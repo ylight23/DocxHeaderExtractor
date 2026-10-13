@@ -1,0 +1,157 @@
+{
+  "artifact": "p7.f1.v6.d4.11f-run-receipt.v1",
+  "label": "Development canary on segments chosen from earlier errors; not an F1 estimate. Raw SSE responses (reasoning included), request bodies, run summaries and the analysis are in run-a57d260f/ (owner instruction 2026-10-13).",
+  "planSha256": "a57d260f3eb8eb506b75556008a34e3e805e3c0e698ea16df2681edf3fba8137",
+  "codeCommit": "73e2ed1fbda60ac368124ee85fd0e21749bf9eda",
+  "authorizationFileSha256": "85bd32ae90829241b4c5d4522f4cb67b4c45557fd0e41dd9bd8d663f21747362",
+  "approvedBy": "ylight23 (session user of the repository owner account; the messages did not restate a name)",
+  "consumedMarker": "consumed-a57d260f….json written before the first POST; the plan cannot run again",
+  "retriesUsed": 0,
+  "posts": 4,
+  "postsAllowed": 16,
+  "actualUsd": 0.00402125,
+  "ceilingUsd": 0.5,
+  "allRequestsMatchPlan": true,
+  "allProviderAlibaba": true,
+  "calls": [
+    {
+      "arm": "AUTO",
+      "unit": "SEG-001",
+      "turn": 1,
+      "requestSha256": "ee0f4fa54c562a1891822e9ea1b4ae8b84b61fa6e9170c320e1150113f859c27",
+      "requestMatchesPlan": true,
+      "responseSha256": "0d735ae99e8de1801ad80ca644f8799350e7867286372b7f9f7bff1889d80be9",
+      "provider": "Alibaba",
+      "model": "qwen/qwen3.7-flash",
+      "finish": "stop",
+      "promptTokens": "10270",
+      "completionTokens": "6028",
+      "reasoningTokens": "4334",
+      "costUsd": 0.00109174,
+      "cachedTokens": "ZERO",
+      "verdict": "PASSED_AUDIT_TO_PARSER"
+    },
+    {
+      "arm": "AUTO",
+      "unit": "SEG-008",
+      "turn": 1,
+      "requestSha256": "0233eea5ab920153a7ea2870507c97fe609b21bb1ebb29dfac40213056c0a69c",
+      "requestMatchesPlan": true,
+      "responseSha256": "a270cf713ad8c998b03043571830cdd41b292f69d18b77dd0fe330c6b3e8deb2",
+      "provider": "Alibaba",
+      "model": "qwen/qwen3.7-flash",
+      "finish": "stop",
+      "promptTokens": "10984",
+      "completionTokens": "5914",
+      "reasoningTokens": "4849",
+      "costUsd": 0.00109834,
+      "cachedTokens": "ZERO",
+      "verdict": "PASSED_AUDIT_TO_PARSER"
+    },
+    {
+      "arm": "EVIDENCE_FIRST",
+      "unit": "SEG-001",
+      "turn": 1,
+      "requestSha256": "e6b1768d0885099f65e6b95520f0fbd6a3ccb6eb26e44f51b628cb97ddee9f5a",
+      "requestMatchesPlan": true,
+      "responseSha256": "b6354263db109f7b36a055cd4d53a22dd24a2335e70d86cc03f9c40bb1768636",
+      "provider": "Alibaba",
+      "model": "qwen/qwen3.7-flash",
+      "finish": "stop",
+      "promptTokens": "10318",
+      "completionTokens": "5257",
+      "reasoningTokens": "3563",
+      "costUsd": 0.00099295,
+      "cachedTokens": "ZERO",
+      "verdict": "PASSED_AUDIT_TO_PARSER"
+    },
+    {
+      "arm": "EVIDENCE_FIRST",
+      "unit": "SEG-008",
+      "turn": 1,
+      "requestSha256": "c333bd45da95d44a5e2dcc71d0198770025c3e271d0e2d762e0b2f585f511fda",
+      "requestMatchesPlan": true,
+      "responseSha256": "a0438bb73009003a072fa3c1db03f8a737ad6bfc3b46edf4a5f4d2324ed19def",
+      "provider": "Alibaba",
+      "model": "qwen/qwen3.7-flash",
+      "finish": "stop",
+      "promptTokens": "11032",
+      "completionTokens": "3902",
+      "reasoningTokens": "2837",
+      "costUsd": 0.00083822,
+      "cachedTokens": "ZERO",
+      "verdict": "PASSED_AUDIT_TO_PARSER"
+    }
+  ],
+  "units": [
+    {
+      "arm": "AUTO",
+      "unit": "SEG-001",
+      "status": "COMPLETE",
+      "failure": null,
+      "modelToolCallsEmitted": 0,
+      "toolSucceeded": 0,
+      "cacheHits": 0,
+      "reasoningMentionsOfTools": 0,
+      "semanticDiagnostic": {
+        "selected": 46,
+        "goldAtoms": 0,
+        "tp": 0,
+        "fp": 46,
+        "fn": 0
+      }
+    },
+    {
+      "arm": "AUTO",
+      "unit": "SEG-008",
+      "status": "COMPLETE",
+      "failure": null,
+      "modelToolCallsEmitted": 0,
+      "toolSucceeded": 0,
+      "cacheHits": 0,
+      "reasoningMentionsOfTools": 0,
+      "semanticDiagnostic": {
+        "selected": 1,
+        "goldAtoms": 1,
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "arm": "EVIDENCE_FIRST",
+      "unit": "SEG-001",
+      "status": "FAILED",
+      "failure": "PROTOCOL:TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED",
+      "modelToolCallsEmitted": 0,
+      "toolSucceeded": 0,
+      "cacheHits": 0,
+      "reasoningMentionsOfTools": 1,
+      "semanticDiagnostic": null
+    },
+    {
+      "arm": "EVIDENCE_FIRST",
+      "unit": "SEG-008",
+      "status": "FAILED",
+      "failure": "PROTOCOL:TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED",
+      "modelToolCallsEmitted": 0,
+      "toolSucceeded": 0,
+      "cacheHits": 0,
+      "reasoningMentionsOfTools": 1,
+      "semanticDiagnostic": null
+    }
+  ],
+  "publication": {
+    "dir": "run-a57d260f",
+    "files": 10,
+    "manifest": "run-a57d260f/publication-manifest.json",
+    "apiKeyInAnyFile": false
+  },
+  "findings": {
+    "capability": "NOT DEMONSTRATED. Requests were streamed with reasoning enabled and tools declared (tool_choice auto, provider Alibaba). Qwen emitted 0 tool calls in 4/4 responses, including both EVIDENCE_FIRST responses whose prompt says the first reply must be tool calls and that an answer before a tool result is refused. The C# loop (dispatcher, role tool messages, cache) was not exercised live.",
+    "whyNotCalled": "The EVIDENCE_FIRST reasoning states the decision in its own words: both responses say no tool call is needed because the evidence is in the prompt, then give the JSON answer. The instruction to call tools first was read and not followed. One factor to test next: every V6 request sets response_format json_object, while F1Q's tool-calling arm (9/10) was built without it; see p7.f1q.response-format-crosstab.v1.json.",
+    "evidence": "No tool evidence: 0 calls, 0 results, 0 cache hits. SEG-001 has 46 targets whose normalized text also occurs outside the shown window; none was looked up.",
+    "semanticDiagnostic": "Offline against Gold on the 96 targets; not F1 and not attributable to tools. AUTO SEG-001 selected 46 lines, 0 Gold heading atoms there (false positives 46); in D4.11b the same arm and segment selected 0. AUTO SEG-008 selected the 1 Gold heading atom (tp 1, fp 0, fn 0); in D4.11b it selected the adjacent body line. EVIDENCE_FIRST units were refused, so no decisions were taken from them. Across D4.10, D4.11b and D4.11f the SEG-001 selection has been 46, 0, 46 on near-identical requests: the answer varies between calls and no prompt change has been shown to cause it.",
+    "cache": "cached_tokens = 0 and cache_write_tokens = 0 in all 4 responses (read from the SSE usage chunk)."
+  }
+}

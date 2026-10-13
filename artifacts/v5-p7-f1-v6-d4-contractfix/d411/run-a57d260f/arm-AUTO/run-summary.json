@@ -1,0 +1,296 @@
+{
+  "artifact": "p7.f1.v6.d4.5-run-summary.v1",
+  "canary": "p7.f1.v6.d4.11f-tool-canary-plan.v1",
+  "planSha256": "a57d260f3eb8eb506b75556008a34e3e805e3c0e698ea16df2681edf3fba8137",
+  "Arm": "AUTO",
+  "Calls": 2,
+  "ReservedUsd": 0.03308,
+  "ActualUsd": 0.0021900799999999996,
+  "HaltReason": null,
+  "Refusals": [],
+  "units": [
+    {
+      "UnitId": "SEG-001",
+      "Status": "COMPLETE",
+      "Calls": 1,
+      "Failure": null,
+      "IncompleteReason": null,
+      "decisions": {
+        "L0042:S0": "SELECT",
+        "L0043:S0": "SELECT",
+        "L0044:S0": "SELECT",
+        "L0045:S0": "SELECT",
+        "L0046:S0": "SELECT",
+        "L0047:S0": "SELECT",
+        "L0048:S0": "SELECT",
+        "L0049:S0": "SELECT",
+        "L0050:S0": "SELECT",
+        "L0051:S0": "SELECT",
+        "L0052:S0": "SELECT",
+        "L0053:S0": "SELECT",
+        "L0054:S0": "SELECT",
+        "L0055:S0": "SELECT",
+        "L0056:S0": "SELECT",
+        "L0057:S0": "SELECT",
+        "L0058:S0": "SELECT",
+        "L0059:S0": "SELECT",
+        "L0060:S0": "SELECT",
+        "L0061:S0": "SELECT",
+        "L0062:S0": "NOT_SELECT",
+        "L0063:S0": "NOT_SELECT",
+        "L0064:S0": "SELECT",
+        "L0065:S0": "SELECT",
+        "L0066:S0": "SELECT",
+        "L0067:S0": "SELECT",
+        "L0068:S0": "SELECT",
+        "L0069:S0": "SELECT",
+        "L0070:S0": "SELECT",
+        "L0071:S0": "SELECT",
+        "L0072:S0": "SELECT",
+        "L0073:S0": "SELECT",
+        "L0074:S0": "SELECT",
+        "L0075:S0": "SELECT",
+        "L0076:S0": "SELECT",
+        "L0077:S0": "SELECT",
+        "L0078:S0": "SELECT",
+        "L0079:S0": "SELECT",
+        "L0080:S0": "SELECT",
+        "L0081:S0": "SELECT",
+        "L0082:S0": "SELECT",
+        "L0083:S0": "SELECT",
+        "L0084:S0": "SELECT",
+        "L0085:S0": "SELECT",
+        "L0086:S0": "SELECT",
+        "L0087:S0": "SELECT",
+        "L0088:S0": "SELECT",
+        "L0089:S0": "SELECT"
+      },
+      "Turns": [
+        {
+          "Turn": 1,
+          "ToolChoice": "auto",
+          "RequestSha256": "ee0f4fa54c562a1891822e9ea1b4ae8b84b61fa6e9170c320e1150113f859c27",
+          "RequestBytes": 32299,
+          "ToolCalls": 0,
+          "FinishReason": "stop",
+          "ContentPresent": true
+        }
+      ],
+      "toolCalls": [],
+      "SuccessfulToolCalls": 0,
+      "Scope": {
+        "EvaluatedTargets": 48,
+        "ShownInRequest": 88,
+        "ObservedThroughToolsOnly": 0,
+        "ObservedTotal": 88,
+        "ObservedPages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "WholeDocumentLines": 2302,
+        "WholeDocumentObserved": false,
+        "RefsTotal": 46,
+        "RefsToToolOnlyLines": 0,
+        "DecisionsCitingToolOnlyLines": []
+      },
+      "Evidence": {
+        "ModelToolCallsEmitted": 0,
+        "ToolsDispatched": 0,
+        "ToolsRejectedBeforeDispatch": 0,
+        "ToolSucceeded": 0,
+        "ToolMessageBytes": 0,
+        "SuccessfulResultsShowingATarget": 0,
+        "TargetsShownByTools": [],
+        "RelevantEvidenceObserved": "OFFLINE_AUDIT_AFTER_FREEZE",
+        "EvidenceUsed": [],
+        "ToolCacheHits": 0
+      }
+    },
+    {
+      "UnitId": "SEG-008",
+      "Status": "COMPLETE",
+      "Calls": 1,
+      "Failure": null,
+      "IncompleteReason": null,
+      "decisions": {
+        "L0372:S0": "NOT_SELECT",
+        "L0373:S0": "NOT_SELECT",
+        "L0374:S0": "NOT_SELECT",
+        "L0375:S0": "NOT_SELECT",
+        "L0376:S0": "NOT_SELECT",
+        "L0377:S0": "NOT_SELECT",
+        "L0378:S0": "NOT_SELECT",
+        "L0379:S0": "NOT_SELECT",
+        "L0380:S0": "NOT_SELECT",
+        "L0381:S0": "NOT_SELECT",
+        "L0382:S0": "NOT_SELECT",
+        "L0383:S0": "NOT_SELECT",
+        "L0384:S0": "NOT_SELECT",
+        "L0385:S0": "NOT_SELECT",
+        "L0386:S0": "NOT_SELECT",
+        "L0387:S0": "NOT_SELECT",
+        "L0388:S0": "NOT_SELECT",
+        "L0389:S0": "NOT_SELECT",
+        "L0390:S0": "NOT_SELECT",
+        "L0391:S0": "NOT_SELECT",
+        "L0392:S0": "NOT_SELECT",
+        "L0393:S0": "NOT_SELECT",
+        "L0394:S0": "NOT_SELECT",
+        "L0395:S0": "NOT_SELECT",
+        "L0396:S0": "SELECT",
+        "L0397:S0": "NOT_SELECT",
+        "L0398:S0": "NOT_SELECT",
+        "L0399:S0": "NOT_SELECT",
+        "L0400:S0": "NOT_SELECT",
+        "L0401:S0": "NOT_SELECT",
+        "L0402:S0": "NOT_SELECT",
+        "L0403:S0": "NOT_SELECT",
+        "L0404:S0": "NOT_SELECT",
+        "L0405:S0": "NOT_SELECT",
+        "L0406:S0": "NOT_SELECT",
+        "L0407:S0": "NOT_SELECT",
+        "L0408:S0": "NOT_SELECT",
+        "L0409:S0": "NOT_SELECT",
+        "L0410:S0": "NOT_SELECT",
+        "L0411:S0": "NOT_SELECT",
+        "L0412:S0": "NOT_SELECT",
+        "L0413:S0": "NOT_SELECT",
+        "L0414:S0": "NOT_SELECT",
+        "L0415:S0": "NOT_SELECT",
+        "L0416:S0": "NOT_SELECT",
+        "L0417:S0": "NOT_SELECT",
+        "L0418:S0": "NOT_SELECT",
+        "L0419:S0": "NOT_SELECT"
+      },
+      "Turns": [
+        {
+          "Turn": 1,
+          "ToolChoice": "auto",
+          "RequestSha256": "0233eea5ab920153a7ea2870507c97fe609b21bb1ebb29dfac40213056c0a69c",
+          "RequestBytes": 36357,
+          "ToolCalls": 0,
+          "FinishReason": "stop",
+          "ContentPresent": true
+        }
+      ],
+      "toolCalls": [],
+      "SuccessfulToolCalls": 0,
+      "Scope": {
+        "EvaluatedTargets": 48,
+        "ShownInRequest": 88,
+        "ObservedThroughToolsOnly": 0,
+        "ObservedTotal": 88,
+        "ObservedPages": [
+          11,
+          12,
+          13
+        ],
+        "WholeDocumentLines": 2302,
+        "WholeDocumentObserved": false,
+        "RefsTotal": 1,
+        "RefsToToolOnlyLines": 0,
+        "DecisionsCitingToolOnlyLines": []
+      },
+      "Evidence": {
+        "ModelToolCallsEmitted": 0,
+        "ToolsDispatched": 0,
+        "ToolsRejectedBeforeDispatch": 0,
+        "ToolSucceeded": 0,
+        "ToolMessageBytes": 0,
+        "SuccessfulResultsShowingATarget": 0,
+        "TargetsShownByTools": [],
+        "RelevantEvidenceObserved": "OFFLINE_AUDIT_AFTER_FREEZE",
+        "EvidenceUsed": [],
+        "ToolCacheHits": 0
+      }
+    }
+  ],
+  "ledger": [
+    {
+      "Seq": 1,
+      "UnitId": "SEG-001",
+      "Stage": "SEGMENT",
+      "Round": 1,
+      "RequestSha256": "ee0f4fa54c562a1891822e9ea1b4ae8b84b61fa6e9170c320e1150113f859c27",
+      "RequestBytes": 32299,
+      "ReserveUsd": 0.0163371,
+      "Transport": "HTTP_OK",
+      "HttpStatus": 200,
+      "ResponseSha256": "0d735ae99e8de1801ad80ca644f8799350e7867286372b7f9f7bff1889d80be9",
+      "RawStoreKey": "0d735ae99e8de1801ad80ca644f8799350e7867286372b7f9f7bff1889d80be9",
+      "FinishReason": "stop",
+      "PromptTokens": "10270",
+      "CompletionTokens": "6028",
+      "ReasoningTokens": "4334",
+      "ProviderCostUsd": 0.00109174,
+      "ComputedCostUsd": 0.00109174,
+      "Endpoint": "Alibaba",
+      "Model": "qwen/qwen3.7-flash",
+      "AuditCodes": [
+        "OK"
+      ],
+      "Verdict": "PASSED_AUDIT_TO_PARSER",
+      "Cache": {
+        "CachedTokens": {
+          "Status": "ZERO",
+          "Value": 0,
+          "Path": "usage.prompt_tokens_details.cached_tokens"
+        },
+        "CacheWriteTokens": {
+          "Status": "ZERO",
+          "Value": 0,
+          "Path": "usage.prompt_tokens_details.cache_write_tokens"
+        },
+        "CacheDiscount": {
+          "Status": "ABSENT",
+          "Value": null,
+          "Path": null
+        }
+      }
+    },
+    {
+      "Seq": 2,
+      "UnitId": "SEG-008",
+      "Stage": "SEGMENT",
+      "Round": 1,
+      "RequestSha256": "0233eea5ab920153a7ea2870507c97fe609b21bb1ebb29dfac40213056c0a69c",
+      "RequestBytes": 36357,
+      "ReserveUsd": 0.016742899999999998,
+      "Transport": "HTTP_OK",
+      "HttpStatus": 200,
+      "ResponseSha256": "a270cf713ad8c998b03043571830cdd41b292f69d18b77dd0fe330c6b3e8deb2",
+      "RawStoreKey": "a270cf713ad8c998b03043571830cdd41b292f69d18b77dd0fe330c6b3e8deb2",
+      "FinishReason": "stop",
+      "PromptTokens": "10984",
+      "CompletionTokens": "5914",
+      "ReasoningTokens": "4849",
+      "ProviderCostUsd": 0.00109834,
+      "ComputedCostUsd": 0.00109834,
+      "Endpoint": "Alibaba",
+      "Model": "qwen/qwen3.7-flash",
+      "AuditCodes": [
+        "OK"
+      ],
+      "Verdict": "PASSED_AUDIT_TO_PARSER",
+      "Cache": {
+        "CachedTokens": {
+          "Status": "ZERO",
+          "Value": 0,
+          "Path": "usage.prompt_tokens_details.cached_tokens"
+        },
+        "CacheWriteTokens": {
+          "Status": "ZERO",
+          "Value": 0,
+          "Path": "usage.prompt_tokens_details.cache_write_tokens"
+        },
+        "CacheDiscount": {
+          "Status": "ABSENT",
+          "Value": null,
+          "Path": null
+        }
+      }
+    }
+  ]
+}

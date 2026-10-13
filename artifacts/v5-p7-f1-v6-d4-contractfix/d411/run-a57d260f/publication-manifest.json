@@ -1,0 +1,67 @@
+{
+  "artifact": "p7.f1.v6.d4.11-publication-manifest.v1",
+  "planSha256": "a57d260f3eb8eb506b75556008a34e3e805e3c0e698ea16df2681edf3fba8137",
+  "files": [
+    {
+      "file": "arm-AUTO/run-summary.json",
+      "kind": "summary",
+      "bytes": 9033,
+      "sha256": "5fcf15a95a71d3a3a111891fb3d99f42cfa584aebd48f67cee581402cbc1c0ac"
+    },
+    {
+      "file": "arm-AUTO/raw/0d735ae99e8de1801ad80ca644f8799350e7867286372b7f9f7bff1889d80be9.sse",
+      "kind": "raw-sse",
+      "bytes": 607720,
+      "sha256": "0d735ae99e8de1801ad80ca644f8799350e7867286372b7f9f7bff1889d80be9"
+    },
+    {
+      "file": "arm-AUTO/raw/a270cf713ad8c998b03043571830cdd41b292f69d18b77dd0fe330c6b3e8deb2.sse",
+      "kind": "raw-sse",
+      "bytes": 608182,
+      "sha256": "a270cf713ad8c998b03043571830cdd41b292f69d18b77dd0fe330c6b3e8deb2"
+    },
+    {
+      "file": "arm-AUTO/requests/SEG-001-turn-1.ee0f4fa54c562a1891822e9ea1b4ae8b84b61fa6e9170c320e1150113f859c27.json",
+      "kind": "request",
+      "bytes": 32299,
+      "sha256": "ee0f4fa54c562a1891822e9ea1b4ae8b84b61fa6e9170c320e1150113f859c27"
+    },
+    {
+      "file": "arm-AUTO/requests/SEG-008-turn-1.0233eea5ab920153a7ea2870507c97fe609b21bb1ebb29dfac40213056c0a69c.json",
+      "kind": "request",
+      "bytes": 36357,
+      "sha256": "0233eea5ab920153a7ea2870507c97fe609b21bb1ebb29dfac40213056c0a69c"
+    },
+    {
+      "file": "arm-EVIDENCE_FIRST/run-summary.json",
+      "kind": "summary",
+      "bytes": 9303,
+      "sha256": "4ca8b50a69304742dd61765e1c07ba53c40f777b752442eb5d0007daca48e4e5"
+    },
+    {
+      "file": "arm-EVIDENCE_FIRST/raw/a0438bb73009003a072fa3c1db03f8a737ad6bfc3b46edf4a5f4d2324ed19def.sse",
+      "kind": "raw-sse",
+      "bytes": 392250,
+      "sha256": "a0438bb73009003a072fa3c1db03f8a737ad6bfc3b46edf4a5f4d2324ed19def"
+    },
+    {
+      "file": "arm-EVIDENCE_FIRST/raw/b6354263db109f7b36a055cd4d53a22dd24a2335e70d86cc03f9c40bb1768636.sse",
+      "kind": "raw-sse",
+      "bytes": 530340,
+      "sha256": "b6354263db109f7b36a055cd4d53a22dd24a2335e70d86cc03f9c40bb1768636"
+    },
+    {
+      "file": "arm-EVIDENCE_FIRST/requests/SEG-001-turn-1.e6b1768d0885099f65e6b95520f0fbd6a3ccb6eb26e44f51b628cb97ddee9f5a.json",
+      "kind": "request",
+      "bytes": 32526,
+      "sha256": "e6b1768d0885099f65e6b95520f0fbd6a3ccb6eb26e44f51b628cb97ddee9f5a"
+    },
+    {
+      "file": "arm-EVIDENCE_FIRST/requests/SEG-008-turn-1.c333bd45da95d44a5e2dcc71d0198770025c3e271d0e2d762e0b2f585f511fda.json",
+      "kind": "request",
+      "bytes": 36584,
+      "sha256": "c333bd45da95d44a5e2dcc71d0198770025c3e271d0e2d762e0b2f585f511fda"
+    }
+  ],
+  "note": "Copied unchanged from the safe store. Raw SSE responses include the model's reasoning text. The document is the public IETF RFC 9114. No API key is in any file (checked before copying)."
+}

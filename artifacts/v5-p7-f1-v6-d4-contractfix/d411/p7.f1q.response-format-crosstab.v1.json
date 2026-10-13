@@ -1,0 +1,19 @@
+{
+  "artifact": "p7.f1q.response-format-crosstab.v1",
+  "providerCalls": 0,
+  "purpose": "After the D4.11f canary (0 tool calls in 4/4 although the prompt asked for them), check in the F1Q raw whether a request setting differs between the turns where Qwen called a tool and the turns where it did not.",
+  "source": "F1Q raw requests and SSE, commit 29c72e7581b2e1ffc45a91b5e6accb11d299ac0c (experiment/p7-f1-semantic-question-v1), artifacts/web-pdf-semantic-diagnostic. Every turn request (request.json) is read with its SSE response; a turn counts as 'called' when the stream carries tool_calls.",
+  "turns": [
+    { "responseFormat": "json_object", "toolsDeclared": true, "toolChoice": "auto", "turns": 1344, "withToolCalls": 34, "share": "2.5%" },
+    { "responseFormat": "absent",      "toolsDeclared": true, "toolChoice": "auto", "turns": 30,   "withToolCalls": 11, "share": "36.7%" },
+    { "responseFormat": "json_object", "toolsDeclared": true, "toolChoice": "none", "turns": 4,    "withToolCalls": 0 },
+    { "responseFormat": "absent",      "toolsDeclared": true, "toolChoice": "none", "turns": 1,    "withToolCalls": 0 },
+    { "responseFormat": "none/absent", "toolsDeclared": false, "turns": 13, "withToolCalls": 0 }
+  ],
+  "reading": "Where tools were declared with tool_choice auto, turns without a response_format called a tool in 11 of 30 (37%), turns with response_format json_object in 34 of 1,344 (2.5%). All V6 canary requests (D4.11b, D4.11f) set json_object on every turn and produced 0 tool calls in 8/8.",
+  "limits": [
+    "Confounded. The 30 turns without response_format are almost all the Issue #5 experiment, whose mandatory arm also had a prompt that requires a first reply of tool calls and a different task; the 1,344 json_object turns are the direct-heading runs with different prompts. The counts do not isolate response_format.",
+    "Not causal. They justify one controlled test, not a conclusion that json_object prevents tool calls on this route."
+  ],
+  "controlledTestWouldBe": "The same D4.11f request with response_format absent on the tool turns, everything else unchanged, as its own plan with its own SHA, budget and approval. The final answer would then not be forced to JSON by the provider, so the strict parser must keep refusing a non-JSON answer."
+}
