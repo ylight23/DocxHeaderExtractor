@@ -1,0 +1,174 @@
+{
+  "artifact": "p7.f1.v6.d4.11j-owner-document-trial-dryrun.v1",
+  "authority": "OWNER-DOC-f4b72d1a",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-f4b72d1a.layout.json.geo.unwrap.single.facts.r1.mainrep2.toolrounds.toolfactsanalysis.factsv3.nolayout.retry1.repair.v1.json",
+  "planSha256": "993bb5b502ef43b792e7aa6a94f27aa34072720a6cf7e93932e88f5eee6113c3",
+  "planVerifiesNow": true,
+  "codeCommit": "9f67db4ad56a224fe84d8fbdf986b74390e5ac4f",
+  "firstRequests": [
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-000",
+      "sha256": "49f582fc152140c6bc59c134d8f5b2c7f90a3cfdf880fa84eddca1938ce1af40",
+      "bytes": 21952,
+      "reserveUsd": 0.004918
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-001",
+      "sha256": "2ff6a270b7266ff72dfd99fb1c1e04f55b07cc03ca6552ea2910db3f79b8f77a",
+      "bytes": 25098,
+      "reserveUsd": 0.005013
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-002",
+      "sha256": "d8082a7576387c51eef7b2b9ce824c4e06ee13ae413e88514d122e537cce6284",
+      "bytes": 25096,
+      "reserveUsd": 0.005013
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-003",
+      "sha256": "fa15d70e36023724a450cbfa7ce0e9a237cfe95dd59f53cd60ce3ad07c56da5d",
+      "bytes": 25006,
+      "reserveUsd": 0.00501
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-004",
+      "sha256": "95d7217c6b7329185a9c8a69d7d481e86107d9e4ff64f6da89bc8e984ff54bba",
+      "bytes": 25118,
+      "reserveUsd": 0.005013
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-005",
+      "sha256": "1b59315ad08ba51b6e9e2ec23f54f0c8d077dd1db23bf2871b736b5cdcb8b61f",
+      "bytes": 25055,
+      "reserveUsd": 0.005011
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-006",
+      "sha256": "96f33c0bb98e52e325cf2116b5e7f0f35a3da154efbd09dd2ed53ce3ed022900",
+      "bytes": 25391,
+      "reserveUsd": 0.005022
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-007",
+      "sha256": "ada0cf9138b8017c995efedec25f44b18782df9fc724a032543daa9fae66563d",
+      "bytes": 24263,
+      "reserveUsd": 0.004988
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-008",
+      "sha256": "f53c5acf3304846eae7ab32208252d88b35e8e0c6043d1d60ac28862595e57f9",
+      "bytes": 24543,
+      "reserveUsd": 0.004996
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-009",
+      "sha256": "13d496dd905c2017467049898ab9058a4f896aab202f347bfc0a421952d99436",
+      "bytes": 25513,
+      "reserveUsd": 0.005025
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-010",
+      "sha256": "64f98a96120106e2343fd77d0aafdfed512aba36b6d2ad6ceba5fbb4e36b3195",
+      "bytes": 24887,
+      "reserveUsd": 0.005006
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-011",
+      "sha256": "23cd4adccf1c38a5a81eda05051cbcfb1cc5eec3580f63ec8cedf6951bbb7efe",
+      "bytes": 24863,
+      "reserveUsd": 0.005006
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-012",
+      "sha256": "bc33e998a8324e43593c3f15d8c3e52ff1dbd3381ad32b863d9f7b5ec16e2313",
+      "bytes": 24576,
+      "reserveUsd": 0.004997
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-013",
+      "sha256": "b15717a7af312c860f904716ee43e9c636f3364a3f2ee246c477e362e8dd1a69",
+      "bytes": 25162,
+      "reserveUsd": 0.005015
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-014",
+      "sha256": "c8f2a7a0908dc5f2a7290ebf33a5e427ec9a189c18342b968fe42d24682c68cf",
+      "bytes": 25138,
+      "reserveUsd": 0.005014
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-015",
+      "sha256": "b2970f2850f66e37c2652f2e4ae72c1e51c9fbf86470df56dd646cb6ce10859c",
+      "bytes": 24771,
+      "reserveUsd": 0.005003
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-016",
+      "sha256": "216469067abab182bbb1ea861bdb63a0b86e74c1910e0d42b8947224c3fe66a7",
+      "bytes": 24479,
+      "reserveUsd": 0.004994
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-017",
+      "sha256": "0751c41b5e8446a52200794c87b0049934f86bf623d342d44b372abdd0e36fc8",
+      "bytes": 21017,
+      "reserveUsd": 0.00489
+    }
+  ],
+  "simulations": [
+    {
+      "simulation": "ANSWER_WITHOUT_TOOLS",
+      "arms": [
+        {
+          "arm": "TOOLFACTS_ANALYSIS_V3",
+          "posts": 3,
+          "reservedUsd": 0.0149,
+          "ceilingUsd": 3.22,
+          "halt": "CONSECUTIVE_CONTRACT_FAILURES",
+          "units": 18,
+          "complete": 0,
+          "stoppedByBudget": 15,
+          "maxRequestBytes": 25098
+        }
+      ]
+    },
+    {
+      "simulation": "TOOL_CALL_ON_EVERY_TURN (an overview each of 3 turns, then answer)",
+      "arms": [
+        {
+          "arm": "TOOLFACTS_ANALYSIS_V3",
+          "posts": 12,
+          "reservedUsd": 0.0837,
+          "ceilingUsd": 3.22,
+          "halt": "CONSECUTIVE_CONTRACT_FAILURES",
+          "units": 18,
+          "complete": 0,
+          "stoppedByBudget": 15,
+          "maxRequestBytes": 33542
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; no provider call; no line text is written to this report."
+  ]
+}

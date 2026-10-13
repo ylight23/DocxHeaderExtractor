@@ -1,0 +1,132 @@
+{
+  "artifact": "p7.f1.v6.d4.11j-owner-document-trial-dryrun.v1",
+  "authority": "OWNER-DOC-6d3cd46d",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-6d3cd46d.layout.json.geo.unwrap.single.facts.r1.first12.mainrep2.toolrounds.toolfactsanalysis.factsv3.nolayout.retry1.repair.v1.json",
+  "planSha256": "b97f3bb46468bffaed82d1601fa9987a3b4f7d6f61925cabb94a060ea525ad1e",
+  "planVerifiesNow": true,
+  "codeCommit": "9f67db4ad56a224fe84d8fbdf986b74390e5ac4f",
+  "firstRequests": [
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-000",
+      "sha256": "6565e070debbd4529f9aa7434d6e102b40f3acdaf07c5dea9ff5f566a85cf435",
+      "bytes": 27036,
+      "reserveUsd": 0.005071
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-001",
+      "sha256": "fcee83ae46848eae0307e9402b35532363fd01744c46019d70f717e4b452162c",
+      "bytes": 33295,
+      "reserveUsd": 0.016437
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-002",
+      "sha256": "449d26ddb88e8b0973de7e6f38dcfcb184644cdd66bf1ac6b6c2a08b25a56af6",
+      "bytes": 33202,
+      "reserveUsd": 0.016427
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-003",
+      "sha256": "db5efe73c468088334a6beb177e867b9b544f0d888ab3de98705bf93c8749e2c",
+      "bytes": 29868,
+      "reserveUsd": 0.005156
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-004",
+      "sha256": "abc2840fe2308c2684bdf4f46bb804c1108b4aff5fa4270bd1e63860d272cf86",
+      "bytes": 31242,
+      "reserveUsd": 0.005197
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-005",
+      "sha256": "e5e2dbb528b65dd174fc6660c635785438c4c5eb003cc182c77e92a0b85cffea",
+      "bytes": 29816,
+      "reserveUsd": 0.005154
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-006",
+      "sha256": "9d1d9ceb53cc17da50c47754b3da4fc3d3fd269d700a0c45c8f77c8583211480",
+      "bytes": 27576,
+      "reserveUsd": 0.005087
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-007",
+      "sha256": "57276c19a4de0c68392f202d027f83360d58fbefff724d121b9d0cbbb382b340",
+      "bytes": 27238,
+      "reserveUsd": 0.005077
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-008",
+      "sha256": "864c3be567ec5aa58027cfeb72bf9a6c5f929e1389a8b8b3be2132fc066ea06b",
+      "bytes": 26802,
+      "reserveUsd": 0.005064
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-009",
+      "sha256": "9e40e112b2de1656ef813bc2f7eccc88f0daf1081b82df409be70aa022d34deb",
+      "bytes": 27629,
+      "reserveUsd": 0.005089
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-010",
+      "sha256": "03fb536f980a981d6b155b0e256d9da30488c5df986ba2dae65d2001938b87b3",
+      "bytes": 28709,
+      "reserveUsd": 0.005121
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-011",
+      "sha256": "c5916dbc8738e04b9043b3d3ddb75c11b8ae17cc93a77904af52b3dd148d74c7",
+      "bytes": 27590,
+      "reserveUsd": 0.005088
+    }
+  ],
+  "simulations": [
+    {
+      "simulation": "ANSWER_WITHOUT_TOOLS",
+      "arms": [
+        {
+          "arm": "TOOLFACTS_ANALYSIS_V3",
+          "posts": 3,
+          "reservedUsd": 0.0379,
+          "ceilingUsd": 2.17,
+          "halt": "CONSECUTIVE_CONTRACT_FAILURES",
+          "units": 12,
+          "complete": 0,
+          "stoppedByBudget": 9,
+          "maxRequestBytes": 33295
+        }
+      ]
+    },
+    {
+      "simulation": "TOOL_CALL_ON_EVERY_TURN (an overview each of 3 turns, then answer)",
+      "arms": [
+        {
+          "arm": "TOOLFACTS_ANALYSIS_V3",
+          "posts": 12,
+          "reservedUsd": 0.2083,
+          "ceilingUsd": 2.17,
+          "halt": "CONSECUTIVE_CONTRACT_FAILURES",
+          "units": 12,
+          "complete": 0,
+          "stoppedByBudget": 9,
+          "maxRequestBytes": 73812
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; no provider call; no line text is written to this report."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "APPROVED",
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-f4b72d1a.layout.json.geo.unwrap.single.facts.r1.mainrep2.toolrounds.toolfactsanalysis.factsv3.nolayout.retry1.repair.v1.json",
+  "planSha256": "993bb5b502ef43b792e7aa6a94f27aa34072720a6cf7e93932e88f5eee6113c3",
+  "codeCommit": "9f67db4ad56a224fe84d8fbdf986b74390e5ac4f",
+  "authorityId": "OWNER-DOC-f4b72d1a",
+  "document": "owner-supplied (outside the repository): 089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+  "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 126,
+  "ceilingUsd": 3.22,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D411j-OWNER-DOC",
+  "dataSharing": {
+    "documentPublicity": "A document of the repository's public heading corpus (todo10_8/heading_corpus_100), whose README states the files are real documents downloaded from public sources (089_ND_195-2013_Luat_Xuat_ban_EN.pdf); the origin is not independently verified here. Text is sent as it is. Requests, raw responses and the analysis stay in the safe store and are not committed or pushed.",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "allow",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ]
+  },
+  "approvedBy": "ylight23 (session user of the repository owner account)",
+  "approvedAtUtc": "2026-10-13T14:01:22.3085081Z",
+  "approvalText": "Owner message 2026-10-13: 'CÓ' (yes) to changing sentence 2 of the instruction to 'select the lines where the heading itself stands (all lines of a heading that runs over several lines)' and running again. Otherwise as the previous run: TOOLFACTS_ANALYSIS_V3 (no layout in the request, documentStyles, layout facts V3), transport retry 1, one repair turn, the repair message naming missing aliases. Ceiling USD 3.22 (derived reserve bound: up to 126 posts), earlier owner permission to exceed budgets (2026-10-13). Public-corpus document, one segment per page, json_object on every turn, single-fence unwrap, 1 repetition, 2 units in parallel. Data policy as the owner's explicit approvals of 2026-10-13 (ZDR=false, waiver unverified, OpenRouter logging unknown, data_collection=allow, raw stays in the safe store). Plan 993bb5b502ef43b792e7aa6a94f27aa34072720a6cf7e93932e88f5eee6113c3.",
+  "approvalSha256": "ed1a306508724467607db4eae8f46e8a7e0c6d0c0782aa2975244f6ca3ec3e9f"
+}
