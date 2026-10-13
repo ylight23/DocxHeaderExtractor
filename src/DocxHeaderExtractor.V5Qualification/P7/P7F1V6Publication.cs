@@ -19,12 +19,15 @@ internal static class P7F1V6Publication
     static readonly Regex KeyShaped = new(@"sk-or-[A-Za-z0-9_\-]{10,}", RegexOptions.CultureInvariant);
     static readonly JsonSerializerOptions Indented = new() { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
-    public sealed record Entry(string File, string Kind, long Bytes, string Sha256);
+    /// <param name="UncompressedSha256">For a raw-sse-gz file: the SHA-256 of the received bytes (the stored file's name), which the gzip decompresses to.</param>
+    public sealed record Entry(string File, string Kind, long Bytes, string Sha256, string? UncompressedSha256 = null, long? UncompressedBytes = null);
     public sealed record Result(string? Refusal, IReadOnlyList<Entry> Files);
 
     static Result Refuse(string code) => new(code, Array.Empty<Entry>());
 
-    public static Result Publish(string planPath, string outDir, IReadOnlyList<string> runDirs, string? apiKey)
+    /// <param name="compressRawSse">Write each raw SSE response as a gzip file (lossless; a stream is large and compresses well). The manifest keeps the
+    /// hash of the received bytes, which is the stored file's name, so the response is still identified by what was received.</param>
+    public static Result Publish(string planPath, string outDir, IReadOnlyList<string> runDirs, string? apiKey, bool compressRawSse = false)
     {
         if (runDirs.Count == 0) return Refuse("NO_RUNS");
         var planSha = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(planPath)));
@@ -71,6 +74,25 @@ internal static class P7F1V6Publication
         foreach (var (from, to, kind) in copies)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(to)!);
+            if (compressRawSse && kind == "raw-sse")
+            {
+                var original = File.ReadAllBytes(from);
+                var target = to + ".gz";
+                using (var fs = new FileStream(target, FileMode.CreateNew, FileAccess.Write, FileShare.None))
+                using (var gz = new System.IO.Compression.GZipStream(fs, System.IO.Compression.CompressionLevel.SmallestSize))
+                    gz.Write(original, 0, original.Length);
+                var zipped = File.ReadAllBytes(target);
+                // Read back: the file must decompress to the received bytes.
+                using (var back = new System.IO.Compression.GZipStream(new MemoryStream(zipped), System.IO.Compression.CompressionMode.Decompress))
+                using (var ms = new MemoryStream())
+                {
+                    back.CopyTo(ms);
+                    if (!ms.ToArray().AsSpan().SequenceEqual(original)) throw new IOException("GZIP_ROUND_TRIP_MISMATCH");
+                }
+                entries.Add(new Entry(Path.GetRelativePath(outDir, target).Replace(Path.DirectorySeparatorChar, '/'), "raw-sse-gz", zipped.Length,
+                    Convert.ToHexStringLower(SHA256.HashData(zipped)), Convert.ToHexStringLower(SHA256.HashData(original)), original.Length));
+                continue;
+            }
             File.Copy(from, to, overwrite: false);
             var copied = File.ReadAllBytes(to);
             entries.Add(new Entry(Path.GetRelativePath(outDir, to).Replace(Path.DirectorySeparatorChar, '/'), kind, copied.Length,
@@ -79,7 +101,7 @@ internal static class P7F1V6Publication
         File.WriteAllText(Path.Combine(outDir, "publication-manifest.json"), JsonSerializer.Serialize(new
         {
             artifact = ManifestArtifact, planSha256 = planSha, files = entries,
-            note = "Copied unchanged from the safe store. Raw SSE responses include the model's reasoning text. The document is the public IETF RFC 9114. No API key is in any file (checked before copying).",
+            note = (compressRawSse ? "Copied from the safe store; raw SSE responses are gzip files whose decompressed bytes are the received bytes (uncompressedSha256 is the safe-store name). " : "Copied unchanged from the safe store. ") + "Raw SSE responses include the model's reasoning text. The documents are the repository's public heading corpus (todo10_8/); each plan states its document's publicity. No API key is in any file (checked before copying).",
         }, Indented) + "\n", new UTF8Encoding(false));
         return new Result(null, entries);
     }

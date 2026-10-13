@@ -116,9 +116,9 @@ internal static class D411Plan
     }
 
     /// <summary>Copies the safe-store runs of a consumed plan into the repository (P7F1V6Publication): only when the approving message said to push.</summary>
-    public static void Publish(string planPath, string outDir, IReadOnlyList<string> runDirs)
+    public static void Publish(string planPath, string outDir, IReadOnlyList<string> runDirs, bool gzip = false)
     {
-        var r = P7F1V6Publication.Publish(planPath, outDir, runDirs, Environment.GetEnvironmentVariable("OPENROUTER_API_KEY"));
+        var r = P7F1V6Publication.Publish(planPath, outDir, runDirs, Environment.GetEnvironmentVariable("OPENROUTER_API_KEY"), gzip);
         if (r.Refusal is not null) { Console.WriteLine("D411 PUBLISH REFUSED: " + r.Refusal); Environment.ExitCode = 2; return; }
         Console.WriteLine($"published {r.Files.Count} files to {outDir}");
     }

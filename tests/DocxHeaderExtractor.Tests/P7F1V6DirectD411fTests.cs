@@ -303,6 +303,45 @@ public sealed class P7F1V6DirectD411fTests : IDisposable
     }
 
     [Fact]
+    public void Publish_WithGzip_WritesLosslessFiles_AndTheManifestKeepsTheHashOfTheReceivedBytes()
+    {
+        var (plan, _, _, runs) = MakeRuns(sseText: arm => "data: {\"choices\":[{\"delta\":{\"content\":\"Tiêu đề — “đóng”\"}}]}\r\n\r\ndata: [DONE]\r\n\r\n" + arm + new string('x', 5000));
+        var outDir = Path.Combine(scratch, "out-gz");
+        var r = P7F1V6Publication.Publish(plan, outDir, runs, "sk-or-REAL-KEY-NOT-IN-ANY-FILE-000000", compressRawSse: true);
+        Assert.Null(r.Refusal);
+        Assert.Equal(2, r.Files.Count(f => f.Kind == "raw-sse-gz"));
+        Assert.Empty(r.Files.Where(f => f.Kind == "raw-sse"));
+        for (int i = 0; i < 2; i++)
+        {
+            var arm = i == 0 ? "AUTO" : "EVIDENCE_FIRST";
+            var stored = Directory.GetFiles(runs[i], "*.bin").Single();
+            var gz = Directory.GetFiles(Path.Combine(outDir, "arm-" + arm, "raw"), "*.sse.gz").Single();
+            using var back = new System.IO.Compression.GZipStream(File.OpenRead(gz), System.IO.Compression.CompressionMode.Decompress);
+            using var ms = new MemoryStream();
+            back.CopyTo(ms);
+            Assert.Equal(File.ReadAllBytes(stored), ms.ToArray());                               // lossless, CRLF and non-ASCII included
+            Assert.True(new FileInfo(gz).Length < new FileInfo(stored).Length);
+            var entry = r.Files.Single(f => f.File.EndsWith(Path.GetFileName(gz), StringComparison.Ordinal));
+            Assert.Equal(Path.GetFileNameWithoutExtension(stored), entry.UncompressedSha256);     // the received bytes' hash is the safe-store name
+            Assert.Equal(new FileInfo(stored).Length, entry.UncompressedBytes);
+            Assert.Equal(Sha(File.ReadAllBytes(gz)), entry.Sha256);
+        }
+        using var manifest = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(outDir, "publication-manifest.json")));
+        Assert.Contains("gzip", manifest.RootElement.GetProperty("note").GetString());
+        Assert.Contains("public heading corpus", manifest.RootElement.GetProperty("note").GetString());
+    }
+
+    [Fact]
+    public void Publish_WithGzip_StillRefusesAKeyAnywhere_AndCopiesNothing()
+    {
+        var (plan, _, _, runs) = MakeRuns(sseText: arm => arm == "EVIDENCE_FIRST"
+            ? "data: {\"choices\":[]}\n\nthe key sk-or-v1-abcdef0123456789abcdef\n\ndata: [DONE]\n\n" : "data: [DONE]\n\n");
+        var outDir = Path.Combine(scratch, "out-gz-key");
+        Assert.Equal("KEY_SHAPED_STRING_IN_FILE", P7F1V6Publication.Publish(plan, outDir, runs, null, compressRawSse: true).Refusal);
+        Assert.False(Directory.Exists(outDir));
+    }
+
+    [Fact]
     public void Publish_NeverOverwrites()
     {
         var (plan, _, _, runs) = MakeRuns();
