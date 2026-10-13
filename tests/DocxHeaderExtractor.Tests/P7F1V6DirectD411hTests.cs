@@ -342,6 +342,30 @@ public sealed class P7F1V6DirectD411hTests : IDisposable
         Assert.Equal(new[] { 1, 1, 2, 2, 3, 3 }, state[0].Units.Select(u => u.Rep));
     }
 
+    [Theory]
+    [InlineData("overview")]
+    [InlineData("pages")]
+    public void EvenIfEveryUnitCallsToolsOnEveryTurn_NoUnitIsStoppedByTheCallLimitOrTheReserve(string scenario)
+    {
+        var pages = U.Value.Lines.Select(l => l.Page).Distinct().ToArray();
+        A.ModelTurn Model(int turn, P7F1V6Protocol.PreparedRequest req) => turn <= A.MaxToolTurns
+            ? new A.ModelTurn(null, (scenario == "overview"
+                ? new[] { new A.ToolCall($"c{turn}", P7F1V6AgentTools.DocumentOverview, "{}") }
+                : Enumerable.Range(0, 8).Select(k => new A.ToolCall($"c{turn}_{k}", P7F1V6AgentTools.PageLayout,
+                    JsonSerializer.Serialize(new { page = pages[(turn * 8 + k) % pages.Length], offset = 0, limit = 40 }))).ToArray()), "tool_calls")
+            : Answer(Final(TargetsIn(req)));
+        var budgets = C.Arms.ToDictionary(a => a.Arm, _ => C.NewArmBudget());
+        var state = C.RunArms(U.Value, C.Arms.ToDictionary(a => a.Arm, a => (A.AgentModel)((unit, turn, req) => Model(turn, req))), budgets);
+        foreach (var s in state)
+        {
+            Assert.Equal(24, s.Budget.Calls);                                              // 6 units x 4 posts: the most a unit can use
+            Assert.Empty(s.Budget.Refusals);
+            Assert.Null(s.Budget.HaltReason);
+            Assert.True(s.Budget.ReservedUsd <= C.CeilingUsdPerArm, s.Budget.ReservedUsd.ToString());
+            Assert.All(s.Units, u => Assert.Equal("COMPLETE", u.Outcome.Unit.Status));
+        }
+    }
+
     // ================= plan and execute =================
 
     static readonly Lazy<byte[]> PlanBytes = new(() => C.Serialize(C.PinnedValues(TestRepository.Root(), "TEST_COMMIT")));
@@ -353,8 +377,9 @@ public sealed class P7F1V6DirectD411hTests : IDisposable
         var p = doc.RootElement;
         Assert.Equal(C.PlanArtifact, p.GetProperty("artifact").GetString());
         Assert.False(p.GetProperty("approvalToSend").GetBoolean());
-        Assert.Equal(18, p.GetProperty("budget").GetProperty("maxCalls").GetInt32());
-        Assert.Equal(0.50, p.GetProperty("budget").GetProperty("ceilingUsd").GetDouble(), 9);
+        Assert.Equal(48, p.GetProperty("budget").GetProperty("maxCalls").GetInt32());
+        Assert.Equal(1.30, p.GetProperty("budget").GetProperty("ceilingUsd").GetDouble(), 9);
+        Assert.Contains("raisedFrom", p.GetProperty("budget").ToString());
         Assert.Equal(0, p.GetProperty("retries").GetInt32());
         Assert.Equal(3, p.GetProperty("repetitions").GetProperty("perArmAndSegment").GetInt32());
         var arms = p.GetProperty("arms").EnumerateArray().ToList();
@@ -362,7 +387,7 @@ public sealed class P7F1V6DirectD411hTests : IDisposable
         Assert.All(arms, a =>
         {
             var b = a.GetProperty("budget");
-            Assert.Equal(9, b.GetProperty("maxCalls").GetInt32());
+            Assert.Equal(24, b.GetProperty("maxCalls").GetInt32());
             Assert.True(b.GetProperty("worstCaseReserveUsd").GetDouble() <= b.GetProperty("ceilingUsd").GetDouble());
             Assert.Equal(2, a.GetProperty("firstRequests").GetArrayLength());
         });

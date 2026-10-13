@@ -103,7 +103,7 @@ internal static class D411hPlan
             notes = new[]
             {
                 "Scripted models only; no provider call. They show the loop, the caps and the reserve, not what Qwen will do.",
-                "Each arm has 9 posts and $0.25: 6 first posts (2 segments x 3 repetitions) and 3 for tool turns. If a model called tools in every unit the budget would stop later units INCOMPLETE (BUDGET:CALL_LIMIT); the second simulation shows it.",
+                "Each arm has 24 posts and $0.65: 6 first posts (2 segments x 3 repetitions) and up to 3 more per unit for tool turns, so no unit can be stopped by the call limit. The dollar figure is the worst-case reserve at the byte cap, not the expected spend.",
             },
         };
         File.WriteAllText(Path.Combine(artifactDir, "p7.f1.v6.d4.11h-prefetch-canary-dryrun.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));

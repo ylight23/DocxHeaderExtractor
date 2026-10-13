@@ -23,8 +23,10 @@ internal static class P7F1V6DirectPrefetchCanary
     public static readonly string[] Segments = { "SEG-001", "SEG-008" };
     public static readonly (string Arm, A.Arm Mode)[] Arms = { ("CONTROL", A.Arm.Auto), ("PREFETCH", A.Arm.Prefetch) };
     public const int Reps = 3;
-    public const int PostsPerArm = 9;                 // 2 segments x 3 repetitions = 6 first posts, 3 spare for tool turns
-    public const double CeilingUsdPerArm = 0.25;      // 9 posts x the worst-case reserve of one 131,072-byte request (0.0262) = 0.236
+    // Raised by the owner's permission to exceed the first budget (9 posts, $0.25 per arm), so that no unit can be stopped by the call limit:
+    // 6 units per arm (2 segments x 3 repetitions) x the 4 posts a unit may use at most (3 tool turns and the forced-answer turn) = 24.
+    public const int PostsPerArm = 24;
+    public const double CeilingUsdPerArm = 0.65;      // 24 posts x the worst-case reserve of one 131,072-byte request (0.0262) = 0.629; a bound on the reserve, not the expected spend
     public const int MaxRequestBytes = 131072;
     public const int Retries = 0;
     public const string PlanArtifact = "p7.f1.v6.d4.11h-prefetch-canary-plan.v1";
@@ -151,7 +153,8 @@ internal static class P7F1V6DirectPrefetchCanary
             ["segments"] = Segments,
             ["budget"] = new { maxCalls = PostsPerArm * Arms.Length, ceilingUsd = CeilingUsdPerArm * Arms.Length, maxRequestBytes = MaxRequestBytes,
                 perArm = "each arm has its own budget and early stop; totals are the sum",
-                ifToolsAreCalled = "each arm has 3 posts beyond the 6 first posts; a unit that needs more is stopped INCOMPLETE with BUDGET:CALL_LIMIT, which the report names; nothing is dropped silently" },
+                ifToolsAreCalled = "each arm has 24 posts, the most its 6 units can use (4 each), so the call limit cannot stop a unit; the dollar ceiling is the worst-case reserve of 24 posts at the byte cap, a bound and not the expected spend (the earlier requests cost about $0.001 to $0.0012 each)",
+                raisedFrom = "9 posts and $0.25 per arm (18 posts, $0.50) in plan b76a2c7e, by the owner's permission to exceed the budget; nothing else in the plan changed" },
             ["measurements"] = new[]
             {
                 "primary, per arm and repetition: SEG-001 selected lines, and how many are Gold (Gold has none among the 48 targets); SEG-008 selected lines against the 1 Gold atom (tp, fp, fn)",
