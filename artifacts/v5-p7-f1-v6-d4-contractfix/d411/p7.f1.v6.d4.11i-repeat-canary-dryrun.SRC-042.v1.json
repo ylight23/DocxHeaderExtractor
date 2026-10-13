@@ -1,0 +1,174 @@
+{
+  "artifact": "p7.f1.v6.d4.11i-repeat-canary-dryrun.v1",
+  "authority": "SRC-042",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.11i-repeat-canary-plan.SRC-042.v1.json",
+  "planSha256": "df369552c7f132f12193a3cbede1e8186682fde0cec21a210ea8e1f2a9c23708",
+  "planVerifiesNow": true,
+  "codeCommit": "b672c595e23ec01265e0b3c5a0986932a91c25b2",
+  "firstRequests": [
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-080",
+      "sha256": "bd875bf960f985d9c5b43b23636dd2c7de4c3a7ce153928b4b9e39503f7f67a1",
+      "bytes": 31192,
+      "reserveUsd": 0.005196
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-067",
+      "sha256": "786d0b2692c95e39344bcb40ca506b583d987e587ab0a90217e35b99c6676d0d",
+      "bytes": 30476,
+      "reserveUsd": 0.005174
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-006",
+      "sha256": "940ca29aa50e08b2298e0029fa1ce186f6bdb7d44dfef8034891ef16a4cb1a6a",
+      "bytes": 35068,
+      "reserveUsd": 0.016614
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-103",
+      "sha256": "f9e0fe8a3dd4e68e68739b059a0c7398e0f26f52cfbc19de2e16e472803c90b9",
+      "bytes": 36665,
+      "reserveUsd": 0.016774
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-080",
+      "sha256": "ad9022f2f806319a4ff9a6910077e7966b3ffcd481e2bb9e66acf5f34ba5d081",
+      "bytes": 65792,
+      "reserveUsd": 0.019686
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-067",
+      "sha256": "de42b5f49527f7ff6cd00a0fccc9ac568c52e2038b963c7936b60cdf81883871",
+      "bytes": 72912,
+      "reserveUsd": 0.020398
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-006",
+      "sha256": "7963cc708d29a972aff306fa8bd1542f2c47009b010a38c68c223e0c44e4deb3",
+      "bytes": 44108,
+      "reserveUsd": 0.017518
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-103",
+      "sha256": "8ff5a42a9d86fd5f5ddaad0890ec12bb72ef1af5e57ba08bc4b98cac0375ca63",
+      "bytes": 38948,
+      "reserveUsd": 0.017002
+    }
+  ],
+  "simulations": [
+    {
+      "simulation": "ANSWER_WITHOUT_TOOLS",
+      "arms": [
+        {
+          "arm": "CONTROL",
+          "posts": 20,
+          "reservedUsd": 0.2188,
+          "ceilingUsd": 0.36,
+          "halt": null,
+          "refusals": [],
+          "units": 20,
+          "complete": 20,
+          "stoppedByBudget": 0,
+          "maxRequestBytes": 36665
+        },
+        {
+          "arm": "PREFETCH",
+          "posts": 20,
+          "reservedUsd": 0.373,
+          "ceilingUsd": 0.53,
+          "halt": null,
+          "refusals": [],
+          "units": 20,
+          "complete": 20,
+          "stoppedByBudget": 0,
+          "maxRequestBytes": 72912
+        }
+      ]
+    },
+    {
+      "simulation": "TOOL_CALL_ON_ABOUT_ONE_UNIT_IN_TEN (an overview on turn 1 of every tenth unit)",
+      "arms": [
+        {
+          "arm": "CONTROL",
+          "posts": 22,
+          "reservedUsd": 0.2542,
+          "ceilingUsd": 0.36,
+          "halt": null,
+          "refusals": [],
+          "units": 20,
+          "complete": 20,
+          "stoppedByBudget": 0,
+          "maxRequestBytes": 48073
+        },
+        {
+          "arm": "PREFETCH",
+          "posts": 22,
+          "reservedUsd": 0.4128,
+          "ceilingUsd": 0.53,
+          "halt": null,
+          "refusals": [],
+          "units": 20,
+          "complete": 20,
+          "stoppedByBudget": 0,
+          "maxRequestBytes": 78797
+        }
+      ]
+    },
+    {
+      "simulation": "LARGEST_RESULTS (8 full page layouts per turn, three turns, then answer)",
+      "arms": [
+        {
+          "arm": "CONTROL",
+          "posts": 19,
+          "reservedUsd": 0.3588,
+          "ceilingUsd": 0.36,
+          "halt": null,
+          "refusals": [
+            {
+              "code": "RESERVE_OVER_CEILING",
+              "count": 16
+            }
+          ],
+          "units": 20,
+          "complete": 4,
+          "stoppedByBudget": 16,
+          "maxRequestBytes": 100201
+        },
+        {
+          "arm": "PREFETCH",
+          "posts": 23,
+          "reservedUsd": 0.5265,
+          "ceilingUsd": 0.53,
+          "halt": null,
+          "refusals": [
+            {
+              "code": "REQUEST_OVER_BYTE_CAP",
+              "count": 2
+            },
+            {
+              "code": "RESERVE_OVER_CEILING",
+              "count": 14
+            }
+          ],
+          "units": 20,
+          "complete": 4,
+          "stoppedByBudget": 16,
+          "maxRequestBytes": 130532
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; no provider call. They show the loop, the caps and the reserve, not what Qwen will do.",
+    "The ceiling is a bound on the reserve, derived from the planned first requests plus the spare posts; the expected spend is far lower."
+  ]
+}

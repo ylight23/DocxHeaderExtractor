@@ -1,0 +1,39 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "PENDING_USER_APPROVAL",
+  "planFile": "p7.f1.v6.d4.11i-repeat-canary-plan.SRC-042.v1.json",
+  "planSha256": "df369552c7f132f12193a3cbede1e8186682fde0cec21a210ea8e1f2a9c23708",
+  "codeCommit": "b672c595e23ec01265e0b3c5a0986932a91c25b2",
+  "authorityId": "SRC-042",
+  "document": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/042_IDA_Financial_Statements_June_2025.pdf",
+  "sourceSha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 48,
+  "ceilingUsd": 0.89,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095",
+  "dataSharing": {
+    "documentPublicity": "International Development Association (World Bank Group) financial statements, June 2025; a document of the repository's public heading corpus (todo10_8/), whose README states the files are real documents downloaded from public sources; the origin is not independently verified here",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "PENDING_USER_DECISION",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": []
+  },
+  "approvedBy": null,
+  "approvedAtUtc": null,
+  "approvalText": null,
+  "approvalSha256": "a9dedb8de6ac387fbc244d82c14abd2da460355851318127dedc052487c249ef"
+}

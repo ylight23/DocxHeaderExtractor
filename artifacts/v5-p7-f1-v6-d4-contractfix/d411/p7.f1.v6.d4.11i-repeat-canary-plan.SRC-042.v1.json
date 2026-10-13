@@ -1,0 +1,294 @@
+{
+  "artifact": "p7.f1.v6.d4.11i-repeat-canary-plan",
+  "approvalToSend": false,
+  "codeCommit": "b672c595e23ec01265e0b3c5a0986932a91c25b2",
+  "authorityId": "SRC-042",
+  "document": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/042_IDA_Financial_Statements_June_2025.pdf",
+  "documentPublicity": "International Development Association (World Bank Group) financial statements, June 2025; a document of the repository's public heading corpus (todo10_8/), whose README states the files are real documents downloaded from public sources; the origin is not independently verified here",
+  "sourceSha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf",
+  "universeSha256": "d128737b62fd0fa53457354ea608f246a5718e1c344c34fc97b77310c3b15c6f",
+  "evidenceStoreSha256": "61e76e4ec2c00780749e62239cc8b8037bbdab4180b9d7af031c685e706f9116",
+  "atoms": 7888,
+  "evidenceParserVersion": "P7_F1Q_READ_ONLY_EVIDENCE_TOOLS_V3",
+  "goldForScorerOnly": {
+    "path": "eval/a99-closed-loop/gold-current/documents/SRC-042.gold.v1.json",
+    "sha256": "ef69768ca66042c7a08f951bb34b2388b350114507aae001369e86d06e2e96a7",
+    "universeSha256": "d128737b62fd0fa53457354ea608f246a5718e1c344c34fc97b77310c3b15c6f",
+    "sentToProvider": false,
+    "use": "offline: choosing the segments by the fixed rules below, and the diagnostic on their targets afterwards. Never part of any request."
+  },
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "evaluationLabel": "Development canary: program-read evidence in the request, on segments chosen by fixed rules; Stage 1 only; not an F1 estimate",
+  "instruction": "Trích xuất tất cả các heading thực sự tổ chức cấu trúc tài liệu, xét theo vai trò của từng lần xuất hiện tại chính vị trí đó.\nChọn những dòng hoặc nhóm dòng có chức năng đặt tên, mở đầu hoặc phân chia một phần nội dung của tài liệu.\nKhông chọn các dòng trong mục lục chỉ liệt kê hoặc dẫn chiếu đến heading xuất hiện ở vị trí khác. Tuy nhiên, vẫn xem xét các heading thực sự tổ chức chính mục lục, chỉ mục và những phần khác của tài liệu.\nSử dụng văn bản, bố cục và ngữ cảnh để xác định chức năng của từng lần xuất hiện. Khi chưa đủ bằng chứng, hãy yêu cầu thêm ngữ cảnh hoặc báo chưa thể quyết định thay vì suy đoán.",
+  "instructionSha256": "c0adeaa57a791fb57eb254f334435eaf29aa398da71a21f74159e72ecdac76ab",
+  "requestVersion": "P7_F1_V6_SELECT_AGENT_REQUEST_V2",
+  "promptVersion": "P7_F1_V6_SELECT_AGENT_PROMPT_V3 + stated target range",
+  "responseVersion": "P7_F1_V6_SELECT_OBJECTS_V1",
+  "versionFieldsInPayload": false,
+  "whyThisPlan": {
+    "d411h": "On SRC-095 (13 posts, plan a46eaeba, receipt in d411/): SEG-001 CONTROL selected 46, 46, 48 contents lines (none Gold); PREFETCH decided NOT_SELECT for all 48 targets in 3 of 3 repetitions; SEG-008's Gold heading was kept in every completed unit; 2 of 3 PREFETCH answers on SEG-001 were refused for one extra decision on the context line after the last target.",
+    "question": "Does the effect hold with more repetitions, on more segments, on another document, and where the repeated text is not a contents list? The risk to look for is the opposite one: evidence that a line's text occurs elsewhere may teach Qwen to drop real headings whose text repeats (segments of rule A), or to change nothing where there is nothing to observe (rule D).",
+    "rangeFix": "The request states targetFirstAlias and targetLastAlias right after targetCount, and the Fields paragraph of the prompt adds one sentence saying the targets are exactly the aliases from the first to the last and that context lines before the first and after the last are never decided. Nothing else in the prompt or payload changes; removing the two fields and the sentence gives back the D4.11h request (checked by a test)."
+  },
+  "documents": "one document per plan, each with its own authorization; this plan: SRC-042",
+  "segmentSelection": {
+    "rules": [
+      "ANCHOR: segments already run in D4.11h, kept for comparison (SRC-095 only)",
+      "A: the segment with the most Gold headings whose text occurs on another line (among segments with a Gold heading)",
+      "B: the segment with the most listed targets among segments with no Gold heading: repeated text that is not a heading",
+      "C: the segment with the most balanced mix of listed Gold and listed non-Gold targets",
+      "D: the segment with the fewest listed targets among segments with a Gold heading",
+      "each rule takes its best segment not already chosen; ties go to the lowest segment index; the plan check recomputes the picks from the parser and the Gold"
+    ],
+    "listedMeans": "the target's normalized text (the repeat normalization) occurs on another line of the document",
+    "picks": [
+      {
+        "segment": "SEG-080",
+        "rule": "A: most Gold headings whose text occurs elsewhere",
+        "targets": 48,
+        "goldAtoms": 8,
+        "listed": 37,
+        "goldListed": 6,
+        "nonGoldListed": 31,
+        "observationBytes": 29528
+      },
+      {
+        "segment": "SEG-067",
+        "rule": "B: most listed targets among segments with no Gold heading",
+        "targets": 48,
+        "goldAtoms": 0,
+        "listed": 48,
+        "goldListed": 0,
+        "nonGoldListed": 48,
+        "observationBytes": 36134
+      },
+      {
+        "segment": "SEG-006",
+        "rule": "C: most balanced mix of listed Gold and listed non-Gold",
+        "targets": 48,
+        "goldAtoms": 7,
+        "listed": 10,
+        "goldListed": 5,
+        "nonGoldListed": 5,
+        "observationBytes": 7338
+      },
+      {
+        "segment": "SEG-103",
+        "rule": "D: fewest listed targets among segments with a Gold heading",
+        "targets": 48,
+        "goldAtoms": 5,
+        "listed": 1,
+        "goldListed": 0,
+        "nonGoldListed": 1,
+        "observationBytes": 1407
+      }
+    ],
+    "segmentsInDocument": 165
+  },
+  "arms": [
+    {
+      "arm": "CONTROL",
+      "promptSha256": "5a83e08300e60a0a3dd136e9a31cd7439d2fa3943f65be41947a094da8bb14c2",
+      "budget": {
+        "maxCalls": 24,
+        "ceilingUsd": 0.36,
+        "maxRequestBytes": 131072,
+        "worstCaseAllAtByteCapUsd": 0.629146
+      },
+      "earlyStop": 3,
+      "firstRequests": [
+        {
+          "unitId": "SEG-080",
+          "turn": 1,
+          "sha256": "bd875bf960f985d9c5b43b23636dd2c7de4c3a7ce153928b4b9e39503f7f67a1",
+          "bytes": 31192
+        },
+        {
+          "unitId": "SEG-067",
+          "turn": 1,
+          "sha256": "786d0b2692c95e39344bcb40ca506b583d987e587ab0a90217e35b99c6676d0d",
+          "bytes": 30476
+        },
+        {
+          "unitId": "SEG-006",
+          "turn": 1,
+          "sha256": "940ca29aa50e08b2298e0029fa1ce186f6bdb7d44dfef8034891ef16a4cb1a6a",
+          "bytes": 35068
+        },
+        {
+          "unitId": "SEG-103",
+          "turn": 1,
+          "sha256": "f9e0fe8a3dd4e68e68739b059a0c7398e0f26f52cfbc19de2e16e472803c90b9",
+          "bytes": 36665
+        }
+      ],
+      "requestPlanSha256": "7862f1d3940d933995d1782c093ce305e8a5ef0a7ea0c2f714f83ced59a27fd0"
+    },
+    {
+      "arm": "PREFETCH",
+      "promptSha256": "2290301be5ab6b432d10913e6cfa30a4a11c43a0a811acbf3fc17e1b23d66de6",
+      "budget": {
+        "maxCalls": 24,
+        "ceilingUsd": 0.53,
+        "maxRequestBytes": 131072,
+        "worstCaseAllAtByteCapUsd": 0.629146
+      },
+      "earlyStop": 3,
+      "firstRequests": [
+        {
+          "unitId": "SEG-080",
+          "turn": 1,
+          "sha256": "ad9022f2f806319a4ff9a6910077e7966b3ffcd481e2bb9e66acf5f34ba5d081",
+          "bytes": 65792
+        },
+        {
+          "unitId": "SEG-067",
+          "turn": 1,
+          "sha256": "de42b5f49527f7ff6cd00a0fccc9ac568c52e2038b963c7936b60cdf81883871",
+          "bytes": 72912
+        },
+        {
+          "unitId": "SEG-006",
+          "turn": 1,
+          "sha256": "7963cc708d29a972aff306fa8bd1542f2c47009b010a38c68c223e0c44e4deb3",
+          "bytes": 44108
+        },
+        {
+          "unitId": "SEG-103",
+          "turn": 1,
+          "sha256": "8ff5a42a9d86fd5f5ddaad0890ec12bb72ef1af5e57ba08bc4b98cac0375ca63",
+          "bytes": 38948
+        }
+      ],
+      "requestPlanSha256": "5cec764134952f51d79653f29d3f590655d0963d0698451ea0ec779be5bc70e3"
+    }
+  ],
+  "prefetch": {
+    "rule": "A target is listed if its normalized text (the repeat normalization of get_repeated_occurrences) also occurs on another line of the document. That is the only criterion: nothing says what any line is.",
+    "shows": "for each listed target: how many other occurrences and on how many pages; for the first 2 other occurrences in reading order: alias, page, reading-order position and distance, whether the text is exactly the same (the text itself when it differs), layout, differences in font size, bold ratio and left edge (other minus target), and the line that follows it",
+    "normalization": "LOWER_INVARIANT_DOT_LEADERS_REMOVED_TRAILING_PAGE_NUMBER_REMOVED_DIGITS_MASKED_WHITESPACE_COLLAPSED_V1",
+    "caps": {
+      "perTarget": 2,
+      "maxBytes": 48000,
+      "textChars": 100,
+      "overflow": "cut to 1 other occurrence per target, then by whole targets from the end; the object says so (complete false, omittedTargets)"
+    },
+    "whereInRequest": "the last property of the user payload; every byte before it equals the CONTROL payload",
+    "notSharedWithAnyAnswer": "the observations come from the parser only; Gold and earlier answers are never used"
+  },
+  "repetitions": {
+    "perArmAndSegment": 5,
+    "requests": "identical bytes each time, so the spread is sampling variation of the same request",
+    "order": "per repetition, per segment: CONTROL then PREFETCH"
+  },
+  "frozen": {
+    "scope": "one document: the runner rebuilds the universe from the pinned PDF and refuses any other document, source hash or universe hash; the plan is re-derived from code, source and Gold and any drift refuses the run",
+    "authorityId": "SRC-042",
+    "document": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/042_IDA_Financial_Statements_June_2025.pdf",
+    "sourceSha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf",
+    "universeSha256": "d128737b62fd0fa53457354ea608f246a5718e1c344c34fc97b77310c3b15c6f",
+    "provider": {
+      "only": [
+        "alibaba"
+      ],
+      "ignore": [
+        "alibaba/us-east-1"
+      ],
+      "allowFallbacks": false,
+      "requireParameters": true,
+      "providerBlockSha256": "a6fc1d02d9c591c11d5d222a96166f5d6079a1dabf404d190343db41d0ad0b73",
+      "model": "qwen/qwen3.7-flash",
+      "endpointCheck": "response provider must be Alibaba and model qwen/qwen3.7-flash, else the run halts"
+    },
+    "requestTemplateSha256": "64c28336db67239494e74ec0cba321b82198d5e6288eb9497aff2df91d9d0c54",
+    "finalTurnTemplateSha256": "8968338b442d457c41347a87339a03d5457240dd8bd2ffce5461a746898208ca",
+    "toolDefinitionsSha256": "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3",
+    "promptSha256": {
+      "control": "5a83e08300e60a0a3dd136e9a31cd7439d2fa3943f65be41947a094da8bb14c2",
+      "prefetch": "2290301be5ab6b432d10913e6cfa30a4a11c43a0a811acbf3fc17e1b23d66de6"
+    },
+    "firstRequestsSha256": "29f21bc159adf187dc3527aa9a23730ebc042616d7f356205a6caf387df55bd2",
+    "laterTurns": "turn 2 onward are built from the first request plus Qwen's own tool calls and the tool results; their bodies are stored with the run"
+  },
+  "tools": {
+    "version": "P7_F1_V6_AGENT_TOOLS_V1",
+    "definitionsSha256": "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3",
+    "names": [
+      "get_document_overview",
+      "get_source_context",
+      "get_page_layout",
+      "get_source_span",
+      "search_document_text",
+      "get_repeated_occurrences",
+      "compare_source_locations"
+    ],
+    "resultCapBytes": 16384,
+    "availability": "declared in both arms, optional (tool_choice auto on turns 1 to 3, none on turn 4)"
+  },
+  "requestShape": "SSE (stream true), reasoning enabled true, response_format absent on turns 1 to 3 and json_object on turn 4, temperature 0, max_tokens 32768, usage include; the strict parser refuses any final answer that is not exactly one JSON object",
+  "limits": {
+    "MaxToolTurns": 3,
+    "MaxCallsPerTurn": 8,
+    "MaxPostsPerUnit": 4,
+    "MaxToolMessageBytesPerUnit": 65536
+  },
+  "model": "qwen/qwen3.7-flash",
+  "route": {
+    "only": [
+      "alibaba"
+    ],
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true
+  },
+  "zdr": "false (owner decision, to be accepted again in the authorization)",
+  "maxTokens": 32768,
+  "retries": 0,
+  "unit": 48,
+  "overlap": 20,
+  "stages": "SELECT, stage SEGMENT only; no RESOLVE, FINALIZE or GROUP",
+  "segments": [
+    "SEG-080",
+    "SEG-067",
+    "SEG-006",
+    "SEG-103"
+  ],
+  "budget": {
+    "maxCalls": 48,
+    "ceilingUsd": 0.89,
+    "maxRequestBytes": 131072,
+    "perArm": "24 posts: 20 first posts (4 segments x 5 repetitions) and 4 for tool turns",
+    "ceilingIs": "derived: the reserve of every planned first request of the arm, repetitions included, plus the spare posts at the worst case (a request at the byte cap), plus 10%, rounded up to the cent. It bounds the reserve, not the expected spend (earlier requests cost about $0.001 to $0.0012 each).",
+    "ifToolsAreCalledMoreThanTheSpare": "a unit that needs a post beyond the arm's limit is stopped INCOMPLETE with BUDGET:CALL_LIMIT, which the report names; nothing is dropped silently"
+  },
+  "measurements": [
+    "per arm, repetition and segment: selected lines, tp, fp, fn against the Gold of the 48 targets; per arm the sums over completed units, and the same by rule (A, B, C, D, anchors)",
+    "protocol outcome per unit with its code; refused answers are counted and never repaired; offline counterfactuals (a stripped fence, a dropped extra decision) are labelled not official",
+    "which lines were selected and whether the same lines are selected in every repetition of a cell",
+    "decisions on context lines (UNEXPECTED_ALIAS), tool calls, cache hits, tokens and cost per request",
+    "whether the reasoning mentions the observations (counts only; the reasoning is never used to change an answer)"
+  ],
+  "readingRules": [
+    "5 repetitions per cell: an indication, not a significance test; every repetition is reported",
+    "false negatives (rules A and anchors): PREFETCH is not safe if, summed over completed units of these segments, its fn exceeds CONTROL's fn by more than 10% of the Gold headings in those units",
+    "false positives (rule B and contents-like segments): the effect holds if PREFETCH's fp is below CONTROL's fp beyond the spread inside CONTROL",
+    "rule D: the two arms should select alike; a difference there would come from the added prompt line or from noise",
+    "if PREFETCH has more refused answers than CONTROL, that cost is reported next to its gain",
+    "a result on one document says nothing about others; the second document is a separate plan"
+  ],
+  "rawPublication": "Raw SSE responses (reasoning included), request bodies, run summaries and the analysis stay in the safe store outside the repository. They are copied into the repository (d411-publish) and pushed only if the approving message says to push them.",
+  "comparedCampaigns": [
+    {
+      "planSha256": "a46eaeba49fdfc35c8ce1c44810a51fbf265e9fb9f0c0284e8056b0c968adda3",
+      "note": "D4.11h, SRC-095, 3 repetitions, no stated range"
+    }
+  ],
+  "liveAuthorization": {
+    "required": true,
+    "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+    "status": "APPROVED",
+    "campaigns": 1
+  }
+}
