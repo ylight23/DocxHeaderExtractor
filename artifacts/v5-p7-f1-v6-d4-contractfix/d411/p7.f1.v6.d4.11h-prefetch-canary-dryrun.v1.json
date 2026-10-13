@@ -1,0 +1,567 @@
+{
+  "artifact": "p7.f1.v6.d4.11h-prefetch-canary-dryrun.v1",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.11h-prefetch-canary-plan.v1.json",
+  "planSha256": "b76a2c7ecf35ecd3d204f0006dcca077a807657980641e9e8af10977d27031ed",
+  "planVerifiesNow": true,
+  "codeCommit": "820cb0b4389cc184624b8ac584372b74c4f42403",
+  "controlEqualsD411gAutoFirstRequests": true,
+  "firstRequests": [
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-001",
+      "sha256": "1b1e2fa465415bdd78dff500c21a52b5bcc27c3afe2029b7da31d53b546cd05f",
+      "bytes": 32258,
+      "reserveUsd": 0.016333
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-008",
+      "sha256": "88c464b808795b08e1d6862160df83660ac82b37c8477ad0100dc7c6b0235ca6",
+      "bytes": 36316,
+      "reserveUsd": 0.016739
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-001",
+      "sha256": "c674ffbed6d2c1cdeb1edb46f5d0180ac39c2732f83b4ad2d90a48e6d740d2b0",
+      "bytes": 61365,
+      "reserveUsd": 0.019244
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-008",
+      "sha256": "a3818f9c31c7f57cf3a3a3fd19b8f73bc40edaf2c5d4a3ad42c7e458eb8cbfb5",
+      "bytes": 40024,
+      "reserveUsd": 0.01711
+    }
+  ],
+  "worstCaseReservePerArmUsd": 0.23593,
+  "simulations": [
+    {
+      "simulation": "ANSWER_WITHOUT_TOOLS",
+      "arms": [
+        {
+          "arm": "CONTROL",
+          "posts": 6,
+          "reservedUsd": 0.099215,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "Rep": 1,
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "maxRequestBytes": 32258,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 1,
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "maxRequestBytes": 36316,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 2,
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "maxRequestBytes": 32258,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 2,
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "maxRequestBytes": 36316,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 3,
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "maxRequestBytes": 32258,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 3,
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "maxRequestBytes": 36316,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            }
+          ]
+        },
+        {
+          "arm": "PREFETCH",
+          "posts": 6,
+          "reservedUsd": 0.10906,
+          "halt": null,
+          "refusals": [],
+          "units": [
+            {
+              "Rep": 1,
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "maxRequestBytes": 61365,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 46,
+              "observationBytes": 25193,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 1,
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "maxRequestBytes": 40024,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 3,
+              "observationBytes": 2644,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 2,
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "maxRequestBytes": 61365,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 46,
+              "observationBytes": 25193,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 2,
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "maxRequestBytes": 40024,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 3,
+              "observationBytes": 2644,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 3,
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "maxRequestBytes": 61365,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 46,
+              "observationBytes": 25193,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 3,
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 1,
+              "maxRequestBytes": 40024,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 3,
+              "observationBytes": 2644,
+              "observationsComplete": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "simulation": "TOOL_CALL_ON_EVERY_TURN (an overview each of 3 turns, then answer)",
+      "arms": [
+        {
+          "arm": "CONTROL",
+          "posts": 9,
+          "reservedUsd": 0.156515,
+          "halt": null,
+          "refusals": [
+            "CALL_LIMIT",
+            "CALL_LIMIT",
+            "CALL_LIMIT",
+            "CALL_LIMIT"
+          ],
+          "units": [
+            {
+              "Rep": 1,
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 52041,
+              "toolMessageBytes": 17473,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 1,
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 56099,
+              "toolMessageBytes": 17473,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 2,
+              "UnitId": "SEG-001",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 1,
+              "maxRequestBytes": 32258,
+              "toolMessageBytes": 5795,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 2,
+              "UnitId": "SEG-008",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 0,
+              "maxRequestBytes": 0,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 3,
+              "UnitId": "SEG-001",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 0,
+              "maxRequestBytes": 0,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 3,
+              "UnitId": "SEG-008",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 0,
+              "maxRequestBytes": 0,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            }
+          ]
+        },
+        {
+          "arm": "PREFETCH",
+          "posts": 9,
+          "reservedUsd": 0.172552,
+          "halt": null,
+          "refusals": [
+            "CALL_LIMIT",
+            "CALL_LIMIT",
+            "CALL_LIMIT",
+            "CALL_LIMIT"
+          ],
+          "units": [
+            {
+              "Rep": 1,
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 81148,
+              "toolMessageBytes": 17473,
+              "observationTargetsListed": 46,
+              "observationBytes": 25193,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 1,
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 59807,
+              "toolMessageBytes": 17473,
+              "observationTargetsListed": 3,
+              "observationBytes": 2644,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 2,
+              "UnitId": "SEG-001",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 1,
+              "maxRequestBytes": 61365,
+              "toolMessageBytes": 5795,
+              "observationTargetsListed": 46,
+              "observationBytes": 25193,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 2,
+              "UnitId": "SEG-008",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 0,
+              "maxRequestBytes": 0,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 3,
+              "observationBytes": 2644,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 3,
+              "UnitId": "SEG-001",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 0,
+              "maxRequestBytes": 0,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 46,
+              "observationBytes": 25193,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 3,
+              "UnitId": "SEG-008",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 0,
+              "maxRequestBytes": 0,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 3,
+              "observationBytes": 2644,
+              "observationsComplete": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "simulation": "LARGEST_RESULTS (8 full page layouts per turn, three turns, then answer)",
+      "arms": [
+        {
+          "arm": "CONTROL",
+          "posts": 9,
+          "reservedUsd": 0.186496,
+          "halt": null,
+          "refusals": [
+            "CALL_LIMIT",
+            "CALL_LIMIT",
+            "CALL_LIMIT",
+            "CALL_LIMIT"
+          ],
+          "units": [
+            {
+              "Rep": 1,
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 101286,
+              "toolMessageBytes": 57695,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 1,
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 105344,
+              "toolMessageBytes": 57695,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 2,
+              "UnitId": "SEG-001",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 1,
+              "maxRequestBytes": 32258,
+              "toolMessageBytes": 49647,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 2,
+              "UnitId": "SEG-008",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 0,
+              "maxRequestBytes": 0,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 3,
+              "UnitId": "SEG-001",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 0,
+              "maxRequestBytes": 0,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 3,
+              "UnitId": "SEG-008",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 0,
+              "maxRequestBytes": 0,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 0,
+              "observationBytes": 0,
+              "observationsComplete": true
+            }
+          ]
+        },
+        {
+          "arm": "PREFETCH",
+          "posts": 9,
+          "reservedUsd": 0.202532,
+          "halt": null,
+          "refusals": [
+            "CALL_LIMIT",
+            "CALL_LIMIT",
+            "CALL_LIMIT",
+            "CALL_LIMIT"
+          ],
+          "units": [
+            {
+              "Rep": 1,
+              "UnitId": "SEG-001",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 130393,
+              "toolMessageBytes": 57695,
+              "observationTargetsListed": 46,
+              "observationBytes": 25193,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 1,
+              "UnitId": "SEG-008",
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 109052,
+              "toolMessageBytes": 57695,
+              "observationTargetsListed": 3,
+              "observationBytes": 2644,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 2,
+              "UnitId": "SEG-001",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 1,
+              "maxRequestBytes": 61365,
+              "toolMessageBytes": 49647,
+              "observationTargetsListed": 46,
+              "observationBytes": 25193,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 2,
+              "UnitId": "SEG-008",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 0,
+              "maxRequestBytes": 0,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 3,
+              "observationBytes": 2644,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 3,
+              "UnitId": "SEG-001",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 0,
+              "maxRequestBytes": 0,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 46,
+              "observationBytes": 25193,
+              "observationsComplete": true
+            },
+            {
+              "Rep": 3,
+              "UnitId": "SEG-008",
+              "Status": "INCOMPLETE",
+              "Failure": "BUDGET:CALL_LIMIT",
+              "posts": 0,
+              "maxRequestBytes": 0,
+              "toolMessageBytes": 0,
+              "observationTargetsListed": 3,
+              "observationBytes": 2644,
+              "observationsComplete": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; no provider call. They show the loop, the caps and the reserve, not what Qwen will do.",
+    "Each arm has 9 posts and $0.25: 6 first posts (2 segments x 3 repetitions) and 3 for tool turns. If a model called tools in every unit the budget would stop later units INCOMPLETE (BUDGET:CALL_LIMIT); the second simulation shows it."
+  ]
+}
