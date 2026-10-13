@@ -648,8 +648,8 @@ switch (args[0])
         break;
     case "d411j-plan":
         // Issue #9 D4.11j (offline): d411j-plan <repo-root> <artifact-dir> <document.pdf>. Pinned owner-document trial plan and a scripted dry-run. No network call; no line text is written.
-        if (args.Length != 4) throw new ArgumentException("d411j-plan <repo-root> <artifact-dir> <document.pdf>");
-        D411jPlan.Plan(args[1], args[2], args[3]);
+        if (args.Length is not (4 or 5)) throw new ArgumentException("d411j-plan <repo-root> <artifact-dir> <document.pdf> [layout]");
+        D411jPlan.Plan(args[1], args[2], args[3], args.Length == 5 && args[4] == "layout");
         break;
     case "d411j-run":
         // Issue #9 D4.11j: d411j-run <repo-root> <plan> <confirmed-plan-sha> <authorization> <safe-root> <document.pdf>. Sends requests; needs an APPROVED authorization.

@@ -28,13 +28,17 @@ internal static class P7F1V6DirectOwnerTrial
     public static IReadOnlyList<string> SegmentsOf(P7F1V6Universe u) =>
         Enumerable.Range(0, u.Cores.Count).Select(n => $"SEG-{n:000}").ToArray();
 
-    public static P7F1V6Universe Load(string documentPath, string fileSha256) =>
-        P7F1V6Universe.RebuildOwnerSupplied(documentPath, fileSha256, null, out var why) ?? throw new InvalidOperationException(why);
+    public static P7F1V6Universe Load(string documentPath, string fileSha256, string segmentation = P7F1V6Universe.FixedSegmentation) =>
+        (P7F1V6Universe.RebuildOwnerSupplied(documentPath, fileSha256, null, out var why) ?? throw new InvalidOperationException(why)).WithSegmentation(segmentation);
 
-    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit)
+    /// <summary>The segmentation a plan pins; a plan without the field is the original fixed 48-line cut.</summary>
+    public static string SegmentationOf(JsonElement plan) =>
+        plan.TryGetProperty("segmentation", out var s) && s.ValueKind == JsonValueKind.Object ? s.GetProperty("policy").GetString()! : P7F1V6Universe.FixedSegmentation;
+
+    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit, string segmentation = P7F1V6Universe.FixedSegmentation)
     {
         var fileSha = Sha256Of(documentPath);
-        var u = Load(documentPath, fileSha);
+        var u = Load(documentPath, fileSha, segmentation);
         var segs = SegmentsOf(u);
         var picks = segs.Select(s => new C.Pick(s, "ALL: every segment of the document", new C.SegStat(s, 0, 0, 0, 0, 0, 0))).ToArray();
         var ceilings = C.Arms.ToDictionary(a => a.Arm, a => C.CeilingUsd(u, picks, a.Mode));
@@ -67,7 +71,7 @@ internal static class P7F1V6DirectOwnerTrial
             var r = new P7F1V6AgentTools(u.Tools).Prefetch(decide);
             return new { segment = s, targets = decide.Length, listed = r.Listed, withoutOtherOccurrence = r.WithoutOther, observationBytes = r.Bytes };
         }).ToArray();
-        return new Dictionary<string, object?>
+        var plan = new Dictionary<string, object?>
         {
             ["artifact"] = PlanArtifact,
             ["approvalToSend"] = false,
@@ -147,6 +151,17 @@ internal static class P7F1V6DirectOwnerTrial
             ["rawPublication"] = "None. Requests (which hold the document text), raw responses, reasoning and the analysis stay in the safe store outside the repository. Only a receipt without any line text is committed.",
             ["liveAuthorization"] = new { required = true, artifact = P7F1V6DirectAuthorization.Artifact, status = P7F1V6DirectAuthorization.Approved, campaigns = 1 },
         };
+        if (segmentation != P7F1V6Universe.FixedSegmentation)
+        {
+            plan["segmentation"] = new
+            {
+                policy = segmentation,
+                rule = "the F1Q arm-B rule: whole pages when they fit in 48 lines, else parser layout blocks of the page, cores of at most 48 lines; only page numbers and parser block ids decide; context stays 20 lines each side",
+                cores = u.Cores.Select(c => new { start = c.Start, end = c.End, firstPage = u.Lines[c.Start].Page, lastPage = u.Lines[c.End - 1].Page }).ToArray(),
+                coresSha256 = P7F1V6Protocol.Sha(string.Join("\n", u.Cores.Select(c => c.Start + "-" + c.End))),
+            };
+        }
+        return plan;
     }
 
     public static byte[] Serialize(Dictionary<string, object?> plan) => Encoding.UTF8.GetBytes(JsonSerializer.Serialize(plan, Indented) + "\n");
@@ -162,7 +177,7 @@ internal static class P7F1V6DirectOwnerTrial
         var planCommit = doc.RootElement.GetProperty("codeCommit").GetString();
         if (planCommit != currentCommit) failures.Add("CODE_COMMIT_DIFFERS");
         if (doc.RootElement.GetProperty("sourceSha256").GetString() != Sha256Of(documentPath)) { failures.Add("OWNER_DOCUMENT_SHA_DIFFERS"); return failures; }
-        if (!Serialize(PinnedValues(documentPath, planCommit ?? "")).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
+        if (!Serialize(PinnedValues(documentPath, planCommit ?? "", SegmentationOf(doc.RootElement))).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
         return failures;
     }
 
@@ -188,7 +203,7 @@ internal static class P7F1V6DirectOwnerTrial
         var segments = plan.RootElement.GetProperty("segments").EnumerateArray().Select(x => x.GetString()!).ToArray();
         var ceilings = plan.RootElement.GetProperty("arms").EnumerateArray().ToDictionary(a => a.GetProperty("arm").GetString()!, a => a.GetProperty("budget").GetProperty("ceilingUsd").GetDouble());
         var posts = plan.RootElement.GetProperty("arms")[0].GetProperty("budget").GetProperty("maxCalls").GetInt32();
-        var u = Load(documentPath, plan.RootElement.GetProperty("sourceSha256").GetString()!);
+        var u = Load(documentPath, plan.RootElement.GetProperty("sourceSha256").GetString()!, SegmentationOf(plan.RootElement));
         var budgets = C.Arms.ToDictionary(a => a.Arm, a => new P7F1V6DirectV2.Budget(posts, ceilings[a.Arm], C.MaxRequestBytes));
         var stores = C.Arms.ToDictionary(a => a.Arm, _ => P7F1V6SafeRawStore.CreateRun(safeRoot));
         var models = C.Arms.ToDictionary(a => a.Arm, a => new P7F1V6AgentAuditedModel(new P7F1V6DirectAuditedModel(

@@ -219,6 +219,33 @@ public sealed class P7F1V6DirectD411jTests : IDisposable
         Assert.Equal("PENDING_USER_APPROVAL", draft.RootElement.GetProperty("status").GetString());
     }
 
+    [Fact]
+    public void LayoutPlan_PinsThePolicyAndTheCores_TheFixedPlanHasNoSuchField_AndVerifyFollowsThePlan()
+    {
+        var path = StandIn();
+        var fixedPlan = Plan();
+        using (var f = JsonDocument.Parse(fixedPlan)) Assert.False(f.RootElement.TryGetProperty("segmentation", out _));
+        var bytes = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation));
+        using var doc = JsonDocument.Parse(bytes);
+        var seg = doc.RootElement.GetProperty("segmentation");
+        Assert.Equal(P7F1V6Universe.LayoutSegmentation, seg.GetProperty("policy").GetString());
+        var u = T.Load(path, T.Sha256Of(path), P7F1V6Universe.LayoutSegmentation);
+        Assert.Equal(u.Cores.Count, seg.GetProperty("cores").GetArrayLength());
+        Assert.Equal(T.SegmentsOf(u), doc.RootElement.GetProperty("segments").EnumerateArray().Select(x => x.GetString()));
+        Assert.NotEqual(Convert.ToHexStringLower(SHA256.HashData(fixedPlan)), Convert.ToHexStringLower(SHA256.HashData(bytes)));
+        var plan = Path.Combine(scratch, "layout-plan.json");
+        File.WriteAllBytes(plan, bytes);
+        var sha = Convert.ToHexStringLower(SHA256.HashData(bytes));
+        Assert.Empty(T.Verify(plan, sha, "TEST_COMMIT", path));
+        // The policy named in the plan decides what Verify rebuilds: a plan edited back to the fixed policy no longer matches its pinned values.
+        var node = JsonNode.Parse(bytes)!.AsObject();
+        node["segmentation"]!["policy"] = P7F1V6Universe.FixedSegmentation;
+        var edited = Encoding.UTF8.GetBytes(node.ToJsonString(new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }) + "\n");
+        var editedPath = Path.Combine(scratch, "layout-edited.json");
+        File.WriteAllBytes(editedPath, edited);
+        Assert.Contains("PINNED_VALUES_DIFFER", T.Verify(editedPath, Convert.ToHexStringLower(SHA256.HashData(edited)), "TEST_COMMIT", path));
+    }
+
     // ================= running =================
 
     sealed class Handler(Func<string, string> respond) : HttpMessageHandler

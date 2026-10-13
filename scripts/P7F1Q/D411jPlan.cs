@@ -37,19 +37,20 @@ internal static class D411jPlan
         ["decisions"] = new JsonArray(targets.Select(a => (JsonNode)new JsonObject { ["alias"] = a, ["decision"] = "NOT_SELECT" }).ToArray()),
     }.ToJsonString();
 
-    public static void Plan(string repoRoot, string artifactDir, string documentPath)
+    public static void Plan(string repoRoot, string artifactDir, string documentPath, bool layout = false)
     {
         if (Git(repoRoot, "status --porcelain -- src scripts tests").Length > 0) { Console.WriteLine("D411j PLAN REFUSED: uncommitted code"); Environment.ExitCode = 2; return; }
         var head = Git(repoRoot, "rev-parse HEAD");
-        var bytes = T.Serialize(T.PinnedValues(documentPath, head));
+        var seg = layout ? P7F1V6Universe.LayoutSegmentation : P7F1V6Universe.FixedSegmentation;
+        var bytes = T.Serialize(T.PinnedValues(documentPath, head, seg));
         using var plan = JsonDocument.Parse(bytes);
         var authority = plan.RootElement.GetProperty("authorityId").GetString()!;
-        var planPath = Path.Combine(artifactDir, $"{T.PlanArtifact.Replace(".v1", "")}.{authority}.v1.json");
+        var planPath = Path.Combine(artifactDir, $"{T.PlanArtifact.Replace(".v1", "")}.{authority}{(layout ? ".layout" : "")}.v1.json");
         File.WriteAllBytes(planPath, bytes);
         var planSha = Convert.ToHexStringLower(SHA256.HashData(bytes));
         var verify = T.Verify(planPath, planSha, head, documentPath);
 
-        var u = T.Load(documentPath, T.Sha256Of(documentPath));
+        var u = T.Load(documentPath, T.Sha256Of(documentPath), seg);
         var segs = plan.RootElement.GetProperty("segments").EnumerateArray().Select(x => x.GetString()!).ToArray();
         var posts = plan.RootElement.GetProperty("arms")[0].GetProperty("budget").GetProperty("maxCalls").GetInt32();
         var ceilings = plan.RootElement.GetProperty("arms").EnumerateArray().ToDictionary(a => a.GetProperty("arm").GetString()!, a => a.GetProperty("budget").GetProperty("ceilingUsd").GetDouble());
@@ -87,7 +88,7 @@ internal static class D411jPlan
             simulations = sims,
             notes = new[] { "Scripted models only; no provider call; no line text is written to this report." },
         };
-        File.WriteAllText(Path.Combine(artifactDir, $"p7.f1.v6.d4.11j-owner-document-trial-dryrun.{authority}.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
+        File.WriteAllText(Path.Combine(artifactDir, $"p7.f1.v6.d4.11j-owner-document-trial-dryrun.{authority}{(layout ? ".layout" : "")}.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
         Console.WriteLine($"{authority}: plan {planSha} verifies={verify.Count == 0} commit={head}");
         Console.WriteLine("segments: " + string.Join(", ", segs) + $" | posts per arm {posts} | ceilings {string.Join(", ", ceilings.Select(kv => kv.Key + " $" + kv.Value))}");
         foreach (var f in report.firstRequests) Console.WriteLine(JsonSerializer.Serialize(f));
