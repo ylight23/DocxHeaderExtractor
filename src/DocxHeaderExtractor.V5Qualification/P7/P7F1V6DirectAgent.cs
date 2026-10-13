@@ -67,12 +67,26 @@ internal static class P7F1V6DirectAgent
         "{\"protocolVersion\":\"" + version + "\",\"status\":\"CLARIFICATION_REQUIRED\",\"clarification\":{\"question\":\"<question to the user>\",\"interpretations\":[\"<reading>\",\"<reading>\"]}}",
         "Rules: targets are the EXACT output universe: return one decision for each alias in targets, NO decision for any other alias, and NO duplicates. The key is \"alias\". decision is SELECT, NOT_SELECT or UNRESOLVED; UNRESOLVED only with status INCOMPLETE. SELECT requires evidenceRefs with 1 to 8 aliases you saw; NOT_SELECT and UNRESOLVED may omit evidenceRefs or give up to 8 such aliases. Do not add headings, levels, parents or other fields.");
 
+    // D4.11i. In D4.11h two of three PREFETCH answers on SEG-001 added a decision for the context line right after the last target (L0090), and the
+    // reasoning of one stated the target range as L0042 to L0090 (49 aliases) while saying 48. The request now states the first and last target.
+    // Off by default, so earlier requests stay reproducible.
+    const string RangeSentence = " targetFirstAlias and targetLastAlias are the first and last of the targets: the targets are exactly the aliases from targetFirstAlias to targetLastAlias in order, and the context lines before the first and after the last are never decided.";
+    public const string RangeSentenceText = RangeSentence;
     const string ObservationsLine = "Observations: the request ends with observations, read from the parser by the program and not requested by you. For each target whose text also occurs on another line of the document they list the first other occurrences: their page, position in reading order, layout, how their font and left edge differ from the target's, and the line that follows each. They are facts about the document, not labels or decisions; what they mean for the instruction is for you to judge. You may cite the aliases they show in evidenceRefs. When observations.complete is true, a target that is not listed has no other occurrence with the same text under the stated normalization. You may still call the tools for anything else.";
 
     public static readonly string AutoPrompt = string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion));
     public static readonly string EvidenceFirstPrompt = string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, EvidenceFirstLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion));
+
+    // The same three prompts with the range sentence added to the Fields paragraph, and nothing else.
+    static string WithRange(string prompt) => prompt.Replace(Fields, Fields + RangeSentence);
+    public static readonly string AutoPromptRange = WithRange(AutoPrompt);
+    public static readonly string PrefetchPromptRange = WithRange(string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, ObservationsLine, ObservedLine, ReplyLine,
+        Body(P7F1V6DirectTwoStage.SelectObjectsVersion)));
+    public const string AutoPromptRangeSha256 = "5a83e08300e60a0a3dd136e9a31cd7439d2fa3943f65be41947a094da8bb14c2";
+    public const string PrefetchPromptRangeSha256 = "2290301be5ab6b432d10913e6cfa30a4a11c43a0a811acbf3fc17e1b23d66de6";
+    public static string Prompt(Arm arm, bool rangeStated) => rangeStated ? (arm == Arm.Prefetch ? PrefetchPromptRange : arm == Arm.Auto ? AutoPromptRange : WithRange(EvidenceFirstPrompt)) : Prompt(arm);
 
     public static readonly string PrefetchPrompt = string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, ObservationsLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion));
@@ -90,7 +104,7 @@ internal static class P7F1V6DirectAgent
 
     /// <summary>The user message: the task and the unit's lines. No version field, no rule about any kind of line.</summary>
     public static string Payload(string instruction, string documentSha256, string unitId, IReadOnlyList<string> decide, IReadOnlyList<P7F1V6Direct.Line> shownLines,
-        JsonObject? observations = null)
+        JsonObject? observations = null, bool rangeStated = false)
     {
         var set = decide.ToHashSet(StringComparer.Ordinal);
         var shown = shownLines.Select(l => l.Alias).ToList();
@@ -108,6 +122,22 @@ internal static class P7F1V6DirectAgent
             ["targets"] = shownLines.Where(l => set.Contains(l.Alias)).Select(Item).ToList(),
             ["context"] = shownLines.Where(l => !set.Contains(l.Alias)).Select(Item).ToList(),
         };
+        if (rangeStated)
+        {
+            // Directly after targetCount, so the property order reads: count, first, last, then the lines.
+            var withRange = new Dictionary<string, object?>();
+            foreach (var kv in payload)
+            {
+                withRange[kv.Key] = kv.Value;
+                if (kv.Key == "targetCount")
+                {
+                    var firstLast = shownLines.Where(l => set.Contains(l.Alias)).Select(l => l.Alias).ToList();
+                    withRange["targetFirstAlias"] = firstLast[0];
+                    withRange["targetLastAlias"] = firstLast[^1];
+                }
+            }
+            payload = withRange;
+        }
         if (observations is not null) payload["observations"] = observations;
         return JsonSerializer.Serialize(payload, Options);
     }
@@ -115,10 +145,10 @@ internal static class P7F1V6DirectAgent
     /// <summary>The user message of an arm for one unit, and the observations it carries (null for Auto and EvidenceFirst). The one place both
     /// the plan's first requests and a live unit take their payload from.</summary>
     public static (string Payload, P7F1V6AgentTools.PrefetchResult? Prefetch) FirstPayload(Arm arm, string instruction, string documentSha256, string unitId,
-        IReadOnlyList<string> orderedTargets, IReadOnlyList<P7F1V6Direct.Line> shownLines, P7F1V6AgentTools tools)
+        IReadOnlyList<string> orderedTargets, IReadOnlyList<P7F1V6Direct.Line> shownLines, P7F1V6AgentTools tools, bool rangeStated = false)
     {
         var prefetch = arm == Arm.Prefetch ? tools.Prefetch(orderedTargets) : null;
-        return (Payload(instruction, documentSha256, unitId, orderedTargets, shownLines, prefetch?.Observations), prefetch);
+        return (Payload(instruction, documentSha256, unitId, orderedTargets, shownLines, prefetch?.Observations, rangeStated), prefetch);
     }
 
     /// <summary>One POST body: the pinned envelope (model, temperature 0, max_tokens, locked provider block, usage) plus the declared tools
@@ -226,7 +256,7 @@ internal static class P7F1V6DirectAgent
         IReadOnlyList<P7F1V6AgentTools.CallRecord> ToolCalls, int SuccessfulToolCalls, ScopeReport Scope, EvidenceReport Evidence);
 
     public static AgentUnitOutcome RunUnit(Arm arm, string instruction, P7F1V6Universe universe, string unitId, IReadOnlyList<string> decide,
-        IEnumerable<int> initialContext, AgentModel model, P7F1V6DirectV2.Budget budget)
+        IEnumerable<int> initialContext, AgentModel model, P7F1V6DirectV2.Budget budget, bool rangeStated = false)
     {
         var lines = universe.Lines;
         var tools = new P7F1V6AgentTools(universe.Tools);
@@ -234,8 +264,8 @@ internal static class P7F1V6DirectAgent
         foreach (var a in decide) shownIdx.Add(tools.PositionOf(a));
         var ordered = decide.OrderBy(tools.PositionOf).ToList();
         var shownAliases = shownIdx.Select(i => lines[i].Alias).ToHashSet(StringComparer.Ordinal);
-        var prompt = Prompt(arm);
-        var (payload, prefetch) = FirstPayload(arm, instruction, universe.SourceSha256, unitId, ordered, shownIdx.Select(i => lines[i]).ToArray(), tools);
+        var prompt = Prompt(arm, rangeStated);
+        var (payload, prefetch) = FirstPayload(arm, instruction, universe.SourceSha256, unitId, ordered, shownIdx.Select(i => lines[i]).ToArray(), tools, rangeStated);
         // Lines the observations show are in the request: Qwen may cite them. Kept apart to report evidence taken from them.
         var observationOnly = (prefetch?.ShownAliases ?? Array.Empty<string>()).Where(a => !shownAliases.Contains(a)).ToHashSet(StringComparer.Ordinal);
         shownAliases.UnionWith(observationOnly);

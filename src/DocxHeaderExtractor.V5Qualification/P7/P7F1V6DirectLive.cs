@@ -219,10 +219,13 @@ internal static class P7F1V6DirectD45
 
     public sealed record GoldPin(string Path, string Sha256, string SourceSha256, string UniverseSha256);
 
-    public static GoldPin ReadGoldPin(string repoRoot)
+    public static GoldPin ReadGoldPin(string repoRoot) => ReadGoldPin(repoRoot, AuthorityId);
+
+    /// <summary>The Gold pin of any registry authority (D4.11i). Gold is read for the scorer and for choosing test segments offline; it is never sent.</summary>
+    public static GoldPin ReadGoldPin(string repoRoot, string authorityId)
     {
         using var reg = JsonDocument.Parse(File.ReadAllText(Path.Combine(repoRoot, Registry)));
-        var a = reg.RootElement.GetProperty("authorities").EnumerateArray().First(x => x.GetProperty("authorityId").GetString() == AuthorityId);
+        var a = reg.RootElement.GetProperty("authorities").EnumerateArray().First(x => x.GetProperty("authorityId").GetString() == authorityId);
         var path = a.GetProperty("canonicalGoldPath").GetString()!;
         using var g = JsonDocument.Parse(File.ReadAllText(Path.Combine(repoRoot, path)));
         return new GoldPin(path, a.GetProperty("goldSha256").GetString()!, a.GetProperty("sourceSha256").GetString()!,
@@ -424,7 +427,9 @@ internal static class P7F1V6DirectAuthorization
             ["safeRoot"] = Path.GetFullPath(safeRoot).TrimEnd(Path.DirectorySeparatorChar),
             ["dataSharing"] = new System.Text.Json.Nodes.JsonObject
             {
-                ["documentPublicity"] = "IETF RFC 9114, published publicly by the IETF",
+                // D4.11i: a plan for another document states its own; plans without the field keep the RFC wording.
+                ["documentPublicity"] = p.TryGetProperty("documentPublicity", out var pub) && pub.ValueKind == JsonValueKind.String
+                    ? pub.GetString() : "IETF RFC 9114, published publicly by the IETF",
                 ["zdr"] = false,
                 ["zdrDecision"] = "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
                 ["dataCollection"] = "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",

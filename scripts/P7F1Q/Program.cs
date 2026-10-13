@@ -636,6 +636,16 @@ switch (args[0])
         if (args.Length != 6) throw new ArgumentException("d411h-run <repo-root> <plan> <confirmed-plan-sha> <authorization> <safe-root>");
         D411hPlan.Live(args[1], args[2], args[3], args[4], args[5]);
         break;
+    case "d411i-plan":
+        // Issue #9 D4.11i (offline): d411i-plan <repo-root> <artifact-dir> <authority-id>. Pinned repeat-canary plan for one document and a scripted dry-run. No network call.
+        if (args.Length != 4) throw new ArgumentException("d411i-plan <repo-root> <artifact-dir> <authority-id>");
+        D411iPlan.Plan(args[1], args[2], args[3]);
+        break;
+    case "d411i-run":
+        // Issue #9 D4.11i: d411i-run <repo-root> <plan> <confirmed-plan-sha> <authorization> <safe-root>. Sends requests; needs an APPROVED authorization.
+        if (args.Length != 6) throw new ArgumentException("d411i-run <repo-root> <plan> <confirmed-plan-sha> <authorization> <safe-root>");
+        D411iPlan.Live(args[1], args[2], args[3], args[4], args[5]);
+        break;
     case "d411-publish":
         // Issue #9 D4.11: d411-publish <plan> <out-dir> <run-dir> [<run-dir>...]. Copies the safe-store runs of a consumed plan into the repo. No network call.
         if (args.Length < 4) throw new ArgumentException("d411-publish <plan> <out-dir> <run-dir> [<run-dir>...]");
