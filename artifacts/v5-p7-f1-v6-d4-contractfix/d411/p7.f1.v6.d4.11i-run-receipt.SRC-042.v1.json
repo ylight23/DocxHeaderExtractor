@@ -1,0 +1,858 @@
+{
+  "artifact": "p7.f1.v6.d4.11i-run-receipt.v1",
+  "authority": "SRC-042",
+  "label": "Development canary on segments chosen by fixed rules; not an F1 estimate. Raw SSE responses (gzip, lossless), reasoning, request bodies, run summaries and the analysis are published unchanged in run-df369552/ with a manifest of hashes (owner instruction 2026-10-13).",
+  "planSha256": "df369552c7f132f12193a3cbede1e8186682fde0cec21a210ea8e1f2a9c23708",
+  "codeCommit": "b672c595e23ec01265e0b3c5a0986932a91c25b2",
+  "authorizationFileSha256": "308b2fa1db005dfd5d7ed136972144eb5e4a88209f956705ce3da9e2002e5f5b",
+  "approvedBy": "ylight23 (session user of the repository owner account; the message did not restate a name)",
+  "retriesUsed": 0,
+  "postsAllowed": 48,
+  "ceilingUsd": 0.89,
+  "posts": {
+    "CONTROL": 21,
+    "PREFETCH": 20
+  },
+  "actualUsd": {
+    "CONTROL": 0.020598,
+    "PREFETCH": 0.021004
+  },
+  "halt": {
+    "CONTROL": null,
+    "PREFETCH": null
+  },
+  "safeStoreRuns": {
+    "CONTROL": "run-517c518a6c0840f5b934385a52293d77",
+    "PREFETCH": "run-b9f6976437694094b363b4c6deb8b8d7"
+  },
+  "publishedIn": "run-df369552/",
+  "byRule": [
+    {
+      "rule": "A",
+      "arm": "CONTROL",
+      "units": 5,
+      "completed": 4,
+      "refused": 1,
+      "selected": 45,
+      "tp": 32,
+      "fp": 13,
+      "fn": 0,
+      "goldAtomsInCompleted": 32,
+      "toolCalls": 0
+    },
+    {
+      "rule": "A",
+      "arm": "PREFETCH",
+      "units": 5,
+      "completed": 5,
+      "refused": 0,
+      "selected": 55,
+      "tp": 40,
+      "fp": 15,
+      "fn": 0,
+      "goldAtomsInCompleted": 40,
+      "toolCalls": 0
+    },
+    {
+      "rule": "B",
+      "arm": "CONTROL",
+      "units": 5,
+      "completed": 4,
+      "refused": 1,
+      "selected": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "goldAtomsInCompleted": 0,
+      "toolCalls": 0
+    },
+    {
+      "rule": "B",
+      "arm": "PREFETCH",
+      "units": 5,
+      "completed": 5,
+      "refused": 0,
+      "selected": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "goldAtomsInCompleted": 0,
+      "toolCalls": 0
+    },
+    {
+      "rule": "C",
+      "arm": "CONTROL",
+      "units": 5,
+      "completed": 5,
+      "refused": 0,
+      "selected": 41,
+      "tp": 35,
+      "fp": 6,
+      "fn": 0,
+      "goldAtomsInCompleted": 35,
+      "toolCalls": 0
+    },
+    {
+      "rule": "C",
+      "arm": "PREFETCH",
+      "units": 5,
+      "completed": 4,
+      "refused": 1,
+      "selected": 34,
+      "tp": 28,
+      "fp": 6,
+      "fn": 0,
+      "goldAtomsInCompleted": 28,
+      "toolCalls": 0
+    },
+    {
+      "rule": "D",
+      "arm": "CONTROL",
+      "units": 5,
+      "completed": 5,
+      "refused": 0,
+      "selected": 25,
+      "tp": 25,
+      "fp": 0,
+      "fn": 0,
+      "goldAtomsInCompleted": 25,
+      "toolCalls": 1
+    },
+    {
+      "rule": "D",
+      "arm": "PREFETCH",
+      "units": 5,
+      "completed": 5,
+      "refused": 0,
+      "selected": 25,
+      "tp": 25,
+      "fp": 0,
+      "fn": 0,
+      "goldAtomsInCompleted": 25,
+      "toolCalls": 0
+    }
+  ],
+  "preRegisteredFalseNegatives": {
+    "pairs": 4,
+    "goldAtoms": 32,
+    "fnControl": 0,
+    "fnPrefetch": 0,
+    "fpControl": 13,
+    "fpPrefetch": 12,
+    "unsafe": false,
+    "rule": "PREFETCH is not safe if its fn exceeds CONTROL's by more than 10% of the Gold headings in the paired cells of rule A and the anchors"
+  },
+  "preRegisteredFalsePositives": {
+    "rule": "the effect holds on a segment if every PREFETCH fp is below every CONTROL fp (rule B segments and SEG-001)",
+    "segments": {
+      "SEG-067": {
+        "controlFp": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefetchFp": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefetchBelowEveryControl": false
+      }
+    }
+  },
+  "refusedByCode": {
+    "CONTROL:PROTOCOL:COVERAGE_INCOMPLETE": 1,
+    "CONTROL:PROTOCOL:REPLY_NOT_JSON": 1,
+    "PREFETCH:PROTOCOL:REPLY_NOT_JSON": 1
+  },
+  "fenced": {
+    "CONTROL": 1,
+    "PREFETCH": 1
+  },
+  "toolCalls": {
+    "CONTROL": 1,
+    "PREFETCH": 0
+  },
+  "selectionAcrossRepetitions": {
+    "CONTROL SEG-006": {
+      "completed": 5,
+      "distinctSelections": 2,
+      "selectedPerRep": [
+        9,
+        7,
+        9,
+        9,
+        7
+      ]
+    },
+    "CONTROL SEG-067": {
+      "completed": 4,
+      "distinctSelections": 1,
+      "selectedPerRep": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "CONTROL SEG-080": {
+      "completed": 4,
+      "distinctSelections": 2,
+      "selectedPerRep": [
+        11,
+        11,
+        11,
+        12
+      ]
+    },
+    "CONTROL SEG-103": {
+      "completed": 5,
+      "distinctSelections": 1,
+      "selectedPerRep": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ]
+    },
+    "PREFETCH SEG-006": {
+      "completed": 4,
+      "distinctSelections": 2,
+      "selectedPerRep": [
+        9,
+        9,
+        7,
+        9
+      ]
+    },
+    "PREFETCH SEG-067": {
+      "completed": 5,
+      "distinctSelections": 1,
+      "selectedPerRep": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "PREFETCH SEG-080": {
+      "completed": 5,
+      "distinctSelections": 5,
+      "selectedPerRep": [
+        10,
+        11,
+        13,
+        10,
+        11
+      ]
+    },
+    "PREFETCH SEG-103": {
+      "completed": 5,
+      "distinctSelections": 1,
+      "selectedPerRep": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ]
+    }
+  },
+  "cells": [
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-080",
+      "rule": "A",
+      "rep": 1,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 11,
+      "tp": 8,
+      "fp": 3,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-067",
+      "rule": "B",
+      "rep": 1,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-006",
+      "rule": "C",
+      "rep": 1,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 9,
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-103",
+      "rule": "D",
+      "rep": 1,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-080",
+      "rule": "A",
+      "rep": 2,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 11,
+      "tp": 8,
+      "fp": 3,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-067",
+      "rule": "B",
+      "rep": 2,
+      "status": "FAILED",
+      "failure": "PROTOCOL:COVERAGE_INCOMPLETE",
+      "selected": null,
+      "tp": null,
+      "fp": null,
+      "fn": null,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-006",
+      "rule": "C",
+      "rep": 2,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 7,
+      "tp": 7,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-103",
+      "rule": "D",
+      "rep": 2,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-080",
+      "rule": "A",
+      "rep": 3,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 11,
+      "tp": 8,
+      "fp": 3,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-067",
+      "rule": "B",
+      "rep": 3,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-006",
+      "rule": "C",
+      "rep": 3,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 9,
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-103",
+      "rule": "D",
+      "rep": 3,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-080",
+      "rule": "A",
+      "rep": 4,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 12,
+      "tp": 8,
+      "fp": 4,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-067",
+      "rule": "B",
+      "rep": 4,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-006",
+      "rule": "C",
+      "rep": 4,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 9,
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-103",
+      "rule": "D",
+      "rep": 4,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 1,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-080",
+      "rule": "A",
+      "rep": 5,
+      "status": "FAILED",
+      "failure": "PROTOCOL:REPLY_NOT_JSON",
+      "selected": null,
+      "tp": null,
+      "fp": null,
+      "fn": null,
+      "toolCalls": 0,
+      "fenced": true,
+      "counterfactual": {
+        "kind": "one outer fence stripped (not official)",
+        "selected": 12,
+        "tp": 8,
+        "fp": 4,
+        "fn": 0
+      }
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-067",
+      "rule": "B",
+      "rep": 5,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-006",
+      "rule": "C",
+      "rep": 5,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 7,
+      "tp": 7,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "CONTROL",
+      "segment": "SEG-103",
+      "rule": "D",
+      "rep": 5,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-080",
+      "rule": "A",
+      "rep": 1,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 10,
+      "tp": 8,
+      "fp": 2,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-067",
+      "rule": "B",
+      "rep": 1,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-006",
+      "rule": "C",
+      "rep": 1,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 9,
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-103",
+      "rule": "D",
+      "rep": 1,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-080",
+      "rule": "A",
+      "rep": 2,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 11,
+      "tp": 8,
+      "fp": 3,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-067",
+      "rule": "B",
+      "rep": 2,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-006",
+      "rule": "C",
+      "rep": 2,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 9,
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-103",
+      "rule": "D",
+      "rep": 2,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-080",
+      "rule": "A",
+      "rep": 3,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 13,
+      "tp": 8,
+      "fp": 5,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-067",
+      "rule": "B",
+      "rep": 3,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-006",
+      "rule": "C",
+      "rep": 3,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 7,
+      "tp": 7,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-103",
+      "rule": "D",
+      "rep": 3,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-080",
+      "rule": "A",
+      "rep": 4,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 10,
+      "tp": 8,
+      "fp": 2,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-067",
+      "rule": "B",
+      "rep": 4,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-006",
+      "rule": "C",
+      "rep": 4,
+      "status": "FAILED",
+      "failure": "PROTOCOL:REPLY_NOT_JSON",
+      "selected": null,
+      "tp": null,
+      "fp": null,
+      "fn": null,
+      "toolCalls": 0,
+      "fenced": true,
+      "counterfactual": {
+        "kind": "one outer fence stripped (not official)",
+        "selected": 9,
+        "tp": 7,
+        "fp": 2,
+        "fn": 0
+      }
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-103",
+      "rule": "D",
+      "rep": 4,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-080",
+      "rule": "A",
+      "rep": 5,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 11,
+      "tp": 8,
+      "fp": 3,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-067",
+      "rule": "B",
+      "rep": 5,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-006",
+      "rule": "C",
+      "rep": 5,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 9,
+      "tp": 7,
+      "fp": 2,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    },
+    {
+      "arm": "PREFETCH",
+      "segment": "SEG-103",
+      "rule": "D",
+      "rep": 5,
+      "status": "COMPLETE",
+      "failure": null,
+      "selected": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "toolCalls": 0,
+      "fenced": false
+    }
+  ],
+  "findings": {
+    "falseNegatives": "None: fn 0 in both arms (4 paired cells of rule A, 32 Gold headings). Evidence did not make Qwen drop real headings (unsafe false).",
+    "falsePositives": "No difference between the arms. SEG-080 (rule A, running page headers next to two-line headings): CONTROL fp 3, 3, 3, 4 (a fifth answer fenced and refused; offline counterfactual fp 4), PREFETCH fp 2, 3, 5, 2, 3. SEG-006 (rule C): CONTROL 2, 0, 2, 2, 0; PREFETCH 2, 2, 0, refused-fenced (counterfactual 2), 2. SEG-067 (rule B, a numeric table: 48 targets with repeated text, no Gold heading) and SEG-103 (rule D): fp 0 in both arms.",
+    "residualErrors": "The same few non-Gold lines are selected by both arms: statement title lines (INTERNATIONAL DEVELOPMENT ASSOCIATION, June 30, 2025, Assets) in SEG-080 and the running page heading 'Management's Discussion and Analysis Section I/II' in SEG-006. They are systematic, not noise, and not linked to repeated-text evidence; whether they are headings under the user's instruction while the frozen Gold does not count them is a separate question this run does not settle.",
+    "protocol": "3 of 40 final answers refused: CONTROL COVERAGE_INCOMPLETE (SEG-067 r2, missing decisions) and REPLY_NOT_JSON (SEG-080 r5, fenced); PREFETCH REPLY_NOT_JSON (SEG-006 r4, fenced). No UNEXPECTED_ALIAS in 40.",
+    "fence": "2 of 40 final answers fenced (one per arm), both refused; offline, not official: stripping one outer fence gives valid JSON with fp 4 and fp 2 respectively. With D4.11h (1 of 12) and SRC-095 (0 of 60), 3 of 112 final answers without response_format on the tool turns were fenced.",
+    "toolCalls": "One in 41 CONTROL requests: SEG-103 repetition 4, turn 1. PREFETCH made none.",
+    "cost": "41 posts, about $0.0416 in total.",
+    "reading": "On this document the evidence neither helps nor harms: the repeated text is table cells and running headers, Qwen does not select them anyway, and its remaining errors are of another kind."
+  },
+  "limits": [
+    "5 repetitions per cell; an indication, not a significance test",
+    "one campaign per document; a result on one document says nothing about others",
+    "the observations were chosen and formatted by the program",
+    "Gold used only offline, to choose the segments by rule and to score their targets"
+  ]
+}

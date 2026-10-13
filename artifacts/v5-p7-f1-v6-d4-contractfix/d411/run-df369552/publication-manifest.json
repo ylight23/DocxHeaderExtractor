@@ -1,0 +1,679 @@
+{
+  "artifact": "p7.f1.v6.d4.11-publication-manifest.v1",
+  "planSha256": "df369552c7f132f12193a3cbede1e8186682fde0cec21a210ea8e1f2a9c23708",
+  "files": [
+    {
+      "file": "arm-CONTROL/run-summary.json",
+      "kind": "summary",
+      "bytes": 94478,
+      "sha256": "bc7fdaaa5480734ef65589ef5602f30f40394d61d0152e22cd8bfad3354b4408",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/raw/03979a01279ef4a74be979e7350c8ad1a14e292cb39d287ac6171451b61d6c7c.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 15038,
+      "sha256": "674b85a42b0eb5f9318df6351796133902d9507dc89e31c611862134575b16a9",
+      "uncompressedSha256": "03979a01279ef4a74be979e7350c8ad1a14e292cb39d287ac6171451b61d6c7c",
+      "uncompressedBytes": 607912
+    },
+    {
+      "file": "arm-CONTROL/raw/16b1306a4943e8edd3e8df8dacb593c8ba69361885af6adfa948f4d26cd4b66e.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 12146,
+      "sha256": "cb93742f02c7ef5323cb8cf4f0ca582742a1fde737538378aa4e0fdc299cf235",
+      "uncompressedSha256": "16b1306a4943e8edd3e8df8dacb593c8ba69361885af6adfa948f4d26cd4b66e",
+      "uncompressedBytes": 505597
+    },
+    {
+      "file": "arm-CONTROL/raw/1bb6491dcd9438a945e2393f6f5752b702fa39ea82d5c479dc0bf46c9e82313d.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 15750,
+      "sha256": "e52fb9a04b0e0317f4d14eda745315c6e070181f058c14546019be99dc8190c7",
+      "uncompressedSha256": "1bb6491dcd9438a945e2393f6f5752b702fa39ea82d5c479dc0bf46c9e82313d",
+      "uncompressedBytes": 618991
+    },
+    {
+      "file": "arm-CONTROL/raw/212c13a4c0e067c2a1eba62a3c1b5250b023c308aef3e3d84307f9cf4560b534.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 13529,
+      "sha256": "d2a8f0817a5c1e448465d9a267ef600edb8720aff0ad4e7e877add6f72b69016",
+      "uncompressedSha256": "212c13a4c0e067c2a1eba62a3c1b5250b023c308aef3e3d84307f9cf4560b534",
+      "uncompressedBytes": 477404
+    },
+    {
+      "file": "arm-CONTROL/raw/25a5bc049603c8ef89c706448ff5f5c719dd0facd0011c1e2700beb22d9b1342.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 18567,
+      "sha256": "ecbdd05375a40121e1e101dfdf105ac1f0e36a6a0aa9b1bcdc6020febbd0729b",
+      "uncompressedSha256": "25a5bc049603c8ef89c706448ff5f5c719dd0facd0011c1e2700beb22d9b1342",
+      "uncompressedBytes": 664631
+    },
+    {
+      "file": "arm-CONTROL/raw/2a043e51226b80770d7db269210e5ae8dac5e5ff8ad3d43012856ed1e7e75d90.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 14342,
+      "sha256": "99280f81403f41c12bc429d4a15a3af1dd70e1ef85c7864bfebd068a5050946c",
+      "uncompressedSha256": "2a043e51226b80770d7db269210e5ae8dac5e5ff8ad3d43012856ed1e7e75d90",
+      "uncompressedBytes": 537785
+    },
+    {
+      "file": "arm-CONTROL/raw/57fb92713049b7e5677f1c74d8e2a3e3c9eed4bc8e260f005971b48e17b541e8.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 26040,
+      "sha256": "fa34fcbdfbf63674329f2d16e978b78d7a356be185b428677bff081b9409af68",
+      "uncompressedSha256": "57fb92713049b7e5677f1c74d8e2a3e3c9eed4bc8e260f005971b48e17b541e8",
+      "uncompressedBytes": 972235
+    },
+    {
+      "file": "arm-CONTROL/raw/5f9ce6c44cc4320a204002845ccc11c41d18ddec3c4cd589c5d66fcc4daf1cc1.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 12011,
+      "sha256": "651344797756a0f57d4e217170bd20b2af93b274a9be84d8b860e31bf688221a",
+      "uncompressedSha256": "5f9ce6c44cc4320a204002845ccc11c41d18ddec3c4cd589c5d66fcc4daf1cc1",
+      "uncompressedBytes": 385334
+    },
+    {
+      "file": "arm-CONTROL/raw/748030869d459b763375095cb87f8a49f3c391ae0d1a59ad57b2dc40908bd21d.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 7681,
+      "sha256": "289d1827be7328be3f480b142cad51cda9e233f911eda2d5140d34a53112274d",
+      "uncompressedSha256": "748030869d459b763375095cb87f8a49f3c391ae0d1a59ad57b2dc40908bd21d",
+      "uncompressedBytes": 256094
+    },
+    {
+      "file": "arm-CONTROL/raw/78fba90136e17f0296eb78ef7e0b768524cd996bb790e3a8abfb62e84d876077.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 24773,
+      "sha256": "b43b012726e621adef4940ff5fb36611ec52dc7bd32f76733e3a3a5756fedcd4",
+      "uncompressedSha256": "78fba90136e17f0296eb78ef7e0b768524cd996bb790e3a8abfb62e84d876077",
+      "uncompressedBytes": 945479
+    },
+    {
+      "file": "arm-CONTROL/raw/8b60b613152c83f1e1a617d4fb3b03d27f141dae9823fb2c3f5d0fb0f78a794b.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 14914,
+      "sha256": "39d587aa6f28c53685deb8731581dcbf1aabcc812daed0979624d203300dd45a",
+      "uncompressedSha256": "8b60b613152c83f1e1a617d4fb3b03d27f141dae9823fb2c3f5d0fb0f78a794b",
+      "uncompressedBytes": 589660
+    },
+    {
+      "file": "arm-CONTROL/raw/916e8c7c96729d939f5aa2ca37ef5822a245de7b041dab46cf201311f1141bb5.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 11609,
+      "sha256": "554c8407b116fae3b3b2693565f77386f5d85c2a4fef69b8ea50aaac2f027733",
+      "uncompressedSha256": "916e8c7c96729d939f5aa2ca37ef5822a245de7b041dab46cf201311f1141bb5",
+      "uncompressedBytes": 430407
+    },
+    {
+      "file": "arm-CONTROL/raw/a22ea68324631db2d291a0b93ae68e8c648e427bb0923b0acd47ae51e95d3288.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 7414,
+      "sha256": "7725825a5e9196f1a92a4a51f3a6072b85d62ebd0b5b2da87f0f12faf02b6ed5",
+      "uncompressedSha256": "a22ea68324631db2d291a0b93ae68e8c648e427bb0923b0acd47ae51e95d3288",
+      "uncompressedBytes": 263123
+    },
+    {
+      "file": "arm-CONTROL/raw/ac8b952239d89e27024a3b4eec2263feca27a422e4e6140f5db7f447f6ce7b7c.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 10291,
+      "sha256": "9a03df0ba4da454311f2d7a28d5c5389f64b0a07470c6fdeceeb5608c4b025db",
+      "uncompressedSha256": "ac8b952239d89e27024a3b4eec2263feca27a422e4e6140f5db7f447f6ce7b7c",
+      "uncompressedBytes": 359188
+    },
+    {
+      "file": "arm-CONTROL/raw/bbab0c7c6eada44e22ea0cb0f80ede2fcd12c31818285fdfded3fa2d545a8183.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 23471,
+      "sha256": "9d3548ffb6359c198799f6d099bd2af5fbb2db2e73b1b6d98c884c93da90c34b",
+      "uncompressedSha256": "bbab0c7c6eada44e22ea0cb0f80ede2fcd12c31818285fdfded3fa2d545a8183",
+      "uncompressedBytes": 871717
+    },
+    {
+      "file": "arm-CONTROL/raw/c20bb2fbd13660beda51ea42b1bdd9363df5add0853ca433bea4bdcb8b44d7db.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 25508,
+      "sha256": "16acb361efe1d7dbdd46db8f03456f25a6855902f2b32b794e72dc8c4f73b092",
+      "uncompressedSha256": "c20bb2fbd13660beda51ea42b1bdd9363df5add0853ca433bea4bdcb8b44d7db",
+      "uncompressedBytes": 937649
+    },
+    {
+      "file": "arm-CONTROL/raw/c78b0027671be3c0a4761f6d29cbfdb8b8703f25dacf76f4246b47e8746e462e.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 12953,
+      "sha256": "9f967161db99fab2250068e778aa438db22ddc6e9af6e7a66c170868a272b730",
+      "uncompressedSha256": "c78b0027671be3c0a4761f6d29cbfdb8b8703f25dacf76f4246b47e8746e462e",
+      "uncompressedBytes": 454967
+    },
+    {
+      "file": "arm-CONTROL/raw/c82fabb1c9d879726d6715a1508471ec1832193ddab9af04094f67aead3c6397.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 16588,
+      "sha256": "d02a1305c3b4af650e64cbfdc7814d811d8795e9f4593503e2f4f3e565333e34",
+      "uncompressedSha256": "c82fabb1c9d879726d6715a1508471ec1832193ddab9af04094f67aead3c6397",
+      "uncompressedBytes": 640638
+    },
+    {
+      "file": "arm-CONTROL/raw/c8a4429fce09fad2cffbbe6f7abe940b0b3b4c464af60b1c1ee88d6d4ce781cd.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 8887,
+      "sha256": "1c17998ae17e330b4ecc56d250a72f1dece3a4bf4c61fbb68a2da1025f5c1f43",
+      "uncompressedSha256": "c8a4429fce09fad2cffbbe6f7abe940b0b3b4c464af60b1c1ee88d6d4ce781cd",
+      "uncompressedBytes": 320798
+    },
+    {
+      "file": "arm-CONTROL/raw/ec15310ebd02ecc462d9e4498f0c3a267510faccb5b6dec08c768a1e3cd6e850.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 21124,
+      "sha256": "0a198359ae289e72fb66175372abac4fff32375ad6df78711bd86f20b680e31d",
+      "uncompressedSha256": "ec15310ebd02ecc462d9e4498f0c3a267510faccb5b6dec08c768a1e3cd6e850",
+      "uncompressedBytes": 776583
+    },
+    {
+      "file": "arm-CONTROL/raw/fdc7262177a88a1d0e12d3091c1283f730f35fbbd07beb57511b3800996ca962.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 22959,
+      "sha256": "735a0fe9247b075f22981581e6ffc83ad0aa559f27afacc011434c9a32f05661",
+      "uncompressedSha256": "fdc7262177a88a1d0e12d3091c1283f730f35fbbd07beb57511b3800996ca962",
+      "uncompressedBytes": 916949
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-006-r1-turn-1.940ca29aa50e08b2298e0029fa1ce186f6bdb7d44dfef8034891ef16a4cb1a6a.json",
+      "kind": "request",
+      "bytes": 35068,
+      "sha256": "940ca29aa50e08b2298e0029fa1ce186f6bdb7d44dfef8034891ef16a4cb1a6a",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-006-r2-turn-1.940ca29aa50e08b2298e0029fa1ce186f6bdb7d44dfef8034891ef16a4cb1a6a.json",
+      "kind": "request",
+      "bytes": 35068,
+      "sha256": "940ca29aa50e08b2298e0029fa1ce186f6bdb7d44dfef8034891ef16a4cb1a6a",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-006-r3-turn-1.940ca29aa50e08b2298e0029fa1ce186f6bdb7d44dfef8034891ef16a4cb1a6a.json",
+      "kind": "request",
+      "bytes": 35068,
+      "sha256": "940ca29aa50e08b2298e0029fa1ce186f6bdb7d44dfef8034891ef16a4cb1a6a",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-006-r4-turn-1.940ca29aa50e08b2298e0029fa1ce186f6bdb7d44dfef8034891ef16a4cb1a6a.json",
+      "kind": "request",
+      "bytes": 35068,
+      "sha256": "940ca29aa50e08b2298e0029fa1ce186f6bdb7d44dfef8034891ef16a4cb1a6a",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-006-r5-turn-1.940ca29aa50e08b2298e0029fa1ce186f6bdb7d44dfef8034891ef16a4cb1a6a.json",
+      "kind": "request",
+      "bytes": 35068,
+      "sha256": "940ca29aa50e08b2298e0029fa1ce186f6bdb7d44dfef8034891ef16a4cb1a6a",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-067-r1-turn-1.786d0b2692c95e39344bcb40ca506b583d987e587ab0a90217e35b99c6676d0d.json",
+      "kind": "request",
+      "bytes": 30476,
+      "sha256": "786d0b2692c95e39344bcb40ca506b583d987e587ab0a90217e35b99c6676d0d",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-067-r2-turn-1.786d0b2692c95e39344bcb40ca506b583d987e587ab0a90217e35b99c6676d0d.json",
+      "kind": "request",
+      "bytes": 30476,
+      "sha256": "786d0b2692c95e39344bcb40ca506b583d987e587ab0a90217e35b99c6676d0d",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-067-r3-turn-1.786d0b2692c95e39344bcb40ca506b583d987e587ab0a90217e35b99c6676d0d.json",
+      "kind": "request",
+      "bytes": 30476,
+      "sha256": "786d0b2692c95e39344bcb40ca506b583d987e587ab0a90217e35b99c6676d0d",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-067-r4-turn-1.786d0b2692c95e39344bcb40ca506b583d987e587ab0a90217e35b99c6676d0d.json",
+      "kind": "request",
+      "bytes": 30476,
+      "sha256": "786d0b2692c95e39344bcb40ca506b583d987e587ab0a90217e35b99c6676d0d",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-067-r5-turn-1.786d0b2692c95e39344bcb40ca506b583d987e587ab0a90217e35b99c6676d0d.json",
+      "kind": "request",
+      "bytes": 30476,
+      "sha256": "786d0b2692c95e39344bcb40ca506b583d987e587ab0a90217e35b99c6676d0d",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-080-r1-turn-1.bd875bf960f985d9c5b43b23636dd2c7de4c3a7ce153928b4b9e39503f7f67a1.json",
+      "kind": "request",
+      "bytes": 31192,
+      "sha256": "bd875bf960f985d9c5b43b23636dd2c7de4c3a7ce153928b4b9e39503f7f67a1",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-080-r2-turn-1.bd875bf960f985d9c5b43b23636dd2c7de4c3a7ce153928b4b9e39503f7f67a1.json",
+      "kind": "request",
+      "bytes": 31192,
+      "sha256": "bd875bf960f985d9c5b43b23636dd2c7de4c3a7ce153928b4b9e39503f7f67a1",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-080-r3-turn-1.bd875bf960f985d9c5b43b23636dd2c7de4c3a7ce153928b4b9e39503f7f67a1.json",
+      "kind": "request",
+      "bytes": 31192,
+      "sha256": "bd875bf960f985d9c5b43b23636dd2c7de4c3a7ce153928b4b9e39503f7f67a1",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-080-r4-turn-1.bd875bf960f985d9c5b43b23636dd2c7de4c3a7ce153928b4b9e39503f7f67a1.json",
+      "kind": "request",
+      "bytes": 31192,
+      "sha256": "bd875bf960f985d9c5b43b23636dd2c7de4c3a7ce153928b4b9e39503f7f67a1",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-080-r5-turn-1.bd875bf960f985d9c5b43b23636dd2c7de4c3a7ce153928b4b9e39503f7f67a1.json",
+      "kind": "request",
+      "bytes": 31192,
+      "sha256": "bd875bf960f985d9c5b43b23636dd2c7de4c3a7ce153928b4b9e39503f7f67a1",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-103-r1-turn-1.f9e0fe8a3dd4e68e68739b059a0c7398e0f26f52cfbc19de2e16e472803c90b9.json",
+      "kind": "request",
+      "bytes": 36665,
+      "sha256": "f9e0fe8a3dd4e68e68739b059a0c7398e0f26f52cfbc19de2e16e472803c90b9",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-103-r2-turn-1.f9e0fe8a3dd4e68e68739b059a0c7398e0f26f52cfbc19de2e16e472803c90b9.json",
+      "kind": "request",
+      "bytes": 36665,
+      "sha256": "f9e0fe8a3dd4e68e68739b059a0c7398e0f26f52cfbc19de2e16e472803c90b9",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-103-r3-turn-1.f9e0fe8a3dd4e68e68739b059a0c7398e0f26f52cfbc19de2e16e472803c90b9.json",
+      "kind": "request",
+      "bytes": 36665,
+      "sha256": "f9e0fe8a3dd4e68e68739b059a0c7398e0f26f52cfbc19de2e16e472803c90b9",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-103-r4-turn-1.f9e0fe8a3dd4e68e68739b059a0c7398e0f26f52cfbc19de2e16e472803c90b9.json",
+      "kind": "request",
+      "bytes": 36665,
+      "sha256": "f9e0fe8a3dd4e68e68739b059a0c7398e0f26f52cfbc19de2e16e472803c90b9",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-103-r4-turn-2.52b11b2aa8711e678344a5318589a28a94b7fea2b608b11b4f60ef6988ba2176.json",
+      "kind": "request",
+      "bytes": 49714,
+      "sha256": "52b11b2aa8711e678344a5318589a28a94b7fea2b608b11b4f60ef6988ba2176",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-CONTROL/requests/SEG-103-r5-turn-1.f9e0fe8a3dd4e68e68739b059a0c7398e0f26f52cfbc19de2e16e472803c90b9.json",
+      "kind": "request",
+      "bytes": 36665,
+      "sha256": "f9e0fe8a3dd4e68e68739b059a0c7398e0f26f52cfbc19de2e16e472803c90b9",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/run-summary.json",
+      "kind": "summary",
+      "bytes": 94991,
+      "sha256": "7573c3b9ce98db6a11279233ae65ce29724d4bbbad90e0d0d8194ad77757a9c2",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/raw/008ad9b30b963a3f9ed9c19669ab257bfeaa13dfe010f61124308481c6014570.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 17097,
+      "sha256": "ef0e06f5054c88f5a2bcd2a086545e360258e532a2c80a7508aa8a17289add55",
+      "uncompressedSha256": "008ad9b30b963a3f9ed9c19669ab257bfeaa13dfe010f61124308481c6014570",
+      "uncompressedBytes": 633816
+    },
+    {
+      "file": "arm-PREFETCH/raw/018e62552266ad55f11103649ec554d11dcaa4d0b618a468b80588f9141fdb22.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 11905,
+      "sha256": "0bd940dff558e7d4f990cae74586b175e70956799ba57b5782754e27fec60b77",
+      "uncompressedSha256": "018e62552266ad55f11103649ec554d11dcaa4d0b618a468b80588f9141fdb22",
+      "uncompressedBytes": 465758
+    },
+    {
+      "file": "arm-PREFETCH/raw/054c6447561896c891ff39dce14af3cd26f9f4863c4b654edec395848e47671c.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 11907,
+      "sha256": "5f9e36b86b4be965250ee3063a3e28b031196cab7d497db4d543087dae73bb99",
+      "uncompressedSha256": "054c6447561896c891ff39dce14af3cd26f9f4863c4b654edec395848e47671c",
+      "uncompressedBytes": 454537
+    },
+    {
+      "file": "arm-PREFETCH/raw/0e7ded5d17fe4a9aa48ff9be906556b746b8e2269b223d931a7bc50616c29826.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 25827,
+      "sha256": "004abee8fbbe4a5df783d5d682d881f6a63d9ad146e0c1f6e315fd429170521a",
+      "uncompressedSha256": "0e7ded5d17fe4a9aa48ff9be906556b746b8e2269b223d931a7bc50616c29826",
+      "uncompressedBytes": 972379
+    },
+    {
+      "file": "arm-PREFETCH/raw/2763ccc3a55eb8107da9a14623d7280432abe9d3767f9b1d7c4207d13273bbbd.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 16837,
+      "sha256": "e67dfadbffc176270b8dddb9bf77fcc08ac5a0bb47c91e4643e6eedf8eaa875a",
+      "uncompressedSha256": "2763ccc3a55eb8107da9a14623d7280432abe9d3767f9b1d7c4207d13273bbbd",
+      "uncompressedBytes": 640332
+    },
+    {
+      "file": "arm-PREFETCH/raw/3124a58dcbc8a5ff3db693796430fbd98cf3b7151d47f311cbe9e35c99ccd234.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 23200,
+      "sha256": "ff1ff50070d73e353c5f2a129feb942283b425799c713ab29ca33d45926bc0a6",
+      "uncompressedSha256": "3124a58dcbc8a5ff3db693796430fbd98cf3b7151d47f311cbe9e35c99ccd234",
+      "uncompressedBytes": 870593
+    },
+    {
+      "file": "arm-PREFETCH/raw/4a41398d0cb86f4f6dcdbb6c1f97761616d984c7425bf255509caf0f31ea76da.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 9444,
+      "sha256": "018a14d65fa10823c4f615c07d2b4a507fab80a27b46d28d83a7b194071872a1",
+      "uncompressedSha256": "4a41398d0cb86f4f6dcdbb6c1f97761616d984c7425bf255509caf0f31ea76da",
+      "uncompressedBytes": 322148
+    },
+    {
+      "file": "arm-PREFETCH/raw/4c50ce23b9621df03fb5b3f13760678661aced455a3f7ab8202d56fafeab34a9.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 12748,
+      "sha256": "087c96ec0f663323201d584f2ba5f524cfc251c286aaa49833bb903719d73a9c",
+      "uncompressedSha256": "4c50ce23b9621df03fb5b3f13760678661aced455a3f7ab8202d56fafeab34a9",
+      "uncompressedBytes": 453842
+    },
+    {
+      "file": "arm-PREFETCH/raw/57fac9eeb0815591ecfc7a51ddba7bb1857a40602242c1e02ee6d794ea43c842.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 17521,
+      "sha256": "9401c3781fd74fa670d19a14b7e21c8683e812cbfc55d116bf6ab8c6dd05ea38",
+      "uncompressedSha256": "57fac9eeb0815591ecfc7a51ddba7bb1857a40602242c1e02ee6d794ea43c842",
+      "uncompressedBytes": 625840
+    },
+    {
+      "file": "arm-PREFETCH/raw/72b82982d521292108f890b3345eeb62258bb09614cccf4f1b02a70debfb7dd8.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 18096,
+      "sha256": "fc7b445f7d98398877bf5653b922f0b02d854391e0705cef78b1851c62720de8",
+      "uncompressedSha256": "72b82982d521292108f890b3345eeb62258bb09614cccf4f1b02a70debfb7dd8",
+      "uncompressedBytes": 662472
+    },
+    {
+      "file": "arm-PREFETCH/raw/7ed7ca040444a2003b964444040de3f67e9c05e17b5a354cfcafacd538c3351b.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 12016,
+      "sha256": "34508891ed474c99895bfd0591382a1fe97dccc33069627088e1c2d7bae076ed",
+      "uncompressedSha256": "7ed7ca040444a2003b964444040de3f67e9c05e17b5a354cfcafacd538c3351b",
+      "uncompressedBytes": 469669
+    },
+    {
+      "file": "arm-PREFETCH/raw/8fe057580d96322fc673de36c63785d6d1be6fcc50431853f5ebd00155d2d407.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 12534,
+      "sha256": "e76a94ef932a54a6f41b0235a77d67c8c541f099c33a1c804c1661d92728f2f5",
+      "uncompressedSha256": "8fe057580d96322fc673de36c63785d6d1be6fcc50431853f5ebd00155d2d407",
+      "uncompressedBytes": 464193
+    },
+    {
+      "file": "arm-PREFETCH/raw/a84405cbdb5f7ca54d51d54eea8ea04fb33079d22521394589f88685e5cfbe1e.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 11471,
+      "sha256": "2927c9eab210d04bd1eeb9bd8022dc318fe7d465044bc12711fb79ecdbe118ee",
+      "uncompressedSha256": "a84405cbdb5f7ca54d51d54eea8ea04fb33079d22521394589f88685e5cfbe1e",
+      "uncompressedBytes": 409684
+    },
+    {
+      "file": "arm-PREFETCH/raw/b1dcfff24dcc9a2e18d3c55f1d1b4d9c5e16383e362b2993438dc772960f3243.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 20506,
+      "sha256": "89bfbf16e97702525413bfdcce20e441cadd797f4513b2403efc7b69982cd4e8",
+      "uncompressedSha256": "b1dcfff24dcc9a2e18d3c55f1d1b4d9c5e16383e362b2993438dc772960f3243",
+      "uncompressedBytes": 747173
+    },
+    {
+      "file": "arm-PREFETCH/raw/b38873e7d1d0462188baae18acc77641e6cc37d64b26e2073831b0e32bb0400d.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 19019,
+      "sha256": "a1a99bdbff4a154e18060b4522163bd9d0fe0aba3cf4d8acd6573d5d1820cff1",
+      "uncompressedSha256": "b38873e7d1d0462188baae18acc77641e6cc37d64b26e2073831b0e32bb0400d",
+      "uncompressedBytes": 733031
+    },
+    {
+      "file": "arm-PREFETCH/raw/b4ea6d6f34b1791e9bb08b4bd2620a70b40a2638451d99a951008e28e9df7a2b.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 15676,
+      "sha256": "d148c1991ba99f2ecfec16d352e6c3b5948e0790297e9e0795872018464fddb6",
+      "uncompressedSha256": "b4ea6d6f34b1791e9bb08b4bd2620a70b40a2638451d99a951008e28e9df7a2b",
+      "uncompressedBytes": 599731
+    },
+    {
+      "file": "arm-PREFETCH/raw/de9832c761a704f3c50b3ee3ea207206973d5bf0e561e2c148e49e75d70426fc.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 18402,
+      "sha256": "05cb8db351bd0cfea45f4e269b32202490b793ebf9b6fd2cd8ee6a05ec56710e",
+      "uncompressedSha256": "de9832c761a704f3c50b3ee3ea207206973d5bf0e561e2c148e49e75d70426fc",
+      "uncompressedBytes": 700988
+    },
+    {
+      "file": "arm-PREFETCH/raw/e03199e067cf9038f1fa6eb117de76e66c48574d45c6812674421c0aa719e920.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 27718,
+      "sha256": "a322e028c8dd99ab156f3400cf4d155b9f95c94e166bb2a774bbca375bd602d8",
+      "uncompressedSha256": "e03199e067cf9038f1fa6eb117de76e66c48574d45c6812674421c0aa719e920",
+      "uncompressedBytes": 1050252
+    },
+    {
+      "file": "arm-PREFETCH/raw/e86225fe86fea9c0f65d5901fb1191a1b8e80a0c9147c1f90895c03f3e33ee01.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 14561,
+      "sha256": "064e411877d8fc75e77eade074529bb7d5b8e69353443937058f623c7c066b89",
+      "uncompressedSha256": "e86225fe86fea9c0f65d5901fb1191a1b8e80a0c9147c1f90895c03f3e33ee01",
+      "uncompressedBytes": 535029
+    },
+    {
+      "file": "arm-PREFETCH/raw/ec3f5aa93cffaeaba3ae8381141c882de8aee17b22d9477579720f033419095d.sse.gz",
+      "kind": "raw-sse-gz",
+      "bytes": 21993,
+      "sha256": "8944f08804509e1e8339dbd0f3d1c63593aee13444dd7396ea661a96eff2ff9f",
+      "uncompressedSha256": "ec3f5aa93cffaeaba3ae8381141c882de8aee17b22d9477579720f033419095d",
+      "uncompressedBytes": 852685
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-006-r1-turn-1.7963cc708d29a972aff306fa8bd1542f2c47009b010a38c68c223e0c44e4deb3.json",
+      "kind": "request",
+      "bytes": 44108,
+      "sha256": "7963cc708d29a972aff306fa8bd1542f2c47009b010a38c68c223e0c44e4deb3",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-006-r2-turn-1.7963cc708d29a972aff306fa8bd1542f2c47009b010a38c68c223e0c44e4deb3.json",
+      "kind": "request",
+      "bytes": 44108,
+      "sha256": "7963cc708d29a972aff306fa8bd1542f2c47009b010a38c68c223e0c44e4deb3",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-006-r3-turn-1.7963cc708d29a972aff306fa8bd1542f2c47009b010a38c68c223e0c44e4deb3.json",
+      "kind": "request",
+      "bytes": 44108,
+      "sha256": "7963cc708d29a972aff306fa8bd1542f2c47009b010a38c68c223e0c44e4deb3",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-006-r4-turn-1.7963cc708d29a972aff306fa8bd1542f2c47009b010a38c68c223e0c44e4deb3.json",
+      "kind": "request",
+      "bytes": 44108,
+      "sha256": "7963cc708d29a972aff306fa8bd1542f2c47009b010a38c68c223e0c44e4deb3",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-006-r5-turn-1.7963cc708d29a972aff306fa8bd1542f2c47009b010a38c68c223e0c44e4deb3.json",
+      "kind": "request",
+      "bytes": 44108,
+      "sha256": "7963cc708d29a972aff306fa8bd1542f2c47009b010a38c68c223e0c44e4deb3",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-067-r1-turn-1.de42b5f49527f7ff6cd00a0fccc9ac568c52e2038b963c7936b60cdf81883871.json",
+      "kind": "request",
+      "bytes": 72912,
+      "sha256": "de42b5f49527f7ff6cd00a0fccc9ac568c52e2038b963c7936b60cdf81883871",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-067-r2-turn-1.de42b5f49527f7ff6cd00a0fccc9ac568c52e2038b963c7936b60cdf81883871.json",
+      "kind": "request",
+      "bytes": 72912,
+      "sha256": "de42b5f49527f7ff6cd00a0fccc9ac568c52e2038b963c7936b60cdf81883871",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-067-r3-turn-1.de42b5f49527f7ff6cd00a0fccc9ac568c52e2038b963c7936b60cdf81883871.json",
+      "kind": "request",
+      "bytes": 72912,
+      "sha256": "de42b5f49527f7ff6cd00a0fccc9ac568c52e2038b963c7936b60cdf81883871",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-067-r4-turn-1.de42b5f49527f7ff6cd00a0fccc9ac568c52e2038b963c7936b60cdf81883871.json",
+      "kind": "request",
+      "bytes": 72912,
+      "sha256": "de42b5f49527f7ff6cd00a0fccc9ac568c52e2038b963c7936b60cdf81883871",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-067-r5-turn-1.de42b5f49527f7ff6cd00a0fccc9ac568c52e2038b963c7936b60cdf81883871.json",
+      "kind": "request",
+      "bytes": 72912,
+      "sha256": "de42b5f49527f7ff6cd00a0fccc9ac568c52e2038b963c7936b60cdf81883871",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-080-r1-turn-1.ad9022f2f806319a4ff9a6910077e7966b3ffcd481e2bb9e66acf5f34ba5d081.json",
+      "kind": "request",
+      "bytes": 65792,
+      "sha256": "ad9022f2f806319a4ff9a6910077e7966b3ffcd481e2bb9e66acf5f34ba5d081",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-080-r2-turn-1.ad9022f2f806319a4ff9a6910077e7966b3ffcd481e2bb9e66acf5f34ba5d081.json",
+      "kind": "request",
+      "bytes": 65792,
+      "sha256": "ad9022f2f806319a4ff9a6910077e7966b3ffcd481e2bb9e66acf5f34ba5d081",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-080-r3-turn-1.ad9022f2f806319a4ff9a6910077e7966b3ffcd481e2bb9e66acf5f34ba5d081.json",
+      "kind": "request",
+      "bytes": 65792,
+      "sha256": "ad9022f2f806319a4ff9a6910077e7966b3ffcd481e2bb9e66acf5f34ba5d081",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-080-r4-turn-1.ad9022f2f806319a4ff9a6910077e7966b3ffcd481e2bb9e66acf5f34ba5d081.json",
+      "kind": "request",
+      "bytes": 65792,
+      "sha256": "ad9022f2f806319a4ff9a6910077e7966b3ffcd481e2bb9e66acf5f34ba5d081",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-080-r5-turn-1.ad9022f2f806319a4ff9a6910077e7966b3ffcd481e2bb9e66acf5f34ba5d081.json",
+      "kind": "request",
+      "bytes": 65792,
+      "sha256": "ad9022f2f806319a4ff9a6910077e7966b3ffcd481e2bb9e66acf5f34ba5d081",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-103-r1-turn-1.8ff5a42a9d86fd5f5ddaad0890ec12bb72ef1af5e57ba08bc4b98cac0375ca63.json",
+      "kind": "request",
+      "bytes": 38948,
+      "sha256": "8ff5a42a9d86fd5f5ddaad0890ec12bb72ef1af5e57ba08bc4b98cac0375ca63",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-103-r2-turn-1.8ff5a42a9d86fd5f5ddaad0890ec12bb72ef1af5e57ba08bc4b98cac0375ca63.json",
+      "kind": "request",
+      "bytes": 38948,
+      "sha256": "8ff5a42a9d86fd5f5ddaad0890ec12bb72ef1af5e57ba08bc4b98cac0375ca63",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-103-r3-turn-1.8ff5a42a9d86fd5f5ddaad0890ec12bb72ef1af5e57ba08bc4b98cac0375ca63.json",
+      "kind": "request",
+      "bytes": 38948,
+      "sha256": "8ff5a42a9d86fd5f5ddaad0890ec12bb72ef1af5e57ba08bc4b98cac0375ca63",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-103-r4-turn-1.8ff5a42a9d86fd5f5ddaad0890ec12bb72ef1af5e57ba08bc4b98cac0375ca63.json",
+      "kind": "request",
+      "bytes": 38948,
+      "sha256": "8ff5a42a9d86fd5f5ddaad0890ec12bb72ef1af5e57ba08bc4b98cac0375ca63",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    },
+    {
+      "file": "arm-PREFETCH/requests/SEG-103-r5-turn-1.8ff5a42a9d86fd5f5ddaad0890ec12bb72ef1af5e57ba08bc4b98cac0375ca63.json",
+      "kind": "request",
+      "bytes": 38948,
+      "sha256": "8ff5a42a9d86fd5f5ddaad0890ec12bb72ef1af5e57ba08bc4b98cac0375ca63",
+      "uncompressedSha256": null,
+      "uncompressedBytes": null
+    }
+  ],
+  "note": "Copied from the safe store; raw SSE responses are gzip files whose decompressed bytes are the received bytes (uncompressedSha256 is the safe-store name). Raw SSE responses include the model's reasoning text. The documents are the repository's public heading corpus (todo10_8/); each plan states its document's publicity. No API key is in any file (checked before copying)."
+}

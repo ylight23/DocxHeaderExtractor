@@ -1,0 +1,43 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "APPROVED",
+  "planFile": "p7.f1.v6.d4.11i-repeat-canary-plan.SRC-042.v1.json",
+  "planSha256": "df369552c7f132f12193a3cbede1e8186682fde0cec21a210ea8e1f2a9c23708",
+  "codeCommit": "b672c595e23ec01265e0b3c5a0986932a91c25b2",
+  "authorityId": "SRC-042",
+  "document": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/042_IDA_Financial_Statements_June_2025.pdf",
+  "sourceSha256": "21a847d94cd8651df41e260f4c6ddadb7c2a176255dbb87052945fc450d9fabf",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 48,
+  "ceilingUsd": 0.89,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095",
+  "dataSharing": {
+    "documentPublicity": "International Development Association (World Bank Group) financial statements, June 2025; a document of the repository's public heading corpus (todo10_8/), whose README states the files are real documents downloaded from public sources; the origin is not independently verified here",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "allow (OpenRouter default; no data_collection field added to the request)",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ]
+  },
+  "approvedBy": "ylight23 (session user of the repository owner account; the message did not restate a name)",
+  "approvedAtUtc": "2026-10-13T02:13:19.6674190Z",
+  "approvalText": "[Approval given in the session of the repository owner account (git user ylight23), one message of 2026-10-13, verbatim]\ncho phép chạy cả 2 ,  ba mục data policy (ZDR, waiver, logging OpenRouter), data_collection,  và có push raw\n(Recorded notes: the message replies to the assistant message that named two plans and asked for the approver, the three open data-policy items, data_collection, retry and whether to push raw: SRC-095 plan e73415f75bafda24ae08b72935d2f4cfe4143be6551ee986a82396bb3f333515 and SRC-042 plan df369552c7f132f12193a3cbede1e8186682fde0cec21a210ea8e1f2a9c23708, both code b672c59, CONTROL vs PREFETCH with the target range stated, 5 identical repetitions, segments chosen by fixed rules, retry 0, route alibaba without alibaba/us-east-1 and no fallback. This record authorizes the SRC-042 plan df369552c7f132f12193a3cbede1e8186682fde0cec21a210ea8e1f2a9c23708: 4 segments, 48 posts, per-arm ceilings $0.36 and $0.53 ($0.89 in total), document the IDA (World Bank Group) financial statements of June 2025 only. The message lists the three open data-policy items (ZDR not supported, ZDR waiver unverified, logging through OpenRouter unknown) and data_collection among what it allows; they are recorded as accepted. The message names no value for data_collection, so the earlier decision stands: allow, the OpenRouter default, with no data_collection field added to the request. approvedBy names the session user: the message did not restate a name. Retry stays 0 as pinned (the message did not mention it). The message says to push raw: after the run the raw SSE responses (reasoning included), the request bodies with tool results, the run summaries and the analysis are copied unchanged from the safe store into the repository and pushed (d411-publish; refused if any file holds an API key). The GPT-6 technical reviews are reviews, not this approval.)",
+  "approvalSha256": "7f621ebb2d96dc3b841af499bbd596f22e6adb16c28b4eb7d120ad74cfd7d20a"
+}
