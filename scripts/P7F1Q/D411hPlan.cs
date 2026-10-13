@@ -79,7 +79,7 @@ internal static class D411hPlan
                     units = s.Units.Select(x => new
                     {
                         x.Rep, x.Outcome.Unit.UnitId, x.Outcome.Unit.Status, x.Outcome.Unit.Failure, posts = x.Outcome.Unit.Calls,
-                        maxRequestBytes = x.Outcome.Turns.Max(t => t.RequestBytes), toolMessageBytes = x.Outcome.Evidence.ToolMessageBytes,
+                        maxRequestBytes = x.Outcome.Turns.Select(t => t.RequestBytes).DefaultIfEmpty(0).Max(), toolMessageBytes = x.Outcome.Evidence.ToolMessageBytes,
                         observationTargetsListed = x.Outcome.Evidence.ObservationTargetsListed, observationBytes = x.Outcome.Evidence.ObservationBytes,
                         observationsComplete = x.Outcome.Evidence.ObservationsComplete,
                     }),
