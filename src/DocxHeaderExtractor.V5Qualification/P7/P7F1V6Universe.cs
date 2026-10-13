@@ -27,6 +27,37 @@ internal sealed class P7F1V6Universe
     /// <summary>The parser evidence (text, page, bbox, typography) the universe was built from; read by the V6 evidence tools.</summary>
     public P7F1QEvidenceTools Tools { get; }
 
+    /// <summary>
+    /// A document the owner supplies from outside the public corpus (D4.11j). The source gate (public corpus prefix) is deliberately not used: this
+    /// path exists only for a plan that declares the document owner-supplied, pins its file hash, and is authorized by the owner, who also decides on
+    /// redaction. The file must hash to the pinned value before and after parsing. redact, if given, is applied to every line text before the lines
+    /// reach a request, the evidence tools or the prefetch, so a tool result cannot show what a request does not. The source hash stays the original's.
+    /// </summary>
+    public static P7F1V6Universe? RebuildOwnerSupplied(string fullPath, string pinnedSourceSha256, Func<string, string>? redact, out string failure)
+    {
+        if (!fullPath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase)) { failure = "UNIVERSE_REBUILD_PDF_ONLY"; return null; }
+        if (!File.Exists(fullPath)) { failure = "OWNER_DOCUMENT_MISSING"; return null; }
+        if (Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(fullPath))) != pinnedSourceSha256) { failure = "OWNER_DOCUMENT_SHA_DIFFERS"; return null; }
+        var parsed = PdfSourceAdapter.BuildWithDetails(fullPath);
+        var store = PdfSourceEvidenceStore.Build(parsed.Snapshot, parsed.Details);
+        if (store.SourceSha256 != pinnedSourceSha256 || Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(fullPath))) != pinnedSourceSha256)
+        {
+            failure = "SOURCE_CHANGED_DURING_PARSE";
+            return null;
+        }
+        if (parsed.Snapshot.Atoms.Count == 0) { failure = "EMPTY_UNIVERSE"; return null; }
+        var issued = new Dictionary<string, string> { ["O1"] = parsed.Snapshot.Atoms[0].Alias };
+        var tools = P7F1QEvidenceTools.FromStore(store, issued, toolSet: 2);
+        if (redact is not null)
+            tools = new P7F1QEvidenceTools(store.SourceSha256, store.SourceAliasUniverseSha256, store.StoreSha256,
+                tools.AllLines.Select(l => l with { Text = redact(l.Text) }).ToArray(), issued, 2);
+        var lines = tools.AllLines
+            .Select(l => new P7F1V6Direct.Line(l.Alias, l.Page ?? 0, l.Text, P7F1QEvidenceTools.CompactLayout(l.Bbox, l.Typography))).ToArray();
+        if (lines.Select(l => l.Alias).Distinct(StringComparer.Ordinal).Count() != lines.Length) { failure = "DUPLICATE_ALIAS"; return null; }
+        failure = "OK";
+        return new P7F1V6Universe("owner-supplied:" + Path.GetFileName(fullPath), store.SourceSha256, store.SourceAliasUniverseSha256, store.StoreSha256, lines, tools);
+    }
+
     /// <summary>Reads the source through the source gate (prefix, path segments, pinned SHA), parses it, builds the evidence store, and
     /// checks that the store describes the same bytes. Returns null with a failure code on any mismatch.</summary>
     public static P7F1V6Universe? Rebuild(string repoRoot, string relativePath, string pinnedSourceSha256, out string failure)
