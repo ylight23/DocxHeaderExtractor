@@ -11,6 +11,9 @@ internal static class P7F1V6LayoutFacts
 {
     public const string Version = "P7_F1_V6_LAYOUT_FACTS_V1";
     public const string VersionV2 = "P7_F1_V6_LAYOUT_FACTS_V2";
+    public const string VersionV3 = "P7_F1_V6_LAYOUT_FACTS_V3";
+    public const string StylesVersion = "P7_F1_V6_DOCUMENT_STYLES_V1";
+    public const int MaxStylesShown = 15, StyleExamples = 3, StyleExampleChars = 80;
     public const double LeftEdgeTolerancePt = 1.5;
 
     public const string Description = "for every line in targets and context: block (the parser's layout block: its number in reading order, the number of lines in it, this line's place in it), "
@@ -24,15 +27,55 @@ internal static class P7F1V6LayoutFacts
         + "; leftEdge (offsetFromPageCommonPt: this line's left edge minus the left edge that the most lines of its page share, in points, 0 meaning the same edge; pageCommonEdgeLines: how many lines of the page start at that common edge; pageLines: how many lines the page has)"
         + "; fontSizeVsPageMedianPt (this line's font size minus the median font size of the lines of its page, in points)";
 
-    public static string DescriptionOf(int version) => version == 2 ? DescriptionV2 : Description;
-    public static string VersionOf(int version) => version == 2 ? VersionV2 : Version;
+    /// <summary>V3 (D4.12l): V2 plus the line's own layout (bbox and font, which the TOOLFACTS_ANALYSIS_V3 request no longer shows) and its style
+    /// against the whole document (size and weight, the rank of that style among the document's styles, how many lines use it).</summary>
+    public const string DescriptionV3 = DescriptionV2
+        + "; layout (bbox in PDF points, bottom-left origin, and font: size, name, bold and italic ratio)"
+        + "; style (sizePt and bold of this line, rankInDocument: the place of that size and weight among the distinct styles of the whole document, 1 being the largest size, bold before regular at the same size; linesWithThisStyleInDocument)";
+
+    public static string DescriptionOf(int version) => version switch { 3 => DescriptionV3, 2 => DescriptionV2, _ => Description };
+    public static string VersionOf(int version) => version switch { 3 => VersionV3, 2 => VersionV2, _ => Version };
+
+    /// <summary>A style is a font size (rounded to half a point) and a weight (bold when at least half the line is bold).</summary>
+    public readonly record struct Style(double SizePt, bool Bold);
+
+    static Style? StyleOf(F1QSourceLine l) =>
+        P7F1QEvidenceTools.FontSizeOf(l.Typography) is { } s ? new Style(Math.Round(s * 2, MidpointRounding.AwayFromZero) / 2, (P7F1QEvidenceTools.Bold(l.Typography) ?? 0) >= 0.5) : null;
+
+    /// <summary>The distinct styles of the document, largest size first, bold before regular at the same size; rank 1 is the first.</summary>
+    public static IReadOnlyList<(Style Style, int Rank, int[] Lines)> Styles(IReadOnlyList<F1QSourceLine> lines) =>
+        Enumerable.Range(0, lines.Count).Select(i => (i, s: StyleOf(lines[i]))).Where(x => x.s.HasValue).GroupBy(x => x.s!.Value)
+            .OrderByDescending(g => g.Key.SizePt).ThenByDescending(g => g.Key.Bold)
+            .Select((g, k) => (g.Key, k + 1, g.Select(x => x.i).ToArray())).ToList();
+
+    /// <summary>The document style table (D4.12l): every distinct style of the whole document, largest first, with how many lines and pages use
+    /// it and the first lines set in it. A measurement of the document; it names no kind of line.</summary>
+    public static JsonObject DocumentStyles(IReadOnlyList<F1QSourceLine> lines)
+    {
+        var styles = Styles(lines);
+        static string Clip(string t) => t.Length <= StyleExampleChars ? t : t[..StyleExampleChars] + "…";
+        return new JsonObject
+        {
+            ["readBy"] = "the program, from the parser's typography of every line of the whole document: each distinct style (font size rounded to half a point, bold when at least half the line is bold), largest size first, bold before regular at the same size, with how many lines and pages use it and the first lines in reading order set in it",
+            ["version"] = StylesVersion,
+            ["documentLines"] = lines.Count,
+            ["stylesTotal"] = styles.Count,
+            ["styles"] = new JsonArray(styles.Take(MaxStylesShown).Select(s => (JsonNode)new JsonObject
+            {
+                ["rank"] = s.Rank, ["sizePt"] = s.Style.SizePt, ["bold"] = s.Style.Bold, ["lines"] = s.Lines.Length,
+                ["pages"] = s.Lines.Select(i => lines[i].Page).Distinct().Count(),
+                ["firstLines"] = new JsonArray(s.Lines.Take(StyleExamples).Select(i => (JsonNode)new JsonObject { ["alias"] = lines[i].Alias, ["page"] = lines[i].Page, ["text"] = Clip(lines[i].Text) }).ToArray()),
+            }).ToArray()),
+            ["stylesNotShown"] = Math.Max(0, styles.Count - MaxStylesShown),
+        };
+    }
 
     static double R(double x) => Math.Round(x, 1, MidpointRounding.AwayFromZero);
 
     /// <summary>The facts of every line, by alias. lines and blocks are parallel, in reading order.</summary>
     public static IReadOnlyDictionary<string, JsonObject> Compute(IReadOnlyList<F1QSourceLine> lines, IReadOnlyList<string> blocks, int version = 1)
     {
-        if (version is not (1 or 2)) throw new ArgumentOutOfRangeException(nameof(version));
+        if (version is not (1 or 2 or 3)) throw new ArgumentOutOfRangeException(nameof(version));
         if (lines.Count != blocks.Count) throw new ArgumentException("LAYOUT_FACTS_LENGTH", nameof(blocks));
         var ordinal = new Dictionary<string, int>(StringComparer.Ordinal);
         foreach (var b in blocks) ordinal.TryAdd(b, ordinal.Count + 1);
@@ -49,7 +92,11 @@ internal static class P7F1V6LayoutFacts
         var commonEdge = new Dictionary<int, (double Edge, int Lines)>();
         var pageLines = Enumerable.Range(0, lines.Count).GroupBy(i => lines[i].Page ?? 0).ToDictionary(g => g.Key, g => g.Count());
         var medianSize = new Dictionary<int, double>();
-        if (version == 2)
+        var styleRank = new Dictionary<int, (Style Style, int Rank, int Lines)>();
+        if (version == 3)
+            foreach (var s in Styles(lines))
+                foreach (var i in s.Lines) styleRank[i] = (s.Style, s.Rank, s.Lines.Length);
+        if (version >= 2)
         {
             foreach (var g in byPage)
             {
@@ -85,7 +132,13 @@ internal static class P7F1V6LayoutFacts
             node["segments"] = s;
             if (lefts[i] is { } left)
                 node["leftEdgeSharedBy"] = byPage[lines[i].Page].Count(j => j != i && Math.Abs(lefts[j]!.Value - left) <= LeftEdgeTolerancePt);
-            if (version == 2)
+            if (version == 3)
+            {
+                if (P7F1QEvidenceTools.CompactLayout(lines[i].Bbox, lines[i].Typography) is { } lay) node["layout"] = System.Text.Json.JsonSerializer.SerializeToNode(lay);
+                if (styleRank.TryGetValue(i, out var sr))
+                    node["style"] = new JsonObject { ["sizePt"] = sr.Style.SizePt, ["bold"] = sr.Style.Bold, ["rankInDocument"] = sr.Rank, ["linesWithThisStyleInDocument"] = sr.Lines };
+            }
+            if (version >= 2)
             {
                 var page = lines[i].Page ?? 0;
                 if (lefts[i] is { } l2 && commonEdge.TryGetValue(page, out var ce))

@@ -827,4 +827,93 @@ public sealed class P7F1V6StableRunTests
         }
         finally { File.Delete(file); }
     }
+
+    // ---- D4.12l: no layout in the request, the document style table, facts V3 ----
+
+    [Fact]
+    public void FactsV3_KeepV2_AddTheLinesLayoutAndItsStyleRank_ConsistentWithTheDocumentStyleTable()
+    {
+        var u = Universe();
+        var v2 = u.WithFactsVersion(2); var v3 = u.WithFactsVersion(3);
+        var table = new P7F1V6AgentTools(v3.Tools, v3.LayoutFacts, factsVersion: 3).DocumentStyles();
+        var styles = table["styles"]!.AsArray();
+        Assert.True(styles.Count > 0);
+        // Largest first, bold before regular at the same size, ranks 1..n.
+        for (int k = 0; k < styles.Count; k++) Assert.Equal(k + 1, (int)styles[k]!["rank"]!);
+        for (int k = 1; k < styles.Count; k++)
+        {
+            var a = (double)styles[k - 1]!["sizePt"]!; var b = (double)styles[k]!["sizePt"]!;
+            Assert.True(a > b || (a == b && (bool)styles[k - 1]!["bold"]! && !(bool)styles[k]!["bold"]!));
+        }
+        foreach (var l in u.Lines)
+        {
+            var f2 = v2.LayoutFacts[l.Alias]; var f3 = v3.LayoutFacts[l.Alias];
+            foreach (var kv in f2) Assert.Equal(kv.Value!.ToJsonString(), f3[kv.Key]!.ToJsonString());
+            if (f3["style"] is JsonObject st)
+            {
+                var rank = (int)st["rankInDocument"]!;
+                if (rank <= styles.Count)
+                {
+                    Assert.Equal((double)styles[rank - 1]!["sizePt"]!, (double)st["sizePt"]!);
+                    Assert.Equal((bool)styles[rank - 1]!["bold"]!, (bool)st["bold"]!);
+                    Assert.Equal((int)styles[rank - 1]!["lines"]!, (int)st["linesWithThisStyleInDocument"]!);
+                }
+            }
+        }
+        Assert.Contains(v3.LayoutFacts.Values, f => f.ContainsKey("layout") && f.ContainsKey("style"));
+        Assert.Equal(u.Lines.Count, (int)table["documentLines"]!);
+    }
+
+    [Fact]
+    public void V3Request_ShowsNoLayout_CarriesTheDocumentStyles_AndItsPromptSaysSo()
+    {
+        var u = Universe().WithFactsVersion(3);
+        var r = C.FirstRequest(A.Arm.ToolFactsAnalysisV3, u, "SEG-001", true, P7F1V6DirectD45.InstructionEnglishMainPlain);
+        using var d = JsonDocument.Parse(r.Body);
+        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        foreach (var part in new[] { "targets", "context" })
+            foreach (var item in p.RootElement.GetProperty(part).EnumerateArray())
+                Assert.Equal(new[] { "alias", "page", "text" }, item.EnumerateObject().Select(x => x.Name).ToArray());
+        Assert.True(p.RootElement.TryGetProperty("documentStyles", out var ds));
+        Assert.True(ds.GetProperty("styles").GetArrayLength() > 0);
+        Assert.False(p.RootElement.TryGetProperty("observations", out _));
+        Assert.Equal(8, d.RootElement.GetProperty("tools").GetArrayLength());
+        var prompt = d.RootElement.GetProperty("messages")[0].GetProperty("content").GetString()!;
+        Assert.Equal(A.ToolFactsAnalysisV3PromptRange, prompt);
+        Assert.Contains("this request shows no layout", prompt);
+        Assert.Contains("Document styles:", prompt);
+        Assert.Contains("its style against the whole document", prompt);
+        Assert.DoesNotContain("Each line has alias, page, text and layout.", prompt);
+        var added = A.ToolFactsAnalysisV3PromptRange.Split((char)10).Except(A.ToolFactsAnalysisV2PromptRange.Split((char)10)).ToList();
+        foreach (var banned in new[] { "table of", "footer", "title", "contents", "cover page", "clause" })
+            Assert.DoesNotContain(banned, string.Join(" ", added), StringComparison.OrdinalIgnoreCase);
+        // The earlier arms still show the layout.
+        using var d2 = JsonDocument.Parse(C.FirstRequest(A.Arm.ToolFactsAnalysisV2, u, "SEG-001", true).Body);
+        using var p2 = JsonDocument.Parse(d2.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        Assert.Contains(p2.RootElement.GetProperty("targets").EnumerateArray(), x => x.TryGetProperty("layout", out _));
+        Assert.False(p2.RootElement.TryGetProperty("documentStyles", out _));
+    }
+
+    [Fact]
+    public void V3Plan_NeedsFactsV3_PinsTheArm_AndVerifies()
+    {
+        var rel = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        Dictionary<string, object?> Pinned(int v) => T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1,
+            firstSegments: 2, instruction: P7F1V6DirectD45.InstructionEnglishMainPlain, fullToolRounds: true, toolFactsAnalysis: true, factsVersion: v, hideLayout: true);
+        Assert.Throws<ArgumentException>(() => Pinned(2));
+        var bytes = T.Serialize(Pinned(3));
+        using var d = JsonDocument.Parse(bytes);
+        Assert.True(T.HideLayoutOf(d.RootElement));
+        Assert.Equal(3, T.FactsVersionOf(d.RootElement));
+        Assert.Equal("TOOLFACTS_ANALYSIS_V3", d.RootElement.GetProperty("arms")[0].GetProperty("arm").GetString());
+        Assert.Equal(A.Sha(A.ToolFactsAnalysisV3PromptRange), d.RootElement.GetProperty("arms")[0].GetProperty("promptSha256").GetString());
+        var file = Path.Combine(Path.GetTempPath(), "dhx-v3-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, bytes);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
 }

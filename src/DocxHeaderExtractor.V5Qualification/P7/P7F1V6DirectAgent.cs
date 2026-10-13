@@ -41,13 +41,16 @@ internal static class P7F1V6DirectAgent
     /// <summary>Auto: tools optional. EvidenceFirst: an answer before any tool result is refused (diagnostic). Prefetch (D4.11h): the AUTO prompt
     /// plus one line, and the request ends with observations the program read itself for every target whose text occurs elsewhere; the tools
     /// stay available and optional.</summary>
-    public enum Arm { Auto, EvidenceFirst, Prefetch, Geometry, Facts, ToolFacts, ToolFactsAnalysis, ToolFactsAnalysisV2 }
+    public enum Arm { Auto, EvidenceFirst, Prefetch, Geometry, Facts, ToolFacts, ToolFactsAnalysis, ToolFactsAnalysisV2, ToolFactsAnalysisV3 }
 
     /// <summary>The arms whose registry declares and accepts get_line_facts.</summary>
-    public static bool UsesFactsTool(Arm arm) => arm is Arm.ToolFacts or Arm.ToolFactsAnalysis or Arm.ToolFactsAnalysisV2;
+    public static bool UsesFactsTool(Arm arm) => arm is Arm.ToolFacts or Arm.ToolFactsAnalysis or Arm.ToolFactsAnalysisV2 or Arm.ToolFactsAnalysisV3;
 
     /// <summary>The arms whose answer may carry analysis and reason.</summary>
-    public static bool AllowsAnalysis(Arm arm) => arm is Arm.ToolFactsAnalysis or Arm.ToolFactsAnalysisV2;
+    public static bool AllowsAnalysis(Arm arm) => arm is Arm.ToolFactsAnalysis or Arm.ToolFactsAnalysisV2 or Arm.ToolFactsAnalysisV3;
+
+    /// <summary>D4.12l: the arm whose request shows no layout and carries the document style table.</summary>
+    public static bool HidesLayout(Arm arm) => arm == Arm.ToolFactsAnalysisV3;
 
     // D4.11f. The task is heading extraction as the user defines it. The prompt gives no definition of a heading and no rule about any kind
     // of line: the user's instruction decides both, and the prompt only tells the model to apply it as written.
@@ -122,9 +125,17 @@ internal static class P7F1V6DirectAgent
     static readonly string FactsToolLineV2 = FactsToolLine.Replace("how many other lines of the page start at the same left edge, and,", FactsV2Clause, StringComparison.Ordinal);
     public static readonly string ToolFactsAnalysisV2PromptRange = WithRange(string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, FactsToolLineV2, UseLine, ObservedLine, ReplyLine,
         BodyWithAnalysis(P7F1V6DirectTwoStage.SelectObjectsVersion)));
+    // D4.12l. TOOLFACTS_ANALYSIS_V2 with two changes the owner chose: the request shows no layout (alias, page and text only; bbox and font come from
+    // get_line_facts, facts V3), and it carries documentStyles, the style table of the whole document. The Fields sentence, the facts sentence and one
+    // new sentence differ; nothing names a kind of line.
+    const string FieldsV3 = "The request gives stage, targetCount (the number of targets), targets (the lines you must decide: one decision for each) and context (lines shown only as evidence: never decide them). Each line has alias, page and text only: this request shows no layout, and the layout of a line (its position and font) comes from get_line_facts. Every alias appears once: in targets or in context, never in both.";
+    static readonly string FactsToolLineV3 = FactsToolLineV2.Replace(FactsV2Clause, FactsV2Clause.Replace(", and,", ", its layout (bbox and font), its style against the whole document (size and weight, the rank of that style among the document's styles, how many lines share it), and,"), StringComparison.Ordinal);
+    const string DocumentStylesLine = "Document styles: documentStyles lists the distinct font styles (size and weight) of the whole document, largest first, with how many lines and pages use each and the first lines set in it. It describes the whole document, not only the lines shown here: use it to compare a target's style with the styles used in the rest of the document. It is a measurement, not a label.";
+    public static readonly string ToolFactsAnalysisV3PromptRange = string.Join("\n", Intro, FieldsV3 + RangeSentence, MembershipOnly, ToolsLine, FactsToolLineV3, DocumentStylesLine, UseLine, ObservedLine, ReplyLine,
+        BodyWithAnalysis(P7F1V6DirectTwoStage.SelectObjectsVersion));
     public const string AutoPromptRangeSha256 = "5a83e08300e60a0a3dd136e9a31cd7439d2fa3943f65be41947a094da8bb14c2";
     public const string PrefetchPromptRangeSha256 = "2290301be5ab6b432d10913e6cfa30a4a11c43a0a811acbf3fc17e1b23d66de6";
-    public static string Prompt(Arm arm, bool rangeStated) => rangeStated ? (arm == Arm.ToolFactsAnalysisV2 ? ToolFactsAnalysisV2PromptRange : arm == Arm.ToolFactsAnalysis ? ToolFactsAnalysisPromptRange : arm == Arm.ToolFacts ? ToolFactsPromptRange : arm == Arm.Facts ? FactsPromptRange : arm == Arm.Geometry ? GeometryPromptRange : arm == Arm.Prefetch ? PrefetchPromptRange : arm == Arm.Auto ? AutoPromptRange : WithRange(EvidenceFirstPrompt)) : Prompt(arm);
+    public static string Prompt(Arm arm, bool rangeStated) => rangeStated ? (arm == Arm.ToolFactsAnalysisV3 ? ToolFactsAnalysisV3PromptRange : arm == Arm.ToolFactsAnalysisV2 ? ToolFactsAnalysisV2PromptRange : arm == Arm.ToolFactsAnalysis ? ToolFactsAnalysisPromptRange : arm == Arm.ToolFacts ? ToolFactsPromptRange : arm == Arm.Facts ? FactsPromptRange : arm == Arm.Geometry ? GeometryPromptRange : arm == Arm.Prefetch ? PrefetchPromptRange : arm == Arm.Auto ? AutoPromptRange : WithRange(EvidenceFirstPrompt)) : Prompt(arm);
 
     public static readonly string PrefetchPrompt = string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, ObservationsLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion));
@@ -133,7 +144,7 @@ internal static class P7F1V6DirectAgent
     public const string EvidenceFirstPromptSha256 = "6c8d2629bfec15f1873f9710ddf72f810ad7fc902c0fdeb1ab4ca736b569230f";
     public const string ToolDefinitionsSha256 = "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3";
 
-    public static string Prompt(Arm arm) => arm switch { Arm.Auto => AutoPrompt, Arm.EvidenceFirst => EvidenceFirstPrompt, Arm.Geometry or Arm.Facts or Arm.ToolFacts or Arm.ToolFactsAnalysis or Arm.ToolFactsAnalysisV2 => throw new ArgumentException("GEOMETRY_NEEDS_RANGE_STATED", nameof(arm)), _ => PrefetchPrompt };
+    public static string Prompt(Arm arm) => arm switch { Arm.Auto => AutoPrompt, Arm.EvidenceFirst => EvidenceFirstPrompt, Arm.Geometry or Arm.Facts or Arm.ToolFacts or Arm.ToolFactsAnalysis or Arm.ToolFactsAnalysisV2 or Arm.ToolFactsAnalysisV3 => throw new ArgumentException("GEOMETRY_NEEDS_RANGE_STATED", nameof(arm)), _ => PrefetchPrompt };
     public static string Sha(string s) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(s)));
 
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -142,13 +153,13 @@ internal static class P7F1V6DirectAgent
 
     /// <summary>The user message: the task and the unit's lines. No version field, no rule about any kind of line.</summary>
     public static string Payload(string instruction, string documentSha256, string unitId, IReadOnlyList<string> decide, IReadOnlyList<P7F1V6Direct.Line> shownLines,
-        JsonObject? observations = null, bool rangeStated = false)
+        JsonObject? observations = null, bool rangeStated = false, bool withoutLayout = false, JsonObject? documentStyles = null)
     {
         var set = decide.ToHashSet(StringComparer.Ordinal);
         var shown = shownLines.Select(l => l.Alias).ToList();
         if (shown.Distinct(StringComparer.Ordinal).Count() != shown.Count) throw new ArgumentException("SHOWN_ALIAS_REPEATED", nameof(shownLines));
         if (decide.Count == 0 || set.Count != decide.Count || decide.Any(a => !shown.Contains(a, StringComparer.Ordinal))) throw new ArgumentException("DECIDE_NOT_SHOWN", nameof(decide));
-        object Item(P7F1V6Direct.Line l) => new { alias = l.Alias, page = l.Page, text = l.Text, layout = l.Layout };
+        object Item(P7F1V6Direct.Line l) => withoutLayout ? new { alias = l.Alias, page = l.Page, text = l.Text } : new { alias = l.Alias, page = l.Page, text = l.Text, layout = l.Layout };
         // observations (Prefetch arm only) come last: every byte before them is the same as in the AUTO request.
         var payload = new Dictionary<string, object?>
         {
@@ -176,6 +187,7 @@ internal static class P7F1V6DirectAgent
             }
             payload = withRange;
         }
+        if (documentStyles is not null) payload["documentStyles"] = documentStyles;
         if (observations is not null) payload["observations"] = observations;
         return JsonSerializer.Serialize(payload, Options);
     }
@@ -191,7 +203,8 @@ internal static class P7F1V6DirectAgent
             prefetch!.Observations["layoutFacts"] = tools.LayoutFactsOf(shownLines.Select(l => l.Alias).ToArray());
             prefetch = prefetch with { Bytes = Encoding.UTF8.GetByteCount(prefetch.Observations.ToJsonString(Options)) };
         }
-        return (Payload(instruction, documentSha256, unitId, orderedTargets, shownLines, prefetch?.Observations, rangeStated), prefetch);
+        return (Payload(instruction, documentSha256, unitId, orderedTargets, shownLines, prefetch?.Observations, rangeStated,
+            withoutLayout: HidesLayout(arm), documentStyles: HidesLayout(arm) ? tools.DocumentStyles() : null), prefetch);
     }
 
     /// <summary>One POST body: the pinned envelope (model, temperature 0, max_tokens, locked provider block, usage) plus the declared tools

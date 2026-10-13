@@ -40,6 +40,8 @@ internal static class P7F1V6DirectRepeatCanary
     public static readonly (string Arm, A.Arm Mode)[] ArmsToolFactsAnalysisOnly = { ("TOOLFACTS_ANALYSIS", A.Arm.ToolFactsAnalysis) };
     /// <summary>D4.12k: TOOLFACTS_ANALYSIS whose prompt also describes the layout facts V2 measurements.</summary>
     public static readonly (string Arm, A.Arm Mode)[] ArmsToolFactsAnalysisV2Only = { ("TOOLFACTS_ANALYSIS_V2", A.Arm.ToolFactsAnalysisV2) };
+    /// <summary>D4.12l: no layout in the request, the document style table in it, facts V3 through the tool.</summary>
+    public static readonly (string Arm, A.Arm Mode)[] ArmsToolFactsAnalysisV3Only = { ("TOOLFACTS_ANALYSIS_V3", A.Arm.ToolFactsAnalysisV3) };
     public static readonly (string Arm, A.Arm Mode)[] ArmsFactsOnly = { ("FACTS", A.Arm.Facts) };
     public static readonly (string Arm, A.Arm Mode)[] ArmsWithGeometry = { ("CONTROL", A.Arm.Auto), ("PREFETCH", A.Arm.Prefetch), ("GEOMETRY", A.Arm.Geometry) };
     public const int Reps = 5;

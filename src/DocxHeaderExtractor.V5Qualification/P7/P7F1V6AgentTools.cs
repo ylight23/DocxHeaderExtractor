@@ -550,6 +550,9 @@ internal sealed class P7F1V6AgentTools
         };
     }
 
+    /// <summary>D4.12l: the style table of the whole document.</summary>
+    public JsonObject DocumentStyles() => P7F1V6LayoutFacts.DocumentStyles(lines);
+
     public PrefetchResult Prefetch(IReadOnlyList<string> targets)
     {
         var listed = new List<(int At, int[] Others)>();
