@@ -1,0 +1,191 @@
+{
+  "artifact": "p7.f1.v6.d4.11j-owner-document-trial-plan.v1",
+  "approvalToSend": false,
+  "codeCommit": "e34597e8653e28c0e3e3a66321ed400fb5ce77bb",
+  "authorityId": "OWNER-DOC-f427233d",
+  "document": "owner-supplied (outside the repository): giay-moi-copy.pdf",
+  "documentPublicity": "NOT part of the repository's public corpus. A document supplied by the owner (giay-moi-copy.pdf), read from outside the repository; whether it is public is not known to the program. The owner decided that nothing is redacted: the text of every line, including any names, telephone numbers and e-mail addresses it contains, is sent as it is. Requests, raw responses and the analysis stay in the safe store and are not committed or pushed.",
+  "sourceSha256": "f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318",
+  "universeSha256": "a7960a793b2c42c1f87c543423fefa07c368e865da2bf25180c713878d6267cb",
+  "evidenceStoreSha256": "1767414774ebfcce2ddc588e06391ef63d5bf99d666bc67cc61ac8b44a63937b",
+  "atoms": 79,
+  "ownerSupplied": {
+    "fileName": "giay-moi-copy.pdf",
+    "fileBytes": 2410679,
+    "fileSha256": "f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318",
+    "pagesWithText": 2,
+    "lines": 79,
+    "publicCorpus": false,
+    "sourceGate": "the public-corpus source gate is not used; this plan pins the file hash and the loader refuses any other bytes",
+    "pathNotPinned": "the file path is an argument of the plan check and of the run, not part of the plan",
+    "redaction": "none: the owner chose to send the document text unchanged",
+    "lineTextsSha256": "8f825d471bcc1fb406a10e2255b835b0878544fc0f4b9ee76af9e47313684da4"
+  },
+  "goldForScorerOnly": "none: there is no Gold for this document. Nothing is scored. The result is the set of lines each arm selects in each repetition, read by the owner.",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "evaluationLabel": "Owner-document trial: which lines Qwen selects as headings under the repeat-canary request; no Gold, no score",
+  "instruction": "Trích xuất tất cả các heading thực sự tổ chức cấu trúc tài liệu, xét theo vai trò của từng lần xuất hiện tại chính vị trí đó.\nChọn những dòng hoặc nhóm dòng có chức năng đặt tên, mở đầu hoặc phân chia một phần nội dung của tài liệu.\nKhông chọn các dòng trong mục lục chỉ liệt kê hoặc dẫn chiếu đến heading xuất hiện ở vị trí khác. Tuy nhiên, vẫn xem xét các heading thực sự tổ chức chính mục lục, chỉ mục và những phần khác của tài liệu.\nSử dụng văn bản, bố cục và ngữ cảnh để xác định chức năng của từng lần xuất hiện. Khi chưa đủ bằng chứng, hãy yêu cầu thêm ngữ cảnh hoặc báo chưa thể quyết định thay vì suy đoán.",
+  "instructionSha256": "c0adeaa57a791fb57eb254f334435eaf29aa398da71a21f74159e72ecdac76ab",
+  "requestVersion": "P7_F1_V6_SELECT_AGENT_REQUEST_V2",
+  "promptVersion": "P7_F1_V6_SELECT_AGENT_PROMPT_V3 + stated target range",
+  "responseVersion": "P7_F1_V6_SELECT_OBJECTS_V1",
+  "versionFieldsInPayload": false,
+  "requestIdenticalTo": "the repeat-canary request (plans e73415f7 and df369552, code b672c59): same system prompts (CONTROL 5a83e083…, PREFETCH 2290301b…), instruction, payload layout, tools, envelope and route; only the document differs",
+  "segments": [
+    "SEG-000",
+    "SEG-001"
+  ],
+  "arms": [
+    {
+      "arm": "FACTS",
+      "promptSha256": "899267e41688012a8d0b5993352cb248eded1183ab6354006555502b256232d6",
+      "budget": {
+        "maxCalls": 5,
+        "ceilingUsd": 0.13,
+        "maxRequestBytes": 131072,
+        "worstCaseAllAtByteCapUsd": 0.131072
+      },
+      "earlyStop": 3,
+      "firstRequests": [
+        {
+          "unitId": "SEG-000",
+          "turn": 1,
+          "sha256": "1184e74dea7da6628790c52327d2fc298d66538aca7419b3fd199c9d2ae54cba",
+          "bytes": 37191
+        },
+        {
+          "unitId": "SEG-001",
+          "turn": 1,
+          "sha256": "330d53c00294566affa5147627a607b6b50b0d5ea3843556ff9dc57407d85ab3",
+          "bytes": 47008
+        }
+      ],
+      "requestPlanSha256": "91bbe3fe6a49ac5e85d4abf0be9366cbc7e7c54a12c8167a8f3a9fc107d0909f"
+    }
+  ],
+  "prefetchMeasuredPerSegment": [
+    {
+      "segment": "SEG-000",
+      "targets": 38,
+      "listed": 0,
+      "withoutOtherOccurrence": 38,
+      "observationBytes": 431
+    },
+    {
+      "segment": "SEG-001",
+      "targets": 41,
+      "listed": 9,
+      "withoutOtherOccurrence": 32,
+      "observationBytes": 8230
+    }
+  ],
+  "repetitions": {
+    "perArmAndSegment": 1,
+    "requests": "identical bytes each time, so the spread is sampling variation of the same request",
+    "order": "per repetition, per segment: CONTROL then PREFETCH"
+  },
+  "frozen": {
+    "scope": "one owner-supplied document: the loader refuses any other bytes; the plan is re-derived from code and the file and any drift refuses the run",
+    "authorityId": "OWNER-DOC-f427233d",
+    "sourceSha256": "f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318",
+    "universeSha256": "a7960a793b2c42c1f87c543423fefa07c368e865da2bf25180c713878d6267cb",
+    "provider": {
+      "only": [
+        "alibaba"
+      ],
+      "ignore": [
+        "alibaba/us-east-1"
+      ],
+      "allowFallbacks": false,
+      "requireParameters": true,
+      "providerBlockSha256": "a6fc1d02d9c591c11d5d222a96166f5d6079a1dabf404d190343db41d0ad0b73",
+      "model": "qwen/qwen3.7-flash",
+      "endpointCheck": "response provider must be Alibaba and model qwen/qwen3.7-flash, else the run halts"
+    },
+    "requestTemplateSha256": "64c28336db67239494e74ec0cba321b82198d5e6288eb9497aff2df91d9d0c54",
+    "toolDefinitionsSha256": "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3",
+    "promptSha256": {
+      "control": "5a83e08300e60a0a3dd136e9a31cd7439d2fa3943f65be41947a094da8bb14c2",
+      "prefetch": "2290301be5ab6b432d10913e6cfa30a4a11c43a0a811acbf3fc17e1b23d66de6"
+    },
+    "firstRequestsSha256": "91bbe3fe6a49ac5e85d4abf0be9366cbc7e7c54a12c8167a8f3a9fc107d0909f"
+  },
+  "tools": {
+    "version": "P7_F1_V6_AGENT_TOOLS_V1",
+    "definitionsSha256": "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3",
+    "names": [
+      "get_document_overview",
+      "get_source_context",
+      "get_page_layout",
+      "get_source_span",
+      "search_document_text",
+      "get_repeated_occurrences",
+      "compare_source_locations"
+    ],
+    "availability": "declared in both arms, optional; tool results come from the document lines"
+  },
+  "requestShape": "SSE (stream true), reasoning enabled true, response_format absent on turns 1 to 3 and json_object on turn 4, temperature 0, max_tokens 32768; the strict parser refuses any final answer that is not exactly one JSON object",
+  "model": "qwen/qwen3.7-flash",
+  "route": {
+    "only": [
+      "alibaba"
+    ],
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true
+  },
+  "zdr": "false (owner decision, to be accepted again in the authorization)",
+  "maxTokens": 32768,
+  "retries": 0,
+  "budget": {
+    "maxCalls": 5,
+    "ceilingUsd": 0.13,
+    "maxRequestBytes": 131072,
+    "perArm": "5 posts: 2 first posts (2 segments x 1 repetitions) and 3 for tool turns",
+    "ceilingIs": "derived as in the repeat canary: the reserve of every planned first request, repetitions included, plus the spare posts at the worst case, plus 10%; a bound on the reserve, not the expected spend"
+  },
+  "measurements": [
+    "per arm and repetition: the lines selected in each segment (aliases; the owner reads their text)",
+    "whether the same lines are selected in every repetition of a cell, and where CONTROL and PREFETCH differ",
+    "protocol outcome per unit with its code; refused answers are counted and never repaired; offline counterfactuals are labelled not official",
+    "tool calls, tokens and cost per request"
+  ],
+  "readingRules": [
+    "no Gold: the program makes no claim that a selected line is or is not a heading; the owner judges",
+    "5 repetitions per cell: an indication of stability, not a significance test",
+    "one document: nothing here says how the request behaves on other documents"
+  ],
+  "rawPublication": "None. Requests (which hold the document text), raw responses, reasoning and the analysis stay in the safe store outside the repository. Only a receipt without any line text is committed.",
+  "liveAuthorization": {
+    "required": true,
+    "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+    "status": "APPROVED",
+    "campaigns": 1
+  },
+  "fenceUnwrap": "P7_F1_V6_SINGLE_FENCE_UNWRAP_V1: a final answer wrapped in exactly one markdown fence (optional json label) around exactly one JSON object is read from inside the fence and the object goes through the unchanged strict parser; prose outside the fence, a second fence or another label is still REPLY_NOT_JSON; a unit that used the unwrap is flagged FenceUnwrapped",
+  "factsUseArm": "only the FACTS arm is run: the same request as GEOMETRY (repeated-text observations, layout block, segments, shared left edge) with one more sentence in the system prompt telling the model to read the observations of a target and of the lines next to it and to compare the target with its neighbours; the sentence names no kind of line",
+  "singleArm": "only the GEOMETRY arm is run: one request that carries every observation the program reads (repeated-text observations, layout block, segments on the visual line with gaps, shared left edge); no CONTROL and no PREFETCH arm",
+  "geometryArm": "a third arm, GEOMETRY: PREFETCH plus observations.layoutFacts (P7_F1_V6_LAYOUT_FACTS_V1), the program's measurements of each shown line's layout block, segments on its visual line and shared left edge; no label, no text reading",
+  "responseFormatTurns": "json_object on EVERY turn, including the turns where Qwen may call a tool (tool_choice auto). Reason: with no response_format on those turns Qwen wrapped the whole answer in a markdown fence in 3 of 3 first answers of the D4.11j layout CONTROL arm (REPLY_NOT_JSON, halted by the early-stop rule). The strict parser is unchanged and still refuses any fence or prose.",
+  "segmentation": {
+    "policy": "LAYOUT_PAGE_BLOCK_48_V1",
+    "rule": "the F1Q arm-B rule: whole pages when they fit in 48 lines, else parser layout blocks of the page, cores of at most 48 lines; only page numbers and parser block ids decide; context stays 20 lines each side",
+    "cores": [
+      {
+        "start": 0,
+        "end": 38,
+        "firstPage": 1,
+        "lastPage": 1
+      },
+      {
+        "start": 38,
+        "end": 79,
+        "firstPage": 2,
+        "lastPage": 2
+      }
+    ],
+    "coresSha256": "fc44e647403d58f185529ae46b60bf865450ca0e75928cc00676a8d6e76e8c75"
+  }
+}

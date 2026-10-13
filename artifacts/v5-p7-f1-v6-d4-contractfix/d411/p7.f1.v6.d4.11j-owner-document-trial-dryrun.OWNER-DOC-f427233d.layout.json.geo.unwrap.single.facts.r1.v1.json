@@ -1,0 +1,62 @@
+{
+  "artifact": "p7.f1.v6.d4.11j-owner-document-trial-dryrun.v1",
+  "authority": "OWNER-DOC-f427233d",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-f427233d.layout.json.geo.unwrap.single.facts.r1.v1.json",
+  "planSha256": "b0eea2c46a5002653c12f3c89a99fbb434e968b3824c20297667852a8a0981d3",
+  "planVerifiesNow": true,
+  "codeCommit": "e34597e8653e28c0e3e3a66321ed400fb5ce77bb",
+  "firstRequests": [
+    {
+      "arm": "FACTS",
+      "segment": "SEG-000",
+      "sha256": "1184e74dea7da6628790c52327d2fc298d66538aca7419b3fd199c9d2ae54cba",
+      "bytes": 37191,
+      "reserveUsd": 0.016826
+    },
+    {
+      "arm": "FACTS",
+      "segment": "SEG-001",
+      "sha256": "330d53c00294566affa5147627a607b6b50b0d5ea3843556ff9dc57407d85ab3",
+      "bytes": 47008,
+      "reserveUsd": 0.017808
+    }
+  ],
+  "simulations": [
+    {
+      "simulation": "ANSWER_WITHOUT_TOOLS",
+      "arms": [
+        {
+          "arm": "FACTS",
+          "posts": 2,
+          "reservedUsd": 0.0346,
+          "ceilingUsd": 0.13,
+          "halt": null,
+          "units": 2,
+          "complete": 2,
+          "stoppedByBudget": 0,
+          "maxRequestBytes": 47008
+        }
+      ]
+    },
+    {
+      "simulation": "TOOL_CALL_ON_EVERY_TURN (an overview each of 3 turns, then answer)",
+      "arms": [
+        {
+          "arm": "FACTS",
+          "posts": 5,
+          "reservedUsd": 0.0859,
+          "ceilingUsd": 0.13,
+          "halt": null,
+          "units": 2,
+          "complete": 1,
+          "stoppedByBudget": 1,
+          "maxRequestBytes": 47008
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; no provider call; no line text is written to this report."
+  ]
+}
