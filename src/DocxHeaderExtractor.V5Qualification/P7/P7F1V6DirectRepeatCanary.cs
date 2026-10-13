@@ -96,8 +96,8 @@ internal static class P7F1V6DirectRepeatCanary
 
     // ---------------- budget ----------------
 
-    public static int Units(IReadOnlyList<Pick> picks, int reps = Reps) => picks.Count * reps;
-    public static int PostsPerArm(IReadOnlyList<Pick> picks, int reps = Reps) => Units(picks, reps) + Math.Max(3, Units(picks, reps) / 5);
+    public static int Units(IReadOnlyList<Pick> picks) => picks.Count * Reps;
+    public static int PostsPerArm(IReadOnlyList<Pick> picks) => Units(picks) + Math.Max(3, Units(picks) / 5);
     public static P7F1V6DirectV2.Budget NewArmBudget(IReadOnlyList<Pick> picks, double ceilingUsd) => new(PostsPerArm(picks), ceilingUsd, MaxRequestBytes);
 
     public static P7F1V6Protocol.PreparedRequest FirstRequest(A.Arm mode, P7F1V6Universe u, string segment, bool jsonObjectAllTurns = false)
@@ -110,10 +110,10 @@ internal static class P7F1V6DirectRepeatCanary
 
     /// <summary>The ceiling is derived, not chosen: the reserve of every planned first request of the arm, repetitions included, plus the spare
     /// posts at the worst case (a request at the byte cap), plus 10%, rounded up to the cent. It bounds the reserve, not the expected spend.</summary>
-    public static double CeilingUsd(P7F1V6Universe u, IReadOnlyList<Pick> picks, A.Arm mode, bool jsonObjectAllTurns = false, int reps = Reps)
+    public static double CeilingUsd(P7F1V6Universe u, IReadOnlyList<Pick> picks, A.Arm mode, bool jsonObjectAllTurns = false)
     {
-        var first = picks.Sum(p => P7F1V6Direct.AttemptUsd(FirstRequest(mode, u, p.Segment, jsonObjectAllTurns).Bytes)) * reps;
-        var spare = (PostsPerArm(picks, reps) - Units(picks, reps)) * P7F1V6Direct.AttemptUsd(MaxRequestBytes);
+        var first = picks.Sum(p => P7F1V6Direct.AttemptUsd(FirstRequest(mode, u, p.Segment, jsonObjectAllTurns).Bytes)) * Reps;
+        var spare = (PostsPerArm(picks) - Units(picks)) * P7F1V6Direct.AttemptUsd(MaxRequestBytes);
         return Math.Ceiling((first + spare) * 1.1 * 100) / 100;
     }
 
@@ -297,10 +297,10 @@ internal static class P7F1V6DirectRepeatCanary
     /// repetition ("SEG-031#r2"); the request payload does not.</summary>
     public static IReadOnlyList<(string Arm, List<RepUnit> Units, P7F1V6DirectV2.Budget Budget)> RunArms(
         P7F1V6Universe u, IReadOnlyList<string> segments, IReadOnlyDictionary<string, A.AgentModel> modelPerArm, IReadOnlyDictionary<string, P7F1V6DirectV2.Budget> budgetPerArm, bool jsonObjectAllTurns = false,
-        (string Arm, A.Arm Mode)[]? arms = null, int reps = Reps, bool unwrapSingleFence = false)
+        (string Arm, A.Arm Mode)[]? arms = null, bool unwrapSingleFence = false)
     {
         var state = (arms ?? Arms).Select(a => (a.Arm, a.Mode, Units: new List<RepUnit>(), Budget: budgetPerArm[a.Arm])).ToList();
-        for (int rep = 1; rep <= reps; rep++)
+        for (int rep = 1; rep <= Reps; rep++)
             foreach (var segment in segments)
             {
                 var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, segment);

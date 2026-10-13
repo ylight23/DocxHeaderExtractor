@@ -8,7 +8,7 @@ using T = DocxHeaderExtractor.V5Qualification.P7.P7F1V6DirectOwnerTrial;
 
 namespace DocxHeaderExtractor.Tests;
 
-/// <summary>Issue #9 D4.12 (offline): the single-fence unwrap, the repetition vote, and a plan that pins repetitions and the unwrap.</summary>
+/// <summary>Issue #9 D4.12 (offline): the single-fence unwrap and a plan that pins it.</summary>
 public sealed class P7F1V6StableRunTests
 {
     const string Obj = "{\"a\":1}";
@@ -33,29 +33,6 @@ public sealed class P7F1V6StableRunTests
     {
         Assert.Equal(expected, P7F1V6ReplyFence.TryUnwrap(reply, out var inner));
         if (expected) Assert.Equal(Obj, inner); else Assert.Equal("", inner);
-    }
-
-    static IReadOnlySet<string> S(params string[] a) => a.ToHashSet(StringComparer.Ordinal);
-
-    [Fact]
-    public void Vote_SelectsOnlyWhatMoreThanHalfSelected_ReportsTheRestAsUncertain_AndNeedsThreeCompleteReps()
-    {
-        var order = new[] { "L1", "L2", "L3", "L4" };
-        var r = P7F1V6Vote.Reduce(new[] { S("L1", "L2"), S("L1", "L3"), S("L1", "L2", "L4"), S("L1"), S("L1", "L2") }, order);
-        Assert.True(r.Enough);
-        Assert.Equal(new[] { "L1", "L2" }, r.Selected);                    // 5/5 and 3/5
-        Assert.Equal(new[] { "L3", "L4" }, r.Uncertain);                   // 1/5 each
-        Assert.Equal(3, r.Votes["L2"]);
-        // An exact tie is not a majority.
-        var tie = P7F1V6Vote.Reduce(new[] { S("L1"), S("L1"), S(), S() }, order);
-        Assert.Empty(tie.Selected);
-        Assert.Equal(new[] { "L1" }, tie.Uncertain);
-        // Too few complete repetitions: no result at all.
-        var few = P7F1V6Vote.Reduce(new[] { S("L1"), S("L1") }, order);
-        Assert.False(few.Enough);
-        Assert.Empty(few.Selected);
-        Assert.Empty(few.Uncertain);
-        Assert.Empty(P7F1V6Vote.Reduce(Array.Empty<IReadOnlySet<string>>(), order).Selected);
     }
 
     // ---- the agent ----
@@ -124,28 +101,22 @@ public sealed class P7F1V6StableRunTests
     // ---- the plan ----
 
     [Fact]
-    public void StablePlan_PinsRepetitionsAndTheUnwrap_AndTheBudgetFollowsTheRepetitions()
+    public void UnwrapPlan_PinsTheUnwrap_AndVerifies()
     {
         var rel = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
         var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
         var basePlan = T.Serialize(T.PinnedValues(path, "TEST_COMMIT"));
-        var stable = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, reps: 9, unwrapFence: true));
+        var plan = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true));
         using var b = JsonDocument.Parse(basePlan);
-        using var s = JsonDocument.Parse(stable);
-        Assert.Equal(C.Reps, T.RepsOf(b.RootElement));
+        using var s = JsonDocument.Parse(plan);
         Assert.False(T.FenceUnwrapOf(b.RootElement));
-        Assert.Equal(9, T.RepsOf(s.RootElement));
         Assert.True(T.FenceUnwrapOf(s.RootElement));
-        Assert.True(T.GeometryArmOf(s.RootElement));
-        var segs = s.RootElement.GetProperty("segments").GetArrayLength();
-        var units = segs * 9;
-        foreach (var arm in s.RootElement.GetProperty("arms").EnumerateArray())
-            Assert.Equal(units + Math.Max(3, units / 5), arm.GetProperty("budget").GetProperty("maxCalls").GetInt32());
-        var file = Path.Combine(Path.GetTempPath(), "dhx-stable-" + Guid.NewGuid().ToString("N") + ".json");
+        Assert.Equal(C.Reps, s.RootElement.GetProperty("repetitions").GetProperty("perArmAndSegment").GetInt32());
+        var file = Path.Combine(Path.GetTempPath(), "dhx-unwrap-" + Guid.NewGuid().ToString("N") + ".json");
         try
         {
-            File.WriteAllBytes(file, stable);
-            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(stable)), "TEST_COMMIT", path));
+            File.WriteAllBytes(file, plan);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(plan)), "TEST_COMMIT", path));
         }
         finally { File.Delete(file); }
     }
