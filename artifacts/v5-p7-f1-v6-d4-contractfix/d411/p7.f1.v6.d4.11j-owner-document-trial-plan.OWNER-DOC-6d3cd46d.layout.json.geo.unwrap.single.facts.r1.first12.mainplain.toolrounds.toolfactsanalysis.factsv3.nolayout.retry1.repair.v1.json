@@ -1,7 +1,7 @@
 {
   "artifact": "p7.f1.v6.d4.11j-owner-document-trial-plan.v1",
   "approvalToSend": false,
-  "codeCommit": "373302403988b5894ef769796aa56aebec3fa41b",
+  "codeCommit": "e489ad6a02f5fc19f4e0d2946754e939cd6fe7ac",
   "authorityId": "OWNER-DOC-6d3cd46d",
   "document": "owner-supplied (outside the repository): 053_IDA_Information_Statement_FY25.pdf",
   "documentPublicity": "A document of the repository's public heading corpus (todo10_8/heading_corpus_100), whose README states the files are real documents downloaded from public sources (053_IDA_Information_Statement_FY25.pdf); the origin is not independently verified here. Text is sent as it is. Requests, raw responses and the analysis stay in the safe store and are not committed or pushed.",
@@ -48,7 +48,7 @@
   "arms": [
     {
       "arm": "TOOLFACTS_ANALYSIS_V3",
-      "promptSha256": "7d38255effd88d91077a387b4db843bfc13aeae163a97c2d5471b2a96969a70e",
+      "promptSha256": "3c557778bcb2dd5fa127195d62e31ec9fad4c83bacecc19881cf61f16bbe2845",
       "budget": {
         "maxCalls": 84,
         "ceilingUsd": 2.17,
@@ -60,77 +60,77 @@
         {
           "unitId": "SEG-000",
           "turn": 1,
-          "sha256": "52f166bb2f898a79c94f5d239409a7d056db9b8754ff2c862ce59b499a8cd10e",
-          "bytes": 26573
+          "sha256": "d7efc2b8fc44bc6efa6c8c5c7c34abc4dc7ee31a4a8875ac712b2fd580d823e4",
+          "bytes": 26593
         },
         {
           "unitId": "SEG-001",
           "turn": 1,
-          "sha256": "69a5ad24eb3770a246537e6387658dac391e5533bbc5922a1b2ede49b60a9feb",
-          "bytes": 32832
+          "sha256": "613329face559963d7e7612d35ff51244d3c186a575a5105ec76ee6efe14f31e",
+          "bytes": 32852
         },
         {
           "unitId": "SEG-002",
           "turn": 1,
-          "sha256": "7612f482bf8a6295ababb4bf6ef20984ba92b95b15f321c92c196739e2ecab04",
-          "bytes": 32739
+          "sha256": "8175662b25a84e74d16a3362acb632f45070e9e7ff0732e83cf955e8b1e7546d",
+          "bytes": 32759
         },
         {
           "unitId": "SEG-003",
           "turn": 1,
-          "sha256": "da10084e036c95c79401d28b2e0bbeaa7f61484da939129967696ab85ce2ba79",
-          "bytes": 29405
+          "sha256": "99ee846746ce67f4d8c4c7c32ea99d559169e0296206cd4da6654ca48c8f41c7",
+          "bytes": 29425
         },
         {
           "unitId": "SEG-004",
           "turn": 1,
-          "sha256": "3345b4245de8a88e077aab658e7b27d9da909bcf3d05c9dc4fe9a93b00f6b327",
-          "bytes": 30779
+          "sha256": "0a1ced33c27f45cc4e985a0fccdb17d229cd4ab1e6148754d2605666baebd1b9",
+          "bytes": 30799
         },
         {
           "unitId": "SEG-005",
           "turn": 1,
-          "sha256": "c24eba7ae11f0ee758413ca4754e1a2994086b4eaf9affac0d84b12ee98218d7",
-          "bytes": 29353
+          "sha256": "db86ccbd050789ad382db32b7d4cebe85159106bcb2a4f4bd4dc76d467e56159",
+          "bytes": 29373
         },
         {
           "unitId": "SEG-006",
           "turn": 1,
-          "sha256": "ef04d27ab96b1883f9d02eeda8d95cd93b1de4b941c381e4d866422dbd95c7b3",
-          "bytes": 27113
+          "sha256": "b502300dcd12d3577cbc1c7d131f6cd93dfef027ff618a0467896c223df16c02",
+          "bytes": 27133
         },
         {
           "unitId": "SEG-007",
           "turn": 1,
-          "sha256": "892f003f87010592ba0c899ab9277d9878e8e637edc0cd5b103c6d29eb4d2436",
-          "bytes": 26775
+          "sha256": "231419a4a71206a09e3541420338dd9a9110f291c7d25bb56bc87502be25dba0",
+          "bytes": 26795
         },
         {
           "unitId": "SEG-008",
           "turn": 1,
-          "sha256": "31122e9af6e192527c70b401e945798a4d0d8641748c10328452165221acbdd4",
-          "bytes": 26339
+          "sha256": "83947a854774e449117c97f0f9a8e102b7136c78965af1b9fb6eebe7f851cde4",
+          "bytes": 26359
         },
         {
           "unitId": "SEG-009",
           "turn": 1,
-          "sha256": "d6a76e16fa341a30f3fdf6a34c86985d9b2d7143a220cef9de45c55b48b51d39",
-          "bytes": 27166
+          "sha256": "0a6eeb7e86e59c089c5263cff5cecd68cfc7b94c4f7014088b68385c54509fde",
+          "bytes": 27186
         },
         {
           "unitId": "SEG-010",
           "turn": 1,
-          "sha256": "5f5285c9d97bafc9b2cc9f8f321bbdc82393ab924ccec045633c96710e3c3209",
-          "bytes": 28246
+          "sha256": "bbad9969409c8ee95fafd67678d23641511ab2bffb91c3837d206a6068baf84c",
+          "bytes": 28266
         },
         {
           "unitId": "SEG-011",
           "turn": 1,
-          "sha256": "e08cced46e4b18f3f784bcce1f2305259770c49a24b544b7bfddf4768c56efb7",
-          "bytes": 27127
+          "sha256": "556fb51e666b80d5c04e0dee253226bc1757551289ec4afbf267321fe7e4af1a",
+          "bytes": 27147
         }
       ],
-      "requestPlanSha256": "d7f84b8b4a96ed8e3bb58ab90b9f5873f56990b9d7506ff2580bc477afe82354"
+      "requestPlanSha256": "42b84e61bf1fb13211973e1e65d2c95931d9dc3bec021b89944e0d9475d04fff"
     }
   ],
   "prefetchMeasuredPerSegment": [
@@ -248,7 +248,7 @@
       "control": "5a83e08300e60a0a3dd136e9a31cd7439d2fa3943f65be41947a094da8bb14c2",
       "prefetch": "2290301be5ab6b432d10913e6cfa30a4a11c43a0a811acbf3fc17e1b23d66de6"
     },
-    "firstRequestsSha256": "d7f84b8b4a96ed8e3bb58ab90b9f5873f56990b9d7506ff2580bc477afe82354"
+    "firstRequestsSha256": "42b84e61bf1fb13211973e1e65d2c95931d9dc3bec021b89944e0d9475d04fff"
   },
   "tools": {
     "version": "P7_F1_V6_AGENT_TOOLS_V1",
@@ -323,7 +323,7 @@
   },
   "hideLayoutArm": "TOOLFACTS_ANALYSIS_V3: the request shows each line's alias, page and text only (no bbox, no font); the layout of a line comes from get_line_facts (layout facts V3: V2 plus the line's layout and its style against the document); the payload carries documentStyles, the style table of the whole document; contract as TOOLFACTS_ANALYSIS",
   "layoutFactsVersion": 3,
-  "toolFactsAnalysisArm": "TOOLFACTS plus room for the explanation inside the answer: a COMPLETE answer may carry one extra top-level string, analysis (at most 2000 characters), and each decision may carry reason (at most 300 characters), asked for every SELECT; the parser reads the decisions exactly as before and neither string decides anything; the prompt says to write nothing outside the JSON object",
+  "toolFactsAnalysisArm": "TOOLFACTS plus room for the explanation inside the answer: a COMPLETE answer may carry one extra top-level string, analysis (no length limit of its own; the whole reply stays within the 16 KB reply cap), and each decision may carry reason (at most 300 characters), asked for every SELECT; the parser reads the decisions exactly as before and neither string decides anything; the prompt says to write nothing outside the JSON object",
   "toolRoundsBudget": "the spare posts of an arm are every unit's full tool rounds (3 per unit), so a unit that uses its tools is not cut by the call limit; the ceiling is derived from that call limit",
   "singleArm": "only the GEOMETRY arm is run: one request that carries every observation the program reads (repeated-text observations, layout block, segments on the visual line with gaps, shared left edge); no CONTROL and no PREFETCH arm",
   "geometryArm": "a third arm, GEOMETRY: PREFETCH plus observations.layoutFacts (P7_F1_V6_LAYOUT_FACTS_V1), the program's measurements of each shown line's layout block, segments on its visual line and shared left edge; no label, no text reading",

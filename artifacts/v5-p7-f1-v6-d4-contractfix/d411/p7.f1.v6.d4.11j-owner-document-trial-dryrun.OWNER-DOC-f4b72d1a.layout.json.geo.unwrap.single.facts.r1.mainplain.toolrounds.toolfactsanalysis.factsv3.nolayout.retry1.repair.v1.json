@@ -3,135 +3,135 @@
   "authority": "OWNER-DOC-f4b72d1a",
   "providerCalls": 0,
   "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-f4b72d1a.layout.json.geo.unwrap.single.facts.r1.mainplain.toolrounds.toolfactsanalysis.factsv3.nolayout.retry1.repair.v1.json",
-  "planSha256": "3bc488554fe93d131ad40d95896faf5fe2327d57d25087c19d0d2dc805eeb5f1",
+  "planSha256": "0ae690afdda4d249b4f2283fb960bb4c7e9d226ec7502543d75672fccbeee9fe",
   "planVerifiesNow": true,
-  "codeCommit": "373302403988b5894ef769796aa56aebec3fa41b",
+  "codeCommit": "e489ad6a02f5fc19f4e0d2946754e939cd6fe7ac",
   "firstRequests": [
     {
       "arm": "TOOLFACTS_ANALYSIS_V3",
       "segment": "SEG-000",
-      "sha256": "0de099cab6e3fc842bf77c93cee3dfec6dd9429f000e09aa1ff85b8914084507",
-      "bytes": 21489,
+      "sha256": "b6fe01b41cf0d8c4306d41640098391d0fdb07084ecf8b1d8eda7a40d89c7736",
+      "bytes": 21509,
       "reserveUsd": 0.004905
     },
     {
       "arm": "TOOLFACTS_ANALYSIS_V3",
       "segment": "SEG-001",
-      "sha256": "b40313873d9527788428bf91233b1968684dc84c840dc88dbc409c51a8af8b28",
-      "bytes": 24635,
-      "reserveUsd": 0.004999
-    },
-    {
-      "arm": "TOOLFACTS_ANALYSIS_V3",
-      "segment": "SEG-002",
-      "sha256": "c7492eb5ca9fe548b49017b6187cf94f049737a88d0d9403a90d82f81d85d24d",
-      "bytes": 24633,
-      "reserveUsd": 0.004999
-    },
-    {
-      "arm": "TOOLFACTS_ANALYSIS_V3",
-      "segment": "SEG-003",
-      "sha256": "ff442b5394da14bb5092b36ba01aa9e475f15805a6a7cef521ec31ad2bdf643a",
-      "bytes": 24543,
-      "reserveUsd": 0.004996
-    },
-    {
-      "arm": "TOOLFACTS_ANALYSIS_V3",
-      "segment": "SEG-004",
-      "sha256": "af87a6498f50b234766ca80fe78b4709e3d284249c3fa523adf37461bcf86980",
+      "sha256": "349f5d4a1b130aec1a8ec67f249825f3ba5c5f07874439552582293c8b5b3ee2",
       "bytes": 24655,
       "reserveUsd": 0.004999
     },
     {
       "arm": "TOOLFACTS_ANALYSIS_V3",
-      "segment": "SEG-005",
-      "sha256": "77494ae9085bfcb085327127a27d6c598b7b4421ad79442ac33c4068b2eaf3fb",
-      "bytes": 24592,
-      "reserveUsd": 0.004998
+      "segment": "SEG-002",
+      "sha256": "f68f8a94a1fca01f60083a0e78f0405ba262057964a6eb45a6c60f7f82312a97",
+      "bytes": 24653,
+      "reserveUsd": 0.004999
     },
     {
       "arm": "TOOLFACTS_ANALYSIS_V3",
-      "segment": "SEG-006",
-      "sha256": "00acc98e5fec1ed281ab4fc8139249307e9e354050ce77155db892e7d548f1f4",
-      "bytes": 24928,
-      "reserveUsd": 0.005008
+      "segment": "SEG-003",
+      "sha256": "5556271f4cfde59ae237690f2cc1974a7e7f0f1c98209d5cef3bdde56483a718",
+      "bytes": 24563,
+      "reserveUsd": 0.004997
     },
     {
       "arm": "TOOLFACTS_ANALYSIS_V3",
-      "segment": "SEG-007",
-      "sha256": "768b2f17e0370ffa144825f5d393fecbd1adf1b57b3fb100def669448c92d6ac",
-      "bytes": 23800,
-      "reserveUsd": 0.004974
-    },
-    {
-      "arm": "TOOLFACTS_ANALYSIS_V3",
-      "segment": "SEG-008",
-      "sha256": "3be1c4c7658fe2233987a7300adc9818556fb8f58f552ae6b06a1e137c5c3af8",
-      "bytes": 24080,
-      "reserveUsd": 0.004982
-    },
-    {
-      "arm": "TOOLFACTS_ANALYSIS_V3",
-      "segment": "SEG-009",
-      "sha256": "657f73b116f0337d64a5dec4d6e56a253e9e3cdb4104d2ade26cb0e8f6a9ba34",
-      "bytes": 25050,
-      "reserveUsd": 0.005011
-    },
-    {
-      "arm": "TOOLFACTS_ANALYSIS_V3",
-      "segment": "SEG-010",
-      "sha256": "fcdf45476fbf79cfaff555167bf14cfb0534d896e5a5ee54778039f29b9bc80f",
-      "bytes": 24424,
-      "reserveUsd": 0.004993
-    },
-    {
-      "arm": "TOOLFACTS_ANALYSIS_V3",
-      "segment": "SEG-011",
-      "sha256": "768a11196156687de38d87220446de09315461636f7649bbb2e5b12c8626e603",
-      "bytes": 24400,
-      "reserveUsd": 0.004992
-    },
-    {
-      "arm": "TOOLFACTS_ANALYSIS_V3",
-      "segment": "SEG-012",
-      "sha256": "43d61f2b11b687c9c8d07b47f22a056f3e96409ec84602cd87038961014ec06e",
-      "bytes": 24113,
-      "reserveUsd": 0.004983
-    },
-    {
-      "arm": "TOOLFACTS_ANALYSIS_V3",
-      "segment": "SEG-013",
-      "sha256": "cf95d445da5da16c557661a3bbc0a500135754cc95ca907538c339c878a2e685",
-      "bytes": 24699,
-      "reserveUsd": 0.005001
-    },
-    {
-      "arm": "TOOLFACTS_ANALYSIS_V3",
-      "segment": "SEG-014",
-      "sha256": "2d9d0ee5b4cfb3e17eb068e86589be47288143fb184abf21d70f43a5fa0a4a5c",
+      "segment": "SEG-004",
+      "sha256": "a51df4f110c36ccdacee433452d66bae95ecd0b8bd898018a8bc5e5ff45137af",
       "bytes": 24675,
       "reserveUsd": 0.005
     },
     {
       "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-005",
+      "sha256": "0ae739e2aabd704c026969cab8018caed11ca0afe8c749fa0c1eebe6d31d34b8",
+      "bytes": 24612,
+      "reserveUsd": 0.004998
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-006",
+      "sha256": "7ff2a9f0d12726a5264872c08b80e2a90edc2c1a1c8c5e66370a988d962d7071",
+      "bytes": 24948,
+      "reserveUsd": 0.005008
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-007",
+      "sha256": "2b94c5a43ddf296444c902fdaf28c7dbaa98cc1d4c48ef540e2d86c653521abe",
+      "bytes": 23820,
+      "reserveUsd": 0.004974
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-008",
+      "sha256": "cc4e06957644c390a86fd01dda5fae27e8a7f77d5ccb41b1406f7bdb26f4a597",
+      "bytes": 24100,
+      "reserveUsd": 0.004983
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-009",
+      "sha256": "e1bb04f2ce1c3bf50a40fa76d58db51fb359612b97eac4e84388053fbd4945c7",
+      "bytes": 25070,
+      "reserveUsd": 0.005012
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-010",
+      "sha256": "b212133f004d1e9bdb3757e0c0d7c1acf7ac2bfea0c5c74aeb3af07cfd8eb9cc",
+      "bytes": 24444,
+      "reserveUsd": 0.004993
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-011",
+      "sha256": "98c0cd47c49474c1dafd5375979a2d9a732223955cc79a784194d42a6738de78",
+      "bytes": 24420,
+      "reserveUsd": 0.004992
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-012",
+      "sha256": "664d212c86722780c408b083713c537511338ac9015e19a1d0894a987f20e2c4",
+      "bytes": 24133,
+      "reserveUsd": 0.004984
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-013",
+      "sha256": "8928bce26d34a9716ed9700501fef319566efb5713e3e50433d185522ddece89",
+      "bytes": 24719,
+      "reserveUsd": 0.005001
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-014",
+      "sha256": "2ca3c02d59a9d978ecc20284ea42d191ed3c5430ce704564a254d4e982d9b7b4",
+      "bytes": 24695,
+      "reserveUsd": 0.005001
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
       "segment": "SEG-015",
-      "sha256": "3e4249e9391ff21464bf1cbcf5e69c04f249fd3d135bb4c046407725e0961810",
-      "bytes": 24308,
-      "reserveUsd": 0.004989
+      "sha256": "21eaa5e90f1f48d7108d2e0e2f7694c5d355154c13798a824aa72945a00b6cde",
+      "bytes": 24328,
+      "reserveUsd": 0.00499
     },
     {
       "arm": "TOOLFACTS_ANALYSIS_V3",
       "segment": "SEG-016",
-      "sha256": "f2d26033e4848c0605e013c8242e1299a973ab993d0339650c8add92c0d5bfe1",
-      "bytes": 24016,
-      "reserveUsd": 0.00498
+      "sha256": "b3dafb17de5c86867bd68147162b4bf1efdd7d2e421b5c10d8af76bf0bffa848",
+      "bytes": 24036,
+      "reserveUsd": 0.004981
     },
     {
       "arm": "TOOLFACTS_ANALYSIS_V3",
       "segment": "SEG-017",
-      "sha256": "9788b0acde0eca9d89adbe51a56e04132b736001e4384b32fe51af0d353a637a",
-      "bytes": 20554,
-      "reserveUsd": 0.004876
+      "sha256": "b8f23f3ded8e6bb1705fb781240e98b49c4e0847bea35d68b34a69b8f6493267",
+      "bytes": 20574,
+      "reserveUsd": 0.004877
     }
   ],
   "simulations": [
@@ -147,7 +147,7 @@
           "units": 18,
           "complete": 0,
           "stoppedByBudget": 15,
-          "maxRequestBytes": 24635
+          "maxRequestBytes": 24655
         }
       ]
     },
@@ -157,13 +157,13 @@
         {
           "arm": "TOOLFACTS_ANALYSIS_V3",
           "posts": 12,
-          "reservedUsd": 0.0834,
+          "reservedUsd": 0.0835,
           "ceilingUsd": 3.22,
           "halt": "CONSECUTIVE_CONTRACT_FAILURES",
           "units": 18,
           "complete": 0,
           "stoppedByBudget": 15,
-          "maxRequestBytes": 33079
+          "maxRequestBytes": 33099
         }
       ]
     }

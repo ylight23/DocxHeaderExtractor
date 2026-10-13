@@ -2,8 +2,8 @@
   "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
   "status": "APPROVED",
   "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-08f459b8.layout.json.geo.unwrap.single.facts.r1.first12.mainplain.toolrounds.toolfactsanalysis.factsv3.nolayout.retry1.repair.v1.json",
-  "planSha256": "2d0b06d188931c1dc4ae781015acc222da3cc57896c744649add261eadc50434",
-  "codeCommit": "373302403988b5894ef769796aa56aebec3fa41b",
+  "planSha256": "77344bf6fad8bb84f91e3b7ee4bc8834840be21b256910b059de6653ca9b7e79",
+  "codeCommit": "e489ad6a02f5fc19f4e0d2946754e939cd6fe7ac",
   "authorityId": "OWNER-DOC-08f459b8",
   "document": "owner-supplied (outside the repository): 029_WB_RFP_Works_DesignBuild_2021.pdf",
   "sourceSha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c",
@@ -37,7 +37,7 @@
     ]
   },
   "approvedBy": "ylight23 (session user of the repository owner account)",
-  "approvedAtUtc": "2026-10-13T12:53:41.8950257Z",
-  "approvalText": "Owner message 2026-10-13: 'LÀM CẢ 2 VÀ SỬA LUÔN TRONG HỢP ĐỒNG HIỆN TẠI, THAY VÌ TẠO NHÁNH MỚI' (transport retry 1 for provider failures and one repair turn for refused answers, in the current contract). Same request as the V3 run: TOOLFACTS_ANALYSIS_V3 arm (no layout in the request, documentStyles, layout facts V3), the owner's instruction verbatim, analysis and reason. Ceiling USD 2.15 (derived reserve bound; full tool rounds, one retry and one repair: up to 84 posts), earlier owner permission to exceed budgets (2026-10-13). Public-corpus document, one segment per page, json_object on every turn, single-fence unwrap, 1 repetition, 2 units in parallel. Data policy as the owner's explicit approvals of 2026-10-13 (ZDR=false, waiver unverified, OpenRouter logging unknown, data_collection=allow, raw stays in the safe store). Plan 2d0b06d188931c1dc4ae781015acc222da3cc57896c744649add261eadc50434.",
-  "approvalSha256": "c14db86a601ae781c75cdd8480cbe3c8c1c62ae750d5d44c308cc3e65eeae054"
+  "approvedAtUtc": "2026-10-13T13:18:27.1269194Z",
+  "approvalText": "Owner message 2026-10-13: 'LÀM CẢ 2 VÀ SỬA LUÔN TRONG HỢP ĐỒNG HIỆN TẠI, THAY VÌ TẠO NHÁNH MỚI' (transport retry 1 for provider failures and one repair turn for refused answers, in the current contract), and 'CHO PHÉP VƯỢT TRẦN NẾU HƠN 2000 KÍ TỰ PHÂN TÍCH' (analysis has no length limit of its own); rerun after fixing the early-stop count. Same request as the V3 run: TOOLFACTS_ANALYSIS_V3 arm (no layout in the request, documentStyles, layout facts V3), the owner's instruction verbatim, analysis and reason. Ceiling USD 2.15 (derived reserve bound; full tool rounds, one retry and one repair: up to 84 posts), earlier owner permission to exceed budgets (2026-10-13). Public-corpus document, one segment per page, json_object on every turn, single-fence unwrap, 1 repetition, 2 units in parallel. Data policy as the owner's explicit approvals of 2026-10-13 (ZDR=false, waiver unverified, OpenRouter logging unknown, data_collection=allow, raw stays in the safe store). Plan 77344bf6fad8bb84f91e3b7ee4bc8834840be21b256910b059de6653ca9b7e79.",
+  "approvalSha256": "6a86edb62992f1a3c1cfd70a49a32ef7bc9acedb86d3f4a9e8fb682d242ca825"
 }
