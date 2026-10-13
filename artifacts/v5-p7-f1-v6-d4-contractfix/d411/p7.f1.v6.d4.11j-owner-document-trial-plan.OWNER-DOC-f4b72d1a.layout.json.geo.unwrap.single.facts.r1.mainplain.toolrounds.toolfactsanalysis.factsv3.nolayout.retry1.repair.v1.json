@@ -1,0 +1,529 @@
+{
+  "artifact": "p7.f1.v6.d4.11j-owner-document-trial-plan.v1",
+  "approvalToSend": false,
+  "codeCommit": "373302403988b5894ef769796aa56aebec3fa41b",
+  "authorityId": "OWNER-DOC-f4b72d1a",
+  "document": "owner-supplied (outside the repository): 089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+  "documentPublicity": "A document of the repository's public heading corpus (todo10_8/heading_corpus_100), whose README states the files are real documents downloaded from public sources (089_ND_195-2013_Luat_Xuat_ban_EN.pdf); the origin is not independently verified here. Text is sent as it is. Requests, raw responses and the analysis stay in the safe store and are not committed or pushed.",
+  "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+  "universeSha256": "d45b4a027d4da6133c852f7ee470365d08fbf8f9a47c25aff9afd074278ec8cc",
+  "evidenceStoreSha256": "cd112f39fc0087670a5d2fd43f990535caf7bf624e7ade8b0630cfa9d6b97637",
+  "atoms": 581,
+  "ownerSupplied": {
+    "fileName": "089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+    "fileBytes": 65464,
+    "fileSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+    "pagesWithText": 18,
+    "lines": 581,
+    "publicCorpus": true,
+    "sourceGate": "the public-corpus source gate is not used; this plan pins the file hash and the loader refuses any other bytes",
+    "pathNotPinned": "the file path is an argument of the plan check and of the run, not part of the plan",
+    "redaction": "none: the owner chose to send the document text unchanged",
+    "lineTextsSha256": "2958053b08d326f5c4dbab2cc8a74a6208e594547af8ed90b8b7bafce50ee219"
+  },
+  "goldForScorerOnly": "none: there is no Gold for this document. Nothing is scored. The result is the set of lines each arm selects in each repetition, read by the owner.",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "evaluationLabel": "Owner-document trial: which lines Qwen selects as headings under the repeat-canary request; no Gold, no score",
+  "instruction": "Extract the main headings of the document: the headings that carry its structure (its outline).\nWhen you are unsure about how a line relates to other lines, use the tools to check that relationship.\nDo not guess: if the evidence does not settle a line, say that it is unresolved instead of choosing.",
+  "instructionSha256": "c37f268895bf606f0caf2473291d5ce600e1ef9d44eb3d0afa43c1c95689dc8f",
+  "requestVersion": "P7_F1_V6_SELECT_AGENT_REQUEST_V2",
+  "promptVersion": "P7_F1_V6_SELECT_AGENT_PROMPT_V3 + stated target range",
+  "responseVersion": "P7_F1_V6_SELECT_OBJECTS_V1",
+  "versionFieldsInPayload": false,
+  "requestIdenticalTo": "the repeat-canary request (plans e73415f7 and df369552, code b672c59): same system prompts (CONTROL 5a83e083…, PREFETCH 2290301b…), instruction, payload layout, tools, envelope and route; only the document differs",
+  "segments": [
+    "SEG-000",
+    "SEG-001",
+    "SEG-002",
+    "SEG-003",
+    "SEG-004",
+    "SEG-005",
+    "SEG-006",
+    "SEG-007",
+    "SEG-008",
+    "SEG-009",
+    "SEG-010",
+    "SEG-011",
+    "SEG-012",
+    "SEG-013",
+    "SEG-014",
+    "SEG-015",
+    "SEG-016",
+    "SEG-017"
+  ],
+  "arms": [
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "promptSha256": "7d38255effd88d91077a387b4db843bfc13aeae163a97c2d5471b2a96969a70e",
+      "budget": {
+        "maxCalls": 126,
+        "ceilingUsd": 3.22,
+        "maxRequestBytes": 131072,
+        "worstCaseAllAtByteCapUsd": 3.303014
+      },
+      "earlyStop": 3,
+      "firstRequests": [
+        {
+          "unitId": "SEG-000",
+          "turn": 1,
+          "sha256": "0de099cab6e3fc842bf77c93cee3dfec6dd9429f000e09aa1ff85b8914084507",
+          "bytes": 21489
+        },
+        {
+          "unitId": "SEG-001",
+          "turn": 1,
+          "sha256": "b40313873d9527788428bf91233b1968684dc84c840dc88dbc409c51a8af8b28",
+          "bytes": 24635
+        },
+        {
+          "unitId": "SEG-002",
+          "turn": 1,
+          "sha256": "c7492eb5ca9fe548b49017b6187cf94f049737a88d0d9403a90d82f81d85d24d",
+          "bytes": 24633
+        },
+        {
+          "unitId": "SEG-003",
+          "turn": 1,
+          "sha256": "ff442b5394da14bb5092b36ba01aa9e475f15805a6a7cef521ec31ad2bdf643a",
+          "bytes": 24543
+        },
+        {
+          "unitId": "SEG-004",
+          "turn": 1,
+          "sha256": "af87a6498f50b234766ca80fe78b4709e3d284249c3fa523adf37461bcf86980",
+          "bytes": 24655
+        },
+        {
+          "unitId": "SEG-005",
+          "turn": 1,
+          "sha256": "77494ae9085bfcb085327127a27d6c598b7b4421ad79442ac33c4068b2eaf3fb",
+          "bytes": 24592
+        },
+        {
+          "unitId": "SEG-006",
+          "turn": 1,
+          "sha256": "00acc98e5fec1ed281ab4fc8139249307e9e354050ce77155db892e7d548f1f4",
+          "bytes": 24928
+        },
+        {
+          "unitId": "SEG-007",
+          "turn": 1,
+          "sha256": "768b2f17e0370ffa144825f5d393fecbd1adf1b57b3fb100def669448c92d6ac",
+          "bytes": 23800
+        },
+        {
+          "unitId": "SEG-008",
+          "turn": 1,
+          "sha256": "3be1c4c7658fe2233987a7300adc9818556fb8f58f552ae6b06a1e137c5c3af8",
+          "bytes": 24080
+        },
+        {
+          "unitId": "SEG-009",
+          "turn": 1,
+          "sha256": "657f73b116f0337d64a5dec4d6e56a253e9e3cdb4104d2ade26cb0e8f6a9ba34",
+          "bytes": 25050
+        },
+        {
+          "unitId": "SEG-010",
+          "turn": 1,
+          "sha256": "fcdf45476fbf79cfaff555167bf14cfb0534d896e5a5ee54778039f29b9bc80f",
+          "bytes": 24424
+        },
+        {
+          "unitId": "SEG-011",
+          "turn": 1,
+          "sha256": "768a11196156687de38d87220446de09315461636f7649bbb2e5b12c8626e603",
+          "bytes": 24400
+        },
+        {
+          "unitId": "SEG-012",
+          "turn": 1,
+          "sha256": "43d61f2b11b687c9c8d07b47f22a056f3e96409ec84602cd87038961014ec06e",
+          "bytes": 24113
+        },
+        {
+          "unitId": "SEG-013",
+          "turn": 1,
+          "sha256": "cf95d445da5da16c557661a3bbc0a500135754cc95ca907538c339c878a2e685",
+          "bytes": 24699
+        },
+        {
+          "unitId": "SEG-014",
+          "turn": 1,
+          "sha256": "2d9d0ee5b4cfb3e17eb068e86589be47288143fb184abf21d70f43a5fa0a4a5c",
+          "bytes": 24675
+        },
+        {
+          "unitId": "SEG-015",
+          "turn": 1,
+          "sha256": "3e4249e9391ff21464bf1cbcf5e69c04f249fd3d135bb4c046407725e0961810",
+          "bytes": 24308
+        },
+        {
+          "unitId": "SEG-016",
+          "turn": 1,
+          "sha256": "f2d26033e4848c0605e013c8242e1299a973ab993d0339650c8add92c0d5bfe1",
+          "bytes": 24016
+        },
+        {
+          "unitId": "SEG-017",
+          "turn": 1,
+          "sha256": "9788b0acde0eca9d89adbe51a56e04132b736001e4384b32fe51af0d353a637a",
+          "bytes": 20554
+        }
+      ],
+      "requestPlanSha256": "f0e15a13921be9a4e7f3eb6836d876caf338c1828f0434d79e035c90d1a67e1e"
+    }
+  ],
+  "prefetchMeasuredPerSegment": [
+    {
+      "segment": "SEG-000",
+      "targets": 34,
+      "listed": 1,
+      "withoutOtherOccurrence": 33,
+      "observationBytes": 962
+    },
+    {
+      "segment": "SEG-001",
+      "targets": 34,
+      "listed": 4,
+      "withoutOtherOccurrence": 30,
+      "observationBytes": 2661
+    },
+    {
+      "segment": "SEG-002",
+      "targets": 35,
+      "listed": 3,
+      "withoutOtherOccurrence": 32,
+      "observationBytes": 2154
+    },
+    {
+      "segment": "SEG-003",
+      "targets": 33,
+      "listed": 4,
+      "withoutOtherOccurrence": 29,
+      "observationBytes": 2294
+    },
+    {
+      "segment": "SEG-004",
+      "targets": 33,
+      "listed": 1,
+      "withoutOtherOccurrence": 32,
+      "observationBytes": 965
+    },
+    {
+      "segment": "SEG-005",
+      "targets": 33,
+      "listed": 1,
+      "withoutOtherOccurrence": 32,
+      "observationBytes": 958
+    },
+    {
+      "segment": "SEG-006",
+      "targets": 36,
+      "listed": 1,
+      "withoutOtherOccurrence": 35,
+      "observationBytes": 964
+    },
+    {
+      "segment": "SEG-007",
+      "targets": 30,
+      "listed": 0,
+      "withoutOtherOccurrence": 30,
+      "observationBytes": 431
+    },
+    {
+      "segment": "SEG-008",
+      "targets": 32,
+      "listed": 1,
+      "withoutOtherOccurrence": 31,
+      "observationBytes": 958
+    },
+    {
+      "segment": "SEG-009",
+      "targets": 35,
+      "listed": 0,
+      "withoutOtherOccurrence": 35,
+      "observationBytes": 431
+    },
+    {
+      "segment": "SEG-010",
+      "targets": 30,
+      "listed": 1,
+      "withoutOtherOccurrence": 29,
+      "observationBytes": 957
+    },
+    {
+      "segment": "SEG-011",
+      "targets": 32,
+      "listed": 1,
+      "withoutOtherOccurrence": 31,
+      "observationBytes": 1006
+    },
+    {
+      "segment": "SEG-012",
+      "targets": 30,
+      "listed": 0,
+      "withoutOtherOccurrence": 30,
+      "observationBytes": 431
+    },
+    {
+      "segment": "SEG-013",
+      "targets": 33,
+      "listed": 2,
+      "withoutOtherOccurrence": 31,
+      "observationBytes": 1518
+    },
+    {
+      "segment": "SEG-014",
+      "targets": 32,
+      "listed": 3,
+      "withoutOtherOccurrence": 29,
+      "observationBytes": 2010
+    },
+    {
+      "segment": "SEG-015",
+      "targets": 33,
+      "listed": 1,
+      "withoutOtherOccurrence": 32,
+      "observationBytes": 956
+    },
+    {
+      "segment": "SEG-016",
+      "targets": 31,
+      "listed": 1,
+      "withoutOtherOccurrence": 30,
+      "observationBytes": 954
+    },
+    {
+      "segment": "SEG-017",
+      "targets": 25,
+      "listed": 1,
+      "withoutOtherOccurrence": 24,
+      "observationBytes": 943
+    }
+  ],
+  "repetitions": {
+    "perArmAndSegment": 1,
+    "requests": "identical bytes each time, so the spread is sampling variation of the same request",
+    "order": "per repetition, per segment: CONTROL then PREFETCH"
+  },
+  "frozen": {
+    "scope": "one owner-supplied document: the loader refuses any other bytes; the plan is re-derived from code and the file and any drift refuses the run",
+    "authorityId": "OWNER-DOC-f4b72d1a",
+    "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+    "universeSha256": "d45b4a027d4da6133c852f7ee470365d08fbf8f9a47c25aff9afd074278ec8cc",
+    "provider": {
+      "only": [
+        "alibaba"
+      ],
+      "ignore": [
+        "alibaba/us-east-1"
+      ],
+      "allowFallbacks": false,
+      "requireParameters": true,
+      "providerBlockSha256": "a6fc1d02d9c591c11d5d222a96166f5d6079a1dabf404d190343db41d0ad0b73",
+      "model": "qwen/qwen3.7-flash",
+      "endpointCheck": "response provider must be Alibaba and model qwen/qwen3.7-flash, else the run halts"
+    },
+    "requestTemplateSha256": "64c28336db67239494e74ec0cba321b82198d5e6288eb9497aff2df91d9d0c54",
+    "toolDefinitionsSha256": "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3",
+    "promptSha256": {
+      "control": "5a83e08300e60a0a3dd136e9a31cd7439d2fa3943f65be41947a094da8bb14c2",
+      "prefetch": "2290301be5ab6b432d10913e6cfa30a4a11c43a0a811acbf3fc17e1b23d66de6"
+    },
+    "firstRequestsSha256": "f0e15a13921be9a4e7f3eb6836d876caf338c1828f0434d79e035c90d1a67e1e"
+  },
+  "tools": {
+    "version": "P7_F1_V6_AGENT_TOOLS_V1",
+    "definitionsSha256": "17b846fe198c451ea1cc4eee6097ad16a6f82d91107a1a44793cc07537ea9142",
+    "names": [
+      "get_document_overview",
+      "get_source_context",
+      "get_page_layout",
+      "get_source_span",
+      "search_document_text",
+      "get_repeated_occurrences",
+      "compare_source_locations",
+      "get_line_facts"
+    ],
+    "availability": "declared in both arms, optional; tool results come from the document lines"
+  },
+  "requestShape": "SSE (stream true), reasoning enabled true, response_format absent on turns 1 to 3 and json_object on turn 4, temperature 0, max_tokens 32768; the strict parser refuses any final answer that is not exactly one JSON object",
+  "model": "qwen/qwen3.7-flash",
+  "route": {
+    "only": [
+      "alibaba"
+    ],
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true
+  },
+  "zdr": "false (owner decision, to be accepted again in the authorization)",
+  "maxTokens": 32768,
+  "retries": 0,
+  "budget": {
+    "maxCalls": 126,
+    "ceilingUsd": 3.22,
+    "maxRequestBytes": 131072,
+    "perArm": "126 posts: 18 first posts (18 segments x 1 repetitions) and 108 for tool turns",
+    "ceilingIs": "derived as in the repeat canary: the reserve of every planned first request, repetitions included, plus the spare posts at the worst case, plus 10%; a bound on the reserve, not the expected spend"
+  },
+  "measurements": [
+    "per arm and repetition: the lines selected in each segment (aliases; the owner reads their text)",
+    "whether the same lines are selected in every repetition of a cell, and where CONTROL and PREFETCH differ",
+    "protocol outcome per unit with its code; refused answers are counted and never repaired; offline counterfactuals are labelled not official",
+    "tool calls, tokens and cost per request"
+  ],
+  "readingRules": [
+    "no Gold: the program makes no claim that a selected line is or is not a heading; the owner judges",
+    "5 repetitions per cell: an indication of stability, not a significance test",
+    "one document: nothing here says how the request behaves on other documents"
+  ],
+  "rawPublication": "None. Requests (which hold the document text), raw responses, reasoning and the analysis stay in the safe store outside the repository. Only a receipt without any line text is committed.",
+  "liveAuthorization": {
+    "required": true,
+    "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+    "status": "APPROVED",
+    "campaigns": 1
+  },
+  "fenceUnwrap": "P7_F1_V6_SINGLE_FENCE_UNWRAP_V1: a final answer wrapped in exactly one markdown fence (optional json label) around exactly one JSON object is read from inside the fence and the object goes through the unchanged strict parser; prose outside the fence, a second fence or another label is still REPLY_NOT_JSON; a unit that used the unwrap is flagged FenceUnwrapped",
+  "factsUseArm": "only the FACTS arm is run: the same request as GEOMETRY (repeated-text observations, layout block, segments, shared left edge) with one more sentence in the system prompt telling the model to read the observations of a target and of the lines next to it and to compare the target with its neighbours; the sentence names no kind of line",
+  "failureHandling": {
+    "transportRetries": 1,
+    "retriable": [
+      "TRANSPORT:STREAM_ERROR",
+      "TRANSPORT:STREAM_INCOMPLETE",
+      "TRANSPORT:RATE_LIMITED_NO_RETRY",
+      "TRANSPORT:SERVER_ERROR_NO_RETRY",
+      "TRANSPORT:TRANSPORT_ERROR"
+    ],
+    "repairTurn": true,
+    "repairRule": "at most one repair per unit: the refused reply and a message naming the refusal are sent once more; the new answer goes through the same strict parser; the unit records RepairedFrom",
+    "spareCallsPerUnit": 3
+  },
+  "hideLayoutArm": "TOOLFACTS_ANALYSIS_V3: the request shows each line's alias, page and text only (no bbox, no font); the layout of a line comes from get_line_facts (layout facts V3: V2 plus the line's layout and its style against the document); the payload carries documentStyles, the style table of the whole document; contract as TOOLFACTS_ANALYSIS",
+  "layoutFactsVersion": 3,
+  "toolFactsAnalysisArm": "TOOLFACTS plus room for the explanation inside the answer: a COMPLETE answer may carry one extra top-level string, analysis (at most 2000 characters), and each decision may carry reason (at most 300 characters), asked for every SELECT; the parser reads the decisions exactly as before and neither string decides anything; the prompt says to write nothing outside the JSON object",
+  "toolRoundsBudget": "the spare posts of an arm are every unit's full tool rounds (3 per unit), so a unit that uses its tools is not cut by the call limit; the ceiling is derived from that call limit",
+  "singleArm": "only the GEOMETRY arm is run: one request that carries every observation the program reads (repeated-text observations, layout block, segments on the visual line with gaps, shared left edge); no CONTROL and no PREFETCH arm",
+  "geometryArm": "a third arm, GEOMETRY: PREFETCH plus observations.layoutFacts (P7_F1_V6_LAYOUT_FACTS_V1), the program's measurements of each shown line's layout block, segments on its visual line and shared left edge; no label, no text reading",
+  "responseFormatTurns": "json_object on EVERY turn, including the turns where Qwen may call a tool (tool_choice auto). Reason: with no response_format on those turns Qwen wrapped the whole answer in a markdown fence in 3 of 3 first answers of the D4.11j layout CONTROL arm (REPLY_NOT_JSON, halted by the early-stop rule). The strict parser is unchanged and still refuses any fence or prose.",
+  "segmentation": {
+    "policy": "LAYOUT_PAGE_BLOCK_48_V1",
+    "rule": "the F1Q arm-B rule: whole pages when they fit in 48 lines, else parser layout blocks of the page, cores of at most 48 lines; only page numbers and parser block ids decide; context stays 20 lines each side",
+    "cores": [
+      {
+        "start": 0,
+        "end": 34,
+        "firstPage": 1,
+        "lastPage": 1
+      },
+      {
+        "start": 34,
+        "end": 68,
+        "firstPage": 2,
+        "lastPage": 2
+      },
+      {
+        "start": 68,
+        "end": 103,
+        "firstPage": 3,
+        "lastPage": 3
+      },
+      {
+        "start": 103,
+        "end": 136,
+        "firstPage": 4,
+        "lastPage": 4
+      },
+      {
+        "start": 136,
+        "end": 169,
+        "firstPage": 5,
+        "lastPage": 5
+      },
+      {
+        "start": 169,
+        "end": 202,
+        "firstPage": 6,
+        "lastPage": 6
+      },
+      {
+        "start": 202,
+        "end": 238,
+        "firstPage": 7,
+        "lastPage": 7
+      },
+      {
+        "start": 238,
+        "end": 268,
+        "firstPage": 8,
+        "lastPage": 8
+      },
+      {
+        "start": 268,
+        "end": 300,
+        "firstPage": 9,
+        "lastPage": 9
+      },
+      {
+        "start": 300,
+        "end": 335,
+        "firstPage": 10,
+        "lastPage": 10
+      },
+      {
+        "start": 335,
+        "end": 365,
+        "firstPage": 11,
+        "lastPage": 11
+      },
+      {
+        "start": 365,
+        "end": 397,
+        "firstPage": 12,
+        "lastPage": 12
+      },
+      {
+        "start": 397,
+        "end": 427,
+        "firstPage": 13,
+        "lastPage": 13
+      },
+      {
+        "start": 427,
+        "end": 460,
+        "firstPage": 14,
+        "lastPage": 14
+      },
+      {
+        "start": 460,
+        "end": 492,
+        "firstPage": 15,
+        "lastPage": 15
+      },
+      {
+        "start": 492,
+        "end": 525,
+        "firstPage": 16,
+        "lastPage": 16
+      },
+      {
+        "start": 525,
+        "end": 556,
+        "firstPage": 17,
+        "lastPage": 17
+      },
+      {
+        "start": 556,
+        "end": 581,
+        "firstPage": 18,
+        "lastPage": 18
+      }
+    ],
+    "coresSha256": "cb0e5e9f1f52043822bb60d35d59e13ec0619d8dba4422764fa7fb3e43af841f"
+  }
+}
