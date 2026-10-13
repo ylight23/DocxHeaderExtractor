@@ -3,9 +3,9 @@
   "authority": "OWNER-DOC-f4b72d1a",
   "providerCalls": 0,
   "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-f4b72d1a.layout.json.geo.unwrap.single.facts.r1.mainrep2.toolrounds.toolfactsanalysis.factsv3.nolayout.retry3.repairall.cache.v1.json",
-  "planSha256": "e90fdc1501967720df490dbb450faa9c0e7b64d3b62b78a2e5c7fb5c5d25fbc5",
+  "planSha256": "5fe9bb7e6dd1ad2344346dc1444e19981436ee7d23d4f2280a85f6063f1a6e80",
   "planVerifiesNow": true,
-  "codeCommit": "3742e4738ceaaa4d96131c11bf506b995268c5f0",
+  "codeCommit": "3ebd89c3634902879ef6fe631bb1a7aefa887867",
   "firstRequests": [
     {
       "arm": "TOOLFACTS_ANALYSIS_V3",
@@ -157,13 +157,13 @@
         {
           "arm": "TOOLFACTS_ANALYSIS_V3",
           "posts": 12,
-          "reservedUsd": 0.0837,
+          "reservedUsd": 0.0838,
           "ceilingUsd": 7.37,
           "halt": "CONSECUTIVE_CONTRACT_FAILURES",
           "units": 18,
           "complete": 0,
           "stoppedByBudget": 15,
-          "maxRequestBytes": 33666
+          "maxRequestBytes": 33728
         }
       ]
     }

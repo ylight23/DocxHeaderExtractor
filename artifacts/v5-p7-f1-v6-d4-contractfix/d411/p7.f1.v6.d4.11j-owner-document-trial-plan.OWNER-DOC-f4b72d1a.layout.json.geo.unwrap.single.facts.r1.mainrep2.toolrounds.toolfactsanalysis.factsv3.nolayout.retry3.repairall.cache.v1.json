@@ -1,7 +1,7 @@
 {
   "artifact": "p7.f1.v6.d4.11j-owner-document-trial-plan.v1",
   "approvalToSend": false,
-  "codeCommit": "3742e4738ceaaa4d96131c11bf506b995268c5f0",
+  "codeCommit": "3ebd89c3634902879ef6fe631bb1a7aefa887867",
   "authorityId": "OWNER-DOC-f4b72d1a",
   "document": "owner-supplied (outside the repository): 089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
   "documentPublicity": "A document of the repository's public heading corpus (todo10_8/heading_corpus_100), whose README states the files are real documents downloaded from public sources (089_ND_195-2013_Luat_Xuat_ban_EN.pdf); the origin is not independently verified here. Text is sent as it is. Requests, raw responses and the analysis stay in the safe store and are not committed or pushed.",
@@ -391,7 +391,7 @@
   },
   "fenceUnwrap": "P7_F1_V6_SINGLE_FENCE_UNWRAP_V1: a final answer wrapped in exactly one markdown fence (optional json label) around exactly one JSON object is read from inside the fence and the object goes through the unchanged strict parser; prose outside the fence, a second fence or another label is still REPLY_NOT_JSON; a unit that used the unwrap is flagged FenceUnwrapped",
   "factsUseArm": "only the FACTS arm is run: the same request as GEOMETRY (repeated-text observations, layout block, segments, shared left edge) with one more sentence in the system prompt telling the model to read the observations of a target and of the lines next to it and to compare the target with its neighbours; the sentence names no kind of line",
-  "promptCache": "the system prompt and the unit payload are each one text block marked cache_control ephemeral (Alibaba caches only marked prefixes; 5-minute TTL renewed on each hit; writes 1.25x, reads 0.1x of the input price); the text is unchanged, only the content shape",
+  "promptCache": "the system prompt, the unit payload and the last history message with text (a tool result or a repair message) are each one text block marked cache_control ephemeral, three marks within the provider's four (Alibaba caches only marked prefixes; 5-minute TTL renewed on each hit; writes 1.25x, reads 0.1x of the input price); the text is unchanged, only the content shape",
   "failureHandling": {
     "transportRetries": 3,
     "retriable": [
