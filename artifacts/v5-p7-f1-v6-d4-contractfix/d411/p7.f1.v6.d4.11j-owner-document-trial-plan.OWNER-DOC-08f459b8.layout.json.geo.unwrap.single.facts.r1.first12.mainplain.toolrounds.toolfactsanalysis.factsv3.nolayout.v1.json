@@ -1,0 +1,1525 @@
+{
+  "artifact": "p7.f1.v6.d4.11j-owner-document-trial-plan.v1",
+  "approvalToSend": false,
+  "codeCommit": "97b43aaadc0601ce0c4d535f448c7ecaefe37ec3",
+  "authorityId": "OWNER-DOC-08f459b8",
+  "document": "owner-supplied (outside the repository): 029_WB_RFP_Works_DesignBuild_2021.pdf",
+  "documentPublicity": "A document of the repository's public heading corpus (todo10_8/heading_corpus_100), whose README states the files are real documents downloaded from public sources (029_WB_RFP_Works_DesignBuild_2021.pdf); the origin is not independently verified here. Text is sent as it is. Requests, raw responses and the analysis stay in the safe store and are not committed or pushed.",
+  "sourceSha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c",
+  "universeSha256": "36408c7f1d6d8e2fa097caf407266e79956a1a3d868695ea5123575094fb253e",
+  "evidenceStoreSha256": "ce0adc921761cb6c68bb85945315e483c80d146b3f841b2e0047b53de52b4ace",
+  "atoms": 7801,
+  "ownerSupplied": {
+    "fileName": "029_WB_RFP_Works_DesignBuild_2021.pdf",
+    "fileBytes": 1740478,
+    "fileSha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c",
+    "pagesWithText": 229,
+    "lines": 7801,
+    "publicCorpus": true,
+    "sourceGate": "the public-corpus source gate is not used; this plan pins the file hash and the loader refuses any other bytes",
+    "pathNotPinned": "the file path is an argument of the plan check and of the run, not part of the plan",
+    "redaction": "none: the owner chose to send the document text unchanged",
+    "lineTextsSha256": "3481a2d4ace24123138a0393d3d0987c53dd13a2adc9fff5927b689310f1b3ce"
+  },
+  "goldForScorerOnly": "none: there is no Gold for this document. Nothing is scored. The result is the set of lines each arm selects in each repetition, read by the owner.",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "evaluationLabel": "Owner-document trial: which lines Qwen selects as headings under the repeat-canary request; no Gold, no score",
+  "instruction": "Extract the main headings of the document: the headings that carry its structure (its outline).\nWhen you are unsure about how a line relates to other lines, use the tools to check that relationship.\nDo not guess: if the evidence does not settle a line, say that it is unresolved instead of choosing.",
+  "instructionSha256": "c37f268895bf606f0caf2473291d5ce600e1ef9d44eb3d0afa43c1c95689dc8f",
+  "requestVersion": "P7_F1_V6_SELECT_AGENT_REQUEST_V2",
+  "promptVersion": "P7_F1_V6_SELECT_AGENT_PROMPT_V3 + stated target range",
+  "responseVersion": "P7_F1_V6_SELECT_OBJECTS_V1",
+  "versionFieldsInPayload": false,
+  "requestIdenticalTo": "the repeat-canary request (plans e73415f7 and df369552, code b672c59): same system prompts (CONTROL 5a83e083…, PREFETCH 2290301b…), instruction, payload layout, tools, envelope and route; only the document differs",
+  "segments": [
+    "SEG-000",
+    "SEG-001",
+    "SEG-002",
+    "SEG-003",
+    "SEG-004",
+    "SEG-005",
+    "SEG-006",
+    "SEG-007",
+    "SEG-008",
+    "SEG-009",
+    "SEG-010",
+    "SEG-011"
+  ],
+  "arms": [
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "promptSha256": "7d38255effd88d91077a387b4db843bfc13aeae163a97c2d5471b2a96969a70e",
+      "budget": {
+        "maxCalls": 48,
+        "ceilingUsd": 1.11,
+        "maxRequestBytes": 131072,
+        "worstCaseAllAtByteCapUsd": 1.258291
+      },
+      "earlyStop": 3,
+      "firstRequests": [
+        {
+          "unitId": "SEG-000",
+          "turn": 1,
+          "sha256": "7be63783e16200ffdc35b9f79ddf9166f6702ae5266e456f3ca13862c230b08a",
+          "bytes": 24315
+        },
+        {
+          "unitId": "SEG-001",
+          "turn": 1,
+          "sha256": "cf8080bfe15a18d98982cdd678fe16ca78e6d1432ceb794cf868c851d03aa6e4",
+          "bytes": 28743
+        },
+        {
+          "unitId": "SEG-002",
+          "turn": 1,
+          "sha256": "022ffa98c72a1fb3e6529017ebddcea4d620d313794c15a5bc788b9a7c41279d",
+          "bytes": 28930
+        },
+        {
+          "unitId": "SEG-003",
+          "turn": 1,
+          "sha256": "d2494b87fa84682c7e291147d57f74f95d71c6c973a82a0076415d250afffcfe",
+          "bytes": 26648
+        },
+        {
+          "unitId": "SEG-004",
+          "turn": 1,
+          "sha256": "1ea9162a1c406739ae4af663e8da70c946c4919e9c677f2ef4700bf460abb3b6",
+          "bytes": 26539
+        },
+        {
+          "unitId": "SEG-005",
+          "turn": 1,
+          "sha256": "9cc409c749c58a1e67b22c57f1b2d8690696bf5a8ab49723edb117c7c438329f",
+          "bytes": 29162
+        },
+        {
+          "unitId": "SEG-006",
+          "turn": 1,
+          "sha256": "f6ac631faa9faf6b5961fb39cb5bb7c5931cb7a1ba8128a9b4877e3852b760b1",
+          "bytes": 28598
+        },
+        {
+          "unitId": "SEG-007",
+          "turn": 1,
+          "sha256": "194a9d055b2584ebdddf71f1182550a4963e22640a79b8c85df9b51a797a1f6e",
+          "bytes": 29773
+        },
+        {
+          "unitId": "SEG-008",
+          "turn": 1,
+          "sha256": "2e588c6031237f260396915ee30ba14f1961b03ea09710cf7f2c61d7ad1b01b0",
+          "bytes": 31946
+        },
+        {
+          "unitId": "SEG-009",
+          "turn": 1,
+          "sha256": "0701a0fe5112f10e53797c2cd7b7a2aeb623a33a9612122856cbcd45ebaf4610",
+          "bytes": 29498
+        },
+        {
+          "unitId": "SEG-010",
+          "turn": 1,
+          "sha256": "2bbb501d8e0e217b7be631256b11478f91e6c8f816017fdad01c8a0324fa00a0",
+          "bytes": 28812
+        },
+        {
+          "unitId": "SEG-011",
+          "turn": 1,
+          "sha256": "11013817f5eed7b11a12c7083149e2ee067280eb906f68b8dd5d908634896838",
+          "bytes": 28123
+        }
+      ],
+      "requestPlanSha256": "b8c14a376fed72fa47c43f4edf9e1d149095c798c09f273339592cdfd55bc68a"
+    }
+  ],
+  "prefetchMeasuredPerSegment": [
+    {
+      "segment": "SEG-000",
+      "targets": 26,
+      "listed": 7,
+      "withoutOtherOccurrence": 19,
+      "observationBytes": 5476
+    },
+    {
+      "segment": "SEG-001",
+      "targets": 37,
+      "listed": 2,
+      "withoutOtherOccurrence": 35,
+      "observationBytes": 1483
+    },
+    {
+      "segment": "SEG-002",
+      "targets": 40,
+      "listed": 0,
+      "withoutOtherOccurrence": 40,
+      "observationBytes": 431
+    },
+    {
+      "segment": "SEG-003",
+      "targets": 29,
+      "listed": 7,
+      "withoutOtherOccurrence": 22,
+      "observationBytes": 7378
+    },
+    {
+      "segment": "SEG-004",
+      "targets": 30,
+      "listed": 6,
+      "withoutOtherOccurrence": 24,
+      "observationBytes": 6366
+    },
+    {
+      "segment": "SEG-005",
+      "targets": 46,
+      "listed": 12,
+      "withoutOtherOccurrence": 34,
+      "observationBytes": 10221
+    },
+    {
+      "segment": "SEG-006",
+      "targets": 43,
+      "listed": 9,
+      "withoutOtherOccurrence": 34,
+      "observationBytes": 8999
+    },
+    {
+      "segment": "SEG-007",
+      "targets": 44,
+      "listed": 25,
+      "withoutOtherOccurrence": 19,
+      "observationBytes": 22159
+    },
+    {
+      "segment": "SEG-008",
+      "targets": 40,
+      "listed": 10,
+      "withoutOtherOccurrence": 30,
+      "observationBytes": 9220
+    },
+    {
+      "segment": "SEG-009",
+      "targets": 30,
+      "listed": 5,
+      "withoutOtherOccurrence": 25,
+      "observationBytes": 5618
+    },
+    {
+      "segment": "SEG-010",
+      "targets": 43,
+      "listed": 9,
+      "withoutOtherOccurrence": 34,
+      "observationBytes": 6830
+    },
+    {
+      "segment": "SEG-011",
+      "targets": 48,
+      "listed": 5,
+      "withoutOtherOccurrence": 43,
+      "observationBytes": 4365
+    }
+  ],
+  "repetitions": {
+    "perArmAndSegment": 1,
+    "requests": "identical bytes each time, so the spread is sampling variation of the same request",
+    "order": "per repetition, per segment: CONTROL then PREFETCH"
+  },
+  "frozen": {
+    "scope": "one owner-supplied document: the loader refuses any other bytes; the plan is re-derived from code and the file and any drift refuses the run",
+    "authorityId": "OWNER-DOC-08f459b8",
+    "sourceSha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c",
+    "universeSha256": "36408c7f1d6d8e2fa097caf407266e79956a1a3d868695ea5123575094fb253e",
+    "provider": {
+      "only": [
+        "alibaba"
+      ],
+      "ignore": [
+        "alibaba/us-east-1"
+      ],
+      "allowFallbacks": false,
+      "requireParameters": true,
+      "providerBlockSha256": "a6fc1d02d9c591c11d5d222a96166f5d6079a1dabf404d190343db41d0ad0b73",
+      "model": "qwen/qwen3.7-flash",
+      "endpointCheck": "response provider must be Alibaba and model qwen/qwen3.7-flash, else the run halts"
+    },
+    "requestTemplateSha256": "64c28336db67239494e74ec0cba321b82198d5e6288eb9497aff2df91d9d0c54",
+    "toolDefinitionsSha256": "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3",
+    "promptSha256": {
+      "control": "5a83e08300e60a0a3dd136e9a31cd7439d2fa3943f65be41947a094da8bb14c2",
+      "prefetch": "2290301be5ab6b432d10913e6cfa30a4a11c43a0a811acbf3fc17e1b23d66de6"
+    },
+    "firstRequestsSha256": "b8c14a376fed72fa47c43f4edf9e1d149095c798c09f273339592cdfd55bc68a"
+  },
+  "tools": {
+    "version": "P7_F1_V6_AGENT_TOOLS_V1",
+    "definitionsSha256": "17b846fe198c451ea1cc4eee6097ad16a6f82d91107a1a44793cc07537ea9142",
+    "names": [
+      "get_document_overview",
+      "get_source_context",
+      "get_page_layout",
+      "get_source_span",
+      "search_document_text",
+      "get_repeated_occurrences",
+      "compare_source_locations",
+      "get_line_facts"
+    ],
+    "availability": "declared in both arms, optional; tool results come from the document lines"
+  },
+  "requestShape": "SSE (stream true), reasoning enabled true, response_format absent on turns 1 to 3 and json_object on turn 4, temperature 0, max_tokens 32768; the strict parser refuses any final answer that is not exactly one JSON object",
+  "model": "qwen/qwen3.7-flash",
+  "route": {
+    "only": [
+      "alibaba"
+    ],
+    "ignore": [
+      "alibaba/us-east-1"
+    ],
+    "allowFallbacks": false,
+    "requireParameters": true
+  },
+  "zdr": "false (owner decision, to be accepted again in the authorization)",
+  "maxTokens": 32768,
+  "retries": 0,
+  "budget": {
+    "maxCalls": 48,
+    "ceilingUsd": 1.11,
+    "maxRequestBytes": 131072,
+    "perArm": "48 posts: 12 first posts (12 segments x 1 repetitions) and 36 for tool turns",
+    "ceilingIs": "derived as in the repeat canary: the reserve of every planned first request, repetitions included, plus the spare posts at the worst case, plus 10%; a bound on the reserve, not the expected spend"
+  },
+  "measurements": [
+    "per arm and repetition: the lines selected in each segment (aliases; the owner reads their text)",
+    "whether the same lines are selected in every repetition of a cell, and where CONTROL and PREFETCH differ",
+    "protocol outcome per unit with its code; refused answers are counted and never repaired; offline counterfactuals are labelled not official",
+    "tool calls, tokens and cost per request"
+  ],
+  "readingRules": [
+    "no Gold: the program makes no claim that a selected line is or is not a heading; the owner judges",
+    "5 repetitions per cell: an indication of stability, not a significance test",
+    "one document: nothing here says how the request behaves on other documents"
+  ],
+  "rawPublication": "None. Requests (which hold the document text), raw responses, reasoning and the analysis stay in the safe store outside the repository. Only a receipt without any line text is committed.",
+  "liveAuthorization": {
+    "required": true,
+    "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+    "status": "APPROVED",
+    "campaigns": 1
+  },
+  "fenceUnwrap": "P7_F1_V6_SINGLE_FENCE_UNWRAP_V1: a final answer wrapped in exactly one markdown fence (optional json label) around exactly one JSON object is read from inside the fence and the object goes through the unchanged strict parser; prose outside the fence, a second fence or another label is still REPLY_NOT_JSON; a unit that used the unwrap is flagged FenceUnwrapped",
+  "factsUseArm": "only the FACTS arm is run: the same request as GEOMETRY (repeated-text observations, layout block, segments, shared left edge) with one more sentence in the system prompt telling the model to read the observations of a target and of the lines next to it and to compare the target with its neighbours; the sentence names no kind of line",
+  "firstSegmentsOnly": 12,
+  "hideLayoutArm": "TOOLFACTS_ANALYSIS_V3: the request shows each line's alias, page and text only (no bbox, no font); the layout of a line comes from get_line_facts (layout facts V3: V2 plus the line's layout and its style against the document); the payload carries documentStyles, the style table of the whole document; contract as TOOLFACTS_ANALYSIS",
+  "layoutFactsVersion": 3,
+  "toolFactsAnalysisArm": "TOOLFACTS plus room for the explanation inside the answer: a COMPLETE answer may carry one extra top-level string, analysis (at most 2000 characters), and each decision may carry reason (at most 300 characters), asked for every SELECT; the parser reads the decisions exactly as before and neither string decides anything; the prompt says to write nothing outside the JSON object",
+  "toolRoundsBudget": "the spare posts of an arm are every unit's full tool rounds (3 per unit), so a unit that uses its tools is not cut by the call limit; the ceiling is derived from that call limit",
+  "singleArm": "only the GEOMETRY arm is run: one request that carries every observation the program reads (repeated-text observations, layout block, segments on the visual line with gaps, shared left edge); no CONTROL and no PREFETCH arm",
+  "geometryArm": "a third arm, GEOMETRY: PREFETCH plus observations.layoutFacts (P7_F1_V6_LAYOUT_FACTS_V1), the program's measurements of each shown line's layout block, segments on its visual line and shared left edge; no label, no text reading",
+  "responseFormatTurns": "json_object on EVERY turn, including the turns where Qwen may call a tool (tool_choice auto). Reason: with no response_format on those turns Qwen wrapped the whole answer in a markdown fence in 3 of 3 first answers of the D4.11j layout CONTROL arm (REPLY_NOT_JSON, halted by the early-stop rule). The strict parser is unchanged and still refuses any fence or prose.",
+  "segmentation": {
+    "policy": "LAYOUT_PAGE_BLOCK_48_V1",
+    "rule": "the F1Q arm-B rule: whole pages when they fit in 48 lines, else parser layout blocks of the page, cores of at most 48 lines; only page numbers and parser block ids decide; context stays 20 lines each side",
+    "cores": [
+      {
+        "start": 0,
+        "end": 26,
+        "firstPage": 1,
+        "lastPage": 3
+      },
+      {
+        "start": 26,
+        "end": 63,
+        "firstPage": 4,
+        "lastPage": 4
+      },
+      {
+        "start": 63,
+        "end": 103,
+        "firstPage": 5,
+        "lastPage": 5
+      },
+      {
+        "start": 103,
+        "end": 132,
+        "firstPage": 6,
+        "lastPage": 6
+      },
+      {
+        "start": 132,
+        "end": 162,
+        "firstPage": 7,
+        "lastPage": 7
+      },
+      {
+        "start": 162,
+        "end": 208,
+        "firstPage": 8,
+        "lastPage": 9
+      },
+      {
+        "start": 208,
+        "end": 251,
+        "firstPage": 9,
+        "lastPage": 9
+      },
+      {
+        "start": 251,
+        "end": 295,
+        "firstPage": 10,
+        "lastPage": 13
+      },
+      {
+        "start": 295,
+        "end": 335,
+        "firstPage": 14,
+        "lastPage": 14
+      },
+      {
+        "start": 335,
+        "end": 365,
+        "firstPage": 15,
+        "lastPage": 15
+      },
+      {
+        "start": 365,
+        "end": 408,
+        "firstPage": 16,
+        "lastPage": 16
+      },
+      {
+        "start": 408,
+        "end": 456,
+        "firstPage": 17,
+        "lastPage": 17
+      },
+      {
+        "start": 456,
+        "end": 503,
+        "firstPage": 18,
+        "lastPage": 18
+      },
+      {
+        "start": 503,
+        "end": 550,
+        "firstPage": 18,
+        "lastPage": 19
+      },
+      {
+        "start": 550,
+        "end": 598,
+        "firstPage": 20,
+        "lastPage": 21
+      },
+      {
+        "start": 598,
+        "end": 646,
+        "firstPage": 21,
+        "lastPage": 21
+      },
+      {
+        "start": 646,
+        "end": 694,
+        "firstPage": 21,
+        "lastPage": 23
+      },
+      {
+        "start": 694,
+        "end": 742,
+        "firstPage": 23,
+        "lastPage": 23
+      },
+      {
+        "start": 742,
+        "end": 790,
+        "firstPage": 24,
+        "lastPage": 24
+      },
+      {
+        "start": 790,
+        "end": 794,
+        "firstPage": 24,
+        "lastPage": 24
+      },
+      {
+        "start": 794,
+        "end": 842,
+        "firstPage": 25,
+        "lastPage": 25
+      },
+      {
+        "start": 842,
+        "end": 889,
+        "firstPage": 26,
+        "lastPage": 27
+      },
+      {
+        "start": 889,
+        "end": 935,
+        "firstPage": 27,
+        "lastPage": 27
+      },
+      {
+        "start": 935,
+        "end": 940,
+        "firstPage": 27,
+        "lastPage": 27
+      },
+      {
+        "start": 940,
+        "end": 988,
+        "firstPage": 28,
+        "lastPage": 28
+      },
+      {
+        "start": 988,
+        "end": 1033,
+        "firstPage": 29,
+        "lastPage": 29
+      },
+      {
+        "start": 1033,
+        "end": 1081,
+        "firstPage": 30,
+        "lastPage": 31
+      },
+      {
+        "start": 1081,
+        "end": 1129,
+        "firstPage": 31,
+        "lastPage": 31
+      },
+      {
+        "start": 1129,
+        "end": 1177,
+        "firstPage": 32,
+        "lastPage": 33
+      },
+      {
+        "start": 1177,
+        "end": 1224,
+        "firstPage": 33,
+        "lastPage": 33
+      },
+      {
+        "start": 1224,
+        "end": 1272,
+        "firstPage": 33,
+        "lastPage": 35
+      },
+      {
+        "start": 1272,
+        "end": 1320,
+        "firstPage": 35,
+        "lastPage": 36
+      },
+      {
+        "start": 1320,
+        "end": 1368,
+        "firstPage": 36,
+        "lastPage": 36
+      },
+      {
+        "start": 1368,
+        "end": 1416,
+        "firstPage": 37,
+        "lastPage": 37
+      },
+      {
+        "start": 1416,
+        "end": 1460,
+        "firstPage": 38,
+        "lastPage": 38
+      },
+      {
+        "start": 1460,
+        "end": 1508,
+        "firstPage": 39,
+        "lastPage": 40
+      },
+      {
+        "start": 1508,
+        "end": 1555,
+        "firstPage": 40,
+        "lastPage": 41
+      },
+      {
+        "start": 1555,
+        "end": 1603,
+        "firstPage": 41,
+        "lastPage": 41
+      },
+      {
+        "start": 1603,
+        "end": 1651,
+        "firstPage": 41,
+        "lastPage": 42
+      },
+      {
+        "start": 1651,
+        "end": 1659,
+        "firstPage": 42,
+        "lastPage": 42
+      },
+      {
+        "start": 1659,
+        "end": 1705,
+        "firstPage": 43,
+        "lastPage": 43
+      },
+      {
+        "start": 1705,
+        "end": 1748,
+        "firstPage": 44,
+        "lastPage": 44
+      },
+      {
+        "start": 1748,
+        "end": 1792,
+        "firstPage": 45,
+        "lastPage": 45
+      },
+      {
+        "start": 1792,
+        "end": 1831,
+        "firstPage": 46,
+        "lastPage": 47
+      },
+      {
+        "start": 1831,
+        "end": 1868,
+        "firstPage": 48,
+        "lastPage": 48
+      },
+      {
+        "start": 1868,
+        "end": 1905,
+        "firstPage": 49,
+        "lastPage": 49
+      },
+      {
+        "start": 1905,
+        "end": 1946,
+        "firstPage": 50,
+        "lastPage": 50
+      },
+      {
+        "start": 1946,
+        "end": 1987,
+        "firstPage": 51,
+        "lastPage": 51
+      },
+      {
+        "start": 1987,
+        "end": 2025,
+        "firstPage": 52,
+        "lastPage": 52
+      },
+      {
+        "start": 2025,
+        "end": 2052,
+        "firstPage": 53,
+        "lastPage": 53
+      },
+      {
+        "start": 2052,
+        "end": 2084,
+        "firstPage": 54,
+        "lastPage": 54
+      },
+      {
+        "start": 2084,
+        "end": 2120,
+        "firstPage": 55,
+        "lastPage": 55
+      },
+      {
+        "start": 2120,
+        "end": 2156,
+        "firstPage": 56,
+        "lastPage": 56
+      },
+      {
+        "start": 2156,
+        "end": 2198,
+        "firstPage": 57,
+        "lastPage": 58
+      },
+      {
+        "start": 2198,
+        "end": 2230,
+        "firstPage": 59,
+        "lastPage": 59
+      },
+      {
+        "start": 2230,
+        "end": 2263,
+        "firstPage": 60,
+        "lastPage": 60
+      },
+      {
+        "start": 2263,
+        "end": 2300,
+        "firstPage": 61,
+        "lastPage": 61
+      },
+      {
+        "start": 2300,
+        "end": 2339,
+        "firstPage": 62,
+        "lastPage": 62
+      },
+      {
+        "start": 2339,
+        "end": 2372,
+        "firstPage": 63,
+        "lastPage": 63
+      },
+      {
+        "start": 2372,
+        "end": 2401,
+        "firstPage": 64,
+        "lastPage": 64
+      },
+      {
+        "start": 2401,
+        "end": 2442,
+        "firstPage": 65,
+        "lastPage": 65
+      },
+      {
+        "start": 2442,
+        "end": 2483,
+        "firstPage": 66,
+        "lastPage": 67
+      },
+      {
+        "start": 2483,
+        "end": 2525,
+        "firstPage": 68,
+        "lastPage": 68
+      },
+      {
+        "start": 2525,
+        "end": 2547,
+        "firstPage": 69,
+        "lastPage": 69
+      },
+      {
+        "start": 2547,
+        "end": 2577,
+        "firstPage": 70,
+        "lastPage": 70
+      },
+      {
+        "start": 2577,
+        "end": 2616,
+        "firstPage": 71,
+        "lastPage": 72
+      },
+      {
+        "start": 2616,
+        "end": 2660,
+        "firstPage": 73,
+        "lastPage": 74
+      },
+      {
+        "start": 2660,
+        "end": 2699,
+        "firstPage": 75,
+        "lastPage": 75
+      },
+      {
+        "start": 2699,
+        "end": 2736,
+        "firstPage": 76,
+        "lastPage": 76
+      },
+      {
+        "start": 2736,
+        "end": 2783,
+        "firstPage": 77,
+        "lastPage": 77
+      },
+      {
+        "start": 2783,
+        "end": 2822,
+        "firstPage": 78,
+        "lastPage": 80
+      },
+      {
+        "start": 2822,
+        "end": 2839,
+        "firstPage": 81,
+        "lastPage": 81
+      },
+      {
+        "start": 2839,
+        "end": 2877,
+        "firstPage": 82,
+        "lastPage": 82
+      },
+      {
+        "start": 2877,
+        "end": 2924,
+        "firstPage": 83,
+        "lastPage": 83
+      },
+      {
+        "start": 2924,
+        "end": 2954,
+        "firstPage": 84,
+        "lastPage": 84
+      },
+      {
+        "start": 2954,
+        "end": 2989,
+        "firstPage": 85,
+        "lastPage": 86
+      },
+      {
+        "start": 2989,
+        "end": 3035,
+        "firstPage": 87,
+        "lastPage": 89
+      },
+      {
+        "start": 3035,
+        "end": 3059,
+        "firstPage": 90,
+        "lastPage": 90
+      },
+      {
+        "start": 3059,
+        "end": 3091,
+        "firstPage": 91,
+        "lastPage": 92
+      },
+      {
+        "start": 3091,
+        "end": 3111,
+        "firstPage": 93,
+        "lastPage": 93
+      },
+      {
+        "start": 3111,
+        "end": 3144,
+        "firstPage": 94,
+        "lastPage": 94
+      },
+      {
+        "start": 3144,
+        "end": 3191,
+        "firstPage": 95,
+        "lastPage": 95
+      },
+      {
+        "start": 3191,
+        "end": 3209,
+        "firstPage": 96,
+        "lastPage": 96
+      },
+      {
+        "start": 3209,
+        "end": 3241,
+        "firstPage": 97,
+        "lastPage": 97
+      },
+      {
+        "start": 3241,
+        "end": 3280,
+        "firstPage": 98,
+        "lastPage": 98
+      },
+      {
+        "start": 3280,
+        "end": 3306,
+        "firstPage": 99,
+        "lastPage": 99
+      },
+      {
+        "start": 3306,
+        "end": 3339,
+        "firstPage": 100,
+        "lastPage": 100
+      },
+      {
+        "start": 3339,
+        "end": 3387,
+        "firstPage": 101,
+        "lastPage": 105
+      },
+      {
+        "start": 3387,
+        "end": 3430,
+        "firstPage": 105,
+        "lastPage": 105
+      },
+      {
+        "start": 3430,
+        "end": 3464,
+        "firstPage": 106,
+        "lastPage": 106
+      },
+      {
+        "start": 3464,
+        "end": 3500,
+        "firstPage": 107,
+        "lastPage": 108
+      },
+      {
+        "start": 3500,
+        "end": 3536,
+        "firstPage": 109,
+        "lastPage": 109
+      },
+      {
+        "start": 3536,
+        "end": 3563,
+        "firstPage": 110,
+        "lastPage": 110
+      },
+      {
+        "start": 3563,
+        "end": 3611,
+        "firstPage": 111,
+        "lastPage": 112
+      },
+      {
+        "start": 3611,
+        "end": 3659,
+        "firstPage": 112,
+        "lastPage": 112
+      },
+      {
+        "start": 3659,
+        "end": 3665,
+        "firstPage": 112,
+        "lastPage": 112
+      },
+      {
+        "start": 3665,
+        "end": 3711,
+        "firstPage": 113,
+        "lastPage": 113
+      },
+      {
+        "start": 3711,
+        "end": 3743,
+        "firstPage": 114,
+        "lastPage": 114
+      },
+      {
+        "start": 3743,
+        "end": 3785,
+        "firstPage": 115,
+        "lastPage": 116
+      },
+      {
+        "start": 3785,
+        "end": 3828,
+        "firstPage": 117,
+        "lastPage": 119
+      },
+      {
+        "start": 3828,
+        "end": 3866,
+        "firstPage": 120,
+        "lastPage": 120
+      },
+      {
+        "start": 3866,
+        "end": 3905,
+        "firstPage": 121,
+        "lastPage": 122
+      },
+      {
+        "start": 3905,
+        "end": 3948,
+        "firstPage": 123,
+        "lastPage": 124
+      },
+      {
+        "start": 3948,
+        "end": 3984,
+        "firstPage": 125,
+        "lastPage": 125
+      },
+      {
+        "start": 3984,
+        "end": 4032,
+        "firstPage": 126,
+        "lastPage": 126
+      },
+      {
+        "start": 4032,
+        "end": 4045,
+        "firstPage": 127,
+        "lastPage": 128
+      },
+      {
+        "start": 4045,
+        "end": 4083,
+        "firstPage": 129,
+        "lastPage": 129
+      },
+      {
+        "start": 4083,
+        "end": 4130,
+        "firstPage": 130,
+        "lastPage": 131
+      },
+      {
+        "start": 4130,
+        "end": 4175,
+        "firstPage": 131,
+        "lastPage": 131
+      },
+      {
+        "start": 4175,
+        "end": 4186,
+        "firstPage": 131,
+        "lastPage": 131
+      },
+      {
+        "start": 4186,
+        "end": 4226,
+        "firstPage": 132,
+        "lastPage": 132
+      },
+      {
+        "start": 4226,
+        "end": 4274,
+        "firstPage": 133,
+        "lastPage": 134
+      },
+      {
+        "start": 4274,
+        "end": 4319,
+        "firstPage": 134,
+        "lastPage": 134
+      },
+      {
+        "start": 4319,
+        "end": 4357,
+        "firstPage": 135,
+        "lastPage": 135
+      },
+      {
+        "start": 4357,
+        "end": 4405,
+        "firstPage": 136,
+        "lastPage": 139
+      },
+      {
+        "start": 4405,
+        "end": 4453,
+        "firstPage": 139,
+        "lastPage": 139
+      },
+      {
+        "start": 4453,
+        "end": 4500,
+        "firstPage": 139,
+        "lastPage": 146
+      },
+      {
+        "start": 4500,
+        "end": 4543,
+        "firstPage": 147,
+        "lastPage": 147
+      },
+      {
+        "start": 4543,
+        "end": 4590,
+        "firstPage": 148,
+        "lastPage": 149
+      },
+      {
+        "start": 4590,
+        "end": 4634,
+        "firstPage": 149,
+        "lastPage": 149
+      },
+      {
+        "start": 4634,
+        "end": 4680,
+        "firstPage": 150,
+        "lastPage": 150
+      },
+      {
+        "start": 4680,
+        "end": 4728,
+        "firstPage": 151,
+        "lastPage": 151
+      },
+      {
+        "start": 4728,
+        "end": 4767,
+        "firstPage": 152,
+        "lastPage": 152
+      },
+      {
+        "start": 4767,
+        "end": 4814,
+        "firstPage": 153,
+        "lastPage": 153
+      },
+      {
+        "start": 4814,
+        "end": 4832,
+        "firstPage": 154,
+        "lastPage": 154
+      },
+      {
+        "start": 4832,
+        "end": 4880,
+        "firstPage": 155,
+        "lastPage": 156
+      },
+      {
+        "start": 4880,
+        "end": 4928,
+        "firstPage": 156,
+        "lastPage": 157
+      },
+      {
+        "start": 4928,
+        "end": 4975,
+        "firstPage": 157,
+        "lastPage": 157
+      },
+      {
+        "start": 4975,
+        "end": 5023,
+        "firstPage": 158,
+        "lastPage": 159
+      },
+      {
+        "start": 5023,
+        "end": 5071,
+        "firstPage": 159,
+        "lastPage": 159
+      },
+      {
+        "start": 5071,
+        "end": 5119,
+        "firstPage": 160,
+        "lastPage": 161
+      },
+      {
+        "start": 5119,
+        "end": 5167,
+        "firstPage": 161,
+        "lastPage": 161
+      },
+      {
+        "start": 5167,
+        "end": 5214,
+        "firstPage": 162,
+        "lastPage": 162
+      },
+      {
+        "start": 5214,
+        "end": 5257,
+        "firstPage": 163,
+        "lastPage": 163
+      },
+      {
+        "start": 5257,
+        "end": 5300,
+        "firstPage": 164,
+        "lastPage": 164
+      },
+      {
+        "start": 5300,
+        "end": 5347,
+        "firstPage": 165,
+        "lastPage": 166
+      },
+      {
+        "start": 5347,
+        "end": 5379,
+        "firstPage": 166,
+        "lastPage": 166
+      },
+      {
+        "start": 5379,
+        "end": 5424,
+        "firstPage": 167,
+        "lastPage": 167
+      },
+      {
+        "start": 5424,
+        "end": 5471,
+        "firstPage": 168,
+        "lastPage": 169
+      },
+      {
+        "start": 5471,
+        "end": 5513,
+        "firstPage": 169,
+        "lastPage": 169
+      },
+      {
+        "start": 5513,
+        "end": 5560,
+        "firstPage": 170,
+        "lastPage": 170
+      },
+      {
+        "start": 5560,
+        "end": 5607,
+        "firstPage": 171,
+        "lastPage": 171
+      },
+      {
+        "start": 5607,
+        "end": 5652,
+        "firstPage": 172,
+        "lastPage": 172
+      },
+      {
+        "start": 5652,
+        "end": 5696,
+        "firstPage": 173,
+        "lastPage": 173
+      },
+      {
+        "start": 5696,
+        "end": 5744,
+        "firstPage": 174,
+        "lastPage": 175
+      },
+      {
+        "start": 5744,
+        "end": 5790,
+        "firstPage": 175,
+        "lastPage": 176
+      },
+      {
+        "start": 5790,
+        "end": 5838,
+        "firstPage": 176,
+        "lastPage": 176
+      },
+      {
+        "start": 5838,
+        "end": 5886,
+        "firstPage": 177,
+        "lastPage": 177
+      },
+      {
+        "start": 5886,
+        "end": 5934,
+        "firstPage": 178,
+        "lastPage": 178
+      },
+      {
+        "start": 5934,
+        "end": 5938,
+        "firstPage": 178,
+        "lastPage": 178
+      },
+      {
+        "start": 5938,
+        "end": 5986,
+        "firstPage": 179,
+        "lastPage": 180
+      },
+      {
+        "start": 5986,
+        "end": 6034,
+        "firstPage": 180,
+        "lastPage": 181
+      },
+      {
+        "start": 6034,
+        "end": 6082,
+        "firstPage": 181,
+        "lastPage": 181
+      },
+      {
+        "start": 6082,
+        "end": 6124,
+        "firstPage": 181,
+        "lastPage": 182
+      },
+      {
+        "start": 6124,
+        "end": 6170,
+        "firstPage": 183,
+        "lastPage": 183
+      },
+      {
+        "start": 6170,
+        "end": 6218,
+        "firstPage": 184,
+        "lastPage": 185
+      },
+      {
+        "start": 6218,
+        "end": 6258,
+        "firstPage": 185,
+        "lastPage": 185
+      },
+      {
+        "start": 6258,
+        "end": 6304,
+        "firstPage": 186,
+        "lastPage": 186
+      },
+      {
+        "start": 6304,
+        "end": 6349,
+        "firstPage": 187,
+        "lastPage": 187
+      },
+      {
+        "start": 6349,
+        "end": 6394,
+        "firstPage": 188,
+        "lastPage": 188
+      },
+      {
+        "start": 6394,
+        "end": 6442,
+        "firstPage": 189,
+        "lastPage": 189
+      },
+      {
+        "start": 6442,
+        "end": 6487,
+        "firstPage": 190,
+        "lastPage": 190
+      },
+      {
+        "start": 6487,
+        "end": 6534,
+        "firstPage": 190,
+        "lastPage": 191
+      },
+      {
+        "start": 6534,
+        "end": 6542,
+        "firstPage": 191,
+        "lastPage": 191
+      },
+      {
+        "start": 6542,
+        "end": 6589,
+        "firstPage": 192,
+        "lastPage": 192
+      },
+      {
+        "start": 6589,
+        "end": 6637,
+        "firstPage": 193,
+        "lastPage": 193
+      },
+      {
+        "start": 6637,
+        "end": 6685,
+        "firstPage": 194,
+        "lastPage": 194
+      },
+      {
+        "start": 6685,
+        "end": 6733,
+        "firstPage": 194,
+        "lastPage": 195
+      },
+      {
+        "start": 6733,
+        "end": 6741,
+        "firstPage": 195,
+        "lastPage": 195
+      },
+      {
+        "start": 6741,
+        "end": 6784,
+        "firstPage": 196,
+        "lastPage": 196
+      },
+      {
+        "start": 6784,
+        "end": 6831,
+        "firstPage": 197,
+        "lastPage": 197
+      },
+      {
+        "start": 6831,
+        "end": 6876,
+        "firstPage": 198,
+        "lastPage": 198
+      },
+      {
+        "start": 6876,
+        "end": 6921,
+        "firstPage": 199,
+        "lastPage": 200
+      },
+      {
+        "start": 6921,
+        "end": 6959,
+        "firstPage": 201,
+        "lastPage": 201
+      },
+      {
+        "start": 6959,
+        "end": 7000,
+        "firstPage": 202,
+        "lastPage": 202
+      },
+      {
+        "start": 7000,
+        "end": 7013,
+        "firstPage": 203,
+        "lastPage": 203
+      },
+      {
+        "start": 7013,
+        "end": 7054,
+        "firstPage": 204,
+        "lastPage": 204
+      },
+      {
+        "start": 7054,
+        "end": 7094,
+        "firstPage": 205,
+        "lastPage": 205
+      },
+      {
+        "start": 7094,
+        "end": 7134,
+        "firstPage": 206,
+        "lastPage": 206
+      },
+      {
+        "start": 7134,
+        "end": 7155,
+        "firstPage": 207,
+        "lastPage": 207
+      },
+      {
+        "start": 7155,
+        "end": 7189,
+        "firstPage": 208,
+        "lastPage": 208
+      },
+      {
+        "start": 7189,
+        "end": 7215,
+        "firstPage": 209,
+        "lastPage": 210
+      },
+      {
+        "start": 7215,
+        "end": 7263,
+        "firstPage": 211,
+        "lastPage": 212
+      },
+      {
+        "start": 7263,
+        "end": 7311,
+        "firstPage": 212,
+        "lastPage": 212
+      },
+      {
+        "start": 7311,
+        "end": 7323,
+        "firstPage": 212,
+        "lastPage": 212
+      },
+      {
+        "start": 7323,
+        "end": 7360,
+        "firstPage": 213,
+        "lastPage": 213
+      },
+      {
+        "start": 7360,
+        "end": 7398,
+        "firstPage": 214,
+        "lastPage": 214
+      },
+      {
+        "start": 7398,
+        "end": 7443,
+        "firstPage": 215,
+        "lastPage": 215
+      },
+      {
+        "start": 7443,
+        "end": 7477,
+        "firstPage": 216,
+        "lastPage": 216
+      },
+      {
+        "start": 7477,
+        "end": 7498,
+        "firstPage": 217,
+        "lastPage": 217
+      },
+      {
+        "start": 7498,
+        "end": 7540,
+        "firstPage": 218,
+        "lastPage": 218
+      },
+      {
+        "start": 7540,
+        "end": 7581,
+        "firstPage": 219,
+        "lastPage": 220
+      },
+      {
+        "start": 7581,
+        "end": 7589,
+        "firstPage": 221,
+        "lastPage": 221
+      },
+      {
+        "start": 7589,
+        "end": 7630,
+        "firstPage": 222,
+        "lastPage": 222
+      },
+      {
+        "start": 7630,
+        "end": 7648,
+        "firstPage": 223,
+        "lastPage": 223
+      },
+      {
+        "start": 7648,
+        "end": 7690,
+        "firstPage": 224,
+        "lastPage": 225
+      },
+      {
+        "start": 7690,
+        "end": 7726,
+        "firstPage": 226,
+        "lastPage": 226
+      },
+      {
+        "start": 7726,
+        "end": 7744,
+        "firstPage": 227,
+        "lastPage": 227
+      },
+      {
+        "start": 7744,
+        "end": 7780,
+        "firstPage": 228,
+        "lastPage": 228
+      },
+      {
+        "start": 7780,
+        "end": 7801,
+        "firstPage": 229,
+        "lastPage": 229
+      }
+    ],
+    "coresSha256": "7b27f620ce4e2aa7484e609ce08670d2d6d12f8bbeb7f52179570e8aaf095402"
+  }
+}
