@@ -321,6 +321,18 @@ internal static class P7F1V6DirectAgent
     public static readonly string[] RetriableTransport = ["TRANSPORT:STREAM_ERROR", "TRANSPORT:STREAM_INCOMPLETE", "TRANSPORT:RATE_LIMITED_NO_RETRY", "TRANSPORT:SERVER_ERROR_NO_RETRY", "TRANSPORT:TRANSPORT_ERROR"];
 
     /// <summary>The message sent with a repair turn: the refusal code and what a valid answer needs. It names no line and no decision.</summary>
+    /// <summary>The most missing aliases a repair message names; the rest are counted.</summary>
+    public const int MaxMissingNamed = 40;
+
+    /// <summary>The repair message with the parser's list of targets that got no decision, when there is one (COVERAGE_INCOMPLETE). The list
+    /// comes from the parser; the message names aliases only, never a decision.</summary>
+    public static string RepairMessage(string failure, IReadOnlyList<string>? missing) =>
+        missing is { Count: > 0 } && failure == "PROTOCOL:COVERAGE_INCOMPLETE"
+            ? "Your answer was refused (" + failure + "): missing decisions for: " + string.Join(", ", missing.Take(MaxMissingNamed))
+              + (missing.Count > MaxMissingNamed ? " and " + (missing.Count - MaxMissingNamed) + " more" : "")
+              + ". Every alias from targetFirstAlias to targetLastAlias needs its own decision, and each segment of a visual line (aliases that differ only by :S0, :S1, :S2 and so on) is a separate target. Send the complete answer again as exactly one JSON object, with one decision for every target."
+            : RepairMessage(failure);
+
     public static string RepairMessage(string failure) => failure switch
     {
         "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED" => "Your answer was refused (" + failure + "): the facts were not read. Call get_line_facts now for the targets (from targetFirstAlias to targetLastAlias; one call covers at most 24 lines), then send the answer.",
@@ -388,13 +400,13 @@ internal static class P7F1V6DirectAgent
         }
 
         // A repair (at most one) may need two more posts: a tool round when the facts were not read, then the answer.
-        bool TryRepair(string failure)
+        bool TryRepair(string failure, IReadOnlyList<string>? missing = null)
         {
             if (!repairTurn || repairedFrom is not null) return false;
             repairedFrom = failure;
             if (failure == "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED") { forcedChoices.Enqueue("auto"); forcedChoices.Enqueue("none"); }
             else forcedChoices.Enqueue("none");
-            history.Add(new JsonObject { ["role"] = "user", ["content"] = RepairMessage(failure) });
+            history.Add(new JsonObject { ["role"] = "user", ["content"] = RepairMessage(failure, missing) });
             return true;
         }
 
@@ -521,7 +533,7 @@ internal static class P7F1V6DirectAgent
             if (!parsed.Ok)
             {
                 history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
-                if (TryRepair("PROTOCOL:" + parsed.Failure)) continue;
+                if (TryRepair("PROTOCOL:" + parsed.Failure, parsed.Missing)) continue;
                 history.RemoveAt(history.Count - 1);
                 budget.NoteContract(false);
                 return Done("FAILED", "PROTOCOL:" + parsed.Failure);

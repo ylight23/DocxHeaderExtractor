@@ -1072,4 +1072,30 @@ public sealed class P7F1V6StableRunTests
         Assert.Contains("must be a string", A.RepairMessage("PROTOCOL:ANALYSIS_INVALID"));
         Assert.Contains("Shorten analysis", A.RepairMessage("PROTOCOL:REPLY_OVER_CAP"));
     }
+
+    [Fact]
+    public void Repair_CoverageIncomplete_NamesTheMissingAliases_AndSaysEverySegmentIsATarget()
+    {
+        var msg = A.RepairMessage("PROTOCOL:COVERAGE_INCOMPLETE", new[] { "L0430:S1", "L0430:S2", "L0431:S1" });
+        Assert.Contains("missing decisions for: L0430:S1, L0430:S2, L0431:S1.", msg);
+        Assert.Contains("each segment of a visual line", msg);
+        // Long lists are cut and counted; other failures keep their message.
+        var many = Enumerable.Range(1, A.MaxMissingNamed + 5).Select(i => $"L{i:0000}:S0").ToArray();
+        Assert.Contains("and 5 more", A.RepairMessage("PROTOCOL:COVERAGE_INCOMPLETE", many));
+        Assert.Equal(A.RepairMessage("PROTOCOL:REPLY_NOT_JSON"), A.RepairMessage("PROTOCOL:REPLY_NOT_JSON", new[] { "L1:S0" }));
+        Assert.Equal(A.RepairMessage("PROTOCOL:COVERAGE_INCOMPLETE"), A.RepairMessage("PROTOCOL:COVERAGE_INCOMPLETE", null));
+
+        // In the loop: an answer that leaves out the last target gets a repair message naming exactly that alias.
+        string? missingAlias = null;
+        var (o, bodies, _) = RunV3((body, turn, n) =>
+        {
+            if (n == 1) return FactsTurn(body);
+            var t = TargetsOf(body);
+            missingAlias = t[^1];
+            return n == 2 ? new A.ModelTurn(WithAnalysis(t.Take(t.Count - 1).ToArray(), "x"), Array.Empty<A.ToolCall>(), "stop") : Answer(body);
+        }, repair: true, retries: 0);
+        Assert.Equal("COMPLETE", o.Unit.Status);
+        Assert.Equal("PROTOCOL:COVERAGE_INCOMPLETE", o.RepairedFrom);
+        Assert.Contains("missing decisions for: " + missingAlias + ".", bodies[2]);
+    }
 }
