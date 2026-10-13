@@ -24,7 +24,11 @@ internal sealed class P7F1V6Universe
         LayoutBlocks = layoutBlocks;
         Segmentation = segmentation;
         Cores = CoresOf(lines, layoutBlocks, segmentation);
+        LayoutFacts = P7F1V6LayoutFacts.Compute(tools.AllLines, layoutBlocks);
     }
+
+    /// <summary>Geometry measurements of every line (D4.12), by alias. Used only by the arms that state them.</summary>
+    public IReadOnlyDictionary<string, System.Text.Json.Nodes.JsonObject> LayoutFacts { get; }
 
     /// <summary>The parser's layout block of each line, parallel to <see cref="Lines"/>.</summary>
     public IReadOnlyList<string> LayoutBlocks { get; }

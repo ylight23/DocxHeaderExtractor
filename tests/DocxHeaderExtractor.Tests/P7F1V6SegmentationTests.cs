@@ -97,4 +97,52 @@ public sealed class P7F1V6SegmentationTests
         Assert.Equal(P7F1V6DirectAgent.Build("S", "{}", body, "none").Body, P7F1V6DirectAgent.Build("S", "{}", body, "none", jsonObjectAllTurns: true).Body);
         Assert.Equal("json_object", none.GetProperty("response_format").GetProperty("type").GetString());
     }
+
+    // ---- D4.12 layout facts ----
+
+    [Fact]
+    public void LayoutFacts_CoverEveryLine_AreMeasurementsOnly_AndNameNoKindOfLine()
+    {
+        var u = Universe("07_system_generated", "095_RFC9114_HTTP_3.pdf");
+        Assert.Equal(u.Lines.Count, u.LayoutFacts.Count);
+        foreach (var l in u.Lines)
+        {
+            var f = u.LayoutFacts[l.Alias];
+            Assert.Subset(new HashSet<string> { "alias", "block", "segments", "leftEdgeSharedBy" }, f.Select(kv => kv.Key).ToHashSet());
+            Assert.True(f.ContainsKey("block") && f.ContainsKey("segments"));
+            Assert.InRange((int)f["block"]!["place"]!, 1, (int)f["block"]!["lines"]!);
+            Assert.InRange((int)f["segments"]!["index"]!, 1, (int)f["segments"]!["count"]!);
+        }
+        var text = string.Join(" ", u.LayoutFacts.Values.Select(v => v.ToJsonString()));
+        var sentence = P7F1V6DirectAgent.GeometryPromptRange.Split((char)10).First(x => x.StartsWith("Layout facts"));
+        foreach (var banned in new[] { "table", "heading", "header", "footer", "title", "column", "cell" })
+            Assert.DoesNotContain(banned, text + P7F1V6LayoutFacts.Description + sentence, StringComparison.OrdinalIgnoreCase);
+        // The block numbers are the reading-order ordinals of the parser's block ids, and the sizes add up to the line count.
+        var blocks = u.Lines.Select((l, i) => (int)u.LayoutFacts[l.Alias]["block"]!["number"]!).Distinct().Count();
+        Assert.Equal(u.LayoutBlocks.Distinct().Count(), blocks);
+    }
+
+    [Fact]
+    public void GeometryArm_AddsLayoutFacts_ToPrefetchObservations_AndLeavesTheOtherArmsUnchanged()
+    {
+        var u = Universe("07_system_generated", "095_RFC9114_HTTP_3.pdf");
+        var control = P7F1V6DirectRepeatCanary.FirstRequest(P7F1V6DirectAgent.Arm.Auto, u, "SEG-001");
+        var prefetch = P7F1V6DirectRepeatCanary.FirstRequest(P7F1V6DirectAgent.Arm.Prefetch, u, "SEG-001");
+        var geometry = P7F1V6DirectRepeatCanary.FirstRequest(P7F1V6DirectAgent.Arm.Geometry, u, "SEG-001");
+        Assert.DoesNotContain("layoutFacts", control.Body);
+        Assert.DoesNotContain("layoutFacts", prefetch.Body);
+        Assert.Contains("layoutFacts", geometry.Body);
+        // The earlier arms' prompts and payloads are what they were.
+        Assert.Equal(P7F1V6DirectAgent.AutoPromptRangeSha256, P7F1V6DirectAgent.Sha(P7F1V6DirectAgent.AutoPromptRange));
+        Assert.Equal(P7F1V6DirectAgent.PrefetchPromptRangeSha256, P7F1V6DirectAgent.Sha(P7F1V6DirectAgent.PrefetchPromptRange));
+        Assert.Contains("Layout facts:", P7F1V6DirectAgent.GeometryPromptRange);
+        Assert.DoesNotContain("Layout facts:", P7F1V6DirectAgent.PrefetchPromptRange);
+        // Every shown line has facts, and none are about lines that are not shown.
+        using var body = System.Text.Json.JsonDocument.Parse(geometry.Body);
+        using var payload = System.Text.Json.JsonDocument.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        var shown = payload.RootElement.GetProperty("targets").EnumerateArray().Concat(payload.RootElement.GetProperty("context").EnumerateArray())
+            .Select(x => x.GetProperty("alias").GetString()).ToList();
+        var facts = payload.RootElement.GetProperty("observations").GetProperty("layoutFacts").GetProperty("lines").EnumerateArray().Select(x => x.GetProperty("alias").GetString()).ToList();
+        Assert.Equal(shown.OrderBy(x => x, StringComparer.Ordinal), facts.OrderBy(x => x, StringComparer.Ordinal));
+    }
 }

@@ -32,20 +32,25 @@ internal static class P7F1V6DirectOwnerTrial
         (P7F1V6Universe.RebuildOwnerSupplied(documentPath, fileSha256, null, out var why) ?? throw new InvalidOperationException(why)).WithSegmentation(segmentation);
 
     /// <summary>The segmentation a plan pins; a plan without the field is the original fixed 48-line cut.</summary>
+    public static (string Arm, A.Arm Mode)[] ArmsOf(bool geometry) => geometry ? C.ArmsWithGeometry : C.Arms;
+
+    public static bool GeometryArmOf(JsonElement plan) => plan.TryGetProperty("geometryArm", out var v) && v.ValueKind == JsonValueKind.String;
+
     public static bool JsonAllTurnsOf(JsonElement plan) => plan.TryGetProperty("responseFormatTurns", out var v) && v.ValueKind == JsonValueKind.String;
 
     public static string SegmentationOf(JsonElement plan) =>
         plan.TryGetProperty("segmentation", out var s) && s.ValueKind == JsonValueKind.Object ? s.GetProperty("policy").GetString()! : P7F1V6Universe.FixedSegmentation;
 
-    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit, string segmentation = P7F1V6Universe.FixedSegmentation, bool jsonObjectAllTurns = false)
+    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit, string segmentation = P7F1V6Universe.FixedSegmentation, bool jsonObjectAllTurns = false, bool geometryArm = false)
     {
         var fileSha = Sha256Of(documentPath);
         var u = Load(documentPath, fileSha, segmentation);
         var segs = SegmentsOf(u);
         var picks = segs.Select(s => new C.Pick(s, "ALL: every segment of the document", new C.SegStat(s, 0, 0, 0, 0, 0, 0))).ToArray();
-        var ceilings = C.Arms.ToDictionary(a => a.Arm, a => C.CeilingUsd(u, picks, a.Mode, jsonObjectAllTurns));
+        var armSet = ArmsOf(geometryArm);
+        var ceilings = armSet.ToDictionary(a => a.Arm, a => C.CeilingUsd(u, picks, a.Mode, jsonObjectAllTurns));
         var worst = P7F1V6Direct.AttemptUsd(C.MaxRequestBytes);
-        var arms = C.Arms.Select(a =>
+        var arms = armSet.Select(a =>
         {
             var first = segs.Select(s => C.FirstRequest(a.Mode, u, s, jsonObjectAllTurns)).ToList();
             return new
@@ -121,7 +126,7 @@ internal static class P7F1V6DirectOwnerTrial
                 requestTemplateSha256 = template.Sha256,
                 toolDefinitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(),
                 promptSha256 = new { control = A.AutoPromptRangeSha256, prefetch = A.PrefetchPromptRangeSha256 },
-                firstRequestsSha256 = P7F1V6Protocol.Sha(string.Join("\n", C.Arms.SelectMany(a => segs.Select(sg => C.FirstRequest(a.Mode, u, sg, jsonObjectAllTurns).Sha256)))),
+                firstRequestsSha256 = P7F1V6Protocol.Sha(string.Join("\n", armSet.SelectMany(a => segs.Select(sg => C.FirstRequest(a.Mode, u, sg, jsonObjectAllTurns).Sha256)))),
             },
             ["tools"] = new { version = P7F1V6AgentTools.Version, definitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(), names = P7F1V6AgentTools.Names,
                 availability = "declared in both arms, optional; tool results come from the document lines" },
@@ -133,7 +138,7 @@ internal static class P7F1V6DirectOwnerTrial
             ["retries"] = C.Retries,
             ["budget"] = new
             {
-                maxCalls = C.PostsPerArm(picks) * C.Arms.Length, ceilingUsd = Math.Round(ceilings.Values.Sum(), 2), maxRequestBytes = C.MaxRequestBytes,
+                maxCalls = C.PostsPerArm(picks) * armSet.Length, ceilingUsd = Math.Round(ceilings.Values.Sum(), 2), maxRequestBytes = C.MaxRequestBytes,
                 perArm = $"{C.PostsPerArm(picks)} posts: {C.Units(picks)} first posts ({segs.Count} segments x {C.Reps} repetitions) and {C.PostsPerArm(picks) - C.Units(picks)} for tool turns",
                 ceilingIs = "derived as in the repeat canary: the reserve of every planned first request, repetitions included, plus the spare posts at the worst case, plus 10%; a bound on the reserve, not the expected spend",
             },
@@ -153,6 +158,8 @@ internal static class P7F1V6DirectOwnerTrial
             ["rawPublication"] = "None. Requests (which hold the document text), raw responses, reasoning and the analysis stay in the safe store outside the repository. Only a receipt without any line text is committed.",
             ["liveAuthorization"] = new { required = true, artifact = P7F1V6DirectAuthorization.Artifact, status = P7F1V6DirectAuthorization.Approved, campaigns = 1 },
         };
+        if (geometryArm)
+            plan["geometryArm"] = "a third arm, GEOMETRY: PREFETCH plus observations.layoutFacts (" + P7F1V6LayoutFacts.Version + "), the program's measurements of each shown line's layout block, segments on its visual line and shared left edge; no label, no text reading";
         if (jsonObjectAllTurns)
             plan["responseFormatTurns"] = "json_object on EVERY turn, including the turns where Qwen may call a tool (tool_choice auto). Reason: with no response_format on those turns Qwen wrapped the whole answer in a markdown fence in 3 of 3 first answers of the D4.11j layout CONTROL arm (REPLY_NOT_JSON, halted by the early-stop rule). The strict parser is unchanged and still refuses any fence or prose.";
         if (segmentation != P7F1V6Universe.FixedSegmentation)
@@ -181,7 +188,7 @@ internal static class P7F1V6DirectOwnerTrial
         var planCommit = doc.RootElement.GetProperty("codeCommit").GetString();
         if (planCommit != currentCommit) failures.Add("CODE_COMMIT_DIFFERS");
         if (doc.RootElement.GetProperty("sourceSha256").GetString() != Sha256Of(documentPath)) { failures.Add("OWNER_DOCUMENT_SHA_DIFFERS"); return failures; }
-        if (!Serialize(PinnedValues(documentPath, planCommit ?? "", SegmentationOf(doc.RootElement), JsonAllTurnsOf(doc.RootElement))).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
+        if (!Serialize(PinnedValues(documentPath, planCommit ?? "", SegmentationOf(doc.RootElement), JsonAllTurnsOf(doc.RootElement), GeometryArmOf(doc.RootElement))).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
         return failures;
     }
 
@@ -208,11 +215,12 @@ internal static class P7F1V6DirectOwnerTrial
         var ceilings = plan.RootElement.GetProperty("arms").EnumerateArray().ToDictionary(a => a.GetProperty("arm").GetString()!, a => a.GetProperty("budget").GetProperty("ceilingUsd").GetDouble());
         var posts = plan.RootElement.GetProperty("arms")[0].GetProperty("budget").GetProperty("maxCalls").GetInt32();
         var u = Load(documentPath, plan.RootElement.GetProperty("sourceSha256").GetString()!, SegmentationOf(plan.RootElement));
-        var budgets = C.Arms.ToDictionary(a => a.Arm, a => new P7F1V6DirectV2.Budget(posts, ceilings[a.Arm], C.MaxRequestBytes));
-        var stores = C.Arms.ToDictionary(a => a.Arm, _ => P7F1V6SafeRawStore.CreateRun(safeRoot));
-        var models = C.Arms.ToDictionary(a => a.Arm, a => new P7F1V6AgentAuditedModel(new P7F1V6DirectAuditedModel(
+        var armSet = ArmsOf(GeometryArmOf(plan.RootElement));
+        var budgets = armSet.ToDictionary(a => a.Arm, a => new P7F1V6DirectV2.Budget(posts, ceilings[a.Arm], C.MaxRequestBytes));
+        var stores = armSet.ToDictionary(a => a.Arm, _ => P7F1V6SafeRawStore.CreateRun(safeRoot));
+        var models = armSet.ToDictionary(a => a.Arm, a => new P7F1V6AgentAuditedModel(new P7F1V6DirectAuditedModel(
             new P7F1V6OpenRouterTransport(handler, TimeSpan.FromSeconds(300)), apiKey, stores[a.Arm], budgets[a.Arm])));
-        var state = C.RunArms(u, segments, models.ToDictionary(kv => kv.Key, kv => (A.AgentModel)kv.Value.Turn), budgets, JsonAllTurnsOf(plan.RootElement));
+        var state = C.RunArms(u, segments, models.ToDictionary(kv => kv.Key, kv => (A.AgentModel)kv.Value.Turn), budgets, JsonAllTurnsOf(plan.RootElement), armSet);
         return state.Select(s => new C.ArmResult(s.Arm, s.Units, models[s.Arm].Ledger, s.Budget.Calls, s.Budget.ReservedUsd, s.Budget.ActualUsd,
             s.Budget.HaltReason, s.Budget.Refusals.ToArray(), stores[s.Arm].RunDirectory)).ToList();
     }

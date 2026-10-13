@@ -357,6 +357,7 @@ internal sealed class P7F1QEvidenceTools
     internal object RelationOf(F1QSourceLine target, F1QSourceLine other) => Relation(target, other);
     internal static double? FontSizeOf(JsonElement? t) => FontSize(t);
     internal static double? LeftEdgeOf(JsonElement? bbox) => Box(bbox)?.Left;
+    internal static double? RightEdgeOf(JsonElement? bbox) => Box(bbox)?.Right;
 
     internal static double? Bold(JsonElement? t) =>
         t is { ValueKind: JsonValueKind.Object } v && v.TryGetProperty("boldRatio", out var s) && s.ValueKind == JsonValueKind.Number ? s.GetDouble() : null;

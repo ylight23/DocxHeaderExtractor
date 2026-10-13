@@ -30,6 +30,8 @@ internal static class P7F1V6DirectRepeatCanary
     };
 
     public static readonly (string Arm, A.Arm Mode)[] Arms = { ("CONTROL", A.Arm.Auto), ("PREFETCH", A.Arm.Prefetch) };
+    /// <summary>D4.12: the two arms plus GEOMETRY (PREFETCH and the layout facts of every shown line).</summary>
+    public static readonly (string Arm, A.Arm Mode)[] ArmsWithGeometry = { ("CONTROL", A.Arm.Auto), ("PREFETCH", A.Arm.Prefetch), ("GEOMETRY", A.Arm.Geometry) };
     public const int Reps = 5;
     public const int MaxRequestBytes = 131072;
     public const int Retries = 0;
@@ -102,7 +104,7 @@ internal static class P7F1V6DirectRepeatCanary
     {
         var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, segment);
         var (payload, _) = A.FirstPayload(mode, P7F1V6DirectD45.Instruction, u.SourceSha256, segment, decide, ctx.Select(i => u.Lines[i]).ToArray(),
-            new P7F1V6AgentTools(u.Tools), rangeStated: true);
+            new P7F1V6AgentTools(u.Tools, u.LayoutFacts), rangeStated: true);
         return A.Build(A.Prompt(mode, rangeStated: true), payload, new System.Text.Json.Nodes.JsonArray(), "auto", jsonObjectAllTurns);
     }
 
@@ -294,9 +296,10 @@ internal static class P7F1V6DirectRepeatCanary
     /// <summary>All repetitions, segments and arms, interleaved: per repetition, per segment, CONTROL then PREFETCH. The ledger unit id carries the
     /// repetition ("SEG-031#r2"); the request payload does not.</summary>
     public static IReadOnlyList<(string Arm, List<RepUnit> Units, P7F1V6DirectV2.Budget Budget)> RunArms(
-        P7F1V6Universe u, IReadOnlyList<string> segments, IReadOnlyDictionary<string, A.AgentModel> modelPerArm, IReadOnlyDictionary<string, P7F1V6DirectV2.Budget> budgetPerArm, bool jsonObjectAllTurns = false)
+        P7F1V6Universe u, IReadOnlyList<string> segments, IReadOnlyDictionary<string, A.AgentModel> modelPerArm, IReadOnlyDictionary<string, P7F1V6DirectV2.Budget> budgetPerArm, bool jsonObjectAllTurns = false,
+        (string Arm, A.Arm Mode)[]? arms = null)
     {
-        var state = Arms.Select(a => (a.Arm, a.Mode, Units: new List<RepUnit>(), Budget: budgetPerArm[a.Arm])).ToList();
+        var state = (arms ?? Arms).Select(a => (a.Arm, a.Mode, Units: new List<RepUnit>(), Budget: budgetPerArm[a.Arm])).ToList();
         for (int rep = 1; rep <= Reps; rep++)
             foreach (var segment in segments)
             {

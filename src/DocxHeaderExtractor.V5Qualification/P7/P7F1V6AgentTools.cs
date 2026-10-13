@@ -86,9 +86,10 @@ internal sealed class P7F1V6AgentTools
     /// size does not depend on it (D4.11b).</summary>
     static string? Registered(string? name) => name is not null && Names.Contains(name, StringComparer.Ordinal) ? name : null;
 
-    public P7F1V6AgentTools(P7F1QEvidenceTools source)
+    public P7F1V6AgentTools(P7F1QEvidenceTools source, IReadOnlyDictionary<string, JsonObject>? layoutFacts = null)
     {
         this.source = source;
+        this.layoutFacts = layoutFacts;
         lines = source.AllLines;
         for (int i = 0; i < lines.Count; i++) index[lines[i].Alias] = i;
         repeatIndex = Enumerable.Range(0, lines.Count).ToLookup(i => P7F1QEvidenceTools.RepeatKey(lines[i].Text), StringComparer.Ordinal);
@@ -463,6 +464,20 @@ internal sealed class P7F1V6AgentTools
     /// other occurrence is only counted. If the list would exceed the byte cap it is first cut to one occurrence per target and then by whole
     /// targets from the end, and the result says so (complete false, omittedTargets).
     /// </summary>
+    readonly IReadOnlyDictionary<string, JsonObject>? layoutFacts;
+
+    /// <summary>D4.12: the layout facts of the lines a request shows, in the order shown. Needs the facts the universe computed.</summary>
+    public JsonObject LayoutFactsOf(IReadOnlyList<string> shownAliases)
+    {
+        if (layoutFacts is null) throw new InvalidOperationException("LAYOUT_FACTS_NOT_PROVIDED");
+        return new JsonObject
+        {
+            ["readBy"] = "the program, from the parser's geometry: " + P7F1V6LayoutFacts.Description,
+            ["version"] = P7F1V6LayoutFacts.Version,
+            ["lines"] = new JsonArray(shownAliases.Select(a => (JsonNode)layoutFacts[a].DeepClone()).ToArray()),
+        };
+    }
+
     public PrefetchResult Prefetch(IReadOnlyList<string> targets)
     {
         var listed = new List<(int At, int[] Others)>();

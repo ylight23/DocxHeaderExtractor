@@ -648,10 +648,10 @@ switch (args[0])
         break;
     case "d411j-plan":
         // Issue #9 D4.11j (offline): d411j-plan <repo-root> <artifact-dir> <document.pdf>. Pinned owner-document trial plan and a scripted dry-run. No network call; no line text is written.
-        if (args.Length is < 4 or > 6) throw new ArgumentException("d411j-plan <repo-root> <artifact-dir> <document.pdf> [fixed|layout|layout96] [jsonall]");
+        if (args.Length is < 4 or > 7) throw new ArgumentException("d411j-plan <repo-root> <artifact-dir> <document.pdf> [fixed|layout|layout96] [jsonall]");
         D411jPlan.Plan(args[1], args[2], args[3],
             args.Length >= 5 ? args[4] switch { "layout" => P7F1V6Universe.LayoutSegmentation, "layout96" => P7F1V6Universe.LayoutSegmentation96, "fixed" => P7F1V6Universe.FixedSegmentation, _ => throw new ArgumentException("segmentation") } : P7F1V6Universe.FixedSegmentation,
-            args.Length == 6 && args[5] == "jsonall");
+            args.Length >= 6 && args[5] == "jsonall", args.Length == 7 && args[6] == "geometry");
         break;
     case "d411j-run":
         // Issue #9 D4.11j: d411j-run <repo-root> <plan> <confirmed-plan-sha> <authorization> <safe-root> <document.pdf>. Sends requests; needs an APPROVED authorization.
