@@ -1,0 +1,132 @@
+{
+  "artifact": "p7.f1.v6.d4.11j-owner-document-trial-dryrun.v1",
+  "authority": "OWNER-DOC-08f459b8",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-08f459b8.layout.json.geo.unwrap.single.facts.r1.first12.en.v1.json",
+  "planSha256": "7d6a9a2585605148311f74068d31c610ef3e9aab30c1b75518d4ebac39538eb1",
+  "planVerifiesNow": true,
+  "codeCommit": "f54c5f4861a748f8e0ce8773d712c06490431bb5",
+  "firstRequests": [
+    {
+      "arm": "FACTS",
+      "segment": "SEG-000",
+      "sha256": "55140b721efa0c601a5f64e2d14cca2eb7a954b0e1a8b5bbf589d2d23369cfda",
+      "bytes": 37392,
+      "reserveUsd": 0.016846
+    },
+    {
+      "arm": "FACTS",
+      "segment": "SEG-001",
+      "sha256": "ea2670c1d3791e19661bedd67e7bc21e8025b6fbcb28092405e9d2f7f6edf644",
+      "bytes": 46869,
+      "reserveUsd": 0.017794
+    },
+    {
+      "arm": "FACTS",
+      "segment": "SEG-002",
+      "sha256": "036a03b74610ac3e9e7accc0deaa8debf14b084336c3d06e29f948543eca9887",
+      "bytes": 46826,
+      "reserveUsd": 0.01779
+    },
+    {
+      "arm": "FACTS",
+      "segment": "SEG-003",
+      "sha256": "7410f03103eb6b38d8e5c5a399fe0ec50b6ac84c691a8384a9a9afb0b0ee2611",
+      "bytes": 48956,
+      "reserveUsd": 0.018003
+    },
+    {
+      "arm": "FACTS",
+      "segment": "SEG-004",
+      "sha256": "259c17803045dbaa5594debd9a19d6a4c2f55962220e44bbc46386c315f51a33",
+      "bytes": 48165,
+      "reserveUsd": 0.017924
+    },
+    {
+      "arm": "FACTS",
+      "segment": "SEG-005",
+      "sha256": "5225403494b0a4dcead000946bfe417591d0f25cf24a4d63f2412cbbe7ce6b44",
+      "bytes": 60442,
+      "reserveUsd": 0.019151
+    },
+    {
+      "arm": "FACTS",
+      "segment": "SEG-006",
+      "sha256": "fd5cae9b69d11b5802a78c06ac18cdcdaf5b9616ce457dfd3b62eebac1479dab",
+      "bytes": 57723,
+      "reserveUsd": 0.01888
+    },
+    {
+      "arm": "FACTS",
+      "segment": "SEG-007",
+      "sha256": "d10e2a0c07b225f18e49d1a6f392cc8df31feb2f62735ca62dc7e1fd1229f0d5",
+      "bytes": 73901,
+      "reserveUsd": 0.020497
+    },
+    {
+      "arm": "FACTS",
+      "segment": "SEG-008",
+      "sha256": "05bf75eaf2458673b1939e250cd9b802e5bc3da7bffe6b124f99cbc8c838f014",
+      "bytes": 59848,
+      "reserveUsd": 0.019092
+    },
+    {
+      "arm": "FACTS",
+      "segment": "SEG-009",
+      "sha256": "e4203371a7571aeb03e5ebf0a202fc72f03281f1e3edeb7c7edf9655024d2e7b",
+      "bytes": 50302,
+      "reserveUsd": 0.018137
+    },
+    {
+      "arm": "FACTS",
+      "segment": "SEG-010",
+      "sha256": "d627fdc798f8bcd44b0722fd80fbdde22c8f0b7546f125416c46b538a5ec40d6",
+      "bytes": 55132,
+      "reserveUsd": 0.01862
+    },
+    {
+      "arm": "FACTS",
+      "segment": "SEG-011",
+      "sha256": "06aa76fb931e0b227233b2c93290bceab02774973b5446fc4cedcbd4b53c25b1",
+      "bytes": 53323,
+      "reserveUsd": 0.018439
+    }
+  ],
+  "simulations": [
+    {
+      "simulation": "ANSWER_WITHOUT_TOOLS",
+      "arms": [
+        {
+          "arm": "FACTS",
+          "posts": 12,
+          "reservedUsd": 0.2212,
+          "ceilingUsd": 0.33,
+          "halt": null,
+          "units": 12,
+          "complete": 12,
+          "stoppedByBudget": 0,
+          "maxRequestBytes": 73901
+        }
+      ]
+    },
+    {
+      "simulation": "TOOL_CALL_ON_EVERY_TURN (an overview each of 3 turns, then answer)",
+      "arms": [
+        {
+          "arm": "FACTS",
+          "posts": 15,
+          "reservedUsd": 0.3014,
+          "ceilingUsd": 0.33,
+          "halt": null,
+          "units": 12,
+          "complete": 3,
+          "stoppedByBudget": 9,
+          "maxRequestBytes": 100703
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; no provider call; no line text is written to this report."
+  ]
+}

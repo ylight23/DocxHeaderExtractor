@@ -1,0 +1,43 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "APPROVED",
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-6d3cd46d.layout.json.geo.unwrap.single.facts.r1.first12.en.v1.json",
+  "planSha256": "bd7eca1ffef4b7df6c6b2b9f772a82d29c736ce6f714f913e1ed45e64b0f1f2d",
+  "codeCommit": "f54c5f4861a748f8e0ce8773d712c06490431bb5",
+  "authorityId": "OWNER-DOC-6d3cd46d",
+  "document": "owner-supplied (outside the repository): 053_IDA_Information_Statement_FY25.pdf",
+  "sourceSha256": "6d3cd46d6297031fd3fd4c2afd066f8d947f18d55ef1418a185e5ef9e0a344da",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 15,
+  "ceilingUsd": 0.35,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D411j-OWNER-DOC",
+  "dataSharing": {
+    "documentPublicity": "A document of the repository's public heading corpus (todo10_8/heading_corpus_100), whose README states the files are real documents downloaded from public sources (053_IDA_Information_Statement_FY25.pdf); the origin is not independently verified here. Text is sent as it is. Requests, raw responses and the analysis stay in the safe store and are not committed or pushed.",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "allow",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ]
+  },
+  "approvedBy": "ylight23 (session user of the repository owner account)",
+  "approvedAtUtc": "2026-10-13T08:39:54.0585879Z",
+  "approvalText": "Owner message 2026-10-13: 'T MUỐN YÊU CẦU TRÍCH XUẤT TẤT CẢ HEADING VÀ DÙNG BẰNG TIẾNG ANH, CHẠY LẠI REQUEST TRÊN VỚI 3 TÀI LIỆU' (instruction: Extract all headings, in English; same request on the three documents). Public-corpus document, FACTS arm, one segment per page, json_object on every turn, single-fence unwrap, 1 repetition. Data policy as the owner's explicit approvals of 2026-10-13 (ZDR=false, waiver unverified, OpenRouter logging unknown, data_collection=allow, raw stays in the safe store). Plan bd7eca1ffef4b7df6c6b2b9f772a82d29c736ce6f714f913e1ed45e64b0f1f2d.",
+  "approvalSha256": "68eeea3da8f0175f86cbc5f4cf336f538fc7dce56517ea72b9947dd344719513"
+}
