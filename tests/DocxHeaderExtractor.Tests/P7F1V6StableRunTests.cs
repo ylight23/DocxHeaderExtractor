@@ -916,4 +916,131 @@ public sealed class P7F1V6StableRunTests
         }
         finally { File.Delete(file); }
     }
+
+    // ---- D4.12m: transport retry and one repair turn ----
+
+    static string FactsCall(string body) =>
+        "{\"first\":\"" + TargetRange(body, "targetFirstAlias") + "\",\"last\":\"" + TargetRange(body, "targetLastAlias") + "\",\"offset\":0}";
+
+    static (A.AgentUnitOutcome Outcome, List<string> Bodies, P7F1V6DirectV2.Budget Budget) RunV3(Func<string, int, int, A.ModelTurn> reply, bool repair, int retries)
+    {
+        var u = Universe().WithFactsVersion(3);
+        var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, "SEG-001");
+        var bodies = new List<string>();
+        var n = 0;
+        A.AgentModel model = (unit, turn, req) => { bodies.Add(req.Body); n++; return reply(req.Body, turn, n); };
+        var budget = new P7F1V6DirectV2.Budget(20, 5, C.MaxRequestBytes);
+        var o = A.RunUnit(A.Arm.ToolFactsAnalysisV3, P7F1V6DirectD45.InstructionEnglishMainPlain, u, "SEG-001", decide, ctx, model, budget,
+            rangeStated: true, jsonObjectAllTurns: true, transportRetries: retries, repairTurn: repair, retryDelayMs: 0);
+        return (o, bodies, budget);
+    }
+
+    static A.ModelTurn FactsTurn(string body) => new(null, new[] { new A.ToolCall("f" + Guid.NewGuid().ToString("N")[..6], P7F1V6AgentTools.LineFacts, FactsCall(body)) }, "tool_calls");
+    static A.ModelTurn Answer(string body) => new(WithAnalysis(TargetsOf(body), "ok"), Array.Empty<A.ToolCall>(), "stop");
+
+    [Fact]
+    public void Repair_AProseAnswer_IsSentBackOnceWithTheRefusal_AndTheCorrectedAnswerIsAccepted()
+    {
+        var (o, bodies, _) = RunV3((body, turn, n) => n == 1 ? FactsTurn(body)
+            : n == 2 ? new A.ModelTurn("Here is my analysis.\n" + WithAnalysis(TargetsOf(body), "x"), Array.Empty<A.ToolCall>(), "stop")
+            : Answer(body), repair: true, retries: 0);
+        Assert.Equal("COMPLETE", o.Unit.Status);
+        Assert.Equal("PROTOCOL:REPLY_NOT_JSON", o.RepairedFrom);
+        Assert.Equal(3, bodies.Count);
+        Assert.Contains("Your answer was refused (PROTOCOL:REPLY_NOT_JSON)", bodies[2]);
+        Assert.Contains("Here is my analysis.", bodies[2]);                      // the refused reply is in the conversation, unchanged
+        // Without the flag the same replies fail as before.
+        var (off, offBodies, _) = RunV3((body, turn, n) => n == 1 ? FactsTurn(body)
+            : new A.ModelTurn("Here is my analysis.\n" + WithAnalysis(TargetsOf(body), "x"), Array.Empty<A.ToolCall>(), "stop"), repair: false, retries: 0);
+        Assert.Equal("PROTOCOL:REPLY_NOT_JSON", off.Unit.Failure);
+        Assert.Null(off.RepairedFrom);
+        Assert.Equal(2, offBodies.Count);
+    }
+
+    [Fact]
+    public void Repair_IsUsedAtMostOnce_ASecondRefusalFailsTheUnit_AndIsRecorded()
+    {
+        var (o, bodies, _) = RunV3((body, turn, n) => n == 1 ? FactsTurn(body) : new A.ModelTurn("not json", Array.Empty<A.ToolCall>(), "stop"), repair: true, retries: 0);
+        Assert.Equal("FAILED", o.Unit.Status);
+        Assert.Equal("PROTOCOL:REPLY_NOT_JSON", o.Unit.Failure);
+        Assert.Equal("PROTOCOL:REPLY_NOT_JSON", o.RepairedFrom);
+        Assert.Equal(3, bodies.Count);
+    }
+
+    [Fact]
+    public void Repair_MissingFacts_GetsATurnToCallTheTool_ThenTheAnswer()
+    {
+        var (o, bodies, _) = RunV3((body, turn, n) => n == 1 ? Answer(body) : n == 2 ? FactsTurn(body) : Answer(body), repair: true, retries: 0);
+        Assert.Equal("COMPLETE", o.Unit.Status);
+        Assert.Equal("PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED", o.RepairedFrom);
+        Assert.Equal(3, bodies.Count);
+        Assert.Contains("Call get_line_facts now", bodies[1]);
+        using var last = JsonDocument.Parse(bodies[2]);
+        Assert.Equal("none", last.RootElement.GetProperty("tool_choice").GetString());
+    }
+
+    [Fact]
+    public void Repair_AToolCallAfterTheLastRound_IsAnsweredAsNotRun_ThenTheAnswerIsAsked()
+    {
+        var (o, bodies, _) = RunV3((body, turn, n) => n <= 4 ? FactsTurn(body) : Answer(body), repair: true, retries: 0);
+        Assert.Equal("COMPLETE", o.Unit.Status);
+        Assert.Equal("PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP", o.RepairedFrom);
+        Assert.Equal(5, bodies.Count);
+        Assert.Contains("TOOL_ROUNDS_EXHAUSTED", bodies[4]);
+        Assert.Contains("no tool rounds are left", bodies[4]);
+        using var last = JsonDocument.Parse(bodies[4]);
+        Assert.Equal("none", last.RootElement.GetProperty("tool_choice").GetString());
+    }
+
+    [Fact]
+    public void Repair_EvidenceIdsInsteadOfAliases_AreNamedInTheRepairMessage()
+    {
+        Assert.Contains("never evidence ids such as E1.01", A.RepairMessage("PROTOCOL:EVIDENCE_NOT_SHOWN"));
+        Assert.Contains("for every alias from targetFirstAlias to targetLastAlias", A.RepairMessage("PROTOCOL:COVERAGE_INCOMPLETE"));
+        foreach (var code in new[] { "PROTOCOL:REPLY_NOT_JSON", "PROTOCOL:EVIDENCE_NOT_SHOWN", "PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP", "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED", "PROTOCOL:X" })
+            foreach (var banned in new[] { "heading", "title", "table", "contents" })
+                Assert.DoesNotContain(banned, A.RepairMessage(code), StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void TransportRetry_ResendsTheSameBytesOnAProviderFailure_AdmittedByTheBudget_ButNotABoundaryMismatch()
+    {
+        var (o, bodies, budget) = RunV3((body, turn, n) => n == 1 ? throw new P7F1V6DirectV2.ReplyFailure("TRANSPORT:STREAM_ERROR")
+            : n == 2 ? FactsTurn(body) : Answer(body), repair: false, retries: 1);
+        Assert.Equal("COMPLETE", o.Unit.Status);
+        Assert.Equal(1, o.TransportRetries);
+        Assert.Equal(bodies[0], bodies[1]);                                      // the same bytes again
+        Assert.Equal(3, budget.Calls);
+        var (once, _, _) = RunV3((body, turn, n) => n <= 2 ? throw new P7F1V6DirectV2.ReplyFailure("TRANSPORT:STREAM_ERROR") : Answer(body), repair: false, retries: 1);
+        Assert.Equal("CALL:TRANSPORT:STREAM_ERROR", once.Unit.Failure);           // one retry only
+        var (boundary, b2, _) = RunV3((body, turn, n) => n == 1 ? throw new P7F1V6DirectV2.ReplyFailure("TRANSPORT:BOUNDARY_SHA_MISMATCH") : Answer(body), repair: false, retries: 1);
+        Assert.Equal("CALL:TRANSPORT:BOUNDARY_SHA_MISMATCH", boundary.Unit.Failure);
+        Assert.Single(b2);
+        var (off, _, _) = RunV3((body, turn, n) => n == 1 ? throw new P7F1V6DirectV2.ReplyFailure("TRANSPORT:STREAM_ERROR") : Answer(body), repair: false, retries: 0);
+        Assert.Equal("CALL:TRANSPORT:STREAM_ERROR", off.Unit.Failure);
+    }
+
+    [Fact]
+    public void FailureHandlingPlan_PinsRetriesAndRepair_AddsSpareCalls_AndVerifies()
+    {
+        var rel = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        Dictionary<string, object?> Pinned(int r, bool rep) => T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1,
+            firstSegments: 2, instruction: P7F1V6DirectD45.InstructionEnglishMainPlain, fullToolRounds: true, toolFactsAnalysis: true, factsVersion: 3, hideLayout: true, transportRetries: r, repairTurn: rep);
+        using var a = JsonDocument.Parse(T.Serialize(Pinned(0, false)));
+        var bytes = T.Serialize(Pinned(1, true));
+        using var b = JsonDocument.Parse(bytes);
+        Assert.False(a.RootElement.TryGetProperty("failureHandling", out _));
+        Assert.Equal(1, T.RetriesOf(b.RootElement));
+        Assert.True(T.RepairOf(b.RootElement));
+        Assert.Equal(a.RootElement.GetProperty("arms")[0].GetProperty("budget").GetProperty("maxCalls").GetInt32() + 2 * 3,
+            b.RootElement.GetProperty("arms")[0].GetProperty("budget").GetProperty("maxCalls").GetInt32());     // 2 units, 3 spare calls each
+        var file = Path.Combine(Path.GetTempPath(), "dhx-fix-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, bytes);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
 }

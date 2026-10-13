@@ -309,11 +309,35 @@ internal static class P7F1V6DirectAgent
     public const string RelevanceAuditedOffline = "OFFLINE_AUDIT_AFTER_FREEZE";
 
     public sealed record AgentUnitOutcome(string Arm, P7F1V6DirectV2.UnitOutcome Unit, IReadOnlyList<TurnRecord> Turns,
-        IReadOnlyList<P7F1V6AgentTools.CallRecord> ToolCalls, int SuccessfulToolCalls, ScopeReport Scope, EvidenceReport Evidence, bool FenceUnwrapped = false, string? Analysis = null, IReadOnlyDictionary<string, string>? Reasons = null);
+        IReadOnlyList<P7F1V6AgentTools.CallRecord> ToolCalls, int SuccessfulToolCalls, ScopeReport Scope, EvidenceReport Evidence, bool FenceUnwrapped = false, string? Analysis = null, IReadOnlyDictionary<string, string>? Reasons = null,
+        string? RepairedFrom = null, int TransportRetries = 0);
+
+    // D4.12m. Two fixes the owner asked for in the current contract, both off by default so every earlier plan runs as before.
+    // transportRetries: a call that failed on the provider's side (an SSE error event, a 429, a 5xx, a broken connection) is sent again, at most
+    // that many times, after a pause, and each attempt is admitted by the budget like any POST. A boundary or prepared-hash mismatch is never retried.
+    // repairTurn: when the final answer is refused (parser failure, the facts call missing, a tool call after the last tool round), the
+    // conversation is sent once more with the refused reply and a message naming the refusal and what a valid answer needs. The new answer goes
+    // through the same strict parser; nothing in the refused reply is repaired by the program. At most one repair per unit; the outcome records it.
+    public static readonly string[] RetriableTransport = ["TRANSPORT:STREAM_ERROR", "TRANSPORT:STREAM_INCOMPLETE", "TRANSPORT:RATE_LIMITED_NO_RETRY", "TRANSPORT:SERVER_ERROR_NO_RETRY", "TRANSPORT:TRANSPORT_ERROR"];
+
+    /// <summary>The message sent with a repair turn: the refusal code and what a valid answer needs. It names no line and no decision.</summary>
+    public static string RepairMessage(string failure) => failure switch
+    {
+        "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED" => "Your answer was refused (" + failure + "): the facts were not read. Call get_line_facts now for the targets (from targetFirstAlias to targetLastAlias; one call covers at most 24 lines), then send the answer.",
+        "PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP" => "Your tool calls were not run (" + failure + "): no tool rounds are left. Send the answer now as exactly one JSON object.",
+        "PROTOCOL:EVIDENCE_NOT_SHOWN" => "Your answer was refused (" + failure + "): evidenceRefs must list aliases of lines you saw (in targets, context or tool results), never evidence ids such as E1.01. Send the complete answer again as exactly one JSON object.",
+        "PROTOCOL:COVERAGE_INCOMPLETE" or "PROTOCOL:UNEXPECTED_ALIAS" or "PROTOCOL:ALIAS_LISTED_TWICE" => "Your answer was refused (" + failure + "): give exactly one decision for every alias from targetFirstAlias to targetLastAlias and for no other alias. Send the complete answer again as exactly one JSON object.",
+        "PROTOCOL:REPLY_NOT_JSON" => "Your answer was refused (" + failure + "): the reply must be exactly one JSON object with nothing before or after it; put any explanation in analysis. Send the complete answer again.",
+        _ => "Your answer was refused (" + failure + "). Send the complete answer again as exactly one JSON object that follows the answer format.",
+    };
 
     public static AgentUnitOutcome RunUnit(Arm arm, string instruction, P7F1V6Universe universe, string unitId, IReadOnlyList<string> decide,
-        IEnumerable<int> initialContext, AgentModel model, P7F1V6DirectV2.Budget budget, bool rangeStated = false, bool jsonObjectAllTurns = false, bool unwrapSingleFence = false)
+        IEnumerable<int> initialContext, AgentModel model, P7F1V6DirectV2.Budget budget, bool rangeStated = false, bool jsonObjectAllTurns = false, bool unwrapSingleFence = false,
+        int transportRetries = 0, bool repairTurn = false, int retryDelayMs = 5000)
     {
+        string? repairedFrom = null;
+        int retriesUsed = 0;
+        var forcedChoices = new Queue<string>();
         bool fenceUnwrapped = false;
         var lines = universe.Lines;
         var tools = new P7F1V6AgentTools(universe.Tools, universe.LayoutFacts, factsTool: UsesFactsTool(arm), factsVersion: universe.FactsVersion);
@@ -357,29 +381,55 @@ internal static class P7F1V6DirectAgent
                 RelevanceAuditedOffline, scope.DecisionsCitingToolOnlyLines, tools.CacheHits,
                 prefetch?.Listed ?? 0, prefetch?.Bytes ?? 0, prefetch is null || prefetch.Omitted == 0,
                 refs.Where(kv => kv.Value.Any(observationOnly.Contains)).Select(kv => kv.Key).OrderBy(tools.PositionOf).ToArray());
-            return new AgentUnitOutcome(arm.ToString(), unit, turns, tools.Ledger.ToArray(), okCalls, scope, evidence, fenceUnwrapped, finalAnalysis, finalReasons);
+            return new AgentUnitOutcome(arm.ToString(), unit, turns, tools.Ledger.ToArray(), okCalls, scope, evidence, fenceUnwrapped, finalAnalysis, finalReasons, repairedFrom, retriesUsed);
         }
 
-        for (int turn = 1; turn <= MaxPostsPerUnit; turn++)
+        // A repair (at most one) may need two more posts: a tool round when the facts were not read, then the answer.
+        bool TryRepair(string failure)
         {
-            var toolChoice = turn <= MaxToolTurns ? "auto" : "none";
+            if (!repairTurn || repairedFrom is not null) return false;
+            repairedFrom = failure;
+            if (failure == "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED") { forcedChoices.Enqueue("auto"); forcedChoices.Enqueue("none"); }
+            else forcedChoices.Enqueue("none");
+            history.Add(new JsonObject { ["role"] = "user", ["content"] = RepairMessage(failure) });
+            return true;
+        }
+
+        for (int turn = 1; turn <= MaxPostsPerUnit + (repairedFrom is null ? 0 : 2); turn++)
+        {
+            var toolChoice = forcedChoices.Count > 0 ? forcedChoices.Dequeue() : turn <= MaxToolTurns ? "auto" : "none";
             var req = Build(prompt, payload, history, toolChoice, jsonObjectAllTurns, factsTool: UsesFactsTool(arm));
             var refusal = budget.Admit(req);
             if (refusal is not null) return Done("INCOMPLETE", "BUDGET:" + refusal);
             requests.Add(req);
             calls++;
-            ModelTurn reply;
-            try { reply = model(unitId, turn, req); }
-            catch (P7F1V6DirectV2.ReplyFailure f)
+            ModelTurn reply = null!;
+            var sent = false;
+            while (!sent)
             {
-                if (f.Code.StartsWith("AUDIT:", StringComparison.Ordinal) || f.Code.StartsWith("CONTENT:", StringComparison.Ordinal)) budget.NoteContract(false);
-                turns.Add(new TurnRecord(turn, toolChoice, req.Sha256, req.Bytes, 0, null, false));
-                return Done("FAILED", "CALL:" + f.Code);
-            }
-            catch (Exception e) when (e is not OutOfMemoryException)
-            {
-                turns.Add(new TurnRecord(turn, toolChoice, req.Sha256, req.Bytes, 0, null, false));
-                return Done("FAILED", "MODEL_CALL_FAILED");
+                try { reply = model(unitId, turn, req); sent = true; }
+                catch (P7F1V6DirectV2.ReplyFailure f) when (retriesUsed < transportRetries && RetriableTransport.Contains(f.Code, StringComparer.Ordinal))
+                {
+                    // The provider failed this call: the same bytes are sent again after a pause, admitted by the budget like any POST.
+                    retriesUsed++;
+                    turns.Add(new TurnRecord(turn, toolChoice, req.Sha256, req.Bytes, 0, null, false));
+                    if (retryDelayMs > 0) Thread.Sleep(retryDelayMs);
+                    var again = budget.Admit(req);
+                    if (again is not null) return Done("INCOMPLETE", "BUDGET:" + again);
+                    requests.Add(req);
+                    calls++;
+                }
+                catch (P7F1V6DirectV2.ReplyFailure f)
+                {
+                    if (f.Code.StartsWith("AUDIT:", StringComparison.Ordinal) || f.Code.StartsWith("CONTENT:", StringComparison.Ordinal)) budget.NoteContract(false);
+                    turns.Add(new TurnRecord(turn, toolChoice, req.Sha256, req.Bytes, 0, null, false));
+                    return Done("FAILED", "CALL:" + f.Code);
+                }
+                catch (Exception e) when (e is not OutOfMemoryException)
+                {
+                    turns.Add(new TurnRecord(turn, toolChoice, req.Sha256, req.Bytes, 0, null, false));
+                    return Done("FAILED", "MODEL_CALL_FAILED");
+                }
             }
             turns.Add(new TurnRecord(turn, toolChoice, req.Sha256, req.Bytes, reply.ToolCalls.Count, reply.FinishReason, reply.Content is not null));
             emitted += reply.ToolCalls.Count;
@@ -393,7 +443,21 @@ internal static class P7F1V6DirectAgent
 
             if (reply.ToolCalls.Count > 0)
             {
-                if (toolChoice == "none") { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP"); }
+                if (toolChoice == "none")
+                {
+                    budget.NoteContract(false);
+                    if (!repairTurn || repairedFrom is not null || reply.ToolCalls.Any(c => string.IsNullOrEmpty(c.Id))) return Done("FAILED", "PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP");
+                    // Repair: the calls are answered under their own ids as not run, then the refusal message asks for the answer.
+                    var notRun = new JsonArray(reply.ToolCalls.Select(c => (JsonNode)new JsonObject
+                    {
+                        ["id"] = c.Id, ["type"] = "function", ["function"] = new JsonObject { ["name"] = c.Name ?? "", ["arguments"] = c.Arguments },
+                    }).ToArray());
+                    history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content, ["tool_calls"] = notRun });
+                    foreach (var c in reply.ToolCalls)
+                        history.Add(new JsonObject { ["role"] = "tool", ["tool_call_id"] = c.Id, ["content"] = "{\"status\":\"NOT_RUN\",\"error\":\"TOOL_ROUNDS_EXHAUSTED\"}" });
+                    TryRepair("PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP");
+                    continue;
+                }
                 // Every tool_call_id is Qwen's own: non-empty and unique in the conversation. A missing or repeated id refuses the whole turn
                 // before any tool runs; C# never makes up an id in Qwen's place.
                 var turnIds = new HashSet<string>(StringComparer.Ordinal);
@@ -439,14 +503,27 @@ internal static class P7F1V6DirectAgent
             }
 
             // A reply without tool calls is the final answer.
-            if (UsesFactsTool(arm) && !tools.Ledger.Any(c => c.Tool == P7F1V6AgentTools.LineFacts && c.Status == "OK")) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED"); }
+            if (UsesFactsTool(arm) && !tools.Ledger.Any(c => c.Tool == P7F1V6AgentTools.LineFacts && c.Status == "OK"))
+            {
+                budget.NoteContract(false);
+                history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
+                if (TryRepair("PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED")) continue;
+                history.RemoveAt(history.Count - 1);
+                return Done("FAILED", "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED");
+            }
             if (arm == Arm.EvidenceFirst && okCalls == 0) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED"); }
             var observed = shownAliases.Concat(tools.ObservedAliases).Distinct(StringComparer.Ordinal).ToDictionary(a => a, tools.PositionOf, StringComparer.Ordinal);
             var content = reply.Content ?? "";
             if (unwrapSingleFence && P7F1V6ReplyFence.TryUnwrap(content, out var inner)) { content = inner; fenceUnwrapped = true; }
             var parsed = P7F1V6DirectTwoStage.ParseSelect(P7F1V6DirectTwoStage.SelectFormat.Objects, content, observed, ordered, needsEvidenceAllowed: false, analysisAllowed: AllowsAnalysis(arm));
             budget.NoteContract(parsed.Ok);
-            if (!parsed.Ok) return Done("FAILED", "PROTOCOL:" + parsed.Failure);
+            if (!parsed.Ok)
+            {
+                history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
+                if (TryRepair("PROTOCOL:" + parsed.Failure)) continue;
+                history.RemoveAt(history.Count - 1);
+                return Done("FAILED", "PROTOCOL:" + parsed.Failure);
+            }
             finalRefs = parsed.Refs;
             finalAnalysis = parsed.Analysis;
             finalReasons = parsed.Reasons;
