@@ -26,7 +26,7 @@ internal static class P7F1V6DirectOwnerTrial
     public static string AuthorityIdOf(string fileSha256) => "OWNER-DOC-" + fileSha256[..8];
 
     public static IReadOnlyList<string> SegmentsOf(P7F1V6Universe u) =>
-        Enumerable.Range(0, (u.Lines.Count + P7F1V6DirectCanary410.Unit - 1) / P7F1V6DirectCanary410.Unit).Select(n => $"SEG-{n:000}").ToArray();
+        Enumerable.Range(0, u.Cores.Count).Select(n => $"SEG-{n:000}").ToArray();
 
     public static P7F1V6Universe Load(string documentPath, string fileSha256) =>
         P7F1V6Universe.RebuildOwnerSupplied(documentPath, fileSha256, null, out var why) ?? throw new InvalidOperationException(why);

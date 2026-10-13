@@ -56,9 +56,9 @@ internal static class P7F1V6DirectRepeatCanary
     {
         var tools = new P7F1V6AgentTools(u.Tools);
         var stats = new List<SegStat>();
-        for (int core = 0, n = 0; core < u.Lines.Count; core += P7F1V6DirectCanary410.Unit, n++)
+        for (int n = 0; n < u.Cores.Count; n++)
         {
-            var end = Math.Min(u.Lines.Count, core + P7F1V6DirectCanary410.Unit);
+            var (core, end) = u.Cores[n];
             var decide = Enumerable.Range(core, end - core).Select(i => u.Lines[i].Alias).ToList();
             var pf = tools.Prefetch(decide);
             var listed = pf.Observations["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).ToHashSet(StringComparer.Ordinal);

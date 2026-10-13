@@ -36,9 +36,8 @@ internal static class P7F1V6DirectCanary410
     public static (string[] Decide, int[] Context) Scope(P7F1V6Universe u, string segment)
     {
         var n = int.Parse(segment.AsSpan(4));
-        var core = n * Unit;
-        var end = Math.Min(u.Lines.Count, core + Unit);
-        if (core >= u.Lines.Count) throw new ArgumentException("SEGMENT_OUT_OF_RANGE", nameof(segment));
+        if (n < 0 || n >= u.Cores.Count) throw new ArgumentException("SEGMENT_OUT_OF_RANGE", nameof(segment));
+        var (core, end) = u.Cores[n];
         var from = Math.Max(0, core - Overlap);
         return (Enumerable.Range(core, end - core).Select(i => u.Lines[i].Alias).ToArray(),
             Enumerable.Range(from, Math.Min(u.Lines.Count, end + Overlap) - from).ToArray());

@@ -11,11 +11,56 @@ namespace DocxHeaderExtractor.V5Qualification.P7;
 /// </summary>
 internal sealed class P7F1V6Universe
 {
-    private P7F1V6Universe(string rel, string sourceSha, string universeSha, string storeSha, IReadOnlyList<P7F1V6Direct.Line> lines, P7F1QEvidenceTools tools)
+    public const string FixedSegmentation = "FIXED_48_LINES_V1";
+    public const string LayoutSegmentation = "LAYOUT_PAGE_BLOCK_48_V1";
+
+    private P7F1V6Universe(string rel, string sourceSha, string universeSha, string storeSha, IReadOnlyList<P7F1V6Direct.Line> lines, P7F1QEvidenceTools tools,
+        IReadOnlyList<string> layoutBlocks, string segmentation = FixedSegmentation)
     {
         Tools = tools;
         DocumentRelativePath = rel; SourceSha256 = sourceSha; UniverseSha256 = universeSha; EvidenceStoreSha256 = storeSha; Lines = lines;
         Aliases = lines.Select(l => l.Alias).ToArray();
+        LayoutBlocks = layoutBlocks;
+        Segmentation = segmentation;
+        Cores = CoresOf(lines, layoutBlocks, segmentation);
+    }
+
+    /// <summary>The parser's layout block of each line, parallel to <see cref="Lines"/>.</summary>
+    public IReadOnlyList<string> LayoutBlocks { get; }
+    /// <summary>How the document is cut into segments: FIXED_48_LINES_V1 (consecutive 48-line cores, the default) or LAYOUT_PAGE_BLOCK_48_V1
+    /// (the F1Q arm-B rule: whole pages when they fit, else parser layout blocks, cores of at most 48 lines). Only page numbers and parser block ids decide.</summary>
+    public string Segmentation { get; }
+    /// <summary>The decided range of each segment, in reading order: [Start, End) indices into <see cref="Lines"/>, covering every line exactly once.</summary>
+    public IReadOnlyList<(int Start, int End)> Cores { get; }
+
+    public P7F1V6Universe WithSegmentation(string policy) =>
+        new(DocumentRelativePath, SourceSha256, UniverseSha256, EvidenceStoreSha256, Lines, Tools, LayoutBlocks, policy);
+
+    static IReadOnlyList<(int Start, int End)> CoresOf(IReadOnlyList<P7F1V6Direct.Line> lines, IReadOnlyList<string> blocks, string policy)
+    {
+        const int unit = P7F1V6DirectCanary410.Unit;
+        List<(int, int)> cores;
+        if (policy == FixedSegmentation)
+            cores = Enumerable.Range(0, (lines.Count + unit - 1) / unit).Select(n => (n * unit, Math.Min(lines.Count, (n + 1) * unit))).ToList();
+        else if (policy == LayoutSegmentation)
+            cores = P7F1QLayoutPacking.Chunks<int>(Enumerable.Range(0, lines.Count).ToArray(), i => lines[i].Page, i => blocks[i], unit)
+                .Select(c => (c[0], c[^1] + 1)).ToList();
+        else throw new ArgumentException("SEGMENTATION_UNKNOWN", nameof(policy));
+        var next = 0;
+        foreach (var (a, b) in cores)
+        {
+            if (a != next || b <= a || b - a > unit) throw new InvalidOperationException("SEGMENTATION_NOT_A_PARTITION");
+            next = b;
+        }
+        if (next != lines.Count) throw new InvalidOperationException("SEGMENTATION_NOT_A_PARTITION");
+        return cores;
+    }
+
+    static string[] BlocksOf(DocxHeaderExtractor.DocumentProcessing.Source.Pdf.PdfSourceBuildResult parsed, IReadOnlyList<P7F1V6Direct.Line> lines)
+    {
+        var byAlias = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var e in parsed.Snapshot.Evidence) byAlias.TryAdd(e.SourceAlias, P7F1QLayoutPacking.Block(parsed.Details, e));
+        return lines.Select(l => byAlias.GetValueOrDefault(l.Alias) ?? "NO_BLOCK:" + l.Alias).ToArray();
     }
 
     public string DocumentRelativePath { get; }
@@ -55,7 +100,7 @@ internal sealed class P7F1V6Universe
             .Select(l => new P7F1V6Direct.Line(l.Alias, l.Page ?? 0, l.Text, P7F1QEvidenceTools.CompactLayout(l.Bbox, l.Typography))).ToArray();
         if (lines.Select(l => l.Alias).Distinct(StringComparer.Ordinal).Count() != lines.Length) { failure = "DUPLICATE_ALIAS"; return null; }
         failure = "OK";
-        return new P7F1V6Universe("owner-supplied:" + Path.GetFileName(fullPath), store.SourceSha256, store.SourceAliasUniverseSha256, store.StoreSha256, lines, tools);
+        return new P7F1V6Universe("owner-supplied:" + Path.GetFileName(fullPath), store.SourceSha256, store.SourceAliasUniverseSha256, store.StoreSha256, lines, tools, BlocksOf(parsed, lines));
     }
 
     /// <summary>Reads the source through the source gate (prefix, path segments, pinned SHA), parses it, builds the evidence store, and
@@ -81,6 +126,6 @@ internal sealed class P7F1V6Universe
             .Select(l => new P7F1V6Direct.Line(l.Alias, l.Page ?? 0, l.Text, P7F1QEvidenceTools.CompactLayout(l.Bbox, l.Typography))).ToArray();
         if (lines.Select(l => l.Alias).Distinct(StringComparer.Ordinal).Count() != lines.Length) { failure = "DUPLICATE_ALIAS"; return null; }
         failure = "OK";
-        return new P7F1V6Universe(relativePath, store.SourceSha256, store.SourceAliasUniverseSha256, store.StoreSha256, lines, tools);
+        return new P7F1V6Universe(relativePath, store.SourceSha256, store.SourceAliasUniverseSha256, store.StoreSha256, lines, tools, BlocksOf(parsed, lines));
     }
 }
