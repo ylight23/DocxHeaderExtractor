@@ -1237,6 +1237,38 @@ public sealed class P7F1V6StableRunTests
         Assert.NotEqual(plain.Sha256, marked.Sha256);
     }
 
+    static int Marks(JsonElement body) => body.GetProperty("messages").EnumerateArray()
+        .Count(m => m.TryGetProperty("content", out var c) && c.ValueKind == JsonValueKind.Array && c.EnumerateArray().Any(b => b.TryGetProperty("cache_control", out _)));
+
+    [Fact]
+    public void CacheMarkers_AThirdMarkGoesOnTheLastHistoryMessageWithText_NeverMoreThanThree_AndTheHistoryIsNotChanged()
+    {
+        var history = new JsonArray(
+            new JsonObject { ["role"] = "assistant", ["content"] = null, ["tool_calls"] = new JsonArray(new JsonObject { ["id"] = "c1", ["type"] = "function", ["function"] = new JsonObject { ["name"] = "get_line_facts", ["arguments"] = "{}" } }) },
+            new JsonObject { ["role"] = "tool", ["tool_call_id"] = "c1", ["content"] = "{\"result\":1}" },
+            new JsonObject { ["role"] = "assistant", ["content"] = null, ["tool_calls"] = new JsonArray(new JsonObject { ["id"] = "c2", ["type"] = "function", ["function"] = new JsonObject { ["name"] = "get_line_facts", ["arguments"] = "{}" } }) },
+            new JsonObject { ["role"] = "tool", ["tool_call_id"] = "c2", ["content"] = "{\"result\":2}" });
+        var before = history.ToJsonString();
+        using var d = JsonDocument.Parse(A.Build("S", "{}", history, "auto", cacheMarkers: true).Body);
+        var msgs = d.RootElement.GetProperty("messages");
+        Assert.Equal(3, Marks(d.RootElement));
+        Assert.Equal(JsonValueKind.String, msgs[3].GetProperty("content").ValueKind);            // the earlier tool result is not marked
+        Assert.Equal(JsonValueKind.Array, msgs[5].GetProperty("content").ValueKind);             // the last one is
+        Assert.Equal("{\"result\":2}", P7F1V6Protocol.MessageText(msgs[5].GetProperty("content")));
+        Assert.Equal(before, history.ToJsonString());
+        // A repair message after an answer is the last text message: it carries the third mark.
+        history.Add(new JsonObject { ["role"] = "assistant", ["content"] = "answer" });
+        history.Add(new JsonObject { ["role"] = "user", ["content"] = "Your answer was refused." });
+        using var r = JsonDocument.Parse(A.Build("S", "{}", history, "none", cacheMarkers: true).Body);
+        Assert.Equal(3, Marks(r.RootElement));
+        Assert.Equal(JsonValueKind.Array, r.RootElement.GetProperty("messages")[7].GetProperty("content").ValueKind);
+        // No history: two marks. No markers asked: none.
+        using var first = JsonDocument.Parse(A.Build("S", "{}", new JsonArray(), "auto", cacheMarkers: true).Body);
+        Assert.Equal(2, Marks(first.RootElement));
+        using var off = JsonDocument.Parse(A.Build("S", "{}", history, "auto").Body);
+        Assert.Equal(0, Marks(off.RootElement));
+    }
+
     [Fact]
     public void CacheMarkers_TheAuditedSenderReadsAMarkedRequest_AndThePlanPinsTheFlag()
     {

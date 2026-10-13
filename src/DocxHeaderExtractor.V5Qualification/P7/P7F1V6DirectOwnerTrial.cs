@@ -206,7 +206,7 @@ internal static class P7F1V6DirectOwnerTrial
         if (firstSegments > 0)
             plan["firstSegmentsOnly"] = firstSegments;
         if (promptCache)
-            plan["promptCache"] = "the system prompt and the unit payload are each one text block marked cache_control ephemeral (Alibaba caches only marked prefixes; 5-minute TTL renewed on each hit; writes 1.25x, reads 0.1x of the input price); the text is unchanged, only the content shape";
+            plan["promptCache"] = "the system prompt, the unit payload and the last history message with text (a tool result or a repair message) are each one text block marked cache_control ephemeral, three marks within the provider's four (Alibaba caches only marked prefixes; 5-minute TTL renewed on each hit; writes 1.25x, reads 0.1x of the input price); the text is unchanged, only the content shape";
         if (transportRetries > 0 || repairTurn)
             plan["failureHandling"] = maxRepairs == 1
                 ? new { transportRetries, retriable = A.RetriableTransport, repairTurn, repairRule = "at most one repair per unit: the refused reply and a message naming the refusal are sent once more; the new answer goes through the same strict parser; the unit records RepairedFrom", spareCallsPerUnit = extraPerUnit }

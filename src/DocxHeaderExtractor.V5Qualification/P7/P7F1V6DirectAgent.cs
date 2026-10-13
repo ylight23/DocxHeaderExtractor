@@ -227,6 +227,15 @@ internal static class P7F1V6DirectAgent
             ? new JsonArray(new JsonObject { ["type"] = "text", ["text"] = text, ["cache_control"] = new JsonObject { ["type"] = "ephemeral" } })
             : JsonValue.Create(text)!;
         foreach (var m in history) messages.Add(m!.DeepClone());
+        // D4.12r: a third mark on the last history message that carries text (a tool result or a repair message), so the next turn reads the whole
+        // conversation so far from the cache. Three marks in all, within the provider's four. The stored history itself is not changed.
+        if (cacheMarkers)
+            for (int i = messages.Count - 1; i >= 2; i--)
+                if (messages[i] is JsonObject last && last["role"]?.GetValue<string>() is "tool" or "user" && last["content"] is JsonValue v && v.TryGetValue<string>(out var lastText))
+                {
+                    last["content"] = Content(lastText);
+                    break;
+                }
         var body = new JsonObject
         {
             ["model"] = spec.Model,
