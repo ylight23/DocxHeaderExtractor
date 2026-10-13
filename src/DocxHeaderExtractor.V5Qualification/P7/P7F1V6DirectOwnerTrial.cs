@@ -113,7 +113,19 @@ internal static class P7F1V6DirectOwnerTrial
         var authority = AuthorityIdOf(fileSha);
         var pages = u.Lines.Select(l => l.Page).Distinct().Count();
         var fileName = Path.GetFileName(documentPath);
-        var prefetch = segs.Select(s =>
+        var publicCorpus = InPublicCorpus(documentPath);
+        var armNames = armSet.Select(a => a.Arm).ToArray();
+        var factsToolDeclared = toolFacts || toolFactsAnalysis || promptFactsV2 || hideLayout;
+        // D4.12t: the prose of a plan follows its flags. What the request has that the repeat-canary request has not; a plan with none of these
+        // keeps the D4.11j wording byte for byte.
+        var requestDiffers = new List<string>();
+        if (!armNames.SequenceEqual(C.Arms.Select(a => a.Arm))) requestDiffers.Add("arms " + string.Join(", ", armNames) + " instead of CONTROL and PREFETCH");
+        if (segmentation != P7F1V6Universe.FixedSegmentation) requestDiffers.Add("segments cut by " + segmentation);
+        if (instruction != P7F1V6DirectD45.Instruction) requestDiffers.Add("instruction " + P7F1V6Core.InstructionSha256(instruction)[..8] + "…");
+        if (jsonObjectAllTurns) requestDiffers.Add("response_format json_object on every turn");
+        if (factsVersion != 1) requestDiffers.Add("layout facts V" + factsVersion);
+        if (hideLayout) requestDiffers.Add("no layout in the request and documentStyles in the payload");
+        if (promptCache) requestDiffers.Add("the system prompt and the payload as cache-marked text blocks");        var prefetch = segs.Select(s =>
         {
             var (decide, _) = P7F1V6DirectCanary410.Scope(u, s);
             var r = new P7F1V6AgentTools(u.Tools).Prefetch(decide);
@@ -126,7 +138,7 @@ internal static class P7F1V6DirectOwnerTrial
             ["codeCommit"] = codeCommit,
             ["authorityId"] = authority,
             ["document"] = "owner-supplied (outside the repository): " + fileName,
-            ["documentPublicity"] = InPublicCorpus(documentPath)
+            ["documentPublicity"] = publicCorpus
                 ? "A document of the repository's public heading corpus (todo10_8/heading_corpus_100), whose README states the files are real documents downloaded from public sources (" + fileName + "); the origin is not independently verified here. Text is sent as it is. Requests, raw responses and the analysis stay in the safe store and are not committed or pushed."
                 : "NOT part of the repository's public corpus. A document supplied by the owner (" + fileName + "), read from outside the repository; whether it is public is not known to the program. "
                 + "The owner decided that nothing is redacted: the text of every line, including any names, telephone numbers and e-mail addresses it contains, is sent as it is. "
@@ -138,26 +150,32 @@ internal static class P7F1V6DirectOwnerTrial
             ["ownerSupplied"] = new
             {
                 fileName, fileBytes = new FileInfo(documentPath).Length, fileSha256 = fileSha, pagesWithText = pages, lines = u.Lines.Count,
-                publicCorpus = InPublicCorpus(documentPath),
+                publicCorpus,
                 sourceGate = "the public-corpus source gate is not used; this plan pins the file hash and the loader refuses any other bytes",
                 pathNotPinned = "the file path is an argument of the plan check and of the run, not part of the plan",
                 redaction = "none: the owner chose to send the document text unchanged",
                 lineTextsSha256 = P7F1V6Protocol.Sha(string.Join("\n", u.Lines.Select(l => l.Alias + "\t" + l.Text))),
             },
-            ["goldForScorerOnly"] = "none: there is no Gold for this document. Nothing is scored. The result is the set of lines each arm selects in each repetition, read by the owner.",
+            ["goldForScorerOnly"] = publicCorpus
+                ? "not used by the run: no Gold is read, sent or scored while the plan runs. The document belongs to the public corpus and may have an all-heading Gold in the registry; any score against it is computed offline afterwards from the stored decisions (tools/p7_f1_v6_d412_freeze.py) and is not part of this plan."
+                : "none: there is no Gold for this document. Nothing is scored. The result is the set of lines each arm selects in each repetition, read by the owner.",
             ["task"] = P7F1V6DirectD45.TaskId,
-            ["evaluationLabel"] = "Owner-document trial: which lines Qwen selects as headings under the repeat-canary request; no Gold, no score",
+            ["evaluationLabel"] = requestDiffers.Count == 0
+                ? "Owner-document trial: which lines Qwen selects as headings under the repeat-canary request; no Gold, no score"
+                : "Owner-document trial: which lines Qwen selects as headings under this plan's request (arms " + string.Join(", ", armNames) + "); no score during the run",
             ["instruction"] = instruction,
             ["instructionSha256"] = P7F1V6Core.InstructionSha256(instruction),
             ["requestVersion"] = A.RequestVersion,
             ["promptVersion"] = A.PromptVersion + " + stated target range",
             ["responseVersion"] = P7F1V6DirectTwoStage.SelectObjectsVersion,
             ["versionFieldsInPayload"] = false,
-            ["requestIdenticalTo"] = "the repeat-canary request (plans e73415f7 and df369552, code b672c59): same system prompts (CONTROL 5a83e083…, PREFETCH 2290301b…), instruction, payload layout, tools, envelope and route; only the document differs",
+            ["requestIdenticalTo"] = requestDiffers.Count == 0
+                ? "the repeat-canary request (plans e73415f7 and df369552, code b672c59): same system prompts (CONTROL 5a83e083…, PREFETCH 2290301b…), instruction, payload layout, tools, envelope and route; only the document differs"
+                : "none: built on the repeat-canary request (plans e73415f7 and df369552, code b672c59) with these differences besides the document: " + string.Join("; ", requestDiffers) + "; the arms' prompt hashes are in arms[].promptSha256",
             ["segments"] = segs,
             ["arms"] = arms,
             ["prefetchMeasuredPerSegment"] = prefetch,
-            ["repetitions"] = new { perArmAndSegment = reps, requests = "identical bytes each time, so the spread is sampling variation of the same request", order = "per repetition, per segment: CONTROL then PREFETCH" },
+            ["repetitions"] = new { perArmAndSegment = reps, requests = "identical bytes each time, so the spread is sampling variation of the same request", order = armNames.Length == 1 ? "per repetition, per segment: " + armNames[0] + " only" : "per repetition, per segment: " + string.Join(" then ", armNames) },
             ["frozen"] = new
             {
                 scope = "one owner-supplied document: the loader refuses any other bytes; the plan is re-derived from code and the file and any drift refuses the run",
@@ -167,18 +185,25 @@ internal static class P7F1V6DirectOwnerTrial
                 provider = new { only = new[] { P7F1V6Protocol.ProviderTag }, ignore = P7F1V6Protocol.DefaultIgnore, allowFallbacks = false, requireParameters = true,
                     providerBlockSha256 = ProviderBlockSha(), model = P7F1V6Protocol.ChatModel, endpointCheck = "response provider must be Alibaba and model qwen/qwen3.7-flash, else the run halts" },
                 requestTemplateSha256 = template.Sha256,
-                toolDefinitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(),
-                promptSha256 = new { control = A.AutoPromptRangeSha256, prefetch = A.PrefetchPromptRangeSha256 },
+                toolDefinitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(factsToolDeclared),
+                promptSha256 = armNames.SequenceEqual(C.Arms.Select(a => a.Arm))
+                    ? (object)new { control = A.AutoPromptRangeSha256, prefetch = A.PrefetchPromptRangeSha256 }
+                    : armSet.ToDictionary(a => a.Arm, a => A.Sha(A.Prompt(a.Mode, rangeStated: true))),
                 firstRequestsSha256 = P7F1V6Protocol.Sha(string.Join("\n", armSet.SelectMany(a => segs.Select(sg => C.FirstRequest(a.Mode, u, sg, jsonObjectAllTurns, instruction, promptCache).Sha256)))),
             },
-            ["tools"] = new { version = P7F1V6AgentTools.Version, definitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(toolFacts || toolFactsAnalysis || promptFactsV2 || hideLayout), names = toolFacts || toolFactsAnalysis || promptFactsV2 || hideLayout ? P7F1V6AgentTools.Names.Append(P7F1V6AgentTools.LineFacts).ToArray() : P7F1V6AgentTools.Names,
-                availability = "declared in both arms, optional; tool results come from the document lines" },
-            ["requestShape"] = "SSE (stream true), reasoning enabled true, response_format absent on turns 1 to 3 and json_object on turn 4, temperature 0, max_tokens 32768; the strict parser refuses any final answer that is not exactly one JSON object",
+            ["tools"] = new { version = P7F1V6AgentTools.Version, definitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(factsToolDeclared), names = factsToolDeclared ? P7F1V6AgentTools.Names.Append(P7F1V6AgentTools.LineFacts).ToArray() : P7F1V6AgentTools.Names,
+                availability = factsToolDeclared
+                    ? "declared on every turn with tool_choice auto; the first reply must call get_line_facts (an answer before a successful call is refused, PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED); every other call is optional; tool results come from the document lines"
+                    : armNames.Length == 1 ? "declared in the arm, optional; tool results come from the document lines" : "declared in " + (armNames.Length == 2 ? "both" : "all") + " arms, optional; tool results come from the document lines" },
+            ["requestShape"] = "SSE (stream true), reasoning enabled true, "
+                + (jsonObjectAllTurns ? "response_format json_object on every turn" : "response_format absent on turns 1 to 3 and json_object on turn 4")
+                + ", temperature 0, max_tokens 32768; the strict parser refuses any final answer that is not exactly one JSON object"
+                + (unwrapFence ? " (after the single-fence unwrap, see fenceUnwrap)" : ""),
             ["model"] = P7F1V6Protocol.ChatModel,
             ["route"] = new { only = new[] { P7F1V6Protocol.ProviderTag }, ignore = P7F1V6Protocol.DefaultIgnore, allowFallbacks = false, requireParameters = true },
             ["zdr"] = "false (owner decision, to be accepted again in the authorization)",
             ["maxTokens"] = P7F1V6Protocol.MaxTokens,
-            ["retries"] = C.Retries,
+            ["retries"] = transportRetries,
             ["budget"] = new
             {
                 maxCalls = C.PostsPerArm(picks, reps, fullToolRounds, extraPerUnit) * armSet.Length, ceilingUsd = Math.Round(ceilings.Values.Sum(), 2), maxRequestBytes = C.MaxRequestBytes,
@@ -188,14 +213,22 @@ internal static class P7F1V6DirectOwnerTrial
             ["measurements"] = new[]
             {
                 "per arm and repetition: the lines selected in each segment (aliases; the owner reads their text)",
-                "whether the same lines are selected in every repetition of a cell, and where CONTROL and PREFETCH differ",
-                "protocol outcome per unit with its code; refused answers are counted and never repaired; offline counterfactuals are labelled not official",
+                armNames.SequenceEqual(C.Arms.Select(a => a.Arm)) ? "whether the same lines are selected in every repetition of a cell, and where CONTROL and PREFETCH differ"
+                    : armNames.Length == 1 ? (reps == 1 ? "one repetition: the lines selected once in each segment; stability is not measured" : "whether the same lines are selected in every repetition of a cell")
+                    : "whether the same lines are selected in every repetition of a cell, and where the arms differ",
+                repairTurn
+                    ? "protocol outcome per unit with its code; a refused answer gets repair turns (see failureHandling) and the unit's outcome is its last answer, with RepairedFrom kept; offline counterfactuals are labelled not official"
+                    : "protocol outcome per unit with its code; refused answers are counted and never repaired; offline counterfactuals are labelled not official",
                 "tool calls, tokens and cost per request",
             },
             ["readingRules"] = new[]
             {
-                "no Gold: the program makes no claim that a selected line is or is not a heading; the owner judges",
-                "5 repetitions per cell: an indication of stability, not a significance test",
+                publicCorpus
+                    ? "no Gold in the run: the program makes no claim that a selected line is or is not a heading; a score against the corpus Gold is offline and separate"
+                    : "no Gold: the program makes no claim that a selected line is or is not a heading; the owner judges",
+                reps == C.Reps ? "5 repetitions per cell: an indication of stability, not a significance test"
+                    : reps == 1 ? "1 repetition per cell: run-to-run variation is not seen, so a difference between two plans may be sampling variation"
+                    : reps + " repetitions per cell: an indication of stability, not a significance test",
                 "one document: nothing here says how the request behaves on other documents",
             },
             ["rawPublication"] = "None. Requests (which hold the document text), raw responses, reasoning and the analysis stay in the safe store outside the repository. Only a receipt without any line text is committed.",

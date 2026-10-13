@@ -1310,4 +1310,30 @@ public sealed class P7F1V6StableRunTests
         }
         finally { File.Delete(file); }
     }
+
+    [Fact]
+    public void PlanProse_FollowsTheFlags_SingleArmFactsToolRepairsOneRepetitionPublicCorpus()
+    {
+        // D4.12t: a flagged plan no longer carries the D4.11j wording (CONTROL then PREFETCH, never repaired, 5 repetitions, optional tools).
+        var rel = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        using var d = JsonDocument.Parse(T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1,
+            firstSegments: 2, instruction: P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, fullToolRounds: true, toolFactsAnalysis: true, factsVersion: 3, hideLayout: true,
+            transportRetries: 3, repairTurn: true, maxRepairs: -1, promptCache: true)));
+        var p = d.RootElement;
+        var text = p.ToString();
+        Assert.DoesNotContain("CONTROL then PREFETCH", text);
+        Assert.DoesNotContain("never repaired", text);
+        Assert.DoesNotContain("5 repetitions per cell", text);
+        Assert.Equal("per repetition, per segment: TOOLFACTS_ANALYSIS_V3 only", p.GetProperty("repetitions").GetProperty("order").GetString());
+        Assert.StartsWith("none: built on the repeat-canary request", p.GetProperty("requestIdenticalTo").GetString());
+        Assert.Contains("no layout in the request", p.GetProperty("requestIdenticalTo").GetString());
+        Assert.StartsWith("not used by the run", p.GetProperty("goldForScorerOnly").GetString());
+        Assert.Contains("must call get_line_facts", p.GetProperty("tools").GetProperty("availability").GetString());
+        Assert.Contains("json_object on every turn", p.GetProperty("requestShape").GetString());
+        Assert.Equal(3, p.GetProperty("retries").GetInt32());
+        Assert.Equal(p.GetProperty("tools").GetProperty("definitionsSha256").GetString(), p.GetProperty("frozen").GetProperty("toolDefinitionsSha256").GetString());
+        Assert.Equal(p.GetProperty("arms")[0].GetProperty("promptSha256").GetString(), p.GetProperty("frozen").GetProperty("promptSha256").GetProperty("TOOLFACTS_ANALYSIS_V3").GetString());
+        Assert.Contains("1 repetition per cell", string.Join("|", p.GetProperty("readingRules").EnumerateArray().Select(x => x.GetString())));
+    }
 }
