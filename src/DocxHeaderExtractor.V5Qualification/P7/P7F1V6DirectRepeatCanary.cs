@@ -107,7 +107,10 @@ internal static class P7F1V6DirectRepeatCanary
     // ---------------- budget ----------------
 
     public static int Units(IReadOnlyList<Pick> picks, int reps = Reps) => picks.Count * reps;
-    public static int PostsPerArm(IReadOnlyList<Pick> picks, int reps = Reps) => Units(picks, reps) + Math.Max(3, Units(picks, reps) / 5);
+    /// <summary>The call limit of an arm: one first post per unit plus the spare posts for tool turns. With fullToolRounds the spare is every unit's
+    /// MaxToolTurns tool rounds (the most an agent unit can use); otherwise a fifth of the units, at least 3.</summary>
+    public static int PostsPerArm(IReadOnlyList<Pick> picks, int reps = Reps, bool fullToolRounds = false) =>
+        Units(picks, reps) + (fullToolRounds ? Units(picks, reps) * A.MaxToolTurns : Math.Max(3, Units(picks, reps) / 5));
     public static P7F1V6DirectV2.Budget NewArmBudget(IReadOnlyList<Pick> picks, double ceilingUsd) => new(PostsPerArm(picks), ceilingUsd, MaxRequestBytes);
 
     public static P7F1V6Protocol.PreparedRequest FirstRequest(A.Arm mode, P7F1V6Universe u, string segment, bool jsonObjectAllTurns = false, string instruction = P7F1V6DirectD45.Instruction)
@@ -120,10 +123,10 @@ internal static class P7F1V6DirectRepeatCanary
 
     /// <summary>The ceiling is derived, not chosen: the reserve of every planned first request of the arm, repetitions included, plus the spare
     /// posts at the worst case (a request at the byte cap), plus 10%, rounded up to the cent. It bounds the reserve, not the expected spend.</summary>
-    public static double CeilingUsd(P7F1V6Universe u, IReadOnlyList<Pick> picks, A.Arm mode, bool jsonObjectAllTurns = false, int reps = Reps, string instruction = P7F1V6DirectD45.Instruction)
+    public static double CeilingUsd(P7F1V6Universe u, IReadOnlyList<Pick> picks, A.Arm mode, bool jsonObjectAllTurns = false, int reps = Reps, string instruction = P7F1V6DirectD45.Instruction, bool fullToolRounds = false)
     {
         var first = picks.Sum(p => P7F1V6Direct.AttemptUsd(FirstRequest(mode, u, p.Segment, jsonObjectAllTurns, instruction).Bytes)) * reps;
-        var spare = (PostsPerArm(picks, reps) - Units(picks, reps)) * P7F1V6Direct.AttemptUsd(MaxRequestBytes);
+        var spare = (PostsPerArm(picks, reps, fullToolRounds) - Units(picks, reps)) * P7F1V6Direct.AttemptUsd(MaxRequestBytes);
         return Math.Ceiling((first + spare) * 1.1 * 100) / 100;
     }
 

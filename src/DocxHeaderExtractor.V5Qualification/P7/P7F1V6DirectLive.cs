@@ -208,6 +208,13 @@ internal static class P7F1V6DirectD45
     public const string InstructionEnglishMain =
         "Extract the main headings of the document: the headings that carry its structure, that is, the ones that give the document its outline.\n" +
         "Use the text, the layout and the context to decide which lines are such headings.";
+    /// <summary>D4.12f: the same request as InstructionEnglishMain, said more plainly for the model: what the main structure is, to use the tools to settle a
+    /// doubt that depends on a relationship between lines, and not to guess. The owner's ideas; it names no kind of line to include or to exclude.</summary>
+    public const string InstructionEnglishMainTools =
+        "Extract the main headings of the document: the headings that carry its structure, that is, the ones that give the document its outline.\n" +
+        "The main structure is the frame of the document: its main headings name or open the main parts, and the other lines belong under them. A line is a main heading because of the part of the document it names or opens and because of its relation to the lines around it, not because of how it looks on its own.\n" +
+        "Use the text, the layout and the context to decide. When a decision depends on a relationship that you cannot see in the lines shown (the lines before and after it, other lines with the same text, its position on the page or in the document), use the tools to check that relationship.\n" +
+        "Do not guess: if the evidence still does not settle a line, say that it is unresolved instead of choosing.";
     public const string TaskId = "A-STRUCTURAL-OCCURRENCES";
     public const string EvaluationLabel = "Development evaluation — task clarification informed by previous model errors";
     public const string BaselineTaskId = "A";

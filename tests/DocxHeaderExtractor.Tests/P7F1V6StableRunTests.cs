@@ -403,4 +403,35 @@ public sealed class P7F1V6StableRunTests
         }
         finally { File.Delete(file); }
     }
+
+    [Fact]
+    public void MainToolsInstruction_SaysStructureToolsAndNoGuessing_NamesNoKindOfLine_AndTheToolRoundsBudgetIsPinned()
+    {
+        var en = P7F1V6DirectD45.InstructionEnglishMainTools;
+        Assert.StartsWith(P7F1V6DirectD45.InstructionEnglishMain.Split((char)10)[0], en);       // the same request first
+        Assert.Contains("use the tools", en);
+        Assert.Contains("Do not guess", en);
+        Assert.Contains("unresolved", en);
+        Assert.Contains("frame of the document", en);
+        foreach (var banned in new[] { "table", "footer", "running", "contents", "clause", "article", "chapter", "title", "cover" })
+            Assert.DoesNotContain(banned, en, StringComparison.OrdinalIgnoreCase);
+        var rel = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        var plain = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1, firstSegments: 3, instruction: en));
+        var full = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1, firstSegments: 3, instruction: en, fullToolRounds: true));
+        using var a = JsonDocument.Parse(plain);
+        using var b = JsonDocument.Parse(full);
+        Assert.False(T.ToolRoundsOf(a.RootElement));
+        Assert.True(T.ToolRoundsOf(b.RootElement));
+        Assert.Equal(3 + 3, a.RootElement.GetProperty("arms")[0].GetProperty("budget").GetProperty("maxCalls").GetInt32());                     // 3 units + 3 spare
+        Assert.Equal(3 + 3 * A.MaxToolTurns, b.RootElement.GetProperty("arms")[0].GetProperty("budget").GetProperty("maxCalls").GetInt32());     // 3 units + every unit's tool rounds
+        Assert.True(b.RootElement.GetProperty("arms")[0].GetProperty("budget").GetProperty("ceilingUsd").GetDouble() > a.RootElement.GetProperty("arms")[0].GetProperty("budget").GetProperty("ceilingUsd").GetDouble());
+        var file = Path.Combine(Path.GetTempPath(), "dhx-tools-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, full);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(full)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
 }
