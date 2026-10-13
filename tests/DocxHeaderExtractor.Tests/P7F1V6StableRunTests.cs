@@ -215,4 +215,32 @@ public sealed class P7F1V6StableRunTests
         }
         finally { File.Delete(file); }
     }
+
+    [Fact]
+    public void EnglishInstructionPlan_PinsTheInstruction_ItReachesTheRequest_AndVerifies()
+    {
+        var rel = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        var en = P7F1V6DirectD45.InstructionEnglishAll;
+        Assert.Equal("Extract all headings", en);
+        var bytes = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1, firstSegments: 2, instruction: en));
+        using var d = JsonDocument.Parse(bytes);
+        Assert.Equal(en, T.InstructionOf(d.RootElement));
+        Assert.Equal(P7F1V6Core.InstructionSha256(en), d.RootElement.GetProperty("instructionSha256").GetString());
+        var u = T.Load(path, T.Sha256Of(path), P7F1V6Universe.LayoutSegmentation);
+        using var body = JsonDocument.Parse(C.FirstRequest(A.Arm.Facts, u, "SEG-000", true, en).Body);
+        using var payload = JsonDocument.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        Assert.Equal(en, payload.RootElement.GetProperty("instruction").GetString());
+        // The default is unchanged: the Vietnamese structural instruction.
+        using var def = JsonDocument.Parse(C.FirstRequest(A.Arm.Facts, u, "SEG-000", true).Body);
+        using var defPayload = JsonDocument.Parse(def.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        Assert.Equal(P7F1V6DirectD45.Instruction, defPayload.RootElement.GetProperty("instruction").GetString());
+        var file = Path.Combine(Path.GetTempPath(), "dhx-en-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, bytes);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
 }

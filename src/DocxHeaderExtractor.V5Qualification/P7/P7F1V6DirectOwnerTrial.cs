@@ -42,6 +42,9 @@ internal static class P7F1V6DirectOwnerTrial
     /// <summary>True when the file lies in the repository's public heading corpus (todo10_8/heading_corpus_100).</summary>
     public static bool InPublicCorpus(string documentPath) => Path.GetFullPath(documentPath).Replace('\\', '/').Contains("/todo10_8/heading_corpus_100/", StringComparison.Ordinal);
 
+    /// <summary>The user instruction a plan pins; a plan from before D4.12c carries the Vietnamese structural instruction.</summary>
+    public static string InstructionOf(JsonElement plan) => plan.GetProperty("instruction").GetString()!;
+
     public static bool FactsUseOf(JsonElement plan) => plan.TryGetProperty("factsUseArm", out var v) && v.ValueKind == JsonValueKind.String;
 
     public static bool SingleArmOf(JsonElement plan) => plan.TryGetProperty("singleArm", out var v) && v.ValueKind == JsonValueKind.String;
@@ -55,18 +58,18 @@ internal static class P7F1V6DirectOwnerTrial
     public static string SegmentationOf(JsonElement plan) =>
         plan.TryGetProperty("segmentation", out var s) && s.ValueKind == JsonValueKind.Object ? s.GetProperty("policy").GetString()! : P7F1V6Universe.FixedSegmentation;
 
-    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit, string segmentation = P7F1V6Universe.FixedSegmentation, bool jsonObjectAllTurns = false, bool geometryArm = false, bool unwrapFence = false, bool singleArm = false, bool factsUse = false, int reps = C.Reps, int firstSegments = 0)
+    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit, string segmentation = P7F1V6Universe.FixedSegmentation, bool jsonObjectAllTurns = false, bool geometryArm = false, bool unwrapFence = false, bool singleArm = false, bool factsUse = false, int reps = C.Reps, int firstSegments = 0, string instruction = P7F1V6DirectD45.Instruction)
     {
         var fileSha = Sha256Of(documentPath);
         var u = Load(documentPath, fileSha, segmentation);
         var segs = firstSegments > 0 ? SegmentsOf(u).Take(firstSegments).ToArray() : SegmentsOf(u);
         var picks = segs.Select(s => new C.Pick(s, "ALL: every segment of the document", new C.SegStat(s, 0, 0, 0, 0, 0, 0))).ToArray();
         var armSet = ArmsOf(geometryArm, singleArm, factsUse);
-        var ceilings = armSet.ToDictionary(a => a.Arm, a => C.CeilingUsd(u, picks, a.Mode, jsonObjectAllTurns, reps));
+        var ceilings = armSet.ToDictionary(a => a.Arm, a => C.CeilingUsd(u, picks, a.Mode, jsonObjectAllTurns, reps, instruction));
         var worst = P7F1V6Direct.AttemptUsd(C.MaxRequestBytes);
         var arms = armSet.Select(a =>
         {
-            var first = segs.Select(s => C.FirstRequest(a.Mode, u, s, jsonObjectAllTurns)).ToList();
+            var first = segs.Select(s => C.FirstRequest(a.Mode, u, s, jsonObjectAllTurns, instruction)).ToList();
             return new
             {
                 arm = a.Arm,
@@ -79,7 +82,7 @@ internal static class P7F1V6DirectOwnerTrial
         }).ToArray();
         string ProviderBlockSha()
         {
-            using var d = JsonDocument.Parse(C.FirstRequest(A.Arm.Auto, u, segs[0], jsonObjectAllTurns).Body);
+            using var d = JsonDocument.Parse(C.FirstRequest(A.Arm.Auto, u, segs[0], jsonObjectAllTurns, instruction).Body);
             return P7F1V6Protocol.Sha(d.RootElement.GetProperty("provider").GetRawText());
         }
         var template = A.Build("<<SYSTEM_PROMPT>>", "<<USER_PAYLOAD>>", new System.Text.Json.Nodes.JsonArray(), "auto");
@@ -120,8 +123,8 @@ internal static class P7F1V6DirectOwnerTrial
             ["goldForScorerOnly"] = "none: there is no Gold for this document. Nothing is scored. The result is the set of lines each arm selects in each repetition, read by the owner.",
             ["task"] = P7F1V6DirectD45.TaskId,
             ["evaluationLabel"] = "Owner-document trial: which lines Qwen selects as headings under the repeat-canary request; no Gold, no score",
-            ["instruction"] = P7F1V6DirectD45.Instruction,
-            ["instructionSha256"] = P7F1V6Core.InstructionSha256(P7F1V6DirectD45.Instruction),
+            ["instruction"] = instruction,
+            ["instructionSha256"] = P7F1V6Core.InstructionSha256(instruction),
             ["requestVersion"] = A.RequestVersion,
             ["promptVersion"] = A.PromptVersion + " + stated target range",
             ["responseVersion"] = P7F1V6DirectTwoStage.SelectObjectsVersion,
@@ -142,7 +145,7 @@ internal static class P7F1V6DirectOwnerTrial
                 requestTemplateSha256 = template.Sha256,
                 toolDefinitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(),
                 promptSha256 = new { control = A.AutoPromptRangeSha256, prefetch = A.PrefetchPromptRangeSha256 },
-                firstRequestsSha256 = P7F1V6Protocol.Sha(string.Join("\n", armSet.SelectMany(a => segs.Select(sg => C.FirstRequest(a.Mode, u, sg, jsonObjectAllTurns).Sha256)))),
+                firstRequestsSha256 = P7F1V6Protocol.Sha(string.Join("\n", armSet.SelectMany(a => segs.Select(sg => C.FirstRequest(a.Mode, u, sg, jsonObjectAllTurns, instruction).Sha256)))),
             },
             ["tools"] = new { version = P7F1V6AgentTools.Version, definitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(), names = P7F1V6AgentTools.Names,
                 availability = "declared in both arms, optional; tool results come from the document lines" },
@@ -212,7 +215,7 @@ internal static class P7F1V6DirectOwnerTrial
         var planCommit = doc.RootElement.GetProperty("codeCommit").GetString();
         if (planCommit != currentCommit) failures.Add("CODE_COMMIT_DIFFERS");
         if (doc.RootElement.GetProperty("sourceSha256").GetString() != Sha256Of(documentPath)) { failures.Add("OWNER_DOCUMENT_SHA_DIFFERS"); return failures; }
-        if (!Serialize(PinnedValues(documentPath, planCommit ?? "", SegmentationOf(doc.RootElement), JsonAllTurnsOf(doc.RootElement), GeometryArmOf(doc.RootElement), FenceUnwrapOf(doc.RootElement), SingleArmOf(doc.RootElement), FactsUseOf(doc.RootElement), RepsOf(doc.RootElement), FirstSegmentsOf(doc.RootElement))).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
+        if (!Serialize(PinnedValues(documentPath, planCommit ?? "", SegmentationOf(doc.RootElement), JsonAllTurnsOf(doc.RootElement), GeometryArmOf(doc.RootElement), FenceUnwrapOf(doc.RootElement), SingleArmOf(doc.RootElement), FactsUseOf(doc.RootElement), RepsOf(doc.RootElement), FirstSegmentsOf(doc.RootElement), InstructionOf(doc.RootElement))).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
         return failures;
     }
 
@@ -244,7 +247,7 @@ internal static class P7F1V6DirectOwnerTrial
         var stores = armSet.ToDictionary(a => a.Arm, _ => P7F1V6SafeRawStore.CreateRun(safeRoot));
         var models = armSet.ToDictionary(a => a.Arm, a => new P7F1V6AgentAuditedModel(new P7F1V6DirectAuditedModel(
             new P7F1V6OpenRouterTransport(handler, TimeSpan.FromSeconds(300)), apiKey, stores[a.Arm], budgets[a.Arm])));
-        var state = C.RunArms(u, segments, models.ToDictionary(kv => kv.Key, kv => (A.AgentModel)kv.Value.Turn), budgets, JsonAllTurnsOf(plan.RootElement), armSet, unwrapSingleFence: FenceUnwrapOf(plan.RootElement), reps: RepsOf(plan.RootElement));
+        var state = C.RunArms(u, segments, models.ToDictionary(kv => kv.Key, kv => (A.AgentModel)kv.Value.Turn), budgets, JsonAllTurnsOf(plan.RootElement), armSet, unwrapSingleFence: FenceUnwrapOf(plan.RootElement), reps: RepsOf(plan.RootElement), instruction: InstructionOf(plan.RootElement));
         return state.Select(s => new C.ArmResult(s.Arm, s.Units, models[s.Arm].Ledger, s.Budget.Calls, s.Budget.ReservedUsd, s.Budget.ActualUsd,
             s.Budget.HaltReason, s.Budget.Refusals.ToArray(), stores[s.Arm].RunDirectory)).ToList();
     }

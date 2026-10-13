@@ -185,6 +185,8 @@ internal static class P7F1V6DirectD45
         "Chọn những dòng hoặc nhóm dòng có chức năng đặt tên, mở đầu hoặc phân chia một phần nội dung của tài liệu.\n" +
         "Không chọn các dòng trong mục lục chỉ liệt kê hoặc dẫn chiếu đến heading xuất hiện ở vị trí khác. Tuy nhiên, vẫn xem xét các heading thực sự tổ chức chính mục lục, chỉ mục và những phần khác của tài liệu.\n" +
         "Sử dụng văn bản, bố cục và ngữ cảnh để xác định chức năng của từng lần xuất hiện. Khi chưa đủ bằng chứng, hãy yêu cầu thêm ngữ cảnh hoặc báo chưa thể quyết định thay vì suy đoán.";
+    /// <summary>D4.12c: the owner's plain request in English, for the corpus runs ("extract all headings", the all-heading Gold's own task, in English).</summary>
+    public const string InstructionEnglishAll = "Extract all headings";
     public const string TaskId = "A-STRUCTURAL-OCCURRENCES";
     public const string EvaluationLabel = "Development evaluation — task clarification informed by previous model errors";
     public const string BaselineTaskId = "A";
