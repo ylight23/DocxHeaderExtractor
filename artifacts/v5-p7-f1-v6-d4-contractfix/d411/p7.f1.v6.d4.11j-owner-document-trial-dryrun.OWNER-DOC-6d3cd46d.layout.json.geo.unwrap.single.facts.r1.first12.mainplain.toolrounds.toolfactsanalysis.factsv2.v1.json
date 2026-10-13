@@ -1,0 +1,132 @@
+{
+  "artifact": "p7.f1.v6.d4.11j-owner-document-trial-dryrun.v1",
+  "authority": "OWNER-DOC-6d3cd46d",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-6d3cd46d.layout.json.geo.unwrap.single.facts.r1.first12.mainplain.toolrounds.toolfactsanalysis.factsv2.v1.json",
+  "planSha256": "75900ac81e219d2ed7636263011d7fa7be6b01734eea7240ffc6b04cb9678a52",
+  "planVerifiesNow": true,
+  "codeCommit": "c91661f70ed8640f5860d315013bde70ac7406d0",
+  "firstRequests": [
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-000",
+      "sha256": "a9d87a689f9213fb8b8aa2b1e23a0c63874f7e991a7b377573bb563d84061256",
+      "bytes": 30853,
+      "reserveUsd": 0.005185
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-001",
+      "sha256": "f444f8a0768711625822beecbbb6c2acbcfceed4f49afa1691dc6e4fe4f5b3b6",
+      "bytes": 41426,
+      "reserveUsd": 0.01725
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-002",
+      "sha256": "2427c944741885a70c1d0cb350b493aff6a86caafd5c3d001aa11ca512ccc518",
+      "bytes": 41344,
+      "reserveUsd": 0.017242
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-003",
+      "sha256": "0aa6c8c35db5a109390b0ad7b2cef0e956698f71f9d667cca5dd2de8b76ba16f",
+      "bytes": 35718,
+      "reserveUsd": 0.016679
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-004",
+      "sha256": "4b33cce86a39f8ec02002fb91e51a44dd1e1c24dbad96f8d4803b1dbd6f1751b",
+      "bytes": 38893,
+      "reserveUsd": 0.016996
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-005",
+      "sha256": "ad6c2e76322b817af24853f64f42f14437985318d3aa5ab62ff59574fdf6fce6",
+      "bytes": 37966,
+      "reserveUsd": 0.016904
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-006",
+      "sha256": "d277729d071bbe5f0aa25eafff7a50c1fa79d3d5c93d450a8b6797516f43d928",
+      "bytes": 35758,
+      "reserveUsd": 0.016683
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-007",
+      "sha256": "26a731ea8b4828b61d10e96f2cd2233163c95b41f197bd5467fbae6da058d0b6",
+      "bytes": 35394,
+      "reserveUsd": 0.016647
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-008",
+      "sha256": "543b38db8af3153a039949e5cd73361f64f654afaed58d831c465717d127fe11",
+      "bytes": 34835,
+      "reserveUsd": 0.016591
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-009",
+      "sha256": "04a9c9144bcf69e12a79b8728a1437d6edf7cb42873e5988e3f16aabf1134065",
+      "bytes": 35545,
+      "reserveUsd": 0.016662
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-010",
+      "sha256": "64de085842138145f64c8842049472245464c9ea39e927a0f0d5776a0bdcc74e",
+      "bytes": 36866,
+      "reserveUsd": 0.016794
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-011",
+      "sha256": "8c29f6d1e8f18072c48045fca02a089678af791b9f421c7b0f7f98e14de50f4b",
+      "bytes": 35706,
+      "reserveUsd": 0.016678
+    }
+  ],
+  "simulations": [
+    {
+      "simulation": "ANSWER_WITHOUT_TOOLS",
+      "arms": [
+        {
+          "arm": "TOOLFACTS_ANALYSIS",
+          "posts": 3,
+          "reservedUsd": 0.0397,
+          "ceilingUsd": 1.25,
+          "halt": "CONSECUTIVE_CONTRACT_FAILURES",
+          "units": 12,
+          "complete": 0,
+          "stoppedByBudget": 9,
+          "maxRequestBytes": 41426
+        }
+      ]
+    },
+    {
+      "simulation": "TOOL_CALL_ON_EVERY_TURN (an overview each of 3 turns, then answer)",
+      "arms": [
+        {
+          "arm": "TOOLFACTS_ANALYSIS",
+          "posts": 12,
+          "reservedUsd": 0.216,
+          "ceilingUsd": 1.25,
+          "halt": "CONSECUTIVE_CONTRACT_FAILURES",
+          "units": 12,
+          "complete": 0,
+          "stoppedByBudget": 9,
+          "maxRequestBytes": 81943
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; no provider call; no line text is written to this report."
+  ]
+}

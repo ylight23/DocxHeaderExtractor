@@ -1,0 +1,174 @@
+{
+  "artifact": "p7.f1.v6.d4.11j-owner-document-trial-dryrun.v1",
+  "authority": "OWNER-DOC-f4b72d1a",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-f4b72d1a.layout.json.geo.unwrap.single.facts.r1.mainplain.toolrounds.toolfactsanalysis.factsv2.v1.json",
+  "planSha256": "008761489bb824399921bc847e55df882b1aee02be89f66ed5d65cd033673f2f",
+  "planVerifiesNow": true,
+  "codeCommit": "c91661f70ed8640f5860d315013bde70ac7406d0",
+  "firstRequests": [
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-000",
+      "sha256": "fcaac361b0f8a9af0c476290ac93422a4d616f7da018ac241851468968cdb2ff",
+      "bytes": 28663,
+      "reserveUsd": 0.00512
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-001",
+      "sha256": "54450cc31aa70fc14675634797eaa40804b1638a55c3545c8b8d3e1640aaaef5",
+      "bytes": 35159,
+      "reserveUsd": 0.016623
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-002",
+      "sha256": "0650e0b37cf5d660de42c102fca0158d8ee38ba06a6329a3e8d319f0b6506b01",
+      "bytes": 35309,
+      "reserveUsd": 0.016638
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-003",
+      "sha256": "c7a813644ee7889257fa354fb1ff13d687018e4b2b100396c6470d644fcd9469",
+      "bytes": 34868,
+      "reserveUsd": 0.016594
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-004",
+      "sha256": "101c77e933ff7a35906edfc1a1fd36e1da5c17f3a3f096afc764b4e0b8cfeffb",
+      "bytes": 34992,
+      "reserveUsd": 0.016606
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-005",
+      "sha256": "b8f92b6d8339f86f6b1a1400b6688938891bfbab9564b596d05d36f67b1290f5",
+      "bytes": 34930,
+      "reserveUsd": 0.0166
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-006",
+      "sha256": "6382a152df8f8d2b15d173df898572b745cd4edca011142d63f6c45a558a5fdc",
+      "bytes": 35773,
+      "reserveUsd": 0.016684
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-007",
+      "sha256": "23ca8bf1e2b13fbe3c23cdded95356084e3d88dc384e97c186abc383bdb3c2be",
+      "bytes": 33624,
+      "reserveUsd": 0.01647
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-008",
+      "sha256": "b40d2910a8fca5dee4d32e699b707f3ad7d5e82ecd01df8d676086d25de54d55",
+      "bytes": 34244,
+      "reserveUsd": 0.016532
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-009",
+      "sha256": "6270d3d3d50ee7f08c68e1223c8f9f73733e14bd3bd6d6a6938308cb083860f9",
+      "bytes": 35730,
+      "reserveUsd": 0.01668
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-010",
+      "sha256": "163386a1f8a0946815c184ebe21e9d42b3a62c0448d894a2ec5b4083716b2919",
+      "bytes": 34238,
+      "reserveUsd": 0.016531
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-011",
+      "sha256": "e5c9e3b9918255c076115bfd05c5ea61af8c8c507d4cfe46ed435c42c122655a",
+      "bytes": 34574,
+      "reserveUsd": 0.016565
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-012",
+      "sha256": "e35cd58b88b670f6d50cad2b17954eb17c969c9efc47d0c0d98e351806efe912",
+      "bytes": 33949,
+      "reserveUsd": 0.016502
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-013",
+      "sha256": "683b0328fa90602f3b4b7f081cce836cfb8cc8354b6a09ea229146c95d647628",
+      "bytes": 35039,
+      "reserveUsd": 0.016611
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-014",
+      "sha256": "581fdb75efa6626711b86bf088052bfc412cadea98d685bdba8663dec584adbe",
+      "bytes": 34826,
+      "reserveUsd": 0.01659
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-015",
+      "sha256": "1f3c8fa9f5779f76a3d9127acae824f9048feb1e9ce5400de56df87ef8d61771",
+      "bytes": 34650,
+      "reserveUsd": 0.016572
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-016",
+      "sha256": "708ff2cd143b5009f96f25518074a01130e5bab16594283a579b01e647f2522f",
+      "bytes": 34012,
+      "reserveUsd": 0.016508
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS",
+      "segment": "SEG-017",
+      "sha256": "ef4710e072415dab5504dbbf8ae9734c56cf409f9b3a226fc71c57b6e619f61a",
+      "bytes": 26106,
+      "reserveUsd": 0.005043
+    }
+  ],
+  "simulations": [
+    {
+      "simulation": "ANSWER_WITHOUT_TOOLS",
+      "arms": [
+        {
+          "arm": "TOOLFACTS_ANALYSIS",
+          "posts": 3,
+          "reservedUsd": 0.0384,
+          "ceilingUsd": 1.87,
+          "halt": "CONSECUTIVE_CONTRACT_FAILURES",
+          "units": 18,
+          "complete": 0,
+          "stoppedByBudget": 15,
+          "maxRequestBytes": 35309
+        }
+      ]
+    },
+    {
+      "simulation": "TOOL_CALL_ON_EVERY_TURN (an overview each of 3 turns, then answer)",
+      "arms": [
+        {
+          "arm": "TOOLFACTS_ANALYSIS",
+          "posts": 12,
+          "reservedUsd": 0.1801,
+          "ceilingUsd": 1.87,
+          "halt": "CONSECUTIVE_CONTRACT_FAILURES",
+          "units": 18,
+          "complete": 0,
+          "stoppedByBudget": 15,
+          "maxRequestBytes": 43753
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; no provider call; no line text is written to this report."
+  ]
+}
