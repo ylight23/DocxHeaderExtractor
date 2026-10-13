@@ -50,6 +50,7 @@ internal static class P7F1V6DirectOwnerTrial
 
     public static int RetriesOf(JsonElement plan) => plan.TryGetProperty("failureHandling", out var f) ? f.GetProperty("transportRetries").GetInt32() : 0;
     public static bool RepairOf(JsonElement plan) => plan.TryGetProperty("failureHandling", out var f) && f.GetProperty("repairTurn").GetBoolean();
+    public static bool PromptCacheOf(JsonElement plan) => plan.TryGetProperty("promptCache", out var v) && v.ValueKind == JsonValueKind.String;
     public static int MaxRepairsOf(JsonElement plan) => plan.TryGetProperty("failureHandling", out var f) && f.TryGetProperty("maxRepairs", out var m) ? m.GetInt32() : 1;
 
     public static bool HideLayoutOf(JsonElement plan) => plan.TryGetProperty("hideLayoutArm", out var v) && v.ValueKind == JsonValueKind.String;
@@ -75,7 +76,7 @@ internal static class P7F1V6DirectOwnerTrial
     public static string SegmentationOf(JsonElement plan) =>
         plan.TryGetProperty("segmentation", out var s) && s.ValueKind == JsonValueKind.Object ? s.GetProperty("policy").GetString()! : P7F1V6Universe.FixedSegmentation;
 
-    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit, string segmentation = P7F1V6Universe.FixedSegmentation, bool jsonObjectAllTurns = false, bool geometryArm = false, bool unwrapFence = false, bool singleArm = false, bool factsUse = false, int reps = C.Reps, int firstSegments = 0, string instruction = P7F1V6DirectD45.Instruction, bool fullToolRounds = false, bool toolFacts = false, bool toolFactsAnalysis = false, int factsVersion = 1, bool promptFactsV2 = false, bool hideLayout = false, int transportRetries = 0, bool repairTurn = false, int maxRepairs = 1)
+    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit, string segmentation = P7F1V6Universe.FixedSegmentation, bool jsonObjectAllTurns = false, bool geometryArm = false, bool unwrapFence = false, bool singleArm = false, bool factsUse = false, int reps = C.Reps, int firstSegments = 0, string instruction = P7F1V6DirectD45.Instruction, bool fullToolRounds = false, bool toolFacts = false, bool toolFactsAnalysis = false, int factsVersion = 1, bool promptFactsV2 = false, bool hideLayout = false, int transportRetries = 0, bool repairTurn = false, int maxRepairs = 1, bool promptCache = false)
     {
         // The spare calls of a unit: its retries and two posts per repair; a repair with no limit of its own is budgeted as four repairs, and the arm's call limit is the bound.
         var extraPerUnit = transportRetries + (repairTurn ? 2 * (maxRepairs < 0 ? 4 : maxRepairs) : 0);
@@ -90,7 +91,7 @@ internal static class P7F1V6DirectOwnerTrial
         var worst = P7F1V6Direct.AttemptUsd(C.MaxRequestBytes);
         var arms = armSet.Select(a =>
         {
-            var first = segs.Select(s => C.FirstRequest(a.Mode, u, s, jsonObjectAllTurns, instruction)).ToList();
+            var first = segs.Select(s => C.FirstRequest(a.Mode, u, s, jsonObjectAllTurns, instruction, promptCache)).ToList();
             return new
             {
                 arm = a.Arm,
@@ -166,7 +167,7 @@ internal static class P7F1V6DirectOwnerTrial
                 requestTemplateSha256 = template.Sha256,
                 toolDefinitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(),
                 promptSha256 = new { control = A.AutoPromptRangeSha256, prefetch = A.PrefetchPromptRangeSha256 },
-                firstRequestsSha256 = P7F1V6Protocol.Sha(string.Join("\n", armSet.SelectMany(a => segs.Select(sg => C.FirstRequest(a.Mode, u, sg, jsonObjectAllTurns, instruction).Sha256)))),
+                firstRequestsSha256 = P7F1V6Protocol.Sha(string.Join("\n", armSet.SelectMany(a => segs.Select(sg => C.FirstRequest(a.Mode, u, sg, jsonObjectAllTurns, instruction, promptCache).Sha256)))),
             },
             ["tools"] = new { version = P7F1V6AgentTools.Version, definitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(toolFacts || toolFactsAnalysis || promptFactsV2 || hideLayout), names = toolFacts || toolFactsAnalysis || promptFactsV2 || hideLayout ? P7F1V6AgentTools.Names.Append(P7F1V6AgentTools.LineFacts).ToArray() : P7F1V6AgentTools.Names,
                 availability = "declared in both arms, optional; tool results come from the document lines" },
@@ -204,6 +205,8 @@ internal static class P7F1V6DirectOwnerTrial
             plan["factsUseArm"] = "only the FACTS arm is run: the same request as GEOMETRY (repeated-text observations, layout block, segments, shared left edge) with one more sentence in the system prompt telling the model to read the observations of a target and of the lines next to it and to compare the target with its neighbours; the sentence names no kind of line";
         if (firstSegments > 0)
             plan["firstSegmentsOnly"] = firstSegments;
+        if (promptCache)
+            plan["promptCache"] = "the system prompt and the unit payload are each one text block marked cache_control ephemeral (Alibaba caches only marked prefixes; 5-minute TTL renewed on each hit; writes 1.25x, reads 0.1x of the input price); the text is unchanged, only the content shape";
         if (transportRetries > 0 || repairTurn)
             plan["failureHandling"] = maxRepairs == 1
                 ? new { transportRetries, retriable = A.RetriableTransport, repairTurn, repairRule = "at most one repair per unit: the refused reply and a message naming the refusal are sent once more; the new answer goes through the same strict parser; the unit records RepairedFrom", spareCallsPerUnit = extraPerUnit }
@@ -252,7 +255,7 @@ internal static class P7F1V6DirectOwnerTrial
         var planCommit = doc.RootElement.GetProperty("codeCommit").GetString();
         if (planCommit != currentCommit) failures.Add("CODE_COMMIT_DIFFERS");
         if (doc.RootElement.GetProperty("sourceSha256").GetString() != Sha256Of(documentPath)) { failures.Add("OWNER_DOCUMENT_SHA_DIFFERS"); return failures; }
-        if (!Serialize(PinnedValues(documentPath, planCommit ?? "", SegmentationOf(doc.RootElement), JsonAllTurnsOf(doc.RootElement), GeometryArmOf(doc.RootElement), FenceUnwrapOf(doc.RootElement), SingleArmOf(doc.RootElement), FactsUseOf(doc.RootElement), RepsOf(doc.RootElement), FirstSegmentsOf(doc.RootElement), InstructionOf(doc.RootElement), ToolRoundsOf(doc.RootElement), ToolFactsOf(doc.RootElement), ToolFactsAnalysisOf(doc.RootElement), FactsVersionOf(doc.RootElement), PromptFactsV2Of(doc.RootElement), HideLayoutOf(doc.RootElement), RetriesOf(doc.RootElement), RepairOf(doc.RootElement), MaxRepairsOf(doc.RootElement))).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
+        if (!Serialize(PinnedValues(documentPath, planCommit ?? "", SegmentationOf(doc.RootElement), JsonAllTurnsOf(doc.RootElement), GeometryArmOf(doc.RootElement), FenceUnwrapOf(doc.RootElement), SingleArmOf(doc.RootElement), FactsUseOf(doc.RootElement), RepsOf(doc.RootElement), FirstSegmentsOf(doc.RootElement), InstructionOf(doc.RootElement), ToolRoundsOf(doc.RootElement), ToolFactsOf(doc.RootElement), ToolFactsAnalysisOf(doc.RootElement), FactsVersionOf(doc.RootElement), PromptFactsV2Of(doc.RootElement), HideLayoutOf(doc.RootElement), RetriesOf(doc.RootElement), RepairOf(doc.RootElement), MaxRepairsOf(doc.RootElement), PromptCacheOf(doc.RootElement))).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
         return failures;
     }
 
@@ -285,7 +288,7 @@ internal static class P7F1V6DirectOwnerTrial
         var models = armSet.ToDictionary(a => a.Arm, a => new P7F1V6AgentAuditedModel(new P7F1V6DirectAuditedModel(
             new P7F1V6OpenRouterTransport(handler, TimeSpan.FromSeconds(300)), apiKey, stores[a.Arm], budgets[a.Arm])));
         var state = C.RunArms(u, segments, models.ToDictionary(kv => kv.Key, kv => (A.AgentModel)kv.Value.Turn), budgets, JsonAllTurnsOf(plan.RootElement), armSet, unwrapSingleFence: FenceUnwrapOf(plan.RootElement), reps: RepsOf(plan.RootElement), instruction: InstructionOf(plan.RootElement), parallelism: C.ParallelismFromEnvironment(),
-            transportRetries: RetriesOf(plan.RootElement), repairTurn: RepairOf(plan.RootElement), maxRepairs: MaxRepairsOf(plan.RootElement));
+            transportRetries: RetriesOf(plan.RootElement), repairTurn: RepairOf(plan.RootElement), maxRepairs: MaxRepairsOf(plan.RootElement), cacheMarkers: PromptCacheOf(plan.RootElement));
         return state.Select(s => new C.ArmResult(s.Arm, s.Units, models[s.Arm].Ledger, s.Budget.Calls, s.Budget.ReservedUsd, s.Budget.ActualUsd,
             s.Budget.HaltReason, s.Budget.Refusals.ToArray(), stores[s.Arm].RunDirectory)).ToList();
     }

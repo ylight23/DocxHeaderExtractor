@@ -77,7 +77,7 @@ internal sealed class P7F1V6DirectAuditedModel
         string stage;
         bool stream;
         using (var body = JsonDocument.Parse(request.Body))
-        using (var payload = JsonDocument.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!))
+        using (var payload = JsonDocument.Parse(P7F1V6Protocol.MessageText(body.RootElement.GetProperty("messages")[1].GetProperty("content"))))
         {
             stage = payload.RootElement.GetProperty("stage").GetString()!;
             stream = body.RootElement.TryGetProperty("stream", out var st) && st.ValueKind == JsonValueKind.True;

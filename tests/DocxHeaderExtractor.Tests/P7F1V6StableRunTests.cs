@@ -52,7 +52,7 @@ public sealed class P7F1V6StableRunTests
         A.AgentModel model = (unit, turn, req) =>
         {
             using var d = JsonDocument.Parse(req.Body);
-            using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+            using var p = JsonDocument.Parse(P7F1V6Protocol.MessageText(d.RootElement.GetProperty("messages")[1].GetProperty("content")));
             var targets = p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
             return new A.ModelTurn(answer(targets), Array.Empty<A.ToolCall>(), "stop");
         };
@@ -135,7 +135,7 @@ public sealed class P7F1V6StableRunTests
         Assert.Equal("GEOMETRY", arms[0].GetProperty("arm").GetString());
         var u = T.Load(path, T.Sha256Of(path), P7F1V6Universe.LayoutSegmentation);
         using var body = JsonDocument.Parse(C.FirstRequest(A.Arm.Geometry, u, "SEG-001", true).Body);
-        using var payload = JsonDocument.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var payload = JsonDocument.Parse(P7F1V6Protocol.MessageText(body.RootElement.GetProperty("messages")[1].GetProperty("content")));
         var obs = payload.RootElement.GetProperty("observations");
         Assert.True(obs.TryGetProperty("targets", out _));          // repeated-text observations
         Assert.True(obs.TryGetProperty("layoutFacts", out _));      // layout block, segments, shared left edge
@@ -157,7 +157,7 @@ public sealed class P7F1V6StableRunTests
         string Payload(A.Arm arm)
         {
             using var body = JsonDocument.Parse(C.FirstRequest(arm, u, "SEG-001", true).Body);
-            return body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!;
+            return P7F1V6Protocol.MessageText(body.RootElement.GetProperty("messages")[1].GetProperty("content"));
         }
         Assert.Equal(Payload(A.Arm.Geometry), Payload(A.Arm.Facts));       // the same observations, byte for byte
         var geometryLines = A.GeometryPromptRange.Split((char)10).ToList();
@@ -230,11 +230,11 @@ public sealed class P7F1V6StableRunTests
         Assert.Equal(P7F1V6Core.InstructionSha256(en), d.RootElement.GetProperty("instructionSha256").GetString());
         var u = T.Load(path, T.Sha256Of(path), P7F1V6Universe.LayoutSegmentation);
         using var body = JsonDocument.Parse(C.FirstRequest(A.Arm.Facts, u, "SEG-000", true, en).Body);
-        using var payload = JsonDocument.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var payload = JsonDocument.Parse(P7F1V6Protocol.MessageText(body.RootElement.GetProperty("messages")[1].GetProperty("content")));
         Assert.Equal(en, payload.RootElement.GetProperty("instruction").GetString());
         // The default is unchanged: the Vietnamese structural instruction.
         using var def = JsonDocument.Parse(C.FirstRequest(A.Arm.Facts, u, "SEG-000", true).Body);
-        using var defPayload = JsonDocument.Parse(def.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var defPayload = JsonDocument.Parse(P7F1V6Protocol.MessageText(def.RootElement.GetProperty("messages")[1].GetProperty("content")));
         Assert.Equal(P7F1V6DirectD45.Instruction, defPayload.RootElement.GetProperty("instruction").GetString());
         var file = Path.Combine(Path.GetTempPath(), "dhx-en-" + Guid.NewGuid().ToString("N") + ".json");
         try
@@ -284,7 +284,7 @@ public sealed class P7F1V6StableRunTests
         if (slow) Thread.Sleep(60);
         Interlocked.Decrement(ref inFlight);
         using var d = JsonDocument.Parse(req.Body);
-        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var p = JsonDocument.Parse(P7F1V6Protocol.MessageText(d.RootElement.GetProperty("messages")[1].GetProperty("content")));
         var targets = p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
         // A deterministic answer that depends on the unit: select the first target of segment 1.
         var odd = unit.Contains("SEG-001");
@@ -338,7 +338,7 @@ public sealed class P7F1V6StableRunTests
         {
             var body = request.Content!.ReadAsStringAsync(ct).Result;
             using var d = JsonDocument.Parse(body);
-            using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+            using var p = JsonDocument.Parse(P7F1V6Protocol.MessageText(d.RootElement.GetProperty("messages")[1].GetProperty("content")));
             var targets = p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
             var content = Bare(targets);
             var prompt = Encoding.UTF8.GetByteCount(body) / 4;
@@ -536,7 +536,7 @@ public sealed class P7F1V6StableRunTests
     static string TargetRange(string body, string key)
     {
         using var d = JsonDocument.Parse(body);
-        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var p = JsonDocument.Parse(P7F1V6Protocol.MessageText(d.RootElement.GetProperty("messages")[1].GetProperty("content")));
         return p.RootElement.GetProperty(key).GetString()!;
     }
 
@@ -547,7 +547,7 @@ public sealed class P7F1V6StableRunTests
         // No observations in the payload; eight tools declared; the prompt is the TOOLFACTS one.
         var first = C.FirstRequest(A.Arm.ToolFacts, u, "SEG-001", true, P7F1V6DirectD45.InstructionEnglishAll);
         using (var d = JsonDocument.Parse(first.Body))
-        using (var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!))
+        using (var p = JsonDocument.Parse(P7F1V6Protocol.MessageText(d.RootElement.GetProperty("messages")[1].GetProperty("content"))))
         {
             Assert.False(p.RootElement.TryGetProperty("observations", out _));
             Assert.Equal(8, d.RootElement.GetProperty("tools").GetArrayLength());
@@ -581,7 +581,7 @@ public sealed class P7F1V6StableRunTests
     static IReadOnlyList<string> TargetsOf(string body)
     {
         using var d = JsonDocument.Parse(body);
-        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var p = JsonDocument.Parse(P7F1V6Protocol.MessageText(d.RootElement.GetProperty("messages")[1].GetProperty("content")));
         return p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
     }
 
@@ -870,7 +870,7 @@ public sealed class P7F1V6StableRunTests
         var u = Universe().WithFactsVersion(3);
         var r = C.FirstRequest(A.Arm.ToolFactsAnalysisV3, u, "SEG-001", true, P7F1V6DirectD45.InstructionEnglishMainPlain);
         using var d = JsonDocument.Parse(r.Body);
-        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var p = JsonDocument.Parse(P7F1V6Protocol.MessageText(d.RootElement.GetProperty("messages")[1].GetProperty("content")));
         foreach (var part in new[] { "targets", "context" })
             foreach (var item in p.RootElement.GetProperty(part).EnumerateArray())
                 Assert.Equal(new[] { "alias", "page", "text" }, item.EnumerateObject().Select(x => x.Name).ToArray());
@@ -889,7 +889,7 @@ public sealed class P7F1V6StableRunTests
             Assert.DoesNotContain(banned, string.Join(" ", added), StringComparison.OrdinalIgnoreCase);
         // The earlier arms still show the layout.
         using var d2 = JsonDocument.Parse(C.FirstRequest(A.Arm.ToolFactsAnalysisV2, u, "SEG-001", true).Body);
-        using var p2 = JsonDocument.Parse(d2.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var p2 = JsonDocument.Parse(P7F1V6Protocol.MessageText(d2.RootElement.GetProperty("messages")[1].GetProperty("content")));
         Assert.Contains(p2.RootElement.GetProperty("targets").EnumerateArray(), x => x.TryGetProperty("layout", out _));
         Assert.False(p2.RootElement.TryGetProperty("documentStyles", out _));
     }
@@ -1201,6 +1201,73 @@ public sealed class P7F1V6StableRunTests
         Assert.Equal(-1, T.MaxRepairsOf(all.RootElement));
         Assert.Equal(3, T.RetriesOf(all.RootElement));
         var file = Path.Combine(Path.GetTempPath(), "dhx-all-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, bytes);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
+
+    // ---- D4.12q: prompt-cache markers ----
+
+    [Fact]
+    public void CacheMarkers_ChangeOnlyTheContentShape_TheTextIsTheSame_AndTheDefaultIsUnchanged()
+    {
+        var u = Universe().WithFactsVersion(3);
+        var plain = C.FirstRequest(A.Arm.ToolFactsAnalysisV3, u, "SEG-001", true, P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines);
+        var marked = C.FirstRequest(A.Arm.ToolFactsAnalysisV3, u, "SEG-001", true, P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, cacheMarkers: true);
+        using var a = JsonDocument.Parse(plain.Body);
+        using var b = JsonDocument.Parse(marked.Body);
+        for (int i = 0; i < 2; i++)
+        {
+            var pa = a.RootElement.GetProperty("messages")[i].GetProperty("content");
+            var pb = b.RootElement.GetProperty("messages")[i].GetProperty("content");
+            Assert.Equal(JsonValueKind.String, pa.ValueKind);
+            Assert.Equal(JsonValueKind.Array, pb.ValueKind);
+            Assert.Equal(1, pb.GetArrayLength());
+            Assert.Equal("text", pb[0].GetProperty("type").GetString());
+            Assert.Equal("ephemeral", pb[0].GetProperty("cache_control").GetProperty("type").GetString());
+            Assert.Equal(pa.GetString(), P7F1V6Protocol.MessageText(pb));
+        }
+        // Everything else in the body is the same.
+        var na = JsonNode.Parse(plain.Body)!.AsObject(); var nb = JsonNode.Parse(marked.Body)!.AsObject();
+        na.Remove("messages"); nb.Remove("messages");
+        Assert.Equal(na.ToJsonString(), nb.ToJsonString());
+        Assert.NotEqual(plain.Sha256, marked.Sha256);
+    }
+
+    [Fact]
+    public void CacheMarkers_TheAuditedSenderReadsAMarkedRequest_AndThePlanPinsTheFlag()
+    {
+        var u = Universe().WithFactsVersion(3);
+        var dir = Path.Combine(Path.GetTempPath(), "dhx-cache-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(dir);
+        try
+        {
+            var store = P7F1V6SafeRawStore.CreateRun(dir);
+            var budget = new P7F1V6DirectV2.Budget(10, 5, C.MaxRequestBytes);
+            var model = new P7F1V6AgentAuditedModel(new P7F1V6DirectAuditedModel(new P7F1V6OpenRouterTransport(new SseHandler(), TimeSpan.FromSeconds(30)), "test-key", store, budget));
+            var req = C.FirstRequest(A.Arm.Auto, u, "SEG-001", cacheMarkers: true);
+            Assert.Null(budget.Admit(req));
+            var turn = model.Turn("U1", 1, req);
+            Assert.NotNull(turn.Content);
+            Assert.Equal("SEGMENT", model.Ledger[0].Stage);
+        }
+        finally { try { Directory.Delete(dir, true); } catch (IOException) { } }
+
+        var rel = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        Dictionary<string, object?> Pinned(bool cache) => T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1,
+            firstSegments: 2, instruction: P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, fullToolRounds: true, toolFactsAnalysis: true, factsVersion: 3, hideLayout: true,
+            transportRetries: 3, repairTurn: true, maxRepairs: -1, promptCache: cache);
+        using var off = JsonDocument.Parse(T.Serialize(Pinned(false)));
+        Assert.False(T.PromptCacheOf(off.RootElement));
+        var bytes = T.Serialize(Pinned(true));
+        using var on = JsonDocument.Parse(bytes);
+        Assert.True(T.PromptCacheOf(on.RootElement));
+        Assert.NotEqual(off.RootElement.GetProperty("arms")[0].GetProperty("requestPlanSha256").GetString(), on.RootElement.GetProperty("arms")[0].GetProperty("requestPlanSha256").GetString());
+        var file = Path.Combine(Path.GetTempPath(), "dhx-cacheplan-" + Guid.NewGuid().ToString("N") + ".json");
         try
         {
             File.WriteAllBytes(file, bytes);

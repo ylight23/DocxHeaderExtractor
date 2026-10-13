@@ -214,13 +214,18 @@ internal static class P7F1V6DirectAgent
     /// the strict parser still refuses any final answer that is not exactly one JSON object (a fence or prose around it included).
     /// D4.11c: reasoning enabled true is stated explicitly and the reply is streamed (SSE), the request shape of every F1Q turn in which
     /// Qwen made tool calls on this route (verified from the F1Q raw). The D4.11b canary sent neither and Qwen made no tool call.</summary>
-    public static P7F1V6Protocol.PreparedRequest Build(string systemPrompt, string payload, JsonArray history, string toolChoice, bool jsonObjectAllTurns = false, bool factsTool = false)
+    /// <summary>cacheMarkers (D4.12q): the system prompt and the unit payload are sent as one text block each, marked cache_control ephemeral, so the
+    /// provider caches the prefix up to each mark (Alibaba caches only marked prefixes). The text is the same; only the content shape differs.</summary>
+    public static P7F1V6Protocol.PreparedRequest Build(string systemPrompt, string payload, JsonArray history, string toolChoice, bool jsonObjectAllTurns = false, bool factsTool = false, bool cacheMarkers = false)
     {
         if (toolChoice is not ("auto" or "none")) throw new ArgumentException("TOOL_CHOICE_INVALID", nameof(toolChoice));
         var spec = P7F1V6Protocol.DefaultSpec();
         var messages = new JsonArray(
-            new JsonObject { ["role"] = "system", ["content"] = systemPrompt },
-            new JsonObject { ["role"] = "user", ["content"] = payload });
+            new JsonObject { ["role"] = "system", ["content"] = Content(systemPrompt) },
+            new JsonObject { ["role"] = "user", ["content"] = Content(payload) });
+        JsonNode Content(string text) => cacheMarkers
+            ? new JsonArray(new JsonObject { ["type"] = "text", ["text"] = text, ["cache_control"] = new JsonObject { ["type"] = "ephemeral" } })
+            : JsonValue.Create(text)!;
         foreach (var m in history) messages.Add(m!.DeepClone());
         var body = new JsonObject
         {
@@ -348,7 +353,7 @@ internal static class P7F1V6DirectAgent
 
     public static AgentUnitOutcome RunUnit(Arm arm, string instruction, P7F1V6Universe universe, string unitId, IReadOnlyList<string> decide,
         IEnumerable<int> initialContext, AgentModel model, P7F1V6DirectV2.Budget budget, bool rangeStated = false, bool jsonObjectAllTurns = false, bool unwrapSingleFence = false,
-        int transportRetries = 0, bool repairTurn = false, int retryDelayMs = 5000, int maxRepairs = 1)
+        int transportRetries = 0, bool repairTurn = false, int retryDelayMs = 5000, int maxRepairs = 1, bool cacheMarkers = false)
     {
         // maxRepairs (D4.12p): how many repair turns one unit may use; -1 is no limit of its own (the arm's call limit still stops a unit that keeps failing).
         string? repairedFrom = null;
@@ -421,7 +426,7 @@ internal static class P7F1V6DirectAgent
         for (int turn = 1; turn <= MaxPostsPerUnit + 2 * repairsUsed; turn++)
         {
             var toolChoice = forcedChoices.Count > 0 ? forcedChoices.Dequeue() : turn <= MaxToolTurns ? "auto" : "none";
-            var req = Build(prompt, payload, history, toolChoice, jsonObjectAllTurns, factsTool: UsesFactsTool(arm));
+            var req = Build(prompt, payload, history, toolChoice, jsonObjectAllTurns, factsTool: UsesFactsTool(arm), cacheMarkers: cacheMarkers);
             var refusal = budget.Admit(req);
             if (refusal is not null) return Done("INCOMPLETE", "BUDGET:" + refusal);
             requests.Add(req);

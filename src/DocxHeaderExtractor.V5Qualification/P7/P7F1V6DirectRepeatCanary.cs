@@ -121,12 +121,12 @@ internal static class P7F1V6DirectRepeatCanary
         Units(picks, reps) + (fullToolRounds ? Units(picks, reps) * A.MaxToolTurns : Math.Max(3, Units(picks, reps) / 5)) + Units(picks, reps) * extraPerUnit;
     public static P7F1V6DirectV2.Budget NewArmBudget(IReadOnlyList<Pick> picks, double ceilingUsd) => new(PostsPerArm(picks), ceilingUsd, MaxRequestBytes);
 
-    public static P7F1V6Protocol.PreparedRequest FirstRequest(A.Arm mode, P7F1V6Universe u, string segment, bool jsonObjectAllTurns = false, string instruction = P7F1V6DirectD45.Instruction)
+    public static P7F1V6Protocol.PreparedRequest FirstRequest(A.Arm mode, P7F1V6Universe u, string segment, bool jsonObjectAllTurns = false, string instruction = P7F1V6DirectD45.Instruction, bool cacheMarkers = false)
     {
         var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, segment);
         var (payload, _) = A.FirstPayload(mode, instruction, u.SourceSha256, segment, decide, ctx.Select(i => u.Lines[i]).ToArray(),
             new P7F1V6AgentTools(u.Tools, u.LayoutFacts, factsVersion: u.FactsVersion), rangeStated: true);
-        return A.Build(A.Prompt(mode, rangeStated: true), payload, new System.Text.Json.Nodes.JsonArray(), "auto", jsonObjectAllTurns, factsTool: A.UsesFactsTool(mode));
+        return A.Build(A.Prompt(mode, rangeStated: true), payload, new System.Text.Json.Nodes.JsonArray(), "auto", jsonObjectAllTurns, factsTool: A.UsesFactsTool(mode), cacheMarkers: cacheMarkers);
     }
 
     /// <summary>The ceiling is derived, not chosen: the reserve of every planned first request of the arm, repetitions included, plus the spare
@@ -319,7 +319,7 @@ internal static class P7F1V6DirectRepeatCanary
     public static IReadOnlyList<(string Arm, List<RepUnit> Units, P7F1V6DirectV2.Budget Budget)> RunArms(
         P7F1V6Universe u, IReadOnlyList<string> segments, IReadOnlyDictionary<string, A.AgentModel> modelPerArm, IReadOnlyDictionary<string, P7F1V6DirectV2.Budget> budgetPerArm, bool jsonObjectAllTurns = false,
         (string Arm, A.Arm Mode)[]? arms = null, bool unwrapSingleFence = false, int reps = Reps, string instruction = P7F1V6DirectD45.Instruction, int parallelism = DefaultParallelism,
-        int transportRetries = 0, bool repairTurn = false, int maxRepairs = 1)
+        int transportRetries = 0, bool repairTurn = false, int maxRepairs = 1, bool cacheMarkers = false)
     {
         if (parallelism < 1) throw new ArgumentOutOfRangeException(nameof(parallelism));
         var state = (arms ?? Arms).Select(a => (a.Arm, a.Mode, Units: new List<RepUnit>(), Budget: budgetPerArm[a.Arm])).ToList();
@@ -337,7 +337,7 @@ internal static class P7F1V6DirectRepeatCanary
             var model = modelPerArm[s.Arm];
             results[i] = new RepUnit(rep, A.RunUnit(s.Mode, instruction, u, segment, decide, ctx,
                 (unit, turn, req) => model(unit + "#r" + rep, turn, req), s.Budget, rangeStated: true, jsonObjectAllTurns: jsonObjectAllTurns, unwrapSingleFence: unwrapSingleFence,
-                transportRetries: transportRetries, repairTurn: repairTurn, maxRepairs: maxRepairs));
+                transportRetries: transportRetries, repairTurn: repairTurn, maxRepairs: maxRepairs, cacheMarkers: cacheMarkers));
         }
         var workers = Math.Min(parallelism, Math.Max(1, jobs.Count));
         if (workers == 1)

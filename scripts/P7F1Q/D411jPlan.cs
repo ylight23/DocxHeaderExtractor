@@ -27,7 +27,7 @@ internal static class D411jPlan
     static string[] Targets(P7F1V6Protocol.PreparedRequest req)
     {
         using var doc = JsonDocument.Parse(req.Body);
-        using var p = JsonDocument.Parse(doc.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var p = JsonDocument.Parse(P7F1V6Protocol.MessageText(doc.RootElement.GetProperty("messages")[1].GetProperty("content")));
         return p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
     }
 
@@ -37,12 +37,12 @@ internal static class D411jPlan
         ["decisions"] = new JsonArray(targets.Select(a => (JsonNode)new JsonObject { ["alias"] = a, ["decision"] = "NOT_SELECT" }).ToArray()),
     }.ToJsonString();
 
-    public static void Plan(string repoRoot, string artifactDir, string documentPath, string seg = P7F1V6Universe.FixedSegmentation, bool jsonAll = false, bool geometry = false, bool unwrap = false, bool single = false, bool factsUse = false, int reps = C.Reps, int firstSegments = 0, string instruction = P7F1V6DirectD45.Instruction, bool toolRounds = false, bool toolFacts = false, bool toolFactsAnalysis = false, int factsVersion = 1, bool promptFactsV2 = false, bool hideLayout = false, int retries = 0, bool repair = false, int maxRepairs = 1)
+    public static void Plan(string repoRoot, string artifactDir, string documentPath, string seg = P7F1V6Universe.FixedSegmentation, bool jsonAll = false, bool geometry = false, bool unwrap = false, bool single = false, bool factsUse = false, int reps = C.Reps, int firstSegments = 0, string instruction = P7F1V6DirectD45.Instruction, bool toolRounds = false, bool toolFacts = false, bool toolFactsAnalysis = false, int factsVersion = 1, bool promptFactsV2 = false, bool hideLayout = false, int retries = 0, bool repair = false, int maxRepairs = 1, bool cache = false)
     {
         if (Git(repoRoot, "status --porcelain -- src scripts tests").Length > 0) { Console.WriteLine("D411j PLAN REFUSED: uncommitted code"); Environment.ExitCode = 2; return; }
         var head = Git(repoRoot, "rev-parse HEAD");
-        var tag = (seg == P7F1V6Universe.LayoutSegmentation96 ? ".layout96" : seg == P7F1V6Universe.LayoutSegmentation ? ".layout" : "") + (jsonAll ? ".json" : "") + (geometry ? ".geo" : "") + (unwrap ? ".unwrap" : "") + (single ? ".single" : "") + (factsUse ? ".facts" : "") + (reps != C.Reps ? $".r{reps}" : "") + (firstSegments > 0 ? $".first{firstSegments}" : "") + (instruction == P7F1V6DirectD45.InstructionEnglishAll ? ".en" : instruction == P7F1V6DirectD45.InstructionEnglishMain ? ".main" : instruction == P7F1V6DirectD45.InstructionEnglishMainTools ? ".maintools" : instruction == P7F1V6DirectD45.InstructionEnglishMainPlain ? ".mainplain" : instruction == P7F1V6DirectD45.InstructionEnglishMainRepresentative ? ".mainrep" : instruction == P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines ? ".mainrep2" : "") + (toolRounds ? ".toolrounds" : "") + (toolFacts ? ".toolfacts" : "") + (toolFactsAnalysis ? ".toolfactsanalysis" : "") + (factsVersion != 1 ? $".factsv{factsVersion}" : "") + (promptFactsV2 ? ".promptv2" : "") + (hideLayout ? ".nolayout" : "") + (retries > 0 ? $".retry{retries}" : "") + (repair ? (maxRepairs < 0 ? ".repairall" : maxRepairs == 1 ? ".repair" : $".repair{maxRepairs}") : "");
-        var bytes = T.Serialize(T.PinnedValues(documentPath, head, seg, jsonAll, geometry, unwrapFence: unwrap, singleArm: single, factsUse: factsUse, reps: reps, firstSegments: firstSegments, instruction: instruction, fullToolRounds: toolRounds, toolFacts: toolFacts, toolFactsAnalysis: toolFactsAnalysis, factsVersion: factsVersion, promptFactsV2: promptFactsV2, hideLayout: hideLayout, transportRetries: retries, repairTurn: repair, maxRepairs: maxRepairs));
+        var tag = (seg == P7F1V6Universe.LayoutSegmentation96 ? ".layout96" : seg == P7F1V6Universe.LayoutSegmentation ? ".layout" : "") + (jsonAll ? ".json" : "") + (geometry ? ".geo" : "") + (unwrap ? ".unwrap" : "") + (single ? ".single" : "") + (factsUse ? ".facts" : "") + (reps != C.Reps ? $".r{reps}" : "") + (firstSegments > 0 ? $".first{firstSegments}" : "") + (instruction == P7F1V6DirectD45.InstructionEnglishAll ? ".en" : instruction == P7F1V6DirectD45.InstructionEnglishMain ? ".main" : instruction == P7F1V6DirectD45.InstructionEnglishMainTools ? ".maintools" : instruction == P7F1V6DirectD45.InstructionEnglishMainPlain ? ".mainplain" : instruction == P7F1V6DirectD45.InstructionEnglishMainRepresentative ? ".mainrep" : instruction == P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines ? ".mainrep2" : "") + (toolRounds ? ".toolrounds" : "") + (toolFacts ? ".toolfacts" : "") + (toolFactsAnalysis ? ".toolfactsanalysis" : "") + (factsVersion != 1 ? $".factsv{factsVersion}" : "") + (promptFactsV2 ? ".promptv2" : "") + (hideLayout ? ".nolayout" : "") + (retries > 0 ? $".retry{retries}" : "") + (repair ? (maxRepairs < 0 ? ".repairall" : maxRepairs == 1 ? ".repair" : $".repair{maxRepairs}") : "") + (cache ? ".cache" : "");
+        var bytes = T.Serialize(T.PinnedValues(documentPath, head, seg, jsonAll, geometry, unwrapFence: unwrap, singleArm: single, factsUse: factsUse, reps: reps, firstSegments: firstSegments, instruction: instruction, fullToolRounds: toolRounds, toolFacts: toolFacts, toolFactsAnalysis: toolFactsAnalysis, factsVersion: factsVersion, promptFactsV2: promptFactsV2, hideLayout: hideLayout, transportRetries: retries, repairTurn: repair, maxRepairs: maxRepairs, promptCache: cache));
         using var plan = JsonDocument.Parse(bytes);
         var authority = plan.RootElement.GetProperty("authorityId").GetString()!;
         var planPath = Path.Combine(artifactDir, $"{T.PlanArtifact.Replace(".v1", "")}.{authority}{tag}.v1.json");
@@ -63,7 +63,7 @@ internal static class D411jPlan
         var sims = models.Select(m =>
         {
             var budgets = T.ArmsOf(geometry, single, factsUse, toolFacts, toolFactsAnalysis, promptFactsV2, hideLayout).ToDictionary(a => a.Arm, a => new P7F1V6DirectV2.Budget(posts, ceilings[a.Arm], C.MaxRequestBytes));
-            var state = C.RunArms(u, segs, T.ArmsOf(geometry, single, factsUse, toolFacts, toolFactsAnalysis, promptFactsV2, hideLayout).ToDictionary(a => a.Arm, _ => m.Model), budgets, jsonAll, T.ArmsOf(geometry, single, factsUse, toolFacts, toolFactsAnalysis, promptFactsV2, hideLayout), unwrapSingleFence: unwrap, reps: reps, instruction: instruction, parallelism: 1);
+            var state = C.RunArms(u, segs, T.ArmsOf(geometry, single, factsUse, toolFacts, toolFactsAnalysis, promptFactsV2, hideLayout).ToDictionary(a => a.Arm, _ => m.Model), budgets, jsonAll, T.ArmsOf(geometry, single, factsUse, toolFacts, toolFactsAnalysis, promptFactsV2, hideLayout), unwrapSingleFence: unwrap, reps: reps, instruction: instruction, parallelism: 1, cacheMarkers: cache);
             return new
             {
                 simulation = m.Name,
@@ -82,7 +82,7 @@ internal static class D411jPlan
             planFile = Path.GetFileName(planPath), planSha256 = planSha, planVerifiesNow = verify.Count == 0, codeCommit = head,
             firstRequests = T.ArmsOf(geometry, single, factsUse, toolFacts, toolFactsAnalysis, promptFactsV2, hideLayout).SelectMany(a => segs.Select(s =>
             {
-                var r = C.FirstRequest(a.Mode, u, s, jsonAll, instruction);
+                var r = C.FirstRequest(a.Mode, u, s, jsonAll, instruction, cache);
                 return new { arm = a.Arm, segment = s, sha256 = r.Sha256, bytes = r.Bytes, reserveUsd = Math.Round(P7F1V6Direct.AttemptUsd(r.Bytes), 6) };
             })),
             simulations = sims,

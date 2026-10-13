@@ -33,6 +33,11 @@ internal static class P7F1V6Protocol
     /// The visible response cap is the output budget of the node parser.</summary>
     public const int PayloadCapBytes = 131072, EnvelopeCapBytes = 147456, VisibleResponseCapBytes = 16384;
 
+    /// <summary>The text of a chat message content: a plain string, or (D4.12q, prompt-cache markers) an array of text blocks joined in order.</summary>
+    public static string MessageText(System.Text.Json.JsonElement content) => content.ValueKind == System.Text.Json.JsonValueKind.String
+        ? content.GetString()!
+        : string.Concat(content.EnumerateArray().Where(b => b.TryGetProperty("type", out var t) && t.GetString() == "text").Select(b => b.GetProperty("text").GetString()));
+
     /// <summary>One request body, built once. The measured bytes, the stored bytes and the transported bytes are all this value.</summary>
     public sealed record PreparedRequest(string Body, int Bytes, string Sha256);
 
