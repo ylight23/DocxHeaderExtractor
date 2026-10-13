@@ -1,0 +1,174 @@
+{
+  "artifact": "p7.f1.v6.d4.11j-owner-document-trial-dryrun.v1",
+  "authority": "OWNER-DOC-f4b72d1a",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-f4b72d1a.layout.json.geo.unwrap.single.facts.r1.mainrep2.toolrounds.toolfactsanalysis.factsv3.nolayout.retry3.repairall.cache.v1.json",
+  "planSha256": "ae7a1f28eb575a5891d1e1fda1d6e05dec1be23a3f8b23e91c38e4c3782712b0",
+  "planVerifiesNow": true,
+  "codeCommit": "ac1267017344ec7a1b4fd81b65b9e53e53c9c6c8",
+  "firstRequests": [
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-000",
+      "sha256": "39d3b2ebf9c6b97fd0d9ddb290c17ba04f3e1832a6c84328dfd43f109df08e7c",
+      "bytes": 22076,
+      "reserveUsd": 0.004922
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-001",
+      "sha256": "4ac06ab4bd918a48bf0d7c2ea4ff274e5f094914c925d62024670b134781d1f6",
+      "bytes": 25222,
+      "reserveUsd": 0.005016
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-002",
+      "sha256": "ad4c49d02cf3d063fae55cb1651987d8c83bc8667107c0cb1c3e6730b9030771",
+      "bytes": 25220,
+      "reserveUsd": 0.005016
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-003",
+      "sha256": "95f5d57c9bf4ec8c823d3df4eac4394e0f994ecd4c591576444deac98f003199",
+      "bytes": 25130,
+      "reserveUsd": 0.005014
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-004",
+      "sha256": "74d6eff44f308d26a3673cca3dd71b648c952e861a9322b94a1f0e9eff1d079a",
+      "bytes": 25242,
+      "reserveUsd": 0.005017
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-005",
+      "sha256": "b8cf4ee336d4e7618a8f20e7aa4b70ba12000acc0f1e3c32095f14f0a66f5747",
+      "bytes": 25179,
+      "reserveUsd": 0.005015
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-006",
+      "sha256": "934f8940b0c36793564db6a8c2e4c2fc0d90165766a6f59b619ae61a93293294",
+      "bytes": 25515,
+      "reserveUsd": 0.005025
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-007",
+      "sha256": "108bfca264ae4787f7442d1aac29598b9f40513b5d1b4957deef71769841e152",
+      "bytes": 24387,
+      "reserveUsd": 0.004991
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-008",
+      "sha256": "7ac197cb2246a8f47e251697fea2742920e94b14f3334f80093b04b6225d9854",
+      "bytes": 24667,
+      "reserveUsd": 0.005
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-009",
+      "sha256": "0b20eecece58c0877fcbe5c497e3f9a5dce9fb90c0e90a71f99cae2524b4218a",
+      "bytes": 25637,
+      "reserveUsd": 0.005029
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-010",
+      "sha256": "7e21fd6f08258e20b2a4b10f2bd629cc87bfe680e130eb5def5ffbbd44914d3f",
+      "bytes": 25011,
+      "reserveUsd": 0.00501
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-011",
+      "sha256": "e981f942831cdc17f9044aca5e8c1c1d5a786ef0390bdf9b49262b104f0741b3",
+      "bytes": 24987,
+      "reserveUsd": 0.005009
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-012",
+      "sha256": "04aa84b8da932a285d905b18eb7e56ef4a59783bb142e1a6fe1343005800cc97",
+      "bytes": 24700,
+      "reserveUsd": 0.005001
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-013",
+      "sha256": "9e85f7d5db0f096ea043ddecd3c3c8e4c78fc90dbb095b733a13fd243312f72f",
+      "bytes": 25286,
+      "reserveUsd": 0.005018
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-014",
+      "sha256": "f2dd880a142612fd8caa103f2e17baa38b3cf7ed536d2b4c5d91a26f4a5b35cd",
+      "bytes": 25262,
+      "reserveUsd": 0.005018
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-015",
+      "sha256": "172356ed81f3e659fa5bdef8e641a9623c6091ed14fc8694a07942de7205c369",
+      "bytes": 24895,
+      "reserveUsd": 0.005007
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-016",
+      "sha256": "e217226bf4fdee0a5b308a8c1c65a29e7dc47520fda6515b9fcac29c776b8ffb",
+      "bytes": 24603,
+      "reserveUsd": 0.004998
+    },
+    {
+      "arm": "TOOLFACTS_ANALYSIS_V3",
+      "segment": "SEG-017",
+      "sha256": "7c3bdb9fa269e7b1435b426f2dfa15f3a4ea8cc9a0de11f94ab861ff08f02d1c",
+      "bytes": 21141,
+      "reserveUsd": 0.004894
+    }
+  ],
+  "simulations": [
+    {
+      "simulation": "ANSWER_WITHOUT_TOOLS",
+      "arms": [
+        {
+          "arm": "TOOLFACTS_ANALYSIS_V3",
+          "posts": 3,
+          "reservedUsd": 0.015,
+          "ceilingUsd": 7.37,
+          "halt": "CONSECUTIVE_CONTRACT_FAILURES",
+          "units": 18,
+          "complete": 0,
+          "stoppedByBudget": 15,
+          "maxRequestBytes": 25222
+        }
+      ]
+    },
+    {
+      "simulation": "TOOL_CALL_ON_EVERY_TURN (an overview each of 3 turns, then answer)",
+      "arms": [
+        {
+          "arm": "TOOLFACTS_ANALYSIS_V3",
+          "posts": 12,
+          "reservedUsd": 0.0837,
+          "ceilingUsd": 7.37,
+          "halt": "CONSECUTIVE_CONTRACT_FAILURES",
+          "units": 18,
+          "complete": 0,
+          "stoppedByBudget": 15,
+          "maxRequestBytes": 33666
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; no provider call; no line text is written to this report."
+  ]
+}
