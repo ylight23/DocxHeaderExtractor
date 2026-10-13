@@ -1,0 +1,39 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "PENDING_USER_APPROVAL",
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-f427233d.v1.json",
+  "planSha256": "b48bcbf7bca1c5452c852ee875fbc425aeb722f91e4bd49385a4b11bd7dc04bd",
+  "codeCommit": "cc97f81308019328c9bd2d13c5c8b22aa7066ab2",
+  "authorityId": "OWNER-DOC-f427233d",
+  "document": "owner-supplied (outside the repository): giay-moi-copy.pdf",
+  "sourceSha256": "f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 26,
+  "ceilingUsd": 0.36,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D411j-OWNER-DOC",
+  "dataSharing": {
+    "documentPublicity": "NOT part of the repository's public corpus. A document supplied by the owner (giay-moi-copy.pdf), read from outside the repository; whether it is public is not known to the program. The owner decided that nothing is redacted: the text of every line, including any names, telephone numbers and e-mail addresses it contains, is sent as it is. Requests, raw responses and the analysis stay in the safe store and are not committed or pushed.",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "PENDING_USER_DECISION",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": []
+  },
+  "approvedBy": null,
+  "approvedAtUtc": null,
+  "approvalText": null,
+  "approvalSha256": "944b2af436bfa035fcfca61fb9bc04aca770bd59d65fc2bbfc0d4371bb990b8a"
+}
