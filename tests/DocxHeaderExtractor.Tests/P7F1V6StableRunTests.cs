@@ -1098,4 +1098,21 @@ public sealed class P7F1V6StableRunTests
         Assert.Equal("PROTOCOL:COVERAGE_INCOMPLETE", o.RepairedFrom);
         Assert.Contains("missing decisions for: " + missingAlias + ".", bodies[2]);
     }
+
+    [Fact]
+    public void MainRepresentativeInstruction_IsTheOwnersFourSentencesVerbatim()
+    {
+        Assert.Equal(
+            "Extract the main headings of the document: the headings that carry its structure (its outline).\n" +
+            "The result is a list of the document's main headings in which each heading appears once: for each heading, select the line where the heading itself stands, at the start of the part it names, as its representative. A line that only lists, repeats or points to a heading that stands elsewhere, for example in a table of contents, is not that heading's representative and is not selected.\n" +
+            "When you are unsure about how a line relates to other lines, use the tools to check that relationship.\n" +
+            "Do not guess: if the evidence does not settle a line, say that it is unresolved instead of choosing.",
+            P7F1V6DirectD45.InstructionEnglishMainRepresentative);
+        var lines = P7F1V6DirectD45.InstructionEnglishMainRepresentative.Split((char)10);
+        Assert.Equal(4, lines.Length);
+        var plain = P7F1V6DirectD45.InstructionEnglishMainPlain.Split((char)10);
+        Assert.Equal(plain[0], lines[0]);
+        Assert.Equal(plain[1], lines[2]);
+        Assert.Equal(plain[2], lines[3]);
+    }
 }
