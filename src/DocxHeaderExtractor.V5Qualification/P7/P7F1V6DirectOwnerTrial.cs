@@ -32,7 +32,7 @@ internal static class P7F1V6DirectOwnerTrial
         (P7F1V6Universe.RebuildOwnerSupplied(documentPath, fileSha256, null, out var why) ?? throw new InvalidOperationException(why)).WithSegmentation(segmentation);
 
     /// <summary>The segmentation a plan pins; a plan without the field is the original fixed 48-line cut.</summary>
-    public static (string Arm, A.Arm Mode)[] ArmsOf(bool geometry, bool single = false, bool factsUse = false, bool toolFacts = false) => toolFacts ? C.ArmsToolFactsOnly : factsUse ? C.ArmsFactsOnly : single ? C.ArmsGeometryOnly : geometry ? C.ArmsWithGeometry : C.Arms;
+    public static (string Arm, A.Arm Mode)[] ArmsOf(bool geometry, bool single = false, bool factsUse = false, bool toolFacts = false, bool toolFactsAnalysis = false) => toolFactsAnalysis ? C.ArmsToolFactsAnalysisOnly : toolFacts ? C.ArmsToolFactsOnly : factsUse ? C.ArmsFactsOnly : single ? C.ArmsGeometryOnly : geometry ? C.ArmsWithGeometry : C.Arms;
 
     public static int RepsOf(JsonElement plan) => plan.GetProperty("repetitions").GetProperty("perArmAndSegment").GetInt32();
 
@@ -44,6 +44,8 @@ internal static class P7F1V6DirectOwnerTrial
 
     /// <summary>The user instruction a plan pins; a plan from before D4.12c carries the Vietnamese structural instruction.</summary>
     public static string InstructionOf(JsonElement plan) => plan.GetProperty("instruction").GetString()!;
+
+    public static bool ToolFactsAnalysisOf(JsonElement plan) => plan.TryGetProperty("toolFactsAnalysisArm", out var v) && v.ValueKind == JsonValueKind.String;
 
     public static bool ToolFactsOf(JsonElement plan) => plan.TryGetProperty("toolFactsArm", out var v) && v.ValueKind == JsonValueKind.String;
 
@@ -62,13 +64,13 @@ internal static class P7F1V6DirectOwnerTrial
     public static string SegmentationOf(JsonElement plan) =>
         plan.TryGetProperty("segmentation", out var s) && s.ValueKind == JsonValueKind.Object ? s.GetProperty("policy").GetString()! : P7F1V6Universe.FixedSegmentation;
 
-    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit, string segmentation = P7F1V6Universe.FixedSegmentation, bool jsonObjectAllTurns = false, bool geometryArm = false, bool unwrapFence = false, bool singleArm = false, bool factsUse = false, int reps = C.Reps, int firstSegments = 0, string instruction = P7F1V6DirectD45.Instruction, bool fullToolRounds = false, bool toolFacts = false)
+    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit, string segmentation = P7F1V6Universe.FixedSegmentation, bool jsonObjectAllTurns = false, bool geometryArm = false, bool unwrapFence = false, bool singleArm = false, bool factsUse = false, int reps = C.Reps, int firstSegments = 0, string instruction = P7F1V6DirectD45.Instruction, bool fullToolRounds = false, bool toolFacts = false, bool toolFactsAnalysis = false)
     {
         var fileSha = Sha256Of(documentPath);
         var u = Load(documentPath, fileSha, segmentation);
         var segs = firstSegments > 0 ? SegmentsOf(u).Take(firstSegments).ToArray() : SegmentsOf(u);
         var picks = segs.Select(s => new C.Pick(s, "ALL: every segment of the document", new C.SegStat(s, 0, 0, 0, 0, 0, 0))).ToArray();
-        var armSet = ArmsOf(geometryArm, singleArm, factsUse, toolFacts);
+        var armSet = ArmsOf(geometryArm, singleArm, factsUse, toolFacts, toolFactsAnalysis);
         var ceilings = armSet.ToDictionary(a => a.Arm, a => C.CeilingUsd(u, picks, a.Mode, jsonObjectAllTurns, reps, instruction, fullToolRounds));
         var worst = P7F1V6Direct.AttemptUsd(C.MaxRequestBytes);
         var arms = armSet.Select(a =>
@@ -151,7 +153,7 @@ internal static class P7F1V6DirectOwnerTrial
                 promptSha256 = new { control = A.AutoPromptRangeSha256, prefetch = A.PrefetchPromptRangeSha256 },
                 firstRequestsSha256 = P7F1V6Protocol.Sha(string.Join("\n", armSet.SelectMany(a => segs.Select(sg => C.FirstRequest(a.Mode, u, sg, jsonObjectAllTurns, instruction).Sha256)))),
             },
-            ["tools"] = new { version = P7F1V6AgentTools.Version, definitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(toolFacts), names = toolFacts ? P7F1V6AgentTools.Names.Append(P7F1V6AgentTools.LineFacts).ToArray() : P7F1V6AgentTools.Names,
+            ["tools"] = new { version = P7F1V6AgentTools.Version, definitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(toolFacts || toolFactsAnalysis), names = toolFacts || toolFactsAnalysis ? P7F1V6AgentTools.Names.Append(P7F1V6AgentTools.LineFacts).ToArray() : P7F1V6AgentTools.Names,
                 availability = "declared in both arms, optional; tool results come from the document lines" },
             ["requestShape"] = "SSE (stream true), reasoning enabled true, response_format absent on turns 1 to 3 and json_object on turn 4, temperature 0, max_tokens 32768; the strict parser refuses any final answer that is not exactly one JSON object",
             ["model"] = P7F1V6Protocol.ChatModel,
@@ -187,6 +189,8 @@ internal static class P7F1V6DirectOwnerTrial
             plan["factsUseArm"] = "only the FACTS arm is run: the same request as GEOMETRY (repeated-text observations, layout block, segments, shared left edge) with one more sentence in the system prompt telling the model to read the observations of a target and of the lines next to it and to compare the target with its neighbours; the sentence names no kind of line";
         if (firstSegments > 0)
             plan["firstSegmentsOnly"] = firstSegments;
+        if (toolFactsAnalysis)
+            plan["toolFactsAnalysisArm"] = "TOOLFACTS plus room for the explanation inside the answer: a COMPLETE answer may carry one extra top-level string, analysis (at most " + P7F1V6DirectTwoStage.MaxAnalysisChars + " characters), and each decision may carry reason (at most " + P7F1V6DirectTwoStage.MaxReasonChars + " characters), asked for every SELECT; the parser reads the decisions exactly as before and neither string decides anything; the prompt says to write nothing outside the JSON object";
         if (toolFacts)
             plan["toolFactsArm"] = "the facts are read through get_line_facts: the request has no observations, the first reply must be tool calls that read the facts (an answer before a successful get_line_facts call is refused, PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED, and counts as a contract failure); the facts are the same three kinds as in the FACTS payload; the other seven tools and all earlier requests are unchanged";
         if (fullToolRounds)
@@ -223,7 +227,7 @@ internal static class P7F1V6DirectOwnerTrial
         var planCommit = doc.RootElement.GetProperty("codeCommit").GetString();
         if (planCommit != currentCommit) failures.Add("CODE_COMMIT_DIFFERS");
         if (doc.RootElement.GetProperty("sourceSha256").GetString() != Sha256Of(documentPath)) { failures.Add("OWNER_DOCUMENT_SHA_DIFFERS"); return failures; }
-        if (!Serialize(PinnedValues(documentPath, planCommit ?? "", SegmentationOf(doc.RootElement), JsonAllTurnsOf(doc.RootElement), GeometryArmOf(doc.RootElement), FenceUnwrapOf(doc.RootElement), SingleArmOf(doc.RootElement), FactsUseOf(doc.RootElement), RepsOf(doc.RootElement), FirstSegmentsOf(doc.RootElement), InstructionOf(doc.RootElement), ToolRoundsOf(doc.RootElement), ToolFactsOf(doc.RootElement))).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
+        if (!Serialize(PinnedValues(documentPath, planCommit ?? "", SegmentationOf(doc.RootElement), JsonAllTurnsOf(doc.RootElement), GeometryArmOf(doc.RootElement), FenceUnwrapOf(doc.RootElement), SingleArmOf(doc.RootElement), FactsUseOf(doc.RootElement), RepsOf(doc.RootElement), FirstSegmentsOf(doc.RootElement), InstructionOf(doc.RootElement), ToolRoundsOf(doc.RootElement), ToolFactsOf(doc.RootElement), ToolFactsAnalysisOf(doc.RootElement))).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
         return failures;
     }
 
@@ -250,7 +254,7 @@ internal static class P7F1V6DirectOwnerTrial
         var ceilings = plan.RootElement.GetProperty("arms").EnumerateArray().ToDictionary(a => a.GetProperty("arm").GetString()!, a => a.GetProperty("budget").GetProperty("ceilingUsd").GetDouble());
         var posts = plan.RootElement.GetProperty("arms")[0].GetProperty("budget").GetProperty("maxCalls").GetInt32();
         var u = Load(documentPath, plan.RootElement.GetProperty("sourceSha256").GetString()!, SegmentationOf(plan.RootElement));
-        var armSet = ArmsOf(GeometryArmOf(plan.RootElement), SingleArmOf(plan.RootElement), FactsUseOf(plan.RootElement), ToolFactsOf(plan.RootElement));
+        var armSet = ArmsOf(GeometryArmOf(plan.RootElement), SingleArmOf(plan.RootElement), FactsUseOf(plan.RootElement), ToolFactsOf(plan.RootElement), ToolFactsAnalysisOf(plan.RootElement));
         var budgets = armSet.ToDictionary(a => a.Arm, a => new P7F1V6DirectV2.Budget(posts, ceilings[a.Arm], C.MaxRequestBytes));
         var stores = armSet.ToDictionary(a => a.Arm, _ => P7F1V6SafeRawStore.CreateRun(safeRoot));
         var models = armSet.ToDictionary(a => a.Arm, a => new P7F1V6AgentAuditedModel(new P7F1V6DirectAuditedModel(

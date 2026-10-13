@@ -157,7 +157,7 @@ internal static class P7F1V6DirectTwoStage
 
     public sealed record SelectReply(bool Ok, string? Failure, string? Status, IReadOnlyDictionary<string, string> Values,
         IReadOnlyList<P7F1V6DirectV2.RetrieveRequest> Retrieve, P7F1V6DirectV2.Clarification? Clarification, string? IncompleteReason,
-        IReadOnlyList<string> Missing, IReadOnlyDictionary<string, IReadOnlyList<string>>? Refs = null);
+        IReadOnlyList<string> Missing, IReadOnlyDictionary<string, IReadOnlyList<string>>? Refs = null, string? Analysis = null, IReadOnlyDictionary<string, string>? Reasons = null);
 
     public sealed record GroupReply(bool Ok, string? Failure, string? Status, IReadOnlyList<IReadOnlyList<string>> Groups,
         IReadOnlyList<(string Alias, string Reason)> ReviewRequests, IReadOnlyList<P7F1V6DirectV2.RetrieveRequest> Retrieve, string? IncompleteReason);
@@ -237,8 +237,11 @@ internal static class P7F1V6DirectTwoStage
     /// <summary>Checks a Stage 1 reply. decide is in target order (the order of positions in the compact format). needsEvidenceAllowed is false
     /// in agent mode (D4.11), where evidence comes through tool calls and a NEEDS_EVIDENCE reply is refused. Refs keeps each decision's
     /// evidenceRefs as given (Objects format), for the scope report; it is never used to change a decision.</summary>
+    /// <summary>D4.12h: the most characters of the optional top-level analysis string (TOOLFACTS_ANALYSIS only).</summary>
+    public const int MaxAnalysisChars = 2000, MaxReasonChars = 300;
+
     public static SelectReply ParseSelect(SelectFormat format, string reply, IReadOnlyDictionary<string, int> shownOrder, IReadOnlyList<string> decide,
-        bool needsEvidenceAllowed = true)
+        bool needsEvidenceAllowed = true, bool analysisAllowed = false)
     {
         SelectReply Fail(string code, IReadOnlyList<string>? missing = null) => new(false, code, null, new Dictionary<string, string>(),
             Array.Empty<P7F1V6DirectV2.RetrieveRequest>(), null, null, missing ?? Array.Empty<string>());
@@ -251,7 +254,15 @@ internal static class P7F1V6DirectTwoStage
             if (root.ValueKind != JsonValueKind.Object) return Fail("ROOT_NOT_OBJECT");
             var decisionKeys = format == SelectFormat.Objects ? new[] { "decisions" } : new[] { "targetCount", "blocks", "selectedEvidence" };
             var allowed = decisionKeys.Concat(new[] { "protocolVersion", "status", "retrieve", "clarification", "incompleteReason" }).ToHashSet();
+            if (analysisAllowed) allowed.Add("analysis");
             if (root.EnumerateObject().Any(p => !allowed.Contains(p.Name))) return Fail("ROOT_KEYS_INVALID");
+            // The analysis is free text for the reader. It is bounded and typed, kept as given, and never read by the parser for a decision.
+            string? analysis = null;
+            if (analysisAllowed && root.TryGetProperty("analysis", out var an))
+            {
+                if (an.ValueKind != JsonValueKind.String || an.GetString()!.Length > MaxAnalysisChars) return Fail("ANALYSIS_INVALID");
+                analysis = an.GetString();
+            }
             if (Str(root, "protocolVersion") != SelectVersion(format)) return Fail("PROTOCOL_VERSION_INVALID");
             var status = Str(root, "status");
             if (status is not ("COMPLETE" or "NEEDS_EVIDENCE" or "CLARIFICATION_REQUIRED" or "INCOMPLETE")) return Fail("STATUS_INVALID");
@@ -261,7 +272,7 @@ internal static class P7F1V6DirectTwoStage
             {
                 var f = ParseNonDecision(root, status, decisionKeys, clarificationAllowed: true, out var retrieve, out var clarification);
                 return f is not null ? Fail(f)
-                    : new SelectReply(true, null, status, new Dictionary<string, string>(), retrieve, clarification, null, Array.Empty<string>());
+                    : new SelectReply(true, null, status, new Dictionary<string, string>(), retrieve, clarification, null, Array.Empty<string>(), null, analysis);
             }
 
             if (Has(root, "retrieve") || Has(root, "clarification")) return Fail("DECISION_REPLY_WITH_OTHER_FIELDS");
@@ -275,13 +286,14 @@ internal static class P7F1V6DirectTwoStage
 
             var values = new Dictionary<string, string>(StringComparer.Ordinal);
             var refsByAlias = new Dictionary<string, IReadOnlyList<string>>(StringComparer.Ordinal);
+            var reasons = new Dictionary<string, string>(StringComparer.Ordinal);
             if (format == SelectFormat.Objects)
             {
                 if (!root.TryGetProperty("decisions", out var ds) || ds.ValueKind != JsonValueKind.Array) return Fail("DECISIONS_MISSING");
                 var decideSet = decide.ToHashSet(StringComparer.Ordinal);
                 foreach (var d in ds.EnumerateArray())
                 {
-                    if (d.ValueKind != JsonValueKind.Object || d.EnumerateObject().Any(p => p.Name is not ("alias" or "decision" or "evidenceRefs")))
+                    if (d.ValueKind != JsonValueKind.Object || d.EnumerateObject().Any(p => p.Name is not ("alias" or "decision" or "evidenceRefs") && !(analysisAllowed && p.Name == "reason")))
                         return Fail("DECISION_KEYS_INVALID");
                     var alias = Str(d, "alias");
                     if (alias is null) return Fail("ALIAS_MISSING");
@@ -293,6 +305,11 @@ internal static class P7F1V6DirectTwoStage
                     List<string>? refs = null;
                     if (hasRefs && (refs = ReadRefs(er, shownOrder, value == "SELECT" ? 1 : 0, out var rf)) is null) return Fail(rf!);
                     if (!decideSet.Contains(alias)) return Fail("UNEXPECTED_ALIAS");
+                    if (analysisAllowed && d.TryGetProperty("reason", out var rs))
+                    {
+                        if (rs.ValueKind != JsonValueKind.String || rs.GetString()!.Length > MaxReasonChars) return Fail("REASON_INVALID");
+                        reasons[alias] = rs.GetString()!;
+                    }
                     if (!values.TryAdd(alias, value!)) return Fail("ALIAS_LISTED_TWICE");
                     refsByAlias[alias] = (IReadOnlyList<string>?)refs ?? Array.Empty<string>();
                 }
@@ -347,7 +364,7 @@ internal static class P7F1V6DirectTwoStage
                 }
             }
             if (status == "INCOMPLETE" && values.Values.All(v => v != "UNRESOLVED")) return Fail("INCOMPLETE_WITHOUT_UNRESOLVED");
-            return new SelectReply(true, null, status, values, Array.Empty<P7F1V6DirectV2.RetrieveRequest>(), null, reason, Array.Empty<string>(), refsByAlias);
+            return new SelectReply(true, null, status, values, Array.Empty<P7F1V6DirectV2.RetrieveRequest>(), null, reason, Array.Empty<string>(), refsByAlias, analysis, reasons);
         }
     }
 

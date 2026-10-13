@@ -608,4 +608,119 @@ public sealed class P7F1V6StableRunTests
         }
         finally { File.Delete(file); }
     }
+
+    // ---- D4.12h: the analysis string beside the decisions ----
+
+    static string WithAnalysis(IReadOnlyList<string> targets, object? analysis)
+    {
+        var o = new JsonObject
+        {
+            ["protocolVersion"] = P7F1V6DirectTwoStage.SelectObjectsVersion, ["status"] = "COMPLETE",
+        };
+        if (analysis is not null) o["analysis"] = JsonSerializer.SerializeToNode(analysis);
+        o["decisions"] = new JsonArray(targets.Select(a => (JsonNode)new JsonObject { ["alias"] = a, ["decision"] = "NOT_SELECT" }).ToArray());
+        return o.ToJsonString();
+    }
+
+    [Fact]
+    public void ParseSelect_TheAnalysisKey_IsAllowedOnlyWhenAsked_IsBoundedAndTyped_AndNeverChangesTheDecisionRules()
+    {
+        var targets = new[] { "L1:S0", "L2:S0" };
+        var shown = targets.Select((a, i) => (a, i)).ToDictionary(x => x.a, x => x.i, StringComparer.Ordinal);
+        P7F1V6DirectTwoStage.SelectReply Parse(string reply, bool allowed) =>
+            P7F1V6DirectTwoStage.ParseSelect(P7F1V6DirectTwoStage.SelectFormat.Objects, reply, shown, targets, needsEvidenceAllowed: false, analysisAllowed: allowed);
+        // Not asked: the key is refused, as every earlier arm always did.
+        var off = Parse(WithAnalysis(targets, "why"), false);
+        Assert.False(off.Ok);
+        Assert.Equal("ROOT_KEYS_INVALID", off.Failure);
+        Assert.True(Parse(WithAnalysis(targets, null), false).Ok);
+        // Asked: read, kept, and the decisions are the same.
+        var on = Parse(WithAnalysis(targets, "The first line is a title because of its block."), true);
+        Assert.True(on.Ok);
+        Assert.Equal("The first line is a title because of its block.", on.Analysis);
+        Assert.Equal(targets.ToDictionary(a => a, _ => "NOT_SELECT"), on.Values.ToDictionary(kv => kv.Key, kv => kv.Value));
+        Assert.Null(Parse(WithAnalysis(targets, null), true).Analysis);
+        // Bounded and typed.
+        Assert.Equal("ANALYSIS_INVALID", Parse(WithAnalysis(targets, new string('x', P7F1V6DirectTwoStage.MaxAnalysisChars + 1)), true).Failure);
+        Assert.True(Parse(WithAnalysis(targets, new string('x', P7F1V6DirectTwoStage.MaxAnalysisChars)), true).Ok);
+        Assert.Equal("ANALYSIS_INVALID", Parse(WithAnalysis(targets, 7), true).Failure);
+        // Nothing else relaxes: another root key, a missing decision, an extra alias and a key inside a decision are still refused.
+        Assert.Equal("ROOT_KEYS_INVALID", Parse(WithAnalysis(targets, "ok").Replace("\"decisions\"", "\"notes\":\"x\",\"decisions\""), true).Failure);
+        Assert.Equal("COVERAGE_INCOMPLETE", Parse(WithAnalysis(targets.Take(1).ToArray(), "ok"), true).Failure);
+        Assert.Equal("UNEXPECTED_ALIAS", Parse(WithAnalysis(targets.Append("L9:S0").ToArray(), "ok"), true).Failure);
+        // reason: allowed on a decision only under this contract, bounded and typed.
+        string WithReason(object reason) => WithAnalysis(targets, "ok").Replace("\"decision\":\"NOT_SELECT\"", "\"decision\":\"NOT_SELECT\",\"reason\":" + JsonSerializer.Serialize(reason), StringComparison.Ordinal);
+        var withReason = Parse(WithReason("short"), true);
+        Assert.True(withReason.Ok);
+        Assert.Equal("short", withReason.Reasons!["L1:S0"]);
+        Assert.Equal("DECISION_KEYS_INVALID", Parse(WithReason("short").Replace("\"analysis\":\"ok\",", ""), false).Failure);   // not asked: reason is refused too
+        Assert.Equal("REASON_INVALID", Parse(WithReason(new string((char)120, P7F1V6DirectTwoStage.MaxReasonChars + 1)), true).Failure);
+        Assert.Equal("REASON_INVALID", Parse(WithReason(3), true).Failure);
+        Assert.Equal("DECISION_KEYS_INVALID", Parse(WithAnalysis(targets, "ok").Replace("\"decision\":\"NOT_SELECT\"", "\"decision\":\"NOT_SELECT\",\"why\":\"x\""), true).Failure);
+    }
+
+    [Fact]
+    public void ToolFactsAnalysisPrompt_DiffersFromToolFactsOnlyByTheAnalysisExampleAndTheRule()
+    {
+        var a = A.ToolFactsPromptRange.Split((char)10).ToList();
+        var b = A.ToolFactsAnalysisPromptRange.Split((char)10).ToList();
+        Assert.Equal(a.Count, b.Count);
+        var changed = a.Zip(b).Where(p => p.First != p.Second).ToList();
+        Assert.Equal(2, changed.Count);                                         // the COMPLETE example line (analysis and reason) and the Rules line
+        Assert.Contains("\"analysis\":\"<your explanation", changed[0].Second);
+        Assert.Contains("\"reason\":\"<why this line is such a heading", changed[0].Second);
+        Assert.Contains("Two extra keys are allowed: analysis", changed[1].Second);
+        Assert.Contains("Write nothing before or after the JSON object", changed[1].Second);
+        Assert.DoesNotContain("analysis", A.ToolFactsPromptRange);
+        foreach (var banned in new[] { "table", "footer", "title", "contents", "cover", "clause" })   // the word heading is the task's own word; no kind of line is named
+            Assert.DoesNotContain(banned, string.Join(" ", changed.Select(c => c.Second)), StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void ToolFactsAnalysisArm_KeepsTheAnalysis_WhileTheOtherToolFactsArmStillRefusesTheSameAnswer()
+    {
+        var u = Universe();
+        var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, "SEG-001");
+        A.AgentUnitOutcome Run(A.Arm arm)
+        {
+            A.AgentModel model = (unit, turn, req) =>
+            {
+                var body = req.Body;
+                if (turn == 1)
+                    return new A.ModelTurn(null, new[] { new A.ToolCall("c1", P7F1V6AgentTools.LineFacts, "{\"first\":\"" + TargetRange(body, "targetFirstAlias") + "\",\"last\":\"" + TargetRange(body, "targetLastAlias") + "\",\"offset\":0}") }, "tool_calls");
+                return new A.ModelTurn(WithAnalysis(TargetsOf(body), "Read the facts; no line is a main heading here."), Array.Empty<A.ToolCall>(), "stop");
+            };
+            return A.RunUnit(arm, P7F1V6DirectD45.InstructionEnglishMainTools, u, "SEG-001", decide, ctx, model, new P7F1V6DirectV2.Budget(8, 5, C.MaxRequestBytes), rangeStated: true, jsonObjectAllTurns: true);
+        }
+        var with = Run(A.Arm.ToolFactsAnalysis);
+        Assert.Equal("COMPLETE", with.Unit.Status);
+        Assert.Equal("Read the facts; no line is a main heading here.", with.Analysis);
+        var without = Run(A.Arm.ToolFacts);
+        Assert.Equal("FAILED", without.Unit.Status);
+        Assert.Equal("PROTOCOL:ROOT_KEYS_INVALID", without.Unit.Failure);
+        Assert.Null(without.Analysis);
+    }
+
+    [Fact]
+    public void ToolFactsAnalysisPlan_HasOneArm_PinsThePrompt_AndVerifies()
+    {
+        var rel = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        var bytes = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1,
+            firstSegments: 3, instruction: P7F1V6DirectD45.InstructionEnglishMainTools, fullToolRounds: true, toolFactsAnalysis: true));
+        using var d = JsonDocument.Parse(bytes);
+        Assert.True(T.ToolFactsAnalysisOf(d.RootElement));
+        var arms = d.RootElement.GetProperty("arms").EnumerateArray().ToList();
+        Assert.Single(arms);
+        Assert.Equal("TOOLFACTS_ANALYSIS", arms[0].GetProperty("arm").GetString());
+        Assert.Equal(A.Sha(A.ToolFactsAnalysisPromptRange), arms[0].GetProperty("promptSha256").GetString());
+        Assert.Equal(P7F1V6AgentTools.DefinitionsSha256(true), d.RootElement.GetProperty("tools").GetProperty("definitionsSha256").GetString());
+        var file = Path.Combine(Path.GetTempPath(), "dhx-analysis-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, bytes);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
 }

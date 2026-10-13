@@ -41,7 +41,10 @@ internal static class P7F1V6DirectAgent
     /// <summary>Auto: tools optional. EvidenceFirst: an answer before any tool result is refused (diagnostic). Prefetch (D4.11h): the AUTO prompt
     /// plus one line, and the request ends with observations the program read itself for every target whose text occurs elsewhere; the tools
     /// stay available and optional.</summary>
-    public enum Arm { Auto, EvidenceFirst, Prefetch, Geometry, Facts, ToolFacts }
+    public enum Arm { Auto, EvidenceFirst, Prefetch, Geometry, Facts, ToolFacts, ToolFactsAnalysis }
+
+    /// <summary>The arms whose registry declares and accepts get_line_facts.</summary>
+    public static bool UsesFactsTool(Arm arm) => arm is Arm.ToolFacts or Arm.ToolFactsAnalysis;
 
     // D4.11f. The task is heading extraction as the user defines it. The prompt gives no definition of a heading and no rule about any kind
     // of line: the user's instruction decides both, and the prompt only tells the model to apply it as written.
@@ -101,9 +104,18 @@ internal static class P7F1V6DirectAgent
     const string FactsToolLine = "Facts: this request carries no observations. Your first reply must be tool calls to get_line_facts that read the facts the program measured for the targets (from targetFirstAlias to targetLastAlias; one call covers at most 24 lines, and a result that was cut says where to continue). An answer given before those facts have arrived is refused. For each line the facts give: its layout block (number, lines in the block, this line's place in it), the separate text segments on its visual line (how many, which one, the gaps in points around it), how many other lines of the page start at the same left edge, and, when its text also occurs on other lines, the first other occurrences (their page, position in reading order, layout, how their font and left edge differ from the line's, and the line that follows each). They are measurements, not labels or decisions; what they mean for the instruction is for you to judge. You may cite the aliases they show in evidenceRefs. You may also call the other tools for anything else.";
     public static readonly string ToolFactsPromptRange = WithRange(string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, FactsToolLine, UseLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion)));
+    // D4.12h. TOOLFACTS with room for the explanation inside the answer: the COMPLETE answer may carry one extra top-level string, analysis (at most
+    // 2000 characters), and the prompt says to put any explanation there and to write nothing outside the JSON object. The parser reads decisions exactly
+    // as before; the analysis is kept for the reader and decides nothing.
+    static string BodyWithAnalysis(string version) => Body(version)
+        .Replace("\"status\":\"COMPLETE\",\"decisions\"", "\"status\":\"COMPLETE\",\"analysis\":\"<your explanation of the decisions, at most 2000 characters>\",\"decisions\"", StringComparison.Ordinal)
+        .Replace("\"decision\":\"SELECT\",\"evidenceRefs\":[\"<alias you saw>\"]}", "\"decision\":\"SELECT\",\"evidenceRefs\":[\"<alias you saw>\"],\"reason\":\"<why this line is such a heading, at most 300 characters>\"}", StringComparison.Ordinal)
+        .Replace("Do not add headings, levels, parents or other fields.", "Two extra keys are allowed: analysis, a string of at most 2000 characters at the top level of a COMPLETE answer, for any explanation of your decisions; and reason, a string of at most 300 characters on a decision, which you give for every SELECT. Write nothing before or after the JSON object. Do not add headings, levels, parents or other fields.", StringComparison.Ordinal);
+    public static readonly string ToolFactsAnalysisPromptRange = WithRange(string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, FactsToolLine, UseLine, ObservedLine, ReplyLine,
+        BodyWithAnalysis(P7F1V6DirectTwoStage.SelectObjectsVersion)));
     public const string AutoPromptRangeSha256 = "5a83e08300e60a0a3dd136e9a31cd7439d2fa3943f65be41947a094da8bb14c2";
     public const string PrefetchPromptRangeSha256 = "2290301be5ab6b432d10913e6cfa30a4a11c43a0a811acbf3fc17e1b23d66de6";
-    public static string Prompt(Arm arm, bool rangeStated) => rangeStated ? (arm == Arm.ToolFacts ? ToolFactsPromptRange : arm == Arm.Facts ? FactsPromptRange : arm == Arm.Geometry ? GeometryPromptRange : arm == Arm.Prefetch ? PrefetchPromptRange : arm == Arm.Auto ? AutoPromptRange : WithRange(EvidenceFirstPrompt)) : Prompt(arm);
+    public static string Prompt(Arm arm, bool rangeStated) => rangeStated ? (arm == Arm.ToolFactsAnalysis ? ToolFactsAnalysisPromptRange : arm == Arm.ToolFacts ? ToolFactsPromptRange : arm == Arm.Facts ? FactsPromptRange : arm == Arm.Geometry ? GeometryPromptRange : arm == Arm.Prefetch ? PrefetchPromptRange : arm == Arm.Auto ? AutoPromptRange : WithRange(EvidenceFirstPrompt)) : Prompt(arm);
 
     public static readonly string PrefetchPrompt = string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, ObservationsLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion));
@@ -112,7 +124,7 @@ internal static class P7F1V6DirectAgent
     public const string EvidenceFirstPromptSha256 = "6c8d2629bfec15f1873f9710ddf72f810ad7fc902c0fdeb1ab4ca736b569230f";
     public const string ToolDefinitionsSha256 = "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3";
 
-    public static string Prompt(Arm arm) => arm switch { Arm.Auto => AutoPrompt, Arm.EvidenceFirst => EvidenceFirstPrompt, Arm.Geometry or Arm.Facts or Arm.ToolFacts => throw new ArgumentException("GEOMETRY_NEEDS_RANGE_STATED", nameof(arm)), _ => PrefetchPrompt };
+    public static string Prompt(Arm arm) => arm switch { Arm.Auto => AutoPrompt, Arm.EvidenceFirst => EvidenceFirstPrompt, Arm.Geometry or Arm.Facts or Arm.ToolFacts or Arm.ToolFactsAnalysis => throw new ArgumentException("GEOMETRY_NEEDS_RANGE_STATED", nameof(arm)), _ => PrefetchPrompt };
     public static string Sha(string s) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(s)));
 
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -275,14 +287,14 @@ internal static class P7F1V6DirectAgent
     public const string RelevanceAuditedOffline = "OFFLINE_AUDIT_AFTER_FREEZE";
 
     public sealed record AgentUnitOutcome(string Arm, P7F1V6DirectV2.UnitOutcome Unit, IReadOnlyList<TurnRecord> Turns,
-        IReadOnlyList<P7F1V6AgentTools.CallRecord> ToolCalls, int SuccessfulToolCalls, ScopeReport Scope, EvidenceReport Evidence, bool FenceUnwrapped = false);
+        IReadOnlyList<P7F1V6AgentTools.CallRecord> ToolCalls, int SuccessfulToolCalls, ScopeReport Scope, EvidenceReport Evidence, bool FenceUnwrapped = false, string? Analysis = null, IReadOnlyDictionary<string, string>? Reasons = null);
 
     public static AgentUnitOutcome RunUnit(Arm arm, string instruction, P7F1V6Universe universe, string unitId, IReadOnlyList<string> decide,
         IEnumerable<int> initialContext, AgentModel model, P7F1V6DirectV2.Budget budget, bool rangeStated = false, bool jsonObjectAllTurns = false, bool unwrapSingleFence = false)
     {
         bool fenceUnwrapped = false;
         var lines = universe.Lines;
-        var tools = new P7F1V6AgentTools(universe.Tools, universe.LayoutFacts, factsTool: arm == Arm.ToolFacts);
+        var tools = new P7F1V6AgentTools(universe.Tools, universe.LayoutFacts, factsTool: UsesFactsTool(arm));
         var shownIdx = new SortedSet<int>(initialContext);
         foreach (var a in decide) shownIdx.Add(tools.PositionOf(a));
         var ordered = decide.OrderBy(tools.PositionOf).ToList();
@@ -298,6 +310,8 @@ internal static class P7F1V6DirectAgent
         var issuedIds = new HashSet<string>(StringComparer.Ordinal);   // every tool_call_id Qwen used in this conversation
         int calls = 0, okCalls = 0, messageBytes = 0, emitted = 0;
         IReadOnlyDictionary<string, IReadOnlyList<string>>? finalRefs = null;
+        string? finalAnalysis = null;
+        IReadOnlyDictionary<string, string>? finalReasons = null;
 
         AgentUnitOutcome Done(string status, string? failure, IReadOnlyDictionary<string, string>? decisions = null, P7F1V6DirectV2.Clarification? clarification = null,
             string? incompleteReason = null)
@@ -321,13 +335,13 @@ internal static class P7F1V6DirectAgent
                 RelevanceAuditedOffline, scope.DecisionsCitingToolOnlyLines, tools.CacheHits,
                 prefetch?.Listed ?? 0, prefetch?.Bytes ?? 0, prefetch is null || prefetch.Omitted == 0,
                 refs.Where(kv => kv.Value.Any(observationOnly.Contains)).Select(kv => kv.Key).OrderBy(tools.PositionOf).ToArray());
-            return new AgentUnitOutcome(arm.ToString(), unit, turns, tools.Ledger.ToArray(), okCalls, scope, evidence, fenceUnwrapped);
+            return new AgentUnitOutcome(arm.ToString(), unit, turns, tools.Ledger.ToArray(), okCalls, scope, evidence, fenceUnwrapped, finalAnalysis, finalReasons);
         }
 
         for (int turn = 1; turn <= MaxPostsPerUnit; turn++)
         {
             var toolChoice = turn <= MaxToolTurns ? "auto" : "none";
-            var req = Build(prompt, payload, history, toolChoice, jsonObjectAllTurns, factsTool: arm == Arm.ToolFacts);
+            var req = Build(prompt, payload, history, toolChoice, jsonObjectAllTurns, factsTool: UsesFactsTool(arm));
             var refusal = budget.Admit(req);
             if (refusal is not null) return Done("INCOMPLETE", "BUDGET:" + refusal);
             requests.Add(req);
@@ -403,15 +417,17 @@ internal static class P7F1V6DirectAgent
             }
 
             // A reply without tool calls is the final answer.
-            if (arm == Arm.ToolFacts && !tools.Ledger.Any(c => c.Tool == P7F1V6AgentTools.LineFacts && c.Status == "OK")) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED"); }
+            if (UsesFactsTool(arm) && !tools.Ledger.Any(c => c.Tool == P7F1V6AgentTools.LineFacts && c.Status == "OK")) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED"); }
             if (arm == Arm.EvidenceFirst && okCalls == 0) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED"); }
             var observed = shownAliases.Concat(tools.ObservedAliases).Distinct(StringComparer.Ordinal).ToDictionary(a => a, tools.PositionOf, StringComparer.Ordinal);
             var content = reply.Content ?? "";
             if (unwrapSingleFence && P7F1V6ReplyFence.TryUnwrap(content, out var inner)) { content = inner; fenceUnwrapped = true; }
-            var parsed = P7F1V6DirectTwoStage.ParseSelect(P7F1V6DirectTwoStage.SelectFormat.Objects, content, observed, ordered, needsEvidenceAllowed: false);
+            var parsed = P7F1V6DirectTwoStage.ParseSelect(P7F1V6DirectTwoStage.SelectFormat.Objects, content, observed, ordered, needsEvidenceAllowed: false, analysisAllowed: arm == Arm.ToolFactsAnalysis);
             budget.NoteContract(parsed.Ok);
             if (!parsed.Ok) return Done("FAILED", "PROTOCOL:" + parsed.Failure);
             finalRefs = parsed.Refs;
+            finalAnalysis = parsed.Analysis;
+            finalReasons = parsed.Reasons;
             if (parsed.Status == "CLARIFICATION_REQUIRED") return Done("CLARIFICATION_REQUIRED", null, clarification: parsed.Clarification);
             return Done(parsed.Status!, null, parsed.Values, incompleteReason: parsed.IncompleteReason);
         }
