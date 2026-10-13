@@ -37,6 +37,12 @@ internal static class P7F1V6DirectRepeatCanary
     public static readonly (string Arm, A.Arm Mode)[] ArmsFactsOnly = { ("FACTS", A.Arm.Facts) };
     public static readonly (string Arm, A.Arm Mode)[] ArmsWithGeometry = { ("CONTROL", A.Arm.Auto), ("PREFETCH", A.Arm.Prefetch), ("GEOMETRY", A.Arm.Geometry) };
     public const int Reps = 5;
+    /// <summary>D4.12d: how many units (one segment of one repetition of one arm) are in flight at once. 1 runs them one after another in the
+    /// original order.</summary>
+    public const int DefaultParallelism = 8;
+    /// <summary>The parallelism of a live run: DefaultParallelism unless DHX_V6_PARALLELISM names another number (1 = sequential).</summary>
+    public static int ParallelismFromEnvironment() =>
+        int.TryParse(Environment.GetEnvironmentVariable("DHX_V6_PARALLELISM"), out var n) && n >= 1 ? n : DefaultParallelism;
     public const int MaxRequestBytes = 131072;
     public const int Retries = 0;
     public const string PlanArtifactPrefix = "p7.f1.v6.d4.11i-repeat-canary-plan";
@@ -301,21 +307,48 @@ internal static class P7F1V6DirectRepeatCanary
     /// repetition ("SEG-031#r2"); the request payload does not.</summary>
     public static IReadOnlyList<(string Arm, List<RepUnit> Units, P7F1V6DirectV2.Budget Budget)> RunArms(
         P7F1V6Universe u, IReadOnlyList<string> segments, IReadOnlyDictionary<string, A.AgentModel> modelPerArm, IReadOnlyDictionary<string, P7F1V6DirectV2.Budget> budgetPerArm, bool jsonObjectAllTurns = false,
-        (string Arm, A.Arm Mode)[]? arms = null, bool unwrapSingleFence = false, int reps = Reps, string instruction = P7F1V6DirectD45.Instruction)
+        (string Arm, A.Arm Mode)[]? arms = null, bool unwrapSingleFence = false, int reps = Reps, string instruction = P7F1V6DirectD45.Instruction, int parallelism = DefaultParallelism)
     {
+        if (parallelism < 1) throw new ArgumentOutOfRangeException(nameof(parallelism));
         var state = (arms ?? Arms).Select(a => (a.Arm, a.Mode, Units: new List<RepUnit>(), Budget: budgetPerArm[a.Arm])).ToList();
+        // The jobs, in the order a sequential run would take them: per repetition, per segment, per arm.
+        var jobs = new List<(int Rep, string Segment, int Arm)>();
         for (int rep = 1; rep <= reps; rep++)
             foreach (var segment in segments)
+                for (int k = 0; k < state.Count; k++) jobs.Add((rep, segment, k));
+        var results = new RepUnit[jobs.Count];
+        void RunJob(int i)
+        {
+            var (rep, segment, k) = jobs[i];
+            var s = state[k];
+            var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, segment);
+            var model = modelPerArm[s.Arm];
+            results[i] = new RepUnit(rep, A.RunUnit(s.Mode, instruction, u, segment, decide, ctx,
+                (unit, turn, req) => model(unit + "#r" + rep, turn, req), s.Budget, rangeStated: true, jsonObjectAllTurns: jsonObjectAllTurns, unwrapSingleFence: unwrapSingleFence));
+        }
+        var workers = Math.Min(parallelism, Math.Max(1, jobs.Count));
+        if (workers == 1)
+            for (int i = 0; i < jobs.Count; i++) RunJob(i);
+        else
+        {
+            // Dedicated threads, not the thread pool: a unit blocks on the network for most of its life.
+            int next = -1;
+            Exception? failure = null;
+            var threads = Enumerable.Range(0, workers).Select(_ => new Thread(() =>
             {
-                var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, segment);
-                foreach (var s in state)
+                while (Volatile.Read(ref failure) is null)
                 {
-                    var model = modelPerArm[s.Arm];
-                    var r = rep;
-                    s.Units.Add(new RepUnit(rep, A.RunUnit(s.Mode, instruction, u, segment, decide, ctx,
-                        (unit, turn, req) => model(unit + "#r" + r, turn, req), s.Budget, rangeStated: true, jsonObjectAllTurns: jsonObjectAllTurns, unwrapSingleFence: unwrapSingleFence)));
+                    var i = Interlocked.Increment(ref next);
+                    if (i >= jobs.Count) return;
+                    try { RunJob(i); }
+                    catch (Exception e) { Interlocked.CompareExchange(ref failure, e, null); return; }
                 }
-            }
+            })).ToList();
+            threads.ForEach(t => t.Start());
+            threads.ForEach(t => t.Join());
+            if (failure is not null) System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(failure).Throw();
+        }
+        for (int i = 0; i < jobs.Count; i++) state[jobs[i].Arm].Units.Add(results[i]);
         return state.Select(s => (s.Arm, s.Units, s.Budget)).ToList();
     }
 
@@ -352,7 +385,7 @@ internal static class P7F1V6DirectRepeatCanary
         var stores = Arms.ToDictionary(a => a.Arm, _ => P7F1V6SafeRawStore.CreateRun(safeRoot));
         var models = Arms.ToDictionary(a => a.Arm, a => new P7F1V6AgentAuditedModel(new P7F1V6DirectAuditedModel(
             new P7F1V6OpenRouterTransport(handler, TimeSpan.FromSeconds(300)), apiKey, stores[a.Arm], budgets[a.Arm])));
-        var state = RunArms(u, segments, models.ToDictionary(kv => kv.Key, kv => (A.AgentModel)kv.Value.Turn), budgets);
+        var state = RunArms(u, segments, models.ToDictionary(kv => kv.Key, kv => (A.AgentModel)kv.Value.Turn), budgets, parallelism: ParallelismFromEnvironment());
         return state.Select(s => new ArmResult(s.Arm, s.Units, models[s.Arm].Ledger, s.Budget.Calls, s.Budget.ReservedUsd, s.Budget.ActualUsd,
             s.Budget.HaltReason, s.Budget.Refusals.ToArray(), stores[s.Arm].RunDirectory)).ToList();
     }

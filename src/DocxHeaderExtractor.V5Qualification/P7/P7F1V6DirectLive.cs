@@ -33,6 +33,22 @@ internal sealed class P7F1V6DirectAuditedModel
 
     public List<LedgerEntry> Ledger { get; } = new();
 
+    // D4.12d: calls may run in parallel. Seq is taken when the call starts (so it is the order the calls were admitted), entries are added
+    // under a lock, and a caller that revises the verdict of its own entry does so through ReviseLast, which finds the entry this thread
+    // added last. LedgerBySeq is the ledger in call order.
+    int seqCounter;
+    readonly object ledgerGate = new();
+    readonly ThreadLocal<int> lastIndex = new(() => -1);
+
+    void AddEntry(LedgerEntry e) { lock (ledgerGate) { Ledger.Add(e); lastIndex.Value = Ledger.Count - 1; } }
+
+    public void ReviseLast(Func<LedgerEntry, LedgerEntry> change)
+    {
+        lock (ledgerGate) { var i = lastIndex.Value; if (i < 0) throw new InvalidOperationException("NO_LEDGER_ENTRY_ON_THIS_THREAD"); Ledger[i] = change(Ledger[i]); }
+    }
+
+    public IReadOnlyList<LedgerEntry> LedgerBySeq { get { lock (ledgerGate) return Ledger.OrderBy(e => e.Seq).ToArray(); } }
+
     static string N(int? v) => v?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "UNKNOWN";
 
     public string Reply(string unitId, int round, P7F1V6Protocol.PreparedRequest request)
@@ -41,7 +57,7 @@ internal sealed class P7F1V6DirectAuditedModel
         var (content, failure) = P7F1V6ResponseAdapter.ExtractContent(text);
         if (content is null)
         {
-            Ledger[^1] = Ledger[^1] with { Verdict = "NO_CONTENT" };
+            ReviseLast(e => e with { Verdict = "NO_CONTENT" });
             throw new P7F1V6DirectV2.ReplyFailure("CONTENT:" + failure);
         }
         // Passing the audit is not acceptance: the contract parser decides next.
@@ -56,7 +72,7 @@ internal sealed class P7F1V6DirectAuditedModel
     /// concatenated arguments, finish_reason, usage, provider, model); the view is derived and never stored as the response.</summary>
     public string ReplyRaw(string unitId, int round, P7F1V6Protocol.PreparedRequest request, bool toolCallsAllowed)
     {
-        var seq = Ledger.Count + 1;
+        var seq = Interlocked.Increment(ref seqCounter);
         var reserve = P7F1V6Direct.AttemptUsd(request.Bytes);
         string stage;
         bool stream;
@@ -82,7 +98,7 @@ internal sealed class P7F1V6DirectAuditedModel
             // A 2xx body that is not valid UTF-8 is kept as received (never repaired) so the evidence is not lost.
             var keptSha = r.Outcome == "RESPONSE_NOT_UTF8" && r.BodyBytes is { Length: > 0 } nb ? Convert.ToHexStringLower(SHA256.HashData(nb)) : null;
             var keptKey = keptSha is not null ? store.Put(r.BodyBytes!) : null;
-            Ledger.Add(Entry(r.Outcome, r.Status, keptSha, keptKey, null, "UNKNOWN", "UNKNOWN", "TRANSPORT_FAILED"));
+            AddEntry(Entry(r.Outcome, r.Status, keptSha, keptKey, null, "UNKNOWN", "UNKNOWN", "TRANSPORT_FAILED"));
             throw new P7F1V6DirectV2.ReplyFailure("TRANSPORT:" + r.Outcome);
         }
         var text = r.Body ?? "";
@@ -90,7 +106,7 @@ internal sealed class P7F1V6DirectAuditedModel
         {
             budget.Halt("API_KEY_ECHOED");
             budget.RecordActual(null, reserve);
-            Ledger.Add(Entry(r.Outcome, r.Status, null, null, null, "UNKNOWN", "UNKNOWN", "KEY_ECHOED_NOT_STORED"));
+            AddEntry(Entry(r.Outcome, r.Status, null, null, null, "UNKNOWN", "UNKNOWN", "KEY_ECHOED_NOT_STORED"));
             throw new P7F1V6DirectV2.ReplyFailure("API_KEY_ECHOED");
         }
         // The stored response is the body as received from HTTP (D4.11d), not the decoded string encoded again.
@@ -107,7 +123,7 @@ internal sealed class P7F1V6DirectAuditedModel
             if (broken is not null)
             {
                 budget.RecordActual(P7F1QSse.Cost(asm.Usage) is { } c ? (double)c : null, reserve);
-                Ledger.Add(Entry(r.Outcome, r.Status, responseSha, rawKey, null, asm.Provider ?? "UNKNOWN", asm.Model ?? "UNKNOWN", broken));
+                AddEntry(Entry(r.Outcome, r.Status, responseSha, rawKey, null, asm.Provider ?? "UNKNOWN", asm.Model ?? "UNKNOWN", broken));
                 throw new P7F1V6DirectV2.ReplyFailure("TRANSPORT:" + broken);
             }
             text = AssembledView(asm);
@@ -127,15 +143,15 @@ internal sealed class P7F1V6DirectAuditedModel
         if (!string.Equals(endpoint, "Alibaba", StringComparison.Ordinal) || model != P7F1V6Protocol.ChatModel)
         {
             budget.Halt("ENDPOINT_OR_MODEL_UNEXPECTED");
-            Ledger.Add(Entry(r.Outcome, r.Status, responseSha, rawKey, audit, endpoint, model, "ENDPOINT_OR_MODEL_UNEXPECTED"));
+            AddEntry(Entry(r.Outcome, r.Status, responseSha, rawKey, audit, endpoint, model, "ENDPOINT_OR_MODEL_UNEXPECTED"));
             throw new P7F1V6DirectV2.ReplyFailure("ENDPOINT_OR_MODEL_UNEXPECTED");
         }
         if (!(audit.Codes.Count == 1 && audit.Codes[0] == "OK"))
         {
-            Ledger.Add(Entry(r.Outcome, r.Status, responseSha, rawKey, audit, endpoint, model, "AUDIT_FAILED"));
+            AddEntry(Entry(r.Outcome, r.Status, responseSha, rawKey, audit, endpoint, model, "AUDIT_FAILED"));
             throw new P7F1V6DirectV2.ReplyFailure("AUDIT:" + string.Join(",", audit.Codes));
         }
-        Ledger.Add(Entry(r.Outcome, r.Status, responseSha, rawKey, audit, endpoint, model, "PASSED_AUDIT_TO_PARSER"));
+        AddEntry(Entry(r.Outcome, r.Status, responseSha, rawKey, audit, endpoint, model, "PASSED_AUDIT_TO_PARSER"));
         return text;
     }
 

@@ -1,3 +1,4 @@
+using System.Text;
 using System.Security.Cryptography;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -242,5 +243,142 @@ public sealed class P7F1V6StableRunTests
             Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
         }
         finally { File.Delete(file); }
+    }
+
+    // ---- D4.12d: parallel units ----
+
+    [Fact]
+    public void Budget_UnderConcurrentAdmission_NeverAdmitsMoreThanItsLimits()
+    {
+        var req = new P7F1V6Protocol.PreparedRequest("{}", 20000, "sha");
+        var worst = P7F1V6Direct.AttemptUsd(req.Bytes);
+        var budget = new P7F1V6DirectV2.Budget(40, worst * 25.5, C.MaxRequestBytes);
+        var admitted = 0;
+        Parallel.For(0, 400, new ParallelOptions { MaxDegreeOfParallelism = 16 }, _ =>
+        {
+            if (budget.Admit(req) is null) Interlocked.Increment(ref admitted);
+        });
+        Assert.Equal(budget.Calls, admitted);
+        Assert.Equal(25, admitted);                         // the reserve ceiling binds before the call limit of 40
+        Assert.True(budget.ReservedUsd <= worst * 25.5 + 1e-9);
+        Assert.Equal(375, budget.Refusals.Count);
+    }
+
+    [Fact]
+    public void Budget_ConsecutiveContractFailures_StillHaltsTheCampaign_WhenReportedFromManyThreads()
+    {
+        var budget = new P7F1V6DirectV2.Budget(100, 10, C.MaxRequestBytes);
+        Parallel.For(0, 8, new ParallelOptions { MaxDegreeOfParallelism = 8 }, _ => budget.NoteContract(false));
+        Assert.Equal("CONSECUTIVE_CONTRACT_FAILURES", budget.HaltReason);
+        Assert.Equal(8, budget.ContractFailures);
+        Assert.NotNull(budget.Admit(new P7F1V6Protocol.PreparedRequest("{}", 1000, "sha")));
+    }
+
+    static int inFlight, maxInFlight;
+
+    static A.AgentModel ScriptedModel(bool slow) => (unit, turn, req) =>
+    {
+        var now = Interlocked.Increment(ref inFlight);
+        int seen;
+        do { seen = Volatile.Read(ref maxInFlight); } while (now > seen && Interlocked.CompareExchange(ref maxInFlight, now, seen) != seen);
+        if (slow) Thread.Sleep(60);
+        Interlocked.Decrement(ref inFlight);
+        using var d = JsonDocument.Parse(req.Body);
+        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        var targets = p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
+        // A deterministic answer that depends on the unit: select the first target of segment 1.
+        var odd = unit.Contains("SEG-001");
+        return new A.ModelTurn(new JsonObject
+        {
+            ["protocolVersion"] = P7F1V6DirectTwoStage.SelectObjectsVersion, ["status"] = "COMPLETE",
+            ["decisions"] = new JsonArray(targets.Select((a, i) => (JsonNode)(odd && i == 0
+                ? new JsonObject { ["alias"] = a, ["decision"] = "SELECT", ["evidenceRefs"] = new JsonArray(a) }
+                : new JsonObject { ["alias"] = a, ["decision"] = "NOT_SELECT" })).ToArray()),
+        }.ToJsonString(), Array.Empty<A.ToolCall>(), "stop");
+    };
+
+    [Fact]
+    public void RunArms_InParallel_GivesTheSameUnitsInTheSameOrder_AsOneAfterAnother_AndReallyOverlaps()
+    {
+        var u = Universe();
+        var segs = new[] { "SEG-000", "SEG-001", "SEG-002" };
+        IReadOnlyDictionary<string, P7F1V6DirectV2.Budget> Budgets() => C.Arms.ToDictionary(a => a.Arm, _ => new P7F1V6DirectV2.Budget(60, 5, C.MaxRequestBytes));
+        var models = C.Arms.ToDictionary(a => a.Arm, _ => ScriptedModel(true));
+        maxInFlight = 0;
+        var sequential = C.RunArms(u, segs, models, Budgets(), reps: 2, parallelism: 1);
+        Assert.Equal(1, maxInFlight);
+        maxInFlight = 0;
+        var parallel = C.RunArms(u, segs, models, Budgets(), reps: 2, parallelism: 6);
+        Assert.True(maxInFlight > 1, "units should overlap");
+        Assert.Equal(sequential.Count, parallel.Count);
+        static string Key(C.RepUnit x) => x.Rep + "|" + x.Outcome.Unit.UnitId + "|" + x.Outcome.Unit.Status + "|"
+            + string.Join(",", x.Outcome.Unit.Decisions.OrderBy(d => d.Key, StringComparer.Ordinal).Select(d => d.Key + "=" + d.Value));
+        for (int k = 0; k < sequential.Count; k++)
+        {
+            Assert.Equal(sequential[k].Arm, parallel[k].Arm);
+            Assert.Equal(sequential[k].Units.Select(Key), parallel[k].Units.Select(Key));
+            Assert.Equal(sequential[k].Budget.Calls, parallel[k].Budget.Calls);
+        }
+        Assert.Equal(new[] { 1, 1, 1, 2, 2, 2 }, parallel[0].Units.Select(x => x.Rep));   // order: per repetition, per segment
+    }
+
+    [Fact]
+    public void RunArms_TransportFailures_NeverAdmitMoreThanTheCallLimit_AlsoInParallel()
+    {
+        var u = Universe();
+        var budgets = C.Arms.ToDictionary(a => a.Arm, _ => new P7F1V6DirectV2.Budget(4, 5, C.MaxRequestBytes));
+        A.AgentModel model = (unit, turn, req) => throw new P7F1V6DirectV2.ReplyFailure("TRANSPORT:TEST");
+        var r = C.RunArms(u, new[] { "SEG-000", "SEG-001", "SEG-002" }, C.Arms.ToDictionary(a => a.Arm, _ => model), budgets, reps: 2, parallelism: 6);
+        foreach (var arm in r) Assert.True(arm.Budget.Calls <= 4);
+    }
+
+    sealed class SseHandler : HttpMessageHandler
+    {
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct)
+        {
+            var body = request.Content!.ReadAsStringAsync(ct).Result;
+            using var d = JsonDocument.Parse(body);
+            using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+            var targets = p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
+            var content = Bare(targets);
+            var prompt = Encoding.UTF8.GetByteCount(body) / 4;
+            var sb = new StringBuilder();
+            void Data(object o) => sb.Append("data: ").Append(JsonSerializer.Serialize(o)).Append("\n\n");
+            Thread.Sleep(20);
+            Data(new { id = "g", provider = "Alibaba", model = "qwen/qwen3.7-flash", choices = new[] { new { index = 0, delta = (object)new { content } } } });
+            Data(new { id = "g", provider = "Alibaba", model = "qwen/qwen3.7-flash", choices = new[] { new { index = 0, delta = (object)new { }, finish_reason = "stop", native_finish_reason = "stop" } } });
+            Data(new { id = "g", provider = "Alibaba", model = "qwen/qwen3.7-flash", choices = Array.Empty<object>(),
+                usage = new { prompt_tokens = prompt, completion_tokens = 300, cost = P7F1V6Usage.Cost(prompt, 300), completion_tokens_details = new { reasoning_tokens = 200 } } });
+            sb.Append("data: [DONE]\n\n");
+            return Task.FromResult(new HttpResponseMessage(System.Net.HttpStatusCode.OK) { Content = new StringContent(sb.ToString(), Encoding.UTF8, "text/event-stream") });
+        }
+    }
+
+    [Fact]
+    public void AuditedModel_UnderConcurrentCalls_KeepsOneLedgerEntryPerCall_WithUniqueSequenceNumbers_AndOrdersBySeq()
+    {
+        var u = Universe();
+        var dir = Path.Combine(Path.GetTempPath(), "dhx-par-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(dir);
+        try
+        {
+            var store = P7F1V6SafeRawStore.CreateRun(dir);
+            var budget = new P7F1V6DirectV2.Budget(100, 5, C.MaxRequestBytes);
+            var model = new P7F1V6AgentAuditedModel(new P7F1V6DirectAuditedModel(new P7F1V6OpenRouterTransport(new SseHandler(), TimeSpan.FromSeconds(30)), "test-key", store, budget));
+            var requests = new[] { "SEG-000", "SEG-001", "SEG-002" }.Select(s => C.FirstRequest(A.Arm.Auto, u, s)).ToArray();
+            Parallel.For(0, 24, new ParallelOptions { MaxDegreeOfParallelism = 8 }, i =>
+            {
+                Assert.Null(budget.Admit(requests[i % 3]));
+                var turn = model.Turn("U" + i, 1, requests[i % 3]);
+                Assert.NotNull(turn.Content);
+            });
+            var ledger = model.Ledger;
+            Assert.Equal(24, ledger.Count);
+            Assert.Equal(Enumerable.Range(1, 24), ledger.Select(e => e.Seq));                  // unique, and returned in call order
+            Assert.Equal(24, ledger.Select(e => e.UnitId).Distinct().Count());
+            Assert.All(ledger, e => Assert.Equal("PASSED_AUDIT_TO_PARSER", e.Verdict));
+            Assert.Equal(24, budget.Calls);
+        }
+        finally { try { Directory.Delete(dir, true); } catch (IOException) { } }
     }
 }

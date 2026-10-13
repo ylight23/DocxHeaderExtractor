@@ -434,7 +434,7 @@ public sealed class P7F1V6DirectD411hTests : IDisposable
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct)
         {
             var body = await request.Content!.ReadAsStringAsync(ct);
-            Bodies.Add(body);
+            lock (Bodies) Bodies.Add(body);
             return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(respond(body), Encoding.UTF8, "text/event-stream") };
         }
     }

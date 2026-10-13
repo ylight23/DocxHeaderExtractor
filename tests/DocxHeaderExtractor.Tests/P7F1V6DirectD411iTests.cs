@@ -296,7 +296,7 @@ public sealed class P7F1V6DirectD411iTests : IDisposable
             return Answer(Decisions(PayloadOf(req).GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!)));
         };
         var budgets = C.Arms.ToDictionary(a => a.Arm, _ => new P7F1V6DirectV2.Budget(100, 100, 2_000_000));
-        var state = C.RunArms(U95, segs, C.Arms.ToDictionary(a => a.Arm, a => Model(a.Arm)), budgets);
+        var state = C.RunArms(U95, segs, C.Arms.ToDictionary(a => a.Arm, a => Model(a.Arm)), budgets, parallelism: 1);
         Assert.All(state, s => { Assert.Equal(15, s.Units.Count); Assert.All(s.Units, u => Assert.Equal("COMPLETE", u.Outcome.Unit.Status)); });
         Assert.Equal(30, seen.Count);
         Assert.Equal(new[] { "CONTROL SEG-001#r1", "PREFETCH SEG-001#r1", "CONTROL SEG-008#r1", "PREFETCH SEG-008#r1", "CONTROL SEG-031#r1", "PREFETCH SEG-031#r1" },
@@ -313,7 +313,7 @@ public sealed class P7F1V6DirectD411iTests : IDisposable
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct)
         {
             var body = await request.Content!.ReadAsStringAsync(ct);
-            Bodies.Add(body);
+            lock (Bodies) Bodies.Add(body);
             return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(respond(body), Encoding.UTF8, "text/event-stream") };
         }
     }

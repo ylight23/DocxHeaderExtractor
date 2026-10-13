@@ -90,6 +90,9 @@ internal static class P7F1V6DirectV2
 
         public int MaxCalls { get; }
         public double CeilingUsd { get; }
+        // D4.12d: units may run in parallel, so every change of the counters and every admission happens under this lock. A refusal or a
+        // halt is seen by every later admission; requests already admitted when a halt happens are not recalled.
+        readonly object gate = new();
         public int MaxRequestBytes { get; }
         public int PromptTokenBudget { get; }
         public int Calls { get; private set; }
@@ -102,7 +105,7 @@ internal static class P7F1V6DirectV2
         public List<int> RefusedRequestBytes { get; } = new();
 
         /// <summary>Stops every later request. Used when a response shows that the reserve or the route can no longer be trusted.</summary>
-        public void Halt(string reason) => HaltReason ??= reason;
+        public void Halt(string reason) { lock (gate) HaltReason ??= reason; }
 
         /// <summary>Consecutive replies that failed the contract (parser, usage/finish audit, or no content). At the threshold the campaign
         /// stops: a systematic contract failure is not fixed by sending the remaining units. Transport failures neither count nor reset.</summary>
@@ -111,21 +114,32 @@ internal static class P7F1V6DirectV2
 
         public void NoteContract(bool passed)
         {
-            if (passed) { ConsecutiveContractFailures = 0; return; }
-            ContractFailures++;
-            if (++ConsecutiveContractFailures >= MaxConsecutiveContractFailures) Halt("CONSECUTIVE_CONTRACT_FAILURES");
+            lock (gate)
+            {
+                if (passed) { ConsecutiveContractFailures = 0; return; }
+                ContractFailures++;
+                if (++ConsecutiveContractFailures >= MaxConsecutiveContractFailures) HaltReason ??= "CONSECUTIVE_CONTRACT_FAILURES";
+            }
         }
 
         /// <summary>Records what one admitted call actually cost. A cost above that call's reserve halts the run: the reserve was not a bound.</summary>
         public void RecordActual(double? providerCostUsd, double attemptReserveUsd)
         {
-            if (providerCostUsd is null) { UnknownCostCalls++; return; }
-            ActualUsd += providerCostUsd.Value;
-            if (providerCostUsd.Value > attemptReserveUsd) Halt("PROVIDER_COST_OVER_RESERVE");
+            lock (gate)
+            {
+                if (providerCostUsd is null) { UnknownCostCalls++; return; }
+                ActualUsd += providerCostUsd.Value;
+                if (providerCostUsd.Value > attemptReserveUsd) HaltReason ??= "PROVIDER_COST_OVER_RESERVE";
+            }
         }
 
         /// <summary>Returns null when the request may be sent (and reserves it), or the refusal code.</summary>
         public string? Admit(P7F1V6Protocol.PreparedRequest request)
+        {
+            lock (gate) return AdmitLocked(request);
+        }
+
+        string? AdmitLocked(P7F1V6Protocol.PreparedRequest request)
         {
             string? refusal = null;
             var worst = P7F1V6Direct.AttemptUsd(request.Bytes);

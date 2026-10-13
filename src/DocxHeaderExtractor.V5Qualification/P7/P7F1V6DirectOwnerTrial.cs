@@ -247,7 +247,7 @@ internal static class P7F1V6DirectOwnerTrial
         var stores = armSet.ToDictionary(a => a.Arm, _ => P7F1V6SafeRawStore.CreateRun(safeRoot));
         var models = armSet.ToDictionary(a => a.Arm, a => new P7F1V6AgentAuditedModel(new P7F1V6DirectAuditedModel(
             new P7F1V6OpenRouterTransport(handler, TimeSpan.FromSeconds(300)), apiKey, stores[a.Arm], budgets[a.Arm])));
-        var state = C.RunArms(u, segments, models.ToDictionary(kv => kv.Key, kv => (A.AgentModel)kv.Value.Turn), budgets, JsonAllTurnsOf(plan.RootElement), armSet, unwrapSingleFence: FenceUnwrapOf(plan.RootElement), reps: RepsOf(plan.RootElement), instruction: InstructionOf(plan.RootElement));
+        var state = C.RunArms(u, segments, models.ToDictionary(kv => kv.Key, kv => (A.AgentModel)kv.Value.Turn), budgets, JsonAllTurnsOf(plan.RootElement), armSet, unwrapSingleFence: FenceUnwrapOf(plan.RootElement), reps: RepsOf(plan.RootElement), instruction: InstructionOf(plan.RootElement), parallelism: C.ParallelismFromEnvironment());
         return state.Select(s => new C.ArmResult(s.Arm, s.Units, models[s.Arm].Ledger, s.Budget.Calls, s.Budget.ReservedUsd, s.Budget.ActualUsd,
             s.Budget.HaltReason, s.Budget.Refusals.ToArray(), stores[s.Arm].RunDirectory)).ToList();
     }

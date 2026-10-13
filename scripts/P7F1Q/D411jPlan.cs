@@ -63,7 +63,7 @@ internal static class D411jPlan
         var sims = models.Select(m =>
         {
             var budgets = T.ArmsOf(geometry, single, factsUse).ToDictionary(a => a.Arm, a => new P7F1V6DirectV2.Budget(posts, ceilings[a.Arm], C.MaxRequestBytes));
-            var state = C.RunArms(u, segs, T.ArmsOf(geometry, single, factsUse).ToDictionary(a => a.Arm, _ => m.Model), budgets, jsonAll, T.ArmsOf(geometry, single, factsUse), unwrapSingleFence: unwrap, reps: reps, instruction: instruction);
+            var state = C.RunArms(u, segs, T.ArmsOf(geometry, single, factsUse).ToDictionary(a => a.Arm, _ => m.Model), budgets, jsonAll, T.ArmsOf(geometry, single, factsUse), unwrapSingleFence: unwrap, reps: reps, instruction: instruction, parallelism: 1);
             return new
             {
                 simulation = m.Name,
@@ -117,7 +117,7 @@ internal static class D411jPlan
                     File.WriteAllText(Path.Combine(requests, $"{x.Outcome.Unit.UnitId}-r{x.Rep}-turn-{t + 1}.{x.Outcome.Unit.Requests[t].Sha256}.json"), x.Outcome.Unit.Requests[t].Body, new UTF8Encoding(false));
             var summary = new
             {
-                artifact = P7F1V6Retention.SummaryArtifact, canary = T.PlanArtifact, planSha256 = confirmedSha, a.Arm,
+                artifact = P7F1V6Retention.SummaryArtifact, canary = T.PlanArtifact, planSha256 = confirmedSha, parallelism = C.ParallelismFromEnvironment(), a.Arm,
                 a.Calls, a.ReservedUsd, a.ActualUsd, a.HaltReason, a.Refusals,
                 units = a.Units.Select(x => new
                 {

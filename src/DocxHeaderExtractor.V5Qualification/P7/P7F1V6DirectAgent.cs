@@ -416,7 +416,7 @@ internal static class P7F1V6DirectAgent
 /// reserve, ledger) with finish_reason tool_calls accepted, then the assistant turn read as given.</summary>
 internal sealed class P7F1V6AgentAuditedModel(P7F1V6DirectAuditedModel inner)
 {
-    public IReadOnlyList<P7F1V6DirectAuditedModel.LedgerEntry> Ledger => inner.Ledger;
+    public IReadOnlyList<P7F1V6DirectAuditedModel.LedgerEntry> Ledger => inner.LedgerBySeq;
 
     public P7F1V6DirectAgent.ModelTurn Turn(string unitId, int turn, P7F1V6Protocol.PreparedRequest request)
     {
@@ -424,10 +424,10 @@ internal sealed class P7F1V6AgentAuditedModel(P7F1V6DirectAuditedModel inner)
         var (reply, failure) = P7F1V6DirectAgent.ReadResponse(text);
         if (reply is null)
         {
-            inner.Ledger[^1] = inner.Ledger[^1] with { Verdict = "NO_CONTENT" };
+            inner.ReviseLast(e => e with { Verdict = "NO_CONTENT" });
             throw new P7F1V6DirectV2.ReplyFailure("CONTENT:" + failure);
         }
-        if (reply.ToolCalls.Count > 0) inner.Ledger[^1] = inner.Ledger[^1] with { Verdict = "TOOL_CALLS_TO_DISPATCHER" };
+        if (reply.ToolCalls.Count > 0) inner.ReviseLast(e => e with { Verdict = "TOOL_CALLS_TO_DISPATCHER" });
         return reply;
     }
 }

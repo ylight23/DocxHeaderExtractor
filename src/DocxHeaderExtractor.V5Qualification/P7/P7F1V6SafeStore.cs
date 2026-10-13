@@ -47,7 +47,8 @@ internal sealed class P7F1V6SafeRawStore
             fs.Write(bytes, 0, bytes.Length);
             fs.Flush(true);
         }
-        File.Move(temp, final, overwrite: false);
+        try { File.Move(temp, final, overwrite: false); }
+        catch (IOException) when (File.Exists(final)) { File.Delete(temp); }   // another thread stored the same bytes first
         return ReadVerified(sha) is not null ? sha : throw new IOException("STORED_HASH_MISMATCH");
     }
 
