@@ -37,12 +37,12 @@ internal static class D411jPlan
         ["decisions"] = new JsonArray(targets.Select(a => (JsonNode)new JsonObject { ["alias"] = a, ["decision"] = "NOT_SELECT" }).ToArray()),
     }.ToJsonString();
 
-    public static void Plan(string repoRoot, string artifactDir, string documentPath, string seg = P7F1V6Universe.FixedSegmentation, bool jsonAll = false, bool geometry = false)
+    public static void Plan(string repoRoot, string artifactDir, string documentPath, string seg = P7F1V6Universe.FixedSegmentation, bool jsonAll = false, bool geometry = false, int reps = C.Reps, bool unwrap = false)
     {
         if (Git(repoRoot, "status --porcelain -- src scripts tests").Length > 0) { Console.WriteLine("D411j PLAN REFUSED: uncommitted code"); Environment.ExitCode = 2; return; }
         var head = Git(repoRoot, "rev-parse HEAD");
-        var tag = (seg == P7F1V6Universe.LayoutSegmentation96 ? ".layout96" : seg == P7F1V6Universe.LayoutSegmentation ? ".layout" : "") + (jsonAll ? ".json" : "") + (geometry ? ".geo" : "");
-        var bytes = T.Serialize(T.PinnedValues(documentPath, head, seg, jsonAll, geometry));
+        var tag = (seg == P7F1V6Universe.LayoutSegmentation96 ? ".layout96" : seg == P7F1V6Universe.LayoutSegmentation ? ".layout" : "") + (jsonAll ? ".json" : "") + (geometry ? ".geo" : "") + (unwrap ? ".unwrap" : "") + (reps != C.Reps ? $".r{reps}" : "");
+        var bytes = T.Serialize(T.PinnedValues(documentPath, head, seg, jsonAll, geometry, reps, unwrap));
         using var plan = JsonDocument.Parse(bytes);
         var authority = plan.RootElement.GetProperty("authorityId").GetString()!;
         var planPath = Path.Combine(artifactDir, $"{T.PlanArtifact.Replace(".v1", "")}.{authority}{tag}.v1.json");
@@ -63,7 +63,7 @@ internal static class D411jPlan
         var sims = models.Select(m =>
         {
             var budgets = T.ArmsOf(geometry).ToDictionary(a => a.Arm, a => new P7F1V6DirectV2.Budget(posts, ceilings[a.Arm], C.MaxRequestBytes));
-            var state = C.RunArms(u, segs, T.ArmsOf(geometry).ToDictionary(a => a.Arm, _ => m.Model), budgets, jsonAll, T.ArmsOf(geometry));
+            var state = C.RunArms(u, segs, T.ArmsOf(geometry).ToDictionary(a => a.Arm, _ => m.Model), budgets, jsonAll, T.ArmsOf(geometry), reps, unwrap);
             return new
             {
                 simulation = m.Name,
@@ -121,7 +121,7 @@ internal static class D411jPlan
                 a.Calls, a.ReservedUsd, a.ActualUsd, a.HaltReason, a.Refusals,
                 units = a.Units.Select(x => new
                 {
-                    x.Rep, x.Outcome.Unit.UnitId, x.Outcome.Unit.Status, x.Outcome.Unit.Calls, x.Outcome.Unit.Failure, x.Outcome.Unit.IncompleteReason,
+                    x.Rep, x.Outcome.Unit.UnitId, x.Outcome.Unit.Status, x.Outcome.Unit.Calls, x.Outcome.Unit.Failure, x.Outcome.Unit.IncompleteReason, x.Outcome.FenceUnwrapped,
                     decisions = x.Outcome.Unit.Decisions, x.Outcome.Turns, toolCalls = x.Outcome.ToolCalls, x.Outcome.SuccessfulToolCalls, x.Outcome.Scope, x.Outcome.Evidence,
                 }),
                 ledger = a.Ledger,

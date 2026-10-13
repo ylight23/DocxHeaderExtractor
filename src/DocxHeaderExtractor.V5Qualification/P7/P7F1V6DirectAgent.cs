@@ -263,11 +263,12 @@ internal static class P7F1V6DirectAgent
     public const string RelevanceAuditedOffline = "OFFLINE_AUDIT_AFTER_FREEZE";
 
     public sealed record AgentUnitOutcome(string Arm, P7F1V6DirectV2.UnitOutcome Unit, IReadOnlyList<TurnRecord> Turns,
-        IReadOnlyList<P7F1V6AgentTools.CallRecord> ToolCalls, int SuccessfulToolCalls, ScopeReport Scope, EvidenceReport Evidence);
+        IReadOnlyList<P7F1V6AgentTools.CallRecord> ToolCalls, int SuccessfulToolCalls, ScopeReport Scope, EvidenceReport Evidence, bool FenceUnwrapped = false);
 
     public static AgentUnitOutcome RunUnit(Arm arm, string instruction, P7F1V6Universe universe, string unitId, IReadOnlyList<string> decide,
-        IEnumerable<int> initialContext, AgentModel model, P7F1V6DirectV2.Budget budget, bool rangeStated = false, bool jsonObjectAllTurns = false)
+        IEnumerable<int> initialContext, AgentModel model, P7F1V6DirectV2.Budget budget, bool rangeStated = false, bool jsonObjectAllTurns = false, bool unwrapSingleFence = false)
     {
+        bool fenceUnwrapped = false;
         var lines = universe.Lines;
         var tools = new P7F1V6AgentTools(universe.Tools, universe.LayoutFacts);
         var shownIdx = new SortedSet<int>(initialContext);
@@ -308,7 +309,7 @@ internal static class P7F1V6DirectAgent
                 RelevanceAuditedOffline, scope.DecisionsCitingToolOnlyLines, tools.CacheHits,
                 prefetch?.Listed ?? 0, prefetch?.Bytes ?? 0, prefetch is null || prefetch.Omitted == 0,
                 refs.Where(kv => kv.Value.Any(observationOnly.Contains)).Select(kv => kv.Key).OrderBy(tools.PositionOf).ToArray());
-            return new AgentUnitOutcome(arm.ToString(), unit, turns, tools.Ledger.ToArray(), okCalls, scope, evidence);
+            return new AgentUnitOutcome(arm.ToString(), unit, turns, tools.Ledger.ToArray(), okCalls, scope, evidence, fenceUnwrapped);
         }
 
         for (int turn = 1; turn <= MaxPostsPerUnit; turn++)
@@ -392,7 +393,9 @@ internal static class P7F1V6DirectAgent
             // A reply without tool calls is the final answer.
             if (arm == Arm.EvidenceFirst && okCalls == 0) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED"); }
             var observed = shownAliases.Concat(tools.ObservedAliases).Distinct(StringComparer.Ordinal).ToDictionary(a => a, tools.PositionOf, StringComparer.Ordinal);
-            var parsed = P7F1V6DirectTwoStage.ParseSelect(P7F1V6DirectTwoStage.SelectFormat.Objects, reply.Content ?? "", observed, ordered, needsEvidenceAllowed: false);
+            var content = reply.Content ?? "";
+            if (unwrapSingleFence && P7F1V6ReplyFence.TryUnwrap(content, out var inner)) { content = inner; fenceUnwrapped = true; }
+            var parsed = P7F1V6DirectTwoStage.ParseSelect(P7F1V6DirectTwoStage.SelectFormat.Objects, content, observed, ordered, needsEvidenceAllowed: false);
             budget.NoteContract(parsed.Ok);
             if (!parsed.Ok) return Done("FAILED", "PROTOCOL:" + parsed.Failure);
             finalRefs = parsed.Refs;

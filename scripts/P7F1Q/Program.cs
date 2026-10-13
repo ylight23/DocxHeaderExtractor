@@ -646,12 +646,23 @@ switch (args[0])
         if (args.Length != 6) throw new ArgumentException("d411i-run <repo-root> <plan> <confirmed-plan-sha> <authorization> <safe-root>");
         D411iPlan.Live(args[1], args[2], args[3], args[4], args[5]);
         break;
+    case "d412-vote":
+        // Issue #9 D4.12 (offline): d412-vote <run-summary.json>... Majority vote per arm and segment; prints aliases and counts only.
+        if (args.Length < 2) throw new ArgumentException("d412-vote <run-summary.json>...");
+        D412Vote.Run(args.Skip(1).ToArray());
+        break;
     case "d411j-plan":
         // Issue #9 D4.11j (offline): d411j-plan <repo-root> <artifact-dir> <document.pdf>. Pinned owner-document trial plan and a scripted dry-run. No network call; no line text is written.
-        if (args.Length is < 4 or > 7) throw new ArgumentException("d411j-plan <repo-root> <artifact-dir> <document.pdf> [fixed|layout|layout96] [jsonall]");
-        D411jPlan.Plan(args[1], args[2], args[3],
-            args.Length >= 5 ? args[4] switch { "layout" => P7F1V6Universe.LayoutSegmentation, "layout96" => P7F1V6Universe.LayoutSegmentation96, "fixed" => P7F1V6Universe.FixedSegmentation, _ => throw new ArgumentException("segmentation") } : P7F1V6Universe.FixedSegmentation,
-            args.Length >= 6 && args[5] == "jsonall", args.Length == 7 && args[6] == "geometry");
+        if (args.Length < 4) throw new ArgumentException("d411j-plan <repo-root> <artifact-dir> <document.pdf> [fixed|layout|layout96] [jsonall] [geometry] [unwrap] [reps=N]");
+        {
+            var opts = args.Skip(4).ToHashSet();
+            var segPolicy = opts.Contains("layout96") ? P7F1V6Universe.LayoutSegmentation96 : opts.Contains("layout") ? P7F1V6Universe.LayoutSegmentation : P7F1V6Universe.FixedSegmentation;
+            var repsArg = opts.FirstOrDefault(o => o.StartsWith("reps=", StringComparison.Ordinal));
+            var known = new HashSet<string> { "fixed", "layout", "layout96", "jsonall", "geometry", "unwrap" };
+            if (opts.Any(o => !known.Contains(o) && o != repsArg)) throw new ArgumentException("unknown d411j-plan option");
+            D411jPlan.Plan(args[1], args[2], args[3], segPolicy, opts.Contains("jsonall"), opts.Contains("geometry"),
+                repsArg is null ? P7F1V6DirectRepeatCanary.Reps : int.Parse(repsArg[5..]), opts.Contains("unwrap"));
+        }
         break;
     case "d411j-run":
         // Issue #9 D4.11j: d411j-run <repo-root> <plan> <confirmed-plan-sha> <authorization> <safe-root> <document.pdf>. Sends requests; needs an APPROVED authorization.
