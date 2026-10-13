@@ -41,10 +41,13 @@ internal static class P7F1V6DirectAgent
     /// <summary>Auto: tools optional. EvidenceFirst: an answer before any tool result is refused (diagnostic). Prefetch (D4.11h): the AUTO prompt
     /// plus one line, and the request ends with observations the program read itself for every target whose text occurs elsewhere; the tools
     /// stay available and optional.</summary>
-    public enum Arm { Auto, EvidenceFirst, Prefetch, Geometry, Facts, ToolFacts, ToolFactsAnalysis }
+    public enum Arm { Auto, EvidenceFirst, Prefetch, Geometry, Facts, ToolFacts, ToolFactsAnalysis, ToolFactsAnalysisV2 }
 
     /// <summary>The arms whose registry declares and accepts get_line_facts.</summary>
-    public static bool UsesFactsTool(Arm arm) => arm is Arm.ToolFacts or Arm.ToolFactsAnalysis;
+    public static bool UsesFactsTool(Arm arm) => arm is Arm.ToolFacts or Arm.ToolFactsAnalysis or Arm.ToolFactsAnalysisV2;
+
+    /// <summary>The arms whose answer may carry analysis and reason.</summary>
+    public static bool AllowsAnalysis(Arm arm) => arm is Arm.ToolFactsAnalysis or Arm.ToolFactsAnalysisV2;
 
     // D4.11f. The task is heading extraction as the user defines it. The prompt gives no definition of a heading and no rule about any kind
     // of line: the user's instruction decides both, and the prompt only tells the model to apply it as written.
@@ -113,9 +116,15 @@ internal static class P7F1V6DirectAgent
         .Replace("Do not add headings, levels, parents or other fields.", "Two extra keys are allowed: analysis, a string of at most 2000 characters at the top level of a COMPLETE answer, for any explanation of your decisions; and reason, a string of at most 300 characters on a decision, which you give for every SELECT. Write nothing before or after the JSON object. Do not add headings, levels, parents or other fields.", StringComparison.Ordinal);
     public static readonly string ToolFactsAnalysisPromptRange = WithRange(string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, FactsToolLine, UseLine, ObservedLine, ReplyLine,
         BodyWithAnalysis(P7F1V6DirectTwoStage.SelectObjectsVersion)));
+    // D4.12k. TOOLFACTS_ANALYSIS with the facts sentence describing the two V2 measurements as well. Only that sentence differs; the request,
+    // the tools and the contract are those of TOOLFACTS_ANALYSIS. Meant for a universe with layout facts V2.
+    const string FactsV2Clause = "how many other lines of the page start at the same left edge, where its left edge lies against the edge that the most lines of its page share (the offset in points, 0 meaning the same edge, and how many lines share that edge), how its font size compares with the median font size of its page (the difference in points), and,";
+    static readonly string FactsToolLineV2 = FactsToolLine.Replace("how many other lines of the page start at the same left edge, and,", FactsV2Clause, StringComparison.Ordinal);
+    public static readonly string ToolFactsAnalysisV2PromptRange = WithRange(string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, FactsToolLineV2, UseLine, ObservedLine, ReplyLine,
+        BodyWithAnalysis(P7F1V6DirectTwoStage.SelectObjectsVersion)));
     public const string AutoPromptRangeSha256 = "5a83e08300e60a0a3dd136e9a31cd7439d2fa3943f65be41947a094da8bb14c2";
     public const string PrefetchPromptRangeSha256 = "2290301be5ab6b432d10913e6cfa30a4a11c43a0a811acbf3fc17e1b23d66de6";
-    public static string Prompt(Arm arm, bool rangeStated) => rangeStated ? (arm == Arm.ToolFactsAnalysis ? ToolFactsAnalysisPromptRange : arm == Arm.ToolFacts ? ToolFactsPromptRange : arm == Arm.Facts ? FactsPromptRange : arm == Arm.Geometry ? GeometryPromptRange : arm == Arm.Prefetch ? PrefetchPromptRange : arm == Arm.Auto ? AutoPromptRange : WithRange(EvidenceFirstPrompt)) : Prompt(arm);
+    public static string Prompt(Arm arm, bool rangeStated) => rangeStated ? (arm == Arm.ToolFactsAnalysisV2 ? ToolFactsAnalysisV2PromptRange : arm == Arm.ToolFactsAnalysis ? ToolFactsAnalysisPromptRange : arm == Arm.ToolFacts ? ToolFactsPromptRange : arm == Arm.Facts ? FactsPromptRange : arm == Arm.Geometry ? GeometryPromptRange : arm == Arm.Prefetch ? PrefetchPromptRange : arm == Arm.Auto ? AutoPromptRange : WithRange(EvidenceFirstPrompt)) : Prompt(arm);
 
     public static readonly string PrefetchPrompt = string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, ObservationsLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion));
@@ -124,7 +133,7 @@ internal static class P7F1V6DirectAgent
     public const string EvidenceFirstPromptSha256 = "6c8d2629bfec15f1873f9710ddf72f810ad7fc902c0fdeb1ab4ca736b569230f";
     public const string ToolDefinitionsSha256 = "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3";
 
-    public static string Prompt(Arm arm) => arm switch { Arm.Auto => AutoPrompt, Arm.EvidenceFirst => EvidenceFirstPrompt, Arm.Geometry or Arm.Facts or Arm.ToolFacts or Arm.ToolFactsAnalysis => throw new ArgumentException("GEOMETRY_NEEDS_RANGE_STATED", nameof(arm)), _ => PrefetchPrompt };
+    public static string Prompt(Arm arm) => arm switch { Arm.Auto => AutoPrompt, Arm.EvidenceFirst => EvidenceFirstPrompt, Arm.Geometry or Arm.Facts or Arm.ToolFacts or Arm.ToolFactsAnalysis or Arm.ToolFactsAnalysisV2 => throw new ArgumentException("GEOMETRY_NEEDS_RANGE_STATED", nameof(arm)), _ => PrefetchPrompt };
     public static string Sha(string s) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(s)));
 
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -422,7 +431,7 @@ internal static class P7F1V6DirectAgent
             var observed = shownAliases.Concat(tools.ObservedAliases).Distinct(StringComparer.Ordinal).ToDictionary(a => a, tools.PositionOf, StringComparer.Ordinal);
             var content = reply.Content ?? "";
             if (unwrapSingleFence && P7F1V6ReplyFence.TryUnwrap(content, out var inner)) { content = inner; fenceUnwrapped = true; }
-            var parsed = P7F1V6DirectTwoStage.ParseSelect(P7F1V6DirectTwoStage.SelectFormat.Objects, content, observed, ordered, needsEvidenceAllowed: false, analysisAllowed: arm == Arm.ToolFactsAnalysis);
+            var parsed = P7F1V6DirectTwoStage.ParseSelect(P7F1V6DirectTwoStage.SelectFormat.Objects, content, observed, ordered, needsEvidenceAllowed: false, analysisAllowed: AllowsAnalysis(arm));
             budget.NoteContract(parsed.Ok);
             if (!parsed.Ok) return Done("FAILED", "PROTOCOL:" + parsed.Failure);
             finalRefs = parsed.Refs;

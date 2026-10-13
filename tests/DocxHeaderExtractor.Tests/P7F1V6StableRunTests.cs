@@ -793,4 +793,38 @@ public sealed class P7F1V6StableRunTests
         }
         finally { File.Delete(file); }
     }
+
+    [Fact]
+    public void ToolFactsAnalysisV2Prompt_DiffersOnlyByTheFactsSentence_WhichDescribesTheTwoNewMeasurements_AndThePlanPinsIt()
+    {
+        var a = A.ToolFactsAnalysisPromptRange.Split((char)10).ToList();
+        var b = A.ToolFactsAnalysisV2PromptRange.Split((char)10).ToList();
+        Assert.Equal(a.Count, b.Count);
+        var changed = a.Zip(b).Where(p => p.First != p.Second).ToList();
+        Assert.Single(changed);
+        Assert.StartsWith("Facts:", changed[0].Second);
+        Assert.Contains("the edge that the most lines of its page share", changed[0].Second);
+        Assert.Contains("median font size of its page", changed[0].Second);
+        foreach (var banned in new[] { "table", "footer", "title", "contents", "body", "margin" })
+            Assert.DoesNotContain(banned, changed[0].Second, StringComparison.OrdinalIgnoreCase);
+        Assert.True(A.UsesFactsTool(A.Arm.ToolFactsAnalysisV2));
+        Assert.True(A.AllowsAnalysis(A.Arm.ToolFactsAnalysisV2));
+        var rel = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        Assert.Throws<ArgumentException>(() => T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1,
+            firstSegments: 2, instruction: P7F1V6DirectD45.InstructionEnglishMainPlain, fullToolRounds: true, toolFactsAnalysis: true, factsVersion: 1, promptFactsV2: true));
+        var bytes = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1,
+            firstSegments: 2, instruction: P7F1V6DirectD45.InstructionEnglishMainPlain, fullToolRounds: true, toolFactsAnalysis: true, factsVersion: 2, promptFactsV2: true));
+        using var d = JsonDocument.Parse(bytes);
+        Assert.True(T.PromptFactsV2Of(d.RootElement));
+        Assert.Equal("TOOLFACTS_ANALYSIS_V2", d.RootElement.GetProperty("arms")[0].GetProperty("arm").GetString());
+        Assert.Equal(A.Sha(A.ToolFactsAnalysisV2PromptRange), d.RootElement.GetProperty("arms")[0].GetProperty("promptSha256").GetString());
+        var file = Path.Combine(Path.GetTempPath(), "dhx-pv2-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, bytes);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
 }
