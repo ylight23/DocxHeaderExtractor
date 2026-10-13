@@ -1,0 +1,43 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "APPROVED",
+  "planFile": "p7.f1.v6.d4.11h-prefetch-canary-plan.v1.json",
+  "planSha256": "a46eaeba49fdfc35c8ce1c44810a51fbf265e9fb9f0c0284e8056b0c968adda3",
+  "codeCommit": "cb173622016bd4afc6f219fd9220d0cf36384213",
+  "authorityId": "SRC-095",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 48,
+  "ceilingUsd": 1.3,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095",
+  "dataSharing": {
+    "documentPublicity": "IETF RFC 9114, published publicly by the IETF",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "allow (OpenRouter default; no data_collection field added to the request)",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ]
+  },
+  "approvedBy": "ylight23 (session user of the repository owner account; the message did not restate a name)",
+  "approvedAtUtc": "2026-10-13T01:24:42.4547068Z",
+  "approvalText": "[Approval given in the session of the repository owner account (git user ylight23), one message of 2026-10-13, verbatim]\ncho phép vượt budget, chạy luôn\n(Recorded notes: the message replies to the assistant message that named plan b76a2c7ecf35ecd3d204f0006dcca077a807657980641e9e8af10977d27031ed (code 820cb0b): CONTROL vs PREFETCH, 3 repetitions, SEG-001 and SEG-008, 18 posts and $0.50 (9 posts and $0.25 per arm), retry 0, route alibaba without alibaba/us-east-1 and no fallback, document SRC-095 only; the same message warned that if the model called tools in every unit the 9 posts per arm would stop later units INCOMPLETE. The permission to exceed the budget was used for that one purpose: the caps were raised to the most the six units per arm can use, 24 posts and $0.65 per arm (48 posts, $1.30 in total; the dollar figure is the worst-case reserve of 24 posts at the byte cap, a bound and not the expected spend, earlier requests cost about $0.001 each). That produced plan a46eaeba49fdfc35c8ce1c44810a51fbf265e9fb9f0c0284e8056b0c968adda3 (code cb17362), which this record authorizes; the requests, prompts, arms, segments, repetitions, route and every other value are those of b76a2c7e. The user had not yet seen the new plan SHA when writing the message. approvedBy names the session user: the message did not restate a name. The message did not restate the three open data-policy items (ZDR not supported, ZDR waiver unverified, logging through OpenRouter unknown) or data_collection; they are adopted from the same user's explicit approval of plan c50833bb on the same route and the same public document (RFC 9114), with data_collection allow as the OpenRouter default and no field added to the request. Retry stays 0 as pinned. The message did not say to push raw responses, so raw responses, reasoning, request bodies and tool results stay in the safe store outside the repository and only a sanitized receipt (codes, counts, costs, hashes) is committed. The GPT-6 technical reviews are reviews, not this approval.)",
+  "approvalSha256": "8567297cb7a5e7955c2156cc459dc0dacec7ed198f931e541f4b982f658fe230"
+}
