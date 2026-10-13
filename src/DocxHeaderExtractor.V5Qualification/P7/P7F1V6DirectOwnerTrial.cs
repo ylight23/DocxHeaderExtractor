@@ -32,20 +32,22 @@ internal static class P7F1V6DirectOwnerTrial
         (P7F1V6Universe.RebuildOwnerSupplied(documentPath, fileSha256, null, out var why) ?? throw new InvalidOperationException(why)).WithSegmentation(segmentation);
 
     /// <summary>The segmentation a plan pins; a plan without the field is the original fixed 48-line cut.</summary>
+    public static bool JsonAllTurnsOf(JsonElement plan) => plan.TryGetProperty("responseFormatTurns", out var v) && v.ValueKind == JsonValueKind.String;
+
     public static string SegmentationOf(JsonElement plan) =>
         plan.TryGetProperty("segmentation", out var s) && s.ValueKind == JsonValueKind.Object ? s.GetProperty("policy").GetString()! : P7F1V6Universe.FixedSegmentation;
 
-    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit, string segmentation = P7F1V6Universe.FixedSegmentation)
+    public static Dictionary<string, object?> PinnedValues(string documentPath, string codeCommit, string segmentation = P7F1V6Universe.FixedSegmentation, bool jsonObjectAllTurns = false)
     {
         var fileSha = Sha256Of(documentPath);
         var u = Load(documentPath, fileSha, segmentation);
         var segs = SegmentsOf(u);
         var picks = segs.Select(s => new C.Pick(s, "ALL: every segment of the document", new C.SegStat(s, 0, 0, 0, 0, 0, 0))).ToArray();
-        var ceilings = C.Arms.ToDictionary(a => a.Arm, a => C.CeilingUsd(u, picks, a.Mode));
+        var ceilings = C.Arms.ToDictionary(a => a.Arm, a => C.CeilingUsd(u, picks, a.Mode, jsonObjectAllTurns));
         var worst = P7F1V6Direct.AttemptUsd(C.MaxRequestBytes);
         var arms = C.Arms.Select(a =>
         {
-            var first = segs.Select(s => C.FirstRequest(a.Mode, u, s)).ToList();
+            var first = segs.Select(s => C.FirstRequest(a.Mode, u, s, jsonObjectAllTurns)).ToList();
             return new
             {
                 arm = a.Arm,
@@ -58,7 +60,7 @@ internal static class P7F1V6DirectOwnerTrial
         }).ToArray();
         string ProviderBlockSha()
         {
-            using var d = JsonDocument.Parse(C.FirstRequest(A.Arm.Auto, u, segs[0]).Body);
+            using var d = JsonDocument.Parse(C.FirstRequest(A.Arm.Auto, u, segs[0], jsonObjectAllTurns).Body);
             return P7F1V6Protocol.Sha(d.RootElement.GetProperty("provider").GetRawText());
         }
         var template = A.Build("<<SYSTEM_PROMPT>>", "<<USER_PAYLOAD>>", new System.Text.Json.Nodes.JsonArray(), "auto");
@@ -119,7 +121,7 @@ internal static class P7F1V6DirectOwnerTrial
                 requestTemplateSha256 = template.Sha256,
                 toolDefinitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(),
                 promptSha256 = new { control = A.AutoPromptRangeSha256, prefetch = A.PrefetchPromptRangeSha256 },
-                firstRequestsSha256 = P7F1V6Protocol.Sha(string.Join("\n", C.Arms.SelectMany(a => segs.Select(sg => C.FirstRequest(a.Mode, u, sg).Sha256)))),
+                firstRequestsSha256 = P7F1V6Protocol.Sha(string.Join("\n", C.Arms.SelectMany(a => segs.Select(sg => C.FirstRequest(a.Mode, u, sg, jsonObjectAllTurns).Sha256)))),
             },
             ["tools"] = new { version = P7F1V6AgentTools.Version, definitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(), names = P7F1V6AgentTools.Names,
                 availability = "declared in both arms, optional; tool results come from the document lines" },
@@ -151,6 +153,8 @@ internal static class P7F1V6DirectOwnerTrial
             ["rawPublication"] = "None. Requests (which hold the document text), raw responses, reasoning and the analysis stay in the safe store outside the repository. Only a receipt without any line text is committed.",
             ["liveAuthorization"] = new { required = true, artifact = P7F1V6DirectAuthorization.Artifact, status = P7F1V6DirectAuthorization.Approved, campaigns = 1 },
         };
+        if (jsonObjectAllTurns)
+            plan["responseFormatTurns"] = "json_object on EVERY turn, including the turns where Qwen may call a tool (tool_choice auto). Reason: with no response_format on those turns Qwen wrapped the whole answer in a markdown fence in 3 of 3 first answers of the D4.11j layout CONTROL arm (REPLY_NOT_JSON, halted by the early-stop rule). The strict parser is unchanged and still refuses any fence or prose.";
         if (segmentation != P7F1V6Universe.FixedSegmentation)
         {
             plan["segmentation"] = new
@@ -177,7 +181,7 @@ internal static class P7F1V6DirectOwnerTrial
         var planCommit = doc.RootElement.GetProperty("codeCommit").GetString();
         if (planCommit != currentCommit) failures.Add("CODE_COMMIT_DIFFERS");
         if (doc.RootElement.GetProperty("sourceSha256").GetString() != Sha256Of(documentPath)) { failures.Add("OWNER_DOCUMENT_SHA_DIFFERS"); return failures; }
-        if (!Serialize(PinnedValues(documentPath, planCommit ?? "", SegmentationOf(doc.RootElement))).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
+        if (!Serialize(PinnedValues(documentPath, planCommit ?? "", SegmentationOf(doc.RootElement), JsonAllTurnsOf(doc.RootElement))).AsSpan().SequenceEqual(bytes)) failures.Add("PINNED_VALUES_DIFFER");
         return failures;
     }
 
@@ -208,7 +212,7 @@ internal static class P7F1V6DirectOwnerTrial
         var stores = C.Arms.ToDictionary(a => a.Arm, _ => P7F1V6SafeRawStore.CreateRun(safeRoot));
         var models = C.Arms.ToDictionary(a => a.Arm, a => new P7F1V6AgentAuditedModel(new P7F1V6DirectAuditedModel(
             new P7F1V6OpenRouterTransport(handler, TimeSpan.FromSeconds(300)), apiKey, stores[a.Arm], budgets[a.Arm])));
-        var state = C.RunArms(u, segments, models.ToDictionary(kv => kv.Key, kv => (A.AgentModel)kv.Value.Turn), budgets);
+        var state = C.RunArms(u, segments, models.ToDictionary(kv => kv.Key, kv => (A.AgentModel)kv.Value.Turn), budgets, JsonAllTurnsOf(plan.RootElement));
         return state.Select(s => new C.ArmResult(s.Arm, s.Units, models[s.Arm].Ledger, s.Budget.Calls, s.Budget.ReservedUsd, s.Budget.ActualUsd,
             s.Budget.HaltReason, s.Budget.Refusals.ToArray(), stores[s.Arm].RunDirectory)).ToList();
     }

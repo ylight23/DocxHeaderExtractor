@@ -158,7 +158,7 @@ internal static class P7F1V6DirectAgent
     /// the strict parser still refuses any final answer that is not exactly one JSON object (a fence or prose around it included).
     /// D4.11c: reasoning enabled true is stated explicitly and the reply is streamed (SSE), the request shape of every F1Q turn in which
     /// Qwen made tool calls on this route (verified from the F1Q raw). The D4.11b canary sent neither and Qwen made no tool call.</summary>
-    public static P7F1V6Protocol.PreparedRequest Build(string systemPrompt, string payload, JsonArray history, string toolChoice)
+    public static P7F1V6Protocol.PreparedRequest Build(string systemPrompt, string payload, JsonArray history, string toolChoice, bool jsonObjectAllTurns = false)
     {
         if (toolChoice is not ("auto" or "none")) throw new ArgumentException("TOOL_CHOICE_INVALID", nameof(toolChoice));
         var spec = P7F1V6Protocol.DefaultSpec();
@@ -179,7 +179,7 @@ internal static class P7F1V6DirectAgent
             ["stream"] = true,
             ["usage"] = new JsonObject { ["include"] = spec.IncludeUsage },
         };
-        if (toolChoice == "none") body.Insert(2, "response_format", new JsonObject { ["type"] = spec.ResponseFormatType });
+        if (toolChoice == "none" || jsonObjectAllTurns) body.Insert(2, "response_format", new JsonObject { ["type"] = spec.ResponseFormatType });
         var text = body.ToJsonString(Options);
         var bytes = Encoding.UTF8.GetBytes(text);
         return new P7F1V6Protocol.PreparedRequest(text, bytes.Length, Convert.ToHexStringLower(SHA256.HashData(bytes)));
@@ -256,7 +256,7 @@ internal static class P7F1V6DirectAgent
         IReadOnlyList<P7F1V6AgentTools.CallRecord> ToolCalls, int SuccessfulToolCalls, ScopeReport Scope, EvidenceReport Evidence);
 
     public static AgentUnitOutcome RunUnit(Arm arm, string instruction, P7F1V6Universe universe, string unitId, IReadOnlyList<string> decide,
-        IEnumerable<int> initialContext, AgentModel model, P7F1V6DirectV2.Budget budget, bool rangeStated = false)
+        IEnumerable<int> initialContext, AgentModel model, P7F1V6DirectV2.Budget budget, bool rangeStated = false, bool jsonObjectAllTurns = false)
     {
         var lines = universe.Lines;
         var tools = new P7F1V6AgentTools(universe.Tools);
@@ -304,7 +304,7 @@ internal static class P7F1V6DirectAgent
         for (int turn = 1; turn <= MaxPostsPerUnit; turn++)
         {
             var toolChoice = turn <= MaxToolTurns ? "auto" : "none";
-            var req = Build(prompt, payload, history, toolChoice);
+            var req = Build(prompt, payload, history, toolChoice, jsonObjectAllTurns);
             var refusal = budget.Admit(req);
             if (refusal is not null) return Done("INCOMPLETE", "BUDGET:" + refusal);
             requests.Add(req);

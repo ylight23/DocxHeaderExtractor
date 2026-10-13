@@ -246,6 +246,25 @@ public sealed class P7F1V6DirectD411jTests : IDisposable
         Assert.Contains("PINNED_VALUES_DIFFER", T.Verify(editedPath, Convert.ToHexStringLower(SHA256.HashData(edited)), "TEST_COMMIT", path));
     }
 
+    [Fact]
+    public void JsonAllTurnsPlan_PinsTheShape_ChangesTheFirstRequests_AndVerifies()
+    {
+        var path = StandIn();
+        var plain = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation96));
+        var json = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation96, jsonObjectAllTurns: true));
+        using var d = JsonDocument.Parse(json);
+        Assert.True(T.JsonAllTurnsOf(d.RootElement));
+        Assert.Equal(P7F1V6Universe.LayoutSegmentation96, T.SegmentationOf(d.RootElement));
+        using var p = JsonDocument.Parse(plain);
+        Assert.False(T.JsonAllTurnsOf(p.RootElement));
+        var u = T.Load(path, T.Sha256Of(path), P7F1V6Universe.LayoutSegmentation96);
+        Assert.NotEqual(C.FirstRequest(A.Arm.Auto, u, "SEG-000").Sha256, C.FirstRequest(A.Arm.Auto, u, "SEG-000", true).Sha256);
+        Assert.Contains("response_format", C.FirstRequest(A.Arm.Prefetch, u, "SEG-000", true).Body);
+        var file = Path.Combine(scratch, "json-plan.json");
+        File.WriteAllBytes(file, json);
+        Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(json)), "TEST_COMMIT", path));
+    }
+
     // ================= running =================
 
     sealed class Handler(Func<string, string> respond) : HttpMessageHandler

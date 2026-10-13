@@ -21,11 +21,11 @@ public sealed class P7F1V6SegmentationTests
         var u = Universe(folder, file);
         Assert.Equal(P7F1V6Universe.FixedSegmentation, u.Segmentation);
         Assert.Equal(u.Lines.Count, u.LayoutBlocks.Count);
-        foreach (var policy in new[] { P7F1V6Universe.FixedSegmentation, P7F1V6Universe.LayoutSegmentation })
+        foreach (var policy in new[] { P7F1V6Universe.FixedSegmentation, P7F1V6Universe.LayoutSegmentation, P7F1V6Universe.LayoutSegmentation96 })
         {
             var v = u.WithSegmentation(policy);
             var next = 0;
-            foreach (var (a, b) in v.Cores) { Assert.Equal(next, a); Assert.InRange(b - a, 1, P7F1V6DirectCanary410.Unit); next = b; }
+            foreach (var (a, b) in v.Cores) { Assert.Equal(next, a); Assert.InRange(b - a, 1, P7F1V6Universe.MaxCore(policy)); next = b; }
             Assert.Equal(u.Lines.Count, next);
             // Every line is decided in exactly one segment, whatever the policy.
             var decided = Enumerable.Range(0, v.Cores.Count).SelectMany(n => P7F1V6DirectCanary410.Scope(v, $"SEG-{n:000}").Decide).ToList();
@@ -72,5 +72,29 @@ public sealed class P7F1V6SegmentationTests
         var b = u.WithSegmentation(P7F1V6Universe.LayoutSegmentation).Cores;
         Assert.Equal(a, b);
         Assert.Throws<ArgumentException>(() => u.WithSegmentation("SOMETHING_ELSE"));
+    }
+
+    [Fact]
+    public void Layout96_NeverCutsInsideABlock_AndIsNoFinerThanLayout48()
+    {
+        var u = Universe("07_system_generated", "095_RFC9114_HTTP_3.pdf");
+        var l48 = u.WithSegmentation(P7F1V6Universe.LayoutSegmentation);
+        var l96 = u.WithSegmentation(P7F1V6Universe.LayoutSegmentation96);
+        Assert.True(l96.Cores.Count <= l48.Cores.Count);
+        for (int k = 1; k < l96.Cores.Count; k++) Assert.NotEqual(l96.LayoutBlocks[l96.Cores[k].Start - 1], l96.LayoutBlocks[l96.Cores[k].Start]);
+        Assert.Contains(l96.Cores, c => c.End - c.Start > P7F1V6DirectCanary410.Unit);
+    }
+
+    [Fact]
+    public void JsonObjectAllTurns_AddsResponseFormatOnToolTurns_OnlyWhenAsked()
+    {
+        var body = new System.Text.Json.Nodes.JsonArray();
+        var auto = System.Text.Json.JsonDocument.Parse(P7F1V6DirectAgent.Build("S", "{}", body, "auto").Body).RootElement;
+        var autoJson = System.Text.Json.JsonDocument.Parse(P7F1V6DirectAgent.Build("S", "{}", body, "auto", jsonObjectAllTurns: true).Body).RootElement;
+        var none = System.Text.Json.JsonDocument.Parse(P7F1V6DirectAgent.Build("S", "{}", body, "none").Body).RootElement;
+        Assert.False(auto.TryGetProperty("response_format", out _));
+        Assert.Equal("json_object", autoJson.GetProperty("response_format").GetProperty("type").GetString());
+        Assert.Equal(P7F1V6DirectAgent.Build("S", "{}", body, "none").Body, P7F1V6DirectAgent.Build("S", "{}", body, "none", jsonObjectAllTurns: true).Body);
+        Assert.Equal("json_object", none.GetProperty("response_format").GetProperty("type").GetString());
     }
 }

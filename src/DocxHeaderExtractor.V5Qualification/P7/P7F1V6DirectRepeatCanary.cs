@@ -98,19 +98,19 @@ internal static class P7F1V6DirectRepeatCanary
     public static int PostsPerArm(IReadOnlyList<Pick> picks) => Units(picks) + Math.Max(3, Units(picks) / 5);
     public static P7F1V6DirectV2.Budget NewArmBudget(IReadOnlyList<Pick> picks, double ceilingUsd) => new(PostsPerArm(picks), ceilingUsd, MaxRequestBytes);
 
-    public static P7F1V6Protocol.PreparedRequest FirstRequest(A.Arm mode, P7F1V6Universe u, string segment)
+    public static P7F1V6Protocol.PreparedRequest FirstRequest(A.Arm mode, P7F1V6Universe u, string segment, bool jsonObjectAllTurns = false)
     {
         var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, segment);
         var (payload, _) = A.FirstPayload(mode, P7F1V6DirectD45.Instruction, u.SourceSha256, segment, decide, ctx.Select(i => u.Lines[i]).ToArray(),
             new P7F1V6AgentTools(u.Tools), rangeStated: true);
-        return A.Build(A.Prompt(mode, rangeStated: true), payload, new System.Text.Json.Nodes.JsonArray(), "auto");
+        return A.Build(A.Prompt(mode, rangeStated: true), payload, new System.Text.Json.Nodes.JsonArray(), "auto", jsonObjectAllTurns);
     }
 
     /// <summary>The ceiling is derived, not chosen: the reserve of every planned first request of the arm, repetitions included, plus the spare
     /// posts at the worst case (a request at the byte cap), plus 10%, rounded up to the cent. It bounds the reserve, not the expected spend.</summary>
-    public static double CeilingUsd(P7F1V6Universe u, IReadOnlyList<Pick> picks, A.Arm mode)
+    public static double CeilingUsd(P7F1V6Universe u, IReadOnlyList<Pick> picks, A.Arm mode, bool jsonObjectAllTurns = false)
     {
-        var first = picks.Sum(p => P7F1V6Direct.AttemptUsd(FirstRequest(mode, u, p.Segment).Bytes)) * Reps;
+        var first = picks.Sum(p => P7F1V6Direct.AttemptUsd(FirstRequest(mode, u, p.Segment, jsonObjectAllTurns).Bytes)) * Reps;
         var spare = (PostsPerArm(picks) - Units(picks)) * P7F1V6Direct.AttemptUsd(MaxRequestBytes);
         return Math.Ceiling((first + spare) * 1.1 * 100) / 100;
     }
@@ -294,7 +294,7 @@ internal static class P7F1V6DirectRepeatCanary
     /// <summary>All repetitions, segments and arms, interleaved: per repetition, per segment, CONTROL then PREFETCH. The ledger unit id carries the
     /// repetition ("SEG-031#r2"); the request payload does not.</summary>
     public static IReadOnlyList<(string Arm, List<RepUnit> Units, P7F1V6DirectV2.Budget Budget)> RunArms(
-        P7F1V6Universe u, IReadOnlyList<string> segments, IReadOnlyDictionary<string, A.AgentModel> modelPerArm, IReadOnlyDictionary<string, P7F1V6DirectV2.Budget> budgetPerArm)
+        P7F1V6Universe u, IReadOnlyList<string> segments, IReadOnlyDictionary<string, A.AgentModel> modelPerArm, IReadOnlyDictionary<string, P7F1V6DirectV2.Budget> budgetPerArm, bool jsonObjectAllTurns = false)
     {
         var state = Arms.Select(a => (a.Arm, a.Mode, Units: new List<RepUnit>(), Budget: budgetPerArm[a.Arm])).ToList();
         for (int rep = 1; rep <= Reps; rep++)
@@ -306,7 +306,7 @@ internal static class P7F1V6DirectRepeatCanary
                     var model = modelPerArm[s.Arm];
                     var r = rep;
                     s.Units.Add(new RepUnit(rep, A.RunUnit(s.Mode, P7F1V6DirectD45.Instruction, u, segment, decide, ctx,
-                        (unit, turn, req) => model(unit + "#r" + r, turn, req), s.Budget, rangeStated: true)));
+                        (unit, turn, req) => model(unit + "#r" + r, turn, req), s.Budget, rangeStated: true, jsonObjectAllTurns: jsonObjectAllTurns)));
                 }
             }
         return state.Select(s => (s.Arm, s.Units, s.Budget)).ToList();

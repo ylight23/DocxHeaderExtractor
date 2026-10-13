@@ -13,6 +13,7 @@ internal sealed class P7F1V6Universe
 {
     public const string FixedSegmentation = "FIXED_48_LINES_V1";
     public const string LayoutSegmentation = "LAYOUT_PAGE_BLOCK_48_V1";
+    public const string LayoutSegmentation96 = "LAYOUT_PAGE_BLOCK_96_V1";
 
     private P7F1V6Universe(string rel, string sourceSha, string universeSha, string storeSha, IReadOnlyList<P7F1V6Direct.Line> lines, P7F1QEvidenceTools tools,
         IReadOnlyList<string> layoutBlocks, string segmentation = FixedSegmentation)
@@ -36,20 +37,23 @@ internal sealed class P7F1V6Universe
     public P7F1V6Universe WithSegmentation(string policy) =>
         new(DocumentRelativePath, SourceSha256, UniverseSha256, EvidenceStoreSha256, Lines, Tools, LayoutBlocks, policy);
 
+    /// <summary>The most lines one segment decides: 48, or 96 for LAYOUT_PAGE_BLOCK_96_V1 (the F1Q pack bound: whole consecutive pages up to 96 lines).</summary>
+    public static int MaxCore(string policy) => policy == LayoutSegmentation96 ? 96 : P7F1V6DirectCanary410.Unit;
+
     static IReadOnlyList<(int Start, int End)> CoresOf(IReadOnlyList<P7F1V6Direct.Line> lines, IReadOnlyList<string> blocks, string policy)
     {
         const int unit = P7F1V6DirectCanary410.Unit;
         List<(int, int)> cores;
         if (policy == FixedSegmentation)
             cores = Enumerable.Range(0, (lines.Count + unit - 1) / unit).Select(n => (n * unit, Math.Min(lines.Count, (n + 1) * unit))).ToList();
-        else if (policy == LayoutSegmentation)
-            cores = P7F1QLayoutPacking.Chunks<int>(Enumerable.Range(0, lines.Count).ToArray(), i => lines[i].Page, i => blocks[i], unit)
+        else if (policy is LayoutSegmentation or LayoutSegmentation96)
+            cores = P7F1QLayoutPacking.Chunks<int>(Enumerable.Range(0, lines.Count).ToArray(), i => lines[i].Page, i => blocks[i], MaxCore(policy))
                 .Select(c => (c[0], c[^1] + 1)).ToList();
         else throw new ArgumentException("SEGMENTATION_UNKNOWN", nameof(policy));
         var next = 0;
         foreach (var (a, b) in cores)
         {
-            if (a != next || b <= a || b - a > unit) throw new InvalidOperationException("SEGMENTATION_NOT_A_PARTITION");
+            if (a != next || b <= a || b - a > MaxCore(policy)) throw new InvalidOperationException("SEGMENTATION_NOT_A_PARTITION");
             next = b;
         }
         if (next != lines.Count) throw new InvalidOperationException("SEGMENTATION_NOT_A_PARTITION");

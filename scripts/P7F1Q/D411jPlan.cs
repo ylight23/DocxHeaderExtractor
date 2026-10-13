@@ -37,15 +37,15 @@ internal static class D411jPlan
         ["decisions"] = new JsonArray(targets.Select(a => (JsonNode)new JsonObject { ["alias"] = a, ["decision"] = "NOT_SELECT" }).ToArray()),
     }.ToJsonString();
 
-    public static void Plan(string repoRoot, string artifactDir, string documentPath, bool layout = false)
+    public static void Plan(string repoRoot, string artifactDir, string documentPath, string seg = P7F1V6Universe.FixedSegmentation, bool jsonAll = false)
     {
         if (Git(repoRoot, "status --porcelain -- src scripts tests").Length > 0) { Console.WriteLine("D411j PLAN REFUSED: uncommitted code"); Environment.ExitCode = 2; return; }
         var head = Git(repoRoot, "rev-parse HEAD");
-        var seg = layout ? P7F1V6Universe.LayoutSegmentation : P7F1V6Universe.FixedSegmentation;
-        var bytes = T.Serialize(T.PinnedValues(documentPath, head, seg));
+        var tag = (seg == P7F1V6Universe.LayoutSegmentation96 ? ".layout96" : seg == P7F1V6Universe.LayoutSegmentation ? ".layout" : "") + (jsonAll ? ".json" : "");
+        var bytes = T.Serialize(T.PinnedValues(documentPath, head, seg, jsonAll));
         using var plan = JsonDocument.Parse(bytes);
         var authority = plan.RootElement.GetProperty("authorityId").GetString()!;
-        var planPath = Path.Combine(artifactDir, $"{T.PlanArtifact.Replace(".v1", "")}.{authority}{(layout ? ".layout" : "")}.v1.json");
+        var planPath = Path.Combine(artifactDir, $"{T.PlanArtifact.Replace(".v1", "")}.{authority}{tag}.v1.json");
         File.WriteAllBytes(planPath, bytes);
         var planSha = Convert.ToHexStringLower(SHA256.HashData(bytes));
         var verify = T.Verify(planPath, planSha, head, documentPath);
@@ -63,7 +63,7 @@ internal static class D411jPlan
         var sims = models.Select(m =>
         {
             var budgets = C.Arms.ToDictionary(a => a.Arm, a => new P7F1V6DirectV2.Budget(posts, ceilings[a.Arm], C.MaxRequestBytes));
-            var state = C.RunArms(u, segs, C.Arms.ToDictionary(a => a.Arm, _ => m.Model), budgets);
+            var state = C.RunArms(u, segs, C.Arms.ToDictionary(a => a.Arm, _ => m.Model), budgets, jsonAll);
             return new
             {
                 simulation = m.Name,
@@ -82,13 +82,13 @@ internal static class D411jPlan
             planFile = Path.GetFileName(planPath), planSha256 = planSha, planVerifiesNow = verify.Count == 0, codeCommit = head,
             firstRequests = C.Arms.SelectMany(a => segs.Select(s =>
             {
-                var r = C.FirstRequest(a.Mode, u, s);
+                var r = C.FirstRequest(a.Mode, u, s, jsonAll);
                 return new { arm = a.Arm, segment = s, sha256 = r.Sha256, bytes = r.Bytes, reserveUsd = Math.Round(P7F1V6Direct.AttemptUsd(r.Bytes), 6) };
             })),
             simulations = sims,
             notes = new[] { "Scripted models only; no provider call; no line text is written to this report." },
         };
-        File.WriteAllText(Path.Combine(artifactDir, $"p7.f1.v6.d4.11j-owner-document-trial-dryrun.{authority}{(layout ? ".layout" : "")}.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
+        File.WriteAllText(Path.Combine(artifactDir, $"p7.f1.v6.d4.11j-owner-document-trial-dryrun.{authority}{tag}.v1.json"), JsonSerializer.Serialize(report, Indented) + "\n", new UTF8Encoding(false));
         Console.WriteLine($"{authority}: plan {planSha} verifies={verify.Count == 0} commit={head}");
         Console.WriteLine("segments: " + string.Join(", ", segs) + $" | posts per arm {posts} | ceilings {string.Join(", ", ceilings.Select(kv => kv.Key + " $" + kv.Value))}");
         foreach (var f in report.firstRequests) Console.WriteLine(JsonSerializer.Serialize(f));
