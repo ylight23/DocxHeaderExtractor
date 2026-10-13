@@ -1,0 +1,270 @@
+{
+  "artifact": "p7.f1.v6.d4.11g-run-receipt.v1",
+  "label": "Development canary on segments chosen from earlier errors; not an F1 estimate. Sanitized receipt: codes, counts, costs and hashes only. Raw SSE responses, reasoning, request bodies and the analysis stay in the safe store outside the repository (the approving message did not ask to push them).",
+  "planSha256": "41376cd2d11e011d90396e20b4b0ae06af14c3a676fa7bad33da27476308ed0e",
+  "codeCommit": "926d8dc46c4fd2d9d72cfb14d367cb0c39705385",
+  "authorizationFileSha256": "ba71c5a466f6574b1e1e831a542de395ebb19bcc6a1ce597b33ed9f2ad876720",
+  "approvedBy": "ylight23 (session user of the repository owner account; the message did not restate a name)",
+  "consumedMarker": "consumed-41376cd2….json written before the first POST; the plan cannot run again",
+  "retriesUsed": 0,
+  "posts": 4,
+  "postsAllowed": 16,
+  "actualUsd": 0.0039434,
+  "ceilingUsd": 0.5,
+  "safeStoreRuns": {
+    "AUTO": "run-b023da9d77d5407c91509e92f7a5c1d0",
+    "EVIDENCE_FIRST": "run-79a2f522797e4f20a5a75ad5eb411eb9"
+  },
+  "calls": [
+    {
+      "arm": "AUTO",
+      "unit": "SEG-001",
+      "turn": 1,
+      "finish": "stop",
+      "provider": "Alibaba",
+      "sseDone": true,
+      "promptTokens": "10268",
+      "completionTokens": "6206",
+      "reasoningTokens": "4512",
+      "costUsd": 0.00111482,
+      "cachedTokens": "ZERO",
+      "verdict": "PASSED_AUDIT_TO_PARSER",
+      "toolCallsInResponse": 0,
+      "reasoningMentionsOfTools": 0
+    },
+    {
+      "arm": "AUTO",
+      "unit": "SEG-008",
+      "turn": 1,
+      "finish": "stop",
+      "provider": "Alibaba",
+      "sseDone": true,
+      "promptTokens": "10982",
+      "completionTokens": "5593",
+      "reasoningTokens": "4528",
+      "costUsd": 0.00105655,
+      "cachedTokens": "ZERO",
+      "verdict": "PASSED_AUDIT_TO_PARSER",
+      "toolCallsInResponse": 0,
+      "reasoningMentionsOfTools": 1
+    },
+    {
+      "arm": "EVIDENCE_FIRST",
+      "unit": "SEG-001",
+      "turn": 1,
+      "finish": "stop",
+      "provider": "Alibaba",
+      "sseDone": true,
+      "promptTokens": "10316",
+      "completionTokens": "5253",
+      "reasoningTokens": "3559",
+      "costUsd": 0.00099237,
+      "cachedTokens": "ZERO",
+      "verdict": "PASSED_AUDIT_TO_PARSER",
+      "toolCallsInResponse": 0,
+      "reasoningMentionsOfTools": 1
+    },
+    {
+      "arm": "EVIDENCE_FIRST",
+      "unit": "SEG-008",
+      "turn": 1,
+      "finish": "stop",
+      "provider": "Alibaba",
+      "sseDone": true,
+      "promptTokens": "11030",
+      "completionTokens": "3452",
+      "reasoningTokens": "2387",
+      "costUsd": 0.00077966,
+      "cachedTokens": "ZERO",
+      "verdict": "PASSED_AUDIT_TO_PARSER",
+      "toolCallsInResponse": 0,
+      "reasoningMentionsOfTools": 1
+    }
+  ],
+  "units": [
+    {
+      "arm": "AUTO",
+      "unit": "SEG-001",
+      "status": "COMPLETE",
+      "failure": null,
+      "modelToolCallsEmitted": 0,
+      "toolSucceeded": 0,
+      "cacheHits": 0,
+      "semanticDiagnostic": {
+        "selected": 46,
+        "goldAtoms": 0,
+        "tp": 0,
+        "fp": 46,
+        "fn": 0
+      }
+    },
+    {
+      "arm": "AUTO",
+      "unit": "SEG-008",
+      "status": "COMPLETE",
+      "failure": null,
+      "modelToolCallsEmitted": 0,
+      "toolSucceeded": 0,
+      "cacheHits": 0,
+      "semanticDiagnostic": {
+        "selected": 1,
+        "goldAtoms": 1,
+        "tp": 1,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "arm": "EVIDENCE_FIRST",
+      "unit": "SEG-001",
+      "status": "FAILED",
+      "failure": "PROTOCOL:TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED",
+      "modelToolCallsEmitted": 0,
+      "toolSucceeded": 0,
+      "cacheHits": 0,
+      "semanticDiagnostic": null
+    },
+    {
+      "arm": "EVIDENCE_FIRST",
+      "unit": "SEG-008",
+      "status": "FAILED",
+      "failure": "PROTOCOL:TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED",
+      "modelToolCallsEmitted": 0,
+      "toolSucceeded": 0,
+      "cacheHits": 0,
+      "semanticDiagnostic": null
+    }
+  ],
+  "responseFormat": "absent on turn 1 (tool_choice auto); no unit reached turn 4",
+  "findings": {
+    "capability": "NOT DEMONSTRATED, and the tested factor is excluded as the sole cause. With response_format removed on the tool turns (the only change against the D4.11f campaign a57d260f), Qwen again emitted 0 tool calls in 4/4 responses, including both EVIDENCE_FIRST responses whose prompt requires a first reply of tool calls. response_format json_object is therefore not the only reason Qwen does not call tools in this setup. The C# loop, dispatcher and cache were not exercised live.",
+    "whyNotCalled": "As in D4.11b and D4.11f the reasoning of the EVIDENCE_FIRST responses states that no tool call is needed because the information is sufficient, then writes the JSON answer. The instruction to call tools first was read and not followed. Reasoning of the AUTO responses: one says it does not need to call any tool, the other does not mention tools.",
+    "fenceCounterfactual": {
+      "label": "offline, not official; nothing was repaired",
+      "rows": [
+        {
+          "arm": "AUTO",
+          "unit": "SEG-001",
+          "turn": 1,
+          "finish": "stop",
+          "contentChars": 3838,
+          "startsWithFence": false,
+          "official": {
+            "ok": true,
+            "failure": null,
+            "status": "COMPLETE",
+            "selected": 46
+          },
+          "fenceStripped": {
+            "applied": false,
+            "reason": "NO_SINGLE_OUTER_FENCE"
+          },
+          "counterfactual": {
+            "ok": true,
+            "failure": null,
+            "status": "COMPLETE",
+            "selected": 46,
+            "sameSelectionAsOfficial": true
+          }
+        },
+        {
+          "arm": "AUTO",
+          "unit": "SEG-008",
+          "turn": 1,
+          "finish": "stop",
+          "contentChars": 2668,
+          "startsWithFence": false,
+          "official": {
+            "ok": true,
+            "failure": null,
+            "status": "COMPLETE",
+            "selected": 1
+          },
+          "fenceStripped": {
+            "applied": false,
+            "reason": "NO_SINGLE_OUTER_FENCE"
+          },
+          "counterfactual": {
+            "ok": true,
+            "failure": null,
+            "status": "COMPLETE",
+            "selected": 1,
+            "sameSelectionAsOfficial": true
+          }
+        },
+        {
+          "arm": "EVIDENCE_FIRST",
+          "unit": "SEG-001",
+          "turn": 1,
+          "finish": "stop",
+          "contentChars": 3838,
+          "startsWithFence": false,
+          "official": {
+            "ok": true,
+            "failure": null,
+            "status": "COMPLETE",
+            "selected": 46
+          },
+          "fenceStripped": {
+            "applied": false,
+            "reason": "NO_SINGLE_OUTER_FENCE"
+          },
+          "counterfactual": {
+            "ok": true,
+            "failure": null,
+            "status": "COMPLETE",
+            "selected": 46,
+            "sameSelectionAsOfficial": true
+          }
+        },
+        {
+          "arm": "EVIDENCE_FIRST",
+          "unit": "SEG-008",
+          "turn": 1,
+          "finish": "stop",
+          "contentChars": 2668,
+          "startsWithFence": false,
+          "official": {
+            "ok": true,
+            "failure": null,
+            "status": "COMPLETE",
+            "selected": 1
+          },
+          "fenceStripped": {
+            "applied": false,
+            "reason": "NO_SINGLE_OUTER_FENCE"
+          },
+          "counterfactual": {
+            "ok": true,
+            "failure": null,
+            "status": "COMPLETE",
+            "selected": 1,
+            "sameSelectionAsOfficial": true
+          }
+        }
+      ],
+      "reading": "None of the 4 final answers was fenced: all were exactly one JSON object, the strict parser accepted the 2 AUTO answers and the 2 EVIDENCE_FIRST answers were refused only by the evidence-first rule (no tool call), not by the parser. Stripping a fence would change nothing here. Without response_format Qwen still produced bare JSON in 4/4, so on this evidence dropping the format cost no contract failures (4 requests; F1Q had seen fences with json_object on)."
+    },
+    "evidence": "No tool evidence: 0 calls, 0 results, 0 cache hits. SEG-001 has 46 targets whose normalized text also occurs outside the shown window; none was looked up.",
+    "semanticDiagnostic": "Offline against Gold on the 96 targets; not F1 and not attributable to tools. AUTO SEG-001 selected 46 lines, 0 Gold heading atoms there (fp 46), the same as D4.11f; in D4.11b it selected 0. AUTO SEG-008 selected the 1 Gold heading atom (tp 1), as in D4.11f. SEG-001 AUTO selections over D4.10 (arm B), D4.11b, D4.11f, D4.11g: 46, 0, 46, 46. The instruction text excludes lines that only list or refer to headings elsewhere; the answer still selects them, and its reasoning says they follow standard heading formatting. EVIDENCE_FIRST units were refused, so no decisions were taken from them.",
+    "cache": "cached_tokens = 0 and cache_write_tokens = 0 in all 4 responses."
+  },
+  "campaignsCompared": [
+    {
+      "plan": "c50833bb (D4.11b)",
+      "request": "non-streaming, no reasoning field, json_object, prompt V1",
+      "toolCalls": "0/4"
+    },
+    {
+      "plan": "a57d260f (D4.11f)",
+      "request": "SSE, reasoning enabled, json_object, prompt V3",
+      "toolCalls": "0/4"
+    },
+    {
+      "plan": "41376cd2 (D4.11g)",
+      "request": "SSE, reasoning enabled, no response_format on tool turns, prompt V3",
+      "toolCalls": "0/4"
+    }
+  ],
+  "nextWouldBe": "Not decided. What is excluded so far: a tool-first instruction, a procedural prompt, SSE, explicit reasoning, and json_object. What Qwen does in F1Q's tool-calling arm that differs: the tool-calling arm's task asks for an assessment per occurrence and its prompt names kinds of line, which V6 will not do; the tool_choice and tool definitions are otherwise the same kind. Any further test needs its own plan."
+}

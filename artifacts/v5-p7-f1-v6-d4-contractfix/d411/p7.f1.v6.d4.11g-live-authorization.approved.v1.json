@@ -1,0 +1,43 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "APPROVED",
+  "planFile": "p7.f1.v6.d4.11g-tool-canary-plan.v1.json",
+  "planSha256": "41376cd2d11e011d90396e20b4b0ae06af14c3a676fa7bad33da27476308ed0e",
+  "codeCommit": "926d8dc46c4fd2d9d72cfb14d367cb0c39705385",
+  "authorityId": "SRC-095",
+  "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 16,
+  "ceilingUsd": 0.5,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095",
+  "dataSharing": {
+    "documentPublicity": "IETF RFC 9114, published publicly by the IETF",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "allow (OpenRouter default; no data_collection field added to the request)",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ]
+  },
+  "approvedBy": "ylight23 (session user of the repository owner account; the message did not restate a name)",
+  "approvedAtUtc": "2026-10-13T00:44:18.8732292Z",
+  "approvalText": "[Approval given in the session of the repository owner account (git user ylight23), one message of 2026-10-13, verbatim]\ncho phép chạy , k cần hỏi, kèm đối chiếu giả định \"nếu bóc fence thì có đọc được không\"\n(Recorded notes: the message replies to the assistant message that named plan 41376cd2d11e011d90396e20b4b0ae06af14c3a676fa7bad33da27476308ed0e (code 926d8dc), at most 16 posts and $0.50, retry 0 as pinned, route alibaba without alibaba/us-east-1 and no fallback, document SRC-095 only, and asked for the approver's name, the three open data-policy items, data_collection, retry and whether to push raw. approvedBy names the session user: the message did not restate a name. The message did not restate the three open data-policy items (ZDR not supported, ZDR waiver unverified, logging through OpenRouter unknown) or data_collection; they are adopted from the same user's explicit approval of plan c50833bb on the same route and the same public document (RFC 9114), with data_collection allow as the OpenRouter default and no field added to the request. The message did not say to push raw responses; the plan's rawPublication policy therefore keeps raw responses, reasoning, request bodies and tool results in the safe store outside the repository, and only a sanitized receipt (codes, counts, costs, hashes) is committed. The message asks for a comparison of what would be readable if a code fence were stripped: that is an offline counterfactual on the stored final answers, labelled not official; the parser stays strict and no answer is repaired. The GPT-6 technical reviews are reviews, not this approval.)",
+  "approvalSha256": "f71ab54ad0757cd0fb6c319e61a91f3535e4da272bef47b801c8bf5d6116c8f2"
+}
