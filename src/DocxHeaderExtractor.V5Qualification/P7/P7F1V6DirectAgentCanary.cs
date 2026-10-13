@@ -26,9 +26,11 @@ internal static class P7F1V6DirectAgentCanary
     public const int Retries = 0;
     /// <summary>D4.11b. Earlier plans, never run, are superseded: D4.11 (e3f8e57e) by the tool_call_id and finish_reason checks of D4.11a,
     /// and D4.11a (51daf941) by the hard tool-message byte cap and the split telemetry of D4.11b.</summary>
-    public const string PlanArtifact = "p7.f1.v6.d4.11f-tool-canary-plan.v1";
+    public const string PlanArtifact = "p7.f1.v6.d4.11g-tool-canary-plan.v1";
     /// <summary>The D4.11b campaign that ran (plan consumed): non-streaming, no reasoning field; Qwen made 0 tool calls in 4/4 replies.</summary>
     public const string PreviousCampaignPlanSha256 = "c50833bb0fe5ca8a609ee6d883e6c84dc86887a49ec0f4daebca26d494c83f08";
+    /// <summary>The D4.11f campaign (plan consumed 2026-10-13): the request this plan changes in one respect. Qwen made 0 tool calls in 4/4.</summary>
+    public const string ComparedCampaignPlanSha256 = "a57d260f3eb8eb506b75556008a34e3e805e3c0e698ea16df2681edf3fba8137";
     public static readonly (string Sha256, string Reason)[] SupersededPlans =
     {
         ("e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf", "D4.11a review: tool_call_id integrity and finish_reason/tool_calls consistency"),
@@ -92,7 +94,8 @@ internal static class P7F1V6DirectAgentCanary
                 provider = new { only = new[] { P7F1V6Protocol.ProviderTag }, ignore = P7F1V6Protocol.DefaultIgnore, allowFallbacks = false, requireParameters = true,
                     providerBlockSha256 = ProviderBlockSha(), model = P7F1V6Protocol.ChatModel, endpointCheck = "response provider must be Alibaba and model qwen/qwen3.7-flash, else the run halts" },
                 requestTemplateSha256 = template.Sha256,
-                requestTemplateCovers = "model, response_format, temperature, max_tokens, reasoning, tools, tool_choice, provider block, stream, usage; the system prompt, the user payload and the history are the only parts that vary",
+                finalTurnTemplateSha256 = P7F1V6DirectAgent.Build("<<SYSTEM_PROMPT>>", "<<USER_PAYLOAD>>", new System.Text.Json.Nodes.JsonArray(), "none").Sha256,
+                requestTemplateCovers = "model, response_format (turn 4 only), temperature, max_tokens, reasoning, tools, tool_choice, provider block, stream, usage; the system prompt, the user payload and the history are the only parts that vary",
                 toolDefinitionsSha256 = P7F1V6AgentTools.DefinitionsSha256(),
                 promptSha256 = new { auto = P7F1V6DirectAgent.AutoPromptSha256, evidenceFirst = P7F1V6DirectAgent.EvidenceFirstPromptSha256 },
                 firstRequestsSha256 = P7F1V6Protocol.Sha(string.Join("\n", Arms.SelectMany(a => Segments.Select(sg => FirstRequest(a.Mode, u, sg).Sha256)))),
@@ -101,6 +104,22 @@ internal static class P7F1V6DirectAgentCanary
             ["rawPublication"] = "After the run, the raw SSE responses (reasoning included), the request bodies with every tool result, the run summaries and the analysis are copied from the safe store into the repository under artifacts/v5-p7-f1-v6-d4-contractfix/d411/run-<plan sha8>/ and pushed, as the owner instructed on 2026-10-13. The document is the public IETF RFC 9114. Done only if the approving message repeats this instruction; the copy refuses a file that contains the API key. Until then, and for any run whose approval does not say so, raw stays in the safe store.",
             ["previousCampaign"] = new { planSha256 = PreviousCampaignPlanSha256, run = true, consumed = true,
                 outcome = "4 of 16 POSTs; Qwen emitted 0 tool calls in 4/4 replies (AUTO and EVIDENCE_FIRST); requests were non-streaming with no reasoning field" },
+            ["comparedCampaign"] = new { planSha256 = ComparedCampaignPlanSha256, run = true, consumed = true, codeCommit = "73e2ed1fbda60ac368124ee85fd0e21749bf9eda",
+                outcome = "4 of 16 POSTs, $0.00402; Qwen emitted 0 tool calls in 4/4 replies; EVIDENCE_FIRST reasoning: no tool call needed, all evidence in the prompt; every request set response_format json_object",
+                raw = "published in artifacts/v5-p7-f1-v6-d4-contractfix/d411/run-a57d260f/" },
+            ["singleFactorTest"] = new
+            {
+                question = "Does response_format json_object stop Qwen from calling tools on this route?",
+                change = "response_format is not sent on the turns where Qwen may call a tool (tool_choice auto: turns 1 to 3). It is still sent on the forced-answer turn (turn 4, tool_choice none), where no tool call is possible. Nothing else differs from the compared campaign: same prompts (V3), same seven tools, same instruction, arms, segments, SSE, reasoning enabled, route, caps, budget and cache.",
+                parser = "unchanged and strict: a final answer must be exactly one JSON object. Without response_format a fence (```json), prose before or after the object, or an empty answer is refused (REPLY_NOT_JSON) and counts as a contract failure; nothing is stripped or repaired",
+                reading = new[]
+                {
+                    "tool calls appear: json_object is a candidate cause of the 0 calls (one factor changed against a57d260f); with 4 requests and run-to-run variance it is an indication, not a measurement",
+                    "no tool calls: json_object is not the sole cause",
+                    "tool calls appear but the answers are refused as not JSON: a different cost of dropping the format, to be measured separately",
+                },
+                evidenceBehind = "p7.f1q.response-format-crosstab.v1.json: in F1Q, turns with tools declared and tool_choice auto called a tool in 11 of 30 turns without response_format and in 34 of 1,344 with json_object (confounded, not causal)",
+            },
             ["promptChange"] = new
             {
                 from = "P7_F1_V6_SELECT_AGENT_PROMPT_V1 (AUTO 3ffe3356…, EVIDENCE_FIRST f36f16eb…), as in the consumed D4.11b campaign",
@@ -110,6 +129,7 @@ internal static class P7F1V6DirectAgentCanary
                 neverSays = "no kind of line is named and nothing says what any line is; a regression bans structure vocabulary from the prompt",
                 evidenceBehind = "D4.11b: with the V1 wording Qwen made 0 tool calls in 4/4 requests. F1Q: the arm whose prompt required a first reply of tool calls had them in 9/10, the arm that said only to call a tool when ambiguous had 0/10. The F1Q prompts named kinds of line; this one does not. Whether this wording makes Qwen call tools is unknown until a run."
             },
+            ["changeFromPreviousCampaignsNote"] = "kept from D4.11f for the record; this plan's only change against the compared campaign is singleFactorTest.change",
             ["changeFromPreviousCampaign"] = "two changes together: the request shape (\"stream\": true (SSE) and \"reasoning\": {\"enabled\": true} in every request) and the agent prompt (V2, see promptChange); tools, instruction, arms, segments, caps and budget unchanged",
             ["requestShapeEvidence"] = "F1Q raw (branch experiment/p7-f1-semantic-question-v1), verified from SSE, tool files and next-turn request bodies: every one of 1,422 F1Q turn requests was stream true with reasoning enabled true; all 45 turns with tool calls were tool_choice auto, finish_reason tool_calls, provider Alibaba; Issue #5 mandatory arm 9/10 requests with tool calls, 28/28 results OK and byte-identical in the next request under the same tool_call_id, final answer finish stop 10/10; optional arm 0/10. This is why the shape is changed; it is not evidence that V6 will get tool calls.",
             ["codeCommit"] = codeCommit,
@@ -151,7 +171,7 @@ internal static class P7F1V6DirectAgentCanary
             ["model"] = P7F1V6Protocol.ChatModel,
             ["route"] = new { only = new[] { P7F1V6Protocol.ProviderTag }, ignore = P7F1V6Protocol.DefaultIgnore, allowFallbacks = false, requireParameters = true },
             ["zdr"] = "false (owner decision, to be accepted again in the authorization)",
-            ["responseFormat"] = "json_object on every turn (as in F1Q plan V3 with tools on this route)",
+            ["responseFormat"] = "absent on turns 1 to 3 (tool_choice auto); json_object on turn 4 (tool_choice none)",
             ["maxTokens"] = P7F1V6Protocol.MaxTokens,
             ["reasoning"] = "enabled true, stated in every request (D4.11c); reasoning on/off is deferred and not part of this canary",
             ["stream"] = "true: the reply is SSE. The stored response is the body exactly as received from HTTP (bytes, not a decoded string encoded again); a 2xx body that is not valid UTF-8 fails the call (RESPONSE_NOT_UTF8) and is kept as received. A stream fails the call (TRANSPORT:STREAM_*) if it lacks [DONE], has an error event in the payload (STREAM_ERROR), has \"event: error\" in any form (STREAM_ERROR_EVENT), any other named event (STREAM_NAMED_EVENT), a field other than data (STREAM_FIELD_UNKNOWN), data after [DONE] (STREAM_DATA_AFTER_DONE), a data event without choices or error (STREAM_EVENT_SHAPE_UNKNOWN) or a malformed event (STREAM_MALFORMED); comments and blank lines are allowed. The audit reads the view assembled from the stream.",

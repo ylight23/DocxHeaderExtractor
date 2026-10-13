@@ -176,6 +176,8 @@ public sealed class P7F1V6DirectD411fTests : IDisposable
                 Assert.Equal(provider.GetProperty("providerBlockSha256").GetString(), P7F1V6Protocol.Sha(body.RootElement.GetProperty("provider").GetRawText()));
             }
         Assert.Equal(A.Build("<<SYSTEM_PROMPT>>", "<<USER_PAYLOAD>>", new JsonArray(), "auto").Sha256, f.GetProperty("requestTemplateSha256").GetString());
+        Assert.Equal(A.Build("<<SYSTEM_PROMPT>>", "<<USER_PAYLOAD>>", new JsonArray(), "none").Sha256, f.GetProperty("finalTurnTemplateSha256").GetString());
+        Assert.NotEqual(f.GetProperty("requestTemplateSha256").GetString(), f.GetProperty("finalTurnTemplateSha256").GetString());
         Assert.Equal(A.ToolDefinitionsSha256, f.GetProperty("toolDefinitionsSha256").GetString());
         Assert.Equal(A.AutoPromptSha256, f.GetProperty("promptSha256").GetProperty("auto").GetString());
         Assert.Equal(64, f.GetProperty("firstRequestsSha256").GetString()!.Length);

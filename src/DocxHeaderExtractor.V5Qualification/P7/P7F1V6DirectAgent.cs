@@ -25,7 +25,7 @@ namespace DocxHeaderExtractor.V5Qualification.P7;
 internal static class P7F1V6DirectAgent
 {
     /// <summary>Pinned by code, plan and request SHA. No version field goes to Qwen in the payload (D4.10 replies copied them).</summary>
-    public const string RequestVersion = "P7_F1_V6_SELECT_AGENT_REQUEST_V1";
+    public const string RequestVersion = "P7_F1_V6_SELECT_AGENT_REQUEST_V2";
     public const string PromptVersion = "P7_F1_V6_SELECT_AGENT_PROMPT_V3";
     public const int MaxToolTurns = 3, MaxCallsPerTurn = 8;
     /// <summary>Hard cap (D4.11b) on the content bytes of every role tool message of one unit, rejected and invalid ones included. Before a
@@ -100,8 +100,11 @@ internal static class P7F1V6DirectAgent
         }, Options);
     }
 
-    /// <summary>One POST body: the pinned envelope (model, json_object, temperature 0, max_tokens, locked provider block, usage) plus the
-    /// declared tools and this turn's tool_choice. history holds the assistant tool-call messages and the tool results, in order.
+    /// <summary>One POST body: the pinned envelope (model, temperature 0, max_tokens, locked provider block, usage) plus the declared tools
+    /// and this turn's tool_choice. history holds the assistant tool-call messages and the tool results, in order.
+    /// D4.11g: response_format json_object is sent only on the forced-answer turn (tool_choice none), where no tool call is possible. On the
+    /// turns where Qwen may call a tool (tool_choice auto) no response_format is sent, so the provider does not force the reply into JSON;
+    /// the strict parser still refuses any final answer that is not exactly one JSON object (a fence or prose around it included).
     /// D4.11c: reasoning enabled true is stated explicitly and the reply is streamed (SSE), the request shape of every F1Q turn in which
     /// Qwen made tool calls on this route (verified from the F1Q raw). The D4.11b canary sent neither and Qwen made no tool call.</summary>
     public static P7F1V6Protocol.PreparedRequest Build(string systemPrompt, string payload, JsonArray history, string toolChoice)
@@ -116,7 +119,6 @@ internal static class P7F1V6DirectAgent
         {
             ["model"] = spec.Model,
             ["messages"] = messages,
-            ["response_format"] = new JsonObject { ["type"] = spec.ResponseFormatType },
             ["temperature"] = spec.Temperature,
             ["max_tokens"] = spec.MaxTokens,
             ["reasoning"] = new JsonObject { ["enabled"] = true },
@@ -126,6 +128,7 @@ internal static class P7F1V6DirectAgent
             ["stream"] = true,
             ["usage"] = new JsonObject { ["include"] = spec.IncludeUsage },
         };
+        if (toolChoice == "none") body.Insert(2, "response_format", new JsonObject { ["type"] = spec.ResponseFormatType });
         var text = body.ToJsonString(Options);
         var bytes = Encoding.UTF8.GetBytes(text);
         return new P7F1V6Protocol.PreparedRequest(text, bytes.Length, Convert.ToHexStringLower(SHA256.HashData(bytes)));

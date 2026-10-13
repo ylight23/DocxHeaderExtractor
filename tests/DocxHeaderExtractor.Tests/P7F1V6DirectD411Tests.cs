@@ -759,8 +759,11 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         Assert.DoesNotContain("responseVersion", payload);
         Assert.DoesNotContain("retrievalAllowed", payload);
         Assert.Equal(A.AutoPrompt, ab.GetProperty("messages")[0].GetProperty("content").GetString());
-        foreach (var field in new[] { "model", "response_format", "temperature", "max_tokens", "provider", "usage" })
+        foreach (var field in new[] { "model", "temperature", "max_tokens", "provider", "usage" })
             Assert.Equal(bb.GetProperty(field).GetRawText(), ab.GetProperty(field).GetRawText());
+        // D4.11g: arm B forces JSON with response_format; the agent's tool turns do not.
+        Assert.True(bb.TryGetProperty("response_format", out _));
+        Assert.False(ab.TryGetProperty("response_format", out _));
         Assert.Equal(P7F1V6AgentTools.Definitions().ToJsonString(), JsonNode.Parse(ab.GetProperty("tools").GetRawText())!.ToJsonString());
         // D4.11c: the F1Q request shape under which Qwen made tool calls on this route.
         Assert.Equal("{\"enabled\":true}", ab.GetProperty("reasoning").GetRawText());
@@ -1145,6 +1148,99 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         Assert.Equal(http.Served[0], File.ReadAllBytes(Path.Combine(store.RunDirectory, entry.RawStoreKey + ".bin")));
     }
 
+    // ================= response_format only on the forced-answer turn (D4.11g) =================
+
+    [Fact]
+    public void ResponseFormat_IsSentOnlyOnTheForcedAnswerTurn_AndNothingElseDiffersBetweenTheTurns()
+    {
+        var history = new JsonArray();
+        var auto = JsonNode.Parse(A.Build("S", "{\"p\":1}", history, "auto").Body)!.AsObject();
+        var none = JsonNode.Parse(A.Build("S", "{\"p\":1}", history, "none").Body)!.AsObject();
+        Assert.Null(auto["response_format"]);
+        Assert.Equal("{\"type\":\"json_object\"}", none["response_format"]!.ToJsonString());
+        Assert.Equal("auto", auto["tool_choice"]!.GetValue<string>());
+        Assert.Equal("none", none["tool_choice"]!.GetValue<string>());
+        Assert.NotNull(auto["tools"]);                        // the tools stay declared on both
+        Assert.NotNull(none["tools"]);
+        foreach (var n in new[] { auto, none }) { n.Remove("response_format"); n.Remove("tool_choice"); }
+        Assert.Equal(auto.ToJsonString(), none.ToJsonString());                        // otherwise the same request
+        // Position of the key is stable: after messages, before temperature.
+        var keys = JsonNode.Parse(A.Build("S", "{}", history, "none").Body)!.AsObject().Select(kv => kv.Key).ToArray();
+        Assert.Equal(new[] { "model", "messages", "response_format", "temperature" }, keys.Take(4));
+    }
+
+    [Fact]
+    public void EveryRequestOfAUnit_HasResponseFormatOnlyOnTheFourthTurn()
+    {
+        var seen = new List<(int Turn, bool HasFormat, string Choice)>();
+        var outcome = Run(A.Arm.Auto, (unit, turn, req) =>
+        {
+            var b = Body(req);
+            seen.Add((turn, b.TryGetProperty("response_format", out _), b.GetProperty("tool_choice").GetString()!));
+            return turn < 4 ? Call(("c" + turn, P7F1V6AgentTools.DocumentOverview, new { })) : Answer(Final(Targets(req)));
+        });
+        Assert.Equal("COMPLETE", outcome.Unit.Status);
+        Assert.Equal(new[] { (1, false, "auto"), (2, false, "auto"), (3, false, "auto"), (4, true, "none") }, seen);
+    }
+
+    public static TheoryData<string> NotExactlyOneJsonObject => new()
+    {
+        { "```json\n{\"protocolVersion\":\"P7_F1_V6_SELECT_OBJECTS_V1\",\"status\":\"COMPLETE\",\"decisions\":[]}\n```" },
+        { "Here is my answer:\n{\"protocolVersion\":\"P7_F1_V6_SELECT_OBJECTS_V1\",\"status\":\"COMPLETE\",\"decisions\":[]}" },
+        { "{\"protocolVersion\":\"P7_F1_V6_SELECT_OBJECTS_V1\",\"status\":\"COMPLETE\",\"decisions\":[]}\nDone." },
+        { "{\"protocolVersion\":\"P7_F1_V6_SELECT_OBJECTS_V1\",\"status\":\"COMPLETE\",\"decisions\":[]} {\"x\":1}" },
+        { "" },
+        { "   " },
+        { "no tool needed, all evidence is in the prompt" },
+    };
+
+    [Theory]
+    [MemberData(nameof(NotExactlyOneJsonObject))]
+    public void WithoutResponseFormat_AFinalAnswerThatIsNotExactlyOneJsonObject_IsRefused_NeverRepaired(string content)
+    {
+        // The answer comes on turn 1, where the provider no longer forces JSON.
+        var outcome = Run(A.Arm.Auto, (unit, turn, req) => Answer(content));
+        Assert.Equal("FAILED", outcome.Unit.Status);
+        Assert.Equal("PROTOCOL:REPLY_NOT_JSON", outcome.Unit.Failure);
+        Assert.All(outcome.Unit.Decisions.Values, v => Assert.Equal("UNRESOLVED", v));
+    }
+
+    [Fact]
+    public void AFencedAnswerAfterToolTurns_IsRefusedToo_AndCountsAsAContractFailure()
+    {
+        var budget = new P7F1V6DirectV2.Budget(100, 100, 2_000_000);
+        var outcome = Run(A.Arm.Auto, (unit, turn, req) => turn == 1
+            ? Call(("c1", P7F1V6AgentTools.DocumentOverview, new { }))
+            : Answer("```json\n" + Final(Targets(req)) + "\n```"), budget);
+        Assert.Equal("PROTOCOL:REPLY_NOT_JSON", outcome.Unit.Failure);
+        Assert.Equal(1, outcome.Evidence.ToolSucceeded);        // the tool turn was fine; only the answer was refused
+        Assert.Equal(1, budget.ContractFailures);
+    }
+
+    [Fact]
+    public void AToolTurnMayCarryTextNextToItsCalls_ItIsNotAnAnswerAndIsNotParsed()
+    {
+        // Without response_format the model may write words beside its tool calls; the loop must not read them as the answer.
+        var outcome = Run(A.Arm.Auto, (unit, turn, req) => turn == 1
+            ? new A.ModelTurn("Let me check the neighbouring lines first.", new[] { new A.ToolCall("c1", P7F1V6AgentTools.DocumentOverview, "{}") }, "tool_calls")
+            : Answer(Final(Targets(req))));
+        Assert.Equal("COMPLETE", outcome.Unit.Status);
+        Assert.Equal(1, outcome.Evidence.ToolSucceeded);
+    }
+
+    [Fact]
+    public void Streaming_AnUnforcedAnswerThatIsExactlyJson_IsAccepted_AndThroughTheAuditedSenderToo()
+    {
+        var model = StreamModel(body => Sse(body, Final(TargetsOfBody(body)), Array.Empty<(string, string, string)>(), "stop"), out var http, out _, out _);
+        var outcome = Run(A.Arm.Auto, model.Turn);
+        Assert.Equal("COMPLETE", outcome.Unit.Status);
+        Assert.DoesNotContain("response_format", http.Bodies[0]);
+        var fenced = StreamModel(body => Sse(body, "```json\n" + Final(TargetsOfBody(body)) + "\n```", Array.Empty<(string, string, string)>(), "stop"), out _, out var budget, out _);
+        var refused = Run(A.Arm.Auto, fenced.Turn, budget);
+        Assert.Equal("PROTOCOL:REPLY_NOT_JSON", refused.Unit.Failure);
+        Assert.Equal(1, budget.ContractFailures);
+    }
+
     // ================= plan and execute =================
 
     static readonly Lazy<byte[]> PlanBytes = new(() => P7F1V6DirectAgentCanary.Serialize(P7F1V6DirectAgentCanary.PinnedValues(TestRepository.Root(), "TEST_COMMIT")));
@@ -1157,6 +1253,10 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         Assert.Equal(P7F1V6DirectAgentCanary.PlanArtifact, p.GetProperty("artifact").GetString());
         Assert.False(p.GetProperty("approvalToSend").GetBoolean());
         Assert.Equal(P7F1V6DirectAgentCanary.PreviousCampaignPlanSha256, p.GetProperty("previousCampaign").GetProperty("planSha256").GetString());
+        Assert.Equal(P7F1V6DirectAgentCanary.ComparedCampaignPlanSha256, p.GetProperty("comparedCampaign").GetProperty("planSha256").GetString());
+        Assert.Contains("absent on turns 1 to 3", p.GetProperty("responseFormat").GetString());
+        Assert.Contains("tool_choice auto", p.GetProperty("singleFactorTest").GetProperty("change").GetString());
+        Assert.Contains("refused (REPLY_NOT_JSON)", p.GetProperty("singleFactorTest").GetProperty("parser").GetString());
         Assert.StartsWith("enabled true", p.GetProperty("reasoning").GetString(), StringComparison.Ordinal);
         Assert.StartsWith("true", p.GetProperty("stream").GetString(), StringComparison.Ordinal);
         Assert.Equal(new[] { "e3f8e57eb43275db5166a27eb930afe85fa002f03b9e6076213063e00367ebcf", "51daf9412732f9685b0d3ea36a7637a0e4d2b561ee7044d857c662c7fc2e6cfa",
