@@ -121,7 +121,7 @@ internal static class P7F1V6DirectRepeatCanary
     {
         var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, segment);
         var (payload, _) = A.FirstPayload(mode, instruction, u.SourceSha256, segment, decide, ctx.Select(i => u.Lines[i]).ToArray(),
-            new P7F1V6AgentTools(u.Tools, u.LayoutFacts), rangeStated: true);
+            new P7F1V6AgentTools(u.Tools, u.LayoutFacts, factsVersion: u.FactsVersion), rangeStated: true);
         return A.Build(A.Prompt(mode, rangeStated: true), payload, new System.Text.Json.Nodes.JsonArray(), "auto", jsonObjectAllTurns, factsTool: A.UsesFactsTool(mode));
     }
 

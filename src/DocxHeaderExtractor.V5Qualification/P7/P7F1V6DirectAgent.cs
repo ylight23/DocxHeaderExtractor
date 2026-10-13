@@ -294,7 +294,7 @@ internal static class P7F1V6DirectAgent
     {
         bool fenceUnwrapped = false;
         var lines = universe.Lines;
-        var tools = new P7F1V6AgentTools(universe.Tools, universe.LayoutFacts, factsTool: UsesFactsTool(arm));
+        var tools = new P7F1V6AgentTools(universe.Tools, universe.LayoutFacts, factsTool: UsesFactsTool(arm), factsVersion: universe.FactsVersion);
         var shownIdx = new SortedSet<int>(initialContext);
         foreach (var a in decide) shownIdx.Add(tools.PositionOf(a));
         var ordered = decide.OrderBy(tools.PositionOf).ToList();

@@ -37,12 +37,12 @@ internal static class D411jPlan
         ["decisions"] = new JsonArray(targets.Select(a => (JsonNode)new JsonObject { ["alias"] = a, ["decision"] = "NOT_SELECT" }).ToArray()),
     }.ToJsonString();
 
-    public static void Plan(string repoRoot, string artifactDir, string documentPath, string seg = P7F1V6Universe.FixedSegmentation, bool jsonAll = false, bool geometry = false, bool unwrap = false, bool single = false, bool factsUse = false, int reps = C.Reps, int firstSegments = 0, string instruction = P7F1V6DirectD45.Instruction, bool toolRounds = false, bool toolFacts = false, bool toolFactsAnalysis = false)
+    public static void Plan(string repoRoot, string artifactDir, string documentPath, string seg = P7F1V6Universe.FixedSegmentation, bool jsonAll = false, bool geometry = false, bool unwrap = false, bool single = false, bool factsUse = false, int reps = C.Reps, int firstSegments = 0, string instruction = P7F1V6DirectD45.Instruction, bool toolRounds = false, bool toolFacts = false, bool toolFactsAnalysis = false, int factsVersion = 1)
     {
         if (Git(repoRoot, "status --porcelain -- src scripts tests").Length > 0) { Console.WriteLine("D411j PLAN REFUSED: uncommitted code"); Environment.ExitCode = 2; return; }
         var head = Git(repoRoot, "rev-parse HEAD");
-        var tag = (seg == P7F1V6Universe.LayoutSegmentation96 ? ".layout96" : seg == P7F1V6Universe.LayoutSegmentation ? ".layout" : "") + (jsonAll ? ".json" : "") + (geometry ? ".geo" : "") + (unwrap ? ".unwrap" : "") + (single ? ".single" : "") + (factsUse ? ".facts" : "") + (reps != C.Reps ? $".r{reps}" : "") + (firstSegments > 0 ? $".first{firstSegments}" : "") + (instruction == P7F1V6DirectD45.InstructionEnglishAll ? ".en" : instruction == P7F1V6DirectD45.InstructionEnglishMain ? ".main" : instruction == P7F1V6DirectD45.InstructionEnglishMainTools ? ".maintools" : instruction == P7F1V6DirectD45.InstructionEnglishMainPlain ? ".mainplain" : "") + (toolRounds ? ".toolrounds" : "") + (toolFacts ? ".toolfacts" : "") + (toolFactsAnalysis ? ".toolfactsanalysis" : "");
-        var bytes = T.Serialize(T.PinnedValues(documentPath, head, seg, jsonAll, geometry, unwrapFence: unwrap, singleArm: single, factsUse: factsUse, reps: reps, firstSegments: firstSegments, instruction: instruction, fullToolRounds: toolRounds, toolFacts: toolFacts, toolFactsAnalysis: toolFactsAnalysis));
+        var tag = (seg == P7F1V6Universe.LayoutSegmentation96 ? ".layout96" : seg == P7F1V6Universe.LayoutSegmentation ? ".layout" : "") + (jsonAll ? ".json" : "") + (geometry ? ".geo" : "") + (unwrap ? ".unwrap" : "") + (single ? ".single" : "") + (factsUse ? ".facts" : "") + (reps != C.Reps ? $".r{reps}" : "") + (firstSegments > 0 ? $".first{firstSegments}" : "") + (instruction == P7F1V6DirectD45.InstructionEnglishAll ? ".en" : instruction == P7F1V6DirectD45.InstructionEnglishMain ? ".main" : instruction == P7F1V6DirectD45.InstructionEnglishMainTools ? ".maintools" : instruction == P7F1V6DirectD45.InstructionEnglishMainPlain ? ".mainplain" : "") + (toolRounds ? ".toolrounds" : "") + (toolFacts ? ".toolfacts" : "") + (toolFactsAnalysis ? ".toolfactsanalysis" : "") + (factsVersion != 1 ? $".factsv{factsVersion}" : "");
+        var bytes = T.Serialize(T.PinnedValues(documentPath, head, seg, jsonAll, geometry, unwrapFence: unwrap, singleArm: single, factsUse: factsUse, reps: reps, firstSegments: firstSegments, instruction: instruction, fullToolRounds: toolRounds, toolFacts: toolFacts, toolFactsAnalysis: toolFactsAnalysis, factsVersion: factsVersion));
         using var plan = JsonDocument.Parse(bytes);
         var authority = plan.RootElement.GetProperty("authorityId").GetString()!;
         var planPath = Path.Combine(artifactDir, $"{T.PlanArtifact.Replace(".v1", "")}.{authority}{tag}.v1.json");
@@ -50,7 +50,7 @@ internal static class D411jPlan
         var planSha = Convert.ToHexStringLower(SHA256.HashData(bytes));
         var verify = T.Verify(planPath, planSha, head, documentPath);
 
-        var u = T.Load(documentPath, T.Sha256Of(documentPath), seg);
+        var u = T.Load(documentPath, T.Sha256Of(documentPath), seg, factsVersion);
         var segs = plan.RootElement.GetProperty("segments").EnumerateArray().Select(x => x.GetString()!).ToArray();
         var posts = plan.RootElement.GetProperty("arms")[0].GetProperty("budget").GetProperty("maxCalls").GetInt32();
         var ceilings = plan.RootElement.GetProperty("arms").EnumerateArray().ToDictionary(a => a.GetProperty("arm").GetString()!, a => a.GetProperty("budget").GetProperty("ceilingUsd").GetDouble());

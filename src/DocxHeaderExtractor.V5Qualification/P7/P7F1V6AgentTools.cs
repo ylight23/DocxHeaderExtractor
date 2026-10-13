@@ -95,8 +95,11 @@ internal sealed class P7F1V6AgentTools
 
     readonly bool factsTool;
 
-    public P7F1V6AgentTools(P7F1QEvidenceTools source, IReadOnlyDictionary<string, JsonObject>? layoutFacts = null, bool factsTool = false)
+    readonly int factsVersion;
+
+    public P7F1V6AgentTools(P7F1QEvidenceTools source, IReadOnlyDictionary<string, JsonObject>? layoutFacts = null, bool factsTool = false, int factsVersion = 1)
     {
+        this.factsVersion = factsVersion;
         this.source = source;
         this.factsTool = factsTool;
         if (factsTool && layoutFacts is null) throw new ArgumentException("FACTS_TOOL_NEEDS_LAYOUT_FACTS", nameof(layoutFacts));
@@ -383,8 +386,8 @@ internal sealed class P7F1V6AgentTools
             : Array.Empty<string>();
         var (result, taken) = Fit(LineFacts, arguments, slice.Length, k => new JsonObject
         {
-            ["readBy"] = "the program, from the parser's geometry and from the text of the whole document: " + P7F1V6LayoutFacts.Description + "; repeatedText lists the first other occurrences of the line's text under the stated normalization",
-            ["version"] = P7F1V6LayoutFacts.Version,
+            ["readBy"] = "the program, from the parser's geometry and from the text of the whole document: " + P7F1V6LayoutFacts.DescriptionOf(factsVersion) + "; repeatedText lists the first other occurrences of the line's text under the stated normalization",
+            ["version"] = P7F1V6LayoutFacts.VersionOf(factsVersion),
             ["normalization"] = P7F1QEvidenceTools.RepeatNormalization,
             ["rangeLines"] = rangeLength, ["offset"] = offset,
             ["facts"] = new JsonArray(slice.Take(k).Select(Item).ToArray()),
@@ -541,8 +544,8 @@ internal sealed class P7F1V6AgentTools
         if (layoutFacts is null) throw new InvalidOperationException("LAYOUT_FACTS_NOT_PROVIDED");
         return new JsonObject
         {
-            ["readBy"] = "the program, from the parser's geometry: " + P7F1V6LayoutFacts.Description,
-            ["version"] = P7F1V6LayoutFacts.Version,
+            ["readBy"] = "the program, from the parser's geometry: " + P7F1V6LayoutFacts.DescriptionOf(factsVersion),
+            ["version"] = P7F1V6LayoutFacts.VersionOf(factsVersion),
             ["lines"] = new JsonArray(shownAliases.Select(a => (JsonNode)layoutFacts[a].DeepClone()).ToArray()),
         };
     }

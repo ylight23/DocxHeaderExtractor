@@ -735,4 +735,62 @@ public sealed class P7F1V6StableRunTests
         Assert.DoesNotContain("name or open", P7F1V6DirectD45.InstructionEnglishMainPlain);
         Assert.DoesNotContain("how it looks", P7F1V6DirectD45.InstructionEnglishMainPlain);
     }
+
+    // ---- D4.12j: layout facts V2 ----
+
+    [Fact]
+    public void LayoutFactsV2_AddTheRelativeLeftEdgeAndFontSize_V1IsUnchanged_AndTheVersionSurvivesResegmentation()
+    {
+        var u = Universe();
+        Assert.Equal(1, u.FactsVersion);
+        Assert.All(u.LayoutFacts.Values, f => { Assert.False(f.ContainsKey("leftEdge")); Assert.False(f.ContainsKey("fontSizeVsPageMedianPt")); });
+        var v2 = u.WithFactsVersion(2);
+        Assert.Equal(2, v2.FactsVersion);
+        Assert.Equal(2, v2.WithSegmentation(P7F1V6Universe.LayoutSegmentation).FactsVersion);
+        Assert.Equal(1, v2.WithSegmentation(P7F1V6Universe.LayoutSegmentation).WithFactsVersion(1).FactsVersion);
+        foreach (var l in u.Lines)
+        {
+            var a = u.LayoutFacts[l.Alias]; var b = v2.LayoutFacts[l.Alias];
+            // Every V1 field is the same in V2.
+            foreach (var kv in a) Assert.Equal(kv.Value!.ToJsonString(), b[kv.Key]!.ToJsonString());
+        }
+        // On every page the common edge is shared by the most lines: no line's own edge is shared by more lines than the common edge.
+        foreach (var page in v2.Lines.GroupBy(l => l.Page))
+        {
+            var withEdge = page.Select(l => v2.LayoutFacts[l.Alias]).Where(f => f.ContainsKey("leftEdge")).ToList();
+            if (withEdge.Count == 0) continue;
+            var common = withEdge.Max(f => (int)f["leftEdge"]!["pageCommonEdgeLines"]!);
+            Assert.All(withEdge, f => Assert.True((int)f["leftEdgeSharedBy"]! + 1 <= common));
+            Assert.Contains(withEdge, f => Math.Abs((double)f["leftEdge"]!["offsetFromPageCommonPt"]!) <= P7F1V6LayoutFacts.LeftEdgeTolerancePt);
+        }
+        Assert.Contains("offsetFromPageCommonPt", P7F1V6LayoutFacts.DescriptionOf(2));
+        Assert.DoesNotContain("offsetFromPageCommonPt", P7F1V6LayoutFacts.DescriptionOf(1));
+        // The tool describes the version it serves.
+        var tools = new P7F1V6AgentTools(v2.Tools, v2.LayoutFacts, factsTool: true, factsVersion: 2);
+        var r = tools.Execute("E1.01", P7F1V6AgentTools.LineFacts, "{\"first\":\"" + v2.Lines[0].Alias + "\",\"last\":\"" + v2.Lines[3].Alias + "\",\"offset\":0}");
+        Assert.Contains(P7F1V6LayoutFacts.VersionV2, Encoding.UTF8.GetString(r.Content));
+        Assert.Contains("fontSizeVsPageMedianPt", Encoding.UTF8.GetString(r.Content));
+    }
+
+    [Fact]
+    public void FactsV2Plan_PinsTheVersion_ChangesOnlyTheFacts_AndVerifies()
+    {
+        var rel = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        Dictionary<string, object?> Pinned(int v) => T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1,
+            firstSegments: 3, instruction: P7F1V6DirectD45.InstructionEnglishMainPlain, fullToolRounds: true, toolFactsAnalysis: true, factsVersion: v);
+        var one = T.Serialize(Pinned(1)); var two = T.Serialize(Pinned(2));
+        using var a = JsonDocument.Parse(one); using var b = JsonDocument.Parse(two);
+        Assert.Equal(1, T.FactsVersionOf(a.RootElement));
+        Assert.Equal(2, T.FactsVersionOf(b.RootElement));
+        // The first requests of TOOLFACTS carry no facts (they come from the tool), so they are the same; the plan differs by the pinned version.
+        Assert.Equal(a.RootElement.GetProperty("arms")[0].GetProperty("requestPlanSha256").GetString(), b.RootElement.GetProperty("arms")[0].GetProperty("requestPlanSha256").GetString());
+        var file = Path.Combine(Path.GetTempPath(), "dhx-v2-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, two);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(two)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
 }

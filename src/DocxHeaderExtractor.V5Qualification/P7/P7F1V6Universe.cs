@@ -16,7 +16,7 @@ internal sealed class P7F1V6Universe
     public const string LayoutSegmentation96 = "LAYOUT_PAGE_BLOCK_96_V1";
 
     private P7F1V6Universe(string rel, string sourceSha, string universeSha, string storeSha, IReadOnlyList<P7F1V6Direct.Line> lines, P7F1QEvidenceTools tools,
-        IReadOnlyList<string> layoutBlocks, string segmentation = FixedSegmentation)
+        IReadOnlyList<string> layoutBlocks, string segmentation = FixedSegmentation, int factsVersion = 1)
     {
         Tools = tools;
         DocumentRelativePath = rel; SourceSha256 = sourceSha; UniverseSha256 = universeSha; EvidenceStoreSha256 = storeSha; Lines = lines;
@@ -24,11 +24,17 @@ internal sealed class P7F1V6Universe
         LayoutBlocks = layoutBlocks;
         Segmentation = segmentation;
         Cores = CoresOf(lines, layoutBlocks, segmentation);
-        LayoutFacts = P7F1V6LayoutFacts.Compute(tools.AllLines, layoutBlocks);
+        FactsVersion = factsVersion;
+        LayoutFacts = P7F1V6LayoutFacts.Compute(tools.AllLines, layoutBlocks, factsVersion);
     }
 
     /// <summary>Geometry measurements of every line (D4.12), by alias. Used only by the arms that state them.</summary>
     public IReadOnlyDictionary<string, System.Text.Json.Nodes.JsonObject> LayoutFacts { get; }
+    /// <summary>1 (D4.12) or 2 (D4.12j: adds the left edge against the page's common edge and the font size against the page median).</summary>
+    public int FactsVersion { get; }
+
+    public P7F1V6Universe WithFactsVersion(int version) =>
+        new(DocumentRelativePath, SourceSha256, UniverseSha256, EvidenceStoreSha256, Lines, Tools, LayoutBlocks, Segmentation, version);
 
     /// <summary>The parser's layout block of each line, parallel to <see cref="Lines"/>.</summary>
     public IReadOnlyList<string> LayoutBlocks { get; }
@@ -39,7 +45,7 @@ internal sealed class P7F1V6Universe
     public IReadOnlyList<(int Start, int End)> Cores { get; }
 
     public P7F1V6Universe WithSegmentation(string policy) =>
-        new(DocumentRelativePath, SourceSha256, UniverseSha256, EvidenceStoreSha256, Lines, Tools, LayoutBlocks, policy);
+        new(DocumentRelativePath, SourceSha256, UniverseSha256, EvidenceStoreSha256, Lines, Tools, LayoutBlocks, policy, FactsVersion);
 
     /// <summary>The most lines one segment decides: 48, or 96 for LAYOUT_PAGE_BLOCK_96_V1 (the F1Q pack bound: whole consecutive pages up to 96 lines).</summary>
     public static int MaxCore(string policy) => policy == LayoutSegmentation96 ? 96 : P7F1V6DirectCanary410.Unit;
