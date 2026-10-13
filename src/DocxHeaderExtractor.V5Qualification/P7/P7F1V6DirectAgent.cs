@@ -110,13 +110,13 @@ internal static class P7F1V6DirectAgent
     const string FactsToolLine = "Facts: this request carries no observations. Your first reply must be tool calls to get_line_facts that read the facts the program measured for the targets (from targetFirstAlias to targetLastAlias; one call covers at most 24 lines, and a result that was cut says where to continue). An answer given before those facts have arrived is refused. For each line the facts give: its layout block (number, lines in the block, this line's place in it), the separate text segments on its visual line (how many, which one, the gaps in points around it), how many other lines of the page start at the same left edge, and, when its text also occurs on other lines, the first other occurrences (their page, position in reading order, layout, how their font and left edge differ from the line's, and the line that follows each). They are measurements, not labels or decisions; what they mean for the instruction is for you to judge. You may cite the aliases they show in evidenceRefs. You may also call the other tools for anything else.";
     public static readonly string ToolFactsPromptRange = WithRange(string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, FactsToolLine, UseLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion)));
-    // D4.12h. TOOLFACTS with room for the explanation inside the answer: the COMPLETE answer may carry one extra top-level string, analysis (at most
-    // 2000 characters), and the prompt says to put any explanation there and to write nothing outside the JSON object. The parser reads decisions exactly
+    // D4.12h. TOOLFACTS with room for the explanation inside the answer: the COMPLETE answer may carry one extra top-level string, analysis ((no length limit
+    // of its own since D4.12m), and the prompt says to put any explanation there and to write nothing outside the JSON object. The parser reads decisions exactly
     // as before; the analysis is kept for the reader and decides nothing.
     static string BodyWithAnalysis(string version) => Body(version)
-        .Replace("\"status\":\"COMPLETE\",\"decisions\"", "\"status\":\"COMPLETE\",\"analysis\":\"<your explanation of the decisions, at most 2000 characters>\",\"decisions\"", StringComparison.Ordinal)
+        .Replace("\"status\":\"COMPLETE\",\"decisions\"", "\"status\":\"COMPLETE\",\"analysis\":\"<your explanation of the decisions>\",\"decisions\"", StringComparison.Ordinal)
         .Replace("\"decision\":\"SELECT\",\"evidenceRefs\":[\"<alias you saw>\"]}", "\"decision\":\"SELECT\",\"evidenceRefs\":[\"<alias you saw>\"],\"reason\":\"<why this line is such a heading, at most 300 characters>\"}", StringComparison.Ordinal)
-        .Replace("Do not add headings, levels, parents or other fields.", "Two extra keys are allowed: analysis, a string of at most 2000 characters at the top level of a COMPLETE answer, for any explanation of your decisions; and reason, a string of at most 300 characters on a decision, which you give for every SELECT. Write nothing before or after the JSON object. Do not add headings, levels, parents or other fields.", StringComparison.Ordinal);
+        .Replace("Do not add headings, levels, parents or other fields.", "Two extra keys are allowed: analysis, a string at the top level of a COMPLETE answer, for any explanation of your decisions (no length limit of its own, but the whole reply must stay under 16 KB); and reason, a string of at most 300 characters on a decision, which you give for every SELECT. Write nothing before or after the JSON object. Do not add headings, levels, parents or other fields.", StringComparison.Ordinal);
     public static readonly string ToolFactsAnalysisPromptRange = WithRange(string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, FactsToolLine, UseLine, ObservedLine, ReplyLine,
         BodyWithAnalysis(P7F1V6DirectTwoStage.SelectObjectsVersion)));
     // D4.12k. TOOLFACTS_ANALYSIS with the facts sentence describing the two V2 measurements as well. Only that sentence differs; the request,
@@ -327,6 +327,9 @@ internal static class P7F1V6DirectAgent
         "PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP" => "Your tool calls were not run (" + failure + "): no tool rounds are left. Send the answer now as exactly one JSON object.",
         "PROTOCOL:EVIDENCE_NOT_SHOWN" => "Your answer was refused (" + failure + "): evidenceRefs must list aliases of lines you saw (in targets, context or tool results), never evidence ids such as E1.01. Send the complete answer again as exactly one JSON object.",
         "PROTOCOL:COVERAGE_INCOMPLETE" or "PROTOCOL:UNEXPECTED_ALIAS" or "PROTOCOL:ALIAS_LISTED_TWICE" => "Your answer was refused (" + failure + "): give exactly one decision for every alias from targetFirstAlias to targetLastAlias and for no other alias. Send the complete answer again as exactly one JSON object.",
+        "PROTOCOL:ANALYSIS_INVALID" => "Your answer was refused (" + failure + "): analysis must be a string. Send the complete answer again as exactly one JSON object.",
+        "PROTOCOL:REPLY_OVER_CAP" => "Your answer was refused (" + failure + "): the whole reply must stay under 16 KB. Shorten analysis and the reasons and send the complete answer again as exactly one JSON object.",
+        "PROTOCOL:REASON_INVALID" => "Your answer was refused (" + failure + "): each reason must be a string of at most 300 characters. Shorten every reason to one sentence and send the complete answer again as exactly one JSON object.",
         "PROTOCOL:REPLY_NOT_JSON" => "Your answer was refused (" + failure + "): the reply must be exactly one JSON object with nothing before or after it; put any explanation in analysis. Send the complete answer again.",
         _ => "Your answer was refused (" + failure + "). Send the complete answer again as exactly one JSON object that follows the answer format.",
     };
@@ -445,8 +448,7 @@ internal static class P7F1V6DirectAgent
             {
                 if (toolChoice == "none")
                 {
-                    budget.NoteContract(false);
-                    if (!repairTurn || repairedFrom is not null || reply.ToolCalls.Any(c => string.IsNullOrEmpty(c.Id))) return Done("FAILED", "PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP");
+                    if (!repairTurn || repairedFrom is not null || reply.ToolCalls.Any(c => string.IsNullOrEmpty(c.Id))) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP"); }
                     // Repair: the calls are answered under their own ids as not run, then the refusal message asks for the answer.
                     var notRun = new JsonArray(reply.ToolCalls.Select(c => (JsonNode)new JsonObject
                     {
@@ -505,10 +507,10 @@ internal static class P7F1V6DirectAgent
             // A reply without tool calls is the final answer.
             if (UsesFactsTool(arm) && !tools.Ledger.Any(c => c.Tool == P7F1V6AgentTools.LineFacts && c.Status == "OK"))
             {
-                budget.NoteContract(false);
                 history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
                 if (TryRepair("PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED")) continue;
                 history.RemoveAt(history.Count - 1);
+                budget.NoteContract(false);
                 return Done("FAILED", "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED");
             }
             if (arm == Arm.EvidenceFirst && okCalls == 0) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED"); }
@@ -516,14 +518,15 @@ internal static class P7F1V6DirectAgent
             var content = reply.Content ?? "";
             if (unwrapSingleFence && P7F1V6ReplyFence.TryUnwrap(content, out var inner)) { content = inner; fenceUnwrapped = true; }
             var parsed = P7F1V6DirectTwoStage.ParseSelect(P7F1V6DirectTwoStage.SelectFormat.Objects, content, observed, ordered, needsEvidenceAllowed: false, analysisAllowed: AllowsAnalysis(arm));
-            budget.NoteContract(parsed.Ok);
             if (!parsed.Ok)
             {
                 history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
                 if (TryRepair("PROTOCOL:" + parsed.Failure)) continue;
                 history.RemoveAt(history.Count - 1);
+                budget.NoteContract(false);
                 return Done("FAILED", "PROTOCOL:" + parsed.Failure);
             }
+            budget.NoteContract(true);
             finalRefs = parsed.Refs;
             finalAnalysis = parsed.Analysis;
             finalReasons = parsed.Reasons;

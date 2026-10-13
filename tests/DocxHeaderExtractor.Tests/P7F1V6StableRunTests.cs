@@ -641,8 +641,8 @@ public sealed class P7F1V6StableRunTests
         Assert.Equal(targets.ToDictionary(a => a, _ => "NOT_SELECT"), on.Values.ToDictionary(kv => kv.Key, kv => kv.Value));
         Assert.Null(Parse(WithAnalysis(targets, null), true).Analysis);
         // Bounded and typed.
-        Assert.Equal("ANALYSIS_INVALID", Parse(WithAnalysis(targets, new string('x', P7F1V6DirectTwoStage.MaxAnalysisChars + 1)), true).Failure);
-        Assert.True(Parse(WithAnalysis(targets, new string('x', P7F1V6DirectTwoStage.MaxAnalysisChars)), true).Ok);
+        Assert.True(Parse(WithAnalysis(targets, new string('x', 6000)), true).Ok);                   // no length limit of its own (owner, D4.12m)
+        Assert.Equal("REPLY_OVER_CAP", Parse(WithAnalysis(targets, new string('x', 20000)), true).Failure);   // the whole reply stays within the cap
         Assert.Equal("ANALYSIS_INVALID", Parse(WithAnalysis(targets, 7), true).Failure);
         // Nothing else relaxes: another root key, a missing decision, an extra alias and a key inside a decision are still refused.
         Assert.Equal("ROOT_KEYS_INVALID", Parse(WithAnalysis(targets, "ok").Replace("\"decisions\"", "\"notes\":\"x\",\"decisions\""), true).Failure);
@@ -1042,5 +1042,34 @@ public sealed class P7F1V6StableRunTests
             Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
         }
         finally { File.Delete(file); }
+    }
+
+    [Fact]
+    public void Repair_ARefusalThatIsRepairedDoesNotCountTowardTheEarlyStop_ButAFinalFailureDoes()
+    {
+        var u = Universe().WithFactsVersion(3);
+        var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, "SEG-001");
+        var budget = new P7F1V6DirectV2.Budget(60, 5, C.MaxRequestBytes);
+        // Three units in a row whose first answer is refused and whose repair succeeds: no halt.
+        for (int k = 0; k < 3; k++)
+        {
+            var n = 0;
+            A.AgentModel model = (unit, turn, req) => { n++; return n == 1 ? FactsTurn(req.Body) : n == 2 ? new A.ModelTurn("prose " + WithAnalysis(TargetsOf(req.Body), "x"), Array.Empty<A.ToolCall>(), "stop") : Answer(req.Body); };
+            var o = A.RunUnit(A.Arm.ToolFactsAnalysisV3, P7F1V6DirectD45.InstructionEnglishMainPlain, u, "SEG-001", decide, ctx, model, budget, rangeStated: true, jsonObjectAllTurns: true, repairTurn: true, retryDelayMs: 0);
+            Assert.Equal("COMPLETE", o.Unit.Status);
+        }
+        Assert.Null(budget.HaltReason);
+        Assert.Equal(0, budget.ContractFailures);
+        // Three units that fail even after their repair: the campaign stops.
+        for (int k = 0; k < 3; k++)
+        {
+            var n = 0;
+            A.AgentModel model = (unit, turn, req) => { n++; return n == 1 ? FactsTurn(req.Body) : new A.ModelTurn("prose", Array.Empty<A.ToolCall>(), "stop"); };
+            A.RunUnit(A.Arm.ToolFactsAnalysisV3, P7F1V6DirectD45.InstructionEnglishMainPlain, u, "SEG-001", decide, ctx, model, budget, rangeStated: true, jsonObjectAllTurns: true, repairTurn: true, retryDelayMs: 0);
+        }
+        Assert.Equal("CONSECUTIVE_CONTRACT_FAILURES", budget.HaltReason);
+        Assert.Equal(3, budget.ContractFailures);
+        Assert.Contains("must be a string", A.RepairMessage("PROTOCOL:ANALYSIS_INVALID"));
+        Assert.Contains("Shorten analysis", A.RepairMessage("PROTOCOL:REPLY_OVER_CAP"));
     }
 }

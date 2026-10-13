@@ -237,8 +237,8 @@ internal static class P7F1V6DirectTwoStage
     /// <summary>Checks a Stage 1 reply. decide is in target order (the order of positions in the compact format). needsEvidenceAllowed is false
     /// in agent mode (D4.11), where evidence comes through tool calls and a NEEDS_EVIDENCE reply is refused. Refs keeps each decision's
     /// evidenceRefs as given (Objects format), for the scope report; it is never used to change a decision.</summary>
-    /// <summary>D4.12h: the most characters of the optional top-level analysis string (TOOLFACTS_ANALYSIS only).</summary>
-    public const int MaxAnalysisChars = 2000, MaxReasonChars = 300;
+        /// <summary>D4.12m: analysis has no length limit of its own (owner, 2026-10-13); the whole reply stays within the reply cap.</summary>
+    public const int MaxReasonChars = 300;
 
     public static SelectReply ParseSelect(SelectFormat format, string reply, IReadOnlyDictionary<string, int> shownOrder, IReadOnlyList<string> decide,
         bool needsEvidenceAllowed = true, bool analysisAllowed = false)
@@ -260,7 +260,7 @@ internal static class P7F1V6DirectTwoStage
             string? analysis = null;
             if (analysisAllowed && root.TryGetProperty("analysis", out var an))
             {
-                if (an.ValueKind != JsonValueKind.String || an.GetString()!.Length > MaxAnalysisChars) return Fail("ANALYSIS_INVALID");
+                if (an.ValueKind != JsonValueKind.String) return Fail("ANALYSIS_INVALID");
                 analysis = an.GetString();
             }
             if (Str(root, "protocolVersion") != SelectVersion(format)) return Fail("PROTOCOL_VERSION_INVALID");

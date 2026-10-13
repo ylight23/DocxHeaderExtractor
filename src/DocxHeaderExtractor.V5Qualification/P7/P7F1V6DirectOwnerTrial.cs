@@ -211,7 +211,7 @@ internal static class P7F1V6DirectOwnerTrial
         if (factsVersion != 1)
             plan["layoutFactsVersion"] = factsVersion;
         if (toolFactsAnalysis)
-            plan["toolFactsAnalysisArm"] = "TOOLFACTS plus room for the explanation inside the answer: a COMPLETE answer may carry one extra top-level string, analysis (at most " + P7F1V6DirectTwoStage.MaxAnalysisChars + " characters), and each decision may carry reason (at most " + P7F1V6DirectTwoStage.MaxReasonChars + " characters), asked for every SELECT; the parser reads the decisions exactly as before and neither string decides anything; the prompt says to write nothing outside the JSON object";
+            plan["toolFactsAnalysisArm"] = "TOOLFACTS plus room for the explanation inside the answer: a COMPLETE answer may carry one extra top-level string, analysis (no length limit of its own; the whole reply stays within the 16 KB reply cap), and each decision may carry reason (at most " + P7F1V6DirectTwoStage.MaxReasonChars + " characters), asked for every SELECT; the parser reads the decisions exactly as before and neither string decides anything; the prompt says to write nothing outside the JSON object";
         if (toolFacts)
             plan["toolFactsArm"] = "the facts are read through get_line_facts: the request has no observations, the first reply must be tool calls that read the facts (an answer before a successful get_line_facts call is refused, PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED, and counts as a contract failure); the facts are the same three kinds as in the FACTS payload; the other seven tools and all earlier requests are unchanged";
         if (fullToolRounds)
