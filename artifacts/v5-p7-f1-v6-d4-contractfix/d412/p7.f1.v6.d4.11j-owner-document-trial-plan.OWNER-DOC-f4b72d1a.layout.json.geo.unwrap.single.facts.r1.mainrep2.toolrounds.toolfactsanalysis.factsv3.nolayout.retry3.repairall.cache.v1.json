@@ -1,7 +1,7 @@
 {
   "artifact": "p7.f1.v6.d4.11j-owner-document-trial-plan.v1",
   "approvalToSend": false,
-  "codeCommit": "ac1267017344ec7a1b4fd81b65b9e53e53c9c6c8",
+  "codeCommit": "7763b91db615c4a5ac3a71edd989e687fe237a1e",
   "authorityId": "OWNER-DOC-f4b72d1a",
   "document": "owner-supplied (outside the repository): 089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
   "documentPublicity": "A document of the repository's public heading corpus (todo10_8/heading_corpus_100), whose README states the files are real documents downloaded from public sources (089_ND_195-2013_Luat_Xuat_ban_EN.pdf); the origin is not independently verified here. Text is sent as it is. Requests, raw responses and the analysis stay in the safe store and are not committed or pushed.",
@@ -21,16 +21,16 @@
     "redaction": "none: the owner chose to send the document text unchanged",
     "lineTextsSha256": "2958053b08d326f5c4dbab2cc8a74a6208e594547af8ed90b8b7bafce50ee219"
   },
-  "goldForScorerOnly": "none: there is no Gold for this document. Nothing is scored. The result is the set of lines each arm selects in each repetition, read by the owner.",
+  "goldForScorerOnly": "not used by the run: no Gold is read, sent or scored while the plan runs. The document belongs to the public corpus and may have an all-heading Gold in the registry; any score against it is computed offline afterwards from the stored decisions (tools/p7_f1_v6_d412_freeze.py) and is not part of this plan.",
   "task": "A-STRUCTURAL-OCCURRENCES",
-  "evaluationLabel": "Owner-document trial: which lines Qwen selects as headings under the repeat-canary request; no Gold, no score",
+  "evaluationLabel": "Owner-document trial: which lines Qwen selects as headings under this plan's request (arms TOOLFACTS_ANALYSIS_V3); no score during the run",
   "instruction": "Extract the main headings of the document: the headings that carry its structure (its outline).\nThe result is a list of the document's main headings in which each heading appears once: for each heading, select the lines where the heading itself stands (all lines of a heading that runs over several lines), at the start of the part it names, as its representative. A line that only lists, repeats or points to a heading that stands elsewhere, for example in a table of contents, is not that heading's representative and is not selected.\nWhen you are unsure about how a line relates to other lines, use the tools to check that relationship.\nDo not guess: if the evidence does not settle a line, say that it is unresolved instead of choosing.",
   "instructionSha256": "2d057c62aaf69297afa46f3dec8d8b88720893491c5620ecfcc51562e9e03884",
   "requestVersion": "P7_F1_V6_SELECT_AGENT_REQUEST_V2",
   "promptVersion": "P7_F1_V6_SELECT_AGENT_PROMPT_V3 + stated target range",
   "responseVersion": "P7_F1_V6_SELECT_OBJECTS_V1",
   "versionFieldsInPayload": false,
-  "requestIdenticalTo": "the repeat-canary request (plans e73415f7 and df369552, code b672c59): same system prompts (CONTROL 5a83e083…, PREFETCH 2290301b…), instruction, payload layout, tools, envelope and route; only the document differs",
+  "requestIdenticalTo": "none: built on the repeat-canary request (plans e73415f7 and df369552, code b672c59) with these differences besides the document: arms TOOLFACTS_ANALYSIS_V3 instead of CONTROL and PREFETCH; segments cut by LAYOUT_PAGE_BLOCK_48_V1; instruction 2d057c62…; response_format json_object on every turn; layout facts V3; no layout in the request and documentStyles in the payload; the system prompt and the payload as cache-marked text blocks; the arms' prompt hashes are in arms[].promptSha256",
   "segments": [
     "SEG-000",
     "SEG-001",
@@ -306,7 +306,7 @@
   "repetitions": {
     "perArmAndSegment": 1,
     "requests": "identical bytes each time, so the spread is sampling variation of the same request",
-    "order": "per repetition, per segment: CONTROL then PREFETCH"
+    "order": "per repetition, per segment: TOOLFACTS_ANALYSIS_V3 only"
   },
   "frozen": {
     "scope": "one owner-supplied document: the loader refuses any other bytes; the plan is re-derived from code and the file and any drift refuses the run",
@@ -327,10 +327,9 @@
       "endpointCheck": "response provider must be Alibaba and model qwen/qwen3.7-flash, else the run halts"
     },
     "requestTemplateSha256": "64c28336db67239494e74ec0cba321b82198d5e6288eb9497aff2df91d9d0c54",
-    "toolDefinitionsSha256": "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3",
+    "toolDefinitionsSha256": "17b846fe198c451ea1cc4eee6097ad16a6f82d91107a1a44793cc07537ea9142",
     "promptSha256": {
-      "control": "5a83e08300e60a0a3dd136e9a31cd7439d2fa3943f65be41947a094da8bb14c2",
-      "prefetch": "2290301be5ab6b432d10913e6cfa30a4a11c43a0a811acbf3fc17e1b23d66de6"
+      "TOOLFACTS_ANALYSIS_V3": "3c557778bcb2dd5fa127195d62e31ec9fad4c83bacecc19881cf61f16bbe2845"
     },
     "firstRequestsSha256": "3dfeaf6e3c103c2bdaeeca017af13b7977881c64873f3a61e9217de4e5fca20a"
   },
@@ -347,9 +346,9 @@
       "compare_source_locations",
       "get_line_facts"
     ],
-    "availability": "declared in both arms, optional; tool results come from the document lines"
+    "availability": "declared on every turn with tool_choice auto; the first reply must call get_line_facts (an answer before a successful call is refused, PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED); every other call is optional; tool results come from the document lines"
   },
-  "requestShape": "SSE (stream true), reasoning enabled true, response_format absent on turns 1 to 3 and json_object on turn 4, temperature 0, max_tokens 32768; the strict parser refuses any final answer that is not exactly one JSON object",
+  "requestShape": "SSE (stream true), reasoning enabled true, response_format json_object on every turn, temperature 0, max_tokens 32768; the strict parser refuses any final answer that is not exactly one JSON object (after the single-fence unwrap, see fenceUnwrap)",
   "model": "qwen/qwen3.7-flash",
   "route": {
     "only": [
@@ -363,7 +362,7 @@
   },
   "zdr": "false (owner decision, to be accepted again in the authorization)",
   "maxTokens": 32768,
-  "retries": 0,
+  "retries": 3,
   "budget": {
     "maxCalls": 270,
     "ceilingUsd": 7.37,
@@ -373,13 +372,13 @@
   },
   "measurements": [
     "per arm and repetition: the lines selected in each segment (aliases; the owner reads their text)",
-    "whether the same lines are selected in every repetition of a cell, and where CONTROL and PREFETCH differ",
-    "protocol outcome per unit with its code; refused answers are counted and never repaired; offline counterfactuals are labelled not official",
+    "one repetition: the lines selected once in each segment; stability is not measured",
+    "protocol outcome per unit with its code; a refused answer gets repair turns (see failureHandling) and the unit's outcome is its last answer, with RepairedFrom kept; offline counterfactuals are labelled not official",
     "tool calls, tokens and cost per request"
   ],
   "readingRules": [
-    "no Gold: the program makes no claim that a selected line is or is not a heading; the owner judges",
-    "5 repetitions per cell: an indication of stability, not a significance test",
+    "no Gold in the run: the program makes no claim that a selected line is or is not a heading; a score against the corpus Gold is offline and separate",
+    "1 repetition per cell: run-to-run variation is not seen, so a difference between two plans may be sampling variation",
     "one document: nothing here says how the request behaves on other documents"
   ],
   "rawPublication": "None. Requests (which hold the document text), raw responses, reasoning and the analysis stay in the safe store outside the repository. Only a receipt without any line text is committed.",
