@@ -2,9 +2,9 @@
   "artifact": "p7.f1.v6.d4.11h-prefetch-canary-dryrun.v1",
   "providerCalls": 0,
   "planFile": "p7.f1.v6.d4.11h-prefetch-canary-plan.v1.json",
-  "planSha256": "b76a2c7ecf35ecd3d204f0006dcca077a807657980641e9e8af10977d27031ed",
+  "planSha256": "a46eaeba49fdfc35c8ce1c44810a51fbf265e9fb9f0c0284e8056b0c968adda3",
   "planVerifiesNow": true,
-  "codeCommit": "820cb0b4389cc184624b8ac584372b74c4f42403",
+  "codeCommit": "cb173622016bd4afc6f219fd9220d0cf36384213",
   "controlEqualsD411gAutoFirstRequests": true,
   "firstRequests": [
     {
@@ -36,7 +36,7 @@
       "reserveUsd": 0.01711
     }
   ],
-  "worstCaseReservePerArmUsd": 0.23593,
+  "worstCaseReservePerArmUsd": 0.629146,
   "simulations": [
     {
       "simulation": "ANSWER_WITHOUT_TOOLS",
@@ -210,15 +210,10 @@
       "arms": [
         {
           "arm": "CONTROL",
-          "posts": 9,
-          "reservedUsd": 0.156515,
+          "posts": 24,
+          "reservedUsd": 0.420545,
           "halt": null,
-          "refusals": [
-            "CALL_LIMIT",
-            "CALL_LIMIT",
-            "CALL_LIMIT",
-            "CALL_LIMIT"
-          ],
+          "refusals": [],
           "units": [
             {
               "Rep": 1,
@@ -247,11 +242,11 @@
             {
               "Rep": 2,
               "UnitId": "SEG-001",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 1,
-              "maxRequestBytes": 32258,
-              "toolMessageBytes": 5795,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 52041,
+              "toolMessageBytes": 17473,
               "observationTargetsListed": 0,
               "observationBytes": 0,
               "observationsComplete": true
@@ -259,11 +254,11 @@
             {
               "Rep": 2,
               "UnitId": "SEG-008",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 0,
-              "maxRequestBytes": 0,
-              "toolMessageBytes": 0,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 56099,
+              "toolMessageBytes": 17473,
               "observationTargetsListed": 0,
               "observationBytes": 0,
               "observationsComplete": true
@@ -271,11 +266,11 @@
             {
               "Rep": 3,
               "UnitId": "SEG-001",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 0,
-              "maxRequestBytes": 0,
-              "toolMessageBytes": 0,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 52041,
+              "toolMessageBytes": 17473,
               "observationTargetsListed": 0,
               "observationBytes": 0,
               "observationsComplete": true
@@ -283,11 +278,11 @@
             {
               "Rep": 3,
               "UnitId": "SEG-008",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 0,
-              "maxRequestBytes": 0,
-              "toolMessageBytes": 0,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 56099,
+              "toolMessageBytes": 17473,
               "observationTargetsListed": 0,
               "observationBytes": 0,
               "observationsComplete": true
@@ -296,15 +291,10 @@
         },
         {
           "arm": "PREFETCH",
-          "posts": 9,
-          "reservedUsd": 0.172552,
+          "posts": 24,
+          "reservedUsd": 0.459923,
           "halt": null,
-          "refusals": [
-            "CALL_LIMIT",
-            "CALL_LIMIT",
-            "CALL_LIMIT",
-            "CALL_LIMIT"
-          ],
+          "refusals": [],
           "units": [
             {
               "Rep": 1,
@@ -333,11 +323,11 @@
             {
               "Rep": 2,
               "UnitId": "SEG-001",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 1,
-              "maxRequestBytes": 61365,
-              "toolMessageBytes": 5795,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 81148,
+              "toolMessageBytes": 17473,
               "observationTargetsListed": 46,
               "observationBytes": 25193,
               "observationsComplete": true
@@ -345,11 +335,11 @@
             {
               "Rep": 2,
               "UnitId": "SEG-008",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 0,
-              "maxRequestBytes": 0,
-              "toolMessageBytes": 0,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 59807,
+              "toolMessageBytes": 17473,
               "observationTargetsListed": 3,
               "observationBytes": 2644,
               "observationsComplete": true
@@ -357,11 +347,11 @@
             {
               "Rep": 3,
               "UnitId": "SEG-001",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 0,
-              "maxRequestBytes": 0,
-              "toolMessageBytes": 0,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 81148,
+              "toolMessageBytes": 17473,
               "observationTargetsListed": 46,
               "observationBytes": 25193,
               "observationsComplete": true
@@ -369,11 +359,11 @@
             {
               "Rep": 3,
               "UnitId": "SEG-008",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 0,
-              "maxRequestBytes": 0,
-              "toolMessageBytes": 0,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 59807,
+              "toolMessageBytes": 17473,
               "observationTargetsListed": 3,
               "observationBytes": 2644,
               "observationsComplete": true
@@ -387,15 +377,10 @@
       "arms": [
         {
           "arm": "CONTROL",
-          "posts": 9,
-          "reservedUsd": 0.186496,
+          "posts": 24,
+          "reservedUsd": 0.510488,
           "halt": null,
-          "refusals": [
-            "CALL_LIMIT",
-            "CALL_LIMIT",
-            "CALL_LIMIT",
-            "CALL_LIMIT"
-          ],
+          "refusals": [],
           "units": [
             {
               "Rep": 1,
@@ -424,11 +409,11 @@
             {
               "Rep": 2,
               "UnitId": "SEG-001",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 1,
-              "maxRequestBytes": 32258,
-              "toolMessageBytes": 49647,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 101286,
+              "toolMessageBytes": 57695,
               "observationTargetsListed": 0,
               "observationBytes": 0,
               "observationsComplete": true
@@ -436,11 +421,11 @@
             {
               "Rep": 2,
               "UnitId": "SEG-008",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 0,
-              "maxRequestBytes": 0,
-              "toolMessageBytes": 0,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 105344,
+              "toolMessageBytes": 57695,
               "observationTargetsListed": 0,
               "observationBytes": 0,
               "observationsComplete": true
@@ -448,11 +433,11 @@
             {
               "Rep": 3,
               "UnitId": "SEG-001",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 0,
-              "maxRequestBytes": 0,
-              "toolMessageBytes": 0,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 101286,
+              "toolMessageBytes": 57695,
               "observationTargetsListed": 0,
               "observationBytes": 0,
               "observationsComplete": true
@@ -460,11 +445,11 @@
             {
               "Rep": 3,
               "UnitId": "SEG-008",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 0,
-              "maxRequestBytes": 0,
-              "toolMessageBytes": 0,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 105344,
+              "toolMessageBytes": 57695,
               "observationTargetsListed": 0,
               "observationBytes": 0,
               "observationsComplete": true
@@ -473,15 +458,10 @@
         },
         {
           "arm": "PREFETCH",
-          "posts": 9,
-          "reservedUsd": 0.202532,
+          "posts": 24,
+          "reservedUsd": 0.549866,
           "halt": null,
-          "refusals": [
-            "CALL_LIMIT",
-            "CALL_LIMIT",
-            "CALL_LIMIT",
-            "CALL_LIMIT"
-          ],
+          "refusals": [],
           "units": [
             {
               "Rep": 1,
@@ -510,11 +490,11 @@
             {
               "Rep": 2,
               "UnitId": "SEG-001",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 1,
-              "maxRequestBytes": 61365,
-              "toolMessageBytes": 49647,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 130393,
+              "toolMessageBytes": 57695,
               "observationTargetsListed": 46,
               "observationBytes": 25193,
               "observationsComplete": true
@@ -522,11 +502,11 @@
             {
               "Rep": 2,
               "UnitId": "SEG-008",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 0,
-              "maxRequestBytes": 0,
-              "toolMessageBytes": 0,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 109052,
+              "toolMessageBytes": 57695,
               "observationTargetsListed": 3,
               "observationBytes": 2644,
               "observationsComplete": true
@@ -534,11 +514,11 @@
             {
               "Rep": 3,
               "UnitId": "SEG-001",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 0,
-              "maxRequestBytes": 0,
-              "toolMessageBytes": 0,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 130393,
+              "toolMessageBytes": 57695,
               "observationTargetsListed": 46,
               "observationBytes": 25193,
               "observationsComplete": true
@@ -546,11 +526,11 @@
             {
               "Rep": 3,
               "UnitId": "SEG-008",
-              "Status": "INCOMPLETE",
-              "Failure": "BUDGET:CALL_LIMIT",
-              "posts": 0,
-              "maxRequestBytes": 0,
-              "toolMessageBytes": 0,
+              "Status": "COMPLETE",
+              "Failure": null,
+              "posts": 4,
+              "maxRequestBytes": 109052,
+              "toolMessageBytes": 57695,
               "observationTargetsListed": 3,
               "observationBytes": 2644,
               "observationsComplete": true
@@ -562,6 +542,6 @@
   ],
   "notes": [
     "Scripted models only; no provider call. They show the loop, the caps and the reserve, not what Qwen will do.",
-    "Each arm has 9 posts and $0.25: 6 first posts (2 segments x 3 repetitions) and 3 for tool turns. If a model called tools in every unit the budget would stop later units INCOMPLETE (BUDGET:CALL_LIMIT); the second simulation shows it."
+    "Each arm has 24 posts and $0.65: 6 first posts (2 segments x 3 repetitions) and up to 3 more per unit for tool turns, so no unit can be stopped by the call limit. The dollar figure is the worst-case reserve at the byte cap, not the expected spend."
   ]
 }

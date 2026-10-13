@@ -2,8 +2,8 @@
   "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
   "status": "PENDING_USER_APPROVAL",
   "planFile": "p7.f1.v6.d4.11h-prefetch-canary-plan.v1.json",
-  "planSha256": "b76a2c7ecf35ecd3d204f0006dcca077a807657980641e9e8af10977d27031ed",
-  "codeCommit": "820cb0b4389cc184624b8ac584372b74c4f42403",
+  "planSha256": "a46eaeba49fdfc35c8ce1c44810a51fbf265e9fb9f0c0284e8056b0c968adda3",
+  "codeCommit": "cb173622016bd4afc6f219fd9220d0cf36384213",
   "authorityId": "SRC-095",
   "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
   "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
@@ -13,8 +13,8 @@
   "providerIgnore": "alibaba/us-east-1",
   "allowFallbacks": false,
   "campaigns": 1,
-  "maxPosts": 18,
-  "ceilingUsd": 0.5,
+  "maxPosts": 48,
+  "ceilingUsd": 1.3,
   "maxRequestBytes": 131072,
   "retries": 0,
   "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D45-SRC095",
@@ -35,5 +35,5 @@
   "approvedBy": null,
   "approvedAtUtc": null,
   "approvalText": null,
-  "approvalSha256": "5885f61991909947cb963ec3193310dc0c058560d3582f9eba2ca723605cb758"
+  "approvalSha256": "840e70243083e101ed968bffd730aa1433778895a17676b6680e0309f12a2bf2"
 }

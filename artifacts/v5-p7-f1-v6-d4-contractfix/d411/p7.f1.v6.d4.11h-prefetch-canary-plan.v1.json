@@ -1,7 +1,7 @@
 {
   "artifact": "p7.f1.v6.d4.11h-prefetch-canary-plan.v1",
   "approvalToSend": false,
-  "codeCommit": "820cb0b4389cc184624b8ac584372b74c4f42403",
+  "codeCommit": "cb173622016bd4afc6f219fd9220d0cf36384213",
   "authorityId": "SRC-095",
   "document": "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf",
   "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
@@ -34,10 +34,10 @@
       "arm": "CONTROL",
       "promptSha256": "1847872a0bf8759342557338a435d16458e7515109ca6c1412887ddad7b08f65",
       "budget": {
-        "maxCalls": 9,
-        "ceilingUsd": 0.25,
+        "maxCalls": 24,
+        "ceilingUsd": 0.65,
         "maxRequestBytes": 131072,
-        "worstCaseReserveUsd": 0.23593
+        "worstCaseReserveUsd": 0.629146
       },
       "earlyStop": 3,
       "firstRequests": [
@@ -60,10 +60,10 @@
       "arm": "PREFETCH",
       "promptSha256": "1d55df852cc5cd4a9e7b04665a94031b83e3e5271689e204174eccaf42c4c4da",
       "budget": {
-        "maxCalls": 9,
-        "ceilingUsd": 0.25,
+        "maxCalls": 24,
+        "ceilingUsd": 0.65,
         "maxRequestBytes": 131072,
-        "worstCaseReserveUsd": 0.23593
+        "worstCaseReserveUsd": 0.629146
       },
       "earlyStop": 3,
       "firstRequests": [
@@ -205,11 +205,12 @@
     "SEG-008"
   ],
   "budget": {
-    "maxCalls": 18,
-    "ceilingUsd": 0.5,
+    "maxCalls": 48,
+    "ceilingUsd": 1.3,
     "maxRequestBytes": 131072,
     "perArm": "each arm has its own budget and early stop; totals are the sum",
-    "ifToolsAreCalled": "each arm has 3 posts beyond the 6 first posts; a unit that needs more is stopped INCOMPLETE with BUDGET:CALL_LIMIT, which the report names; nothing is dropped silently"
+    "ifToolsAreCalled": "each arm has 24 posts, the most its 6 units can use (4 each), so the call limit cannot stop a unit; the dollar ceiling is the worst-case reserve of 24 posts at the byte cap, a bound and not the expected spend (the earlier requests cost about $0.001 to $0.0012 each)",
+    "raisedFrom": "9 posts and $0.25 per arm (18 posts, $0.50) in plan b76a2c7e, by the owner's permission to exceed the budget; nothing else in the plan changed"
   },
   "measurements": [
     "primary, per arm and repetition: SEG-001 selected lines, and how many are Gold (Gold has none among the 48 targets); SEG-008 selected lines against the 1 Gold atom (tp, fp, fn)",
