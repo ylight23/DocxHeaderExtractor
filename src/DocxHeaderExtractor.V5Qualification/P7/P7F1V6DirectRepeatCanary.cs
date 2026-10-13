@@ -34,6 +34,8 @@ internal static class P7F1V6DirectRepeatCanary
     /// <summary>D4.12: only GEOMETRY - one request carrying every observation (repeated text, layout block, segments, shared left edge).</summary>
     public static readonly (string Arm, A.Arm Mode)[] ArmsGeometryOnly = { ("GEOMETRY", A.Arm.Geometry) };
     /// <summary>D4.12b: only FACTS - the GEOMETRY request plus one system-prompt sentence on how to use the observations.</summary>
+    /// <summary>D4.12g: only TOOLFACTS - the FACTS request with the facts read by a mandatory first tool call instead of sitting in the payload.</summary>
+    public static readonly (string Arm, A.Arm Mode)[] ArmsToolFactsOnly = { ("TOOLFACTS", A.Arm.ToolFacts) };
     public static readonly (string Arm, A.Arm Mode)[] ArmsFactsOnly = { ("FACTS", A.Arm.Facts) };
     public static readonly (string Arm, A.Arm Mode)[] ArmsWithGeometry = { ("CONTROL", A.Arm.Auto), ("PREFETCH", A.Arm.Prefetch), ("GEOMETRY", A.Arm.Geometry) };
     public const int Reps = 5;
@@ -118,7 +120,7 @@ internal static class P7F1V6DirectRepeatCanary
         var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, segment);
         var (payload, _) = A.FirstPayload(mode, instruction, u.SourceSha256, segment, decide, ctx.Select(i => u.Lines[i]).ToArray(),
             new P7F1V6AgentTools(u.Tools, u.LayoutFacts), rangeStated: true);
-        return A.Build(A.Prompt(mode, rangeStated: true), payload, new System.Text.Json.Nodes.JsonArray(), "auto", jsonObjectAllTurns);
+        return A.Build(A.Prompt(mode, rangeStated: true), payload, new System.Text.Json.Nodes.JsonArray(), "auto", jsonObjectAllTurns, factsTool: mode == A.Arm.ToolFacts);
     }
 
     /// <summary>The ceiling is derived, not chosen: the reserve of every planned first request of the arm, repetitions included, plus the spare

@@ -30,6 +30,12 @@ internal sealed class P7F1V6AgentTools
 
     public static readonly string[] Names = [DocumentOverview, SourceContext, PageLayout, SourceSpan, SearchText, Repeated, Compare];
 
+    /// <summary>D4.12g: an eighth tool, declared and accepted only when the registry is built with factsTool (the TOOLFACTS arm). It returns the
+    /// measurements the program otherwise puts in the request (layout block, segments on the visual line, shared left edge, other occurrences of the
+    /// same text) for a range of lines. With factsTool false the declarations, the names and every earlier request are unchanged.</summary>
+    public const string LineFacts = "get_line_facts";
+    public const int MaxFactLines = 24, MaxFactRange = 400;
+
     /// <summary>Where each tool comes from. Issue #5 names its four tools; the others are the F1Q V2 comparison, the V6 D1 search and a new
     /// overview. get_page_image is not registered: no image of a page exists in the V6 evidence store, and image input on the pinned route
     /// has not been verified.</summary>
@@ -84,11 +90,16 @@ internal sealed class P7F1V6AgentTools
 
     /// <summary>The name a result and the ledger carry: a registered name, or null. A name Qwen made up is never echoed back, so a result's
     /// size does not depend on it (D4.11b).</summary>
-    static string? Registered(string? name) => name is not null && Names.Contains(name, StringComparer.Ordinal) ? name : null;
+    string? Registered(string? name) => IsRegistered(name) ? name : null;
+    bool IsRegistered(string? name) => name is not null && (Names.Contains(name, StringComparer.Ordinal) || (factsTool && name == LineFacts));
 
-    public P7F1V6AgentTools(P7F1QEvidenceTools source, IReadOnlyDictionary<string, JsonObject>? layoutFacts = null)
+    readonly bool factsTool;
+
+    public P7F1V6AgentTools(P7F1QEvidenceTools source, IReadOnlyDictionary<string, JsonObject>? layoutFacts = null, bool factsTool = false)
     {
         this.source = source;
+        this.factsTool = factsTool;
+        if (factsTool && layoutFacts is null) throw new ArgumentException("FACTS_TOOL_NEEDS_LAYOUT_FACTS", nameof(layoutFacts));
         this.layoutFacts = layoutFacts;
         lines = source.AllLines;
         for (int i = 0; i < lines.Count; i++) index[lines[i].Alias] = i;
@@ -103,7 +114,22 @@ internal sealed class P7F1V6AgentTools
 
     // ---------------- declarations ----------------
 
-    public static JsonArray Definitions() => new(
+    public static JsonArray Definitions(bool withFactsTool = false)
+    {
+        var all = BaseDefinitions();
+        if (withFactsTool) all.Add(FactsToolDefinition());
+        return all;
+    }
+
+    static JsonObject FactsToolDefinition() => Tool(LineFacts, "Read facts the program measured for the lines from one alias to another in reading order (at most " + MaxFactLines + " lines per call; use offset to continue where a result was cut). For each line: its page, its layout block (number, lines in the block, its place in it), the separate text segments on its visual line (how many, which one, the gaps in points before and after it), how many other lines of its page start at the same left edge, and, when its text also occurs on other lines, the first other occurrences (page, position in reading order, layout, how their font and left edge differ, the line that follows each). Measurements only: no label and no decision.",
+        new JsonObject
+        {
+            ["first"] = AliasArg("The first line of the range."),
+            ["last"] = AliasArg("The last line of the range, not before the first and at most " + MaxFactRange + " lines after it."),
+            ["offset"] = Int(0, 100000, "How many lines of the range to skip."),
+        }, "first", "last", "offset");
+
+    static JsonArray BaseDefinitions() => new(
         Tool(DocumentOverview, "Summarise the whole document from the parser: number of lines and pages, and for each page its line count, text extent and median font size; plus how many lines use each font size. No line text.",
             new JsonObject()),
         Tool(SourceContext, "Read the lines before and after one line in reading order. Each line has its text, page and layout (bbox in PDF points, font size, font name, bold and italic ratio) and its position relative to the given line (same baseline, vertical offset, horizontal overlap, font-size difference). Also returns the other lines on the same baseline of that page and the page's statistics.",
@@ -148,7 +174,7 @@ internal sealed class P7F1V6AgentTools
                 ["window"] = Int(0, MaxCompareWindow, "Lines before and after each line."),
             }, "first", "second", "window"));
 
-    public static string DefinitionsSha256() => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(Definitions().ToJsonString(Wire))));
+    public static string DefinitionsSha256(bool withFactsTool = false) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(Definitions(withFactsTool).ToJsonString(Wire))));
 
     static JsonObject Tool(string name, string description, JsonObject properties, params string[] required) => new()
     {
@@ -181,7 +207,7 @@ internal sealed class P7F1V6AgentTools
         string status = "OK"; string? error = null; var truncated = false; string? cacheOf = null; string? key = null;
         try
         {
-            if (name is null || !Names.Contains(name, StringComparer.Ordinal)) throw new ArgumentError("UNKNOWN_TOOL");
+            if (!IsRegistered(name)) throw new ArgumentError("UNKNOWN_TOOL");
             using var doc = ParseArguments(raw);
             var args = doc.RootElement;
             key = name + "\n" + Canonical(args);
@@ -199,10 +225,11 @@ internal sealed class P7F1V6AgentTools
                     SourceSpan => Span(args, returned),
                     SearchText => Search(args, returned),
                     Repeated => Repeat(args, returned),
+                    LineFacts => FactsOfRange(args, returned),
                     _ => CompareTwo(args, returned),
                 };
         }
-        catch (ArgumentError e) { status = name is null || !Names.Contains(name, StringComparer.Ordinal) ? "UNKNOWN_TOOL" : "INVALID_ARGUMENT"; error = e.Code; result = null; returned.Clear(); truncated = false; cacheOf = null; key = null; }
+        catch (ArgumentError e) { status = !IsRegistered(name) ? "UNKNOWN_TOOL" : "INVALID_ARGUMENT"; error = e.Code; result = null; returned.Clear(); truncated = false; cacheOf = null; key = null; }
         var content = Body(evidenceId, Registered(name), status, error, arguments, result, cacheOf);
         if (content.Length > MaxResultBytes) throw new InvalidOperationException("V6_TOOL_RESULT_CAP_EXCEEDED");   // the handlers fit before this point
         var aliases = returned.Distinct(StringComparer.Ordinal).ToArray();
@@ -323,6 +350,48 @@ internal sealed class P7F1V6AgentTools
             ["basis"] = P7F1QEvidenceTools.LayoutBasis,
         });
         returned.AddRange(slice.Take(taken).Select(i => lines[i].Alias));
+        return (arguments, result, taken < slice.Length);
+    }
+
+    (JsonNode?, JsonNode?, bool) FactsOfRange(JsonElement args, List<string> returned)
+    {
+        Keys(args, "first", "last", "offset");
+        var first = Alias(args, "first"); var last = Alias(args, "last");
+        int from = index[first], to = index[last];
+        if (to < from || to - from + 1 > MaxFactRange) throw new ArgumentError("RANGE_INVALID");
+        int offset = Range(args, "offset", 0, 100000);
+        var rangeLength = to - from + 1;
+        var slice = Enumerable.Range(from, rangeLength).Skip(offset).Take(MaxFactLines).ToArray();
+        var arguments = new JsonObject { ["first"] = first, ["last"] = last, ["offset"] = offset };
+        var aliases = slice.Select(i => lines[i].Alias).ToList();
+        var repeated = aliases.Count == 0 ? new Dictionary<string, JsonObject>() :
+            Prefetch(aliases).Observations["targets"]!.AsArray().ToDictionary(t => t!["alias"]!.GetValue<string>(), t => t!.AsObject(), StringComparer.Ordinal);
+        JsonNode Item(int i)
+        {
+            var o = (JsonObject)layoutFacts![lines[i].Alias].DeepClone();
+            o["page"] = lines[i].Page;
+            if (repeated.TryGetValue(lines[i].Alias, out var r))
+            {
+                var copy = (JsonObject)r.DeepClone();
+                copy.Remove("alias");
+                o["repeatedText"] = copy;
+            }
+            return o;
+        }
+        IEnumerable<string> Shown(int i) => repeated.TryGetValue(lines[i].Alias, out var r)
+            ? r["shown"]!.AsArray().SelectMany(x => new[] { x!["alias"]!.GetValue<string>() }.Concat(x["followingLine"] is JsonObject f ? new[] { f["alias"]!.GetValue<string>() } : Array.Empty<string>()))
+            : Array.Empty<string>();
+        var (result, taken) = Fit(LineFacts, arguments, slice.Length, k => new JsonObject
+        {
+            ["readBy"] = "the program, from the parser's geometry and from the text of the whole document: " + P7F1V6LayoutFacts.Description + "; repeatedText lists the first other occurrences of the line's text under the stated normalization",
+            ["version"] = P7F1V6LayoutFacts.Version,
+            ["normalization"] = P7F1QEvidenceTools.RepeatNormalization,
+            ["rangeLines"] = rangeLength, ["offset"] = offset,
+            ["facts"] = new JsonArray(slice.Take(k).Select(Item).ToArray()),
+            ["hasMore"] = offset + k < rangeLength, ["nextOffset"] = offset + k < rangeLength ? offset + k : null,
+            ["truncation"] = Truncation(k, slice.Length, offset + k),
+        });
+        returned.AddRange(slice.Take(taken).SelectMany(i => Shown(i).Prepend(lines[i].Alias)));
         return (arguments, result, taken < slice.Length);
     }
 

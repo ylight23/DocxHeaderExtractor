@@ -41,7 +41,7 @@ internal static class P7F1V6DirectAgent
     /// <summary>Auto: tools optional. EvidenceFirst: an answer before any tool result is refused (diagnostic). Prefetch (D4.11h): the AUTO prompt
     /// plus one line, and the request ends with observations the program read itself for every target whose text occurs elsewhere; the tools
     /// stay available and optional.</summary>
-    public enum Arm { Auto, EvidenceFirst, Prefetch, Geometry, Facts }
+    public enum Arm { Auto, EvidenceFirst, Prefetch, Geometry, Facts, ToolFacts }
 
     // D4.11f. The task is heading extraction as the user defines it. The prompt gives no definition of a heading and no rule about any kind
     // of line: the user's instruction decides both, and the prompt only tells the model to apply it as written.
@@ -95,9 +95,15 @@ internal static class P7F1V6DirectAgent
     const string UseLine = "Use the observations: before you decide a target, read what the observations say about it and about the lines next to it - whether its text occurs on other lines (observations.targets), and its layout block, the segments on its visual line and its left edge as against the lines before and after it (observations.layoutFacts). Compare the target with its neighbours, not with its own text alone. Base each decision on the instruction and on this evidence together.";
     public static readonly string FactsPromptRange = WithRange(string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, ObservationsLine, GeometryLine, UseLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion)));
+    // D4.12g. The FACTS request, with the facts moved out of the payload: the request carries no observations, the tools include get_line_facts, and the
+    // first reply must read the facts of the targets through it (an answer before a successful get_line_facts call is refused). The facts are the same
+    // three kinds the FACTS payload carried, and the sentence on how to use them is the same one.
+    const string FactsToolLine = "Facts: this request carries no observations. Your first reply must be tool calls to get_line_facts that read the facts the program measured for the targets (from targetFirstAlias to targetLastAlias; one call covers at most 24 lines, and a result that was cut says where to continue). An answer given before those facts have arrived is refused. For each line the facts give: its layout block (number, lines in the block, this line's place in it), the separate text segments on its visual line (how many, which one, the gaps in points around it), how many other lines of the page start at the same left edge, and, when its text also occurs on other lines, the first other occurrences (their page, position in reading order, layout, how their font and left edge differ from the line's, and the line that follows each). They are measurements, not labels or decisions; what they mean for the instruction is for you to judge. You may cite the aliases they show in evidenceRefs. You may also call the other tools for anything else.";
+    public static readonly string ToolFactsPromptRange = WithRange(string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, FactsToolLine, UseLine, ObservedLine, ReplyLine,
+        Body(P7F1V6DirectTwoStage.SelectObjectsVersion)));
     public const string AutoPromptRangeSha256 = "5a83e08300e60a0a3dd136e9a31cd7439d2fa3943f65be41947a094da8bb14c2";
     public const string PrefetchPromptRangeSha256 = "2290301be5ab6b432d10913e6cfa30a4a11c43a0a811acbf3fc17e1b23d66de6";
-    public static string Prompt(Arm arm, bool rangeStated) => rangeStated ? (arm == Arm.Facts ? FactsPromptRange : arm == Arm.Geometry ? GeometryPromptRange : arm == Arm.Prefetch ? PrefetchPromptRange : arm == Arm.Auto ? AutoPromptRange : WithRange(EvidenceFirstPrompt)) : Prompt(arm);
+    public static string Prompt(Arm arm, bool rangeStated) => rangeStated ? (arm == Arm.ToolFacts ? ToolFactsPromptRange : arm == Arm.Facts ? FactsPromptRange : arm == Arm.Geometry ? GeometryPromptRange : arm == Arm.Prefetch ? PrefetchPromptRange : arm == Arm.Auto ? AutoPromptRange : WithRange(EvidenceFirstPrompt)) : Prompt(arm);
 
     public static readonly string PrefetchPrompt = string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, ObservationsLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion));
@@ -106,7 +112,7 @@ internal static class P7F1V6DirectAgent
     public const string EvidenceFirstPromptSha256 = "6c8d2629bfec15f1873f9710ddf72f810ad7fc902c0fdeb1ab4ca736b569230f";
     public const string ToolDefinitionsSha256 = "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3";
 
-    public static string Prompt(Arm arm) => arm switch { Arm.Auto => AutoPrompt, Arm.EvidenceFirst => EvidenceFirstPrompt, Arm.Geometry or Arm.Facts => throw new ArgumentException("GEOMETRY_NEEDS_RANGE_STATED", nameof(arm)), _ => PrefetchPrompt };
+    public static string Prompt(Arm arm) => arm switch { Arm.Auto => AutoPrompt, Arm.EvidenceFirst => EvidenceFirstPrompt, Arm.Geometry or Arm.Facts or Arm.ToolFacts => throw new ArgumentException("GEOMETRY_NEEDS_RANGE_STATED", nameof(arm)), _ => PrefetchPrompt };
     public static string Sha(string s) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(s)));
 
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -174,7 +180,7 @@ internal static class P7F1V6DirectAgent
     /// the strict parser still refuses any final answer that is not exactly one JSON object (a fence or prose around it included).
     /// D4.11c: reasoning enabled true is stated explicitly and the reply is streamed (SSE), the request shape of every F1Q turn in which
     /// Qwen made tool calls on this route (verified from the F1Q raw). The D4.11b canary sent neither and Qwen made no tool call.</summary>
-    public static P7F1V6Protocol.PreparedRequest Build(string systemPrompt, string payload, JsonArray history, string toolChoice, bool jsonObjectAllTurns = false)
+    public static P7F1V6Protocol.PreparedRequest Build(string systemPrompt, string payload, JsonArray history, string toolChoice, bool jsonObjectAllTurns = false, bool factsTool = false)
     {
         if (toolChoice is not ("auto" or "none")) throw new ArgumentException("TOOL_CHOICE_INVALID", nameof(toolChoice));
         var spec = P7F1V6Protocol.DefaultSpec();
@@ -189,7 +195,7 @@ internal static class P7F1V6DirectAgent
             ["temperature"] = spec.Temperature,
             ["max_tokens"] = spec.MaxTokens,
             ["reasoning"] = new JsonObject { ["enabled"] = true },
-            ["tools"] = P7F1V6AgentTools.Definitions(),
+            ["tools"] = P7F1V6AgentTools.Definitions(factsTool),
             ["tool_choice"] = toolChoice,
             ["provider"] = JsonSerializer.SerializeToNode(P7F1V6Protocol.ProviderBlock(spec.ProviderTag, spec.AllowFallbacks, spec.RequireParameters, spec.Ignore), Options),
             ["stream"] = true,
@@ -276,7 +282,7 @@ internal static class P7F1V6DirectAgent
     {
         bool fenceUnwrapped = false;
         var lines = universe.Lines;
-        var tools = new P7F1V6AgentTools(universe.Tools, universe.LayoutFacts);
+        var tools = new P7F1V6AgentTools(universe.Tools, universe.LayoutFacts, factsTool: arm == Arm.ToolFacts);
         var shownIdx = new SortedSet<int>(initialContext);
         foreach (var a in decide) shownIdx.Add(tools.PositionOf(a));
         var ordered = decide.OrderBy(tools.PositionOf).ToList();
@@ -321,7 +327,7 @@ internal static class P7F1V6DirectAgent
         for (int turn = 1; turn <= MaxPostsPerUnit; turn++)
         {
             var toolChoice = turn <= MaxToolTurns ? "auto" : "none";
-            var req = Build(prompt, payload, history, toolChoice, jsonObjectAllTurns);
+            var req = Build(prompt, payload, history, toolChoice, jsonObjectAllTurns, factsTool: arm == Arm.ToolFacts);
             var refusal = budget.Admit(req);
             if (refusal is not null) return Done("INCOMPLETE", "BUDGET:" + refusal);
             requests.Add(req);
@@ -397,6 +403,7 @@ internal static class P7F1V6DirectAgent
             }
 
             // A reply without tool calls is the final answer.
+            if (arm == Arm.ToolFacts && !tools.Ledger.Any(c => c.Tool == P7F1V6AgentTools.LineFacts && c.Status == "OK")) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED"); }
             if (arm == Arm.EvidenceFirst && okCalls == 0) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_EVIDENCE_REQUIRED_NOT_REQUESTED"); }
             var observed = shownAliases.Concat(tools.ObservedAliases).Distinct(StringComparer.Ordinal).ToDictionary(a => a, tools.PositionOf, StringComparer.Ordinal);
             var content = reply.Content ?? "";

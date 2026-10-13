@@ -434,4 +434,178 @@ public sealed class P7F1V6StableRunTests
         }
         finally { File.Delete(file); }
     }
+
+    // ---- D4.12g: the facts through a mandatory first tool call ----
+
+    static (string Body, JsonElement Root) Req(P7F1V6Protocol.PreparedRequest r)
+    {
+        var d = JsonDocument.Parse(r.Body);
+        return (r.Body, d.RootElement.Clone());
+    }
+
+    [Fact]
+    public void FactsTool_IsDeclaredOnlyWhenAsked_AndEveryEarlierToolDeclarationIsUnchanged()
+    {
+        Assert.Equal(P7F1V6DirectAgent.ToolDefinitionsSha256, P7F1V6AgentTools.DefinitionsSha256());
+        Assert.Equal(7, P7F1V6AgentTools.Definitions().Count);
+        var with = P7F1V6AgentTools.Definitions(true);
+        Assert.Equal(8, with.Count);
+        Assert.Equal(P7F1V6AgentTools.LineFacts, with[7]!["function"]!["name"]!.GetValue<string>());
+        Assert.NotEqual(P7F1V6AgentTools.DefinitionsSha256(), P7F1V6AgentTools.DefinitionsSha256(true));
+        for (int i = 0; i < 7; i++) Assert.Equal(P7F1V6AgentTools.Definitions()[i]!.ToJsonString(), with[i]!.ToJsonString());
+        // The earlier arms' requests are byte for byte what they were.
+        var u = Universe();
+        foreach (var arm in new[] { A.Arm.Auto, A.Arm.Prefetch, A.Arm.Geometry, A.Arm.Facts })
+            Assert.DoesNotContain(P7F1V6AgentTools.LineFacts, C.FirstRequest(arm, u, "SEG-000").Body);
+        Assert.Contains(P7F1V6AgentTools.LineFacts, C.FirstRequest(A.Arm.ToolFacts, u, "SEG-000").Body);
+    }
+
+    [Fact]
+    public void FactsTool_AnswersARange_WithTheLayoutFactsAndTheRepeatedText_PagesByOffset_AndIsUnknownWithoutTheFlag()
+    {
+        var u = Universe();
+        var plain = new P7F1V6AgentTools(u.Tools, u.LayoutFacts);
+        var r0 = plain.Execute("E1.01", P7F1V6AgentTools.LineFacts, "{\"first\":\"" + u.Lines[0].Alias + "\",\"last\":\"" + u.Lines[5].Alias + "\",\"offset\":0}");
+        Assert.Equal("UNKNOWN_TOOL", r0.Status);
+        var tools = new P7F1V6AgentTools(u.Tools, u.LayoutFacts, factsTool: true);
+        var first = u.Lines[10].Alias; var last = u.Lines[69].Alias;                       // 60 lines: more than one call
+        var r = tools.Execute("E1.01", P7F1V6AgentTools.LineFacts, "{\"first\":\"" + first + "\",\"last\":\"" + last + "\",\"offset\":0}");
+        Assert.Equal("OK", r.Status);
+        Assert.True(r.Content.Length <= P7F1V6AgentTools.MaxResultBytes);
+        using var doc = JsonDocument.Parse(r.Content);
+        var res = doc.RootElement.GetProperty("result");
+        var facts = res.GetProperty("facts").EnumerateArray().ToList();
+        Assert.True(facts.Count > 0 && facts.Count <= P7F1V6AgentTools.MaxFactLines);
+        Assert.Equal(60, res.GetProperty("rangeLines").GetInt32());
+        Assert.True(res.GetProperty("hasMore").GetBoolean());
+        foreach (var f in facts)
+        {
+            var alias = f.GetProperty("alias").GetString()!;
+            var expected = u.LayoutFacts[alias];
+            Assert.Equal(expected["block"]!.ToJsonString(), f.GetProperty("block").GetRawText());
+            Assert.Equal(expected["segments"]!.ToJsonString(), f.GetProperty("segments").GetRawText());
+        }
+        // The next page starts where this one ended and nothing is repeated or skipped.
+        var next = res.GetProperty("nextOffset").GetInt32();
+        Assert.Equal(facts.Count, next);
+        var r2 = tools.Execute("E1.02", P7F1V6AgentTools.LineFacts, "{\"first\":\"" + first + "\",\"last\":\"" + last + "\",\"offset\":" + next + "}");
+        using var doc2 = JsonDocument.Parse(r2.Content);
+        var facts2 = doc2.RootElement.GetProperty("result").GetProperty("facts").EnumerateArray().Select(x => x.GetProperty("alias").GetString()).ToList();
+        Assert.DoesNotContain(facts2, a => facts.Any(f => f.GetProperty("alias").GetString() == a));
+        Assert.Equal(u.Lines[10 + next].Alias, facts2[0]);
+        // Every alias a result shows counts as observed (Qwen may cite it).
+        Assert.All(facts.Select(f => f.GetProperty("alias").GetString()!), a => Assert.Contains(a, tools.ObservedAliases));
+        // Bad ranges are refused.
+        Assert.Equal("INVALID_ARGUMENT", tools.Execute("E1.03", P7F1V6AgentTools.LineFacts, "{\"first\":\"" + last + "\",\"last\":\"" + first + "\",\"offset\":0}").Status);
+        Assert.Equal("INVALID_ARGUMENT", tools.Execute("E1.04", P7F1V6AgentTools.LineFacts, "{\"first\":\"" + first + "\",\"last\":\"" + last + "\"}").Status);
+    }
+
+    [Fact]
+    public void FactsTool_ShowsTheSameRepeatedTextObservationsThePayloadCarriesInTheFactsArm()
+    {
+        var u = Universe();
+        var (decide, _) = P7F1V6DirectCanary410.Scope(u, "SEG-001");
+        var tools = new P7F1V6AgentTools(u.Tools, u.LayoutFacts, factsTool: true);
+        var pf = new P7F1V6AgentTools(u.Tools, u.LayoutFacts).Prefetch(decide);
+        var listed = pf.Observations["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).ToHashSet(StringComparer.Ordinal);
+        var seen = new HashSet<string>(StringComparer.Ordinal);
+        var offset = 0;
+        while (offset < decide.Length)
+        {
+            var r = tools.Execute("E1." + offset, P7F1V6AgentTools.LineFacts, "{\"first\":\"" + decide[0] + "\",\"last\":\"" + decide[^1] + "\",\"offset\":" + offset + "}");
+            using var doc = JsonDocument.Parse(r.Content);
+            var res = doc.RootElement.GetProperty("result");
+            var facts = res.GetProperty("facts").EnumerateArray().ToList();
+            foreach (var f in facts) if (f.TryGetProperty("repeatedText", out _)) seen.Add(f.GetProperty("alias").GetString()!);
+            offset += facts.Count;
+            Assert.True(facts.Count > 0);
+        }
+        Assert.Equal(listed, seen);   // the tool lists repeated text for exactly the targets the payload observations listed
+    }
+
+    static A.AgentUnitOutcome RunToolFacts(P7F1V6Universe u, Func<string, int, A.ModelTurn> reply, out List<string> requests)
+    {
+        var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, "SEG-001");
+        var seen = new List<string>();
+        A.AgentModel model = (unit, turn, req) => { lock (seen) seen.Add(req.Body); return reply(req.Body, turn); };
+        var outcome = A.RunUnit(A.Arm.ToolFacts, P7F1V6DirectD45.InstructionEnglishAll, u, "SEG-001", decide, ctx, model, new P7F1V6DirectV2.Budget(8, 5, C.MaxRequestBytes), rangeStated: true, jsonObjectAllTurns: true);
+        requests = seen;
+        return outcome;
+    }
+
+    static string TargetRange(string body, string key)
+    {
+        using var d = JsonDocument.Parse(body);
+        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        return p.RootElement.GetProperty(key).GetString()!;
+    }
+
+    [Fact]
+    public void ToolFactsArm_HasNoObservationsInThePayload_ARefusedAnswerWithoutTheFactsCall_AndAcceptsOnceTheFactsHaveBeenRead()
+    {
+        var u = Universe();
+        // No observations in the payload; eight tools declared; the prompt is the TOOLFACTS one.
+        var first = C.FirstRequest(A.Arm.ToolFacts, u, "SEG-001", true, P7F1V6DirectD45.InstructionEnglishAll);
+        using (var d = JsonDocument.Parse(first.Body))
+        using (var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!))
+        {
+            Assert.False(p.RootElement.TryGetProperty("observations", out _));
+            Assert.Equal(8, d.RootElement.GetProperty("tools").GetArrayLength());
+            Assert.Equal(A.ToolFactsPromptRange, d.RootElement.GetProperty("messages")[0].GetProperty("content").GetString());
+        }
+        Assert.Contains("first reply must be tool calls to get_line_facts", A.ToolFactsPromptRange);
+        Assert.DoesNotContain("get_line_facts", A.FactsPromptRange);
+
+        // An answer with no facts call is refused as a contract failure.
+        var refused = RunToolFacts(u, (body, turn) => new A.ModelTurn(Bare(TargetsOf(body)), Array.Empty<A.ToolCall>(), "stop"), out _);
+        Assert.Equal("FAILED", refused.Unit.Status);
+        Assert.Equal("PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED", refused.Unit.Failure);
+
+        // A call to another tool is not the facts call.
+        var other = RunToolFacts(u, (body, turn) => turn == 1
+            ? new A.ModelTurn(null, new[] { new A.ToolCall("c1", P7F1V6AgentTools.DocumentOverview, "{}") }, "tool_calls")
+            : new A.ModelTurn(Bare(TargetsOf(body)), Array.Empty<A.ToolCall>(), "stop"), out _);
+        Assert.Equal("PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED", other.Unit.Failure);
+
+        // Facts first, then the answer.
+        var ok = RunToolFacts(u, (body, turn) => turn == 1
+            ? new A.ModelTurn(null, new[] { new A.ToolCall("c1", P7F1V6AgentTools.LineFacts, "{\"first\":\"" + TargetRange(body, "targetFirstAlias") + "\",\"last\":\"" + TargetRange(body, "targetLastAlias") + "\",\"offset\":0}") }, "tool_calls")
+            : new A.ModelTurn(Bare(TargetsOf(body)), Array.Empty<A.ToolCall>(), "stop"), out var requests);
+        Assert.Equal("COMPLETE", ok.Unit.Status);
+        Assert.Equal(2, requests.Count);
+        Assert.Contains("rangeLines", requests[1]);                // the facts came back as the tool message
+        Assert.True(ok.Evidence.ToolSucceeded >= 1);
+        Assert.NotEmpty(ok.Evidence.TargetsShownByTools);
+    }
+
+    static IReadOnlyList<string> TargetsOf(string body)
+    {
+        using var d = JsonDocument.Parse(body);
+        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        return p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
+    }
+
+    [Fact]
+    public void ToolFactsPlan_HasOneToolFactsArm_PinsTheEightToolDefinitions_AndVerifies()
+    {
+        var rel = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        var bytes = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1,
+            firstSegments: 3, instruction: P7F1V6DirectD45.InstructionEnglishMainTools, fullToolRounds: true, toolFacts: true));
+        using var d = JsonDocument.Parse(bytes);
+        Assert.True(T.ToolFactsOf(d.RootElement));
+        var arms = d.RootElement.GetProperty("arms").EnumerateArray().ToList();
+        Assert.Single(arms);
+        Assert.Equal("TOOLFACTS", arms[0].GetProperty("arm").GetString());
+        Assert.Equal(A.Sha(A.ToolFactsPromptRange), arms[0].GetProperty("promptSha256").GetString());
+        Assert.Equal(P7F1V6AgentTools.DefinitionsSha256(true), d.RootElement.GetProperty("tools").GetProperty("definitionsSha256").GetString());
+        Assert.Contains(P7F1V6AgentTools.LineFacts, d.RootElement.GetProperty("tools").GetProperty("names").EnumerateArray().Select(x => x.GetString()));
+        var file = Path.Combine(Path.GetTempPath(), "dhx-toolfacts-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, bytes);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
 }
