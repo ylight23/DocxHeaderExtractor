@@ -1115,4 +1115,14 @@ public sealed class P7F1V6StableRunTests
         Assert.Equal(plain[1], lines[2]);
         Assert.Equal(plain[2], lines[3]);
     }
+
+    [Fact]
+    public void MainRepresentativeLinesInstruction_DiffersOnlyBySelectingAllLinesOfAHeading()
+    {
+        var a = P7F1V6DirectD45.InstructionEnglishMainRepresentative.Split((char)10);
+        var b = P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines.Split((char)10);
+        Assert.Equal(a.Length, b.Length);
+        Assert.Equal(new[] { 1 }, Enumerable.Range(0, a.Length).Where(i => a[i] != b[i]));
+        Assert.Equal(a[1].Replace("select the line where the heading itself stands,", "select the lines where the heading itself stands (all lines of a heading that runs over several lines),"), b[1]);
+    }
 }

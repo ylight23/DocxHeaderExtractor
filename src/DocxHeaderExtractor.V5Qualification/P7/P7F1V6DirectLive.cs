@@ -227,6 +227,13 @@ internal static class P7F1V6DirectD45
         "The result is a list of the document's main headings in which each heading appears once: for each heading, select the line where the heading itself stands, at the start of the part it names, as its representative. A line that only lists, repeats or points to a heading that stands elsewhere, for example in a table of contents, is not that heading's representative and is not selected.\n" +
         "When you are unsure about how a line relates to other lines, use the tools to check that relationship.\n" +
         "Do not guess: if the evidence does not settle a line, say that it is unresolved instead of choosing.";
+    /// <summary>D4.12o: InstructionEnglishMainRepresentative with the owner's correction (2026-10-13): select the lines of the heading, all of them when it
+    /// runs over several lines. Only that sentence differs.</summary>
+    public const string InstructionEnglishMainRepresentativeLines =
+        "Extract the main headings of the document: the headings that carry its structure (its outline).\n" +
+        "The result is a list of the document's main headings in which each heading appears once: for each heading, select the lines where the heading itself stands (all lines of a heading that runs over several lines), at the start of the part it names, as its representative. A line that only lists, repeats or points to a heading that stands elsewhere, for example in a table of contents, is not that heading's representative and is not selected.\n" +
+        "When you are unsure about how a line relates to other lines, use the tools to check that relationship.\n" +
+        "Do not guess: if the evidence does not settle a line, say that it is unresolved instead of choosing.";
     public const string TaskId = "A-STRUCTURAL-OCCURRENCES";
     public const string EvaluationLabel = "Development evaluation — task clarification informed by previous model errors";
     public const string BaselineTaskId = "A";
