@@ -41,7 +41,7 @@ internal static class P7F1V6DirectAgent
     /// <summary>Auto: tools optional. EvidenceFirst: an answer before any tool result is refused (diagnostic). Prefetch (D4.11h): the AUTO prompt
     /// plus one line, and the request ends with observations the program read itself for every target whose text occurs elsewhere; the tools
     /// stay available and optional.</summary>
-    public enum Arm { Auto, EvidenceFirst, Prefetch, Geometry }
+    public enum Arm { Auto, EvidenceFirst, Prefetch, Geometry, Facts }
 
     // D4.11f. The task is heading extraction as the user defines it. The prompt gives no definition of a heading and no rule about any kind
     // of line: the user's instruction decides both, and the prompt only tells the model to apply it as written.
@@ -89,9 +89,15 @@ internal static class P7F1V6DirectAgent
     const string GeometryLine = "Layout facts: observations.layoutFacts adds, for every line in targets and context, measurements the program took from the page: its layout block (number, lines in the block, this line's place in it), the separate text segments on its visual line (how many, which one, the gaps in points around it) and how many other lines of the page start at the same left edge. They are measurements, not labels or decisions; what they mean for the instruction is for you to judge.";
     public static readonly string GeometryPromptRange = WithRange(string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, ObservationsLine, GeometryLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion)));
+    // D4.12b. The same request as Geometry (the same observations), and one more sentence in the system prompt: how to use them. In the Geometry run Qwen's
+    // reasoning never mentioned the observations. The sentence is procedural: it says to read them and to compare a target with its neighbours; it names
+    // no kind of line and does not say what any observation means for the instruction.
+    const string UseLine = "Use the observations: before you decide a target, read what the observations say about it and about the lines next to it - whether its text occurs on other lines (observations.targets), and its layout block, the segments on its visual line and its left edge as against the lines before and after it (observations.layoutFacts). Compare the target with its neighbours, not with its own text alone. Base each decision on the instruction and on this evidence together.";
+    public static readonly string FactsPromptRange = WithRange(string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, ObservationsLine, GeometryLine, UseLine, ObservedLine, ReplyLine,
+        Body(P7F1V6DirectTwoStage.SelectObjectsVersion)));
     public const string AutoPromptRangeSha256 = "5a83e08300e60a0a3dd136e9a31cd7439d2fa3943f65be41947a094da8bb14c2";
     public const string PrefetchPromptRangeSha256 = "2290301be5ab6b432d10913e6cfa30a4a11c43a0a811acbf3fc17e1b23d66de6";
-    public static string Prompt(Arm arm, bool rangeStated) => rangeStated ? (arm == Arm.Geometry ? GeometryPromptRange : arm == Arm.Prefetch ? PrefetchPromptRange : arm == Arm.Auto ? AutoPromptRange : WithRange(EvidenceFirstPrompt)) : Prompt(arm);
+    public static string Prompt(Arm arm, bool rangeStated) => rangeStated ? (arm == Arm.Facts ? FactsPromptRange : arm == Arm.Geometry ? GeometryPromptRange : arm == Arm.Prefetch ? PrefetchPromptRange : arm == Arm.Auto ? AutoPromptRange : WithRange(EvidenceFirstPrompt)) : Prompt(arm);
 
     public static readonly string PrefetchPrompt = string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, ObservationsLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion));
@@ -100,7 +106,7 @@ internal static class P7F1V6DirectAgent
     public const string EvidenceFirstPromptSha256 = "6c8d2629bfec15f1873f9710ddf72f810ad7fc902c0fdeb1ab4ca736b569230f";
     public const string ToolDefinitionsSha256 = "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3";
 
-    public static string Prompt(Arm arm) => arm switch { Arm.Auto => AutoPrompt, Arm.EvidenceFirst => EvidenceFirstPrompt, Arm.Geometry => throw new ArgumentException("GEOMETRY_NEEDS_RANGE_STATED", nameof(arm)), _ => PrefetchPrompt };
+    public static string Prompt(Arm arm) => arm switch { Arm.Auto => AutoPrompt, Arm.EvidenceFirst => EvidenceFirstPrompt, Arm.Geometry or Arm.Facts => throw new ArgumentException("GEOMETRY_NEEDS_RANGE_STATED", nameof(arm)), _ => PrefetchPrompt };
     public static string Sha(string s) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(s)));
 
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -152,8 +158,8 @@ internal static class P7F1V6DirectAgent
     public static (string Payload, P7F1V6AgentTools.PrefetchResult? Prefetch) FirstPayload(Arm arm, string instruction, string documentSha256, string unitId,
         IReadOnlyList<string> orderedTargets, IReadOnlyList<P7F1V6Direct.Line> shownLines, P7F1V6AgentTools tools, bool rangeStated = false)
     {
-        var prefetch = arm is Arm.Prefetch or Arm.Geometry ? tools.Prefetch(orderedTargets) : null;
-        if (arm == Arm.Geometry)
+        var prefetch = arm is Arm.Prefetch or Arm.Geometry or Arm.Facts ? tools.Prefetch(orderedTargets) : null;
+        if (arm is Arm.Geometry or Arm.Facts)
         {
             prefetch!.Observations["layoutFacts"] = tools.LayoutFactsOf(shownLines.Select(l => l.Alias).ToArray());
             prefetch = prefetch with { Bytes = Encoding.UTF8.GetByteCount(prefetch.Observations.ToJsonString(Options)) };

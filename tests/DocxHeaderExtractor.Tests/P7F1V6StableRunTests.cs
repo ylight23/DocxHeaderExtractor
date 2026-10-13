@@ -146,4 +146,51 @@ public sealed class P7F1V6StableRunTests
         }
         finally { File.Delete(file); }
     }
+
+    [Fact]
+    public void FactsArm_IsTheGeometryRequestPlusOneProceduralSentence_AndNamesNoKindOfLine()
+    {
+        var rel = "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        var u = T.Load(path, T.Sha256Of(path), P7F1V6Universe.LayoutSegmentation);
+        string Payload(A.Arm arm)
+        {
+            using var body = JsonDocument.Parse(C.FirstRequest(arm, u, "SEG-001", true).Body);
+            return body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!;
+        }
+        Assert.Equal(Payload(A.Arm.Geometry), Payload(A.Arm.Facts));       // the same observations, byte for byte
+        var geometryLines = A.GeometryPromptRange.Split((char)10).ToList();
+        var factsLines = A.FactsPromptRange.Split((char)10).ToList();
+        var added = factsLines.Except(geometryLines).ToList();
+        Assert.Single(added);
+        Assert.StartsWith("Use the observations:", added[0]);
+        Assert.Empty(geometryLines.Except(factsLines));
+        foreach (var banned in new[] { "table", "heading", "header", "footer", "title", "column", "cell", "contents" })
+            Assert.DoesNotContain(banned, added[0], StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("Use the observations:", A.GeometryPromptRange);
+    }
+
+    [Fact]
+    public void FactsPlan_HasOneFactsArm_OneRepetition_AndVerifies()
+    {
+        var rel = "todo10_8/heading_corpus_100/07_system_generated/095_RFC9114_HTTP_3.pdf";
+        var path = Path.Combine(TestRepository.Root(), rel.Replace('/', Path.DirectorySeparatorChar));
+        var bytes = T.Serialize(T.PinnedValues(path, "TEST_COMMIT", P7F1V6Universe.LayoutSegmentation, true, true, unwrapFence: true, singleArm: true, factsUse: true, reps: 1));
+        using var d = JsonDocument.Parse(bytes);
+        Assert.True(T.FactsUseOf(d.RootElement));
+        Assert.Equal(1, T.RepsOf(d.RootElement));
+        var arms = d.RootElement.GetProperty("arms").EnumerateArray().ToList();
+        Assert.Single(arms);
+        Assert.Equal("FACTS", arms[0].GetProperty("arm").GetString());
+        var segs = d.RootElement.GetProperty("segments").GetArrayLength();
+        Assert.Equal(segs + Math.Max(3, segs / 5), arms[0].GetProperty("budget").GetProperty("maxCalls").GetInt32());
+        Assert.Equal(A.Sha(A.FactsPromptRange), arms[0].GetProperty("promptSha256").GetString());
+        var file = Path.Combine(Path.GetTempPath(), "dhx-facts-" + Guid.NewGuid().ToString("N") + ".json");
+        try
+        {
+            File.WriteAllBytes(file, bytes);
+            Assert.Empty(T.Verify(file, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT", path));
+        }
+        finally { File.Delete(file); }
+    }
 }
