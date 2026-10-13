@@ -49,9 +49,9 @@ internal static class P7F1V6DirectAgentCanary
     public static P7F1V6Protocol.PreparedRequest FirstRequest(P7F1V6DirectAgent.Arm arm, P7F1V6Universe u, string segment)
     {
         var (decide, ctx) = P7F1V6DirectCanary410.Scope(u, segment);
-        return P7F1V6DirectAgent.Build(P7F1V6DirectAgent.Prompt(arm),
-            P7F1V6DirectAgent.Payload(P7F1V6DirectD45.Instruction, u.SourceSha256, segment, decide, ctx.Select(i => u.Lines[i]).ToArray()),
-            new System.Text.Json.Nodes.JsonArray(), "auto");
+        var (payload, _) = P7F1V6DirectAgent.FirstPayload(arm, P7F1V6DirectD45.Instruction, u.SourceSha256, segment, decide,
+            ctx.Select(i => u.Lines[i]).ToArray(), new P7F1V6AgentTools(u.Tools));
+        return P7F1V6DirectAgent.Build(P7F1V6DirectAgent.Prompt(arm), payload, new System.Text.Json.Nodes.JsonArray(), "auto");
     }
 
     public static Dictionary<string, object?> PinnedValues(string repoRoot, string codeCommit)

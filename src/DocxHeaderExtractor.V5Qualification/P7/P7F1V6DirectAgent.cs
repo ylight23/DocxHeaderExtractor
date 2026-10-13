@@ -38,7 +38,10 @@ internal static class P7F1V6DirectAgent
     public const int MaxToolMessageBytesPerUnit = 65536;
     public const int MaxPostsPerUnit = MaxToolTurns + 1;
 
-    public enum Arm { Auto, EvidenceFirst }
+    /// <summary>Auto: tools optional. EvidenceFirst: an answer before any tool result is refused (diagnostic). Prefetch (D4.11h): the AUTO prompt
+    /// plus one line, and the request ends with observations the program read itself for every target whose text occurs elsewhere; the tools
+    /// stay available and optional.</summary>
+    public enum Arm { Auto, EvidenceFirst, Prefetch }
 
     // D4.11f. The task is heading extraction as the user defines it. The prompt gives no definition of a heading and no rule about any kind
     // of line: the user's instruction decides both, and the prompt only tells the model to apply it as written.
@@ -64,16 +67,21 @@ internal static class P7F1V6DirectAgent
         "{\"protocolVersion\":\"" + version + "\",\"status\":\"CLARIFICATION_REQUIRED\",\"clarification\":{\"question\":\"<question to the user>\",\"interpretations\":[\"<reading>\",\"<reading>\"]}}",
         "Rules: targets are the EXACT output universe: return one decision for each alias in targets, NO decision for any other alias, and NO duplicates. The key is \"alias\". decision is SELECT, NOT_SELECT or UNRESOLVED; UNRESOLVED only with status INCOMPLETE. SELECT requires evidenceRefs with 1 to 8 aliases you saw; NOT_SELECT and UNRESOLVED may omit evidenceRefs or give up to 8 such aliases. Do not add headings, levels, parents or other fields.");
 
+    const string ObservationsLine = "Observations: the request ends with observations, read from the parser by the program and not requested by you. For each target whose text also occurs on another line of the document they list the first other occurrences: their page, position in reading order, layout, how their font and left edge differ from the target's, and the line that follows each. They are facts about the document, not labels or decisions; what they mean for the instruction is for you to judge. You may cite the aliases they show in evidenceRefs. When observations.complete is true, a target that is not listed has no other occurrence with the same text under the stated normalization. You may still call the tools for anything else.";
+
     public static readonly string AutoPrompt = string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion));
     public static readonly string EvidenceFirstPrompt = string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, EvidenceFirstLine, ObservedLine, ReplyLine,
         Body(P7F1V6DirectTwoStage.SelectObjectsVersion));
 
+    public static readonly string PrefetchPrompt = string.Join("\n", Intro, Fields, MembershipOnly, ToolsLine, ObservationsLine, ObservedLine, ReplyLine,
+        Body(P7F1V6DirectTwoStage.SelectObjectsVersion));
+    public const string PrefetchPromptSha256 = "1d55df852cc5cd4a9e7b04665a94031b83e3e5271689e204174eccaf42c4c4da";
     public const string AutoPromptSha256 = "1847872a0bf8759342557338a435d16458e7515109ca6c1412887ddad7b08f65";
     public const string EvidenceFirstPromptSha256 = "6c8d2629bfec15f1873f9710ddf72f810ad7fc902c0fdeb1ab4ca736b569230f";
     public const string ToolDefinitionsSha256 = "a7229469f1a4dab84a10dbfc6064ad9882aacdd0d7da3d0e4fca4598cbfd7aa3";
 
-    public static string Prompt(Arm arm) => arm == Arm.Auto ? AutoPrompt : EvidenceFirstPrompt;
+    public static string Prompt(Arm arm) => arm switch { Arm.Auto => AutoPrompt, Arm.EvidenceFirst => EvidenceFirstPrompt, _ => PrefetchPrompt };
     public static string Sha(string s) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(s)));
 
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -81,23 +89,36 @@ internal static class P7F1V6DirectAgent
     // ---------------- requests ----------------
 
     /// <summary>The user message: the task and the unit's lines. No version field, no rule about any kind of line.</summary>
-    public static string Payload(string instruction, string documentSha256, string unitId, IReadOnlyList<string> decide, IReadOnlyList<P7F1V6Direct.Line> shownLines)
+    public static string Payload(string instruction, string documentSha256, string unitId, IReadOnlyList<string> decide, IReadOnlyList<P7F1V6Direct.Line> shownLines,
+        JsonObject? observations = null)
     {
         var set = decide.ToHashSet(StringComparer.Ordinal);
         var shown = shownLines.Select(l => l.Alias).ToList();
         if (shown.Distinct(StringComparer.Ordinal).Count() != shown.Count) throw new ArgumentException("SHOWN_ALIAS_REPEATED", nameof(shownLines));
         if (decide.Count == 0 || set.Count != decide.Count || decide.Any(a => !shown.Contains(a, StringComparer.Ordinal))) throw new ArgumentException("DECIDE_NOT_SHOWN", nameof(decide));
         object Item(P7F1V6Direct.Line l) => new { alias = l.Alias, page = l.Page, text = l.Text, layout = l.Layout };
-        return JsonSerializer.Serialize(new
+        // observations (Prefetch arm only) come last: every byte before them is the same as in the AUTO request.
+        var payload = new Dictionary<string, object?>
         {
-            instruction,
-            instructionSha256 = P7F1V6Core.InstructionSha256(instruction),
-            documentSha256,
-            stage = "SEGMENT", unitId,
-            targetCount = decide.Count,
-            targets = shownLines.Where(l => set.Contains(l.Alias)).Select(Item),
-            context = shownLines.Where(l => !set.Contains(l.Alias)).Select(Item),
-        }, Options);
+            ["instruction"] = instruction,
+            ["instructionSha256"] = P7F1V6Core.InstructionSha256(instruction),
+            ["documentSha256"] = documentSha256,
+            ["stage"] = "SEGMENT", ["unitId"] = unitId,
+            ["targetCount"] = decide.Count,
+            ["targets"] = shownLines.Where(l => set.Contains(l.Alias)).Select(Item).ToList(),
+            ["context"] = shownLines.Where(l => !set.Contains(l.Alias)).Select(Item).ToList(),
+        };
+        if (observations is not null) payload["observations"] = observations;
+        return JsonSerializer.Serialize(payload, Options);
+    }
+
+    /// <summary>The user message of an arm for one unit, and the observations it carries (null for Auto and EvidenceFirst). The one place both
+    /// the plan's first requests and a live unit take their payload from.</summary>
+    public static (string Payload, P7F1V6AgentTools.PrefetchResult? Prefetch) FirstPayload(Arm arm, string instruction, string documentSha256, string unitId,
+        IReadOnlyList<string> orderedTargets, IReadOnlyList<P7F1V6Direct.Line> shownLines, P7F1V6AgentTools tools)
+    {
+        var prefetch = arm == Arm.Prefetch ? tools.Prefetch(orderedTargets) : null;
+        return (Payload(instruction, documentSha256, unitId, orderedTargets, shownLines, prefetch?.Observations), prefetch);
     }
 
     /// <summary>One POST body: the pinned envelope (model, temperature 0, max_tokens, locked provider block, usage) plus the declared tools
@@ -196,7 +217,8 @@ internal static class P7F1V6DirectAgent
     /// line Qwen saw only through a tool.</summary>
     public sealed record EvidenceReport(int ModelToolCallsEmitted, int ToolsDispatched, int ToolsRejectedBeforeDispatch, int ToolSucceeded,
         int ToolMessageBytes, int SuccessfulResultsShowingATarget, IReadOnlyList<string> TargetsShownByTools, string RelevantEvidenceObserved,
-        IReadOnlyList<string> EvidenceUsed, int ToolCacheHits);
+        IReadOnlyList<string> EvidenceUsed, int ToolCacheHits, int ObservationTargetsListed, int ObservationBytes, bool ObservationsComplete,
+        IReadOnlyList<string> EvidenceUsedFromObservations);
 
     public const string RelevanceAuditedOffline = "OFFLINE_AUDIT_AFTER_FREEZE";
 
@@ -213,7 +235,10 @@ internal static class P7F1V6DirectAgent
         var ordered = decide.OrderBy(tools.PositionOf).ToList();
         var shownAliases = shownIdx.Select(i => lines[i].Alias).ToHashSet(StringComparer.Ordinal);
         var prompt = Prompt(arm);
-        var payload = Payload(instruction, universe.SourceSha256, unitId, ordered, shownIdx.Select(i => lines[i]).ToArray());
+        var (payload, prefetch) = FirstPayload(arm, instruction, universe.SourceSha256, unitId, ordered, shownIdx.Select(i => lines[i]).ToArray(), tools);
+        // Lines the observations show are in the request: Qwen may cite them. Kept apart to report evidence taken from them.
+        var observationOnly = (prefetch?.ShownAliases ?? Array.Empty<string>()).Where(a => !shownAliases.Contains(a)).ToHashSet(StringComparer.Ordinal);
+        shownAliases.UnionWith(observationOnly);
         var history = new JsonArray();
         var requests = new List<P7F1V6Protocol.PreparedRequest>();
         var turns = new List<TurnRecord>();
@@ -240,7 +265,9 @@ internal static class P7F1V6DirectAgent
             var evidence = new EvidenceReport(emitted, tools.Ledger.Count - rejected, rejected, okRecords.Length, messageBytes,
                 okRecords.Count(c => c.ReturnedAliases.Any(targetSet.Contains)),
                 ordered.Where(a => okRecords.Any(c => c.ReturnedAliases.Contains(a, StringComparer.Ordinal))).ToArray(),
-                RelevanceAuditedOffline, scope.DecisionsCitingToolOnlyLines, tools.CacheHits);
+                RelevanceAuditedOffline, scope.DecisionsCitingToolOnlyLines, tools.CacheHits,
+                prefetch?.Listed ?? 0, prefetch?.Bytes ?? 0, prefetch is null || prefetch.Omitted == 0,
+                refs.Where(kv => kv.Value.Any(observationOnly.Contains)).Select(kv => kv.Key).OrderBy(tools.PositionOf).ToArray());
             return new AgentUnitOutcome(arm.ToString(), unit, turns, tools.Ledger.ToArray(), okCalls, scope, evidence);
         }
 

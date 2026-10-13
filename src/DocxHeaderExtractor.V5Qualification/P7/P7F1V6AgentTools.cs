@@ -444,6 +444,87 @@ internal sealed class P7F1V6AgentTools
         return (arguments, result, false);
     }
 
+    // ---------------- prefetched observations (D4.11h) ----------------
+
+    public const int PrefetchPerTarget = 2, PrefetchMaxBytes = 48_000, PrefetchTextChars = 100;
+
+    /// <param name="Observations">The object that goes into the request.</param>
+    /// <param name="ShownAliases">Every alias the observations show (other occurrences and the line after each).</param>
+    /// <param name="Listed">Targets that have another occurrence and are listed.</param>
+    /// <param name="WithoutOther">Targets with no other occurrence of the same normalized text.</param>
+    /// <param name="Omitted">Targets that have another occurrence but did not fit the byte cap (0 when the list is complete).</param>
+    public sealed record PrefetchResult(JsonObject Observations, int Bytes, IReadOnlyList<string> ShownAliases, int Listed, int WithoutOther, int Omitted, int PerTarget);
+
+    /// <summary>
+    /// The neutral read that the program runs itself, instead of waiting for the model to ask (D4.11h): for every target whose normalized text
+    /// (the repeat normalization of get_repeated_occurrences) also occurs on another line of the document, the first <see cref="PrefetchPerTarget"/>
+    /// other occurrences in reading order with their page, reading-order position, layout, how their font and left edge differ from the target's,
+    /// and the line that follows each. The only rule is "the text occurs elsewhere"; it says nothing about what any line is. A target with no
+    /// other occurrence is only counted. If the list would exceed the byte cap it is first cut to one occurrence per target and then by whole
+    /// targets from the end, and the result says so (complete false, omittedTargets).
+    /// </summary>
+    public PrefetchResult Prefetch(IReadOnlyList<string> targets)
+    {
+        var listed = new List<(int At, int[] Others)>();
+        var without = 0;
+        foreach (var a in targets)
+        {
+            var at = index[a];
+            var key = P7F1QEvidenceTools.RepeatKey(lines[at].Text);
+            var others = key.Length == 0 ? Array.Empty<int>() : repeatIndex[key].Where(i => i != at).ToArray();
+            if (others.Length == 0) without++; else listed.Add((at, others));
+        }
+
+        JsonObject Build(int perTarget, int take)
+        {
+            JsonObject Other(int at, int j)
+            {
+                var o = lines[j];
+                var t = lines[at];
+                double? D(double? x, double? y) => x is { } xv && y is { } yv ? Math.Round(yv - xv, 1, MidpointRounding.AwayFromZero) : null;
+                var n = new JsonObject { ["alias"] = o.Alias, ["page"] = o.Page, ["readingOrder"] = j, ["distanceFromTarget"] = j - at, ["exactTextMatch"] = o.Text == t.Text };
+                if (o.Text != t.Text) n["text"] = Clip(o.Text, PrefetchTextChars);
+                n["layout"] = Node(P7F1QEvidenceTools.CompactLayout(o.Bbox, o.Typography));
+                n["delta"] = new JsonObject
+                {
+                    ["fontSize"] = D(P7F1QEvidenceTools.FontSizeOf(t.Typography), P7F1QEvidenceTools.FontSizeOf(o.Typography)),
+                    ["boldRatio"] = D(P7F1QEvidenceTools.Bold(t.Typography), P7F1QEvidenceTools.Bold(o.Typography)),
+                    ["leftEdge"] = D(P7F1QEvidenceTools.LeftEdgeOf(t.Bbox), P7F1QEvidenceTools.LeftEdgeOf(o.Bbox)),
+                };
+                if (j + 1 < lines.Count) n["followingLine"] = new JsonObject { ["alias"] = lines[j + 1].Alias, ["page"] = lines[j + 1].Page, ["text"] = Clip(lines[j + 1].Text, PrefetchTextChars) };
+                return n;
+            }
+            var items = listed.Take(take).Select(x => (JsonNode)new JsonObject
+            {
+                ["alias"] = lines[x.At].Alias, ["otherOccurrences"] = x.Others.Length,
+                ["pagesWithOtherOccurrences"] = x.Others.Select(i => lines[i].Page).Distinct().Count(),
+                ["shown"] = new JsonArray(x.Others.Take(perTarget).Select(j => (JsonNode)Other(x.At, j)).ToArray()),
+            }).ToArray();
+            var o = new JsonObject
+            {
+                ["readBy"] = "the program, not requested by the model: for every target whose text also occurs on another line of the document it ran the get_repeated_occurrences read, and for each occurrence shown it read the line that follows",
+                ["normalization"] = P7F1QEvidenceTools.RepeatNormalization,
+                ["shownPerTarget"] = perTarget,
+                ["complete"] = take == listed.Count,
+                ["targetsWithoutOtherOccurrence"] = without,
+                ["targets"] = new JsonArray(items),
+            };
+            if (take < listed.Count) o["omittedTargets"] = listed.Count - take;
+            return o;
+        }
+
+        int Size(JsonObject o) => Encoding.UTF8.GetByteCount(o.ToJsonString(Wire));
+        var perTarget = PrefetchPerTarget;
+        var take = listed.Count;
+        var obs = Build(perTarget, take);
+        if (Size(obs) > PrefetchMaxBytes) { perTarget = 1; obs = Build(perTarget, take); }
+        while (Size(obs) > PrefetchMaxBytes && take > 0) { take--; obs = Build(perTarget, take); }
+        var shown = obs["targets"]!.AsArray().SelectMany(t => t!["shown"]!.AsArray().SelectMany(x =>
+            new[] { x!["alias"]!.GetValue<string>() }.Concat(x["followingLine"] is JsonObject f ? new[] { f["alias"]!.GetValue<string>() } : Array.Empty<string>())))
+            .Distinct(StringComparer.Ordinal).ToArray();
+        return new PrefetchResult(obs, Size(obs), shown, take, without, listed.Count - take, perTarget);
+    }
+
     // ---------------- observations ----------------
 
     JsonObject LineNode(int i, int maxText, int? relativeTo = null)
