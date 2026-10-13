@@ -1,0 +1,43 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "APPROVED",
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-f427233d.layout.json.geo.unwrap.single.v1.json",
+  "planSha256": "526efade3ddaf0029dcbe2bd211c81063fd2dcd57b666e9342e13ffcb96b9a47",
+  "codeCommit": "93b5cd0e7a93d37dd70786e64cfea0b98eb5f7e4",
+  "authorityId": "OWNER-DOC-f427233d",
+  "document": "owner-supplied (outside the repository): giay-moi-copy.pdf",
+  "sourceSha256": "f427233dcdcd8fc9724c4133c6ef5082bc5105474d4f074442b2c63f76922318",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 13,
+  "ceilingUsd": 0.28,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D411j-OWNER-DOC",
+  "dataSharing": {
+    "documentPublicity": "NOT part of the repository's public corpus. A document supplied by the owner (giay-moi-copy.pdf), read from outside the repository; whether it is public is not known to the program. The owner decided that nothing is redacted: the text of every line, including any names, telephone numbers and e-mail addresses it contains, is sent as it is. Requests, raw responses and the analysis stay in the safe store and are not committed or pushed.",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "allow",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ]
+  },
+  "approvedBy": "ylight23 (session user of the repository owner account)",
+  "approvedAtUtc": "2026-10-13T07:24:44.6010176Z",
+  "approvalText": "Owner message 2026-10-13: 'tạo plan chỉ 1 nhánh gồm 3 fact neutral trên tăng rich evidence mà?' (a single arm whose one request carries the neutral facts). Single GEOMETRY arm, one segment per page, json_object on every turn, single-fence unwrap, 5 repetitions. Same document, data policy and request shape as the owner's explicit approvals of 2026-10-13 for the Giấy mời trial (ZDR=false, waiver unverified, OpenRouter logging unknown, data_collection=allow, text unredacted, raw stays in the safe store). Plan 526efade3ddaf0029dcbe2bd211c81063fd2dcd57b666e9342e13ffcb96b9a47.",
+  "approvalSha256": "1ade002aa0f5171bae112a28ca1e9c8e8b4554d66573f31960da2cfd943d0ca6"
+}

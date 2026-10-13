@@ -1,0 +1,62 @@
+{
+  "artifact": "p7.f1.v6.d4.11j-owner-document-trial-dryrun.v1",
+  "authority": "OWNER-DOC-f427233d",
+  "providerCalls": 0,
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-f427233d.layout.json.geo.unwrap.single.v1.json",
+  "planSha256": "526efade3ddaf0029dcbe2bd211c81063fd2dcd57b666e9342e13ffcb96b9a47",
+  "planVerifiesNow": true,
+  "codeCommit": "93b5cd0e7a93d37dd70786e64cfea0b98eb5f7e4",
+  "firstRequests": [
+    {
+      "arm": "GEOMETRY",
+      "segment": "SEG-000",
+      "sha256": "7907f4687e789a8ba79c0fe4ce688598639c61b12d9e6020ce0343d25939beea",
+      "bytes": 36725,
+      "reserveUsd": 0.01678
+    },
+    {
+      "arm": "GEOMETRY",
+      "segment": "SEG-001",
+      "sha256": "c437a822cf28dd4344214b41b0850bb857d4284b114ee2da3bc7826f830554a3",
+      "bytes": 46542,
+      "reserveUsd": 0.017761
+    }
+  ],
+  "simulations": [
+    {
+      "simulation": "ANSWER_WITHOUT_TOOLS",
+      "arms": [
+        {
+          "arm": "GEOMETRY",
+          "posts": 10,
+          "reservedUsd": 0.1727,
+          "ceilingUsd": 0.28,
+          "halt": null,
+          "units": 10,
+          "complete": 10,
+          "stoppedByBudget": 0,
+          "maxRequestBytes": 46542
+        }
+      ]
+    },
+    {
+      "simulation": "TOOL_CALL_ON_EVERY_TURN (an overview each of 3 turns, then answer)",
+      "arms": [
+        {
+          "arm": "GEOMETRY",
+          "posts": 13,
+          "reservedUsd": 0.2255,
+          "ceilingUsd": 0.28,
+          "halt": null,
+          "units": 10,
+          "complete": 3,
+          "stoppedByBudget": 7,
+          "maxRequestBytes": 50738
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scripted models only; no provider call; no line text is written to this report."
+  ]
+}
