@@ -1,0 +1,43 @@
+{
+  "artifact": "p7.f1.v6.d4.5-live-authorization.v1",
+  "status": "APPROVED",
+  "planFile": "p7.f1.v6.d4.11j-owner-document-trial-plan.OWNER-DOC-08f459b8.layout.json.geo.unwrap.single.facts.r1.first12.mainrep2.toolrounds.toolfactsanalysis.factsv3.nolayout.retry3.repairall.v1.json",
+  "planSha256": "eb490a149039744bfc613624bd2259b5de70f81e5b827fb3858b7fbb9ac3beb5",
+  "codeCommit": "5c5841b262fb493648e6e336d902c54c54458722",
+  "authorityId": "OWNER-DOC-08f459b8",
+  "document": "owner-supplied (outside the repository): 029_WB_RFP_Works_DesignBuild_2021.pdf",
+  "sourceSha256": "08f459b8083249824a7fced5edf9bcde2faebd9d56c1456d6a0381a717f0994c",
+  "task": "A-STRUCTURAL-OCCURRENCES",
+  "model": "qwen/qwen3.7-flash",
+  "providerOnly": "alibaba",
+  "providerIgnore": "alibaba/us-east-1",
+  "allowFallbacks": false,
+  "campaigns": 1,
+  "maxPosts": 180,
+  "ceilingUsd": 4.93,
+  "maxRequestBytes": 131072,
+  "retries": 0,
+  "safeRoot": "C:\\Users\\btdba\\AppData\\Local\\DocxHeaderExtractor\\QualificationRaw\\D411j-OWNER-DOC",
+  "dataSharing": {
+    "documentPublicity": "A document of the repository's public heading corpus (todo10_8/heading_corpus_100), whose README states the files are real documents downloaded from public sources (029_WB_RFP_Works_DesignBuild_2021.pdf); the origin is not independently verified here. Text is sent as it is. Requests, raw responses and the analysis stay in the safe store and are not committed or pushed.",
+    "zdr": false,
+    "zdrDecision": "User decision recorded in the session (2026-10-12): \"CHO PHÉP DÂT ZDR = FALSE VÌ QWEN FLASH KHÔNG CẤU HÌNH ZDR = TRUE\". The route policy fact stays WAIVER_NOT_VERIFIED until this record is approved.",
+    "dataCollection": "NOT_SET_IN_REQUEST (OpenRouter default: allow). Setting deny would change the pinned request bytes and may make the Alibaba route ineligible.",
+    "dataCollectionDecision": "allow",
+    "loggingThroughOpenRouter": "UNKNOWN: not verified. Accepted only if listed in acceptedOpenItems.",
+    "openItemsToAccept": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ],
+    "acceptedOpenItems": [
+      "alibaba:zero data retention for qwen3.7-flash:NOT_SUPPORTED",
+      "alibaba:ZDR decision by the user:WAIVER_NOT_VERIFIED",
+      "alibaba:logging of request content through the OpenRouter endpoint:UNKNOWN"
+    ]
+  },
+  "approvedBy": "ylight23 (session user of the repository owner account)",
+  "approvedAtUtc": "2026-10-13T14:53:15.0065841Z",
+  "approvalText": "Owner message 2026-10-13: 'LƯỢT SỬA KHÔNG GIỚI HẠN, THỬ LẠI NẾU LỖI, CHO PHÉP CHẠY LẠI 029 1 LẦN' (repair turns with no limit of their own, retry on provider errors, run SRC-029 once more). Transport retries 3 (the owner named no number), repairs with no limit of their own (the arm call limit, 180 posts, is the bound). Request as the previous run: TOOLFACTS_ANALYSIS_V3, the owner's representative-lines instruction, and the fix that lets the model cite lines shown in documentStyles. Ceiling USD 4.93 (derived reserve bound), earlier owner permission to exceed budgets (2026-10-13). Public-corpus document, first 12 segments, one segment per page, json_object on every turn, single-fence unwrap, 1 repetition, 4 units in parallel. Data policy as the owner's explicit approvals of 2026-10-13 (ZDR=false, waiver unverified, OpenRouter logging unknown, data_collection=allow, raw stays in the safe store). Plan eb490a149039744bfc613624bd2259b5de70f81e5b827fb3858b7fbb9ac3beb5.",
+  "approvalSha256": "a83e1a82a71f3486d519f02b79ddf25f44a06afe9d0a19f1be57ece4ac57ffcf"
+}
