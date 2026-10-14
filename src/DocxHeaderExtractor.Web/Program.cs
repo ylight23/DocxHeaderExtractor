@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.DocumentProcessing.Review;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -6,20 +5,15 @@ using System.Threading.Channels;
 using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.Infrastructure.Learning;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.Application.Runtime;
-using DocxHeaderExtractor.Application.Feedback;
-using DocxHeaderExtractor.Application.Review;
 using DocxHeaderExtractor.Application.Semantics;
 using DocxHeaderExtractor.Application.Tasks;
 using DocxHeaderExtractor.Infrastructure.Runtime;
 using DocxHeaderExtractor.Infrastructure.Sources;
-using DocxHeaderExtractor.Infrastructure.Feedback;
-using DocxHeaderExtractor.Infrastructure.Review;
 using DocxHeaderExtractor.Web;
 using DocumentFormat.OpenXml.Packaging;
 using Microsoft.AspNetCore.Http.Features;
@@ -44,12 +38,6 @@ builder.Services.AddSingleton<LlamaModelCache>();
 builder.Services.AddSingleton<WebTransportFactoryResolver>(sp => selection =>
     new WebInferenceTransportFactory(selection, sp.GetRequiredService<IHttpClientFactory>(),
         sp.GetRequiredService<LlamaModelCache>()));
-builder.Services.AddSingleton(_ => new CorrectionMemory(CorrectionMemory.DefaultPath()));
-builder.Services.AddSingleton<IHumanFeedbackStore>(sp =>
-    new CorrectionMemoryFeedbackStore(sp.GetRequiredService<CorrectionMemory>()));
-builder.Services.AddSingleton<IHumanReviewStore>(_ =>
-    new JsonFileHumanReviewStore(RuntimeStatePaths.ReviewDirectory));
-builder.Services.AddSingleton<HumanReviewService>();
 builder.Services.AddSingleton<DocumentAgentHarnessFactory>();
 builder.Services.AddSingleton<LmStudioModelDiscovery>();
 builder.Services.AddSingleton<WritebackStore>();
@@ -103,24 +91,6 @@ app.MapGet("/api/lmstudio/models", async (LmStudioModelDiscovery discovery, Canc
 // Mặc định lấy thẳng từ Core, để giao diện luôn khớp với lệnh CLI tương ứng.
 app.MapGet("/api/defaults", () => Results.Json(Defaults.Current(), json));
 
-// Chỉ lưu những dòng người dùng đổi khác dự đoán. Correction nằm cục bộ và chỉ được retrieval
-// làm ví dụ; endpoint không fine-tune hoặc tự deploy model mới.
-app.MapPost("/api/corrections", async (HttpRequest req, IHumanFeedbackStore feedbackStore, CancellationToken ct) =>
-{
-    try
-    {
-        using var reader = new StreamReader(req.Body, Encoding.UTF8,
-            detectEncodingFromByteOrderMarks: true, bufferSize: 1024, leaveOpen: false);
-        var saved = await feedbackStore.SaveChangedAsync(
-            new HumanFeedbackSubmission(await reader.ReadToEndAsync(ct)), ct);
-        return Results.Json(new { saved, total = feedbackStore.Count }, json);
-    }
-    catch (Exception ex) when (ex is FormatException or InvalidOperationException or JsonException)
-    {
-        return Results.BadRequest(new { message = ex.Message });
-    }
-});
-
 // Bản .docx đã gắn outline chỉ sống trong bộ nhớ tới lần tải đầu tiên. Không có đường dẫn nào do
 // client chỉ định: đích ghi luôn nằm trong thư mục tạm của chính request đó.
 app.MapGet("/api/outline/{runId:guid}.docx", (Guid runId, WritebackStore store) =>
@@ -133,14 +103,11 @@ app.MapGet("/api/outline/{runId:guid}.docx", (Guid runId, WritebackStore store) 
             entry.FileName);
 });
 
-app.MapHumanReviewEndpoints(json);
-
 app.MapPost("/api/extract", async (
     HttpRequest req,
     HttpResponse res,
     DocumentAgentHarnessFactory harnessFactory,
     WritebackStore writebackStore,
-    HumanReviewService humanReviewService,
     WebTransportFactoryResolver transportFactory,
     CancellationToken ct) =>
 {
@@ -216,14 +183,6 @@ app.MapPost("/api/extract", async (
         // Một quyết định duy nhất về định dạng, đọc từ byte, dùng chung cho mọi bước phía sau.
         var uploadedType = UploadedSourceDetector.Detect(inputPath);
 
-        // Bundle review dựng từ OOXML nên chỉ có với nguồn OOXML. Trước đây bước này chạy vô điều
-        // kiện qua EnsureDocx và từ chối PDF theo phần mở rộng, nên Web không rút trích được PDF
-        // dù lane PDF đã chạy được từ CLI/MCP. Với PDF thì không có snapshot — nói ra chứ không
-        // dựng một snapshot hình dạng DOCX từ tài liệu không phải DOCX.
-        var source = uploadedType == SourceType.Pdf
-            ? null
-            : new ReviewDocumentSourceReader(options).Read(inputPath).Document;
-
         // Hai backend dùng tài nguyên máy này cần khóa. OpenRouter có thể chạy đồng thời và không
         // được giữ hàng chỉ vì GPU local/LM Studio đang bận.
         var gateHeld = false;
@@ -289,11 +248,6 @@ app.MapPost("/api/extract", async (
 
             var agentRun = await run;
             var outline = agentRun.TaskResult.Value;
-            var humanReview = source is null
-                ? null
-                : AuthorityOutlineReviewProjection.Project(outline, source);
-            if (humanReview is not null)
-                await humanReviewService.PublishAsync(humanReview, ct);
 
             // Đọc vào bộ nhớ trước khi finally xoá thư mục tạm; link chỉ tải được đúng một lần.
             string? download = null;
@@ -313,15 +267,6 @@ app.MapPost("/api/extract", async (
                 pipeline = WebPipelineProjection.Project(agentRun, uploadedType.ToString().ToLowerInvariant()),
                 stats = Stats.From(outline),
                 sourceType = uploadedType.ToString().ToLowerInvariant(),
-                review = source is null ? null : ReviewBundle.Create(outline, source),
-                humanReview,
-                humanReviewUrl = humanReview is null
-                    ? null
-                    : $"/review.html?documentId={Uri.EscapeDataString(
-                        ReviewDocumentIdCodec.Encode(humanReview.DocumentId))}",
-                humanReviewUnavailableReason = source is null
-                    ? "human review is projected from the OOXML source document; a PDF has none"
-                    : null,
                 agent = new
                 {
                     runId = agentRun.RunId,
