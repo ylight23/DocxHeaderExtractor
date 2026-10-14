@@ -12,9 +12,8 @@ DOCX -> DocxSourceOccurrenceAdapter -+
 PDF  -> PdfSourceOccurrenceAdapter --+          |
                                                 v
                                        IHeadingAuthority   (the replaceable seam)
-                         DOCX: TextSemanticHeadingAuthority   (pending its own qualification)
-                         PDF:  SelectedLinesHeadingAuthority  (since 2026-10-14)
-                               IHeadingSelector -> PdfHeadingAgentSelector
+                         DOCX and PDF: SelectedLinesHeadingAuthority  (PDF since 2026-10-14, DOCX since 2026-10-14)
+                               IHeadingSelector -> DocxHeadingAgentSelector / PdfHeadingAgentSelector
                                (V6 direct agent, D4.12 method: one conversation per layout segment,
                                get_line_facts first, evidence tools, repair turns)
                                F1 -> G2A -> H2-C V2 (FunctionAnchorExtentHeadingAuthority) retired
@@ -28,10 +27,12 @@ PDF  -> PdfSourceOccurrenceAdapter --+          |
         CanonicalFinalStructure -> DocumentProductOutputProjector
 ```
 
-Routes: `DocxHeadingAuthorityRoute` and `PdfHeadingAuthorityRoute` each run their source adapter, their
-authority and the one shared assembler. The PDF route additionally owns the lane lease, checkpoint and
-the fail-closed qualified transport (`IAgentRouteInferenceTransport`); there is no
-canonical-text fallback.
+Routes: `DocxHeadingPipeline` and `PdfHeadingPipeline` each run their source adapter, the selected-lines
+authority and the one shared assembler. Both run under the shared lane lease (`LaneExecution`) and the
+fail-closed qualified transport (`IAgentRouteInferenceTransport`, `LeaseBoundInferenceTransport`); the
+PDF route additionally owns its checkpoint. There is no canonical-text fallback and no local-model route:
+the former DOCX text authority (`TextSemanticHeadingAuthority`, `CanonicalSemanticEngine`, the Core
+canonical pipeline and binder) was removed when DOCX moved to the V6 agent.
 
 Ownership:
 
@@ -40,9 +41,8 @@ Ownership:
 - Hierarchy owns parent and depth. The materializer owns canonical structure creation.
 - Projection owns product shape. Infrastructure owns provider transport and the model/route policy.
 
-Promoting DOCX to the qualified protocol means writing a new `IHeadingAuthority` after its own
-qualification evidence exists; the source adapter, assembler and projection do not change. Gold,
-replay, qualification artifacts and diagnostics are never production authority.
+The DOCX route has not been scored against Gold yet; scoring it is a separate step. Gold, replay,
+qualification artifacts and diagnostics are never production authority.
 
 ## Historical inventory
 

@@ -192,10 +192,7 @@ serialized shapes preserved by that ownership move. Later DTO retirement/API cha
 documented separately in the cleanup contract compatibility and S1/S2 audits. File-backed source hashing belongs to
 `DocumentProcessing/Provenance`, not the pure semantic services.
 
-`DocumentProcessing/Semantics/Canonical` owns `CanonicalSemanticTextProductionEntryPoint`,
-`CanonicalSemanticRequestComposer`, and `SemanticContextPacker`. The entrypoint invokes the
-Core `ICanonicalSemanticTextModel` boundary; its input contracts remain Core-owned, so Core has
-no reverse reference to DocumentProcessing. DOCX uses this text path; PDF uses the V6 heading agent (`DocxHeaderExtractor.PdfHeadingAgent`, the D4.12 method, promoted 2026-10-14) behind `IHeadingSelector`; the F1 → G2A → H2-C V2 chain it replaced is no longer on any production route.
+Both PDF and DOCX use the V6 heading agent (`DocxHeaderExtractor.PdfHeadingAgent`, the D4.12 method; PDF promoted 2026-10-14, DOCX wired 2026-10-14) behind `IHeadingSelector`. The agent is source-neutral: `IAgentSource` gives lines, windows and facts, `IAgentFlavor` gives the prompt, tool definitions and grouping/placement text, `IAgentTools` (over `AgentToolHost`) runs the tools. `PdfAgentFlavor` and `DocxAgentFlavor` are the two flavors; `HeadingAgentSelector` is the one conversation driver. The old DOCX text path (`CanonicalSemantic*` engine, request composer, entry point and the Core canonical pipeline/binder/parser) and the F1 → G2A → H2-C V2 chain were removed.
 
 `Infrastructure/AI/QualifiedInference` owns the frozen provider carrier and its provider envelope/body
 types. Moving them does not change provider payload bytes, prompt wording, token limits, or parser

@@ -38,9 +38,9 @@ public interface IInferenceTransportFactory
     Task<IInferenceTransport> CreateAsync(CancellationToken ct = default);
 
     /// <summary>
-    /// Creates the separately-authorized production transport for the PDF authority route.
-    /// DOCX continues to use <see cref="CreateAsync"/> and may use any configured provider.
-    /// A factory that has not explicitly opted into the qualified PDF route fails closed rather
+    /// Creates the separately-authorized production transport for the agent routes (PDF and DOCX).
+    /// Both routes call the provider through the V6 heading selector and need the key this transport carries.
+    /// A factory that has not explicitly opted into the qualified agent route fails closed rather
     /// than silently falling back to its default (usually local) transport.
     /// </summary>
     Task<IInferenceTransport> CreateAgentRouteAsync(CancellationToken ct = default) =>
@@ -58,7 +58,7 @@ public interface IInferenceTransportFactory
 }
 
 /// <summary>
-/// Marker issued only by a composition root that has authorized the qualified PDF route. It names the
+/// Marker issued only by a composition root that has authorized the qualified agent route (PDF or DOCX). It names the
 /// provider and model the route was qualified on and carries the provider key: ordinary production must
 /// not borrow another transport merely to reach the PDF agent.
 /// </summary>
@@ -67,7 +67,7 @@ public interface IAgentRouteInferenceTransport : IInferenceTransport
     string RouteProvider { get; }
     string RouteModel { get; }
 
-    /// <summary>The provider key of the authorized route, for the PDF heading selector, which calls the provider itself (V6 promotion).
-    /// Null when the composition root issued none; the PDF lane then refuses before any call.</summary>
+    /// <summary>The provider key of the authorized route, for the heading selector, which calls the provider itself (V6 promotion).
+    /// Null when the composition root issued none; the lane then refuses before any call.</summary>
     string? OpenRouterApiKey => null;
 }
