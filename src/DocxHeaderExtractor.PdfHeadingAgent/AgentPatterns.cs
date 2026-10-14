@@ -22,6 +22,8 @@ namespace DocxHeaderExtractor.PdfHeadingAgent;
 /// applies it, recording each change (alias, previous, new, pattern, reason). UNRESOLVED keeps the earlier decision. An answer still refused
 /// after the repair turns changes nothing and is reported; nothing is changed silently.</item>
 /// </list>
+/// V4 (owner, 2026-10-14): the evidence is at the occurrence's own location: evidenceRefs of a member must include the member itself or the line
+/// that follows it (next). Citing only other members is refused: in V3 the model justified six members of "#." by two other members alone.
 /// V3 (owner, 2026-10-14): an occurrence decided differently from comparable occurrences must give source-grounded evidence whether its decision
 /// changed or was kept; agreement with the majority is not evidence. C# checks that every member on the smaller side of a split explains itself.
 /// V2 (after the first SRC-089 run): V1 asked for one decision for the whole pattern with named exceptions; the model then gave a word pattern
@@ -30,7 +32,7 @@ namespace DocxHeaderExtractor.PdfHeadingAgent;
 /// </summary>
 internal static class AgentPatterns
 {
-    public const string Version = "PDF_HEADING_PATTERN_V3";
+    public const string Version = "PDF_HEADING_PATTERN_V4";
     public const int MaxMembers = 120, MaxPatterns = 8, MaxAudits = 2, MaxRepairs = 2, TextChars = 120, MaxRefs = 8, MaxReasonChars = 300;
 
     public static readonly string Prompt = PromptFor(audit: false);
@@ -43,10 +45,10 @@ internal static class AgentPatterns
             : "The document was decided one segment at a time, and the lines that start with the pattern were not all decided the same way.") + " The request gives pattern and members: every decided line of the whole document whose text starts with the pattern (a number written as #), each with alias, page, text, style, next (the line that follows it) and the decision, and the reason when there is one, given to it earlier. It also gives documentStyles, the styles of the whole document.",
         "First write rule: how the instruction applies to the lines of this pattern, the same way everywhere in the document. Then decide every member by that rule, one by one, with its text, style and next line in view. A line is not a heading because it starts with the pattern: body text can start with the same words, for example a sentence that refers to another part of the document. Do not keep or change an earlier decision because it was made.",
         "For an occurrence whose decision differs from comparable occurrences, provide source-grounded evidence explaining why its structural function is the same or different. This requirement applies whether the original decision is changed or retained. Agreement with the majority is not itself evidence.",
-        "In this answer that means: a member whose decision differs from its earlier decision, and every member on the smaller side when your decisions are split between SELECT and NOT_SELECT (both sides when they are equal), needs reason and evidenceRefs, the aliases that show its structural function. Other members need neither. If a member cannot be settled, give UNRESOLVED; it keeps its earlier decision.",
+        "In this answer that means: a member whose decision differs from its earlier decision, and every member on the smaller side when your decisions are split between SELECT and NOT_SELECT (both sides when they are equal), needs reason and evidenceRefs, the aliases that show its structural function. Other members need neither. The evidence is at the member's own location: evidenceRefs of a member must include the member itself or its next line; other aliases may be added, but other members alone do not show what this occurrence does where it stands. If a member cannot be settled, give UNRESOLVED; it keeps its earlier decision.",
         "Your answer is exactly one JSON object and nothing else. Use only the keys shown below.",
         "{\"protocolVersion\":\"" + Version + "\",\"pattern\":\"<the pattern, copied>\",\"rule\":\"<how the instruction applies to these lines, at most " + MaxReasonChars + " characters>\",\"decisions\":[{\"alias\":\"<member alias>\",\"decision\":\"SELECT\"},{\"alias\":\"<member alias>\",\"decision\":\"NOT_SELECT\",\"reason\":\"<why its decision changes, at most " + MaxReasonChars + " characters>\",\"evidenceRefs\":[\"<alias shown>\"]}]}",
-        "Rules: copy pattern exactly. decisions lists every member exactly once, in the order given. decision is SELECT, NOT_SELECT or UNRESOLVED. reason and evidenceRefs (1 to " + MaxRefs + " aliases shown in the request) are required when decision differs from the member's earlier decision, and for every member on the smaller side of a split. Do not add other fields.");
+        "Rules: copy pattern exactly. decisions lists every member exactly once, in the order given. decision is SELECT, NOT_SELECT or UNRESOLVED. reason and evidenceRefs (1 to " + MaxRefs + " aliases shown in the request) are required when decision differs from the member's earlier decision, and for every member on the smaller side of a split. evidenceRefs of a member includes the member's own alias or its next alias. Do not add other fields.");
 
     public sealed record Conflict(string Pattern, int[] Members);
     public sealed record Change(string Alias, string Previous, string New, string Pattern, string Reason);
@@ -158,6 +160,7 @@ internal static class AgentPatterns
         var lines = source.Lines;
         var members = conflict.Members;
         var earlier = members.ToDictionary(i => lines[i].Alias, i => decisions[lines[i].Alias], StringComparer.Ordinal);
+        var nextOf = members.Where(i => i + 1 < lines.Count).ToDictionary(i => lines[i].Alias, i => lines[i + 1].Alias, StringComparer.Ordinal);
         var shown = new HashSet<string>(earlier.Keys, StringComparer.Ordinal);
         object? Style(int i) => source.LayoutFacts.TryGetValue(lines[i].Alias, out var f) && f["style"] is { } s ? JsonNode.Parse(s.ToJsonString()) : null;
         var items = members.Select(i =>
@@ -205,20 +208,21 @@ internal static class AgentPatterns
             {
                 var content = reply.Content ?? "";
                 if (TryUnwrapFence(content, out var inner)) content = inner;
-                parsed = Parse(content, conflict.Pattern, earlier, shown, out failure, out detail);
+                parsed = Parse(content, conflict.Pattern, earlier, shown, out failure, out detail, nextOf);
             }
             if (parsed is not null) return (parsed, reply.Content, null, posts);
             if (repairs >= MaxRepairs) return (null, null, unitId + ":" + failure, posts);
             repairs++;
             history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content ?? "" });
             history.Add(new JsonObject { ["role"] = "user", ["content"] = "Your answer was refused (" + failure + ")" + (detail is null ? "" : ": " + detail + ".")
-                + " Copy the pattern exactly, give rule, and decide every member exactly once with SELECT, NOT_SELECT or UNRESOLVED; a member whose decision differs from its earlier decision, and every member on the smaller side of a split, needs reason and 1 to " + MaxRefs + " aliases shown in the request in evidenceRefs. Send the complete answer again as exactly one JSON object." });
+                + " Copy the pattern exactly, give rule, and decide every member exactly once with SELECT, NOT_SELECT or UNRESOLVED; a member whose decision differs from its earlier decision, and every member on the smaller side of a split, needs reason and 1 to " + MaxRefs + " aliases shown in the request in evidenceRefs, including the member itself or its next line. Send the complete answer again as exactly one JSON object." });
         }
     }
 
     /// <summary>The strict parser of a pattern answer. earlier holds every member (in the order shown) and the decision it got from its segment;
     /// shown holds every alias of the request.</summary>
-    internal static Resolution? Parse(string reply, string pattern, IReadOnlyDictionary<string, string> earlier, IReadOnlySet<string> shown, out string? failure, out string? detail)
+    internal static Resolution? Parse(string reply, string pattern, IReadOnlyDictionary<string, string> earlier, IReadOnlySet<string> shown, out string? failure, out string? detail,
+        IReadOnlyDictionary<string, string> nextOf)
     {
         failure = null; detail = null;
         if (Encoding.UTF8.GetByteCount(reply) > VisibleResponseCapBytes) { failure = "PROTOCOL:REPLY_OVER_CAP"; return null; }
@@ -250,6 +254,9 @@ internal static class AgentPatterns
                     if (refs.ValueKind != JsonValueKind.Array || refs.GetArrayLength() is < 1 or > MaxRefs) { failure = "PROTOCOL:EVIDENCE_INVALID"; detail = alias + ": evidenceRefs must give 1 to " + MaxRefs + " aliases"; return null; }
                     foreach (var r in refs.EnumerateArray())
                         if (r.ValueKind != JsonValueKind.String || !shown.Contains(r.GetString()!)) { failure = "PROTOCOL:EVIDENCE_NOT_SHOWN"; detail = alias + ": " + (r.ValueKind == JsonValueKind.String ? r.GetString() : "a value") + " was not shown in this request"; return null; }
+                    // V4: evidence at the occurrence's own location - the member itself or the line after it.
+                    if (!refs.EnumerateArray().Any(r => r.GetString() == alias || (nextOf.TryGetValue(alias, out var next) && r.GetString() == next)))
+                    { failure = "PROTOCOL:EVIDENCE_NOT_LOCAL"; detail = alias + ": evidenceRefs must include " + alias + (nextOf.TryGetValue(alias, out var n2) ? " or its next line " + n2 : ""); return null; }
                 }
                 if (value != "UNRESOLVED" && value != before && (string.IsNullOrWhiteSpace(why) || !hasRefs))
                 { failure = "PROTOCOL:CHANGE_WITHOUT_EVIDENCE"; detail = alias + " changes from " + before + " to " + value + " without reason and evidenceRefs"; return null; }

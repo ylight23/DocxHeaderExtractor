@@ -297,6 +297,9 @@ public sealed class PdfHeadingAgentPatternTests
         { Reply("p", new { alias = "keep-out", decision = "NOT_SELECT" }, new { alias = "keep-in", decision = "SELECT" }), "PROTOCOL:DIFFERENCE_WITHOUT_EVIDENCE" },
         { Reply("p", new { alias = "keep-out", decision = "NOT_SELECT", reason = "body", evidenceRefs = new[] { "next" } }, new { alias = "keep-in", decision = "SELECT" }), "PROTOCOL:DIFFERENCE_WITHOUT_EVIDENCE" },
         { Reply("p", new { alias = "keep-out", decision = "NOT_SELECT", reason = "body", evidenceRefs = new[] { "next" } }, new { alias = "keep-in", decision = "SELECT", reason = "opens", evidenceRefs = new[] { "keep-in" } }), null },
+        // V4: the evidence is at the member's own location - itself or its next line; other members alone are refused.
+        { Reply("p", new { alias = "keep-out", decision = "NOT_SELECT", reason = "body", evidenceRefs = new[] { "keep-in" } }, new { alias = "keep-in", decision = "SELECT", reason = "opens", evidenceRefs = new[] { "keep-in" } }), "PROTOCOL:EVIDENCE_NOT_LOCAL" },
+        { Reply("p", new { alias = "keep-out", decision = "NOT_SELECT", reason = "body", evidenceRefs = new[] { "keep-in", "keep-out" } }, new { alias = "keep-in", decision = "SELECT", reason = "opens", evidenceRefs = new[] { "keep-in" } }), null },
         // An answer that is not split needs evidence only for a change; a change with a reason and an alias shown is accepted; UNRESOLVED needs none.
         { Reply("p", new { alias = "keep-out", decision = "SELECT", reason = "why", evidenceRefs = new[] { "next" } }, new { alias = "keep-in", decision = "SELECT" }), null },
         { Reply("p", new { alias = "keep-out", decision = "SELECT", reason = "why", evidenceRefs = new[] { "next" } }, new { alias = "keep-in", decision = "UNRESOLVED" }), null },
@@ -315,7 +318,8 @@ public sealed class PdfHeadingAgentPatternTests
     {
         var earlier = new Dictionary<string, string> { ["keep-out"] = "NOT_SELECT", ["keep-in"] = "SELECT" };
         var shown = new HashSet<string>(earlier.Keys) { "next" };
-        var parsed = AgentPatterns.Parse(reply, "p", earlier, shown, out var got, out _);
+        var nextOf = new Dictionary<string, string> { ["keep-out"] = "next" };
+        var parsed = AgentPatterns.Parse(reply, "p", earlier, shown, out var got, out _, nextOf);
         Assert.Equal(failure, got);
         Assert.Equal(failure is null, parsed is not null);
     }
