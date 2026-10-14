@@ -16,7 +16,7 @@ internal sealed record AgentSourceLine(string Alias, int Ordinal, int? Page, str
 /// (P7F1V6Universe, P7F1QEvidenceTools.FromStore, PdfSourceEvidenceStore, P7F1QLayoutPacking, layout segmentation LAYOUT_PAGE_BLOCK_48_V1); the
 /// parity tests hold the two to the same bytes.
 /// </summary>
-internal sealed class AgentSource
+internal sealed class AgentSource : IAgentSource
 {
     public const int Unit = 48, Overlap = 20;
 
@@ -36,6 +36,7 @@ internal sealed class AgentSource
     /// <summary>The decided range of each segment, [Start, End) into <see cref="Lines"/>, covering every line once.</summary>
     public IReadOnlyList<(int Start, int End)> Cores { get; }
     public IReadOnlyDictionary<string, System.Text.Json.Nodes.JsonObject> LayoutFacts { get; }
+    public IAgentFlavor Flavor => PdfAgentFlavor.Instance;
 
     public static string SegmentId(int n) => $"SEG-{n:000}";
 

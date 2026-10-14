@@ -97,13 +97,14 @@ internal static class AgentProtocol
     /// <summary>The user message of one unit: the instruction, the document hash, the targets and context (alias, page, text), the target range
     /// and the document style table.</summary>
     public static string Payload(string documentSha256, string unitId, IReadOnlyList<string> decide, IReadOnlyList<AgentSourceLine> shownLines, JsonObject documentStyles,
-        string instruction = Instruction)
+        string instruction = Instruction, IAgentFlavor? flavor = null)
     {
+        flavor ??= PdfAgentFlavor.Instance;
         var set = decide.ToHashSet(StringComparer.Ordinal);
         var shown = shownLines.Select(l => l.Alias).ToList();
         if (shown.Distinct(StringComparer.Ordinal).Count() != shown.Count) throw new ArgumentException("SHOWN_ALIAS_REPEATED", nameof(shownLines));
         if (decide.Count == 0 || set.Count != decide.Count || decide.Any(a => !shown.Contains(a, StringComparer.Ordinal))) throw new ArgumentException("DECIDE_NOT_SHOWN", nameof(decide));
-        object Item(AgentSourceLine l) => new { alias = l.Alias, page = l.Page ?? 0, text = l.Text };
+        object Item(AgentSourceLine l) => flavor.PayloadItem(l);
         var targets = shownLines.Where(l => set.Contains(l.Alias)).ToList();
         var payload = new Dictionary<string, object?>
         {
@@ -123,13 +124,14 @@ internal static class AgentProtocol
 
     /// <summary>One POST body: model, messages (system prompt and payload as cache-marked text blocks, then the history), json_object, temperature
     /// 0, max_tokens, reasoning enabled, the eight tools, this turn's tool_choice, the locked provider block, streaming and usage.</summary>
-    public static PreparedRequest Build(string payload, JsonArray history, string toolChoice)
+    public static PreparedRequest Build(string payload, JsonArray history, string toolChoice, IAgentFlavor? flavor = null)
     {
+        flavor ??= PdfAgentFlavor.Instance;
         if (toolChoice is not ("auto" or "none")) throw new ArgumentException("TOOL_CHOICE_INVALID", nameof(toolChoice));
         static JsonNode Content(string text) =>
             new JsonArray(new JsonObject { ["type"] = "text", ["text"] = text, ["cache_control"] = new JsonObject { ["type"] = "ephemeral" } });
         var messages = new JsonArray(
-            new JsonObject { ["role"] = "system", ["content"] = Content(SystemPrompt) },
+            new JsonObject { ["role"] = "system", ["content"] = Content(flavor.SystemPrompt) },
             new JsonObject { ["role"] = "user", ["content"] = Content(payload) });
         foreach (var m in history) messages.Add(m!.DeepClone());
         var body = new JsonObject
@@ -140,7 +142,7 @@ internal static class AgentProtocol
             ["temperature"] = 0,
             ["max_tokens"] = MaxTokens,
             ["reasoning"] = new JsonObject { ["enabled"] = true },
-            ["tools"] = AgentTools.Definitions(),
+            ["tools"] = flavor.ToolDefinitions(),
             ["tool_choice"] = toolChoice,
             ["provider"] = JsonSerializer.SerializeToNode(new { only = new[] { ProviderTag }, ignore = Ignore, allow_fallbacks = false, require_parameters = true }, Options),
             ["stream"] = true,

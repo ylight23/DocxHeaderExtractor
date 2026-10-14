@@ -94,16 +94,17 @@ internal static class AgentUnit
 
     public delegate ModelTurn Model(string unitId, int turn, PreparedRequest request);
 
-    public static AgentUnitOutcome Run(AgentSource source, int segment, Model model, AgentBudget budget, int retryDelayMs = 5000, string instruction = Instruction)
+    public static AgentUnitOutcome Run(IAgentSource source, int segment, Model model, AgentBudget budget, int retryDelayMs = 5000, string instruction = Instruction)
     {
         var unitId = AgentSource.SegmentId(segment);
         var (decide, shownIdx) = source.Scope(segment);
         var lines = source.Lines;
-        var tools = new AgentTools(source);
+        var flavor = source.Flavor;
+        var tools = flavor.CreateTools(source);
         var ordered = decide.OrderBy(tools.PositionOf).ToList();
         var shownAliases = shownIdx.Select(i => lines[i].Alias).ToHashSet(StringComparer.Ordinal);
         var styles = tools.DocumentStyles();
-        var payload = Payload(source.SourceSha256, unitId, ordered, shownIdx.Select(i => lines[i]).ToArray(), styles, instruction);
+        var payload = Payload(source.SourceSha256, unitId, ordered, shownIdx.Select(i => lines[i]).ToArray(), styles, instruction, flavor);
         // The style table shows the first lines of each style: they are in the request, so the model may cite them.
         shownAliases.UnionWith(styles["styles"]!.AsArray().SelectMany(s => s!["firstLines"]!.AsArray().Select(l => l!["alias"]!.GetValue<string>())));
 
@@ -134,7 +135,7 @@ internal static class AgentUnit
         for (int turn = 1; turn <= MaxPostsPerUnit + 2 * repairsUsed; turn++)
         {
             var toolChoice = forcedChoices.Count > 0 ? forcedChoices.Dequeue() : turn <= MaxToolTurns ? "auto" : "none";
-            var req = Build(payload, history, toolChoice);
+            var req = Build(payload, history, toolChoice, flavor);
             var refusal = budget.Admit(req);
             if (refusal is not null) return Done("INCOMPLETE", "BUDGET:" + refusal);
             requestShas.Add(req.Sha256);
@@ -200,7 +201,7 @@ internal static class AgentUnit
                 var reserve = reply.ToolCalls.Select((c, i) => tools.RejectionBytes(ids[i], c.Name)).ToArray();
                 if (messageBytes + reserve.Sum() > MaxToolMessageBytesPerUnit) return Done("INCOMPLETE", "BUDGET:UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED");
                 var future = Enumerable.Range(turn + 1, Math.Max(0, MaxToolTurns - turn))
-                    .Sum(t => Enumerable.Range(1, MaxCallsPerTurn).Sum(k => AgentTools.Names.Max(name => tools.RejectionBytes($"E{t}.{k:00}", name))));
+                    .Sum(t => Enumerable.Range(1, MaxCallsPerTurn).Sum(k => tools.ReservedNames.Max(name => tools.RejectionBytes($"E{t}.{k:00}", name))));
                 var assistantCalls = new JsonArray();
                 var results = new List<JsonObject>();
                 for (int n = 1; n <= reply.ToolCalls.Count; n++)
@@ -209,7 +210,7 @@ internal static class AgentUnit
                     var evidenceId = ids[n - 1];
                     var later = reserve.Skip(n).Sum();
                     var result = n > MaxCallsPerTurn ? tools.Reject(evidenceId, call.Name, call.Arguments, "PER_TURN_CALL_CAP_EXCEEDED")
-                        : messageBytes + AgentTools.MaxResultBytes + later + future > MaxToolMessageBytesPerUnit
+                        : messageBytes + tools.MaxResultBytes + later + future > MaxToolMessageBytesPerUnit
                             ? tools.Reject(evidenceId, call.Name, call.Arguments, "UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED")
                         : tools.Execute(evidenceId, call.Name, call.Arguments);
                     messageBytes += result.Content.Length;
@@ -228,7 +229,7 @@ internal static class AgentUnit
             }
 
             // A reply without tool calls is the final answer. It must come after the facts were read.
-            if (!tools.Ledger.Any(c => c.Tool == AgentTools.LineFacts && c.Status == "OK"))
+            if (!tools.FactsWereRead)
             {
                 history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
                 TryRepair("PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED");
