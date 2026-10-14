@@ -59,11 +59,13 @@ public sealed class PdfProductReachabilityTests : IDisposable
         // outline a host consumes. The script claims occurrences rather than judging them, so this
         // measures the wiring between the semantic stage and the outline, nothing about the model.
         using var model = new QualifiedPdfScriptedClassifier();
-        var outline = await RunAsync(CopyPdf("claimed.pdf"), model: model);
+        var selector = new ScriptedPdfSelector();
+        var outline = await RunAsync(CopyPdf("claimed.pdf"), model: model, selector: selector);
 
         Assert.Equal("pdf-canonical-vnext", outline.DeterministicRoute);
         Assert.NotEmpty(outline.Headings);
-        Assert.True(model.Calls > 0, "the PDF lane never reached the transport");
+        Assert.True(selector.Calls > 0, "the PDF lane never reached the heading selector");
+        Assert.True(model.Calls > 0, "the PDF lane never reached the transport for placement");
         Assert.Equal("qualified-pdf-script", outline.Model);
         // The text on the outline is the source occurrence's, never the model's echo of it.
         Assert.All(outline.Headings, heading => Assert.False(string.IsNullOrWhiteSpace(heading.Text)));
@@ -100,13 +102,14 @@ public sealed class PdfProductReachabilityTests : IDisposable
         // did nothing on one lane would make the harness's repair loop mean two different things
         // depending on what was uploaded - and it would look like a model failure, not a wiring one.
         var path = CopyPdf("quarantine.pdf");
-        var full = await RunAsync(path, model: new QualifiedPdfScriptedClassifier());
+        var full = await RunAsync(path, model: new QualifiedPdfScriptedClassifier(), selector: new ScriptedPdfSelector());
         Assert.NotEmpty(full.Headings);
 
         var repaired = await RunAsync(
             path,
             quarantine: full.Headings.Select(heading => heading.Index).ToHashSet(),
-            model: new QualifiedPdfScriptedClassifier());
+            model: new QualifiedPdfScriptedClassifier(),
+            selector: new ScriptedPdfSelector());
 
         Assert.True(repaired.Headings.Count < full.Headings.Count,
             $"quarantine changed nothing: {full.Headings.Count} headings before and after");
@@ -137,12 +140,12 @@ public sealed class PdfProductReachabilityTests : IDisposable
     }
 
     private static async Task<DocumentOutline> RunAsync(
-        string path, IReadOnlySet<int>? quarantine = null, IInferenceTransport? model = null)
+        string path, IReadOnlySet<int>? quarantine = null, IInferenceTransport? model = null, IPdfHeadingSelector? selector = null)
     {
         var options = new PipelineOptions { DisableLlm = model is null };
         using var tool = model is null
             ? new PipelineDocumentExtractionTool(options, new NoCallInferenceTransportFactory())
-            : new PipelineDocumentExtractionTool(options, model);
+            : new PipelineDocumentExtractionTool(options, model, pdfSelector: selector);
         return await tool.ExecuteAsync(new AgentToolInvocation(
             new DocumentAgentRequest(path),
             1,
@@ -157,83 +160,48 @@ public sealed class PdfProductReachabilityTests : IDisposable
     }
 
     /// <summary>
-    /// Test-only production-authorized transport. It exercises the promoted F1 → G2A → H2-C
-    /// protocol rather than the historical generic heading schema.
+    /// Test-only production-authorized transport. Since the V6 promotion (2026-10-14) the PDF lane sends it no frozen request: it carries
+    /// the route's key and answers the placement call (with no placement). Calls counts the placement calls.
     /// </summary>
     private sealed class QualifiedPdfScriptedClassifier : IPdfProductionAuthorizedInferenceTransport
     {
         public int Calls { get; private set; }
+        public string? OpenRouterApiKey => "test-key";
         public string PdfProductionProvider => "test";
         public string PdfProductionModel => "test";
         public string ModelName => "qualified-pdf-script";
         public int ContextSize => 1 << 20;
-        public string RuntimeDescription => "test-only qualified PDF protocol script";
+        public string RuntimeDescription => "test-only PDF route script";
         public int SharedPrefixTokens => 0;
         public IFrozenInferenceRequestComposer RequestComposer => new OpenRouterQwen37InferenceRequestComposer();
 
         public Task<string> BoundaryCutAsync(
-            string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
-            Task.FromResult("{\"placements\":[]}");
+            string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
+        {
+            Calls++;
+            return Task.FromResult("{\"placements\":[]}");
+        }
 
         public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(
             byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
-            CancellationToken cancellationToken = default)
-        {
-            Calls++;
-            using var request = System.Text.Json.JsonDocument.Parse(userMessage);
-            var root = request.RootElement;
-            var protocol = root.GetProperty("protocolVersion").GetString();
-            string content = protocol switch
-            {
-                "v5-total-occurrence-function-membership-1" => Functions(root),
-                "v5-function-conditioned-anchor-existence-1" => Anchors(root),
-                "v5-function-conditioned-exact-end-pointer-clean-paired-1" => Boundary(root),
-                _ => throw new InvalidOperationException($"Unexpected PDF test protocol: {protocol}"),
-            };
-            return Task.FromResult(new FrozenInferenceResponse(content, "stop"));
-        }
+            CancellationToken cancellationToken = default) =>
+            throw new InvalidOperationException("the V6 PDF lane sends no frozen request");
 
         public void Dispose() { }
+    }
 
-        private static string Functions(System.Text.Json.JsonElement root)
-        {
-            var decisions = root.GetProperty("occurrences").EnumerateArray()
-                .Select((row, index) => new
-                {
-                    occurrence = row.GetProperty("id").GetString(),
-                    function = index == 0 ? "ESTABLISHES_STRUCTURE" : "OTHER",
-                })
-                .ToArray();
-            return System.Text.Json.JsonSerializer.Serialize(new { decisions });
-        }
+    /// <summary>A heading selector that claims the first line of every page: it measures the wiring, nothing about a model.</summary>
+    private sealed class ScriptedPdfSelector : IPdfHeadingSelector
+    {
+        public int Calls { get; private set; }
+        public string SelectorId => "scripted-first-line-of-page";
 
-        private static string Anchors(System.Text.Json.JsonElement root)
+        public Task<PdfHeadingSelection> SelectAsync(string pdfPath, string apiKey, CancellationToken ct)
         {
-            var decisions = root.GetProperty("occurrences").EnumerateArray()
-                .Select(row => new
-                {
-                    primary = row.GetProperty("primary").GetString(),
-                    anchor = "HAS_STRUCTURAL_EXTENT",
-                })
-                .ToArray();
-            return System.Text.Json.JsonSerializer.Serialize(new { decisions });
-        }
-
-        private static string Boundary(System.Text.Json.JsonElement root)
-        {
-            var anchor = root.GetProperty("anchors")[0];
-            var occurrences = anchor.GetProperty("occurrences").EnumerateArray().ToArray();
-            var id = anchor.GetProperty("anchor").GetString();
-            var outside = occurrences.Length > 1 ? occurrences[1].GetProperty("occurrence").GetString() : null;
-            var decision = new
-            {
-                anchor = id,
-                headingMembers = new[] { id },
-                endOccurrence = id,
-                firstOutsideOccurrence = outside,
-                firstOutsideRole = outside is null ? "NO_VISIBLE_SUCCESSOR" : "BODY_CONTENT",
-            };
-            return System.Text.Json.JsonSerializer.Serialize(new { decisions = new[] { decision } });
+            Calls++;
+            var atoms = DocxHeaderExtractor.DocumentProcessing.Source.Pdf.PdfSourceAdapter.BuildWithDetails(pdfPath).Snapshot.Atoms;
+            var firsts = atoms.GroupBy(atom => atom.Page).Select(page => page.OrderBy(atom => atom.Ordinal).First().Alias).ToHashSet(StringComparer.Ordinal);
+            return Task.FromResult(new PdfHeadingSelection(firsts, 1, 1, [], ["{}"], 1, 0.0));
         }
     }
 

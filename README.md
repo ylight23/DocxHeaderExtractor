@@ -11,9 +11,9 @@ Mỗi định dạng có đúng một lane, không có đường dự phòng:
 | | DOCX | PDF |
 |---|---|---|
 | Nguồn | paragraph OpenXML (`OpenXmlDocumentSource`) | segment atom theo dòng hình ảnh `L{row}:S{segment}`, typography `PDF_SOURCE_FACTS_V3` |
-| Request | `V2_ATTENTION_FREE` | function-conditioned `F1 → G2A → H2-C V2` |
-| Contract | `DocxAliasSpan` (alias + UTF-16 span) | frozen occurrence ledger + strict anchor/end-boundary binding |
-| Chia request | `FIXED_OWNED_COUNT_120` | P05 resource-bounded (90 KB, 96 atom sở hữu, halo 8) |
+| Request | `V2_ATTENTION_FREE` | V6 heading agent (Qwen, một hội thoại mỗi segment layout, đọc facts bằng tool trước khi trả lời; từ 2026-10-14) |
+| Contract | `DocxAliasSpan` (alias + UTF-16 span) | các dòng được chọn theo alias nguồn, parser nghiêm ngặt, các dòng liên tiếp cùng khối layout là một heading |
+| Chia request | `FIXED_OWNED_COUNT_120` | segment layout (nguyên trang, hoặc khối layout; tối đa 48 dòng quyết định, 20 dòng ngữ cảnh mỗi phía) |
 
 Evidence gửi mô hình là dữ kiện nguồn (text, số đo typography, vị trí trang, đánh số); harness
 không gắn nhãn "ứng viên" hay phán đoán cỡ chữ. Ownership không chồng lấn: halo chỉ để đọc, claim

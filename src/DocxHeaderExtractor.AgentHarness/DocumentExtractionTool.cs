@@ -6,6 +6,7 @@ using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.DocumentProcessing;
+using DocxHeaderExtractor.PdfHeadingAgent;
 
 namespace DocxHeaderExtractor.AgentHarness;
 
@@ -40,7 +41,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool, ID
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(factory);
         _docxLane = new DocxExtractionPipeline(options, factory);
-        _pdfLane = new PdfExtractionHandler(options, factory);
+        _pdfLane = new PdfExtractionHandler(options, factory, factory.CreatePdfHeadingSelector() ?? new PdfHeadingAgentSelector());
         _dispatcher = Dispatch(_docxLane, _pdfLane);
         Descriptor = Describe(options, factory.SendsDataExternally);
     }
@@ -49,14 +50,15 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool, ID
         PipelineOptions options,
         IInferenceTransport transport,
         bool ownsTransport = false,
-        bool sendsDataExternally = false)
+        bool sendsDataExternally = false,
+        IPdfHeadingSelector? pdfSelector = null)
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(transport);
         _docxLane = new DocxExtractionPipeline(options, transport, sendsDataExternally);
         // The same transport instance both lanes use, owned by whoever handed it in. Creating a
         // second one here would open a second provider connection for one document.
-        _pdfLane = new PdfExtractionHandler(options, transport, sendsDataExternally);
+        _pdfLane = new PdfExtractionHandler(options, transport, sendsDataExternally, pdfSelector ?? new PdfHeadingAgentSelector());
         _dispatcher = Dispatch(_docxLane, _pdfLane);
         _transport = transport;
         _ownsTransport = ownsTransport;

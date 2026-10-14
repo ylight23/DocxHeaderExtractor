@@ -2,6 +2,7 @@ using DocxHeaderExtractor.Core.Semantics.Validation;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Materialization;
+using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
@@ -9,13 +10,13 @@ using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
-/// The normal PDF route: the qualified function-conditioned heading authority (F1 → G2A → H2-C V2)
-/// run under a lane lease and checkpoint, then the shared binding, placement, hierarchy and
-/// materialization. There is intentionally no canonical-text fallback.
+/// The normal PDF route: the V6 selected-lines heading authority (an <see cref="IPdfHeadingSelector"/>, the D4.12 direct agent) run under a
+/// lane lease and checkpoint, then the shared binding, placement, hierarchy and materialization. The function-conditioned chain
+/// (F1 → G2A → H2-C V2) it replaced was removed from production on 2026-10-14. There is intentionally no canonical-text fallback.
 /// </summary>
 internal static class PdfHeadingPipeline
 {
-    private const string AuthorityId = FunctionAnchorExtentHeadingAuthority.AuthorityId;
+    private const string AuthorityId = SelectedLinesHeadingAuthority.AuthorityId;
 
     public static async Task<HeadingPipelineResult> RunAsync(
         DocumentSourceSnapshot authority,
@@ -23,6 +24,7 @@ internal static class PdfHeadingPipeline
         string sourceName,
         IInferenceTransport? transport,
         SemanticLaneOptions? semanticLaneOptions,
+        IPdfHeadingSelector? selector,
         CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(authority);
@@ -36,6 +38,10 @@ internal static class PdfHeadingPipeline
             { SourceCatalog = authority.Catalog };
         if (transport is not IPdfProductionAuthorizedInferenceTransport authorized)
             throw new InvalidOperationException("PDF_PRODUCTION_AUTHORIZATION_REQUIRED");
+        if (selector is null)
+            throw new InvalidOperationException("PDF_HEADING_SELECTOR_REQUIRED: the PDF lane has no authority without the V6 heading selector.");
+        var apiKey = authorized.OpenRouterApiKey
+            ?? throw new InvalidOperationException("PDF_HEADING_SELECTOR_KEY_MISSING: the authorized PDF route carries no provider key.");
 
         await using var scope = ProductionCheckpointScope.Create();
         await using var checkpoint = new PdfStageCheckpoint(scope.CheckpointPath, Path.GetFileNameWithoutExtension(sourceName));
@@ -43,7 +49,7 @@ internal static class PdfHeadingPipeline
             pdfDetails.Blocks.Select(block => new PdfSelectedSourceIdentity(
                 block.Id, block.Page, block.Lines.Select(PdfLineIdentity.Of).ToArray(), block.DisplayText)).ToArray(), ct).ConfigureAwait(false);
         var execution = await PdfLaneExecution.RunAsync(
-            (lease, laneCt) => RunCoreAsync(authority, pdfDetails, authorized, lease, laneCt),
+            (lease, laneCt) => RunCoreAsync(authority, pdfDetails, authorized, selector, sourceName, apiKey, lease, laneCt),
             (semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline,
             ct).ConfigureAwait(false);
         await checkpoint.StopAcceptingWritesAndDrainAsync().ConfigureAwait(false);
@@ -82,16 +88,19 @@ internal static class PdfHeadingPipeline
         };
     }
 
-    private static async Task<HeadingPipelineResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IPdfProductionAuthorizedInferenceTransport authorized, PdfLaneExecutionLease lease, CancellationToken ct)
+    private static async Task<HeadingPipelineResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IPdfProductionAuthorizedInferenceTransport authorized,
+        IPdfHeadingSelector selector, string pdfPath, string apiKey, PdfLaneExecutionLease lease, CancellationToken ct)
     {
         var leaseBound = new LeaseBoundFrozenInferenceTransport(authorized, lease);
-        IHeadingAuthority authority = new FunctionAnchorExtentHeadingAuthority(
-            leaseBound,
-            authorized.RequestComposer,
+        IHeadingAuthority authority = new SelectedLinesHeadingAuthority(
+            selector,
+            pdfPath,
+            apiKey,
             pdfDetails.LayoutBlockByAtom,
+            leaseBound,
             () => { if (!lease.IsActive) throw new PdfExecutionLeaseLostException(); });
         var decided = await authority.DecideAsync(source, ct).ConfigureAwait(false);
-        // The function-conditioned chain defines no semantic node identity, so every validated
+        // The selected-lines authority defines no semantic node identity, so every validated
         // source occurrence reaches the canonical structure.
         var assembly = await HeadingStructureAssembler.AssembleAsync(
             source, decided, PrimaryOccurrenceSelection.EverySourceOccurrence, ct).ConfigureAwait(false);

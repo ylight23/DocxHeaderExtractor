@@ -52,7 +52,7 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
                 $"selected {_selection.Remote.OpenRouterProviderRoute ?? "<automatic>"}.");
 
         IInferenceTransport transport = new PdfProductionOpenRouterInferenceTransport(
-            OpenRouterInferenceTransport.CreateOwned(_selection.Remote));
+            OpenRouterInferenceTransport.CreateOwned(_selection.Remote), _selection.Remote.ApiKey);
         return Task.FromResult(transport);
     }
 
@@ -65,9 +65,10 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
     };
 
     /// <summary>Capability/authorization wrapper for the only qualified PDF production transport.</summary>
-    private sealed class PdfProductionOpenRouterInferenceTransport(OpenRouterInferenceTransport inner)
+    private sealed class PdfProductionOpenRouterInferenceTransport(OpenRouterInferenceTransport inner, string apiKey)
         : IPdfProductionAuthorizedInferenceTransport
     {
+        public string? OpenRouterApiKey => string.IsNullOrWhiteSpace(apiKey) ? null : apiKey;
         public string PdfProductionProvider => "OpenRouter/Alibaba";
         public string PdfProductionModel => RemoteInferenceOptions.DefaultModel;
         public string ModelName => inner.ModelName;

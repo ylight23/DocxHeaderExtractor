@@ -121,7 +121,7 @@ public sealed class PdfProductionProviderPolicyTests
             TestRepository.Path("todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf"));
         using var transport = new GenericFrozenTransport();
         var error = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfHeadingPipeline.RunAsync(
-            built.Snapshot, built.Details, "generic.pdf", transport, null, CancellationToken.None));
+            built.Snapshot, built.Details, "generic.pdf", transport, null, null, CancellationToken.None));
         Assert.Equal("PDF_PRODUCTION_AUTHORIZATION_REQUIRED", error.Message);
         Assert.Equal(0, transport.Calls);
     }

@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
@@ -17,7 +18,7 @@ internal static class HeadingParentResolver
         is already settled: do not add, remove, rename or re-judge any entry. Decide one thing only
         — where each heading in "toPlace" sits relative to the others.
 
-        Answer with {"placements":[{"alias":"<alias>","parent":"<alias>|ROOT|NONE"}]}.
+        Answer with a JSON object {"placements":[{"alias":"<alias>","parent":"<alias>|ROOT|NONE"}]}.
           "<alias>" - it belongs under that heading, which must appear earlier in the list.
           "ROOT"    - it is a top-level section of this document.
           "NONE"    - it is a heading but holds no position in the section tree: the document's own
@@ -27,8 +28,18 @@ internal static class HeadingParentResolver
         the harness derives depth from the relations you give.
         """;
 
+    // Added only when the caller hands over measurements: what they are, and that they decide nothing.
+    private const string RawEvidenceSentence = """
+        Each heading may also carry "style" (sizePt and bold of the line, rankInDocument: the place of that size and weight among the distinct
+        styles of the whole document, 1 being the largest, and linesWithThisStyleInDocument), and "documentStyles" lists those distinct styles
+        with the first lines set in each. They are measurements of the document, not labels and not decisions: you decide each relation.
+        """;
+
     /// <summary>The placement prompt, line endings settled (a prompt is bytes on the wire).</summary>
     internal static string PlacementPrompt { get; } = RawPlacementPrompt.ReplaceLineEndings("\n");
+
+    /// <summary>The placement prompt for a packet that carries measurements.</summary>
+    internal static string PlacementPromptWithEvidence { get; } = PlacementPrompt + "\n" + RawEvidenceSentence.ReplaceLineEndings("\n");
 
     /// <summary>
     /// Re-asks only about headings the first pass left unplaced. Provider authority remains with
@@ -41,6 +52,31 @@ internal static class HeadingParentResolver
         CancellationToken cancellationToken) =>
         (await PlaceWithObservationAsync(bound, transport, cancellationToken).ConfigureAwait(false)).Headings;
 
+    /// <summary>The user message of the placement request. Without evidence it is exactly the packet the stage always sent.</summary>
+    internal static string PlacementPacket(
+        IReadOnlyList<CanonicalSemanticBoundHeading> ordered, IReadOnlySet<string> unplaced, HeadingPlacementEvidence? evidence)
+    {
+        if (evidence is null)
+            return JsonSerializer.Serialize(new
+            {
+                headings = ordered.Select(item => new { alias = item.Alias, text = item.Text }).ToArray(),
+                toPlace = ordered.Where(item => unplaced.Contains(item.SourceId)).Select(item => item.Alias).ToArray(),
+            });
+        var packet = new JsonObject
+        {
+            ["documentStyles"] = JsonNode.Parse(evidence.DocumentStylesJson),
+            ["headings"] = new JsonArray(ordered.Select(item =>
+            {
+                var heading = new JsonObject { ["alias"] = item.Alias, ["text"] = item.Text };
+                if (evidence.StyleJsonByAlias.TryGetValue(item.Alias, out var style)) heading["style"] = JsonNode.Parse(style);
+                return (JsonNode)heading;
+            }).ToArray()),
+            ["toPlace"] = new JsonArray(ordered.Where(item => unplaced.Contains(item.SourceId))
+                .Select(item => (JsonNode)JsonValue.Create(item.Alias)!).ToArray()),
+        };
+        return packet.ToJsonString();
+    }
+
     internal sealed record PlacementResult(
         IReadOnlyList<CanonicalSemanticBoundHeading> Headings,
         HeadingPlacementExecutionObservation Observation);
@@ -48,7 +84,8 @@ internal static class HeadingParentResolver
     internal static async Task<PlacementResult> PlaceWithObservationAsync(
         IReadOnlyList<CanonicalSemanticBoundHeading> bound,
         IInferenceTransport transport,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        HeadingPlacementEvidence? evidence = null)
     {
         ArgumentNullException.ThrowIfNull(bound);
         ArgumentNullException.ThrowIfNull(transport);
@@ -62,18 +99,13 @@ internal static class HeadingParentResolver
             return Observe(bound, unplaced, "placement-not-required");
 
         var ordered = bound.OrderBy(item => item.SourceOrdinal).ThenBy(item => item.Start).ToArray();
-        var packet = JsonSerializer.Serialize(new
-        {
-            headings = ordered.Select(item => new { alias = item.Alias, text = item.Text }).ToArray(),
-            toPlace = ordered.Where(item => unplaced.Contains(item.SourceId))
-                .Select(item => item.Alias).ToArray(),
-        });
+        var packet = PlacementPacket(ordered, unplaced, evidence);
 
         string raw;
         try
         {
             raw = await transport.BoundaryCutAsync(
-                PlacementPrompt,
+                evidence is null ? PlacementPrompt : PlacementPromptWithEvidence,
                 packet,
                 cancellationToken,
                 expectedItemCount: unplaced.Count);

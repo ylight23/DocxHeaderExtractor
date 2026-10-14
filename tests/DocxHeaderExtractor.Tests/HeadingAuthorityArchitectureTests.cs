@@ -93,7 +93,7 @@ public sealed class HeadingAuthorityArchitectureTests
                 "PdfStyleKey", "PdfTextUtilities", "PdfVisualLineSegmentation", "PdfReadOnlyCorrespondenceBuilder", "PdfSourceFactsBuilder"]),
             ("Source", ["DocumentSourceCatalogBuilder"]),
             ("Source/Common", ["DocumentOccurrence", "DocumentSourceSnapshot", "OccurrenceContext", "LooseLabelledMarkerParser", "SourceMarkerFactsParser", "SourceMarkerFact"]),
-            ("Semantics/HeadingAuthority", ["TextSemanticHeadingAuthority", "FunctionAnchorExtentHeadingAuthority", "HeadingDecisionBinder"]),
+            ("Semantics/HeadingAuthority", ["TextSemanticHeadingAuthority", "SelectedLinesHeadingAuthority", "HeadingDecisionBinder"]),
             ("Semantics/Canonical", ["CanonicalSemanticEngine", "CanonicalSemanticExperiment", "CanonicalGrounding", "SemanticConflictCensus",
                 "SemanticEvidencePackingPolicy", "SemanticRequestVersion"]),
             ("Materialization", ["HeadingParentResolver", "HeadingHierarchyResolver", "HeadingStructureMaterializer", "HeadingStructureAssembler"]),
@@ -228,7 +228,7 @@ public sealed class HeadingAuthorityArchitectureTests
         Assert.DoesNotContain("PdfSemantic", adapter, StringComparison.Ordinal);
         // DOCX stays on the canonical-text authority until it has its own qualification evidence.
         Assert.Contains("TextSemanticHeadingAuthority", route, StringComparison.Ordinal);
-        Assert.DoesNotContain("FunctionAnchorExtentHeadingAuthority", route, StringComparison.Ordinal);
+        Assert.DoesNotContain("SelectedLinesHeadingAuthority", route, StringComparison.Ordinal);
         Assert.DoesNotContain("PdfHeadingPipeline", route, StringComparison.Ordinal);
         Assert.DoesNotContain("IFrozenInferenceTransport", route, StringComparison.Ordinal);
         Assert.DoesNotContain("IPdfProductionAuthorizedInferenceTransport", route, StringComparison.Ordinal);
@@ -242,13 +242,14 @@ public sealed class HeadingAuthorityArchitectureTests
         var route = File.ReadAllText(TestRepository.Path(
             "src/DocxHeaderExtractor.DocumentProcessing/Pipeline/PdfHeadingPipeline.cs"));
         var authority = File.ReadAllText(TestRepository.Path(
-            "src/DocxHeaderExtractor.DocumentProcessing/Semantics/HeadingAuthority/FunctionAnchorExtentHeadingAuthority.cs"));
+            "src/DocxHeaderExtractor.DocumentProcessing/Semantics/HeadingAuthority/SelectedLinesHeadingAuthority.cs"));
 
         Assert.Contains("PdfSourceAdapter.Build", extraction, StringComparison.Ordinal);
         Assert.Contains("PdfHeadingPipeline.RunAsync", extraction, StringComparison.Ordinal);
         Assert.Contains("IPdfProductionAuthorizedInferenceTransport", extraction, StringComparison.Ordinal);
         Assert.Contains("IFrozenInferenceTransport", route, StringComparison.Ordinal);
-        Assert.Contains("IFrozenInferenceTransport", authority, StringComparison.Ordinal);
+        // The V6 authority asks an IPdfHeadingSelector; it holds no provider transport of its own and no canonical-text fallback.
+        Assert.Contains("IPdfHeadingSelector", authority, StringComparison.Ordinal);
         foreach (var source in new[] { extraction, route, authority })
         {
             Assert.DoesNotContain("CanonicalSemanticTextProductionEntryPoint", source, StringComparison.Ordinal);

@@ -22,6 +22,7 @@ internal interface IHeadingAuthority
 /// <param name="Decisions">Exact heading extents the authority selected.</param>
 /// <param name="BoundHeadings">The same headings as bound semantic claims, input to placement and hierarchy.</param>
 /// <param name="PlacementTransport">Transport for the bounded placement follow-up; null when none ran.</param>
+/// <param name="PlacementEvidence">Optional measurements for the placement pass (the PDF lane's style table); null keeps the packet unchanged.</param>
 /// <param name="CompleteAudit">
 /// Adds the authority's own audit facts (raw responses, contracts, lane telemetry) to the route audit
 /// once the shared stages have run.
@@ -30,4 +31,5 @@ internal sealed record HeadingAuthorityResult(
     IReadOnlyList<HeadingExtentDecision> Decisions,
     IReadOnlyList<CanonicalSemanticBoundHeading> BoundHeadings,
     IInferenceTransport? PlacementTransport,
-    Func<PipelineExecutionAudit, HeadingStructureAssembly, PipelineExecutionAudit> CompleteAudit);
+    Func<PipelineExecutionAudit, HeadingStructureAssembly, PipelineExecutionAudit> CompleteAudit,
+    HeadingPlacementEvidence? PlacementEvidence = null);

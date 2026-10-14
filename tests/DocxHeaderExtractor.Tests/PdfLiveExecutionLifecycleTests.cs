@@ -7,6 +7,11 @@ using DocxHeaderExtractor.DocumentProcessing.Routing;
 
 namespace DocxHeaderExtractor.Tests;
 
+/// <summary>
+/// The live PDF lane's lifecycle under a deadline and cancellation. Since the V6 promotion (2026-10-14) the model work of the lane is the heading
+/// selector, so the gate sits there: a late selection after a timeout or a cancellation is quarantined, and the follow-up provider work (the
+/// placement call through the authorized transport) never starts.
+/// </summary>
 public sealed class PdfLiveExecutionLifecycleTests
 {
     private const string Pdf =
@@ -15,89 +20,94 @@ public sealed class PdfLiveExecutionLifecycleTests
     [Fact]
     public async Task Live_pdf_path_succeeds_before_the_execution_deadline()
     {
-        using var transport = new GateClassifier();
+        using var transport = new CountingTransport();
+        var selector = new GateSelector(FirstAlias());
 
-        var executionTask = RunAsync(transport, new SemanticLaneOptions(TimeSpan.FromSeconds(30)));
-        await transport.Started.Task;
-        transport.Complete();
+        var executionTask = RunAsync(transport, selector, new SemanticLaneOptions(TimeSpan.FromSeconds(30)));
+        await selector.Started.Task;
+        selector.Complete();
         var execution = await executionTask;
 
         Assert.Equal("pdf-canonical-vnext", execution.Result.Provenance.Route);
-        Assert.True(transport.Calls > 0);
+        Assert.Equal(1, selector.Calls);
+        Assert.Equal(1, transport.PlacementCalls);
     }
 
     [Fact]
-    public async Task Live_pdf_path_surfaces_a_provider_failure_before_the_deadline()
+    public async Task Live_pdf_path_surfaces_a_selector_failure_before_the_deadline()
     {
-        using var transport = new GateClassifier
-        {
-            ImmediateFailure = new InvalidOperationException("live-provider-failure"),
-        };
+        using var transport = new CountingTransport();
+        var selector = new GateSelector(FirstAlias()) { ImmediateFailure = new InvalidOperationException("live-provider-failure") };
 
-        var error = await Assert.ThrowsAsync<InvalidOperationException>(() => RunAsync(
-            transport,
-            new SemanticLaneOptions(TimeSpan.FromSeconds(30))));
+        var error = await Assert.ThrowsAsync<InvalidOperationException>(() => RunAsync(transport, selector, new SemanticLaneOptions(TimeSpan.FromSeconds(30))));
 
         Assert.Equal("live-provider-failure", error.Message);
-        Assert.Equal(1, transport.Calls);
+        Assert.Equal(1, selector.Calls);
+        Assert.Equal(0, transport.PlacementCalls);
     }
 
     [Fact]
     public async Task Live_pdf_timeout_quarantines_late_success_and_blocks_follow_up_provider_work()
     {
-        using var transport = new GateClassifier();
-        var execution = RunAsync(
-            transport,
-            new SemanticLaneOptions(TimeSpan.FromSeconds(2)));
+        using var transport = new CountingTransport();
+        var selector = new GateSelector(FirstAlias());
+        var execution = RunAsync(transport, selector, new SemanticLaneOptions(TimeSpan.FromSeconds(2)));
 
-        await transport.Started.Task;
+        await selector.Started.Task;
         await Assert.ThrowsAsync<TimeoutException>(() => execution);
 
-        transport.Complete();
-        await transport.FirstCallCompleted.Task;
+        selector.Complete();
+        await selector.Returned.Task;
+        await Task.Delay(500);
 
-        Assert.Equal(1, transport.Calls);
+        Assert.Equal(1, selector.Calls);
+        Assert.Equal(0, transport.PlacementCalls);
     }
 
     [Fact]
     public async Task Live_pdf_cancellation_quarantines_late_success_and_blocks_follow_up_provider_work()
     {
         using var cancellation = new CancellationTokenSource();
-        using var transport = new GateClassifier();
-        var execution = RunAsync(
-            transport,
-            new SemanticLaneOptions(TimeSpan.FromSeconds(30)),
-            cancellation.Token);
+        using var transport = new CountingTransport();
+        var selector = new GateSelector(FirstAlias());
+        var execution = RunAsync(transport, selector, new SemanticLaneOptions(TimeSpan.FromSeconds(30)), cancellation.Token);
 
-        await transport.Started.Task;
+        await selector.Started.Task;
         cancellation.Cancel();
         await Assert.ThrowsAsync<OperationCanceledException>(() => execution);
 
-        transport.Complete();
-        await transport.FirstCallCompleted.Task;
+        selector.Complete();
+        await selector.Returned.Task;
+        await Task.Delay(500);
 
-        Assert.Equal(1, transport.Calls);
+        Assert.Equal(1, selector.Calls);
+        Assert.Equal(0, transport.PlacementCalls);
     }
 
     [Fact]
-    public async Task Live_pdf_timeout_observes_a_late_provider_failure_without_reopening_execution()
+    public async Task Live_pdf_timeout_observes_a_late_selector_failure_without_reopening_execution()
     {
-        using var transport = new GateClassifier();
-        var execution = RunAsync(
-            transport,
-            new SemanticLaneOptions(TimeSpan.FromSeconds(2)));
+        using var transport = new CountingTransport();
+        var selector = new GateSelector(FirstAlias());
+        var execution = RunAsync(transport, selector, new SemanticLaneOptions(TimeSpan.FromSeconds(2)));
 
-        await transport.Started.Task;
+        await selector.Started.Task;
         await Assert.ThrowsAsync<TimeoutException>(() => execution);
 
-        transport.Fail(new InvalidOperationException("late-live-failure"));
-        await transport.FirstCallCompleted.Task;
+        selector.Fail(new InvalidOperationException("late-live-failure"));
+        await selector.Returned.Task;
+        await Task.Delay(500);
 
-        Assert.Equal(1, transport.Calls);
+        Assert.Equal(1, selector.Calls);
+        Assert.Equal(0, transport.PlacementCalls);
     }
+
+    private static string FirstAlias() =>
+        PdfSourceAdapter.BuildWithDetails(Path.Combine(TestRepository.Root(), Pdf)).Snapshot.Atoms.OrderBy(a => a.Ordinal).First().Alias;
 
     private static Task<DocumentExtractionExecutionResult> RunAsync(
         IFrozenInferenceTransport transport,
+        IPdfHeadingSelector selector,
         SemanticLaneOptions lane,
         CancellationToken cancellationToken = default)
     {
@@ -107,75 +117,60 @@ public sealed class PdfLiveExecutionLifecycleTests
             new PipelineOptions(),
             transport,
             ct: cancellationToken,
-            semanticLaneOptions: lane);
+            semanticLaneOptions: lane,
+            selector: selector);
     }
 
-    private sealed class GateClassifier : IPdfProductionAuthorizedInferenceTransport
+    /// <summary>A selector whose answer waits for the test: it signals Started when called and Returned once its answer or failure is out.</summary>
+    private sealed class GateSelector(string alias) : IPdfHeadingSelector
     {
-        private readonly TaskCompletionSource<FrozenInferenceResponse> _firstCall =
-            new(TaskCreationOptions.RunContinuationsAsynchronously);
-        private string? _firstUserMessage;
+        private readonly TaskCompletionSource<PdfHeadingSelection> _answer = new(TaskCreationOptions.RunContinuationsAsynchronously);
 
-        public TaskCompletionSource Started { get; } =
-            new(TaskCreationOptions.RunContinuationsAsynchronously);
-
-        public TaskCompletionSource FirstCallCompleted { get; } =
-            new(TaskCreationOptions.RunContinuationsAsynchronously);
-
+        public TaskCompletionSource Started { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
+        public TaskCompletionSource Returned { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
         public Exception? ImmediateFailure { get; init; }
         public int Calls { get; private set; }
-        public string ModelName => "p5c-fake";
-        public string PdfProductionProvider => "test";
-        public string PdfProductionModel => "test";
-        public int ContextSize => 1 << 20;
-        public string RuntimeDescription => "P5c live-path fake; no provider";
-        public int SharedPrefixTokens => 0;
-        public IFrozenInferenceRequestComposer RequestComposer => new OpenRouterQwen37InferenceRequestComposer();
+        public string SelectorId => "gate-test-selector";
 
-        public Task<string> BoundaryCutAsync(
-            string systemPrompt,
-            string userMessage,
-            CancellationToken ct = default,
-            int expectedItemCount = 0)
-        {
-            return Task.FromResult("{\"headings\":[]}");
-        }
-
-        public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
+        public async Task<PdfHeadingSelection> SelectAsync(string pdfPath, string apiKey, CancellationToken ct)
         {
             Calls++;
-            if (ImmediateFailure is not null)
-                return Task.FromException<FrozenInferenceResponse>(ImmediateFailure);
-            if (Calls > 1)
-                return Task.FromResult(F1AllOther(userMessage));
-            _firstUserMessage = userMessage;
             Started.TrySetResult();
-            return AwaitFirstCallAsync();
-        }
-
-        public void Complete() => _firstCall.TrySetResult(F1AllOther(_firstUserMessage!));
-        public void Fail(Exception exception) => _firstCall.TrySetException(exception);
-        public void Dispose() { }
-
-        private static FrozenInferenceResponse F1AllOther(string userMessage)
-        {
-            using var request = System.Text.Json.JsonDocument.Parse(userMessage);
-            var decisions = request.RootElement.GetProperty("occurrences").EnumerateArray()
-                .Select(item => new { occurrence = item.GetProperty("id").GetString(), function = "OTHER" }).ToArray();
-            return new FrozenInferenceResponse(
-                System.Text.Json.JsonSerializer.Serialize(new { decisions }), "stop");
-        }
-
-        private async Task<FrozenInferenceResponse> AwaitFirstCallAsync()
-        {
             try
             {
-                return await _firstCall.Task.ConfigureAwait(false);
+                if (ImmediateFailure is not null) throw ImmediateFailure;
+                return await _answer.Task;
             }
-            finally
-            {
-                FirstCallCompleted.TrySetResult();
-            }
+            finally { Returned.TrySetResult(); }
         }
+
+        public void Complete() => _answer.TrySetResult(new PdfHeadingSelection(new HashSet<string> { alias }, 1, 1, [], ["{}"], 1, 0.0));
+        public void Fail(Exception error) => _answer.TrySetException(error);
+    }
+
+    /// <summary>The authorized transport: never sends a frozen request on this lane; counts the placement calls and answers them with no placement.</summary>
+    private sealed class CountingTransport : IPdfProductionAuthorizedInferenceTransport
+    {
+        private int _placementCalls;
+        public int PlacementCalls => Volatile.Read(ref _placementCalls);
+        public string? OpenRouterApiKey => "test-key";
+        public IFrozenInferenceRequestComposer RequestComposer => new OpenRouterQwen37InferenceRequestComposer();
+        public string PdfProductionProvider => "test";
+        public string PdfProductionModel => "test";
+        public string ModelName => "lifecycle-fake";
+        public int ContextSize => 1 << 20;
+        public string RuntimeDescription => "lifecycle fake; no provider";
+        public int SharedPrefixTokens => 0;
+
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
+        {
+            Interlocked.Increment(ref _placementCalls);
+            return Task.FromResult("{\"placements\":[]}");
+        }
+
+        public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default) =>
+            throw new InvalidOperationException("the V6 lane sends no frozen request");
+
+        public void Dispose() { }
     }
 }

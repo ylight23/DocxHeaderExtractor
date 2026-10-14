@@ -42,7 +42,23 @@ public static class PdfExtractionPipeline
         CancellationToken ct = default) =>
         RunExecutionCoreAsync(
             file, options, analyst, quarantinedIndexes, analystSendsDataExternally, ct,
-            SemanticLaneOptions.Default);
+            SemanticLaneOptions.Default, selector: null);
+
+    /// <summary>
+    /// The lane's entry with the V6 heading selector, which is the PDF heading authority. The public signature above is unchanged; without a
+    /// selector a run that needs the model refuses (PDF_HEADING_SELECTOR_REQUIRED).
+    /// </summary>
+    internal static Task<DocumentExtractionExecutionResult> RunWithSelectorAsync(
+        UploadedFile file,
+        PipelineOptions options,
+        IInferenceTransport? analyst,
+        IPdfHeadingSelector? selector,
+        IReadOnlySet<int>? quarantinedIndexes = null,
+        bool analystSendsDataExternally = false,
+        CancellationToken ct = default) =>
+        RunExecutionCoreAsync(
+            file, options, analyst, quarantinedIndexes, analystSendsDataExternally, ct,
+            SemanticLaneOptions.Default, selector);
 
     /// <summary>
     /// Internal lifecycle seam for deterministic lane-boundary tests. The public execution
@@ -55,10 +71,11 @@ public static class PdfExtractionPipeline
         SemanticLaneOptions semanticLaneOptions,
         IReadOnlySet<int>? quarantinedIndexes = null,
         bool analystSendsDataExternally = false,
-        CancellationToken ct = default) =>
+        CancellationToken ct = default,
+        IPdfHeadingSelector? selector = null) =>
         RunExecutionCoreAsync(
             file, options, analyst, quarantinedIndexes, analystSendsDataExternally, ct,
-            semanticLaneOptions);
+            semanticLaneOptions, selector);
 
     private static async Task<DocumentExtractionExecutionResult> RunExecutionCoreAsync(
         UploadedFile file,
@@ -67,7 +84,8 @@ public static class PdfExtractionPipeline
         IReadOnlySet<int>? quarantinedIndexes,
         bool transportSendsDataExternally,
         CancellationToken ct,
-        SemanticLaneOptions semanticLaneOptions)
+        SemanticLaneOptions semanticLaneOptions,
+        IPdfHeadingSelector? selector)
     {
         ArgumentNullException.ThrowIfNull(file);
         ArgumentNullException.ThrowIfNull(options);
@@ -84,12 +102,12 @@ public static class PdfExtractionPipeline
         }
 
         HeadingPipelineResult authority;
-        // PDF heading authority is the promoted function-conditioned chain. Unlike the
-        // historical canonical engine it has no semantic fallback: invalid stage output is
-        // withheld by that adapter rather than delegated to a second membership authority.
+        // PDF heading authority is the V6 selected-lines authority. It has no semantic fallback:
+        // a unit whose answer fails the contract leaves its lines undecided rather than delegating
+        // them to a second membership authority.
         var sourceBuild = PdfSourceAdapter.BuildWithDetails(file.LocalPath);
         authority = await PdfHeadingPipeline.RunAsync(
-            sourceBuild.Snapshot, sourceBuild.Details, file.LocalPath, used, semanticLaneOptions, ct);
+            sourceBuild.Snapshot, sourceBuild.Details, file.LocalPath, used, semanticLaneOptions, selector, ct);
         // The same repair step the DOCX lane applies, through the same implementation. A quarantine
         // that silently did nothing on one format would make the harness's repair loop mean two
         // different things depending on what was uploaded.

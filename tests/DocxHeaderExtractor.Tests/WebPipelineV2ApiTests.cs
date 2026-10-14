@@ -4,6 +4,7 @@ using System.Net;
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.Infrastructure.Sources;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +28,8 @@ public sealed class WebPipelineV2ApiTests
         var result = Assert.Single(events, e => e.GetProperty("type").GetString() == "result");
         Assert.Contains(result.GetProperty("pipeline").GetProperty("headings").EnumerateArray(),
             h => h.GetProperty("sources").GetArrayLength() > 1);
-        Assert.Equal(transport.FunctionCalls * 3, transport.FrozenCalls); // F1 + G2A + H2-C per owned pack, no repair run.
+        Assert.Equal(1, transport.SelectorCalls); // one V6 selection per document, no repair run.
+        Assert.Equal(0, transport.FrozenCalls);
         Assert.Equal(0, result.GetProperty("agent").GetProperty("repairAttempts").GetInt32());
         Assert.DoesNotContain(events, e => e.TryGetProperty("stage", out var stage) && stage.GetString() == "repair");
     }
@@ -54,7 +56,8 @@ public sealed class WebPipelineV2ApiTests
                 source.GetProperty("selectedText").GetString());
             Assert.Equal("source-catalog", source.GetProperty("availability").GetString());
         }
-        Assert.True(transport.FrozenCalls >= 3);
+        Assert.Equal(1, transport.SelectorCalls);
+        Assert.Equal(0, transport.FrozenCalls);
         // This fake deliberately returns the text-inference shape, not a placement response.
         // The real producer must report that failure without removing its grounded headings.
         Assert.Equal("failed", dto.GetProperty("stages").EnumerateArray()
@@ -66,7 +69,8 @@ public sealed class WebPipelineV2ApiTests
         Assert.Equal(1, transport.TextCalls);
         Assert.Contains("source-selection:completed", dto.GetProperty("checkpoints").EnumerateArray().Select(e => e.GetString()));
         Assert.Contains(dto.GetProperty("stages").EnumerateArray(), e =>
-            e.GetProperty("id").GetString() == "F1-semantic-function" && e.GetProperty("status").GetString() == "not-recorded");
+            e.GetProperty("id").GetString() == "V6-line-selection" && e.GetProperty("status").GetString() == "completed");
+        Assert.DoesNotContain(dto.GetProperty("stages").EnumerateArray(), e => e.GetProperty("id").GetString()!.StartsWith("F1"));
         Assert.DoesNotContain("rawAnalystResponses", result.GetRawText());
         Assert.DoesNotContain("RawSse", result.GetRawText());
         Assert.DoesNotContain("reasoning", result.GetRawText(), StringComparison.OrdinalIgnoreCase);
@@ -112,7 +116,8 @@ public sealed class WebPipelineV2ApiTests
         Assert.Contains("Execution failed", error.GetProperty("message").GetString());
         Assert.DoesNotContain("SECRET-PROVIDER-PAYLOAD", JsonSerializer.Serialize(events));
         Assert.Equal("failed", error.GetProperty("pipeline").GetProperty("stages")[0].GetProperty("status").GetString());
-        Assert.Equal(1, transport.FrozenCalls);
+        Assert.Equal(1, transport.SelectorCalls);
+        Assert.Equal(0, transport.FrozenCalls);
     }
 
     [Fact(Timeout = 180_000)]
@@ -149,6 +154,8 @@ public sealed class WebPipelineV2ApiTests
         Assert.NotEmpty(dto.GetProperty("headings").EnumerateArray());
         Assert.Equal(result.GetProperty("outline").GetProperty("headings").GetArrayLength(), dto.GetProperty("headings").GetArrayLength());
         Assert.Equal("not-recorded", dto.GetProperty("summary").GetProperty("rejectedAvailability").GetString());
+        Assert.Contains(dto.GetProperty("stages").EnumerateArray(), e =>
+            e.GetProperty("id").GetString() == "V6-line-selection" && e.GetProperty("status").GetString() == "partial");
     }
 
     [Fact]
@@ -187,6 +194,35 @@ public sealed class WebPipelineV2ApiTests
     {
         public Task<IInferenceTransport> CreateAsync(CancellationToken ct = default) => Task.FromResult<IInferenceTransport>(transport);
         public Task<IInferenceTransport> CreatePdfProductionAsync(CancellationToken ct = default) => CreateAsync(ct);
+        public IPdfHeadingSelector? CreatePdfHeadingSelector() => new FakeSelector(transport);
+    }
+
+    /// <summary>
+    /// The V6 heading selector of the fake route, scripted by the transport's flags: it claims the first line of every page; with
+    /// MultipartExtent the first page's first two lines form one heading; with WithholdFirstExtent the first segment fails and its line is not
+    /// claimed; with Fail it throws a provider error that must not reach the client.
+    /// </summary>
+    private sealed class FakeSelector(FakeTransport transport) : IPdfHeadingSelector
+    {
+        public string SelectorId => "web-fake-selector";
+
+        public Task<PdfHeadingSelection> SelectAsync(string pdfPath, string apiKey, CancellationToken ct)
+        {
+            transport.SelectorCalls++;
+            if (transport.Fail) throw new InvalidOperationException("SECRET-PROVIDER-PAYLOAD");
+            var pages = DocxHeaderExtractor.DocumentProcessing.Source.Pdf.PdfSourceAdapter.BuildWithDetails(pdfPath).Snapshot.Atoms
+                .GroupBy(atom => atom.Page).OrderBy(page => page.Key).Select(page => page.OrderBy(atom => atom.Ordinal).ToArray()).ToArray();
+            var groups = new List<IReadOnlyList<string>>();
+            for (int n = 0; n < pages.Length; n++)
+            {
+                if (n == 0 && transport.WithholdFirstExtent) { transport.Withheld = true; continue; }
+                groups.Add(n == 0 && transport.MultipartExtent ? [pages[0][0].Alias, pages[0][1].Alias] : [pages[n][0].Alias]);
+            }
+            var selected = groups.SelectMany(g => g).ToHashSet(StringComparer.Ordinal);
+            return Task.FromResult(transport.WithholdFirstExtent
+                ? new PdfHeadingSelection(selected, pages.Length - 1, pages.Length, ["SEG-000:FAILED:PROTOCOL:COVERAGE_INCOMPLETE"], ["{}"], pages.Length, 0.0, Groups: groups)
+                : new PdfHeadingSelection(selected, pages.Length, pages.Length, [], ["{}"], pages.Length, 0.0, Groups: groups));
+        }
     }
 
     // In-process transport only; no network client or provider credentials.
@@ -199,7 +235,9 @@ public sealed class WebPipelineV2ApiTests
         public bool Fail { get; init; }
         public bool TextHeading { get; init; }
         public bool WithholdFirstExtent { get; init; }
-        public bool Withheld { get; private set; }
+        public bool Withheld { get; set; }
+        public int SelectorCalls { get; set; }
+        public string? OpenRouterApiKey => "test-key";
         public string ModelName => "test";
         public int ContextSize => 1 << 20;
         public string RuntimeDescription => "no provider";

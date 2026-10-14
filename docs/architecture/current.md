@@ -195,7 +195,7 @@ documented separately in the cleanup contract compatibility and S1/S2 audits. Fi
 `DocumentProcessing/Semantics/Canonical` owns `CanonicalSemanticTextProductionEntryPoint`,
 `CanonicalSemanticRequestComposer`, and `SemanticContextPacker`. The entrypoint invokes the
 Core `ICanonicalSemanticTextModel` boundary; its input contracts remain Core-owned, so Core has
-no reverse reference to DocumentProcessing. DOCX uses this text path; PDF uses F1 → G2A → H2-C V2.
+no reverse reference to DocumentProcessing. DOCX uses this text path; PDF uses the V6 heading agent (`DocxHeaderExtractor.PdfHeadingAgent`, the D4.12 method, promoted 2026-10-14) behind `IPdfHeadingSelector`; the F1 → G2A → H2-C V2 chain it replaced is no longer on any production route.
 
 `Infrastructure/AI/QualifiedInference` owns the frozen provider carrier and its provider envelope/body
 types. Moving them does not change provider payload bytes, prompt wording, token limits, or parser

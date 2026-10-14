@@ -71,13 +71,24 @@ public static class WebPipelineProjection
             new("source-parsing", "completed", "Production execution source catalog") };
         var lane = audit?.SemanticLane;
         stages.Add(new("semantic-execution", lane?.Status switch
-        { "complete" => "completed", "not-run" => "skipped", "failed" => "failed", "timed-out" => "failed", _ => "not-recorded" },
+        { "complete" => "completed", "partial" => "partial", "not-run" => "skipped", "failed" => "failed", "timed-out" => "failed", _ => "not-recorded" },
             lane is null ? "No lane observation" : $"Producer lane status: {lane.Status}; failure: {lane.FailureClass ?? "none"}"));
+        // The PDF lane's model steps since the V6 promotion: line selection per layout segment, then grouping of adjacent selected lines.
         if (sourceKind == "pdf")
-            foreach (var stage in new[] { "F1-semantic-function", "G2A-anchor-existence", "H2-C-boundary-extent" })
-                stages.Add(lane?.Status == "not-run"
-                    ? new(stage, "skipped", $"Producer semantic lane explicitly not-run: {lane.FailureClass ?? "not recorded"}")
-                    : new(stage, "not-recorded", "Declared protocols are not per-stage execution observations"));
+        {
+            var groupingFallback = lane?.FailureClass?.Contains("GROUP-", StringComparison.Ordinal) == true;
+            stages.Add(lane?.Status switch
+            {
+                "not-run" => new("V6-line-selection", "skipped", $"Producer semantic lane explicitly not-run: {lane.FailureClass ?? "not recorded"}"),
+                "complete" => new("V6-line-selection", "completed", $"Segments decided: {lane.Completed}/{lane.Scheduled}"),
+                "partial" => new("V6-line-selection", "partial", $"Segments decided: {lane.Completed}/{lane.Scheduled}"),
+                _ => new("V6-line-selection", "not-recorded", "No lane observation"),
+            });
+            stages.Add(lane?.Status is "complete" or "partial"
+                ? new("V6-line-grouping", groupingFallback ? "partial" : "completed",
+                    groupingFallback ? "Some runs were grouped by the layout fallback" : "Adjacent selected lines divided into headings")
+                : new("V6-line-grouping", lane?.Status == "not-run" ? "skipped" : "not-recorded", "No grouping observation"));
+        }
         stages.Add(new("exact-binding-validation", elements.Length > 0 ? "completed" : "not-recorded",
             elements.Length > 0 ? "Validated structural elements" : "No binding-stage observation"));
         var placement = audit?.PlacementExecution;

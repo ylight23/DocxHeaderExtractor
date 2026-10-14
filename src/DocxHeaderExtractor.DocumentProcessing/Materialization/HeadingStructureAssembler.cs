@@ -52,7 +52,7 @@ internal static class HeadingStructureAssembler
                     .Where(item => item.Resolution == HeadingHierarchyResolver.Unresolved)
                     .Select(item => item.SourceId).ToHashSet(StringComparer.Ordinal), "placement-not-requested")
             : await HeadingParentResolver.PlaceWithObservationAsync(
-                authority.BoundHeadings, authority.PlacementTransport, cancellationToken).ConfigureAwait(false);
+                authority.BoundHeadings, authority.PlacementTransport, cancellationToken, authority.PlacementEvidence).ConfigureAwait(false);
         var placed = placement.Headings;
         // The alias catalog spans the whole document while contexts hold only the occurrences the
         // route carries, so a bound heading can name a source this route cannot materialize.

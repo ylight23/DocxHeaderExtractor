@@ -7,7 +7,8 @@ namespace DocxHeaderExtractor.DocumentProcessing.Routing;
 /// <summary>
 /// The PDF lane, owning PDF uploads and nothing else.
 /// <para>
-/// It runs the qualified function-conditioned PDF authority chain, reading only the uploaded PDF.
+/// It runs the V6 heading selector as the PDF heading authority, reading only the uploaded PDF. Without a selector the lane refuses
+/// any run that needs the model (PDF_HEADING_SELECTOR_REQUIRED); with the model disabled it returns the source only, as before.
 /// It never looks for a DOCX, and its result stands alone: a PDF and a DOCX of the same document are two independent
 /// canonical documents unless a user asks for them to be compared.
 /// </para>
@@ -24,6 +25,7 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
     private readonly IInferenceTransportFactory? _transportFactory;
     private readonly bool _sendsDataExternally;
     private readonly bool _ownsTransport;
+    private readonly IPdfHeadingSelector? _selector;
     private IInferenceTransport? _transport;
 
     public PdfExtractionHandler(PipelineOptions options, IInferenceTransport? analyst = null)
@@ -32,20 +34,23 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
     public PdfExtractionHandler(
         PipelineOptions options,
         IInferenceTransport? analyst,
-        bool sendsDataExternally)
+        bool sendsDataExternally,
+        IPdfHeadingSelector? selector = null)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _transport = analyst;
         _sendsDataExternally = sendsDataExternally;
         _ownsTransport = false;
+        _selector = selector;
     }
 
-    public PdfExtractionHandler(PipelineOptions options, IInferenceTransportFactory analystFactory)
+    public PdfExtractionHandler(PipelineOptions options, IInferenceTransportFactory analystFactory, IPdfHeadingSelector? selector = null)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _transportFactory = analystFactory ?? throw new ArgumentNullException(nameof(analystFactory));
         _sendsDataExternally = analystFactory.SendsDataExternally;
         _ownsTransport = true;
+        _selector = selector;
     }
 
     public SourceType Handles => SourceType.Pdf;
@@ -57,8 +62,8 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
     {
         ArgumentNullException.ThrowIfNull(file);
         var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
-        return await PdfExtractionPipeline.RunExecutionAsync(
-            file, _options, transport, quarantinedIndexes, _sendsDataExternally, ct);
+        return await PdfExtractionPipeline.RunWithSelectorAsync(
+            file, _options, transport, _selector, quarantinedIndexes, _sendsDataExternally, ct);
     }
 
     public void Dispose()

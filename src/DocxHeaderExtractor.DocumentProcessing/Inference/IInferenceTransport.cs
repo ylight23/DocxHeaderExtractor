@@ -45,6 +45,12 @@ public interface IInferenceTransportFactory
     /// </summary>
     Task<IInferenceTransport> CreatePdfProductionAsync(CancellationToken ct = default) =>
         throw new InvalidOperationException("PDF_PRODUCTION_PROVIDER_FACTORY_REQUIRED");
+
+    /// <summary>
+    /// The PDF heading selector of this provider route, when the factory supplies its own (a host or a test that drives the selection
+    /// itself). Null, the default, makes the composition root use the production V6 agent.
+    /// </summary>
+    DocxHeaderExtractor.DocumentProcessing.Routing.IPdfHeadingSelector? CreatePdfHeadingSelector() => null;
 }
 
 /// <summary>
@@ -77,4 +83,8 @@ public interface IPdfProductionAuthorizedInferenceTransport : IFrozenInferenceTr
     IFrozenInferenceRequestComposer RequestComposer { get; }
     string PdfProductionProvider { get; }
     string PdfProductionModel { get; }
+
+    /// <summary>The provider key of the authorized route, for the PDF heading selector, which calls the provider itself (V6 promotion).
+    /// Null when the composition root issued none; the PDF lane then refuses before any call.</summary>
+    string? OpenRouterApiKey => null;
 }

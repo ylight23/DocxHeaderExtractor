@@ -13,9 +13,11 @@ PDF  -> PdfSourceOccurrenceAdapter --+          |
                                                 v
                                        IHeadingAuthority   (the replaceable seam)
                          DOCX: TextSemanticHeadingAuthority   (pending its own qualification)
-                         PDF:  FunctionAnchorExtentHeadingAuthority
-                               OccurrenceFunctionProtocolV1 -> HeadingAnchorProtocolV1
-                               -> HeadingExtentProtocolV2   (F1 -> G2A -> H2-C V2, frozen wire)
+                         PDF:  SelectedLinesHeadingAuthority  (since 2026-10-14)
+                               IPdfHeadingSelector -> PdfHeadingAgentSelector
+                               (V6 direct agent, D4.12 method: one conversation per layout segment,
+                               get_line_facts first, evidence tools, repair turns)
+                               F1 -> G2A -> H2-C V2 (FunctionAnchorExtentHeadingAuthority) retired
                                                 |
                                                 v
                                      HeadingStructureAssembler (shared, format-blind)
