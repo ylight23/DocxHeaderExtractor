@@ -29,9 +29,6 @@ public sealed class DocxExtractionPipeline : IDisposable
     /// with the model disabled the route returns the source only. The transport (or the factory that makes it) must be the authorized agent route:
     /// it carries the provider key the selector uses and serves the shared placement stage.
     /// </summary>
-    public DocxExtractionPipeline(PipelineOptions options)
-        : this(options, null, null, null) { }
-
     public DocxExtractionPipeline(PipelineOptions options, IInferenceTransportFactory analystFactory, IHeadingSelector? selector = null)
         : this(options, null, analystFactory, selector) { }
 
@@ -60,18 +57,6 @@ public sealed class DocxExtractionPipeline : IDisposable
         _selector = selector;
         _transportSendsDataExternally = transportSendsDataExternally || transportFactory?.SendsDataExternally == true;
         _ownsTransport = transportFactory is not null || transport is null;
-    }
-
-    public Task<DocumentOutline> RunAsync(string inputPath, CancellationToken ct = default) =>
-        RunAsync(inputPath, null, ct);
-
-    public async Task<DocumentOutline> RunAsync(
-        string inputPath,
-        IReadOnlySet<int>? quarantinedIndexes,
-        CancellationToken ct = default)
-    {
-        var execution = await ExecuteDocumentAsync(inputPath, quarantinedIndexes, ct);
-        return execution.Outline;
     }
 
     public Task<DocumentExtractionExecutionResult> RunDocumentExecutionAsync(

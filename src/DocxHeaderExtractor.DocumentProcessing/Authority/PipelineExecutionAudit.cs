@@ -27,24 +27,12 @@ public sealed record PipelineExecutionAudit(
     [JsonPropertyName("modelInputContracts")]
     public IReadOnlyList<string> ModelInputContracts { get; init; } = [];
 
-    /// <summary>Per-source source/model/validation trace for PDF-first audit routes.</summary>
-    [JsonPropertyName("sourceStageTraces")]
-    public IReadOnlyList<HeadingSourceStageTrace> SourceStageTraces { get; init; } = [];
-
     [JsonPropertyName("validatedStructures")]
     public IReadOnlyList<ResolvedHeadingHierarchy> ValidatedStructures { get; init; } = [];
 
     /// <summary>M8.1 source-only evidence inventory for already validated headings.</summary>
     [JsonPropertyName("hierarchyFacts")]
     public IReadOnlyList<HeadingHierarchyFactAudit> HierarchyFacts { get; init; } = [];
-
-    /// <summary>
-    /// Measured semantic disagreement for this run. Reported so the question "does this route need
-    /// an adjudication model" is answered from counted conflict, not assumed conflict.
-    /// </summary>
-    [JsonPropertyName("conflictCensus")]
-    public Semantics.Canonical.SemanticConflictCensus ConflictCensus { get; init; } =
-        Semantics.Canonical.SemanticConflictCensus.Empty;
 
     /// <summary>Independent semantic execution outcome. A timeout is partial work, not provider unavailability.</summary>
     [JsonPropertyName("semanticLane")]
@@ -58,9 +46,6 @@ public sealed record PipelineExecutionAudit(
     /// </summary>
     [JsonPropertyName("spanLane")]
     public LaneExecutionAudit? SpanLane { get; init; }
-
-    [JsonPropertyName("batchTelemetry")]
-    public HeadingAuthorityBatchTelemetry? BatchTelemetry { get; init; }
 
     /// <summary>Runtime-only placement observation; frozen audit JSON remains unchanged.</summary>
     [JsonIgnore]
@@ -81,24 +66,6 @@ public sealed record LaneExecutionAudit(
     [property: JsonPropertyName("timedOut")] int TimedOut,
     [property: JsonPropertyName("notStarted")] int NotStarted,
     [property: JsonPropertyName("failureClass")] string? FailureClass = null);
-
-public sealed record HeadingAuthorityBatchTelemetry(
-    [property: JsonPropertyName("sourceParagraphCount")] int SourceParagraphCount,
-    [property: JsonPropertyName("roleInputBlockCount")] int RoleInputBlockCount,
-    [property: JsonPropertyName("roleBatchCount")] int RoleBatchCount,
-    [property: JsonPropertyName("roleProviderCalls")] int RoleProviderCalls,
-    [property: JsonPropertyName("roleInputTokensTotal")] int RoleInputTokensTotal,
-    [property: JsonPropertyName("roleLargestBatchBlocks")] int RoleLargestBatchBlocks,
-    [property: JsonPropertyName("roleLargestBatchTokens")] int RoleLargestBatchTokens,
-    [property: JsonPropertyName("headingLikeAfterRole")] int HeadingLikeAfterRole,
-    [property: JsonPropertyName("spanBatchCount")] int SpanBatchCount,
-    [property: JsonPropertyName("spanProviderCalls")] int SpanProviderCalls,
-    [property: JsonPropertyName("spanInputTokensTotal")] int SpanInputTokensTotal,
-    [property: JsonPropertyName("hierarchyInputCount")] int HierarchyInputCount,
-    [property: JsonPropertyName("hierarchyProviderCalls")] int HierarchyProviderCalls,
-    [property: JsonPropertyName("totalProviderCalls")] int TotalProviderCalls,
-    [property: JsonPropertyName("totalResponses")] int TotalResponses,
-    [property: JsonPropertyName("elapsedMs")] long ElapsedMs);
 
 public sealed record SourceBlockAudit(
     [property: JsonPropertyName("id")] string Id,

@@ -66,5 +66,4 @@ public sealed record DocumentExtractionRequest(UploadedFile File);
 public sealed class UnsupportedSourceException(UploadedFile file)
     : NotSupportedException($"'{file.OriginalFileName}' was identified as {file.DetectedType} by its content and cannot be extracted.")
 {
-    public UploadedFile File { get; } = file;
 }

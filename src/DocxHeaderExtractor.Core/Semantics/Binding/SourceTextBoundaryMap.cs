@@ -30,6 +30,4 @@ public static class SourceTextBoundaryMap
         return boundaries.ToArray();
     }
 
-    public static bool Contains(IReadOnlyList<int> boundaries, int offset) =>
-        boundaries.Contains(offset);
 }

@@ -35,9 +35,6 @@ internal static class PdfGeometryPolicy
     /// </summary>
     public const double SideBearingEm = 0.05;
 
-    /// <summary>Version of this policy; part of the source-universe identity it produces.</summary>
-    public const string Version = "a99-pdf-glyph-geometry-v2-font-independent";
-
     public static double Snap(double value) =>
         Math.Round(value / Quantum, MidpointRounding.ToEven) * Quantum;
 }

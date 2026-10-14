@@ -18,13 +18,6 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// </summary>
 public static class PdfExtractionPipeline
 {
-    public static async Task<DocumentExtractionResult> RunAsync(
-        UploadedFile file,
-        PipelineOptions options,
-        IInferenceTransport? analyst = null,
-        CancellationToken ct = default) =>
-        (await RunExecutionAsync(file, options, analyst, ct: ct)).Result;
-
     /// <summary>
     /// The canonical document plus the outline shape the harness has always spoken.
     /// <para>
@@ -59,23 +52,6 @@ public static class PdfExtractionPipeline
         RunExecutionCoreAsync(
             file, options, analyst, quarantinedIndexes, analystSendsDataExternally, ct,
             SemanticLaneOptions.Default, selector);
-
-    /// <summary>
-    /// Internal lifecycle seam for deterministic lane-boundary tests. The public execution
-    /// signature above remains source- and binary-compatible with the pre-P5c route.
-    /// </summary>
-    internal static Task<DocumentExtractionExecutionResult> RunExecutionAsync(
-        UploadedFile file,
-        PipelineOptions options,
-        IInferenceTransport? analyst,
-        SemanticLaneOptions semanticLaneOptions,
-        IReadOnlySet<int>? quarantinedIndexes = null,
-        bool analystSendsDataExternally = false,
-        CancellationToken ct = default,
-        IHeadingSelector? selector = null) =>
-        RunExecutionCoreAsync(
-            file, options, analyst, quarantinedIndexes, analystSendsDataExternally, ct,
-            semanticLaneOptions, selector);
 
     private static async Task<DocumentExtractionExecutionResult> RunExecutionCoreAsync(
         UploadedFile file,

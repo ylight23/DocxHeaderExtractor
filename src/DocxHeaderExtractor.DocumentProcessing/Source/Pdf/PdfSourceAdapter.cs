@@ -36,8 +36,6 @@ internal static class PdfSourceAdapter
         WriteIndented = false,
     };
 
-    public static DocumentSourceSnapshot Build(string pdfPath) => BuildWithDetails(pdfPath).Snapshot;
-
     internal static PdfSourceBuildResult BuildWithDetails(string pdfPath)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
@@ -52,14 +50,6 @@ internal static class PdfSourceAdapter
     internal static PdfSourceBuildResult BuildWithDetails(
         IReadOnlyList<PdfLine> segments,
         string sourceSha256 = "") => BuildWithDetailsCore(segments, sourceSha256);
-
-    /// <param name="sourceSha256">
-    /// Retained for qualification/source-authority construction. Every other measurement here -
-    /// the three hashes - depends on the PDF's text and geometry alone.
-    /// </param>
-    public static DocumentSourceSnapshot Build(
-        IReadOnlyList<PdfLine> segments,
-        string sourceSha256 = "") => BuildWithDetails(segments, sourceSha256).Snapshot;
 
     private static PdfSourceBuildResult BuildWithDetailsCore(
         IReadOnlyList<PdfLine> segments,

@@ -99,5 +99,4 @@ internal sealed record DocxSourceBuildResult(
     IReadOnlyDictionary<string, OccurrenceContext> OccurrenceContexts,
     DocumentSourceSnapshot Snapshot)
 {
-    public int Count => Contexts.Count;
 }

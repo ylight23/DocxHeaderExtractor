@@ -17,13 +17,4 @@ internal static class HeadingDecisionBinder
         ArgumentNullException.ThrowIfNull(decisions);
         return HeadingDecisionValidator.Validate(contexts, decisions);
     }
-
-    public static IReadOnlyList<HeadingSourceStageTrace> Trace(
-        IReadOnlyDictionary<string, OccurrenceContext> contexts,
-        IReadOnlyList<HeadingExtentDecision> decisions)
-    {
-        ArgumentNullException.ThrowIfNull(contexts);
-        ArgumentNullException.ThrowIfNull(decisions);
-        return HeadingDecisionValidator.Trace(contexts, decisions);
-    }
 }

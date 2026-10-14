@@ -23,36 +23,11 @@ internal sealed record ValidatedHeading(
     public IReadOnlyList<CanonicalSemanticBoundPart>? Parts { get; init; }
 }
 
-/// <summary>Diagnostic trace; never authority input.</summary>
-public sealed record HeadingSourceStageTrace(
-    string Id,
-    string Scope,
-    string? SemanticFunction,
-    string SpanStatus,
-    string ValidationStatus,
-    string? Reason);
-
 /// <summary>Parser-owned UTF-16 boundaries for exact source spans.</summary>
 internal static class SourceTextBoundaryMap
 {
-    public static IReadOnlyList<int> For(string sourceText)
-    {
-        ArgumentNullException.ThrowIfNull(sourceText);
-        var boundaries = new SortedSet<int> { 0, sourceText.Length };
-        for (var index = 0; index < sourceText.Length; index++)
-        {
-            var current = sourceText[index];
-            var previous = index == 0 ? '\0' : sourceText[index - 1];
-            if (char.IsWhiteSpace(current) || char.IsPunctuation(current) || char.IsSymbol(current))
-            {
-                boundaries.Add(index);
-                boundaries.Add(index + 1);
-            }
-            if (index > 0 && char.IsLetterOrDigit(current) != char.IsLetterOrDigit(previous))
-                boundaries.Add(index);
-        }
-        return boundaries.ToArray();
-    }
+    public static IReadOnlyList<int> For(string sourceText) =>
+        DocxHeaderExtractor.Core.Semantics.Binding.SourceTextBoundaryMap.For(sourceText);
 
     public static bool Contains(string sourceText, int offset) =>
         offset >= 0 && offset <= sourceText.Length && For(sourceText).Contains(offset);
@@ -72,22 +47,6 @@ internal static class HeadingDecisionValidator
                 "source-grounded-pointer-span") { Parts = decision.Parts };
         })
         .ToArray();
-
-    public static IReadOnlyList<HeadingSourceStageTrace> Trace(
-        IReadOnlyDictionary<string, OccurrenceContext> contexts,
-        IReadOnlyList<HeadingExtentDecision> decisions)
-    {
-        var byId = decisions.GroupBy(d => d.Id).ToDictionary(g => g.Key, g => g.First(), StringComparer.Ordinal);
-        return contexts.Values.Select(context =>
-        {
-            if (!byId.TryGetValue(context.SourceId, out var decision))
-                return new HeadingSourceStageTrace(context.SourceId, context.StructuralScope, "unknown", "not-proposed", "unresolved", "missing-model-proposal");
-            var spanStatus = ValidateSpan(decision, context.RawText, out var spanReason);
-            return new HeadingSourceStageTrace(
-                context.SourceId, context.StructuralScope, decision.SemanticFunction, spanStatus,
-                spanStatus == "valid" ? "eligible" : "unresolved", spanReason);
-        }).ToArray();
-    }
 
     public static bool IsEligibleHeading(HeadingExtentDecision decision, OccurrenceContext context) =>
         context.EvidenceOrigins.All(origin => origin is "layout_parser" or "marker_parser" or "scope_detector" or "docx_parser" or "ooxml_parser") &&

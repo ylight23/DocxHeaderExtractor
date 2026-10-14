@@ -41,8 +41,6 @@ internal sealed class LaneExecutionLease
     }
 
     public int TerminalTransitionCount => Volatile.Read(ref _terminalTransitions);
-    public bool LateCompletionObserved => Volatile.Read(ref _lateCompletionObserved) != 0;
-    public Exception? LateFault => Volatile.Read(ref _lateFault);
     public bool CanPublishCompletedResult => State == LaneExecutionState.Succeeded &&
         TerminalTransitionCount == 1;
 
@@ -117,12 +115,6 @@ internal static class LaneExecution
         /// <summary>Observed wrapper for work that outlived the deadline.</summary>
         public Task? DetachedTask { get; init; }
     }
-
-    public static async Task<Result<T>> RunAsync<T>(
-        Func<CancellationToken, Task<T>> action,
-        TimeSpan deadline,
-        CancellationToken callerCancellation)
-        => await RunAsync((_, ct) => action(ct), deadline, callerCancellation).ConfigureAwait(false);
 
     public static async Task<Result<T>> RunAsync<T>(
         Func<LaneExecutionLease, CancellationToken, Task<T>> action,

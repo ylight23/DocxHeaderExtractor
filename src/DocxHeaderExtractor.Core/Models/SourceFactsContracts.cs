@@ -18,10 +18,7 @@ public sealed record SourceFacts
     public IReadOnlyList<int> ParserBoundaries { get; init; } = [];
 }
 
-public sealed record SourceTextSpan(int Start, int End)
-{
-    public bool IsValidFor(string text) => Start >= 0 && End > Start && End <= text.Length;
-}
+public sealed record SourceTextSpan(int Start, int End);
 
 /// <summary>Stable source/writeback coordinates. PDF render coordinates are optional for DOCX-only input.</summary>
 public sealed record SourceAnchor

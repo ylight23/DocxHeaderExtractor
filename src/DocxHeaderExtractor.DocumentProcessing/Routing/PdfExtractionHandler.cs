@@ -28,9 +28,6 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
     private readonly IHeadingSelector? _selector;
     private IInferenceTransport? _transport;
 
-    public PdfExtractionHandler(PipelineOptions options, IInferenceTransport? analyst = null)
-        : this(options, analyst, sendsDataExternally: false) { }
-
     public PdfExtractionHandler(
         PipelineOptions options,
         IInferenceTransport? analyst,

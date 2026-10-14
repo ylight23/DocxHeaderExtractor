@@ -62,19 +62,6 @@ internal sealed record PdfSourceTextProjection(
         new(text, text, [], CurrentVersion);
 
     /// <summary>
-    /// Where a canonical span came from. Returns every glyph run the span touches, so a caller can
-    /// report the page and box of a heading the model identified purely by text.
-    /// </summary>
-    public IReadOnlyList<PdfVerbatimSpanMapEntry> Resolve(int start, int length)
-    {
-        if (length <= 0) return [];
-        var end = start + length;
-        return SpanMap
-            .Where(entry => entry.VerbatimStart < end && entry.VerbatimStart + entry.VerbatimLength > start)
-            .ToArray();
-    }
-
-    /// <summary>
     /// Joins occurrence projections into one, as a block joins its lines. Offsets are rebased onto
     /// the combined string; nothing is re-derived from text, so the mapping survives composition.
     /// </summary>

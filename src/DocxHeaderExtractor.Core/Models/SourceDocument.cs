@@ -19,8 +19,6 @@ public sealed record SourceDocument
 public sealed record SourceParagraph
 {
     public required string SourceId { get; init; }
-    // Read-only naming bridge for evaluation assertions; source identity remains SourceId.
-    public string StableId => SourceId;
     public required int SourceOrdinal { get; init; }
     public required string Text { get; init; }
     public IReadOnlyList<SourceTextRunSpan> TextSpans { get; init; } = new ReadOnlyCollection<SourceTextRunSpan>([]);
