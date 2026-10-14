@@ -216,9 +216,9 @@ project dependencies in Core; frozen wire and replay parity are tested separatel
 The retired extraction/slim/converter classes are not current production routes. Input conversion,
 where requested, happens at the source preparation boundary before normalized OOXML extraction.
 
-The current mechanical checks are the architecture/layout tests in
-`tests/DocxHeaderExtractor.Tests` and `.github/workflows/deterministic.yml`, with
-`scripts/Invoke-A99TestTier.ps1` selecting deterministic tiers. Historical architecture audit scripts
+Since 2026-10-14 the test project holds only the V6 heading-agent tests (the production agent, its parity
+with the qualified V6 code, and the V6 qualification code itself); `.github/workflows/deterministic.yml`
+builds and runs them. The architecture tests named above were removed with the rest. Historical architecture audit scripts
 are not current repository entrypoints. Historical publication gates must not be presented as
 evidence for a newer commit. Verification results belong to the exact tested revision and the
 ownership closure audit, not to stale branch status.

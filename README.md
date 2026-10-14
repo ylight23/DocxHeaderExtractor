@@ -119,11 +119,12 @@ Thêm `"DHX_MCP_RULES_ONLY": "true"` vào `env` để thử parser mà không c�
 ## Kiểm thử
 
 ```powershell
-.\scripts\Invoke-A99TestTier.ps1                     # CORE_DETERMINISTIC, không gọi provider
-.\scripts\Invoke-A99TestTier.ps1 -Tier All           # toàn bộ suite
+dotnet test tests/DocxHeaderExtractor.Tests         # bộ test V6, không gọi provider
 ```
 
-Tier được khai trong [docs/testing/a99-test-suite-manifest.v1.json](docs/testing/a99-test-suite-manifest.v1.json).
+Từ 2026-10-14 bộ test chỉ còn thí nghiệm V6 của PDF heading agent: `PdfHeadingAgent*` (agent production, parity với code V6
+đã qualify), `PdfV6SelectedLinesLaneTests` và `P7F1V6*` (code V6 trong `DocxHeaderExtractor.V5Qualification`). Các test cũ
+(DOCX, web, MCP, Gold, các thí nghiệm V4-V5/P6-P7) đã xóa theo quyết định của chủ dự án; xem lịch sử git.
 Gold duy nhất nằm ở `eval/a99-closed-loop/gold/`; mỗi thay đổi Gold cần người duyệt từng mục.
 Provider run chỉ chạy dưới manifest thí nghiệm đã đóng băng (`PdfExperimentExecutionGate`).
 
