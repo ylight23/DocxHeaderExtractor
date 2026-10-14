@@ -9,7 +9,7 @@ namespace DocxHeaderExtractor.Infrastructure.AI;
 public sealed class RemoteInferenceOptions
 {
     /// <summary>
-    /// The model the production re-baseline qualified (streaming, reasoning none, P05, V4 PDF lane).
+    /// The model the production route was qualified on (streaming; the PDF V6 agent and the DOCX lane).
     /// </summary>
     public const string DefaultModel = "qwen/qwen3.7-flash";
 

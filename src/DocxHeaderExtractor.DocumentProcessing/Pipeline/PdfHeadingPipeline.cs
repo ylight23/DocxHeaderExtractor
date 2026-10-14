@@ -91,7 +91,7 @@ internal static class PdfHeadingPipeline
     private static async Task<HeadingPipelineResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IPdfProductionAuthorizedInferenceTransport authorized,
         IPdfHeadingSelector selector, string pdfPath, string apiKey, PdfLaneExecutionLease lease, CancellationToken ct)
     {
-        var leaseBound = new LeaseBoundFrozenInferenceTransport(authorized, lease);
+        var leaseBound = new LeaseBoundInferenceTransport(authorized, lease);
         IHeadingAuthority authority = new SelectedLinesHeadingAuthority(
             selector,
             pdfPath,
@@ -128,12 +128,12 @@ internal static class PdfHeadingPipeline
         { SourceCatalog = source.Catalog, ProjectionContext = assembly.ProjectionContext };
     }
 
-    private sealed class LeaseBoundFrozenInferenceTransport : IFrozenInferenceTransport
+    private sealed class LeaseBoundInferenceTransport : IInferenceTransport
     {
-        private readonly IFrozenInferenceTransport _inner;
+        private readonly IInferenceTransport _inner;
         private readonly PdfLaneExecutionLease _lease;
 
-        public LeaseBoundFrozenInferenceTransport(IFrozenInferenceTransport inner, PdfLaneExecutionLease lease)
+        public LeaseBoundInferenceTransport(IInferenceTransport inner, PdfLaneExecutionLease lease)
         {
             _inner = inner;
             _lease = lease;
@@ -145,8 +145,6 @@ internal static class PdfHeadingPipeline
         public int SharedPrefixTokens => _inner.SharedPrefixTokens;
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             StartAndObserve(() => _inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount));
-        public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default) =>
-            StartAndObserve(() => _inner.ExecuteFrozenRequestAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken));
         public void Dispose() { }
 
         private Task<T> StartAndObserve<T>(Func<Task<T>> start)

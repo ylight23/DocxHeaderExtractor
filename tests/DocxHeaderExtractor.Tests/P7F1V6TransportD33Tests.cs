@@ -1,7 +1,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using DocxHeaderExtractor.V5Qualification.P7;
+using DocxHeaderExtractor.V6Qualification.P7;
 
 namespace DocxHeaderExtractor.Tests;
 

@@ -1,6 +1,6 @@
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.V5Qualification.P7;
+using DocxHeaderExtractor.V6Qualification.P7;
 
 namespace DocxHeaderExtractor.Tests;
 

@@ -151,31 +151,6 @@ internal static class AgentProtocol
         return new PreparedRequest(text, bytes.Length, Convert.ToHexStringLower(SHA256.HashData(bytes)));
     }
 
-    /// <summary>A POST body without tools (the grouping step): the system prompt and the payload as plain strings, then the history;
-    /// json_object, temperature 0, reasoning enabled, the locked provider block, streaming and usage.</summary>
-    public static PreparedRequest BuildPlain(string systemPrompt, string payload, JsonArray history)
-    {
-        var messages = new JsonArray(
-            new JsonObject { ["role"] = "system", ["content"] = systemPrompt },
-            new JsonObject { ["role"] = "user", ["content"] = payload });
-        foreach (var m in history) messages.Add(m!.DeepClone());
-        var body = new JsonObject
-        {
-            ["model"] = ChatModel,
-            ["messages"] = messages,
-            ["response_format"] = new JsonObject { ["type"] = "json_object" },
-            ["temperature"] = 0,
-            ["max_tokens"] = MaxTokens,
-            ["reasoning"] = new JsonObject { ["enabled"] = true },
-            ["provider"] = JsonSerializer.SerializeToNode(new { only = new[] { ProviderTag }, ignore = Ignore, allow_fallbacks = false, require_parameters = true }, Options),
-            ["stream"] = true,
-            ["usage"] = new JsonObject { ["include"] = true },
-        };
-        var text = body.ToJsonString(Options);
-        var bytes = Encoding.UTF8.GetBytes(text);
-        return new PreparedRequest(text, bytes.Length, Convert.ToHexStringLower(SHA256.HashData(bytes)));
-    }
-
     // ---------------- replies ----------------
 
     public sealed record ToolCall(string? Id, string? Name, string Arguments);

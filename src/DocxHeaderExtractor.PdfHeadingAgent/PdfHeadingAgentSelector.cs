@@ -73,23 +73,6 @@ public sealed class PdfHeadingAgentSelector : IPdfHeadingSelector
         return reply;
     };
 
-    /// <summary>Only the grouping step, for lines already selected: asks the model how each run of adjacent selected lines divides into headings.
-    /// One request per 40 runs; none when no two selected lines are adjacent.</summary>
-    public async Task<(IReadOnlyList<IReadOnlyList<string>> Groups, IReadOnlyList<string> Failures, int Posts, double CostUsd)> GroupSelectedAsync(
-        string pdfPath, IReadOnlySet<string> selectedAliases, string apiKey, CancellationToken ct)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(apiKey);
-        return await Task.Run(() =>
-        {
-            var source = AgentSource.Load(pdfPath, out var failure) ?? throw new InvalidOperationException("PDF_AGENT_SOURCE_REFUSED:" + failure);
-            var budget = BudgetFor(source, instruction);
-            using var handler = handlerFactory();
-            using var model = new AgentModel(handler, apiKey, budget);
-            var grouping = AgentGrouping.Group(source, selectedAliases, Traced(model), budget, parallelism, ct, retryDelayMs: 5000, instruction);
-            return ((IReadOnlyList<IReadOnlyList<string>>)grouping.Groups, (IReadOnlyList<string>)grouping.Failures, grouping.Posts, budget.ActualUsd);
-        }, ct);
-    }
-
     /// <summary>The measurements the placement pass gets: the document's style table and the style of every line that has one. Facts only.</summary>
     public static PdfPlacementContext PlacementContextOf(string pdfPath)
     {

@@ -4,10 +4,10 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.V5Qualification.P7;
-using A = DocxHeaderExtractor.V5Qualification.P7.P7F1V6DirectAgent;
-using C = DocxHeaderExtractor.V5Qualification.P7.P7F1V6DirectRepeatCanary;
-using T = DocxHeaderExtractor.V5Qualification.P7.P7F1V6DirectOwnerTrial;
+using DocxHeaderExtractor.V6Qualification.P7;
+using A = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectAgent;
+using C = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectRepeatCanary;
+using T = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectOwnerTrial;
 
 // Issue #9 D4.11j: the owner-document trial. d411j-plan writes the pinned plan and a scripted dry-run (no network). d411j-run sends requests and needs the
 // owner's approval of the plan and of sending this document. Nothing here prints or writes any line text of the document.

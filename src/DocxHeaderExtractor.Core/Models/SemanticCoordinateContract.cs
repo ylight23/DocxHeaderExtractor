@@ -48,15 +48,6 @@ public sealed record SemanticCoordinateContract(
     public object Schema() => SchemaFactory();
 
     /// <summary>
-    /// Identity of the schema bytes. Taken over the same canonical serialization the freeze
-    /// artifacts use, so a lane's contract can be compared with a recorded hash without either
-    /// side having to describe how it was produced.
-    /// </summary>
-    public string SchemaHash() =>
-        Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(
-            JsonSerializer.Serialize(Schema(), Canonical).ReplaceLineEndings("\n"))));
-
-    /// <summary>
     /// Checks a reply against this contract. Paired with <see cref="Schema"/> deliberately: a
     /// request built from one contract and validated against another would accept coordinates the
     /// model was never offered, and the mismatch would be invisible from either side alone.

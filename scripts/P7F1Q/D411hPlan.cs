@@ -4,9 +4,9 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.V5Qualification.P7;
-using A = DocxHeaderExtractor.V5Qualification.P7.P7F1V6DirectAgent;
-using C = DocxHeaderExtractor.V5Qualification.P7.P7F1V6DirectPrefetchCanary;
+using DocxHeaderExtractor.V6Qualification.P7;
+using A = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectAgent;
+using C = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectPrefetchCanary;
 
 // Issue #9 D4.11h: the prefetch canary (CONTROL vs PREFETCH, 3 repetitions) on SEG-001 and SEG-008. d411h-plan writes the pinned plan and a dry-run with
 // scripted models (no network). d411h-run sends requests and needs its own plan SHA, budget and owner approval.

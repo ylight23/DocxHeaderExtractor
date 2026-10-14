@@ -61,9 +61,6 @@ internal sealed record PdfSourceTextProjection(
     public static PdfSourceTextProjection Identity(string text) =>
         new(text, text, [], CurrentVersion);
 
-    /// <summary>True when this projection carries glyph provenance rather than standing in for it.</summary>
-    public bool HasGlyphProvenance => SpanMap.Count > 0;
-
     /// <summary>
     /// Where a canonical span came from. Returns every glyph run the span touches, so a caller can
     /// report the page and box of a heading the model identified purely by text.

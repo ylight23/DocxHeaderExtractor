@@ -3,9 +3,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.V5Qualification.P7;
-using A = DocxHeaderExtractor.V5Qualification.P7.P7F1V6DirectAgent;
-using C = DocxHeaderExtractor.V5Qualification.P7.P7F1V6DirectRepeatCanary;
+using DocxHeaderExtractor.V6Qualification.P7;
+using A = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectAgent;
+using C = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectRepeatCanary;
 
 namespace DocxHeaderExtractor.Tests;
 

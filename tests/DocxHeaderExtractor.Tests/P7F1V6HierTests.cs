@@ -1,7 +1,7 @@
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
-using DocxHeaderExtractor.V5Qualification.P7;
+using DocxHeaderExtractor.V6Qualification.P7;
 
 namespace DocxHeaderExtractor.Tests;
 

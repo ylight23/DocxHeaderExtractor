@@ -2,8 +2,8 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.V5Qualification.P7;
-using F = DocxHeaderExtractor.V5Qualification.P7.P7F1V6DirectTwoStage.SelectFormat;
+using DocxHeaderExtractor.V6Qualification.P7;
+using F = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectTwoStage.SelectFormat;
 
 // Issue #9 D4.9 (offline): dry-run of variants A (V3, decisions and groups in one reply), B (two-stage, object decisions) and C (two-stage,
 // compact codes) on SRC-095 with scripted models, and a representation-change replay of the recorded D4.8 replies. Nothing is sent. The

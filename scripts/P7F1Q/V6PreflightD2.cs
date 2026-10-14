@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
-using DocxHeaderExtractor.V5Qualification.P7;
+using DocxHeaderExtractor.V6Qualification.P7;
 
 // Issue #9 D2 preflight (offline, no provider). For each document and each shard size, runs the hierarchical reconciliation
 // with a scripted honest model and measures every node: exact input bytes, exact accepted output bytes, levels, requests,

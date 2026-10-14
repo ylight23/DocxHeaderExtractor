@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
-using DocxHeaderExtractor.V5Qualification.P7;
+using DocxHeaderExtractor.V6Qualification.P7;
 
 // Issue #9 D1 preflight (offline, no provider). Measures what a V6 run would send and receive on real documents, using the
 // driver itself with a scripted honest model, plus a whole-document read census with the read tools. Writes one JSON per

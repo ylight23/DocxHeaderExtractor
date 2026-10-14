@@ -1,6 +1,6 @@
 using System.Text;
 using System.Text.Json;
-using DocxHeaderExtractor.V5Qualification.P7;
+using DocxHeaderExtractor.V6Qualification.P7;
 
 // D3.1 protocol snapshot candidate (offline). Writes the manifest of every hash and the candidate document from the same constants the
 // tests use, so the document and the code cannot drift apart. No network call. Nothing here freezes the snapshot.

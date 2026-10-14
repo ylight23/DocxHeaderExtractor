@@ -11,7 +11,6 @@ namespace DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 /// </summary>
 internal static class DocxSourceAdapter
 {
-    internal static DocxSourceBuildResult BuildForAudit(SourceDocument source) => Build(source);
 
     internal static DocxSourceBuildResult Build(SourceDocument sourceDocument)
     {

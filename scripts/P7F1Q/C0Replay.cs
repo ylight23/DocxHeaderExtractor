@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
-using DocxHeaderExtractor.V5Qualification.P7;
+using DocxHeaderExtractor.V6Qualification.P7;
 
 // Gate C0 (D3.5a): offline replay of the public document RFC 9113 through the same dispatch, audit and parser path as a live run, with the
 // mock port. Nothing here opens a connection. c0-pin writes the pins; c0-replay refuses if the source, candidate, universe or manifest hash

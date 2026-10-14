@@ -213,15 +213,6 @@ internal static class CanonicalSemanticEngine
             public string PackId { get; init; } = string.Empty;
         }
 
-        /// <summary>
-        /// Every request this input would produce, composed through
-        /// <see cref="CanonicalSemanticRequestComposer"/> - the same composition
-        /// <see cref="InferAsync"/> sends to a transport, available here without one. A dry-run
-        /// caller uses this directly; nothing re-derives request bytes from fields on the side.
-        /// </summary>
-        public IReadOnlyList<ComposedSegment> ComposeRequests(CanonicalSemanticTextInferenceInput input) =>
-            ComposeSegments(input).ToArray();
-
         private IEnumerable<ComposedSegment> ComposeSegments(CanonicalSemanticTextInferenceInput input)
         {
             var evidence = input.SourceEvidence ?? [];

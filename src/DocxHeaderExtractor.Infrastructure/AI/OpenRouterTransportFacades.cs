@@ -3,11 +3,11 @@ using DocxHeaderExtractor.DocumentProcessing.Inference;
 namespace DocxHeaderExtractor.Infrastructure.AI;
 
 /// <summary>
-/// Production OpenRouter surface: ordinary boundary calls and frozen requests only. Raw observation,
+/// Production OpenRouter surface: ordinary boundary calls only. Raw observation,
 /// unconstrained-response, and tool-call transport live in the qualification assembly, which reaches
 /// <see cref="OpenRouterTransportEngine"/> through InternalsVisibleTo.
 /// </summary>
-public sealed class OpenRouterInferenceTransport : IFrozenInferenceTransport, IDisposable
+public sealed class OpenRouterInferenceTransport : IInferenceTransport
 {
     private readonly OpenRouterTransportEngine _engine;
 
@@ -32,10 +32,6 @@ public sealed class OpenRouterInferenceTransport : IFrozenInferenceTransport, ID
 
     public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default,
         int expectedItemCount = 0) => _engine.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount);
-
-    public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens,
-        string systemPrompt, string userMessage, CancellationToken cancellationToken = default) =>
-        _engine.ExecuteFrozenRequestAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken);
 
     internal static int BoundaryOutputBudgetFor(string userMessage, int expectedItemCount, int maxOutputTokens) =>
         OpenRouterTransportEngine.BoundaryOutputBudgetFor(userMessage, expectedItemCount, maxOutputTokens);

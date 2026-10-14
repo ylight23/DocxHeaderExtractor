@@ -138,22 +138,6 @@ internal sealed class OpenRouterTransportEngine : IDisposable
         byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
         => await ExecuteObservedCoreAsync(payloadBytes, maxTokens, systemPrompt, userMessage, enforceJsonObjectCompatibility: true, ct);
 
-    public async Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(
-        byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
-    {
-        var observation = await ExecuteObservedAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken).ConfigureAwait(false);
-        return new FrozenInferenceResponse(observation.Content, observation.FinishReason);
-    }
-
-    /// <summary>
-    /// Executes a frozen body whose response format is intentionally unconstrained. This is an
-    /// additive qualification transport entry point; the raw body is still sent byte-for-byte and
-    /// the same streaming/retry/usage machinery is used. No JSON compatibility rule is applied.
-    /// </summary>
-    public async Task<OpenRouterTransportObservation> ExecuteObservedUnconstrainedAsync(
-        byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
-        => await ExecuteObservedCoreAsync(payloadBytes, maxTokens, systemPrompt, userMessage, enforceJsonObjectCompatibility: false, ct);
-
     private async Task<OpenRouterTransportObservation> ExecuteObservedCoreAsync(
         byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, bool enforceJsonObjectCompatibility, CancellationToken ct)
     {
@@ -191,57 +175,6 @@ internal sealed class OpenRouterTransportEngine : IDisposable
 
             var delay = RetryDelay(attempt, result.StatusCode, result.RetryAfter);
             _options.DebugLog?.Invoke($"[OpenRouter] V5_SEMANTIC_DECISION_CANARY transport retry {attempt} after {delay.TotalMilliseconds:0} ms: {result.Error!.Message}");
-            await RetryWait(delay, ct);
-        }
-    }
-
-    /// <summary>
-    /// Same frozen-body execution surface as <see cref="ExecuteAsync"/> - exact same HTTP/SSE
-    /// transport, retry, deadline and telemetry machinery, reused unchanged - for a forced-tool-call
-    /// request instead of a <c>response_format</c> one. Additive only: <see cref="SseReassembly"/>
-    /// already captured only <c>delta.content</c>/<c>finish_reason</c>; this reads
-    /// <c>delta.tool_calls[]</c> from the exact same events, which a json_object response never
-    /// carries, so <see cref="ExecuteAsync"/>/<see cref="BoundaryCutAsync"/> are unaffected byte for
-    /// byte. Returns the raw, unreassembled per-chunk fragments -
-    /// <see cref="V5ToolCallArgumentsReassembler"/> does the reassembly, deliberately kept out of this
-    /// transport class.
-    /// </summary>
-    public async Task<(string Content, string? FinishReason, IReadOnlyList<OpenRouterToolCallDelta> ToolCallFragments, JsonElement? Usage)> ExecuteToolCallAsync(
-        byte[] payloadBytes, int maxTokens, string systemPrompt, string userMessage, CancellationToken ct = default)
-    {
-        ArgumentNullException.ThrowIfNull(payloadBytes);
-        using var logical = ProviderCallTelemetry.Start(_options.Observability, new ProviderLogicalCallMetadata
-        {
-            Stage = "V5_FORCED_TOOL_CALL",
-            LogicalCallId = $"v5-forced-tool-{Guid.NewGuid():N}",
-            RequestHash = ProviderObservabilityHashing.Sha256Bytes(payloadBytes),
-            RequestBytes = payloadBytes.Length,
-            EstimatedInputTokens = ProviderObservabilityHashing.EstimateTokens(systemPrompt + "\n" + userMessage),
-            MaxOutputTokens = maxTokens,
-            SourceItemCount = 1,
-            ContextItemCount = 1,
-            ContextCharacterCount = userMessage.Length,
-            Provider = "OpenRouter",
-            Model = _options.Model,
-        });
-        _options.DebugLog?.Invoke($"[OpenRouter] V5_FORCED_TOOL_CALL REQUEST model={_options.Model} payload={Encoding.UTF8.GetString(payloadBytes)}");
-
-        for (var attempt = 1; ; attempt++)
-        {
-            var result = await StreamOnceAsync(payloadBytes, maxTokens, systemPrompt, userMessage, logical, ct);
-            if (result.Content is { } content)
-            {
-                var fragments = result.ToolCallFragments ?? [];
-                logical?.Complete(new { resultCharacters = content.Length, toolCallFragments = fragments.Count, attempts = attempt });
-                return (content, result.FinishReason, fragments, result.Usage);
-            }
-
-            ct.ThrowIfCancellationRequested();
-            if (!result.Retryable || attempt > _options.TransientRequestRetries)
-                throw result.Error!;
-
-            var delay = RetryDelay(attempt, result.StatusCode, result.RetryAfter);
-            _options.DebugLog?.Invoke($"[OpenRouter] V5_FORCED_TOOL_CALL transport retry {attempt} after {delay.TotalMilliseconds:0} ms: {result.Error!.Message}");
             await RetryWait(delay, ct);
         }
     }

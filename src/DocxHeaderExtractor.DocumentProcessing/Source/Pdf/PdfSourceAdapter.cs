@@ -10,8 +10,8 @@ namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 /// <summary>
 /// The coordinate atoms of a PDF and the evidence attached to each - two hashes that pin exactly
 /// that and nothing past it. How they partition into requests is the packing policy's concern.
-/// <para>Request composition is deliberately outside this source authority. The promoted PDF
-/// route consumes these parser-owned facts directly through F1 → G2A → H2-C V2.</para>
+/// <para>Request composition is deliberately outside this source authority. The PDF route (the V6
+/// heading agent) consumes these parser-owned facts directly.</para>
 /// </summary>
 /// <summary>
 /// Builds the coordinate atoms of a PDF and the evidence attached to each - all without contacting

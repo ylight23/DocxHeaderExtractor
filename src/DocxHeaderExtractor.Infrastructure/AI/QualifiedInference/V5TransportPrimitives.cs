@@ -17,8 +17,6 @@ public sealed record V5ProviderEnvelope(
     [JsonPropertyName("openRouterResponseCacheDisabled")]
     public bool OpenRouterResponseCacheDisabled { get; init; } = true;
 
-    [JsonPropertyName("explicitCacheControl")]
-    public string? ExplicitCacheControl { get; init; }
 }
 
 /// <summary>Minimal production wire body DTO, shared by the carrier and the live adapter.</summary>

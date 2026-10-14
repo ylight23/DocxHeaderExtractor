@@ -10,9 +10,8 @@ namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 
 /// <summary>
 /// The canonical-text heading authority the DOCX route uses today. One text-model pass answers
-/// heading, role and relation for each source alias; the model supplies no coordinates. It is not
-/// the qualified F1 → anchor → extent chain, and DOCX does not use that chain until it has its own
-/// qualification evidence - replacing this class is the whole change that promotion needs.
+/// heading, role and relation for each source alias; the model supplies no coordinates. PDF does not
+/// use it: the PDF route has its own authority (<see cref="SelectedLinesHeadingAuthority"/>).
 /// </summary>
 internal sealed class TextSemanticHeadingAuthority(
     IInferenceTransport? transport,

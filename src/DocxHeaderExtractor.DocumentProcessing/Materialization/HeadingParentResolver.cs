@@ -41,17 +41,6 @@ internal static class HeadingParentResolver
     /// <summary>The placement prompt for a packet that carries measurements.</summary>
     internal static string PlacementPromptWithEvidence { get; } = PlacementPrompt + "\n" + RawEvidenceSentence.ReplaceLineEndings("\n");
 
-    /// <summary>
-    /// Re-asks only about headings the first pass left unplaced. Provider authority remains with
-    /// the transport supplied by the caller; the PDF experiment caller supplies its gated
-    /// transport, so this stage has no alternate transport or budget path.
-    /// </summary>
-    public static async Task<IReadOnlyList<CanonicalSemanticBoundHeading>> PlaceUnresolvedHeadingsAsync(
-        IReadOnlyList<CanonicalSemanticBoundHeading> bound,
-        IInferenceTransport transport,
-        CancellationToken cancellationToken) =>
-        (await PlaceWithObservationAsync(bound, transport, cancellationToken).ConfigureAwait(false)).Headings;
-
     /// <summary>The user message of the placement request. Without evidence it is exactly the packet the stage always sent.</summary>
     internal static string PlacementPacket(
         IReadOnlyList<CanonicalSemanticBoundHeading> ordered, IReadOnlySet<string> unplaced, HeadingPlacementEvidence? evidence)

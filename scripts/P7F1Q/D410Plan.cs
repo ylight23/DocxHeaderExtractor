@@ -4,8 +4,8 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.V5Qualification.P7;
-using F = DocxHeaderExtractor.V5Qualification.P7.P7F1V6DirectTwoStage.SelectFormat;
+using DocxHeaderExtractor.V6Qualification.P7;
+using F = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectTwoStage.SelectFormat;
 
 // Issue #9 D4.10: the B/C development canary on SEG-001, SEG-008 and SEG-009. d410-plan writes the pinned plan and a per-arm dry-run
 // (scripted models; the oracle reads the Gold for capacity only). d410-run sends requests and needs its own approval.

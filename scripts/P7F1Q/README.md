@@ -25,14 +25,14 @@ abstentions are never scored as OTHER.
 
 ```
 dotnet build scripts/P7F1Q -c Release -o <bin>
-dotnet <bin>/dhx-v5-qualify.dll probe
-dotnet <bin>/dhx-v5-qualify.dll prepare <frozen-request-dir> <full-source-dir> <new-plan.json> <new-bodies-dir>
+dotnet <bin>/dhx-v6-qualify.dll probe
+dotnet <bin>/dhx-v6-qualify.dll prepare <frozen-request-dir> <full-source-dir> <new-plan.json> <new-bodies-dir>
 # commit + push the plan before any provider call
-dotnet <bin>/dhx-v5-qualify.dll execute <plan.json> <plan-sha256> <bodies-dir> <frozen-request-dir> <full-source-dir> <capture-root> [handle,...]
-dotnet <bin>/dhx-v5-qualify.dll freeze <plan.json> <capture-root> <new-freeze-receipt.json>
+dotnet <bin>/dhx-v6-qualify.dll execute <plan.json> <plan-sha256> <bodies-dir> <frozen-request-dir> <full-source-dir> <capture-root> [handle,...]
+dotnet <bin>/dhx-v6-qualify.dll freeze <plan.json> <capture-root> <new-freeze-receipt.json>
 # commit + push raw before scoring
 dotnet build scripts/P7F1QScore -c Release -o <score-bin>
-dotnet <score-bin>/dhx-v5-qualify.dll <plan-v1.json> <capture-root> <raw-manifest-sha256> <pilot-gold-dir> <d3-raw-dir> <new-score.json>
+dotnet <score-bin>/dhx-v6-qualify.dll <plan-v1.json> <capture-root> <raw-manifest-sha256> <pilot-gold-dir> <d3-raw-dir> <new-score.json>
 ```
 
 Retry policy: one identical-body retry per model turn on transport failure only. Stops: three

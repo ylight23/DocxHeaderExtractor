@@ -27,10 +27,10 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
     }
 
     /// <summary>
-    /// The promoted PDF route is deliberately narrower than the general heading transport
-    /// factory. Its frozen F1/G2A/H2-C bodies were qualified only on OpenRouter's Alibaba route
-    /// for qwen/qwen3.7-flash, so selecting a local or alternate remote backend must fail before
-    /// a PDF provider call is attempted.
+    /// The PDF route is deliberately narrower than the general heading transport factory. Its
+    /// V6 agent was qualified only on OpenRouter's Alibaba route for qwen/qwen3.7-flash, so
+    /// selecting a local or alternate remote backend must fail before a PDF provider call is
+    /// attempted.
     /// </summary>
     public Task<IInferenceTransport> CreatePdfProductionAsync(
         CancellationToken ct = default)
@@ -75,16 +75,10 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
         public int ContextSize => inner.ContextSize;
         public string RuntimeDescription => inner.RuntimeDescription;
         public int SharedPrefixTokens => inner.SharedPrefixTokens;
-        public IFrozenInferenceRequestComposer RequestComposer { get; } = new OpenRouterQwen37InferenceRequestComposer();
 
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage,
             CancellationToken ct = default, int expectedItemCount = 0) =>
             inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount);
-
-        public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(
-            byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
-            CancellationToken cancellationToken = default) =>
-            inner.ExecuteFrozenRequestAsync(providerBody, maxTokens, systemPrompt, userMessage, cancellationToken);
 
         public void Dispose() => inner.Dispose();
     }

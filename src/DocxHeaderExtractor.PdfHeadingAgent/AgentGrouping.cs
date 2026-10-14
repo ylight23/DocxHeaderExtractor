@@ -126,7 +126,7 @@ internal static class AgentGrouping
             if (repairs >= MaxRepairs) return (empty, null, unitId + ":" + failure, posts);
             repairs++;
             history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content ?? "" });
-            history.Add(new JsonObject { ["role"] = "user", ["content"] = RepairMessage(failure, detail) });
+            history.Add(new JsonObject { ["role"] = "user", ["content"] = RepairMessage(failure ?? "UNKNOWN", detail) });
         }
     }
 

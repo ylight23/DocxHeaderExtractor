@@ -253,8 +253,9 @@ DOCX source reading honors ExtractionOptions, including --no-tables. Extraction,
 immediate writeback use the same configured policy. The separate human-review upload endpoint
 retains default extraction; incompatible source ordinals must fail closed at writeback.
 Private transport names are normalized without renaming public named parameters or compatibility
-wire fields. V5Qualification legacy/replay owners and their internal access seams are retained;
-production cannot reference the qualification project or namespace.
+wire fields. Since 2026-10-14 `DocxHeaderExtractor.V6Qualification` (formerly V5Qualification) holds only the qualified V6
+heading-agent code that the parity tests hold the production PDF agent to; production cannot reference it.
+The legacy/replay owners this paragraph used to name were removed.
 
 See [production-cleanup-closure.md](production-cleanup-closure.md) for intentional public API
 retirements, behavior-fix scope, regression coverage, and final verification gates. Cleanup is

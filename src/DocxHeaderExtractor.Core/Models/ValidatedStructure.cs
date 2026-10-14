@@ -21,10 +21,4 @@ public sealed class ValidatedStructure
     [JsonPropertyName("relations")]
     public IReadOnlyList<StructuralRelation> Relations { get; }
 
-    /// <summary>
-    /// Retained public/wire compatibility alias of Elements, not a filtered or separate authority.
-    /// Production projections consume Elements directly; every admitted element is a heading.
-    /// </summary>
-    public IReadOnlyList<ValidatedStructuralElement> OutlineElements => Elements;
-
 }

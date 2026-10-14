@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using DocxHeaderExtractor.V5Qualification.P7;
+using DocxHeaderExtractor.V6Qualification.P7;
 
 // Issue #9 D4.5 plan (offline): writes the pinned plan for SRC-095 / task A / unit 48 and a dry-run report. Nothing is sent: every simulated
 // reply comes from a scripted model in this process. The scripted oracle reads the Gold to play a perfect model for capacity checks only;

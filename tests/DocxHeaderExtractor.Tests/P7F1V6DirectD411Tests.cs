@@ -3,9 +3,9 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.V5Qualification.P7;
-using A = DocxHeaderExtractor.V5Qualification.P7.P7F1V6DirectAgent;
-using F = DocxHeaderExtractor.V5Qualification.P7.P7F1V6DirectTwoStage.SelectFormat;
+using DocxHeaderExtractor.V6Qualification.P7;
+using A = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectAgent;
+using F = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectTwoStage.SelectFormat;
 
 namespace DocxHeaderExtractor.Tests;
 

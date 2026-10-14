@@ -123,7 +123,7 @@ dotnet test tests/DocxHeaderExtractor.Tests         # bộ test V6, không gọi
 ```
 
 Từ 2026-10-14 bộ test chỉ còn thí nghiệm V6 của PDF heading agent: `PdfHeadingAgent*` (agent production, parity với code V6
-đã qualify), `PdfV6SelectedLinesLaneTests` và `P7F1V6*` (code V6 trong `DocxHeaderExtractor.V5Qualification`). Các test cũ
+đã qualify), `PdfV6SelectedLinesLaneTests` và `P7F1V6*` (code V6 trong `DocxHeaderExtractor.V6Qualification`). Các test cũ
 (DOCX, web, MCP, Gold, các thí nghiệm V4-V5/P6-P7) đã xóa theo quyết định của chủ dự án; xem lịch sử git.
 Gold duy nhất nằm ở `eval/a99-closed-loop/gold/`; mỗi thay đổi Gold cần người duyệt từng mục.
 Provider run chỉ chạy dưới manifest thí nghiệm đã đóng băng (`PdfExperimentExecutionGate`).

@@ -3,7 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
-using DocxHeaderExtractor.V5Qualification.P7;
+using DocxHeaderExtractor.V6Qualification.P7;
 
 // P7-F1Q runner, reduced on 2026-10-14 to the V6 heading-agent experiment (Issue #9: D1-D4.12 preflights, plans, canaries and runs).
 // The earlier F1Q / held-out / DIRECT-F1 V1-V5 modes were removed with their qualification code; see git history.

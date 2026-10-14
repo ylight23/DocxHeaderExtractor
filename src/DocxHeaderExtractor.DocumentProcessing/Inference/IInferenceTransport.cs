@@ -54,33 +54,12 @@ public interface IInferenceTransportFactory
 }
 
 /// <summary>
-/// Runtime completion returned by executing an already frozen provider request body.
-/// Provider usage, raw transport evidence, and retry diagnostics belong to observation APIs,
-/// not to the document-processing response contract.
+/// Marker issued only by a composition root that has authorized the qualified PDF route. It names the
+/// provider and model the route was qualified on and carries the provider key: ordinary production must
+/// not borrow another transport merely to reach the PDF agent.
 /// </summary>
-public sealed record FrozenInferenceResponse(string Content, string? FinishReason);
-
-/// <summary>
-/// Optional exact-body surface for production candidates whose body composer is part of their
-/// semantic contract. Implementations must send the supplied bytes verbatim and retain their normal
-/// transport-only retry policy; they must not rebuild or edit the request.
-/// </summary>
-public interface IFrozenInferenceTransport : IInferenceTransport
+public interface IPdfProductionAuthorizedInferenceTransport : IInferenceTransport
 {
-    Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(
-        byte[] providerBody, int maxTokens, string systemPrompt, string userMessage,
-        CancellationToken cancellationToken = default);
-}
-
-/// <summary>
-/// Marker issued only by a composition root that has authorized the qualified PDF route. It is
-/// deliberately distinct from experimental qualification transport: ordinary production must
-/// not borrow an experiment manifest merely to use its approved provider transport.
-/// </summary>
-public interface IPdfProductionAuthorizedInferenceTransport : IFrozenInferenceTransport
-{
-    /// <summary>Qualified PDF request composition, owned by the authorized capability, not generic transport.</summary>
-    IFrozenInferenceRequestComposer RequestComposer { get; }
     string PdfProductionProvider { get; }
     string PdfProductionModel { get; }
 

@@ -7,7 +7,7 @@ using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.PdfHeadingAgent;
-using DocxHeaderExtractor.V5Qualification.P7;
+using DocxHeaderExtractor.V6Qualification.P7;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -69,7 +69,6 @@ public sealed class PdfV6SelectedLinesLaneTests
         Assert.Equal(2, heading.Structure.Elements.Count);
         Assert.Equal(new[] { FixedSelector.Id }, heading.Audit!.ModelInputContracts);
         Assert.Equal("complete", heading.Audit.SemanticLane!.Status);
-        Assert.Equal(0, transport.FrozenCalls);   // the selector, not the frozen transport, decides membership
         // Hierarchy: the selector gives no parent relation, so the shared placement pass asks once for the headings it left unplaced.
         Assert.Equal(1, transport.PlacementCalls);
         Assert.Equal(2, heading.Structure.Elements.Count);
@@ -88,7 +87,7 @@ public sealed class PdfV6SelectedLinesLaneTests
         var noKey = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfExtractionPipeline.RunWithSelectorAsync(file, new PipelineOptions(), keyless, selector));
         Assert.StartsWith("PDF_HEADING_SELECTOR_KEY_MISSING", noKey.Message);
         Assert.Equal(0, selector.Calls);
-        Assert.Equal(0, keyed.FrozenCalls + keyed.PlacementCalls + keyless.FrozenCalls + keyless.PlacementCalls);
+        Assert.Equal(0, keyed.PlacementCalls + keyless.PlacementCalls);
     }
 
     [Fact]
@@ -210,12 +209,10 @@ public sealed class PdfV6SelectedLinesLaneTests
 
     private class NoCallTransport(string? key) : IPdfProductionAuthorizedInferenceTransport
     {
-        public int FrozenCalls { get; private set; }
         public int PlacementCalls { get; private set; }
         public string? LastPrompt { get; private set; }
         public string? LastPacket { get; private set; }
         public string? OpenRouterApiKey => key;
-        public IFrozenInferenceRequestComposer RequestComposer => new OpenRouterQwen37InferenceRequestComposer();
         public string PdfProductionProvider => "test";
         public string PdfProductionModel => "test";
         public string ModelName => "test";
@@ -230,19 +227,12 @@ public sealed class PdfV6SelectedLinesLaneTests
             return Task.FromResult("{\"placements\":[]}");
         }
 
-        public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default)
-        {
-            FrozenCalls++;
-            throw new InvalidOperationException("the V6 lane must not send a frozen request");
-        }
-
         public void Dispose() { }
     }
 
     /// <summary>A transport that does not implement the key member: the interface default answers null.</summary>
     private sealed class DefaultKeyTransport : IPdfProductionAuthorizedInferenceTransport
     {
-        public IFrozenInferenceRequestComposer RequestComposer => new OpenRouterQwen37InferenceRequestComposer();
         public string PdfProductionProvider => "test";
         public string PdfProductionModel => "test";
         public string ModelName => "test";
@@ -250,7 +240,6 @@ public sealed class PdfV6SelectedLinesLaneTests
         public string RuntimeDescription => "test";
         public int SharedPrefixTokens => 0;
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) => throw new NotSupportedException();
-        public Task<FrozenInferenceResponse> ExecuteFrozenRequestAsync(byte[] providerBody, int maxTokens, string systemPrompt, string userMessage, CancellationToken cancellationToken = default) => throw new NotSupportedException();
         public void Dispose() { }
     }
 }
