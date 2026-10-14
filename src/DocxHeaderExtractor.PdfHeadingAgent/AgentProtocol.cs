@@ -85,6 +85,36 @@ internal static class AgentProtocol
     public static readonly string SystemPrompt = string.Join("\n", Intro, FieldsV3 + RangeSentence, MembershipOnly, ToolsLine, FactsToolLineV3, DocumentStylesLine, UseLine, ObservedLine, ReplyLine,
         BodyWithAnalysis(SelectObjectsVersion));
 
+    // ---------------- EXPERIMENT (2026-10-14, off by default): pattern commitments ----------------
+    // The variant replaces the "Use the observations" sentence, which names request fields the V3 request does not have, with one about the facts
+    // the model actually receives, and asks for the pattern a heading's first line follows, so that C# can find every line of the document with
+    // the same opening and send a pattern whose lines were decided differently to one document-wide decision.
+
+    public const int MaxPatternChars = 60;
+    const string UseFactsLine = "Use the facts: before you decide a target, read the facts get_line_facts returned for it and for the lines next to it - its layout block, the segments on its visual line, its left edge and its style as against the lines before and after it, and the other occurrences of its text. Compare the target with its neighbours, not with its own text alone. Base each decision on the instruction and on this evidence together.";
+    const string PatternLine = "Pattern: for a target you select that is the first line of a heading and opens with a number (digits, a Roman numeral or a letter used as a number), also give pattern: the words before that number as they stand, the number written as #, and the punctuation right after it, nothing more - for example \"Xyz #.\" for a line \"Xyz 12. Some title\". A line that does not open with a number gets no pattern, nor does a later line of a heading that runs over several lines. The lines of the whole document that start with the same pattern are checked together, so that the instruction is applied to all of them the same way.";
+
+    public static readonly string SystemPromptPatterns = SystemPrompt
+        .Replace(UseLine, UseFactsLine + "\n" + PatternLine, StringComparison.Ordinal)
+        .Replace("\"reason\":\"<why this line is such a heading, at most 300 characters>\"}", "\"reason\":\"<why this line is such a heading, at most 300 characters>\",\"pattern\":\"<the words before the number, the number as #, the punctuation after it>\"}", StringComparison.Ordinal)
+        .Replace("Write nothing before or after the JSON object.", "A third key is allowed on a SELECT that is the first line of a heading: pattern, a string of at most " + MaxPatternChars + " characters. Write nothing before or after the JSON object.", StringComparison.Ordinal);
+
+    /// <summary>The pattern normalization: lower case, every run of digits (and of #) as one #, runs of whitespace as one space, trimmed.</summary>
+    public static string NormalizePattern(string text)
+    {
+        var sb = new StringBuilder(text.Length);
+        var space = false;
+        foreach (var c in text.Trim().ToLowerInvariant())
+        {
+            if (char.IsWhiteSpace(c)) { if (!space) sb.Append(' '); space = true; continue; }
+            space = false;
+            var d = char.IsDigit(c) ? '#' : c;
+            if (d == '#' && sb.Length > 0 && sb[^1] == '#') continue;
+            sb.Append(d);
+        }
+        return sb.ToString();
+    }
+
     public static string Sha(string s) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(s)));
 
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -120,13 +150,13 @@ internal static class AgentProtocol
 
     /// <summary>One POST body: model, messages (system prompt and payload as cache-marked text blocks, then the history), json_object, temperature
     /// 0, max_tokens, reasoning enabled, the eight tools, this turn's tool_choice, the locked provider block, streaming and usage.</summary>
-    public static PreparedRequest Build(string payload, JsonArray history, string toolChoice)
+    public static PreparedRequest Build(string payload, JsonArray history, string toolChoice, string? systemPrompt = null)
     {
         if (toolChoice is not ("auto" or "none")) throw new ArgumentException("TOOL_CHOICE_INVALID", nameof(toolChoice));
         static JsonNode Content(string text) =>
             new JsonArray(new JsonObject { ["type"] = "text", ["text"] = text, ["cache_control"] = new JsonObject { ["type"] = "ephemeral" } });
         var messages = new JsonArray(
-            new JsonObject { ["role"] = "system", ["content"] = Content(SystemPrompt) },
+            new JsonObject { ["role"] = "system", ["content"] = Content(systemPrompt ?? SystemPrompt) },
             new JsonObject { ["role"] = "user", ["content"] = Content(payload) });
         foreach (var m in history) messages.Add(m!.DeepClone());
         var body = new JsonObject
@@ -139,6 +169,31 @@ internal static class AgentProtocol
             ["reasoning"] = new JsonObject { ["enabled"] = true },
             ["tools"] = AgentTools.Definitions(),
             ["tool_choice"] = toolChoice,
+            ["provider"] = JsonSerializer.SerializeToNode(new { only = new[] { ProviderTag }, ignore = Ignore, allow_fallbacks = false, require_parameters = true }, Options),
+            ["stream"] = true,
+            ["usage"] = new JsonObject { ["include"] = true },
+        };
+        var text = body.ToJsonString(Options);
+        var bytes = Encoding.UTF8.GetBytes(text);
+        return new PreparedRequest(text, bytes.Length, Convert.ToHexStringLower(SHA256.HashData(bytes)));
+    }
+
+    /// <summary>A POST body without tools (the grouping and pattern steps): the system prompt and the payload as plain strings, then the history;
+    /// json_object, temperature 0, reasoning enabled, the locked provider block, streaming and usage.</summary>
+    public static PreparedRequest BuildPlain(string systemPrompt, string payload, JsonArray history)
+    {
+        var messages = new JsonArray(
+            new JsonObject { ["role"] = "system", ["content"] = systemPrompt },
+            new JsonObject { ["role"] = "user", ["content"] = payload });
+        foreach (var m in history) messages.Add(m!.DeepClone());
+        var body = new JsonObject
+        {
+            ["model"] = ChatModel,
+            ["messages"] = messages,
+            ["response_format"] = new JsonObject { ["type"] = "json_object" },
+            ["temperature"] = 0,
+            ["max_tokens"] = MaxTokens,
+            ["reasoning"] = new JsonObject { ["enabled"] = true },
             ["provider"] = JsonSerializer.SerializeToNode(new { only = new[] { ProviderTag }, ignore = Ignore, allow_fallbacks = false, require_parameters = true }, Options),
             ["stream"] = true,
             ["usage"] = new JsonObject { ["include"] = true },
@@ -215,7 +270,7 @@ internal static class AgentProtocol
 
     public sealed record SelectReply(bool Ok, string? Failure, string? Status, IReadOnlyDictionary<string, string> Values, Clarification? Clarification,
         string? IncompleteReason, IReadOnlyList<string> Missing, IReadOnlyDictionary<string, IReadOnlyList<string>>? Refs = null, string? Analysis = null,
-        IReadOnlyDictionary<string, string>? Reasons = null);
+        IReadOnlyDictionary<string, string>? Reasons = null, IReadOnlyDictionary<string, string>? Patterns = null);
 
     static string? Str(JsonElement e, string name) => e.TryGetProperty(name, out var v) && v.ValueKind == JsonValueKind.String ? v.GetString() : null;
     static bool Has(JsonElement root, string name) =>
@@ -237,7 +292,7 @@ internal static class AgentProtocol
 
     /// <summary>The strict parser of a final answer (objects format, agent mode, analysis and reasons allowed). A missing or extra alias is
     /// reported, never filled in; a decision is never changed. shownOrder holds every alias the model saw.</summary>
-    public static SelectReply ParseSelect(string reply, IReadOnlyDictionary<string, int> shownOrder, IReadOnlyList<string> decide)
+    public static SelectReply ParseSelect(string reply, IReadOnlyDictionary<string, int> shownOrder, IReadOnlyList<string> decide, bool patternsAllowed = false)
     {
         SelectReply Fail(string code, IReadOnlyList<string>? missing = null) => new(false, code, null, new Dictionary<string, string>(), null, null, missing ?? Array.Empty<string>());
         if (Encoding.UTF8.GetByteCount(reply) > VisibleResponseCapBytes) return Fail("REPLY_OVER_CAP");
@@ -291,11 +346,12 @@ internal static class AgentProtocol
             var values = new Dictionary<string, string>(StringComparer.Ordinal);
             var refsByAlias = new Dictionary<string, IReadOnlyList<string>>(StringComparer.Ordinal);
             var reasons = new Dictionary<string, string>(StringComparer.Ordinal);
+            var patterns = new Dictionary<string, string>(StringComparer.Ordinal);
             if (!root.TryGetProperty("decisions", out var ds) || ds.ValueKind != JsonValueKind.Array) return Fail("DECISIONS_MISSING");
             var decideSet = decide.ToHashSet(StringComparer.Ordinal);
             foreach (var d in ds.EnumerateArray())
             {
-                if (d.ValueKind != JsonValueKind.Object || d.EnumerateObject().Any(p => p.Name is not ("alias" or "decision" or "evidenceRefs" or "reason")))
+                if (d.ValueKind != JsonValueKind.Object || d.EnumerateObject().Any(p => p.Name is not ("alias" or "decision" or "evidenceRefs" or "reason") && !(patternsAllowed && p.Name == "pattern")))
                     return Fail("DECISION_KEYS_INVALID");
                 var alias = Str(d, "alias");
                 if (alias is null) return Fail("ALIAS_MISSING");
@@ -312,13 +368,18 @@ internal static class AgentProtocol
                     if (rs.ValueKind != JsonValueKind.String || rs.GetString()!.Length > MaxReasonChars) return Fail("REASON_INVALID");
                     reasons[alias] = rs.GetString()!;
                 }
+                if (patternsAllowed && d.TryGetProperty("pattern", out var pt))
+                {
+                    if (pt.ValueKind != JsonValueKind.String || pt.GetString()!.Trim().Length == 0 || pt.GetString()!.Length > MaxPatternChars) return Fail("PATTERN_INVALID");
+                    patterns[alias] = pt.GetString()!;
+                }
                 if (!values.TryAdd(alias, value!)) return Fail("ALIAS_LISTED_TWICE");
                 refsByAlias[alias] = (IReadOnlyList<string>?)refs ?? Array.Empty<string>();
             }
             var missing = decide.Where(a => !values.ContainsKey(a)).ToArray();
             if (missing.Length > 0) return Fail("COVERAGE_INCOMPLETE", missing);
             if (status == "INCOMPLETE" && values.Values.All(v => v != "UNRESOLVED")) return Fail("INCOMPLETE_WITHOUT_UNRESOLVED");
-            return new SelectReply(true, null, status, values, null, reason, Array.Empty<string>(), refsByAlias, analysis, reasons);
+            return new SelectReply(true, null, status, values, null, reason, Array.Empty<string>(), refsByAlias, analysis, reasons, patterns);
         }
     }
 
@@ -342,6 +403,7 @@ internal static class AgentProtocol
         "PROTOCOL:ANALYSIS_INVALID" => "Your answer was refused (" + failure + "): analysis must be a string. Send the complete answer again as exactly one JSON object.",
         "PROTOCOL:REPLY_OVER_CAP" => "Your answer was refused (" + failure + "): the whole reply must stay under 16 KB. Shorten analysis and the reasons and send the complete answer again as exactly one JSON object.",
         "PROTOCOL:REASON_INVALID" => "Your answer was refused (" + failure + "): each reason must be a string of at most 300 characters. Shorten every reason to one sentence and send the complete answer again as exactly one JSON object.",
+        "PROTOCOL:PATTERN_INVALID" => "Your answer was refused (" + failure + "): pattern must be a non-empty string of at most " + MaxPatternChars + " characters, the opening of the line with every digit written as #. Send the complete answer again as exactly one JSON object.",
         "PROTOCOL:REPLY_NOT_JSON" => "Your answer was refused (" + failure + "): the reply must be exactly one JSON object with nothing before or after it; put any explanation in analysis. Send the complete answer again.",
         _ => "Your answer was refused (" + failure + "). Send the complete answer again as exactly one JSON object that follows the answer format.",
     };

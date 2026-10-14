@@ -77,7 +77,7 @@ internal sealed class AgentBudget(int maxCalls, double ceilingUsd)
 /// <summary>What one unit (one segment) ended with.</summary>
 internal sealed record AgentUnitOutcome(string UnitId, string Status, string? Failure, IReadOnlyDictionary<string, string> Decisions, int Posts,
     int ToolCallsEmitted, int ToolCallsSucceeded, bool FenceUnwrapped, string? Analysis, IReadOnlyDictionary<string, string>? Reasons,
-    string? RepairedFrom, int RepairsUsed, int TransportRetries, IReadOnlyList<string> RequestSha256s);
+    string? RepairedFrom, int RepairsUsed, int TransportRetries, IReadOnlyList<string> RequestSha256s, IReadOnlyDictionary<string, string>? Patterns = null);
 
 /// <summary>
 /// One unit of the D4.12 method as a conversation (ported from the qualified V6 RunUnit, arm TOOLFACTS_ANALYSIS_V3, with json_object on every
@@ -94,7 +94,8 @@ internal static class AgentUnit
 
     public delegate ModelTurn Model(string unitId, int turn, PreparedRequest request);
 
-    public static AgentUnitOutcome Run(AgentSource source, int segment, Model model, AgentBudget budget, int retryDelayMs = 5000, string instruction = Instruction)
+    public static AgentUnitOutcome Run(AgentSource source, int segment, Model model, AgentBudget budget, int retryDelayMs = 5000, string instruction = Instruction,
+        bool patterns = false)
     {
         var unitId = AgentSource.SegmentId(segment);
         var (decide, shownIdx) = source.Scope(segment);
@@ -116,9 +117,9 @@ internal static class AgentUnit
         var issuedIds = new HashSet<string>(StringComparer.Ordinal);
 
         AgentUnitOutcome Done(string status, string? failure, IReadOnlyDictionary<string, string>? decisions = null, string? analysis = null,
-            IReadOnlyDictionary<string, string>? reasons = null) =>
+            IReadOnlyDictionary<string, string>? reasons = null, IReadOnlyDictionary<string, string>? patternsOf = null) =>
             new(unitId, status, failure, decisions ?? ordered.ToDictionary(a => a, _ => "UNRESOLVED", StringComparer.Ordinal), posts, emitted, okCalls,
-                fenceUnwrapped, analysis, reasons, repairedFrom, repairsUsed, retriesUsed, requestShas);
+                fenceUnwrapped, analysis, reasons, repairedFrom, repairsUsed, retriesUsed, requestShas, patternsOf);
 
         // Repairs have no limit of their own: the budget's call limit stops a unit that keeps failing.
         bool TryRepair(string failure, IReadOnlyList<string>? missing = null)
@@ -134,7 +135,7 @@ internal static class AgentUnit
         for (int turn = 1; turn <= MaxPostsPerUnit + 2 * repairsUsed; turn++)
         {
             var toolChoice = forcedChoices.Count > 0 ? forcedChoices.Dequeue() : turn <= MaxToolTurns ? "auto" : "none";
-            var req = Build(payload, history, toolChoice);
+            var req = Build(payload, history, toolChoice, patterns ? SystemPromptPatterns : null);
             var refusal = budget.Admit(req);
             if (refusal is not null) return Done("INCOMPLETE", "BUDGET:" + refusal);
             requestShas.Add(req.Sha256);
@@ -237,7 +238,7 @@ internal static class AgentUnit
             var observed = shownAliases.Concat(tools.ObservedAliases).Distinct(StringComparer.Ordinal).ToDictionary(a => a, tools.PositionOf, StringComparer.Ordinal);
             var content = reply.Content ?? "";
             if (TryUnwrapFence(content, out var inner)) { content = inner; fenceUnwrapped = true; }
-            var parsed = ParseSelect(content, observed, ordered);
+            var parsed = ParseSelect(content, observed, ordered, patternsAllowed: patterns);
             if (!parsed.Ok)
             {
                 history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
@@ -246,7 +247,7 @@ internal static class AgentUnit
             }
             budget.NoteContract(true);
             if (parsed.Status == "CLARIFICATION_REQUIRED") return Done("CLARIFICATION_REQUIRED", null, analysis: parsed.Analysis);
-            return Done(parsed.Status!, null, parsed.Values, parsed.Analysis, parsed.Reasons);
+            return Done(parsed.Status!, null, parsed.Values, parsed.Analysis, parsed.Reasons, parsed.Patterns);
         }
         throw new InvalidOperationException("AGENT_TURN_LOOP_EXHAUSTED");
     }
