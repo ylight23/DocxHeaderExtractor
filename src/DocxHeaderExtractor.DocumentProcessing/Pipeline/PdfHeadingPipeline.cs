@@ -36,8 +36,8 @@ internal static class PdfHeadingPipeline
             return new HeadingPipelineResult(
                 ValidatedStructureFactory.Create([]), SourceOnlyAudit(authority, pdfDetails), "pdf-function-conditioned-llm-disabled")
             { SourceCatalog = authority.Catalog };
-        if (transport is not IPdfProductionAuthorizedInferenceTransport authorized)
-            throw new InvalidOperationException("PDF_PRODUCTION_AUTHORIZATION_REQUIRED");
+        if (transport is not IAgentRouteInferenceTransport authorized)
+            throw new InvalidOperationException("AGENT_ROUTE_AUTHORIZATION_REQUIRED");
         if (selector is null)
             throw new InvalidOperationException("PDF_HEADING_SELECTOR_REQUIRED: the PDF lane has no authority without the V6 heading selector.");
         var apiKey = authorized.OpenRouterApiKey
@@ -48,16 +48,16 @@ internal static class PdfHeadingPipeline
         await checkpoint.RecordSelectionAsync(
             pdfDetails.Blocks.Select(block => new PdfSelectedSourceIdentity(
                 block.Id, block.Page, block.Lines.Select(PdfLineIdentity.Of).ToArray(), block.DisplayText)).ToArray(), ct).ConfigureAwait(false);
-        var execution = await PdfLaneExecution.RunAsync(
+        var execution = await LaneExecution.RunAsync(
             (lease, laneCt) => RunCoreAsync(authority, pdfDetails, authorized, selector, sourceName, apiKey, lease, laneCt),
             (semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline,
             ct).ConfigureAwait(false);
         await checkpoint.StopAcceptingWritesAndDrainAsync().ConfigureAwait(false);
-        if (execution.State == PdfLaneExecutionState.TimedOut)
+        if (execution.State == LaneExecutionState.TimedOut)
             throw new TimeoutException("PDF semantic execution exceeded its lane deadline.");
-        if (execution.State == PdfLaneExecutionState.Cancelled)
+        if (execution.State == LaneExecutionState.Cancelled)
             throw new OperationCanceledException(ct);
-        if (execution.State == PdfLaneExecutionState.Failed)
+        if (execution.State == LaneExecutionState.Failed)
             throw execution.Fault ?? new InvalidOperationException("PDF semantic execution failed.");
         if (!execution.Lease.CanPublishCompletedResult || execution.Value is null)
             throw new InvalidOperationException("PDF semantic result lost its execution lease.");
@@ -88,8 +88,8 @@ internal static class PdfHeadingPipeline
         };
     }
 
-    private static async Task<HeadingPipelineResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IPdfProductionAuthorizedInferenceTransport authorized,
-        IHeadingSelector selector, string pdfPath, string apiKey, PdfLaneExecutionLease lease, CancellationToken ct)
+    private static async Task<HeadingPipelineResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IAgentRouteInferenceTransport authorized,
+        IHeadingSelector selector, string pdfPath, string apiKey, LaneExecutionLease lease, CancellationToken ct)
     {
         var leaseBound = new LeaseBoundInferenceTransport(authorized, lease);
         IHeadingAuthority authority = new SelectedLinesHeadingAuthority(
@@ -98,7 +98,7 @@ internal static class PdfHeadingPipeline
             apiKey,
             pdfDetails.LayoutBlockByAtom,
             leaseBound,
-            () => { if (!lease.IsActive) throw new PdfExecutionLeaseLostException(); });
+            () => { if (!lease.IsActive) throw new LaneLeaseLostException(); });
         var decided = await authority.DecideAsync(source, ct).ConfigureAwait(false);
         // The selected-lines authority defines no semantic node identity, so every validated
         // source occurrence reaches the canonical structure.
@@ -126,39 +126,5 @@ internal static class PdfHeadingPipeline
             AuthorityId,
             assembly.Structure.Elements.Select(value => value.Id).ToHashSet(StringComparer.Ordinal))
         { SourceCatalog = source.Catalog, ProjectionContext = assembly.ProjectionContext };
-    }
-
-    private sealed class LeaseBoundInferenceTransport : IInferenceTransport
-    {
-        private readonly IInferenceTransport _inner;
-        private readonly PdfLaneExecutionLease _lease;
-
-        public LeaseBoundInferenceTransport(IInferenceTransport inner, PdfLaneExecutionLease lease)
-        {
-            _inner = inner;
-            _lease = lease;
-        }
-
-        public string ModelName => _inner.ModelName;
-        public int ContextSize => _inner.ContextSize;
-        public string RuntimeDescription => _inner.RuntimeDescription;
-        public int SharedPrefixTokens => _inner.SharedPrefixTokens;
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
-            StartAndObserve(() => _inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount));
-        public void Dispose() { }
-
-        private Task<T> StartAndObserve<T>(Func<Task<T>> start)
-        {
-            Task<T>? task = null;
-            if (!_lease.TryStartDownstream(() => task = start())) throw new PdfExecutionLeaseLostException();
-            return ObserveAsync(task!, _lease);
-        }
-
-        private static async Task<T> ObserveAsync<T>(Task<T> task, PdfLaneExecutionLease lease)
-        {
-            var result = await task.ConfigureAwait(false);
-            if (!lease.IsActive) throw new PdfExecutionLeaseLostException();
-            return result;
-        }
     }
 }

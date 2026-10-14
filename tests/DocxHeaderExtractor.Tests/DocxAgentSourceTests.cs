@@ -21,41 +21,9 @@ public sealed class DocxAgentSourceTests : IDisposable
         try { Directory.Delete(dir, recursive: true); } catch (IOException) { }
     }
 
-    private static Paragraph P(string text, string? style = null, bool bold = false, string? anchor = null)
-    {
-        var run = new Run(new Text(text) { Space = SpaceProcessingModeValues.Preserve });
-        if (bold) run.PrependChild(new RunProperties(new Bold()));
-        var p = new Paragraph();
-        if (style is not null) p.AppendChild(new ParagraphProperties(new ParagraphStyleId { Val = style }));
-        if (anchor is null) p.AppendChild(run); else p.AppendChild(new Hyperlink(run) { Anchor = anchor });
-        return p;
-    }
+    private string MakeDocx(string name = "sample.docx") => DocxTestDocument.Create(Path.Combine(dir, name));
 
-    /// <summary>0 Chapter I and 1 GENERAL PROVISIONS (Heading1), 2 a bold Normal paragraph, 3 a Normal clause, 4-5 a table with two rows, 6 a
-    /// paragraph that links to a bookmark, 7 a Normal paragraph.</summary>
-    private string MakeDocx(string name = "sample.docx")
-    {
-        var path = Path.Combine(dir, name);
-        using (var doc = WordprocessingDocument.Create(path, WordprocessingDocumentType.Document))
-        {
-            var main = doc.AddMainDocumentPart();
-            main.AddNewPart<StyleDefinitionsPart>().Styles = new Styles(
-                new Style(new StyleName { Val = "Normal" }, new StyleRunProperties(new FontSize { Val = "22" })) { Type = StyleValues.Paragraph, StyleId = "Normal", Default = true },
-                new Style(new StyleName { Val = "heading 1" }, new BasedOn { Val = "Normal" },
-                    new StyleParagraphProperties(new OutlineLevel { Val = 0 }),
-                    new StyleRunProperties(new Bold(), new FontSize { Val = "32" })) { Type = StyleValues.Paragraph, StyleId = "Heading1" });
-            var table = new Table(
-                new TableRow(new TableCell(P("Header cell"))),
-                new TableRow(new TableCell(P("Row cell"))));
-            main.Document = new Document(new Body(
-                P("Chapter I", "Heading1"), P("GENERAL PROVISIONS", "Heading1"),
-                P("Article 1. Scope", bold: true), P("1. This clause is body text."),
-                table,
-                P("Table of contents entry", anchor: "_Toc1"),
-                P("Closing paragraph.")));
-        }
-        return path;
-    }
+    private static DocumentFormat.OpenXml.Wordprocessing.Paragraph P(string text) => DocxTestDocument.P(text);
 
     private DocxAgentSource Load(string path)
     {

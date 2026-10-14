@@ -1,7 +1,7 @@
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>The only non-terminal state of one PDF lane execution.</summary>
-internal enum PdfLaneExecutionState
+internal enum LaneExecutionState
 {
     Active = 0,
     Succeeded = 1,
@@ -10,9 +10,9 @@ internal enum PdfLaneExecutionState
     Cancelled = 4,
 }
 
-internal sealed class PdfExecutionLeaseLostException : InvalidOperationException
+internal sealed class LaneLeaseLostException : InvalidOperationException
 {
-    public PdfExecutionLeaseLostException()
+    public LaneLeaseLostException()
         : base("The PDF execution lease is no longer active; late provider work was quarantined.")
     {
     }
@@ -22,38 +22,38 @@ internal sealed class PdfExecutionLeaseLostException : InvalidOperationException
 /// Monotonic lease for one lane attempt. A terminal transition wins exactly once. Checkpoint,
 /// publication, and downstream work can admit an operation only while the lease is active.
 /// </summary>
-internal sealed class PdfLaneExecutionLease
+internal sealed class LaneExecutionLease
 {
     private readonly object _sync = new();
-    private PdfLaneExecutionState _state = PdfLaneExecutionState.Active;
+    private LaneExecutionState _state = LaneExecutionState.Active;
     private Exception? _lateFault;
     private int _lateCompletionObserved;
     private int _terminalTransitions;
 
-    public PdfLaneExecutionState State
+    public LaneExecutionState State
     {
         get { lock (_sync) return _state; }
     }
 
     public bool IsActive
     {
-        get { lock (_sync) return _state == PdfLaneExecutionState.Active; }
+        get { lock (_sync) return _state == LaneExecutionState.Active; }
     }
 
     public int TerminalTransitionCount => Volatile.Read(ref _terminalTransitions);
     public bool LateCompletionObserved => Volatile.Read(ref _lateCompletionObserved) != 0;
     public Exception? LateFault => Volatile.Read(ref _lateFault);
-    public bool CanPublishCompletedResult => State == PdfLaneExecutionState.Succeeded &&
+    public bool CanPublishCompletedResult => State == LaneExecutionState.Succeeded &&
         TerminalTransitionCount == 1;
 
-    public bool TryTransition(PdfLaneExecutionState terminal)
+    public bool TryTransition(LaneExecutionState terminal)
     {
-        if (terminal is PdfLaneExecutionState.Active)
+        if (terminal is LaneExecutionState.Active)
             throw new ArgumentException("A lane transition must be terminal.", nameof(terminal));
 
         lock (_sync)
         {
-            if (_state != PdfLaneExecutionState.Active) return false;
+            if (_state != LaneExecutionState.Active) return false;
             _state = terminal;
             Interlocked.Increment(ref _terminalTransitions);
             return true;
@@ -67,7 +67,7 @@ internal sealed class PdfLaneExecutionLease
     public IDisposable? TryAdmitOperation()
     {
         lock (_sync)
-            return _state == PdfLaneExecutionState.Active ? NoopLease.Instance : null;
+            return _state == LaneExecutionState.Active ? NoopLease.Instance : null;
     }
 
     public bool TryPublish(Action publish)
@@ -75,7 +75,7 @@ internal sealed class PdfLaneExecutionLease
         ArgumentNullException.ThrowIfNull(publish);
         lock (_sync)
         {
-            if (_state != PdfLaneExecutionState.Active) return false;
+            if (_state != LaneExecutionState.Active) return false;
             publish();
             return true;
         }
@@ -107,12 +107,12 @@ internal sealed class PdfLaneExecutionLease
 /// work that ignored cancellation, but the detached work is always observed and its late output is
 /// quarantined behind the execution lease.
 /// </summary>
-internal static class PdfLaneExecution
+internal static class LaneExecution
 {
     internal sealed record Result<T>(T? Value, bool TimedOut, bool Cancelled, Exception? Fault = null)
     {
-        public PdfLaneExecutionState State { get; init; }
-        public PdfLaneExecutionLease Lease { get; init; } = null!;
+        public LaneExecutionState State { get; init; }
+        public LaneExecutionLease Lease { get; init; } = null!;
 
         /// <summary>Observed wrapper for work that outlived the deadline.</summary>
         public Task? DetachedTask { get; init; }
@@ -125,20 +125,20 @@ internal static class PdfLaneExecution
         => await RunAsync((_, ct) => action(ct), deadline, callerCancellation).ConfigureAwait(false);
 
     public static async Task<Result<T>> RunAsync<T>(
-        Func<PdfLaneExecutionLease, CancellationToken, Task<T>> action,
+        Func<LaneExecutionLease, CancellationToken, Task<T>> action,
         TimeSpan deadline,
         CancellationToken callerCancellation)
     {
         ArgumentNullException.ThrowIfNull(action);
         if (deadline <= TimeSpan.Zero) throw new ArgumentOutOfRangeException(nameof(deadline));
 
-        var lease = new PdfLaneExecutionLease();
+        var lease = new LaneExecutionLease();
         if (callerCancellation.IsCancellationRequested)
         {
-            lease.TryTransition(PdfLaneExecutionState.Cancelled);
+            lease.TryTransition(LaneExecutionState.Cancelled);
             return new Result<T>(default, false, true)
             {
-                State = PdfLaneExecutionState.Cancelled,
+                State = LaneExecutionState.Cancelled,
                 Lease = lease,
             };
         }
@@ -152,19 +152,19 @@ internal static class PdfLaneExecution
         }
         catch (OperationCanceledException) when (callerCancellation.IsCancellationRequested)
         {
-            lease.TryTransition(PdfLaneExecutionState.Cancelled);
+            lease.TryTransition(LaneExecutionState.Cancelled);
             return new Result<T>(default, false, true)
             {
-                State = PdfLaneExecutionState.Cancelled,
+                State = LaneExecutionState.Cancelled,
                 Lease = lease,
             };
         }
         catch (Exception ex)
         {
-            lease.TryTransition(PdfLaneExecutionState.Failed);
+            lease.TryTransition(LaneExecutionState.Failed);
             return new Result<T>(default, false, false, ex)
             {
-                State = PdfLaneExecutionState.Failed,
+                State = LaneExecutionState.Failed,
                 Lease = lease,
             };
         }
@@ -177,10 +177,10 @@ internal static class PdfLaneExecution
             try
             {
                 var value = await work.ConfigureAwait(false);
-                if (lease.TryTransition(PdfLaneExecutionState.Succeeded))
+                if (lease.TryTransition(LaneExecutionState.Succeeded))
                     return new Result<T>(value, false, false)
                     {
-                        State = PdfLaneExecutionState.Succeeded,
+                        State = LaneExecutionState.Succeeded,
                         Lease = lease,
                     };
 
@@ -189,19 +189,19 @@ internal static class PdfLaneExecution
             }
             catch (OperationCanceledException) when (callerCancellation.IsCancellationRequested)
             {
-                lease.TryTransition(PdfLaneExecutionState.Cancelled);
+                lease.TryTransition(LaneExecutionState.Cancelled);
                 return new Result<T>(default, false, true)
                 {
-                    State = PdfLaneExecutionState.Cancelled,
+                    State = LaneExecutionState.Cancelled,
                     Lease = lease,
                 };
             }
             catch (Exception ex)
             {
-                if (lease.TryTransition(PdfLaneExecutionState.Failed))
+                if (lease.TryTransition(LaneExecutionState.Failed))
                     return new Result<T>(default, false, false, ex)
                     {
-                        State = PdfLaneExecutionState.Failed,
+                        State = LaneExecutionState.Failed,
                         Lease = lease,
                     };
 
@@ -214,12 +214,12 @@ internal static class PdfLaneExecution
         // the deadline task, even though the caller token was already cancelled. Caller
         // cancellation is authoritative once observed; do not misclassify it as a timeout.
         var terminal = completed == cancellationTask || callerCancellation.IsCancellationRequested
-            ? PdfLaneExecutionState.Cancelled
-            : PdfLaneExecutionState.TimedOut;
+            ? LaneExecutionState.Cancelled
+            : LaneExecutionState.TimedOut;
         lease.TryTransition(terminal);
         laneCancellation.Cancel(throwOnFirstException: false);
         var observedDetached = ObserveDetachedAsync(work, lease);
-        return new Result<T>(default, terminal == PdfLaneExecutionState.TimedOut, terminal == PdfLaneExecutionState.Cancelled)
+        return new Result<T>(default, terminal == LaneExecutionState.TimedOut, terminal == LaneExecutionState.Cancelled)
         {
             State = terminal,
             Lease = lease,
@@ -227,7 +227,7 @@ internal static class PdfLaneExecution
         };
     }
 
-    private static async Task ObserveDetachedAsync<T>(Task<T> work, PdfLaneExecutionLease lease)
+    private static async Task ObserveDetachedAsync<T>(Task<T> work, LaneExecutionLease lease)
     {
         try
         {
@@ -252,17 +252,17 @@ internal static class PdfLaneExecution
         }
     }
 
-    private static Result<T> TerminalResultAfterLateCompletion<T>(PdfLaneExecutionLease lease) =>
+    private static Result<T> TerminalResultAfterLateCompletion<T>(LaneExecutionLease lease) =>
         lease.State switch
         {
-            PdfLaneExecutionState.TimedOut => new Result<T>(default, true, false)
+            LaneExecutionState.TimedOut => new Result<T>(default, true, false)
             {
-                State = PdfLaneExecutionState.TimedOut,
+                State = LaneExecutionState.TimedOut,
                 Lease = lease,
             },
-            PdfLaneExecutionState.Cancelled => new Result<T>(default, false, true)
+            LaneExecutionState.Cancelled => new Result<T>(default, false, true)
             {
-                State = PdfLaneExecutionState.Cancelled,
+                State = LaneExecutionState.Cancelled,
                 Lease = lease,
             },
             _ => new Result<T>(default, false, false)

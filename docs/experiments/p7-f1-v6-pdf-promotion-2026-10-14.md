@@ -14,7 +14,7 @@ PDF → production parser (PdfSourceAdapter) → PdfHeadingAgentSelector
       → SelectedLinesHeadingAuthority → shared assembler → outline (json, md, txt, xml, csv)
 ```
 
-Code: `src/DocxHeaderExtractor.PdfHeadingAgent` (the agent), `IPdfHeadingSelector` and `SelectedLinesHeadingAuthority` in `DocxHeaderExtractor.DocumentProcessing`. The production assemblies do not reference the qualification project (the architecture test enforces this); the agent is a port of the qualified V6 code, and `PdfHeadingAgentParityTests` holds the port to the qualified bytes on SRC-089.
+Code: `src/DocxHeaderExtractor.PdfHeadingAgent` (the agent), `IHeadingSelector` and `SelectedLinesHeadingAuthority` in `DocxHeaderExtractor.DocumentProcessing`. The production assemblies do not reference the qualification project (the architecture test enforces this); the agent is a port of the qualified V6 code, and `PdfHeadingAgentParityTests` holds the port to the qualified bytes on SRC-089.
 
 ### 1. Selection (the frozen method, with the structural-heading instruction below)
 

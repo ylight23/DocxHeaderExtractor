@@ -33,7 +33,7 @@ retained for existing library/test callers and is not a second authority route.
 
 `DocumentProcessing/Pipeline/` is orchestration-only. Its exact, recursively checked allowlist is
 `DocxExtractionPipeline.cs`, `DocxHeadingPipeline.cs`, `PdfExtractionPipeline.cs`,
-`PdfHeadingPipeline.cs`, `PdfLaneExecution.cs`, `PdfStageCheckpoint.cs`,
+`PdfHeadingPipeline.cs`, `LaneExecution.cs`, `PdfStageCheckpoint.cs`,
 `ProductionCheckpointScope.cs`, `PipelineOptions.cs`, and `PdfSemanticLaneOptions.cs`. The last file
 owns only the semantic lane's execution deadline, not source facts or heading decisions. Helpers, validators and parsers may not
 be added there.
@@ -195,7 +195,7 @@ documented separately in the cleanup contract compatibility and S1/S2 audits. Fi
 `DocumentProcessing/Semantics/Canonical` owns `CanonicalSemanticTextProductionEntryPoint`,
 `CanonicalSemanticRequestComposer`, and `SemanticContextPacker`. The entrypoint invokes the
 Core `ICanonicalSemanticTextModel` boundary; its input contracts remain Core-owned, so Core has
-no reverse reference to DocumentProcessing. DOCX uses this text path; PDF uses the V6 heading agent (`DocxHeaderExtractor.PdfHeadingAgent`, the D4.12 method, promoted 2026-10-14) behind `IPdfHeadingSelector`; the F1 → G2A → H2-C V2 chain it replaced is no longer on any production route.
+no reverse reference to DocumentProcessing. DOCX uses this text path; PDF uses the V6 heading agent (`DocxHeaderExtractor.PdfHeadingAgent`, the D4.12 method, promoted 2026-10-14) behind `IHeadingSelector`; the F1 → G2A → H2-C V2 chain it replaced is no longer on any production route.
 
 `Infrastructure/AI/QualifiedInference` owns the frozen provider carrier and its provider envelope/body
 types. Moving them does not change provider payload bytes, prompt wording, token limits, or parser
@@ -203,7 +203,7 @@ semantics. Assembly/namespace relocations require consumers to rebuild/update im
 does not claim binary compatibility for relocated public implementation types.
 
 `IFrozenInferenceTransport` only executes supplied frozen bytes; it does not select a model-specific
-composer. The authorized `IPdfProductionAuthorizedInferenceTransport` owns the qualified PDF
+composer. The authorized `IAgentRouteInferenceTransport` owns the qualified PDF
 composer, and the production heading pipeline requires this capability before starting calls.
 Generic OpenRouter and qualification transports can target other models without implicitly
 advertising the qualified PDF composer. Qualification supplies its composer explicitly.

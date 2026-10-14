@@ -33,7 +33,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
     public Task RecordSelectionAsync(
         IReadOnlyList<PdfSelectedSourceIdentity> selected,
         CancellationToken ct,
-        PdfLaneExecutionLease? executionLease = null) =>
+        LaneExecutionLease? executionLease = null) =>
         AppendAsync("selection", "selected", "completed", new
         {
             selected = selected.Select(item => new
@@ -52,7 +52,7 @@ internal sealed class PdfStageCheckpoint : IAsyncDisposable
         string status,
         object payload,
         CancellationToken ct,
-        PdfLaneExecutionLease? executionLease = null)
+        LaneExecutionLease? executionLease = null)
     {
         lock (_writeState)
         {

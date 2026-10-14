@@ -32,26 +32,26 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
     /// selecting a local or alternate remote backend must fail before a PDF provider call is
     /// attempted.
     /// </summary>
-    public Task<IInferenceTransport> CreatePdfProductionAsync(
+    public Task<IInferenceTransport> CreateAgentRouteAsync(
         CancellationToken ct = default)
     {
         if (_selection.Backend is not InferenceBackend.OpenRouter)
             throw new InvalidOperationException(
-                $"PDF_PRODUCTION_PROVIDER_UNSUPPORTED: requires OpenRouter/{RemoteInferenceOptions.DefaultModel} " +
+                $"AGENT_ROUTE_PROVIDER_UNSUPPORTED: requires OpenRouter/{RemoteInferenceOptions.DefaultModel} " +
                 $"via {RemoteInferenceOptions.DefaultProviderRoute}; selected {Describe(_selection.Backend)}.");
 
         if (!string.Equals(_selection.Remote.Model, RemoteInferenceOptions.DefaultModel, StringComparison.Ordinal))
             throw new InvalidOperationException(
-                $"PDF_PRODUCTION_MODEL_UNSUPPORTED: requires {RemoteInferenceOptions.DefaultModel}; " +
+                $"AGENT_ROUTE_MODEL_UNSUPPORTED: requires {RemoteInferenceOptions.DefaultModel}; " +
                 $"selected {_selection.Remote.Model}.");
 
         if (!string.Equals(_selection.Remote.OpenRouterProviderRoute, RemoteInferenceOptions.DefaultProviderRoute,
                 StringComparison.Ordinal))
             throw new InvalidOperationException(
-                $"PDF_PRODUCTION_PROVIDER_ROUTE_UNSUPPORTED: requires {RemoteInferenceOptions.DefaultProviderRoute}; " +
+                $"AGENT_ROUTE_PROVIDER_ROUTE_UNSUPPORTED: requires {RemoteInferenceOptions.DefaultProviderRoute}; " +
                 $"selected {_selection.Remote.OpenRouterProviderRoute ?? "<automatic>"}.");
 
-        IInferenceTransport transport = new PdfProductionOpenRouterInferenceTransport(
+        IInferenceTransport transport = new AgentRouteOpenRouterTransport(
             OpenRouterInferenceTransport.CreateOwned(_selection.Remote), _selection.Remote.ApiKey);
         return Task.FromResult(transport);
     }
@@ -65,12 +65,12 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
     };
 
     /// <summary>Capability/authorization wrapper for the only qualified PDF production transport.</summary>
-    private sealed class PdfProductionOpenRouterInferenceTransport(OpenRouterInferenceTransport inner, string apiKey)
-        : IPdfProductionAuthorizedInferenceTransport
+    private sealed class AgentRouteOpenRouterTransport(OpenRouterInferenceTransport inner, string apiKey)
+        : IAgentRouteInferenceTransport
     {
         public string? OpenRouterApiKey => string.IsNullOrWhiteSpace(apiKey) ? null : apiKey;
-        public string PdfProductionProvider => "OpenRouter/Alibaba";
-        public string PdfProductionModel => RemoteInferenceOptions.DefaultModel;
+        public string RouteProvider => "OpenRouter/Alibaba";
+        public string RouteModel => RemoteInferenceOptions.DefaultModel;
         public string ModelName => inner.ModelName;
         public int ContextSize => inner.ContextSize;
         public string RuntimeDescription => inner.RuntimeDescription;

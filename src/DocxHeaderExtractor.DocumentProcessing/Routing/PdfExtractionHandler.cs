@@ -78,7 +78,7 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
         if (_transportFactory is null) return null;
         // PDF has its own qualified provider policy. It must never inherit the DOCX factory's
         // default local backend merely because both lanes share the same general abstraction.
-        _transport = await _transportFactory.CreatePdfProductionAsync(ct);
+        _transport = await _transportFactory.CreateAgentRouteAsync(ct);
         return _transport;
     }
 }

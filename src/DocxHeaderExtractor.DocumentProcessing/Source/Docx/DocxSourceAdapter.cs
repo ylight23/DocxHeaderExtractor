@@ -47,8 +47,12 @@ internal static class DocxSourceAdapter
         var universeEvidence = result.Values.OrderBy(item => item.Source.SourceOrdinal)
             .Select(item => EvidenceOf(item, aliasesBySourceId[item.Source.SourceId].Alias)).ToArray();
         var sourceHash = CanonicalSemanticSourceHash.Compute(sourceDocument.SourcePath);
+        // The atoms of a DOCX are its paragraphs: no page, row or segment of a PDF line, only the alias, the OOXML identity, the reading order and the text.
+        var atoms = result.Values.OrderBy(item => item.Source.SourceOrdinal)
+            .Select(item => new SemanticSourceAtom(aliasesBySourceId[item.Source.SourceId].Alias, item.Source.SourceId, item.Source.SourceOrdinal, 0,
+                item.Source.SourceOrdinal, 0, item.Source.Text)).ToArray();
         var universe = new DocumentSourceSnapshot(
-            [],
+            atoms,
             result.Values.OrderBy(item => item.Source.SourceOrdinal)
                 .Select(item => new DocumentOccurrence(item.Source.SourceId, aliasesBySourceId[item.Source.SourceId].Alias,
                     item.Source.SourceOrdinal, item.Source.Text, sourceDocument.SourceKind, item.Source.Style.StyleId)).ToArray(),

@@ -28,8 +28,8 @@ internal sealed class WebInferenceTransportFactory(
             _ => await new InferenceTransportFactory(selection).CreateAsync(ct).ConfigureAwait(false),
         };
 
-    public Task<IInferenceTransport> CreatePdfProductionAsync(CancellationToken ct = default) =>
-        _pdfFactory.CreatePdfProductionAsync(ct);
+    public Task<IInferenceTransport> CreateAgentRouteAsync(CancellationToken ct = default) =>
+        _pdfFactory.CreateAgentRouteAsync(ct);
 
     /// <summary>The cache, not an individual document pipeline, owns the local model lifetime.</summary>
     private sealed class BorrowedInferenceTransport(IInferenceTransport inner) : IInferenceTransport

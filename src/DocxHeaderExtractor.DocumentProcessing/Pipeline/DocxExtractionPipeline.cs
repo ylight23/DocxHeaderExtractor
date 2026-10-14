@@ -19,36 +19,45 @@ public sealed class DocxExtractionPipeline : IDisposable
 {
     private readonly PipelineOptions _options;
     private readonly IInferenceTransportFactory? _transportFactory;
+    private readonly IHeadingSelector? _selector;
     private readonly bool _transportSendsDataExternally;
     private IInferenceTransport? _transport;
     private readonly bool _ownsTransport;
 
+    /// <summary>
+    /// The DOCX route's authority is the V6 heading selector: without one, a run that needs the model refuses (DOCX_HEADING_SELECTOR_REQUIRED);
+    /// with the model disabled the route returns the source only. The transport (or the factory that makes it) must be the authorized agent route:
+    /// it carries the provider key the selector uses and serves the shared placement stage.
+    /// </summary>
     public DocxExtractionPipeline(PipelineOptions options)
-        : this(options, null, null) { }
+        : this(options, null, null, null) { }
 
-    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransportFactory analystFactory)
-        : this(options, null, analystFactory) { }
+    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransportFactory analystFactory, IHeadingSelector? selector = null)
+        : this(options, null, analystFactory, selector) { }
 
-    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransport analyst)
-        : this(options, analyst, null, false)
+    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransport analyst, IHeadingSelector? selector = null)
+        : this(options, analyst, null, selector, false)
     {
     }
 
     public DocxExtractionPipeline(
         PipelineOptions options,
         IInferenceTransport analyst,
-        bool sendsDataExternally)
-        : this(options, analyst, null, sendsDataExternally) { }
+        bool sendsDataExternally,
+        IHeadingSelector? selector = null)
+        : this(options, analyst, null, selector, sendsDataExternally) { }
 
     private DocxExtractionPipeline(
         PipelineOptions options,
         IInferenceTransport? transport,
         IInferenceTransportFactory? transportFactory,
+        IHeadingSelector? selector,
         bool transportSendsDataExternally = false)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _transport = transport;
         _transportFactory = transportFactory;
+        _selector = selector;
         _transportSendsDataExternally = transportSendsDataExternally || transportFactory?.SendsDataExternally == true;
         _ownsTransport = transportFactory is not null || transport is null;
     }
@@ -90,10 +99,10 @@ public sealed class DocxExtractionPipeline : IDisposable
         var sourceDocument = new OpenXmlDocumentSource(_options.Extraction).Read(inputPath);
             var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
             var authority = await DocxHeadingPipeline.RunAsync(
-                sourceDocument, transport, ct);
+                sourceDocument, transport, _selector, SemanticLaneOptions.Default, ct);
             authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
             var audit = authority.Audit;
-            const string route = "docx-canonical-vnext";
+            const string route = DocxHeadingPipeline.RouteId;
             var reason = authority.Reason;
 
             var product = new DocumentProductOutput(FileSha256(inputPath), []);
@@ -154,7 +163,7 @@ public sealed class DocxExtractionPipeline : IDisposable
         if (_transportFactory is null)
             throw new InvalidOperationException(
                 "Inference provider factory chưa được đăng ký ở composition root.");
-        _transport = await _transportFactory.CreateAsync(ct);
+        _transport = await _transportFactory.CreateAgentRouteAsync(ct);
         return _transport;
     }
 

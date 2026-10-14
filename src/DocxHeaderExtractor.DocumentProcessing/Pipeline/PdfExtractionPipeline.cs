@@ -94,11 +94,11 @@ public static class PdfExtractionPipeline
 
         var started = Environment.TickCount64;
         var used = options.DisableLlm ? null : transport;
-        var productionAuthorized = used is IPdfProductionAuthorizedInferenceTransport;
+        var productionAuthorized = used is IAgentRouteInferenceTransport;
         if (used is not null && !productionAuthorized)
         {
             throw new InvalidOperationException(
-                "PDF_PRODUCTION_AUTHORIZATION_REQUIRED: requires the production-authorized PDF inference transport.");
+                "AGENT_ROUTE_AUTHORIZATION_REQUIRED: requires the production-authorized PDF inference transport.");
         }
 
         HeadingPipelineResult authority;

@@ -123,9 +123,9 @@ public sealed class PdfV6SelectedLinesLaneTests
             Backend = InferenceBackend.OpenRouter,
             Remote = new RemoteInferenceOptions { ApiKey = "sk-test", OpenRouterProviderRoute = RemoteInferenceOptions.DefaultProviderRoute },
         };
-        using var transport = await new InferenceTransportFactory(selection).CreatePdfProductionAsync();
-        Assert.Equal("sk-test", ((IPdfProductionAuthorizedInferenceTransport)transport).OpenRouterApiKey);
-        Assert.Null(((IPdfProductionAuthorizedInferenceTransport)new DefaultKeyTransport()).OpenRouterApiKey);
+        using var transport = await new InferenceTransportFactory(selection).CreateAgentRouteAsync();
+        Assert.Equal("sk-test", ((IAgentRouteInferenceTransport)transport).OpenRouterApiKey);
+        Assert.Null(((IAgentRouteInferenceTransport)new DefaultKeyTransport()).OpenRouterApiKey);
     }
 
     [Fact]
@@ -207,14 +207,14 @@ public sealed class PdfV6SelectedLinesLaneTests
         }
     }
 
-    private class NoCallTransport(string? key) : IPdfProductionAuthorizedInferenceTransport
+    private class NoCallTransport(string? key) : IAgentRouteInferenceTransport
     {
         public int PlacementCalls { get; private set; }
         public string? LastPrompt { get; private set; }
         public string? LastPacket { get; private set; }
         public string? OpenRouterApiKey => key;
-        public string PdfProductionProvider => "test";
-        public string PdfProductionModel => "test";
+        public string RouteProvider => "test";
+        public string RouteModel => "test";
         public string ModelName => "test";
         public int ContextSize => 1 << 20;
         public string RuntimeDescription => "V6 lane test; no provider";
@@ -231,10 +231,10 @@ public sealed class PdfV6SelectedLinesLaneTests
     }
 
     /// <summary>A transport that does not implement the key member: the interface default answers null.</summary>
-    private sealed class DefaultKeyTransport : IPdfProductionAuthorizedInferenceTransport
+    private sealed class DefaultKeyTransport : IAgentRouteInferenceTransport
     {
-        public string PdfProductionProvider => "test";
-        public string PdfProductionModel => "test";
+        public string RouteProvider => "test";
+        public string RouteModel => "test";
         public string ModelName => "test";
         public int ContextSize => 1;
         public string RuntimeDescription => "test";

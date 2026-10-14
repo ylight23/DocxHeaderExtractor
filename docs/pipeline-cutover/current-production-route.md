@@ -14,7 +14,7 @@ PDF  -> PdfSourceOccurrenceAdapter --+          |
                                        IHeadingAuthority   (the replaceable seam)
                          DOCX: TextSemanticHeadingAuthority   (pending its own qualification)
                          PDF:  SelectedLinesHeadingAuthority  (since 2026-10-14)
-                               IPdfHeadingSelector -> PdfHeadingAgentSelector
+                               IHeadingSelector -> PdfHeadingAgentSelector
                                (V6 direct agent, D4.12 method: one conversation per layout segment,
                                get_line_facts first, evidence tools, repair turns)
                                F1 -> G2A -> H2-C V2 (FunctionAnchorExtentHeadingAuthority) retired
@@ -30,7 +30,7 @@ PDF  -> PdfSourceOccurrenceAdapter --+          |
 
 Routes: `DocxHeadingAuthorityRoute` and `PdfHeadingAuthorityRoute` each run their source adapter, their
 authority and the one shared assembler. The PDF route additionally owns the lane lease, checkpoint and
-the fail-closed qualified transport (`IPdfProductionAuthorizedInferenceTransport`); there is no
+the fail-closed qualified transport (`IAgentRouteInferenceTransport`); there is no
 canonical-text fallback.
 
 Ownership:

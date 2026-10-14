@@ -43,14 +43,18 @@ public interface IInferenceTransportFactory
     /// A factory that has not explicitly opted into the qualified PDF route fails closed rather
     /// than silently falling back to its default (usually local) transport.
     /// </summary>
-    Task<IInferenceTransport> CreatePdfProductionAsync(CancellationToken ct = default) =>
-        throw new InvalidOperationException("PDF_PRODUCTION_PROVIDER_FACTORY_REQUIRED");
+    Task<IInferenceTransport> CreateAgentRouteAsync(CancellationToken ct = default) =>
+        throw new InvalidOperationException("AGENT_ROUTE_PROVIDER_FACTORY_REQUIRED");
 
     /// <summary>
     /// The PDF heading selector of this provider route, when the factory supplies its own (a host or a test that drives the selection
     /// itself). Null, the default, makes the composition root use the production V6 agent.
     /// </summary>
     DocxHeaderExtractor.DocumentProcessing.Routing.IHeadingSelector? CreatePdfHeadingSelector() => null;
+
+    /// <summary>The DOCX heading selector of this provider route, as <see cref="CreatePdfHeadingSelector"/> for a PDF. Null, the default, makes the
+    /// composition root use the production DOCX agent.</summary>
+    DocxHeaderExtractor.DocumentProcessing.Routing.IHeadingSelector? CreateDocxHeadingSelector() => null;
 }
 
 /// <summary>
@@ -58,10 +62,10 @@ public interface IInferenceTransportFactory
 /// provider and model the route was qualified on and carries the provider key: ordinary production must
 /// not borrow another transport merely to reach the PDF agent.
 /// </summary>
-public interface IPdfProductionAuthorizedInferenceTransport : IInferenceTransport
+public interface IAgentRouteInferenceTransport : IInferenceTransport
 {
-    string PdfProductionProvider { get; }
-    string PdfProductionModel { get; }
+    string RouteProvider { get; }
+    string RouteModel { get; }
 
     /// <summary>The provider key of the authorized route, for the PDF heading selector, which calls the provider itself (V6 promotion).
     /// Null when the composition root issued none; the PDF lane then refuses before any call.</summary>
