@@ -96,9 +96,10 @@ public sealed class WebPipelineV2ProjectionTests
         Assert.Equal("source-parsing", dto.Stages[1].Id);
         Assert.Equal("final-result", dto.Stages[^1].Id);
         Assert.Equal("not-recorded", dto.Stages.Single(s => s.Id == "exact-binding-validation").Status);
-        Assert.All(dto.Stages.Where(s => s.Id.StartsWith("F1") || s.Id.StartsWith("G2A") || s.Id.StartsWith("H2-C")),
-            s => Assert.Equal("not-recorded", s.Status));
-        Assert.Equal(kind == "pdf" ? 3 : 0, dto.Stages.Count(s => s.Id.StartsWith("F1") || s.Id.StartsWith("G2A") || s.Id.StartsWith("H2-C")));
+        // The PDF lane shows the V6 steps (line selection, line grouping); the retired F1/G2A/H2-C stages are gone from every kind.
+        Assert.All(dto.Stages.Where(s => s.Id.StartsWith("V6-")), s => Assert.Equal("not-recorded", s.Status));
+        Assert.Equal(kind == "pdf" ? 2 : 0, dto.Stages.Count(s => s.Id.StartsWith("V6-")));
+        Assert.DoesNotContain(dto.Stages, s => s.Id.StartsWith("F1") || s.Id.StartsWith("G2A") || s.Id.StartsWith("H2-C"));
     }
 
     [Fact]
