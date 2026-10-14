@@ -113,6 +113,15 @@ internal static class AgentProtocol
         .Replace("\"reason\":\"<why this line is such a heading, at most 300 characters>\"}", "\"reason\":\"<why this line is such a heading, at most 300 characters>\",\"pattern\":\"<the words before the number, the number as #, the punctuation after it>\"}", StringComparison.Ordinal)
         .Replace("Write nothing before or after the JSON object.", "A third key is allowed on a SELECT that is the first line of a heading: pattern, a string of at most " + MaxPatternChars + " characters. Write nothing before or after the JSON object.", StringComparison.Ordinal);
 
+    // EXPERIMENT (consensus audit): the pattern is asked for every target that opens with a number, selected or not, so that a kind of numbered
+    // line the segments all left out forms a group too and can be sampled for an independent check.
+    const string PatternLineAudit = "Pattern: for every target that opens with a number (digits, a Roman numeral or a letter used as a number), whether you select it or not, also give pattern: the words before that number as they stand, the number written as #, and the punctuation right after it, nothing more - for example \"Xyz #.\" for a line \"Xyz 12. Some title\". A line that does not open with a number gets no pattern, nor does a later line of a heading that runs over several lines. The lines of the whole document that start with the same pattern are checked together, so that the instruction is applied to all of them the same way.";
+
+    public static readonly string SystemPromptPatternsAudit = SystemPrompt
+        .Replace(UseLine, UseFactsLine + "\n" + PatternLineAudit, StringComparison.Ordinal)
+        .Replace("\"reason\":\"<why this line is such a heading, at most 300 characters>\"}", "\"reason\":\"<why this line is such a heading, at most 300 characters>\",\"pattern\":\"<the words before the number, the number as #, the punctuation after it>\"}", StringComparison.Ordinal)
+        .Replace("Write nothing before or after the JSON object.", "A third key is allowed on the decision of a target that opens with a number, selected or not: pattern, a string of at most " + MaxPatternChars + " characters. Write nothing before or after the JSON object.", StringComparison.Ordinal);
+
     /// <summary>The pattern normalization: lower case, every run of digits (and of #) as one #, runs of whitespace as one space, trimmed.</summary>
     public static string NormalizePattern(string text)
     {

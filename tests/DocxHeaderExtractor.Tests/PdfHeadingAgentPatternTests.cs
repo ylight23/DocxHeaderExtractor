@@ -191,6 +191,72 @@ public sealed class PdfHeadingAgentPatternTests
         Assert.Equal(new[] { "PATTERN-001:PROTOCOL:DIFFERENCE_WITHOUT_EVIDENCE" }, r.Failures);
     }
 
+    /// <summary>The lines that open with a plain number ("1. ..."), found by the normalized opening only.</summary>
+    private static int[] Numbered() =>
+        Enumerable.Range(0, Source.Value.Lines.Count).Where(i => NormalizePattern(Source.Value.Lines[i].Text).StartsWith("#. ", StringComparison.Ordinal)).ToArray();
+
+    [Fact]
+    public void The_audit_sample_takes_groups_decided_alike_those_all_left_out_first()
+    {
+        var articles = Articles();
+        var numbered = Numbered();
+        Assert.InRange(numbered.Length, 2, AgentPatterns.MaxMembers);
+        var decisions = Source.Value.Lines.ToDictionary(l => l.Alias, _ => "NOT_SELECT", StringComparer.Ordinal);
+        foreach (var i in articles) decisions[A(i)] = "SELECT";
+        var patterns = new Dictionary<string, string> { [A(articles[0])] = "Article #.", [A(numbered[0])] = "#." };
+
+        var (conflicts, audits, _) = AgentPatterns.FindGroups(Source.Value, decisions, patterns);
+
+        Assert.Empty(conflicts);
+        Assert.Equal(new[] { "#.", "article #." }, audits.Select(a => a.Pattern));
+        Assert.Equal(numbered, audits[0].Members);
+    }
+
+    [Fact]
+    public void An_audit_is_asked_only_when_the_audit_is_on_and_its_changes_are_applied_like_any_other()
+    {
+        var articles = Articles();
+        var numbered = Numbered();
+        var decisions = Source.Value.Lines.ToDictionary(l => l.Alias, _ => "NOT_SELECT", StringComparer.Ordinal);
+        foreach (var i in articles) decisions[A(i)] = "SELECT";
+        var patterns = new Dictionary<string, string> { [A(numbered[0])] = "#." };
+        var lifted = A(numbered[0]);
+        var prompts = new List<string>();
+        var (model, payloads) = Scripted((_, p) => Answer(p, (alias, before) => alias == lifted ? "SELECT" : before));
+        AgentUnit.Model recording = (unit, turn, req) =>
+        {
+            using var body = JsonDocument.Parse(req.Body);
+            lock (prompts) prompts.Add(body.RootElement.GetProperty("messages")[0].GetProperty("content").GetString()!);
+            return model(unit, turn, req);
+        };
+
+        var off = AgentPatterns.Reconcile(Source.Value, decisions, patterns, new Dictionary<string, string>(), recording, new AgentBudget(100, 100), 1, CancellationToken.None, retryDelayMs: 0);
+        Assert.Empty(payloads);
+        Assert.Empty(off.Audited!);
+        Assert.Equal(decisions, off.Decisions);
+
+        // lifted is on the smaller side of the split it makes, and it changes: the scripted answer gives it a reason and evidence.
+        var on = AgentPatterns.Reconcile(Source.Value, decisions, patterns, new Dictionary<string, string>(), recording, new AgentBudget(100, 100), 1, CancellationToken.None,
+            retryDelayMs: 0, consensusAudit: true);
+        var payload = Assert.Single(payloads);
+        Assert.Equal("AUDIT", payload.GetProperty("stage").GetString());
+        Assert.Contains("independent check", Assert.Single(prompts));
+        Assert.Equal(new[] { "#.:" + numbered.Length }, on.Audited);
+        Assert.Empty(on.Conflicts);
+        Assert.Equal("SELECT", on.Decisions[lifted]);
+        var change = Assert.Single(on.Changes);
+        Assert.Equal((lifted, "NOT_SELECT", "SELECT", "#."), (change.Alias, change.Previous, change.New, change.Pattern));
+    }
+
+    [Fact]
+    public void The_audit_prompt_asks_for_the_pattern_of_every_numbered_target_selected_or_not()
+    {
+        Assert.Contains("for every target that opens with a number", SystemPromptPatternsAudit);
+        Assert.Contains("whether you select it or not", SystemPromptPatternsAudit);
+        Assert.Contains("selected or not: pattern", SystemPromptPatternsAudit);
+        Assert.DoesNotContain("whether you select it or not", SystemPromptPatterns);
+    }
+
     [Fact]
     public void An_unresolved_member_keeps_its_decision_and_is_reported()
     {

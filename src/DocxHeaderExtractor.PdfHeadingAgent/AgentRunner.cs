@@ -95,7 +95,7 @@ internal static class AgentUnit
     public delegate ModelTurn Model(string unitId, int turn, PreparedRequest request);
 
     public static AgentUnitOutcome Run(AgentSource source, int segment, Model model, AgentBudget budget, int retryDelayMs = 5000, string instruction = Instruction,
-        bool patterns = false)
+        bool patterns = false, bool consensusAudit = false)
     {
         var unitId = AgentSource.SegmentId(segment);
         var (decide, shownIdx) = source.Scope(segment);
@@ -135,7 +135,7 @@ internal static class AgentUnit
         for (int turn = 1; turn <= MaxPostsPerUnit + 2 * repairsUsed; turn++)
         {
             var toolChoice = forcedChoices.Count > 0 ? forcedChoices.Dequeue() : turn <= MaxToolTurns ? "auto" : "none";
-            var req = Build(payload, history, toolChoice, patterns ? SystemPromptPatterns : null);
+            var req = Build(payload, history, toolChoice, consensusAudit ? SystemPromptPatternsAudit : patterns ? SystemPromptPatterns : null);
             var refusal = budget.Admit(req);
             if (refusal is not null) return Done("INCOMPLETE", "BUDGET:" + refusal);
             requestShas.Add(req.Sha256);
@@ -238,7 +238,7 @@ internal static class AgentUnit
             var observed = shownAliases.Concat(tools.ObservedAliases).Distinct(StringComparer.Ordinal).ToDictionary(a => a, tools.PositionOf, StringComparer.Ordinal);
             var content = reply.Content ?? "";
             if (TryUnwrapFence(content, out var inner)) { content = inner; fenceUnwrapped = true; }
-            var parsed = ParseSelect(content, observed, ordered, patternsAllowed: patterns);
+            var parsed = ParseSelect(content, observed, ordered, patternsAllowed: patterns || consensusAudit);
             if (!parsed.Ok)
             {
                 history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });

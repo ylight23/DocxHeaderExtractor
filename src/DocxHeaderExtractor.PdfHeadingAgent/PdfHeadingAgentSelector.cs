@@ -29,7 +29,7 @@ public sealed class PdfHeadingAgentSelector : IPdfHeadingSelector
     readonly Action<string, string?>? onModelReply;
     readonly string instruction;
     readonly int firstSegments;
-    readonly bool patternCommitments;
+    readonly bool patternCommitments, consensusAudit;
 
     /// <param name="handlerFactory">The HTTP handler of a run; no redirects and no cookies by default.</param>
     /// <param name="parallelism">Segments in flight at once; DHX_PDF_AGENT_PARALLELISM, else 6 (the provider rate-limited above about 6 concurrent requests).</param>
@@ -37,13 +37,14 @@ public sealed class PdfHeadingAgentSelector : IPdfHeadingSelector
     /// <param name="instruction">The user instruction sent verbatim; the frozen D4.12 instruction by default.</param>
     /// <param name="firstSegments">Diagnostics: decide only the first N segments (0 = every segment), as the D4.12 trials did for long documents.</param>
     public PdfHeadingAgentSelector(Func<HttpMessageHandler>? handlerFactory = null, int? parallelism = null, Action<string, string?>? onModelReply = null,
-        string? instruction = null, int firstSegments = 0, bool patternCommitments = false)
+        string? instruction = null, int firstSegments = 0, bool patternCommitments = false, bool consensusAudit = false)
     {
         this.onModelReply = onModelReply;
         this.instruction = instruction ?? AgentProtocol.Instruction;
         if (firstSegments < 0) throw new ArgumentOutOfRangeException(nameof(firstSegments));
         this.firstSegments = firstSegments;
-        this.patternCommitments = patternCommitments;
+        this.patternCommitments = patternCommitments || consensusAudit;
+        this.consensusAudit = consensusAudit;
         this.handlerFactory = handlerFactory ?? (() => AgentModel.CreateHandler());
         this.parallelism = parallelism
             ?? (int.TryParse(Environment.GetEnvironmentVariable("DHX_PDF_AGENT_PARALLELISM"), out var n) && n >= 1 ? n : DefaultParallelism);
@@ -61,10 +62,10 @@ public sealed class PdfHeadingAgentSelector : IPdfHeadingSelector
         return Task.Run(() =>
         {
             var source = AgentSource.Load(pdfPath, out var failure) ?? throw new InvalidOperationException("PDF_AGENT_SOURCE_REFUSED:" + failure);
-            var budget = BudgetFor(source, instruction, patternCommitments);
+            var budget = BudgetFor(source, instruction, patternCommitments, consensusAudit);
             using var handler = handlerFactory();
             using var model = new AgentModel(handler, apiKey, budget);
-            return Select(source, Traced(model), budget, parallelism, ct, retryDelayMs: 5000, costOf: () => budget.ActualUsd, instruction, firstSegments, patternCommitments);
+            return Select(source, Traced(model), budget, parallelism, ct, retryDelayMs: 5000, costOf: () => budget.ActualUsd, instruction, firstSegments, patternCommitments, consensusAudit);
         }, ct);
     }
 
@@ -106,7 +107,7 @@ public sealed class PdfHeadingAgentSelector : IPdfHeadingSelector
 
     /// <summary>The budget of one document: one first post per segment plus every segment's tool rounds, transport retries and four repairs, and
     /// the reserve of every first request plus those spare posts at the byte cap, plus 10%.</summary>
-    internal static AgentBudget BudgetFor(AgentSource source, string instruction = AgentProtocol.Instruction, bool patternCommitments = false)
+    internal static AgentBudget BudgetFor(AgentSource source, string instruction = AgentProtocol.Instruction, bool patternCommitments = false, bool consensusAudit = false)
     {
         var units = source.Cores.Count;
         var posts = units + units * AgentProtocol.MaxToolTurns + units * ExtraPostsPerUnit;
@@ -123,18 +124,21 @@ public sealed class PdfHeadingAgentSelector : IPdfHeadingSelector
         var groupPosts = Math.Max(1, (source.Lines.Count + 79) / 80) * (1 + AgentGrouping.MaxRepairs) * (1 + AgentUnit.TransportRetries);
         var groupReserve = groupPosts * AgentBudget.AttemptUsd(60000);
         // EXPERIMENT: the pattern step, at most MaxPatterns requests with their retries and repairs.
-        var patternPosts = patternCommitments ? AgentPatterns.MaxPatterns * (1 + AgentPatterns.MaxRepairs) * (1 + AgentUnit.TransportRetries) : 0;
+        var patternPosts = patternCommitments || consensusAudit
+            ? (AgentPatterns.MaxPatterns + (consensusAudit ? AgentPatterns.MaxAudits : 0)) * (1 + AgentPatterns.MaxRepairs) * (1 + AgentUnit.TransportRetries) : 0;
         var patternReserve = patternPosts * AgentBudget.AttemptUsd(80000);
         return new AgentBudget(posts + groupPosts + patternPosts, Math.Ceiling((first + spare + groupReserve + patternReserve) * 1.1 * 100) / 100);
     }
 
     /// <summary>Runs every segment, parallelism at a time, and collects the lines selected by the units whose answer passed.</summary>
     internal static PdfHeadingSelection Select(AgentSource source, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct,
-        int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0, bool patternCommitments = false)
+        int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0, bool patternCommitments = false,
+        bool consensusAudit = false)
     {
+        patternCommitments |= consensusAudit;
         var outcomes = new AgentUnitOutcome[firstSegments > 0 ? Math.Min(firstSegments, source.Cores.Count) : source.Cores.Count];
         Parallel.For(0, outcomes.Length, new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct },
-            n => outcomes[n] = AgentUnit.Run(source, n, model, budget, retryDelayMs, instruction, patternCommitments));
+            n => outcomes[n] = AgentUnit.Run(source, n, model, budget, retryDelayMs, instruction, patternCommitments, consensusAudit));
         var complete = outcomes.Where(o => o.Status == "COMPLETE").ToArray();
         var selected = complete.SelectMany(o => o.Decisions.Where(d => d.Value == "SELECT").Select(d => d.Key)).ToHashSet(StringComparer.Ordinal);
         var answers = complete.Select(o => patternCommitments
@@ -148,11 +152,11 @@ public sealed class PdfHeadingAgentSelector : IPdfHeadingSelector
             var decisions = complete.SelectMany(o => o.Decisions).ToDictionary(d => d.Key, d => d.Value, StringComparer.Ordinal);
             var patterns = complete.Where(o => o.Patterns is not null).SelectMany(o => o.Patterns!).ToDictionary(p => p.Key, p => p.Value, StringComparer.Ordinal);
             var reasons = complete.Where(o => o.Reasons is not null).SelectMany(o => o.Reasons!).ToDictionary(p => p.Key, p => p.Value, StringComparer.Ordinal);
-            var reconciled = AgentPatterns.Reconcile(source, decisions, patterns, reasons, model, budget, parallelism, ct, retryDelayMs, instruction);
+            var reconciled = AgentPatterns.Reconcile(source, decisions, patterns, reasons, model, budget, parallelism, ct, retryDelayMs, instruction, consensusAudit);
             selected = reconciled.Decisions.Where(d => d.Value == "SELECT").Select(d => d.Key).ToHashSet(StringComparer.Ordinal);
             answers = answers.Append(JsonSerializer.Serialize(new
             {
-                patternsGiven = reconciled.PatternsGiven, conflicts = reconciled.Conflicts, skipped = reconciled.Skipped,
+                patternsGiven = reconciled.PatternsGiven, conflicts = reconciled.Conflicts, audited = reconciled.Audited, skipped = reconciled.Skipped,
                 changes = reconciled.Changes, unresolved = reconciled.Unresolved, answers = reconciled.Answers,
             }, Compact)).ToArray();
             failures.AddRange(reconciled.Failures);
