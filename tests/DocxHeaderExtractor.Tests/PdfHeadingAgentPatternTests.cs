@@ -165,6 +165,33 @@ public sealed class PdfHeadingAgentPatternTests
     }
 
     [Fact]
+    public void A_member_kept_apart_from_the_rest_without_evidence_is_refused_whatever_the_majority()
+    {
+        var articles = Articles();
+        var decisions = MixedDecisions();
+        var odd = A(articles[0]);
+        // odd was SELECT and stays SELECT while every other member becomes or stays NOT_SELECT: kept, but on the smaller side, so it must explain.
+        var (model, payloads) = Scripted((_, p) => JsonSerializer.Serialize(new
+        {
+            protocolVersion = AgentPatterns.Version, pattern = p.GetProperty("pattern").GetString(), rule = "r",
+            decisions = p.GetProperty("members").EnumerateArray().Select(m =>
+            {
+                var alias = m.GetProperty("alias").GetString()!;
+                var before = m.GetProperty("decision").GetString()!;
+                var value = alias == odd ? "SELECT" : "NOT_SELECT";
+                return value != before ? (object)new { alias, decision = value, reason = "body", evidenceRefs = new[] { alias } } : new { alias, decision = value };
+            }),
+        }));
+
+        var r = AgentPatterns.Reconcile(Source.Value, decisions, new Dictionary<string, string> { [A(articles[0])] = "Article #." },
+            new Dictionary<string, string>(), model, new AgentBudget(100, 100), 1, CancellationToken.None, retryDelayMs: 0);
+
+        Assert.Equal(1 + AgentPatterns.MaxRepairs, payloads.Count);
+        Assert.Equal(decisions, r.Decisions);
+        Assert.Equal(new[] { "PATTERN-001:PROTOCOL:DIFFERENCE_WITHOUT_EVIDENCE" }, r.Failures);
+    }
+
+    [Fact]
     public void An_unresolved_member_keeps_its_decision_and_is_reported()
     {
         var articles = Articles();
@@ -200,8 +227,12 @@ public sealed class PdfHeadingAgentPatternTests
 
     public static TheoryData<string, string?> Answers() => new()
     {
-        // Keeping both earlier decisions needs no evidence; a change with a reason and an alias shown is accepted; UNRESOLVED needs none.
-        { Reply("p", new { alias = "keep-out", decision = "NOT_SELECT" }, new { alias = "keep-in", decision = "SELECT" }), null },
+        // A split answer: the smaller side (both sides here, 1 against 1) must explain itself even when it keeps its earlier decision (V3).
+        { Reply("p", new { alias = "keep-out", decision = "NOT_SELECT" }, new { alias = "keep-in", decision = "SELECT" }), "PROTOCOL:DIFFERENCE_WITHOUT_EVIDENCE" },
+        { Reply("p", new { alias = "keep-out", decision = "NOT_SELECT", reason = "body", evidenceRefs = new[] { "next" } }, new { alias = "keep-in", decision = "SELECT" }), "PROTOCOL:DIFFERENCE_WITHOUT_EVIDENCE" },
+        { Reply("p", new { alias = "keep-out", decision = "NOT_SELECT", reason = "body", evidenceRefs = new[] { "next" } }, new { alias = "keep-in", decision = "SELECT", reason = "opens", evidenceRefs = new[] { "keep-in" } }), null },
+        // An answer that is not split needs evidence only for a change; a change with a reason and an alias shown is accepted; UNRESOLVED needs none.
+        { Reply("p", new { alias = "keep-out", decision = "SELECT", reason = "why", evidenceRefs = new[] { "next" } }, new { alias = "keep-in", decision = "SELECT" }), null },
         { Reply("p", new { alias = "keep-out", decision = "SELECT", reason = "why", evidenceRefs = new[] { "next" } }, new { alias = "keep-in", decision = "UNRESOLVED" }), null },
         { Reply("other", new { alias = "keep-out", decision = "NOT_SELECT" }, new { alias = "keep-in", decision = "SELECT" }), "PROTOCOL:PATTERN_NOT_COPIED" },
         { Reply("p", new { alias = "keep-out", decision = "MAYBE" }, new { alias = "keep-in", decision = "SELECT" }), "PROTOCOL:DECISION_INVALID" },
