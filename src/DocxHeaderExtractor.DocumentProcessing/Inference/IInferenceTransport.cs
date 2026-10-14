@@ -35,13 +35,11 @@ public interface IInferenceTransportFactory
 {
     bool SendsDataExternally => false;
 
-    Task<IInferenceTransport> CreateAsync(CancellationToken ct = default);
-
     /// <summary>
     /// Creates the separately-authorized production transport for the agent routes (PDF and DOCX).
     /// Both routes call the provider through the V6 heading selector and need the key this transport carries.
-    /// A factory that has not explicitly opted into the qualified agent route fails closed rather
-    /// than silently falling back to its default (usually local) transport.
+    /// A factory that has not explicitly opted into the qualified agent route fails closed; there is no
+    /// other (local or default) transport for a route to fall back to.
     /// </summary>
     Task<IInferenceTransport> CreateAgentRouteAsync(CancellationToken ct = default) =>
         throw new InvalidOperationException("AGENT_ROUTE_PROVIDER_FACTORY_REQUIRED");

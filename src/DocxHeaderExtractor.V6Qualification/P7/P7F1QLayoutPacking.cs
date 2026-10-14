@@ -1,5 +1,4 @@
 using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
