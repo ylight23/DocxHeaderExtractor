@@ -106,10 +106,9 @@ public sealed class PdfV6SelectedLinesLaneTests
     {
         var selector = new PdfHeadingAgentSelector();
         // The frozen D4.12 instruction is kept for parity; production sends the owner's structural-heading instruction (2026-10-14),
-        // which replaced the revised instruction (813e49c6) after the three-document comparison.
+        // which replaced the earlier "main headings by meaning" instruction after the three-document comparison.
         Assert.Equal(P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, AgentProtocol.InstructionD412);
         Assert.Equal("2d057c62aaf69297afa46f3dec8d8b88720893491c5620ecfcc51562e9e03884", P7F1V6Core.InstructionSha256(AgentProtocol.InstructionD412));
-        Assert.Equal("813e49c6", P7F1V6Core.InstructionSha256(AgentProtocol.InstructionOutlineMeaning)[..8]);
         Assert.Equal(AgentProtocol.InstructionStructuralV1, AgentProtocol.Instruction);
         Assert.Equal("c5c5b6939b99d4cb907a59b2da472d14e1ffc7e35067c1ae48ca0f0ccabdb793", P7F1V6Core.InstructionSha256(AgentProtocol.Instruction));
         Assert.Equal("p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:instruction-c5c5b693", selector.SelectorId);
