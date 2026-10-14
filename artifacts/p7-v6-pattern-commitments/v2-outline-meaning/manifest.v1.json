@@ -1,0 +1,336 @@
+{
+  "freeze": "P7_V6_PATTERN_COMMITMENTS_V2_OUTLINE_MEANING",
+  "frozenOn": "2026-10-14",
+  "condition": "InstructionOutlineMeaning + pattern step V2; one experimental condition, not to be pooled with any other instruction or pattern version",
+  "codeCommit": "59e3183",
+  "agentDllSha256": "d44849533497aa457892c9904736ce8ae5bdd25054276c5fa6fbc72cd98f81c9",
+  "instruction": {
+    "name": "InstructionOutlineMeaning",
+    "sha256": "813e49c6a77cb4cdcc7d79693322126520fac2da12dd3fa3999bd2e76993de85"
+  },
+  "prompts": {
+    "selectionSystemPromptPatterns": "573faf2f39d3cca35456d7a9813a8b19b5932421fe8a7c45cbef9d65e2c40d50",
+    "selectionSystemPromptBase": "3c557778bcb2dd5fa127195d62e31ec9fad4c83bacecc19881cf61f16bbe2845",
+    "patternPrompt": "e5982fb092b9b1cf9bce4106b5bd52f389eb7a6d96d59578cc8689742d31129b",
+    "patternVersion": "PDF_HEADING_PATTERN_V2",
+    "groupingPrompt": "d5cc6d1542f4f1699eba261661a1c7399cc9c2d57135f28b9a6a8cf18e6c1310"
+  },
+  "provider": "openrouter qwen/qwen3.7-flash, provider alibaba only; ZDR false, data_collection allow; parallelism 6",
+  "captured": "per run: selected aliases, groups, the final answer of every segment and of the pattern and grouping steps, failures, calls, cost, scope. NOT captured: request bodies (deterministic from codeCommit and the PDF), intermediate tool-call turns, reasoning tokens.",
+  "scoring": "Gold lines of every scheduled segment count (a Gold line of a failed segment is a miss). FUNCTION = Gold headings with at least one line selected; ALIAS = found headings with all their lines selected, and Gold headings that came out as exactly one heading. Gold is not changed by any model result.",
+  "excluded": "V1 pattern runs (artifacts not frozen; superseded: word patterns turned body lines into headings).",
+  "runs": [
+    {
+      "document": "SRC-029",
+      "pdf": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf",
+      "sourceSha256Prefix": "08f459b8",
+      "rep": 1,
+      "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-029.gold.v1.json",
+      "firstSegments": 12,
+      "rawFile": "raw/029-pat-r1.json",
+      "rawSha256": "d0f2bc5793487514a77a0b3064384d7165c8eb6758cb32b59e8f6fbe2e9568bd",
+      "units": "12/12",
+      "unitFailures": [],
+      "providerCalls": 31,
+      "providerCostUsd": 0.021477,
+      "seconds": 372.8,
+      "linesInScope": 456,
+      "linesUndecided": 0,
+      "goldLinesUndecided": 0,
+      "beforePatternStep": {
+        "precision": 1.0,
+        "recall": 0.5625,
+        "tp": 27,
+        "fp": 0,
+        "fn": 21
+      },
+      "afterPatternStep": {
+        "precision": 1.0,
+        "recall": 0.5625,
+        "tp": 27,
+        "fp": 0,
+        "fn": 21
+      },
+      "function": {
+        "goldHeadingsInScope": 34,
+        "found": 23
+      },
+      "alias": {
+        "foundWithAllLines": 22,
+        "exactlyOneHeading": 13,
+        "falseHeadings": 0
+      },
+      "patternStep": {
+        "patternsGiven": 5,
+        "conflicts": [
+          "#.:90",
+          "part # –:8"
+        ],
+        "skipped": [
+          "NOT_ITS_OWN_OPENING"
+        ],
+        "changes": 0,
+        "changesRightAgainstGold": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "document": "SRC-029",
+      "pdf": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf",
+      "sourceSha256Prefix": "08f459b8",
+      "rep": 2,
+      "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-029.gold.v1.json",
+      "firstSegments": 12,
+      "rawFile": "raw/029-pat-r2.json",
+      "rawSha256": "d198e86d9eecb529995cd9aa6bb38af32048917a2b1400d927bf82efe8e931fc",
+      "units": "12/12",
+      "unitFailures": [],
+      "providerCalls": 31,
+      "providerCostUsd": 0.020065,
+      "seconds": 301.6,
+      "linesInScope": 456,
+      "linesUndecided": 0,
+      "goldLinesUndecided": 0,
+      "beforePatternStep": {
+        "precision": 1.0,
+        "recall": 0.3125,
+        "tp": 15,
+        "fp": 0,
+        "fn": 33
+      },
+      "afterPatternStep": {
+        "precision": 1.0,
+        "recall": 0.3125,
+        "tp": 15,
+        "fp": 0,
+        "fn": 33
+      },
+      "function": {
+        "goldHeadingsInScope": 34,
+        "found": 14
+      },
+      "alias": {
+        "foundWithAllLines": 14,
+        "exactlyOneHeading": 7,
+        "falseHeadings": 0
+      },
+      "patternStep": {
+        "patternsGiven": 3,
+        "conflicts": [
+          "#.:90"
+        ],
+        "skipped": [
+          "NOT_ITS_OWN_OPENING"
+        ],
+        "changes": 0,
+        "changesRightAgainstGold": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "document": "SRC-053",
+      "pdf": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/053_IDA_Information_Statement_FY25.pdf",
+      "sourceSha256Prefix": "6d3cd46d",
+      "rep": 1,
+      "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-053.gold.v1.json",
+      "firstSegments": 12,
+      "rawFile": "raw/053-pat-r1.json",
+      "rawSha256": "90b4c3237769cd3bbc133b6a53ec16ad4e4eba22ccf929e69bae8f023215c753",
+      "units": "11/12",
+      "unitFailures": [
+        "SEG-007:INCOMPLETE:BUDGET:REQUEST_OVER_BYTE_CAP"
+      ],
+      "providerCalls": 42,
+      "providerCostUsd": 0.048646,
+      "seconds": 792.8,
+      "linesInScope": 558,
+      "linesUndecided": 48,
+      "goldLinesUndecided": 1,
+      "beforePatternStep": {
+        "precision": 0.963,
+        "recall": 0.8966,
+        "tp": 26,
+        "fp": 1,
+        "fn": 3
+      },
+      "afterPatternStep": {
+        "precision": 0.963,
+        "recall": 0.8966,
+        "tp": 26,
+        "fp": 1,
+        "fn": 3
+      },
+      "function": {
+        "goldHeadingsInScope": 29,
+        "found": 26
+      },
+      "alias": {
+        "foundWithAllLines": 26,
+        "exactlyOneHeading": 25,
+        "falseHeadings": 0
+      },
+      "patternStep": {
+        "patternsGiven": 1,
+        "conflicts": [],
+        "skipped": [],
+        "changes": 0,
+        "changesRightAgainstGold": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "document": "SRC-053",
+      "pdf": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/053_IDA_Information_Statement_FY25.pdf",
+      "sourceSha256Prefix": "6d3cd46d",
+      "rep": 2,
+      "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-053.gold.v1.json",
+      "firstSegments": 12,
+      "rawFile": "raw/053-pat-r2.json",
+      "rawSha256": "07b8db09314cbfd5ddeb2240573748e40c3eebc740e99c2ecaddd049e2238546",
+      "units": "12/12",
+      "unitFailures": [],
+      "providerCalls": 41,
+      "providerCostUsd": 0.027217,
+      "seconds": 387.7,
+      "linesInScope": 558,
+      "linesUndecided": 0,
+      "goldLinesUndecided": 0,
+      "beforePatternStep": {
+        "precision": 0.8519,
+        "recall": 0.7931,
+        "tp": 23,
+        "fp": 4,
+        "fn": 6
+      },
+      "afterPatternStep": {
+        "precision": 0.8519,
+        "recall": 0.7931,
+        "tp": 23,
+        "fp": 4,
+        "fn": 6
+      },
+      "function": {
+        "goldHeadingsInScope": 29,
+        "found": 23
+      },
+      "alias": {
+        "foundWithAllLines": 23,
+        "exactlyOneHeading": 22,
+        "falseHeadings": 3
+      },
+      "patternStep": {
+        "patternsGiven": 1,
+        "conflicts": [],
+        "skipped": [
+          "NO_NUMBER"
+        ],
+        "changes": 0,
+        "changesRightAgainstGold": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "document": "SRC-089",
+      "pdf": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+      "sourceSha256Prefix": "f4b72d1a",
+      "rep": 1,
+      "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json",
+      "firstSegments": 0,
+      "rawFile": "raw/089-pat-r1.json",
+      "rawSha256": "ae7939587d89a5c7210d795fc2f3ce5d25d23ced57a76cd92bb7e774bc8904b5",
+      "units": "18/18",
+      "unitFailures": [],
+      "providerCalls": 47,
+      "providerCostUsd": 0.026455,
+      "seconds": 410.0,
+      "linesInScope": 581,
+      "linesUndecided": 0,
+      "goldLinesUndecided": 0,
+      "beforePatternStep": {
+        "precision": 1.0,
+        "recall": 0.807,
+        "tp": 46,
+        "fp": 0,
+        "fn": 11
+      },
+      "afterPatternStep": {
+        "precision": 1.0,
+        "recall": 0.8421,
+        "tp": 48,
+        "fp": 0,
+        "fn": 9
+      },
+      "function": {
+        "goldHeadingsInScope": 36,
+        "found": 31
+      },
+      "alias": {
+        "foundWithAllLines": 29,
+        "exactlyOneHeading": 29,
+        "falseHeadings": 0
+      },
+      "patternStep": {
+        "patternsGiven": 14,
+        "conflicts": [
+          "article #.:26",
+          "chapter #:5"
+        ],
+        "skipped": [],
+        "changes": 2,
+        "changesRightAgainstGold": 2,
+        "unresolved": 0
+      }
+    },
+    {
+      "document": "SRC-089",
+      "pdf": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+      "sourceSha256Prefix": "f4b72d1a",
+      "rep": 2,
+      "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json",
+      "firstSegments": 0,
+      "rawFile": "raw/089-pat-r2.json",
+      "rawSha256": "36bea2f05a0a031987580d048d40fa5f7f2df1226cd138779a9c633e1cc94ba8",
+      "units": "18/18",
+      "unitFailures": [],
+      "providerCalls": 43,
+      "providerCostUsd": 0.024073,
+      "seconds": 404.6,
+      "linesInScope": 581,
+      "linesUndecided": 0,
+      "goldLinesUndecided": 0,
+      "beforePatternStep": {
+        "precision": 1.0,
+        "recall": 0.8421,
+        "tp": 48,
+        "fp": 0,
+        "fn": 9
+      },
+      "afterPatternStep": {
+        "precision": 1.0,
+        "recall": 0.8421,
+        "tp": 48,
+        "fp": 0,
+        "fn": 9
+      },
+      "function": {
+        "goldHeadingsInScope": 36,
+        "found": 30
+      },
+      "alias": {
+        "foundWithAllLines": 30,
+        "exactlyOneHeading": 30,
+        "falseHeadings": 0
+      },
+      "patternStep": {
+        "patternsGiven": 14,
+        "conflicts": [
+          "article #.:26"
+        ],
+        "skipped": [],
+        "changes": 0,
+        "changesRightAgainstGold": 0,
+        "unresolved": 0
+      }
+    }
+  ]
+}
