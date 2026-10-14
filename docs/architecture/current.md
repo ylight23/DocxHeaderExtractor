@@ -15,7 +15,7 @@ reports remain historical evidence, not the current ownership or publication sta
 ## Current host routes
 
 ```text
-Web / CLI / MCP
+Web / CLI
   -> DocumentAgentHarness
   -> PipelineDocumentExtractionTool
   -> DocxExtractionPipeline / PdfExtractionPipeline
@@ -25,7 +25,7 @@ Web / CLI / MCP
   -> GenericTaskResult
 ```
 
-All three hosts currently use the same `DocumentAgentHarness`; Web, CLI, and MCP consume the
+Both hosts use the same `DocumentAgentHarness`; Web and CLI consume the
 validated `TaskResult.Value` projection. The compatibility `DocumentAgentRunResult.Outline` is
 retained for existing library/test callers and is not a second authority route.
 
@@ -109,7 +109,6 @@ qualification/history subsystems retain their distinct live responsibilities.
 | `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Application`, `DocumentProcessing`, `Core` |
 | `Web` | HTTP host and UI composition root | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure` |
 | `Cli` | command host and explicit evaluation/repair commands | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure`, explicit `Eval` plugin bridge |
-| `Mcp` | MCP host and async job adapter | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure` |
 | `Eval` | evaluation/replay-only adapters | `Core`, `DocumentProcessing` |
 | `Infrastructure` | provider implementations, prompt/cache adapters, and source infrastructure ports | `Application`, `Core`, `DocumentProcessing` |
 
@@ -119,9 +118,8 @@ DocumentProcessing now owns source/parser/rendering and authority pipeline imple
 contains package-free contracts/value objects/validators and pure deterministic domain algorithms. Infrastructure now contains provider
 contracts, heading-provider implementations, prompt/cache
 adapters, fact-provider adapters, LLamaSharp/SGLang VLM adapters, and an allowlisted file resource
-resolver. Core exposes no concrete provider or inference orchestration. Web/MCP wire normal and review paths; CLI evaluation commands use an explicit Eval project boundary and the CLI normal path does not activate Eval. The hosts wire the resolver
-and trusted semantic registry into the common harness; the MCP subprocess worker composes the same
-source boundary plus runtime state adapters. The normal extraction route never activates the Eval
+resolver. Core exposes no concrete provider or inference orchestration. Web wires the normal path; CLI evaluation commands use an explicit Eval project boundary and the CLI normal path does not activate Eval. The hosts wire the resolver
+and trusted semantic registry into the common harness. The MCP host was removed on 2026-10-14 (owner: not needed yet). The normal extraction route never activates the Eval
 project. `EvaluationProjectionBridge` was the adapter that carried an outline across that boundary;
 it was removed once nothing called it, and no evaluation command had been reaching it.
 
@@ -135,13 +133,12 @@ it was removed once nothing called it, and no evaluation command had been reachi
   Application `SkillCatalog` before harness creation; framework-specific adapter remains deferred
   without adding a runtime dependency in Phase 1
 - semantic definitions: provider-independent concept/schema registry in Application; trusted
-  generic defaults are composed by Web/MCP, while external configuration registration and feature
+  generic defaults are composed by Web, while external configuration registration and feature
   consumers remain open
 - run lifecycle: versioned persistence/telemetry ports and secret redaction contract in Application;
-  Web/MCP compose `JsonFileTaskRunStore` and `JsonLinesTaskTelemetrySink` from the configurable
+  Web composes `JsonFileTaskRunStore` and `JsonLinesTaskTelemetrySink` from the configurable
   `DHX_RUNTIME_STATE_DIR` boundary, and the common harness records Running and terminal states;
   persistence failures remain non-authoritative and provider payloads are not part of these artifacts
-- MCP job state: temporary `McpJobStore` snapshots owned by the MCP host
 - generated/writeback files: request-owned temp directories and explicit writeback adapters
 - Accuracy-99 review/gold: evaluation-owned and excluded from this cutover
 

@@ -19,11 +19,4 @@ public sealed class PdfHeadingAgentSelector : HeadingAgentSelector
 
     private protected override IAgentSource Load(string path) =>
         AgentSource.Load(path, out var failure) ?? throw new InvalidOperationException("PDF_AGENT_SOURCE_REFUSED:" + failure);
-
-    /// <summary>The measurements the placement pass gets: the document's style table and the style of every line that has one. Facts only.</summary>
-    public static HeadingPlacementContext PlacementContextOf(string pdfPath)
-    {
-        var source = AgentSource.Load(pdfPath, out var failure) ?? throw new InvalidOperationException("PDF_AGENT_SOURCE_REFUSED:" + failure);
-        return source.Flavor.PlacementContext(source);
-    }
 }

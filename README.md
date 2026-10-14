@@ -20,7 +20,7 @@ không gắn nhãn "ứng viên" hay phán đoán cỡ chữ. Ownership không c
 bắt đầu ở atom không thuộc leaf bị từ chối. Quote chỉ khác atom ở khoảng trắng hai đầu được hiểu
 là cả atom; mọi khác biệt khác bị từ chối. Chi tiết: [docs/architecture/production-request-architecture-v2.md](docs/architecture/production-request-architecture-v2.md).
 
-Host: CLI (`dhx`), Web UI (`dhx-ui`), MCP server (`dhx-mcp`) — cùng đi qua `DocumentAgentHarness`
+Host: CLI (`dhx`), Web UI (`dhx-ui`) — cùng đi qua `DocumentAgentHarness`
 (policy, guardrail, source-grounding validator, cổng duyệt của người trước khi ghi).
 
 ## Yêu cầu
@@ -96,25 +96,6 @@ Endpoint bắt buộc là loopback (`localhost`, `127.0.0.1`, `::1`). CLI tươn
 heading và tải bản `.docx` đã ghi outline sau khi duyệt xong. Nhãn người dùng sửa được lưu
 append-only tại `%LOCALAPPDATA%\DocxHeaderExtractor\verified-corrections.jsonl` (đổi bằng
 `DHX_CORRECTION_MEMORY`); pipeline không đọc ngược lại file này.
-
-### MCP (LM Studio/Bionic gọi DocxHeaderExtractor)
-
-```powershell
-.\scripts\publish-lmstudio-mcp.ps1 -Model "model-identifier-from-v1-models"
-```
-
-Script sinh `out-mcp\dhx-mcp.dll` và `out-mcp\lmstudio-mcp.json`; chép cấu hình vào
-**Program → Install → Edit mcp.json** của LM Studio (mẫu:
-[docs/lmstudio-mcp.example.json](docs/lmstudio-mcp.example.json)). MCP công khai ba tool
-read-only:
-
-- `get_docx_extractor_status`: kiểm tra API/model/root được phép;
-- `extract_docx_headings`: xác thực file, xếp job nền và trả `jobId` ngay;
-- `get_docx_extraction_result`: trả `Queued`/`Running` hoặc outline khi hoàn tất.
-
-`DHX_MCP_ALLOWED_ROOTS` là danh sách thư mục tuyệt đối (phân cách `;`); path traversal, file ngoài
-root và file quá 50 MB bị chặn trước pipeline. MCP không có tool shell và không có tool writeback.
-Thêm `"DHX_MCP_RULES_ONLY": "true"` vào `env` để thử parser mà không cần LM Studio Local Server.
 
 ## Kiểm thử
 

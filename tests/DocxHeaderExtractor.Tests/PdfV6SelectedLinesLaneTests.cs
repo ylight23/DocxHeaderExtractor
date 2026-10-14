@@ -142,7 +142,8 @@ public sealed class PdfV6SelectedLinesLaneTests
         Assert.DoesNotContain("documentStyles", plain.LastPacket!, StringComparison.Ordinal);
 
         using var withStyles = new NoCallTransport("route-key");
-        var context = PdfHeadingAgentSelector.PlacementContextOf(TestRepository.Path(Pdf));
+        var agentSource = AgentSource.Load(TestRepository.Path(Pdf), out _)!;
+        var context = agentSource.Flavor.PlacementContext(agentSource);
         await PdfExtractionPipeline.RunWithSelectorAsync(file, new PipelineOptions(), withStyles, new FixedSelector(aliases, context));
         Assert.Equal(DocxHeaderExtractor.DocumentProcessing.Materialization.HeadingParentResolver.PlacementPromptWithEvidence, withStyles.LastPrompt);
         using var packet = JsonDocument.Parse(withStyles.LastPacket!);

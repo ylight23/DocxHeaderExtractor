@@ -29,7 +29,6 @@
          thật chứ không chỉ chạy tay một lần. -->
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Cli\DocxHeaderExtractor.Cli.csproj" />
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Core\DocxHeaderExtractor.Core.csproj" />
-    <ProjectReference Include="..\..\src\DocxHeaderExtractor.Mcp\DocxHeaderExtractor.Mcp.csproj" />
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Infrastructure\DocxHeaderExtractor.Infrastructure.csproj" />
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.V6Qualification\DocxHeaderExtractor.V6Qualification.csproj" />
     <!-- Chỉ để kiểm giới hạn của WritebackStore: nó giữ tài liệu của người dùng trong bộ nhớ nên
