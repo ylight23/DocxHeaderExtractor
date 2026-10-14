@@ -1,0 +1,379 @@
+{
+  "frozenOn": "2026-10-14",
+  "provider": "openrouter qwen/qwen3.7-flash, provider alibaba only; ZDR false, data_collection allow; parallelism 6 per run",
+  "instruction": {
+    "name": "InstructionStructuralV1",
+    "sha256": "c5c5b6939b99d4cb907a59b2da472d14e1ffc7e35067c1ae48ca0f0ccabdb793"
+  },
+  "captured": "per run: selected aliases, groups, every final answer, every model reply with its time (replies), failures, calls, cost, scope. NOT captured: request bodies (deterministic from codeCommit and the PDF), reasoning tokens.",
+  "scoring": "Gold lines of every scheduled segment count (a Gold line of a failed segment is a miss). FUNCTION = Gold headings with at least one line selected; ALIAS = found headings with all their lines selected, and Gold headings that came out as exactly one heading. Gold is not changed by any model result.",
+  "invalidRuns": "validRun false: the OpenRouter account ran out of credit during the concurrent runs (HTTP 402, recorded as TRANSPORT:CLIENT_ERROR; credits 20.00, usage 20.18 at 2026-10-14). Their scores measure the outage, not the method; do not compare them.",
+  "freeze": "P7_V6_PATTERN_COMMITMENTS_V4_STRUCTURAL_AUDIT",
+  "condition": "InstructionStructuralV1 + pattern step V4 + consensus audit; one experimental condition, not pooled with any other",
+  "codeCommit": "bb4aa7a",
+  "prompts": {
+    "dllSha256": "25d20438a27ec92cb1a75e0fe9653db02f7c8b91e873f375e34c10d901793e88",
+    "selectionSystemPromptPatterns": "573faf2f39d3cca35456d7a9813a8b19b5932421fe8a7c45cbef9d65e2c40d50",
+    "patternPrompt": "cf28dc9b7cdaf4b30db8f53fb1c39b30686f33fa3a561dc502d61becffe5f0fc",
+    "patternVersion": "PDF_HEADING_PATTERN_V4",
+    "groupingPrompt": "d5cc6d1542f4f1699eba261661a1c7399cc9c2d57135f28b9a6a8cf18e6c1310",
+    "selectionSystemPromptPatternsAudit": "9858430954886add76ab69a45f9c2c29abfb851fcfb029f6e84a2417e11f7169",
+    "auditPrompt": "f4201979ba3812a9f110f138c1db1408746fcb8691cb6a18faf7a979edba5e8d"
+  },
+  "runs": [
+    {
+      "document": "SRC-029",
+      "pdf": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf",
+      "sourceSha256Prefix": "08f459b8",
+      "rep": 1,
+      "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-029.gold.v1.json",
+      "firstSegments": 12,
+      "rawFile": "raw/029-sta-r1.json",
+      "rawSha256": "aa3583e52eb541f33bb6c69e352b06e5eb7b4868575dee4d5249381823c7e1b6",
+      "validRun": false,
+      "units": "3/12",
+      "unitFailures": [
+        "SEG-000:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-001:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-003:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-004:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-005:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-007:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-008:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-009:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-011:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "GROUP-001:CALL:TRANSPORT:CLIENT_ERROR"
+      ],
+      "providerCalls": 19,
+      "providerCostUsd": 0.00563,
+      "seconds": 246.1,
+      "linesInScope": 456,
+      "linesUndecided": 330,
+      "goldLinesUndecided": 44,
+      "beforePatternStep": {
+        "precision": 1.0,
+        "recall": 0.0833,
+        "tp": 4,
+        "fp": 0,
+        "fn": 44
+      },
+      "afterPatternStep": {
+        "precision": 1.0,
+        "recall": 0.0625,
+        "tp": 3,
+        "fp": 0,
+        "fn": 45
+      },
+      "function": {
+        "goldHeadingsInScope": 34,
+        "found": 3
+      },
+      "alias": {
+        "foundWithAllLines": 2,
+        "exactlyOneHeading": 2,
+        "falseHeadings": 0
+      },
+      "patternStep": {
+        "patternsGiven": 7,
+        "conflicts": [
+          "#.:10"
+        ],
+        "skipped": [],
+        "changes": 1,
+        "changesRightAgainstGold": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "document": "SRC-029",
+      "pdf": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/029_WB_RFP_Works_DesignBuild_2021.pdf",
+      "sourceSha256Prefix": "08f459b8",
+      "rep": 2,
+      "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-029.gold.v1.json",
+      "firstSegments": 12,
+      "rawFile": "raw/029-sta-r2.json",
+      "rawSha256": "d7d6702112f4dba62a2732ed1b90200d2d373d0a6c9b8379b6a241f9cd9c5dff",
+      "validRun": false,
+      "units": "11/12",
+      "unitFailures": [
+        "SEG-011:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "PATTERN-001:PROTOCOL:CHANGE_WITHOUT_EVIDENCE",
+        "GROUP-001:PROTOCOL:HEADING_SIZE_INVALID"
+      ],
+      "providerCalls": 34,
+      "providerCostUsd": 0.026183,
+      "seconds": 699.7,
+      "linesInScope": 456,
+      "linesUndecided": 48,
+      "goldLinesUndecided": 3,
+      "beforePatternStep": {
+        "precision": 0.8491,
+        "recall": 0.9375,
+        "tp": 45,
+        "fp": 8,
+        "fn": 3
+      },
+      "afterPatternStep": {
+        "precision": 0.8491,
+        "recall": 0.9375,
+        "tp": 45,
+        "fp": 8,
+        "fn": 3
+      },
+      "function": {
+        "goldHeadingsInScope": 34,
+        "found": 32
+      },
+      "alias": {
+        "foundWithAllLines": 32,
+        "exactlyOneHeading": 28,
+        "falseHeadings": 8
+      },
+      "patternStep": {
+        "patternsGiven": 60,
+        "conflicts": [
+          "#.:84"
+        ],
+        "skipped": [
+          "NOT_ITS_OWN_OPENING",
+          "NOT_ITS_OWN_OPENING",
+          "NOT_ITS_OWN_OPENING",
+          "NOT_ITS_OWN_OPENING"
+        ],
+        "changes": 0,
+        "changesRightAgainstGold": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "document": "SRC-053",
+      "pdf": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/053_IDA_Information_Statement_FY25.pdf",
+      "sourceSha256Prefix": "6d3cd46d",
+      "rep": 1,
+      "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-053.gold.v1.json",
+      "firstSegments": 12,
+      "rawFile": "raw/053-sta-r1.json",
+      "rawSha256": "c920078057015617d99cfc07ffb36939cb2fc41f4aa1bfe96f7b4546412674e6",
+      "validRun": false,
+      "units": "0/12",
+      "unitFailures": [
+        "SEG-000:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-001:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-002:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-003:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-004:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-005:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-006:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-007:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-008:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-009:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-010:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-011:FAILED:CALL:TRANSPORT:CLIENT_ERROR"
+      ],
+      "providerCalls": 12,
+      "providerCostUsd": 0,
+      "seconds": 23.3,
+      "linesInScope": 558,
+      "linesUndecided": 558,
+      "goldLinesUndecided": 29,
+      "beforePatternStep": {
+        "precision": 0,
+        "recall": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 29
+      },
+      "afterPatternStep": {
+        "precision": 0,
+        "recall": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 29
+      },
+      "function": {
+        "goldHeadingsInScope": 29,
+        "found": 0
+      },
+      "alias": {
+        "foundWithAllLines": 0,
+        "exactlyOneHeading": 0,
+        "falseHeadings": 0
+      },
+      "patternStep": {
+        "patternsGiven": 0,
+        "conflicts": [],
+        "skipped": [],
+        "changes": 0,
+        "changesRightAgainstGold": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "document": "SRC-053",
+      "pdf": "todo10_8/heading_corpus_100/03_tai_chinh_ke_toan/053_IDA_Information_Statement_FY25.pdf",
+      "sourceSha256Prefix": "6d3cd46d",
+      "rep": 2,
+      "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-053.gold.v1.json",
+      "firstSegments": 12,
+      "rawFile": "raw/053-sta-r2.json",
+      "rawSha256": "d420b49cebd04659f66c972f898af049183907a95bc102a776d25c479560c51a",
+      "validRun": false,
+      "units": "4/12",
+      "unitFailures": [
+        "SEG-001:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-003:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-005:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-006:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-007:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-008:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-009:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
+        "SEG-011:FAILED:CALL:TRANSPORT:CLIENT_ERROR"
+      ],
+      "providerCalls": 25,
+      "providerCostUsd": 0.011023,
+      "seconds": 186.5,
+      "linesInScope": 558,
+      "linesUndecided": 369,
+      "goldLinesUndecided": 16,
+      "beforePatternStep": {
+        "precision": 0.8125,
+        "recall": 0.4483,
+        "tp": 13,
+        "fp": 3,
+        "fn": 16
+      },
+      "afterPatternStep": {
+        "precision": 0.8125,
+        "recall": 0.4483,
+        "tp": 13,
+        "fp": 3,
+        "fn": 16
+      },
+      "function": {
+        "goldHeadingsInScope": 29,
+        "found": 13
+      },
+      "alias": {
+        "foundWithAllLines": 13,
+        "exactlyOneHeading": 10,
+        "falseHeadings": 2
+      },
+      "patternStep": {
+        "patternsGiven": 0,
+        "conflicts": [],
+        "skipped": [],
+        "changes": 0,
+        "changesRightAgainstGold": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "document": "SRC-089",
+      "pdf": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+      "sourceSha256Prefix": "f4b72d1a",
+      "rep": 1,
+      "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json",
+      "firstSegments": 0,
+      "rawFile": "raw/089-sta-r1.json",
+      "rawSha256": "8df2e2358d7cf8bdaa6e7ef22dab68463abea56e6c25c7d2536d61e3c2adfb8b",
+      "validRun": true,
+      "units": "18/18",
+      "unitFailures": [],
+      "providerCalls": 53,
+      "providerCostUsd": 0.032399,
+      "seconds": 580.9,
+      "linesInScope": 581,
+      "linesUndecided": 0,
+      "goldLinesUndecided": 0,
+      "beforePatternStep": {
+        "precision": 0.8772,
+        "recall": 0.8772,
+        "tp": 50,
+        "fp": 7,
+        "fn": 7
+      },
+      "afterPatternStep": {
+        "precision": 0.8772,
+        "recall": 0.8772,
+        "tp": 50,
+        "fp": 7,
+        "fn": 7
+      },
+      "function": {
+        "goldHeadingsInScope": 36,
+        "found": 32
+      },
+      "alias": {
+        "foundWithAllLines": 32,
+        "exactlyOneHeading": 32,
+        "falseHeadings": 4
+      },
+      "patternStep": {
+        "patternsGiven": 46,
+        "conflicts": [
+          "#.:88",
+          "article #.:26"
+        ],
+        "skipped": [],
+        "changes": 0,
+        "changesRightAgainstGold": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "document": "SRC-089",
+      "pdf": "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf",
+      "sourceSha256Prefix": "f4b72d1a",
+      "rep": 2,
+      "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json",
+      "firstSegments": 0,
+      "rawFile": "raw/089-sta-r2.json",
+      "rawSha256": "1b20bca898f37e731adc790f0d80148e7e61d4a783f4974ee43c48d3302afa95",
+      "validRun": true,
+      "units": "18/18",
+      "unitFailures": [],
+      "providerCalls": 46,
+      "providerCostUsd": 0.026312,
+      "seconds": 400.9,
+      "linesInScope": 581,
+      "linesUndecided": 0,
+      "goldLinesUndecided": 0,
+      "beforePatternStep": {
+        "precision": 1.0,
+        "recall": 0.9123,
+        "tp": 52,
+        "fp": 0,
+        "fn": 5
+      },
+      "afterPatternStep": {
+        "precision": 1.0,
+        "recall": 0.9123,
+        "tp": 52,
+        "fp": 0,
+        "fn": 5
+      },
+      "function": {
+        "goldHeadingsInScope": 36,
+        "found": 33
+      },
+      "alias": {
+        "foundWithAllLines": 33,
+        "exactlyOneHeading": 33,
+        "falseHeadings": 0
+      },
+      "patternStep": {
+        "patternsGiven": 63,
+        "conflicts": [
+          "#.:88"
+        ],
+        "skipped": [
+          "NOT_ITS_OWN_OPENING",
+          "NOT_ITS_OWN_OPENING"
+        ],
+        "changes": 0,
+        "changesRightAgainstGold": 0,
+        "unresolved": 0
+      }
+    }
+  ]
+}
