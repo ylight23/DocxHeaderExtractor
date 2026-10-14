@@ -113,6 +113,8 @@ internal sealed class AgentModel : IDisposable
                 >= 200 and < 300 => "HTTP_OK",
                 >= 300 and < 400 => "REDIRECT_REFUSED",
                 429 => "RATE_LIMITED_NO_RETRY",
+                // The provider account has no credit left: not retried, and named apart so the failure says what to fix.
+                402 => "PAYMENT_REQUIRED",
                 >= 500 => "SERVER_ERROR_NO_RETRY",
                 >= 400 => "CLIENT_ERROR",
                 _ => "UNEXPECTED_STATUS",

@@ -27,9 +27,10 @@ internal static class AgentProtocol
     public const string SelectObjectsVersion = "P7_F1_V6_SELECT_OBJECTS_V1";
     public const int MaxEvidenceRefs = 8, MaxInterpretations = 5, MaxFreeTextChars = 1000, MaxReasonChars = 300, MaxMissingNamed = 40;
 
-    /// <summary>The instruction production sends: the owner's revised instruction, adopted 2026-10-14 after the three-document test
-    /// (docs/experiments/p7-f1-v6-pdf-promotion-2026-10-14.md).</summary>
-    public const string Instruction = InstructionOutlineMeaning;
+    /// <summary>The instruction production sends: the owner's structural-heading instruction (Task A), adopted 2026-10-14 after the
+    /// three-document comparison with InstructionOutlineMeaning (artifacts/p7-v6-pattern-commitments; docs/experiments/
+    /// p7-f1-v6-pdf-promotion-2026-10-14.md). The pattern step stays off.</summary>
+    public const string Instruction = InstructionStructuralV1;
 
     /// <summary>The user instruction of the frozen D4.12 method (mainrep2), verbatim. Kept for the parity tests against the qualified code.</summary>
     public const string InstructionD412 =

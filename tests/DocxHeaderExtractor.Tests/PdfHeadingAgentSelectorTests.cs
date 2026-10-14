@@ -73,6 +73,22 @@ public sealed class PdfHeadingAgentSelectorTests
     }
 
     [Fact]
+    public void An_account_without_credit_is_named_and_not_retried()
+    {
+        var handler = new FakeOpenRouter((_, _) => (HttpStatusCode.PaymentRequired, "{\"error\":{\"code\":402,\"message\":\"Insufficient credits\"}}"));
+        var source = AgentSource.Load(TestRepository.Path(Pdf), out _)!;
+        var budget = PdfHeadingAgentSelector.BudgetFor(source);
+        using var model = new AgentModel(handler, "sk-test", budget);
+
+        var outcome = AgentUnit.Run(source, 0, model.Turn, budget, retryDelayMs: 0);
+
+        Assert.Equal("FAILED", outcome.Status);
+        Assert.Equal("CALL:TRANSPORT:PAYMENT_REQUIRED", outcome.Failure);
+        Assert.Equal(0, outcome.TransportRetries);
+        Assert.Equal(1, handler.Posts);
+    }
+
+    [Fact]
     public void A_reply_from_another_endpoint_halts_the_document()
     {
         var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTarget, provider: "SomeoneElse");

@@ -16,7 +16,7 @@ PDF → production parser (PdfSourceAdapter) → PdfHeadingAgentSelector
 
 Code: `src/DocxHeaderExtractor.PdfHeadingAgent` (the agent), `IPdfHeadingSelector` and `SelectedLinesHeadingAuthority` in `DocxHeaderExtractor.DocumentProcessing`. The production assemblies do not reference the qualification project (the architecture test enforces this); the agent is a port of the qualified V6 code, and `PdfHeadingAgentParityTests` holds the port to the qualified bytes on SRC-089.
 
-### 1. Selection (the frozen method, with the revised instruction below)
+### 1. Selection (the frozen method, with the structural-heading instruction below)
 
 Arm TOOLFACTS_ANALYSIS_V3, instruction revised on 2026-10-14 (SHA `813e49c6…`; the frozen `mainrep2`, `2d057c62…`, is kept for parity), layout segments, the first reply must call `get_line_facts`, three transport retries, repair turns with no limit of their own, two prompt-cache marks. First request of every SRC-089 segment equals the SHA pinned in the D4.12 reference plan (`3dfeaf6e…`).
 
@@ -94,7 +94,24 @@ Open: the instruction has to say which levels are "main", or the selection shoul
 
 ## What is retired
 
-`FunctionAnchorExtentHeadingAuthority` and its byte-parity and requalification tests are removed. The F1/G2A/H2-C protocol classes (`OccurrenceFunctionProtocolV1`, `HeadingAnchorProtocolV1`, `HeadingExtentProtocolV2`, `PdfReadOnlyCorrespondenceBuilder`, the P05 packing policy) are no longer on any production route but remain, because the qualification project and historical tests still use them.
+`FunctionAnchorExtentHeadingAuthority` and its byte-parity and requalification tests are removed. On 2026-10-14 the owner cut the repository to the V6 experiment (commit e6a7d65): every other test, the non-V6 qualification code and the P7 experiment scripts are gone, and so are the two production classes nothing used any more (`PdfInferenceWireContract`, `PdfReadOnlyCorrespondenceBuilder`). The F1/G2A/H2-C protocol classes (`OccurrenceFunctionProtocolV1`, `HeadingAnchorProtocolV1`, `HeadingExtentProtocolV2`) stay because the kept V6 qualification code still refers to them.
+
+## Instruction changed again: the structural-heading instruction (adopted 2026-10-14)
+
+The owner replaced "main headings" with a functional definition: every genuine structural heading at every level, decided by what the occurrence does at its own location (it names, introduces or divides a unit of content), not by level, length, numbering or the ability to summarize; a standalone label and the title after it may form one heading over several lines (`InstructionStructuralV1`, SHA-256 `c5c5b693...`). Production sends it since this change; the pattern step stays off.
+
+Measured on SRC-089 (whole), SRC-029 and SRC-053 (first 12 segments), 2 runs each, frozen in `artifacts/p7-v6-pattern-commitments/` (precision / recall of the selected lines against the all-heading Gold, after the pattern step where it ran):
+
+| condition | SRC-089 | SRC-029 | SRC-053 |
+|---|---|---|---|
+| revised instruction (813e49c6) + pattern V2 | 1.00 / .84 | 1.00 / .31-.56 | .85-.96 / .79-.90 |
+| structural instruction + pattern V3 | .93-.98 / .91 | .35-.84 / .73-.77 | .78-.81 / 1.00 |
+| structural instruction + pattern V4 | .82-.98 / .91-.95 | .77-.79 / .75-.94 | .81-.91 / 1.00 |
+| structural instruction + pattern V4 + consensus audit | .88-1.00 / .88-.91 | .97 / .75 | .78-.81 / 1.00 |
+
+The structural instruction finds more headings on every document (SRC-053: 29/29 in every run) and selects more numbered body clauses, so precision drops. The pattern step (a document-wide decision per numbered opening) made 68 changes across the structural runs and none was right against Gold; under V3 it turned 66 table-of-contents lines of SRC-029 into headings. It is not on the production route. Once the model finds a heading it almost always selects all of its lines; the remaining alias errors are in the grouping step (SRC-029).
+
+Provider failures now name an account without credit apart: HTTP 402 is `PAYMENT_REQUIRED`, not `CLIENT_ERROR`, and is not retried.
 
 ## Reproduce
 

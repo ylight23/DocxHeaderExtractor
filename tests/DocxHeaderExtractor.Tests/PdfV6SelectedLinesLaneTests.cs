@@ -102,17 +102,19 @@ public sealed class PdfV6SelectedLinesLaneTests
     }
 
     [Fact]
-    public void The_production_selector_runs_the_d412_method_with_the_revised_instruction()
+    public void The_production_selector_runs_the_d412_method_with_the_structural_instruction()
     {
         var selector = new PdfHeadingAgentSelector();
-        // The frozen D4.12 instruction is kept for parity; production sends the owner's revised instruction (2026-10-14).
+        // The frozen D4.12 instruction is kept for parity; production sends the owner's structural-heading instruction (2026-10-14),
+        // which replaced the revised instruction (813e49c6) after the three-document comparison.
         Assert.Equal(P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, AgentProtocol.InstructionD412);
         Assert.Equal("2d057c62aaf69297afa46f3dec8d8b88720893491c5620ecfcc51562e9e03884", P7F1V6Core.InstructionSha256(AgentProtocol.InstructionD412));
-        Assert.Equal(AgentProtocol.InstructionOutlineMeaning, AgentProtocol.Instruction);
-        Assert.Equal("813e49c6", P7F1V6Core.InstructionSha256(AgentProtocol.Instruction)[..8]);
-        Assert.Equal("p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:instruction-813e49c6", selector.SelectorId);
-        Assert.Contains("Apply this the same way everywhere in the document", AgentProtocol.Instruction, StringComparison.Ordinal);
-        Assert.Contains("not by how it looks", AgentProtocol.Instruction, StringComparison.Ordinal);
+        Assert.Equal("813e49c6", P7F1V6Core.InstructionSha256(AgentProtocol.InstructionOutlineMeaning)[..8]);
+        Assert.Equal(AgentProtocol.InstructionStructuralV1, AgentProtocol.Instruction);
+        Assert.Equal("c5c5b6939b99d4cb907a59b2da472d14e1ffc7e35067c1ae48ca0f0ccabdb793", P7F1V6Core.InstructionSha256(AgentProtocol.Instruction));
+        Assert.Equal("p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:instruction-c5c5b693", selector.SelectorId);
+        Assert.Contains("at every level of its outline", AgentProtocol.Instruction, StringComparison.Ordinal);
+        Assert.Contains("It does not need to summarize that content", AgentProtocol.Instruction, StringComparison.Ordinal);
     }
 
     [Fact]
