@@ -7,7 +7,7 @@
   },
   "captured": "per run: selected aliases, groups, every final answer, every model reply with its time (replies), failures, calls, cost, scope. NOT captured: request bodies (deterministic from codeCommit and the PDF), reasoning tokens.",
   "scoring": "Gold lines of every scheduled segment count (a Gold line of a failed segment is a miss). FUNCTION = Gold headings with at least one line selected; ALIAS = found headings with all their lines selected, and Gold headings that came out as exactly one heading. Gold is not changed by any model result.",
-  "invalidRuns": "validRun false: the OpenRouter account ran out of credit during the concurrent runs (HTTP 402, recorded as TRANSPORT:CLIENT_ERROR; credits 20.00, usage 20.18 at 2026-10-14). Their scores measure the outage, not the method; do not compare them.",
+  "reruns": "The first concurrent runs exhausted the OpenRouter credit (HTTP 402, recorded as TRANSPORT:CLIENT_ERROR). After the owner topped up, those 11 runs were rerun with the same DLLs and arguments and replace them here; the broken outputs are kept apart (results/invalid-402, not frozen). validRun is false only for a run with such a 402 failure.",
   "freeze": "P7_V6_PATTERN_COMMITMENTS_V4_STRUCTURAL_AUDIT",
   "condition": "InstructionStructuralV1 + pattern step V4 + consensus audit; one experimental condition, not pooled with any other",
   "codeCommit": "bb4aa7a",
@@ -29,57 +29,52 @@
       "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-029.gold.v1.json",
       "firstSegments": 12,
       "rawFile": "raw/029-sta-r1.json",
-      "rawSha256": "aa3583e52eb541f33bb6c69e352b06e5eb7b4868575dee4d5249381823c7e1b6",
-      "validRun": false,
-      "units": "3/12",
+      "rawSha256": "19c8ba430e5dd1e30eab3177cd0c12341c3be310442d71b2785c98d2dd48d222",
+      "validRun": true,
+      "units": "11/12",
       "unitFailures": [
-        "SEG-000:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-001:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-003:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-004:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-005:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-007:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-008:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-009:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-011:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "GROUP-001:CALL:TRANSPORT:CLIENT_ERROR"
+        "SEG-000:FAILED:CALL:AUDIT:FINISH_LENGTH,REASONING_EXHAUSTED",
+        "PATTERN-002:PROTOCOL:DECISION_KEYS_INVALID"
       ],
-      "providerCalls": 19,
-      "providerCostUsd": 0.00563,
-      "seconds": 246.1,
+      "providerCalls": 39,
+      "providerCostUsd": 0.034917,
+      "seconds": 694.3,
       "linesInScope": 456,
-      "linesUndecided": 330,
-      "goldLinesUndecided": 44,
+      "linesUndecided": 26,
+      "goldLinesUndecided": 9,
       "beforePatternStep": {
-        "precision": 1.0,
-        "recall": 0.0833,
-        "tp": 4,
-        "fp": 0,
-        "fn": 44
+        "precision": 0.973,
+        "recall": 0.75,
+        "tp": 36,
+        "fp": 1,
+        "fn": 12
       },
       "afterPatternStep": {
-        "precision": 1.0,
-        "recall": 0.0625,
-        "tp": 3,
-        "fp": 0,
-        "fn": 45
+        "precision": 0.973,
+        "recall": 0.75,
+        "tp": 36,
+        "fp": 1,
+        "fn": 12
       },
       "function": {
         "goldHeadingsInScope": 34,
-        "found": 3
+        "found": 28
       },
       "alias": {
-        "foundWithAllLines": 2,
-        "exactlyOneHeading": 2,
+        "foundWithAllLines": 28,
+        "exactlyOneHeading": 24,
         "falseHeadings": 0
       },
       "patternStep": {
-        "patternsGiven": 7,
+        "patternsGiven": 74,
         "conflicts": [
-          "#.:10"
+          "#:110",
+          "#.:90",
+          "section # -:24",
+          "part # –:8"
         ],
         "skipped": [],
-        "changes": 1,
+        "changes": 0,
         "changesRightAgainstGold": 0,
         "unresolved": 0
       }
@@ -92,55 +87,51 @@
       "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-029.gold.v1.json",
       "firstSegments": 12,
       "rawFile": "raw/029-sta-r2.json",
-      "rawSha256": "d7d6702112f4dba62a2732ed1b90200d2d373d0a6c9b8379b6a241f9cd9c5dff",
-      "validRun": false,
-      "units": "11/12",
+      "rawSha256": "dd71552e3617313beba12d9aace44e34b32850312ca21569bc56b8e9effb0b28",
+      "validRun": true,
+      "units": "12/12",
       "unitFailures": [
-        "SEG-011:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "PATTERN-001:PROTOCOL:CHANGE_WITHOUT_EVIDENCE",
-        "GROUP-001:PROTOCOL:HEADING_SIZE_INVALID"
+        "PATTERN-001:PROTOCOL:CHANGE_WITHOUT_EVIDENCE"
       ],
-      "providerCalls": 34,
-      "providerCostUsd": 0.026183,
-      "seconds": 699.7,
+      "providerCalls": 41,
+      "providerCostUsd": 0.032663,
+      "seconds": 593.6,
       "linesInScope": 456,
-      "linesUndecided": 48,
-      "goldLinesUndecided": 3,
+      "linesUndecided": 0,
+      "goldLinesUndecided": 0,
       "beforePatternStep": {
-        "precision": 0.8491,
-        "recall": 0.9375,
-        "tp": 45,
-        "fp": 8,
-        "fn": 3
+        "precision": 0.9737,
+        "recall": 0.7708,
+        "tp": 37,
+        "fp": 1,
+        "fn": 11
       },
       "afterPatternStep": {
-        "precision": 0.8491,
-        "recall": 0.9375,
-        "tp": 45,
-        "fp": 8,
-        "fn": 3
+        "precision": 0.973,
+        "recall": 0.75,
+        "tp": 36,
+        "fp": 1,
+        "fn": 12
       },
       "function": {
         "goldHeadingsInScope": 34,
-        "found": 32
+        "found": 27
       },
       "alias": {
-        "foundWithAllLines": 32,
-        "exactlyOneHeading": 28,
-        "falseHeadings": 8
+        "foundWithAllLines": 27,
+        "exactlyOneHeading": 18,
+        "falseHeadings": 0
       },
       "patternStep": {
-        "patternsGiven": 60,
+        "patternsGiven": 49,
         "conflicts": [
-          "#.:84"
+          "#:110",
+          "#.:90",
+          "section # -:24",
+          "part # –:8"
         ],
-        "skipped": [
-          "NOT_ITS_OWN_OPENING",
-          "NOT_ITS_OWN_OPENING",
-          "NOT_ITS_OWN_OPENING",
-          "NOT_ITS_OWN_OPENING"
-        ],
-        "changes": 0,
+        "skipped": [],
+        "changes": 1,
         "changesRightAgainstGold": 0,
         "unresolved": 0
       }
@@ -153,51 +144,40 @@
       "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-053.gold.v1.json",
       "firstSegments": 12,
       "rawFile": "raw/053-sta-r1.json",
-      "rawSha256": "c920078057015617d99cfc07ffb36939cb2fc41f4aa1bfe96f7b4546412674e6",
-      "validRun": false,
-      "units": "0/12",
+      "rawSha256": "4cfaee2c8cc0d248ed0639a066c44da79ddc3acf300644cab5cb77927225c14e",
+      "validRun": true,
+      "units": "11/12",
       "unitFailures": [
-        "SEG-000:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-001:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-002:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-003:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-004:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-005:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-006:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-007:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-008:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-009:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-010:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-011:FAILED:CALL:TRANSPORT:CLIENT_ERROR"
+        "SEG-011:FAILED:CALL:AUDIT:FINISH_LENGTH,REASONING_EXHAUSTED"
       ],
-      "providerCalls": 12,
-      "providerCostUsd": 0,
-      "seconds": 23.3,
+      "providerCalls": 40,
+      "providerCostUsd": 0.029638,
+      "seconds": 880.8,
       "linesInScope": 558,
-      "linesUndecided": 558,
-      "goldLinesUndecided": 29,
+      "linesUndecided": 48,
+      "goldLinesUndecided": 0,
       "beforePatternStep": {
-        "precision": 0,
-        "recall": 0.0,
-        "tp": 0,
-        "fp": 0,
-        "fn": 29
+        "precision": 0.8056,
+        "recall": 1.0,
+        "tp": 29,
+        "fp": 7,
+        "fn": 0
       },
       "afterPatternStep": {
-        "precision": 0,
-        "recall": 0.0,
-        "tp": 0,
-        "fp": 0,
-        "fn": 29
+        "precision": 0.8056,
+        "recall": 1.0,
+        "tp": 29,
+        "fp": 7,
+        "fn": 0
       },
       "function": {
         "goldHeadingsInScope": 29,
-        "found": 0
+        "found": 29
       },
       "alias": {
-        "foundWithAllLines": 0,
-        "exactlyOneHeading": 0,
-        "falseHeadings": 0
+        "foundWithAllLines": 29,
+        "exactlyOneHeading": 26,
+        "falseHeadings": 6
       },
       "patternStep": {
         "patternsGiven": 0,
@@ -216,51 +196,44 @@
       "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-053.gold.v1.json",
       "firstSegments": 12,
       "rawFile": "raw/053-sta-r2.json",
-      "rawSha256": "d420b49cebd04659f66c972f898af049183907a95bc102a776d25c479560c51a",
-      "validRun": false,
-      "units": "4/12",
-      "unitFailures": [
-        "SEG-001:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-003:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-005:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-006:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-007:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-008:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-009:FAILED:CALL:TRANSPORT:CLIENT_ERROR",
-        "SEG-011:FAILED:CALL:TRANSPORT:CLIENT_ERROR"
-      ],
-      "providerCalls": 25,
-      "providerCostUsd": 0.011023,
-      "seconds": 186.5,
+      "rawSha256": "10bfc8324cf748a98d1ebca5b29991b87a60449ca025fbbc7b45e1cb05f6ae85",
+      "validRun": true,
+      "units": "12/12",
+      "unitFailures": [],
+      "providerCalls": 39,
+      "providerCostUsd": 0.022478,
+      "seconds": 255.9,
       "linesInScope": 558,
-      "linesUndecided": 369,
-      "goldLinesUndecided": 16,
+      "linesUndecided": 0,
+      "goldLinesUndecided": 0,
       "beforePatternStep": {
-        "precision": 0.8125,
-        "recall": 0.4483,
-        "tp": 13,
-        "fp": 3,
-        "fn": 16
+        "precision": 0.7838,
+        "recall": 1.0,
+        "tp": 29,
+        "fp": 8,
+        "fn": 0
       },
       "afterPatternStep": {
-        "precision": 0.8125,
-        "recall": 0.4483,
-        "tp": 13,
-        "fp": 3,
-        "fn": 16
+        "precision": 0.7838,
+        "recall": 1.0,
+        "tp": 29,
+        "fp": 8,
+        "fn": 0
       },
       "function": {
         "goldHeadingsInScope": 29,
-        "found": 13
+        "found": 29
       },
       "alias": {
-        "foundWithAllLines": 13,
-        "exactlyOneHeading": 10,
-        "falseHeadings": 2
+        "foundWithAllLines": 29,
+        "exactlyOneHeading": 26,
+        "falseHeadings": 7
       },
       "patternStep": {
-        "patternsGiven": 0,
-        "conflicts": [],
+        "patternsGiven": 3,
+        "conflicts": [
+          "table #::3"
+        ],
         "skipped": [],
         "changes": 0,
         "changesRightAgainstGold": 0,
