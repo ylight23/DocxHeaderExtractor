@@ -1,8 +1,0 @@
-{
-  "schemaVersion": "a99-semantic-text-stable-error-provider-failure-audit-v1",
-  "failures": [],
-  "providerCallsCurrentRun": 2,
-  "retriesExhausted": false,
-  "attemptLineage": [],
-  "historicalEvidenceIntegrity": "The prior runner overwrote failed-cell paths; no raw transport envelope or per-attempt hashes remain to reconstruct retroactively."
-}
