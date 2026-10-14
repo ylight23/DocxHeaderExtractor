@@ -22,34 +22,42 @@ internal sealed record DocxAgentLine(string Alias, string SourceId, int Ordinal,
 /// style is used, whether the neighbours share it). No fact names a kind of paragraph, and none reads the text for a word.
 /// </para>
 /// </summary>
-internal sealed class DocxAgentSource
+internal sealed class DocxAgentSource : IAgentSource
 {
     public const string Version = "DOCX_AGENT_SOURCE_V1";
     public const string StylesVersion = "DOCX_AGENT_DOCUMENT_STYLES_V1";
     public const string FactsVersion = "DOCX_AGENT_LINE_FACTS_V1";
+    /// <summary>What the facts of a paragraph hold, as the facts tool tells the model.</summary>
+    public const string FactsDescription = "for every paragraph in the range: style (id, name, outlineLevel, sizePt, bold, italic, underline, allCaps, alignment), numbering (id, level, label, format), "
+        + "text (chars, boldCharRatio, lineBreaks), place (inTable, inTextBox, and tableDepth, tableRow, tableCell inside a table), internalLinks (the bookmark names of its internal hyperlinks), "
+        + "styleInDocument (rank: the place of its style among the distinct styles of the whole document, 1 being the largest, bold before regular at the same size; linesWithThisStyleInDocument), "
+        + "neighbours (whether the paragraphs before and after share its style) and sizeVsDocumentMedianPt (its font size minus the median font size of the document)";
     /// <summary>Paragraphs decided per segment, and the paragraphs shown on each side as context.</summary>
     public const int Unit = 48, Overlap = 20;
     public const int MaxStylesShown = 15, StyleExamples = 3, StyleExampleChars = 80;
 
-    DocxAgentSource(string sourceSha, string universeSha, string storeSha, IReadOnlyList<DocxAgentLine> lines,
+    DocxAgentSource(string sourceSha, string universeSha, string storeSha, IReadOnlyList<DocxAgentLine> paragraphs,
         IReadOnlyDictionary<string, JsonObject> facts, JsonObject styleTable)
     {
-        SourceSha256 = sourceSha; SourceAliasUniverseSha256 = universeSha; EvidenceStoreSha256 = storeSha; Lines = lines;
-        Cores = CoresOf(lines.Count);
+        SourceSha256 = sourceSha; SourceAliasUniverseSha256 = universeSha; EvidenceStoreSha256 = storeSha; Paragraphs = paragraphs;
+        Lines = paragraphs.Select(p => new AgentSourceLine(p.Alias, p.Ordinal, null, p.Text, null, null)).ToArray();
+        Cores = CoresOf(paragraphs.Count);
         Facts = facts; StyleTable = styleTable;
     }
 
     public string SourceSha256 { get; }
     public string SourceAliasUniverseSha256 { get; }
     public string EvidenceStoreSha256 { get; }
-    public IReadOnlyList<DocxAgentLine> Lines { get; }
+    /// <summary>The paragraphs with their OOXML identity and parsed paragraph, in reading order.</summary>
+    public IReadOnlyList<DocxAgentLine> Paragraphs { get; }
+    /// <summary>The paragraphs as the agent's conversation reads them: alias, order and text; a paragraph has no page, box or typography.</summary>
+    public IReadOnlyList<AgentSourceLine> Lines { get; }
+    public IAgentFlavor Flavor => DocxAgentFlavor.Instance;
     /// <summary>The decided range of each segment, [Start, End) into <see cref="Lines"/>, covering every paragraph once.</summary>
     public IReadOnlyList<(int Start, int End)> Cores { get; }
     public IReadOnlyDictionary<string, JsonObject> Facts { get; }
     /// <summary>The document style table: the distinct styles of the whole document, with how many paragraphs use each.</summary>
     public JsonObject StyleTable { get; }
-
-    public static string SegmentId(int n) => $"SEG-{n:000}";
 
     /// <summary>The targets of one segment and the paragraphs shown with them (<see cref="Overlap"/> on each side), as line indices.</summary>
     public (string[] Decide, int[] Shown) Scope(int segment)

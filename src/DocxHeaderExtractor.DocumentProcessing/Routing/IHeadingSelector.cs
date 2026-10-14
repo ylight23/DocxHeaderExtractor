@@ -45,4 +45,6 @@ public sealed record HeadingSelection(
 /// Measurements of the document handed to the placement pass: the style table of the whole document and the style of each line (JSON objects as
 /// text, keyed by line alias). Facts only; the placement model decides every relation.
 /// </summary>
-public sealed record HeadingPlacementContext(string DocumentStylesJson, IReadOnlyDictionary<string, string> StyleJsonByAlias);
+/// <param name="MeasurementsNote">The sentence that tells the placement model what the style objects hold, when the document is not a PDF (the
+/// default sentence describes a PDF's size, weight and rank). Null keeps the default.</param>
+public sealed record HeadingPlacementContext(string DocumentStylesJson, IReadOnlyDictionary<string, string> StyleJsonByAlias, string? MeasurementsNote = null);

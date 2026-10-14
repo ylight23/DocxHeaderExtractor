@@ -41,6 +41,9 @@ internal static class HeadingParentResolver
     /// <summary>The placement prompt for a packet that carries measurements.</summary>
     internal static string PlacementPromptWithEvidence { get; } = PlacementPrompt + "\n" + RawEvidenceSentence.ReplaceLineEndings("\n");
 
+    /// <summary>The placement prompt for a packet whose measurements the caller describes itself (a document that is not a PDF).</summary>
+    internal static string PlacementPromptWithNote(string note) => PlacementPrompt + "\n" + note.ReplaceLineEndings("\n");
+
     /// <summary>The user message of the placement request. Without evidence it is exactly the packet the stage always sent.</summary>
     internal static string PlacementPacket(
         IReadOnlyList<CanonicalSemanticBoundHeading> ordered, IReadOnlySet<string> unplaced, HeadingPlacementEvidence? evidence)
@@ -94,7 +97,7 @@ internal static class HeadingParentResolver
         try
         {
             raw = await transport.BoundaryCutAsync(
-                evidence is null ? PlacementPrompt : PlacementPromptWithEvidence,
+                evidence is null ? PlacementPrompt : evidence.MeasurementsNote is { } note ? PlacementPromptWithNote(note) : PlacementPromptWithEvidence,
                 packet,
                 cancellationToken,
                 expectedItemCount: unplaced.Count);

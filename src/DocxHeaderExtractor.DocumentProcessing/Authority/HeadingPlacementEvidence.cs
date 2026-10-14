@@ -8,4 +8,5 @@ namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 /// </summary>
 /// <param name="DocumentStylesJson">The style table of the whole document (JSON object).</param>
 /// <param name="StyleJsonByAlias">The style of a line (JSON object), by the line's alias; a line without a measurable style has no entry.</param>
-internal sealed record HeadingPlacementEvidence(string DocumentStylesJson, IReadOnlyDictionary<string, string> StyleJsonByAlias);
+/// <param name="MeasurementsNote">What the style objects hold, when the default (PDF) sentence does not describe them.</param>
+internal sealed record HeadingPlacementEvidence(string DocumentStylesJson, IReadOnlyDictionary<string, string> StyleJsonByAlias, string? MeasurementsNote = null);

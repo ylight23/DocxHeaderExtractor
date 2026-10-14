@@ -52,7 +52,7 @@ internal sealed class SelectedLinesHeadingAuthority(
                     : JsonSerializer.Serialize(new { unitFailures = selection.UnitFailures, selectedAliasesNotInSource = unknown, atoms = atomCount })),
             SpanLane = new LaneExecutionAudit("selected-lines", decisions.Count, assembly.Validated.Count, 0, decisions.Count - assembly.Validated.Count),
         };
-        var evidence = selection.Placement is { } p ? new HeadingPlacementEvidence(p.DocumentStylesJson, p.StyleJsonByAlias) : null;
+        var evidence = selection.Placement is { } p ? new HeadingPlacementEvidence(p.DocumentStylesJson, p.StyleJsonByAlias, p.MeasurementsNote) : null;
         return new HeadingAuthorityResult(decisions, bound, placementTransport, Complete, evidence);
     }
 
