@@ -32,7 +32,7 @@ internal static class AgentGrouping
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
     /// <summary>The selected lines as headings, in document order: model-divided runs, layout rule for a run that could not be divided.</summary>
-    public static Result Group(AgentSource source, IReadOnlySet<string> selected, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct, int retryDelayMs = 5000,
+    public static Result Group(IAgentSource source, IReadOnlySet<string> selected, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct, int retryDelayMs = 5000,
         string instruction = Instruction)
     {
         var chosen = Enumerable.Range(0, source.Lines.Count).Where(i => selected.Contains(source.Lines[i].Alias)).ToArray();
@@ -67,7 +67,7 @@ internal static class AgentGrouping
         {
             if (runOf.TryGetValue(chosen[k], out var run))
             {
-                var parts = division.TryGetValue(run.Id, out var d) ? d : LayoutRule(source, run.Lines);
+                var parts = division.TryGetValue(run.Id, out var d) ? d : source.Flavor.FallbackDivision(source, run.Lines);
                 foreach (var g in parts) groups.Add(g.Select(i => source.Lines[i].Alias).ToArray());
                 k += run.Lines.Length;
             }
@@ -77,7 +77,7 @@ internal static class AgentGrouping
     }
 
     /// <summary>The fallback: consecutive lines of the same page and parser layout block are one heading.</summary>
-    static List<int[]> LayoutRule(AgentSource source, int[] lines)
+    internal static List<int[]> LayoutRule(AgentSource source, int[] lines)
     {
         var groups = new List<List<int>>();
         foreach (var i in lines)
@@ -90,7 +90,7 @@ internal static class AgentGrouping
     }
 
     static (Dictionary<string, List<int[]>> Division, string? Answer, string? Failure, int Posts) AskChunk(
-        AgentSource source, Run[] chunk, int number, AgentUnit.Model model, AgentBudget budget, int retryDelayMs, string instruction)
+        IAgentSource source, Run[] chunk, int number, AgentUnit.Model model, AgentBudget budget, int retryDelayMs, string instruction)
     {
         var empty = new Dictionary<string, List<int[]>>(StringComparer.Ordinal);
         var unitId = "GROUP-" + number.ToString("000");
@@ -99,7 +99,7 @@ internal static class AgentGrouping
         int posts = 0, retries = 0, repairs = 0;
         while (true)
         {
-            var req = BuildRequest(payload, history);
+            var req = BuildRequest(payload, history, source.Flavor.GroupPrompt);
             if (budget.Admit(req) is { } refusal) return (empty, null, unitId + ":BUDGET:" + refusal, posts);
             posts++;
             AgentProtocol.ModelTurn reply;
@@ -137,11 +137,10 @@ internal static class AgentGrouping
         + " Every line of a run belongs to exactly one heading, in the order of the run: a line that is a heading of its own goes in a group of its own, and no line may be left out."
         + " Give every run exactly once, with groups of 1 to " + MaxHeadingLines + " lines and aliases copied exactly. Send the complete answer again as exactly one JSON object.";
 
-    static string Payload(AgentSource source, Run[] chunk, int number, string instruction)
+    static string Payload(IAgentSource source, Run[] chunk, int number, string instruction)
     {
-        object Line(int i) => new { alias = source.Lines[i].Alias, page = source.Lines[i].Page ?? 0, text = source.Lines[i].Text, layout = Evidence.CompactLayout(source.Lines[i].Bbox, source.Lines[i].Typography) };
-        object? Near(int i) => i < 0 || i >= source.Lines.Count ? null
-            : new { alias = source.Lines[i].Alias, page = source.Lines[i].Page ?? 0, text = Clip(source.Lines[i].Text), selected = false };
+        object Line(int i) => source.Flavor.GroupLineItem(source, i);
+        object? Near(int i) => i < 0 || i >= source.Lines.Count ? null : source.Flavor.GroupContextItem(source, i);
         var payload = new Dictionary<string, object?>
         {
             ["instruction"] = instruction,
@@ -159,13 +158,13 @@ internal static class AgentGrouping
         return JsonSerializer.Serialize(payload, Options);
     }
 
-    static string Clip(string t) => t.Length <= ContextChars ? t : t[..ContextChars];
+    internal static string Clip(string t) => t.Length <= ContextChars ? t : t[..ContextChars];
 
     /// <summary>One POST body: the group prompt and the payload, json_object, no tools. The provider block, streaming and usage are the agent's.</summary>
-    internal static PreparedRequest BuildRequest(string payload, JsonArray history)
+    internal static PreparedRequest BuildRequest(string payload, JsonArray history, string? groupPrompt = null)
     {
         var messages = new JsonArray(
-            new JsonObject { ["role"] = "system", ["content"] = GroupPrompt },
+            new JsonObject { ["role"] = "system", ["content"] = groupPrompt ?? GroupPrompt },
             new JsonObject { ["role"] = "user", ["content"] = payload });
         foreach (var m in history) messages.Add(m!.DeepClone());
         var body = new JsonObject
@@ -186,7 +185,7 @@ internal static class AgentGrouping
     }
 
     /// <summary>The strict parser of a grouping answer. Null with a failure code when the answer is not a division of every run.</summary>
-    internal static Dictionary<string, List<int[]>>? Parse(string reply, Run[] chunk, AgentSource source, out string? failure, out string? detail)
+    internal static Dictionary<string, List<int[]>>? Parse(string reply, Run[] chunk, IAgentSource source, out string? failure, out string? detail)
     {
         failure = null; detail = null;
         if (Encoding.UTF8.GetByteCount(reply) > VisibleResponseCapBytes) { failure = "PROTOCOL:REPLY_OVER_CAP"; return null; }

@@ -50,7 +50,7 @@ public interface IInferenceTransportFactory
     /// The PDF heading selector of this provider route, when the factory supplies its own (a host or a test that drives the selection
     /// itself). Null, the default, makes the composition root use the production V6 agent.
     /// </summary>
-    DocxHeaderExtractor.DocumentProcessing.Routing.IPdfHeadingSelector? CreatePdfHeadingSelector() => null;
+    DocxHeaderExtractor.DocumentProcessing.Routing.IHeadingSelector? CreatePdfHeadingSelector() => null;
 }
 
 /// <summary>

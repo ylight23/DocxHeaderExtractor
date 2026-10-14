@@ -10,7 +10,7 @@ using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 /// <summary>
-/// The normal PDF route: the V6 selected-lines heading authority (an <see cref="IPdfHeadingSelector"/>, the D4.12 direct agent) run under a
+/// The normal PDF route: the V6 selected-lines heading authority (an <see cref="IHeadingSelector"/>, the D4.12 direct agent) run under a
 /// lane lease and checkpoint, then the shared binding, placement, hierarchy and materialization. The function-conditioned chain
 /// (F1 → G2A → H2-C V2) it replaced was removed from production on 2026-10-14. There is intentionally no canonical-text fallback.
 /// </summary>
@@ -24,7 +24,7 @@ internal static class PdfHeadingPipeline
         string sourceName,
         IInferenceTransport? transport,
         SemanticLaneOptions? semanticLaneOptions,
-        IPdfHeadingSelector? selector,
+        IHeadingSelector? selector,
         CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(authority);
@@ -89,7 +89,7 @@ internal static class PdfHeadingPipeline
     }
 
     private static async Task<HeadingPipelineResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IPdfProductionAuthorizedInferenceTransport authorized,
-        IPdfHeadingSelector selector, string pdfPath, string apiKey, PdfLaneExecutionLease lease, CancellationToken ct)
+        IHeadingSelector selector, string pdfPath, string apiKey, PdfLaneExecutionLease lease, CancellationToken ct)
     {
         var leaseBound = new LeaseBoundInferenceTransport(authorized, lease);
         IHeadingAuthority authority = new SelectedLinesHeadingAuthority(

@@ -52,7 +52,7 @@ public static class PdfExtractionPipeline
         UploadedFile file,
         PipelineOptions options,
         IInferenceTransport? analyst,
-        IPdfHeadingSelector? selector,
+        IHeadingSelector? selector,
         IReadOnlySet<int>? quarantinedIndexes = null,
         bool analystSendsDataExternally = false,
         CancellationToken ct = default) =>
@@ -72,7 +72,7 @@ public static class PdfExtractionPipeline
         IReadOnlySet<int>? quarantinedIndexes = null,
         bool analystSendsDataExternally = false,
         CancellationToken ct = default,
-        IPdfHeadingSelector? selector = null) =>
+        IHeadingSelector? selector = null) =>
         RunExecutionCoreAsync(
             file, options, analyst, quarantinedIndexes, analystSendsDataExternally, ct,
             semanticLaneOptions, selector);
@@ -85,7 +85,7 @@ public static class PdfExtractionPipeline
         bool transportSendsDataExternally,
         CancellationToken ct,
         SemanticLaneOptions semanticLaneOptions,
-        IPdfHeadingSelector? selector)
+        IHeadingSelector? selector)
     {
         ArgumentNullException.ThrowIfNull(file);
         ArgumentNullException.ThrowIfNull(options);

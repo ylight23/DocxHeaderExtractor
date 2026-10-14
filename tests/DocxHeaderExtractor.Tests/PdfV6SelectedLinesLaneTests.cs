@@ -12,7 +12,7 @@ using DocxHeaderExtractor.V6Qualification.P7;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
-/// The PDF lane after the V6 promotion (2026-10-14): an <see cref="IPdfHeadingSelector"/> is the only heading authority. These tests use a
+/// The PDF lane after the V6 promotion (2026-10-14): an <see cref="IHeadingSelector"/> is the only heading authority. These tests use a
 /// selector that answers from a fixed alias set and a transport that makes no provider call.
 /// </summary>
 public sealed class PdfV6SelectedLinesLaneTests
@@ -192,7 +192,7 @@ public sealed class PdfV6SelectedLinesLaneTests
         Assert.Equal("{\"headings\":[{\"alias\":\"L0001:S0\",\"text\":\"Chapter I\"},{\"alias\":\"L0002:S0\",\"text\":\"GENERAL\"}],\"toPlace\":[\"L0002:S0\"]}", packet);
     }
 
-    private sealed class FixedSelector(IReadOnlySet<string> aliases, PdfPlacementContext? placement = null) : IPdfHeadingSelector
+    private sealed class FixedSelector(IReadOnlySet<string> aliases, HeadingPlacementContext? placement = null) : IHeadingSelector
     {
         public const string Id = "fixed-test-selector";
         public int Calls { get; private set; }
@@ -200,10 +200,10 @@ public sealed class PdfV6SelectedLinesLaneTests
         public string? Path { get; private set; }
         public string SelectorId => Id;
 
-        public Task<PdfHeadingSelection> SelectAsync(string pdfPath, string apiKey, CancellationToken ct)
+        public Task<HeadingSelection> SelectAsync(string pdfPath, string apiKey, CancellationToken ct)
         {
             Calls++; Key = apiKey; Path = pdfPath;
-            return Task.FromResult(new PdfHeadingSelection(aliases, 3, 3, [], ["{}"], 3, 0.0, placement));
+            return Task.FromResult(new HeadingSelection(aliases, 3, 3, [], ["{}"], 3, 0.0, placement));
         }
     }
 

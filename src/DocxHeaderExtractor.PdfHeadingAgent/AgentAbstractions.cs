@@ -1,4 +1,5 @@
 using System.Text.Json.Nodes;
+using DocxHeaderExtractor.DocumentProcessing.Routing;
 
 namespace DocxHeaderExtractor.PdfHeadingAgent;
 
@@ -32,6 +33,18 @@ internal interface IAgentFlavor
     IAgentTools CreateTools(IAgentSource source);
     /// <summary>One line of the targets or the context in the unit payload.</summary>
     object PayloadItem(AgentSourceLine line);
+
+    // The grouping step (which selected lines form one heading) differs only in how a line is shown and in the rule used for a run the model
+    // could not divide.
+    string GroupPrompt { get; }
+    /// <summary>A line of a run in the grouping request.</summary>
+    object GroupLineItem(IAgentSource source, int index);
+    /// <summary>The line next to a run, shown only as context (selected false).</summary>
+    object GroupContextItem(IAgentSource source, int index);
+    /// <summary>The measurements the placement pass gets: the document's style table and the style of every line that has one. Facts only.</summary>
+    HeadingPlacementContext PlacementContext(IAgentSource source);
+    /// <summary>How a run divides into headings when the model's division was refused or could not be asked for: contiguous groups of line indices.</summary>
+    List<int[]> FallbackDivision(IAgentSource source, int[] lines);
 }
 
 /// <summary>

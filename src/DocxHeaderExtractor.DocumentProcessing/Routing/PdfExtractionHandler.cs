@@ -25,7 +25,7 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
     private readonly IInferenceTransportFactory? _transportFactory;
     private readonly bool _sendsDataExternally;
     private readonly bool _ownsTransport;
-    private readonly IPdfHeadingSelector? _selector;
+    private readonly IHeadingSelector? _selector;
     private IInferenceTransport? _transport;
 
     public PdfExtractionHandler(PipelineOptions options, IInferenceTransport? analyst = null)
@@ -35,7 +35,7 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
         PipelineOptions options,
         IInferenceTransport? analyst,
         bool sendsDataExternally,
-        IPdfHeadingSelector? selector = null)
+        IHeadingSelector? selector = null)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _transport = analyst;
@@ -44,7 +44,7 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
         _selector = selector;
     }
 
-    public PdfExtractionHandler(PipelineOptions options, IInferenceTransportFactory analystFactory, IPdfHeadingSelector? selector = null)
+    public PdfExtractionHandler(PipelineOptions options, IInferenceTransportFactory analystFactory, IHeadingSelector? selector = null)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _transportFactory = analystFactory ?? throw new ArgumentNullException(nameof(analystFactory));

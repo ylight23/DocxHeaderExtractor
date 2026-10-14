@@ -8,14 +8,14 @@ namespace DocxHeaderExtractor.DocumentProcessing.Routing;
 /// qualified as the D4.12 method), so the lane depends on this seam, not on the agent.
 /// </para>
 /// </summary>
-public interface IPdfHeadingSelector
+public interface IHeadingSelector
 {
     /// <summary>Identifies the method in the route audit, for example the agent's arm and instruction.</summary>
     string SelectorId { get; }
 
     /// <param name="pdfPath">The uploaded PDF; the selector parses it with the same parser as the lane, so the aliases agree.</param>
     /// <param name="apiKey">The provider key of the authorized PDF route.</param>
-    Task<PdfHeadingSelection> SelectAsync(string pdfPath, string apiKey, CancellationToken ct);
+    Task<HeadingSelection> SelectAsync(string pdfPath, string apiKey, CancellationToken ct);
 }
 
 /// <summary>What a selector decided for one PDF.</summary>
@@ -30,7 +30,7 @@ public interface IPdfHeadingSelector
 /// <param name="Placement">Optional measurements for the shared placement pass (parent relations); null sends the placement packet as it was.</param>
 /// <param name="Groups">Optional: the selected lines divided into headings, in document order (each group is the lines of one heading). Null makes
 /// the authority group by its own layout rule: consecutive lines of the same page and parser layout block.</param>
-public sealed record PdfHeadingSelection(
+public sealed record HeadingSelection(
     IReadOnlySet<string> SelectedAliases,
     int UnitsComplete,
     int UnitsTotal,
@@ -38,11 +38,11 @@ public sealed record PdfHeadingSelection(
     IReadOnlyList<string> ModelAnswers,
     int ProviderCalls,
     double ProviderCostUsd,
-    PdfPlacementContext? Placement = null,
+    HeadingPlacementContext? Placement = null,
     IReadOnlyList<IReadOnlyList<string>>? Groups = null);
 
 /// <summary>
 /// Measurements of the document handed to the placement pass: the style table of the whole document and the style of each line (JSON objects as
 /// text, keyed by line alias). Facts only; the placement model decides every relation.
 /// </summary>
-public sealed record PdfPlacementContext(string DocumentStylesJson, IReadOnlyDictionary<string, string> StyleJsonByAlias);
+public sealed record HeadingPlacementContext(string DocumentStylesJson, IReadOnlyDictionary<string, string> StyleJsonByAlias);

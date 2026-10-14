@@ -51,7 +51,7 @@ public sealed class PipelineDocumentExtractionTool : IDocumentExtractionTool, ID
         IInferenceTransport transport,
         bool ownsTransport = false,
         bool sendsDataExternally = false,
-        IPdfHeadingSelector? pdfSelector = null)
+        IHeadingSelector? pdfSelector = null)
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(transport);

@@ -9,14 +9,14 @@ using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 
 /// <summary>
-/// The PDF heading authority since the V6 promotion: an <see cref="IPdfHeadingSelector"/> answers which source lines are headings, and this
+/// The PDF heading authority since the V6 promotion: an <see cref="IHeadingSelector"/> answers which source lines are headings, and this
 /// class turns its answer into heading extents for the shared stages. A run of consecutive selected lines on the same page and in the same
 /// parser layout block is one heading (the selector is asked to select every line of a heading that runs over several lines); any other
 /// selected line starts a heading of its own. Aliases the source does not have are ignored and counted. Placement and hierarchy run on the
 /// shared stages with the authorized transport, as before.
 /// </summary>
 internal sealed class SelectedLinesHeadingAuthority(
-    IPdfHeadingSelector selector,
+    IHeadingSelector selector,
     string pdfPath,
     string apiKey,
     IReadOnlyDictionary<string, string> layoutBlockByAtom,
