@@ -17,7 +17,7 @@ internal sealed class PdfAgentFlavor : IAgentFlavor
     public string SystemPrompt => AgentProtocol.SystemPrompt;
     public string AnswerVersion => AgentProtocol.SelectObjectsVersion;
     public bool HeadingExtents => false;
-    public bool SendsBackUncoveredTargets => false;
+    public bool RequiresCoreFacts => false;
     public JsonArray ToolDefinitions() => AgentTools.Definitions();
     public IAgentTools CreateTools(IAgentSource source) => new AgentTools((AgentSource)source);
     public object PayloadItem(AgentSourceLine line) => new { alias = line.Alias, page = line.Page ?? 0, text = line.Text };

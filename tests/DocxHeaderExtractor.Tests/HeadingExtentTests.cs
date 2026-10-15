@@ -130,6 +130,22 @@ public sealed class HeadingExtentTests : IDisposable
     }
 
     [Fact]
+    public void An_unknown_alias_with_an_extent_is_an_unexpected_alias_not_an_exception()
+    {
+        var extent = new { start = 0, end = Heading.Length, text = Heading };
+        var answer = JsonSerializer.Serialize(new
+        {
+            protocolVersion = AgentProtocol.SelectExtentVersion, status = "COMPLETE",
+            decisions = new object[] { new { alias = "L1", decision = "NOT_SELECT" }, new { alias = "L9", decision = "SELECT", evidenceRefs = new[] { "L1" }, headingExtent = extent } },
+        });
+        var shown = new Dictionary<string, int> { ["L1"] = 0, ["L9"] = 1 };
+
+        Assert.Equal("UNEXPECTED_ALIAS", AgentProtocol.ParseSelect(answer, shown, ["L1"], AgentProtocol.SelectExtentVersion, Texts).Failure);
+        // A target the caller gave no text for is refused the same way, never looked up blind.
+        Assert.Equal("UNEXPECTED_ALIAS", AgentProtocol.ParseSelect(Answer("L1", extent), Shown, ["L1"], AgentProtocol.SelectExtentVersion, new Dictionary<string, string>()).Failure);
+    }
+
+    [Fact]
     public void The_pdf_answer_format_has_no_extent_and_is_unchanged()
     {
         var extent = new { start = 0, end = Heading.Length, text = Heading };
@@ -209,6 +225,78 @@ public sealed class HeadingExtentTests : IDisposable
             path, "sk-test", new Dictionary<string, string>(), null, () => { }).DecideAsync(source, CancellationToken.None);
 
         Assert.Equal(new TextOffsetSpan(0, "Chapter I".Length), Assert.Single(decided.Decisions).HeadingSpan);
+    }
+
+    // ---------------- the three cases of an extent at the authority ----------------
+
+    static HeadingSelection Selected(IEnumerable<string> aliases, Dictionary<string, TextOffsetSpan>? extents = null, IReadOnlyList<IReadOnlyList<string>>? groups = null) =>
+        new(new HashSet<string>(aliases), 1, 1, [], ["{}"], 1, 0.0, Groups: groups, HeadingExtents: extents);
+
+    async Task<HeadingAuthorityResult> Decide(HeadingSelection selection)
+    {
+        var path = Mixed();
+        var source = DocxSourceAdapter.Build(new OpenXmlDocumentSource(new PipelineOptions().Extraction).Read(path)).Snapshot;
+        return await new SelectedLinesHeadingAuthority(new Fixed(selection), path, "sk-test", new Dictionary<string, string>(), null, () => { })
+            .DecideAsync(source, CancellationToken.None);
+    }
+
+    string AliasOf(string text)
+    {
+        var source = DocxSourceAdapter.Build(new OpenXmlDocumentSource(new PipelineOptions().Extraction).Read(Mixed())).Snapshot;
+        return source.Atoms.Single(a => a.Text.StartsWith(text, StringComparison.Ordinal)).Alias;
+    }
+
+    [Fact]
+    public async Task No_extent_is_the_whole_line_and_a_valid_extent_is_used_exactly()
+    {
+        var article = AliasOf(Heading);
+        var whole = await Decide(Selected([article]));
+        var exact = await Decide(Selected([article], new() { [article] = new(0, Heading.Length) }));
+
+        Assert.Equal(new TextOffsetSpan(0, Assert.Single(whole.BoundHeadings).Text.Length), Assert.Single(whole.Decisions).HeadingSpan);
+        Assert.StartsWith(Heading + " 1. Using cyberspace", Assert.Single(whole.BoundHeadings).Text, StringComparison.Ordinal);
+        Assert.Equal(Heading, Assert.Single(exact.BoundHeadings).Text);
+        Assert.Equal(new TextOffsetSpan(0, Heading.Length), Assert.Single(exact.Decisions).HeadingSpan);
+    }
+
+    [Theory]
+    [InlineData(0, 4000)]
+    [InlineData(-1, 10)]
+    [InlineData(30, 30)]
+    [InlineData(40, 12)]
+    public async Task An_extent_outside_its_line_is_rejected_and_never_replaced_by_the_whole_line(int start, int end)
+    {
+        var article = AliasOf(Heading);
+
+        var decided = await Decide(Selected([article], new() { [article] = new(start, end) }));
+
+        Assert.Empty(decided.Decisions);
+        Assert.Empty(decided.BoundHeadings);
+    }
+
+    [Fact]
+    public async Task A_rejected_extent_drops_only_its_own_line_from_a_heading_over_several_lines()
+    {
+        var chapter = AliasOf("Chapter I");
+        var article = AliasOf(Heading);
+        var selection = Selected([chapter, article], new() { [article] = new(5, 9999) }, [[chapter, article]]);
+
+        var decided = await Decide(selection);
+
+        var heading = Assert.Single(decided.BoundHeadings);
+        Assert.Equal("Chapter I", heading.Text);
+        Assert.Equal(chapter, Assert.Single(heading.Parts).Alias);
+    }
+
+    [Fact]
+    public async Task An_extent_for_a_line_that_is_not_selected_makes_no_heading()
+    {
+        var chapter = AliasOf("Chapter I");
+        var article = AliasOf(Heading);
+
+        var decided = await Decide(Selected([chapter], new() { [article] = new(0, Heading.Length) }));
+
+        Assert.Equal("Chapter I", Assert.Single(decided.BoundHeadings).Text);
     }
 
     // ---------------- end to end over a fake provider ----------------

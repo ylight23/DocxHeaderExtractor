@@ -26,26 +26,35 @@ internal sealed class DocxAgentSource : IAgentSource
 {
     public const string Version = "DOCX_AGENT_SOURCE_V1";
     public const string StylesVersion = "DOCX_AGENT_DOCUMENT_STYLES_V1";
-    public const string FactsVersion = "DOCX_AGENT_LINE_FACTS_V2";
+    public const string FactsVersion = "DOCX_AGENT_LINE_FACTS_V3";
     /// <summary>What the facts of a paragraph hold, as the facts tool tells the model.</summary>
     public const string FactsDescription = "for every paragraph in the range: style (id, name, outlineLevel, sizePt, bold, italic, underline, allCaps, alignment), numbering (id, level, label, format), "
-        + "text (chars, boldCharRatio, lineBreaks; when the paragraph breaks lines, lineBreakOffsets and pieces: the text between line breaks with its start and end; "
-        + "when its formatting changes inside the paragraph, formatRuns: the stretches of the same bold, italic and underline with their start and end; offsets are UTF-16 code units of the paragraph's text, in which a line break is one space), place (inTable, inTextBox, and tableDepth, tableRow, tableCell inside a table), internalLinks (the bookmark names of its internal hyperlinks), "
+        + "text (chars, boldCharRatio, lineBreaks and, when the paragraph breaks lines, lineBreakOffsets; when its formatting changes inside the paragraph, formatRunCount and formatChangeOffsets; "
+        + "offsets are UTF-16 code units of the paragraph's text, in which a line break is one space; the pieces between line breaks and the exact formatRuns are in get_source_span), "
+        + "place (inTable, inTextBox, and tableDepth, tableRow, tableCell inside a table), internalLinks (the bookmark names of its internal hyperlinks), "
         + "styleInDocument (rank: the place of its style among the distinct styles of the whole document, 1 being the largest, bold before regular at the same size; linesWithThisStyleInDocument), "
-        + "neighbours (whether the paragraphs before and after share its style) and sizeVsDocumentMedianPt (its font size minus the median font size of the document)";
+        + "neighbours (whether the paragraphs before and after share its style), sizeVsDocumentMedianPt (its font size minus the median font size of the document) "
+        + "and repetition (otherOccurrences: how many other paragraphs have the same text under the stated normalization, and sampleAliases: the first two; get_repeated_occurrences and compare_source_locations read them)";
     /// <summary>Paragraphs decided per segment, and the paragraphs shown on each side as context.</summary>
     public const int Unit = 48, Overlap = 20;
     public const int MaxStylesShown = 15, StyleExamples = 3, StyleExampleChars = 80;
     /// <summary>At most this many pieces and format runs per paragraph, each piece's text clipped to <see cref="PieceChars"/> (its offsets stay exact).</summary>
     public const int MaxPieces = 6, MaxFormatRuns = 8, PieceChars = 120;
+    /// <summary>The compact facts of a paragraph show at most this many line-break and format-change offsets (the full record has them all).</summary>
+    public const int MaxCompactOffsets = 8, MaxFullOffsets = 64;
+    /// <summary>A segment is cut by the size of the compact facts of its paragraphs (each as the tool writes it, repetition summary included): at most
+    /// <see cref="Unit"/> paragraphs and at most this many bytes of them, never fewer than one paragraph. What the facts tool sends adds the envelope of its
+    /// results (about 1.7 KB each), so the core facts of a window arrive in about 32 KB of tool messages, the target that leaves the rest of the unit's
+    /// 64 KB for detail.</summary>
+    public const int CoreFactsBytes = 28000;
 
     DocxAgentSource(string sourceSha, string universeSha, string storeSha, IReadOnlyList<DocxAgentLine> paragraphs,
         IReadOnlyDictionary<string, JsonObject> facts, JsonObject styleTable)
     {
         SourceSha256 = sourceSha; SourceAliasUniverseSha256 = universeSha; EvidenceStoreSha256 = storeSha; Paragraphs = paragraphs;
         Lines = paragraphs.Select(p => new AgentSourceLine(p.Alias, p.Ordinal, null, p.Text, null, null)).ToArray();
-        Cores = CoresOf(paragraphs.Count);
         Facts = facts; StyleTable = styleTable;
+        Cores = CoresOf(CompactSizes(paragraphs, facts));
     }
 
     public string SourceSha256 { get; }
@@ -120,11 +129,38 @@ internal sealed class DocxAgentSource : IAgentSource
 
     static string Hash(byte[] bytes) => Convert.ToHexStringLower(SHA256.HashData(bytes));
 
-    /// <summary>Fixed windows of <see cref="Unit"/> paragraphs (the last one shorter): a partition of the document.</summary>
-    static IReadOnlyList<(int Start, int End)> CoresOf(int count)
+    /// <summary>The bytes of each paragraph's entry in a facts result: its compact facts, its alias, and the repetition summary when its text occurs
+    /// elsewhere (counted from the same normalization the tool uses).</summary>
+    static int[] CompactSizes(IReadOnlyList<DocxAgentLine> paragraphs, IReadOnlyDictionary<string, JsonObject> facts)
+    {
+        var keys = paragraphs.Select(p => Evidence.RepeatKey(p.Text)).ToArray();
+        var counts = keys.Where(k => k.Length > 0).GroupBy(k => k, StringComparer.Ordinal).ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal);
+        return Enumerable.Range(0, paragraphs.Count).Select(i =>
+        {
+            var size = DocxLineFacts.CompactBytes(facts[paragraphs[i].Alias], paragraphs[i].Alias);
+            if (keys[i].Length > 0 && counts[keys[i]] - 1 is var others and > 0)
+                size += DocxLineFacts.RepetitionBytes(others, paragraphs[i].Alias.Length);
+            return size;
+        }).ToArray();
+    }
+
+    /// <summary>
+    /// A partition of the document into windows of consecutive paragraphs: each takes paragraphs while it holds fewer than <see cref="Unit"/> and the
+    /// compact facts of its paragraphs fit <see cref="CoreFactsBytes"/> (a paragraph that alone exceeds it is a window of its own). An ordinary document
+    /// is cut into windows of <see cref="Unit"/>, as before; only a window of unusually large paragraphs is cut shorter. Every paragraph is in exactly
+    /// one window, and the context shown with a window crosses its edges, so no heading is lost at a boundary.
+    /// </summary>
+    internal static IReadOnlyList<(int Start, int End)> CoresOf(IReadOnlyList<int> compactBytes)
     {
         var cores = new List<(int, int)>();
-        for (var s = 0; s < count; s += Unit) cores.Add((s, Math.Min(count, s + Unit)));
+        int start = 0, bytes = 0;
+        for (var i = 0; i < compactBytes.Count; i++)
+        {
+            var size = compactBytes[i];
+            if (i > start && (i - start >= Unit || bytes + size > CoreFactsBytes)) { cores.Add((start, i)); start = i; bytes = 0; }
+            bytes += size;
+        }
+        if (compactBytes.Count > start) cores.Add((start, compactBytes.Count));
         return cores;
     }
 }
@@ -203,6 +239,43 @@ internal static class DocxLineFacts
         return Math.Round(Math.Min(1.0, (double)bold / p.Text.Length), 2, MidpointRounding.AwayFromZero);
     }
 
+    /// <summary>
+    /// The facts of a paragraph as get_line_facts shows them: the full facts with the text detail cut down to what tells the model whether to ask for
+    /// more. The line breaks keep their offsets (at most <see cref="DocxAgentSource.MaxCompactOffsets"/>), the formatting keeps its number of runs and
+    /// the offsets where it changes; the pieces between the breaks and the exact format runs stay in the full record that get_source_span returns.
+    /// Nothing is dropped by what a paragraph says, only by how much of the same measurement is shown.
+    /// </summary>
+    internal static JsonObject Compact(JsonObject full)
+    {
+        var o = (JsonObject)full.DeepClone();
+        o.Remove("alias");
+        var text = (JsonObject)o["text"]!;
+        if (text["lineBreakOffsets"] is JsonArray breaks && breaks.Count > DocxAgentSource.MaxCompactOffsets)
+        {
+            var kept = breaks.Take(DocxAgentSource.MaxCompactOffsets).Select(b => b!.DeepClone()).ToArray();
+            text["lineBreakOffsets"] = new JsonArray(kept);
+            text["lineBreakOffsetsNotShown"] = breaks.Count - kept.Length + (text["lineBreakOffsetsNotShown"]?.GetValue<int>() ?? 0);
+        }
+        text.Remove("pieces");
+        if (text["formatRuns"] is JsonArray runs)
+        {
+            var total = runs.Count + (text["formatRunsNotShown"]?.GetValue<int>() ?? 0);
+            var changes = runs.Skip(1).Take(DocxAgentSource.MaxCompactOffsets).Select(r => (JsonNode)r!["start"]!.GetValue<int>()).ToArray();
+            text.Remove("formatRuns");
+            text.Remove("formatRunsNotShown");
+            text["formatRunCount"] = total;
+            text["formatChangeOffsets"] = new JsonArray(changes);
+        }
+        return o;
+    }
+
+    /// <summary>The size in bytes of a paragraph's entry in a facts result without its repetition summary: the compact facts, the alias key and a comma.</summary>
+    internal static int CompactBytes(JsonObject full, string alias) => Compact(full).ToJsonString().Length + alias.Length + 12;
+
+    /// <summary>The size of the repetition summary of a paragraph whose text occurs in <paramref name="others"/> other paragraphs.</summary>
+    internal static int RepetitionBytes(int others, int aliasLength) =>
+        ("\"repetition\":{\"otherOccurrences\":" + others + ",\"sampleAliases\":[]},").Length + Math.Min(2, others) * (aliasLength + 3);
+
     /// <summary>The text of a paragraph as measured: its length, its bold share and its line breaks; where it breaks lines, the offsets of the
     /// breaks and the pieces between them; where its run formatting changes, the stretches of the same formatting. Offsets only, never a label:
     /// which part is a heading is for the model to judge.</summary>
@@ -212,7 +285,8 @@ internal static class DocxLineFacts
         if (p.LineBreakOffsets.Count > 0)
         {
             var breaks = p.LineBreakOffsets.Where(b => b >= 0 && b < p.Text.Length).Order().ToArray();
-            o["lineBreakOffsets"] = new JsonArray(breaks.Select(b => (JsonNode)b).ToArray());
+            o["lineBreakOffsets"] = new JsonArray(breaks.Take(DocxAgentSource.MaxFullOffsets).Select(b => (JsonNode)b).ToArray());
+            if (breaks.Length > DocxAgentSource.MaxFullOffsets) o["lineBreakOffsetsNotShown"] = breaks.Length - DocxAgentSource.MaxFullOffsets;
             var pieces = new JsonArray();
             var start = 0;
             foreach (var end in breaks.Append(p.Text.Length))

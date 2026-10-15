@@ -147,13 +147,15 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         {
             unit = o.UnitId, decisions = o.Decisions, reasons = o.Reasons, analysis = o.Analysis,
             headingExtents = o.Extents is { Count: > 0 } e ? e.ToDictionary(kv => kv.Key, kv => new { start = kv.Value.Start, end = kv.Value.End, text = kv.Value.Text }) : null,
-            factsCoverage = new { targetsWithoutFacts = o.TargetsWithoutFacts ?? Array.Empty<string>(), factsResultsCut = o.FactsResultsCut },
+            coreFactsCoverage = new { targetsWithoutFacts = o.TargetsWithoutFacts ?? Array.Empty<string>(), factsResultsCut = o.FactsResultsCut },
+            detailEvidenceCoverage = new { aliasesRead = o.DetailEvidenceAliases ?? Array.Empty<string>() },
         }, Compact)).ToArray();
         // Only the extent of a line that its own unit selected counts; every unit decides its own targets, so no alias has two.
         var extents = complete.Where(o => o.Extents is not null)
             .SelectMany(o => o.Extents!.Where(kv => o.Decisions.GetValueOrDefault(kv.Key) == "SELECT"))
             .ToDictionary(kv => kv.Key, kv => new DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan(kv.Value.Start, kv.Value.End), StringComparer.Ordinal);
-        var failures = outcomes.Where(o => o.Status != "COMPLETE").Select(o => o.UnitId + ":" + o.Status + ":" + (o.Failure ?? "UNKNOWN")).ToList();
+        var failures = outcomes.Where(o => o.Status != "COMPLETE").Select(o => o.UnitId + ":" + o.Status + ":" + (o.Failure ?? "UNKNOWN")
+            + (o.Failure is "COVERAGE:CORE_FACTS_MISSING" or "BUDGET:CORE_FACTS_UNCOVERED" ? ":" + o.TargetsWithoutFacts!.Count + "_TARGETS_WITHOUT_CORE_FACTS" : "")).ToList();
         if (budget.HaltReason is { } halt) failures.Add("HALT:" + halt);
         // The selected lines divided into headings: the model decides which adjacent lines form one heading, C# checks the division.
         var grouping = AgentGrouping.Group(source, selected, model, budget, parallelism, ct, retryDelayMs, instruction);

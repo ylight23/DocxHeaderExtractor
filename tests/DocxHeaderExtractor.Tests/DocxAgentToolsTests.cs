@@ -64,19 +64,18 @@ public sealed class DocxAgentToolsTests : IDisposable
         Assert.Equal(A(source, 0), facts[0].GetProperty("alias").GetString());
         Assert.Equal("heading 1", facts[0].GetProperty("style").GetProperty("name").GetString());
         Assert.False(facts[1].GetProperty("place").GetProperty("inTable").GetBoolean());
-        // "Part 1" shares its normalized text with the six other headings: the first two are shown, each with the paragraph that follows it.
-        var repeated = facts[0].GetProperty("repeatedText");
-        Assert.Equal(6, repeated.GetProperty("otherOccurrences").GetInt32());
-        var shown = repeated.GetProperty("shown").EnumerateArray().ToArray();
-        Assert.Equal(DocxAgentTools.PrefetchPerTarget, shown.Length);
-        Assert.Equal(A(source, 20), shown[0].GetProperty("alias").GetString());
-        Assert.Equal(A(source, 21), shown[0].GetProperty("followingLine").GetProperty("alias").GetString());
-        Assert.False(shown[0].GetProperty("exactTextMatch").GetBoolean());
+        // "Part 1" shares its normalized text with the six other headings: the count and the first two are summarised; the places themselves and
+        // the paragraphs that follow them come from get_repeated_occurrences and compare_source_locations, not from the core facts.
+        var repetition = facts[0].GetProperty("repetition");
+        Assert.Equal(6, repetition.GetProperty("otherOccurrences").GetInt32());
+        var sample = repetition.GetProperty("sampleAliases").EnumerateArray().Select(a => a.GetString()).ToArray();
+        Assert.Equal(DocxAgentTools.PrefetchPerTarget, sample.Length);
+        Assert.Equal(A(source, 20), sample[0]);
+        Assert.False(facts[0].TryGetProperty("repeatedText", out _));
         // Body paragraphs of equal digit count share their normalized text with each other.
-        Assert.True(facts[1].GetProperty("repeatedText").GetProperty("otherOccurrences").GetInt32() > 0);
+        Assert.True(facts[1].GetProperty("repetition").GetProperty("otherOccurrences").GetInt32() > 0);
         // What the result showed can be cited.
         Assert.Contains(A(source, 20), tools.ObservedAliases);
-        Assert.Contains(A(source, 21), tools.ObservedAliases);
         Assert.True(tools.FactsWereRead);
     }
 

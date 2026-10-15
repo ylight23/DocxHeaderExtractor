@@ -48,18 +48,36 @@ Heading extent (DOCX, 2026-10-15): a paragraph can hold a heading and the body t
 or after a `w:br` (which the reader writes as one space). The DOCX answer format (`P7_F1_V6_SELECT_OBJECTS_EXTENT_V1`)
 lets a SELECT carry `headingExtent` `{start, end, text}`: UTF-16 offsets into the paragraph's text and that exact
 text. The model decides the extent; the facts give it `lineBreakOffsets`, `pieces` and `formatRuns` with offsets
-(`DOCX_AGENT_LINE_FACTS_V2`). The parser checks the offsets, the verbatim text, edge whitespace and word boundaries
+(`DOCX_AGENT_LINE_FACTS_V3`). The parser checks the offsets, the verbatim text, edge whitespace and word boundaries
 and refuses a mismatch with what it measured; it never moves an extent. `SelectedLinesHeadingAuthority` binds the
-heading to that span; a SELECT without an extent is the whole paragraph, as before. Writing the outline back is
+heading to that span. A SELECT without an extent is the whole paragraph; an extent that does not lie inside its
+paragraph is rejected there and the paragraph makes no heading, never the whole paragraph. Writing the outline back is
 still per paragraph (`w:outlineLvl`), so a heading that shares its paragraph with body text marks the whole
 paragraph there; exact writeback for that case needs its own design. The PDF answer format, prompt and production
 instruction (`InstructionStructuralV1`) are unchanged; `InstructionFormattingEvidenceV2` is a candidate to compare.
 
-Facts coverage: every unit keeps a ledger of the targets whose own facts a facts call returned, and the audit
-(`factsCoverage` in each unit's model answer) lists the targets left without and the facts results that were cut.
-On DOCX an answer that leaves targets uncovered goes back once, naming them, while another facts result still fits
-the unit's tool bytes; the next answer is taken as it is. On PDF the ledger is recorded only, so the qualified
-conversation keeps its request bytes.
+Compact facts and core coverage (DOCX): `get_line_facts` (`DOCX_AGENT_LINE_FACTS_V3`) gives every target its core facts
+and only a summary of the heavy ones: line breaks with their offsets (at most 8), the number of format runs and the
+offsets where the formatting changes, and a repetition summary (`otherOccurrences` and two `sampleAliases`). The pieces
+between line breaks, every format run with its exact offsets and the full text come from `get_source_span`; the places of
+a repeated text come from `get_repeated_occurrences`, `compare_source_locations` and `get_source_context`. The full facts
+stay in the evidence store, so a model that asks gets the same measurements as before. The program decides how data is
+shown, never which detail a paragraph needs.
+
+Each unit keeps two ledgers in its audit: `coreFactsCoverage` (the targets whose core facts a facts call returned, and the
+results that were cut) and `detailEvidenceCoverage` (the aliases the model chose to read through the other tools; not
+required of any target). A DOCX unit is COMPLETE only when every target's core facts were returned: an answer that falls
+short goes back once, naming the targets, while another facts result still fits the unit's tool bytes; if they stay
+uncovered the unit is INCOMPLETE (`COVERAGE:CORE_FACTS_MISSING`), and if there is no room left to read them it is
+INCOMPLETE too (`BUDGET:CORE_FACTS_UNCOVERED`). None of an INCOMPLETE unit's decisions is used. On PDF the ledger is
+recorded only, so the qualified conversation keeps its request bytes.
+
+Units (DOCX): a window holds at most 48 paragraphs and at most 28,000 bytes of compact facts (the size the tool would write
+for them), and is never shorter than one paragraph. An ordinary document is cut into windows of 48; only a window of
+unusually large paragraphs is cut shorter. The windows stay a partition and the context shown with a window crosses its
+edges. Measured offline on the 72 readable documents of `todo10_8/generated-docx` (3,718 units): core facts p50 27.3 KB,
+p90 28.9 KB, p99 29.1 KB, max 30.9 KB, none over 32 KB, two facts calls per unit, and no unit cut short by size (the 72
+shorter units are the last unit of each document).
 
 The DOCX route has not been scored against Gold yet; scoring it is a separate step. Gold, replay,
 qualification artifacts and diagnostics are never production authority.

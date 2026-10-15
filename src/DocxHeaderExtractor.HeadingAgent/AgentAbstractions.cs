@@ -33,9 +33,11 @@ internal interface IAgentFlavor
     string AnswerVersion { get; }
     /// <summary>Whether a SELECT may carry headingExtent, the part of the line's text that is the heading (checked against the text, never moved).</summary>
     bool HeadingExtents { get; }
-    /// <summary>Whether an answer that decides targets the facts calls returned no facts for is sent back once, naming them. Off for the PDF:
-    /// its conversation is the qualified one, held to the qualified request bytes, so there the coverage ledger is recorded only.</summary>
-    bool SendsBackUncoveredTargets { get; }
+    /// <summary>Whether a COMPLETE answer needs the core facts of every target (DOCX). An answer that leaves targets without is sent back once, naming
+    /// them, while another facts result still fits the unit; if they stay uncovered, or the unit has no room left to read them, the unit ends INCOMPLETE
+    /// and none of its decisions is used. Off for the PDF: its conversation is the qualified one, held to the qualified request bytes, so there the
+    /// coverage ledger is recorded only.</summary>
+    bool RequiresCoreFacts { get; }
     JsonArray ToolDefinitions();
     IAgentTools CreateTools(IAgentSource source);
     /// <summary>One line of the targets or the context in the unit payload.</summary>
@@ -78,4 +80,7 @@ internal interface IAgentTools
     IReadOnlySet<string> FactsReturnedFor { get; }
     /// <summary>Successful facts calls whose result was cut (hasMore true or truncated).</summary>
     int FactsResultsCut { get; }
+    /// <summary>The detail evidence the model asked for: every alias that a successful call of a tool other than the facts tool showed. Not required
+    /// of any target; it records what the model chose to read.</summary>
+    IReadOnlySet<string> DetailEvidenceAliases { get; }
 }

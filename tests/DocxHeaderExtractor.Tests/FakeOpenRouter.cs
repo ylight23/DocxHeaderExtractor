@@ -33,6 +33,9 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
             usage = new { prompt_tokens = 1000, completion_tokens = 200, completion_tokens_details = new { reasoning_tokens = 150 }, cost = 0.001 } })
         + "data: [DONE]\n\n";
 
+    /// <summary>The most targets one get_line_facts call returns: the tool's cap per call (the compact facts of a unit fit it).</summary>
+    public const int MaxFactsPerCall = 24;
+
     /// <summary>Facts calls for one turn: get_line_facts over the targets at offset 0, 24, ... (at most <paramref name="pages"/> calls).</summary>
     public static object[] FactsCalls(IReadOnlyList<string> targets, int pages = int.MaxValue) =>
         Enumerable.Range(0, Math.Min(pages, (targets.Count + 23) / 24)).Select(k => (object)new
@@ -40,6 +43,13 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
             index = k, id = "call_" + targets[0] + "_" + k, type = "function",
             function = new { name = "get_line_facts", arguments = JsonSerializer.Serialize(new { first = targets[0], last = targets[^1], offset = 24 * k }) },
         }).ToArray();
+
+    /// <summary>The facts calls of a first turn as the route's model makes them: a DOCX unit needs the core facts of every target (every page of
+    /// them), so all pages; a PDF unit keeps the qualified single call over its range.</summary>
+    public static object[] FirstTurnFacts(JsonObject body, IReadOnlyList<string> targets) => AnswerVersion(body) == "P7_F1_V6_SELECT_OBJECTS_EXTENT_V1"
+        ? FactsCalls(targets)
+        : [new { index = 0, id = "call_" + targets[0], type = "function",
+            function = new { name = "get_line_facts", arguments = JsonSerializer.Serialize(new { first = targets[0], last = targets[^1], offset = 0 }) } }];
 
     /// <summary>The answer format the request's system prompt names: the DOCX one carries heading extents.</summary>
     public static string AnswerVersion(JsonObject body) =>
@@ -64,11 +74,7 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
         var unit = JsonNode.Parse(messages[1]!["content"]![0]!["text"]!.GetValue<string>())!;
         var targets = unit["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).ToArray();
         if (!messages.Any(m => m!["role"]!.GetValue<string>() == "tool"))
-            return (HttpStatusCode.OK, Stream(new
-            {
-                tool_calls = new[] { new { index = 0, id = "call_" + targets[0], type = "function",
-                    function = new { name = "get_line_facts", arguments = JsonSerializer.Serialize(new { first = targets[0], last = targets[^1], offset = 0 }) } } },
-            }, "tool_calls"));
+            return (HttpStatusCode.OK, Stream(new { tool_calls = FirstTurnFacts(body, targets) }, "tool_calls"));
         var answer = JsonSerializer.Serialize(new
         {
             protocolVersion = AnswerVersion(body), status = "COMPLETE", analysis = "fake",
@@ -84,11 +90,7 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
         var payload = JsonNode.Parse(messages[1]!["content"]![0]!["text"]!.GetValue<string>())!;
         var targets = payload["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).ToArray();
         if (!messages.Any(m => m!["role"]!.GetValue<string>() == "tool"))
-            return (HttpStatusCode.OK, Stream(new
-            {
-                tool_calls = new[] { new { index = 0, id = "call_" + targets[0], type = "function",
-                    function = new { name = "get_line_facts", arguments = JsonSerializer.Serialize(new { first = targets[0], last = targets[^1], offset = 0 }) } } },
-            }, "tool_calls"));
+            return (HttpStatusCode.OK, Stream(new { tool_calls = FirstTurnFacts(body, targets) }, "tool_calls"));
         var answer = JsonSerializer.Serialize(new
         {
             protocolVersion = AnswerVersion(body), status = "COMPLETE", analysis = "fake",

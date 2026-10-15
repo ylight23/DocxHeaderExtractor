@@ -20,10 +20,6 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
 
     private string Long() => DocxTestDocument.CreateLong(Path.Combine(dir, "long.docx"), 100);
 
-    /// <summary>Units whose answer went back once because the facts calls left targets uncovered (the ledger in the audit says so).</summary>
-    private static int SentBack(DocxHeaderExtractor.DocumentProcessing.Routing.HeadingSelection selection) =>
-        selection.ModelAnswers.Select(a => JsonNode.Parse(a)!).Count(a => a["factsCoverage"]?["targetsWithoutFacts"]?.AsArray().Count > 0);
-
     [Fact]
     public async Task Every_window_reads_its_facts_then_answers_and_the_request_is_the_docx_one()
     {
@@ -39,11 +35,9 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
         Assert.Equal(selection.UnitsTotal, selection.UnitsComplete);
         Assert.Empty(selection.UnitFailures);
         Assert.Equal(Enumerable.Range(0, source.Cores.Count).Select(n => source.Scope(n).Decide[0]).ToHashSet(), selection.SelectedAliases);
-        // Facts, then the answer; a window the one facts call did not cover gets its answer sent back once (the coverage ledger), and the same
-        // answer is then taken: the two full windows here, not the short last one.
-        Assert.Equal(2, SentBack(selection));
-        Assert.Equal(2 * selection.UnitsTotal + SentBack(selection), selection.ProviderCalls);
-        Assert.Equal(2 * selection.UnitsTotal + SentBack(selection), handler.Posts);
+        // Facts (every page of them, the core facts of every target), then the answer.
+        Assert.Equal(2 * selection.UnitsTotal, selection.ProviderCalls);
+        Assert.Equal(2 * selection.UnitsTotal, handler.Posts);
         Assert.All(handler.Keys, k => Assert.Equal("Bearer sk-test", k));
 
         // Every request carries the DOCX prompt and the six DOCX tools; the facts a unit read are the DOCX facts.
@@ -73,7 +67,7 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
         Assert.Empty(selection.UnitFailures);
         Assert.Equal(source.Cores.Count, selection.Groups!.Count(g => g.Count == 2));
         Assert.Equal(selection.SelectedAliases.Order(), selection.Groups!.SelectMany(g => g).Order());
-        Assert.Equal(2 * selection.UnitsTotal + SentBack(selection) + 1, selection.ProviderCalls);
+        Assert.Equal(2 * selection.UnitsTotal + 1, selection.ProviderCalls);
         // The group request carries the DOCX grouping prompt, and its lines carry a style and no page.
         var group = handler.Bodies.Single(b => b["messages"]![1]!["content"] is JsonValue);
         Assert.Equal(DocxAgentFlavor.Instance.GroupPrompt, group["messages"]![0]!["content"]!.ToString());

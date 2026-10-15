@@ -351,7 +351,8 @@ internal static class AgentProtocol
                 if (d.TryGetProperty("headingExtent", out var he))
                 {
                     if (value != "SELECT") return Fail("HEADING_EXTENT_NOT_ON_SELECT");
-                    var (extent, code, detail) = ReadExtent(he, targetTexts![alias]);
+                    if (!targetTexts!.TryGetValue(alias, out var targetText)) return Fail("UNEXPECTED_ALIAS");
+                    var (extent, code, detail) = ReadExtent(he, targetText);
                     if (extent is null) return Fail(code!, detail: alias + ": " + detail);
                     extents[alias] = extent;
                 }

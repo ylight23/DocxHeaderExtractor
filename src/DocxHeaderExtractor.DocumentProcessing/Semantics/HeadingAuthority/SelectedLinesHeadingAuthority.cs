@@ -16,8 +16,10 @@ namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 /// shared stages with the authorized transport, as before.
 /// <para>
 /// The heading text of a selected line is the whole line unless the selector gave its heading extent (a DOCX paragraph that opens with its
-/// heading and continues with body text): then it is exactly that span of the line's text. The authority takes the selector's span as it is;
-/// the shared validator checks it against the source, and a span that does not lie inside the line is not applied but counted.
+/// heading and continues with body text): then it is exactly that span of the line's text. The authority takes the selector's span as it is.
+/// Three cases are kept apart: no extent is the whole line, as the contract says; a valid extent is used exactly; an extent that does not lie
+/// inside its line is rejected, and the line then makes no heading. It is never replaced by the whole line, which would put the body text into
+/// the heading again.
 /// </para>
 /// </summary>
 internal sealed class SelectedLinesHeadingAuthority(
@@ -38,10 +40,15 @@ internal sealed class SelectedLinesHeadingAuthority(
         var selection = await selector.SelectAsync(pdfPath, apiKey, ct).ConfigureAwait(false);
         ensureActive();
         var extents = selection.HeadingExtents ?? new Dictionary<string, TextOffsetSpan>(StringComparer.Ordinal);
+        var byAlias = source.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
+        // Selected lines whose extent is invalid, and extents for lines that are not selected or not in the source: none of them reaches a heading.
+        var rejected = selection.SelectedAliases.Where(alias => extents.TryGetValue(alias, out var e) && byAlias.TryGetValue(alias, out var atom) && !Fits(e, atom.Text))
+            .ToHashSet(StringComparer.Ordinal);
+        var extentsRejected = rejected.Count + extents.Keys.Count(alias => !selection.SelectedAliases.Contains(alias) || !byAlias.ContainsKey(alias));
+        var usable = rejected.Count == 0 ? selection.SelectedAliases : selection.SelectedAliases.Where(alias => !rejected.Contains(alias)).ToHashSet(StringComparer.Ordinal);
         var decisions = selection.Groups is { } given
-            ? FromGroups(source.Atoms, selection.SelectedAliases, given, layoutBlockByAtom, extents)
-            : Group(source.Atoms, selection.SelectedAliases, layoutBlockByAtom, extents);
-        var extentsNotInLine = extents.Count(kv => source.Atoms.FirstOrDefault(atom => atom.Alias == kv.Key) is { } atom && !Fits(kv.Value, atom.Text));
+            ? FromGroups(source.Atoms, usable, given, layoutBlockByAtom, extents)
+            : Group(source.Atoms, usable, layoutBlockByAtom, extents);
         var atoms = source.Atoms.ToDictionary(atom => atom.Alias, StringComparer.Ordinal);
         var bound = decisions.Select(decision => ToBound(decision, atoms)).ToArray();
         var unknown = selection.SelectedAliases.Count(alias => !atoms.ContainsKey(alias));
@@ -55,8 +62,8 @@ internal sealed class SelectedLinesHeadingAuthority(
             SemanticLane = new LaneExecutionAudit(
                 selection.UnitsComplete == selection.UnitsTotal ? "complete" : "partial",
                 selection.UnitsTotal, selection.UnitsComplete, 0, selection.UnitsTotal - selection.UnitsComplete,
-                selection.UnitFailures.Count == 0 && unknown == 0 && extentsNotInLine == 0 ? null
-                    : JsonSerializer.Serialize(new { unitFailures = selection.UnitFailures, selectedAliasesNotInSource = unknown, headingExtentsNotInLine = extentsNotInLine, atoms = atomCount })),
+                selection.UnitFailures.Count == 0 && unknown == 0 && extentsRejected == 0 ? null
+                    : JsonSerializer.Serialize(new { unitFailures = selection.UnitFailures, selectedAliasesNotInSource = unknown, headingExtentsRejected = extentsRejected, atoms = atomCount })),
             SpanLane = new LaneExecutionAudit("selected-lines", decisions.Count, assembly.Validated.Count, 0, decisions.Count - assembly.Validated.Count),
         };
         var evidence = selection.Placement is { } p ? new HeadingPlacementEvidence(p.DocumentStylesJson, p.StyleJsonByAlias, p.MeasurementsNote) : null;
@@ -105,13 +112,15 @@ internal sealed class SelectedLinesHeadingAuthority(
         return groups.Select(group => Decision(group, extents)).ToArray();
     }
 
-    /// <summary>One heading over its lines: each part is the line's heading extent when the selector gave one that lies inside the line, else the
-    /// whole line. The decision's span is its first part's.</summary>
+    /// <summary>One heading over its lines: each part is the line's heading extent when the selector gave one, else the whole line. The callers pass
+    /// only lines whose extent lies inside them (a line with an invalid extent is left out before this point), so an extent is applied or absent,
+    /// never replaced. The decision's span is its first part's.</summary>
     private static HeadingExtentDecision Decision(IReadOnlyList<SemanticSourceAtom> lines, IReadOnlyDictionary<string, TextOffsetSpan>? extents)
     {
         var parts = lines.Select(atom =>
         {
-            var span = extents is not null && extents.TryGetValue(atom.Alias, out var e) && Fits(e, atom.Text) ? e : new TextOffsetSpan(0, atom.Text.Length);
+            var span = extents is not null && extents.TryGetValue(atom.Alias, out var e) ? e : new TextOffsetSpan(0, atom.Text.Length);
+            if (!Fits(span, atom.Text)) throw new InvalidOperationException("HEADING_EXTENT_OUTSIDE_LINE:" + atom.Alias);
             return new CanonicalSemanticBoundPart(atom.Alias, atom.SourceId, atom.Ordinal, atom.Text[span.Start..span.End], span.Start, span.End);
         }).ToArray();
         return new HeadingExtentDecision(parts[0].SourceId, Reason, new TextOffsetSpan(parts[0].Start, parts[0].End), "ESTABLISHES_STRUCTURE", parts);

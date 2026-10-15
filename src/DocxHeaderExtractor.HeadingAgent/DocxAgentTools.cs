@@ -22,7 +22,7 @@ internal sealed class DocxAgentTools : AgentToolHost
 
     public const int MaxNeighbours = 6, MaxSpanAliases = 8, MaxRepeated = 20, MaxCompareWindow = 3, MaxSearchLimit = 50, MaxQueryChars = 200, MinQueryChars = 2,
         MaxListTextChars = 200, MaxCompareTextChars = 160, MaxSpanTextChars = 4000, MaxFactLines = 24, MaxFactRange = 400,
-        PrefetchPerTarget = 2, PrefetchTextChars = 100;
+        PrefetchPerTarget = 2;
 
     readonly DocxAgentSource docx;
     readonly ILookup<string, int> repeatIndex;
@@ -55,7 +55,7 @@ internal sealed class DocxAgentTools : AgentToolHost
     public static JsonArray Definitions()
     {
         var all = BaseDefinitions();
-        all.Add(Tool(LineFacts, "Read facts the program measured for the paragraphs from one alias to another in reading order (at most " + MaxFactLines + " per call; use offset to continue where a result was cut). For each paragraph: its style (id, name, outline level, size, bold, italic, underline, all capitals, alignment), its numbering (list, level, rendered label), its text (characters, share of bold characters, line breaks, and with their offsets the line breaks, the pieces between them and the stretches of the same formatting), where it stands (in a table with depth, row and cell, or in a text box), the internal links it carries, the rank and use of its style in the document, whether its neighbours share its style, its size against the document median, and, when its text also occurs on other paragraphs, the first other occurrences (place in reading order, style, whether they are in a table or carry links, the size difference, the paragraph that follows each). Measurements only: no label and no decision.",
+        all.Add(Tool(LineFacts, "Read the core facts the program measured for the paragraphs from one alias to another in reading order (at most " + MaxFactLines + " per call; use offset to continue where a result was cut). For each paragraph: its style (id, name, outline level, size, bold, italic, underline, all capitals, alignment), its numbering (list, level, rendered label), its text (characters, share of bold characters, line breaks with their offsets, and where its formatting changes inside the paragraph the number of formatting runs and the offsets where it changes), where it stands (in a table with depth, row and cell, or in a text box), the internal links it carries, the rank and use of its style in the document, whether its neighbours share its style, its size against the document median, and a repetition summary (how many other paragraphs have the same normalized text and the first two of them). The pieces of text between line breaks and every formatting run with its exact offsets come from get_source_span; the other places of a repeated text and the paragraphs around them come from get_repeated_occurrences, compare_source_locations and get_source_context. Measurements only: no label and no decision.",
             new JsonObject
             {
                 ["first"] = AliasArg("The first paragraph of the range."),
@@ -261,20 +261,20 @@ internal sealed class DocxAgentTools : AgentToolHost
         var rangeLength = to - from + 1;
         var slice = Enumerable.Range(from, rangeLength).Skip(offset).Take(MaxFactLines).ToArray();
         var arguments = new JsonObject { ["first"] = first, ["last"] = last, ["offset"] = offset };
-        var repeated = slice.ToDictionary(i => i, RepeatedTextOf);
+        var repeated = slice.ToDictionary(i => i, RepetitionOf);
         JsonNode Item(int i)
         {
-            var o = FactsNode(i);
-            o["alias"] = lines[i].Alias;
-            if (repeated[i] is { } r) o["repeatedText"] = r.DeepClone();
+            var o = new JsonObject { ["alias"] = lines[i].Alias };
+            foreach (var (key, value) in DocxLineFacts.Compact(docx.Facts[lines[i].Alias])) o[key] = value?.DeepClone();
+            if (repeated[i] is { } r) o["repetition"] = r.DeepClone();
             return o;
         }
         IEnumerable<string> Shown(int i) => repeated[i] is { } r
-            ? r["shown"]!.AsArray().SelectMany(x => new[] { x!["alias"]!.GetValue<string>() }.Concat(x["followingLine"] is JsonObject f ? new[] { f["alias"]!.GetValue<string>() } : Array.Empty<string>()))
+            ? r["sampleAliases"]!.AsArray().Select(x => x!.GetValue<string>())
             : Array.Empty<string>();
         var (result, taken) = Fit(LineFacts, arguments, slice.Length, k => new JsonObject
         {
-            ["readBy"] = "the program, from the OOXML of every paragraph and from the text of the whole document: " + DocxAgentSource.FactsDescription + "; repeatedText lists the first other occurrences of the paragraph's text under the stated normalization",
+            ["readBy"] = "the program, from the OOXML of every paragraph and from the text of the whole document: " + DocxAgentSource.FactsDescription,
             ["version"] = DocxAgentSource.FactsVersion,
             ["normalization"] = Evidence.RepeatNormalization,
             ["rangeLines"] = rangeLength, ["offset"] = offset,
@@ -323,28 +323,18 @@ internal sealed class DocxAgentTools : AgentToolHost
         return o;
     }
 
-    /// <summary>The first other occurrences of a paragraph's text: where they are, their facts in brief, and the paragraph after each. Null when
-    /// the text occurs nowhere else. The only rule is "the text occurs elsewhere"; it says nothing about what any paragraph is.</summary>
-    JsonObject? RepeatedTextOf(int at)
+    /// <summary>How often a paragraph's text occurs elsewhere in the document and where first: the number of other paragraphs with the same normalized
+    /// text and the aliases of the first two. Null when it occurs nowhere else. It only says that a comparison is possible; the places themselves are read
+    /// with get_repeated_occurrences and compare_source_locations.</summary>
+    JsonObject? RepetitionOf(int at)
     {
         var key = Evidence.RepeatKey(lines[at].Text);
         var others = key.Length == 0 ? Array.Empty<int>() : repeatIndex[key].Where(i => i != at).ToArray();
         if (others.Length == 0) return null;
-        var target = docx.Facts[lines[at].Alias]["style"]!.AsObject();
-        JsonObject Other(int j)
-        {
-            var o = new JsonObject { ["alias"] = lines[j].Alias, ["readingOrder"] = j, ["distanceFromTarget"] = j - at, ["exactTextMatch"] = lines[j].Text == lines[at].Text };
-            if (lines[j].Text != lines[at].Text) o["text"] = Clip(lines[j].Text, PrefetchTextChars);
-            o["facts"] = Brief(j);
-            var other = docx.Facts[lines[j].Alias]["style"]!.AsObject();
-            if (target["sizePt"] is { } x && other["sizePt"] is { } y) o["sizeDeltaPt"] = Math.Round(y.GetValue<double>() - x.GetValue<double>(), 1, MidpointRounding.AwayFromZero);
-            if (j + 1 < lines.Count) o["followingLine"] = new JsonObject { ["alias"] = lines[j + 1].Alias, ["text"] = Clip(lines[j + 1].Text, PrefetchTextChars) };
-            return o;
-        }
         return new JsonObject
         {
             ["otherOccurrences"] = others.Length,
-            ["shown"] = new JsonArray(others.Take(PrefetchPerTarget).Select(j => (JsonNode)Other(j)).ToArray()),
+            ["sampleAliases"] = new JsonArray(others.Take(PrefetchPerTarget).Select(j => (JsonNode)lines[j].Alias).ToArray()),
         };
     }
 }

@@ -79,6 +79,8 @@ internal abstract class AgentToolHost : IAgentTools
     public bool FactsWereRead => ledger.Any(c => c.Tool == FactsToolName && c.Status == "OK");
     public IReadOnlySet<string> FactsReturnedFor => factsFor;
     public int FactsResultsCut => factsCut;
+    public IReadOnlySet<string> DetailEvidenceAliases => ledger.Where(c => c.Status == "OK" && c.Tool != FactsToolName)
+        .SelectMany(c => c.ReturnedAliases).ToHashSet(StringComparer.Ordinal);
 
     /// <summary>A facts handler names the lines whose own facts its result carries; they enter the coverage ledger once the call succeeds.</summary>
     protected void NoteFactsReturned(IEnumerable<string> aliases, bool cut)

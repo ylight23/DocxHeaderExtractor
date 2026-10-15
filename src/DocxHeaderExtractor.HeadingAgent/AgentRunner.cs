@@ -76,12 +76,14 @@ internal sealed class AgentBudget(int maxCalls, double ceilingUsd)
 
 /// <summary>What one unit (one segment) ended with.</summary>
 /// <param name="Extents">The headingExtent of each SELECT that gave one (DOCX), checked against the target's text.</param>
-/// <param name="TargetsWithoutFacts">The coverage ledger at the end of the unit: targets whose own facts no successful facts call returned.</param>
+/// <param name="TargetsWithoutFacts">Core facts coverage at the end of the unit: targets whose own core facts no successful facts call returned.</param>
 /// <param name="FactsResultsCut">Successful facts calls whose result was cut.</param>
+/// <param name="DetailEvidenceAliases">Detail evidence coverage: the aliases the model chose to read through the other tools. Not required of any target.</param>
 internal sealed record AgentUnitOutcome(string UnitId, string Status, string? Failure, IReadOnlyDictionary<string, string> Decisions, int Posts,
     int ToolCallsEmitted, int ToolCallsSucceeded, bool FenceUnwrapped, string? Analysis, IReadOnlyDictionary<string, string>? Reasons,
     string? RepairedFrom, int RepairsUsed, int TransportRetries, IReadOnlyList<string> RequestSha256s,
-    IReadOnlyDictionary<string, HeadingExtent>? Extents = null, IReadOnlyList<string>? TargetsWithoutFacts = null, int FactsResultsCut = 0);
+    IReadOnlyDictionary<string, HeadingExtent>? Extents = null, IReadOnlyList<string>? TargetsWithoutFacts = null, int FactsResultsCut = 0,
+    IReadOnlyList<string>? DetailEvidenceAliases = null);
 
 /// <summary>
 /// One unit of the D4.12 method as a conversation (ported from the qualified V6 RunUnit, arm TOOLFACTS_ANALYSIS_V3, with json_object on every
@@ -90,9 +92,10 @@ internal sealed record AgentUnitOutcome(string UnitId, string Status, string? Fa
 ///   turn 4: tool_choice none; the model answers from what it has.
 /// The first answer must come after a successful get_line_facts call. A refused answer gets a repair turn (the refused reply and a message
 /// naming the refusal). The coverage ledger records which targets the facts calls returned facts for, and the outcome carries the targets left
-/// without. Where the flavor asks for it (DOCX), an answer that leaves some out is sent back once with their aliases while the unit still has
-/// room for another facts result; the answer after that is taken as it is. C# never reads the reasoning, never changes a decision and never adds
-/// a call the model did not make.
+/// without, and separately the detail evidence the model chose to read. Where the flavor requires the core facts (DOCX), a COMPLETE answer that
+/// leaves some target without them is sent back once with their aliases while the unit still has room for another facts result; if they stay
+/// uncovered, or there is no room to read them, the unit ends INCOMPLETE and none of its decisions is used. C# never reads the reasoning, never
+/// changes a decision and never adds a call the model did not make; which detail a decision needs is the model's.
 /// </summary>
 internal static class AgentUnit
 {
@@ -129,7 +132,8 @@ internal static class AgentUnit
             IReadOnlyDictionary<string, string>? reasons = null, IReadOnlyDictionary<string, HeadingExtent>? extents = null) =>
             new(unitId, status, failure, decisions ?? ordered.ToDictionary(a => a, _ => "UNRESOLVED", StringComparer.Ordinal), posts, emitted, okCalls,
                 fenceUnwrapped, analysis, reasons, repairedFrom, repairsUsed, retriesUsed, requestShas, extents,
-                ordered.Where(a => !tools.FactsReturnedFor.Contains(a)).ToArray(), tools.FactsResultsCut);
+                ordered.Where(a => !tools.FactsReturnedFor.Contains(a)).ToArray(), tools.FactsResultsCut,
+                ordered.Where(tools.DetailEvidenceAliases.Contains).ToArray());
 
         // Repairs have no limit of their own: the budget's call limit stops a unit that keeps failing.
         bool TryRepair(string failure, IReadOnlyList<string>? missing = null, string? detail = null)
@@ -257,16 +261,21 @@ internal static class AgentUnit
             }
             budget.NoteContract(true);
             if (parsed.Status == "CLARIFICATION_REQUIRED") return Done("CLARIFICATION_REQUIRED", null, analysis: parsed.Analysis);
-            // The coverage ledger: an answer that decides targets whose facts were never returned goes back once, naming them, when another
-            // facts result still fits the unit's tool bytes (asking for what cannot be delivered would only cost a post). The model may read
-            // them or send the same answer; the program does not judge whether a decision needed them.
+            // Core facts coverage: a COMPLETE answer needs the core facts of every target to have been returned. One that falls short goes back
+            // once, naming the targets, when another facts result still fits the unit's tool bytes (asking for what cannot be delivered would only
+            // cost a post). If the targets stay uncovered, or there is no room to read them, the unit is INCOMPLETE: the decisions of an unread
+            // target are not taken. Which detail evidence a decision needs is the model's; only the core facts are required.
             var uncovered = ordered.Where(a => !tools.FactsReturnedFor.Contains(a)).ToArray();
-            if (uncovered.Length > 0 && !coverageAsked && flavor.SendsBackUncoveredTargets && messageBytes + tools.MaxResultBytes <= MaxToolMessageBytesPerUnit)
+            if (uncovered.Length > 0 && parsed.Status == "COMPLETE" && flavor.RequiresCoreFacts)
             {
-                coverageAsked = true;
-                history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
-                TryRepair("PROTOCOL:TOOL_FACTS_INCOMPLETE", uncovered);
-                continue;
+                if (!coverageAsked && messageBytes + tools.MaxResultBytes <= MaxToolMessageBytesPerUnit)
+                {
+                    coverageAsked = true;
+                    history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
+                    TryRepair("PROTOCOL:TOOL_FACTS_INCOMPLETE", uncovered);
+                    continue;
+                }
+                return Done("INCOMPLETE", coverageAsked ? "COVERAGE:CORE_FACTS_MISSING" : "BUDGET:CORE_FACTS_UNCOVERED");
             }
             return Done(parsed.Status!, null, parsed.Values, parsed.Analysis, parsed.Reasons, parsed.Extents);
         }
