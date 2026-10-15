@@ -9,7 +9,6 @@ using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.Application.Runtime;
-using DocxHeaderExtractor.Application.Semantics;
 using DocxHeaderExtractor.Application.Tasks;
 using DocxHeaderExtractor.V6Runner;
 using DocxHeaderExtractor.Infrastructure.Runtime;
@@ -44,7 +43,6 @@ builder.Services.AddSingleton<ITaskRunStore>(_ => new JsonFileTaskRunStore(Runti
 builder.Services.AddSingleton<ITaskTelemetrySink>(_ => new JsonLinesTaskTelemetrySink(RuntimeStatePaths.TelemetryPath));
 builder.Services.AddSingleton<IInputResourceResolver>(_ =>
     new FileInputResourceResolver([Path.GetTempPath(), AppContext.BaseDirectory]));
-builder.Services.AddSingleton(SemanticRegistryDefaults.Create());
 builder.Services.AddHttpClient("OpenRouter", client =>
 {
     client.Timeout = TimeSpan.FromMinutes(5);

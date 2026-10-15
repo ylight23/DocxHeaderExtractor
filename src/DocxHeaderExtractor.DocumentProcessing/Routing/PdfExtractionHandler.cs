@@ -30,22 +30,22 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
 
     public PdfExtractionHandler(
         PipelineOptions options,
-        IInferenceTransport? analyst,
+        IInferenceTransport? transport,
         bool sendsDataExternally,
         IHeadingSelector? selector = null)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
-        _transport = analyst;
+        _transport = transport;
         _sendsDataExternally = sendsDataExternally;
         _ownsTransport = false;
         _selector = selector;
     }
 
-    public PdfExtractionHandler(PipelineOptions options, IInferenceTransportFactory analystFactory, IHeadingSelector? selector = null)
+    public PdfExtractionHandler(PipelineOptions options, IInferenceTransportFactory transportFactory, IHeadingSelector? selector = null)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
-        _transportFactory = analystFactory ?? throw new ArgumentNullException(nameof(analystFactory));
-        _sendsDataExternally = analystFactory.SendsDataExternally;
+        _transportFactory = transportFactory ?? throw new ArgumentNullException(nameof(transportFactory));
+        _sendsDataExternally = transportFactory.SendsDataExternally;
         _ownsTransport = true;
         _selector = selector;
     }
@@ -54,13 +54,12 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
 
     public async Task<DocumentExtractionExecutionResult> ExtractAsync(
         UploadedFile file,
-        IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(file);
         var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
         return await PdfExtractionPipeline.RunWithSelectorAsync(
-            file, _options, transport, _selector, quarantinedIndexes, _sendsDataExternally, ct);
+            file, _options, transport, _selector, _sendsDataExternally, ct);
     }
 
     public void Dispose()

@@ -40,17 +40,16 @@ public sealed class V6DocumentRunner : IDisposable
     /// </summary>
     public async Task<DocumentExtractionExecutionResult> ExtractAsync(
         string inputPath,
-        IReadOnlySet<int>? quarantine = null,
         CancellationToken ct = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(inputPath);
         if (UploadedSourceDetector.Detect(inputPath) != SourceType.Unknown)
-            return await DispatchAsync(inputPath, quarantine, ct).ConfigureAwait(false);
+            return await DispatchAsync(inputPath, ct).ConfigureAwait(false);
 
         var conversion = OfficeDocumentConverter.EnsureDocx(inputPath);
         try
         {
-            return await DispatchAsync(conversion.Path, quarantine, ct).ConfigureAwait(false);
+            return await DispatchAsync(conversion.Path, ct).ConfigureAwait(false);
         }
         finally
         {
@@ -58,8 +57,8 @@ public sealed class V6DocumentRunner : IDisposable
         }
     }
 
-    private Task<DocumentExtractionExecutionResult> DispatchAsync(string path, IReadOnlySet<int>? quarantine, CancellationToken ct) =>
-        _dispatcher.ExtractAsync(new DocumentExtractionRequest(UploadedFile.FromLocalPath(path)), quarantine, ct);
+    private Task<DocumentExtractionExecutionResult> DispatchAsync(string path, CancellationToken ct) =>
+        _dispatcher.ExtractAsync(new DocumentExtractionRequest(UploadedFile.FromLocalPath(path)), ct);
 
     /// <summary>
     /// Writes the outline's <c>w:outlineLvl</c> into a copy of the uploaded file. The source is never modified; the target

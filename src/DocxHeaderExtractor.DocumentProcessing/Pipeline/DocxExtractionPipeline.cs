@@ -29,20 +29,20 @@ public sealed class DocxExtractionPipeline : IDisposable
     /// with the model disabled the route returns the source only. The transport (or the factory that makes it) must be the authorized agent route:
     /// it carries the provider key the selector uses and serves the shared placement stage.
     /// </summary>
-    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransportFactory analystFactory, IHeadingSelector? selector = null)
-        : this(options, null, analystFactory, selector) { }
+    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransportFactory transportFactory, IHeadingSelector? selector = null)
+        : this(options, null, transportFactory, selector) { }
 
-    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransport analyst, IHeadingSelector? selector = null)
-        : this(options, analyst, null, selector, false)
+    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransport transport, IHeadingSelector? selector = null)
+        : this(options, transport, null, selector, false)
     {
     }
 
     public DocxExtractionPipeline(
         PipelineOptions options,
-        IInferenceTransport analyst,
+        IInferenceTransport transport,
         bool sendsDataExternally,
         IHeadingSelector? selector = null)
-        : this(options, analyst, null, selector, sendsDataExternally) { }
+        : this(options, transport, null, selector, sendsDataExternally) { }
 
     private DocxExtractionPipeline(
         PipelineOptions options,
@@ -61,13 +61,11 @@ public sealed class DocxExtractionPipeline : IDisposable
 
     public Task<DocumentExtractionExecutionResult> RunDocumentExecutionAsync(
         string inputPath,
-        IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default) =>
-        ExecuteDocumentAsync(inputPath, quarantinedIndexes, ct);
+        ExecuteDocumentAsync(inputPath, ct);
 
     private async Task<DocumentExtractionExecutionResult> ExecuteDocumentAsync(
         string inputPath,
-        IReadOnlySet<int>? quarantinedIndexes,
         CancellationToken ct = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(inputPath);
@@ -85,7 +83,6 @@ public sealed class DocxExtractionPipeline : IDisposable
             var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
             var authority = await DocxHeadingPipeline.RunAsync(
                 sourceDocument, transport, _selector, SemanticLaneOptions.Default, ct);
-            authority = ApplyStructuralQuarantine(authority, quarantinedIndexes);
             var audit = authority.Audit;
             const string route = DocxHeadingPipeline.RouteId;
             var reason = authority.Reason;
@@ -124,7 +121,7 @@ public sealed class DocxExtractionPipeline : IDisposable
                 new DocumentExtractionProvenance(
                     route,
                     "docx-source-document",
-                    _options.DisableLlm ? 0 : audit?.RawAnalystResponses.Count ?? 0));
+                    _options.DisableLlm ? 0 : audit?.RawModelResponses.Count ?? 0));
             var outline = new DocumentOutline
             {
                 File = Path.GetFileName(inputPath),
@@ -164,55 +161,6 @@ public sealed class DocxExtractionPipeline : IDisposable
             CanonicalGroundingProjection.Project(structure, projectionContext));
     }
 
-    internal static HeadingPipelineResult ApplyStructuralQuarantine(
-        HeadingPipelineResult authority,
-        IReadOnlySet<int>? quarantinedIndexes)
-    {
-        ArgumentNullException.ThrowIfNull(authority);
-        if (quarantinedIndexes is null || quarantinedIndexes.Count == 0) return authority;
-
-        var removedElements = authority.Structure.Elements
-            .Where(element => element.Sources.Any(source => quarantinedIndexes.Contains(source.SourceOrdinal)))
-            .ToArray();
-        if (removedElements.Length == 0) return authority;
-
-        var removedElementIds = removedElements.Select(element => element.Id).ToHashSet(StringComparer.Ordinal);
-        var removedSourceIds = removedElements.SelectMany(element => element.Sources
-            .SelectMany(source => new[] { source.SourceId, authority.ProjectionContext.StableIdFor(element.Id, source.SourceId) }))
-            .Where(id => !string.IsNullOrWhiteSpace(id))
-            .ToHashSet(StringComparer.Ordinal);
-        var remaining = authority.Structure.Elements
-            .Where(element => !removedElementIds.Contains(element.Id))
-            .ToArray();
-        var emitted = (authority.EmittedElementIds ?? authority.Structure.Elements
-                .Select(element => element.Id).ToHashSet(StringComparer.Ordinal))
-            .Where(id => !removedElementIds.Contains(id))
-            .ToHashSet(StringComparer.Ordinal);
-        var audit = authority.Audit;
-        if (audit is not null)
-        {
-            audit = audit with
-            {
-                ValidatedStructures = audit.ValidatedStructures.Where(item => !removedSourceIds.Contains(item.SourceId)).ToArray(),
-                HierarchyFacts = audit.HierarchyFacts.Where(item => !removedSourceIds.Contains(item.Id)).ToArray(),
-                GroundedBlockIds = audit.GroundedBlockIds.Where(id => !removedSourceIds.Contains(id)).ToArray(),
-            };
-        }
-
-        var survivingRelations = authority.Structure.Relations
-            .Where(relation => !removedElementIds.Contains(relation.FromId) &&
-                !removedElementIds.Contains(relation.ToId))
-            .Select(relation => new StructuralRelationProposal(
-                relation.FromId, relation.ToId, relation.Type));
-        return authority with
-        {
-            Structure = ValidatedStructureFactory.Create(remaining, survivingRelations),
-            ProjectionContext = authority.ProjectionContext.Retain(remaining.Select(element => element.Id).ToHashSet(StringComparer.Ordinal)),
-            Audit = audit,
-            EmittedElementIds = emitted,
-        };
-    }
-
     internal static OutlineRunProvenance BuildProvenance(PipelineExecutionAudit? audit,
         bool sentDataExternally)
     {
@@ -229,7 +177,7 @@ public sealed class DocxExtractionPipeline : IDisposable
         passes.Add(new("deterministic-hierarchy", 1, audit.ValidatedStructures.Count, false));
         passes.Add(new("output-policy", 1, audit.ValidatedStructures.Count, false));
         return new OutlineRunProvenance(
-            audit.SemanticLane is not null || audit.SpanLane is not null ? "configured-analyst" : "deterministic-ooxml",
+            audit.SemanticLane is not null || audit.SpanLane is not null ? "configured-route" : "deterministic-ooxml",
             sentDataExternally,
             passes);
     }

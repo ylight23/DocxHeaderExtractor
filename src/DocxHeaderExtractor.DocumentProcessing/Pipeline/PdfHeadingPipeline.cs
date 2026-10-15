@@ -92,7 +92,7 @@ internal static class PdfHeadingPipeline
         IHeadingSelector selector, string pdfPath, string apiKey, LaneExecutionLease lease, CancellationToken ct)
     {
         var leaseBound = new LeaseBoundInferenceTransport(authorized, lease);
-        IHeadingAuthority authority = new SelectedLinesHeadingAuthority(
+        var authority = new SelectedLinesHeadingAuthority(
             selector,
             pdfPath,
             apiKey,

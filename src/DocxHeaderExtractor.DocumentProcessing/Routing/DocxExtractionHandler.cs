@@ -10,10 +10,9 @@ public sealed class DocxExtractionHandler(DocxExtractionPipeline pipeline) : IDo
 
     public Task<DocumentExtractionExecutionResult> ExtractAsync(
         UploadedFile file,
-        IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(file);
-        return pipeline.RunDocumentExecutionAsync(file.LocalPath, quarantinedIndexes, ct);
+        return pipeline.RunDocumentExecutionAsync(file.LocalPath, ct);
     }
 }

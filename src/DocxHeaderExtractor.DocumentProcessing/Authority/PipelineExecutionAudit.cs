@@ -20,9 +20,9 @@ public sealed record PipelineExecutionAudit(
     [JsonPropertyName("route")]
     public string? PipelineId { get; init; }
 
-    /// <summary>Raw analyst completions, populated only by explicit diagnostic routes.</summary>
-    [JsonPropertyName("rawAnalystResponses")]
-    public IReadOnlyList<string> RawAnalystResponses { get; init; } = [];
+    /// <summary>Raw model completions, populated only by explicit diagnostic routes.</summary>
+    [JsonPropertyName("rawModelResponses")]
+    public IReadOnlyList<string> RawModelResponses { get; init; } = [];
 
     [JsonPropertyName("modelInputContracts")]
     public IReadOnlyList<string> ModelInputContracts { get; init; } = [];

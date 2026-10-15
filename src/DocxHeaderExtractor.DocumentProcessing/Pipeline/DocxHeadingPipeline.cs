@@ -71,7 +71,7 @@ internal static class DocxHeadingPipeline
         LaneExecutionLease lease, CancellationToken ct)
     {
         var leaseBound = new LeaseBoundInferenceTransport(authorized, lease);
-        IHeadingAuthority authority = new SelectedLinesHeadingAuthority(
+        var authority = new SelectedLinesHeadingAuthority(
             selector,
             docxPath,
             apiKey,

@@ -29,12 +29,11 @@ public static class PdfExtractionPipeline
     public static Task<DocumentExtractionExecutionResult> RunExecutionAsync(
         UploadedFile file,
         PipelineOptions options,
-        IInferenceTransport? analyst = null,
-        IReadOnlySet<int>? quarantinedIndexes = null,
-        bool analystSendsDataExternally = false,
+        IInferenceTransport? transport = null,
+        bool sendsDataExternally = false,
         CancellationToken ct = default) =>
         RunExecutionCoreAsync(
-            file, options, analyst, quarantinedIndexes, analystSendsDataExternally, ct,
+            file, options, transport, sendsDataExternally, ct,
             SemanticLaneOptions.Default, selector: null);
 
     /// <summary>
@@ -44,20 +43,18 @@ public static class PdfExtractionPipeline
     internal static Task<DocumentExtractionExecutionResult> RunWithSelectorAsync(
         UploadedFile file,
         PipelineOptions options,
-        IInferenceTransport? analyst,
+        IInferenceTransport? transport,
         IHeadingSelector? selector,
-        IReadOnlySet<int>? quarantinedIndexes = null,
-        bool analystSendsDataExternally = false,
+        bool sendsDataExternally = false,
         CancellationToken ct = default) =>
         RunExecutionCoreAsync(
-            file, options, analyst, quarantinedIndexes, analystSendsDataExternally, ct,
+            file, options, transport, sendsDataExternally, ct,
             SemanticLaneOptions.Default, selector);
 
     private static async Task<DocumentExtractionExecutionResult> RunExecutionCoreAsync(
         UploadedFile file,
         PipelineOptions options,
         IInferenceTransport? transport,
-        IReadOnlySet<int>? quarantinedIndexes,
         bool transportSendsDataExternally,
         CancellationToken ct,
         SemanticLaneOptions semanticLaneOptions,
@@ -84,10 +81,6 @@ public static class PdfExtractionPipeline
         var sourceBuild = PdfSourceAdapter.BuildWithDetails(file.LocalPath);
         authority = await PdfHeadingPipeline.RunAsync(
             sourceBuild.Snapshot, sourceBuild.Details, file.LocalPath, used, semanticLaneOptions, selector, ct);
-        // The same repair step the DOCX lane applies, through the same implementation. A quarantine
-        // that silently did nothing on one format would make the harness's repair loop mean two
-        // different things depending on what was uploaded.
-        authority = DocxExtractionPipeline.ApplyStructuralQuarantine(authority, quarantinedIndexes);
 
         // The catalog the lane parsed, not a second one derived from the audit. The audit's block
         // text is a readable rendering meant for a person to read; the model was shown, and the
@@ -113,7 +106,7 @@ public static class PdfExtractionPipeline
             new DocumentExtractionProvenance(
                 "pdf-canonical-vnext",
                 "pdf-source-document",
-                authority.Audit?.RawAnalystResponses.Count ?? 0)
+                authority.Audit?.RawModelResponses.Count ?? 0)
             {
                 ExecutionContract = ExecutionContracts.ExplicitUploadedPdfCanonical,
             });

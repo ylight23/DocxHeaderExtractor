@@ -12,16 +12,9 @@ public interface IDocumentExtractionHandler
     /// Both come from one run on purpose. A host that needs an outline would otherwise have to
     /// take a second path, and a second path is a second answer about the same document.
     /// </para>
-    /// <para>
-    /// <paramref name="quarantinedIndexes"/> is the harness repair loop removing source occurrences
-    /// a validator rejected, then re-running. It is not intent - it says nothing about what the
-    /// caller wants out of the document - so it stays a parameter here rather than joining
-    /// <see cref="DocumentExtractionRequest"/>, which must carry the file and nothing else.
-    /// </para>
     /// </summary>
     Task<Authority.DocumentExtractionExecutionResult> ExtractAsync(
         UploadedFile file,
-        IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default);
 }
 
@@ -46,7 +39,6 @@ public sealed class DocumentExtractionRouter
 
     public Task<Authority.DocumentExtractionExecutionResult> ExtractAsync(
         DocumentExtractionRequest request,
-        IReadOnlySet<int>? quarantinedIndexes = null,
         CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(request);
@@ -56,7 +48,7 @@ public sealed class DocumentExtractionRouter
         // not the identity of what was parsed, which is worse than either alone.
         var file = UploadedFile.FromLocalPath(request.File.LocalPath, request.File.OriginalFileName);
         return _extractors.TryGetValue(file.DetectedType, out var extractor)
-            ? extractor.ExtractAsync(file, quarantinedIndexes, ct)
+            ? extractor.ExtractAsync(file, ct)
             : throw new UnsupportedSourceException(file);
     }
 }

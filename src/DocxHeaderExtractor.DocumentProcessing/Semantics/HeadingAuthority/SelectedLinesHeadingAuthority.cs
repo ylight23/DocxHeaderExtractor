@@ -9,8 +9,8 @@ using DocxHeaderExtractor.DocumentProcessing.Source.Common;
 namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 
 /// <summary>
-/// The PDF heading authority since the V6 promotion: an <see cref="IHeadingSelector"/> answers which source lines are headings, and this
-/// class turns its answer into heading extents for the shared stages. A run of consecutive selected lines on the same page and in the same
+/// The heading authority of both lanes (PDF since the V6 promotion, DOCX since its V6 wiring): an <see cref="IHeadingSelector"/> answers
+/// which source lines are headings, and this class turns its answer into heading extents for the shared stages. A run of consecutive selected lines on the same page and in the same
 /// parser layout block is one heading (the selector is asked to select every line of a heading that runs over several lines); any other
 /// selected line starts a heading of its own. Aliases the source does not have are ignored and counted. Placement and hierarchy run on the
 /// shared stages with the authorized transport, as before.
@@ -21,7 +21,7 @@ internal sealed class SelectedLinesHeadingAuthority(
     string apiKey,
     IReadOnlyDictionary<string, string> layoutBlockByAtom,
     IInferenceTransport? placementTransport,
-    Action ensureActive) : IHeadingAuthority
+    Action ensureActive)
 {
     internal const string AuthorityId = "pdf-v6-selected-lines-heading-authority-v1";
     internal const string Reason = "pdf-v6-selected-lines-v1";
@@ -42,7 +42,7 @@ internal sealed class SelectedLinesHeadingAuthority(
 
         PipelineExecutionAudit Complete(PipelineExecutionAudit audit, HeadingStructureAssembly assembly) => audit with
         {
-            RawAnalystResponses = selection.ModelAnswers,
+            RawModelResponses = selection.ModelAnswers,
             ModelInputContracts = [selector.SelectorId],
             ValidatedStructures = assembly.Hierarchies.Values.ToArray(),
             SemanticLane = new LaneExecutionAudit(
@@ -112,3 +112,19 @@ internal sealed class SelectedLinesHeadingAuthority(
         return new CanonicalSemanticBoundHeading(primary.Alias, primary.SourceId, primary.Ordinal, string.Join(" ", parts.Select(value => value.Text)), "ESTABLISHES_STRUCTURE", "heading", "document_body", [], 0, primary.Text.Length) { Parts = parts };
     }
 }
+
+/// <summary>What an authority decided, plus what the shared stages need to continue.</summary>
+/// <param name="Decisions">Exact heading extents the authority selected.</param>
+/// <param name="BoundHeadings">The same headings as bound semantic claims, input to placement and hierarchy.</param>
+/// <param name="PlacementTransport">Transport for the bounded placement follow-up; null when none ran.</param>
+/// <param name="PlacementEvidence">Optional measurements for the placement pass (the PDF lane's style table); null keeps the packet unchanged.</param>
+/// <param name="CompleteAudit">
+/// Adds the authority's own audit facts (raw responses, contracts, lane telemetry) to the route audit
+/// once the shared stages have run.
+/// </param>
+internal sealed record HeadingAuthorityResult(
+    IReadOnlyList<HeadingExtentDecision> Decisions,
+    IReadOnlyList<CanonicalSemanticBoundHeading> BoundHeadings,
+    IInferenceTransport? PlacementTransport,
+    Func<PipelineExecutionAudit, HeadingStructureAssembly, PipelineExecutionAudit> CompleteAudit,
+    HeadingPlacementEvidence? PlacementEvidence = null);
