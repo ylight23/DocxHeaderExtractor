@@ -13,12 +13,12 @@ namespace DocxHeaderExtractor.HeadingAgent;
 /// </summary>
 internal sealed class DocxAgentTools : AgentToolHost
 {
-    public const string Version = "DOCX_AGENT_TOOLS_V1";
+    public const string Version = "DOCX_AGENT_TOOLS_V2";
     public const string SourceContext = "get_source_context", SourceSpan = "get_source_span", SearchText = "search_document_text",
-        Repeated = "get_repeated_occurrences", Compare = "compare_source_locations";
+        Repeated = "get_repeated_occurrences", Compare = "compare_source_locations", Sequence = "get_shape_sequence";
     /// <summary>The facts tool: the facts of a range of lines and the other occurrences of the same text. The agent's first reply must call it.</summary>
     public const string LineFacts = "get_line_facts";
-    public static readonly string[] Names = [SourceContext, SourceSpan, SearchText, Repeated, Compare];
+    public static readonly string[] Names = [SourceContext, SourceSpan, SearchText, Repeated, Compare, Sequence];
 
     public const int MaxNeighbours = 6, MaxSpanAliases = 8, MaxRepeated = 20, MaxCompareWindow = 3, MaxSearchLimit = 50, MaxQueryChars = 200, MinQueryChars = 2,
         MaxListTextChars = 200, MaxCompareTextChars = 160, MaxSpanTextChars = 4000, MaxFactLines = 24, MaxFactRange = 400,
@@ -46,12 +46,13 @@ internal sealed class DocxAgentTools : AgentToolHost
         SearchText => Search(args, returned),
         Repeated => Repeat(args, returned),
         LineFacts => FactsOfRange(args, returned),
+        Sequence => SequenceOf(args, returned),
         _ => CompareTwo(args, returned),
     };
 
     // ---------------- declarations ----------------
 
-    /// <summary>The six declarations, get_line_facts last.</summary>
+    /// <summary>The seven declarations, get_line_facts last.</summary>
     public static JsonArray Definitions()
     {
         var all = BaseDefinitions();
@@ -99,7 +100,9 @@ internal sealed class DocxAgentTools : AgentToolHost
                 ["first"] = AliasArg("First paragraph."),
                 ["second"] = AliasArg("Second paragraph."),
                 ["window"] = Int(0, MaxCompareWindow, "Paragraphs before and after each."),
-            }, "first", "second", "window"));
+            }, "first", "second", "window"),
+        Tool(Sequence, "Read the numbered sequence a paragraph belongs to, from the form of the text only: its key is the words before its first number (at most two), # for the number, and the punctuation right after it (\"Article 4.\" and \"Article 17.\" share \"Article #.\"). Returns the key and the paragraph's number, how many paragraphs share the key, its place among them, the paragraphs just before and after it in the sequence, and where the numbers skip, repeat or go down. For every skip it also lists the paragraphs between the two neighbours that carry exactly a missing number under another form (a misspelled label, a comma for a full stop). A skipped number may be a misreading, a gap in the source or a legitimate jump; the result says what the numbers do, not what any paragraph is.",
+            new JsonObject { ["alias"] = AliasArg("The paragraph whose sequence to read.") }, "alias"));
 
     public static string DefinitionsSha256() => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(Definitions().ToJsonString(Wire))));
 
@@ -285,6 +288,29 @@ internal sealed class DocxAgentTools : AgentToolHost
         returned.AddRange(slice.Take(taken).SelectMany(i => Shown(i).Prepend(lines[i].Alias)));
         NoteFactsReturned(slice.Take(taken).Select(i => lines[i].Alias), taken < slice.Length || offset + taken < rangeLength);
         return (arguments, result, taken < slice.Length);
+    }
+
+    (JsonNode?, JsonNode?, bool) SequenceOf(JsonElement args, List<string> returned)
+    {
+        Keys(args, "alias");
+        var alias = Alias(args, "alias");
+        var arguments = new JsonObject { ["alias"] = alias };
+        var described = ShapeSequence.Describe(lines, index[alias]);
+        var result = new JsonObject
+        {
+            ["readBy"] = "the program, from the form of the text of every paragraph of the document: the words before the first number, the number, the punctuation after it",
+            ["version"] = ShapeSequence.Version,
+            ["sequence"] = described,
+        };
+        if (described is null) result["noKey"] = "no number stands among the first words of this paragraph";
+        if (Body("E0.00", Sequence, "OK", null, arguments, result).Length + ResultMargin > MaxResultBytes) throw new InvalidOperationException("DOCX_TOOL_SEQUENCE_OVER_CAP");
+        if (described is not null)
+            foreach (var node in described.AsObject().Where(kv => kv.Value is JsonArray).SelectMany(kv => kv.Value!.AsArray())
+                         .SelectMany(n => n?["missingNumberUnderAnotherKey"] is JsonArray c ? c.Prepend(n) : [n]))
+                foreach (var key in new[] { "alias", "afterAlias", "beforeAlias", "fromAlias", "toAlias" })
+                    if (node?[key] is JsonValue v) returned.Add(v.GetValue<string>());
+        returned.Add(alias);
+        return (arguments, result, false);
     }
 
     // ---------------- observations ----------------

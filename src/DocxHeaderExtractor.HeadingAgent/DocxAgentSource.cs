@@ -80,15 +80,27 @@ internal sealed class DocxAgentSource : IAgentSource
             Enumerable.Range(from, Math.Min(Lines.Count, end + Overlap) - from).ToArray());
     }
 
-    /// <summary>Reads the DOCX with the production reader. Null with a failure code when it has no text or is not a DOCX package.</summary>
+    /// <summary>Reads the DOCX with the production reader. Null with a failure code when it is not a DOCX package, when its pages are images
+    /// with next to no OOXML text (SCANNED_IMAGE_ONLY: its content needs OCR, and reading it would decide on a signature block), or when it has no text.</summary>
     public static DocxAgentSource? Load(string docxPath, ExtractionOptions? options, out string failure)
     {
         SourceDocument document;
-        try { document = new OpenXmlDocumentSource(options).Read(docxPath); }
+        DocxSourceIntegrity integrity;
+        try
+        {
+            integrity = DocxSourceIntegrity.Read(docxPath);
+            if (integrity.Kind == DocxSourceKind.ScannedImageOnly) { failure = "SCANNED_IMAGE_ONLY"; return null; }
+            document = new OpenXmlDocumentSource(options).Read(docxPath);
+        }
         catch (Exception e) when (e is InvalidDataException or InvalidOperationException or DocumentFormat.OpenXml.Packaging.OpenXmlPackageException or FileFormatException)
         { failure = "NOT_A_DOCX_PACKAGE"; return null; }
-        return From(document, out failure);
+        var source = From(document, out failure);
+        if (source is not null) source.Integrity = integrity;
+        return source;
     }
+
+    /// <summary>What the package carries its content as (native text, or native text with page images), when the source was loaded from a file.</summary>
+    public DocxSourceIntegrity? Integrity { get; private set; }
 
     /// <summary>Builds the source from an already read document, under the aliases of the route's source snapshot.</summary>
     public static DocxAgentSource? From(SourceDocument document, out string failure)

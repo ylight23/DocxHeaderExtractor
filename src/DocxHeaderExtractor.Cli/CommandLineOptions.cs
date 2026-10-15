@@ -47,7 +47,7 @@ public sealed class CommandLineOptions
         int i = 0;
         // Only verbs the CLI actually dispatches. Anything else is treated as an input path
         // by the default extract route.
-        if (!args[0].StartsWith('-') && args[0] is "extract" or "help" or "info")
+        if (!args[0].StartsWith('-') && args[0] is "extract" or "help" or "info" or "scan-ocr")
         {
             o.Command = args[0];
             i = 1;
@@ -162,6 +162,9 @@ public sealed class CommandLineOptions
         Cách dùng:
           dhx extract <file> [tuỳ chọn]                  # mặc định; tên lệnh có thể bỏ qua
           dhx info    <file.gguf>                        # xem metadata mô hình
+          dhx scan-ocr <file.docx> [-o <thư-mục>]        # OCR tiền xử lý cho DOCX chỉ có ảnh trang (cần tesseract,
+                                                         # tuỳ chọn ImageMagick); ghi evidence bất biến vào thư mục
+                                                         # (mặc định .dhx-evidence/scan-ocr), không sửa tài liệu
           dhx help                                       # trợ giúp
 
         Tuỳ chọn chính:

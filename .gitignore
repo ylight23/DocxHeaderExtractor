@@ -67,3 +67,6 @@ outline_llm/
 # Gold visual review workspace: 150 DPI renders of held-out pages; public repo, keep local/private (manifest pins hashes)
 artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.gold-workspace.*/*.review.html
 artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.gold-workspace.*/*.review.pdf
+
+# OCR preflight evidence store (page images, TSV): written by `dhx scan-ocr`, never committed
+.dhx-evidence/

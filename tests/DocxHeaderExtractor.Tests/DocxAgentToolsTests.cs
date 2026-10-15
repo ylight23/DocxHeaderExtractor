@@ -31,13 +31,13 @@ public sealed class DocxAgentToolsTests : IDisposable
     private static string Args(object o) => JsonSerializer.Serialize(o);
 
     [Fact]
-    public void Six_tools_are_declared_with_strict_schemas_and_the_facts_tool_last()
+    public void Seven_tools_are_declared_with_strict_schemas_and_the_facts_tool_last()
     {
         var defs = DocxAgentTools.Definitions();
         var names = defs.Select(d => d!["function"]!["name"]!.GetValue<string>()).ToArray();
 
         Assert.Equal(DocxAgentTools.Names.Append(DocxAgentTools.LineFacts), names);
-        Assert.Equal(6, defs.Count);
+        Assert.Equal(7, defs.Count);   // V2 added get_shape_sequence
         Assert.All(defs, d =>
         {
             var parameters = d!["function"]!["parameters"]!;
