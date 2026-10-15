@@ -361,11 +361,13 @@ function handleStreamEvent(evt) {
     $('devState').textContent = 'Lỗi xử lý';
     showError(evt.message);
     window.WebPipelineV2.showFailure(evt.message);
+  } else if (evt.type === 'reply') {
+    appendReply(evt);
   } else if (evt.type === 'result') {
     $('devDot').className = 'devdot done';
     $('devState').textContent = 'Đã hoàn tất · ' + logEvents.length + ' sự kiện';
     outline = evt.outline;
-    render(evt.outline, evt.stats, evt.agent, evt.modelReplies);
+    render(evt.outline, evt.stats, evt.agent);
     window.WebPipelineV2.render(evt.pipeline);
   }
 }
@@ -502,6 +504,7 @@ $('run').onclick = async () => {
   outline = null; serverError = false;
   window.WebPipelineV2.reset();
   ['statsPanel', 'treePanel', 'rawPanel', 'errBox'].forEach(id => $(id).classList.add('hidden'));
+  $('rawReplies').replaceChildren();
   logEvents = [];
   devLogLines = 0;
   $('log').textContent = '';
@@ -582,7 +585,7 @@ function tiles(id, items) {
   ).join('');
 }
 
-function render(o, s, agent, replies) {
+function render(o, s, agent) {
   const secs = (o.elapsedMs / 1000).toFixed(1);
   const items = [
     [o.paragraphCount, 'đoạn trong file'],
@@ -638,17 +641,21 @@ function render(o, s, agent, replies) {
 
   $('statsPanel').classList.remove('hidden');
   $('treePanel').classList.remove('hidden');
+}
 
-  // Phản hồi thô chỉ có khi người dùng đã bật; mỗi cửa sổ là một khung thu gọn.
-  $('rawPanel').classList.toggle('hidden', !(replies && replies.length));
+// Phản hồi của mô hình, từng cái một khi máy chủ gửi tới (chỉ khi người dùng đã bật). Các cửa sổ chạy song song nên có thể xen kẽ.
+function appendReply(r) {
   const section = (title, text) => text ? `<h4>${title}</h4><pre>${esc(text)}</pre>` : '';
-  $('rawReplies').innerHTML = (replies || []).map(r => {
-    const calls = (r.toolCalls || []).map(c => `${c.name}(${c.arguments})`).join('\n');
-    return `<details class="llm-event"><summary>${esc(r.unit)} · lượt ${r.turn}${r.finishReason ? ' · ' + esc(r.finishReason) : ''}</summary>`
-      + section('Suy luận', r.reasoning) + section('Gọi tool', calls)
-      + section('Kết quả tool trước lượt này', (r.toolResults || []).map(x => x.content).join('\n\n'))
-      + section('Nội dung', r.content) + '</details>';
-  }).join('');
+  const calls = (r.toolCalls || []).map(c => `${c.name}(${c.arguments})`).join('\n');
+  const item = document.createElement('details');
+  item.className = 'llm-event';
+  item.innerHTML = `<summary>${esc(r.unit)} · lượt ${r.turn}${r.finishReason ? ' · ' + esc(r.finishReason) : ''}</summary>`
+    + section('Suy luận', r.reasoning) + section('Gọi tool', calls)
+    + section('Kết quả tool trước lượt này', (r.toolResults || []).map(x => x.content).join('\n\n'))
+    + section('Nội dung', r.content);
+  $('rawPanel').classList.remove('hidden');
+  $('rawReplies').append(item);
+  item.scrollIntoView({ block: 'nearest' });
 }
 </script>
 </body>

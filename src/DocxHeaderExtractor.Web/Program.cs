@@ -203,9 +203,9 @@ app.MapPost("/api/extract", async (
             // "agent" để giữ nhật ký trên giao diện.
             // Phản hồi của mô hình chỉ được giữ và trả về khi người dùng tự bật "Hiện phản hồi của mô hình".
             var showRaw = form["showRaw"].ToString() is "1" or "true" or "on";
-            var replies = new ConcurrentQueue<ModelReply>();
+            // Each reply is written to the stream as soon as the model returns it; units run in parallel, so replies interleave.
             using var runner = new V6DocumentRunner(options, transportFactory(provider),
-                showRaw ? r => replies.Enqueue(r) : null);
+                showRaw ? r => events.Writer.TryWrite(ReplyEvent(r)) : null);
 
             // Đích ghi do server đặt bên trong thư mục tạm của request, không bao giờ lấy từ form:
             // một đường dẫn do client chỉ định là đường để ghi đè file bất kỳ trên máy chủ.
@@ -264,14 +264,6 @@ app.MapPost("/api/extract", async (
                 type = "result",
                 outline = WebPipelineProjection.SafeOutline(outline, json),
                 pipeline = WebPipelineProjection.Project(runId, "Completed", outline, execution, uploadedType.ToString().ToLowerInvariant()),
-                modelReplies = showRaw
-                    ? replies.OrderBy(r => r.Unit, StringComparer.Ordinal).ThenBy(r => r.Turn).Select(r => new
-                    {
-                        unit = r.Unit, turn = r.Turn, reasoning = r.Reasoning, finishReason = r.FinishReason, content = r.Content,
-                        toolCalls = r.ToolCalls.Select(c => new { name = c.Name, arguments = c.Arguments }).ToArray(),
-                        toolResults = r.ToolResults.Select(x => new { toolCallId = x.ToolCallId, content = x.Content }).ToArray(),
-                    }).ToArray()
-                    : null,
                 stats = Stats.From(outline),
                 sourceType = uploadedType.ToString().ToLowerInvariant(),
                 agent = new
@@ -299,8 +291,12 @@ app.MapPost("/api/extract", async (
     }
     catch (Exception ex)
     {
+        // A refusal about the input format names only the format; it carries no provider payload, so it can be shown.
+        var message = ex is NotSupportedException or FileNotFoundException
+            ? ex.Message
+            : $"Execution failed ({ex.GetType().Name}). Provider payload and source diagnostics are withheld.";
         try { await EmitAsync(new { type = "error",
-            message = $"Execution failed ({ex.GetType().Name}). Provider payload and source diagnostics are withheld.",
+            message,
             pipeline = new { schemaVersion = "web-pipeline-v2", availability = "unavailable", outcome = "Failed",
                 stages = new[] { new WebPipelineStage("execution", "failed", "Server exception; sub-stages not-recorded") } } }); }
         catch (Exception) { /* kết nối đã đứt */ }
@@ -320,6 +316,19 @@ Console.OutputEncoding = Encoding.UTF8;
 Console.WriteLine($"dhx-ui đang chạy: {string.Join(", ", app.Urls.DefaultIfEmpty("http://localhost:5099"))}");
 Console.WriteLine("Ctrl+C để dừng.");
 app.Run();
+
+// One model reply as a stream event: what the model streamed, the tool calls it made, the tool results it was given, and its content.
+static object ReplyEvent(ModelReply r) => new
+{
+    type = "reply",
+    unit = r.Unit,
+    turn = r.Turn,
+    reasoning = r.Reasoning,
+    finishReason = r.FinishReason,
+    content = r.Content,
+    toolCalls = r.ToolCalls.Select(c => new { name = c.Name, arguments = c.Arguments }).ToArray(),
+    toolResults = r.ToolResults.Select(x => new { toolCallId = x.ToolCallId, content = x.Content }).ToArray(),
+};
 
 // Tên file người dùng tải lên không được phép thoát khỏi thư mục làm việc.
 static string SafeName(string name)

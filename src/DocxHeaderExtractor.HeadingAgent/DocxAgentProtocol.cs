@@ -26,7 +26,12 @@ internal static class DocxAgentProtocol
     /// <summary>The grouping prompt: the shared one, saying what a line carries in this kind of document.</summary>
     public static readonly string GroupPrompt = AgentGrouping.GroupPrompt.Replace(
         "Each line has alias, page, text and layout;",
-        "Each line has alias, text and its style (style name, font size, bold, numbering label and level, alignment, when it has them);", StringComparison.Ordinal);
+        "Each line has alias, text and its style (style name, font size, bold, numbering label and level, alignment, when it has them);", StringComparison.Ordinal)
+        + "\n" + GroupingFactsLine;
+
+    /// <summary>Two measurements of the document, given to every line of a grouping request. They describe the document; they say nothing about what
+    /// a heading is, and no example is given.</summary>
+    const string GroupingFactsLine = "Each line also carries shape: its first two words, with every number or roman numeral written as #. And shapeCount: how many lines of the whole document have that shape. Both are measurements of the document, not labels; what they mean for the division is for you to judge.";
 
     /// <summary>What the style objects of the placement pass hold for a DOCX (the default sentence describes a PDF's size, weight and rank).</summary>
     public const string PlacementNote = "Each heading may also carry \"style\" (the style name, the outline level it declares, sizePt, bold, italic, allCaps, alignment, the numbering label and level, rankInDocument: the place of its style among the distinct styles of the whole document, 1 being the largest, and linesWithThisStyleInDocument), and \"documentStyles\" lists those distinct styles with the first lines set in each. They are measurements of the document, not labels and not decisions: you decide each relation.";

@@ -75,48 +75,84 @@
     }
     document.getElementById('treePanel').classList.add('hidden');
     document.getElementById('statsPanel').classList.add('hidden');
-    summary.textContent = `${model.summary.accepted} accepted · ${model.summary.unknownLevel} unknown level · ` +
-      `${model.summary.requiresReview} require review · rejected: ${model.summary.rejected ?? model.summary.rejectedAvailability}`;
+    summary.textContent = `${model.summary.accepted} tiêu đề · ${model.summary.unknownLevel} chưa có cấp · ` +
+      `${model.summary.requiresReview} cần xem lại` +
+      (typeof model.summary.rejected === 'number' ? ` · ${model.summary.rejected} bị loại` : '');
     const forest = buildForest(model);
+    const STATUS = { RequiresReview: ['Cần xem lại', 'review'], HumanVerified: ['Đã xác nhận', 'ok'] };
+    function levelOf(heading) { return heading.level == null ? 'unknown' : String(Math.min(heading.level, 6)); }
+    function levelBadge(heading) {
+      const badge = element('span', heading.level == null ? 'H?' : 'H' + heading.level, 'v2-level');
+      badge.dataset.level = levelOf(heading);
+      badge.title = heading.level == null ? 'Chưa có cấp' : 'Cấp ' + heading.level;
+      return badge;
+    }
+    function chips(heading) {
+      const out = [];
+      const [label, kind] = STATUS[heading.decision?.status] || [heading.decision?.status, 'neutral'];
+      if (label) out.push(element('span', label, 'v2-chip v2-chip-' + kind));
+      const resolution = String(heading.hierarchyResolution || '');
+      if (resolution.includes('out-of-hierarchy')) out.push(element('span', 'Ngoài cây mục', 'v2-chip v2-chip-neutral'));
+      else if (resolution.includes('unresolved')) out.push(element('span', 'Chưa xác định cha', 'v2-chip v2-chip-neutral'));
+      return out;
+    }
     function draw(node, visited) {
-      if (visited.has(node.heading.elementId)) return element('li', 'Invalid cyclic relationship; unavailable');
+      if (visited.has(node.heading.elementId)) return element('li', 'Quan hệ vòng không hợp lệ; không hiển thị');
       const next = new Set(visited); next.add(node.heading.elementId);
       const li = element('li'); li.setAttribute('role', 'treeitem');
-      const row = element('div', null, 'v2-tree-row');
+      const row = element('div', null, 'v2-row');
+      row.dataset.level = levelOf(node.heading);
       const group = element('ul'); group.setAttribute('role', 'group');
       if (node.children.length) {
-        const toggle = element('button', '−', 'v2-toggle');
-        toggle.type = 'button'; toggle.setAttribute('aria-label', 'Collapse ' + node.heading.text);
+        const toggle = element('button', '▾', 'v2-toggle');
+        toggle.type = 'button'; toggle.setAttribute('aria-label', 'Thu gọn ' + node.heading.text);
         toggle.setAttribute('aria-expanded', 'true');
         toggle.onclick = () => {
           group.hidden = !group.hidden;
-          toggle.textContent = group.hidden ? '+' : '−';
+          toggle.textContent = group.hidden ? '▸' : '▾';
           toggle.setAttribute('aria-expanded', String(!group.hidden));
-          toggle.setAttribute('aria-label', (group.hidden ? 'Expand ' : 'Collapse ') + node.heading.text);
+          toggle.setAttribute('aria-label', (group.hidden ? 'Mở rộng ' : 'Thu gọn ') + node.heading.text);
         };
         row.append(toggle);
+      } else {
+        row.append(element('span', null, 'v2-toggle-spacer'));
       }
-      const select = element('button', node.heading.text, 'v2-select'); select.type = 'button';
+      const select = element('button', null, 'v2-select'); select.type = 'button';
       select.dataset.elementId = node.heading.elementId;
+      // The source id is long (page, coordinates, text); it stays in the tooltip and in the inspector.
+      select.title = 'Source ID: ' + node.heading.sourceId;
+      select.append(levelBadge(node.heading), element('span', node.heading.text, 'v2-text'));
       select.onclick = () => {
         panel.querySelectorAll('.v2-select').forEach(b => b.setAttribute('aria-pressed', String(b === select)));
         inspect(node.heading);
       };
-      row.append(select, element('small', `L${node.heading.level ?? '?'} · ${node.heading.sourceId} · ${node.heading.decision.status}`));
+      row.append(select, ...chips(node.heading));
       li.append(row);
       for (const child of node.children) group.append(draw(child, next));
       if (node.children.length) li.append(group);
       return li;
     }
     function bucket(label, nodes) {
-      tree.append(element('h3', label));
+      tree.append(element('h3', `${label} (${nodes.length})`));
       const list = element('ul'); list.setAttribute('role', 'tree'); list.setAttribute('aria-label', label);
       for (const node of nodes) list.append(draw(node, new Set()));
       tree.append(list);
-      if (!nodes.length) tree.append(element('p', 'None'));
+      if (!nodes.length) tree.append(element('p', 'Không có'));
     }
-    bucket('Roots — no validated parent', forest.roots);
-    bucket('Unresolved / parent not emitted', forest.unresolved);
+    const setAll = open => {
+      tree.querySelectorAll('ul[role=group]').forEach(g => { g.hidden = !open; });
+      tree.querySelectorAll('.v2-toggle').forEach(toggle => {
+        toggle.textContent = open ? '▾' : '▸';
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+    };
+    const toolbar = element('div', null, 'v2-toolbar');
+    const expandAll = element('button', 'Mở rộng tất cả', 'secondary'); expandAll.type = 'button'; expandAll.onclick = () => setAll(true);
+    const collapseAll = element('button', 'Thu gọn tất cả', 'secondary'); collapseAll.type = 'button'; collapseAll.onclick = () => setAll(false);
+    toolbar.append(expandAll, collapseAll);
+    tree.append(toolbar);
+    bucket('Mục gốc, chưa có cha', forest.roots);
+    bucket('Chưa xác định vị trí (cha chưa được phát)', forest.unresolved);
     const stages = document.getElementById('v2Stages'); stages.replaceChildren();
     for (const stage of model.stages) stages.append(element('li', `${stage.id} — ${stage.status}: ${stage.evidence}`));
     document.getElementById('v2Diagnostics').textContent = JSON.stringify({ executionId: model.executionId,

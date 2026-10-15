@@ -1,10 +1,85 @@
-.v2-grid{display:grid;grid-template-columns:minmax(260px,1fr) minmax(300px,1fr);gap:1rem}
-#pipelineV2 ul{list-style:none;padding-left:1rem}#pipelineV2 li{margin:.5rem 0}
-.v2-tree-row{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
-.v2-select{color:inherit;background:transparent;border:1px solid var(--line,#bbb);text-align:left;overflow-wrap:anywhere;max-width:100%}
-.v2-select[aria-pressed=true]{outline:2px solid var(--accent,#6189ff)}
-.v2-toggle{min-width:32px}.v2-tree-row small{opacity:.75}
-.v2-facts{display:grid;grid-template-columns:minmax(100px,1fr) minmax(150px,2fr);gap:.5rem}
-.v2-facts dd{margin:0;overflow-wrap:anywhere}#pipelineV2 pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:350px;overflow:auto}
-.v2-source{border-top:1px solid #777;padding-top:.5rem}#v2Inspector{min-width:0}
-@media(max-width:720px){.v2-grid{grid-template-columns:1fr}.v2-facts{grid-template-columns:1fr}.v2-tree-row small{width:100%}}
+/* Pipeline viewer: the validated heading tree and the evidence of the heading you select.
+   Colours come from the page's variables so the viewer follows its light and dark themes. */
+
+.v2-grid { display: grid; grid-template-columns: minmax(320px, 1.15fr) minmax(300px, 1fr); gap: 20px; align-items: start; }
+#v2Tree { min-width: 0; }
+
+/* ---- inspector ---- */
+#v2Inspector {
+  min-width: 0; position: sticky; top: 12px; max-height: calc(100vh - 24px); overflow: auto;
+  padding: 14px 16px; border: 1px solid var(--line, #e3e6ea); border-radius: 10px; background: var(--panel, #fff);
+}
+#pipelineV2 #v2Inspector h3 { margin: 0 0 10px; font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--ink, #16181d); }
+#v2Inspector h4 { margin: 12px 0 6px; font-size: 12px; color: var(--muted, #6b7280); }
+#v2Inspector > p { margin: 0; color: var(--muted, #6b7280); font-size: 13px; }
+.v2-facts { display: grid; grid-template-columns: minmax(110px, 1fr) minmax(150px, 2fr); gap: 4px 12px; font-size: 12.5px; margin: 0; }
+.v2-facts dt { color: var(--muted, #6b7280); }
+.v2-facts dd { margin: 0; overflow-wrap: anywhere; }
+.v2-source { border-top: 1px solid var(--line, #e3e6ea); margin-top: 12px; padding-top: 4px; }
+#pipelineV2 pre {
+  white-space: pre-wrap; overflow-wrap: anywhere; max-height: 350px; overflow: auto; margin: 0;
+  padding: 8px 10px; border-radius: 6px; background: var(--bg, #f6f7f9); font-size: 12px;
+}
+
+/* ---- tree ---- */
+#pipelineV2 h3 {
+  margin: 20px 0 8px; font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; color: var(--muted, #6b7280);
+}
+#v2Tree > h3:first-of-type { margin-top: 4px; }
+#pipelineV2 ul { list-style: none; margin: 0; padding: 0; }
+#pipelineV2 li { margin: 1px 0; position: relative; }
+/* One guide line per level, with an elbow into each child. */
+#pipelineV2 ul ul { margin-left: 10px; padding-left: 16px; border-left: 1px solid var(--line, #e3e6ea); }
+#pipelineV2 ul ul > li::before { content: ""; position: absolute; left: -16px; top: 17px; width: 12px; border-top: 1px solid var(--line, #e3e6ea); }
+
+.v2-toolbar { display: flex; gap: 8px; margin: 0 0 6px; }
+.v2-toolbar button { margin: 0; padding: 4px 11px; font-size: 12px; }
+
+.v2-row { display: flex; align-items: flex-start; gap: 4px; }
+.v2-toggle, .v2-toggle-spacer { flex: none; width: 24px; height: 30px; display: inline-block; }
+#pipelineV2 button.v2-toggle {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 0; margin: 0; padding: 0;
+  height: 30px; border: 0; border-radius: 6px; background: transparent; color: var(--muted, #6b7280); font-size: 13px; line-height: 1; cursor: pointer;
+}
+#pipelineV2 button.v2-toggle:hover { background: var(--accbg, #e8effd); color: var(--accent, #2f6feb); }
+
+#pipelineV2 button.v2-select {
+  display: flex; align-items: baseline; gap: 10px; flex: 1 1 auto; min-width: 0; max-width: 100%; margin: 0; padding: 7px 10px;
+  border: 1px solid transparent; border-radius: 8px; background: transparent; color: var(--ink, #16181d);
+  font: inherit; text-align: left; cursor: pointer; box-shadow: none;
+}
+#pipelineV2 button.v2-select:hover { background: var(--accbg, #e8effd); }
+#pipelineV2 button.v2-select[aria-pressed=true] { background: var(--accbg, #e8effd); border-color: var(--accent, #2f6feb); }
+#pipelineV2 button.v2-select:focus-visible { outline: 2px solid var(--accent, #2f6feb); outline-offset: 1px; }
+.v2-text { min-width: 0; overflow-wrap: anywhere; line-height: 1.4; }
+
+/* Weight follows depth, so the outline reads as an outline. */
+.v2-row[data-level="1"] .v2-text { font-size: 15px; font-weight: 700; }
+.v2-row[data-level="2"] .v2-text { font-size: 14px; font-weight: 600; }
+.v2-row[data-level="3"] .v2-text, .v2-row[data-level="4"] .v2-text,
+.v2-row[data-level="5"] .v2-text, .v2-row[data-level="6"] .v2-text { font-size: 13.5px; font-weight: 450; }
+.v2-row[data-level="unknown"] .v2-text { font-size: 13.5px; font-weight: 450; color: var(--muted, #6b7280); }
+
+/* Level badge: solid for H1, tinted for H2, outlined deeper, dashed when the level is unknown. */
+.v2-level {
+  flex: none; min-width: 28px; padding: 1px 6px; border-radius: 5px; border: 1px solid var(--line, #e3e6ea);
+  font: 600 11px/1.5 ui-monospace, Consolas, monospace; text-align: center; color: var(--muted, #6b7280); background: var(--bg, #f6f7f9);
+}
+.v2-level[data-level="1"] { background: var(--accent, #2f6feb); border-color: var(--accent, #2f6feb); color: #fff; }
+.v2-level[data-level="2"] { background: var(--accbg, #e8effd); border-color: transparent; color: var(--accent, #2f6feb); }
+.v2-level[data-level="unknown"] { border-style: dashed; background: transparent; }
+
+/* Status chips sit after the title and wrap under it on a narrow screen. */
+.v2-chip { flex: none; margin-top: 6px; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.v2-chip-review { background: var(--warnbg, #fbf1e0); color: var(--warn, #a4620a); }
+.v2-chip-ok { background: var(--okbg, #e6f4ec); color: var(--ok, #1a7f4b); }
+.v2-chip-neutral { background: var(--bg, #f6f7f9); color: var(--muted, #6b7280); border: 1px dashed var(--line, #e3e6ea); }
+
+#v2Stages { padding-left: 22px; font-size: 13px; line-height: 1.7; }
+
+@media (max-width: 820px) {
+  .v2-row { flex-wrap: wrap; }
+  .v2-grid { grid-template-columns: 1fr; }
+  #v2Inspector { position: static; max-height: none; }
+  .v2-facts { grid-template-columns: 1fr; }
+}

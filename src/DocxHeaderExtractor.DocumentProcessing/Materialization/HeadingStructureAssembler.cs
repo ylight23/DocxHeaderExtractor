@@ -43,16 +43,20 @@ internal static class HeadingStructureAssembler
         ArgumentNullException.ThrowIfNull(authority);
 
         var validated = HeadingDecisionBinder.BindAndValidate(source.OccurrenceContexts, authority.Decisions);
+        // Only validated headings are placed. A heading that fails validation never becomes an element, so a level or a parent taken from it
+        // would have no element to stand on: its child would show a depth with no parent, and the relation would be dropped without a trace.
+        var validatedIds = validated.Select(item => item.SourceId).ToHashSet(StringComparer.Ordinal);
+        var bound = authority.BoundHeadings.Where(item => validatedIds.Contains(item.SourceId)).ToArray();
         // Reasoning surface #3: headings the first pass left unplaced come back in one narrow
         // follow-up that asks only about position. Bounded to a single round; an unresolved heading
         // is a legitimate outcome.
         var placement = authority.PlacementTransport is null
-            ? HeadingParentResolver.Observe(authority.BoundHeadings,
-                HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(authority.BoundHeadings)
+            ? HeadingParentResolver.Observe(bound,
+                HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(bound)
                     .Where(item => item.Resolution == HeadingHierarchyResolver.Unresolved)
                     .Select(item => item.SourceId).ToHashSet(StringComparer.Ordinal), "placement-not-requested")
             : await HeadingParentResolver.PlaceWithObservationAsync(
-                authority.BoundHeadings, authority.PlacementTransport, cancellationToken, authority.PlacementEvidence).ConfigureAwait(false);
+                bound, authority.PlacementTransport, cancellationToken, authority.PlacementEvidence).ConfigureAwait(false);
         var placed = placement.Headings;
         // The alias catalog spans the whole document while contexts hold only the occurrences the
         // route carries, so a bound heading can name a source this route cannot materialize.

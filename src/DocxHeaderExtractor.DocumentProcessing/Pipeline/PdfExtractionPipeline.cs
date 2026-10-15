@@ -104,7 +104,7 @@ public static class PdfExtractionPipeline
             sections,
             chunks,
             new DocumentExtractionProvenance(
-                "pdf-canonical-vnext",
+                "pdf-v6-selected-lines",
                 "pdf-source-document",
                 authority.Audit?.RawModelResponses.Count ?? 0)
             {
@@ -157,7 +157,7 @@ public static class PdfExtractionPipeline
             ProductOutput = product,
             ElapsedMs = Environment.TickCount64 - started,
             Model = transport?.ModelName,
-            DeterministicRoute = "pdf-canonical-vnext",
+            DeterministicRoute = "pdf-v6-selected-lines",
             RouteAudit = audit,
             Provenance = DocxExtractionPipeline.BuildProvenance(
                 audit, !options.DisableLlm && transportSendsDataExternally),

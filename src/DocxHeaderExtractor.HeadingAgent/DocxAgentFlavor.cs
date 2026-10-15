@@ -1,4 +1,6 @@
 using System.Text.Encodings.Web;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
@@ -65,11 +67,35 @@ internal sealed class DocxAgentFlavor : IAgentFlavor
         if (style["alignment"] is { } alignment) brief["alignment"] = alignment.DeepClone();
         if (f["numbering"]?["label"] is { } label) brief["numberLabel"] = label.DeepClone();
         if (f["numbering"]?["level"] is { } level) brief["numberLevel"] = level.DeepClone();
-        return new { alias = docx.Lines[index].Alias, text = docx.Lines[index].Text, style = brief };
+        var shape = Shape(docx.Lines[index].Text);
+        return new { alias = docx.Lines[index].Alias, text = docx.Lines[index].Text, style = brief, shape, shapeCount = ShapeCountsOf(docx)[shape] };
     }
 
     public object GroupContextItem(IAgentSource source, int index) =>
         new { alias = source.Lines[index].Alias, text = AgentGrouping.Clip(source.Lines[index].Text), selected = false };
 
     public List<int[]> FallbackDivision(IAgentSource source, int[] lines) => lines.Select(i => new[] { i }).ToList();
+
+    static readonly Regex NumberToken = new(@"^(\d+(\.\d+)*|[IVXLCDM]+)$", RegexOptions.CultureInvariant);
+    static readonly ConditionalWeakTable<IAgentSource, Dictionary<string, int>> shapeCounts = new();
+
+    /// <summary>The shape of a line: its first two words, with every number or roman numeral written as #. Only the form of the text is read.</summary>
+    internal static string Shape(string text) =>
+        string.Join(" ", text.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries).Take(2).Select(word =>
+        {
+            var core = word.TrimEnd('.', ':', ';', ',', ')');
+            return core.Length > 0 && NumberToken.IsMatch(core) ? "#" : word;
+        }));
+
+    /// <summary>How many lines of the document have each shape, counted once per source.</summary>
+    static Dictionary<string, int> ShapeCountsOf(IAgentSource source) => shapeCounts.GetValue(source, s =>
+    {
+        var counts = new Dictionary<string, int>(StringComparer.Ordinal);
+        foreach (var line in s.Lines)
+        {
+            var shape = Shape(line.Text);
+            counts[shape] = counts.GetValueOrDefault(shape) + 1;
+        }
+        return counts;
+    });
 }
