@@ -2,7 +2,7 @@ using System.Text.Json.Nodes;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-using DocxHeaderExtractor.PdfHeadingAgent;
+using DocxHeaderExtractor.HeadingAgent;
 
 namespace DocxHeaderExtractor.Tests;
 

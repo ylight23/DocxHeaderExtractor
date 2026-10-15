@@ -2,7 +2,7 @@ using System.Text;
 using System.Text.Json;
 using System.Security.Cryptography;
 using DocxHeaderExtractor.Cli;
-using DocxHeaderExtractor.AgentHarness;
+using DocxHeaderExtractor.V6Runner;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
@@ -94,14 +94,9 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
         return 2;
     }
 
-    using var tool = new PipelineDocumentExtractionTool(o.Pipeline, new InferenceTransportFactory(o.Provider));
-    // Extraction writes through the canonical ProductOutput authority.
-    using IDocumentActionTool? actionTool = o.WritebackPath is null
-        ? null
-        : new DocxProductWritebackTool(o.Pipeline.Extraction);
-    var harness = CliHarnessComposition.Create(files, tool, actionTool);
-    if (!o.Quiet)
-        Console.Error.WriteLine($"  policy: {harness.Skill}");
+    // Chạy thẳng tuyến V6 (PDF/DOCX). Không qua harness: không có consent gửi dữ liệu ra ngoài,
+    // không có validator, không có guardrail đích ghi (chủ dự án chấp nhận, 2026-10-15).
+    using var runner = new V6DocumentRunner(o.Pipeline, new InferenceTransportFactory(o.Provider));
     var outputs = new List<string>();
     int failed = 0;
 
@@ -110,27 +105,24 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
         if (!o.Quiet) Console.Error.WriteLine($"» {Path.GetFileName(file)}");
         try
         {
-            var agentRun = await harness.RunAsync(AgentRequest(file, o), ct);
-            var outline = agentRun.TaskResult.Value;
+            var execution = await runner.ExtractAsync(file, ct: ct);
+            var outline = execution.Outline;
             if (!o.Quiet)
+                Console.Error.WriteLine($"  {outline.Headings.Count} heading từ {outline.ParagraphCount} đoạn.");
+
+            if (o.WritebackPath is not null)
             {
-                Console.Error.WriteLine($"  {AgentRunNarrator.Describe(agentRun)}");
-
-                // Lượt dựng lại là chi phí GẤP ĐÔI và trước đây hoàn toàn câm: narrator chỉ nói
-                // "đã phải dựng lại 1 lượt" mà không nói vì sao. Ở §132 một mục do mô hình bù bị
-                // nuốt mất vì danh sách sai thứ tự, và phải cắm mốc in chỉ số thủ công mới truy ra.
-                foreach (var e in agentRun.Trace.Where(x => x.Kind == AgentRunEventKind.Repairing))
-                    Console.Error.WriteLine($"  ⟲ {e.Message}");
-
-                Console.Error.WriteLine($"  agent={agentRun.Outcome} · run={agentRun.RunId:N}");
+                var writeback = V6DocumentRunner.WriteOutline(
+                    file, outline, o.WritebackPath, o.Pipeline.Extraction,
+                    applyHeadingStyles: o.WritebackHeadingStyles, overwrite: o.WritebackOverwrite);
+                if (!o.Quiet)
+                    Console.Error.WriteLine($"  Đã ghi {writeback.Applied} heading, bỏ qua {writeback.Skipped} mục: {Path.GetFileName(writeback.OutputPath)}");
             }
             outputs.Add(OutlineFormatter.Format(outline, o.Format));
         }
         catch (Exception ex) when (ex is not OperationCanceledException)
         {
-            Console.Error.WriteLine($"  {AgentRunNarrator.DescribeError(ex)}");
-            // The narrated one-liner is for operators; a failure inside the pipeline is not
-            // diagnosable without the frame that threw.
+            Console.Error.WriteLine($"  {ex.Message}");
             if (o.Verbose) Console.Error.WriteLine(ex.ToString());
             failed++;
         }
@@ -166,15 +158,6 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
 /// Yêu cầu gửi harness cho một tài liệu. Chỉ đồng ý gửi dữ liệu ra ngoài khi backend là dịch vụ
 /// từ xa và người dùng không chạy <c>--no-llm</c>.
 /// </summary>
-static DocumentAgentRequest AgentRequest(string file, CommandLineOptions o) =>
-    new(file, AllowExternalDataTransfer:
-        !o.Pipeline.DisableLlm && o.Provider.Backend is InferenceBackend.OpenRouter or InferenceBackend.Sglang)
-    {
-        WritebackTargetPath = o.WritebackPath,
-        AllowWritebackOverwrite = o.WritebackOverwrite,
-        ApplyHeadingStyles = o.WritebackHeadingStyles,
-    };
-
 static int RunModelInfo(CommandLineOptions o)
 {
     var path = o.Inputs.FirstOrDefault() ?? o.Provider.LocalModel.ModelPath;

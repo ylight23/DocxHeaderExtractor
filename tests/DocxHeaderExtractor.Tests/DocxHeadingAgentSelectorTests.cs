@@ -1,5 +1,5 @@
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.PdfHeadingAgent;
+using DocxHeaderExtractor.HeadingAgent;
 
 namespace DocxHeaderExtractor.Tests;
 

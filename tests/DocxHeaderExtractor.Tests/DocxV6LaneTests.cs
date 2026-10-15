@@ -4,7 +4,7 @@ using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
-using DocxHeaderExtractor.PdfHeadingAgent;
+using DocxHeaderExtractor.HeadingAgent;
 
 namespace DocxHeaderExtractor.Tests;
 

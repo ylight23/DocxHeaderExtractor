@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DocxHeaderExtractor.Core\DocxHeaderExtractor.Core.csproj" />
+    <ProjectReference Include="..\DocxHeaderExtractor.Sources\DocxHeaderExtractor.Sources.csproj" />
   </ItemGroup>
 
 </Project>

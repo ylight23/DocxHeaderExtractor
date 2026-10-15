@@ -1,7 +1,7 @@
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.PdfHeadingAgent;
+using DocxHeaderExtractor.HeadingAgent;
 using DocxHeaderExtractor.V6Qualification.P7;
 using A = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectAgent;
 using C = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectRepeatCanary;
@@ -9,7 +9,7 @@ using C = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectRepeatCanary;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
-/// The production PDF heading agent (DocxHeaderExtractor.PdfHeadingAgent) is a port of the qualified V6 direct agent with the D4.12 method. These
+/// The production PDF heading agent (DocxHeaderExtractor.HeadingAgent) is a port of the qualified V6 direct agent with the D4.12 method. These
 /// tests hold it to the qualified code byte for byte on SRC-089: the source and its hashes, the layout facts, the system prompt, the tool
 /// declarations, the first request of every segment (also against the SHA-256s pinned in the D4.12 reference plan), the result of every kind
 /// of tool call, and whole conversations driven by the same scripted model, with repairs, a fenced answer and a transport retry.

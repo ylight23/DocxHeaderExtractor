@@ -110,9 +110,6 @@ public sealed class HeadingRecord
     public bool Disputed { get; set; }
 }
 
-public sealed record TextOffsetSpan(
-    [property: JsonPropertyName("start")] int Start,
-    [property: JsonPropertyName("end")] int End);
 
 /// <summary>Runtime grounding evidence for one exact source selection, keyed by identity, not ordinal.</summary>
 public sealed record HeadingSourcePart(string SourceId, int SourceOrdinal, TextOffsetSpan Span, string OriginalText);

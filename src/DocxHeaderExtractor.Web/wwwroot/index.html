@@ -1263,7 +1263,7 @@ function handle(evt) {
     outline = evt.outline;
     if (evt.agent) {
       appendLiveEvent({ type: 'agent', channel: 'agent', stage: 'completed', kind: evt.agent.outcome,
-        message: `${evt.agent.message} (policy ${evt.agent.skill}, ${evt.agent.steps} bước)` });
+        message: evt.agent.message });
     }
     render(evt.outline, evt.stats, evt.agent);
   }

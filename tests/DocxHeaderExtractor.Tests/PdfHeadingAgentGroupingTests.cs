@@ -1,6 +1,6 @@
 using System.Text.Json;
-using DocxHeaderExtractor.PdfHeadingAgent;
-using static DocxHeaderExtractor.PdfHeadingAgent.AgentProtocol;
+using DocxHeaderExtractor.HeadingAgent;
+using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
 
 namespace DocxHeaderExtractor.Tests;
 

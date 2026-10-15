@@ -2,7 +2,6 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Channels;
-using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
@@ -12,6 +11,7 @@ using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.Application.Runtime;
 using DocxHeaderExtractor.Application.Semantics;
 using DocxHeaderExtractor.Application.Tasks;
+using DocxHeaderExtractor.V6Runner;
 using DocxHeaderExtractor.Infrastructure.Runtime;
 using DocxHeaderExtractor.Infrastructure.Sources;
 using DocxHeaderExtractor.Web;
@@ -38,7 +38,6 @@ builder.Services.AddSingleton<LlamaModelCache>();
 builder.Services.AddSingleton<WebTransportFactoryResolver>(sp => selection =>
     new WebInferenceTransportFactory(selection, sp.GetRequiredService<IHttpClientFactory>(),
         sp.GetRequiredService<LlamaModelCache>()));
-builder.Services.AddSingleton<DocumentAgentHarnessFactory>();
 builder.Services.AddSingleton<LmStudioModelDiscovery>();
 builder.Services.AddSingleton<WritebackStore>();
 builder.Services.AddSingleton<ITaskRunStore>(_ => new JsonFileTaskRunStore(RuntimeStatePaths.RunDirectory));
@@ -106,7 +105,6 @@ app.MapGet("/api/outline/{runId:guid}.docx", (Guid runId, WritebackStore store) 
 app.MapPost("/api/extract", async (
     HttpRequest req,
     HttpResponse res,
-    DocumentAgentHarnessFactory harnessFactory,
     WritebackStore writebackStore,
     WebTransportFactoryResolver transportFactory,
     CancellationToken ct) =>
@@ -201,9 +199,9 @@ app.MapPost("/api/extract", async (
             // The factory deliberately resolves DOCX and PDF separately. In particular, an
             // OpenRouter instance constructed directly here would not carry the PDF production
             // authorization marker, while local/LM Studio remain valid DOCX backends only.
-            using var tool = new PipelineDocumentExtractionTool(
-                options,
-                transportFactory(provider));
+            // Chạy thẳng tuyến V6 (agent PDF/DOCX), giống CLI: không qua harness. Tiến độ stream dưới dạng sự kiện
+            // "agent" để giữ nhật ký trên giao diện.
+            using var runner = new V6DocumentRunner(options, transportFactory(provider));
 
             // Đích ghi do server đặt bên trong thư mục tạm của request, không bao giờ lấy từ form:
             // một đường dẫn do client chỉ định là đường để ghi đè file bất kỳ trên máy chủ.
@@ -211,75 +209,69 @@ app.MapPost("/api/extract", async (
             var writebackTarget = wantsWriteback
                 ? Path.Combine(work, Path.GetFileNameWithoutExtension(SafeName(upload.FileName)) + ".outline.docx")
                 : null;
-            using IDocumentActionTool? actionTool = wantsWriteback
-                ? new DocxProductWritebackTool(options.Extraction)
-                : null;
 
-            var sink = new DelegateAgentRunSink((evt, _) =>
+            var runId = Guid.NewGuid();
+            void Stage(string stage, string kind, string message) => events.Writer.TryWrite(new
             {
-                events.Writer.TryWrite(new
-                {
-                    type = "agent",
-                    runId = evt.RunId,
-                    sequence = evt.Sequence,
-                    timestamp = evt.Timestamp,
-                    stage = evt.Stage,
-                    kind = evt.Kind.ToString(),
-                    message = evt.Message,
-                });
-                return ValueTask.CompletedTask;
+                type = "agent",
+                runId,
+                timestamp = DateTimeOffset.UtcNow,
+                stage,
+                kind,
+                message,
             });
-            var harness = harnessFactory.Create(tool, sink, actionTool: actionTool);
-            var request = new DocumentAgentRequest(
-                inputPath,
-                AllowExternalDataTransfer:
-                    !options.DisableLlm && provider.SendsDataExternally)
+            var run = Task.Run(async () =>
             {
-                UserPrompt = form["userPrompt"].ToString().Trim() is { Length: > 0 } prompt
-                    ? prompt
-                    : "Extract the document structure.",
-                WritebackTargetPath = writebackTarget,
-            };
-            var run = Task.Run(() => harness.RunAsync(request, ct), ct);
+                Stage("extract", "Started", "Bắt đầu trích xuất tài liệu.");
+                var execution = await runner.ExtractAsync(inputPath, ct: ct);
+                var outline = execution.Outline;
+                Stage("extract", "Completed", $"Tuyến {uploadedType} trả {outline.Headings.Count} heading từ {outline.ParagraphCount} đoạn.");
+                OutlineWritebackReport? written = null;
+                if (writebackTarget is not null)
+                {
+                    Stage("writeback", "Started", "Ghi outline vào bản sao.");
+                    written = V6DocumentRunner.WriteOutline(inputPath, outline, writebackTarget, options.Extraction);
+                    Stage("writeback", "Completed", $"Đã ghi {written.Applied} heading, bỏ qua {written.Skipped} mục.");
+                }
+                return (Outline: outline, Execution: execution, Writeback: written);
+            }, ct);
             _ = run.ContinueWith(_ => events.Writer.TryComplete(), TaskScheduler.Default);
 
             await foreach (var evt in events.Reader.ReadAllAsync(ct))
                 await EmitAsync(evt);
 
-            var agentRun = await run;
-            var outline = agentRun.TaskResult.Value;
+            var (outline, execution, writeback) = await run;
 
             // Đọc vào bộ nhớ trước khi finally xoá thư mục tạm; link chỉ tải được đúng một lần.
             string? download = null;
-            if (agentRun.Writeback is { } written && File.Exists(written.OutputPath))
+            if (writeback is { } written && File.Exists(written.OutputPath))
             {
                 writebackStore.Put(
-                    agentRun.RunId,
+                    runId,
                     await File.ReadAllBytesAsync(written.OutputPath, ct),
                     Path.GetFileName(written.OutputPath));
-                download = $"/api/outline/{agentRun.RunId}.docx";
+                download = $"/api/outline/{runId}.docx";
             }
 
+            var requiresReview = outline.Headings.Count(h =>
+                h.DecisionStatus == HeadingDecisionStatus.RequiresReview || h.Disputed);
             await EmitAsync(new
             {
                 type = "result",
                 outline = WebPipelineProjection.SafeOutline(outline, json),
-                pipeline = WebPipelineProjection.Project(agentRun, uploadedType.ToString().ToLowerInvariant()),
+                pipeline = WebPipelineProjection.Project(runId, "Completed", outline, execution, uploadedType.ToString().ToLowerInvariant()),
                 stats = Stats.From(outline),
                 sourceType = uploadedType.ToString().ToLowerInvariant(),
                 agent = new
                 {
-                    runId = agentRun.RunId,
-                    planId = agentRun.TaskResult.PlanId,
-                    outcome = agentRun.Outcome.ToString(),
-                    steps = agentRun.Steps,
-                    repairAttempts = agentRun.RepairAttempts,
-                    requiresReview = agentRun.RequiresReview,
-                    skill = agentRun.Skill.ToString(),
-                    // Câu tường thuật do harness dựng từ chính outline đã qua validator, để UI
-                    // không phải tự diễn giải lại các con số và tự ý làm nhẹ phần "cần duyệt".
-                    message = AgentRunNarrator.Describe(agentRun),
-                    writebackApplied = agentRun.Writeback?.Applied,
+                    runId,
+                    outcome = "Completed",
+                    steps = writeback is null ? 1 : 2,
+                    repairAttempts = 0,
+                    requiresReview,
+                    message = $"Trích xuất {outline.Headings.Count} heading từ {outline.ParagraphCount} đoạn."
+                        + (requiresReview == 0 ? "" : $" Còn {requiresReview} mục cần xem lại."),
+                    writebackApplied = writeback?.Applied,
                     download,
                 },
             });

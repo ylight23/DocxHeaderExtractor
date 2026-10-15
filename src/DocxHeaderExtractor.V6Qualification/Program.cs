@@ -2,7 +2,7 @@ namespace DocxHeaderExtractor.V6Qualification;
 
 /// <summary>
 /// What remains of the qualification project is the V6 heading-agent experiment (P7F1V6*): the qualified code that the production
-/// PdfHeadingAgent is held to byte for byte by the parity tests. It has no command of its own any more; the earlier P5-P7 commands and
+/// PdfHeadingAgent (in DocxHeaderExtractor.HeadingAgent) is held to byte for byte by the parity tests. It has no command of its own any more; the earlier P5-P7 commands and
 /// canaries were removed on 2026-10-14 (see git history).
 /// </summary>
 internal static class Program

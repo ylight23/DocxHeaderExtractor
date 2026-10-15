@@ -1,6 +1,5 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.AgentHarness;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
@@ -26,11 +25,11 @@ public sealed record WebPipelineResponse(string SchemaVersion, Guid ExecutionId,
 /// <summary>Read-only Web projection of one retained execution. No parsing, inference or authority reconstruction.</summary>
 public static class WebPipelineProjection
 {
-    public static WebPipelineResponse Project(DocumentAgentRunResult run, string sourceKind)
+    public static WebPipelineResponse Project(Guid runId, string outcome, DocumentOutline outline,
+        DocumentExtractionExecutionResult? execution, string sourceKind)
     {
-        var execution = run.Execution;
-        if (execution is null || !ReferenceEquals(execution.Outline, run.TaskResult.Value))
-            return new("web-pipeline-v2", run.RunId, "unavailable", run.Outcome.ToString(), sourceKind,
+        if (execution is null || !ReferenceEquals(execution.Outline, outline))
+            return new("web-pipeline-v2", runId, "unavailable", outcome, sourceKind,
                 [], [], [], [], new(0, 0, 0, null, "not-recorded", 0),
                 [new("execution", "not-recorded", "Same-execution envelope was not supplied")], [], null, null);
 
@@ -106,7 +105,7 @@ public static class WebPipelineProjection
                 $"Producer {placement.Status}; requested={placement.RequestedCount}; placed={placement.PlacedCount}; outside-tree={placement.OutOfHierarchyCount}; unresolved={placement.UnresolvedCount}; failure={placement.FailureClass ?? "none"}"));
         stages.Add(new("projection", "completed", "Returned production outline"));
         stages.Add(new("final-result", "completed", "Validated harness task result"));
-        return new("web-pipeline-v2", run.RunId, "same-execution", run.Outcome.ToString(), sourceKind, headings,
+        return new("web-pipeline-v2", runId, "same-execution", outcome, sourceKind, headings,
             relations, headings.Where(h => h.ParentStatus == "no-validated-parent").Select(h => h.ElementId).ToArray(),
             headings.Where(h => h.ParentStatus is "unresolved" or "parent-not-emitted").Select(h => h.ElementId).ToArray(),
             new(headings.Length, headings.Count(h => h.Level is null),

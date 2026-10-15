@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Source readers (OOXML, PDF), the source snapshot, the shared model contracts (former Core) and the selector contract. Nothing here knows the pipeline. -->
+    <InternalsVisibleTo Include="DocxHeaderExtractor.DocumentProcessing" />
+    <InternalsVisibleTo Include="DocxHeaderExtractor.HeadingAgent" />
+    <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
+    <InternalsVisibleTo Include="dhx-v6-qualify" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" />
+    <PackageReference Include="PdfPig" />
+  </ItemGroup>
+
+</Project>

@@ -6,7 +6,7 @@ using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.Infrastructure.AI;
-using DocxHeaderExtractor.PdfHeadingAgent;
+using DocxHeaderExtractor.HeadingAgent;
 using DocxHeaderExtractor.V6Qualification.P7;
 
 namespace DocxHeaderExtractor.Tests;
