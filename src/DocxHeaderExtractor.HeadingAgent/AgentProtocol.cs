@@ -159,8 +159,9 @@ internal static class AgentProtocol
 
     public sealed record ToolCall(string? Id, string? Name, string Arguments);
 
-    /// <summary>One assistant turn as the response states it. Content is the visible text (null when absent); reasoning is never read.</summary>
-    public sealed record ModelTurn(string? Content, IReadOnlyList<ToolCall> ToolCalls, string? FinishReason);
+    /// <summary>One assistant turn as the response states it. Content is the visible text (null when absent). Reasoning is carried for the
+    /// diagnostics hook only: no decision reads it.</summary>
+    public sealed record ModelTurn(string? Content, IReadOnlyList<ToolCall> ToolCalls, string? FinishReason, string? Reasoning = null);
 
     /// <summary>Reads choices[0].message of a chat response: content and tool_calls, as given. Never repairs anything.</summary>
     public static (ModelTurn? Turn, string? Failure) ReadResponse(string responseJson)
@@ -192,7 +193,8 @@ internal static class AgentProtocol
                 }
             if (calls.Count == 0 && finish == "tool_calls") return (null, "FINISH_TOOL_CALLS_WITHOUT_CALLS");
             if (calls.Count == 0 && content is null) return (null, "CONTENT_NOT_TEXT");
-            return (new ModelTurn(content, calls, finish), null);
+            var reasoning = msg.TryGetProperty("reasoning", out var rz) && rz.ValueKind == JsonValueKind.String ? rz.GetString() : null;
+            return (new ModelTurn(content, calls, finish, reasoning), null);
         }
     }
 

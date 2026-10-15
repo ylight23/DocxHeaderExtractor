@@ -133,14 +133,15 @@ internal static class Sse
     public sealed record Call(int Index, string? Id, string? Name, string Arguments);
 
     public sealed record Assembly(string Content, IReadOnlyList<Call> ToolCalls, string? FinishReason, string? NativeFinishReason, JsonElement? Usage,
-        bool Error, string? GenerationId, string? Provider, string? Model, bool Done, int MalformedEvents)
+        bool Error, string? GenerationId, string? Provider, string? Model, bool Done, int MalformedEvents, string Reasoning)
     {
         public double? Cost => Usage is { } u && u.TryGetProperty("cost", out var c) && c.ValueKind == JsonValueKind.Number ? c.GetDouble() : null;
 
-        /// <summary>The chat-completion view of the stream; the reasoning is not carried.</summary>
+        /// <summary>The chat-completion view of the stream. The reasoning travels as message.reasoning, for the diagnostics hook only.</summary>
         public string View()
         {
             var message = new JsonObject { ["role"] = "assistant", ["content"] = Content.Length == 0 ? null : Content };
+            if (Reasoning.Length > 0) message["reasoning"] = Reasoning;
             if (ToolCalls.Count > 0)
                 message["tool_calls"] = new JsonArray(ToolCalls.Select(t => (JsonNode)new JsonObject
                 {
@@ -158,6 +159,7 @@ internal static class Sse
     public static Assembly Parse(string raw)
     {
         var content = new StringBuilder();
+        var reasoning = new StringBuilder();
         var calls = new SortedDictionary<int, (string? Id, string? Name, StringBuilder Args)>();
         string? finish = null, native = null, id = null, provider = null, model = null;
         JsonElement? usage = null; var error = false; var done = false; var malformed = 0;
@@ -186,6 +188,7 @@ internal static class Sse
                     if (c.TryGetProperty("error", out _)) error = true;
                     if (!c.TryGetProperty("delta", out var delta) || delta.ValueKind != JsonValueKind.Object) continue;
                     if (delta.TryGetProperty("content", out var t) && t.ValueKind == JsonValueKind.String) content.Append(t.GetString());
+                    if (delta.TryGetProperty("reasoning", out var rs) && rs.ValueKind == JsonValueKind.String) reasoning.Append(rs.GetString());
                     if (delta.TryGetProperty("tool_calls", out var tc) && tc.ValueKind == JsonValueKind.Array)
                         foreach (var call in tc.EnumerateArray())
                         {
@@ -203,7 +206,7 @@ internal static class Sse
             }
         }
         return new(content.ToString(), calls.Select(kv => new Call(kv.Key, kv.Value.Id, kv.Value.Name, kv.Value.Args.ToString())).ToArray(),
-            finish, native, usage, error, id, provider, model, done, malformed);
+            finish, native, usage, error, id, provider, model, done, malformed, reasoning.ToString());
     }
 
     /// <summary>Only data events, blank lines and comments are accepted; an event line, an unknown field, data after [DONE] or a data event

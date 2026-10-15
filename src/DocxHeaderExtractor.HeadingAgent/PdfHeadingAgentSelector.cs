@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.HeadingAgent;
 public sealed class PdfHeadingAgentSelector : HeadingAgentSelector
 {
     /// <inheritdoc cref="HeadingAgentSelector"/>
-    public PdfHeadingAgentSelector(Func<HttpMessageHandler>? handlerFactory = null, int? parallelism = null, Action<string, string?>? onModelReply = null,
+    public PdfHeadingAgentSelector(Func<HttpMessageHandler>? handlerFactory = null, int? parallelism = null, Action<ModelReply>? onModelReply = null,
         string? instruction = null, int firstSegments = 0)
         : base(handlerFactory, parallelism, onModelReply, instruction, firstSegments) { }
 

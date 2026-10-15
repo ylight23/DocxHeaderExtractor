@@ -14,7 +14,7 @@ public sealed class DocxHeadingAgentSelector : HeadingAgentSelector
 
     /// <param name="extraction">The route's extraction options (for example tables left out); null reads everything.</param>
     /// <inheritdoc cref="HeadingAgentSelector"/>
-    public DocxHeadingAgentSelector(Func<HttpMessageHandler>? handlerFactory = null, int? parallelism = null, Action<string, string?>? onModelReply = null,
+    public DocxHeadingAgentSelector(Func<HttpMessageHandler>? handlerFactory = null, int? parallelism = null, Action<ModelReply>? onModelReply = null,
         string? instruction = null, int firstSegments = 0, ExtractionOptions? extraction = null)
         : base(handlerFactory, parallelism, onModelReply, instruction, firstSegments) => this.extraction = extraction;
 

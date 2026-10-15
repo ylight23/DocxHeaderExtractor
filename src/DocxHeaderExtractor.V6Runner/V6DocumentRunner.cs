@@ -24,13 +24,14 @@ public sealed class V6DocumentRunner : IDisposable
     private readonly PdfExtractionHandler _pdfLane;
     private readonly DocumentExtractionRouter _dispatcher;
 
-    public V6DocumentRunner(PipelineOptions options, IInferenceTransportFactory factory)
+    /// <param name="onModelReply">Diagnostics only: called with every model reply. Null records nothing.</param>
+    public V6DocumentRunner(PipelineOptions options, IInferenceTransportFactory factory, Action<ModelReply>? onModelReply = null)
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(factory);
         _docxLane = new DocxExtractionPipeline(options, factory,
-            factory.CreateDocxHeadingSelector() ?? new DocxHeadingAgentSelector(extraction: options.Extraction));
-        _pdfLane = new PdfExtractionHandler(options, factory, factory.CreatePdfHeadingSelector() ?? new PdfHeadingAgentSelector());
+            factory.CreateDocxHeadingSelector() ?? new DocxHeadingAgentSelector(onModelReply: onModelReply, extraction: options.Extraction));
+        _pdfLane = new PdfExtractionHandler(options, factory, factory.CreatePdfHeadingSelector() ?? new PdfHeadingAgentSelector(onModelReply: onModelReply));
         _dispatcher = new DocumentExtractionRouter(new DocxExtractionHandler(_docxLane), _pdfLane);
     }
 

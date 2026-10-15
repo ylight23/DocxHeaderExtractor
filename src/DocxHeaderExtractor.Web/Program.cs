@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -7,6 +8,7 @@ using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.HeadingAgent;
 using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.Application.Runtime;
 using DocxHeaderExtractor.Application.Tasks;
@@ -199,7 +201,11 @@ app.MapPost("/api/extract", async (
             // authorization marker, while local/LM Studio remain valid DOCX backends only.
             // Chạy thẳng tuyến V6 (agent PDF/DOCX), giống CLI: không qua harness. Tiến độ stream dưới dạng sự kiện
             // "agent" để giữ nhật ký trên giao diện.
-            using var runner = new V6DocumentRunner(options, transportFactory(provider));
+            // Phản hồi của mô hình chỉ được giữ và trả về khi người dùng tự bật "Hiện phản hồi của mô hình".
+            var showRaw = form["showRaw"].ToString() is "1" or "true" or "on";
+            var replies = new ConcurrentQueue<ModelReply>();
+            using var runner = new V6DocumentRunner(options, transportFactory(provider),
+                showRaw ? r => replies.Enqueue(r) : null);
 
             // Đích ghi do server đặt bên trong thư mục tạm của request, không bao giờ lấy từ form:
             // một đường dẫn do client chỉ định là đường để ghi đè file bất kỳ trên máy chủ.
@@ -258,6 +264,14 @@ app.MapPost("/api/extract", async (
                 type = "result",
                 outline = WebPipelineProjection.SafeOutline(outline, json),
                 pipeline = WebPipelineProjection.Project(runId, "Completed", outline, execution, uploadedType.ToString().ToLowerInvariant()),
+                modelReplies = showRaw
+                    ? replies.OrderBy(r => r.Unit, StringComparer.Ordinal).ThenBy(r => r.Turn).Select(r => new
+                    {
+                        unit = r.Unit, turn = r.Turn, reasoning = r.Reasoning, finishReason = r.FinishReason, content = r.Content,
+                        toolCalls = r.ToolCalls.Select(c => new { name = c.Name, arguments = c.Arguments }).ToArray(),
+                        toolResults = r.ToolResults.Select(x => new { toolCallId = x.ToolCallId, content = x.Content }).ToArray(),
+                    }).ToArray()
+                    : null,
                 stats = Stats.From(outline),
                 sourceType = uploadedType.ToString().ToLowerInvariant(),
                 agent = new

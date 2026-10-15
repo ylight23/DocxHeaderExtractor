@@ -4,6 +4,17 @@ using DocxHeaderExtractor.DocumentProcessing.Routing;
 
 namespace DocxHeaderExtractor.HeadingAgent;
 
+/// <summary>One model reply as the diagnostics hook sees it: the unit, the turn, the reasoning the model streamed (null when it streamed none),
+/// the tool calls it made, its visible content, and the tool results the request before it added to the conversation. No decision reads any of it.</summary>
+public sealed record ModelReply(string Unit, int Turn, string? Reasoning, IReadOnlyList<ModelReplyToolCall> ToolCalls, string? Content, string? FinishReason,
+    IReadOnlyList<ModelToolResult> ToolResults);
+
+/// <summary>A tool result the conversation received: the call it answers and the content the tool returned.</summary>
+public sealed record ModelToolResult(string? ToolCallId, string Content);
+
+/// <summary>A tool call of a model reply: the tool's name and the arguments as the model wrote them.</summary>
+public sealed record ModelReplyToolCall(string? Name, string Arguments);
+
 /// <summary>
 /// The heading selector of the V6 method, for any kind of document: the document is read into an <see cref="IAgentSource"/> and cut into
 /// segments; each segment is one conversation with qwen/qwen3.7-flash on OpenRouter (provider alibaba only, alibaba/us-east-1 ignored, no
@@ -20,16 +31,16 @@ public abstract class HeadingAgentSelector : IHeadingSelector
 
     readonly Func<HttpMessageHandler> handlerFactory;
     readonly int parallelism;
-    readonly Action<string, string?>? onModelReply;
+    readonly Action<ModelReply>? onModelReply;
     readonly string instruction;
     readonly int firstSegments;
 
     /// <param name="handlerFactory">The HTTP handler of a run; no redirects and no cookies by default.</param>
     /// <param name="parallelism">Segments in flight at once; DHX_PDF_AGENT_PARALLELISM, else 6 (the provider rate-limited above about 6 concurrent requests).</param>
-    /// <param name="onModelReply">Diagnostics: called with the unit id and the content of every model reply. Null (the default) records nothing.</param>
+    /// <param name="onModelReply">Diagnostics: called with every model reply (unit, turn, reasoning, tool calls, content). Null (the default) records nothing.</param>
     /// <param name="instruction">The user instruction sent verbatim; the production instruction by default.</param>
     /// <param name="firstSegments">Diagnostics: decide only the first N segments (0 = every segment), as the D4.12 trials did for long documents.</param>
-    private protected HeadingAgentSelector(Func<HttpMessageHandler>? handlerFactory, int? parallelism, Action<string, string?>? onModelReply, string? instruction, int firstSegments)
+    private protected HeadingAgentSelector(Func<HttpMessageHandler>? handlerFactory, int? parallelism, Action<ModelReply>? onModelReply, string? instruction, int firstSegments)
     {
         this.onModelReply = onModelReply;
         this.instruction = instruction ?? AgentProtocol.Instruction;
@@ -65,12 +76,41 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         }, ct);
     }
 
-    AgentUnit.Model Traced(AgentModel model) => (unitId, turn, request) =>
+    AgentUnit.Model Traced(AgentModel model)
     {
-        var reply = model.Turn(unitId, turn, request);
-        onModelReply?.Invoke(unitId, reply.Content);
-        return reply;
-    };
+        // Each request carries the whole conversation of its unit, so the tool results a reply has not reported yet are the new tail.
+        var reported = new Dictionary<string, int>(StringComparer.Ordinal);
+        var gate = new object();
+        return (unitId, turn, request) =>
+        {
+            var results = onModelReply is null ? Array.Empty<ModelToolResult>() : NewToolResults(request.Body, unitId, reported, gate);
+            var reply = model.Turn(unitId, turn, request);
+            onModelReply?.Invoke(new ModelReply(unitId, turn, reply.Reasoning,
+                reply.ToolCalls.Select(c => new ModelReplyToolCall(c.Name, c.Arguments)).ToArray(), reply.Content, reply.FinishReason, results));
+            return reply;
+        };
+    }
+
+    /// <summary>The tool results one request adds to the conversation of one unit, since that unit's previous request.</summary>
+    static IReadOnlyList<ModelToolResult> NewToolResults(string body, string unitId, Dictionary<string, int> reported, object gate)
+    {
+        var all = new List<ModelToolResult>();
+        using (var doc = JsonDocument.Parse(body))
+        {
+            if (doc.RootElement.TryGetProperty("messages", out var messages) && messages.ValueKind == JsonValueKind.Array)
+                foreach (var m in messages.EnumerateArray())
+                    if (m.TryGetProperty("role", out var role) && role.GetString() == "tool")
+                        all.Add(new ModelToolResult(
+                            m.TryGetProperty("tool_call_id", out var id) ? id.GetString() : null,
+                            m.TryGetProperty("content", out var c) ? c.GetString() ?? "" : ""));
+        }
+        lock (gate)
+        {
+            reported.TryGetValue(unitId, out var seen);
+            reported[unitId] = all.Count;
+            return all.Skip(seen).ToArray();
+        }
+    }
 
     /// <summary>The budget of one document: one first post per segment plus every segment's tool rounds, transport retries and four repairs, and
     /// the reserve of every first request plus those spare posts at the byte cap, plus 10%.</summary>

@@ -87,4 +87,51 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
         Assert.Contains("DOCX_AGENT_SOURCE_REFUSED", error.ToString(), StringComparison.Ordinal);
         Assert.Equal(0, handler.Posts);
     }
+
+    [Fact]
+    public async Task Every_model_reply_is_handed_to_the_diagnostics_hook_only_when_one_is_given()
+    {
+        var path = Long();
+        var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTarget);
+        var replies = new List<string>();
+        var selector = new DocxHeadingAgentSelector(() => handler, parallelism: 1,
+            onModelReply: r => replies.Add(r.Content ?? ""));
+
+        await selector.SelectAsync(path, "sk-test", CancellationToken.None);
+
+        Assert.NotEmpty(replies);
+        Assert.Contains(replies, c => c.Contains("P7_F1_V6_SELECT_OBJECTS_V1", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void The_reasoning_the_model_streamed_survives_the_stream_and_the_reply()
+    {
+        var raw = "data: {\"id\":\"g\",\"choices\":[{\"index\":0,\"delta\":{\"reasoning\":\"Thinking \"}}]}\n\n"
+            + "data: {\"id\":\"g\",\"choices\":[{\"index\":0,\"delta\":{\"reasoning\":\"more.\"}}]}\n\n"
+            + "data: {\"id\":\"g\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"{}\"},\"finish_reason\":\"stop\"}]}\n\n"
+            + "data: [DONE]\n\n";
+
+        var asm = Sse.Parse(raw);
+
+        Assert.Equal("Thinking more.", asm.Reasoning);
+        Assert.Equal("{}", asm.Content);
+        var turn = AgentProtocol.ReadResponse(asm.View()).Turn;
+        Assert.Equal("Thinking more.", turn!.Reasoning);
+        Assert.Equal("{}", turn.Content);
+    }
+
+    [Fact]
+    public async Task A_reply_carries_the_tool_results_the_request_before_it_added()
+    {
+        var path = Long();
+        var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTarget);
+        var replies = new List<ModelReply>();
+        var selector = new DocxHeadingAgentSelector(() => handler, parallelism: 1, onModelReply: r => replies.Add(r));
+
+        await selector.SelectAsync(path, "sk-test", CancellationToken.None);
+
+        Assert.Contains(replies, r => r.ToolResults.Count == 1
+            && r.ToolResults[0].Content.Contains(DocxAgentSource.FactsVersion, StringComparison.Ordinal));
+        Assert.All(replies.Where(r => r.Turn == 1), r => Assert.Empty(r.ToolResults));
+    }
 }

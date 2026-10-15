@@ -117,11 +117,6 @@
   #devState { font-weight: 650; font-size: 13px; }
   #devElapsed { margin-left: auto; color: var(--muted); font: 12px ui-monospace, Consolas, monospace; }
   #devMeta { margin: 0 0 10px; color: var(--muted); font-size: 12px; }
-  .workgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .workitem { padding: 10px 14px 10px 0; margin-right: 14px; border-right: 1px solid var(--line); min-width: 0; }
-  .workitem:nth-child(2n) { border-right: 0; margin-right: 0; }
-  .worklabel { display: block; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
-  .workvalue { display: block; font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   #workHint { margin: 12px 0 0; color: var(--muted); font-size: 12.5px; }
 
   /* Hai cột trải hết chiều ngang: trái là thao tác — cấu hình rồi tới trạng thái backend;
@@ -143,34 +138,6 @@
 
   /* Danh sách bước suy ra từ chính các dòng log, để cột trái nói được "đang ở đâu trong pipeline"
      chứ không chỉ lặp lại trạng thái một dòng của cột phải. */
-  .stages { list-style: none; margin: 14px 0 0; padding: 0; }
-  .stage { display: flex; align-items: center; gap: 10px; padding: 7px 0; font-size: 13px; color: var(--muted); }
-  .stage .sdot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); flex: 0 0 auto; }
-  .stage.done { color: var(--ink); }
-  .stage.done .sdot { background: var(--ok); }
-  .stage.live { color: var(--ink); font-weight: 650; }
-  .stage.live .sdot { background: var(--accent); box-shadow: 0 0 0 4px var(--accbg); }
-  .harness-stage { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: 8px; align-items: center; width: 100%; padding: 7px 6px; border: 0; border-radius: 6px; background: transparent; color: var(--muted); text-align: left; font: inherit; font-size: 12.5px; cursor: pointer; }
-  .harness-stage:hover, .harness-stage.selected { background: var(--accbg); }
-  .harness-stage .stage-number { color: var(--muted); font: 11px ui-monospace, Consolas, monospace; }
-  .harness-stage .stage-status { font-size: 11px; font-weight: 650; }
-  .harness-stage.done { color: var(--ink); }
-  .harness-stage.live { color: var(--ink); font-weight: 650; }
-  .harness-stage.failed { color: var(--bad); }
-  .harness-stage .sdot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); display: block; }
-  .harness-stage.done .sdot { background: var(--ok); }
-  .harness-stage.live .sdot { background: var(--accent); box-shadow: 0 0 0 4px var(--accbg); }
-  .harness-detail { margin-top: 10px; padding: 10px 11px; border: 1px solid var(--line); border-radius: 7px; background: var(--bg); font-size: 12px; }
-  .harness-heading { display: flex; align-items: baseline; gap: 9px; margin: 1px 0 9px; }
-  .harness-heading strong { font-size: 12px; letter-spacing: .06em; }
-  .harness-heading .note { margin: 0; }
-  .harness-detail h3 { margin: 0 0 8px; font-size: 13px; }
-  .harness-facts { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 4px 10px; }
-  .harness-facts dt { color: var(--muted); }
-  .harness-facts dd { margin: 0; overflow-wrap: anywhere; }
-  .prompt-box { margin-top: 14px; }
-  .prompt-box textarea { min-height: 74px; font: inherit; font-size: 13.5px; }
-  .prompt-box .note { margin: 5px 0 0; }
   .spacer { flex: 1 1 auto; }
 
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -212,62 +179,10 @@
   }
   .hidden { display: none; }
   .scroll { overflow-x: auto; }
-  .review-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; margin: 0 0 12px; }
-  .review-tools button { margin-top: 0; }
-  .review-tools input[type=file] { max-width: 280px; font-size: 12.5px; }
-  .review-level { width: 92px; min-width: 92px; }
   .sid { font: 11px/1.25 ui-monospace, Consolas, monospace; color: var(--muted); word-break: break-all; }
-  .audit-grid { display: grid; grid-template-columns: minmax(260px, .8fr) minmax(0, 1.6fr); gap: 14px; }
-  .audit-list { max-height: 620px; overflow-y: auto; border: 1px solid var(--line); border-radius: 7px; }
-  .audit-row { display: flex; gap: 9px; align-items: center; width: 100%; padding: 9px 11px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; margin: 0; background: transparent; color: var(--ink); text-align: left; font-size: 12.5px; font-weight: 500; }
-  .audit-row:last-child { border-bottom: 0; }
-  .audit-row:hover, .audit-row.active { background: var(--accbg); }
-  .audit-row .audit-num { color: var(--muted); font: 11px ui-monospace, Consolas, monospace; min-width: 34px; }
-  .audit-row .audit-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
-  .audit-row .audit-mark { width: 8px; height: 8px; border-radius: 50%; background: var(--line); flex: 0 0 auto; }
-  .audit-row.heading .audit-mark { background: var(--ok); }
-  .audit-row.nonheading .audit-mark { background: var(--bad); }
-  .audit-row.uncertain .audit-mark { background: var(--warn); }
-  .audit-review { min-width: 0; }
-  .audit-source { background: var(--bg); border: 1px solid var(--line); border-radius: 7px; padding: 13px 15px; }
-  .audit-source h3 { margin: 0 0 8px; font-size: 18px; line-height: 1.3; }
-  .audit-source .source-meta { color: var(--muted); font: 11.5px/1.5 ui-monospace, Consolas, monospace; margin-bottom: 12px; overflow-wrap: anywhere; }
-  .audit-quote { margin: 0; padding: 12px 13px; background: var(--panel); border-left: 3px solid var(--accent); font-size: 16px; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
-  .audit-context { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
-  .audit-context section { min-width: 0; }
-  .audit-context h4 { margin: 0 0 5px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
-  .audit-context p { margin: 0; color: var(--muted); font-size: 12.5px; white-space: pre-wrap; overflow-wrap: anywhere; }
-  .audit-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 13px; align-items: center; }
-  .audit-actions button { margin-top: 0; }
-  .audit-actions button.selected { outline: 2px solid var(--ink); outline-offset: 2px; }
-  .audit-actions .next { margin-left: auto; }
-  .audit-progress { display: flex; align-items: baseline; gap: 10px; margin: 0 0 11px; }
-  .audit-progress strong { font-size: 20px; font-variant-numeric: tabular-nums; }
-  .audit-progress span { color: var(--muted); font-size: 12px; }
-  .audit-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
-  .audit-filter select { width: auto; min-width: 150px; }
-  .audit-lock { color: var(--muted); font-size: 12px; margin: 10px 0 0; }
-  .gold-banner { background: var(--accbg); border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line)); border-radius: 7px; padding: 11px 13px; margin-bottom: 12px; }
-  .gold-banner strong { display: block; margin-bottom: 3px; }
-  .gold-form { display: grid; grid-template-columns: minmax(180px, .65fr) minmax(220px, 1fr); gap: 10px; margin-top: 12px; }
-  .gold-form textarea { min-height: 58px; }
-  .gold-span { margin-top: 12px; }
-  .gold-span label { display: block; color: var(--muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 5px; }
-  .gold-source-lines { display: flex; flex-wrap: wrap; gap: 6px; }
-  .gold-source-lines label { display: inline-flex; align-items: center; gap: 5px; color: var(--ink); text-transform: none; letter-spacing: 0; font-size: 12px; font-weight: 500; border: 1px solid var(--line); border-radius: 5px; padding: 4px 7px; background: var(--panel); }
-  .gold-source-lines input { accent-color: var(--accent); }
-  .gold-level { width: 120px; }
-  .gold-integrity { color: var(--ok); font-size: 12px; margin-top: 10px; }
-  .gold-mode .panel:not(#goldPanel) { display: none !important; }
-  .workspace-nav { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 12px; }
-  .workspace-nav button { margin: 0; }
-  .workspace-nav button.active { outline: 2px solid var(--ink); outline-offset: 2px; }
-  .workspace-nav .note { margin: 0 0 0 4px; }
   .brand { display: flex; align-items: baseline; gap: 10px; margin: 2px 0 14px; }
   .brand strong { font-size: 18px; letter-spacing: .02em; }
   .brand span { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
-  .prompt-label { display: block; margin: 16px 0 5px; font-size: 12.5px; color: var(--muted); font-weight: 600; }
-  #userPrompt { min-height: 92px; font: 14px/1.5 "Segoe UI", system-ui, sans-serif; }
   .cancel-button { background: var(--badbg); color: var(--bad); border: 1px solid color-mix(in srgb, var(--bad) 28%, var(--line)); }
   .log-tabs { display: flex; gap: 6px; margin: 0 0 9px; }
   .log-tabs button { margin: 0; padding: 5px 10px; font-size: 12px; }
@@ -279,9 +194,6 @@
   .log-row.agent .log-kind { color: var(--accent); }
   .log-row.raw .log-kind { color: var(--warn); }
   .log-empty { color: var(--muted); font-style: italic; }
-  .developer-heading { margin-top: 22px; }
-  @media (max-width: 700px) { .gold-form { grid-template-columns: 1fr; } }
-  @media (max-width: 820px) { .audit-grid { grid-template-columns: 1fr; } .audit-list { max-height: 300px; } .audit-actions .next { margin-left: 0; } }
 </style>
 <link rel="stylesheet" href="pipeline-v2.css">
 <script src="pipeline-v2.js" defer></script>
@@ -289,19 +201,10 @@
 <body>
 <div class="wrap">
   <header class="appbar">
-    <div class="appbrand">DOCUMENT AI / AUTOMATIC HARNESS</div>
-    <div class="appcontext">Prompt-driven document structure</div>
+    <div class="appbrand">DOCUMENT AI · TRÍCH XUẤT TIÊU ĐỀ</div>
+    <div class="appcontext">Agent V6 cho DOCX và PDF</div>
   </header>
-  <div class="workspace-nav" aria-label="Workspace mode">
-    <button class="secondary active" data-workspace-mode="extract">Trích xuất</button>
-    <button class="secondary" data-workspace-mode="gold">Blind Gold · source-only</button>
-    <button class="secondary" data-workspace-mode="developer">Developer / Evaluation</button>
-    <span class="note" id="workspaceModeNote">Trích xuất và kiểm tra kết quả hệ thống.</span>
-  </div>
-  <!-- Không còn h1/mô tả: tên app đã nằm ở <title> của tab, còn định dạng nhận được thì ô kéo thả
-       đang nói rồi — hai dòng đó chỉ đẩy hai panel làm việc xuống dưới. -->
-  <div class="duo" id="analysisShell">
-  <div class="col">
+
   <div class="panel">
     <h2>Tài liệu &amp; cấu hình
       <span class="chip" id="privacyNote"></span>
@@ -314,59 +217,42 @@
     </div>
     <input id="file" type="file" class="hidden" accept=".docx,.docm,.doc,.rtf,.odt,.pdf">
 
-    <div class="prompt-box">
-      <label class="f" for="userPrompt">User prompt</label>
-      <textarea id="userPrompt" placeholder="Describe the structure or concepts to extract.">Extract the document structure as a tree.</textarea>
-      <p class="note">The prompt is carried in the task trace; validator and source grounding remain authoritative.</p>
-    </div>
-
     <details id="developerSettings">
-      <summary>Developer / Model settings</summary>
-    <div class="opts">
-      <div>
-        <label class="f" for="backend">Backend suy luận</label>
-        <select id="backend">
-          <option value="local">Qwen local</option>
-          <option value="lmstudio">LM Studio local</option>
-          <option value="openrouter" disabled>OpenRouter · chưa có API key</option>
-        </select>
-      </div>
-      <div>
-        <label class="f" for="model">Mô hình cục bộ</label>
-        <select id="model"></select>
-      </div>
-      <div id="lmStudioModelWrap" class="hidden">
-        <label class="f" for="lmStudioModel">Mô hình trong LM Studio</label>
-        <select id="lmStudioModel"><option value="">— đang kết nối —</option></select>
-      </div>
-      <div>
-        <label class="f" for="gpuLayers">Lớp đẩy lên GPU</label>
-        <input id="gpuLayers" type="number" min="0" step="1" value="0">
-      </div>
-    </div>
-    <div class="checks">
-      <label><input type="checkbox" id="noLlm"> Không gọi mô hình (chỉ đọc nguồn, không tự nhận tiêu đề)</label>
-      <label><input type="checkbox" id="writeback"> Ghi outline vào bản sao .docx để tải về</label>
-    </div>
-
-
-    <details id="advanced">
-      <summary>Developer / Model settings</summary>
+      <summary>Cài đặt mô hình</summary>
       <div class="opts">
+        <div>
+          <label class="f" for="backend">Backend suy luận</label>
+          <select id="backend">
+            <option value="openrouter" disabled>OpenRouter · chưa có API key</option>
+            <option value="local">Qwen local</option>
+            <option value="lmstudio">LM Studio local</option>
+          </select>
+        </div>
+        <div>
+          <label class="f" for="model">Mô hình cục bộ (.gguf)</label>
+          <select id="model"></select>
+        </div>
+        <div id="lmStudioModelWrap" class="hidden">
+          <label class="f" for="lmStudioModel">Mô hình trong LM Studio</label>
+          <select id="lmStudioModel"><option value="">— đang kết nối —</option></select>
+        </div>
+        <div>
+          <label class="f" for="gpuLayers">Lớp đẩy lên GPU</label>
+          <input id="gpuLayers" type="number" min="0" step="1" value="0">
+        </div>
         <div>
           <label class="f" for="ctx">Cửa sổ ngữ cảnh (token)</label>
           <input id="ctx" type="number" min="4096" step="1024" placeholder="tự đọc từ mô hình">
-          <p class="note">Bỏ trống: server đọc <code>{arch}.context_length</code> từ chính file GGUF
-            (Qwen3.5-9B khai 262.144, dùng tới trần 32.768). Gõ số thì <b>số của bạn thắng</b> và
-            tự đọc bị tắt.</p>
+          <p class="note">Bỏ trống: server đọc <code>{arch}.context_length</code> từ chính file GGUF.
+            Gõ số thì số của bạn thắng và tự đọc bị tắt.</p>
         </div>
       </div>
       <div class="checks">
-        <label><input type="checkbox" id="showRaw"> Hiện JSON LLM trả về (debug)</label>
+        <label><input type="checkbox" id="noLlm"> Không gọi mô hình (chỉ đọc nguồn, không tự nhận tiêu đề)</label>
+        <label><input type="checkbox" id="writeback"> Ghi outline vào bản sao .docx để tải về</label>
+        <label><input type="checkbox" id="showRaw"> Hiện phản hồi của mô hình (debug)</label>
       </div>
     </details>
-    </details>
-
 
     <div class="actions">
       <button id="run" disabled>Thực hiện</button>
@@ -374,33 +260,16 @@
     </div>
   </div>
 
-    <div class="panel" id="workCard">
-      <h2>Automatic Harness execution <span class="chip acc">Intent → Plan → Tool → Validator → Source</span></h2>
-      <div class="harness-heading"><strong>HARNESS EXECUTION</strong><span class="note">Intent -> Plan -> Capabilities -> Policy -> Stages</span></div>
-      <div class="workgrid">
-        <div class="workitem"><span class="worklabel">Trạng thái</span><span id="workState" class="workvalue">Chờ tài liệu</span></div>
-        <div class="workitem"><span class="worklabel">Tài liệu</span><span id="workFile" class="workvalue">Chưa chọn file</span></div>
-        <div class="workitem"><span class="worklabel">Backend / model</span><span id="workModel" class="workvalue">—</span></div>
-        <div class="workitem"><span class="worklabel">Context / batch</span><span id="workConfig" class="workvalue">—</span></div>
-      </div>
-      <ol class="stages" id="stages"></ol>
-      <div class="harness-detail" id="harnessDetail"><h3>Harness trace</h3><p class="note" style="margin:0">Select a stage to inspect its contract and emitted events.</p></div>
-      <div class="spacer"></div>
-      <p id="workHint">Chọn tài liệu để bắt đầu một lượt phân tích có thể theo dõi.</p>
+  <div class="panel" id="progressPanel">
+    <h2>Tiến trình</h2>
+    <div class="devbar"><span id="devDot" class="devdot"></span><span id="devState">Đang chờ</span><span id="devElapsed">0 s</span></div>
+    <p id="devMeta">Chưa có lượt xử lý.</p>
+    <div class="log-tabs" role="tablist" aria-label="Bộ lọc nhật ký">
+      <button class="secondary active" data-log-tab="all" role="tab">Tất cả</button>
+      <button class="secondary" data-log-tab="agent" role="tab">Agent</button>
+      <button class="secondary" data-log-tab="raw" role="tab">Thông báo máy chủ</button>
     </div>
-    </div>
-
-    <div class="panel" id="progressPanel">
-      <h2>Live backend / LLM log</h2>
-      <div class="devbar"><span id="devDot" class="devdot"></span><span id="devState">Đang chờ</span><span id="devElapsed">0 s</span></div>
-      <p id="devMeta">Chưa có lượt xử lý.</p>
-      <div class="log-tabs" role="tablist" aria-label="Log filter">
-        <button class="secondary active" data-log-tab="all" role="tab">All</button>
-        <button class="secondary" data-log-tab="agent" role="tab">Agent</button>
-        <button class="secondary" data-log-tab="raw" role="tab">Host notices</button>
-      </div>
-      <div id="log" class="event-log" aria-live="polite"></div>
-    </div>
+    <div id="log" class="event-log" aria-live="polite"></div>
   </div>
 
   <div id="errBox" class="panel hidden"><div class="err" id="errText"></div></div>
@@ -413,551 +282,97 @@
     <p class="note hidden" id="downloadNote">Link chỉ dùng được một lần; tải xong là bản ghi rời khỏi bộ nhớ server.</p>
   </div>
 
-  <details id="developerPanel">
-    <summary>Developer / Evaluation</summary>
-  <div class="panel" id="auditPanel">
-    <h2>6D-D · Remaining-cohort adjudication <span class="tag dis">silver-positive cohort</span></h2>
-    <p class="note" style="margin: 0 0 12px">
-      Đây là adjudication bổ sung cho packet đã có silver positive. Nó không phải independent human gold; dùng workspace Blind Gold bên dưới cho review độc lập.
-    </p>
-    <div class="review-tools">
-      <input id="auditFile" type="file" accept=".json,application/json">
-      <select id="auditDocFilter" disabled><option value="all">Tất cả tài liệu</option></select>
-      <button id="auditExport" class="secondary" disabled>Xuất nhãn đã adjudicate</button>
-      <button id="auditClear" class="secondary" disabled>Xóa nhãn nháp</button>
-    </div>
-    <p class="note" id="auditStatus">Chưa nạp packet 6D-D.</p>
-    <div id="auditWorkspace" class="hidden">
-      <div class="audit-progress"><strong id="auditCount">0/0</strong><span id="auditCountText">chưa adjudicate</span></div>
-      <div class="audit-grid">
-        <div>
-          <div class="audit-filter"><select id="auditLabelFilter"><option value="all">Tất cả nhãn</option><option value="pending">Chưa gán nhãn</option><option value="REVIEWED_HEADING">Heading</option><option value="REVIEWED_NON_HEADING">Non-heading</option><option value="UNCERTAIN">Uncertain</option></select></div>
-          <div id="auditList" class="audit-list"></div>
-        </div>
-        <div id="auditReview" class="audit-review"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="panel hidden" id="goldPanel">
-    <h2>Independent Human Gold <span class="tag Style">source-only</span></h2>
-    <div class="gold-banner">
-      <strong>Review độc lập, không nhìn pipeline</strong>
-      Packet được hiển thị như nguồn thô. Mọi label, prediction, rank, route block, validator và output có sẵn trong JSON đều bị bỏ qua. Chỉ sau khi export/freeze mới được join với kết quả hệ thống.
-    </div>
-    <div class="review-tools">
-      <input id="goldFile" type="file" accept=".json,application/json">
-      <input id="goldReviewerId" placeholder="Reviewer ID (pseudonymous)" autocomplete="off">
-      <input id="goldVersion" placeholder="Adjudication version" value="N0-human-gold.v1">
-      <button id="goldExit" class="secondary hidden">Thoát chế độ độc lập</button>
-      <button id="goldExport" class="secondary" disabled>Freeze &amp; export gold</button>
-      <button id="goldClear" class="secondary" disabled>Xóa nhãn nháp</button>
-    </div>
-    <p class="note" id="goldStatus">Chưa nạp source-first blind packet.</p>
-    <div id="goldWorkspace" class="hidden">
-      <div class="audit-progress"><strong id="goldCount">0/0</strong><span id="goldCountText">chưa adjudicate</span></div>
-      <div class="audit-grid">
-        <div>
-          <div class="audit-filter"><select id="goldDocFilter"><option value="all">Tất cả tài liệu</option></select><select id="goldLabelFilter"><option value="all">Tất cả nhãn</option><option value="pending">Chưa gán nhãn</option><option value="REVIEWED_HEADING">Heading</option><option value="REVIEWED_NON_HEADING">Non-heading</option><option value="UNCERTAIN">Uncertain</option></select></div>
-          <div id="goldList" class="audit-list"></div>
-        </div>
-        <div id="goldReview" class="audit-review"></div>
-      </div>
-    </div>
-  </div>
-
   <div class="panel hidden" id="treePanel">
     <h2>Cấu trúc tiêu đề</h2>
     <div class="scroll"><table id="tree"></table></div>
   </div>
 
-  <div class="panel hidden" id="outputTracePanel">
-    <h2>Output trace · pipeline only</h2>
-    <p class="note" style="margin: 0 0 12px">
-      Đây là danh sách output của lượt chạy hiện tại, không phải human review. Có thể nạp source-expected JSON để xem chênh lệch nhóm quan sát; việc đó không thay thế occurrence-safe evaluator.
-    </p>
-    <div class="review-tools">
-      <input id="traceExpectedFile" type="file" accept=".json,application/json">
-      <button id="traceClearExpected" class="secondary">Bỏ source expected</button>
-    </div>
-    <div class="tiles" id="traceTiles"></div>
-    <p class="note" id="traceNote"></p>
-    <div class="scroll"><table id="traceTable"></table></div>
+  <div class="panel hidden" id="rawPanel">
+    <h2>Phản hồi của mô hình</h2>
+    <p class="note">Chỉ có khi bạn bật "Hiện phản hồi của mô hình" trước khi chạy: suy luận mà mô hình stream, lời gọi tool và nội dung trả lời. Kết quả tool là dữ liệu mà tool trả về cho lượt đó. Nội dung có thể chứa văn bản lấy từ tài liệu.</p>
+    <div id="rawReplies"></div>
   </div>
-</details>
 </div>
 
-<section class="panel hidden" id="pipelineV2" aria-label="Validated pipeline result">
-  <h2>Heading Structure — validated authority</h2>
+<section class="panel hidden" id="pipelineV2" aria-label="Kết quả pipeline đã kiểm tra">
+  <h2>Cấu trúc tiêu đề — đã kiểm tra nguồn</h2>
   <p id="v2Summary" aria-live="polite"></p>
   <div class="v2-grid"><div id="v2Tree"></div><aside id="v2Inspector"></aside></div>
-  <h3>Pipeline Execution Viewer</h3><ol id="v2Stages"></ol>
-  <details><summary>Developer — safe execution audit / provenance</summary><pre id="v2Diagnostics"></pre></details>
+  <h3>Các bước thực thi</h3><ol id="v2Stages"></ol>
+  <details><summary>Nhật ký kiểm tra và nguồn gốc (an toàn để chia sẻ)</summary><pre id="v2Diagnostics"></pre></details>
 </section>
+
 <script>
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-let picked = null, outline = null, serverError = false;
+
+let picked = null, outline = null, serverError = false, runController = null;
 let defaults = null, gpuBaseNote = '', gpuBaseLabel = '';
 let devStarted = 0, devLogLines = 0;
-let logEvents = [], harnessEvents = [], activeLogTab = 'all', harnessSelectedStage = null, harnessStagePinned = false;
-let rawDataVisible = false;
-let auditPacket = null, auditItems = [], auditIndex = 0;
-let goldPacket = null, goldItems = [], goldIndex = 0;
-let workspaceMode = 'extract';
-let traceExpected = null;
-
-const HARNESS_STAGE_DEFS = [
-  { key: 'intent.proposal', label: 'Intent proposal', match: e => e.stage === 'intent.proposal', contract: 'IntentProposal' },
-  { key: 'intent.validation', label: 'Intent validation', match: e => e.stage === 'intent.validation', contract: 'ValidatedIntent / IntentState' },
-  { key: 'semantic.resolve', label: 'Semantic resolution', match: e => e.stage === 'semantic.resolve', contract: 'Semantic registry' },
-  { key: 'plan', label: 'Capability planning', match: e => e.stage.startsWith('plan.') || e.stage === 'capability.resolve', contract: 'SemanticTaskPlan / ExecutionPlan' },
-  { key: 'policy.approval', label: 'Policy', match: e => e.stage === 'policy.approval', contract: 'PolicyDecision' },
-  { key: 'tool', label: 'Capability execution', match: e => e.stage.startsWith('tool.') || e.stage === 'capability.execute', contract: 'Capability tool' },
-  { key: 'validation', label: 'Validation & source grounding', match: e => e.stage.startsWith('validator.') || e.stage === 'validation.source-authority' || e.stage === 'gate.human_review', contract: 'Validator / source authority / review gate' },
-  { key: 'projection.prompt-driven', label: 'Projection', match: e => e.stage === 'projection.prompt-driven', contract: 'PromptDrivenProjection<DocumentOutline>' },
-];
-
-function stageEvents(def) { return harnessEvents.filter(def.match); }
-
-function stageState(events) {
-  if (!events.length) return 'not-recorded';
-  const latest = events[events.length - 1];
-  if (latest.kind === 'Failed') return 'failed';
-  if (latest.kind === 'Blocked') return 'blocked';
-  if (latest.kind === 'Skipped') return 'skipped';
-  if (latest.kind === 'Cancelled') return 'cancelled';
-  if (latest.kind === 'Started' || latest.kind === 'Repairing') return 'live';
-  return 'done';
-}
-
-function renderHarnessStages() {
-  const current = harnessEvents.length ? harnessEvents[harnessEvents.length - 1] : null;
-  const currentDef = current && HARNESS_STAGE_DEFS.find(def => def.match(current));
-  const currentKey = currentDef?.key;
-  $('stages').innerHTML = HARNESS_STAGE_DEFS.map((def, index) => {
-    const events = stageEvents(def), state = stageState(events);
-    const selected = (harnessSelectedStage || currentKey) === def.key;
-    const status = state === 'done' ? 'DONE' : state === 'live' ? 'RUNNING' : state.toUpperCase();
-    return `<li><button class="harness-stage ${state} ${selected ? 'selected' : ''}" data-harness-stage="${def.key}">
-      <span class="sdot"></span><span><span class="stage-number">${index + 1}.</span> ${esc(def.label)}</span><span class="stage-status">${status}</span>
-    </button></li>`;
-  }).join('');
-  document.querySelectorAll('[data-harness-stage]').forEach(button => button.onclick = () => {
-    harnessSelectedStage = button.dataset.harnessStage;
-    harnessStagePinned = true;
-    renderHarnessStages();
-    renderHarnessDetail(harnessSelectedStage);
-  });
-  if (!harnessSelectedStage && currentKey) harnessSelectedStage = currentKey;
-}
-
-function renderHarnessDetail(key) {
-  const def = HARNESS_STAGE_DEFS.find(item => item.key === key) || HARNESS_STAGE_DEFS[0];
-  const events = stageEvents(def);
-  const latest = events[events.length - 1];
-  const prompt = $('userPrompt')?.value.trim() || 'Extract the document structure as a tree.';
-  const facts = [
-    ['State', latest ? latest.kind.toUpperCase() : 'NOT-RECORDED'],
-    ['Reference contract (not execution evidence)', def.contract],
-    ['Stage', def.key],
-    ['Latest event', latest?.message || 'Chưa có event'],
-  ];
-  $('harnessDetail').innerHTML = `<h3>${esc(def.label)}</h3><dl class="harness-facts">${facts.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(String(v))}</dd>`).join('')}</dl>`;
-}
+let logEvents = [], activeLogTab = 'all';
 
 function formatEventTime(value) {
   const date = value ? new Date(value) : new Date();
   return Number.isNaN(date.getTime()) ? '--:--:--' : date.toLocaleTimeString([], { hour12: false });
 }
 
+// Nội dung giống JSON/prompt thô của mô hình được gom vào khung thu gọn, không hiện thẳng.
 function looksLikeRaw(message) {
   return />>>\s*(REQUEST|PROMPT)|<<<\s*(RESPONSE|OUTPUT)|prompt tokens|raw json|^\s*[\[{]/i.test(String(message));
 }
 
 function renderLog() {
   const all = [...logEvents].sort((a, b) => a.order - b.order);
-  const rawCount = all.filter(item => item.category === 'raw' && looksLikeRaw(item.message)).length;
-  const visible = all.filter(item => activeLogTab === 'all'
-    ? rawDataVisible || !looksLikeRaw(item.message) || item.category === 'agent'
-    : activeLogTab === item.category && (activeLogTab !== 'raw' || rawDataVisible || !looksLikeRaw(item.message)));
-  const hiddenNote = activeLogTab === 'raw' && !rawDataVisible
-    ? `<div class="raw-hidden">Raw provider payloads are not published by production Web. Only safe host notices and harness events are available.</div>` : '';
-  $('log').innerHTML = hiddenNote + visible.map(item => {
+  const visible = all.filter(item => activeLogTab === 'all' || activeLogTab === item.category);
+  $('log').innerHTML = visible.map(item => {
     const agent = item.category === 'agent';
     if (!agent && looksLikeRaw(item.message)) {
-      return `<details class="llm-event"><summary>${esc(formatEventTime(item.timestamp))} · LLM raw event</summary><pre>${esc(item.message)}</pre></details>`;
+      return `<details class="llm-event"><summary>${esc(formatEventTime(item.timestamp))} · sự kiện thô</summary><pre>${esc(item.message)}</pre></details>`;
     }
-    return `<div class="log-entry ${agent ? 'agent' : 'raw'}"><div class="log-head"><span>${esc(formatEventTime(item.timestamp))}</span><span class="log-kind">${esc(agent ? item.stage.toUpperCase() : 'BACKEND')}</span>${agent ? `<span>${esc(item.kind)}</span>` : ''}</div><div class="log-body">${esc(item.message)}</div></div>`;
-  }).join('') || (hiddenNote ? '' : '<div class="raw-hidden">No events yet.</div>');
+    const kind = agent ? `${item.stage || ''} · ${item.kind || ''}` : 'MÁY CHỦ';
+    return `<div class="log-entry ${agent ? 'agent' : 'raw'}"><div class="log-head"><span>${esc(formatEventTime(item.timestamp))}</span><span class="log-kind">${esc(kind)}</span></div><div>${esc(item.message || '')}</div></div>`;
+  }).join('') || '<div class="raw-hidden">Chưa có sự kiện.</div>';
   $('log').scrollTop = $('log').scrollHeight;
 }
 
-// Presentation adapter for the two existing NDJSON event types.
-function handleStreamEvent(evt) {
-  if (evt.type === 'log') {
-    devLogLines++;
-    updateDevState(evt.message);
-    logEvents.push({ category: 'raw', message: String(evt.message || ''), timestamp: Date.now(), order: logEvents.length });
-    renderLog();
-  } else if (evt.type === 'agent') {
-    const event = { ...evt, category: 'agent', timestamp: evt.timestamp || Date.now(), order: logEvents.length };
-    harnessEvents.push(event);
-    logEvents.push(event);
-    if (!harnessStagePinned) {
-      harnessSelectedStage = HARNESS_STAGE_DEFS.find(def => def.match(event))?.key || harnessSelectedStage;
-    }
-    $('devState').textContent = `${evt.stage} · ${evt.kind}`;
-    renderHarnessStages();
-    renderHarnessDetail(harnessSelectedStage || 'intent.proposal');
-    renderLog();
-  } else if (evt.type === 'error') {
-    serverError = true;
-    $('devDot').className = 'devdot error';
-    $('devState').textContent = 'Processing error';
-    $('workState').textContent = 'Error';
-    $('workHint').textContent = evt.message;
-    showError(evt.message);
-    window.WebPipelineV2.showFailure(evt.message);
-  } else if (evt.type === 'result') {
-    $('devDot').className = 'devdot done';
-    $('devState').textContent = 'Completed · ' + logEvents.length + ' received events';
-    renderStages(true);
-    renderHarnessStages();
-    $('workState').textContent = 'Completed';
-    $('workHint').textContent = 'Pipeline complete; inspect the validated result and source evidence below.';
-    outline = evt.outline;
-    render(evt.outline, evt.stats, evt.agent);
-    window.WebPipelineV2.render(evt.pipeline);
-  }
-}
-
-const workspaceNotes = {
-  extract: 'Trích xuất và kiểm tra kết quả hệ thống.',
-  gold: 'Chỉ source packet và nhãn của reviewer. Pipeline bị cô lập cho đến khi artifact được freeze.',
-  developer: 'Cấu hình runtime, evaluation và log chi tiết dành cho developer.'
-};
-
-// Raw/backend messages and harness events already share one streamed response. The UI keeps
-// those records separate only for presentation, then merges them by arrival/timestamp in All.
 document.querySelectorAll('[data-log-tab]').forEach(button => button.onclick = () => {
   activeLogTab = button.dataset.logTab;
   document.querySelectorAll('[data-log-tab]').forEach(tab => tab.classList.toggle('active', tab === button));
   renderLog();
 });
-$('showRaw').checked = false;
-$('showRaw').disabled = true;
-$('showRaw').title = 'Raw provider payloads are unavailable in the production Web response.';
 
-function setWorkspaceMode(mode) {
-  workspaceMode = mode;
-  document.querySelectorAll('[data-workspace-mode]').forEach(button => button.classList.toggle('active', button.dataset.workspaceMode === mode));
-  $('workspaceModeNote').textContent = workspaceNotes[mode];
-  const blind = mode === 'gold';
-  const developer = mode === 'developer';
-  document.body.classList.toggle('gold-mode', blind);
-  $('developerPanel').open = mode !== 'extract';
-  $('goldPanel').classList.toggle('hidden', !blind);
-  $('outputTracePanel').classList.toggle('hidden', !developer || !outline);
-  if (!blind) $('goldExit').classList.add('hidden');
-  if (blind) {
-    $('goldExit').classList.toggle('hidden', !goldPacket);
-    window.scrollTo({ top: 0, behavior: 'instant' });
+function pushLog(category, message, stage, kind, timestamp) {
+  logEvents.push({ category, message, stage, kind, timestamp: timestamp || Date.now(), order: logEvents.length });
+  renderLog();
+}
+
+// Hai loại sự kiện từ máy chủ: "log" (thông báo máy chủ) và "agent" (tiến độ của lượt chạy).
+function handleStreamEvent(evt) {
+  if (evt.type === 'log') {
+    devLogLines++;
+    $('devState').textContent = String(evt.message || '').slice(0, 120);
+    pushLog('raw', String(evt.message || ''));
+  } else if (evt.type === 'agent') {
+    $('devState').textContent = `${evt.stage} · ${evt.kind}`;
+    pushLog('agent', evt.message, evt.stage, evt.kind, evt.timestamp ? Date.parse(evt.timestamp) : null);
+  } else if (evt.type === 'error') {
+    serverError = true;
+    $('devDot').className = 'devdot error';
+    $('devState').textContent = 'Lỗi xử lý';
+    showError(evt.message);
+    window.WebPipelineV2.showFailure(evt.message);
+  } else if (evt.type === 'result') {
+    $('devDot').className = 'devdot done';
+    $('devState').textContent = 'Đã hoàn tất · ' + logEvents.length + ' sự kiện';
+    outline = evt.outline;
+    render(evt.outline, evt.stats, evt.agent, evt.modelReplies);
+    window.WebPipelineV2.render(evt.pipeline);
   }
 }
-document.querySelectorAll('[data-workspace-mode]').forEach(button => button.onclick = () => setWorkspaceMode(button.dataset.workspaceMode));
-document.querySelectorAll('[data-log-filter]').forEach(button => button.onclick = () => {
-  logFilter = button.dataset.logFilter;
-  document.querySelectorAll('[data-log-filter]').forEach(tab => tab.classList.toggle('active', tab.dataset.logFilter === logFilter));
-  renderLiveLog();
-});
 
-// ---------- 6D-D blind source review ----------
-$('auditFile').onchange = async e => {
-  const file = e.target.files[0];
-  if (!file) return;
-  try {
-    const packet = JSON.parse(await file.text());
-    if (packet.artifactKind !== 'accuracy_round6d_blind_negative_adjudication_packet' || !Array.isArray(packet.occurrences))
-      throw new Error('Không phải packet adjudication 6D-D hợp lệ.');
-    auditPacket = packet;
-    auditItems = packet.occurrences.map((item, index) => ({ ...item, _index: index, adjudicatedLabel: item.adjudicatedLabel || null }));
-    auditIndex = 0;
-    const docs = [...new Set(auditItems.map(item => item.documentSha256))];
-    $('auditDocFilter').innerHTML = '<option value="all">Tất cả tài liệu</option>' + docs.map((sha, i) => `<option value="${esc(sha)}">Tài liệu ${i + 1} · ${esc(sha.slice(0, 10))}</option>`).join('');
-    $('auditDocFilter').disabled = false;
-    $('auditExport').disabled = false;
-    $('auditClear').disabled = false;
-    $('auditWorkspace').classList.remove('hidden');
-    $('auditStatus').textContent = `${auditItems.length} occurrence đã nạp · source-first · nhãn chưa freeze`;
-    renderAudit();
-  } catch (error) {
-    $('auditStatus').textContent = error.message || 'Không đọc được packet.';
-    $('auditWorkspace').classList.add('hidden');
-  }
-};
-$('auditDocFilter').onchange = renderAudit;
-$('auditLabelFilter').onchange = renderAudit;
-$('auditClear').onclick = () => {
-  auditItems.forEach(item => item.adjudicatedLabel = null);
-  auditIndex = 0;
-  renderAudit();
-};
-$('auditExport').onclick = () => {
-  if (!auditPacket) return;
-  const output = {
-    ...auditPacket,
-    labelsFrozen: true,
-    freezeStatus: 'HUMAN_ADJUDICATION_RECORDED',
-    adjudicationVersion: '6D-D.v1',
-    reviewedAt: new Date().toISOString(),
-    occurrences: auditItems.map(({ _index, ...item }) => ({ ...item, adjudicatedLabel: item.adjudicatedLabel || 'UNCERTAIN' }))
-  };
-  downloadJson('selected-cohort-negative-adjudicated.v1.json', output);
-  $('auditStatus').textContent = 'Đã xuất packet adjudicated. Kiểm tra lại reviewer metadata trước khi dùng làm authority.';
-};
-
-function auditVisibleItems() {
-  const doc = $('auditDocFilter').value;
-  const label = $('auditLabelFilter').value;
-  return auditItems.filter(item => (doc === 'all' || item.documentSha256 === doc) &&
-    (label === 'all' || (label === 'pending' ? !item.adjudicatedLabel : item.adjudicatedLabel === label)));
-}
-
-function renderAudit() {
-  if (!auditPacket) return;
-  const visible = auditVisibleItems();
-  const current = auditItems[auditIndex] || visible[0];
-  if (current && !visible.includes(current) && visible.length) auditIndex = auditItems.indexOf(visible[0]);
-  const active = auditItems[auditIndex] || visible[0];
-  const completed = auditItems.filter(item => item.adjudicatedLabel).length;
-  $('auditCount').textContent = `${completed}/${auditItems.length}`;
-  $('auditCountText').textContent = completed === auditItems.length ? 'đã gán nhãn · có thể freeze' : 'đã gán nhãn';
-  $('auditList').innerHTML = visible.map(item => {
-    const state = item.adjudicatedLabel === 'REVIEWED_HEADING' ? 'heading' : item.adjudicatedLabel === 'REVIEWED_NON_HEADING' ? 'nonheading' : 'uncertain';
-    return `<button class="audit-row ${state} ${item === active ? 'active' : ''}" data-audit-index="${item._index}"><span class="audit-mark"></span><span class="audit-num">${item._index + 1}</span><span class="audit-text">${esc(item.sourceText || '(không có text)')}</span></button>`;
-  }).join('') || '<p class="note" style="padding: 12px">Không có occurrence theo bộ lọc.</p>';
-  document.querySelectorAll('[data-audit-index]').forEach(button => button.onclick = () => { auditIndex = Number(button.dataset.auditIndex); renderAudit(); });
-  if (!active) { $('auditReview').innerHTML = ''; return; }
-  const lines = (active.sourceLineIds || []).join('\n');
-  const layout = active.layoutFacts || {};
-  $('auditReview').innerHTML = `<div class="audit-source">
-    <h3>Occurrence ${active._index + 1}</h3>
-    <div class="source-meta">page ${esc(String(active.page ?? '—'))} · ${esc(active.documentSha256 || '')}<br>${esc(lines)}</div>
-    <p class="audit-quote">${esc(active.sourceText || 'Không có source text')}</p>
-    <div class="audit-context"><section><h4>Ngay trước</h4><p>${esc((active.precedingSourceLines || []).join('\n') || '—')}</p></section><section><h4>Ngay sau</h4><p>${esc((active.followingSourceLines || []).join('\n') || '—')}</p></section></div>
-    <p class="audit-lock">Layout: ${esc(`${layout.lineCount ?? '—'} dòng · x ${layout.left ?? '—'}–${layout.right ?? '—'} · y ${layout.bottomY ?? '—'}–${layout.topY ?? '—'}`)}</p>
-    <div class="audit-actions">
-      <button class="${active.adjudicatedLabel === 'REVIEWED_HEADING' ? 'selected' : ''}" data-audit-label="REVIEWED_HEADING">Heading</button>
-      <button class="secondary ${active.adjudicatedLabel === 'REVIEWED_NON_HEADING' ? 'selected' : ''}" data-audit-label="REVIEWED_NON_HEADING">Non-heading</button>
-      <button class="secondary ${active.adjudicatedLabel === 'UNCERTAIN' ? 'selected' : ''}" data-audit-label="UNCERTAIN">Uncertain</button>
-      <button class="secondary next" id="auditNext">Tiếp theo →</button>
-    </div>
-  </div>`;
-  document.querySelectorAll('[data-audit-label]').forEach(button => button.onclick = () => { active.adjudicatedLabel = button.dataset.auditLabel; moveAudit(1); });
-  $('auditNext').onclick = () => moveAudit(1);
-}
-
-function moveAudit(delta) {
-  const visible = auditVisibleItems();
-  const position = visible.indexOf(auditItems[auditIndex]);
-  auditIndex = visible.length ? visible[(position + delta + visible.length) % visible.length]._index : auditIndex;
-  renderAudit();
-}
-
-// ---------- Independent human gold ----------
-// This path intentionally discards any labels embedded in the input packet. The packet is
-// treated as a source transport only; authority is created by the reviewer here.
-$('goldFile').onchange = async e => {
-  const file = e.target.files[0];
-  if (!file) return;
-  try {
-    const packet = JSON.parse(await file.text());
-    const items = Array.isArray(packet.occurrences) ? packet.occurrences : Array.isArray(packet.items) ? packet.items : null;
-    if (!items || !items.length) throw new Error('Packet phải có occurrences hoặc items source-first.');
-    if (!items.every(item => item.documentSha256 && item.page !== undefined && (item.sourceLineIds || item.sourceSpan) && item.sourceText !== undefined))
-      throw new Error('Packet thiếu source authority: documentSha256, page, sourceLineIds/sourceSpan hoặc sourceText.');
-    goldPacket = packet;
-    goldItems = items.map((item, index) => {
-      const sourceLines = Array.isArray(item.sourceLines) && item.sourceLines.length
-        ? item.sourceLines.map(line => ({ id: String(line.id || line.lineId), text: String(line.text || '') }))
-        : (item.sourceLineIds || []).map((id, lineIndex) => ({ id: String(id), text: lineIndex === 0 ? String(item.sourceText || '') : '' }));
-      return {
-      documentSha256: item.documentSha256,
-      page: item.page,
-      sourceLineIds: Array.isArray(item.sourceLineIds) ? [...item.sourceLineIds] : [],
-      sourceSpan: item.sourceSpan || null,
-      sourceText: item.sourceText || '',
-      precedingSourceLines: Array.isArray(item.precedingSourceLines) ? [...item.precedingSourceLines] : [],
-      followingSourceLines: Array.isArray(item.followingSourceLines) ? [...item.followingSourceLines] : [],
-      layoutFacts: item.layoutFacts || {},
-      _index: index,
-      label: null,
-      level: null,
-      headingText: '',
-      sourceLines,
-      headingLineIds: sourceLines.map(line => line.id)
-    };
-    });
-    goldIndex = 0;
-    const docs = [...new Set(goldItems.map(item => item.documentSha256))];
-    $('goldDocFilter').innerHTML = '<option value="all">Tất cả tài liệu</option>' + docs.map((sha, i) => `<option value="${esc(sha)}">Tài liệu ${i + 1} · ${esc(sha.slice(0, 10))}</option>`).join('');
-    $('goldExport').disabled = false;
-    $('goldClear').disabled = false;
-    $('goldExit').classList.remove('hidden');
-    $('goldWorkspace').classList.remove('hidden');
-    setWorkspaceMode('gold');
-    $('goldStatus').textContent = `${goldItems.length} source occurrence đã nạp · mọi nhãn có sẵn đã bị bỏ qua · chưa freeze`;
-    renderGold();
-  } catch (error) {
-    $('goldStatus').textContent = error.message || 'Không đọc được blind packet.';
-    $('goldWorkspace').classList.add('hidden');
-  }
-};
-$('goldDocFilter').onchange = renderGold;
-$('goldLabelFilter').onchange = renderGold;
-$('goldClear').onclick = () => { goldItems.forEach(item => { item.label = null; item.level = null; item.headingText = ''; item.headingLineIds = [...item.sourceLineIds]; }); renderGold(); };
-$('goldExit').onclick = () => setWorkspaceMode('extract');
-$('goldExport').onclick = () => {
-  if (!goldPacket) return;
-  const reviewerId = $('goldReviewerId').value.trim();
-  const version = $('goldVersion').value.trim();
-  if (!reviewerId || !version) { $('goldStatus').textContent = 'Cần Reviewer ID và Adjudication version trước khi freeze.'; return; }
-  const pending = goldItems.filter(item => !item.label);
-  if (pending.length) { $('goldStatus').textContent = `Chưa freeze: còn ${pending.length} occurrence chưa gán nhãn.`; return; }
-  const output = {
-    artifactKind: 'independent_human_gold_occurrence_review',
-    authorityClass: 'HUMAN_GOLD',
-    sourcePacketSha256: goldPacket.sourcePacketSha256 || goldPacket.artifactSha256 || null,
-    reviewerId,
-    adjudicationVersion: version,
-    reviewedAt: new Date().toISOString(),
-    labelsFrozen: true,
-    occurrences: goldItems.map(item => ({
-      occurrenceId: `${item.documentSha256}:${item.page}:${item.sourceLineIds.join(',')}`,
-      documentSha256: item.documentSha256, page: item.page, sourceLineIds: item.sourceLineIds,
-      sourceSpan: item.sourceSpan, sourceText: item.sourceText, label: item.label,
-      ...(item.label === 'REVIEWED_HEADING' ? {
-        headingText: item.headingText || item.sourceText,
-        headingLineIds: item.headingLineIds,
-        headingSourceLines: item.sourceLines.filter(line => item.headingLineIds.includes(line.id)),
-        level: item.level
-      } : {}),
-      ...(item.label === 'UNCERTAIN' ? { level: null } : {})
-    }))
-  };
-  downloadJson('independent-human-gold.v1.json', output);
-  $('goldStatus').textContent = 'Đã freeze artifact HUMAN_GOLD. Chỉ từ bây giờ mới được join với pipeline output.';
-};
-
-function goldVisibleItems() {
-  const doc = $('goldDocFilter').value;
-  const label = $('goldLabelFilter').value;
-  return goldItems.filter(item => (doc === 'all' || item.documentSha256 === doc) &&
-    (label === 'all' || (label === 'pending' ? !item.label : item.label === label)));
-}
-
-function renderGold() {
-  if (!goldPacket) return;
-  const visible = goldVisibleItems();
-  if (!visible.includes(goldItems[goldIndex]) && visible.length) goldIndex = visible[0]._index;
-  const active = goldItems[goldIndex] || visible[0];
-  const completed = goldItems.filter(item => item.label).length;
-  $('goldCount').textContent = `${completed}/${goldItems.length}`;
-  $('goldCountText').textContent = completed === goldItems.length ? 'đã gán nhãn · sẵn sàng freeze' : 'đã gán nhãn';
-  $('goldList').innerHTML = visible.map(item => {
-    const state = item.label === 'REVIEWED_HEADING' ? 'heading' : item.label === 'REVIEWED_NON_HEADING' ? 'nonheading' : item.label === 'UNCERTAIN' ? 'uncertain' : '';
-    return `<button class="audit-row ${state} ${item === active ? 'active' : ''}" data-gold-index="${item._index}"><span class="audit-mark"></span><span class="audit-num">${item._index + 1}</span><span class="audit-text">${esc(item.sourceText || '(không có source text)')}</span></button>`;
-  }).join('') || '<p class="note" style="padding: 12px">Không có occurrence theo bộ lọc.</p>';
-  document.querySelectorAll('[data-gold-index]').forEach(button => button.onclick = () => { goldIndex = Number(button.dataset.goldIndex); renderGold(); });
-  if (!active) { $('goldReview').innerHTML = ''; return; }
-  const layout = active.layoutFacts || {};
-  const lineOptions = (active.sourceLines || []).map(line => `<label title="${esc(line.text)}"><input type="checkbox" data-gold-line="${esc(line.id)}" ${active.headingLineIds.includes(line.id) ? 'checked' : ''}>${esc(line.id)}</label>`).join('');
-  $('goldReview').innerHTML = `<div class="audit-source">
-    <h3>Source occurrence ${active._index + 1}</h3>
-    <div class="source-meta">page ${esc(String(active.page))} · ${esc(active.documentSha256)}<br>source lines: ${esc(active.sourceLineIds.join(', ') || '—')}</div>
-    <p class="audit-quote">${esc(active.sourceText || 'Không có source text')}</p>
-    <div class="audit-context"><section><h4>Ngay trước</h4><p>${esc(active.precedingSourceLines.join('\n') || '—')}</p></section><section><h4>Ngay sau</h4><p>${esc(active.followingSourceLines.join('\n') || '—')}</p></section></div>
-    <p class="gold-integrity">Source-only · không có model/prediction/rank/validator/output trong workspace này.</p>
-    <p class="audit-lock">Layout: ${esc(`${layout.lineCount ?? '—'} dòng · x ${layout.left ?? '—'}–${layout.right ?? '—'} · y ${layout.bottomY ?? '—'}–${layout.topY ?? '—'}`)}</p>
-    <div class="audit-actions">
-      <button class="${active.label === 'REVIEWED_HEADING' ? 'selected' : ''}" data-gold-label="REVIEWED_HEADING">Heading</button>
-      <button class="secondary ${active.label === 'REVIEWED_NON_HEADING' ? 'selected' : ''}" data-gold-label="REVIEWED_NON_HEADING">Non-heading</button>
-      <button class="secondary ${active.label === 'UNCERTAIN' ? 'selected' : ''}" data-gold-label="UNCERTAIN">Uncertain</button>
-      <button class="secondary next" id="goldNext">Tiếp theo →</button>
-    </div>
-    <div class="gold-form ${active.label === 'REVIEWED_HEADING' ? '' : 'hidden'}">
-      <div><label class="f" for="goldHeadingText">Heading text (exact source)</label><textarea id="goldHeadingText" placeholder="Giữ nguyên text từ source">${esc(active.headingText || active.sourceText)}</textarea></div>
-      <div><label class="f" for="goldLevel">Level</label><select id="goldLevel" class="gold-level"><option value="">— chưa biết —</option>${[1,2,3,4,5,6,7,8,9].map(level => `<option value="${level}"${active.level === level ? ' selected' : ''}>H${level}</option>`).join('')}</select></div>
-    </div>
-    <div class="gold-span ${active.label === 'REVIEWED_HEADING' ? '' : 'hidden'}"><label>Heading span · source line IDs</label><div class="gold-source-lines">${lineOptions || '<span class="note">Packet không có sourceLineIds; giữ sourceSpan làm identity.</span>'}</div></div>
-  </div>`;
-  document.querySelectorAll('[data-gold-label]').forEach(button => button.onclick = () => { active.label = button.dataset.goldLabel; if (active.label !== 'REVIEWED_HEADING') { active.level = null; active.headingText = ''; active.headingLineIds = [...active.sourceLineIds]; } else if (!active.headingText) active.headingText = active.sourceText; renderGold(); });
-  $('goldNext').onclick = () => moveGold(1);
-  const text = $('goldHeadingText'); if (text) text.oninput = () => active.headingText = text.value;
-  const level = $('goldLevel'); if (level) level.onchange = () => active.level = level.value ? Number(level.value) : null;
-  document.querySelectorAll('[data-gold-line]').forEach(input => input.onchange = () => { active.headingLineIds = [...document.querySelectorAll('[data-gold-line]:checked')].map(x => x.dataset.goldLine); });
-}
-
-function moveGold(delta) {
-  const visible = goldVisibleItems();
-  const position = visible.indexOf(goldItems[goldIndex]);
-  goldIndex = visible.length ? visible[(position + delta + visible.length) % visible.length]._index : goldIndex;
-  renderGold();
-}
-
-function downloadJson(name, value) {
-  const blob = new Blob([JSON.stringify(value, null, 2)], { type: 'application/json' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob); link.download = name; link.click();
-  setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-}
-
-// ---------- output trace (pipeline output, never human authority) ----------
-$('traceExpectedFile').onchange = async e => {
-  const file = e.target.files[0];
-  if (!file) return;
-  try {
-    const parsed = JSON.parse(await file.text());
-    if (!Array.isArray(parsed.headingOccurrences)) throw new Error('JSON không có headingOccurrences.');
-    traceExpected = parsed;
-    if (outline) renderOutputTrace(outline);
-  } catch (error) {
-    $('traceNote').textContent = error.message || 'Không đọc được source expected JSON.';
-  }
-};
-$('traceClearExpected').onclick = () => { traceExpected = null; $('traceExpectedFile').value = ''; if (outline) renderOutputTrace(outline); };
-
-function traceKind(text) {
-  const value = String(text || '').trim();
-  if (/^LAW\b|^ON\s+INVESTMENT\b/i.test(value)) return 'LAW';
-  if (/^CHAPTER\b/i.test(value)) return 'Chapter';
-  if (/^SECTION\b/i.test(value)) return 'Section';
-  if (/^ARTICLE\b/i.test(value)) return 'Article';
-  return 'Other';
-}
-
-function traceCounts(headings, textOf = h => h.text) {
-  const counts = { LAW: 0, Chapter: 0, Section: 0, Article: 0, Other: 0 };
-  headings.forEach(item => counts[traceKind(textOf(item))]++);
-  return counts;
-}
-
-function renderOutputTrace(o) {
-  const headings = Array.isArray(o.headings) ? o.headings : [];
-  const outputCounts = traceCounts(headings);
-  const expectedRows = traceExpected?.headingOccurrences?.filter(item => item.label === 'REVIEWED_HEADING') || [];
-  const expectedCounts = traceCounts(expectedRows, item => item.sourceText || (item.sourceTextLines || []).join(' '));
-  const tiles = [[headings.length, 'pipeline output']];
-  Object.entries(outputCounts).forEach(([kind, count]) => tiles.push([count, `output · ${kind}`]));
-  if (expectedRows.length) tiles.push([expectedRows.length, 'source expected · tham chiếu']);
-  $('traceTiles').innerHTML = tiles.map(item => `<div class="tile"><div class="v">${esc(String(item[0]))}</div><div class="k">${esc(item[1])}</div></div>`).join('');
-  $('traceNote').textContent = expectedRows.length
-    ? `Source expected đã nạp: ${expectedRows.length}. Chênh lệch nhóm chỉ là trace quan sát, không phải occurrence join hoặc kết luận missing.`
-    : 'Chưa nạp source expected JSON; đang hiển thị riêng output pipeline.';
-  $('traceTable').innerHTML = '<thead><tr><th>STT</th><th>Nhóm quan sát</th><th>Output text</th><th>Paragraph</th><th>Source</th></tr></thead><tbody>' +
-    headings.map((heading, index) => `<tr><td class="i">${index + 1}</td><td><span class="tag Model">${traceKind(heading.text)}</span></td><td>${esc(heading.text || '')}</td><td class="i">${esc(String(heading.index ?? '—'))}</td><td class="i">${esc(heading.source || '—')}</td></tr>`).join('') + '</tbody>';
-  $('outputTracePanel').classList.toggle('hidden', workspaceMode !== 'developer');
+function showError(msg) {
+  $('errBox').classList.remove('hidden');
+  $('errText').textContent = msg;
 }
 
 // ---------- chọn file ----------
@@ -973,29 +388,18 @@ $('file').onchange = e => { if (e.target.files[0]) setFile(e.target.files[0]); }
 function setFile(f) {
   picked = f;
   $('dropName').textContent = f.name + '  ·  ' + (f.size / 1024).toFixed(0) + ' KB';
-  $('workFile').textContent = f.name;
-  $('workState').textContent = 'Sẵn sàng phân tích';
-  $('workHint').textContent = $('noLlm').checked
-    ? 'Pipeline chỉ đọc nguồn; không gọi mô hình và không tự nhận heading.'
-    : 'Pipeline xác định DOCX/PDF từ byte và chạy authority tương ứng.';
   $('run').disabled = false;
 }
 
-// ---------- mặc định + danh sách mô hình ----------
-// Mặc định lấy từ máy chủ (đọc thẳng Core) để giao diện không lệch khỏi CLI.
+// ---------- mặc định, backend, mô hình ----------
 fetch('/api/defaults').then(r => r.json()).then(d => {
   defaults = d;
-  $('workConfig').textContent = d.lmStudioContextSize ? `${d.lmStudioContextSize} token` : 'ngữ cảnh tự đọc';
-
-  // Ô GPU chỉ có nghĩa khi bản dựng có backend GPU; bản CPU thì khoá lại thay vì để người
-  // dùng gõ số rồi tưởng đang chạy GPU mà thực ra không.
   $('gpuLayers').value = d.gpuLayers;
   $('gpuLayers').disabled = !d.gpuBackend;
   gpuBaseLabel = d.gpuBackend ? 'bản dựng GPU' : 'bản dựng CPU';
   gpuBaseNote = d.gpuBackend
-    ? 'Bản dựng có backend GPU. GPU 4 GB nên dùng khoảng 15–20 lớp; chỉ dùng 99 khi VRAM đủ chứa toàn bộ model và context.'
-    : 'Bản dựng CPU — ô này không có tác dụng. Dựng lại với -p:UseVulkan=true (AMD/Intel) '
-      + 'hoặc -p:UseCuda=true (NVIDIA) để bật.';
+    ? 'Bản dựng có backend GPU. GPU 4 GB nên dùng khoảng 15–20 lớp.'
+    : 'Bản dựng CPU — ô này không có tác dụng. Dựng lại với -p:UseVulkan=true hoặc -p:UseCuda=true để bật.';
   chip('gpuNote', gpuBaseLabel, gpuBaseNote, d.gpuBackend ? 'acc' : '');
 
   const remote = $('backend').querySelector('option[value="openrouter"]');
@@ -1012,7 +416,7 @@ fetch('/api/defaults').then(r => r.json()).then(d => {
 });
 
 async function loadLmStudioModels(d) {
-  const backendOption = $('backend').querySelector('option[value="lmstudio"]');
+  const option = $('backend').querySelector('option[value="lmstudio"]');
   const select = $('lmStudioModel');
   try {
     const response = await fetch('/api/lmstudio/models');
@@ -1023,14 +427,13 @@ async function loadLmStudioModels(d) {
     if (d.lmStudioModel && !ids.includes(d.lmStudioModel)) ids.unshift(d.lmStudioModel);
     select.innerHTML = ids.map(id => `<option value="${esc(id)}">${esc(id)}</option>`).join('');
     if (d.lmStudioModel) select.value = d.lmStudioModel;
-    backendOption.textContent = `LM Studio local · ${d.lmStudioEndpoint}`;
-    backendOption.disabled = false;
-    if (!$('noLlm').checked) $('backend').value = 'lmstudio';
+    option.textContent = `LM Studio local · ${d.lmStudioEndpoint}`;
+    option.disabled = false;
   } catch {
     select.innerHTML = d.lmStudioModel
       ? `<option value="${esc(d.lmStudioModel)}">${esc(d.lmStudioModel)}</option>`
       : '<option value="">— không kết nối được —</option>';
-    backendOption.textContent = `LM Studio · chưa kết nối ${d.lmStudioEndpoint}`;
+    option.textContent = `LM Studio · chưa kết nối ${d.lmStudioEndpoint}`;
   }
   syncBackend();
 }
@@ -1038,74 +441,37 @@ async function loadLmStudioModels(d) {
 $('backend').onchange = syncBackend;
 $('noLlm').onchange = syncBackend;
 
+// Khoá các ô không có tác dụng với backend đang chọn, và báo nơi dữ liệu đi.
 function syncBackend() {
   const noLlm = $('noLlm').checked;
   const backend = $('backend').value;
   const remote = backend === 'openrouter' && !noLlm;
   const lmStudio = backend === 'lmstudio' && !noLlm;
-  const rpc = remote || lmStudio;
-  // Ô mô hình/ngữ cảnh vô nghĩa cả khi chạy từ xa lẫn khi tắt LLM — khoá lại thay vì để người
-  // dùng chỉnh một giá trị không đi tới đâu.
   ['model', 'ctx', 'gpuLayers'].forEach(id =>
-    $(id).disabled = rpc || noLlm || (id === 'gpuLayers' && defaults && !defaults.gpuBackend));
+    $(id).disabled = remote || lmStudio || noLlm || (id === 'gpuLayers' && defaults && !defaults.gpuBackend));
   $('lmStudioModelWrap').classList.toggle('hidden', !lmStudio);
   $('lmStudioModel').disabled = !lmStudio;
   if (remote)
-    chip('privacyNote', 'gửi ra OpenRouter', 'Tài liệu sẽ được gửi ra OpenRouter bằng HTTPS. Request bắt buộc ZDR, cấm provider thu thập dữ liệu và yêu cầu JSON; kết quả được kiểm tra schema/ID tại server và API key không được gửi xuống trình duyệt.', 'warn');
+    chip('privacyNote', 'gửi ra OpenRouter', 'Tài liệu sẽ được gửi ra OpenRouter bằng HTTPS.', 'warn');
   else if (lmStudio)
-    chip('privacyNote', 'loopback · không rời máy', 'LM Studio chạy qua loopback trên chính máy này. API key (nếu bật) chỉ nằm ở server; nội dung không được gửi tới OpenRouter.', 'ok');
+    chip('privacyNote', 'loopback · không rời máy', 'LM Studio chạy qua loopback trên chính máy này.', 'ok');
   else
     chip('privacyNote', 'local · không rời máy', 'Backend local: nội dung tài liệu không rời khỏi máy.', 'ok');
-
-  if (lmStudio) {
-    const ctxSize = defaults?.lmStudioContextSize ?? 16384;
-    chip('gpuNote', `ctx ${ctxSize}`,
-      `Context/GPU/parallel được cấu hình khi nạp model trong LM Studio; DHX đang khai báo context ${ctxSize} token.`);
-  } else {
-    chip('gpuNote', gpuBaseLabel, gpuBaseNote, defaults?.gpuBackend ? 'acc' : '');
-  }
   renderCfgNote();
 }
 
-// cfgNote nói về CHẤT LƯỢNG cấu hình, nên nó phải phản ứng với cả lựa chọn mô hình lẫn việc tắt
-// LLM. Trước đây nó chỉ được đặt lúc đổi mô hình: tick "chỉ dùng luật OpenXML" xong panel vẫn
-// khoe "đang dùng cấu hình chất lượng đã đo" trong khi sẽ không có mô hình nào chạy.
-let modelNote = '', modelLabel = '', modelTone = '';
-
 function renderCfgNote() {
   if ($('noLlm').checked) {
-    chip('cfgNote', 'không dùng model',
-      'Không gọi mô hình: chỉ đọc nguồn và dựng catalog. Harness không tự kết luận tiêu đề từ '
-      + 'style/đánh số, nên kết quả không có tiêu đề nào.', 'warn');
-    return;
+    chip('cfgNote', 'không dùng mô hình', 'Chỉ đọc nguồn: không có heading nào được nhận từ mô hình.', 'warn');
+  } else if ($('backend').value === 'openrouter') {
+    chip('cfgNote', 'OpenRouter', 'Suy luận từ xa: chất lượng phụ thuộc model slug đang cấu hình trên server.', 'warn');
+  } else if ($('backend').value === 'lmstudio') {
+    chip('cfgNote', 'LM Studio', 'Mô hình chạy trong LM Studio; kết quả được kiểm tra theo nguồn trước khi dùng.');
+  } else {
+    chip('cfgNote', 'Qwen local', 'Mô hình .gguf trên máy này.');
   }
-  if ($('backend').value === 'openrouter') {
-    chip('cfgNote', 'chưa đo trên server này',
-      'Suy luận từ xa: chất lượng phụ thuộc model slug đang cấu hình trên server, không phải bộ số đo cục bộ.', 'warn');
-    return;
-  }
-  if ($('backend').value === 'lmstudio') {
-    chip('cfgNote', 'LM Studio',
-      'LM Studio local RPC: kết quả được hậu kiểm theo contract trước khi dùng.');
-    return;
-  }
-  chip('cfgNote', modelLabel, modelNote, modelTone);
 }
 
-// Model đang thật sự chạy phải đọc theo backend đang chọn. Bản trước viết
-// `$('lmStudioModel').value || $('model')...` nên chỉ cần LM Studio có model nào đó là ô "Backend /
-// model" và dev log khoe id của LM Studio, kể cả khi đang chạy Qwen local bằng file .gguf — nhìn
-// vào tưởng nạp nhầm model trong khi server vẫn chạy đúng thứ được chọn.
-function activeModelLabel() {
-  if ($('noLlm').checked) return 'không gọi model';
-  const backend = $('backend').value;
-  if (backend === 'lmstudio') return $('lmStudioModel').value || 'chưa chọn model LM Studio';
-  if (backend === 'openrouter')
-    return (defaults && defaults.openRouterModel) || 'model cấu hình trên server';
-  return $('model').selectedOptions[0]?.textContent || 'model mặc định';
-}
-
-// Nhãn ngắn hiện trên chip, câu đầy đủ nằm ở tooltip — không rút gọn nội dung, chỉ đổi chỗ đặt.
 function chip(id, label, detail, tone = '') {
   const el = $(id);
   el.textContent = label || '';
@@ -1118,37 +484,13 @@ fetch('/api/models').then(r => r.json()).then(list => {
   if (!list.length) {
     sel.innerHTML = '<option value="">— không tìm thấy .gguf —</option>';
     $('noLlm').checked = true;
-    modelLabel = 'không có .gguf'; modelTone = 'warn';
-    modelNote = 'Không tìm thấy .gguf nào trong models/ — hãy dùng LM Studio hoặc OpenRouter.';
+    renderCfgNote();
     syncBackend();
     return;
   }
-  // Mô hình khuyên dùng đứng đầu danh sách nên tự được chọn.
   sel.innerHTML = list.map(m =>
-    `<option value="${esc(m.path)}">${esc(m.name)} · ${m.sizeGb} GB${
-      m.recommended ? ' · khuyên dùng' : ''}</option>`).join('');
-  syncCtx();
-  sel.onchange = syncCtx;
-
-  function syncCtx() {
-    const opt = sel.selectedOptions[0];
-    // KHÔNG tự điền ctx nữa. Bản cũ điền suggestedCtx — con số đoán từ TÊN FILE — nên ô luôn có
-    // giá trị và request luôn mang ctx, tức cơ chế tự đọc {arch}.context_length từ GGUF không bao
-    // giờ chạy được. Để trống thì server đọc từ chính mô hình (§56.4).
-    $('ctx').value = '';
-    // Không hứa "100%" trống không: con số đó là MỘT lần chạy trên MỘT tài liệu, và batched
-    // executor không tái lập từng bit nên chạy lại có thể lệch vài phần trăm.
-    const measured = opt.textContent.includes('khuyên dùng');
-    modelLabel = measured ? 'cấu hình đã đo' : 'không phải cấu hình đã đo';
-    modelTone = measured ? 'ok' : 'warn';
-    modelNote = measured
-      ? 'Đang dùng cấu hình chất lượng đã đo — mô hình lớn nhất tìm thấy, ngữ cảnh đọc thẳng '
-        + 'từ file GGUF, 6 ứng viên mỗi khối. Mốc 100% là một lần đo trên đúng tài liệu '
-        + 'benchmark; chạy lại có thể lệch vài phần trăm và tài liệu khác thì chưa nói lên gì.'
-      : 'Mô hình này KHÔNG phải cấu hình đã đo. Mô hình nhỏ hơn tụt precision rõ rệt — trên cùng '
-        + 'tài liệu benchmark, Llama-3.2-3B đo được 73% còn Qwen2.5-7B 100% (mỗi bên một lần chạy).';
-    renderCfgNote();
-  }
+    `<option value="${esc(m.path)}">${esc(m.name)} · ${m.sizeGb} GB${m.recommended ? ' · khuyên dùng' : ''}</option>`).join('');
+  syncBackend();
 });
 
 // ---------- chạy ----------
@@ -1159,50 +501,38 @@ $('run').onclick = async () => {
   runController = new AbortController();
   outline = null; serverError = false;
   window.WebPipelineV2.reset();
-  ['statsPanel', 'treePanel', 'errBox'].forEach(id => $(id).classList.add('hidden'));
+  ['statsPanel', 'treePanel', 'rawPanel', 'errBox'].forEach(id => $(id).classList.add('hidden'));
   logEvents = [];
-  harnessEvents = [];
-  harnessSelectedStage = null;
-  harnessStagePinned = false;
-  rawDataVisible = $('showRaw').checked;
+  devLogLines = 0;
   $('log').textContent = '';
-  $('harnessDetail').innerHTML = '<h3>Harness trace</h3><p class="note" style="margin:0">Select a stage to inspect its contract and emitted events.</p>';
-  devStarted = Date.now(); devLogLines = 0;
-  renderStages();
+  devStarted = Date.now();
   $('devDot').className = 'devdot live';
-  $('devState').textContent = 'Đang khởi tạo pipeline…';
+  $('devState').textContent = 'Đang khởi tạo…';
   $('devElapsed').textContent = '0 s';
   $('devMeta').textContent = `${$('backend').selectedOptions[0]?.textContent || 'Backend'} · ${activeModelLabel()}`;
-  $('workState').textContent = 'Đang xử lý';
-  $('workModel').textContent = activeModelLabel();
-  $('workConfig').textContent = $('ctx').value ? `${$('ctx').value} token` : 'ngữ cảnh tự đọc';
-  $('workHint').textContent = 'Đang theo dõi harness events; raw provider payload không được công bố.';
 
   const fd = new FormData();
   fd.append('file', picked);
   fd.append('backend', $('backend').value);
-  fd.append('userPrompt', $('userPrompt').value.trim());
   fd.append('model', $('model').value);
   fd.append('lmStudioModel', $('lmStudioModel').value);
   fd.append('ctx', $('ctx').value);
   fd.append('gpuLayers', $('gpuLayers').value);
   fd.append('noLlm', $('noLlm').checked ? '1' : '0');
-  fd.append('showRaw', $('showRaw').checked ? '1' : '0');
   fd.append('writeback', $('writeback').checked ? '1' : '0');
+  fd.append('showRaw', $('showRaw').checked ? '1' : '0');
 
-  const started = Date.now();
   const timer = setInterval(() => {
-    const elapsed = Math.round((Date.now() - started) / 1000);
+    const elapsed = Math.round((Date.now() - devStarted) / 1000);
     $('run').textContent = 'Đang chạy… ' + elapsed + ' s';
     $('devElapsed').textContent = elapsed + ' s';
   }, 1000);
 
   try {
-    fd.append('userPrompt', $('userPrompt').value.trim());
     const res = await fetch('/api/extract', { method: 'POST', body: fd, signal: runController.signal });
     if (!res.ok) throw new Error(await res.text());
 
-    // NDJSON: đọc từng dòng ngay khi máy chủ đẩy ra, không đợi chạy xong.
+    // NDJSON: đọc từng dòng ngay khi máy chủ đẩy ra, không đợi lượt chạy xong.
     const reader = res.body.getReader(), dec = new TextDecoder();
     let buf = '';
     for (;;) {
@@ -1212,19 +542,16 @@ $('run').onclick = async () => {
       const lines = buf.split('\n');
       buf = lines.pop();
       for (const line of lines) {
-        if (!line.trim()) continue;
-        handle(JSON.parse(line));
+        if (line.trim()) handleStreamEvent(JSON.parse(line));
       }
     }
-    // Máy chủ đã báo lỗi cụ thể rồi thì giữ nguyên, đừng đè bằng thông báo chung chung.
+    // Máy chủ đã báo lỗi cụ thể thì giữ nguyên, đừng đè bằng thông báo chung chung.
     if (!outline && !serverError) throw new Error('Máy chủ đóng kết nối trước khi trả kết quả.');
   } catch (e) {
     if (e.name === 'AbortError') {
-      handle({ type: 'agent', stage: 'run', kind: 'Cancelled', message: 'Run đã được hủy bởi người dùng.' });
+      pushLog('agent', 'Lượt chạy đã được hủy.', 'run', 'Cancelled');
       $('devDot').className = 'devdot';
       $('devState').textContent = 'Đã hủy';
-      $('workState').textContent = 'Đã hủy';
-      $('workHint').textContent = 'Run đã dừng; có thể chọn lại file và thực hiện lại.';
     } else {
       showError(e.message);
       window.WebPipelineV2.showFailure(e.message);
@@ -1240,108 +567,45 @@ $('run').onclick = async () => {
 
 $('cancelRun').onclick = () => runController?.abort();
 
-function handle(evt) {
-  if (evt.type === 'log') {
-    devLogLines++;
-    updateDevState(evt.message);
-    appendLiveEvent({ ...evt, channel: 'raw' });
-  } else if (evt.type === 'agent') {
-    appendLiveEvent({ ...evt, channel: 'agent' });
-  } else if (evt.type === 'error') {
-    serverError = true;
-    $('devDot').className = 'devdot error';
-    $('devState').textContent = 'Lỗi xử lý';
-    $('workState').textContent = 'Lỗi';
-    $('workHint').textContent = evt.message;
-    showError(evt.message);
-  } else if (evt.type === 'result') {
-    $('devDot').className = 'devdot done';
-    $('devState').textContent = 'Đã hoàn tất · ' + devLogLines + ' sự kiện';
-    renderStages(true);
-    $('workState').textContent = 'Hoàn tất';
-    $('workHint').textContent = 'Đã qua pipeline; xem Tổng quan và Cấu trúc tiêu đề bên dưới.';
-    outline = evt.outline;
-    if (evt.agent) {
-      appendLiveEvent({ type: 'agent', channel: 'agent', stage: 'completed', kind: evt.agent.outcome,
-        message: evt.agent.message });
-    }
-    render(evt.outline, evt.stats, evt.agent);
-  }
-}
-
-function appendLiveEvent(evt) {
-  liveEvents.push({ ...evt, receivedAt: Date.now() });
-  renderLiveLog();
-}
-
-function renderLiveLog() {
-  const events = logFilter === 'all' ? liveEvents : liveEvents.filter(evt => evt.channel === logFilter);
-  $('log').innerHTML = events.length ? events.map(evt => {
-    const time = new Date(evt.receivedAt).toLocaleTimeString('vi-VN', { hour12: false });
-    const channel = evt.channel === 'agent' ? 'AGENT' : 'LLM RAW';
-    const kind = evt.channel === 'agent' ? `${evt.stage || 'event'} · ${evt.kind || ''}` : 'BACKEND';
-    return `<div class="log-row ${evt.channel}"><span class="log-time">${esc(time)}</span><span class="log-kind">${esc(channel)}<br>${esc(kind)}</span><span>${esc(evt.message || '')}</span></div>`;
-  }).join('') : '<div class="log-empty">Chưa có sự kiện.</div>';
-  $('log').scrollTop = $('log').scrollHeight;
-}
-
-// Keep the run-lifecycle function names, but route rendering through the
-// contract-aware harness view above.
-function renderStages(allDone = false) { renderHarnessStages(); }
-function updateDevState(message) {
-  const latest = harnessEvents[harnessEvents.length - 1];
-  $('devState').textContent = latest ? `${latest.stage} · ${latest.kind}` : 'Processing...';
-}
-function handle(evt) { handleStreamEvent(evt); }
-renderHarnessStages();
-renderHarnessDetail(harnessSelectedStage);
-
-function showError(msg) {
-  $('errBox').classList.remove('hidden');
-  $('errText').textContent = msg;
+function activeModelLabel() {
+  if ($('noLlm').checked) return 'không gọi mô hình';
+  const backend = $('backend').value;
+  if (backend === 'lmstudio') return $('lmStudioModel').value || 'chưa chọn mô hình LM Studio';
+  if (backend === 'openrouter') return (defaults && defaults.openRouterModel) || 'model cấu hình trên server';
+  return $('model').selectedOptions[0]?.textContent || 'mô hình mặc định';
 }
 
 // ---------- hiển thị kết quả ----------
-function render(o, s, agent) {
+function tiles(id, items) {
+  $(id).innerHTML = items.map(([v, k, big]) =>
+    `<div class="tile${big ? ' big' : ''}"><div class="v">${esc(String(v))}</div><div class="k">${esc(k)}</div></div>`
+  ).join('');
+}
+
+function render(o, s, agent, replies) {
   const secs = (o.elapsedMs / 1000).toFixed(1);
-  const t = [
+  const items = [
     [o.paragraphCount, 'đoạn trong file'],
-    [s.sources, 'nguồn'],
+    [o.sourceCount, 'đoạn nguồn được xét'],
     [s.headings, 'tiêu đề', true],
-    [s.humanVerified, 'người xác nhận'],
-    [s.requiresReview, 'cần duyệt'],
-    ['not-recorded', 'bị loại — chưa có census'],
     [s.maxLevel, 'cấp sâu nhất'],
     [secs + ' s', 'thời gian'],
   ];
-  if (o.disputedCount) t.splice(4, 0, [o.disputedCount, 'cần xem lại']);
-  tiles('tiles', t);
+  if (agent && agent.requiresReview) items.splice(3, 0, [agent.requiresReview, 'cần xem lại']);
+  tiles('tiles', items);
 
   $('confNote').innerHTML =
-    // Câu tường thuật do harness dựng từ outline đã qua validator — hiển thị nguyên văn để UI
-    // không diễn giải lại các con số theo hướng dễ chịu hơn thực tế.
     (agent ? `${esc(agent.message)}<br>` : '') +
-    `Nguồn: <span class="tag Model">Model</span> ${s.byModel}` +
-    ` · <span class="tag HumanCorrection">Người sửa</span> ${s.byHumanCorrection}` +
-    (o.model ? ` — mô hình <code>${esc(o.model)}</code>` : ' — không gọi mô hình') +
-    `.<br>Mục chưa được xác nhận được giữ ở trạng thái cần duyệt.`;
+    (o.model ? `Mô hình <code>${esc(o.model)}</code>.` : 'Không gọi mô hình.') +
+    (agent && agent.writebackApplied != null ? `<br>Đã gắn outline cho ${agent.writebackApplied} heading vào bản sao .docx.` : '');
 
-  // Nút tải chỉ hiện khi harness thật sự đã ghi được file. Không dựng link từ runId ở phía
-  // trình duyệt: run bị gate chặn thì không có gì để tải, và một link chết còn khó hiểu hơn.
+  // Nút tải chỉ hiện khi máy chủ thật sự ghi được file.
   const download = agent && agent.download;
   $('downloadDocx').classList.toggle('hidden', !download);
   $('downloadNote').classList.toggle('hidden', !download);
   if (download) $('downloadDocx').onclick = () => { window.location.href = download; };
 
-  // PHẢI khai TRƯỚC câu lệnh dưới: đặt giữa biểu thức nối chuỗi thì cả <script> hỏng cú pháp.
-  const decisionTag = h => {
-    if (h.decisionStatus === 'HumanVerified') return '<span class="tag HumanCorrection">người xác nhận</span>';
-    if (h.decisionStatus === 'RequiresReview') return '<span class="tag dis">nên xem</span>';
-    return '';
-  };
-
   // Level indentation is a visual aid, not a claim of a validated ParentChild relation.
-  // Only the source-grounded fields actually supplied by the outline are shown here.
   const headingEvidence = h => {
     const fields = [
       ['Stable ID', h.stableId],
@@ -1351,10 +615,7 @@ function render(o, s, agent) {
           ? `[${h.headingSpan.start}, ${h.headingSpan.end})` : null],
       ['Hierarchy resolution', h.hierarchyResolution],
       ['Boundary source', h.boundarySource],
-      ['Confidence basis', h.confidenceBasis],
-      ['Style ID', h.styleId],
       ['Original text', h.originalText],
-      ['Inline body', h.inlineBody],
     ].filter(([, value]) => value !== null && value !== undefined && value !== '');
     return fields.length
       ? `<details class="heading-evidence"><summary>Chi tiết nguồn và quyết định</summary><dl>${fields.map(([key, value]) =>
@@ -1370,7 +631,6 @@ function render(o, s, agent) {
         <td style="padding-left:10px">
           <span class="lvl">${h.level == null ? 'H?' : 'H' + h.level}</span>${esc(h.text)}${
             h.inlineBody ? '<span class="tag dis">tách nội dung cùng dòng</span>' : ''}${
-            decisionTag(h)}${
             h.disputed ? '<span class="tag dis">cần xem lại</span>' : ''}
           ${headingEvidence(h)}</td>
         <td><span class="tag ${esc(h.source || '')}">${esc(h.source || '—')}</span></td>
@@ -1378,14 +638,17 @@ function render(o, s, agent) {
 
   $('statsPanel').classList.remove('hidden');
   $('treePanel').classList.remove('hidden');
-  renderOutputTrace(o);
-}
 
-// ---------- tiện ích ----------
-function tiles(id, items) {
-  $(id).innerHTML = items.map(([v, k, big]) =>
-    `<div class="tile${big ? ' big' : ''}"><div class="v">${esc(String(v))}</div><div class="k">${esc(k)}</div></div>`
-  ).join('');
+  // Phản hồi thô chỉ có khi người dùng đã bật; mỗi cửa sổ là một khung thu gọn.
+  $('rawPanel').classList.toggle('hidden', !(replies && replies.length));
+  const section = (title, text) => text ? `<h4>${title}</h4><pre>${esc(text)}</pre>` : '';
+  $('rawReplies').innerHTML = (replies || []).map(r => {
+    const calls = (r.toolCalls || []).map(c => `${c.name}(${c.arguments})`).join('\n');
+    return `<details class="llm-event"><summary>${esc(r.unit)} · lượt ${r.turn}${r.finishReason ? ' · ' + esc(r.finishReason) : ''}</summary>`
+      + section('Suy luận', r.reasoning) + section('Gọi tool', calls)
+      + section('Kết quả tool trước lượt này', (r.toolResults || []).map(x => x.content).join('\n\n'))
+      + section('Nội dung', r.content) + '</details>';
+  }).join('');
 }
 </script>
 </body>

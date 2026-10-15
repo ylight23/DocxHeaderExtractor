@@ -96,7 +96,8 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
 
     // Chạy thẳng tuyến V6 (PDF/DOCX). Không qua harness: không có consent gửi dữ liệu ra ngoài,
     // không có validator, không có guardrail đích ghi (chủ dự án chấp nhận, 2026-10-15).
-    using var runner = new V6DocumentRunner(o.Pipeline, new InferenceTransportFactory(o.Provider));
+    using var runner = new V6DocumentRunner(o.Pipeline, new InferenceTransportFactory(o.Provider),
+        o.ShowRawOutput ? r => PrintModelReply(r) : null);
     var outputs = new List<string>();
     int failed = 0;
 
@@ -158,6 +159,16 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
 /// Yêu cầu gửi harness cho một tài liệu. Chỉ đồng ý gửi dữ liệu ra ngoài khi backend là dịch vụ
 /// từ xa và người dùng không chạy <c>--no-llm</c>.
 /// </summary>
+// --show-raw: what the model streamed and wrote for one reply. Reasoning and content are the model's own text.
+static void PrintModelReply(DocxHeaderExtractor.HeadingAgent.ModelReply r)
+{
+    Console.Error.WriteLine($"--- [{r.Unit}] lượt {r.Turn} ({r.FinishReason ?? "—"}) ---");
+    if (!string.IsNullOrEmpty(r.Reasoning)) Console.Error.WriteLine($"[suy luận]\n{r.Reasoning}");
+    foreach (var c in r.ToolCalls) Console.Error.WriteLine($"[gọi tool] {c.Name} {c.Arguments}");
+    foreach (var x in r.ToolResults) Console.Error.WriteLine($"[kết quả tool trước lượt này] {x.Content}");
+    if (!string.IsNullOrEmpty(r.Content)) Console.Error.WriteLine($"[nội dung]\n{r.Content}");
+}
+
 static int RunModelInfo(CommandLineOptions o)
 {
     var path = o.Inputs.FirstOrDefault() ?? o.Provider.LocalModel.ModelPath;
