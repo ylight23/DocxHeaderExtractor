@@ -30,7 +30,8 @@ public sealed class DocxAgentFlavorTests : IDisposable
         Assert.Contains(AgentProtocol.Intro, prompt);
         Assert.Contains(AgentProtocol.MembershipOnly, prompt);
         Assert.Contains(AgentProtocol.ObservedLine, prompt);
-        Assert.Contains(AgentProtocol.BodyWithAnalysis(AgentProtocol.SelectObjectsVersion), prompt);
+        Assert.EndsWith(DocxAgentProtocol.ExtentBody, prompt, StringComparison.Ordinal);
+        Assert.StartsWith(AgentProtocol.BodyWithAnalysis(AgentProtocol.SelectExtentVersion)[..200], DocxAgentProtocol.ExtentBody, StringComparison.Ordinal);
         Assert.Contains("You have at most " + AgentProtocol.MaxToolTurns + " rounds of tool calls", prompt);
         // What is DOCX's own.
         Assert.Contains("A line is one paragraph of the document", prompt);

@@ -29,6 +29,13 @@ internal interface IAgentSource
 internal interface IAgentFlavor
 {
     string SystemPrompt { get; }
+    /// <summary>The protocolVersion of this flavor's answer format.</summary>
+    string AnswerVersion { get; }
+    /// <summary>Whether a SELECT may carry headingExtent, the part of the line's text that is the heading (checked against the text, never moved).</summary>
+    bool HeadingExtents { get; }
+    /// <summary>Whether an answer that decides targets the facts calls returned no facts for is sent back once, naming them. Off for the PDF:
+    /// its conversation is the qualified one, held to the qualified request bytes, so there the coverage ledger is recorded only.</summary>
+    bool SendsBackUncoveredTargets { get; }
     JsonArray ToolDefinitions();
     IAgentTools CreateTools(IAgentSource source);
     /// <summary>One line of the targets or the context in the unit payload.</summary>
@@ -66,4 +73,9 @@ internal interface IAgentTools
     IReadOnlySet<string> ObservedAliases { get; }
     /// <summary>Whether a call to the facts tool has succeeded: the first answer is refused before that.</summary>
     bool FactsWereRead { get; }
+    /// <summary>The ledger of evidence coverage: every line whose own facts a successful facts call returned (not the lines a result only
+    /// mentions). It says which targets the model has read the facts of; it decides nothing.</summary>
+    IReadOnlySet<string> FactsReturnedFor { get; }
+    /// <summary>Successful facts calls whose result was cut (hasMore true or truncated).</summary>
+    int FactsResultsCut { get; }
 }

@@ -25,12 +25,16 @@ internal static class AgentProtocol
     public const int MaxToolMessageBytesPerUnit = 65536;
     public const int VisibleResponseCapBytes = 16384;
     public const string SelectObjectsVersion = "P7_F1_V6_SELECT_OBJECTS_V1";
+    /// <summary>The answer format of a flavor that lets a SELECT carry headingExtent: the exact part of the target's text that is the heading
+    /// (see <see cref="DocxAgentProtocol"/>). The PDF flavor keeps <see cref="SelectObjectsVersion"/>, so its prompt and parser are unchanged.</summary>
+    public const string SelectExtentVersion = "P7_F1_V6_SELECT_OBJECTS_EXTENT_V1";
     public const int MaxEvidenceRefs = 8, MaxInterpretations = 5, MaxFreeTextChars = 1000, MaxReasonChars = 300, MaxMissingNamed = 40;
 
     /// <summary>The instruction production sends: the owner's structural-heading instruction (Task A), adopted 2026-10-14 after the
     /// three-document comparison with the earlier "main headings by meaning" instruction (SHA-256 813e49c6, in git history; artifacts/
-    /// p7-v6-pattern-commitments; docs/experiments/p7-f1-v6-pdf-promotion-2026-10-14.md).</summary>
-    public const string Instruction = InstructionFormattingEvidenceV1;
+    /// p7-v6-pattern-commitments; docs/experiments/p7-f1-v6-pdf-promotion-2026-10-14.md). The formatting-evidence variant
+    /// (<see cref="InstructionFormattingEvidenceV2"/>) is a candidate to compare, not the default, until an A/B run shows its effect.</summary>
+    public const string Instruction = InstructionStructuralV1;
 
     /// <summary>The user instruction of the frozen D4.12 method (mainrep2), verbatim. Kept for the parity tests against the qualified code.</summary>
     public const string InstructionD412 =
@@ -52,14 +56,15 @@ internal static class AgentProtocol
         "Do not select numbered body paragraphs, table-of-contents references, cross-references, or other text merely because their wording, numbering, or appearance resembles a heading. Determine the structural function of each occurrence at its own location using its text, layout, and surrounding context.\n" +
         "When the available evidence cannot establish that function, request additional source evidence or report the occurrence as unresolved rather than guessing.";
 
-    /// <summary>Formatting is one kind of evidence among several, never the decision on its own; a paragraph that opens with a unit's label and title
-    /// and continues with its body is one heading occurrence. Shared by the DOCX and the PDF variant (the PDF production instruction stays <see cref="Instruction"/>).</summary>
+    /// <summary>Formatting is one kind of evidence among several, never the decision on its own. Shared by the DOCX instruction and the PDF variant.
+    /// The earlier V1 paragraph also told the model to select a paragraph that opens with a heading and continues with body text; that sentence
+    /// moved to <see cref="DocxAgentProtocol.HeadingExtentParagraph"/>, which comes with an answer field for the heading's extent, because without
+    /// one the whole paragraph became the heading text.</summary>
     public const string FormattingEvidenceParagraph =
-        "Formatting of a line (its style, font size, emphasis, alignment, numbering) is one kind of evidence, read together with the text, the place of the line in the outline and the lines around it. It does not by itself make a line a heading, and its absence does not by itself rule a line out. " +
-        "A paragraph that opens with the label and title of a structural unit and continues with the unit's body text in the same paragraph is a heading occurrence: select it. The body text it continues with is not a separate heading.";
+        "Formatting of a line (its style, font size, emphasis, alignment, numbering) is one kind of evidence, read together with the text, the place of the line in the outline and the lines around it. It does not by itself make a line a heading, and its absence does not by itself rule a line out.";
 
     /// <summary>The structural instruction plus <see cref="FormattingEvidenceParagraph"/>. Not the PDF production instruction: a variant to compare.</summary>
-    public const string InstructionFormattingEvidenceV1 = InstructionStructuralV1 + "\n" + FormattingEvidenceParagraph;
+    public const string InstructionFormattingEvidenceV2 = InstructionStructuralV1 + "\n" + FormattingEvidenceParagraph;
 
     // ---------------- system prompt (TOOLFACTS_ANALYSIS_V3, range stated) ----------------
 
@@ -231,9 +236,14 @@ internal static class AgentProtocol
 
     public sealed record Clarification(string Question, IReadOnlyList<string> Interpretations);
 
+    /// <param name="Extents">The headingExtent of each SELECT that gave one, checked against the target's text; empty when the flavor has none.</param>
+    /// <param name="Detail">For a refused headingExtent: what the program measured (the text at the offsets given, where the text given occurs).</param>
     public sealed record SelectReply(bool Ok, string? Failure, string? Status, IReadOnlyDictionary<string, string> Values, Clarification? Clarification,
         string? IncompleteReason, IReadOnlyList<string> Missing, IReadOnlyDictionary<string, IReadOnlyList<string>>? Refs = null, string? Analysis = null,
-        IReadOnlyDictionary<string, string>? Reasons = null);
+        IReadOnlyDictionary<string, string>? Reasons = null, IReadOnlyDictionary<string, HeadingExtent>? Extents = null, string? Detail = null);
+
+    /// <summary>A heading's extent inside its line: [Start, End) in UTF-16 code units of the line's text, and that exact text.</summary>
+    public sealed record HeadingExtent(int Start, int End, string Text);
 
     static string? Str(JsonElement e, string name) => e.TryGetProperty(name, out var v) && v.ValueKind == JsonValueKind.String ? v.GetString() : null;
     static bool Has(JsonElement root, string name) =>
@@ -255,9 +265,15 @@ internal static class AgentProtocol
 
     /// <summary>The strict parser of a final answer (objects format, agent mode, analysis and reasons allowed). A missing or extra alias is
     /// reported, never filled in; a decision is never changed. shownOrder holds every alias the model saw.</summary>
-    public static SelectReply ParseSelect(string reply, IReadOnlyDictionary<string, int> shownOrder, IReadOnlyList<string> decide)
+    /// <param name="version">The protocolVersion the answer must carry: the flavor's answer format.</param>
+    /// <param name="targetTexts">The text of every target, when the flavor lets a SELECT carry headingExtent; null refuses that key, as before.
+    /// An extent is only checked, never moved: its offsets must lie inside the target's text on word boundaries, and its text must be exactly the
+    /// text at those offsets.</param>
+    public static SelectReply ParseSelect(string reply, IReadOnlyDictionary<string, int> shownOrder, IReadOnlyList<string> decide,
+        string version = SelectObjectsVersion, IReadOnlyDictionary<string, string>? targetTexts = null)
     {
-        SelectReply Fail(string code, IReadOnlyList<string>? missing = null) => new(false, code, null, new Dictionary<string, string>(), null, null, missing ?? Array.Empty<string>());
+        SelectReply Fail(string code, IReadOnlyList<string>? missing = null, string? detail = null) =>
+            new(false, code, null, new Dictionary<string, string>(), null, null, missing ?? Array.Empty<string>(), Detail: detail);
         if (Encoding.UTF8.GetByteCount(reply) > VisibleResponseCapBytes) return Fail("REPLY_OVER_CAP");
         JsonDocument doc;
         try { doc = JsonDocument.Parse(reply); } catch (JsonException) { return Fail("REPLY_NOT_JSON"); }
@@ -274,7 +290,7 @@ internal static class AgentProtocol
                 if (an.ValueKind != JsonValueKind.String) return Fail("ANALYSIS_INVALID");
                 analysis = an.GetString();
             }
-            if (Str(root, "protocolVersion") != SelectObjectsVersion) return Fail("PROTOCOL_VERSION_INVALID");
+            if (Str(root, "protocolVersion") != version) return Fail("PROTOCOL_VERSION_INVALID");
             var status = Str(root, "status");
             if (status is not ("COMPLETE" or "NEEDS_EVIDENCE" or "CLARIFICATION_REQUIRED" or "INCOMPLETE")) return Fail("STATUS_INVALID");
             if (status == "NEEDS_EVIDENCE") return Fail("NEEDS_EVIDENCE_NOT_IN_AGENT_MODE");
@@ -309,11 +325,13 @@ internal static class AgentProtocol
             var values = new Dictionary<string, string>(StringComparer.Ordinal);
             var refsByAlias = new Dictionary<string, IReadOnlyList<string>>(StringComparer.Ordinal);
             var reasons = new Dictionary<string, string>(StringComparer.Ordinal);
+            var extents = new Dictionary<string, HeadingExtent>(StringComparer.Ordinal);
             if (!root.TryGetProperty("decisions", out var ds) || ds.ValueKind != JsonValueKind.Array) return Fail("DECISIONS_MISSING");
             var decideSet = decide.ToHashSet(StringComparer.Ordinal);
             foreach (var d in ds.EnumerateArray())
             {
-                if (d.ValueKind != JsonValueKind.Object || d.EnumerateObject().Any(p => p.Name is not ("alias" or "decision" or "evidenceRefs" or "reason")))
+                if (d.ValueKind != JsonValueKind.Object || d.EnumerateObject().Any(p => p.Name is not ("alias" or "decision" or "evidenceRefs" or "reason")
+                        && !(p.Name == "headingExtent" && targetTexts is not null)))
                     return Fail("DECISION_KEYS_INVALID");
                 var alias = Str(d, "alias");
                 if (alias is null) return Fail("ALIAS_MISSING");
@@ -330,22 +348,65 @@ internal static class AgentProtocol
                     if (rs.ValueKind != JsonValueKind.String || rs.GetString()!.Length > MaxReasonChars) return Fail("REASON_INVALID");
                     reasons[alias] = rs.GetString()!;
                 }
+                if (d.TryGetProperty("headingExtent", out var he))
+                {
+                    if (value != "SELECT") return Fail("HEADING_EXTENT_NOT_ON_SELECT");
+                    var (extent, code, detail) = ReadExtent(he, targetTexts![alias]);
+                    if (extent is null) return Fail(code!, detail: alias + ": " + detail);
+                    extents[alias] = extent;
+                }
                 if (!values.TryAdd(alias, value!)) return Fail("ALIAS_LISTED_TWICE");
                 refsByAlias[alias] = (IReadOnlyList<string>?)refs ?? Array.Empty<string>();
             }
             var missing = decide.Where(a => !values.ContainsKey(a)).ToArray();
             if (missing.Length > 0) return Fail("COVERAGE_INCOMPLETE", missing);
             if (status == "INCOMPLETE" && values.Values.All(v => v != "UNRESOLVED")) return Fail("INCOMPLETE_WITHOUT_UNRESOLVED");
-            return new SelectReply(true, null, status, values, null, reason, Array.Empty<string>(), refsByAlias, analysis, reasons);
+            return new SelectReply(true, null, status, values, null, reason, Array.Empty<string>(), refsByAlias, analysis, reasons, extents);
         }
+    }
+
+    /// <summary>Checks one headingExtent against its target's text. The program measures, it does not choose: a refusal says what lies at the
+    /// offsets given and where the text given occurs in the target, and the model sends its own extent again.</summary>
+    static (HeadingExtent? Extent, string? Code, string? Detail) ReadExtent(JsonElement e, string text)
+    {
+        if (e.ValueKind != JsonValueKind.Object || e.EnumerateObject().Any(p => p.Name is not ("start" or "end" or "text"))
+            || !e.TryGetProperty("start", out var s) || s.ValueKind != JsonValueKind.Number || !s.TryGetInt32(out var start)
+            || !e.TryGetProperty("end", out var en) || en.ValueKind != JsonValueKind.Number || !en.TryGetInt32(out var end)
+            || Str(e, "text") is not { } given)
+            return (null, "HEADING_EXTENT_INVALID", "headingExtent must be an object with exactly start (integer), end (integer) and text (string)");
+        string Where()
+        {
+            var at = new List<string>();
+            for (var i = given.Length == 0 ? -1 : text.IndexOf(given, StringComparison.Ordinal); i >= 0 && at.Count < 3; i = text.IndexOf(given, i + 1, StringComparison.Ordinal))
+                at.Add("[" + i + "," + (i + given.Length) + ")");
+            return at.Count == 0 ? "the text you gave does not occur in the target's text" : "the text you gave occurs in the target's text at " + string.Join(", ", at);
+        }
+        if (start < 0 || end <= start || end > text.Length)
+            return (null, "HEADING_EXTENT_OUT_OF_RANGE", "the target's text has " + text.Length + " characters, so 0 <= start < end <= " + text.Length + " is required; " + Where());
+        var found = text[start..end];
+        if (found != given)
+            return (null, "HEADING_EXTENT_TEXT_MISMATCH", "the text at [" + start + "," + end + ") is " + JsonSerializer.Serialize(found, Options) + "; " + Where());
+        if (given.Trim().Length != given.Length)
+            return (null, "HEADING_EXTENT_EDGE_WHITESPACE", "the extent must not start or end with a space or a line break");
+        var boundaries = DocxHeaderExtractor.Core.Semantics.Binding.SourceTextBoundaryMap.For(text);
+        if (!boundaries.Contains(start) || !boundaries.Contains(end))
+            return (null, "HEADING_EXTENT_NOT_ON_BOUNDARY", "start and end must not cut a word or a number");
+        return (new HeadingExtent(start, end, given), null, null);
     }
 
     // ---------------- repair messages ----------------
 
     /// <summary>The message sent with a repair turn: the refusal code and what a valid answer needs; for COVERAGE_INCOMPLETE the targets that got
     /// no decision. It names no decision.</summary>
-    public static string RepairMessage(string failure, IReadOnlyList<string>? missing) =>
-        missing is { Count: > 0 } && failure == "PROTOCOL:COVERAGE_INCOMPLETE"
+    public static string RepairMessage(string failure, IReadOnlyList<string>? missing, string? detail = null) =>
+        failure.StartsWith("PROTOCOL:HEADING_EXTENT_", StringComparison.Ordinal)
+            ? "Your answer was refused (" + failure + "): " + (detail ?? "a headingExtent does not match its target's text")
+              + ". start and end are offsets in UTF-16 code units into the target's text exactly as the request and get_line_facts show it (a line break is one space there); text must be exactly that part of the target's text. Send the complete answer again as exactly one JSON object."
+        : missing is { Count: > 0 } && failure == "PROTOCOL:TOOL_FACTS_INCOMPLETE"
+            ? "Your answer was not taken yet (" + failure + "): get_line_facts has not returned facts for these targets: " + string.Join(", ", missing.Take(MaxMissingNamed))
+              + (missing.Count > MaxMissingNamed ? " and " + (missing.Count - MaxMissingNamed) + " more" : "")
+              + ". Call get_line_facts for them now (when a result says hasMore, call again with its nextOffset), then send the complete answer. If none of your decisions needs those facts, you may send the same answer again."
+        : missing is { Count: > 0 } && failure == "PROTOCOL:COVERAGE_INCOMPLETE"
             ? "Your answer was refused (" + failure + "): missing decisions for: " + string.Join(", ", missing.Take(MaxMissingNamed))
               + (missing.Count > MaxMissingNamed ? " and " + (missing.Count - MaxMissingNamed) + " more" : "")
               + ". Every alias from targetFirstAlias to targetLastAlias needs its own decision, and each segment of a visual line (aliases that differ only by :S0, :S1, :S2 and so on) is a separate target. Send the complete answer again as exactly one JSON object, with one decision for every target."

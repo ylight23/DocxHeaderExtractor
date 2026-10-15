@@ -18,6 +18,9 @@ internal sealed class DocxAgentFlavor : IAgentFlavor
     static readonly JsonSerializerOptions Compact = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
     public string SystemPrompt => DocxAgentProtocol.SystemPrompt;
+    public string AnswerVersion => AgentProtocol.SelectExtentVersion;
+    public bool HeadingExtents => true;
+    public bool SendsBackUncoveredTargets => true;
     public JsonArray ToolDefinitions() => DocxAgentTools.Definitions();
     public IAgentTools CreateTools(IAgentSource source) => new DocxAgentTools((DocxAgentSource)source);
     public object PayloadItem(AgentSourceLine line) => new { alias = line.Alias, text = line.Text };

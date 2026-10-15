@@ -36,6 +36,12 @@ internal abstract class AgentToolHost : IAgentTools
     protected readonly Dictionary<string, int> index = new(StringComparer.Ordinal);
     readonly List<CallRecord> ledger = new();
     readonly HashSet<string> observed = new(StringComparer.Ordinal);
+    // The coverage ledger: the lines whose own facts a successful, dispatched facts call returned, and how many such results were cut. A
+    // handler notes its lines in pending; they count only once the call has succeeded.
+    readonly HashSet<string> factsFor = new(StringComparer.Ordinal);
+    int factsCut;
+    readonly List<string> pendingFacts = new();
+    bool pendingCut;
     // Result cache (D4.11f). The tools read a fixed source, so the same call gives the same result. Only successful calls are kept, keyed by
     // the tool and its arguments in canonical form (keys sorted); a repeat returns the stored result, byte for byte but for the evidence id,
     // and says so. The cache lives as long as this registry, i.e. one unit's conversation; nothing is shared between units or arms.
@@ -71,6 +77,15 @@ internal abstract class AgentToolHost : IAgentTools
     public int DocumentLines => lines.Count;
     public int PositionOf(string alias) => index[alias];
     public bool FactsWereRead => ledger.Any(c => c.Tool == FactsToolName && c.Status == "OK");
+    public IReadOnlySet<string> FactsReturnedFor => factsFor;
+    public int FactsResultsCut => factsCut;
+
+    /// <summary>A facts handler names the lines whose own facts its result carries; they enter the coverage ledger once the call succeeds.</summary>
+    protected void NoteFactsReturned(IEnumerable<string> aliases, bool cut)
+    {
+        pendingFacts.AddRange(aliases);
+        pendingCut |= cut;
+    }
     int IAgentTools.MaxResultBytes => MaxResultBytes;
 
     /// <summary>The name a result and the ledger carry: a registered name, or null. A name Qwen made up is never echoed back, so a result's
@@ -114,6 +129,7 @@ internal abstract class AgentToolHost : IAgentTools
     {
         var raw = rawArguments ?? "";
         var returned = new List<string>();
+        pendingFacts.Clear(); pendingCut = false;
         JsonNode? arguments = null, result = null;
         string status = "OK"; string? error = null; var truncated = false; string? cacheOf = null; string? key = null;
         try
@@ -135,6 +151,9 @@ internal abstract class AgentToolHost : IAgentTools
         if (content.Length > MaxResultBytes) throw new InvalidOperationException("V6_TOOL_RESULT_CAP_EXCEEDED");   // the handlers fit before this point
         var aliases = returned.Distinct(StringComparer.Ordinal).ToArray();
         if (status == "OK") foreach (var a in aliases) observed.Add(a);
+        // A repeated call returns facts already in the ledger, so only a dispatched one adds to it.
+        if (status == "OK" && cacheOf is null) { factsFor.UnionWith(pendingFacts); if (pendingCut) factsCut++; }
+        pendingFacts.Clear(); pendingCut = false;
         if (status == "OK" && key is not null && cacheOf is null) cache[key] = new Cached(evidenceId, arguments, result, truncated, aliases);
         var sha = Convert.ToHexStringLower(SHA256.HashData(content));
         ledger.Add(new CallRecord(evidenceId, Registered(name) ?? "UNREGISTERED", Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(raw))), status, error,

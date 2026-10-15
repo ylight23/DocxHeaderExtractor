@@ -55,7 +55,7 @@ internal sealed class DocxAgentTools : AgentToolHost
     public static JsonArray Definitions()
     {
         var all = BaseDefinitions();
-        all.Add(Tool(LineFacts, "Read facts the program measured for the paragraphs from one alias to another in reading order (at most " + MaxFactLines + " per call; use offset to continue where a result was cut). For each paragraph: its style (id, name, outline level, size, bold, italic, underline, all capitals, alignment), its numbering (list, level, rendered label), its text (characters, share of bold characters, line breaks), where it stands (in a table with depth, row and cell, or in a text box), the internal links it carries, the rank and use of its style in the document, whether its neighbours share its style, its size against the document median, and, when its text also occurs on other paragraphs, the first other occurrences (place in reading order, style, whether they are in a table or carry links, the size difference, the paragraph that follows each). Measurements only: no label and no decision.",
+        all.Add(Tool(LineFacts, "Read facts the program measured for the paragraphs from one alias to another in reading order (at most " + MaxFactLines + " per call; use offset to continue where a result was cut). For each paragraph: its style (id, name, outline level, size, bold, italic, underline, all capitals, alignment), its numbering (list, level, rendered label), its text (characters, share of bold characters, line breaks, and with their offsets the line breaks, the pieces between them and the stretches of the same formatting), where it stands (in a table with depth, row and cell, or in a text box), the internal links it carries, the rank and use of its style in the document, whether its neighbours share its style, its size against the document median, and, when its text also occurs on other paragraphs, the first other occurrences (place in reading order, style, whether they are in a table or carry links, the size difference, the paragraph that follows each). Measurements only: no label and no decision.",
             new JsonObject
             {
                 ["first"] = AliasArg("The first paragraph of the range."),
@@ -283,6 +283,7 @@ internal sealed class DocxAgentTools : AgentToolHost
             ["truncation"] = Truncation(k, slice.Length, offset + k),
         });
         returned.AddRange(slice.Take(taken).SelectMany(i => Shown(i).Prepend(lines[i].Alias)));
+        NoteFactsReturned(slice.Take(taken).Select(i => lines[i].Alias), taken < slice.Length || offset + taken < rangeLength);
         return (arguments, result, taken < slice.Length);
     }
 

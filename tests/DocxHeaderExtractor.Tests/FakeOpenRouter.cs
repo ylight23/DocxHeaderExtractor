@@ -26,12 +26,25 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
 
     private static string Event(object o) => "data: " + JsonSerializer.Serialize(o) + "\n\n";
 
-    private static string Stream(object delta, string finish) =>
+    internal static string Stream(object delta, string finish) =>
         ": OPENROUTER PROCESSING\n\n"
         + Event(new { id = "gen-1", provider = "PROVIDER", model = "qwen/qwen3.7-flash", choices = new[] { new { index = 0, delta } } })
         + Event(new { id = "gen-1", provider = "PROVIDER", model = "qwen/qwen3.7-flash", choices = new[] { new { index = 0, delta = new { }, finish_reason = finish } },
             usage = new { prompt_tokens = 1000, completion_tokens = 200, completion_tokens_details = new { reasoning_tokens = 150 }, cost = 0.001 } })
         + "data: [DONE]\n\n";
+
+    /// <summary>Facts calls for one turn: get_line_facts over the targets at offset 0, 24, ... (at most <paramref name="pages"/> calls).</summary>
+    public static object[] FactsCalls(IReadOnlyList<string> targets, int pages = int.MaxValue) =>
+        Enumerable.Range(0, Math.Min(pages, (targets.Count + 23) / 24)).Select(k => (object)new
+        {
+            index = k, id = "call_" + targets[0] + "_" + k, type = "function",
+            function = new { name = "get_line_facts", arguments = JsonSerializer.Serialize(new { first = targets[0], last = targets[^1], offset = 24 * k }) },
+        }).ToArray();
+
+    /// <summary>The answer format the request's system prompt names: the DOCX one carries heading extents.</summary>
+    public static string AnswerVersion(JsonObject body) =>
+        body["messages"]![0]!["content"]![0]!["text"]!.GetValue<string>().Contains("P7_F1_V6_SELECT_OBJECTS_EXTENT_V1", StringComparison.Ordinal)
+            ? "P7_F1_V6_SELECT_OBJECTS_EXTENT_V1" : "P7_F1_V6_SELECT_OBJECTS_V1";
 
     /// <summary>As above, but each segment selects its first TWO targets; a GROUP request (the system prompt is the group prompt, the user
     /// message a plain string) is answered with one heading per run.</summary>
@@ -58,7 +71,7 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
             }, "tool_calls"));
         var answer = JsonSerializer.Serialize(new
         {
-            protocolVersion = "P7_F1_V6_SELECT_OBJECTS_V1", status = "COMPLETE", analysis = "fake",
+            protocolVersion = AnswerVersion(body), status = "COMPLETE", analysis = "fake",
             decisions = targets.Select((a, i) => i < 2 ? (object)new { alias = a, decision = "SELECT", evidenceRefs = new[] { a }, reason = "head" } : new { alias = a, decision = "NOT_SELECT" }),
         });
         return (HttpStatusCode.OK, Stream(new { content = answer }, "stop"));
@@ -78,7 +91,7 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
             }, "tool_calls"));
         var answer = JsonSerializer.Serialize(new
         {
-            protocolVersion = "P7_F1_V6_SELECT_OBJECTS_V1", status = "COMPLETE", analysis = "fake",
+            protocolVersion = AnswerVersion(body), status = "COMPLETE", analysis = "fake",
             decisions = targets.Select((a, i) => i == 0 ? (object)new { alias = a, decision = "SELECT", evidenceRefs = new[] { a }, reason = "first" } : new { alias = a, decision = "NOT_SELECT" }),
         });
         return (HttpStatusCode.OK, Stream(new { content = answer }, "stop"));

@@ -223,6 +223,7 @@ internal sealed class AgentTools : AgentToolHost
             ["truncation"] = Truncation(k, slice.Length, offset + k),
         });
         returned.AddRange(slice.Take(taken).SelectMany(i => Shown(i).Prepend(lines[i].Alias)));
+        NoteFactsReturned(slice.Take(taken).Select(i => lines[i].Alias), taken < slice.Length || offset + taken < rangeLength);
         return (arguments, result, taken < slice.Length);
     }
 

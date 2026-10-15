@@ -1,3 +1,5 @@
+using DocxHeaderExtractor.DocumentProcessing.Authority;
+
 namespace DocxHeaderExtractor.DocumentProcessing.Routing;
 
 /// <summary>
@@ -30,6 +32,9 @@ public interface IHeadingSelector
 /// <param name="Placement">Optional measurements for the shared placement pass (parent relations); null sends the placement packet as it was.</param>
 /// <param name="Groups">Optional: the selected lines divided into headings, in document order (each group is the lines of one heading). Null makes
 /// the authority group by its own layout rule: consecutive lines of the same page and parser layout block.</param>
+/// <param name="HeadingExtents">Optional: for a selected line of which only a part is heading text (a DOCX paragraph that opens with its heading
+/// and continues with body text), that part as a UTF-16 span of the line's text, by alias. The selector checked that the span's text is the
+/// line's text at those offsets; a selected line without an entry is heading text from end to end.</param>
 public sealed record HeadingSelection(
     IReadOnlySet<string> SelectedAliases,
     int UnitsComplete,
@@ -39,7 +44,8 @@ public sealed record HeadingSelection(
     int ProviderCalls,
     double ProviderCostUsd,
     HeadingPlacementContext? Placement = null,
-    IReadOnlyList<IReadOnlyList<string>>? Groups = null);
+    IReadOnlyList<IReadOnlyList<string>>? Groups = null,
+    IReadOnlyDictionary<string, TextOffsetSpan>? HeadingExtents = null);
 
 /// <summary>
 /// Measurements of the document handed to the placement pass: the style table of the whole document and the style of each line (JSON objects as

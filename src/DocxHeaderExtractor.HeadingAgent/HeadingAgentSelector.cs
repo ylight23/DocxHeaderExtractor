@@ -143,13 +143,23 @@ public abstract class HeadingAgentSelector : IHeadingSelector
             n => outcomes[n] = AgentUnit.Run(source, n, model, budget, retryDelayMs, instruction));
         var complete = outcomes.Where(o => o.Status == "COMPLETE").ToArray();
         var selected = complete.SelectMany(o => o.Decisions.Where(d => d.Value == "SELECT").Select(d => d.Key)).ToHashSet(StringComparer.Ordinal);
-        var answers = complete.Select(o => JsonSerializer.Serialize(new { unit = o.UnitId, decisions = o.Decisions, reasons = o.Reasons, analysis = o.Analysis }, Compact)).ToArray();
+        var answers = complete.Select(o => JsonSerializer.Serialize(new
+        {
+            unit = o.UnitId, decisions = o.Decisions, reasons = o.Reasons, analysis = o.Analysis,
+            headingExtents = o.Extents is { Count: > 0 } e ? e.ToDictionary(kv => kv.Key, kv => new { start = kv.Value.Start, end = kv.Value.End, text = kv.Value.Text }) : null,
+            factsCoverage = new { targetsWithoutFacts = o.TargetsWithoutFacts ?? Array.Empty<string>(), factsResultsCut = o.FactsResultsCut },
+        }, Compact)).ToArray();
+        // Only the extent of a line that its own unit selected counts; every unit decides its own targets, so no alias has two.
+        var extents = complete.Where(o => o.Extents is not null)
+            .SelectMany(o => o.Extents!.Where(kv => o.Decisions.GetValueOrDefault(kv.Key) == "SELECT"))
+            .ToDictionary(kv => kv.Key, kv => new DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan(kv.Value.Start, kv.Value.End), StringComparer.Ordinal);
         var failures = outcomes.Where(o => o.Status != "COMPLETE").Select(o => o.UnitId + ":" + o.Status + ":" + (o.Failure ?? "UNKNOWN")).ToList();
         if (budget.HaltReason is { } halt) failures.Add("HALT:" + halt);
         // The selected lines divided into headings: the model decides which adjacent lines form one heading, C# checks the division.
         var grouping = AgentGrouping.Group(source, selected, model, budget, parallelism, ct, retryDelayMs, instruction);
         answers = answers.Concat(grouping.Answers.Select(a => JsonSerializer.Serialize(new { grouping = a }, Compact))).ToArray();
         failures.AddRange(grouping.Failures);
-        return new HeadingSelection(selected, complete.Length, outcomes.Length, failures, answers, budget.Calls, costOf(), source.Flavor.PlacementContext(source), grouping.Groups);
+        return new HeadingSelection(selected, complete.Length, outcomes.Length, failures, answers, budget.Calls, costOf(), source.Flavor.PlacementContext(source), grouping.Groups,
+            extents.Count > 0 ? extents : null);
     }
 }

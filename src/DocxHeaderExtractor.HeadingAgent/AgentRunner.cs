@@ -75,9 +75,13 @@ internal sealed class AgentBudget(int maxCalls, double ceilingUsd)
 }
 
 /// <summary>What one unit (one segment) ended with.</summary>
+/// <param name="Extents">The headingExtent of each SELECT that gave one (DOCX), checked against the target's text.</param>
+/// <param name="TargetsWithoutFacts">The coverage ledger at the end of the unit: targets whose own facts no successful facts call returned.</param>
+/// <param name="FactsResultsCut">Successful facts calls whose result was cut.</param>
 internal sealed record AgentUnitOutcome(string UnitId, string Status, string? Failure, IReadOnlyDictionary<string, string> Decisions, int Posts,
     int ToolCallsEmitted, int ToolCallsSucceeded, bool FenceUnwrapped, string? Analysis, IReadOnlyDictionary<string, string>? Reasons,
-    string? RepairedFrom, int RepairsUsed, int TransportRetries, IReadOnlyList<string> RequestSha256s);
+    string? RepairedFrom, int RepairsUsed, int TransportRetries, IReadOnlyList<string> RequestSha256s,
+    IReadOnlyDictionary<string, HeadingExtent>? Extents = null, IReadOnlyList<string>? TargetsWithoutFacts = null, int FactsResultsCut = 0);
 
 /// <summary>
 /// One unit of the D4.12 method as a conversation (ported from the qualified V6 RunUnit, arm TOOLFACTS_ANALYSIS_V3, with json_object on every
@@ -85,7 +89,10 @@ internal sealed record AgentUnitOutcome(string UnitId, string Status, string? Fa
 ///   turns 1..3: tools declared, tool_choice auto; a reply with tool calls is answered with the tool results and the conversation continues;
 ///   turn 4: tool_choice none; the model answers from what it has.
 /// The first answer must come after a successful get_line_facts call. A refused answer gets a repair turn (the refused reply and a message
-/// naming the refusal). C# never reads the reasoning, never changes a decision and never adds a call the model did not make.
+/// naming the refusal). The coverage ledger records which targets the facts calls returned facts for, and the outcome carries the targets left
+/// without. Where the flavor asks for it (DOCX), an answer that leaves some out is sent back once with their aliases while the unit still has
+/// room for another facts result; the answer after that is taken as it is. C# never reads the reasoning, never changes a decision and never adds
+/// a call the model did not make.
 /// </summary>
 internal static class AgentUnit
 {
@@ -111,24 +118,27 @@ internal static class AgentUnit
         string? repairedFrom = null;
         int repairsUsed = 0, retriesUsed = 0, posts = 0, okCalls = 0, messageBytes = 0, emitted = 0;
         var fenceUnwrapped = false;
+        var coverageAsked = false;
+        var targetTexts = flavor.HeadingExtents ? ordered.ToDictionary(a => a, a => lines[tools.PositionOf(a)].Text, StringComparer.Ordinal) : null;
         var forcedChoices = new Queue<string>();
         var history = new JsonArray();
         var requestShas = new List<string>();
         var issuedIds = new HashSet<string>(StringComparer.Ordinal);
 
         AgentUnitOutcome Done(string status, string? failure, IReadOnlyDictionary<string, string>? decisions = null, string? analysis = null,
-            IReadOnlyDictionary<string, string>? reasons = null) =>
+            IReadOnlyDictionary<string, string>? reasons = null, IReadOnlyDictionary<string, HeadingExtent>? extents = null) =>
             new(unitId, status, failure, decisions ?? ordered.ToDictionary(a => a, _ => "UNRESOLVED", StringComparer.Ordinal), posts, emitted, okCalls,
-                fenceUnwrapped, analysis, reasons, repairedFrom, repairsUsed, retriesUsed, requestShas);
+                fenceUnwrapped, analysis, reasons, repairedFrom, repairsUsed, retriesUsed, requestShas, extents,
+                ordered.Where(a => !tools.FactsReturnedFor.Contains(a)).ToArray(), tools.FactsResultsCut);
 
         // Repairs have no limit of their own: the budget's call limit stops a unit that keeps failing.
-        bool TryRepair(string failure, IReadOnlyList<string>? missing = null)
+        bool TryRepair(string failure, IReadOnlyList<string>? missing = null, string? detail = null)
         {
             repairedFrom ??= failure;
             repairsUsed++;
-            if (failure == "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED") { forcedChoices.Enqueue("auto"); forcedChoices.Enqueue("none"); }
+            if (failure is "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED" or "PROTOCOL:TOOL_FACTS_INCOMPLETE") { forcedChoices.Enqueue("auto"); forcedChoices.Enqueue("none"); }
             else forcedChoices.Enqueue("none");
-            history.Add(new JsonObject { ["role"] = "user", ["content"] = RepairMessage(failure, missing) });
+            history.Add(new JsonObject { ["role"] = "user", ["content"] = RepairMessage(failure, missing, detail) });
             return true;
         }
 
@@ -238,16 +248,27 @@ internal static class AgentUnit
             var observed = shownAliases.Concat(tools.ObservedAliases).Distinct(StringComparer.Ordinal).ToDictionary(a => a, tools.PositionOf, StringComparer.Ordinal);
             var content = reply.Content ?? "";
             if (TryUnwrapFence(content, out var inner)) { content = inner; fenceUnwrapped = true; }
-            var parsed = ParseSelect(content, observed, ordered);
+            var parsed = ParseSelect(content, observed, ordered, flavor.AnswerVersion, targetTexts);
             if (!parsed.Ok)
             {
                 history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
-                TryRepair("PROTOCOL:" + parsed.Failure, parsed.Missing);
+                TryRepair("PROTOCOL:" + parsed.Failure, parsed.Missing, parsed.Detail);
                 continue;
             }
             budget.NoteContract(true);
             if (parsed.Status == "CLARIFICATION_REQUIRED") return Done("CLARIFICATION_REQUIRED", null, analysis: parsed.Analysis);
-            return Done(parsed.Status!, null, parsed.Values, parsed.Analysis, parsed.Reasons);
+            // The coverage ledger: an answer that decides targets whose facts were never returned goes back once, naming them, when another
+            // facts result still fits the unit's tool bytes (asking for what cannot be delivered would only cost a post). The model may read
+            // them or send the same answer; the program does not judge whether a decision needed them.
+            var uncovered = ordered.Where(a => !tools.FactsReturnedFor.Contains(a)).ToArray();
+            if (uncovered.Length > 0 && !coverageAsked && flavor.SendsBackUncoveredTargets && messageBytes + tools.MaxResultBytes <= MaxToolMessageBytesPerUnit)
+            {
+                coverageAsked = true;
+                history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
+                TryRepair("PROTOCOL:TOOL_FACTS_INCOMPLETE", uncovered);
+                continue;
+            }
+            return Done(parsed.Status!, null, parsed.Values, parsed.Analysis, parsed.Reasons, parsed.Extents);
         }
         throw new InvalidOperationException("AGENT_TURN_LOOP_EXHAUSTED");
     }

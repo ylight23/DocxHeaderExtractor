@@ -26,15 +26,18 @@ internal sealed class DocxAgentSource : IAgentSource
 {
     public const string Version = "DOCX_AGENT_SOURCE_V1";
     public const string StylesVersion = "DOCX_AGENT_DOCUMENT_STYLES_V1";
-    public const string FactsVersion = "DOCX_AGENT_LINE_FACTS_V1";
+    public const string FactsVersion = "DOCX_AGENT_LINE_FACTS_V2";
     /// <summary>What the facts of a paragraph hold, as the facts tool tells the model.</summary>
     public const string FactsDescription = "for every paragraph in the range: style (id, name, outlineLevel, sizePt, bold, italic, underline, allCaps, alignment), numbering (id, level, label, format), "
-        + "text (chars, boldCharRatio, lineBreaks), place (inTable, inTextBox, and tableDepth, tableRow, tableCell inside a table), internalLinks (the bookmark names of its internal hyperlinks), "
+        + "text (chars, boldCharRatio, lineBreaks; when the paragraph breaks lines, lineBreakOffsets and pieces: the text between line breaks with its start and end; "
+        + "when its formatting changes inside the paragraph, formatRuns: the stretches of the same bold, italic and underline with their start and end; offsets are UTF-16 code units of the paragraph's text, in which a line break is one space), place (inTable, inTextBox, and tableDepth, tableRow, tableCell inside a table), internalLinks (the bookmark names of its internal hyperlinks), "
         + "styleInDocument (rank: the place of its style among the distinct styles of the whole document, 1 being the largest, bold before regular at the same size; linesWithThisStyleInDocument), "
         + "neighbours (whether the paragraphs before and after share its style) and sizeVsDocumentMedianPt (its font size minus the median font size of the document)";
     /// <summary>Paragraphs decided per segment, and the paragraphs shown on each side as context.</summary>
     public const int Unit = 48, Overlap = 20;
     public const int MaxStylesShown = 15, StyleExamples = 3, StyleExampleChars = 80;
+    /// <summary>At most this many pieces and format runs per paragraph, each piece's text clipped to <see cref="PieceChars"/> (its offsets stay exact).</summary>
+    public const int MaxPieces = 6, MaxFormatRuns = 8, PieceChars = 120;
 
     DocxAgentSource(string sourceSha, string universeSha, string storeSha, IReadOnlyList<DocxAgentLine> paragraphs,
         IReadOnlyDictionary<string, JsonObject> facts, JsonObject styleTable)
@@ -200,6 +203,65 @@ internal static class DocxLineFacts
         return Math.Round(Math.Min(1.0, (double)bold / p.Text.Length), 2, MidpointRounding.AwayFromZero);
     }
 
+    /// <summary>The text of a paragraph as measured: its length, its bold share and its line breaks; where it breaks lines, the offsets of the
+    /// breaks and the pieces between them; where its run formatting changes, the stretches of the same formatting. Offsets only, never a label:
+    /// which part is a heading is for the model to judge.</summary>
+    internal static JsonObject TextFacts(SourceParagraph p)
+    {
+        var o = new JsonObject { ["chars"] = p.Text.Length, ["boldCharRatio"] = BoldCharRatio(p), ["lineBreaks"] = p.LineBreakOffsets.Count };
+        if (p.LineBreakOffsets.Count > 0)
+        {
+            var breaks = p.LineBreakOffsets.Where(b => b >= 0 && b < p.Text.Length).Order().ToArray();
+            o["lineBreakOffsets"] = new JsonArray(breaks.Select(b => (JsonNode)b).ToArray());
+            var pieces = new JsonArray();
+            var start = 0;
+            foreach (var end in breaks.Append(p.Text.Length))
+            {
+                if (pieces.Count == DocxAgentSource.MaxPieces) break;
+                if (end > start) pieces.Add(Piece(p.Text, start, end));
+                start = end + 1;   // the break itself is one space in the text
+            }
+            o["pieces"] = pieces;
+        }
+        var runs = FormatRuns(p);
+        if (runs.Count > 1)
+        {
+            o["formatRuns"] = new JsonArray(runs.Take(DocxAgentSource.MaxFormatRuns).Select(r => (JsonNode)new JsonObject
+            {
+                ["start"] = r.Start, ["end"] = r.End, ["bold"] = r.Bold, ["italic"] = r.Italic, ["underline"] = r.Underline,
+            }).ToArray());
+            if (runs.Count > DocxAgentSource.MaxFormatRuns) o["formatRunsNotShown"] = runs.Count - DocxAgentSource.MaxFormatRuns;
+        }
+        return o;
+    }
+
+    static JsonObject Piece(string text, int start, int end)
+    {
+        var piece = new JsonObject { ["start"] = start, ["end"] = end };
+        if (end - start <= DocxAgentSource.PieceChars) piece["text"] = text[start..end];
+        else { piece["text"] = text.Substring(start, DocxAgentSource.PieceChars); piece["textTruncated"] = true; }
+        return piece;
+    }
+
+    /// <summary>The run spans merged into stretches of the same bold, italic and underline, over characters that are not white space at either
+    /// end of a stretch; a gap between spans (a line break, a tab) joins the stretch around it when both sides agree.</summary>
+    static List<(int Start, int End, bool Bold, bool Italic, bool Underline)> FormatRuns(SourceParagraph p)
+    {
+        var result = new List<(int Start, int End, bool Bold, bool Italic, bool Underline)>();
+        foreach (var span in p.TextSpans.Where(t => t.End > t.Start).OrderBy(t => t.Start))
+        {
+            int start = Math.Max(0, span.Start), end = Math.Min(p.Text.Length, span.End);
+            while (start < end && char.IsWhiteSpace(p.Text[start])) start++;
+            while (end > start && char.IsWhiteSpace(p.Text[end - 1])) end--;
+            if (end <= start) continue;
+            if (result.Count > 0 && result[^1] is var last && (last.Bold, last.Italic, last.Underline) == (span.Bold, span.Italic, span.Underline)
+                && (start <= last.End || p.Text[last.End..start].All(char.IsWhiteSpace)))
+                result[^1] = (last.Start, Math.Max(last.End, end), last.Bold, last.Italic, last.Underline);
+            else result.Add((start, end, span.Bold, span.Italic, span.Underline));
+        }
+        return result;
+    }
+
     /// <summary>The facts of every paragraph, by alias.</summary>
     public static IReadOnlyDictionary<string, JsonObject> Compute(IReadOnlyList<DocxAgentLine> lines, IReadOnlyList<(Style Style, int Rank, int[] Lines)> styles)
     {
@@ -228,7 +290,7 @@ internal static class DocxLineFacts
                 if (p.Numbering.NumberingFormat is not null) numbering["format"] = p.Numbering.NumberingFormat;
                 node["numbering"] = numbering;
             }
-            node["text"] = new JsonObject { ["chars"] = p.Text.Length, ["boldCharRatio"] = BoldCharRatio(p), ["lineBreaks"] = p.LineBreakOffsets.Count };
+            node["text"] = TextFacts(p);
             var (depth, row, cell, box) = Place(lines[i].SourceId);
             var place = new JsonObject { ["inTable"] = depth > 0, ["inTextBox"] = box };
             if (depth > 0) { place["tableDepth"] = depth; if (row is { } r) place["tableRow"] = r; if (cell is { } c) place["tableCell"] = c; }

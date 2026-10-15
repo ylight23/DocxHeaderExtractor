@@ -44,6 +44,23 @@ Ownership:
 - Hierarchy owns parent and depth. The materializer owns canonical structure creation.
 - Projection owns product shape. Infrastructure owns provider transport and the model/route policy.
 
+Heading extent (DOCX, 2026-10-15): a paragraph can hold a heading and the body text after it, on the same line
+or after a `w:br` (which the reader writes as one space). The DOCX answer format (`P7_F1_V6_SELECT_OBJECTS_EXTENT_V1`)
+lets a SELECT carry `headingExtent` `{start, end, text}`: UTF-16 offsets into the paragraph's text and that exact
+text. The model decides the extent; the facts give it `lineBreakOffsets`, `pieces` and `formatRuns` with offsets
+(`DOCX_AGENT_LINE_FACTS_V2`). The parser checks the offsets, the verbatim text, edge whitespace and word boundaries
+and refuses a mismatch with what it measured; it never moves an extent. `SelectedLinesHeadingAuthority` binds the
+heading to that span; a SELECT without an extent is the whole paragraph, as before. Writing the outline back is
+still per paragraph (`w:outlineLvl`), so a heading that shares its paragraph with body text marks the whole
+paragraph there; exact writeback for that case needs its own design. The PDF answer format, prompt and production
+instruction (`InstructionStructuralV1`) are unchanged; `InstructionFormattingEvidenceV2` is a candidate to compare.
+
+Facts coverage: every unit keeps a ledger of the targets whose own facts a facts call returned, and the audit
+(`factsCoverage` in each unit's model answer) lists the targets left without and the facts results that were cut.
+On DOCX an answer that leaves targets uncovered goes back once, naming them, while another facts result still fits
+the unit's tool bytes; the next answer is taken as it is. On PDF the ledger is recorded only, so the qualified
+conversation keeps its request bytes.
+
 The DOCX route has not been scored against Gold yet; scoring it is a separate step. Gold, replay,
 qualification artifacts and diagnostics are never production authority.
 

@@ -330,11 +330,11 @@ document.querySelectorAll('[data-main-tab]').forEach(b => b.onclick = () => show
 function renderPrompt() {
   document.querySelectorAll('[data-route]').forEach(b => b.classList.toggle('active', b.dataset.route === promptRoute));
   document.querySelectorAll('[data-prompt]').forEach(b => {
-    const available = b.dataset.prompt !== 'groupPrompt' || promptRoute === 'docx';
+    const available = b.dataset.prompt !== 'groupPrompt' || !prompts || !!prompts[promptRoute]?.groupPrompt;
     b.classList.toggle('hidden', !available);
     b.classList.toggle('active', b.dataset.prompt === promptKind);
   });
-  if (promptKind === 'groupPrompt' && promptRoute !== 'docx') promptKind = 'instruction';
+  if (promptKind === 'groupPrompt' && prompts && !prompts[promptRoute]?.groupPrompt) promptKind = 'instruction';
   if (!prompts) return;
   const text = prompts[promptRoute]?.[promptKind];
   $('promptText').textContent = text || '(không có nội dung)';
