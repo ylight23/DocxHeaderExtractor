@@ -1,5 +1,7 @@
 ﻿# Việc cần làm
 
+> **Lịch sử (2026-10-15).** Tài liệu này mô tả trạng thái trước đó. Các thành phần được nhắc tới đã bị xóa hoặc đổi tên: `AgentHarness`, MCP host, project `Core` (gộp vào `Sources`) và `PdfHeadingAgent` (đổi thành `HeadingAgent`). Kiến trúc hiện tại: [kiến trúc hiện tại](docs/architecture/current.md).
+
 Xếp theo (giá trị đã chứng minh) / (rủi ro đo lường). Mỗi mục ghi kèm **cách nghiệm thu**, vì ở dự
 án này phần khó không phải viết code mà là biết một thay đổi có thật sự tốt hơn không.
 

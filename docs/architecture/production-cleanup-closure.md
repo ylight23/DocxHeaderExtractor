@@ -1,5 +1,7 @@
 # S12–S15 production cleanup closure
 
+> **Lịch sử (2026-10-15).** Tài liệu này mô tả trạng thái trước đó. Các thành phần được nhắc tới đã bị xóa hoặc đổi tên: `AgentHarness`, MCP host, project `Core` (gộp vào `Sources`) và `PdfHeadingAgent` (đổi thành `HeadingAgent`). Kiến trúc hiện tại: [kiến trúc hiện tại](current.md).
+
 Status: `ARCHITECTURE STABLE / CLEANUP CLOSED`.
 Verified revision: `c5dec2ee700e7e04903e00d642d5d268b5e1b8e1`.
 

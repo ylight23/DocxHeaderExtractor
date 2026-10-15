@@ -1,5 +1,7 @@
 # Current semantic reachability audit — 2026-09-27
 
+> **Lịch sử (2026-10-15).** Tài liệu này mô tả trạng thái trước đó. Các thành phần được nhắc tới đã bị xóa hoặc đổi tên: `AgentHarness`, MCP host, project `Core` (gộp vào `Sources`) và `PdfHeadingAgent` (đổi thành `HeadingAgent`). Kiến trúc hiện tại: [kiến trúc hiện tại](current.md).
+
 ## Scope and checkpoint
 
 This is a source-level reachability audit of current `HEAD` (`6a055022742cbe974bde04ddef58da9742215a64`, branch `refactor/a99-semantic-control-plane-vnext`). It deliberately did not invoke a provider, set `A99_LLM_PILOT_RUN`, modify an experiment artifact, or alter an extraction decision.

@@ -1,5 +1,7 @@
 # LEGACY-1 — Exact Legacy Reachability Census
 
+> **Lịch sử (2026-10-15).** Tài liệu này mô tả trạng thái trước đó. Các thành phần được nhắc tới đã bị xóa hoặc đổi tên: `AgentHarness`, MCP host, project `Core` (gộp vào `Sources`) và `PdfHeadingAgent` (đổi thành `HeadingAgent`). Kiến trúc hiện tại: [kiến trúc hiện tại](current.md).
+
 Status: `PASS_WITH_LEGACY_REMAINING` at `main@e9b4c61a7fe7c34419352812f5d1216d06d81736`.
 
 This is an audit-only census. It did not change production code, tests, expected values, routes, or historical evidence. It did not call a provider or execute the full suite.

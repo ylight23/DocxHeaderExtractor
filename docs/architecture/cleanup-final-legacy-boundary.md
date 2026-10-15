@@ -1,5 +1,7 @@
 # Cleanup — Final Legacy Boundary
 
+> **Lịch sử (2026-10-15).** Tài liệu này mô tả trạng thái trước đó. Các thành phần được nhắc tới đã bị xóa hoặc đổi tên: `AgentHarness`, MCP host, project `Core` (gộp vào `Sources`) và `PdfHeadingAgent` (đổi thành `HeadingAgent`). Kiến trúc hiện tại: [kiến trúc hiện tại](current.md).
+
 Status: PASS
 
 This cleanup was executed from `main@c67ac6683156efd25ddf1105557ac1d4f82ab60a` on

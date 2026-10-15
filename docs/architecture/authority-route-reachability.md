@@ -1,5 +1,7 @@
 # Authority Route Reachability Reconciliation
 
+> **Lịch sử (2026-10-15).** Tài liệu này mô tả trạng thái trước đó. Các thành phần được nhắc tới đã bị xóa hoặc đổi tên: `AgentHarness`, MCP host, project `Core` (gộp vào `Sources`) và `PdfHeadingAgent` (đổi thành `HeadingAgent`). Kiến trúc hiện tại: [kiến trúc hiện tại](current.md).
+
 **Scope:** the 11 C2-P route-diversion failures.  
 **Source revision:** `521ab902d89d4f3c8c7a68cb528b84ca6ebccfb2`  
 **Mode:** audit-only; no provider calls, production changes, or test changes.

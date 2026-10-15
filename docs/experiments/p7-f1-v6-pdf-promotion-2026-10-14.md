@@ -1,5 +1,7 @@
 # P7 F1 V6: promotion to the production PDF lane (2026-10-14)
 
+> **Lịch sử (2026-10-15).** Tài liệu này mô tả trạng thái trước đó. Các thành phần được nhắc tới đã bị xóa hoặc đổi tên: `AgentHarness`, MCP host, project `Core` (gộp vào `Sources`) và `PdfHeadingAgent` (đổi thành `HeadingAgent`). Kiến trúc hiện tại: [kiến trúc hiện tại](../architecture/current.md).
+
 Issue #9. The V6 direct agent with the method frozen in D4.12 ([p7-f1-v6-d4.12-owner-trials.md](p7-f1-v6-d4.12-owner-trials.md)) replaced the function-conditioned chain (F1 → G2A → H2-C V2) as the heading authority of the PDF lane. DOCX and DOC keep the canonical text pipeline.
 
 The owner decided the promotion on 2026-10-14 without a held-out run. This page records what changed, what was measured, and what has **not** been measured.

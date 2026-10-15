@@ -1,5 +1,7 @@
 # Web pipeline V2
 
+> **Lịch sử (2026-10-15).** Tài liệu này mô tả trạng thái trước đó. Các thành phần được nhắc tới đã bị xóa hoặc đổi tên: `AgentHarness`, MCP host, project `Core` (gộp vào `Sources`) và `PdfHeadingAgent` (đổi thành `HeadingAgent`). Kiến trúc hiện tại: [kiến trúc hiện tại](current.md).
+
 Baseline: `41b84d1`. This is a Web projection change, not an accuracy treatment or a new authority.
 
 ## Same-execution data flow
