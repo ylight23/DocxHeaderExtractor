@@ -1,272 +1,83 @@
-# Current architecture contract
+# Kiến trúc hiện tại
 
-Status: `ARCHITECTURE STABLE / CLEANUP CLOSED`
+Cập nhật 2026-10-15. Đây là trạng thái đang chạy của code; lịch sử các giai đoạn trước nằm trong git.
 
-Verified revision: `c5dec2ee700e7e04903e00d642d5d268b5e1b8e1`.
-Windows deterministic: PASS, 1051/1051. Ubuntu deterministic CI: PASS, 1051/1051.
-Provider calls: 0. Gold mutations: 0. Frozen artifact rebaselines: 0.
+## Tóm tắt
 
-Source-cleanup baseline: `main@a2fece331b05c9a59e3e998207be2b2596c3e745`.
-The subsequent Core ownership changes are described below; this is a current contract, not a frozen qualification artifact.
+- Mỗi định dạng có đúng một tuyến, không có đường dự phòng: DOCX và PDF đều lấy heading qua
+  `IHeadingSelector`, và selector mặc định là agent V6 (Qwen qua OpenRouter, một hội thoại mỗi cửa sổ).
+- CLI và Web gọi thẳng tuyến V6 qua `V6DocumentRunner`. Không còn harness, không còn MCP.
+- `.doc`, `.rtf`, `.odt` được chuyển sang OOXML trước khi vào tuyến.
+- Consent gửi dữ liệu ra ngoài đã bị bỏ theo quyết định của chủ dự án (2026-10-15).
 
-The source-tree hygiene changes are integrated into `main`. Historical Phase-1/Phase-2 branch
-reports remain historical evidence, not the current ownership or publication status.
+## Các project
 
-## Current host routes
+| Project | Vai trò | Phụ thuộc |
+|---|---|---|
+| `Sources` | Hợp đồng dùng chung (kiểu `Core` cũ trong `Models/`, `Semantics/`), đọc nguồn OOXML và PDF (`Source/`, `OpenXmlLayer/`), snapshot nguồn, `IHeadingSelector`, `UploadedSource` | `Application` |
+| `DocumentProcessing` | Pipeline DOCX/PDF, router, bước ghép (binder, parent resolver, hierarchy, materializer), projection, writeback `.docx`, interface transport | `Sources`, `Application` |
+| `HeadingAgent` | Agent V6 cho PDF (`PdfHeadingAgentSelector`) và DOCX (`DocxHeadingAgentSelector`) | `Sources` |
+| `V6Runner` | `V6DocumentRunner`: nối agent vào pipeline, định tuyến file, chuyển `.doc`, ghi outline | `HeadingAgent`, `DocumentProcessing` |
+| `Application` | Hợp đồng không phụ thuộc provider: runtime, semantic registry, tác vụ/tài nguyên còn dùng | `Sources` |
+| `Infrastructure` | Transport provider (OpenRouter, LM Studio, SGLang, Llama local), factory chọn route, store run | `Application`, `DocumentProcessing`, `Sources` |
+| `Cli` | Lệnh `dhx`; gọi `V6DocumentRunner` trực tiếp | `V6Runner`, `Infrastructure` |
+| `Web` | Giao diện `dhx-ui`; gọi `V6DocumentRunner` trực tiếp, stream sự kiện tiến độ | `V6Runner`, `Infrastructure` |
+| `V6Qualification` | Thí nghiệm V6 đã qualify (parity, canary). Không phải đường chạy production | `HeadingAgent`, `DocumentProcessing`, `Infrastructure` |
+
+Quy tắc phụ thuộc: `Sources` không biết pipeline; `HeadingAgent` chỉ thấy `Sources`; `DocumentProcessing`
+không biết agent (chỉ biết `IHeadingSelector`). `V6Runner` là chỗ duy nhất nối hai bên.
+
+Đã xóa: `AgentHarness` (guardrail, validator, consent, tường thuật), skill `heading-extraction`,
+`Mcp`, `Core` (gộp vào `Sources`).
+
+Lưu ý: `Application` hiện phụ thuộc `Sources` (vì `Core` đã gộp vào đó). Đây là đảo ngược tầng; nếu cần
+tách lại, phải chuyển các kiểu `Application` dùng khỏi `Sources`.
+
+## Luồng chạy
 
 ```text
-Web / CLI
-  -> DocumentAgentHarness
-  -> PipelineDocumentExtractionTool
-  -> DocxExtractionPipeline / PdfExtractionPipeline
-  -> DocxHeadingPipeline / PdfHeadingPipeline
-  -> HeadingPipelineResult (runtime envelope; Structure = ValidatedStructure authority)
-  -> PromptDrivenProjection
-  -> GenericTaskResult
+CLI (dhx) / Web (dhx-ui)
+  -> V6DocumentRunner.ExtractAsync(file)
+       -> UploadedSourceDetector (đọc byte, không đọc đuôi)
+       -> .doc/.rtf/.odt: OfficeDocumentConverter.EnsureDocx
+       -> DocumentExtractionRouter
+            DOCX -> DocxExtractionPipeline -> DocxHeadingPipeline
+            PDF  -> PdfExtractionHandler   -> PdfHeadingPipeline
+         mỗi tuyến: source adapter -> IHeadingSelector (agent V6) -> SelectedLinesHeadingAuthority
+                    -> HeadingStructureAssembler (binder, placement, hierarchy, materializer)
+                    -> CanonicalFinalStructure -> DocumentProductOutputProjector
+       -> DocumentExtractionExecutionResult (Outline + audit)
+  -> (tuỳ chọn) V6DocumentRunner.WriteOutline -> bản sao .docx với w:outlineLvl
 ```
 
-Both hosts use the same `DocumentAgentHarness`; Web and CLI consume the
-validated `TaskResult.Value` projection. The compatibility `DocumentAgentRunResult.Outline` is
-retained for existing library/test callers and is not a second authority route.
+Nếu tuyến không có selector hoặc không có khóa provider, nó từ chối trước khi gọi mô hình
+(`DOCX_HEADING_SELECTOR_REQUIRED`, `DOCX_HEADING_SELECTOR_KEY_MISSING`, `PDF_HEADING_SELECTOR_REQUIRED`).
+Với `--no-llm` hoặc `DisableLlm`, tuyến DOCX trả nguồn không có heading (`docx-llm-disabled`).
 
-## Production ownership after N15
+## Ranh giới trách nhiệm
 
-`DocumentProcessing/Pipeline/` is orchestration-only. Its exact, recursively checked allowlist is
-`DocxExtractionPipeline.cs`, `DocxHeadingPipeline.cs`, `PdfExtractionPipeline.cs`,
-`PdfHeadingPipeline.cs`, `LaneExecution.cs`, `PdfStageCheckpoint.cs`,
-`ProductionCheckpointScope.cs`, `PipelineOptions.cs`, and `PdfSemanticLaneOptions.cs`. The last file
-owns only the semantic lane's execution deadline, not source facts or heading decisions. Helpers, validators and parsers may not
-be added there.
+- Nguồn (`Sources`) giữ sự kiện nguồn: text, alias, toạ độ, style, đánh số. Không quyết định heading.
+- Agent (`HeadingAgent`) quyết định dòng nào là heading và cách nhóm chúng. Agent chỉ gọi provider qua
+  khóa của tuyến đã ủy quyền.
+- Bước ghép trong `DocumentProcessing` chỉ kiểm tra và dựng cấu trúc từ kết quả agent: binder, đặt vị trí
+  (`HeadingParentResolver`), phân cấp, materializer. Không lấy heading từ chỗ khác.
+- Projection và writeback chỉ biến cấu trúc đã kiểm tra thành output và file.
 
-PDF parsing/adapters belong to `Source/Pdf`; DOCX adapters to `Source/Docx`; shared marker parsing
-to `Source/Common`. `DocumentSourceCatalogBuilder` belongs to the `Source` root because it builds
-both generic and PDF-facing catalogs. Canonical semantics belong to `Semantics/Canonical`, heading
-authority/decision contracts to `Semantics/HeadingAuthority`, and hierarchy/binding/materialization
-to `Materialization`. Output projections/policies belong to `Projection`, audit/result contracts
-to `Authority`, neutral transport/wire contracts to `Inference`, DOCX product writeback to
-`OpenXmlLayer`, and binary revision discovery to `Provenance`.
+## Backend model
 
-The C# audit vocabulary is `PipelineExecutionAudit`, `LaneExecutionAudit`, `SourceBlockAudit`,
-`SourceBlockDecisionAudit`, and `ExecutionAuditBoundary`. `PipelineExecutionAudit.PipelineId`
-retains the JSON name `route`; serialized/API names and frozen experiment artifacts are unchanged.
-`HeadingAuthorityArchitectureTests` guards the exact layout, retired symbols, and provider-neutral
-DocumentProcessing vocabulary. This cleanup changes neither prompts nor semantic authority.
+`Infrastructure` còn giữ mã của các backend local (Llama qua LLamaSharp, LM Studio, SGLang) và OpenRouter.
+Tuyến trích xuất chỉ chấp nhận OpenRouter: `CreateAgentRouteAsync` từ chối backend khác với
+`AGENT_ROUTE_PROVIDER_UNSUPPORTED`. Vì vậy các cờ CLI/Web chọn backend local vẫn được đọc, nhưng hiện không
+chạy được trích xuất. Việc xóa hẳn mã local là một bước riêng, chưa làm.
 
-Source ownership is namespace-aligned: shared `SourceMarkerFact` lives in `Source/Common`, PDF
-facts/context construction in `Source/Pdf`, and `HeadingHierarchyFactAudit` in `Authority`.
-`Source/**` may not depend on the `Pipeline` namespace; orchestration depends on source, never
-the reverse. The architecture guard checks both that dependency direction and source namespaces.
+## Lưu trữ và đầu ra
 
-PDF appearance grouping uses `PdfStyleKey.StyleOf` with the unchanged half-point default bucket.
-Readable text reconstruction belongs to `PdfTextUtilities`. The unused style-profile/statistics
-records and title/group collections are retired; these source utilities do not classify headings.
+- Run của Web: `JsonFileTaskRunStore` trong `DHX_RUNTIME_STATE_DIR`.
+- Checkpoint của PDF: thư mục tạm, dọn khi kết thúc (`ProductionCheckpointScope`).
+- Writeback: bản sao `.docx` mới; file nguồn không bao giờ bị sửa.
+- Gold và artifact thí nghiệm không phải nguồn sự thật của production.
 
-`PdfLayoutBlockGrouper`/`PdfLayoutBlock` describe geometric layout grouping, not semantic decisions.
-`PdfSourceContextBuilder`/`PdfSourceContext` describe parser context supplied to inference, and
-`PdfTextUtilities.DisplayReadable` is display reconstruction, not heading detection.
-`Authority/PdfHierarchyFactsInventory` inventories already-validated headings for observability;
-it cannot create headings or call a provider. Review, writeback, output projection, audit, and
-qualification/history subsystems retain their distinct live responsibilities.
+## Kiểm thử
 
-## Trust and authority boundaries
-
-- Model output is a proposal, never authority.
-- Input documents and tool output are untrusted until deterministic validation.
-- Parser-owned source coordinates are the only materialization source.
-- `ValidatedStructure` is structural authority.
-- S4 retains `ValidatedStructuralElement.ParentId` and `ValidatedStructure.OutlineElements`
-  as public/wire compatibility views, not independent authority. Graph admission derives
-  ParentId only from explicit validated relations. Production outline/grounding/section
-  projections read Elements directly; section hierarchy reads Relations.
-- S5 places the pure source/span/type/role/level/parent validation and DTO materialization
-  gate `StructuralProposalValidator` in `Core/Semantics/Validation`. The processing
-  materializer still owns source assembly, hierarchy decisions, status/origin choice and
-  projection context. The validator accepts caller-supplied decision data; it has no
-  processing status or runtime dependency.
-- `HeadingPipelineResult` is the DOCX/PDF runtime envelope, not a second authority. It carries
-  Structure plus projection context, source catalog, audit, emitted IDs and reason. It remains
-  in the existing DocumentProcessing/Authority audit/result-contract owner, outside orchestration
-  source files and outside Core. ProjectionContext stays JsonIgnore. S3 renames the public C#
-  envelope API; it does not change default/Web JSON field names or graph semantics.
-- Application plan compilation creates stable `PlanId` values from task/resource identity and
-  capability metadata; explicit idempotency keys override the resource identity when supplied.
-- Capability metadata is registered and resolved by the provider-independent Application catalog;
-  host tool selection cannot silently overwrite duplicate capability names.
-- Policy/guardrails authorize transfer and mutation; a model cannot grant permission. A remote
-  capability with an exhausted provider-call budget is denied before execution.
-- Retry is typed and policy-driven: only explicitly transient `ProviderCallException` failures may
-  be retried, and cancellation/untyped failures remain fail-closed.
-- Projection and formatting cannot create authority.
-- Accuracy-99 gold, human adjudication, and provider-quality tuning are outside Phase 1.
-
-## Project dependency baseline
-
-| Project | Current role | Current references |
-|---|---|---|
-| `Core` | source/structure contracts, authority value objects, validators/binders and pure deterministic domain algorithms | no project or parser/render/provider package references |
-| `Application` | provider-independent intent, plan compiler, policy, projection, task/resource, capability, semantic-registry and runtime contracts | `Core` |
-| `DocumentProcessing` | DOCX/PDF source adapters, authority pipeline implementations, bounded review/repair compatibility | `Application`, `Core`; owns OpenXML/PdfPig/PDFtoImage |
-| `AgentHarness` | host-neutral orchestration, registry, guardrails, validators, task envelope | `Application`, `DocumentProcessing`, `Core` |
-| `Web` | HTTP host and UI composition root | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure` |
-| `Cli` | command host and explicit evaluation/repair commands | `AgentHarness`, `Core`, `DocumentProcessing`, `Infrastructure`, explicit `Eval` plugin bridge |
-| `Eval` | evaluation/replay-only adapters | `Core`, `DocumentProcessing` |
-| `Infrastructure` | provider implementations, prompt/cache adapters, and source infrastructure ports | `Application`, `Core`, `DocumentProcessing` |
-
-`Application`, `DocumentProcessing`, and `Infrastructure` project boundaries now exist. Package
-versions are centrally declared in `Directory.Packages.props` without changing the pinned versions.
-DocumentProcessing now owns source/parser/rendering and authority pipeline implementations; Core
-contains package-free contracts/value objects/validators and pure deterministic domain algorithms. Infrastructure now contains provider
-contracts, heading-provider implementations, prompt/cache
-adapters, fact-provider adapters, LLamaSharp/SGLang VLM adapters, and an allowlisted file resource
-resolver. Core exposes no concrete provider or inference orchestration. Web wires the normal path; CLI evaluation commands use an explicit Eval project boundary and the CLI normal path does not activate Eval. The hosts wire the resolver
-and trusted semantic registry into the common harness. The MCP host was removed on 2026-10-14 (owner: not needed yet). The normal extraction route never activates the Eval
-project. `EvaluationProjectionBridge` was the adapter that carried an outline across that boundary;
-it was removed once nothing called it, and no evaluation command had been reaching it.
-
-## Persisted artifacts and ownership
-
-- correction memory: Web writes through Application `IHumanFeedbackStore` and the Infrastructure
-  `CorrectionMemoryFeedbackStore`; the append-only implementation is owned by Infrastructure at
-  `src/DocxHeaderExtractor.Infrastructure/Learning/CorrectionMemory.cs` and remains compatible
-  with existing JSONL files
-- skill policy: versioned `skills/heading-extraction/SKILL.md`, parsed into the provider-independent
-  Application `SkillCatalog` before harness creation; framework-specific adapter remains deferred
-  without adding a runtime dependency in Phase 1
-- semantic definitions: provider-independent concept/schema registry in Application; trusted
-  generic defaults are composed by Web, while external configuration registration and feature
-  consumers remain open
-- run lifecycle: versioned persistence/telemetry ports and secret redaction contract in Application;
-  Web composes `JsonFileTaskRunStore` and `JsonLinesTaskTelemetrySink` from the configurable
-  `DHX_RUNTIME_STATE_DIR` boundary, and the common harness records Running and terminal states;
-  persistence failures remain non-authoritative and provider payloads are not part of these artifacts
-- generated/writeback files: request-owned temp directories and explicit writeback adapters
-- Accuracy-99 review/gold: evaluation-owned and excluded from this cutover
-
-The extension seam is executable-tested in
-`tests/DocxHeaderExtractor.Tests/AutoHarnessExtensionProofTests.cs`: a custom capability, semantic
-definition, allowlisted source, compiled task plan, and provider-neutral transport can compose
-without adding a second authority route or making a provider call.
-
-## Core semantic and inference ownership
-
-`Core/Models` owns DTOs, value objects and neutral contract descriptors, not domain services.
-Value-object invariants and wire schema/encoding helpers remain valid contract behavior; this is
-not a blanket ban on methods in Models. `SemanticCoordinateContract` remains a descriptor that
-composes delegates from the separately owned parsing, validation and binding services.
-
-Materialized production structure is heading-only: `StructuralElementType.Heading = 2`,
-`ProposedRole.HeadingTopic = 0`, and `StructuralRelationType.ParentChild = 0`. These numerical
-identities and the live JSON field/enum names are retained. Title/subtitle/list/caption/table/figure
-materialization and non-parent relations are retired, not silently remapped to headings. This
-intentionally narrows the public contract; downstream consumers of retired members must migrate.
-It does not narrow the model's upstream semantic-role vocabulary or prevent title extraction.
-
-The former `StructuralContracts.cs` monolith is split into `SourceSelectionContracts.cs`
-(source identity/spans), `HeadingStructuralContracts.cs` (heading proposals/results),
-`HeadingHierarchyContracts.cs` (parent relation DTOs), and `ValidatedStructure.cs` (passive graph result).
-Graph construction/validation belongs to `Core/Semantics/Validation/ValidatedStructureFactory`;
-relations must be explicit and ParentId is derived only from the admitted relation graph.
-Projection metadata and outline stable-ID compatibility belong to the separate
-`DocumentProcessing/Projection/HeadingProjectionContext`, keyed by element/source identity and
-carried by the runtime envelope, not the Core authority graph. Heading/product output compatibility
-is tested separately from the intentional raw structural DTO/API retirement; see
-`structural-projection-context-audit.md`.
-Exact source/multipart spans, hierarchy, provenance, source catalogs, sections and body-backed chunks
-remain live. Generic synthetic graph tests are replaced with heading/output and retirement guards.
-Neutral inference input/interface/context and occurrence contracts live in `Core/Models/Inference`.
-The neutral `Core.V5` namespaces are retained for source compatibility; the retired
-`Models/QualifiedInference` folder contains no current files.
-
-`Core/Semantics/Canonical` owns the pure deterministic `CanonicalSemanticPipeline`,
-`SemanticConflictNormalizer`, and `CanonicalSemanticGlobalConflictDetector`. These operate on
-supplied proposals/source aliases, perform no IO or inference, and cannot select a semantic winner.
-Their result/conflict DTOs remain in Core Models. Domain processing is not provider orchestration.
-
-`Core/Semantics/Binding`, `Validation`, `Parsing` and `Identity` own exact/source-part binding,
-coordinate-binding strategies, proposal and relation validators, proposal parsing/decoding and
-semantic identity resolution. Their contract/result DTOs keep the `Core.Models` namespace and
-serialized shapes preserved by that ownership move. Later DTO retirement/API changes are
-documented separately in the cleanup contract compatibility and S1/S2 audits. File-backed source hashing belongs to
-`DocumentProcessing/Provenance`, not the pure semantic services.
-
-Both PDF and DOCX use the V6 heading agent (`DocxHeaderExtractor.PdfHeadingAgent`, the D4.12 method; PDF promoted 2026-10-14, DOCX wired 2026-10-14) behind `IHeadingSelector`. The agent is source-neutral: `IAgentSource` gives lines, windows and facts, `IAgentFlavor` gives the prompt, tool definitions and grouping/placement text, `IAgentTools` (over `AgentToolHost`) runs the tools. `PdfAgentFlavor` and `DocxAgentFlavor` are the two flavors; `HeadingAgentSelector` is the one conversation driver. The old DOCX text path (`CanonicalSemantic*` engine, request composer, entry point and the Core canonical pipeline/binder/parser) and the F1 → G2A → H2-C V2 chain were removed.
-
-`Infrastructure/AI/QualifiedInference` owns the frozen provider carrier and its provider envelope/body
-types. Moving them does not change provider payload bytes, prompt wording, token limits, or parser
-semantics. Assembly/namespace relocations require consumers to rebuild/update imports; this cleanup
-does not claim binary compatibility for relocated public implementation types.
-
-`IFrozenInferenceTransport` only executes supplied frozen bytes; it does not select a model-specific
-composer. The authorized `IAgentRouteInferenceTransport` owns the qualified PDF
-composer, and the production heading pipeline requires this capability before starting calls.
-Generic OpenRouter and qualification transports can target other models without implicitly
-advertising the qualified PDF composer. Qualification supplies its composer explicitly.
-
-The mixed `CanonicalSemanticVnextRuntime.cs` is split into context contracts, runtime packing,
-contract validation and hard-binding validation. No validation/binding logic is deleted.
-`CoreOwnershipArchitectureTests` guards this split and the absence of concrete providers/reverse
-project dependencies in Core; frozen wire and replay parity are tested separately.
-
-The retired extraction/slim/converter classes are not current production routes. Input conversion,
-where requested, happens at the source preparation boundary before normalized OOXML extraction.
-
-Since 2026-10-14 the test project holds only the V6 heading-agent tests (the production agent, its parity
-with the qualified V6 code, and the V6 qualification code itself); `.github/workflows/deterministic.yml`
-builds and runs them. The architecture tests named above were removed with the rest. Historical architecture audit scripts
-are not current repository entrypoints. Historical publication gates must not be presented as
-evidence for a newer commit. Verification results belong to the exact tested revision and the
-ownership closure audit, not to stale branch status.
-
-The latest local Core ownership verification is recorded in
-[`core-ownership-closure-audit.md`](core-ownership-closure-audit.md), including the exact tested
-revision and clean tracked checkout caveat. The subsequent C1/C2 ownership closure is recorded in
-[`core-domain-service-ownership-audit.md`](core-domain-service-ownership-audit.md).
-
-## Residual dependency closure (S6-S10)
-
-Inference factories take only CancellationToken; provider selection is composition-owned,
-not passed through PipelineOptions. Source IR DocumentSourceSnapshot is distinct from the
-ReviewDocumentSourceSnapshot/ReviewDocumentSourceReader review boundary. Routing uses
-IDocumentExtractionHandler, DocxExtractionHandler/PdfExtractionHandler and the file-only
-DocumentExtractionRequest; DocumentExtractionExecutionResult carries extraction + outline.
-These public C# migrations are intentional; runtime behavior and serialized shapes are retained.
-Stage owners have explicit imports and no reverse Pipeline dependency; Routing/Review are
-approved composition consumers. See residual-dependency-closure-audit.md for parity and API scope.
-Clean tracked Windows verification of S6-S10 is recorded in
-residual-dependency-closure-verification.md (S11). No additional structural cleanup stage is planned.
-
-## Production cleanup closure (S12-S15)
-
-AgentHarness consumes an explicitly injected neutral inference factory/transport; provider
-construction belongs to host composition roots, not the harness. CLI/Web own opt-in raw provider
-diagnostics, with CLI logging to stderr rather than result stdout. PipelineOptions no longer owns
-ShowRawOutput. LM Studio/SGLang implement the existing optional diagnostic callback; default
-logging remains off and provider request bodies remain unchanged.
-
-DOCX source reading honors ExtractionOptions, including --no-tables. Extraction, review, and
-immediate writeback use the same configured policy. The separate human-review upload endpoint
-retains default extraction; incompatible source ordinals must fail closed at writeback.
-Private transport names are normalized without renaming public named parameters or compatibility
-wire fields. Since 2026-10-14 `DocxHeaderExtractor.V6Qualification` (formerly V5Qualification) holds only the qualified V6
-heading-agent code that the parity tests hold the production PDF agent to; production cannot reference it.
-The legacy/replay owners this paragraph used to name were removed.
-
-See [production-cleanup-closure.md](production-cleanup-closure.md) for intentional public API
-retirements, behavior-fix scope, regression coverage, and final verification gates. Cleanup is
-closed at verified revision `c5dec2e`. Clean tracked Windows verification at `2f59cd7` passed
-Release, expanded focused 201/201, and CoreDeterministic 1051/1051; only documentation changed
-between that revision and `c5dec2e`. The verification checkout remained clean after the suite.
-[Ubuntu CI for `c5dec2e`](https://github.com/ylight23/DocxHeaderExtractor/actions/runs/37718570871)
-passed Release, focused 51/51, deterministic 1051/1051, and generated-artifact cleanliness.
-Provider calls, Gold mutations, and frozen artifact rebaselines were all 0.
-No further mass rename/move stage is planned. The subsequent
-[frozen inference response split](frozen-inference-response-split.md) is a separate deliberate
-API refactor: production consumes only `FrozenInferenceResponse(Content, FinishReason)`;
-qualification retains the full observation. It does not change this closure's verified revision.
-
-## Phase control
-
-`HUMAN_ADJUDICATION = NOT_STARTED_IN_PHASE1`
-`ACCURACY_TUNING = NOT_STARTED_IN_PHASE1`
-`PROVIDER_QUALITY_TUNING = NOT_STARTED_IN_PHASE1`
-`MULTI_PROMPT_FUNCTIONAL_VERIFICATION = NOT_STARTED_IN_PHASE1`
+`dotnet test tests/DocxHeaderExtractor.Tests` (747 test, không gọi provider, trừ các test đánh dấu
+rõ ràng). Thí nghiệm V6 nằm trong `V6Qualification` và các test `P7F1V6*`.

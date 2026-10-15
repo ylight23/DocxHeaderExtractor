@@ -27,6 +27,9 @@ PDF  -> PdfSourceOccurrenceAdapter --+          |
         CanonicalFinalStructure -> DocumentProductOutputProjector
 ```
 
+Hosts (2026-10-15): the CLI and the Web call `V6DocumentRunner` directly; there is no harness between them and
+the pipelines. The runner routes the file, converts `.doc`/`.rtf`/`.odt` first, and writes the outline when asked.
+
 Routes: `DocxHeadingPipeline` and `PdfHeadingPipeline` each run their source adapter, the selected-lines
 authority and the one shared assembler. Both run under the shared lane lease (`LaneExecution`) and the
 fail-closed qualified transport (`IAgentRouteInferenceTransport`, `LeaseBoundInferenceTransport`); the

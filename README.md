@@ -20,8 +20,20 @@ không gắn nhãn "ứng viên" hay phán đoán cỡ chữ. Ownership không c
 bắt đầu ở atom không thuộc leaf bị từ chối. Quote chỉ khác atom ở khoảng trắng hai đầu được hiểu
 là cả atom; mọi khác biệt khác bị từ chối. Chi tiết: [docs/architecture/production-request-architecture-v2.md](docs/architecture/production-request-architecture-v2.md).
 
-Host: CLI (`dhx`), Web UI (`dhx-ui`) — cùng đi qua `DocumentAgentHarness`
-(policy, guardrail, source-grounding validator, cổng duyệt của người trước khi ghi).
+Host: CLI (`dhx`) và Web UI (`dhx-ui`) đều chạy thẳng tuyến V6 qua `V6DocumentRunner`
+(không còn harness; xem [docs/architecture/current.md](docs/architecture/current.md)).
+
+Cấu trúc project:
+
+| Project | Vai trò |
+|---|---|
+| `Sources` | Hợp đồng dùng chung (cũ là `Core`), đọc nguồn OOXML và PDF, `IHeadingSelector` |
+| `DocumentProcessing` | Pipeline DOCX/PDF, router, bước ghép, projection, writeback |
+| `HeadingAgent` | Agent V6 cho PDF và DOCX |
+| `V6Runner` | Nối agent vào pipeline; điểm gọi của CLI và Web |
+| `Application` / `Infrastructure` | Hợp đồng runtime; transport provider và factory route |
+| `Cli` / `Web` | Hai host |
+| `V6Qualification` | Thí nghiệm V6 đã qualify |
 
 ## Yêu cầu
 
