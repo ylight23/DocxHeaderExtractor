@@ -23,6 +23,10 @@ internal static class DocxAgentProtocol
     public static readonly string SystemPrompt = string.Join("\n", Intro, Fields + RangeSentence, MembershipOnly, ToolsLineFor(ToolsFirst), FactsToolLine, DocumentStylesLine,
         UseFactsLine, ObservedLine, ReplyLine, BodyWithAnalysis(SelectObjectsVersion));
 
+    /// <summary>The instruction a DOCX run sends: the production structural instruction, plus what the DOCX presents as evidence. Formatting is
+    /// one kind of evidence among several; it never decides a heading on its own.</summary>
+    public const string Instruction = AgentProtocol.InstructionFormattingEvidenceV1;
+
     /// <summary>The grouping prompt: the shared one, saying what a line carries in this kind of document.</summary>
     public static readonly string GroupPrompt = AgentGrouping.GroupPrompt.Replace(
         "Each line has alias, page, text and layout;",

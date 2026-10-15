@@ -1,5 +1,7 @@
 using System.Text;
 using System.Text.Json;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.HeadingAgent;
 using DocxHeaderExtractor.V6Qualification.P7;
@@ -21,6 +23,19 @@ public sealed class PdfHeadingAgentParityTests
     private const string PlanPromptSha256 = "3c557778bcb2dd5fa127195d62e31ec9fad4c83bacecc19881cf61f16bbe2845";
     private const string PlanToolDefinitionsSha256 = "17b846fe198c451ea1cc4eee6097ad16a6f82d91107a1a44793cc07537ea9142";
     private const string PlanFirstRequestsSha256 = "3dfeaf6e3c103c2bdaeeca017af13b7977881c64873f3a61e9217de4e5fca20a";
+    // Production's system prompt (2026-10-15 revision): pinned so a further change is seen; the request checks below swap it in for the qualified one.
+    private const string ProductionPromptSha256 = "526e6e86281a0a0709eacb7cb4b08e2b5278436a85288630772d5251520844fd";
+
+    /// <summary>The body production sends for a qualified body: the same request with production's system prompt in place of the qualified one.
+    /// Everything else in the body must already match byte for byte.</summary>
+    private static string WithProductionPrompt(string qualifiedBody)
+    {
+        static string Escaped(string text) =>
+            JsonSerializer.Serialize(text, new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping })[1..^1];
+        var from = Escaped(A.ToolFactsAnalysisV3PromptRange);
+        Assert.Contains(from, qualifiedBody, StringComparison.Ordinal);
+        return qualifiedBody.Replace(from, Escaped(AgentProtocol.SystemPrompt), StringComparison.Ordinal);
+    }
 
     private static readonly Lazy<(AgentSource Production, P7F1V6Universe Qualified)> Sources = new(() =>
     {
@@ -64,8 +79,11 @@ public sealed class PdfHeadingAgentParityTests
     [Fact]
     public void Prompt_instruction_and_tool_declarations_are_the_pinned_ones()
     {
-        Assert.Equal(A.ToolFactsAnalysisV3PromptRange, AgentProtocol.SystemPrompt);
-        Assert.Equal(PlanPromptSha256, AgentProtocol.Sha(AgentProtocol.SystemPrompt));
+        // The qualified prompt is still the reference of the D4.12 plan. Production's prompt is its 2026-10-15 revision (UseLine and
+        // FactsToolLine, checked by PromptContractTests), pinned here so that any further change is seen.
+        Assert.Equal(PlanPromptSha256, AgentProtocol.Sha(A.ToolFactsAnalysisV3PromptRange));
+        Assert.NotEqual(A.ToolFactsAnalysisV3PromptRange, AgentProtocol.SystemPrompt);
+        Assert.Equal(ProductionPromptSha256, AgentProtocol.Sha(AgentProtocol.SystemPrompt));
         Assert.Equal(P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, AgentProtocol.InstructionD412);
         Assert.Equal(P7F1V6AgentTools.Definitions(true).ToJsonString(), AgentTools.Definitions().ToJsonString());
         Assert.Equal(PlanToolDefinitionsSha256, AgentTools.DefinitionsSha256());
@@ -84,8 +102,8 @@ public sealed class PdfHeadingAgentParityTests
                 new JsonArray(), "auto");
             var theirs = C.FirstRequest(A.Arm.ToolFactsAnalysisV3, q, AgentSource.SegmentId(n), jsonObjectAllTurns: true,
                 instruction: P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, cacheMarkers: true);
-            Assert.Equal(theirs.Body, mine.Body);
-            shas.Add(mine.Sha256);
+            Assert.Equal(WithProductionPrompt(theirs.Body), mine.Body);
+            shas.Add(theirs.Sha256);
         }
         Assert.Equal(PlanFirstRequestsSha256, AgentProtocol.Sha(string.Join("\n", shas)));
     }
@@ -211,7 +229,7 @@ public sealed class PdfHeadingAgentParityTests
             return new AgentProtocol.ModelTurn(step.Content, step.Calls.Select(c => new AgentProtocol.ToolCall(c.Id, c.Name, c.Args)).ToArray(), step.Finish);
         }, new AgentBudget(1000, 100), retryDelayMs: 0, instruction: AgentProtocol.InstructionD412);
 
-        Assert.Equal(theirs.Unit.Requests.Select(r => r.Sha256), mine.RequestSha256s);
+        Assert.Equal(theirs.Unit.Requests.Select(r => AgentProtocol.Sha(WithProductionPrompt(r.Body))), mine.RequestSha256s);
         Assert.Equal(theirs.Unit.Status, mine.Status);
         Assert.Equal(theirs.Unit.Failure, mine.Failure);
         Assert.Equal(theirs.Unit.Decisions.OrderBy(d => d.Key, StringComparer.Ordinal), mine.Decisions.OrderBy(d => d.Key, StringComparer.Ordinal));

@@ -25,18 +25,21 @@
   .appbar { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin: 0 0 12px; }
   .appbrand { font-size: 12px; font-weight: 750; letter-spacing: .11em; color: var(--ink); }
   .appcontext { color: var(--muted); font-size: 12px; }
-  .wrap { max-width: none; margin: 0; padding: 12px 14px 32px; }
+  .wrap { margin: 0; padding: 12px 14px 32px; }
+
+  /* Hai cột: trái là đầu vào, cấu hình và prompt; phải là kết quả, log và phản hồi mô hình.
+     Cột trái dính khi cuộn và tự cuộn bên trong, để cột phải luôn chiếm phần còn lại. */
+  .app { display: grid; grid-template-columns: minmax(340px, 420px) minmax(0, 1fr); gap: 12px; align-items: start; }
+  .stack { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .stack-left { position: sticky; top: 12px; max-height: calc(100vh - 24px); overflow-y: auto; padding-right: 2px; }
+
   .panel {
     background: var(--panel); border: 1px solid var(--line);
-    border-radius: 10px; padding: 12px 14px; margin-bottom: 12px;
+    border-radius: 10px; padding: 12px 14px; margin: 0;
   }
   .panel h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em;
               color: var(--muted); margin: 0 0 10px; font-weight: 600;
               display: flex; align-items: center; flex-wrap: wrap; gap: 7px; }
-
-  /* Ba câu ghi chú về privacy / GPU / chất lượng cấu hình từng là ba đoạn văn nằm dưới hàng
-     select, đẩy nút Phân tích xuống gần cuối màn. Giờ chúng là chip cạnh tiêu đề panel: nhãn
-     ngắn nhìn là biết, còn nguyên văn giải thích nằm ở tooltip nên không mất thông tin nào. */
   .chip {
     display: inline-flex; align-items: center; padding: 2px 9px; border-radius: 999px;
     font-size: 11px; font-weight: 600; text-transform: none; letter-spacing: 0;
@@ -55,31 +58,50 @@
   #drop strong { display: block; font-size: 15px; margin-bottom: 3px; }
   #drop span { color: var(--muted); font-size: 13px; }
 
-  .opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 16px; }
+  .opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
   label.f { display: block; font-size: 12.5px; color: var(--muted); margin-bottom: 5px; }
   select, input[type=number] {
     width: 100%; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px;
     background: var(--bg); color: var(--ink); font: inherit; font-size: 13.5px;
   }
-  .checks { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 14px; font-size: 13.5px; }
+  .checks { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; font-size: 13.5px; }
   .checks label { display: flex; align-items: center; gap: 7px; cursor: pointer; }
 
   button {
-    margin-top: 16px; padding: 9px 20px; border: 0; border-radius: 7px;
+    margin-top: 12px; padding: 9px 20px; border: 0; border-radius: 7px;
     background: var(--accent); color: #fff; font: inherit; font-weight: 600;
     font-size: 14px; cursor: pointer;
   }
   button:disabled { opacity: .5; cursor: default; }
   button.secondary { background: var(--bg); color: var(--ink); border: 1px solid var(--line); }
   .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-  .actions button { margin-top: 16px; }
+  .actions button { margin-top: 12px; }
+  .cancel-button { background: var(--badbg); color: var(--bad); border: 1px solid color-mix(in srgb, var(--bad) 28%, var(--line)); }
 
-  .heading-evidence { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
-  .heading-evidence summary { cursor: pointer; }
-  .heading-evidence dl { display: grid; grid-template-columns: minmax(90px, 130px) minmax(0, 1fr); gap: 3px 10px; margin: 6px 0; }
-  .heading-evidence dt { font-weight: 650; }
-  .heading-evidence dd { margin: 0; overflow-wrap: anywhere; user-select: text; }
-  #tree caption { text-align: left; color: var(--muted); font-size: 12px; padding: 4px 0 8px; }
+  .seg { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+  .seg button { margin: 0; padding: 5px 10px; font-size: 12px; border-radius: 5px; }
+  .seg button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .seg button.hidden { display: none; }
+
+  .prompt-text {
+    margin: 0; max-height: 46vh; overflow: auto; padding: 11px 13px;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 7px;
+    font: 12px/1.6 ui-monospace, "Cascadia Mono", Consolas, monospace;
+    white-space: pre-wrap; overflow-wrap: anywhere; user-select: text;
+  }
+
+  .devbar { display: flex; align-items: center; gap: 9px; }
+  .devdot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); flex: 0 0 auto; }
+  .devdot.live { background: var(--accent); box-shadow: 0 0 0 4px var(--accbg); }
+  .devdot.done { background: var(--ok); }
+  .devdot.error { background: var(--bad); }
+  #devState { font-weight: 650; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+  #devElapsed { margin-left: auto; color: var(--muted); font: 12px ui-monospace, Consolas, monospace; flex: 0 0 auto; }
+  #devMeta { margin: 4px 0 10px; color: var(--muted); font-size: 12px; }
+  .runbar { position: sticky; top: 12px; z-index: 2; }
+
+  .pane { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .pane.hidden, .hidden { display: none !important; }
 
   .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 10px; }
   .tile { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 11px 13px; }
@@ -87,17 +109,12 @@
   .tile .k { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
   .tile.big .v { color: var(--accent); }
 
-  /* min-height:0 là bắt buộc: mặc định min-height của flex item là auto, log dài bao nhiêu thì
-     card cao bấy nhiêu và tràn khỏi màn hình thay vì tự cuộn bên trong. */
   #log {
     font: 12.5px/1.6 ui-monospace, "Cascadia Mono", Consolas, monospace;
-    white-space: pre-wrap; color: var(--muted); overflow-y: auto; overflow-wrap: anywhere;
+    color: var(--muted); overflow-y: auto; overflow-wrap: anywhere;
     background: var(--bg); border: 1px solid var(--line); border-radius: 7px; padding: 11px 13px;
-    flex: 1 1 auto; min-height: 0;
+    max-height: calc(100vh - 260px); min-height: 240px;
   }
-  .log-tabs { display: flex; gap: 6px; margin: 0 0 9px; }
-  .log-tabs button { margin: 0; padding: 5px 10px; font-size: 12px; border-radius: 5px; }
-  .log-tabs button.active { background: var(--ink); color: var(--panel); }
   .event-log { display: flex; flex-direction: column; gap: 7px; }
   .log-entry { white-space: pre-wrap; overflow-wrap: anywhere; padding: 6px 8px; border-left: 2px solid var(--line); }
   .log-entry.agent { border-left-color: var(--accent); background: color-mix(in srgb, var(--accbg) 45%, transparent); }
@@ -107,38 +124,7 @@
   .llm-event pre { margin: 6px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; color: var(--ink); }
   .log-head { display: flex; gap: 8px; align-items: baseline; color: var(--muted); font: 11px ui-monospace, Consolas, monospace; }
   .log-kind { color: var(--accent); font-weight: 700; }
-  .log-body { margin-top: 2px; }
   .raw-hidden { color: var(--muted); padding: 9px 2px; font-size: 12px; }
-  .devbar { display: flex; align-items: center; gap: 9px; margin: -3px 0 8px; }
-  .devdot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); flex: 0 0 auto; }
-  .devdot.live { background: var(--accent); box-shadow: 0 0 0 4px var(--accbg); }
-  .devdot.done { background: var(--ok); }
-  .devdot.error { background: var(--bad); }
-  #devState { font-weight: 650; font-size: 13px; }
-  #devElapsed { margin-left: auto; color: var(--muted); font: 12px ui-monospace, Consolas, monospace; }
-  #devMeta { margin: 0 0 10px; color: var(--muted); font-size: 12px; }
-  #workHint { margin: 12px 0 0; color: var(--muted); font-size: 12.5px; }
-
-  /* Hai cột trải hết chiều ngang: trái là thao tác — cấu hình rồi tới trạng thái backend;
-     phải chỉ có dev log thô của LLM, cao bằng cả cột trái. Panel log luôn hiển thị (trước đây bị
-     `hidden` tới lúc bấm chạy nên nửa màn hình bên phải trống trơn). */
-  .duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: start; }
-  .duo > .col { display: flex; flex-direction: column; min-width: 0; }
-  /* Card log cao tối đa bằng khung nhìn và dính khi cuộn: chính nó không bao giờ dài quá màn hình,
-     phần chảy tràn là dòng log bên trong. */
-  .duo > #progressPanel {
-    display: flex; flex-direction: column; min-width: 0; overflow: hidden;
-    position: sticky; top: 12px;
-    min-height: min(520px, calc(100vh - 24px)); max-height: calc(100vh - 24px);
-  }
-  @media (max-width: 1000px) {
-    .duo { grid-template-columns: minmax(0, 1fr); }
-    .duo > #progressPanel { position: static; min-height: 320px; max-height: 70vh; }
-  }
-
-  /* Danh sách bước suy ra từ chính các dòng log, để cột trái nói được "đang ở đâu trong pipeline"
-     chứ không chỉ lặp lại trạng thái một dòng của cột phải. */
-  .spacer { flex: 1 1 auto; }
 
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
   th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em;
@@ -148,8 +134,6 @@
   td.i, td.c { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; white-space: nowrap; }
   td.c { text-align: right; }
   .lvl { color: var(--muted); font-size: 12px; margin-right: 8px; font-variant-numeric: tabular-nums; }
-
-  .approx { opacity: .55; margin-left: 2px; font-weight: 400; }
   .tag { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
   .tag.Style { background: var(--okbg); color: var(--ok); }
   .tag.Model { background: var(--accbg); color: var(--accent); }
@@ -157,43 +141,25 @@
   .tag.miss { background: var(--badbg); color: var(--bad); }
   .tag.dis { background: var(--warnbg); color: var(--warn); margin-left: 8px; }
   tr.dis td { background: color-mix(in srgb, var(--warnbg) 45%, transparent); }
+  #tree caption { text-align: left; color: var(--muted); font-size: 12px; padding: 4px 0 8px; }
+  .heading-evidence { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
+  .heading-evidence summary { cursor: pointer; }
+  .heading-evidence dl { display: grid; grid-template-columns: minmax(90px, 130px) minmax(0, 1fr); gap: 3px 10px; margin: 6px 0; }
+  .heading-evidence dt { font-weight: 650; }
+  .heading-evidence dd { margin: 0; overflow-wrap: anywhere; user-select: text; }
 
-  /* Trang giờ trải hết chiều ngang màn hình; đoạn giải thích dài mà kéo tới 2000px thì mắt
-     không bắt được dòng kế tiếp, nên giới hạn riêng phần chữ chứ không giới hạn cả layout. */
-  .note { font-size: 12.5px; color: var(--muted); margin-top: 12px; max-width: 100ch; }
+  .note { font-size: 12.5px; color: var(--muted); margin: 10px 0 0; max-width: 100ch; }
   .err { background: var(--badbg); color: var(--bad); padding: 11px 13px; border-radius: 7px; font-size: 13.5px; }
-
-  details#advanced { margin-top: 16px; border: 1px solid var(--line); border-radius: 7px; padding: 10px 13px; }
-  details#advanced > summary { cursor: pointer; font-size: 13px; color: var(--muted); font-weight: 600; }
-  details#advanced[open] > summary { margin-bottom: 4px; }
-  details#advanced .opts { margin-top: 10px; }
-  details#advanced .note { margin-top: 5px; }
-  details#developerSettings, details#developerPanel { margin-top: 14px; border: 1px solid var(--line); border-radius: 7px; padding: 10px 13px; }
-  details#developerSettings > summary, details#developerPanel > summary { cursor: pointer; font-size: 13px; color: var(--muted); font-weight: 650; }
-  details#developerSettings[open] > summary, details#developerPanel[open] > summary { margin-bottom: 8px; }
-  details#developerPanel > .panel:first-of-type { margin-top: 0; }
-  textarea {
-    width: 100%; min-height: 86px; padding: 9px 11px; border: 1px solid var(--line);
-    border-radius: 7px; background: var(--bg); color: var(--ink); resize: vertical;
-    font: 12.5px/1.6 ui-monospace, Consolas, monospace;
-  }
-  .hidden { display: none; }
+  code { font-size: 12px; }
   .scroll { overflow-x: auto; }
   .sid { font: 11px/1.25 ui-monospace, Consolas, monospace; color: var(--muted); word-break: break-all; }
-  .brand { display: flex; align-items: baseline; gap: 10px; margin: 2px 0 14px; }
-  .brand strong { font-size: 18px; letter-spacing: .02em; }
-  .brand span { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
-  .cancel-button { background: var(--badbg); color: var(--bad); border: 1px solid color-mix(in srgb, var(--bad) 28%, var(--line)); }
-  .log-tabs { display: flex; gap: 6px; margin: 0 0 9px; }
-  .log-tabs button { margin: 0; padding: 5px 10px; font-size: 12px; }
-  .log-tabs button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .log-row { display: grid; grid-template-columns: 74px 132px minmax(0, 1fr); gap: 8px; padding: 5px 0; border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent); white-space: pre-wrap; }
-  .log-row:last-child { border-bottom: 0; }
-  .log-time, .log-kind { color: var(--muted); font-size: 11px; }
-  .log-kind { font-weight: 700; letter-spacing: .03em; }
-  .log-row.agent .log-kind { color: var(--accent); }
-  .log-row.raw .log-kind { color: var(--warn); }
-  .log-empty { color: var(--muted); font-style: italic; }
+
+  @media (max-width: 900px) {
+    .app { grid-template-columns: minmax(0, 1fr); }
+    .stack-left { position: static; max-height: none; overflow: visible; }
+    .runbar { position: static; }
+    #log { max-height: 60vh; }
+  }
 </style>
 <link rel="stylesheet" href="pipeline-v2.css">
 <script src="pipeline-v2.js" defer></script>
@@ -205,102 +171,137 @@
     <div class="appcontext">Agent V6 cho DOCX và PDF</div>
   </header>
 
-  <div class="panel">
-    <h2>Tài liệu &amp; cấu hình
-      <span class="chip" id="privacyNote"></span>
-      <span class="chip" id="gpuNote"></span>
-      <span class="chip" id="cfgNote"></span>
-    </h2>
-    <div id="drop">
-      <strong id="dropName">Kéo thả file vào đây, hoặc bấm để chọn</strong>
-      <span>.docx · .docm · .doc · .rtf · .odt · .pdf</span>
-    </div>
-    <input id="file" type="file" class="hidden" accept=".docx,.docm,.doc,.rtf,.odt,.pdf">
+  <div class="app">
+    <aside class="stack stack-left" aria-label="Đầu vào, cài đặt và prompt">
+      <section class="panel">
+        <h2>Tài liệu</h2>
+        <div id="drop">
+          <strong id="dropName">Kéo thả file vào đây, hoặc bấm để chọn</strong>
+          <span>.docx · .docm · .doc · .rtf · .odt · .pdf</span>
+        </div>
+        <input id="file" type="file" class="hidden" accept=".docx,.docm,.doc,.rtf,.odt,.pdf">
+        <div class="actions">
+          <button id="run" disabled>Thực hiện</button>
+          <button id="cancelRun" class="cancel-button hidden">Hủy</button>
+        </div>
+      </section>
 
-    <details id="developerSettings">
-      <summary>Cài đặt mô hình</summary>
-      <div class="opts">
-        <div>
-          <label class="f" for="backend">Backend suy luận</label>
-          <select id="backend">
-            <option value="openrouter" disabled>OpenRouter · chưa có API key</option>
-            <option value="local">Qwen local</option>
-            <option value="lmstudio">LM Studio local</option>
-          </select>
+      <section class="panel">
+        <h2>Cài đặt hệ thống
+          <span class="chip" id="privacyNote"></span>
+          <span class="chip" id="gpuNote"></span>
+          <span class="chip" id="cfgNote"></span>
+        </h2>
+        <div class="opts">
+          <div>
+            <label class="f" for="backend">Backend suy luận</label>
+            <select id="backend">
+              <option value="openrouter" disabled>OpenRouter · chưa có API key</option>
+              <option value="local">Qwen local</option>
+              <option value="lmstudio">LM Studio local</option>
+            </select>
+          </div>
+          <div>
+            <label class="f" for="model">Mô hình cục bộ (.gguf)</label>
+            <select id="model"></select>
+          </div>
+          <div id="lmStudioModelWrap" class="hidden">
+            <label class="f" for="lmStudioModel">Mô hình trong LM Studio</label>
+            <select id="lmStudioModel"><option value="">— đang kết nối —</option></select>
+          </div>
+          <div>
+            <label class="f" for="gpuLayers">Lớp đẩy lên GPU</label>
+            <input id="gpuLayers" type="number" min="0" step="1" value="0">
+          </div>
+          <div>
+            <label class="f" for="ctx">Cửa sổ ngữ cảnh (token)</label>
+            <input id="ctx" type="number" min="4096" step="1024" placeholder="tự đọc từ mô hình">
+            <p class="note">Bỏ trống: server đọc <code>{arch}.context_length</code> từ chính file GGUF.
+              Gõ số thì số của bạn thắng và tự đọc bị tắt.</p>
+          </div>
         </div>
-        <div>
-          <label class="f" for="model">Mô hình cục bộ (.gguf)</label>
-          <select id="model"></select>
+        <div class="checks">
+          <label><input type="checkbox" id="noLlm"> Không gọi mô hình (chỉ đọc nguồn, không tự nhận tiêu đề)</label>
+          <label><input type="checkbox" id="writeback"> Ghi outline vào bản sao .docx để tải về</label>
+          <label><input type="checkbox" id="showRaw"> Hiện phản hồi của mô hình (debug)</label>
         </div>
-        <div id="lmStudioModelWrap" class="hidden">
-          <label class="f" for="lmStudioModel">Mô hình trong LM Studio</label>
-          <select id="lmStudioModel"><option value="">— đang kết nối —</option></select>
+      </section>
+
+      <section class="panel">
+        <h2>Prompt và instruction</h2>
+        <div class="seg" aria-label="Tuyến xử lý">
+          <button class="secondary" data-route="pdf">PDF</button>
+          <button class="secondary" data-route="docx">DOCX</button>
         </div>
-        <div>
-          <label class="f" for="gpuLayers">Lớp đẩy lên GPU</label>
-          <input id="gpuLayers" type="number" min="0" step="1" value="0">
+        <div class="seg" aria-label="Loại prompt">
+          <button class="secondary" data-prompt="instruction">Instruction của người dùng</button>
+          <button class="secondary" data-prompt="systemPrompt">System prompt</button>
+          <button class="secondary" data-prompt="groupPrompt">Prompt gom nhóm</button>
         </div>
-        <div>
-          <label class="f" for="ctx">Cửa sổ ngữ cảnh (token)</label>
-          <input id="ctx" type="number" min="4096" step="1024" placeholder="tự đọc từ mô hình">
-          <p class="note">Bỏ trống: server đọc <code>{arch}.context_length</code> từ chính file GGUF.
-            Gõ số thì số của bạn thắng và tự đọc bị tắt.</p>
+        <pre id="promptText" class="prompt-text" aria-live="polite">Đang tải prompt…</pre>
+        <p class="note">Chỉ đọc. Các chuỗi này là hằng số trong mã nguồn, được gửi nguyên văn cho mô hình; ô cài đặt bên trên không đổi được chúng.</p>
+      </section>
+    </aside>
+
+    <main class="stack stack-right" aria-label="Kết quả và nhật ký">
+      <section class="panel runbar">
+        <div class="devbar"><span id="devDot" class="devdot"></span><span id="devState">Đang chờ</span><span id="devElapsed">0 s</span></div>
+        <p id="devMeta">Chưa có lượt xử lý.</p>
+        <div class="seg" role="tablist" aria-label="Chế độ hiển thị">
+          <button class="secondary active" data-main-tab="results" role="tab">Kết quả</button>
+          <button class="secondary" data-main-tab="log" role="tab">Log agent</button>
+          <button class="secondary" data-main-tab="raw" role="tab">Phản hồi mô hình</button>
         </div>
+      </section>
+
+      <div id="paneResults" class="pane">
+        <div id="errBox" class="panel hidden"><div class="err" id="errText"></div></div>
+
+        <section class="panel hidden" id="statsPanel">
+          <h2>Tổng quan</h2>
+          <div class="tiles" id="tiles"></div>
+          <p class="note" id="confNote"></p>
+          <button id="downloadDocx" class="hidden">Tải bản .docx đã gắn outline</button>
+          <p class="note hidden" id="downloadNote">Link chỉ dùng được một lần; tải xong là bản ghi rời khỏi bộ nhớ server.</p>
+        </section>
+
+        <section class="panel hidden" id="treePanel">
+          <h2>Cấu trúc tiêu đề</h2>
+          <div class="scroll"><table id="tree"></table></div>
+        </section>
+
+        <section class="panel hidden" id="pipelineV2" aria-label="Kết quả pipeline đã kiểm tra">
+          <h2>Cấu trúc tiêu đề — đã kiểm tra nguồn</h2>
+          <p id="v2Summary" aria-live="polite"></p>
+          <div class="v2-grid"><div id="v2Tree"></div><aside id="v2Inspector"></aside></div>
+          <h3>Các bước thực thi</h3><ol id="v2Stages"></ol>
+          <details><summary>Nhật ký kiểm tra và nguồn gốc (an toàn để chia sẻ)</summary><pre id="v2Diagnostics"></pre></details>
+        </section>
       </div>
-      <div class="checks">
-        <label><input type="checkbox" id="noLlm"> Không gọi mô hình (chỉ đọc nguồn, không tự nhận tiêu đề)</label>
-        <label><input type="checkbox" id="writeback"> Ghi outline vào bản sao .docx để tải về</label>
-        <label><input type="checkbox" id="showRaw"> Hiện phản hồi của mô hình (debug)</label>
+
+      <div id="paneLog" class="pane hidden">
+        <section class="panel">
+          <h2>Log agent hoạt động</h2>
+          <div class="seg" role="tablist" aria-label="Bộ lọc nhật ký">
+            <button class="secondary active" data-log-tab="all" role="tab">Tất cả</button>
+            <button class="secondary" data-log-tab="agent" role="tab">Agent</button>
+            <button class="secondary" data-log-tab="raw" role="tab">Thông báo máy chủ</button>
+          </div>
+          <div id="log" class="event-log" aria-live="polite"></div>
+        </section>
       </div>
-    </details>
 
-    <div class="actions">
-      <button id="run" disabled>Thực hiện</button>
-      <button id="cancelRun" class="cancel-button hidden">Hủy</button>
-    </div>
-  </div>
-
-  <div class="panel" id="progressPanel">
-    <h2>Tiến trình</h2>
-    <div class="devbar"><span id="devDot" class="devdot"></span><span id="devState">Đang chờ</span><span id="devElapsed">0 s</span></div>
-    <p id="devMeta">Chưa có lượt xử lý.</p>
-    <div class="log-tabs" role="tablist" aria-label="Bộ lọc nhật ký">
-      <button class="secondary active" data-log-tab="all" role="tab">Tất cả</button>
-      <button class="secondary" data-log-tab="agent" role="tab">Agent</button>
-      <button class="secondary" data-log-tab="raw" role="tab">Thông báo máy chủ</button>
-    </div>
-    <div id="log" class="event-log" aria-live="polite"></div>
-  </div>
-
-  <div id="errBox" class="panel hidden"><div class="err" id="errText"></div></div>
-
-  <div class="panel hidden" id="statsPanel">
-    <h2>Tổng quan</h2>
-    <div class="tiles" id="tiles"></div>
-    <p class="note" id="confNote"></p>
-    <button id="downloadDocx" class="hidden">Tải bản .docx đã gắn outline</button>
-    <p class="note hidden" id="downloadNote">Link chỉ dùng được một lần; tải xong là bản ghi rời khỏi bộ nhớ server.</p>
-  </div>
-
-  <div class="panel hidden" id="treePanel">
-    <h2>Cấu trúc tiêu đề</h2>
-    <div class="scroll"><table id="tree"></table></div>
-  </div>
-
-  <div class="panel hidden" id="rawPanel">
-    <h2>Phản hồi của mô hình</h2>
-    <p class="note">Chỉ có khi bạn bật "Hiện phản hồi của mô hình" trước khi chạy: suy luận mà mô hình stream, lời gọi tool và nội dung trả lời. Kết quả tool là dữ liệu mà tool trả về cho lượt đó. Nội dung có thể chứa văn bản lấy từ tài liệu.</p>
-    <div id="rawReplies"></div>
+      <div id="paneRaw" class="pane hidden">
+        <section class="panel hidden" id="rawPanel">
+          <h2>Phản hồi của mô hình</h2>
+          <p class="note">Chỉ có khi bạn bật "Hiện phản hồi của mô hình" trước khi chạy: suy luận mà mô hình stream, lời gọi tool và nội dung trả lời. Kết quả tool là dữ liệu mà tool trả về cho lượt đó. Nội dung có thể chứa văn bản lấy từ tài liệu.</p>
+          <div id="rawReplies"></div>
+        </section>
+        <p class="raw-hidden" id="rawEmpty">Chưa có phản hồi nào. Bật "Hiện phản hồi của mô hình" ở cột trái rồi bấm Thực hiện.</p>
+      </div>
+    </main>
   </div>
 </div>
-
-<section class="panel hidden" id="pipelineV2" aria-label="Kết quả pipeline đã kiểm tra">
-  <h2>Cấu trúc tiêu đề — đã kiểm tra nguồn</h2>
-  <p id="v2Summary" aria-live="polite"></p>
-  <div class="v2-grid"><div id="v2Tree"></div><aside id="v2Inspector"></aside></div>
-  <h3>Các bước thực thi</h3><ol id="v2Stages"></ol>
-  <details><summary>Nhật ký kiểm tra và nguồn gốc (an toàn để chia sẻ)</summary><pre id="v2Diagnostics"></pre></details>
-</section>
 
 <script>
 const $ = id => document.getElementById(id);
@@ -310,16 +311,38 @@ let picked = null, outline = null, serverError = false, runController = null;
 let defaults = null, gpuBaseNote = '', gpuBaseLabel = '';
 let devStarted = 0, devLogLines = 0;
 let logEvents = [], activeLogTab = 'all';
+let prompts = null, promptRoute = 'docx', promptKind = 'instruction';
 
 function formatEventTime(value) {
   const date = value ? new Date(value) : new Date();
   return Number.isNaN(date.getTime()) ? '--:--:--' : date.toLocaleTimeString([], { hour12: false });
 }
 
-// Nội dung giống JSON/prompt thô của mô hình được gom vào khung thu gọn, không hiện thẳng.
-function looksLikeRaw(message) {
-  return />>>\s*(REQUEST|PROMPT)|<<<\s*(RESPONSE|OUTPUT)|prompt tokens|raw json|^\s*[\[{]/i.test(String(message));
+// ---------- chuyển tab bên phải ----------
+const PANES = { results: 'paneResults', log: 'paneLog', raw: 'paneRaw' };
+function showMain(name) {
+  for (const [key, id] of Object.entries(PANES)) $(id).classList.toggle('hidden', key !== name);
+  document.querySelectorAll('[data-main-tab]').forEach(b => b.classList.toggle('active', b.dataset.mainTab === name));
 }
+document.querySelectorAll('[data-main-tab]').forEach(b => b.onclick = () => showMain(b.dataset.mainTab));
+
+// ---------- prompt (chỉ đọc) ----------
+function renderPrompt() {
+  document.querySelectorAll('[data-route]').forEach(b => b.classList.toggle('active', b.dataset.route === promptRoute));
+  document.querySelectorAll('[data-prompt]').forEach(b => {
+    const available = b.dataset.prompt !== 'groupPrompt' || promptRoute === 'docx';
+    b.classList.toggle('hidden', !available);
+    b.classList.toggle('active', b.dataset.prompt === promptKind);
+  });
+  if (promptKind === 'groupPrompt' && promptRoute !== 'docx') promptKind = 'instruction';
+  if (!prompts) return;
+  const text = prompts[promptRoute]?.[promptKind];
+  $('promptText').textContent = text || '(không có nội dung)';
+}
+document.querySelectorAll('[data-route]').forEach(b => b.onclick = () => { promptRoute = b.dataset.route; renderPrompt(); });
+document.querySelectorAll('[data-prompt]').forEach(b => b.onclick = () => { promptKind = b.dataset.prompt; renderPrompt(); });
+fetch('/api/prompts').then(r => r.json()).then(p => { prompts = p; renderPrompt(); })
+  .catch(() => { $('promptText').textContent = 'Không tải được prompt từ máy chủ.'; });
 
 function renderLog() {
   const all = [...logEvents].sort((a, b) => a.order - b.order);
@@ -333,6 +356,11 @@ function renderLog() {
     return `<div class="log-entry ${agent ? 'agent' : 'raw'}"><div class="log-head"><span>${esc(formatEventTime(item.timestamp))}</span><span class="log-kind">${esc(kind)}</span></div><div>${esc(item.message || '')}</div></div>`;
   }).join('') || '<div class="raw-hidden">Chưa có sự kiện.</div>';
   $('log').scrollTop = $('log').scrollHeight;
+}
+
+// Nội dung giống JSON/prompt thô của mô hình được gom vào khung thu gọn, không hiện thẳng.
+function looksLikeRaw(message) {
+  return />>>\s*(REQUEST|PROMPT)|<<<\s*(RESPONSE|OUTPUT)|prompt tokens|raw json|^\s*[\[{]/i.test(String(message));
 }
 
 document.querySelectorAll('[data-log-tab]').forEach(button => button.onclick = () => {
@@ -369,12 +397,14 @@ function handleStreamEvent(evt) {
     outline = evt.outline;
     render(evt.outline, evt.stats, evt.agent);
     window.WebPipelineV2.render(evt.pipeline);
+    showMain('results');
   }
 }
 
 function showError(msg) {
   $('errBox').classList.remove('hidden');
   $('errText').textContent = msg;
+  showMain('results');
 }
 
 // ---------- chọn file ----------
@@ -391,6 +421,9 @@ function setFile(f) {
   picked = f;
   $('dropName').textContent = f.name + '  ·  ' + (f.size / 1024).toFixed(0) + ' KB';
   $('run').disabled = false;
+  // Tuyến theo đuôi file; người dùng vẫn đổi được bằng nút PDF/DOCX.
+  promptRoute = /\.pdf$/i.test(f.name) ? 'pdf' : 'docx';
+  renderPrompt();
 }
 
 // ---------- mặc định, backend, mô hình ----------
@@ -505,6 +538,7 @@ $('run').onclick = async () => {
   window.WebPipelineV2.reset();
   ['statsPanel', 'treePanel', 'rawPanel', 'errBox'].forEach(id => $(id).classList.add('hidden'));
   $('rawReplies').replaceChildren();
+  $('rawEmpty').classList.remove('hidden');
   logEvents = [];
   devLogLines = 0;
   $('log').textContent = '';
@@ -513,6 +547,7 @@ $('run').onclick = async () => {
   $('devState').textContent = 'Đang khởi tạo…';
   $('devElapsed').textContent = '0 s';
   $('devMeta').textContent = `${$('backend').selectedOptions[0]?.textContent || 'Backend'} · ${activeModelLabel()}`;
+  showMain('log');
 
   const fd = new FormData();
   fd.append('file', picked);
@@ -654,6 +689,7 @@ function appendReply(r) {
     + section('Kết quả tool trước lượt này', (r.toolResults || []).map(x => x.content).join('\n\n'))
     + section('Nội dung', r.content);
   $('rawPanel').classList.remove('hidden');
+  $('rawEmpty').classList.add('hidden');
   $('rawReplies').append(item);
   item.scrollIntoView({ block: 'nearest' });
 }

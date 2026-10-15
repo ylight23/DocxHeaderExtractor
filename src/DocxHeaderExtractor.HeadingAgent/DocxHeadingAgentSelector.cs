@@ -16,7 +16,7 @@ public sealed class DocxHeadingAgentSelector : HeadingAgentSelector
     /// <inheritdoc cref="HeadingAgentSelector"/>
     public DocxHeadingAgentSelector(Func<HttpMessageHandler>? handlerFactory = null, int? parallelism = null, Action<ModelReply>? onModelReply = null,
         string? instruction = null, int firstSegments = 0, ExtractionOptions? extraction = null)
-        : base(handlerFactory, parallelism, onModelReply, instruction, firstSegments) => this.extraction = extraction;
+        : base(handlerFactory, parallelism, onModelReply, instruction ?? DocxAgentProtocol.Instruction, firstSegments) => this.extraction = extraction;
 
     public override string SelectorId => "docx-v6:" + DocxAgentSource.Version + ":instruction-" + InstructionTag;
 

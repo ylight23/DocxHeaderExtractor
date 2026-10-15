@@ -90,6 +90,9 @@ app.MapGet("/api/lmstudio/models", async (LmStudioModelDiscovery discovery, Canc
 // Mặc định lấy thẳng từ Core, để giao diện luôn khớp với lệnh CLI tương ứng.
 app.MapGet("/api/defaults", () => Results.Json(Defaults.Current(), json));
 
+// Prompt và instruction mà agent gửi đi, chỉ để hiển thị. Chúng là hằng số trong mã nguồn: giao diện không sửa được.
+app.MapGet("/api/prompts", () => Results.Json(new { pdf = PromptCatalog.Pdf, docx = PromptCatalog.Docx }, json));
+
 // Bản .docx đã gắn outline chỉ sống trong bộ nhớ tới lần tải đầu tiên. Không có đường dẫn nào do
 // client chỉ định: đích ghi luôn nằm trong thư mục tạm của chính request đó.
 app.MapGet("/api/outline/{runId:guid}.docx", (Guid runId, WritebackStore store) =>
