@@ -229,8 +229,15 @@ where the tools are missing, so a green suite on a machine without them checks n
 
 ## 7. Not done yet, and known limits
 
-- The transcription preflight is new: not yet run live; cost per document estimated from the eval at about 0.015 USD
-  for `023` (1,084 lines).
+- First live run with the transcription (`ket-qua-023-v3.json`, commit `876634af`): grey 2x crops of body lines fit
+  about five to a request, so 218 batches were cut where the ceiling was planned for 144 from the line count; 65 were
+  refused (`BUDGET:RESERVE_OVER_CEILING`) and 332 of 1,084 lines went untranscribed. Fixed: the budget is made from the
+  batches actually cut, and a retriable transport failure is sent once more. Of the 752 transcribed, 715 passed the
+  checks (34 longer than the OCR, 3 with a line break; the result now lists each refused one with its OCR reading).
+  Against the gold: every heading line shown from the transcription was exact (72/72); the 19 wrong heading texts were
+  all lines shown from OCR (untranscribed or refused). 111 of the 120 gold lines were selected; `SEG-001` failed
+  (`AUDIT:FINISH_LENGTH,REASONING_EXHAUSTED`: the model's reasoning used every output token), which lost `Điều 3`.
+  Preflight 153 POST, 0.0167 USD; conversation 132 POST, 0.0790 USD.
 - One live run so far, `023` on Windows (`ket-qua-023.json`, built from `0288e073`): the model accepts the page images
   (34 pages observed, no vision failure); 29/29 units complete, 113 POSTs, 0.0718 USD for the conversation, the vision
   calls not counted in that total. 117 selected lines; all 49 `Điều` and the five `Chương` found (`Chương III` read as

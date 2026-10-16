@@ -67,9 +67,8 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
         }
 
         var failures = new List<string>();
-        // Three crop kinds; grey crops reach the byte cap at about five per request. Each call reserves the worst cost of a request at the cap.
-        var planned = 3 * (gold.Count / 5 + 2);
-        var budget = new AgentBudget(planned * (1 + AgentUnit.TransportRetries), ceilingUsd ?? planned * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes));
+        var calls = 0;
+        var cost = 0.0;
         var cropBytes = new Dictionary<string, long>(StringComparer.Ordinal);
         var factory = handlerFactory ?? (() => AgentModel.CreateHandler());
         var work = Path.Combine(Path.GetTempPath(), "dhx-eval-" + Guid.NewGuid().ToString("N"));
@@ -93,8 +92,10 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
                     if (!ok) failures.Add($"{method}:L{gold[k].N:000}:CROP_FAILED");
                 }
                 var ids = gold.Select(g => "T" + g.N.ToString("000", System.Globalization.CultureInfo.InvariantCulture)).ToArray();
-                var texts = ScanTranscription.Transcribe(crops, ids, keys, Path.Combine(storeRoot, "vlm-transcribe"), apiKey, budget, factory, failures, method,
-                    MaxLinesPerRequest, parallelism: 2);
+                var (texts, budget) = ScanTranscription.Transcribe(crops, ids, keys, Path.Combine(storeRoot, "vlm-transcribe"), apiKey,
+                    n => new AgentBudget(n * (1 + AgentUnit.TransportRetries), ceilingUsd ?? n * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes)), factory, failures, method, MaxLinesPerRequest, parallelism: 2);
+                calls += budget.Calls;
+                cost += budget.ActualUsd;
                 for (var k = 0; k < gold.Count; k++) readings[k][method] = texts[k];
             }
         }
@@ -113,7 +114,7 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
         var lines = gold.Select((g, k) => new LineResult(g.N, g.Page, g.Text, (IReadOnlyDictionary<string, string?>)readings[k])).ToArray();
         var methods = new[] { Original, Upscaled, BestView, VlmBilevel, VlmEnlarged, VlmEnlargedBilevel, Shown };
         var scores = methods.Select(m => Score(m, lines)).ToArray();
-        var report = new Report(ReportVersion, evidence.SourceSha256, AgentProtocol.ChatModel, PromptVersion, scores, lines, failures, budget.Calls, budget.ActualUsd, cropBytes);
+        var report = new Report(ReportVersion, evidence.SourceSha256, AgentProtocol.ChatModel, PromptVersion, scores, lines, failures, calls, cost, cropBytes);
         var dir = Path.Combine(storeRoot, "eval");
         Directory.CreateDirectory(dir);
         File.WriteAllText(Path.Combine(dir, evidence.SourceSha256[..16] + "-scan-text-eval.json"), JsonSerializer.Serialize(report, Json), Utf8);

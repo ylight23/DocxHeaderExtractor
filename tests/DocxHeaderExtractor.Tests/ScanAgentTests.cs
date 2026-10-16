@@ -435,6 +435,8 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal((ScanAgentSource.VlmTranscribedReading, "VLM_TRANSCRIBED"), (part.ViewId, part.ReadingOrigin));
         Assert.Equal([ScanAgentSource.VlmTranscribedReading, ScanOcrPreflight.UpscaledView], part.ReadingsThatAgree);
         Assert.Equal((2, 3), (result.TranscriptionsAccepted, result.TranscribedLines));
+        var rejected = result.TranscriptionRejections.Single();
+        Assert.Equal(("P001-L005", ScanTranscription.RejectedMultiline, "Trưởng phòng thực hiện chứng thực các việc"), (rejected.Alias, rejected.Status, rejected.OcrReading));
         // The agent saw the transcription as the line's text.
         Assert.Contains("Điều 2. Thẩm quyền chứng thực", handler.Bodies[0]["messages"]![1]!["content"]![0]!["text"]!.GetValue<string>(), StringComparison.Ordinal);
     }
@@ -480,5 +482,40 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal(2, handler.Posts);   // read back from the store
         Assert.Equal(set.Lines, again.Lines);
         Assert.Equal(0, again.ProviderCalls);
+    }
+
+    [Fact]
+    public void The_transcription_budget_is_made_for_the_batches_the_byte_cap_cut_not_for_the_line_count()
+    {
+        // Six crops of 40 KB: two fit a request under the byte cap, so ten lines per request would plan one call where three are needed
+        // (on 023 grey 2x crops of body lines fitted about five, and 65 batches were refused against a ceiling planned from the line count).
+        var random = new Random(7);
+        var crops = Enumerable.Range(0, 6).Select(k =>
+        {
+            var file = Path.Combine(dir, $"crop-{k}.png");
+            var bytes = new byte[40_000];
+            random.NextBytes(bytes);
+            File.WriteAllBytes(file, bytes);
+            return (string?)file;
+        }).ToArray();
+        var ids = Enumerable.Range(1, 6).Select(k => $"T{k:000}").ToArray();
+        var handler = new FakeOpenRouter((body, post) =>
+        {
+            var asked = body["messages"]![1]!["content"]!.AsArray().Where(c => c!["type"]!.GetValue<string>() == "text").Select(c => c!["text"]!.GetValue<string>()["id ".Length..]);
+            return (HttpStatusCode.OK, FakeOpenRouter.Stream(new
+            {
+                content = JsonSerializer.Serialize(new { protocolVersion = ScanTranscription.PromptVersion, lines = asked.Select(id => new { id, text = "Điều " + id }) }),
+            }, "stop"));
+        });
+        var planned = 0;
+        var failures = new List<string>();
+
+        var (texts, budget) = ScanTranscription.Transcribe(crops, ids, ids, Path.Combine(dir, "t"), "sk-test",
+            n => { planned = n; return new AgentBudget(n, n * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes)); }, () => handler, failures, "T", 10, 1);
+
+        Assert.Empty(failures);
+        Assert.Equal(3, planned);
+        Assert.Equal(3, budget.Calls);
+        Assert.Equal(ids.Select(id => "Điều " + id), texts);
     }
 }

@@ -64,9 +64,12 @@ public static class ScanTranscription
     /// Sends the crops in batches of at most <paramref name="maxPerRequest"/> that stay under the transport's byte cap, each crop after its id,
     /// and returns the text the model gave for each (null where none came back). A batch is stored under <paramref name="cacheDir"/> by what
     /// its crops are made of (<paramref name="keys"/>: image hash, box, scale; not the bytes, which carry ImageMagick's time stamp), and read back.
+    /// The budget is made by <paramref name="budgetFor"/> once the batches are cut, from their number: how many crops fit a request depends on
+    /// their bytes (on 023, about five grey 2x crops of body lines), so it cannot be planned from the line count.
     /// </summary>
-    internal static string?[] Transcribe(IReadOnlyList<string?> crops, IReadOnlyList<string> ids, IReadOnlyList<string> keys, string cacheDir, string apiKey,
-        AgentBudget budget, Func<HttpMessageHandler> factory, List<string> failures, string label, int maxPerRequest, int parallelism)
+    internal static (string?[] Texts, AgentBudget Budget) Transcribe(IReadOnlyList<string?> crops, IReadOnlyList<string> ids, IReadOnlyList<string> keys,
+        string cacheDir, string apiKey, Func<int, AgentBudget> budgetFor, Func<HttpMessageHandler> factory, List<string> failures, string label,
+        int maxPerRequest, int parallelism)
     {
         var batches = new List<List<int>>();
         var current = new List<int>();
@@ -85,6 +88,7 @@ public static class ScanTranscription
             current.Add(k);
         }
         if (current.Count > 0) batches.Add(current);
+        var budget = budgetFor(batches.Count);
 
         var result = new string?[crops.Count];
         var problems = new string?[batches.Count];
@@ -98,14 +102,18 @@ public static class ScanTranscription
             if (reply is null)
             {
                 var request = Request(take.SelectMany(k => new[] { Text("id " + ids[k]), Image(crops[k]!) }));
-                if (budget.Admit(request) is { } refusal) { problems[b] = $"{name}:BUDGET:{refusal}"; return; }
-                try
+                for (var attempt = 0; reply is null; attempt++)
                 {
-                    using var handler = factory();
-                    using var model = new AgentModel(handler, apiKey, budget);
-                    reply = model.Turn(name, 1, request).Content ?? "";
+                    if (budget.Admit(request) is { } refusal) { problems[b] = $"{name}:BUDGET:{refusal}"; return; }
+                    try
+                    {
+                        using var handler = factory();
+                        using var model = new AgentModel(handler, apiKey, budget);
+                        reply = model.Turn(name, 1 + attempt, request).Content ?? "";
+                    }
+                    catch (ReplyFailure f) when (attempt < AgentUnit.TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal)) { }
+                    catch (ReplyFailure f) { problems[b] = $"{name}:CALL:{f.Code}"; return; }
                 }
-                catch (ReplyFailure f) { problems[b] = $"{name}:CALL:{f.Code}"; return; }
                 if (AgentProtocol.TryUnwrapFence(reply, out var inner)) reply = inner;
             }
             var parsed = Parse(reply, take.Select(k => ids[k]).ToArray(), out var problem);
@@ -120,7 +128,7 @@ public static class ScanTranscription
             }
         });
         failures.AddRange(problems.Where(p => p is not null)!);
-        return result;
+        return (result, budget);
     }
 
     /// <summary>The transcriptions by id; null when the reply is not the expected object. An id not asked, a repeated id or an overlong text is
@@ -195,8 +203,8 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
 {
     public const int CropPad = 8;
 
-    /// <param name="CeilingUsd">The cost ceiling of the run; null for the worst case of the planned calls (each call reserves the worst cost of a
-    /// request at the byte cap; the measured cost on 023 was 0.0033 USD for 28 calls).</param>
+    /// <param name="CeilingUsd">The cost ceiling of the run; null for the worst case of the batches cut (each call reserves the worst cost of a
+    /// request at the byte cap, about 0.026 USD; measured on 023: 0.0167 USD for 119 transcription and 34 vision calls).</param>
     public sealed record Options(int MaxPages = 300, double Scale = 2.0, int MaxLinesPerRequest = 10, int Parallelism = 4, double? CeilingUsd = null);
 
     public TranscriptionSet Run(ScanOcrEvidence evidence, string evidenceEntry, string apiKey, Options? options = null)
@@ -206,9 +214,6 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
         var primary = evidence.Views.First(v => v.Spec.ViewId == ScanOcrPreflight.OriginalView);
         var lines = primary.Pages.Take(options.MaxPages).SelectMany(p => p.Lines.Select(l => (Page: p, Line: l))).ToArray();
         var failures = new List<string>();
-        // A batch is cut at MaxLinesPerRequest or, rarely, at the byte cap: the plan allows one cut per page on top of the even ones.
-        var planned = lines.Length / Math.Max(1, options.MaxLinesPerRequest) + primary.Pages.Count + 2;
-        var budget = new AgentBudget(planned * (1 + AgentUnit.TransportRetries), options.CeilingUsd ?? planned * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes));
         var work = Path.Combine(Path.GetTempPath(), "dhx-transcribe-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(work);
         try
@@ -224,7 +229,8 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
                 crops[k] = image is not null && TesseractOcr.CropScaled(magick, image, file, line.Box, CropPad, options.Scale) ? file : null;
             });
             failures.AddRange(Enumerable.Range(0, lines.Length).Where(k => crops[k] is null).Select(k => $"{lines[k].Line.Id}:CROP_FAILED"));
-            var texts = ScanTranscription.Transcribe(crops, lines.Select(l => l.Line.Id).ToArray(), keys, Path.Combine(storeRoot, "vlm-transcribe"), apiKey, budget,
+            AgentBudget BudgetFor(int batches) => new(batches * (1 + AgentUnit.TransportRetries), options.CeilingUsd ?? batches * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes));
+            var (texts, budget) = ScanTranscription.Transcribe(crops, lines.Select(l => l.Line.Id).ToArray(), keys, Path.Combine(storeRoot, "vlm-transcribe"), apiKey, BudgetFor,
                 handlerFactory ?? (() => AgentModel.CreateHandler()), failures, "TRANSCRIBE", options.MaxLinesPerRequest, options.Parallelism);
             var result = lines.Select((l, k) => new LineTranscription(l.Line.Id, texts[k], ScanTranscription.Guard(texts[k], l.Line.Text))).ToArray();
             return new TranscriptionSet(TranscriptionSet.CurrentVersion, AgentProtocol.ChatModel, ScanTranscription.PromptVersion, options.Scale, result,

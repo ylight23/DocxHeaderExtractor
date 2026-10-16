@@ -28,11 +28,16 @@ public sealed record ScanHeadingResult(string SourceSha256, string SelectorId, I
     public int TranscriptionsAccepted { get; init; }
     public IReadOnlyDictionary<string, int> TranscriptionStatuses { get; init; } = new Dictionary<string, int>();
     public IReadOnlyList<string> TranscriptionFailures { get; init; } = [];
+    /// <summary>Every transcription the checks refused, with the OCR reading it was checked against: the program never shows these.</summary>
+    public IReadOnlyList<TranscriptionRejection> TranscriptionRejections { get; init; } = [];
 
     /// <summary>The vision observation and transcription calls sent before the conversation, and their cost; not in ProviderCalls.</summary>
     public int PreflightCalls { get; init; }
     public double PreflightCostUsd { get; init; }
 }
+
+/// <summary>A transcription the checks refused: the line, why, what the vision model wrote and the primary OCR reading of the same box.</summary>
+public sealed record TranscriptionRejection(string Alias, string LineId, string Status, string? Transcription, string OcrReading);
 
 /// <summary>
 /// The heading route of a scanned DOCX: OCR preflight (evidence store), vision preflight (observations of the page images by the agent's own
@@ -88,6 +93,9 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
             TranscriptionsAccepted = transcriptions?.Accepted ?? 0,
             TranscriptionStatuses = (transcriptions?.Lines ?? []).GroupBy(l => l.Status).ToDictionary(g => g.Key, g => g.Count()),
             TranscriptionFailures = transcriptions?.Failures ?? [],
+            TranscriptionRejections = source.ScanLines.Select(l => (l, t: source.Transcription(l.Alias)))
+                .Where(x => x.t is { Status: not (ScanTranscription.Accepted or ScanTranscription.NotTranscribed) })
+                .Select(x => new TranscriptionRejection(x.l.Alias, x.l.Primary.Id, x.t!.Status, x.t.Text, x.l.Primary.Text)).ToArray(),
         };
     }
 
