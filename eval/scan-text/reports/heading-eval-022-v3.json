@@ -1,0 +1,122 @@
+{
+  "Version": "SCAN_HEADING_EVAL_V1",
+  "Required": 110,
+  "RequiredFound": 110,
+  "AcceptableFound": 8,
+  "Selected": 130,
+  "SelectedMatched": 118,
+  "SplitParts": 0,
+  "FalsePositives": 12,
+  "TextExact": 117,
+  "Recall": 1,
+  "Precision": 0.9077,
+  "Missed": [],
+  "Extra": [
+    {
+      "Index": 34,
+      "Page": 18,
+      "Text": "2. Trường hợp chuyển đổi công ty trách nhiệm hữu hạn một thành viên thành công ty trách nhiệm hữu hạn hai thành viên trở lên",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 35,
+      "Page": 18,
+      "Text": "3. Trường hợp chuyển đổi công ty trách nhiệm hữu hạn hai thành viên trở lên thành công ty trách nhiệm hữu hạn một thành viên",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 38,
+      "Page": 21,
+      "Text": "3. Trường hợp nội dung Cam kết thực hiện mục tiêu xã hội, môi trường",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 39,
+      "Page": 22,
+      "Text": "4. Trường hợp chấm dứt Cam kết thực hiện mục tiêu xã hội, môi trường,",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 40,
+      "Page": 22,
+      "Text": "5. Hồ sơ, trình tự, thủ tục chia, tách, hợp nhất, sáp nhập doanh nghiệp xã",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 41,
+      "Page": 22,
+      "Text": "6. Hồ sơ, trình tự, thủ tục giải thể doanh nghiệp xã hội được thực hiện",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 42,
+      "Page": 22,
+      "Text": "7. Việc đăng ký thành lập doanh nghiệp xã hội trên cơ sở chuyển đổi từ",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 71,
+      "Page": 42,
+      "Text": "3. Trường hợp thay đổi thành viên do thừa kế, hồ sơ đăng ký doanh nghiệp bao gồm các giấy tờ sau đây:",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 72,
+      "Page": 42,
+      "Text": "4. Trường hợp đăng ký thay đổi thành viên do có thành viên không thực hiện cam kết góp vốn theo quy định tại Điều 47 Luật Doanh nghiệp, hồ sơ",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 76,
+      "Page": 43,
+      "Text": "1. Trường hợp chủ sở hữu công ty chuyển nhượng toàn bộ vốn điều lệ",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 101,
+      "Page": 63,
+      "Text": "3. Trường hợp doanh nghiệp ngừng hoạt động kinh doanh 01 năm mà không thông báo với Cơ quan đăng ký kinh doanh và Cơ quan thuế, Phòng Đăng ký kinh doanh thông báo bằng văn bản về hành vi vi phạm và yêu cầu",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 130,
+      "Page": 85,
+      "Text": "Nơi nhận:",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    }
+  ],
+  "NotExact": [
+    {
+      "Index": 105,
+      "Page": 68,
+      "Text": "Chương VIII, HỘ KINH DOANH VÀ ĐĂNG KÝ HỘ KINH DOANH",
+      "Gold": 96,
+      "Kind": "heading",
+      "TextExact": false
+    }
+  ]
+}

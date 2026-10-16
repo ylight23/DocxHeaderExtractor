@@ -53,7 +53,7 @@ public sealed class CommandLineOptions
         int i = 0;
         // Only verbs the CLI actually dispatches. Anything else is treated as an input path
         // by the default extract route.
-        if (!args[0].StartsWith('-') && args[0] is "extract" or "help" or "info" or "scan-ocr" or "scan-extract" or "scan-text-eval")
+        if (!args[0].StartsWith('-') && args[0] is "extract" or "help" or "info" or "scan-ocr" or "scan-extract" or "scan-text-eval" or "scan-heading-eval")
         {
             o.Command = args[0];
             i = 1;
@@ -186,6 +186,9 @@ public sealed class CommandLineOptions
           dhx scan-text-eval <file.docx> --gold <gold.json> [-o <thư-mục>]
                                                          # đo độ chính xác chữ: 2 view OCR và VLM chép mù
                                                          # (không xem OCR) so với gold; gửi ảnh cắt dòng
+          dhx scan-heading-eval <ket-qua.json> --gold <gold.json>
+                                                         # chấm heading của một kết quả scan-extract theo
+                                                         # bộ đáp án: đủ (recall), đúng (precision), tách đôi
           dhx help                                       # trợ giúp
 
         Tuỳ chọn chính:

@@ -50,6 +50,7 @@ try
         "scan-ocr" => RunScanOcr(options),
         "scan-extract" => await RunScanExtractAsync(options, cts.Token),
         "scan-text-eval" => RunScanTextEval(options),
+        "scan-heading-eval" => RunScanHeadingEval(options),
         _ => await RunExtractAsync(options, cts.Token),
     };
 }
@@ -148,6 +149,23 @@ static int RunScanTextEval(CommandLineOptions o)
     Console.WriteLine($"{report.ProviderCalls} POST, {report.ProviderCostUsd:0.0000} USD; lỗi: {(report.Failures.Count == 0 ? "không" : string.Join(", ", report.Failures))}");
     Console.WriteLine($"báo cáo: {Path.Combine(root, "eval", report.SourceSha256[..16] + "-scan-text-eval.json")}");
     return report.Scores.Any(s => s.Method.StartsWith("vlm", StringComparison.Ordinal) && s.Exact == 0 && report.Failures.Count > 0) ? 1 : 0;
+}
+
+// The headings of a scan result against a gold of which headings the document has. Reads files only; sends nothing.
+static int RunScanHeadingEval(CommandLineOptions o)
+{
+    if (o.GoldPath is null || o.Inputs.Count != 1) { Console.Error.WriteLine("Cách dùng: dhx scan-heading-eval <ket-qua.json> --gold <gold.json>"); return 2; }
+    var gold = DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingEvaluation.ReadGold(o.GoldPath);
+    var r = DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingEvaluation.Score(gold, DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingEvaluation.ReadResult(o.Inputs[0]));
+    Console.WriteLine($"Đủ (recall):        {r.RequiredFound}/{r.Required} heading bắt buộc ({100 * r.Recall:0.0}%), thêm {r.AcceptableFound} heading chấp nhận được");
+    Console.WriteLine($"Đúng (precision):   {r.SelectedMatched}/{r.Selected} heading chọn ra là heading ({100 * r.Precision:0.0}%), {r.FalsePositives} chọn thừa, {r.SplitParts} phần bị tách");
+    Console.WriteLine($"Chữ đúng nguyên văn: {r.TextExact}/{r.RequiredFound + r.AcceptableFound}");
+    foreach (var m in r.Missed) Console.WriteLine($"  thiếu  tr.{m.Page}: {m.Text}");
+    foreach (var m in r.Extra) Console.WriteLine($"  thừa   tr.{m.Page} #{m.Index} ({m.Kind}): {m.Text}");
+    foreach (var m in r.NotExact) Console.WriteLine($"  chữ khác tr.{m.Page} #{m.Index}: {m.Text}");
+    if (o.OutputPath is { } output)
+        File.WriteAllText(output, JsonSerializer.Serialize(r, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }));
+    return 0;
 }
 
 // Keep the top-level CLI source terminated by a single newline.

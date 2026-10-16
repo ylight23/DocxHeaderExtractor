@@ -1,0 +1,493 @@
+{
+ "version": "SCAN_HEADING_GOLD_V1",
+ "provenance": "CLAUDE_READ_FROM_PAGE_IMAGES: the headings of the document read by Claude from its page images (Chương, Mục, Điều with their titles; texts checked line by line against the images); not reviewed by a person. Not human gold under the a99 gold policy.",
+ "source": "todo10_8/generated-docx/01_phap_quy/011_Luat_An_toan_thong_tin_mang_86-2015-QH13.docx",
+ "sourceSha256": "5a7ab944618861645727669ecb05f6a808ddf57b4f82ba48f2283a051c63ce33",
+ "rule": "required: every Chương, Mục and Điều with its title, one heading each, label and title together. acceptable: the title block. Anything else selected (numbered clauses 1., 2., points a), b), the motto, signatures) is not a heading under the instruction (numbered body paragraphs).",
+ "headings": [
+  {
+   "n": 1,
+   "page": 1,
+   "label": null,
+   "text": "LUẬT AN TOÀN THÔNG TIN MẠNG",
+   "kind": "acceptable",
+   "note": "the document's title block; a structural heading of the whole document or not, by reading"
+  },
+  {
+   "n": 2,
+   "page": 1,
+   "label": "Chương I",
+   "text": "Chương I NHỮNG QUY ĐỊNH CHUNG",
+   "kind": "required"
+  },
+  {
+   "n": 3,
+   "page": 1,
+   "label": "Điều 1",
+   "text": "Điều 1. Phạm vi điều chỉnh",
+   "kind": "required"
+  },
+  {
+   "n": 4,
+   "page": 1,
+   "label": "Điều 2",
+   "text": "Điều 2. Đối tượng áp dụng",
+   "kind": "required"
+  },
+  {
+   "n": 5,
+   "page": 1,
+   "label": "Điều 3",
+   "text": "Điều 3. Giải thích từ ngữ",
+   "kind": "required"
+  },
+  {
+   "n": 6,
+   "page": 2,
+   "label": "Điều 4",
+   "text": "Điều 4. Nguyên tắc bảo đảm an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 7,
+   "page": 3,
+   "label": "Điều 5",
+   "text": "Điều 5. Chính sách của Nhà nước về an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 8,
+   "page": 3,
+   "label": "Điều 6",
+   "text": "Điều 6. Hợp tác quốc tế về an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 9,
+   "page": 4,
+   "label": "Điều 7",
+   "text": "Điều 7. Các hành vi bị nghiêm cấm",
+   "kind": "required"
+  },
+  {
+   "n": 10,
+   "page": 4,
+   "label": "Điều 8",
+   "text": "Điều 8. Xử lý vi phạm pháp luật về an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 11,
+   "page": 4,
+   "label": "Chương II",
+   "text": "Chương II BẢO ĐẢM AN TOÀN THÔNG TIN MẠNG",
+   "kind": "required"
+  },
+  {
+   "n": 12,
+   "page": 4,
+   "label": "Mục 1",
+   "text": "Mục 1 BẢO VỆ THÔNG TIN MẠNG",
+   "kind": "required"
+  },
+  {
+   "n": 13,
+   "page": 4,
+   "label": "Điều 9",
+   "text": "Điều 9. Phân loại thông tin",
+   "kind": "required"
+  },
+  {
+   "n": 14,
+   "page": 5,
+   "label": "Điều 10",
+   "text": "Điều 10. Quản lý gửi thông tin",
+   "kind": "required"
+  },
+  {
+   "n": 15,
+   "page": 5,
+   "label": "Điều 11",
+   "text": "Điều 11. Phòng ngừa, phát hiện, ngăn chặn và xử lý phần mềm độc hại",
+   "kind": "required"
+  },
+  {
+   "n": 16,
+   "page": 6,
+   "label": "Điều 12",
+   "text": "Điều 12. Bảo đảm an toàn tài nguyên viễn thông",
+   "kind": "required"
+  },
+  {
+   "n": 17,
+   "page": 6,
+   "label": "Điều 13",
+   "text": "Điều 13. Ứng cứu sự cố an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 18,
+   "page": 6,
+   "label": "Điều 14",
+   "text": "Điều 14. Ứng cứu khẩn cấp bảo đảm an toàn thông tin mạng quốc gia",
+   "kind": "required"
+  },
+  {
+   "n": 19,
+   "page": 7,
+   "label": "Điều 15",
+   "text": "Điều 15. Trách nhiệm của cơ quan, tổ chức, cá nhân trong bảo đảm an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 20,
+   "page": 7,
+   "label": "Mục 2",
+   "text": "Mục 2 BẢO VỆ THÔNG TIN CÁ NHÂN",
+   "kind": "required"
+  },
+  {
+   "n": 21,
+   "page": 7,
+   "label": "Điều 16",
+   "text": "Điều 16. Nguyên tắc bảo vệ thông tin cá nhân trên mạng",
+   "kind": "required"
+  },
+  {
+   "n": 22,
+   "page": 8,
+   "label": "Điều 17",
+   "text": "Điều 17. Thu thập và sử dụng thông tin cá nhân",
+   "kind": "required"
+  },
+  {
+   "n": 23,
+   "page": 8,
+   "label": "Điều 18",
+   "text": "Điều 18. Cập nhật, sửa đổi và hủy bỏ thông tin cá nhân",
+   "kind": "required"
+  },
+  {
+   "n": 24,
+   "page": 9,
+   "label": "Điều 19",
+   "text": "Điều 19. Bảo đảm an toàn thông tin cá nhân trên mạng",
+   "kind": "required"
+  },
+  {
+   "n": 25,
+   "page": 9,
+   "label": "Điều 20",
+   "text": "Điều 20. Trách nhiệm của cơ quan quản lý nhà nước trong bảo vệ thông tin cá nhân trên mạng",
+   "kind": "required"
+  },
+  {
+   "n": 26,
+   "page": 9,
+   "label": "Mục 3",
+   "text": "Mục 3 BẢO VỆ HỆ THỐNG THÔNG TIN",
+   "kind": "required"
+  },
+  {
+   "n": 27,
+   "page": 9,
+   "label": "Điều 21",
+   "text": "Điều 21. Phân loại cấp độ an toàn hệ thống thông tin",
+   "kind": "required"
+  },
+  {
+   "n": 28,
+   "page": 10,
+   "label": "Điều 22",
+   "text": "Điều 22. Nhiệm vụ bảo vệ hệ thống thông tin",
+   "kind": "required"
+  },
+  {
+   "n": 29,
+   "page": 10,
+   "label": "Điều 23",
+   "text": "Điều 23. Biện pháp bảo vệ hệ thống thông tin",
+   "kind": "required"
+  },
+  {
+   "n": 30,
+   "page": 10,
+   "label": "Điều 24",
+   "text": "Điều 24. Giám sát an toàn hệ thống thông tin",
+   "kind": "required"
+  },
+  {
+   "n": 31,
+   "page": 10,
+   "label": "Điều 25",
+   "text": "Điều 25. Trách nhiệm của chủ quản hệ thống thông tin",
+   "kind": "required"
+  },
+  {
+   "n": 32,
+   "page": 11,
+   "label": "Điều 26",
+   "text": "Điều 26. Hệ thống thông tin quan trọng quốc gia",
+   "kind": "required"
+  },
+  {
+   "n": 33,
+   "page": 11,
+   "label": "Điều 27",
+   "text": "Điều 27. Trách nhiệm bảo đảm an toàn thông tin mạng cho hệ thống thông tin quan trọng quốc gia",
+   "kind": "required"
+  },
+  {
+   "n": 34,
+   "page": 12,
+   "label": "Mục 4",
+   "text": "Mục 4 NGĂN CHẶN XUNG ĐỘT THÔNG TIN TRÊN MẠNG",
+   "kind": "required"
+  },
+  {
+   "n": 35,
+   "page": 12,
+   "label": "Điều 28",
+   "text": "Điều 28. Trách nhiệm của tổ chức, cá nhân trong việc ngăn chặn xung đột thông tin trên mạng",
+   "kind": "required"
+  },
+  {
+   "n": 36,
+   "page": 12,
+   "label": "Điều 29",
+   "text": "Điều 29. Ngăn chặn hoạt động sử dụng mạng để khủng bố",
+   "kind": "required"
+  },
+  {
+   "n": 37,
+   "page": 12,
+   "label": "Chương III",
+   "text": "Chương III MẬT MÃ DÂN SỰ",
+   "kind": "required"
+  },
+  {
+   "n": 38,
+   "page": 12,
+   "label": "Điều 30",
+   "text": "Điều 30. Sản phẩm, dịch vụ mật mã dân sự",
+   "kind": "required"
+  },
+  {
+   "n": 39,
+   "page": 13,
+   "label": "Điều 31",
+   "text": "Điều 31. Kinh doanh sản phẩm, dịch vụ mật mã dân sự",
+   "kind": "required"
+  },
+  {
+   "n": 40,
+   "page": 13,
+   "label": "Điều 32",
+   "text": "Điều 32. Trình tự, thủ tục đề nghị cấp Giấy phép kinh doanh sản phẩm, dịch vụ mật mã dân sự",
+   "kind": "required"
+  },
+  {
+   "n": 41,
+   "page": 14,
+   "label": "Điều 33",
+   "text": "Điều 33. Sửa đổi, bổ sung, cấp lại, gia hạn, tạm đình chỉ và thu hồi Giấy phép kinh doanh sản phẩm, dịch vụ mật mã dân sự",
+   "kind": "required"
+  },
+  {
+   "n": 42,
+   "page": 15,
+   "label": "Điều 34",
+   "text": "Điều 34. Xuất khẩu, nhập khẩu sản phẩm mật mã dân sự",
+   "kind": "required"
+  },
+  {
+   "n": 43,
+   "page": 16,
+   "label": "Điều 35",
+   "text": "Điều 35. Trách nhiệm của doanh nghiệp kinh doanh sản phẩm, dịch vụ mật mã dân sự",
+   "kind": "required"
+  },
+  {
+   "n": 44,
+   "page": 16,
+   "label": "Điều 36",
+   "text": "Điều 36. Trách nhiệm của tổ chức, cá nhân sử dụng sản phẩm, dịch vụ mật mã dân sự",
+   "kind": "required"
+  },
+  {
+   "n": 45,
+   "page": 17,
+   "label": "Chương IV",
+   "text": "Chương IV TIÊU CHUẨN, QUY CHUẨN KỸ THUẬT AN TOÀN THÔNG TIN MẠNG",
+   "kind": "required"
+  },
+  {
+   "n": 46,
+   "page": 17,
+   "label": "Điều 37",
+   "text": "Điều 37. Tiêu chuẩn, quy chuẩn kỹ thuật an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 47,
+   "page": 17,
+   "label": "Điều 38",
+   "text": "Điều 38. Quản lý tiêu chuẩn, quy chuẩn kỹ thuật an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 48,
+   "page": 18,
+   "label": "Điều 39",
+   "text": "Điều 39. Đánh giá hợp chuẩn, hợp quy về an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 49,
+   "page": 18,
+   "label": "Chương V",
+   "text": "Chương V KINH DOANH TRONG LĨNH VỰC AN TOÀN THÔNG TIN MẠNG",
+   "kind": "required"
+  },
+  {
+   "n": 50,
+   "page": 18,
+   "label": "Mục 1",
+   "text": "Mục 1 CẤP GIẤY PHÉP KINH DOANH SẢN PHẨM, DỊCH VỤ AN TOÀN THÔNG TIN MẠNG",
+   "kind": "required"
+  },
+  {
+   "n": 51,
+   "page": 18,
+   "label": "Điều 40",
+   "text": "Điều 40. Kinh doanh trong lĩnh vực an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 52,
+   "page": 19,
+   "label": "Điều 41",
+   "text": "Điều 41. Sản phẩm, dịch vụ trong lĩnh vực an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 53,
+   "page": 20,
+   "label": "Điều 42",
+   "text": "Điều 42. Điều kiện cấp Giấy phép kinh doanh sản phẩm, dịch vụ an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 54,
+   "page": 20,
+   "label": "Điều 43",
+   "text": "Điều 43. Hồ sơ đề nghị cấp Giấy phép kinh doanh sản phẩm, dịch vụ an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 55,
+   "page": 21,
+   "label": "Điều 44",
+   "text": "Điều 44. Thẩm định hồ sơ và cấp Giấy phép kinh doanh sản phẩm, dịch vụ an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 56,
+   "page": 22,
+   "label": "Điều 45",
+   "text": "Điều 45. Sửa đổi, bổ sung, gia hạn, tạm đình chỉ, thu hồi và cấp lại Giấy phép kinh doanh sản phẩm, dịch vụ an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 57,
+   "page": 23,
+   "label": "Điều 46",
+   "text": "Điều 46. Trách nhiệm của doanh nghiệp kinh doanh sản phẩm, dịch vụ an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 58,
+   "page": 23,
+   "label": "Mục 2",
+   "text": "Mục 2 QUẢN LÝ NHẬP KHẨU SẢN PHẨM AN TOÀN THÔNG TIN MẠNG",
+   "kind": "required"
+  },
+  {
+   "n": 59,
+   "page": 23,
+   "label": "Điều 47",
+   "text": "Điều 47. Nguyên tắc quản lý nhập khẩu sản phẩm an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 60,
+   "page": 24,
+   "label": "Điều 48",
+   "text": "Điều 48. Sản phẩm nhập khẩu theo giấy phép trong lĩnh vực an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 61,
+   "page": 24,
+   "label": "Chương VI",
+   "text": "Chương VI PHÁT TRIỂN NGUỒN NHÂN LỰC AN TOÀN THÔNG TIN MẠNG",
+   "kind": "required"
+  },
+  {
+   "n": 62,
+   "page": 24,
+   "label": "Điều 49",
+   "text": "Điều 49. Đào tạo, bồi dưỡng nghiệp vụ về an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 63,
+   "page": 24,
+   "label": "Điều 50",
+   "text": "Điều 50. Văn bằng, chứng chỉ đào tạo về an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 64,
+   "page": 25,
+   "label": "Chương VII",
+   "text": "Chương VII QUẢN LÝ NHÀ NƯỚC VỀ AN TOÀN THÔNG TIN MẠNG",
+   "kind": "required"
+  },
+  {
+   "n": 65,
+   "page": 25,
+   "label": "Điều 51",
+   "text": "Điều 51. Nội dung quản lý nhà nước về an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 66,
+   "page": 25,
+   "label": "Điều 52",
+   "text": "Điều 52. Trách nhiệm quản lý nhà nước về an toàn thông tin mạng",
+   "kind": "required"
+  },
+  {
+   "n": 67,
+   "page": 28,
+   "label": "Chương VIII",
+   "text": "Chương VIII ĐIỀU KHOẢN THI HÀNH",
+   "kind": "required"
+  },
+  {
+   "n": 68,
+   "page": 28,
+   "label": "Điều 53",
+   "text": "Điều 53. Hiệu lực thi hành",
+   "kind": "required"
+  },
+  {
+   "n": 69,
+   "page": 28,
+   "label": "Điều 54",
+   "text": "Điều 54. Quy định chi tiết",
+   "kind": "required"
+  }
+ ]
+}

@@ -1,0 +1,330 @@
+{
+  "Version": "SCAN_HEADING_EVAL_V1",
+  "Required": 110,
+  "RequiredFound": 110,
+  "AcceptableFound": 9,
+  "Selected": 150,
+  "SelectedMatched": 119,
+  "SplitParts": 0,
+  "FalsePositives": 31,
+  "TextExact": 111,
+  "Recall": 1,
+  "Precision": 0.7933,
+  "Missed": [],
+  "Extra": [
+    {
+      "Index": 23,
+      "Page": 12,
+      "Text": "3. Các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ trong phạm vi",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 35,
+      "Page": 18,
+      "Text": "2. Trường hợp chuyển đổi công ty trách nhiệm hữu hạn một thành viên thành công ty trách nhiệm hữu hạn hai thành viên trở lên",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 36,
+      "Page": 18,
+      "Text": "3. Trường hợp chuyển đổi công ty trách nhiệm hữu hạn hai thành viên trở lên thành công ty trách nhiệm hữu hạn một thành viên",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 37,
+      "Page": 19,
+      "Text": "4. Trường hợp chuyển đổi công ty trách nhiệm hữu hạn thành công ty cổ phần và ngược lại",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 40,
+      "Page": 21,
+      "Text": "2. Trường hợp doanh nghiệp chuyển đổi thành doanh nghiệp xã hội,",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 41,
+      "Page": 21,
+      "Text": "3. Trường hợp nội dung Cam kết thực hiện mục tiêu xã hội, môi trường",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 43,
+      "Page": 23,
+      "Text": "1. Hồ sơ, trình tự, thủ tục đăng ký doanh nghiệp đối với tổ chức tín dụng, chi nhánh, văn phòng đại diện, địa điểm kinh doanh của tổ chức tín dụng thực hiện theo quy định tại Nghị định này tương ứng với từng loại hình doanh nghiệp, kèm theo hồ sơ phải có bản sao giấy phép hoặc văn bản chấp thuận do Ngân hàng Nhà nước Việt Nam cấp. 2. Hồ sơ đăng ký hoạt động, đăng ký thay đổi nội dung đăng ký hoạt động đối với chi nhánh ngân hàng nước ngoài, văn phòng đại diện của tổ chức tín dụng nước ngoài, tổ chức nước ngoài khác có hoạt động ngân hàng thực",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 44,
+      "Page": 23,
+      "Text": "hiện tương ứng theo quy định tại điểm a và điểm c khoản 1 Điều 31 và khoản 2 Điều 62 Nghị định này, kèm theo hồ sơ phải có bản sao giấy phép hoặc văn",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 49,
+      "Page": 26,
+      "Text": "3. Trong thời hạn 03 ngày làm việc kể từ ngày nhận được hồ sơ hợp lệ,",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 73,
+      "Page": 42,
+      "Text": "4. Trường hợp đăng ký thay đổi thành viên do có thành viên không thực hiện cam kết góp vốn theo quy định tại Điều 47 Luật Doanh nghiệp, hồ sơ đăng ký doanh nghiệp bao gồm các giấy tờ sau đây:",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 76,
+      "Page": 43,
+      "Text": "7. Trường hợp thay đổi thành viên theo quyết định chia, tách, sáp nhập,",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 77,
+      "Page": 43,
+      "Text": "8. Sau khi nhận hồ sơ đăng ký doanh nghiệp, Phòng Đăng ký kinh doanh",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 79,
+      "Page": 43,
+      "Text": "1. Trường hợp chủ sở hữu công ty chuyển nhượng toàn bộ vốn điều lệ",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 98,
+      "Page": 56,
+      "Text": "a) Trường hợp thông tin kê khai trong hồ sơ đăng ký thành lập doanh",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 99,
+      "Page": 56,
+      "Text": "b) Trường hợp thông tin kê khai trong hồ sơ đăng ký thay đổi nội dung",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 107,
+      "Page": 62,
+      "Text": "a) Trường hợp nội dung kê khai trong hồ sơ đăng ký thành lập mới",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 108,
+      "Page": 62,
+      "Text": "b) Trường hợp hồ sơ đăng ký thay đổi nội dung đăng ký doanh nghiệp,",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 109,
+      "Page": 62,
+      "Text": "c) Phòng Đăng ký kinh doanh thông báo về hành vi kê khai hồ sơ đăng",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 112,
+      "Page": 66,
+      "Text": "3. Trường hợp chi nhánh, văn phòng đại diện ngừng hoạt động 01 năm",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 113,
+      "Page": 66,
+      "Text": "4. Trường hợp Tòa án quyết định thu hồi Giấy chứng nhận đăng ký hoạt",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 114,
+      "Page": 66,
+      "Text": "5. Trường hợp Phòng Đăng ký kinh doanh nhận được văn bản đề nghị",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 115,
+      "Page": 66,
+      "Text": "6. Chi nhánh, văn phòng đại diện hoạt động theo Giấy phép đầu tư, Giấy",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 133,
+      "Page": 77,
+      "Text": "3. Trường hợp hộ kinh doanh ngừng hoạt động kinh doanh quá 06 tháng",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 134,
+      "Page": 77,
+      "Text": "4. Trường hợp hộ kinh doanh kinh doanh ngành, nghề bị cấm thì Cơ",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 135,
+      "Page": 77,
+      "Text": "5. Trường hợp hộ kinh doanh được thành lập bởi những người không",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 136,
+      "Page": 78,
+      "Text": "a) Nếu hộ kinh doanh do một cá nhân thành lập và cá nhân đó không",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 137,
+      "Page": 78,
+      "Text": "b) Nếu hộ kinh doanh do thành viên hộ gia đình thành lập và có thành",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 138,
+      "Page": 78,
+      "Text": "6. Trường hợp Tòa án quyết định thu hồi Giấy chứng nhận đăng ký hộ",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 139,
+      "Page": 78,
+      "Text": "7. Trường hợp Cơ quan đăng ký kinh doanh cấp huyện nhận được văn",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 145,
+      "Page": 83,
+      "Text": "3. Trường hợp chi nhánh, văn phòng đại diện, địa điểm kinh doanh khác tỉnh, thành phố trực thuộc trung ương nơi doanh nghiệp đặt trụ sở chính,",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 146,
+      "Page": 83,
+      "Text": "4. Trường hợp doanh nghiệp hoạt động theo Giấy phép đầu tư, Giấy chứng nhận đầu tư (đồng thời là Giấy chứng nhận đăng ký kinh doanh) hoặc các giấy tờ có giá trị pháp lý tương đương đăng ký giải thể, doanh nghiệp không bắt buộc phải thực hiện thủ tục cấp đổi sang Giấy chứng nhận đăng ký",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    }
+  ],
+  "NotExact": [
+    {
+      "Index": 19,
+      "Page": 10,
+      "Text": "Điều 16. Nhiệm vụ, quyền hạn của Cơ quan đăng ký kinh doanh cấp huyện",
+      "Gold": 19,
+      "Kind": "heading",
+      "TextExact": false
+    },
+    {
+      "Index": 32,
+      "Page": 16,
+      "Text": "Điều 24. Hồ sơ đăng ký doanh nghiệp đối với công ty trách hữu hạn một thành viên",
+      "Gold": 31,
+      "Kind": "heading",
+      "TextExact": false
+    },
+    {
+      "Index": 71,
+      "Page": 39,
+      "Text": "Điều 51. Đăng ký thay đổi vốn điều lệ, phần vốn góp vốn góp",
+      "Gold": 62,
+      "Kind": "heading",
+      "TextExact": false
+    },
+    {
+      "Index": 75,
+      "Page": 43,
+      "Text": "6. Đăng ký thay đổi thành viên trong trường hợp thành viên sử dụng",
+      "Gold": 66,
+      "Kind": "heading",
+      "TextExact": false
+    },
+    {
+      "Index": 97,
+      "Page": 56,
+      "Text": "2. Trường hợp thông tin kê khai trong hồ sơ đăng ký doanh nghiệp là",
+      "Gold": 84,
+      "Kind": "heading",
+      "TextExact": false
+    },
+    {
+      "Index": 106,
+      "Page": 62,
+      "Text": "1. Trường hợp nội dung kê khai trong hồ sơ đăng ký doanh nghiệp là",
+      "Gold": 91,
+      "Kind": "heading",
+      "TextExact": false
+    },
+    {
+      "Index": 117,
+      "Page": 68,
+      "Text": "Chương VIII, HỘ KINH DOANH VÀ ĐĂNG KÝ HỘ KINH DOANH",
+      "Gold": 96,
+      "Kind": "heading",
+      "TextExact": false
+    },
+    {
+      "Index": 148,
+      "Page": 84,
+      "Text": "Điều 99. Quy định chuyển tiếp đối với hộ kinh doanh do hộ gia đình,",
+      "Gold": 118,
+      "Kind": "heading",
+      "TextExact": false
+    }
+  ]
+}

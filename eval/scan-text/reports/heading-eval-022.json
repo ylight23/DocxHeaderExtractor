@@ -1,0 +1,234 @@
+{
+  "Version": "SCAN_HEADING_EVAL_V1",
+  "Required": 110,
+  "RequiredFound": 109,
+  "AcceptableFound": 9,
+  "Selected": 139,
+  "SelectedMatched": 118,
+  "SplitParts": 0,
+  "FalsePositives": 21,
+  "TextExact": 113,
+  "Recall": 0.9909,
+  "Precision": 0.8489,
+  "Missed": [
+    {
+      "N": 25,
+      "Page": 13,
+      "Label": "Điều 19",
+      "Text": "Điều 19. Xử lý đối với trường hợp tên doanh nghiệp xâm phạm quyền sở hữu công nghiệp",
+      "Required": true
+    }
+  ],
+  "Extra": [
+    {
+      "Index": 33,
+      "Page": 18,
+      "Text": "2. Trường hợp chuyển đổi công ty trách nhiệm hữu hạn một thành viên",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 34,
+      "Page": 18,
+      "Text": "3. Trường hợp chuyển đổi công ty trách nhiệm hữu hạn hai thành viên",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 37,
+      "Page": 20,
+      "Text": "1. Hồ sơ, trình tự, thủ tục đăng ký thành lập doanh nghiệp xã hội, chi",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 38,
+      "Page": 21,
+      "Text": "2. Trường hợp doanh nghiệp chuyển đổi thành doanh nghiệp xã hội,",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 39,
+      "Page": 22,
+      "Text": "5. Hồ sơ, trình tự, thủ tục chia, tách, hợp nhất, sáp nhập doanh nghiệp xã hội thực hiện theo quy định tại Nghị định này. Trường hợp thành lập doanh",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 40,
+      "Page": 22,
+      "Text": "6. Hồ sơ, trình tự, thủ tục giải thể doanh nghiệp xã hội được thực hiện theo quy định tại Nghị định này. Trường hợp doanh nghiệp xã hội còn số dư",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 41,
+      "Page": 22,
+      "Text": "7. Việc đăng ký thành lập doanh nghiệp xã hội trên cơ sở chuyển đổi từ cơ sở bảo trợ xã hội, quỹ xã hội, quỹ từ thiện thực hiện tại Phòng Đăng ký kinh doanh nơi doanh nghiệp xã hội dự định đặt trụ sở chính. Hồ sơ đăng ký doanh nghiệp bao gồm các giấy tờ quy định tại khoản 1 Điều này, trong đó không bao gồm Giấy chứng nhận đăng ký đầu tư quy định tại điểm b khoản 4 Điều 22, điểm c khoản 4 Điều 23, điểm c khoản 3 Điều 24 Nghị định này.",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 70,
+      "Page": 42,
+      "Text": "3. Trường hợp thay đổi thành viên do thừa kế, hồ sơ đăng ký doanh nghiệp bao gồm các giấy tờ sau đây:",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 71,
+      "Page": 42,
+      "Text": "4. Trường hợp đăng ký thay đổi thành viên do có thành viên không thực hiện cam kết góp vốn theo quy định tại Điều 47 Luật Doanh nghiệp, hồ sơ",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 93,
+      "Page": 56,
+      "Text": "a) Trường hợp thông tin kê khai trong hồ sơ đăng ký thành lập doanh nghiệp là không trung thực, không chính xác",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 94,
+      "Page": 56,
+      "Text": "b) Trường hợp thông tin kê khai trong hồ sơ đăng ký thay đổi nội dung đăng ký doanh nghiệp là không trung thực, không chính xác",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 96,
+      "Page": 57,
+      "Text": "3.",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 97,
+      "Page": 57,
+      "Text": "4.",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 98,
+      "Page": 58,
+      "Text": "5.",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 99,
+      "Page": 58,
+      "Text": "6.",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 106,
+      "Page": 63,
+      "Text": "3. Trường hợp doanh nghiệp ngừng hoạt động kinh doanh 01 năm mà không thông báo với Cơ quan đăng ký kinh doanh và Cơ quan thuế, Phòng Đăng ký kinh doanh thông báo bằng văn bản về hành vi vi phạm và yêu cầu",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 127,
+      "Page": 79,
+      "Text": "c) Trường hợp cấp đăng ký thay đổi nội dung đăng ký hộ kinh doanh",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 128,
+      "Page": 79,
+      "Text": "3. Việc xử lý đối với trường hợp Giấy chứng nhận đăng ký hộ kinh doanh được cấp trên cơ sở thông tin kê khai trong hô sơ đăng ký hộ kinh doanh là không trung thực, không chính xác được thực hiện theo quy định sau đây: a) Trường hợp thông tin kê khai trong hồ sơ đăng ký thành lập hộ kinh doanh là không trung thực, không chính xác, Cơ quan đăng ký kinh doanh cấp",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 129,
+      "Page": 80,
+      "Text": "b) Trường hợp thông tin kê khai trong hồ sơ đăng ký thay đổi nội dung đăng ký hộ kinh doanh là không trung thực, không chính xác, Cơ quan đăng",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 134,
+      "Page": 83,
+      "Text": "3. Trường hợp chi nhánh, văn phòng đại diện, địa điểm kinh doanh khác",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 135,
+      "Page": 83,
+      "Text": "4. Trường hợp doanh nghiệp hoạt động theo Giấy phép đầu tư, Giấy",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    }
+  ],
+  "NotExact": [
+    {
+      "Index": 54,
+      "Page": 30,
+      "Text": "Điều 39. Hiệu đính thông tin trên Giấy chứng nhận đăng ký doanh nghiệp, Giấy xác nhận thay đổi nội dung đăng ký doanh nghiệp, Giấy",
+      "Gold": 48,
+      "Kind": "heading",
+      "TextExact": false
+    },
+    {
+      "Index": 102,
+      "Page": 60,
+      "Text": "Điều 73. Chấm dứt tồn tại của công ty bị chia, công ty bị hợp nhắt, công ty bị sáp nhập",
+      "Gold": 88,
+      "Kind": "heading",
+      "TextExact": false
+    },
+    {
+      "Index": 110,
+      "Page": 68,
+      "Text": "Chương VIII, HỘ KINH DOANH VÀ ĐĂNG KÝ HỘ KINH DOANH",
+      "Gold": 96,
+      "Kind": "heading",
+      "TextExact": false
+    },
+    {
+      "Index": 132,
+      "Page": 81,
+      "Text": "Điều 96. Quy định chuyển tiếp đối với các doanh nghiệp hoạt động",
+      "Gold": 115,
+      "Kind": "heading",
+      "TextExact": false
+    },
+    {
+      "Index": 136,
+      "Page": 84,
+      "Text": "Điều 98. Quy định chuyển tiếp đối với công ty chứng khoán, công ty quản lý quỹ đầu tư chứng khoán, chỉ nhánh công ty chứng khoán nước ngoài và chỉ nhánh công ty quản lý quỹ nước ngoài tại Việt Nam được đăng ký thành lập và hoạt động theo Giấy phép thành lập và hoạt động kinh doanh chứng khoán",
+      "Gold": 117,
+      "Kind": "heading",
+      "TextExact": false
+    }
+  ]
+}

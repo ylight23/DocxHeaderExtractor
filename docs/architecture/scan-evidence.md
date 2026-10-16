@@ -245,6 +245,33 @@ another, 250 s of 309 s; median call 20.7 s). On the scan route (owner's decisio
 The model may answer on its first turn; `get_line_facts` still gives the facts of any other line. PDF and DOCX keep
 the forced facts call (`IAgentFlavor.PayloadFacts` is null for them). The selector id says `facts-in-request`.
 
+## 5e. Which headings (`dhx scan-heading-eval`, `SCAN_HEADING_GOLD_V1`, `SCAN_HEADING_EVAL_V1`)
+
+`dhx scan-heading-eval <ket-qua.json> --gold <gold.json> [-o report.json]` scores the headings a scan run selected
+against a gold of the document's headings; it changes nothing. A heading with a label (Chương, Mục, Điều, Phần) is
+matched by the label's kind and number within a page; one without (the title block, a titled clause) by its letters
+(similarity 0.8), or by the start of them when only the first line of a longer title was selected (found, its text not
+exact). A title selected apart from its label is a split part, not a false positive. Recall counts the required
+headings found; precision counts the selections that are a gold heading or a part of one; "acceptable" headings count
+for neither side when missed and are not false positives when selected.
+
+The golds (`eval/scan-text/011_headings.v1.json`, `022_headings.v1.json`) were read by Claude from the page images, not
+reviewed by a person; they are not human gold under the a99 gold policy. Required: every Chương, Mục and Điều with its
+title. Acceptable: the title block and, in 022, the numbered clauses that carry a title of their own and head their
+points ("1. Bộ Kế hoạch và Đầu tư:", "2. Thông báo lập địa điểm kinh doanh"). For 022 every Chương and Điều part of
+the v3 run was checked against the images (one fix: `Chương VIII,` is `Chương VIII`) and every other line any of the
+three runs selected (55) was looked at in its context. The 022 texts were taken from v3 after that check, so the "text
+exact" count favours v3 only where v3 was right.
+
+| run | recall | precision | false positives | text exact |
+|---|---|---|---|---|
+| 011 v2 (`SCAN_AGENT_SOURCE_V3`) | 68/68 | 68/70 (97.1%) | 2 (clauses 4., 5.) | 67/68 |
+| 022 old (`SCAN_AGENT_SOURCE_V2`, vision on) | 110/110 | 119/150 (79.3%) | 31 | 111/119 |
+| 022 (`SCAN_AGENT_SOURCE_V3`) | 109/110 (Điều 19 missed) | 118/139 (84.9%) | 21 (four bare 3.–6.) | 113/118 |
+| 022 v3 (facts in request) | 110/110 | 118/130 (90.8%) | 12 | 117/118 |
+
+Reports: `eval/scan-text/reports/heading-eval-*.json`.
+
 ## 5b. Speed
 
 - OCR: every page of both views is one queue of engine runs (one thread each), the upscaled pages first since they take

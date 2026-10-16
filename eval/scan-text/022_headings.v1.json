@@ -1,0 +1,859 @@
+{
+ "version": "SCAN_HEADING_GOLD_V1",
+ "provenance": "CLAUDE_READ_FROM_PAGE_IMAGES: the headings of the document read by Claude from its page images (every Chương and Điều with its title, texts checked part by part against the images; every other line any of three scan runs selected looked at in its context); not reviewed by a person. Not human gold under the a99 gold policy.",
+ "source": "todo10_8/generated-docx/01_phap_quy/022_ND_01-2021_Dang_ky_doanh_nghiep.docx",
+ "sourceSha256": "f8197a069ea9dfbd6e6c8f6ddb5af9c49fafe3328d7fae90544abe3a3dc86a81",
+ "rule": "required: every Chương and Điều with its title, one heading each, label and title together (the document has no Mục). acceptable: the title block, and the numbered clauses that carry a title of their own and are followed by their points or items (1. Bộ Kế hoạch và Đầu tư:, 2. Thông báo lập địa điểm kinh doanh). Anything else selected (clauses that are sentences, points a), b), a bare number 3., Nơi nhận:) is not a heading under the instruction (numbered body paragraphs).",
+ "headings": [
+  {
+   "n": 1,
+   "page": 1,
+   "label": null,
+   "text": "NGHỊ ĐỊNH Về đăng ký doanh nghiệp",
+   "kind": "acceptable",
+   "note": "the document's title block"
+  },
+  {
+   "n": 2,
+   "page": 1,
+   "label": "Chương I",
+   "text": "Chương I QUY ĐỊNH CHUNG",
+   "kind": "required"
+  },
+  {
+   "n": 3,
+   "page": 1,
+   "label": "Điều 1",
+   "text": "Điều 1. Phạm vi điều chỉnh",
+   "kind": "required"
+  },
+  {
+   "n": 4,
+   "page": 2,
+   "label": "Điều 2",
+   "text": "Điều 2. Đối tượng áp dụng",
+   "kind": "required"
+  },
+  {
+   "n": 5,
+   "page": 2,
+   "label": "Điều 3",
+   "text": "Điều 3. Giải thích từ ngữ",
+   "kind": "required"
+  },
+  {
+   "n": 6,
+   "page": 3,
+   "label": "Điều 4",
+   "text": "Điều 4. Nguyên tắc áp dụng giải quyết thủ tục đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 7,
+   "page": 3,
+   "label": "Điều 5",
+   "text": "Điều 5. Quyền thành lập doanh nghiệp và nghĩa vụ đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 8,
+   "page": 4,
+   "label": "Điều 6",
+   "text": "Điều 6. Giấy chứng nhận đăng ký doanh nghiệp, Giấy chứng nhận đăng ký hoạt động chi nhánh, văn phòng đại diện, Giấy chứng nhận đăng ký địa điểm kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 9,
+   "page": 4,
+   "label": "Điều 7",
+   "text": "Điều 7. Ghi ngành, nghề kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 10,
+   "page": 5,
+   "label": "Điều 8",
+   "text": "Điều 8. Mã số doanh nghiệp, mã số đơn vị phụ thuộc của doanh nghiệp, mã số địa điểm kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 11,
+   "page": 6,
+   "label": "Điều 9",
+   "text": "Điều 9. Số lượng hồ sơ đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 12,
+   "page": 7,
+   "label": "Điều 10",
+   "text": "Điều 10. Ngôn ngữ sử dụng trong hồ sơ đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 13,
+   "page": 7,
+   "label": "Điều 11",
+   "text": "Điều 11. Giấy tờ pháp lý của cá nhân trong hồ sơ đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 14,
+   "page": 7,
+   "label": "Điều 12",
+   "text": "Điều 12. Ủy quyền thực hiện thủ tục đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 15,
+   "page": 8,
+   "label": "Điều 13",
+   "text": "Điều 13. Cấp đăng ký doanh nghiệp theo quy trình dự phòng",
+   "kind": "required"
+  },
+  {
+   "n": 16,
+   "page": 8,
+   "label": "Chương II",
+   "text": "Chương II NHIỆM VỤ, QUYỀN HẠN CỦA CƠ QUAN ĐĂNG KÝ KINH DOANH VÀ QUẢN LÝ NHÀ NƯỚC VỀ ĐĂNG KÝ DOANH NGHIỆP, ĐĂNG KÝ HỘ KINH DOANH",
+   "kind": "required"
+  },
+  {
+   "n": 17,
+   "page": 8,
+   "label": "Điều 14",
+   "text": "Điều 14. Cơ quan đăng ký kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 18,
+   "page": 9,
+   "label": "Điều 15",
+   "text": "Điều 15. Nhiệm vụ, quyền hạn của Phòng Đăng ký kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 19,
+   "page": 10,
+   "label": "Điều 16",
+   "text": "Điều 16. Nhiệm vụ, quyền hạn của Cơ quan đăng ký kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 20,
+   "page": 10,
+   "label": "Điều 17",
+   "text": "Điều 17. Quản lý nhà nước về đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 21,
+   "page": 10,
+   "label": null,
+   "text": "1. Bộ Kế hoạch và Đầu tư:",
+   "kind": "acceptable",
+   "note": "a numbered clause with a title of its own, followed by its points or items; selecting it is not counted against precision"
+  },
+  {
+   "n": 22,
+   "page": 11,
+   "label": null,
+   "text": "2. Bộ Tài chính:",
+   "kind": "acceptable",
+   "note": "a numbered clause with a title of its own, followed by its points or items; selecting it is not counted against precision"
+  },
+  {
+   "n": 23,
+   "page": 12,
+   "label": "Chương III",
+   "text": "Chương III ĐĂNG KÝ TÊN DOANH NGHIỆP, CHI NHÁNH, VĂN PHÒNG ĐẠI DIỆN, ĐỊA ĐIỂM KINH DOANH",
+   "kind": "required"
+  },
+  {
+   "n": 24,
+   "page": 12,
+   "label": "Điều 18",
+   "text": "Điều 18. Đăng ký tên doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 25,
+   "page": 13,
+   "label": "Điều 19",
+   "text": "Điều 19. Xử lý đối với trường hợp tên doanh nghiệp xâm phạm quyền sở hữu công nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 26,
+   "page": 14,
+   "label": "Điều 20",
+   "text": "Điều 20. Đăng ký tên chi nhánh, văn phòng đại diện, địa điểm kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 27,
+   "page": 14,
+   "label": "Chương IV",
+   "text": "Chương IV HỒ SƠ, TRÌNH TỰ, THỦ TỤC ĐĂNG KÝ DOANH NGHIỆP, ĐĂNG KÝ HOẠT ĐỘNG CHI NHÁNH, VĂN PHÒNG ĐẠI DIỆN, ĐỊA ĐIỂM KINH DOANH",
+   "kind": "required"
+  },
+  {
+   "n": 28,
+   "page": 14,
+   "label": "Điều 21",
+   "text": "Điều 21. Hồ sơ đăng ký doanh nghiệp đối với doanh nghiệp tư nhân",
+   "kind": "required"
+  },
+  {
+   "n": 29,
+   "page": 15,
+   "label": "Điều 22",
+   "text": "Điều 22. Hồ sơ đăng ký doanh nghiệp đối với công ty hợp danh",
+   "kind": "required"
+  },
+  {
+   "n": 30,
+   "page": 15,
+   "label": "Điều 23",
+   "text": "Điều 23. Hồ sơ đăng ký doanh nghiệp đối với công ty trách nhiệm hữu hạn hai thành viên trở lên, công ty cổ phần",
+   "kind": "required"
+  },
+  {
+   "n": 31,
+   "page": 16,
+   "label": "Điều 24",
+   "text": "Điều 24. Hồ sơ đăng ký doanh nghiệp đối với công ty trách nhiệm hữu hạn một thành viên",
+   "kind": "required"
+  },
+  {
+   "n": 32,
+   "page": 16,
+   "label": "Điều 25",
+   "text": "Điều 25. Hồ sơ đăng ký doanh nghiệp đối với các công ty được thành lập trên cơ sở chia, tách, hợp nhất công ty",
+   "kind": "required"
+  },
+  {
+   "n": 33,
+   "page": 17,
+   "label": "Điều 26",
+   "text": "Điều 26. Hồ sơ đăng ký doanh nghiệp đối với các trường hợp chuyển đổi loại hình doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 34,
+   "page": 20,
+   "label": "Điều 27",
+   "text": "Điều 27. Đăng ký chuyển đổi từ hộ kinh doanh thành doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 35,
+   "page": 20,
+   "label": "Điều 28",
+   "text": "Điều 28. Hồ sơ, trình tự, thủ tục đăng ký doanh nghiệp đối với doanh nghiệp xã hội",
+   "kind": "required"
+  },
+  {
+   "n": 36,
+   "page": 23,
+   "label": "Điều 29",
+   "text": "Điều 29. Hồ sơ, trình tự, thủ tục đăng ký doanh nghiệp đối với tổ chức tín dụng, chi nhánh ngân hàng nước ngoài, văn phòng đại diện của tổ chức tín dụng nước ngoài, tổ chức nước ngoài khác có hoạt động ngân hàng",
+   "kind": "required"
+  },
+  {
+   "n": 37,
+   "page": 24,
+   "label": "Điều 30",
+   "text": "Điều 30. Hồ sơ, trình tự, thủ tục đăng ký doanh nghiệp đối với công ty chứng khoán, công ty quản lý quỹ đầu tư chứng khoán, công ty đầu tư chứng khoán, chi nhánh công ty chứng khoán nước ngoài và chi nhánh công ty quản lý quỹ nước ngoài tại Việt Nam",
+   "kind": "required"
+  },
+  {
+   "n": 38,
+   "page": 25,
+   "label": "Điều 31",
+   "text": "Điều 31. Hồ sơ, trình tự, thủ tục đăng ký hoạt động chi nhánh, văn phòng đại diện, thông báo lập địa điểm kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 39,
+   "page": 25,
+   "label": null,
+   "text": "1. Hồ sơ đăng ký hoạt động chi nhánh, văn phòng đại diện",
+   "kind": "acceptable",
+   "note": "a numbered clause with a title of its own, followed by its points or items; selecting it is not counted against precision"
+  },
+  {
+   "n": 40,
+   "page": 25,
+   "label": null,
+   "text": "2. Thông báo lập địa điểm kinh doanh",
+   "kind": "acceptable",
+   "note": "a numbered clause with a title of its own, followed by its points or items; selecting it is not counted against precision"
+  },
+  {
+   "n": 41,
+   "page": 26,
+   "label": "Điều 32",
+   "text": "Điều 32. Tiếp nhận, xử lý hồ sơ đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 42,
+   "page": 27,
+   "label": "Điều 33",
+   "text": "Điều 33. Thời hạn cấp Giấy chứng nhận đăng ký doanh nghiệp, Giấy xác nhận về việc thay đổi nội dung đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 43,
+   "page": 27,
+   "label": "Điều 34",
+   "text": "Điều 34. Cấp Giấy chứng nhận đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 44,
+   "page": 28,
+   "label": "Điều 35",
+   "text": "Điều 35. Công bố nội dung đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 45,
+   "page": 28,
+   "label": "Điều 36",
+   "text": "Điều 36. Cung cấp thông tin đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 46,
+   "page": 29,
+   "label": "Điều 37",
+   "text": "Điều 37. Phương thức thanh toán phí, lệ phí đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 47,
+   "page": 29,
+   "label": "Điều 38",
+   "text": "Điều 38. Chuẩn hóa, chuyển đổi dữ liệu đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 48,
+   "page": 30,
+   "label": "Điều 39",
+   "text": "Điều 39. Hiệu đính thông tin trên Giấy chứng nhận đăng ký doanh nghiệp, Giấy xác nhận thay đổi nội dung đăng ký doanh nghiệp, Giấy chứng nhận đăng ký hoạt động chi nhánh, văn phòng đại diện, Giấy chứng nhận đăng ký địa điểm kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 49,
+   "page": 30,
+   "label": "Điều 40",
+   "text": "Điều 40. Hiệu đính thông tin đăng ký doanh nghiệp do chuyển đổi dữ liệu vào Cơ sở dữ liệu quốc gia về đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 50,
+   "page": 31,
+   "label": "Điều 41",
+   "text": "Điều 41. Tình trạng pháp lý của doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 51,
+   "page": 33,
+   "label": "Chương V",
+   "text": "Chương V ĐĂNG KÝ DOANH NGHIỆP QUA MẠNG THÔNG TIN ĐIỆN TỬ",
+   "kind": "required"
+  },
+  {
+   "n": 52,
+   "page": 33,
+   "label": "Điều 42",
+   "text": "Điều 42. Đăng ký doanh nghiệp qua mạng thông tin điện tử",
+   "kind": "required"
+  },
+  {
+   "n": 53,
+   "page": 33,
+   "label": "Điều 43",
+   "text": "Điều 43. Hồ sơ đăng ký doanh nghiệp qua mạng thông tin điện tử",
+   "kind": "required"
+  },
+  {
+   "n": 54,
+   "page": 34,
+   "label": "Điều 44",
+   "text": "Điều 44. Trình tự, thủ tục đăng ký doanh nghiệp qua mạng thông tin điện tử sử dụng chữ ký số",
+   "kind": "required"
+  },
+  {
+   "n": 55,
+   "page": 35,
+   "label": "Điều 45",
+   "text": "Điều 45. Trình tự, thủ tục đăng ký doanh nghiệp qua mạng thông tin điện tử sử dụng Tài khoản đăng ký kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 56,
+   "page": 35,
+   "label": "Điều 46",
+   "text": "Điều 46. Xử lý vi phạm, khiếu nại và giải quyết tranh chấp liên quan đến chữ ký số, Tài khoản đăng ký kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 57,
+   "page": 36,
+   "label": "Chương VI",
+   "text": "Chương VI HỒ SƠ, TRÌNH TỰ, THỦ TỤC ĐĂNG KÝ THAY ĐỔI, THÔNG BÁO THAY ĐỔI NỘI DUNG ĐĂNG KÝ DOANH NGHIỆP",
+   "kind": "required"
+  },
+  {
+   "n": 58,
+   "page": 36,
+   "label": "Điều 47",
+   "text": "Điều 47. Đăng ký thay đổi địa chỉ trụ sở chính của doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 59,
+   "page": 36,
+   "label": "Điều 48",
+   "text": "Điều 48. Đăng ký đổi tên doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 60,
+   "page": 37,
+   "label": "Điều 49",
+   "text": "Điều 49. Đăng ký thay đổi thành viên hợp danh",
+   "kind": "required"
+  },
+  {
+   "n": 61,
+   "page": 37,
+   "label": "Điều 50",
+   "text": "Điều 50. Đăng ký thay đổi người đại diện theo pháp luật của công ty trách nhiệm hữu hạn, công ty cổ phần",
+   "kind": "required"
+  },
+  {
+   "n": 62,
+   "page": 39,
+   "label": "Điều 51",
+   "text": "Điều 51. Đăng ký thay đổi vốn điều lệ, phần vốn góp, tỷ lệ phần vốn góp",
+   "kind": "required"
+  },
+  {
+   "n": 63,
+   "page": 40,
+   "label": "Điều 52",
+   "text": "Điều 52. Đăng ký thay đổi thành viên công ty trách nhiệm hữu hạn hai thành viên trở lên",
+   "kind": "required"
+  },
+  {
+   "n": 64,
+   "page": 42,
+   "label": null,
+   "text": "5. Đăng ký thay đổi thành viên do tặng cho phần vốn góp",
+   "kind": "acceptable",
+   "note": "a numbered clause with a title of its own, followed by its points or items; selecting it is not counted against precision"
+  },
+  {
+   "n": 65,
+   "page": 43,
+   "label": "Điều 53",
+   "text": "Điều 53. Đăng ký thay đổi chủ sở hữu công ty trách nhiệm hữu hạn một thành viên",
+   "kind": "required"
+  },
+  {
+   "n": 66,
+   "page": 43,
+   "label": null,
+   "text": "6. Đăng ký thay đổi thành viên trong trường hợp thành viên sử dụng phần vốn góp để trả nợ",
+   "kind": "acceptable",
+   "note": "a numbered clause with a title of its own, followed by its points or items; selecting it is not counted against precision"
+  },
+  {
+   "n": 67,
+   "page": 45,
+   "label": "Điều 54",
+   "text": "Điều 54. Đăng ký thay đổi chủ doanh nghiệp tư nhân trong trường hợp bán, tặng cho doanh nghiệp, chủ doanh nghiệp chết",
+   "kind": "required"
+  },
+  {
+   "n": 68,
+   "page": 46,
+   "label": "Điều 55",
+   "text": "Điều 55. Đăng ký thay đổi vốn đầu tư của chủ doanh nghiệp tư nhân",
+   "kind": "required"
+  },
+  {
+   "n": 69,
+   "page": 46,
+   "label": "Điều 56",
+   "text": "Điều 56. Thông báo thay đổi ngành, nghề kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 70,
+   "page": 46,
+   "label": "Điều 57",
+   "text": "Điều 57. Thông báo thay đổi thông tin của cổ đông sáng lập công ty cổ phần chưa niêm yết",
+   "kind": "required"
+  },
+  {
+   "n": 71,
+   "page": 47,
+   "label": "Điều 58",
+   "text": "Điều 58. Thông báo thay đổi cổ đông là nhà đầu tư nước ngoài trong công ty cổ phần chưa niêm yết",
+   "kind": "required"
+  },
+  {
+   "n": 72,
+   "page": 48,
+   "label": "Điều 59",
+   "text": "Điều 59. Thông báo thay đổi nội dung đăng ký thuế",
+   "kind": "required"
+  },
+  {
+   "n": 73,
+   "page": 48,
+   "label": "Điều 60",
+   "text": "Điều 60. Thông báo thay đổi thông tin cổ đông là nhà đầu tư nước ngoài, thông báo thay đổi thông tin người đại diện theo ủy quyền của cổ đông là tổ chức nước ngoài, thông báo cho thuê doanh nghiệp tư nhân, thông báo thay đổi thông tin người đại diện theo ủy quyền",
+   "kind": "required"
+  },
+  {
+   "n": 74,
+   "page": 49,
+   "label": "Điều 61",
+   "text": "Điều 61. Đăng ký thay đổi nội dung đăng ký doanh nghiệp đối với công ty bị tách, công ty nhận sáp nhập",
+   "kind": "required"
+  },
+  {
+   "n": 75,
+   "page": 50,
+   "label": "Điều 62",
+   "text": "Điều 62. Đăng ký thay đổi nội dung đăng ký hoạt động chi nhánh, văn phòng đại diện, địa điểm kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 76,
+   "page": 51,
+   "label": "Điều 63",
+   "text": "Điều 63. Cập nhật, bổ sung thông tin trong hồ sơ đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 77,
+   "page": 52,
+   "label": "Điều 64",
+   "text": "Điều 64. Hồ sơ đăng ký doanh nghiệp trong trường hợp doanh nghiệp thông qua quyết định theo hình thức lấy ý kiến bằng văn bản",
+   "kind": "required"
+  },
+  {
+   "n": 78,
+   "page": 52,
+   "label": "Điều 65",
+   "text": "Điều 65. Các trường hợp không được đăng ký, thông báo thay đổi nội dung đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 79,
+   "page": 53,
+   "label": "Chương VII",
+   "text": "Chương VII HỒ SƠ, TRÌNH TỰ, THỦ TỤC ĐĂNG KÝ TẠM NGỪNG KINH DOANH, CẤP LẠI GIẤY CHỨNG NHẬN ĐĂNG KÝ DOANH NGHIỆP, GIẢI THỂ DOANH NGHIỆP, THU HỒI GIẤY CHỨNG NHẬN ĐĂNG KÝ DOANH NGHIỆP",
+   "kind": "required"
+  },
+  {
+   "n": 80,
+   "page": 53,
+   "label": "Điều 66",
+   "text": "Điều 66. Đăng ký tạm ngừng kinh doanh, tiếp tục kinh doanh trước thời hạn đã thông báo đối với doanh nghiệp, chi nhánh, văn phòng đại diện, địa điểm kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 81,
+   "page": 54,
+   "label": "Điều 67",
+   "text": "Điều 67. Tạm ngừng kinh doanh, đình chỉ hoạt động, chấm dứt kinh doanh theo yêu cầu của cơ quan nhà nước có thẩm quyền",
+   "kind": "required"
+  },
+  {
+   "n": 82,
+   "page": 54,
+   "label": "Điều 68",
+   "text": "Điều 68. Cấp lại Giấy chứng nhận đăng ký doanh nghiệp, Giấy xác nhận về việc thay đổi nội dung đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 83,
+   "page": 55,
+   "label": "Điều 69",
+   "text": "Điều 69. Xử lý trường hợp cấp đăng ký doanh nghiệp không đúng hồ sơ, trình tự, thủ tục hoặc thông tin kê khai trong hồ sơ đăng ký doanh nghiệp là không trung thực, không chính xác",
+   "kind": "required"
+  },
+  {
+   "n": 84,
+   "page": 56,
+   "label": null,
+   "text": "2. Trường hợp thông tin kê khai trong hồ sơ đăng ký doanh nghiệp là không trung thực, không chính xác",
+   "kind": "acceptable",
+   "note": "a numbered clause with a title of its own, followed by its points or items; selecting it is not counted against precision"
+  },
+  {
+   "n": 85,
+   "page": 57,
+   "label": "Điều 70",
+   "text": "Điều 70. Đăng ký giải thể doanh nghiệp đối với trường hợp quy định tại các điểm a, b và c khoản 1 Điều 207 Luật Doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 86,
+   "page": 59,
+   "label": "Điều 71",
+   "text": "Điều 71. Đăng ký giải thể doanh nghiệp trong trường hợp bị thu hồi Giấy chứng nhận đăng ký doanh nghiệp hoặc theo quyết định của Tòa án",
+   "kind": "required"
+  },
+  {
+   "n": 87,
+   "page": 59,
+   "label": "Điều 72",
+   "text": "Điều 72. Chấm dứt hoạt động chi nhánh, văn phòng đại diện, địa điểm kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 88,
+   "page": 60,
+   "label": "Điều 73",
+   "text": "Điều 73. Chấm dứt tồn tại của công ty bị chia, công ty bị hợp nhất, công ty bị sáp nhập",
+   "kind": "required"
+  },
+  {
+   "n": 89,
+   "page": 61,
+   "label": "Điều 74",
+   "text": "Điều 74. Xác định nội dung kê khai trong hồ sơ đăng ký doanh nghiệp là giả mạo",
+   "kind": "required"
+  },
+  {
+   "n": 90,
+   "page": 62,
+   "label": "Điều 75",
+   "text": "Điều 75. Trình tự, thủ tục thu hồi Giấy chứng nhận đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 91,
+   "page": 62,
+   "label": null,
+   "text": "1. Trường hợp nội dung kê khai trong hồ sơ đăng ký doanh nghiệp là giả mạo",
+   "kind": "acceptable",
+   "note": "a numbered clause with a title of its own, followed by its points or items; selecting it is not counted against precision"
+  },
+  {
+   "n": 92,
+   "page": 62,
+   "label": null,
+   "text": "2. Trường hợp doanh nghiệp đã đăng ký có cá nhân, tổ chức thuộc đối tượng bị cấm thành lập doanh nghiệp theo quy định tại khoản 2 Điều 17 Luật Doanh nghiệp",
+   "kind": "acceptable",
+   "note": "a numbered clause with a title of its own, followed by its points or items; selecting it is not counted against precision"
+  },
+  {
+   "n": 93,
+   "page": 64,
+   "label": "Điều 76",
+   "text": "Điều 76. Khôi phục tình trạng pháp lý của doanh nghiệp sau khi bị thu hồi Giấy chứng nhận đăng ký doanh nghiệp",
+   "kind": "required"
+  },
+  {
+   "n": 94,
+   "page": 65,
+   "label": "Điều 77",
+   "text": "Điều 77. Thu hồi Giấy chứng nhận đăng ký hoạt động chi nhánh, văn phòng đại diện",
+   "kind": "required"
+  },
+  {
+   "n": 95,
+   "page": 68,
+   "label": "Điều 78",
+   "text": "Điều 78. Quy trình đăng tải quyết định mở thủ tục phá sản, quyết định tuyên bố doanh nghiệp phá sản của Tòa án",
+   "kind": "required"
+  },
+  {
+   "n": 96,
+   "page": 68,
+   "label": "Chương VIII",
+   "text": "Chương VIII HỘ KINH DOANH VÀ ĐĂNG KÝ HỘ KINH DOANH",
+   "kind": "required"
+  },
+  {
+   "n": 97,
+   "page": 68,
+   "label": "Điều 79",
+   "text": "Điều 79. Hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 98,
+   "page": 69,
+   "label": "Điều 80",
+   "text": "Điều 80. Quyền thành lập hộ kinh doanh và nghĩa vụ đăng ký hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 99,
+   "page": 69,
+   "label": "Điều 81",
+   "text": "Điều 81. Quyền và nghĩa vụ của chủ hộ kinh doanh, thành viên hộ gia đình tham gia đăng ký hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 100,
+   "page": 70,
+   "label": "Điều 82",
+   "text": "Điều 82. Giấy chứng nhận đăng ký hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 101,
+   "page": 70,
+   "label": "Điều 83",
+   "text": "Điều 83. Mã số đăng ký hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 102,
+   "page": 71,
+   "label": "Điều 84",
+   "text": "Điều 84. Nguyên tắc áp dụng trong đăng ký hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 103,
+   "page": 71,
+   "label": "Điều 85",
+   "text": "Điều 85. Số lượng hồ sơ đăng ký hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 104,
+   "page": 71,
+   "label": "Điều 86",
+   "text": "Điều 86. Địa điểm kinh doanh của hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 105,
+   "page": 72,
+   "label": "Điều 87",
+   "text": "Điều 87. Đăng ký hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 106,
+   "page": 73,
+   "label": "Điều 88",
+   "text": "Điều 88. Đặt tên hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 107,
+   "page": 73,
+   "label": "Điều 89",
+   "text": "Điều 89. Ngành, nghề kinh doanh của hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 108,
+   "page": 74,
+   "label": "Điều 90",
+   "text": "Điều 90. Đăng ký thay đổi nội dung đăng ký hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 109,
+   "page": 75,
+   "label": "Điều 91",
+   "text": "Điều 91. Tạm ngừng kinh doanh, tiếp tục kinh doanh trước thời hạn đã thông báo của hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 110,
+   "page": 76,
+   "label": "Điều 92",
+   "text": "Điều 92. Chấm dứt hoạt động hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 111,
+   "page": 76,
+   "label": "Điều 93",
+   "text": "Điều 93. Thu hồi Giấy chứng nhận đăng ký hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 112,
+   "page": 78,
+   "label": "Điều 94",
+   "text": "Điều 94. Cấp lại Giấy chứng nhận đăng ký hộ kinh doanh",
+   "kind": "required"
+  },
+  {
+   "n": 113,
+   "page": 80,
+   "label": "Chương IX",
+   "text": "Chương IX ĐIỀU KHOẢN THI HÀNH",
+   "kind": "required"
+  },
+  {
+   "n": 114,
+   "page": 80,
+   "label": "Điều 95",
+   "text": "Điều 95. Xử lý vi phạm, khen thưởng",
+   "kind": "required"
+  },
+  {
+   "n": 115,
+   "page": 81,
+   "label": "Điều 96",
+   "text": "Điều 96. Quy định chuyển tiếp đối với các doanh nghiệp hoạt động theo Giấy chứng nhận đăng ký kinh doanh hoặc Giấy chứng nhận đăng ký kinh doanh và đăng ký thuế",
+   "kind": "required"
+  },
+  {
+   "n": 116,
+   "page": 81,
+   "label": "Điều 97",
+   "text": "Điều 97. Quy định chuyển tiếp đối với các doanh nghiệp hoạt động theo Giấy phép đầu tư, Giấy chứng nhận đầu tư (đồng thời là Giấy chứng nhận đăng ký kinh doanh) hoặc các giấy tờ có giá trị pháp lý tương đương",
+   "kind": "required"
+  },
+  {
+   "n": 117,
+   "page": 84,
+   "label": "Điều 98",
+   "text": "Điều 98. Quy định chuyển tiếp đối với công ty chứng khoán, công ty quản lý quỹ đầu tư chứng khoán, chi nhánh công ty chứng khoán nước ngoài và chi nhánh công ty quản lý quỹ nước ngoài tại Việt Nam được đăng ký thành lập và hoạt động theo Giấy phép thành lập và hoạt động kinh doanh chứng khoán",
+   "kind": "required"
+  },
+  {
+   "n": 118,
+   "page": 84,
+   "label": "Điều 99",
+   "text": "Điều 99. Quy định chuyển tiếp đối với hộ kinh doanh do hộ gia đình, nhóm cá nhân thành lập",
+   "kind": "required"
+  },
+  {
+   "n": 119,
+   "page": 84,
+   "label": "Điều 100",
+   "text": "Điều 100. Hiệu lực thi hành",
+   "kind": "required"
+  },
+  {
+   "n": 120,
+   "page": 84,
+   "label": "Điều 101",
+   "text": "Điều 101. Trách nhiệm thi hành",
+   "kind": "required"
+  }
+ ]
+}

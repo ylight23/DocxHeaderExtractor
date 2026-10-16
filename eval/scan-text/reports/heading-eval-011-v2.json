@@ -1,0 +1,42 @@
+{
+  "Version": "SCAN_HEADING_EVAL_V1",
+  "Required": 68,
+  "RequiredFound": 68,
+  "AcceptableFound": 0,
+  "Selected": 70,
+  "SelectedMatched": 68,
+  "SplitParts": 0,
+  "FalsePositives": 2,
+  "TextExact": 67,
+  "Recall": 1,
+  "Precision": 0.9714,
+  "Missed": [],
+  "Extra": [
+    {
+      "Index": 66,
+      "Page": 26,
+      "Text": "4. Ban Cơ yếu Chính phủ giúp Bộ trưởng Bộ Quốc phòng thực hiện quản lý nhà nước về mật mã dân sự, có nhiệm vụ sau đây:",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 67,
+      "Page": 27,
+      "Text": "5. Bộ Công an có nhiệm vụ, quyền hạn sau đây:",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    }
+  ],
+  "NotExact": [
+    {
+      "Index": 49,
+      "Page": 18,
+      "Text": "Mục 1 CẤP GIẤY PHÉP KINH DOANH SẢN PHẨM, DỊCH VỤ AN TOÀN THONG TIN MẠNG",
+      "Gold": 50,
+      "Kind": "heading",
+      "TextExact": false
+    }
+  ]
+}
