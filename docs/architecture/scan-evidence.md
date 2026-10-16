@@ -221,6 +221,21 @@ the vision model reads when it is shown only the crop: the crop the vision prefl
 2x (the scans are black and white already, so a grey crop would be the same image). Each batch is stored once
 (`<root>/vlm-transcribe/`); the report is written to `<root>/eval/`.
 
+## 5c. Measured type and in-memory crops (`SCAN_TYPOGRAPHY_V1`, `SCAN_AGENT_SOURCE_V3`, `SCAN_LINE_FACTS_V3`)
+
+- `PngRaster` decodes a page image in .NET (PNG without interlacing, any colour type, 1 to 16 bits; anything else is
+  first turned into an 8-bit grey PNG by ImageMagick). The transcription's black-and-white 2x masked crops are cut from
+  it in memory: pixel for pixel the image tool's crop (tested on 023's pages, at the page's edges and with masks), so
+  the stored transcriptions stay valid; 1,084 crops in about 14 s on one core against about 0.3 s each before.
+- `ScanTypography` measures each OCR line on the image: the mean length of its horizontal runs of dark pixels (the
+  width of its vertical strokes), against the page's median line, per unit of height, and its share of ink. On 023,
+  against the gold heading lines: bold lines at 1.29 times the page's median stroke or more (10th percentile, median
+  1.35), regular heading lines and 98% of the body at 1.06 or less; the body lines above 1.15 were bold on the image
+  too (title block, motto, signature). The facts give it as `typography` with origin `MEASURED_ON_IMAGE`.
+- So the vision preflight's page-by-page typography questions (one call a page, 90 to 371 s a document) are off by
+  default; `dhx scan-extract --vision` asks them too, shown beside the measurement (`typography.vision`). Line height
+  and alignment were measured already (layout facts).
+
 ## 5b. Speed
 
 - OCR: every page of both views is one queue of engine runs (one thread each), the upscaled pages first since they take

@@ -179,4 +179,84 @@ public sealed class ScanSourceTests : IDisposable
         Assert.Equal(written, File.GetLastWriteTimeUtc(Path.Combine(entry, "evidence.json")));
         Assert.Equal(original.Pages[0].Lines.Select(l => l.Text), second.Views[0].Pages[0].Lines.Select(l => l.Text));
     }
+
+    // ---------------- the raster: one decode per page, crops in memory ----------------
+
+    [Fact]
+    public void A_png_is_read_as_grey_levels_whatever_its_colour_type_and_depth()
+    {
+        var grey = PngRaster.TryDecode(TestPng.WithBlack(20, 10, 200, (5, 2, 4, 3)))!;
+        Assert.Equal((20, 10), (grey.Width, grey.Height));
+        Assert.Equal((200, 0), (grey[0, 0], grey[6, 3]));
+        Assert.Null(PngRaster.TryDecode([1, 2, 3]));
+
+        var magick = TesseractOcr.FindImageMagick();
+        if (magick is null) return;
+        // The same image written by the image tool as 1-bit grey, RGB and palette PNG reads the same.
+        var source = TestPng.WithBlack(40, 12, 255, (3, 3, 10, 5), (20, 1, 6, 9));
+        foreach (var form in new[] { new[] { "-type", "bilevel" }, ["-type", "TrueColor", "-define", "png:color-type=2"], ["-type", "Palette"] })
+        {
+            var other = PngRaster.TryDecode(TesseractOcr.MagickBytes(magick, source, form)!)!;
+            Assert.Equal(PngRaster.TryDecode(source)!.Grey, other.Grey);
+        }
+    }
+
+    [Fact]
+    public void A_crop_cut_in_memory_has_every_pixel_of_the_one_the_image_tool_makes()
+    {
+        var magick = TesseractOcr.FindImageMagick();
+        var docx = TestRepository.Path("todo10_8/generated-docx/01_phap_quy/023_ND_23-2015_Chung_thuc.docx");
+        if (magick is null || !File.Exists(docx)) return;
+        using var zip = System.IO.Compression.ZipFile.OpenRead(docx);
+        var page = Path.Combine(dir, "page.png");
+        using (var e = zip.Entries.First(x => x.FullName.StartsWith("word/media/", StringComparison.Ordinal) && x.Name.EndsWith(".png", StringComparison.Ordinal)).Open())
+        using (var f = File.Create(page)) e.CopyTo(f);
+        var raster = PngRaster.Load(page, magick)!;
+        // A line inside the page with a neighbour reaching into its margin, one at the top-left corner, one at the bottom-right edge.
+        var cases = new (PixelBox Box, PixelBox[] Mask)[]
+        {
+            (new PixelBox(300, 400, 900, 45), [new PixelBox(320, 360, 400, 44), new PixelBox(250, 440, 300, 40)]),
+            (new PixelBox(2, 3, 300, 40), []),
+            (new PixelBox(raster.Width - 200, raster.Height - 30, 198, 28), [new PixelBox(raster.Width - 150, raster.Height - 70, 100, 45)]),
+        };
+        foreach (var (box, mask) in cases)
+        {
+            var file = Path.Combine(dir, "tool.png");
+            Assert.True(TesseractOcr.CropScaled(magick, page, file, box, 8, 2.0, bilevel: true, mask: mask));
+            var tool = PngRaster.TryDecode(File.ReadAllBytes(file))!;
+            var mine = PngRaster.TryDecode(raster.CropBilevel(box, 8, 2, mask, TesseractOcr.BilevelThresholdShare))!;
+            Assert.Equal((tool.Width, tool.Height), (mine.Width, mine.Height));
+            Assert.Equal(tool.Grey, mine.Grey);
+        }
+    }
+
+    [Fact]
+    public void Bold_type_is_measured_as_strokes_wider_than_the_pages_median()
+    {
+        // 30 lines of "text": vertical strokes 2 px wide every 8 px; line 5 has strokes 4 px wide (bold); one speck line.
+        const int width = 600, height = 30 * 40 + 40;
+        var grey = Enumerable.Repeat((byte)255, width * height).ToArray();
+        var lines = new List<OcrLine>();
+        for (var n = 0; n < 30; n++)
+        {
+            var top = 20 + n * 40;
+            var stroke = n == 5 ? 4 : 2;
+            for (var y = top; y < top + 30; y++)
+                for (var x = 50; x < 550; x += 8)
+                    for (var k = 0; k < stroke; k++) grey[y * width + x + k] = 0;
+            lines.Add(new OcrLine($"P001-ocr-original-L{n + 1:000}", "x", new PixelBox(50, top, 500, 30), 95, 95, false, []));
+        }
+        lines.Add(new OcrLine("P001-ocr-original-L031", ".", new PixelBox(10, 5, 4, 4), 20, 20, false, []));
+        grey[6 * width + 11] = 0;
+        var page = new OcrPage(1, new string('a', 64), width, height, new string('b', 64), lines);
+
+        var measured = ScanTypography.Measure(new PngRaster(width, height, grey), page).ToDictionary(t => t.LineId);
+
+        Assert.Equal(2.0, measured["P001-ocr-original-L001"].StrokeWidthPx);
+        Assert.Equal(1.0, measured["P001-ocr-original-L001"].StrokeVsPageMedian);
+        Assert.Equal(2.0, measured["P001-ocr-original-L006"].StrokeVsPageMedian);
+        Assert.Equal(2.0, measured["P001-ocr-original-L006"].InkVsPageMedian);
+        // The speck has too few runs to count in the median, and is still measured.
+        Assert.Equal(1, measured["P001-ocr-original-L031"].Runs);
+    }
 }

@@ -107,6 +107,8 @@ public static class TesseractOcr
 
     /// <summary>The share of grey above which a pixel turns white in the black-and-white images a vision model sees.</summary>
     public const string BilevelThreshold = "55%";
+    /// <summary>The same threshold as a share of white, for crops cut in memory (<see cref="PngRaster.CropBilevel"/>).</summary>
+    public const double BilevelThresholdShare = 0.55;
 
     /// <summary>A black-and-white PNG of the page at <paramref name="width"/> pixels wide, for a vision model that sees the whole page. A scan
     /// in grey JPEG is several times larger (paper texture); black and white keeps letters, weight and diacritics.</summary>
@@ -167,6 +169,18 @@ public static class TesseractOcr
         if (code != 0 || bytes.Length == 0) return false;
         File.WriteAllBytes(output, bytes);
         return true;
+    }
+
+    /// <summary>Runs ImageMagick on image bytes and returns the PNG it writes; null when it fails.</summary>
+    public static byte[]? MagickBytes(string magick, byte[] input, IEnumerable<string> operations)
+    {
+        var all = new List<string>();
+        if (Path.GetFileNameWithoutExtension(magick).Equals("magick", StringComparison.OrdinalIgnoreCase)) all.Add("convert");
+        all.Add("-");
+        all.AddRange(operations);
+        all.Add("png:-");
+        var (code, bytes, _) = RunRaw(magick, all, null, input);
+        return code != 0 || bytes.Length == 0 ? null : bytes;
     }
 
     static (int Code, string Stdout, string Stderr) Run(string exe, IEnumerable<string> args, IReadOnlyDictionary<string, string>? env, byte[]? stdin = null)

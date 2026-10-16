@@ -56,7 +56,7 @@ public sealed record TranscriptionRejection(string Alias, string LineId, string 
 /// are headings, their extents and the readings it takes. C# measures, stores and checks; it decides no heading and corrects no reading.
 /// </summary>
 public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageHandler>? handlerFactory = null, int? parallelism = null,
-    Action<ModelReply>? onModelReply = null, string? instruction = null, bool vision = true,
+    Action<ModelReply>? onModelReply = null, string? instruction = null, bool vision = false,
     ScanOcrPreflight.Options? ocrOptions = null, ScanVisionPreflight.Options? visionOptions = null, bool transcribe = true,
     ScanTranscriptionPreflight.Options? transcriptionOptions = null)
 {
@@ -79,6 +79,10 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
         var ocr = new ScanOcrPreflight(Path.Combine(storeRoot, OcrFolder));
         var evidence = ocr.Run(docxPath, ocrOptions);
         seconds["ocr"] = clock.Elapsed.TotalSeconds;
+        // The type of every line, measured on the page images in .NET: what the vision model was asked page by page (bold, size) before.
+        var typeClock = System.Diagnostics.Stopwatch.StartNew();
+        var typography = ScanTypography.MeasureAll(evidence, ocr.EntryOf(evidence), TesseractOcr.FindImageMagick());
+        seconds["typography"] = typeClock.Elapsed.TotalSeconds;
         var seer = new ScanVisionPreflight(Path.Combine(storeRoot, "vlm"), handlerFactory);
         // With the blind transcription, the vision preflight asks no reading choices: choosing among OCR readings drew the model to a wrong one
         // (4 of 11 right on 023's headings), and the agent then took an OCR reading the transcription had read right.
@@ -101,7 +105,7 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
             });
         seconds["preflight"] = clock.Elapsed.TotalSeconds;
         var talk = System.Diagnostics.Stopwatch.StartNew();
-        var result = ExtractFrom(evidence, observations, apiKey, ct, transcriptions);
+        var result = ExtractFrom(evidence, observations, apiKey, ct, transcriptions, typography);
         seconds["conversation"] = talk.Elapsed.TotalSeconds;
         return result with
         {
@@ -119,9 +123,9 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
 
     /// <summary>The conversation over stored evidence, observations and transcriptions.</summary>
     internal ScanHeadingResult ExtractFrom(ScanOcrEvidence evidence, IReadOnlyList<VlmPageObservation> observations, string apiKey, CancellationToken ct,
-        TranscriptionSet? transcriptions = null)
+        TranscriptionSet? transcriptions = null, IReadOnlyDictionary<string, LineTypography>? typography = null)
     {
-        var source = new ScanAgentSource(evidence, observations, transcriptions);
+        var source = new ScanAgentSource(evidence, observations, transcriptions, typography);
         var budget = HeadingAgentSelector.BudgetFor(source, instruction);
         using var handler = (handlerFactory ?? (() => AgentModel.CreateHandler()))();
         using var model = new AgentModel(handler, apiKey, budget);

@@ -298,14 +298,27 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
             var timings = new CallTimings();
             var crops = new string?[lines.Length];
             var keys = new string[lines.Length];
-            Parallel.For(0, lines.Length, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, k =>
+            // A page is decoded once and its lines are cut from it in memory (pixel for pixel what the image tool makes, without one run of it
+            // per line); grey crops, or a page the reader cannot take, go to the image tool line by line.
+            var byPage = Enumerable.Range(0, lines.Length).GroupBy(k => lines[k].Page.Page).ToArray();
+            Parallel.ForEach(byPage, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, Environment.ProcessorCount) }, group =>
             {
-                var (page, line) = lines[k];
-                var mask = options.Mask ? TesseractOcr.BoxesInCrop(line.Box, CropPad, page.Lines.Where(l => l.Id != line.Id).Select(l => l.Box)) : null;
-                keys[k] = ScanTranscription.CropKey(page.ImageSha256, line.Box, CropPad, options.Scale, options.Bilevel, mask);
+                var page = lines[group.First()].Page;
                 var image = ScanOcrPreflight.PageImagePath(evidenceEntry, page.Page);
-                var file = Path.Combine(work, $"{k:00000}.png");
-                crops[k] = image is not null && TesseractOcr.CropScaled(magick, image, file, line.Box, CropPad, options.Scale, options.Bilevel, mask) ? file : null;
+                var raster = image is not null && options.Bilevel && options.Scale == Math.Floor(options.Scale) ? PngRaster.Load(image, magick) : null;
+                foreach (var k in group)
+                {
+                    var line = lines[k].Line;
+                    var mask = options.Mask ? TesseractOcr.BoxesInCrop(line.Box, CropPad, page.Lines.Where(l => l.Id != line.Id).Select(l => l.Box)) : null;
+                    keys[k] = ScanTranscription.CropKey(page.ImageSha256, line.Box, CropPad, options.Scale, options.Bilevel, mask);
+                    var file = Path.Combine(work, $"{k:00000}.png");
+                    if (raster is not null)
+                    {
+                        File.WriteAllBytes(file, raster.CropBilevel(line.Box, CropPad, (int)options.Scale, mask, TesseractOcr.BilevelThresholdShare));
+                        crops[k] = file;
+                    }
+                    else crops[k] = image is not null && TesseractOcr.CropScaled(magick, image, file, line.Box, CropPad, options.Scale, options.Bilevel, mask) ? file : null;
+                }
             });
             failures.AddRange(Enumerable.Range(0, lines.Length).Where(k => crops[k] is null).Select(k => $"{lines[k].Line.Id}:CROP_FAILED"));
             // Room for the second asks and the splits of a batch that stays unreadable (rare): twice the batches' worst cost.

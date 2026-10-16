@@ -24,7 +24,7 @@ internal sealed record ScanLine(string Alias, int Page, OcrLine Primary, int Pag
 /// </summary>
 internal sealed class ScanAgentSource : IAgentSource
 {
-    public const string Version = "SCAN_AGENT_SOURCE_V2", FactsVersion = "SCAN_LINE_FACTS_V2";
+    public const string Version = "SCAN_AGENT_SOURCE_V3", FactsVersion = "SCAN_LINE_FACTS_V3";
     public const string VlmProposedReading = "vlm-proposed", VlmTranscribedReading = "vlm-transcribed";
     public const int Overlap = 20, LeftEdgeTolerancePx = 8, LowConfidence = 60, MaxLowConfidenceWords = 8;
 
@@ -46,8 +46,13 @@ internal sealed class ScanAgentSource : IAgentSource
     readonly Dictionary<string, LineTranscription> transcribed = new(StringComparer.Ordinal);
     readonly string? visionModel;
 
-    public ScanAgentSource(ScanOcrEvidence evidence, IReadOnlyList<VlmPageObservation>? vision = null, TranscriptionSet? transcriptions = null)
+    /// <summary>The type of each line measured on its page image (<see cref="ScanTypography"/>), by OCR line id; empty when not measured.</summary>
+    public IReadOnlyDictionary<string, LineTypography> Typography { get; }
+
+    public ScanAgentSource(ScanOcrEvidence evidence, IReadOnlyList<VlmPageObservation>? vision = null, TranscriptionSet? transcriptions = null,
+        IReadOnlyDictionary<string, LineTypography>? typography = null)
     {
+        Typography = typography ?? new Dictionary<string, LineTypography>();
         Evidence = evidence;
         Vision = vision ?? [];
         Transcriptions = transcriptions;
@@ -95,6 +100,7 @@ internal sealed class ScanAgentSource : IAgentSource
         SourceAliasUniverseSha256 = Sha(string.Join("\n", lines.Select(l => l.Alias + "\t" + Text(l.Alias))));
         EvidenceStoreSha256 = Sha(string.Join("\n", new[] { Version, FactsVersion, evidence.ParametersSha256 }
             .Concat(Vision.Select(v => v.ImageSha256 + ":" + v.PromptVersion + ":" + v.Model))
+            .Concat(Typography.Count == 0 ? [] : [ScanTypography.Version])
             .Concat(transcriptions is null ? [] : [transcriptions.Model + ":" + transcriptions.PromptVersion + ":" + transcriptions.Scale.ToString(System.Globalization.CultureInfo.InvariantCulture)])
             .Concat(lines.Select(l => l.Alias + "\t" + Facts[l.Alias].ToJsonString()))));
     }
@@ -184,14 +190,23 @@ internal sealed class ScanAgentSource : IAgentSource
                     ["differencesWithOtherViews"] = l.OtherViews.Values.Sum(v => v.Differences.Count),
                 };
                 JsonObject typography;
-                if (seen.TryGetValue(l.Alias, out var vo))
+                if (Typography.TryGetValue(l.Primary.Id, out var mt))
                     typography = new JsonObject
+                    {
+                        ["origin"] = "MEASURED_ON_IMAGE", ["measured"] = true,
+                        ["strokeWidthPx"] = mt.StrokeWidthPx, ["strokeVsPageMedian"] = mt.StrokeVsPageMedian,
+                        ["strokePerHeightVsPageMedian"] = mt.StrokePerHeightVsPageMedian, ["inkVsPageMedian"] = mt.InkVsPageMedian,
+                    };
+                else if (seen.ContainsKey(l.Alias))
+                    typography = new JsonObject { ["measured"] = false, ["reason"] = "the page image could not be read; see vision" };
+                else
+                    typography = new JsonObject { ["measured"] = false, ["reason"] = "a scan carries no font data, and the page image could not be read" };
+                if (seen.TryGetValue(l.Alias, out var vo))
+                    typography["vision"] = new JsonObject
                     {
                         ["origin"] = "VLM_OBSERVATION", ["observedBy"] = visionModel, ["appearsBold"] = vo.AppearsBold,
                         ["relativeSize"] = vo.RelativeSize, ["alignment"] = vo.Alignment,
                     };
-                else
-                    typography = new JsonObject { ["measured"] = false, ["reason"] = "a scan carries no font data, and no vision observation was made for this line" };
                 var node = new JsonObject
                 {
                     ["alias"] = l.Alias, ["origin"] = "OCR_DERIVED", ["page"] = l.Page,

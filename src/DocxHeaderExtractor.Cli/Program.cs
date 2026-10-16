@@ -102,7 +102,7 @@ static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationTok
     var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
     if (string.IsNullOrWhiteSpace(key)) { Console.Error.WriteLine("Chưa có OPENROUTER_API_KEY."); return 2; }
     var root = o.OutputPath ?? ".dhx-evidence";
-    var selector = new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(root, parallelism: o.Jobs,
+    var selector = new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(root, parallelism: o.Jobs, vision: o.Vision,
         onModelReply: o.ShowRawOutput ? r => PrintModelReply(r) : null,
         transcriptionOptions: o.Jobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null,
         visionOptions: o.Jobs is { } seeJobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null);
@@ -112,7 +112,7 @@ static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationTok
         var result = await selector.ExtractAsync(file, key, ct);
         if (!o.Quiet)
             Console.Error.WriteLine($"  {result.Headings.Count} heading, {result.UnitsComplete}/{result.UnitsTotal} unit, {result.ProviderCalls} POST, " +
-                $"{result.ProviderCostUsd:0.0000} USD, VLM {result.VisionPagesObserved} trang ({result.VisionFailures.Count} lỗi), " +
+                $"{result.ProviderCostUsd:0.0000} USD, " + (o.Vision ? $"VLM {result.VisionPagesObserved} trang ({result.VisionFailures.Count} lỗi), " : "kiểu chữ đo trên ảnh, ") +
                 $"chép {result.TranscriptionsAccepted}/{result.TranscribedLines} dòng dùng được ({result.TranscriptionFailures.Count} lỗi), " +
                 $"tiền xử lý {result.PreflightCalls} POST {result.PreflightCostUsd:0.0000} USD");
         if (!o.Quiet && result.StageSeconds.Count > 0)

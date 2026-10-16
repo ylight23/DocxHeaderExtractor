@@ -14,6 +14,8 @@ public sealed class CommandLineOptions
     public string? GoldPath { get; private set; }
     /// <summary>scan-extract: calls at once to the provider in the conversation and the transcription (null: the route's defaults).</summary>
     public int? Jobs { get; private set; }
+    /// <summary>scan-extract: also ask the vision model about every page's typography (off: it is measured on the images).</summary>
+    public bool Vision { get; private set; }
     public OutlineFormat Format { get; private set; } = OutlineFormat.Json;
     public bool Quiet { get; private set; }
 
@@ -70,6 +72,7 @@ public sealed class CommandLineOptions
                 case "-m" or "--model": llama.ModelPath = Next(a); break;
                 case "-o" or "--out": o.OutputPath = Next(a); break;
                 case "--gold": o.GoldPath = Next(a); break;
+                case "--vision": o.Vision = true; break;
                 case "--jobs": o.Jobs = int.TryParse(Next(a), out var jobs) && jobs is >= 1 and <= 64 ? jobs : throw new ArgumentException("--jobs cần số từ 1 đến 64"); break;
                 case "-f" or "--format": o.Format = ParseFormat(Next(a)); break;
                 case "--no-llm": o.Pipeline.DisableLlm = true; break;
@@ -175,6 +178,8 @@ public sealed class CommandLineOptions
           dhx scan-extract <file.docx> [-o <thư-mục>]    # heading của DOCX chỉ có ảnh trang: OCR + quan sát VLM
                                                          # (qwen/qwen3.7-flash, gửi ảnh trang) + hội thoại V6; Qwen
                                                          # quyết định; key từ OPENROUTER_API_KEY; in JSON
+                                                         # kiểu chữ (đậm, cỡ) đo trên ảnh; --vision: hỏi thêm
+                                                         # VLM từng trang
                                                          # --jobs N: số lần gọi API cùng lúc cho xem trang,
                                                          # chép chữ và hội thoại (mặc định 32); giảm nếu bị
                                                          # giới hạn tốc độ

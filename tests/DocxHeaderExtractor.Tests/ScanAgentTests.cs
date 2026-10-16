@@ -63,8 +63,8 @@ public sealed class ScanAgentTests : IDisposable
             source.Readings("P001-L004"));
         var facts = source.Facts["P001-L004"];
         Assert.Equal("OCR_DERIVED", facts["origin"]!.GetValue<string>());
-        Assert.Equal("VLM_OBSERVATION", facts["typography"]!["origin"]!.GetValue<string>());
-        Assert.Equal("yes", facts["typography"]!["appearsBold"]!.GetValue<string>());
+        Assert.Equal("VLM_OBSERVATION", facts["typography"]!["vision"]!["origin"]!.GetValue<string>());
+        Assert.Equal("yes", facts["typography"]!["vision"]!["appearsBold"]!.GetValue<string>());
         Assert.True(facts["ocr"]!["viewsReadItDifferently"]!.GetValue<bool>());
         Assert.Equal(55, facts["ocr"]!["minConfidence"]!.GetValue<double>());
         Assert.False(source.Facts["P001-L001"]["typography"]!["measured"]!.GetValue<bool>());
@@ -606,5 +606,21 @@ public sealed class ScanAgentTests : IDisposable
 
         Assert.Equal(["dòng T001", null, "dòng T003", "dòng T004"], texts);
         Assert.Equal("T-B001ab:CALL:CONTENT:CONTENT_NOT_TEXT", failures.Single());
+    }
+
+    [Fact]
+    public void The_facts_carry_the_type_measured_on_the_image_and_a_vision_observation_only_beside_it()
+    {
+        var measured = new Dictionary<string, LineTypography>
+        {
+            ["P001-ocr-original-L004"] = new("P001-ocr-original-L004", 6.2, 1.38, 1.4, 0.21, 1.3, 400),
+        };
+        var source = new ScanAgentSource(Evidence(), [Vision()], null, measured);
+
+        var t = source.Facts["P001-L004"]["typography"]!;
+        Assert.Equal(("MEASURED_ON_IMAGE", 1.38), (t["origin"]!.GetValue<string>(), t["strokeVsPageMedian"]!.GetValue<double>()));
+        Assert.Equal("VLM_OBSERVATION", t["vision"]!["origin"]!.GetValue<string>());
+        Assert.False(source.Facts["P001-L002"]["typography"]!["measured"]!.GetValue<bool>());
+        Assert.Contains("MEASURED_ON_IMAGE", ScanAgentProtocol.SystemPrompt, StringComparison.Ordinal);
     }
 }
