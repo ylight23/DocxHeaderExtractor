@@ -1,17 +1,33 @@
 {
   "Version": "SCAN_HEADING_EVAL_V1",
-  "Required": 110,
-  "RequiredFound": 110,
-  "AcceptableFound": 8,
+  "Required": 111,
+  "RequiredFound": 111,
+  "AcceptableFound": 0,
   "Selected": 130,
-  "SelectedMatched": 118,
+  "SelectedMatched": 111,
   "SplitParts": 0,
-  "FalsePositives": 12,
-  "TextExact": 117,
+  "FalsePositives": 19,
+  "TextExact": 110,
   "Recall": 1,
-  "Precision": 0.9077,
+  "Precision": 0.8538,
   "Missed": [],
   "Extra": [
+    {
+      "Index": 21,
+      "Page": 10,
+      "Text": "1. Bộ Kế hoạch và Đầu tư:",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 22,
+      "Page": 11,
+      "Text": "2. Bộ Tài chính:",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
     {
       "Index": 34,
       "Page": 18,
@@ -69,6 +85,22 @@
       "TextExact": false
     },
     {
+      "Index": 46,
+      "Page": 25,
+      "Text": "1. Hồ sơ đăng ký hoạt động chi nhánh, văn phòng đại diện",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 47,
+      "Page": 25,
+      "Text": "2. Thông báo lập địa điểm kinh doanh",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
       "Index": 71,
       "Page": 42,
       "Text": "3. Trường hợp thay đổi thành viên do thừa kế, hồ sơ đăng ký doanh nghiệp bao gồm các giấy tờ sau đây:",
@@ -85,9 +117,33 @@
       "TextExact": false
     },
     {
+      "Index": 73,
+      "Page": 42,
+      "Text": "5. Đăng ký thay đổi thành viên do tặng cho phần vốn góp",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 74,
+      "Page": 43,
+      "Text": "6. Đăng ký thay đổi thành viên trong trường hợp thành viên sử dụng phần vốn góp để trả nợ",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
       "Index": 76,
       "Page": 43,
       "Text": "1. Trường hợp chủ sở hữu công ty chuyển nhượng toàn bộ vốn điều lệ",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 100,
+      "Page": 62,
+      "Text": "2. Trường hợp doanh nghiệp đã đăng ký có cá nhân, tổ chức thuộc đối tượng bị cấm thành lập doanh nghiệp theo quy định tại khoản 2 Điều 17 Luật Doanh nghiệp",
       "Gold": null,
       "Kind": "extra",
       "TextExact": false
@@ -114,7 +170,7 @@
       "Index": 105,
       "Page": 68,
       "Text": "Chương VIII, HỘ KINH DOANH VÀ ĐĂNG KÝ HỘ KINH DOANH",
-      "Gold": 96,
+      "Gold": 87,
       "Kind": "heading",
       "TextExact": false
     }

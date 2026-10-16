@@ -1,6 +1,6 @@
 {
   "Version": "SCAN_HEADING_EVAL_V1",
-  "Required": 68,
+  "Required": 69,
   "RequiredFound": 68,
   "AcceptableFound": 0,
   "Selected": 70,
@@ -8,9 +8,17 @@
   "SplitParts": 0,
   "FalsePositives": 2,
   "TextExact": 67,
-  "Recall": 1,
+  "Recall": 0.9855,
   "Precision": 0.9714,
-  "Missed": [],
+  "Missed": [
+    {
+      "N": 1,
+      "Page": 1,
+      "Label": null,
+      "Text": "LUẬT AN TOÀN THÔNG TIN MẠNG",
+      "Required": true
+    }
+  ],
   "Extra": [
     {
       "Index": 66,

@@ -1,18 +1,18 @@
 {
   "Version": "SCAN_HEADING_EVAL_V1",
-  "Required": 110,
-  "RequiredFound": 109,
-  "AcceptableFound": 9,
+  "Required": 111,
+  "RequiredFound": 110,
+  "AcceptableFound": 0,
   "Selected": 139,
-  "SelectedMatched": 118,
+  "SelectedMatched": 110,
   "SplitParts": 0,
-  "FalsePositives": 21,
-  "TextExact": 113,
-  "Recall": 0.9909,
-  "Precision": 0.8489,
+  "FalsePositives": 29,
+  "TextExact": 105,
+  "Recall": 0.991,
+  "Precision": 0.7914,
   "Missed": [
     {
-      "N": 25,
+      "N": 23,
       "Page": 13,
       "Label": "Điều 19",
       "Text": "Điều 19. Xử lý đối với trường hợp tên doanh nghiệp xâm phạm quyền sở hữu công nghiệp",
@@ -20,6 +20,22 @@
     }
   ],
   "Extra": [
+    {
+      "Index": 21,
+      "Page": 10,
+      "Text": "1. Bộ Kế hoạch và Đầu tư:",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 22,
+      "Page": 11,
+      "Text": "2. Bộ Tài chính:",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
     {
       "Index": 33,
       "Page": 18,
@@ -77,6 +93,22 @@
       "TextExact": false
     },
     {
+      "Index": 45,
+      "Page": 25,
+      "Text": "1. Hồ sơ đăng ký hoạt động chi nhánh, văn phòng đại diện",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 46,
+      "Page": 25,
+      "Text": "2. Thông báo lập địa điểm kinh doanh",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
       "Index": 70,
       "Page": 42,
       "Text": "3. Trường hợp thay đổi thành viên do thừa kế, hồ sơ đăng ký doanh nghiệp bao gồm các giấy tờ sau đây:",
@@ -88,6 +120,30 @@
       "Index": 71,
       "Page": 42,
       "Text": "4. Trường hợp đăng ký thay đổi thành viên do có thành viên không thực hiện cam kết góp vốn theo quy định tại Điều 47 Luật Doanh nghiệp, hồ sơ",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 72,
+      "Page": 42,
+      "Text": "5. Đăng ký thay đổi thành viên do tặng cho phần vốn góp",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 73,
+      "Page": 43,
+      "Text": "6. Đăng ký thay đổi thành viên trong trường hợp thành viên sử dụng phần vốn góp để trả nợ",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 92,
+      "Page": 56,
+      "Text": "2. Trường hợp thông tin kê khai trong hồ sơ đăng ký doanh nghiệp là không trung thực, không chính xác",
       "Gold": null,
       "Kind": "extra",
       "TextExact": false
@@ -136,6 +192,14 @@
       "Index": 99,
       "Page": 58,
       "Text": "6.",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 105,
+      "Page": 62,
+      "Text": "2. Trường hợp doanh nghiệp đã đăng ký có cá nhân, tổ chức thuộc đối tượng bị cấm thành lập doanh nghiệp theo quy định tại khoản 2 Điều 17 Luật Doanh nghiệp",
       "Gold": null,
       "Kind": "extra",
       "TextExact": false
@@ -194,7 +258,7 @@
       "Index": 54,
       "Page": 30,
       "Text": "Điều 39. Hiệu đính thông tin trên Giấy chứng nhận đăng ký doanh nghiệp, Giấy xác nhận thay đổi nội dung đăng ký doanh nghiệp, Giấy",
-      "Gold": 48,
+      "Gold": 44,
       "Kind": "heading",
       "TextExact": false
     },
@@ -202,7 +266,7 @@
       "Index": 102,
       "Page": 60,
       "Text": "Điều 73. Chấm dứt tồn tại của công ty bị chia, công ty bị hợp nhắt, công ty bị sáp nhập",
-      "Gold": 88,
+      "Gold": 81,
       "Kind": "heading",
       "TextExact": false
     },
@@ -210,7 +274,7 @@
       "Index": 110,
       "Page": 68,
       "Text": "Chương VIII, HỘ KINH DOANH VÀ ĐĂNG KÝ HỘ KINH DOANH",
-      "Gold": 96,
+      "Gold": 87,
       "Kind": "heading",
       "TextExact": false
     },
@@ -218,7 +282,7 @@
       "Index": 132,
       "Page": 81,
       "Text": "Điều 96. Quy định chuyển tiếp đối với các doanh nghiệp hoạt động",
-      "Gold": 115,
+      "Gold": 106,
       "Kind": "heading",
       "TextExact": false
     },
@@ -226,7 +290,7 @@
       "Index": 136,
       "Page": 84,
       "Text": "Điều 98. Quy định chuyển tiếp đối với công ty chứng khoán, công ty quản lý quỹ đầu tư chứng khoán, chỉ nhánh công ty chứng khoán nước ngoài và chỉ nhánh công ty quản lý quỹ nước ngoài tại Việt Nam được đăng ký thành lập và hoạt động theo Giấy phép thành lập và hoạt động kinh doanh chứng khoán",
-      "Gold": 117,
+      "Gold": 108,
       "Kind": "heading",
       "TextExact": false
     }

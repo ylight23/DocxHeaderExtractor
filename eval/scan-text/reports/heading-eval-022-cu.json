@@ -1,17 +1,33 @@
 {
   "Version": "SCAN_HEADING_EVAL_V1",
-  "Required": 110,
-  "RequiredFound": 110,
-  "AcceptableFound": 9,
+  "Required": 111,
+  "RequiredFound": 111,
+  "AcceptableFound": 0,
   "Selected": 150,
-  "SelectedMatched": 119,
+  "SelectedMatched": 111,
   "SplitParts": 0,
-  "FalsePositives": 31,
-  "TextExact": 111,
+  "FalsePositives": 39,
+  "TextExact": 106,
   "Recall": 1,
-  "Precision": 0.7933,
+  "Precision": 0.74,
   "Missed": [],
   "Extra": [
+    {
+      "Index": 21,
+      "Page": 10,
+      "Text": "1. Bộ Kế hoạch và Đầu tư:",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 22,
+      "Page": 11,
+      "Text": "2. Bộ Tài chính:",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
     {
       "Index": 23,
       "Page": 12,
@@ -77,6 +93,22 @@
       "TextExact": false
     },
     {
+      "Index": 47,
+      "Page": 25,
+      "Text": "1. Hồ sơ đăng ký hoạt động chi nhánh, văn phòng đại diện",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 48,
+      "Page": 25,
+      "Text": "2. Thông báo lập địa điểm kinh doanh",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
       "Index": 49,
       "Page": 26,
       "Text": "3. Trong thời hạn 03 ngày làm việc kể từ ngày nhận được hồ sơ hợp lệ,",
@@ -88,6 +120,22 @@
       "Index": 73,
       "Page": 42,
       "Text": "4. Trường hợp đăng ký thay đổi thành viên do có thành viên không thực hiện cam kết góp vốn theo quy định tại Điều 47 Luật Doanh nghiệp, hồ sơ đăng ký doanh nghiệp bao gồm các giấy tờ sau đây:",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 74,
+      "Page": 42,
+      "Text": "5. Đăng ký thay đổi thành viên do tặng cho phần vốn góp",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 75,
+      "Page": 43,
+      "Text": "6. Đăng ký thay đổi thành viên trong trường hợp thành viên sử dụng",
       "Gold": null,
       "Kind": "extra",
       "TextExact": false
@@ -117,6 +165,14 @@
       "TextExact": false
     },
     {
+      "Index": 97,
+      "Page": 56,
+      "Text": "2. Trường hợp thông tin kê khai trong hồ sơ đăng ký doanh nghiệp là",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
       "Index": 98,
       "Page": 56,
       "Text": "a) Trường hợp thông tin kê khai trong hồ sơ đăng ký thành lập doanh",
@@ -128,6 +184,14 @@
       "Index": 99,
       "Page": 56,
       "Text": "b) Trường hợp thông tin kê khai trong hồ sơ đăng ký thay đổi nội dung",
+      "Gold": null,
+      "Kind": "extra",
+      "TextExact": false
+    },
+    {
+      "Index": 106,
+      "Page": 62,
+      "Text": "1. Trường hợp nội dung kê khai trong hồ sơ đăng ký doanh nghiệp là",
       "Gold": null,
       "Kind": "extra",
       "TextExact": false
@@ -274,7 +338,7 @@
       "Index": 32,
       "Page": 16,
       "Text": "Điều 24. Hồ sơ đăng ký doanh nghiệp đối với công ty trách hữu hạn một thành viên",
-      "Gold": 31,
+      "Gold": 29,
       "Kind": "heading",
       "TextExact": false
     },
@@ -282,31 +346,7 @@
       "Index": 71,
       "Page": 39,
       "Text": "Điều 51. Đăng ký thay đổi vốn điều lệ, phần vốn góp vốn góp",
-      "Gold": 62,
-      "Kind": "heading",
-      "TextExact": false
-    },
-    {
-      "Index": 75,
-      "Page": 43,
-      "Text": "6. Đăng ký thay đổi thành viên trong trường hợp thành viên sử dụng",
-      "Gold": 66,
-      "Kind": "heading",
-      "TextExact": false
-    },
-    {
-      "Index": 97,
-      "Page": 56,
-      "Text": "2. Trường hợp thông tin kê khai trong hồ sơ đăng ký doanh nghiệp là",
-      "Gold": 84,
-      "Kind": "heading",
-      "TextExact": false
-    },
-    {
-      "Index": 106,
-      "Page": 62,
-      "Text": "1. Trường hợp nội dung kê khai trong hồ sơ đăng ký doanh nghiệp là",
-      "Gold": 91,
+      "Gold": 58,
       "Kind": "heading",
       "TextExact": false
     },
@@ -314,7 +354,7 @@
       "Index": 117,
       "Page": 68,
       "Text": "Chương VIII, HỘ KINH DOANH VÀ ĐĂNG KÝ HỘ KINH DOANH",
-      "Gold": 96,
+      "Gold": 87,
       "Kind": "heading",
       "TextExact": false
     },
@@ -322,7 +362,7 @@
       "Index": 148,
       "Page": 84,
       "Text": "Điều 99. Quy định chuyển tiếp đối với hộ kinh doanh do hộ gia đình,",
-      "Gold": 118,
+      "Gold": 109,
       "Kind": "heading",
       "TextExact": false
     }

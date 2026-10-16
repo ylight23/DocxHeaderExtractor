@@ -76,7 +76,8 @@ public sealed class ScanHeadingEvaluationTests
         var gold = ScanHeadingEvaluation.ReadGold(TestRepository.Path("eval/scan-text/022_headings.v1.json"));
         Assert.Equal(Enumerable.Range(1, 101).Select(i => "điều " + i), gold.Where(g => g.Label?.StartsWith("Điều", StringComparison.Ordinal) == true).Select(g => ScanHeadingEvaluation.LabelOf(g.Label!)));
         Assert.Equal(9, gold.Count(g => g.Label?.StartsWith("Chương", StringComparison.Ordinal) == true));
-        Assert.Equal(110, gold.Count(g => g.Required));
+        Assert.Equal(111, gold.Count(g => g.Required));   // as the user-approved a99 gold DOC-0202: title, Chương I-IX, Điều 1-101
+        Assert.All(gold, g => Assert.True(g.Required));
         Assert.DoesNotContain(gold, g => g.Text.StartsWith("Chương VIII,", StringComparison.Ordinal));
     }
 

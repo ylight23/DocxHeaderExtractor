@@ -255,20 +255,24 @@ exact). A title selected apart from its label is a split part, not a false posit
 headings found; precision counts the selections that are a gold heading or a part of one; "acceptable" headings count
 for neither side when missed and are not false positives when selected.
 
-The golds (`eval/scan-text/011_headings.v1.json`, `022_headings.v1.json`) were read by Claude from the page images, not
-reviewed by a person; they are not human gold under the a99 gold policy. Required: every Chương, Mục and Điều with its
-title. Acceptable: the title block and, in 022, the numbered clauses that carry a title of their own and head their
-points ("1. Bộ Kế hoạch và Đầu tư:", "2. Thông báo lập địa điểm kinh doanh"). For 022 every Chương and Điều part of
-the v3 run was checked against the images (one fix: `Chương VIII,` is `Chương VIII`) and every other line any of the
-three runs selected (55) was looked at in its context. The 022 texts were taken from v3 after that check, so the "text
-exact" count favours v3 only where v3 was right.
+The golds (`eval/scan-text/011_headings.v1.json`, `022_headings.v1.json`) follow the boundary of the user-approved a99
+legal gold: 022 is DOC-0202 itself (same source; `canonical-semantic-gold-vnext/semantic/DOC-0202.semantic-freeze.v1.json`,
+111 headings = the decree title, Chương I–IX, Điều 1–101; khoản, điểm, Nơi nhận, signatures and page furniture are
+not headings), and 011 is read the same way (the law's title, every Chương, Mục and Điều: 69). DOC-0202 freezes the
+count only; the lines, pages and texts in these files were read by Claude from the page images and are not reviewed by
+a person. For 022 every Chương and Điều part of the v3 run was checked against the images (one fix: `Chương VIII,` is
+`Chương VIII`), and the texts were taken from v3 after that check, so "text exact" favours v3 only where v3 was right.
 
 | run | recall | precision | false positives | text exact |
 |---|---|---|---|---|
-| 011 v2 (`SCAN_AGENT_SOURCE_V3`) | 68/68 | 68/70 (97.1%) | 2 (clauses 4., 5.) | 67/68 |
-| 022 old (`SCAN_AGENT_SOURCE_V2`, vision on) | 110/110 | 119/150 (79.3%) | 31 | 111/119 |
-| 022 (`SCAN_AGENT_SOURCE_V3`) | 109/110 (Điều 19 missed) | 118/139 (84.9%) | 21 (four bare 3.–6.) | 113/118 |
-| 022 v3 (facts in request) | 110/110 | 118/130 (90.8%) | 12 | 117/118 |
+| 011 v2 (`SCAN_AGENT_SOURCE_V3`) | 68/69 (title missed) | 68/70 (97.1%) | 2 (khoản 4., 5.) | 67/68 |
+| 022 old (`SCAN_AGENT_SOURCE_V2`, vision on) | 111/111 | 111/150 (74.0%) | 39 | 106/111 |
+| 022 (`SCAN_AGENT_SOURCE_V3`) | 110/111 (Điều 19 missed) | 110/139 (79.1%) | 29 (four bare 3.–6.) | 105/110 |
+| 022 v3 (facts in request) | 111/111 | 111/130 (85.4%) | 19 (18 khoản, Nơi nhận) | 110/111 |
+
+Every false positive on 022 is a khoản or "Nơi nhận:". The instruction asks for headings "at all structural levels,
+including … lower-level subdivisions" and also not to select "numbered body paragraphs"; a khoản reads as both, and
+the runs disagree on which (55 different lines across the three).
 
 Reports: `eval/scan-text/reports/heading-eval-*.json`.
 
