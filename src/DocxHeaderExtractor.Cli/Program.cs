@@ -67,7 +67,8 @@ catch (Exception ex)
 // OCR preflight: writes the evidence store of each scanned DOCX and prints what it holds. It changes no document and decides nothing.
 static int RunScanOcr(CommandLineOptions o)
 {
-    var root = o.OutputPath ?? Path.Combine(".dhx-evidence", "scan-ocr");
+    // The same store scan-extract reads (<root>/ocr), so its OCR is not done twice.
+    var root = Path.Combine(o.OutputPath ?? ".dhx-evidence", DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector.OcrFolder);
     var preflight = new DocxHeaderExtractor.DocumentProcessing.Source.Scan.ScanOcrPreflight(root);
     foreach (var file in ExpandInputs(o.Inputs))
     {

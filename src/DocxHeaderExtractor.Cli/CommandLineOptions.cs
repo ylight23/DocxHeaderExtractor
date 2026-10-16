@@ -164,7 +164,8 @@ public sealed class CommandLineOptions
           dhx info    <file.gguf>                        # xem metadata mô hình
           dhx scan-ocr <file.docx> [-o <thư-mục>]        # OCR tiền xử lý cho DOCX chỉ có ảnh trang (cần tesseract,
                                                          # tuỳ chọn ImageMagick); ghi evidence bất biến vào thư mục
-                                                         # (mặc định .dhx-evidence/scan-ocr), không sửa tài liệu
+                                                         # (mặc định .dhx-evidence/ocr, chung với scan-extract),
+                                                         # không sửa tài liệu
           dhx scan-extract <file.docx> [-o <thư-mục>]    # heading của DOCX chỉ có ảnh trang: OCR + quan sát VLM
                                                          # (qwen/qwen3.7-flash, gửi ảnh trang) + hội thoại V6; Qwen
                                                          # quyết định; key từ OPENROUTER_API_KEY; in JSON

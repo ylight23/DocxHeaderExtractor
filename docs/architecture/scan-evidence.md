@@ -39,7 +39,9 @@ binary `.doc` under a `.docx` name.
 - views that could not be made are recorded with the reason (`IMAGEMAGICK_NOT_FOUND`, `NO_PAGE_IMAGES`).
 
 The store entry is `<root>/<sourceSha[..16]>/<parametersSha[..12]>/` (evidence.json, pages/, views/<id>/*.tsv),
-written to a temporary directory and moved into place; an existing entry is read back, never rewritten.
+written to a temporary directory and moved into place; an existing entry is read back, never rewritten. `dhx scan-ocr` and
+`dhx scan-extract` share the root (`.dhx-evidence/ocr` by default, `<-o>/ocr` otherwise), so OCR done ahead by
+`scan-ocr` is not done again by `scan-extract`.
 
 `OcrViewComparer` pairs the lines of two views by box overlap (IoU at least 0.5) and lists, after NFC, every
 stretch where their words differ, as `UNVERIFIED`. It never chooses.

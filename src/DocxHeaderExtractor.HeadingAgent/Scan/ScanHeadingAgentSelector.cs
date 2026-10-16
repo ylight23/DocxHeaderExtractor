@@ -31,6 +31,9 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
     Action<ModelReply>? onModelReply = null, string? instruction = null, bool vision = true,
     ScanOcrPreflight.Options? ocrOptions = null, ScanVisionPreflight.Options? visionOptions = null)
 {
+    /// <summary>The folder of the store root that holds the OCR evidence; <c>dhx scan-ocr</c> writes to the same one.</summary>
+    public const string OcrFolder = "ocr";
+
     readonly string instruction = instruction ?? ScanAgentProtocol.Instruction;
     readonly int parallelism = parallelism ?? HeadingAgentSelector.DefaultParallelism;
 
@@ -39,7 +42,7 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
     public Task<ScanHeadingResult> ExtractAsync(string docxPath, string apiKey, CancellationToken ct) => Task.Run(() =>
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(apiKey);
-        var ocr = new ScanOcrPreflight(Path.Combine(storeRoot, "ocr"));
+        var ocr = new ScanOcrPreflight(Path.Combine(storeRoot, OcrFolder));
         var evidence = ocr.Run(docxPath, ocrOptions);
         var observations = vision
             ? new ScanVisionPreflight(Path.Combine(storeRoot, "vlm"), handlerFactory).Run(evidence, ocr.EntryOf(evidence), apiKey, visionOptions)
