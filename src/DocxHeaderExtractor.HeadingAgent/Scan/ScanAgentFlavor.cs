@@ -56,6 +56,9 @@ internal sealed class ScanAgentFlavor : IAgentFlavor
     /// cut so that theirs stay under 28 KB).</summary>
     public JsonArray? PayloadFacts(IAgentSource source, IReadOnlyList<string> targets) =>
         new(targets.Select(a => (JsonNode)((ScanAgentSource)source).Facts[a].DeepClone()).ToArray());
+    public IEnumerable<string> FactReferences(JsonNode facts) =>
+        (facts["repetition"]?["sampleAliases"]?.AsArray().Select(a => a!.GetValue<string>()) ?? [])
+            .Concat(ScanTextMeasurements.ReferencedAliases(facts));
     public JsonArray ToolDefinitions() => ScanAgentTools.Definitions();
     public IAgentTools CreateTools(IAgentSource source) => new ScanAgentTools((ScanAgentSource)source);
     public object PayloadItem(AgentSourceLine line) => new { alias = line.Alias, page = line.Page ?? 0, text = line.Text };

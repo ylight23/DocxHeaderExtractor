@@ -24,7 +24,7 @@ internal sealed record ScanLine(string Alias, int Page, OcrLine Primary, int Pag
 /// </summary>
 internal sealed class ScanAgentSource : IAgentSource
 {
-    public const string Version = "SCAN_AGENT_SOURCE_V3", FactsVersion = "SCAN_LINE_FACTS_V3";
+    public const string Version = "SCAN_AGENT_SOURCE_V4", FactsVersion = "SCAN_LINE_FACTS_V4";
     public const string VlmProposedReading = "vlm-proposed", VlmTranscribedReading = "vlm-transcribed";
     public const int Overlap = 20, LeftEdgeTolerancePx = 8, LowConfidence = 60, MaxLowConfidenceWords = 8;
 
@@ -154,6 +154,7 @@ internal sealed class ScanAgentSource : IAgentSource
     Dictionary<string, JsonObject> ComputeFacts()
     {
         var result = new Dictionary<string, JsonObject>(StringComparer.Ordinal);
+        var surface = ScanTextMeasurements.Build(Lines, DefaultReading);
         var repeat = ScanLines.Select((l, i) => (k: Evidence_RepeatKey(Text(l.Alias)), i)).Where(x => x.k.Length > 0).ToLookup(x => x.k, x => x.i, StringComparer.Ordinal);
         foreach (var page in ScanLines.Select((l, i) => (l, i)).GroupBy(x => x.l.Page))
         {
@@ -211,6 +212,7 @@ internal sealed class ScanAgentSource : IAgentSource
                 {
                     ["alias"] = l.Alias, ["origin"] = "OCR_DERIVED", ["page"] = l.Page,
                     ["text"] = TextFacts(l),
+                    ["surface"] = surface[l.Alias],
                     ["layout"] = layout, ["ocr"] = ocr, ["typography"] = typography,
                 };
                 if (chosen.TryGetValue(l.Alias, out var c))

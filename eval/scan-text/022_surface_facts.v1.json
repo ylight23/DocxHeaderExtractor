@@ -1,0 +1,354 @@
+{
+  "kind": "DIAGNOSTIC_NOT_GOLD",
+  "sourceSha256": "f8197a069ea9dfbd6e6c8f6ddb5af9c49fafe3328d7fae90544abe3a3dc86a81",
+  "factsVersion": "SCAN_LINE_FACTS_V4",
+  "readingMode": "ocr-original only; cached OCR; no VLM or API invoked",
+  "documentLines": 3184,
+  "unitsWithNewFacts": 149,
+  "facts": [
+    {
+      "alias": "P057-L029",
+      "origin": "OCR_DERIVED",
+      "page": 57,
+      "text": {
+        "shownReading": "ocr-original",
+        "chars": 70,
+        "words": 16,
+        "transcription": "NOT_ASKED"
+      },
+      "surface": {
+        "origin": "TEXT_MEASURED",
+        "readingViewId": "ocr-original",
+        "leadingToken": {
+          "text": "3.",
+          "start": 0,
+          "end": 2,
+          "form": "decimal"
+        },
+        "numberedPrefix": {
+          "key": "#.",
+          "value": 3,
+          "form": "decimal"
+        },
+        "endingPunctuation": "",
+        "previousLine": {
+          "alias": "P057-L028",
+          "page": 57,
+          "readingViewId": "ocr-original",
+          "endingPunctuation": ","
+        },
+        "nextLine": {
+          "alias": "P057-L030",
+          "page": 57,
+          "readingViewId": "ocr-original",
+          "firstLetter": {
+            "text": "n",
+            "case": "lower"
+          }
+        },
+        "nearestPrecedingNamedNumber": {
+          "alias": "P057-L008",
+          "page": 57,
+          "readingViewId": "ocr-original",
+          "numberedPrefix": {
+            "key": "Điêu #",
+            "value": 207,
+            "form": "decimal"
+          },
+          "linesBetween": 20
+        }
+      },
+      "layout": {
+        "box": {
+          "left": 460,
+          "top": 2149,
+          "width": 1487,
+          "height": 57
+        },
+        "page": {
+          "width": 2158,
+          "height": 3042
+        },
+        "leftEdgeOffsetFromPageCommonPx": 103,
+        "leftEdgeSharedBy": 7,
+        "lineHeightVsPageMedian": 0.98,
+        "leftMarginPx": 460,
+        "rightMarginPx": 211,
+        "centredOffsetPx": 124,
+        "gapAbovePx": 47,
+        "gapBelowPx": 3
+      },
+      "ocr": {
+        "meanConfidence": 95.9,
+        "minConfidence": 86.2,
+        "lowConfidenceWords": 0,
+        "overlapsOtherLine": false,
+        "viewsCoveringLine": 2,
+        "viewsReadItDifferently": false,
+        "differencesWithOtherViews": 0
+      },
+      "typography": {
+        "measured": false,
+        "reason": "a scan carries no font data, and the page image could not be read"
+      }
+    },
+    {
+      "alias": "P057-L034",
+      "origin": "OCR_DERIVED",
+      "page": 57,
+      "text": {
+        "shownReading": "ocr-original",
+        "chars": 66,
+        "words": 14,
+        "transcription": "NOT_ASKED"
+      },
+      "surface": {
+        "origin": "TEXT_MEASURED",
+        "readingViewId": "ocr-original",
+        "leadingToken": {
+          "text": "4.",
+          "start": 0,
+          "end": 2,
+          "form": "decimal"
+        },
+        "numberedPrefix": {
+          "key": "#.",
+          "value": 4,
+          "form": "decimal"
+        },
+        "endingPunctuation": "",
+        "previousLine": {
+          "alias": "P057-L033",
+          "page": 57,
+          "readingViewId": "ocr-original",
+          "endingPunctuation": "."
+        },
+        "nextLine": {
+          "alias": "P057-L035",
+          "page": 57,
+          "readingViewId": "ocr-original",
+          "firstLetter": {
+            "text": "p",
+            "case": "lower"
+          }
+        },
+        "nearestPrecedingNamedNumber": {
+          "alias": "P057-L008",
+          "page": 57,
+          "readingViewId": "ocr-original",
+          "numberedPrefix": {
+            "key": "Điêu #",
+            "value": 207,
+            "form": "decimal"
+          },
+          "linesBetween": 25
+        }
+      },
+      "layout": {
+        "box": {
+          "left": 460,
+          "top": 2494,
+          "width": 1487,
+          "height": 59
+        },
+        "page": {
+          "width": 2158,
+          "height": 3042
+        },
+        "leftEdgeOffsetFromPageCommonPx": 103,
+        "leftEdgeSharedBy": 7,
+        "lineHeightVsPageMedian": 1.02,
+        "leftMarginPx": 460,
+        "rightMarginPx": 211,
+        "centredOffsetPx": 124,
+        "gapAbovePx": 48,
+        "gapBelowPx": 1
+      },
+      "ocr": {
+        "meanConfidence": 96.8,
+        "minConfidence": 95.7,
+        "lowConfidenceWords": 0,
+        "overlapsOtherLine": false,
+        "viewsCoveringLine": 2,
+        "viewsReadItDifferently": false,
+        "differencesWithOtherViews": 0
+      },
+      "typography": {
+        "measured": false,
+        "reason": "a scan carries no font data, and the page image could not be read"
+      }
+    },
+    {
+      "alias": "P058-L002",
+      "origin": "OCR_DERIVED",
+      "page": 58,
+      "text": {
+        "shownReading": "ocr-original",
+        "chars": 68,
+        "words": 15,
+        "transcription": "NOT_ASKED"
+      },
+      "surface": {
+        "origin": "TEXT_MEASURED",
+        "readingViewId": "ocr-original",
+        "leadingToken": {
+          "text": "5.",
+          "start": 0,
+          "end": 2,
+          "form": "decimal"
+        },
+        "numberedPrefix": {
+          "key": "#.",
+          "value": 5,
+          "form": "decimal"
+        },
+        "endingPunctuation": "",
+        "previousLine": {
+          "alias": "P058-L001",
+          "page": 58,
+          "readingViewId": "ocr-original",
+          "endingPunctuation": ""
+        },
+        "nextLine": {
+          "alias": "P058-L003",
+          "page": 58,
+          "readingViewId": "ocr-original",
+          "firstLetter": {
+            "text": "k",
+            "case": "lower"
+          }
+        },
+        "nearestPrecedingNamedNumber": {
+          "alias": "P057-L008",
+          "page": 57,
+          "readingViewId": "ocr-original",
+          "numberedPrefix": {
+            "key": "Điêu #",
+            "value": 207,
+            "form": "decimal"
+          },
+          "linesBetween": 30
+        }
+      },
+      "layout": {
+        "box": {
+          "left": 465,
+          "top": 205,
+          "width": 1481,
+          "height": 72
+        },
+        "page": {
+          "width": 2158,
+          "height": 3042
+        },
+        "leftEdgeOffsetFromPageCommonPx": 104,
+        "leftEdgeSharedBy": 3,
+        "lineHeightVsPageMedian": 1.07,
+        "leftMarginPx": 465,
+        "rightMarginPx": 212,
+        "centredOffsetPx": 126,
+        "gapAbovePx": 109,
+        "gapBelowPx": -12
+      },
+      "ocr": {
+        "meanConfidence": 96.4,
+        "minConfidence": 94.4,
+        "lowConfidenceWords": 0,
+        "overlapsOtherLine": false,
+        "viewsCoveringLine": 2,
+        "viewsReadItDifferently": true,
+        "differencesWithOtherViews": 1
+      },
+      "typography": {
+        "measured": false,
+        "reason": "a scan carries no font data, and the page image could not be read"
+      }
+    },
+    {
+      "alias": "P058-L012",
+      "origin": "OCR_DERIVED",
+      "page": 58,
+      "text": {
+        "shownReading": "ocr-original",
+        "chars": 65,
+        "words": 15,
+        "transcription": "NOT_ASKED"
+      },
+      "surface": {
+        "origin": "TEXT_MEASURED",
+        "readingViewId": "ocr-original",
+        "leadingToken": {
+          "text": "6.",
+          "start": 0,
+          "end": 2,
+          "form": "decimal"
+        },
+        "numberedPrefix": {
+          "key": "#.",
+          "value": 6,
+          "form": "decimal"
+        },
+        "endingPunctuation": "",
+        "previousLine": {
+          "alias": "P058-L011",
+          "page": 58,
+          "readingViewId": "ocr-original",
+          "endingPunctuation": "."
+        },
+        "nextLine": {
+          "alias": "P058-L013",
+          "page": 58,
+          "readingViewId": "ocr-original",
+          "firstLetter": {
+            "text": "đ",
+            "case": "lower"
+          }
+        },
+        "nearestPrecedingNamedNumber": {
+          "alias": "P058-L007",
+          "page": 58,
+          "readingViewId": "ocr-original",
+          "numberedPrefix": {
+            "key": "thời hạn #",
+            "value": 5,
+            "form": "decimal"
+          },
+          "linesBetween": 4
+        }
+      },
+      "layout": {
+        "box": {
+          "left": 467,
+          "top": 854,
+          "width": 1481,
+          "height": 57
+        },
+        "page": {
+          "width": 2158,
+          "height": 3042
+        },
+        "leftEdgeOffsetFromPageCommonPx": 106,
+        "leftEdgeSharedBy": 3,
+        "lineHeightVsPageMedian": 0.85,
+        "leftMarginPx": 467,
+        "rightMarginPx": 210,
+        "centredOffsetPx": 128,
+        "gapAbovePx": 46,
+        "gapBelowPx": 3
+      },
+      "ocr": {
+        "meanConfidence": 95.9,
+        "minConfidence": 84.4,
+        "lowConfidenceWords": 0,
+        "overlapsOtherLine": false,
+        "viewsCoveringLine": 2,
+        "viewsReadItDifferently": true,
+        "differencesWithOtherViews": 1
+      },
+      "typography": {
+        "measured": false,
+        "reason": "a scan carries no font data, and the page image could not be read"
+      }
+    }
+  ]
+}

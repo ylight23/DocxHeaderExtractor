@@ -674,4 +674,80 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal(line.Box, bound.Catalog.Units.Single(u => u.SourceId == line.LineId).SourceAnchor.Scan!.Box);
         Assert.Equal(line.PrimaryReading, line.Readings[ScanOcrPreflight.OriginalView]);
     }
+
+    [Fact]
+    public void Surface_facts_reach_the_first_request_and_the_facts_tool_without_becoming_membership_rules()
+    {
+        var source = new ScanAgentSource(Evidence());
+        const string numbered = "P001-L003";
+        var facts = source.Facts[numbered];
+        Assert.Equal("1.", facts["surface"]!["leadingToken"]!["text"]!.GetValue<string>());
+        Assert.Equal("P001-L002", facts["surface"]!["nearestPrecedingNamedNumber"]!["alias"]!.GetValue<string>());
+        var tools = ScanAgentFlavor.Instance.CreateTools(source);
+        var called = Call(tools, ScanAgentTools.LineFacts, new { first = numbered, last = numbered, offset = 0 });
+        Assert.Equal(facts.ToJsonString(), called["facts"]![0]!.ToJsonString());
+        Assert.Contains("P001-L002", tools.ObservedAliases);
+        Assert.Contains("P001-L004", tools.ObservedAliases);
+        Assert.Equal([numbered], tools.FactsReturnedFor); // mentioned neighbours do not acquire core facts coverage
+
+        using var handler = new FakeOpenRouter((body, _) =>
+        {
+            var payload = JsonNode.Parse(body["messages"]![1]!["content"]![0]!["text"]!.GetValue<string>())!;
+            Assert.Equal(facts.ToJsonString(), payload["targetFacts"]!.AsArray().Single(f => f!["alias"]!.GetValue<string>() == numbered)!.ToJsonString());
+            return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = JsonSerializer.Serialize(new
+            {
+                protocolVersion = AgentProtocol.SelectScanVersion, status = "COMPLETE",
+                decisions = payload["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).Select(a => a == numbered
+                    ? (object)new { alias = a, decision = "SELECT", evidenceRefs = new[] { a } }
+                    : new { alias = a, decision = "NOT_SELECT" }),
+            }) }, "stop"));
+        });
+        // Even with numeric-prefix facts, C# must retain the line if the model selects it.
+        var result = new ScanHeadingAgentSelector(dir, () => handler).ExtractFrom(Evidence(), [], "test-key", CancellationToken.None);
+        Assert.Equal("1. Nghị định này quy định về chứng thực", Assert.Single(result.Headings).Text);
+        Assert.Empty(result.UnitFailures);
+    }
+
+    [Fact]
+    public void A_preceding_label_outside_the_context_window_is_citable_from_the_fact_that_actually_shows_it()
+    {
+        var original = Evidence();
+        var view = original.Views[0];
+        var page = view.Pages[0];
+        var source = new ScanAgentSource(original with { Views = [view with { Pages = [page with
+        {
+            Lines = Enumerable.Range(1, 120).Select(n => Line(ScanOcrPreflight.OriginalView, n,
+                n == 1 ? "Điều 17. Hồ sơ" : n == 120 ? "2. Trường hợp chuyển đổi," : "Nội dung được đọc nguyên văn.",
+                300, n * 45, 1000)).ToArray(),
+        }] }] });
+        const string preceding = "P001-L001", target = "P001-L120";
+        var segment = source.Cores.Count - 1;
+        Assert.DoesNotContain(preceding, source.Scope(segment).Shown.Select(i => source.Lines[i].Alias));
+        foreach (var n in Enumerable.Range(0, source.Cores.Count))
+        {
+            var (decide, shown) = source.Scope(n);
+            var payload = AgentProtocol.Payload(source.SourceSha256, AgentSource.SegmentId(n), decide,
+                shown.Select(i => source.Lines[i]).ToArray(), source.StyleTable, ScanAgentProtocol.Instruction, source.Flavor,
+                source.Flavor.PayloadFacts(source, decide));
+            Assert.InRange(AgentProtocol.Build(payload, new JsonArray(), "auto", source.Flavor).Bytes, 1, AgentBudget.MaxRequestBytes);
+        }
+        using var handler = new FakeOpenRouter((body, _) =>
+        {
+            var payload = JsonNode.Parse(body["messages"]![1]!["content"]![0]!["text"]!.GetValue<string>())!;
+            return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = JsonSerializer.Serialize(new
+            {
+                protocolVersion = AgentProtocol.SelectScanVersion, status = "COMPLETE",
+                decisions = payload["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).Select(a => a == target
+                    ? (object)new { alias = a, decision = "SELECT", evidenceRefs = new[] { a, preceding } }
+                    : new { alias = a, decision = "NOT_SELECT" }),
+            }) }, "stop"));
+        });
+        var budget = HeadingAgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction);
+        using var model = new AgentModel(handler, "test-key", budget);
+        var result = AgentUnit.Run(source, segment, model.Turn, budget, retryDelayMs: 0, ScanAgentProtocol.Instruction);
+        Assert.Equal("COMPLETE", result.Status);
+        Assert.Equal("SELECT", result.Decisions[target]);
+        Assert.Equal(1, result.Posts);
+        Assert.Empty(result.TargetsWithoutFacts!);
+    }
 }

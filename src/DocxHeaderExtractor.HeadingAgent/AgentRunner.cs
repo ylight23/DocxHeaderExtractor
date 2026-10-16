@@ -117,7 +117,7 @@ internal static class AgentUnit
         var requestFacts = flavor.PayloadFacts(source, ordered);
         var payload = Payload(source.SourceSha256, unitId, ordered, shownIdx.Select(i => lines[i]).ToArray(), styles, instruction, flavor, requestFacts);
         if (requestFacts is not null)
-            tools.NoteRequestFacts(ordered, requestFacts.SelectMany(f => f!["repetition"]?["sampleAliases"]?.AsArray().Select(a => a!.GetValue<string>()) ?? []));
+            tools.NoteRequestFacts(ordered, requestFacts.SelectMany(f => flavor.FactReferences(f!)));
         // The style table shows the first lines of each style: they are in the request, so the model may cite them.
         shownAliases.UnionWith(styles["styles"]!.AsArray().SelectMany(s => s!["firstLines"]!.AsArray().Select(l => l!["alias"]!.GetValue<string>())));
 

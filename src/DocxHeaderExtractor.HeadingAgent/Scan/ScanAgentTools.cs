@@ -88,7 +88,7 @@ internal sealed class ScanAgentTools : AgentToolHost
             ["hasMore"] = offset + k < rangeLength, ["nextOffset"] = offset + k < rangeLength ? offset + k : null,
             ["truncation"] = Truncation(k, slice.Length, offset + k),
         });
-        returned.AddRange(slice.Take(taken).SelectMany(i => (scan.Facts[lines[i].Alias]["repetition"]?["sampleAliases"]?.AsArray().Select(a => a!.GetValue<string>()) ?? []).Prepend(lines[i].Alias)));
+        returned.AddRange(slice.Take(taken).SelectMany(i => scan.Flavor.FactReferences(scan.Facts[lines[i].Alias]).Prepend(lines[i].Alias)));
         NoteFactsReturned(slice.Take(taken).Select(i => lines[i].Alias), taken < slice.Length || offset + taken < rangeLength);
         return (arguments, result, taken < slice.Length);
     }

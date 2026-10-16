@@ -31,6 +31,30 @@ Scan writeback to Word paragraphs is explicitly unsupported: Web skips it, and t
 refuses it. This integration changes routing/output, not the selector's heading policy or its
 measured accuracy; the 011/022 references still need human review.
 
+### Additional text observations (`SCAN_AGENT_SOURCE_V4`, `SCAN_LINE_FACTS_V4`)
+
+Each line's `surface` facts are measured from its declared reading, identified by `readingViewId`:
+
+- `leadingToken`: the literal leading digits/letters and punctuation, with exact UTF-16 offsets;
+  `numberedPrefix`: the existing language-neutral shape key, form and numeric value, when readable;
+- `endingPunctuation`: the punctuation at the end of the line, including closing quotes. Long form
+  leaders are bounded to four displayed characters and disclose their full count;
+- `previousLine`: its alias, page, reading and terminal punctuation; `nextLine`: its alias, page,
+  reading, literal leading token when present, and its first Unicode letter and case;
+- `nearestPrecedingNamedNumber`: the nearest earlier line whose shape key has words before a number,
+  with that key/value/form and the number of intervening lines. Its words may be arbitrary, an OCR
+  error or an inline cross-reference. It is **not** an enclosing article or a parent claim.
+
+No `isHeading`, `isBody`, sentence-completion or article-membership judgement is added. In particular,
+a comma and a following lower-case letter are exposed as two observations, not labelled a continuing
+sentence. No keyword list decides heading membership. Both the scan system prompt and user instruction
+remain byte-for-byte unchanged. Facts are in the first request and in `get_line_facts`; referenced
+aliases become citable observations without counting as reading those neighbours' core facts.
+OCR and VLM transcription cache keys do not change. Larger facts can make the existing size-based
+partitioner create more conversation units; no new provider call or automatic decision is introduced
+by the measurements themselves. `eval/scan-text/022_surface_facts.v1.json` shows four real 022 lines,
+measured offline from cached primary OCR only; it is a diagnostic example, not a gold reference.
+
 ```text
 source (DOCX) ──► DocxSourceIntegrity ──► NativeText / Mixed ──► native DOCX pipeline
                                      └──► ScannedImageOnly ──► OCR/VLM source and selection
