@@ -17,6 +17,7 @@
   <ItemGroup>
     <PackageReference Include="DocumentFormat.OpenXml" />
     <PackageReference Include="PdfPig" />
+    <PackageReference Include="PDFtoImage" />
   </ItemGroup>
 
 </Project>

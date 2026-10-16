@@ -4,14 +4,16 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using DocumentFormat.OpenXml.Packaging;
 using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
+using DocxHeaderExtractor.DocumentProcessing.Routing;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Scan;
 
 /// <summary>
-/// The OCR preflight of a DOCX whose pages are images. It runs before any agent conversation, once per source and parameter set, and writes
+/// The OCR preflight of a scanned DOCX or PDF. It runs before any agent conversation, once per source and parameter set, and writes
 /// immutable evidence that the evidence tools read later:
 /// <list type="bullet">
-/// <item>the page images, in the order the body places them, as their original bytes with their SHA-256;</item>
+/// <item>the page images: original DOCX image bytes in body order, or full PDF pages rendered at a recorded DPI, each with its SHA-256;</item>
 /// <item>one view per preprocessing: <c>ocr-original</c> (the image as it is) and <c>ocr-upscaled</c> (grey, scaled), each with the engine,
 /// its version and parameters, the raw TSV of every page and its hash, and the lines with word boxes and confidences;</item>
 /// <item>the views that could not be made, with the reason.</item>
@@ -40,7 +42,10 @@ public sealed class ScanOcrPreflight(string storeRoot)
         using var cancellation = TesseractOcr.WithCancellation(ct);
         ct.ThrowIfCancellationRequested();
         options ??= new Options();
-        var integrity = DocxSourceIntegrity.Read(docxPath);
+        var isPdf = UploadedSourceDetector.Detect(docxPath) == SourceType.Pdf;
+        var integrity = isPdf ? null : DocxSourceIntegrity.Read(docxPath);
+        var sourceSha = integrity?.SourceSha256 ?? Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(docxPath)));
+        var sourceKind = integrity?.Kind.ToString() ?? PdfSourceIntegrity.Read(docxPath, ct).Kind;
         var tesseract = TesseractOcr.FindTesseract() ?? throw new InvalidOperationException("TESSERACT_NOT_FOUND");
         var engineVersion = TesseractOcr.Version(tesseract);
         var installed = TesseractOcr.Languages(tesseract);
@@ -48,17 +53,20 @@ public sealed class ScanOcrPreflight(string storeRoot)
         if (missing.Length > 0) throw new InvalidOperationException("TESSERACT_LANGUAGE_MISSING:" + string.Join(",", missing));
         var magick = TesseractOcr.FindImageMagick();
 
-        var parameters = string.Join("|", ScanOcrEvidence.CurrentVersion, integrity.SourceSha256, engineVersion, options.Languages,
+        var parameters = string.Join("|", ScanOcrEvidence.CurrentVersion, sourceSha, engineVersion, options.Languages,
             options.PageSegmentationMode, options.UpscaleFactor.ToString("R", System.Globalization.CultureInfo.InvariantCulture), options.MaxPages, magick is not null);
+        if (isPdf) parameters += "|" + PdfScanPageRenderer.CacheBasis;
         var parametersSha = TesseractOcr.Sha256(parameters);
-        var final = Path.Combine(storeRoot, integrity.SourceSha256[..16], parametersSha[..12]);
-        if (TryLoad(final, integrity.SourceSha256, parametersSha) is { } stored) return stored;
+        var final = Path.Combine(storeRoot, sourceSha[..16], parametersSha[..12]);
+        if (TryLoad(final, sourceSha, parametersSha) is { } stored) return stored;
 
         var temp = Path.Combine(storeRoot, ".tmp-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(Path.Combine(temp, "pages"));
         try
         {
-            var pages = PageImages(docxPath, integrity, options.MaxPages);
+            var pages = isPdf
+                ? PdfScanPageRenderer.Render(docxPath, options.MaxPages, ct).Select(p => new PageImage(p.Page, p.Bytes, ".png", p.Sha256, p.Width, p.Height)).ToArray()
+                : PageImages(docxPath, integrity!, options.MaxPages);
             var imagePaths = pages.Select(p =>
             {
                 var file = Path.Combine(temp, "pages", $"page-{p.Page:000}{p.Extension}");
@@ -68,7 +76,7 @@ public sealed class ScanOcrPreflight(string storeRoot)
 
             var views = new List<OcrView>();
             var gaps = new List<OcrViewGap>();
-            if (pages.Count == 0) gaps.Add(new OcrViewGap(OriginalView, "NO_PAGE_IMAGES:" + integrity.Kind));
+            if (pages.Count == 0) gaps.Add(new OcrViewGap(OriginalView, "NO_PAGE_IMAGES:" + sourceKind));
             else
             {
                 var specs = new List<(OcrViewSpec Spec, string? Magick)>
@@ -81,7 +89,8 @@ public sealed class ScanOcrPreflight(string storeRoot)
                         options.UpscaleFactor, TesseractOcr.EngineName, engineVersion, options.Languages, options.PageSegmentationMode), magick));
                 views.AddRange(MakeViews(specs, pages, imagePaths, tesseract, temp, Math.Max(1, options.Parallelism ?? Environment.ProcessorCount), ct));
             }
-            var evidence = new ScanOcrEvidence(ScanOcrEvidence.CurrentVersion, integrity.SourceSha256, integrity.Kind.ToString(), pages.Count, parametersSha, views, gaps);
+            var evidence = new ScanOcrEvidence(ScanOcrEvidence.CurrentVersion, sourceSha, sourceKind, pages.Count, parametersSha, views, gaps)
+            { PageImageBasis = isPdf ? PdfScanPageRenderer.CacheBasis : null };
             ct.ThrowIfCancellationRequested();
             File.WriteAllText(Path.Combine(temp, "evidence.json"), JsonSerializer.Serialize(evidence, Json), Utf8);
             Directory.CreateDirectory(Path.GetDirectoryName(final)!);
@@ -89,7 +98,7 @@ public sealed class ScanOcrPreflight(string storeRoot)
             catch (IOException) when (Directory.Exists(final))
             {
                 // Another run wrote the same entry first; it is the same evidence, so it is read back and this one is dropped.
-                return TryLoad(final, integrity.SourceSha256, parametersSha) ?? throw new InvalidOperationException("SCAN_EVIDENCE_RACE_UNREADABLE");
+                return TryLoad(final, sourceSha, parametersSha) ?? throw new InvalidOperationException("SCAN_EVIDENCE_RACE_UNREADABLE");
             }
             return evidence;
         }

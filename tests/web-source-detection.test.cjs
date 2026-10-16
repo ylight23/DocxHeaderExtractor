@@ -74,12 +74,13 @@ test('missing key blocks model use but preserves the explicit offline OCR option
   assert.match(s.$('sourceNote').textContent, /chỉ chạy OCR/);
 });
 
-test('unsupported PDF scan and failed inspection cannot start extraction', async () => {
+test('PDF scans use the scan prompt and enable extraction; failed inspection cannot start it', async () => {
   const s = screen();
   let done = s.choose('scan.pdf');
-  s.reply(0, { ...scan, format: 'pdf', route: 'pdf-scan', supported: false });
+  s.reply(0, { ...scan, format: 'pdf', route: 'scan', supported: true });
   await done;
-  assert.equal(s.$('run').disabled, true);
+  assert.equal(s.$('run').disabled, false);
+  assert.equal(s.read('promptRoute'), 'scan');
   done = s.choose('broken.docx');
   s.reply(1, { message: 'Invalid document' }, false);
   await done;

@@ -1,0 +1,38 @@
+{
+  "kind": "DIAGNOSTIC_NOT_GOLD",
+  "source": "todo10_8/heading_corpus_100/01_phap_quy/011_Luat_An_toan_thong_tin_mang_86-2015-QH13.pdf",
+  "sourceSha256": "ac6ab85b9eea4f81379573fdd85ef3e3651d458f382ad9da809191d04df593b3",
+  "sourceKind": "ScannedPdf",
+  "pageCount": 28,
+  "pageImageBasis": "PDF_SCAN_RASTER_V1|dpi=200|annotations=true|forms=true|PDFtoImage=5.4.0.0",
+  "parametersSha256": "e59560c6c60d7965bbae6d201d93e04f1db91809f9356ce8efef57fddba3e14d",
+  "elapsedSeconds": 140.7,
+  "providerCalls": 0,
+  "providerCostUsd": 0,
+  "views": [
+    {
+      "viewId": "ocr-original",
+      "pages": 28,
+      "lines": 1056,
+      "words": 13903
+    },
+    {
+      "viewId": "ocr-upscaled",
+      "pages": 28,
+      "lines": 1050,
+      "words": 13877
+    }
+  ],
+  "gaps": [],
+  "note": "Local PDF rendering and OCR only. No VLM/Qwen request or heading-accuracy evaluation.",
+  "webOfflineSmoke": {
+    "httpStatus": 200,
+    "route": "scan-v6-selected-lines",
+    "sourceCount": 1056,
+    "headings": 0,
+    "mode": "OCR_ONLY",
+    "preflightCalls": 0,
+    "conversationCalls": 0,
+    "note": "Zero headings expected with noLlm=true; this checks source routing and OCR, not model accuracy."
+  }
+}

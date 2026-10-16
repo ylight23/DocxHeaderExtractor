@@ -272,8 +272,9 @@ internal sealed class ScanAgentTools : AgentToolHost
                 ["model"] = scan.VisionModel, ["pagesObserved"] = scan.Vision.Count(v => v.Failure is null),
                 ["pagesFailed"] = scan.Vision.Count(v => v.Failure is not null), ["origin"] = "VLM_OBSERVATION",
             },
-            ["typography"] = "a scan carries no font data: typography comes only from vision observations, which are a model's judgement",
+            ["typography"] = "a scan carries no font data: its line facts carry pixel measurements marked MEASURED_ON_IMAGE; optional vision observations are a model's judgement",
         };
+        if (ev.PageImageBasis is { } basis) result["pageImageBasis"] = basis;
         return (new JsonObject(), result, false);
     }
 }

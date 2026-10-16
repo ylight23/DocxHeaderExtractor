@@ -13,8 +13,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
     <PackageReference Include="xunit" />
     <PackageReference Include="xunit.runner.visualstudio" />
-    <!-- Test-only: renders a PDF page to PNG for the SELECTIVE_SEMANTIC_ESCALATION_V1 VLM
-         escalation experiment. Not referenced by any src/ project - production is unchanged. -->
+    <!-- Also used by production scan PDF rendering in Sources; retained here for renderer fixture generation. -->
     <PackageReference Include="PDFtoImage" />
   </ItemGroup>
 

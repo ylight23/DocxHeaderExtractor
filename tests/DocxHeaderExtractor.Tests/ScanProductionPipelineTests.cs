@@ -33,13 +33,16 @@ public sealed class ScanProductionPipelineTests
             new(3, .002, 2, .01, 4, 4, new Dictionary<string, int> { ["ACCEPTED"] = 4 }, [], [], [], new Dictionary<string, double>()));
     }
 
-    [Fact]
-    public async Task Production_runner_routes_scanned_docx_into_shared_structure_sections_chunks_and_source_evidence()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task Production_runner_routes_scanned_documents_into_shared_structure_sections_chunks_and_source_evidence(bool pdf)
     {
-        var scan = new FixedScan(Prepared(ScanPath));
+        var path = pdf ? ScanPath.Replace("generated-docx", "heading_corpus_100").Replace(".docx", ".pdf") : ScanPath;
+        var scan = new FixedScan(Prepared(path));
         var factory = new Factory(scan);
         using var runner = new V6DocumentRunner(new PipelineOptions(), factory);
-        var run = await runner.ExtractAsync(ScanPath);
+        var run = await runner.ExtractAsync(path);
 
         Assert.Equal(1, scan.Calls);
         Assert.Equal("test-route-key", scan.Key);

@@ -540,7 +540,7 @@ function syncBackend() {
     chip('privacyNote', 'local · không rời máy', 'Backend local: nội dung tài liệu không rời khỏi máy.', 'ok');
   if (sourceInspection) {
     $('sourceNote').textContent = (noLlm && sourceInspection.route === 'scan'
-      ? 'Bản scan trong Word: chỉ chạy OCR trên máy, không gọi VLM/Qwen và không tự chọn heading.' : sourceInspection.message) +
+      ? 'Bản scan: chỉ chạy OCR trên máy, không gọi VLM/Qwen và không tự chọn heading.' : sourceInspection.message) +
       (requiresRemote && defaults && !defaults.openRouterAvailable ? ' Cần cấu hình OPENROUTER_API_KEY trên server, hoặc chọn Không gọi mô hình.' : '');
     $('writeback').disabled = !sourceInspection.canWriteback;
     if (!sourceInspection.canWriteback) $('writeback').checked = false;

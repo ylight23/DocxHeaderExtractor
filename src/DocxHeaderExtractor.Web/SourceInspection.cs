@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 namespace DocxHeaderExtractor.Web;
 
@@ -24,29 +25,16 @@ public sealed record SourceInspection(string Format, string Kind, string Route, 
                         "Word có văn bản: dùng route DOCX, không cần OCR.", docx.TextChars, docx.PageImages),
                 };
             case SourceType.Pdf:
-                using (var pdf = UglyToad.PdfPig.PdfDocument.Open(path))
+                var pdf = PdfSourceIntegrity.Read(path, ct);
                 {
-                    long text = 0;
-                    int imageOnlyPages = 0;
-                    foreach (var page in pdf.GetPages())
-                    {
-                        ct.ThrowIfCancellationRequested();
-                        var chars = page.Letters.Sum(l => (long)l.Value.Count(c => !char.IsWhiteSpace(c)));
-                        text += chars;
-                        // A logo is not a scanned page. A page-sized image with only a footer/header still needs OCR.
-                        var pageImage = page.NumberOfImages > 0 && page.GetImages().Any(image =>
-                            image.BoundingBox.Width >= DocxSourceIntegrity.PageCoverage * page.Width &&
-                            image.BoundingBox.Height >= DocxSourceIntegrity.PageCoverage * page.Height);
-                        if (chars < DocxSourceIntegrity.TextCharsPerPageImage && pageImage) imageOnlyPages++;
-                    }
-                    if (imageOnlyPages > 0)
-                        return new("pdf", text == 0 ? "scan" : "mixed", "pdf-scan", true, false, true, false,
-                            $"PDF có {imageOnlyPages} trang ảnh không có hoặc có rất ít chữ trích xuất được, cần OCR. Web hiện hỗ trợ scan trong DOCX; hãy dùng bản DOCX chứa ảnh trang.", text, imageOnlyPages);
-                    if (text == 0)
+                    if (pdf.RequiresOcr)
+                        return new("pdf", pdf.ScanPages.Count == pdf.Pages ? "scan" : "mixed", "scan", true, true, true, false,
+                            $"PDF có {pdf.ScanPages.Count}/{pdf.Pages} trang cần OCR. Tự render toàn bộ trang → OCR → VLM chép chữ → Qwen chọn heading.", pdf.TextChars, pdf.ScanPages.Count);
+                    if (pdf.TextChars == 0)
                         return new("pdf", "empty", "pdf", false, false, false, false,
                             "PDF không có chữ trích xuất được và không nhận diện được ảnh trang để OCR.");
                     return new("pdf", "native", "pdf", false, true, true, true,
-                        "PDF có lớp chữ: dùng route PDF, không cần OCR.", text);
+                        "PDF có lớp chữ: dùng route PDF, không cần OCR.", pdf.TextChars);
                 }
             default:
                 return new("unknown", "conversion", "docx", false, true, false, true,

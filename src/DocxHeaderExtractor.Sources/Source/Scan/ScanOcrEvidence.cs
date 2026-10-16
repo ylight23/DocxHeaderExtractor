@@ -126,6 +126,11 @@ public sealed record ScanOcrEvidence(
     [property: JsonPropertyName("gaps")] IReadOnlyList<OcrViewGap> Gaps)
 {
     public const string CurrentVersion = "SCAN_OCR_EVIDENCE_V1";
+
+    /// <summary>For PDF, the renderer/version/DPI of the immutable page rasters. Null on legacy DOCX evidence.</summary>
+    [JsonPropertyName("pageImageBasis")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? PageImageBasis { get; init; }
 }
 
 /// <summary>Where two views read the same line differently: the words of each view between the parts they share. Never resolved here.</summary>

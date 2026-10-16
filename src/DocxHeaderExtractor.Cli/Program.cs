@@ -74,16 +74,24 @@ static int RunScanOcr(CommandLineOptions o)
     var preflight = new DocxHeaderExtractor.DocumentProcessing.Source.Scan.ScanOcrPreflight(root);
     foreach (var file in ExpandInputs(o.Inputs))
     {
-        var integrity = DocxHeaderExtractor.DocumentProcessing.Source.Docx.DocxSourceIntegrity.Read(file);
-        Console.WriteLine($"» {Path.GetFileName(file)}: {integrity.Kind}, {integrity.PageImages} ảnh trang, {integrity.TextChars} ký tự OOXML");
-        if (integrity.PageImages == 0) continue;
+        if (DocxHeaderExtractor.DocumentProcessing.Routing.UploadedSourceDetector.Detect(file) == DocxHeaderExtractor.DocumentProcessing.Routing.SourceType.Pdf)
+        {
+            var pdf = DocxHeaderExtractor.DocumentProcessing.Source.Pdf.PdfSourceIntegrity.Read(file);
+            Console.WriteLine($"» {Path.GetFileName(file)}: {pdf.Kind}, {pdf.Pages} trang, {pdf.ScanPages.Count} trang cần OCR");
+        }
+        else
+        {
+            var integrity = DocxHeaderExtractor.DocumentProcessing.Source.Docx.DocxSourceIntegrity.Read(file);
+            Console.WriteLine($"» {Path.GetFileName(file)}: {integrity.Kind}, {integrity.PageImages} ảnh trang, {integrity.TextChars} ký tự OOXML");
+            if (integrity.PageImages == 0) continue;
+        }
         var watch = System.Diagnostics.Stopwatch.StartNew();
         var evidence = preflight.Run(file);
         foreach (var view in evidence.Views)
         {
             var lines = view.Pages.SelectMany(p => p.Lines).ToArray();
             var words = lines.SelectMany(l => l.Words).ToArray();
-            Console.WriteLine($"  {view.Spec.ViewId}: {view.Pages.Count} trang, {lines.Length} dòng, {words.Length} từ, confidence TB {words.Average(w => w.Confidence):0.0}, " +
+            Console.WriteLine($"  {view.Spec.ViewId}: {view.Pages.Count} trang, {lines.Length} dòng, {words.Length} từ, confidence TB {(words.Length == 0 ? 0 : words.Average(w => w.Confidence)):0.0}, " +
                 $"từ <60: {words.Count(w => w.Confidence < 60)}, dòng chồng dòng khác: {lines.Count(l => l.OverlapsOtherLine)}");
         }
         foreach (var gap in evidence.Gaps) Console.WriteLine($"  thiếu view {gap.ViewId}: {gap.Reason}");

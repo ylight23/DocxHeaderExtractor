@@ -1,6 +1,7 @@
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Routing;
 
@@ -26,28 +27,31 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
     private readonly bool _sendsDataExternally;
     private readonly bool _ownsTransport;
     private readonly IHeadingSelector? _selector;
+    private readonly IScanHeadingSelector? _scanSelector;
     private IInferenceTransport? _transport;
 
     public PdfExtractionHandler(
         PipelineOptions options,
         IInferenceTransport? transport,
         bool sendsDataExternally,
-        IHeadingSelector? selector = null)
+        IHeadingSelector? selector = null, IScanHeadingSelector? scanSelector = null)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _transport = transport;
         _sendsDataExternally = sendsDataExternally;
         _ownsTransport = false;
         _selector = selector;
+        _scanSelector = scanSelector;
     }
 
-    public PdfExtractionHandler(PipelineOptions options, IInferenceTransportFactory transportFactory, IHeadingSelector? selector = null)
+    public PdfExtractionHandler(PipelineOptions options, IInferenceTransportFactory transportFactory, IHeadingSelector? selector = null, IScanHeadingSelector? scanSelector = null)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _transportFactory = transportFactory ?? throw new ArgumentNullException(nameof(transportFactory));
         _sendsDataExternally = transportFactory.SendsDataExternally;
         _ownsTransport = true;
         _selector = selector;
+        _scanSelector = scanSelector ?? transportFactory.CreateScanHeadingSelector();
     }
 
     public SourceType Handles => SourceType.Pdf;
@@ -57,6 +61,10 @@ public sealed class PdfExtractionHandler : IDocumentExtractionHandler, IDisposab
         CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(file);
+        ct.ThrowIfCancellationRequested();
+        if (file.DetectedType == SourceType.Pdf && PdfSourceIntegrity.Read(file.LocalPath, ct).RequiresOcr)
+            return await ScanExtractionPipeline.RunAsync(file.LocalPath, _options, _options.DisableLlm ? null : await GetTransportAsync(ct),
+                _scanSelector, _sendsDataExternally, ct).ConfigureAwait(false);
         var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
         return await PdfExtractionPipeline.RunWithSelectorAsync(
             file, _options, transport, _selector, _sendsDataExternally, ct);

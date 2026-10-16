@@ -29,13 +29,13 @@ public sealed class V6DocumentRunner : IDisposable
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(factory);
-        _docxLane = new DocxExtractionPipeline(options, factory,
-            factory.CreateDocxHeadingSelector() ?? new DocxHeadingAgentSelector(onModelReply: onModelReply, extraction: options.Extraction),
-            factory.CreateScanHeadingSelector() ?? new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(options.ScanEvidenceRoot,
+        var scanSelector = factory.CreateScanHeadingSelector() ?? new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(options.ScanEvidenceRoot,
                 parallelism: options.ScanJobs, onModelReply: onModelReply, vision: options.ScanVision,
                 transcriptionOptions: options.ScanJobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null,
-                visionOptions: options.ScanJobs is { } seeJobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null));
-        _pdfLane = new PdfExtractionHandler(options, factory, factory.CreatePdfHeadingSelector() ?? new PdfHeadingAgentSelector(onModelReply: onModelReply));
+                visionOptions: options.ScanJobs is { } seeJobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null);
+        _docxLane = new DocxExtractionPipeline(options, factory,
+            factory.CreateDocxHeadingSelector() ?? new DocxHeadingAgentSelector(onModelReply: onModelReply, extraction: options.Extraction), scanSelector);
+        _pdfLane = new PdfExtractionHandler(options, factory, factory.CreatePdfHeadingSelector() ?? new PdfHeadingAgentSelector(onModelReply: onModelReply), scanSelector);
         _dispatcher = new DocumentExtractionRouter(new DocxExtractionHandler(_docxLane), _pdfLane);
     }
 

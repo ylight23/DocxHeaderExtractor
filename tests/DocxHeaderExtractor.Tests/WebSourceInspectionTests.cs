@@ -109,19 +109,23 @@ public sealed class WebSourceInspectionTests : IDisposable
         if (hasFooter) page.AddText("Page 1", 10, new PdfPoint(10, 10), builder.AddStandard14Font(Standard14Font.Helvetica));
         var path = Path.Combine(dir, "scan.pdf");
         File.WriteAllBytes(path, builder.Build());
-        using var app = new WebApplicationFactory<WebProgram>();
+        var scan = new OfflineScan();
+        using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(host => host.ConfigureTestServices(services =>
+            services.AddSingleton<WebTransportFactoryResolver>(_ => _ => new OfflineFactory(scan))));
         using var client = app.CreateClient();
         using var form = Upload(path, "renamed.docx");
         using var response = await client.PostAsync("/api/inspect", form);
         var result = JsonDocument.Parse(await response.Content.ReadAsStringAsync()).RootElement;
         Assert.True(result.GetProperty("requiresOcr").GetBoolean());
-        Assert.False(result.GetProperty("supported").GetBoolean());
-        Assert.Equal("pdf-scan", result.GetProperty("route").GetString());
+        Assert.True(result.GetProperty("supported").GetBoolean());
+        Assert.Equal("scan", result.GetProperty("route").GetString());
         using var extractForm = Upload(path);
         extractForm.Add(new StringContent("1"), "noLlm");
         using var extract = await client.PostAsync("/api/extract", extractForm);
-        Assert.Contains("PDF", await extract.Content.ReadAsStringAsync());
-        Assert.DoesNotContain("\"type\":\"result\"", await extract.Content.ReadAsStringAsync());
+        var events = (await extract.Content.ReadAsStringAsync()).Split('\n', StringSplitOptions.RemoveEmptyEntries).Select(l => JsonDocument.Parse(l).RootElement.Clone()).ToArray();
+        Assert.DoesNotContain(events, e => e.GetProperty("type").GetString() == "error");
+        Assert.Equal("scan-v6-selected-lines", events.Single(e => e.GetProperty("type").GetString() == "result").GetProperty("outline").GetProperty("deterministicRoute").GetString());
+        Assert.Equal(1, scan.Calls);
     }
 
     [Fact]
