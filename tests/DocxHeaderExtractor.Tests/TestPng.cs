@@ -6,13 +6,17 @@ namespace DocxHeaderExtractor.Tests;
 /// <summary>Valid PNG files for tests: an 8-bit grey image of one colour, with real CRCs, so that image tools accept it.</summary>
 internal static class TestPng
 {
-    public static byte[] Grey(int width, int height, byte value = 255)
+    public static byte[] Grey(int width, int height, byte value = 255) => WithBlack(width, height, value);
+
+    /// <summary>A grey image with black rectangles (left, top, width, height): lines of "text" for crop tests.</summary>
+    public static byte[] WithBlack(int width, int height, byte value, params (int X, int Y, int W, int H)[] black)
     {
         using var raw = new MemoryStream();
         for (var y = 0; y < height; y++)
         {
             raw.WriteByte(0);   // filter: none
-            for (var x = 0; x < width; x++) raw.WriteByte(value);
+            for (var x = 0; x < width; x++)
+                raw.WriteByte(black.Any(b => x >= b.X && x < b.X + b.W && y >= b.Y && y < b.Y + b.H) ? (byte)0 : value);
         }
         using var compressed = new MemoryStream();
         using (var z = new ZLibStream(compressed, CompressionLevel.Optimal, leaveOpen: true)) raw.WriteTo(z);

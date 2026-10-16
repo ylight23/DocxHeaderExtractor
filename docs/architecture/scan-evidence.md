@@ -201,6 +201,10 @@ Measured with the vision transcription (Windows, commit `004bbdae`, report in `.
 | vision model, blind, crop enlarged 2x | 120/120 (100%) | 0.00% |
 | vision model, blind, crop enlarged 2x in black and white (6.6x fewer bytes) | 118/120 (98%) | 0.27% |
 
+The two black-and-white misses read every letter right and added the line above (`Mục 3`/`Mục 4`), whose bottom the
+8 px margin caught. `scan-text-eval` now also measures crops masked: the other lines' boxes that reach into the crop are
+painted white (except where they overlap the line's own box) before the crop is cut (`-2x-masked`, `-2x-bilevel-masked`).
+
 The two misses at 1x read every letter right but added the line above (`Mục 3⏎CHỨNG THỰC CHỮ KÝ`): the crop's margin
 caught part of it. Hence the transcription preflight's checks and the 2x scale. The eval also scores what the route
 shows (`shown-by-scan-route`: the 2x transcription where it passes the checks, else `ocr-original`). One document, its

@@ -34,7 +34,8 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
     static readonly UTF8Encoding Utf8 = new(encoderShouldEmitUTF8Identifier: false);
 
     public const string Original = ScanOcrPreflight.OriginalView, Upscaled = "ocr-upscaled", BestView = "oracle-better-ocr-view",
-        VlmBilevel = "vlm-blind-crop", VlmEnlarged = "vlm-blind-crop-2x", VlmEnlargedBilevel = "vlm-blind-crop-2x-bilevel", Shown = "shown-by-scan-route";
+        VlmBilevel = "vlm-blind-crop", VlmEnlarged = "vlm-blind-crop-2x", VlmEnlargedBilevel = "vlm-blind-crop-2x-bilevel",
+        VlmEnlargedMasked = "vlm-blind-crop-2x-masked", VlmEnlargedBilevelMasked = "vlm-blind-crop-2x-bilevel-masked", Shown = "shown-by-scan-route";
 
     public static IReadOnlyList<GoldLine> ReadGold(string path)
     {
@@ -75,7 +76,12 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
         Directory.CreateDirectory(work);
         try
         {
-            foreach (var (method, enlarged, bilevel) in new[] { (VlmBilevel, false, true), (VlmEnlarged, true, false), (VlmEnlargedBilevel, true, true) })
+            var primary = evidence.Views.First(v => v.Spec.ViewId == Original);
+            foreach (var (method, enlarged, bilevel, masked) in new[]
+            {
+                (VlmBilevel, false, true, false), (VlmEnlarged, true, false, false), (VlmEnlargedBilevel, true, true, false),
+                (VlmEnlargedMasked, true, false, true), (VlmEnlargedBilevelMasked, true, true, true),
+            })
             {
                 var crops = new string?[gold.Count];
                 var keys = new string[gold.Count];
@@ -83,11 +89,16 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
                 {
                     var image = ScanOcrPreflight.PageImagePath(entry, gold[k].Page);
                     var file = Path.Combine(work, $"{method}-{k:000}.png");
-                    var ok = image is not null && (enlarged ? TesseractOcr.CropScaled(magick, image, file, gold[k].Box, ScanVisionPreflight.CropPad, EnlargedScale, bilevel)
+                    // The other lines of the page that the margin reaches, as the primary OCR view has them.
+                    var mask = masked && primary.Pages.FirstOrDefault(p => p.Page == gold[k].Page) is { } maskPage
+                        ? TesseractOcr.BoxesInCrop(gold[k].Box, ScanVisionPreflight.CropPad, maskPage.Lines.Where(l => l != MatchLine(primary, gold[k])).Select(l => l.Box))
+                        : null;
+                    var ok = image is not null && (enlarged ? TesseractOcr.CropScaled(magick, image, file, gold[k].Box, ScanVisionPreflight.CropPad, EnlargedScale, bilevel, mask)
                         : TesseractOcr.Crop(magick, image, file, gold[k].Box, ScanVisionPreflight.CropPad));
                     crops[k] = ok ? file : null;
                     var sha = evidence.Views[0].Pages.FirstOrDefault(p => p.Page == gold[k].Page)?.ImageSha256 ?? "";
-                    keys[k] = method + ":" + ScanTranscription.CropKey(sha, gold[k].Box, ScanVisionPreflight.CropPad, enlarged ? EnlargedScale : 1) + ":" + TesseractOcr.BilevelThreshold;
+                    keys[k] = method + ":" + ScanTranscription.CropKey(sha, gold[k].Box, ScanVisionPreflight.CropPad, enlarged ? EnlargedScale : 1) + ":" + TesseractOcr.BilevelThreshold
+                        + (mask is null ? "" : ":mask=" + string.Join(";", mask.Select(m => $"{m.Left},{m.Top},{m.Width},{m.Height}")));
                     if (ok) cropBytes[method] = cropBytes.GetValueOrDefault(method) + new FileInfo(file).Length;
                     if (!ok) failures.Add($"{method}:L{gold[k].N:000}:CROP_FAILED");
                 }
@@ -115,7 +126,7 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
             readings[k][Shown] = ocrText is not null && ScanTranscription.Guard(t, ocrText, neighbours) == ScanTranscription.Accepted ? t : ocrText;
         }
         var lines = gold.Select((g, k) => new LineResult(g.N, g.Page, g.Text, (IReadOnlyDictionary<string, string?>)readings[k])).ToArray();
-        var methods = new[] { Original, Upscaled, BestView, VlmBilevel, VlmEnlarged, VlmEnlargedBilevel, Shown };
+        var methods = new[] { Original, Upscaled, BestView, VlmBilevel, VlmEnlarged, VlmEnlargedBilevel, VlmEnlargedMasked, VlmEnlargedBilevelMasked, Shown };
         var scores = methods.Select(m => Score(m, lines)).ToArray();
         var report = new Report(ReportVersion, evidence.SourceSha256, AgentProtocol.ChatModel, PromptVersion, scores, lines, failures, calls, cost, cropBytes);
         var dir = Path.Combine(storeRoot, "eval");

@@ -98,6 +98,7 @@ public sealed class ScanTextEvaluationTests : IDisposable
         Assert.Equal(gold.Length, score[ScanTextEvaluation.VlmBilevel].Exact);
         Assert.Equal(gold.Length, score[ScanTextEvaluation.VlmEnlarged].Exact);
         Assert.Equal(gold.Length, score[ScanTextEvaluation.VlmEnlargedBilevel].Exact);
+        Assert.Equal(gold.Length, score[ScanTextEvaluation.VlmEnlargedBilevelMasked].Exact);
         // Same pixels as the grey 2x crops, far fewer bytes.
         Assert.True(report.CropBytes[ScanTextEvaluation.VlmEnlargedBilevel] < report.CropBytes[ScanTextEvaluation.VlmEnlarged]);
         Assert.True(score[ScanTextEvaluation.Original].Exact >= 1);
@@ -105,7 +106,7 @@ public sealed class ScanTextEvaluationTests : IDisposable
         Assert.All(report.Lines, l => Assert.NotNull(l.Readings[ScanTextEvaluation.Original]));
         var posts = handler.Posts;
         // At least one request per crop kind; enlarged crops are larger, so they may be split to stay under the transport's byte cap.
-        Assert.InRange(posts, 3, 3 * gold.Length);
+        Assert.InRange(posts, 5, 5 * gold.Length);
         Assert.All(handler.Bodies, b => Assert.True(System.Text.Encoding.UTF8.GetByteCount(b.ToJsonString()) <= DocxHeaderExtractor.HeadingAgent.AgentBudget.MaxRequestBytes + 4096));
 
         var again = evaluation.Run(path, gold, "sk-test", ocrOptions: options);
@@ -113,5 +114,41 @@ public sealed class ScanTextEvaluationTests : IDisposable
         Assert.Equal(posts, handler.Posts);   // read back from the store
         Assert.Equal(report.Scores, again.Scores);
         Assert.True(File.Exists(Path.Combine(dir, "Kho đánh giá", "eval", report.SourceSha256[..16] + "-scan-text-eval.json")));
+    }
+
+    /// <summary>The mean grey (0 black, 1 white) of a band of rows of a PNG, by ImageMagick.</summary>
+    static double Mean(string magick, string png, int top, int rows)
+    {
+        var psi = new System.Diagnostics.ProcessStartInfo(magick) { RedirectStandardOutput = true, UseShellExecute = false };
+        foreach (var a in (Path.GetFileNameWithoutExtension(magick) == "magick" ? new[] { "convert" } : []).Concat([png, "-crop", $"10000x{rows}+0+{top}", "+repage", "-format", "%[fx:mean]", "info:"]))
+            psi.ArgumentList.Add(a);
+        using var p = System.Diagnostics.Process.Start(psi)!;
+        var text = p.StandardOutput.ReadToEnd();
+        p.WaitForExit();
+        return double.Parse(text.Trim(), System.Globalization.CultureInfo.InvariantCulture);
+    }
+
+    [Fact]
+    public void A_masked_crop_has_no_part_of_the_line_above_and_keeps_all_of_its_own()
+    {
+        var magick = TesseractOcr.FindImageMagick();
+        if (magick is null) return;
+        // The line above ends 4 px above the line's box: inside the 8 px margin. Its box also overlaps the line's own box by 2 px.
+        var page = Path.Combine(dir, "page.png");
+        File.WriteAllBytes(page, TestPng.WithBlack(400, 200, 255, (100, 60, 120, 36), (100, 100, 200, 30)));
+        var own = new PixelBox(100, 100, 200, 30);
+        var mask = TesseractOcr.BoxesInCrop(own, 8, [new PixelBox(100, 60, 120, 42), own, new PixelBox(100, 170, 50, 20)]);
+        Assert.Equal([new PixelBox(100, 60, 120, 42)], mask);
+
+        var plain = Path.Combine(dir, "plain.png");
+        var masked = Path.Combine(dir, "masked.png");
+        Assert.True(TesseractOcr.CropScaled(magick, page, plain, own, 8, 2.0, bilevel: true));
+        Assert.True(TesseractOcr.CropScaled(magick, page, masked, own, 8, 2.0, bilevel: true, mask: mask));
+
+        // The top margin (8 px, 16 at 2x): black from the line above in the plain crop, white in the masked one.
+        Assert.True(Mean(magick, plain, 0, 8) < 0.9);
+        Assert.Equal(1.0, Mean(magick, masked, 0, 16), 3);
+        // The line's own box (rows 16 to 76 at 2x) is untouched.
+        Assert.Equal(Mean(magick, plain, 16, 60), Mean(magick, masked, 16, 60), 3);
     }
 }

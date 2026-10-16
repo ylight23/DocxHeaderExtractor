@@ -124,15 +124,34 @@ public static class TesseractOcr
     /// <summary>A PNG of one region of the page with <paramref name="pad"/> pixels around it, enlarged by <paramref name="scale"/>: a line some 40
     /// pixels high gives a vision model few pixels per diacritic. Grey and smoothed by default; with <paramref name="bilevel"/>, every pixel is
     /// repeated (no smoothing) and the result is black and white, which for a black-and-white scan keeps every pixel of the source in a file
-    /// about five times smaller.</summary>
-    public static bool CropScaled(string magick, string input, string output, PixelBox box, int pad, double scale, bool bilevel = false)
+    /// about five times smaller. With <paramref name="mask"/>, those boxes (the other lines the margin reaches) are painted white first, except
+    /// where they overlap <paramref name="box"/> itself, so that a fragment of the line above is not in the image to be read.</summary>
+    public static bool CropScaled(string magick, string input, string output, PixelBox box, int pad, double scale, bool bilevel = false,
+        IReadOnlyList<PixelBox>? mask = null)
     {
         var x = Math.Max(0, box.Left - pad); var y = Math.Max(0, box.Top - pad);
         var geometry = string.Create(CultureInfo.InvariantCulture, $"{box.Width + 2 * pad}x{box.Height + 2 * pad}+{x}+{y}");
         var resize = (scale * 100).ToString("0.##", CultureInfo.InvariantCulture) + "%";
-        return Magick(magick, input, bilevel
-            ? ["-crop", geometry, "+repage", "-colorspace", "Gray", "-filter", "point", "-resize", resize, "-threshold", BilevelThreshold, "-type", "bilevel"]
-            : ["-crop", geometry, "+repage", "-colorspace", "Gray", "-resize", resize], output);
+        var ops = new List<string>();
+        if (mask is { Count: > 0 })
+        {
+            ops.AddRange(["-write", "mpr:page", "+delete", "mpr:page", "-fill", "white"]);
+            foreach (var m in mask)
+                ops.AddRange(["-draw", string.Create(CultureInfo.InvariantCulture, $"rectangle {m.Left},{m.Top} {m.Left + m.Width - 1},{m.Top + m.Height - 1}")]);
+            // The line's own box is put back from the untouched page: a neighbour's box may overlap it.
+            ops.AddRange(["(", "mpr:page", "-crop", string.Create(CultureInfo.InvariantCulture, $"{box.Width}x{box.Height}+{box.Left}+{box.Top}"), ")",
+                "-geometry", string.Create(CultureInfo.InvariantCulture, $"+{box.Left}+{box.Top}"), "-composite"]);
+        }
+        ops.AddRange(["-crop", geometry, "+repage", "-colorspace", "Gray"]);
+        ops.AddRange(bilevel ? ["-filter", "point", "-resize", resize, "-threshold", BilevelThreshold, "-type", "bilevel"] : ["-resize", resize]);
+        return Magick(magick, input, ops, output);
+    }
+
+    /// <summary>The boxes of <paramref name="others"/> that reach into the crop of <paramref name="box"/> with its margin.</summary>
+    public static IReadOnlyList<PixelBox> BoxesInCrop(PixelBox box, int pad, IEnumerable<PixelBox> others)
+    {
+        int x0 = box.Left - pad, y0 = box.Top - pad, x1 = box.Left + box.Width + pad, y1 = box.Top + box.Height + pad;
+        return others.Where(o => o != box && o.Left < x1 && o.Left + o.Width > x0 && o.Top < y1 && o.Top + o.Height > y0).ToArray();
     }
 
     /// <summary>Runs ImageMagick on one image and writes a PNG. The image goes in on standard input and comes out on standard output, and .NET
