@@ -180,6 +180,7 @@
           <span>.docx · .docm · .doc · .rtf · .odt · .pdf</span>
         </div>
         <input id="file" type="file" class="hidden" accept=".docx,.docm,.doc,.rtf,.odt,.pdf">
+        <p id="sourceNote" class="note" aria-live="polite">Tự kiểm tra nội dung file để chọn đọc văn bản hoặc OCR.</p>
         <div class="actions">
           <button id="run" disabled>Thực hiện</button>
           <button id="cancelRun" class="cancel-button hidden">Hủy</button>
@@ -232,6 +233,7 @@
         <div class="seg" aria-label="Tuyến xử lý">
           <button class="secondary" data-route="pdf">PDF</button>
           <button class="secondary" data-route="docx">DOCX</button>
+          <button class="secondary" data-route="scan">Scan · OCR/VLM</button>
         </div>
         <div class="seg" aria-label="Loại prompt">
           <button class="secondary" data-prompt="instruction">Instruction của người dùng</button>
@@ -308,6 +310,7 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 let picked = null, outline = null, serverError = false, runController = null;
+let sourceInspection = null, inspectController = null, inspecting = false;
 let defaults = null, gpuBaseNote = '', gpuBaseLabel = '';
 let devStarted = 0, devLogLines = 0;
 let logEvents = [], activeLogTab = 'all';
@@ -376,7 +379,10 @@ function pushLog(category, message, stage, kind, timestamp) {
 
 // Hai loại sự kiện từ máy chủ: "log" (thông báo máy chủ) và "agent" (tiến độ của lượt chạy).
 function handleStreamEvent(evt) {
-  if (evt.type === 'log') {
+  if (evt.type === 'source') {
+    applySourceInspection(evt.source);
+    pushLog('agent', evt.source.message, 'source', 'Detected');
+  } else if (evt.type === 'log') {
     devLogLines++;
     $('devState').textContent = String(evt.message || '').slice(0, 120);
     pushLog('raw', String(evt.message || ''));
@@ -417,13 +423,50 @@ $('drop').ondrop = e => {
 };
 $('file').onchange = e => { if (e.target.files[0]) setFile(e.target.files[0]); };
 
-function setFile(f) {
+async function setFile(f) {
+  if (runController) return;
+  inspectController?.abort();
+  const controller = new AbortController();
+  inspectController = controller;
   picked = f;
+  sourceInspection = null;
+  inspecting = true;
   $('dropName').textContent = f.name + '  ·  ' + (f.size / 1024).toFixed(0) + ' KB';
-  $('run').disabled = false;
-  // Tuyến theo đuôi file; người dùng vẫn đổi được bằng nút PDF/DOCX.
-  promptRoute = /\.pdf$/i.test(f.name) ? 'pdf' : 'docx';
+  $('sourceNote').textContent = 'Đang kiểm tra nội dung file…';
+  $('errBox').classList.add('hidden');
+  syncRunButton();
+  try {
+    const fd = new FormData();
+    fd.append('file', f);
+    const response = await fetch('/api/inspect', { method: 'POST', body: fd, signal: controller.signal });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Không kiểm tra được file.');
+    if (picked !== f || controller.signal.aborted) return;
+    applySourceInspection(data);
+  } catch (error) {
+    if (error.name !== 'AbortError' && picked === f) {
+      $('sourceNote').textContent = error.message;
+      showError(error.message);
+    }
+  } finally {
+    if (inspectController === controller) {
+      inspectController = null;
+      inspecting = false;
+      syncRunButton();
+    }
+  }
+}
+
+function applySourceInspection(source) {
+  sourceInspection = source;
+  promptRoute = source.route === 'scan' ? 'scan' : source.format === 'pdf' ? 'pdf' : 'docx';
   renderPrompt();
+  syncBackend();
+}
+
+function syncRunButton() {
+  const needsKey = sourceInspection?.requiresOpenRouter && !$('noLlm').checked && !defaults?.openRouterAvailable;
+  $('run').disabled = !!runController || !picked || inspecting || !sourceInspection?.supported || !!needsKey;
 }
 
 // ---------- mặc định, backend, mô hình ----------
@@ -479,6 +522,9 @@ $('noLlm').onchange = syncBackend;
 // Khoá các ô không có tác dụng với backend đang chọn, và báo nơi dữ liệu đi.
 function syncBackend() {
   const noLlm = $('noLlm').checked;
+  const requiresRemote = !!sourceInspection?.requiresOpenRouter && !noLlm;
+  ['local', 'lmstudio'].forEach(value => $('backend').querySelector(`option[value="${value}"]`).disabled = requiresRemote);
+  if (requiresRemote) $('backend').value = 'openrouter';
   const backend = $('backend').value;
   const remote = backend === 'openrouter' && !noLlm;
   const lmStudio = backend === 'lmstudio' && !noLlm;
@@ -492,7 +538,15 @@ function syncBackend() {
     chip('privacyNote', 'loopback · không rời máy', 'LM Studio chạy qua loopback trên chính máy này.', 'ok');
   else
     chip('privacyNote', 'local · không rời máy', 'Backend local: nội dung tài liệu không rời khỏi máy.', 'ok');
+  if (sourceInspection) {
+    $('sourceNote').textContent = (noLlm && sourceInspection.route === 'scan'
+      ? 'Bản scan trong Word: chỉ chạy OCR trên máy, không gọi VLM/Qwen và không tự chọn heading.' : sourceInspection.message) +
+      (requiresRemote && defaults && !defaults.openRouterAvailable ? ' Cần cấu hình OPENROUTER_API_KEY trên server, hoặc chọn Không gọi mô hình.' : '');
+    $('writeback').disabled = !sourceInspection.canWriteback;
+    if (!sourceInspection.canWriteback) $('writeback').checked = false;
+  }
   renderCfgNote();
+  syncRunButton();
 }
 
 function renderCfgNote() {
@@ -518,7 +572,7 @@ fetch('/api/models').then(r => r.json()).then(list => {
   const sel = $('model');
   if (!list.length) {
     sel.innerHTML = '<option value="">— không tìm thấy .gguf —</option>';
-    $('noLlm').checked = true;
+    if ($('backend').value === 'local') $('noLlm').checked = true;
     renderCfgNote();
     syncBackend();
     return;
@@ -530,7 +584,7 @@ fetch('/api/models').then(r => r.json()).then(list => {
 
 // ---------- chạy ----------
 $('run').onclick = async () => {
-  if (!picked) return;
+  if (!picked || inspecting || !sourceInspection?.supported || runController) return;
   $('run').disabled = true;
   $('cancelRun').classList.remove('hidden');
   runController = new AbortController();
@@ -599,7 +653,7 @@ $('run').onclick = async () => {
     runController = null;
     $('cancelRun').classList.add('hidden');
     $('run').textContent = 'Thực hiện';
-    $('run').disabled = false;
+    syncRunButton();
   }
 };
 

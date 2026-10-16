@@ -91,7 +91,37 @@ app.MapGet("/api/lmstudio/models", async (LmStudioModelDiscovery discovery, Canc
 app.MapGet("/api/defaults", () => Results.Json(Defaults.Current(), json));
 
 // Prompt và instruction mà agent gửi đi, chỉ để hiển thị. Chúng là hằng số trong mã nguồn: giao diện không sửa được.
-app.MapGet("/api/prompts", () => Results.Json(new { pdf = PromptCatalog.Pdf, docx = PromptCatalog.Docx }, json));
+app.MapGet("/api/prompts", () => Results.Json(new { pdf = PromptCatalog.Pdf, docx = PromptCatalog.Docx, scan = PromptCatalog.Scan }, json));
+
+// Source inspection is local only: no OCR, model or provider call. The uploaded copy is removed after the response.
+app.MapPost("/api/inspect", async (HttpRequest req, CancellationToken ct) =>
+{
+    if (!req.HasFormContentType) return Results.BadRequest(new { message = "Cần multipart/form-data." });
+    string? work = null;
+    try
+    {
+        var form = await req.ReadFormAsync(ct);
+        var upload = form.Files["file"];
+        if (upload is null || upload.Length == 0) return Results.BadRequest(new { message = "Chưa chọn file." });
+        work = Path.Combine(Path.GetTempPath(), "dhx-inspect", Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(work);
+        var path = Path.Combine(work, SafeName(upload.FileName));
+        await using (var stream = File.Create(path)) await upload.CopyToAsync(stream, ct);
+        return Results.Json(SourceInspection.Read(path, ct), json);
+    }
+    catch (BadHttpRequestException ex) when (ex.StatusCode == StatusCodes.Status413PayloadTooLarge)
+    {
+        return Results.Json(new { message = $"File quá lớn (trần {MaxUploadBytes / (1024 * 1024)} MB)." }, statusCode: 413);
+    }
+    catch (Exception ex) when (ex is not OperationCanceledException)
+    {
+        return Results.BadRequest(new { message = "Không đọc được cấu trúc file. Hãy kiểm tra file có hợp lệ và không bị khóa." });
+    }
+    finally
+    {
+        if (work is not null) { try { Directory.Delete(work, recursive: true); } catch (IOException) { } }
+    }
+});
 
 // Bản .docx đã gắn outline chỉ sống trong bộ nhớ tới lần tải đầu tiên. Không có đường dẫn nào do
 // client chỉ định: đích ghi luôn nằm trong thư mục tạm của chính request đó.
@@ -169,7 +199,14 @@ app.MapPost("/api/extract", async (
         await using (var fs = File.Create(inputPath))
             await upload.CopyToAsync(fs, ct);
 
-        var options = RequestOptions.Build(form, out var problem, out var provider);
+        var inspection = SourceInspection.Read(inputPath, ct);
+        await EmitAsync(new { type = "source", source = inspection });
+        if (!inspection.Supported)
+        {
+            await EmitAsync(new { type = "error", message = inspection.Message });
+            return;
+        }
+        var options = RequestOptions.Build(form, out var problem, out var provider, inspection);
         if (problem is not null)
         {
             await EmitAsync(new { type = "error", message = problem });
@@ -272,6 +309,7 @@ app.MapPost("/api/extract", async (
                 pipeline = WebPipelineProjection.Project(runId, outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed", outline, execution, execution.Result.DocumentIdentity.SourceKind),
                 stats = Stats.From(outline),
                 sourceType = uploadedType.ToString().ToLowerInvariant(),
+                sourceInspection = inspection,
                 agent = new
                 {
                     runId,

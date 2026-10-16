@@ -7,7 +7,8 @@ namespace DocxHeaderExtractor.Web;
 /// <summary>Dựng <see cref="PipelineOptions"/> từ form của giao diện.</summary>
 public static class RequestOptions
 {
-    public static PipelineOptions Build(IFormCollection form, out string? problem, out InferenceProviderSelection provider)
+    public static PipelineOptions Build(IFormCollection form, out string? problem, out InferenceProviderSelection provider,
+        SourceInspection? source = null)
     {
         problem = null;
         provider = new InferenceProviderSelection();
@@ -23,6 +24,14 @@ public static class RequestOptions
             "lmstudio" => InferenceBackend.LmStudio,
             _ => InferenceBackend.Local,
         };
+
+        if (source?.RequiresOpenRouter == true && provider.Backend != InferenceBackend.OpenRouter)
+        {
+            problem = source.RequiresOcr
+                ? "Bản scan cần OpenRouter để VLM chép chữ và Qwen chọn heading. Hãy chọn OpenRouter hoặc bật Không gọi mô hình để chỉ chạy OCR."
+                : "Route PDF dùng OpenRouter. Hãy chọn OpenRouter hoặc bật Không gọi mô hình để chỉ đọc nguồn.";
+            return o;
+        }
 
         if (provider.Backend == InferenceBackend.OpenRouter)
         {
