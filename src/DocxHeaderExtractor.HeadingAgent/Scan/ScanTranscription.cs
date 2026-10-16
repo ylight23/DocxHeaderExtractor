@@ -107,13 +107,15 @@ public static class ScanTranscription
     /// </summary>
     internal static (string?[] Texts, AgentBudget Budget) Transcribe(IReadOnlyList<string?> crops, IReadOnlyList<string> ids, IReadOnlyList<string> keys,
         string cacheDir, string apiKey, Func<int, AgentBudget> budgetFor, Func<HttpMessageHandler> factory, List<string> failures, string label,
-        int maxPerRequest, int parallelism, string reasoning = ReasoningOn, CallTimings? timings = null)
+        int maxPerRequest, int parallelism, string reasoning = ReasoningOn, CallTimings? timings = null, CancellationToken ct = default)
     {
+        ct.ThrowIfCancellationRequested();
         var batches = new List<List<int>>();
         var current = new List<int>();
         var content = new JsonArray();
         foreach (var k in Enumerable.Range(0, crops.Count).Where(k => crops[k] is not null))
         {
+            ct.ThrowIfCancellationRequested();
             var part = new JsonNode[] { Text("id " + ids[k]), Image(crops[k]!) };
             if (current.Count > 0 && (current.Count >= maxPerRequest
                 || Request(content.Select(c => c!.DeepClone()).Concat(part.Select(p => p.DeepClone())), reasoning).Bytes > AgentBudget.MaxRequestBytes))
@@ -134,6 +136,7 @@ public static class ScanTranscription
         // with no text (CONTENT_NOT_TEXT, once in 218 batches on 023), and the others then still get read.
         string? Batch(List<int> take, string name)
         {
+            ct.ThrowIfCancellationRequested();
             var key = TesseractOcr.Sha256(string.Join("|", AgentProtocol.ChatModel, PromptVersion, SystemPrompt, string.Join(",", take.Select(k => ids[k] + "=" + keys[k])))
                 + (reasoning == ReasoningOn ? "" : "|reasoning=" + reasoning));
             var file = Path.Combine(cacheDir, key[..24] + ".json");
@@ -151,11 +154,12 @@ public static class ScanTranscription
                 int attempt = 0, transportRetries = 0, replyRetries = 0;
                 while (parsed is null)
                 {
+                    ct.ThrowIfCancellationRequested();
                     if (budget.Admit(request) is { } refusal) return $"{name}:BUDGET:{refusal}";
                     try
                     {
                         using var handler = factory();
-                        using var model = new AgentModel(handler, apiKey, budget);
+                        using var model = new AgentModel(handler, apiKey, budget, cancellationToken: ct);
                         reply = (timings is null ? model.Turn(name, ++attempt, request) : timings.Time(name, () => model.Turn(name, ++attempt, request))).Content ?? "";
                     }
                     catch (ReplyFailure f) when (transportRetries < AgentUnit.TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal)) { transportRetries++; continue; }
@@ -184,7 +188,7 @@ public static class ScanTranscription
             }
             return null;
         }
-        Parallel.For(0, batches.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, parallelism) }, b => problems[b] = Batch(batches[b], $"{label}-B{b + 1:000}"));
+        Parallel.For(0, batches.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, parallelism), CancellationToken = ct }, b => problems[b] = Batch(batches[b], $"{label}-B{b + 1:000}"));
         failures.AddRange(problems.Where(p => p is not null)!);
         return (result, budget);
     }
@@ -283,8 +287,10 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
     public sealed record Options(int MaxPages = 300, double Scale = 2.0, int MaxLinesPerRequest = 10, int Parallelism = 32, double? CeilingUsd = null,
         bool Bilevel = true, bool Mask = true, string Reasoning = "1024");
 
-    public TranscriptionSet Run(ScanOcrEvidence evidence, string evidenceEntry, string apiKey, Options? options = null)
+    public TranscriptionSet Run(ScanOcrEvidence evidence, string evidenceEntry, string apiKey, Options? options = null, CancellationToken ct = default)
     {
+        using var cancellation = TesseractOcr.WithCancellation(ct);
+        ct.ThrowIfCancellationRequested();
         options ??= new Options();
         var magick = TesseractOcr.FindImageMagick() ?? throw new InvalidOperationException("IMAGEMAGICK_NOT_FOUND");
         var primary = evidence.Views.First(v => v.Spec.ViewId == ScanOcrPreflight.OriginalView);
@@ -301,13 +307,14 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
             // A page is decoded once and its lines are cut from it in memory (pixel for pixel what the image tool makes, without one run of it
             // per line); grey crops, or a page the reader cannot take, go to the image tool line by line.
             var byPage = Enumerable.Range(0, lines.Length).GroupBy(k => lines[k].Page.Page).ToArray();
-            Parallel.ForEach(byPage, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, Environment.ProcessorCount) }, group =>
+            Parallel.ForEach(byPage, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, Environment.ProcessorCount), CancellationToken = ct }, group =>
             {
                 var page = lines[group.First()].Page;
                 var image = ScanOcrPreflight.PageImagePath(evidenceEntry, page.Page);
                 var raster = image is not null && options.Bilevel && options.Scale == Math.Floor(options.Scale) ? PngRaster.Load(image, magick) : null;
                 foreach (var k in group)
                 {
+                    ct.ThrowIfCancellationRequested();
                     var line = lines[k].Line;
                     var mask = options.Mask ? TesseractOcr.BoxesInCrop(line.Box, CropPad, page.Lines.Where(l => l.Id != line.Id).Select(l => l.Box)) : null;
                     keys[k] = ScanTranscription.CropKey(page.ImageSha256, line.Box, CropPad, options.Scale, options.Bilevel, mask);
@@ -325,7 +332,7 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
             AgentBudget BudgetFor(int batches) => new(batches * (2 + AgentUnit.TransportRetries) + lines.Length, options.CeilingUsd ?? 2 * batches * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes));
             var cropSeconds = cropClock.Elapsed.TotalSeconds;
             var (texts, budget) = ScanTranscription.Transcribe(crops, lines.Select(l => l.Line.Id).ToArray(), keys, Path.Combine(storeRoot, "vlm-transcribe"), apiKey, BudgetFor,
-                handlerFactory ?? (() => AgentModel.CreateHandler()), failures, "TRANSCRIBE", options.MaxLinesPerRequest, options.Parallelism, options.Reasoning, timings);
+                handlerFactory ?? (() => AgentModel.CreateHandler()), failures, "TRANSCRIBE", options.MaxLinesPerRequest, options.Parallelism, options.Reasoning, timings, ct);
             var result = lines.Select((l, k) => new LineTranscription(l.Line.Id, texts[k],
                 ScanTranscription.Guard(texts[k], l.Line.Text, ScanTranscription.Neighbours(l.Page, l.Line).Select(n => n.Text)))).ToArray();
             return new TranscriptionSet(TranscriptionSet.CurrentVersion, AgentProtocol.ChatModel, ScanTranscription.PromptVersion, options.Scale, result,

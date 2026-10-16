@@ -31,6 +31,15 @@ public sealed record SourceAnchor
     public string? RenderBlockId { get; init; }
     public IReadOnlyList<string> RenderLineIds { get; init; } = [];
     public PdfBoundingBox? BoundingBox { get; init; }
+    /// <summary>Scan coordinates and independent readings. These are pixels from the top left, not PDF points.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public ScanLineAnchor? Scan { get; init; }
 }
 
 public sealed record PdfBoundingBox(double Left, double Bottom, double Right, double Top);
+
+public sealed record ScanLineAnchor(DocxHeaderExtractor.DocumentProcessing.Source.Scan.PixelBox Box, int ImageWidth, int ImageHeight,
+    string ReadingViewId, string PrimaryReading, IReadOnlyDictionary<string, string> Readings, string? TranscriptionStatus, string? TranscriptionText = null)
+{
+    public string ReadingOrigin => ReadingViewId switch { "vlm-transcribed" => "VLM_TRANSCRIBED", "vlm-proposed" => "CORRECTION_CANDIDATE", _ => "OCR_DERIVED" };
+}

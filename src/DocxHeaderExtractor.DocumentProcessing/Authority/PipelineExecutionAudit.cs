@@ -20,6 +20,10 @@ public sealed record PipelineExecutionAudit(
     [JsonPropertyName("route")]
     public string? PipelineId { get; init; }
 
+    [JsonPropertyName("scan")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public DocxHeaderExtractor.DocumentProcessing.Routing.ScanRunDiagnostics? Scan { get; init; }
+
     /// <summary>Raw model completions, populated only by explicit diagnostic routes.</summary>
     [JsonPropertyName("rawModelResponses")]
     public IReadOnlyList<string> RawModelResponses { get; init; } = [];

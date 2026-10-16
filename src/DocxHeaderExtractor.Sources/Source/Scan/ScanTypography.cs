@@ -51,11 +51,13 @@ public static class ScanTypography
     }
 
     /// <summary>Every line of the primary view measured, page by page in parallel; a page whose image cannot be read has no measurements.</summary>
-    public static IReadOnlyDictionary<string, LineTypography> MeasureAll(ScanOcrEvidence evidence, string evidenceEntry, string? magick)
+    public static IReadOnlyDictionary<string, LineTypography> MeasureAll(ScanOcrEvidence evidence, string evidenceEntry, string? magick, CancellationToken ct = default)
     {
+        using var cancellation = TesseractOcr.WithCancellation(ct);
+        ct.ThrowIfCancellationRequested();
         var primary = evidence.Views.First(v => v.Spec.ViewId == ScanOcrPreflight.OriginalView);
         var result = new System.Collections.Concurrent.ConcurrentDictionary<string, LineTypography>(StringComparer.Ordinal);
-        Parallel.ForEach(primary.Pages, new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount }, page =>
+        Parallel.ForEach(primary.Pages, new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount, CancellationToken = ct }, page =>
         {
             if (ScanOcrPreflight.PageImagePath(evidenceEntry, page.Page) is not { } image || PngRaster.Load(image, magick) is not { } raster) return;
             foreach (var t in Measure(raster, page)) result[t.LineId] = t;

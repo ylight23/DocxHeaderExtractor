@@ -232,9 +232,12 @@ app.MapPost("/api/extract", async (
                 Stage("extract", "Started", "Bắt đầu trích xuất tài liệu.");
                 var execution = await runner.ExtractAsync(inputPath, ct: ct);
                 var outline = execution.Outline;
-                Stage("extract", "Completed", $"Tuyến {uploadedType} trả {outline.Headings.Count} heading từ {outline.ParagraphCount} đoạn.");
+                Stage("extract", outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed",
+                    $"Tuyến {outline.DeterministicRoute} trả {outline.Headings.Count} heading từ {outline.ParagraphCount} đơn vị nguồn.");
                 OutlineWritebackReport? written = null;
-                if (writebackTarget is not null)
+                if (writebackTarget is not null && outline.DeterministicRoute == "scan-v6-selected-lines")
+                    Stage("writeback", "Skipped", "Bản scan có tọa độ ảnh; chưa hỗ trợ ghi heading vào đoạn Word.");
+                else if (writebackTarget is not null)
                 {
                     Stage("writeback", "Started", "Ghi outline vào bản sao.");
                     written = V6DocumentRunner.WriteOutline(inputPath, outline, writebackTarget, options.Extraction);
@@ -266,13 +269,13 @@ app.MapPost("/api/extract", async (
             {
                 type = "result",
                 outline = WebPipelineProjection.SafeOutline(outline, json),
-                pipeline = WebPipelineProjection.Project(runId, "Completed", outline, execution, uploadedType.ToString().ToLowerInvariant()),
+                pipeline = WebPipelineProjection.Project(runId, outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed", outline, execution, execution.Result.DocumentIdentity.SourceKind),
                 stats = Stats.From(outline),
                 sourceType = uploadedType.ToString().ToLowerInvariant(),
                 agent = new
                 {
                     runId,
-                    outcome = "Completed",
+                    outcome = outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed",
                     steps = writeback is null ? 1 : 2,
                     repairAttempts = 0,
                     requiresReview,

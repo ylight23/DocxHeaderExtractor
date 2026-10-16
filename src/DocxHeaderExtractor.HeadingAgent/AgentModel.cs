@@ -21,13 +21,15 @@ internal sealed class AgentModel : IDisposable
     readonly HttpClient client;
     readonly string apiKey;
     readonly AgentBudget budget;
+    readonly CancellationToken cancellationToken;
     readonly object usageGate = new();
 
-    public AgentModel(HttpMessageHandler handler, string apiKey, AgentBudget budget, TimeSpan? timeout = null)
+    public AgentModel(HttpMessageHandler handler, string apiKey, AgentBudget budget, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(apiKey)) throw new ArgumentException("API_KEY_MISSING", nameof(apiKey));
         client = new HttpClient(handler, disposeHandler: false) { Timeout = timeout ?? TimeSpan.FromSeconds(300) };
         this.apiKey = apiKey; this.budget = budget;
+        this.cancellationToken = cancellationToken;
     }
 
     public int PromptTokens { get; private set; }
@@ -96,14 +98,16 @@ internal sealed class AgentModel : IDisposable
         message.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json") { CharSet = "utf-8" };
         message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
         HttpResponseMessage response;
-        try { response = client.SendAsync(message).GetAwaiter().GetResult(); }
+        try { response = client.SendAsync(message, cancellationToken).GetAwaiter().GetResult(); }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested) { throw; }
         catch (OperationCanceledException) { return ("TIMEOUT_OR_CANCELLED", null); }
         catch (HttpRequestException) { return ("TRANSPORT_ERROR", null); }
         using (response)
         {
             var status = (int)response.StatusCode;
             byte[] bodyBytes;
-            try { bodyBytes = response.Content.ReadAsByteArrayAsync().GetAwaiter().GetResult(); }
+            try { bodyBytes = response.Content.ReadAsByteArrayAsync(cancellationToken).GetAwaiter().GetResult(); }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested) { throw; }
             catch (Exception e) when (e is HttpRequestException or IOException or OperationCanceledException) { return ("TRANSPORT_ERROR", null); }
             string? body;
             try { body = StrictUtf8.GetString(bodyBytes); }

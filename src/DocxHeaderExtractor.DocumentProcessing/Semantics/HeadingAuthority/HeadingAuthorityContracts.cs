@@ -39,7 +39,7 @@ internal static class HeadingDecisionValidator
         .ToArray();
 
     public static bool IsEligibleHeading(HeadingExtentDecision decision, OccurrenceContext context) =>
-        context.EvidenceOrigins.All(origin => origin is "layout_parser" or "marker_parser" or "scope_detector" or "docx_parser" or "ooxml_parser") &&
+        context.EvidenceOrigins.All(origin => origin is "layout_parser" or "marker_parser" or "scope_detector" or "docx_parser" or "ooxml_parser" or "scan_reader") &&
         ValidateSpan(decision, context.RawText, out _) == "valid";
 
     private static string ValidateSpan(HeadingExtentDecision decision, string sourceText, out string? reason)

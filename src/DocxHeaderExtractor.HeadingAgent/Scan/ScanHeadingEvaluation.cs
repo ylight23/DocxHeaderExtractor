@@ -40,8 +40,11 @@ public static partial class ScanHeadingEvaluation
     public static IReadOnlyList<ResultHeading> ReadResult(string path)
     {
         using var doc = JsonDocument.Parse(File.ReadAllText(path, Encoding.UTF8));
-        return doc.RootElement.GetProperty("Headings").EnumerateArray().Select(h => new ResultHeading(h.GetProperty("Index").GetInt32(),
-            h.GetProperty("Parts")[0].GetProperty("Page").GetInt32(), h.GetProperty("Text").GetString()!)).ToArray();
+        JsonElement Field(JsonElement item, string legacy, string production) =>
+            item.TryGetProperty(legacy, out var value) ? value : item.GetProperty(production);
+        return Field(doc.RootElement, "Headings", "headings").EnumerateArray().Select(h => new ResultHeading(
+            Field(h, "Index", "index").GetInt32(), Field(Field(h, "Parts", "scanSources")[0], "Page", "page").GetInt32(),
+            Field(h, "Text", "text").GetString()!)).ToArray();
     }
 
     [GeneratedRegex(@"^\W*(Chương|Mục|Điều|Phần)\s*([IVXLC]+|\d+)(?![IVXLC\d])", RegexOptions.CultureInvariant)]

@@ -47,8 +47,10 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
 
     /// <summary>Observes every page of an evidence (up to <see cref="Options.MaxPages"/>). Returns one observation per page, the failed ones with
     /// their failure; never throws for a page the model could not answer.</summary>
-    public IReadOnlyList<VlmPageObservation> Run(ScanOcrEvidence evidence, string evidenceEntry, string apiKey, Options? options = null)
+    public IReadOnlyList<VlmPageObservation> Run(ScanOcrEvidence evidence, string evidenceEntry, string apiKey, Options? options = null, CancellationToken ct = default)
     {
+        using var cancellation = TesseractOcr.WithCancellation(ct);
+        ct.ThrowIfCancellationRequested();
         options ??= new Options();
         timings = new CallTimings();
         var magick = TesseractOcr.FindImageMagick() ?? throw new InvalidOperationException("IMAGEMAGICK_NOT_FOUND");
@@ -60,7 +62,7 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
         var budget = new AgentBudget(pages.Length * (1 + AgentUnit.TransportRetries), options.CeilingUsd);
         var factory = handlerFactory ?? (() => AgentModel.CreateHandler());
         var result = new VlmPageObservation[pages.Length];
-        Parallel.For(0, pages.Length, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, k =>
+        Parallel.For(0, pages.Length, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism), CancellationToken = ct }, k =>
         {
             var page = pages[k];
             var readings = page.Lines.ToDictionary(l => l.Id, l =>
@@ -70,7 +72,7 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
                     if (aligned[v.Spec.ViewId].TryGetValue(l.Id, out var a) && a.LineB is { } b) r[v.Spec.ViewId] = otherLines[v.Spec.ViewId][b].Text;
                 return r;
             }, StringComparer.Ordinal);
-            result[k] = ObservePage(page, readings, ScanOcrPreflight.PageImagePath(evidenceEntry, page.Page), magick, apiKey, budget, factory, options);
+            result[k] = ObservePage(page, readings, ScanOcrPreflight.PageImagePath(evidenceEntry, page.Page), magick, apiKey, budget, factory, options, ct);
         });
         LastCalls = budget.Calls;
         LastCallTimes = timings.Stats();
@@ -84,7 +86,7 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
             .OrderBy(l => l.MinConfidence).ThenBy(l => l.Id, StringComparer.Ordinal).Take(max).ToArray();
 
     VlmPageObservation ObservePage(OcrPage page, IReadOnlyDictionary<string, Dictionary<string, string>> readings, string? imagePath, string magick,
-        string apiKey, AgentBudget budget, Func<HttpMessageHandler> factory, Options options)
+        string apiKey, AgentBudget budget, Func<HttpMessageHandler> factory, Options options, CancellationToken ct)
     {
         VlmPageObservation Failed(string code, IReadOnlyList<string>? lines = null, IReadOnlyList<string>? asked = null) =>
             new(VlmPageObservation.CurrentVersion, page.Page, page.ImageSha256, AgentProtocol.ChatModel, PromptVersion, lines ?? [], asked ?? [], [], [], [], code, null);
@@ -134,7 +136,7 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
             var request = Request(content.ToArray());
             AgentProtocol.ModelTurn turn;
             using (var handler = factory())
-            using (var model = new AgentModel(handler, apiKey, budget))
+            using (var model = new AgentModel(handler, apiKey, budget, cancellationToken: ct))
             {
                 var refusal = budget.Admit(request);
                 if (refusal is not null) return Failed("BUDGET:" + refusal, lineIds, asked);

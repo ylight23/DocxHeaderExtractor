@@ -3,11 +3,39 @@
 Status 2026-10-16. The plan agreed with the owner: immutable source, versioned derived
 views, read-only evidence tools; the model decides. Nothing here corrects a reading or names a heading.
 
+## Production integration (2026-10-16)
+
+`dhx extract <scan.docx> --openrouter -f json` and the Web upload now detect `ScannedImageOnly`
+before the native DOCX adapter. The production composition root supplies `IScanHeadingSelector`;
+`ScanExtractionPipeline` runs its OCR/VLM preparation and selection under the shared lane deadline,
+then uses the existing selected-lines authority, binding, placement, hierarchy and materialization.
+Native/Mixed DOCX and PDF keep their own selectors. The shared placement packet carries measured
+scan layout and typography; the model decides parent relations, without a heading-keyword rule.
+
+The source catalog contains every OCR line in its declared reading (accepted blind transcription,
+else OCR, or the selected alternate reading). A heading extent addresses that exact reading.
+`SourceAnchor.Scan` and the outline's `scanSources` keep the page, original-image pixel box, reading
+view, original OCR, other readings and transcription status/text. Scan pixels are not PDF points
+or editable OOXML paragraphs. Sections and chunks use the same catalog the binder used.
+
+`routeAudit.scan` separates preflight and conversation calls/costs and records shared placement
+attempts; placement billing is not exposed by the shared transport and is not included in those
+two costs. Unit failures, missing OCR views and failed preflight calls make the result partial;
+CLI returns exit code 1 while retaining the usable JSON. Web reports `Partial` and its diagnostics.
+`scan-extract` remains the standalone diagnostic format and also returns 1 for incomplete results.
+
+Cancellation reaches page workers, the exact Tesseract/ImageMagick child process, transcription
+and conversation HTTP calls, and shared placement. A cancelled/deadline-expired run cannot publish
+a completed result. `--no-llm` builds a local OCR catalog without transcription/selection calls.
+Scan writeback to Word paragraphs is explicitly unsupported: Web skips it, and the writeback API
+refuses it. This integration changes routing/output, not the selector's heading policy or its
+measured accuracy; the 011/022 references still need human review.
+
 ```text
-source (DOCX) ──► DocxSourceIntegrity ──► NativeText / Mixed ──► DocxAgentSource (as before)
-                                     └──► ScannedImageOnly ──► refused as SCANNED_IMAGE_ONLY
-                                                              └──► ScanOcrPreflight (offline, `dhx scan-ocr`)
-                                                                   └──► evidence store (immutable, two views)
+source (DOCX) ──► DocxSourceIntegrity ──► NativeText / Mixed ──► native DOCX pipeline
+                                     └──► ScannedImageOnly ──► OCR/VLM source and selection
+                                                              └──► shared binding, placement, hierarchy
+                                                                   └──► structure, outline, sections, chunks
 ```
 
 ## 1. Source integrity (`DOCX_SOURCE_INTEGRITY_V1`)

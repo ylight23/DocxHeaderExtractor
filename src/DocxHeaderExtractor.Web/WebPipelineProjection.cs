@@ -73,7 +73,7 @@ public static class WebPipelineProjection
         { "complete" => "completed", "partial" => "partial", "not-run" => "skipped", "failed" => "failed", "timed-out" => "failed", _ => "not-recorded" },
             lane is null ? "No lane observation" : $"Producer lane status: {lane.Status}; failure: {lane.FailureClass ?? "none"}"));
         // The PDF lane's model steps since the V6 promotion: line selection per layout segment, then grouping of adjacent selected lines.
-        if (sourceKind == "pdf")
+        if (sourceKind is "pdf" or "scan")
         {
             var groupingFallback = lane?.FailureClass?.Contains("GROUP-", StringComparison.Ordinal) == true;
             stages.Add(lane?.Status switch
@@ -104,7 +104,7 @@ public static class WebPipelineProjection
                 },
                 $"Producer {placement.Status}; requested={placement.RequestedCount}; placed={placement.PlacedCount}; outside-tree={placement.OutOfHierarchyCount}; unresolved={placement.UnresolvedCount}; failure={placement.FailureClass ?? "none"}"));
         stages.Add(new("projection", "completed", "Returned production outline"));
-        stages.Add(new("final-result", "completed", "Validated harness task result"));
+        stages.Add(new("final-result", outcome == "Partial" ? "partial" : "completed", "Validated pipeline task result"));
         return new("web-pipeline-v2", runId, "same-execution", outcome, sourceKind, headings,
             relations, headings.Where(h => h.ParentStatus == "no-validated-parent").Select(h => h.ElementId).ToArray(),
             headings.Where(h => h.ParentStatus is "unresolved" or "parent-not-emitted").Select(h => h.ElementId).ToArray(),
@@ -123,7 +123,7 @@ public static class WebPipelineProjection
     { audit.PipelineId, audit.SourceBlocksAvailable, audit.SourceBlocksSelected, audit.SourcePagesAvailable,
         audit.SourcePagesSelected, audit.SemanticLane, audit.SpanLane,
         groundedSourceIds = audit.GroundedBlockIds, decisionCount = audit.BlockDecisions.Count,
-        placementExecution = audit.PlacementExecution };
+        placementExecution = audit.PlacementExecution, audit.Scan };
 
     /// <summary>Keep outline compatibility fields while withholding transport completions/payloads from the Web.</summary>
     public static JsonNode SafeOutline(DocumentOutline outline, JsonSerializerOptions options)

@@ -43,6 +43,9 @@ public static class HeadingOutlineProjection
         {
             StructuralElementId = element.Id,
             ValidatedSourcePartCount = element.Sources.Count,
+            ScanSources = units is not null && element.Sources.Any(p => units.GetValueOrDefault(p.SourceId)?.SourceAnchor.Scan is not null)
+                ? element.Sources.Select(p => new ScanHeadingSourcePart(p.SourceId, units[p.SourceId].SourceAnchor.Page!.Value,
+                    new TextOffsetSpan(p.Span.Start, p.Span.End), units[p.SourceId].SourceAnchor.Scan!)).ToArray() : null,
             SourceParts = units is null ? null : Array.AsReadOnly(element.Sources.Select(part =>
                 units.TryGetValue(part.SourceId, out var unit)
                     ? new HeadingSourcePart(part.SourceId, part.SourceOrdinal,

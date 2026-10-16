@@ -53,6 +53,9 @@ public interface IInferenceTransportFactory
     /// <summary>The DOCX heading selector of this provider route, as <see cref="CreatePdfHeadingSelector"/> for a PDF. Null, the default, makes the
     /// composition root use the production DOCX agent.</summary>
     DocxHeaderExtractor.DocumentProcessing.Routing.IHeadingSelector? CreateDocxHeadingSelector() => null;
+
+    /// <summary>Optional host-provided scan processor; the production composition root supplies the OCR/VLM implementation.</summary>
+    DocxHeaderExtractor.DocumentProcessing.Routing.IScanHeadingSelector? CreateScanHeadingSelector() => null;
 }
 
 /// <summary>

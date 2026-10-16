@@ -76,7 +76,15 @@ internal sealed class ScanAgentFlavor : IAgentFlavor
     public object GroupContextItem(IAgentSource source, int index) =>
         new { alias = source.Lines[index].Alias, page = source.Lines[index].Page ?? 0, text = AgentGrouping.Clip(source.Lines[index].Text), selected = false };
 
-    public HeadingPlacementContext PlacementContext(IAgentSource source) => new("{}", new Dictionary<string, string>(StringComparer.Ordinal), ScanAgentProtocol.PlacementNote);
+    public HeadingPlacementContext PlacementContext(IAgentSource source)
+    {
+        var scan = (ScanAgentSource)source;
+        return new HeadingPlacementContext(new JsonObject { ["kind"] = "scan", ["documentLines"] = scan.Lines.Count }.ToJsonString(),
+            scan.Facts.ToDictionary(p => p.Key, p => new JsonObject
+            {
+                ["layout"] = p.Value["layout"]?.DeepClone(), ["typography"] = p.Value["typography"]?.DeepClone(),
+            }.ToJsonString(), StringComparer.Ordinal), ScanAgentProtocol.PlacementNote);
+    }
 
     /// <summary>A run the model could not divide stays as separate headings: geometry alone does not say two lines are one heading.</summary>
     public List<int[]> FallbackDivision(IAgentSource source, int[] lines) => lines.Select(i => new[] { i }).ToList();

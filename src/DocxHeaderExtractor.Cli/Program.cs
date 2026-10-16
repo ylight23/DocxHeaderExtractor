@@ -107,10 +107,13 @@ static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationTok
         onModelReply: o.ShowRawOutput ? r => PrintModelReply(r) : null,
         transcriptionOptions: o.Jobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null,
         visionOptions: o.Jobs is { } seeJobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null);
+    var incomplete = false;
     foreach (var file in ExpandInputs(o.Inputs))
     {
         if (!o.Quiet) Console.Error.WriteLine($"» {Path.GetFileName(file)}");
         var result = await selector.ExtractAsync(file, key, ct);
+        incomplete |= result.UnitsComplete != result.UnitsTotal || result.UnitFailures.Count > 0
+            || result.TranscriptionFailures.Count > 0 || result.VisionFailures.Count > 0 || result.OcrGaps.Count > 0 || result.PartsRejected > 0;
         if (!o.Quiet)
             Console.Error.WriteLine($"  {result.Headings.Count} heading, {result.UnitsComplete}/{result.UnitsTotal} unit, {result.ProviderCalls} POST, " +
                 $"{result.ProviderCostUsd:0.0000} USD, " + (o.Vision ? $"VLM {result.VisionPagesObserved} trang ({result.VisionFailures.Count} lỗi), " : "kiểu chữ đo trên ảnh, ") +
@@ -127,7 +130,7 @@ static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationTok
         }
         Console.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }));
     }
-    return 0;
+    return incomplete ? 1 : 0;
 }
 
 // Reading accuracy of a scan's lines against a gold transcription: the OCR views and the vision model transcribing blind. Prints the scores.
@@ -202,10 +205,13 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
 
     // Chạy thẳng tuyến V6 (PDF/DOCX). Không qua harness: không có consent gửi dữ liệu ra ngoài,
     // không có validator, không có guardrail đích ghi (chủ dự án chấp nhận, 2026-10-15).
+    o.Pipeline.ScanJobs = o.Jobs;
+    o.Pipeline.ScanVision = o.Vision;
     using var runner = new V6DocumentRunner(o.Pipeline, new InferenceTransportFactory(o.Provider),
         o.ShowRawOutput ? r => PrintModelReply(r) : null);
     var outputs = new List<string>();
     int failed = 0;
+    int partial = 0;
 
     foreach (var file in files)
     {
@@ -214,10 +220,27 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
         {
             var execution = await runner.ExtractAsync(file, ct: ct);
             var outline = execution.Outline;
+            var partialResult = outline.DeterministicRoute == "scan-v6-selected-lines" && outline.RouteAudit?.SemanticLane?.Status == "partial";
+            if (partialResult)
+            {
+                Console.Error.WriteLine("  Scan trả kết quả một phần: " + outline.RouteAudit?.SemanticLane?.FailureClass);
+            }
             if (!o.Quiet)
                 Console.Error.WriteLine($"  {outline.Headings.Count} heading từ {outline.ParagraphCount} đoạn.");
+            if (!o.Quiet && outline.RouteAudit?.Scan is { } scan)
+            {
+                Console.Error.WriteLine($"  scan: chép {scan.TranscriptionsAccepted}/{scan.TranscribedLines} dòng dùng được, " +
+                    $"tiền xử lý {scan.PreflightCalls} POST {scan.PreflightCostUsd:0.0000} USD, " +
+                    $"hội thoại {scan.ConversationCalls} POST {scan.ConversationCostUsd:0.0000} USD, dựng cấp {scan.PlacementCalls} lần");
+                Console.Error.WriteLine("  thời gian: " + string.Join(", ", scan.StageSeconds.Select(kv => $"{kv.Key} {kv.Value:0.0}s")));
+            }
 
-            if (o.WritebackPath is not null)
+            if (o.WritebackPath is not null && outline.DeterministicRoute == "scan-v6-selected-lines")
+            {
+                Console.Error.WriteLine("  Không ghi outline vào Word: bản scan chưa có các đoạn văn bản để gắn heading. Kết quả trích xuất vẫn được giữ.");
+                partialResult = true;
+            }
+            else if (o.WritebackPath is not null)
             {
                 var writeback = V6DocumentRunner.WriteOutline(
                     file, outline, o.WritebackPath, o.Pipeline.Extraction,
@@ -226,6 +249,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
                     Console.Error.WriteLine($"  Đã ghi {writeback.Applied} heading, bỏ qua {writeback.Skipped} mục: {Path.GetFileName(writeback.OutputPath)}");
             }
             outputs.Add(OutlineFormatter.Format(outline, o.Format));
+            if (partialResult) partial++;
         }
         catch (Exception ex) when (ex is not OperationCanceledException)
         {
@@ -248,9 +272,9 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
         {
             await File.WriteAllTextAsync(path, text, new UTF8Encoding(false), ct);
             if (!o.Quiet)
-                Console.Error.WriteLine(failed == 0
+                Console.Error.WriteLine(failed == 0 && partial == 0
                     ? $"Đã ghi: {path}"
-                    : $"Đã ghi {outputs.Count}/{files.Count} tài liệu vào {path} — {failed} tài liệu lỗi và KHÔNG có trong file.");
+                    : $"Đã ghi {outputs.Count}/{files.Count} tài liệu vào {path}; {partial} kết quả một phần; {failed} tài liệu lỗi không có trong file.");
         }
     }
     else if (outputs.Count > 0)
@@ -258,7 +282,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
         Console.WriteLine(text);
     }
 
-    return failed == 0 ? 0 : 1;
+    return failed == 0 && partial == 0 ? 0 : 1;
 }
 
 /// <summary>

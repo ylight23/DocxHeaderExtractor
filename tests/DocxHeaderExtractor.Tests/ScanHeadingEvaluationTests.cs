@@ -90,4 +90,20 @@ public sealed class ScanHeadingEvaluationTests
         Assert.Equal(6, gold.Count(g => g.Label?.StartsWith("Mục", StringComparison.Ordinal) == true));
         Assert.Equal(Enumerable.Range(1, 54).Select(i => "điều " + i), gold.Where(g => g.Label?.StartsWith("Điều", StringComparison.Ordinal) == true).Select(g => ScanHeadingEvaluation.LabelOf(g.Label!)));
     }
+
+    [Theory]
+    [InlineData("{\"Headings\":[{\"Index\":1,\"Parts\":[{\"Page\":4}],\"Text\":\"Chương II\"}]}")]
+    [InlineData("{\"headings\":[{\"index\":1,\"scanSources\":[{\"Page\":4}],\"text\":\"Chương II\"}]}")]
+    [InlineData("{\"headings\":[{\"index\":1,\"scanSources\":[{\"page\":4}],\"text\":\"Chương II\"}]}")]
+    public void Legacy_diagnostic_and_production_results_have_the_same_heading_inventory(string json)
+    {
+        var path = Path.GetTempFileName();
+        try
+        {
+            File.WriteAllText(path, json);
+            var result = Assert.Single(ScanHeadingEvaluation.ReadResult(path));
+            Assert.Equal(new R(1, 4, "Chương II"), result);
+        }
+        finally { File.Delete(path); }
+    }
 }

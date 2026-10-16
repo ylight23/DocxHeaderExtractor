@@ -15,6 +15,20 @@ public static class TesseractOcr
     public const string EngineName = "tesseract";
     public const int TimeoutMs = 180_000;
 
+    // External image helpers are synchronous and nested (PNG decoding may use ImageMagick).
+    // ExecutionContext carries this scoped token into the page workers without sharing it between documents.
+    static readonly AsyncLocal<CancellationToken> ProcessCancellation = new();
+    public static IDisposable WithCancellation(CancellationToken ct)
+    {
+        var previous = ProcessCancellation.Value;
+        ProcessCancellation.Value = ct;
+        return new CancellationScope(previous);
+    }
+    sealed class CancellationScope(CancellationToken previous) : IDisposable
+    {
+        public void Dispose() => ProcessCancellation.Value = previous;
+    }
+
     public static string? FindTesseract() => Find("tesseract", "tesseract.exe", @"C:\Program Files\Tesseract-OCR\tesseract.exe");
     public static string? FindImageMagick() => Find("magick", "magick.exe", "convert");
 
@@ -189,8 +203,10 @@ public static class TesseractOcr
         return (code, Encoding.UTF8.GetString(stdout), stderr);
     }
 
-    static (int Code, byte[] Stdout, string Stderr) RunRaw(string exe, IEnumerable<string> args, IReadOnlyDictionary<string, string>? env, byte[]? stdin)
+    internal static (int Code, byte[] Stdout, string Stderr) RunRaw(string exe, IEnumerable<string> args, IReadOnlyDictionary<string, string>? env, byte[]? stdin)
     {
+        var ct = ProcessCancellation.Value;
+        ct.ThrowIfCancellationRequested();
         var psi = new ProcessStartInfo(exe)
         {
             RedirectStandardOutput = true, RedirectStandardError = true, RedirectStandardInput = stdin is not null, UseShellExecute = false, CreateNoWindow = true,
@@ -199,6 +215,7 @@ public static class TesseractOcr
         foreach (var a in args) psi.ArgumentList.Add(a);
         if (env is not null) foreach (var (k, v) in env) psi.Environment[k] = v;
         using var proc = Process.Start(psi) ?? throw new InvalidOperationException("PROCESS_NOT_STARTED:" + exe);
+        using var cancel = ct.Register(() => { try { proc.Kill(entireProcessTree: true); } catch (InvalidOperationException) { } catch (System.ComponentModel.Win32Exception) { } });
         // Both outputs are read before the input is written, so a child that writes while it reads cannot block on a full pipe.
         var output = new MemoryStream();
         var stdout = proc.StandardOutput.BaseStream.CopyToAsync(output);
@@ -215,6 +232,7 @@ public static class TesseractOcr
         }
         if (!proc.WaitForExit(TimeoutMs)) { try { proc.Kill(true); } catch (InvalidOperationException) { } throw new TimeoutException("PROCESS_TIMEOUT:" + exe); }
         stdout.Wait();
+        ct.ThrowIfCancellationRequested();
         return (proc.ExitCode, output.ToArray(), stderr.Result);
     }
 }

@@ -30,7 +30,11 @@ public sealed class V6DocumentRunner : IDisposable
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(factory);
         _docxLane = new DocxExtractionPipeline(options, factory,
-            factory.CreateDocxHeadingSelector() ?? new DocxHeadingAgentSelector(onModelReply: onModelReply, extraction: options.Extraction));
+            factory.CreateDocxHeadingSelector() ?? new DocxHeadingAgentSelector(onModelReply: onModelReply, extraction: options.Extraction),
+            factory.CreateScanHeadingSelector() ?? new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(options.ScanEvidenceRoot,
+                parallelism: options.ScanJobs, onModelReply: onModelReply, vision: options.ScanVision,
+                transcriptionOptions: options.ScanJobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null,
+                visionOptions: options.ScanJobs is { } seeJobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null));
         _pdfLane = new PdfExtractionHandler(options, factory, factory.CreatePdfHeadingSelector() ?? new PdfHeadingAgentSelector(onModelReply: onModelReply));
         _dispatcher = new DocumentExtractionRouter(new DocxExtractionHandler(_docxLane), _pdfLane);
     }
@@ -77,6 +81,8 @@ public sealed class V6DocumentRunner : IDisposable
         ArgumentNullException.ThrowIfNull(outline);
         ArgumentException.ThrowIfNullOrWhiteSpace(targetPath);
         ArgumentNullException.ThrowIfNull(extraction);
+        if (outline.DeterministicRoute == "scan-v6-selected-lines")
+            throw new NotSupportedException("SCAN_OUTLINE_WRITEBACK_UNSUPPORTED: scanned pages have image coordinates, not editable Word paragraphs.");
 
         var productOutput = outline.ProductOutput
             ?? throw new InvalidOperationException(

@@ -4,6 +4,7 @@ using System.Text.Json.Nodes;
 using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
 using DocxHeaderExtractor.HeadingAgent;
 using DocxHeaderExtractor.HeadingAgent.Scan;
+using DocxHeaderExtractor.DocumentProcessing.Routing;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -654,5 +655,23 @@ public sealed class ScanAgentTests : IDisposable
         // PDF and DOCX keep reading the facts through the tool.
         Assert.Null(((IAgentFlavor)PdfAgentFlavor.Instance).PayloadFacts(source, ["P001-L002"]));
         Assert.Null(((IAgentFlavor)DocxAgentFlavor.Instance).PayloadFacts(source, ["P001-L002"]));
+    }
+
+    [Fact]
+    public void The_pipeline_source_binds_extents_to_the_selected_reading_and_keeps_the_original()
+    {
+        var source = new ScanAgentSource(Evidence(), [], Transcriptions());
+        const string alias = "P001-L004";
+        var selection = new HeadingSelection(new HashSet<string> { alias }, 1, 1, [], [], 0, 0)
+        { HeadingReadings = new Dictionary<string, string> { [alias] = ScanOcrPreflight.UpscaledView } };
+        var prepared = ScanHeadingAgentSelector.PrepareSelection(source, selection);
+        var bound = ScanSourceAdapter.Build(prepared);
+        var line = prepared.Lines.Single(l => l.Alias == alias);
+        Assert.Equal("Điều 2. Thẩm quyền chứng thực", line.Text);
+        Assert.Equal(ScanOcrPreflight.UpscaledView, line.ReadingViewId);
+        Assert.Equal("Điều 2. Tham quyền chứng thực", line.PrimaryReading);
+        Assert.Equal(line.Text, bound.Catalog.Units.Single(u => u.SourceId == line.LineId).Text);
+        Assert.Equal(line.Box, bound.Catalog.Units.Single(u => u.SourceId == line.LineId).SourceAnchor.Scan!.Box);
+        Assert.Equal(line.PrimaryReading, line.Readings[ScanOcrPreflight.OriginalView]);
     }
 }

@@ -58,7 +58,7 @@ public sealed record TranscriptionRejection(string Alias, string LineId, string 
 public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageHandler>? handlerFactory = null, int? parallelism = null,
     Action<ModelReply>? onModelReply = null, string? instruction = null, bool vision = false,
     ScanOcrPreflight.Options? ocrOptions = null, ScanVisionPreflight.Options? visionOptions = null, bool transcribe = true,
-    ScanTranscriptionPreflight.Options? transcriptionOptions = null)
+    ScanTranscriptionPreflight.Options? transcriptionOptions = null) : IScanHeadingSelector
 {
     /// <summary>The folder of the store root that holds the OCR evidence; <c>dhx scan-ocr</c> writes to the same one.</summary>
     public const string OcrFolder = "ocr";
@@ -71,17 +71,27 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
 
     public string SelectorId => "scan-v6:" + ScanAgentSource.Version + ":facts-in-request:instruction-" + AgentProtocol.Sha(instruction)[..8];
 
-    public Task<ScanHeadingResult> ExtractAsync(string docxPath, string apiKey, CancellationToken ct) => Task.Run(() =>
+    public async Task<ScanHeadingResult> ExtractAsync(string docxPath, string apiKey, CancellationToken ct)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(apiKey);
+        return (await RunAsync(docxPath, apiKey, ct).ConfigureAwait(false)).Result;
+    }
+
+    public async Task<ScanDocumentSelection> PrepareAsync(string path, string? apiKey, CancellationToken ct) =>
+        (await RunAsync(path, apiKey, ct).ConfigureAwait(false)).Prepared;
+
+    Task<(ScanHeadingResult Result, ScanDocumentSelection Prepared)> RunAsync(string docxPath, string? apiKey, CancellationToken ct) => Task.Run(() =>
+    {
+        ct.ThrowIfCancellationRequested();
+        if (apiKey is not null) ArgumentException.ThrowIfNullOrWhiteSpace(apiKey);
         var seconds = new Dictionary<string, double>(StringComparer.Ordinal);
         var clock = System.Diagnostics.Stopwatch.StartNew();
         var ocr = new ScanOcrPreflight(Path.Combine(storeRoot, OcrFolder));
-        var evidence = ocr.Run(docxPath, ocrOptions);
+        var evidence = ocr.Run(docxPath, ocrOptions, ct);
         seconds["ocr"] = clock.Elapsed.TotalSeconds;
         // The type of every line, measured on the page images in .NET: what the vision model was asked page by page (bold, size) before.
         var typeClock = System.Diagnostics.Stopwatch.StartNew();
-        var typography = ScanTypography.MeasureAll(evidence, ocr.EntryOf(evidence), TesseractOcr.FindImageMagick());
+        var typography = ScanTypography.MeasureAll(evidence, ocr.EntryOf(evidence), TesseractOcr.FindImageMagick(), ct);
         seconds["typography"] = typeClock.Elapsed.TotalSeconds;
         var seer = new ScanVisionPreflight(Path.Combine(storeRoot, "vlm"), handlerFactory);
         // With the blind transcription, the vision preflight asks no reading choices: choosing among OCR readings drew the model to a wrong one
@@ -90,24 +100,35 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
         IReadOnlyList<VlmPageObservation> observations = [];
         TranscriptionSet? transcriptions = null;
         // Both read only the OCR evidence and the page images, and both wait on the provider: they run side by side.
-        Parallel.Invoke(
+        Parallel.Invoke(new ParallelOptions { CancellationToken = ct },
             () =>
             {
                 var t = System.Diagnostics.Stopwatch.StartNew();
-                if (vision) observations = seer.Run(evidence, ocr.EntryOf(evidence), apiKey, seeOptions);
+                if (vision && apiKey is not null) observations = seer.Run(evidence, ocr.EntryOf(evidence), apiKey, seeOptions, ct);
                 lock (seconds) seconds["vision"] = t.Elapsed.TotalSeconds;
             },
             () =>
             {
                 var t = System.Diagnostics.Stopwatch.StartNew();
-                if (transcribe) transcriptions = new ScanTranscriptionPreflight(storeRoot, handlerFactory).Run(evidence, ocr.EntryOf(evidence), apiKey, transcriptionOptions);
+                if (transcribe && apiKey is not null) transcriptions = new ScanTranscriptionPreflight(storeRoot, handlerFactory).Run(evidence, ocr.EntryOf(evidence), apiKey, transcriptionOptions, ct);
                 lock (seconds) seconds["transcription"] = t.Elapsed.TotalSeconds;
             });
         seconds["preflight"] = clock.Elapsed.TotalSeconds;
+        ct.ThrowIfCancellationRequested();
         var talk = System.Diagnostics.Stopwatch.StartNew();
-        var result = ExtractFrom(evidence, observations, apiKey, ct, transcriptions, typography);
+        ScanDocumentSelection? prepared = null;
+        ScanHeadingResult result;
+        if (apiKey is null)
+        {
+            var source = new ScanAgentSource(evidence, [], null, typography);
+            var empty = new HeadingSelection(new HashSet<string>(), 0, 0, [], [], 0, 0);
+            prepared = PrepareSelection(source, empty);
+            result = new ScanHeadingResult(evidence.SourceSha256, SelectorId, [], 0, 0, [], [], 0, 0, 0, [], evidence.Gaps, 0);
+        }
+        else result = ExtractFrom(evidence, observations, apiKey, ct, transcriptions, typography,
+            (source, selection) => prepared = PrepareSelection(source, selection));
         seconds["conversation"] = talk.Elapsed.TotalSeconds;
-        return result with
+        result = result with
         {
             PreflightCalls = seer.LastCalls + (transcriptions?.ProviderCalls ?? 0),
             PreflightCostUsd = seer.LastCostUsd + (transcriptions?.ProviderCostUsd ?? 0),
@@ -119,22 +140,28 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
             },
             TranscriptionCropSeconds = transcriptions?.CropSeconds ?? 0,
         };
+        ct.ThrowIfCancellationRequested();
+        return (result, prepared! with { Diagnostics = new ScanRunDiagnostics(result.PreflightCalls, result.PreflightCostUsd,
+            result.ProviderCalls, result.ProviderCostUsd, result.TranscribedLines, result.TranscriptionsAccepted, result.TranscriptionStatuses,
+            result.TranscriptionFailures, result.VisionFailures, result.OcrGaps, result.StageSeconds) });
     }, ct);
 
     /// <summary>The conversation over stored evidence, observations and transcriptions.</summary>
     internal ScanHeadingResult ExtractFrom(ScanOcrEvidence evidence, IReadOnlyList<VlmPageObservation> observations, string apiKey, CancellationToken ct,
-        TranscriptionSet? transcriptions = null, IReadOnlyDictionary<string, LineTypography>? typography = null)
+        TranscriptionSet? transcriptions = null, IReadOnlyDictionary<string, LineTypography>? typography = null,
+        Action<ScanAgentSource, HeadingSelection>? onSelected = null)
     {
         var source = new ScanAgentSource(evidence, observations, transcriptions, typography);
         var budget = HeadingAgentSelector.BudgetFor(source, instruction);
         using var handler = (handlerFactory ?? (() => AgentModel.CreateHandler()))();
-        using var model = new AgentModel(handler, apiKey, budget);
+        using var model = new AgentModel(handler, apiKey, budget, cancellationToken: ct);
         var traced = HeadingAgentSelector.Traced(model, onModelReply);
         var timings = new CallTimings();
         AgentUnit.Model timed = (unit, turn, request) => timings.Time(unit, () => traced(unit, turn, request));
         var selection = HeadingAgentSelector.Select(source, timed, budget, parallelism, ct, retryDelayMs: 5000,
             costOf: () => budget.ActualUsd, instruction);
         var (headings, rejected) = Headings(source, selection);
+        onSelected?.Invoke(source, selection);
         return new ScanHeadingResult(evidence.SourceSha256, SelectorId, headings, selection.UnitsComplete, selection.UnitsTotal, selection.UnitFailures,
             selection.ModelAnswers, selection.ProviderCalls, selection.ProviderCostUsd, observations.Count(o => o.Failure is null),
             observations.Where(o => o.Failure is not null).Select(o => $"P{o.Page:000}:{o.Failure}").ToArray(), evidence.Gaps, rejected)
@@ -149,6 +176,21 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
             CallSeconds = new Dictionary<string, CallStats> { ["conversation"] = timings.Stats() },
             SlowestUnits = timings.SlowestUnits(5),
         };
+    }
+
+    internal static ScanDocumentSelection PrepareSelection(ScanAgentSource source, HeadingSelection selection)
+    {
+        var lines = source.ScanLines.Select(l =>
+        {
+            var readings = source.Readings(l.Alias);
+            var view = selection.HeadingReadings?.GetValueOrDefault(l.Alias) ?? source.DefaultReading(l.Alias);
+            if (!readings.TryGetValue(view, out var text)) throw new InvalidOperationException("SCAN_READING_UNKNOWN:" + l.Alias);
+            return new ScanSourceLine(l.Alias, l.Primary.Id, l.Page, l.Primary.Box, l.PageWidth, l.PageHeight, text,
+                l.Primary.Text, view, readings, source.Transcription(l.Alias)?.Status, source.Facts[l.Alias].ToJsonString(), source.Transcription(l.Alias)?.Text);
+        }).ToArray();
+        return new ScanDocumentSelection(source.SourceSha256, lines, selection,
+            new ScanRunDiagnostics(0, 0, selection.ProviderCalls, selection.ProviderCostUsd, 0, 0,
+                new Dictionary<string, int>(), [], [], source.Evidence.Gaps, new Dictionary<string, double>()));
     }
 
     /// <summary>The selected lines as headings, in reading order: the agent's division when it gave one, else one heading per line. A part whose

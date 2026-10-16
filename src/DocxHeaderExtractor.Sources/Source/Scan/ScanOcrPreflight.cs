@@ -35,8 +35,10 @@ public sealed class ScanOcrPreflight(string storeRoot)
     static readonly JsonSerializerOptions Json = new() { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
     /// <summary>Reads the evidence back when it exists for this source and these parameters; otherwise makes it and writes it.</summary>
-    public ScanOcrEvidence Run(string docxPath, Options? options = null)
+    public ScanOcrEvidence Run(string docxPath, Options? options = null, CancellationToken ct = default)
     {
+        using var cancellation = TesseractOcr.WithCancellation(ct);
+        ct.ThrowIfCancellationRequested();
         options ??= new Options();
         var integrity = DocxSourceIntegrity.Read(docxPath);
         var tesseract = TesseractOcr.FindTesseract() ?? throw new InvalidOperationException("TESSERACT_NOT_FOUND");
@@ -77,9 +79,10 @@ public sealed class ScanOcrPreflight(string storeRoot)
                 else
                     specs.Add((new OcrViewSpec(UpscaledView, "grey, scaled " + options.UpscaleFactor.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture) + "x (ImageMagick)",
                         options.UpscaleFactor, TesseractOcr.EngineName, engineVersion, options.Languages, options.PageSegmentationMode), magick));
-                views.AddRange(MakeViews(specs, pages, imagePaths, tesseract, temp, Math.Max(1, options.Parallelism ?? Environment.ProcessorCount)));
+                views.AddRange(MakeViews(specs, pages, imagePaths, tesseract, temp, Math.Max(1, options.Parallelism ?? Environment.ProcessorCount), ct));
             }
             var evidence = new ScanOcrEvidence(ScanOcrEvidence.CurrentVersion, integrity.SourceSha256, integrity.Kind.ToString(), pages.Count, parametersSha, views, gaps);
+            ct.ThrowIfCancellationRequested();
             File.WriteAllText(Path.Combine(temp, "evidence.json"), JsonSerializer.Serialize(evidence, Json), Utf8);
             Directory.CreateDirectory(Path.GetDirectoryName(final)!);
             try { Directory.Move(temp, final); }
@@ -141,14 +144,14 @@ public sealed class ScanOcrPreflight(string storeRoot)
     /// <summary>Every page of every view as one queue of engine runs, the heaviest first (the upscaled view's pages take about twice as long), so
     /// that no worker waits while another view still has pages.</summary>
     static IEnumerable<OcrView> MakeViews(IReadOnlyList<(OcrViewSpec Spec, string? Magick)> specs, IReadOnlyList<PageImage> pages, string[] imagePaths,
-        string tesseract, string temp, int parallelism)
+        string tesseract, string temp, int parallelism, CancellationToken ct)
     {
         var result = specs.Select(_ => new OcrPage[pages.Count]).ToArray();
         foreach (var (spec, _) in specs) Directory.CreateDirectory(Path.Combine(temp, "views", spec.ViewId));
         var jobs = Enumerable.Range(0, specs.Count).OrderByDescending(v => specs[v].Spec.Scale)
             .SelectMany(v => Enumerable.Range(0, pages.Count).Select(k => (View: v, Page: k))).ToArray();
         Parallel.ForEach(System.Collections.Concurrent.Partitioner.Create(jobs, System.Collections.Concurrent.EnumerablePartitionerOptions.NoBuffering),
-            new ParallelOptions { MaxDegreeOfParallelism = parallelism }, job =>
+            new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct }, job =>
         {
             var (spec, magick) = specs[job.View];
             var k = job.Page;

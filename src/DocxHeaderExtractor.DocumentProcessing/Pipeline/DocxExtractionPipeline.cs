@@ -20,6 +20,7 @@ public sealed class DocxExtractionPipeline : IDisposable
     private readonly PipelineOptions _options;
     private readonly IInferenceTransportFactory? _transportFactory;
     private readonly IHeadingSelector? _selector;
+    private readonly IScanHeadingSelector? _scanSelector;
     private readonly bool _transportSendsDataExternally;
     private IInferenceTransport? _transport;
     private readonly bool _ownsTransport;
@@ -29,11 +30,11 @@ public sealed class DocxExtractionPipeline : IDisposable
     /// with the model disabled the route returns the source only. The transport (or the factory that makes it) must be the authorized agent route:
     /// it carries the provider key the selector uses and serves the shared placement stage.
     /// </summary>
-    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransportFactory transportFactory, IHeadingSelector? selector = null)
-        : this(options, null, transportFactory, selector) { }
+    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransportFactory transportFactory, IHeadingSelector? selector = null, IScanHeadingSelector? scanSelector = null)
+        : this(options, null, transportFactory, selector, scanSelector: scanSelector) { }
 
-    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransport transport, IHeadingSelector? selector = null)
-        : this(options, transport, null, selector, false)
+    public DocxExtractionPipeline(PipelineOptions options, IInferenceTransport transport, IHeadingSelector? selector = null, IScanHeadingSelector? scanSelector = null)
+        : this(options, transport, null, selector, false, scanSelector)
     {
     }
 
@@ -49,12 +50,13 @@ public sealed class DocxExtractionPipeline : IDisposable
         IInferenceTransport? transport,
         IInferenceTransportFactory? transportFactory,
         IHeadingSelector? selector,
-        bool transportSendsDataExternally = false)
+        bool transportSendsDataExternally = false, IScanHeadingSelector? scanSelector = null)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
         _transport = transport;
         _transportFactory = transportFactory;
         _selector = selector;
+        _scanSelector = scanSelector ?? transportFactory?.CreateScanHeadingSelector();
         _transportSendsDataExternally = transportSendsDataExternally || transportFactory?.SendsDataExternally == true;
         _ownsTransport = transportFactory is not null || transport is null;
     }
@@ -79,6 +81,10 @@ public sealed class DocxExtractionPipeline : IDisposable
                 "source adapter phải chuyển đổi định dạng không phải OOXML trước khi gọi pipeline.");
 
         var started = Environment.TickCount64;
+        ct.ThrowIfCancellationRequested();
+        if (DocxHeaderExtractor.DocumentProcessing.Source.Docx.DocxSourceIntegrity.Read(inputPath).Kind == DocxHeaderExtractor.DocumentProcessing.Source.Docx.DocxSourceKind.ScannedImageOnly)
+            return await ScanExtractionPipeline.RunAsync(inputPath, _options, _options.DisableLlm ? null : await GetTransportAsync(ct),
+                _scanSelector, _transportSendsDataExternally, ct).ConfigureAwait(false);
         var sourceDocument = new OpenXmlDocumentSource(_options.Extraction).Read(inputPath);
             var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
             var authority = await DocxHeadingPipeline.RunAsync(
