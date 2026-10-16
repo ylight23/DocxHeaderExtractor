@@ -6,8 +6,7 @@ using DocxHeaderExtractor.DocumentProcessing.Routing;
 namespace DocxHeaderExtractor.HeadingAgent;
 
 /// <summary>
-/// The PDF flavor: the qualified V6 prompt and tools, byte for byte (the parity tests hold them to the qualified SHA-256s). A line of the
-/// payload is its alias, page and text; everything about its layout comes from the facts tool.
+/// The PDF flavor: V6 tools and measurements, with the targets' existing facts supplied in the first request.
 /// </summary>
 internal sealed class PdfAgentFlavor : IAgentFlavor
 {
@@ -18,6 +17,11 @@ internal sealed class PdfAgentFlavor : IAgentFlavor
     public string AnswerVersion => AgentProtocol.SelectObjectsVersion;
     public bool HeadingExtents => false;
     public bool RequiresCoreFacts => false;
+    public JsonArray? PayloadFacts(IAgentSource source, IReadOnlyList<string> targets) => AgentRequestFacts.Read(source, targets);
+    public IEnumerable<string> FactReferences(JsonNode facts) =>
+        facts["repeatedText"]?["shown"]?.AsArray().SelectMany(x =>
+            new[] { x!["alias"]!.GetValue<string>() }.Concat(x["followingLine"] is JsonObject following
+                ? new[] { following["alias"]!.GetValue<string>() } : [])) ?? [];
     public JsonArray ToolDefinitions() => AgentTools.Definitions();
     public IAgentTools CreateTools(IAgentSource source) => new AgentTools((AgentSource)source);
     public object PayloadItem(AgentSourceLine line) => new { alias = line.Alias, page = line.Page ?? 0, text = line.Text };

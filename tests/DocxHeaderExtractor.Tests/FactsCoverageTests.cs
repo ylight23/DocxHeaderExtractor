@@ -1,17 +1,13 @@
 using System.Net;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;
 using DocxHeaderExtractor.HeadingAgent;
 
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
-/// Core facts coverage. get_line_facts gives every target its core facts; the runner keeps a ledger of the targets it returned them for, apart from
-/// the detail evidence the model chose to read. A DOCX unit is COMPLETE only when every target's core facts were returned: an answer that falls short
-/// goes back once, naming the targets, and if they stay uncovered or the unit has no room left to read them the unit is INCOMPLETE and none of its
-/// decisions is used. Which detail a decision needs is never the program's call.
+/// Core facts coverage: request-supplied facts cover every target before the first reply. Optional facts calls still paginate and record
+/// their returned aliases; detail evidence remains separate. C# does not decide which additional detail the model needs.
 /// </summary>
 public sealed class FactsCoverageTests : IDisposable
 {
@@ -57,29 +53,22 @@ public sealed class FactsCoverageTests : IDisposable
     };
 
     [Fact]
-    public async Task A_complete_answer_that_leaves_targets_without_core_facts_goes_back_once_and_then_the_unit_is_incomplete()
+    public async Task An_answer_after_only_one_optional_facts_page_is_complete_because_the_request_already_covers_every_target()
     {
         var path = Long();
         var handler = new FakeOpenRouter(FirstPageOnly(readsTheRest: false));
-
         var selection = await new DocxHeadingAgentSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
-
-        var decide = DocxAgentSource.Load(path, null, out _)!.Scope(0).Decide;
-        // facts, answer (sent back), the same answer again: refused, and none of its decisions is used.
-        Assert.Equal(3, handler.Posts);
-        Assert.Equal(0, selection.UnitsComplete);
-        Assert.Empty(selection.SelectedAliases);
-        var failure = Assert.Single(selection.UnitFailures);
-        Assert.Contains(":INCOMPLETE:COVERAGE:CORE_FACTS_MISSING:", failure, StringComparison.Ordinal);
-        Assert.EndsWith(":" + (decide.Length - FakeOpenRouter.MaxFactsPerCall) + "_TARGETS_WITHOUT_CORE_FACTS", failure, StringComparison.Ordinal);
-        var repair = handler.Bodies[^1]["messages"]!.AsArray().Last(m => m!["role"]!.GetValue<string>() == "user")!["content"]!.GetValue<string>();
-        Assert.Contains("PROTOCOL:TOOL_FACTS_INCOMPLETE", repair, StringComparison.Ordinal);
-        Assert.Contains(decide[FakeOpenRouter.MaxFactsPerCall], repair, StringComparison.Ordinal);
-        Assert.All(decide.Take(FakeOpenRouter.MaxFactsPerCall), a => Assert.DoesNotContain(a, repair, StringComparison.Ordinal));
+        Assert.Equal(2, handler.Posts);
+        Assert.Equal(1, selection.UnitsComplete);
+        Assert.Single(selection.SelectedAliases);
+        Assert.Empty(selection.UnitFailures);
+        var audit = JsonNode.Parse(selection.ModelAnswers[0])!;
+        Assert.Empty(audit["coreFactsCoverage"]!["targetsWithoutFacts"]!.AsArray());
+        Assert.All(handler.Bodies, body => Assert.DoesNotContain("TOOL_FACTS_INCOMPLETE", body.ToJsonString()));
     }
 
     [Fact]
-    public async Task When_the_model_reads_the_missing_facts_after_the_refusal_its_answer_is_taken()
+    public async Task Optional_facts_pagination_does_not_remove_the_request_coverage()
     {
         var path = Long();
         var handler = new FakeOpenRouter(FirstPageOnly(readsTheRest: true));
@@ -111,45 +100,32 @@ public sealed class FactsCoverageTests : IDisposable
     }
 
     [Fact]
-    public async Task A_unit_with_no_room_left_to_read_the_missing_facts_is_incomplete_and_is_not_sent_back()
+    public async Task Optional_detail_calls_still_obey_the_request_budget_and_do_not_trigger_a_core_facts_repair()
     {
-        // 48 paragraphs of about 800 characters: the unit's tool bytes go to span and context records over three rounds, and the missing core facts
-        // (a facts result can be 16 KB) no longer fit in what is left of the unit's 64 KB.
-        var path = Path.Combine(dir, "wide.docx");
-        using (var doc = WordprocessingDocument.Create(path, DocumentFormat.OpenXml.WordprocessingDocumentType.Document))
-        {
-            var main = doc.AddMainDocumentPart();
-            main.Document = new Document(new Body(Enumerable.Range(0, 48).Select(i =>
-                (DocumentFormat.OpenXml.OpenXmlElement)new Paragraph(new Run(new Text($"P{i:00} " + string.Concat(Enumerable.Repeat($"word{i:00} ", 115))))))));
-        }
+        var path = Long();
         var handler = new FakeOpenRouter((body, post) =>
         {
             var messages = body["messages"]!.AsArray();
-            var targets = JsonNode.Parse(messages[1]!["content"]![0]!["text"]!.GetValue<string>())!["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).ToArray();
+            var payload = JsonNode.Parse(messages[1]!["content"]![0]!["text"]!.GetValue<string>())!;
+            var targets = payload["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).ToArray();
             var rounds = messages.Count(m => m!["role"]!.GetValue<string>() == "assistant");
-            object Call(string name, object args, int k) => new { index = k, id = $"call_{name}_{rounds}_{k}", type = "function", function = new { name, arguments = JsonSerializer.Serialize(args) } };
-            if (rounds == 0)
-                return (HttpStatusCode.OK, FakeOpenRouter.Stream(new
+            if (rounds < AgentProtocol.MaxToolTurns)
+                return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { tool_calls = new[] { new
                 {
-                    tool_calls = new[] { Call("get_line_facts", new { first = targets[0], last = targets[^1], offset = 0 }, 0),
-                        Call("get_source_span", new { aliases = targets.Skip(0).Take(8) }, 1), Call("get_source_span", new { aliases = targets.Skip(8).Take(8) }, 2) },
-                }, "tool_calls"));
-            if (rounds <= 2)
-                return (HttpStatusCode.OK, FakeOpenRouter.Stream(new
-                {
-                    tool_calls = Enumerable.Range(0, 3).Select(k => Call("get_source_context", new { alias = targets[20 + rounds * 7 + k * 4], before = 6, after = 6 }, k)).ToArray(),
-                }, "tool_calls"));
+                    index = 0, id = "detail_" + rounds, type = "function",
+                    function = new { name = "get_source_span", arguments = JsonSerializer.Serialize(new { aliases = targets.Take(8) }) },
+                } } }, "tool_calls"));
             return Answer(body, targets);
         });
-
         var selection = await new DocxHeadingAgentSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
-
-        Assert.Equal(0, selection.UnitsComplete);
-        Assert.Empty(selection.SelectedAliases);
-        var failure = Assert.Single(selection.UnitFailures);
-        Assert.Contains(":INCOMPLETE:BUDGET:CORE_FACTS_UNCOVERED:", failure, StringComparison.Ordinal);
-        // Three tool rounds and the answer; asking for more facts would only have cost a post the unit could not deliver.
+        Assert.Equal(1, selection.UnitsComplete);
+        Assert.Single(selection.SelectedAliases);
+        Assert.Empty(selection.UnitFailures);
         Assert.Equal(4, handler.Posts);
+        var audit = JsonNode.Parse(selection.ModelAnswers[0])!;
+        Assert.Empty(audit["coreFactsCoverage"]!["targetsWithoutFacts"]!.AsArray());
+        Assert.NotEmpty(audit["detailEvidenceCoverage"]!["aliasesRead"]!.AsArray());
+        Assert.All(handler.Bodies, body => Assert.DoesNotContain("TOOL_FACTS_INCOMPLETE", body.ToJsonString()));
     }
 
     [Fact]
@@ -180,7 +156,7 @@ public sealed class FactsCoverageTests : IDisposable
     }
 
     [Fact]
-    public void Only_the_docx_flavor_requires_core_facts_so_the_qualified_pdf_conversation_keeps_its_bytes()
+    public void Core_facts_requirements_are_unchanged_by_how_the_facts_are_delivered()
     {
         Assert.True(DocxAgentFlavor.Instance.RequiresCoreFacts);
         Assert.False(PdfAgentFlavor.Instance.RequiresCoreFacts);

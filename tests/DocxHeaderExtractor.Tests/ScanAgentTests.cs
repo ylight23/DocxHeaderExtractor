@@ -652,9 +652,7 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Empty(outcome.TargetsWithoutFacts!);
         Assert.Equal("SELECT", outcome.Decisions["P001-L002"]);
         Assert.Contains("the request carries targetFacts", ScanAgentProtocol.SystemPrompt, StringComparison.Ordinal);
-        // PDF and DOCX keep reading the facts through the tool.
-        Assert.Null(((IAgentFlavor)PdfAgentFlavor.Instance).PayloadFacts(source, ["P001-L002"]));
-        Assert.Null(((IAgentFlavor)DocxAgentFlavor.Instance).PayloadFacts(source, ["P001-L002"]));
+        // PDF and DOCX supply their own route facts too; checked with real sources in TargetsFactsInRequestTests.
     }
 
     [Fact]

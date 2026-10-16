@@ -1,7 +1,6 @@
 using System.Text;
 using System.Text.Json;
 using System.Text.Encodings.Web;
-using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.HeadingAgent;
 using DocxHeaderExtractor.V6Qualification.P7;
@@ -13,7 +12,7 @@ namespace DocxHeaderExtractor.Tests;
 /// <summary>
 /// The production PDF heading agent (DocxHeaderExtractor.HeadingAgent) is a port of the qualified V6 direct agent with the D4.12 method. These
 /// tests hold it to the qualified code byte for byte on SRC-089: the source and its hashes, the layout facts, the system prompt, the tool
-/// declarations, the first request of every segment (also against the SHA-256s pinned in the D4.12 reference plan), the result of every kind
+/// declarations, the first request of every segment (only the prompt and targetFacts differ from the pinned D4.12 reference), the result of every kind
 /// of tool call, and whole conversations driven by the same scripted model, with repairs, a fenced answer and a transport retry.
 /// </summary>
 public sealed class PdfHeadingAgentParityTests
@@ -23,18 +22,25 @@ public sealed class PdfHeadingAgentParityTests
     private const string PlanPromptSha256 = "3c557778bcb2dd5fa127195d62e31ec9fad4c83bacecc19881cf61f16bbe2845";
     private const string PlanToolDefinitionsSha256 = "17b846fe198c451ea1cc4eee6097ad16a6f82d91107a1a44793cc07537ea9142";
     private const string PlanFirstRequestsSha256 = "3dfeaf6e3c103c2bdaeeca017af13b7977881c64873f3a61e9217de4e5fca20a";
-    // Production's system prompt (2026-10-15 revision): pinned so a further change is seen; the request checks below swap it in for the qualified one.
-    private const string ProductionPromptSha256 = "526e6e86281a0a0709eacb7cb4b08e2b5278436a85288630772d5251520844fd";
+    // Production's system prompt (2026-10-16 facts-in-request revision): pinned so a further change is seen; the request checks below swap it in for the qualified one.
+    private const string ProductionPromptSha256 = "7afd4abfdd10de122606477c6f816c57cf791a13500e2bba543aca634b1e6a1d";
 
-    /// <summary>The body production sends for a qualified body: the same request with production's system prompt in place of the qualified one.
-    /// Everything else in the body must already match byte for byte.</summary>
-    private static string WithProductionPrompt(string qualifiedBody)
+    /// <summary>The production request differs only by its system prompt and the existing tool facts added as targetFacts.
+    /// Model, tools, provider settings and conversation history must still match byte for byte.</summary>
+    private static string WithProductionRequest(string qualifiedBody)
     {
         static string Escaped(string text) =>
             JsonSerializer.Serialize(text, new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping })[1..^1];
         var from = Escaped(A.ToolFactsAnalysisV3PromptRange);
         Assert.Contains(from, qualifiedBody, StringComparison.Ordinal);
-        return qualifiedBody.Replace(from, Escaped(AgentProtocol.SystemPrompt), StringComparison.Ordinal);
+        var withPrompt = qualifiedBody.Replace(from, Escaped(AgentProtocol.SystemPrompt), StringComparison.Ordinal);
+        var body = JsonNode.Parse(withPrompt)!;
+        var originalPayload = body["messages"]![1]!["content"]![0]!["text"]!.GetValue<string>();
+        var payload = JsonNode.Parse(originalPayload)!;
+        var targets = payload["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).ToArray();
+        payload["targetFacts"] = Sources.Value.Production.Flavor.PayloadFacts(Sources.Value.Production, targets);
+        var newPayload = payload.ToJsonString(new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+        return withPrompt.Replace(Escaped(originalPayload), Escaped(newPayload), StringComparison.Ordinal);
     }
 
     private static readonly Lazy<(AgentSource Production, P7F1V6Universe Qualified)> Sources = new(() =>
@@ -90,7 +96,7 @@ public sealed class PdfHeadingAgentParityTests
     }
 
     [Fact]
-    public void The_first_request_of_every_segment_is_the_qualified_and_pinned_one()
+    public void First_requests_differ_from_the_pinned_reference_only_in_the_prompt_and_the_supplied_tool_facts()
     {
         var (p, q) = Sources.Value;
         var styles = new AgentTools(p).DocumentStyles();
@@ -98,11 +104,11 @@ public sealed class PdfHeadingAgentParityTests
         for (int n = 0; n < p.Cores.Count; n++)
         {
             var (decide, shown) = p.Scope(n);
-            var mine = AgentProtocol.Build(AgentProtocol.Payload(p.SourceSha256, AgentSource.SegmentId(n), decide, shown.Select(i => p.Lines[i]).ToArray(), styles, AgentProtocol.InstructionD412),
+            var mine = AgentProtocol.Build(AgentProtocol.Payload(p.SourceSha256, AgentSource.SegmentId(n), decide, shown.Select(i => p.Lines[i]).ToArray(), styles, AgentProtocol.InstructionD412, targetFacts: p.Flavor.PayloadFacts(p, decide)),
                 new JsonArray(), "auto");
             var theirs = C.FirstRequest(A.Arm.ToolFactsAnalysisV3, q, AgentSource.SegmentId(n), jsonObjectAllTurns: true,
                 instruction: P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, cacheMarkers: true);
-            Assert.Equal(WithProductionPrompt(theirs.Body), mine.Body);
+            Assert.Equal(WithProductionRequest(theirs.Body), mine.Body);
             shas.Add(theirs.Sha256);
         }
         Assert.Equal(PlanFirstRequestsSha256, AgentProtocol.Sha(string.Join("\n", shas)));
@@ -229,7 +235,20 @@ public sealed class PdfHeadingAgentParityTests
             return new AgentProtocol.ModelTurn(step.Content, step.Calls.Select(c => new AgentProtocol.ToolCall(c.Id, c.Name, c.Args)).ToArray(), step.Finish);
         }, new AgentBudget(1000, 100), retryDelayMs: 0, instruction: AgentProtocol.InstructionD412);
 
-        Assert.Equal(theirs.Unit.Requests.Select(r => AgentProtocol.Sha(WithProductionPrompt(r.Body))), mine.RequestSha256s);
+        if (scenario == "answer-first-then-repair")
+        {
+            // The intentional change: facts are already present, so production accepts the first answer without the old facts repair.
+            Assert.Equal(3, theirs.Unit.Requests.Count);
+            Assert.Equal(new[] { AgentProtocol.Sha(WithProductionRequest(theirs.Unit.Requests[0].Body)) }, mine.RequestSha256s);
+            Assert.Equal("COMPLETE", mine.Status);
+            Assert.Null(mine.RepairedFrom);
+            Assert.Equal(0, mine.RepairsUsed);
+            Assert.Equal(0, mine.ToolCallsSucceeded);
+            Assert.Empty(mine.TargetsWithoutFacts!);
+            Assert.Equal(theirs.Unit.Decisions.OrderBy(d => d.Key, StringComparer.Ordinal), mine.Decisions.OrderBy(d => d.Key, StringComparer.Ordinal));
+            return;
+        }
+        Assert.Equal(theirs.Unit.Requests.Select(r => AgentProtocol.Sha(WithProductionRequest(r.Body))), mine.RequestSha256s);
         Assert.Equal(theirs.Unit.Status, mine.Status);
         Assert.Equal(theirs.Unit.Failure, mine.Failure);
         Assert.Equal(theirs.Unit.Decisions.OrderBy(d => d.Key, StringComparer.Ordinal), mine.Decisions.OrderBy(d => d.Key, StringComparer.Ordinal));

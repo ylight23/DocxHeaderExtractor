@@ -35,7 +35,7 @@ public sealed class PromptContractTests
         var styles = new AgentTools(source).DocumentStyles();
         var (decide, shown) = source.Scope(0);
         var request = JsonNode.Parse(AgentProtocol.Payload(source.SourceSha256, AgentSource.SegmentId(0), decide,
-            shown.Select(i => source.Lines[i]).ToArray(), styles))!.AsObject();
+            shown.Select(i => source.Lines[i]).ToArray(), styles, targetFacts: source.Flavor.PayloadFacts(source, decide)))!.AsObject();
 
         var carried = new HashSet<string>(StringComparer.Ordinal);
         foreach (var key in request.Select(p => p.Key)) carried.Add(key);

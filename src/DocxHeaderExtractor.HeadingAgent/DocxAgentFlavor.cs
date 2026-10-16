@@ -9,7 +9,7 @@ namespace DocxHeaderExtractor.HeadingAgent;
 
 /// <summary>
 /// The DOCX flavor: the same conversation as a PDF's, presented as paragraphs. A line of the payload is its alias and text; its style, numbering
-/// and place come from the facts tool. The grouping step shows a paragraph with its style in brief, and a run the model could not divide stays as
+/// and place are supplied as targetFacts in the first request, using the existing facts tool. The grouping step shows a paragraph with its style in brief, and a run the model could not divide stays as
 /// separate headings (without a page or a layout block there is no layout rule that could merge them safely).
 /// </summary>
 internal sealed class DocxAgentFlavor : IAgentFlavor
@@ -21,6 +21,7 @@ internal sealed class DocxAgentFlavor : IAgentFlavor
     public string AnswerVersion => AgentProtocol.SelectExtentVersion;
     public bool HeadingExtents => true;
     public bool RequiresCoreFacts => true;
+    public JsonArray? PayloadFacts(IAgentSource source, IReadOnlyList<string> targets) => AgentRequestFacts.Read(source, targets);
     public JsonArray ToolDefinitions() => DocxAgentTools.Definitions();
     public IAgentTools CreateTools(IAgentSource source) => new DocxAgentTools((DocxAgentSource)source);
     public object PayloadItem(AgentSourceLine line) => new { alias = line.Alias, text = line.Text };

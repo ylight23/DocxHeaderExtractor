@@ -126,7 +126,8 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         var first = Enumerable.Range(0, units).Sum(n =>
         {
             var (decide, shown) = source.Scope(n);
-            var payload = AgentProtocol.Payload(source.SourceSha256, AgentSource.SegmentId(n), decide, shown.Select(i => source.Lines[i]).ToArray(), styles, instruction, flavor);
+            var payload = AgentProtocol.Payload(source.SourceSha256, AgentSource.SegmentId(n), decide, shown.Select(i => source.Lines[i]).ToArray(), styles, instruction, flavor,
+                flavor.PayloadFacts(source, decide));
             return AgentBudget.AttemptUsd(AgentProtocol.Build(payload, new System.Text.Json.Nodes.JsonArray(), "auto", flavor).Bytes);
         });
         var spare = (posts - units) * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);

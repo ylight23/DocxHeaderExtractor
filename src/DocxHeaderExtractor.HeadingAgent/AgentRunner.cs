@@ -90,7 +90,7 @@ internal sealed record AgentUnitOutcome(string UnitId, string Status, string? Fa
 /// turn, the single-fence unwrap, two prompt-cache marks, 3 transport retries and repair turns with no limit of their own):
 ///   turns 1..3: tools declared, tool_choice auto; a reply with tool calls is answered with the tool results and the conversation continues;
 ///   turn 4: tool_choice none; the model answers from what it has.
-/// The first answer must come after a successful get_line_facts call. A refused answer gets a repair turn (the refused reply and a message
+/// The first answer needs facts supplied in the request or a successful get_line_facts call. A refused answer gets a repair turn (the refused reply and a message
 /// naming the refusal). The coverage ledger records which targets the facts calls returned facts for, and the outcome carries the targets left
 /// without, and separately the detail evidence the model chose to read. Where the flavor requires the core facts (DOCX), a COMPLETE answer that
 /// leaves some target without them is sent back once with their aliases while the unit still has room for another facts result; if they stay

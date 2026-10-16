@@ -24,7 +24,7 @@ internal interface IAgentSource
 
 /// <summary>
 /// What differs between kinds of document in the method: the system prompt, the declared tools (and the object that runs them), and how a line
-/// appears in a request. The conversation itself - forced facts call, tool rounds, repairs, retries, budget - is the same for every kind.
+/// appears in a request. The conversation itself - facts supplied in the request, optional tool rounds, repairs, retries, budget - is the same for every kind.
 /// </summary>
 internal interface IAgentFlavor
 {
@@ -47,8 +47,7 @@ internal interface IAgentFlavor
     /// Empty for PDF and DOCX, whose runs stay as they were qualified.</summary>
     IReadOnlyList<string> RetryOnceCodes => [];
     /// <summary>The core facts of the targets, put into the first request (targetFacts) so that the model need not ask for them, in the form the
-    /// facts tool returns them; null when the model reads them through the facts tool (PDF, DOCX). The scan route only (owner's decision
-    /// 2026-10-16: one round trip less per unit, the conversation's time being the longest unit's chain of calls).</summary>
+    /// facts tool returns them. All production routes supply them; a null result retains the facts-tool prerequisite.</summary>
     JsonArray? PayloadFacts(IAgentSource source, IReadOnlyList<string> targets) => null;
     /// <summary>References whose observations a facts entry actually shows, without claiming their full core facts were read.</summary>
     IEnumerable<string> FactReferences(JsonNode facts) =>
@@ -88,9 +87,9 @@ internal interface IAgentTools
     AgentToolHost.Result Execute(string evidenceId, string? name, string? rawArguments);
     /// <summary>Every alias a successful tool result showed.</summary>
     IReadOnlySet<string> ObservedAliases { get; }
-    /// <summary>Whether a call to the facts tool has succeeded: the first answer is refused before that.</summary>
+    /// <summary>Whether facts were supplied in the request or a facts-tool call succeeded.</summary>
     bool FactsWereRead { get; }
-    /// <summary>The ledger of evidence coverage: every line whose own facts a successful facts call returned (not the lines a result only
+    /// <summary>The ledger of evidence coverage: every line whose own facts were supplied in the request or returned by a successful facts call (not the lines a result only
     /// mentions). It says which targets the model has read the facts of; it decides nothing.</summary>
     IReadOnlySet<string> FactsReturnedFor { get; }
     /// <summary>Successful facts calls whose result was cut (hasMore true or truncated).</summary>

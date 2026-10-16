@@ -25,6 +25,16 @@ internal sealed class AgentSource : IAgentSource
         SourceSha256 = sourceSha; SourceAliasUniverseSha256 = universeSha; EvidenceStoreSha256 = storeSha; Lines = lines; Blocks = blocks;
         Cores = CoresOf(lines, blocks);
         LayoutFacts = AgentLayoutFacts.Compute(lines, blocks);
+        // Preserve layout boundaries, splitting only oversized cores by the bytes of the actual tool facts.
+        // Like DOCX/scan, leave room in the request for text, context, prompts and optional tool results.
+        var factTools = Flavor.CreateTools(this);
+        Cores = Cores.SelectMany(core =>
+        {
+            var aliases = lines.Skip(core.Start).Take(core.End - core.Start).Select(l => l.Alias).ToArray();
+            var facts = AgentRequestFacts.Read(factTools, aliases);
+            var sizes = facts.Select(f => Encoding.UTF8.GetByteCount(f!.ToJsonString())).ToArray();
+            return DocxAgentSource.CoresOf(sizes).Select(part => (core.Start + part.Start, core.Start + part.End));
+        }).ToArray();
     }
 
     public string SourceSha256 { get; }

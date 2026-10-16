@@ -3,6 +3,10 @@
 Status 2026-10-16. The plan agreed with the owner: immutable source, versioned derived
 views, read-only evidence tools; the model decides. Nothing here corrects a reading or names a heading.
 
+The first-request facts delivery is now also enabled for native text PDF and DOCX; see
+[target facts in the first production request](target-facts-in-request.md). This changes fact delivery, not the
+user's heading instruction. Historical statements below that PDF/DOCX requests were unchanged describe the earlier scan work.
+
 ## Production integration (2026-10-16)
 
 `dhx extract <scan.docx> --openrouter -f json` and the Web upload now detect `ScannedImageOnly`

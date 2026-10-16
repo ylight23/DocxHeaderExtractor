@@ -35,7 +35,8 @@ public sealed class DocxAgentFlavorTests : IDisposable
         Assert.Contains("You have at most " + AgentProtocol.MaxToolTurns + " rounds of tool calls", prompt);
         // What is DOCX's own.
         Assert.Contains("A line is one paragraph of the document", prompt);
-        Assert.Contains("Your first reply must be tool calls to get_line_facts", prompt);
+        Assert.Contains("the request carries targetFacts", prompt);
+        Assert.DoesNotContain("Your first reply must be tool calls", prompt);
         Assert.Contains("the outline level the style or the paragraph declares", prompt);
         Assert.Contains("how its style ranks among the styles of the document", prompt);
         Assert.Contains("documentStyles lists the distinct styles (style name, font size and weight)", prompt);
