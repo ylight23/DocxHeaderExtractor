@@ -33,6 +33,18 @@
       "Exact": 120,
       "Lines": 120,
       "CharacterErrorRate": 0
+    },
+    {
+      "Method": "vlm-blind-crop-2x-bilevel",
+      "Exact": 118,
+      "Lines": 120,
+      "CharacterErrorRate": 0.0027180067950169874
+    },
+    {
+      "Method": "shown-by-scan-route",
+      "Exact": 120,
+      "Lines": 120,
+      "CharacterErrorRate": 0
     }
   ],
   "Lines": [
@@ -45,7 +57,9 @@
         "ocr-upscaled": "NGHỊ ĐỊNH",
         "oracle-better-ocr-view": "NGHỊ ĐỊNH",
         "vlm-blind-crop": "NGHỊ ĐỊNH",
-        "vlm-blind-crop-2x": "NGHỊ ĐỊNH"
+        "vlm-blind-crop-2x": "NGHỊ ĐỊNH",
+        "vlm-blind-crop-2x-bilevel": "NGHỊ ĐỊNH",
+        "shown-by-scan-route": "NGHỊ ĐỊNH"
       }
     },
     {
@@ -57,7 +71,9 @@
         "ocr-upscaled": "Về cấp bản sao từ số gốc, chứng thực bản sao từ bản chính,",
         "oracle-better-ocr-view": "Về cấp bản sao từ số gốc, chứng thực bản sao từ bản chính,",
         "vlm-blind-crop": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,",
-        "vlm-blind-crop-2x": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,"
+        "vlm-blind-crop-2x": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,",
+        "vlm-blind-crop-2x-bilevel": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,",
+        "shown-by-scan-route": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,"
       }
     },
     {
@@ -69,7 +85,9 @@
         "ocr-upscaled": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
         "oracle-better-ocr-view": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
-        "vlm-blind-crop-2x": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch"
+        "vlm-blind-crop-2x": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
+        "shown-by-scan-route": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch"
       }
     },
     {
@@ -81,7 +99,9 @@
         "ocr-upscaled": "- Chương I",
         "oracle-better-ocr-view": "Chương I",
         "vlm-blind-crop": "Chương I",
-        "vlm-blind-crop-2x": "Chương I"
+        "vlm-blind-crop-2x": "Chương I",
+        "vlm-blind-crop-2x-bilevel": "Chương I",
+        "shown-by-scan-route": "Chương I"
       }
     },
     {
@@ -93,7 +113,9 @@
         "ocr-upscaled": "NHỮNG QUY ĐỊNH CHUNG",
         "oracle-better-ocr-view": "NHỮNG QUY ĐỊNH CHUNG",
         "vlm-blind-crop": "NHỮNG QUY ĐỊNH CHUNG",
-        "vlm-blind-crop-2x": "NHỮNG QUY ĐỊNH CHUNG"
+        "vlm-blind-crop-2x": "NHỮNG QUY ĐỊNH CHUNG",
+        "vlm-blind-crop-2x-bilevel": "NHỮNG QUY ĐỊNH CHUNG",
+        "shown-by-scan-route": "NHỮNG QUY ĐỊNH CHUNG"
       }
     },
     {
@@ -105,7 +127,9 @@
         "ocr-upscaled": "Điều 1. Phạm vi điều chỉnh",
         "oracle-better-ocr-view": "Điều 1. Phạm vi điều chỉnh",
         "vlm-blind-crop": "Điều 1. Phạm vi điều chỉnh",
-        "vlm-blind-crop-2x": "Điều 1. Phạm vi điều chỉnh"
+        "vlm-blind-crop-2x": "Điều 1. Phạm vi điều chỉnh",
+        "vlm-blind-crop-2x-bilevel": "Điều 1. Phạm vi điều chỉnh",
+        "shown-by-scan-route": "Điều 1. Phạm vi điều chỉnh"
       }
     },
     {
@@ -117,7 +141,9 @@
         "ocr-upscaled": "Điều 2. Giải thích từ ngữ",
         "oracle-better-ocr-view": "Điều 2. Giải thích từ ngữ",
         "vlm-blind-crop": "Điều 2. Giải thích từ ngữ",
-        "vlm-blind-crop-2x": "Điều 2. Giải thích từ ngữ"
+        "vlm-blind-crop-2x": "Điều 2. Giải thích từ ngữ",
+        "vlm-blind-crop-2x-bilevel": "Điều 2. Giải thích từ ngữ",
+        "shown-by-scan-route": "Điều 2. Giải thích từ ngữ"
       }
     },
     {
@@ -129,7 +155,9 @@
         "ocr-upscaled": "Điều 3. Giá trị pháp lý của bản sao được cấp từ số gốc, | bản sao được",
         "oracle-better-ocr-view": "Điều 3. Giá trị pháp lý của bản sao được cấp từ số gốc, | bản sao được",
         "vlm-blind-crop": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được",
-        "vlm-blind-crop-2x": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được"
+        "vlm-blind-crop-2x": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được",
+        "vlm-blind-crop-2x-bilevel": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được",
+        "shown-by-scan-route": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được"
       }
     },
     {
@@ -141,7 +169,9 @@
         "ocr-upscaled": "chứng thực từ bản chính, chữ ir ký được chứng thực và hợp đồng, giao dịch",
         "oracle-better-ocr-view": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
         "vlm-blind-crop": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
-        "vlm-blind-crop-2x": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch"
+        "vlm-blind-crop-2x": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
+        "shown-by-scan-route": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch"
       }
     },
     {
@@ -153,7 +183,9 @@
         "ocr-upscaled": "được chứng thực",
         "oracle-better-ocr-view": "được chứng thực",
         "vlm-blind-crop": "được chứng thực",
-        "vlm-blind-crop-2x": "được chứng thực"
+        "vlm-blind-crop-2x": "được chứng thực",
+        "vlm-blind-crop-2x-bilevel": "được chứng thực",
+        "shown-by-scan-route": "được chứng thực"
       }
     },
     {
@@ -165,7 +197,9 @@
         "ocr-upscaled": "Điều 4. Tham quyên và trách nhiệm cap ban sao từ so gốc",
         "oracle-better-ocr-view": "Điều 4. Tham quyền và trách nhiệm cap bản sao từ sô gốc",
         "vlm-blind-crop": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc",
-        "vlm-blind-crop-2x": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc"
+        "vlm-blind-crop-2x": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc",
+        "vlm-blind-crop-2x-bilevel": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc",
+        "shown-by-scan-route": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc"
       }
     },
     {
@@ -177,7 +211,9 @@
         "ocr-upscaled": "Điều 5. Tham quyền và trách nhiệm chứng thực",
         "oracle-better-ocr-view": "Điều 5. Tham quyền và trách nhiệm chứng thực",
         "vlm-blind-crop": "Điều 5. Thẩm quyền và trách nhiệm chứng thực",
-        "vlm-blind-crop-2x": "Điều 5. Thẩm quyền và trách nhiệm chứng thực"
+        "vlm-blind-crop-2x": "Điều 5. Thẩm quyền và trách nhiệm chứng thực",
+        "vlm-blind-crop-2x-bilevel": "Điều 5. Thẩm quyền và trách nhiệm chứng thực",
+        "shown-by-scan-route": "Điều 5. Thẩm quyền và trách nhiệm chứng thực"
       }
     },
     {
@@ -189,7 +225,9 @@
         "ocr-upscaled": "Điều 6. Trách nhiệm của cơ quan, tô chức tiép nhận ban sao",
         "oracle-better-ocr-view": "Điều 6. Trách nhiệm của cơ quan, to chức tiép nhận ban sao",
         "vlm-blind-crop": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao",
-        "vlm-blind-crop-2x": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao"
+        "vlm-blind-crop-2x": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao",
+        "vlm-blind-crop-2x-bilevel": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao",
+        "shown-by-scan-route": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao"
       }
     },
     {
@@ -201,7 +239,9 @@
         "ocr-upscaled": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
         "oracle-better-ocr-view": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
         "vlm-blind-crop": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
-        "vlm-blind-crop-2x": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực"
+        "vlm-blind-crop-2x": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
+        "vlm-blind-crop-2x-bilevel": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
+        "shown-by-scan-route": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực"
       }
     },
     {
@@ -213,7 +253,9 @@
         "ocr-upscaled": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
         "oracle-better-ocr-view": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
         "vlm-blind-crop": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
-        "vlm-blind-crop-2x": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực"
+        "vlm-blind-crop-2x": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
+        "vlm-blind-crop-2x-bilevel": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
+        "shown-by-scan-route": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực"
       }
     },
     {
@@ -225,7 +267,9 @@
         "ocr-upscaled": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
         "oracle-better-ocr-view": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
         "vlm-blind-crop": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
-        "vlm-blind-crop-2x": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực"
+        "vlm-blind-crop-2x": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
+        "vlm-blind-crop-2x-bilevel": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
+        "shown-by-scan-route": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực"
       }
     },
     {
@@ -237,7 +281,9 @@
         "ocr-upscaled": "Điều 10. Địa điểm chứng thực",
         "oracle-better-ocr-view": "Điều 10. Địa điểm chứng thực",
         "vlm-blind-crop": "Điều 10. Địa điểm chứng thực",
-        "vlm-blind-crop-2x": "Điều 10. Địa điểm chứng thực"
+        "vlm-blind-crop-2x": "Điều 10. Địa điểm chứng thực",
+        "vlm-blind-crop-2x-bilevel": "Điều 10. Địa điểm chứng thực",
+        "shown-by-scan-route": "Điều 10. Địa điểm chứng thực"
       }
     },
     {
@@ -249,7 +295,9 @@
         "ocr-upscaled": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dich",
         "oracle-better-ocr-view": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao địch",
         "vlm-blind-crop": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch",
-        "vlm-blind-crop-2x": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch"
+        "vlm-blind-crop-2x": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch",
+        "shown-by-scan-route": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch"
       }
     },
     {
@@ -261,7 +309,9 @@
         "ocr-upscaled": "Điều 12. Lời chứng",
         "oracle-better-ocr-view": "Điều 12. Lời chứng",
         "vlm-blind-crop": "Điều 12. Lời chứng",
-        "vlm-blind-crop-2x": "Điều 12. Lời chứng"
+        "vlm-blind-crop-2x": "Điều 12. Lời chứng",
+        "vlm-blind-crop-2x-bilevel": "Điều 12. Lời chứng",
+        "shown-by-scan-route": "Điều 12. Lời chứng"
       }
     },
     {
@@ -273,7 +323,9 @@
         "ocr-upscaled": "Điều 13. Số chứng thực và số chứng thực",
         "oracle-better-ocr-view": "Điều 13. Số chứng thực và số chứng thực",
         "vlm-blind-crop": "Điều 13. Sổ chứng thực và số chứng thực",
-        "vlm-blind-crop-2x": "Điều 13. Sổ chứng thực và số chứng thực"
+        "vlm-blind-crop-2x": "Điều 13. Sổ chứng thực và số chứng thực",
+        "vlm-blind-crop-2x-bilevel": "Điều 13. Sổ chứng thực và số chứng thực",
+        "shown-by-scan-route": "Điều 13. Sổ chứng thực và số chứng thực"
       }
     },
     {
@@ -285,7 +337,9 @@
         "ocr-upscaled": "Điều 14. Chế độ lưu trữ",
         "oracle-better-ocr-view": "Điều 14. Chế độ lưu trữ",
         "vlm-blind-crop": "Điều 14. Chế độ lưu trữ",
-        "vlm-blind-crop-2x": "Điều 14. Chế độ lưu trữ"
+        "vlm-blind-crop-2x": "Điều 14. Chế độ lưu trữ",
+        "vlm-blind-crop-2x-bilevel": "Điều 14. Chế độ lưu trữ",
+        "shown-by-scan-route": "Điều 14. Chế độ lưu trữ"
       }
     },
     {
@@ -297,7 +351,9 @@
         "ocr-upscaled": "Điều 15. Lệ phí chứng thực, chỉ phí khác",
         "oracle-better-ocr-view": "Điều 15. Lệ phí chứng thực, chỉ phí khác",
         "vlm-blind-crop": "Điều 15. Lệ phí chứng thực, chi phí khác",
-        "vlm-blind-crop-2x": "Điều 15. Lệ phí chứng thực, chi phí khác"
+        "vlm-blind-crop-2x": "Điều 15. Lệ phí chứng thực, chi phí khác",
+        "vlm-blind-crop-2x-bilevel": "Điều 15. Lệ phí chứng thực, chi phí khác",
+        "shown-by-scan-route": "Điều 15. Lệ phí chứng thực, chi phí khác"
       }
     },
     {
@@ -309,7 +365,9 @@
         "ocr-upscaled": "Chương II",
         "oracle-better-ocr-view": "Chương II",
         "vlm-blind-crop": "Chương II",
-        "vlm-blind-crop-2x": "Chương II"
+        "vlm-blind-crop-2x": "Chương II",
+        "vlm-blind-crop-2x-bilevel": "Chương II",
+        "shown-by-scan-route": "Chương II"
       }
     },
     {
@@ -321,7 +379,9 @@
         "ocr-upscaled": "CAP BAN SAO TỪ SO GOC, CHUNG THỰC BAN SAO TU BAN CHINH,",
         "oracle-better-ocr-view": "CẤP BẢN SAO TỪ SO GÓC, CHUNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
         "vlm-blind-crop": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
-        "vlm-blind-crop-2x": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,"
+        "vlm-blind-crop-2x": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
+        "vlm-blind-crop-2x-bilevel": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
+        "shown-by-scan-route": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,"
       }
     },
     {
@@ -333,7 +393,9 @@
         "ocr-upscaled": "CHUNG THUC CHU KY",
         "oracle-better-ocr-view": "CHỨNG THỰC CHỮ KÝ",
         "vlm-blind-crop": "CHỨNG THỰC CHỮ KÝ",
-        "vlm-blind-crop-2x": "CHỨNG THỰC CHỮ KÝ"
+        "vlm-blind-crop-2x": "CHỨNG THỰC CHỮ KÝ",
+        "vlm-blind-crop-2x-bilevel": "CHỨNG THỰC CHỮ KÝ",
+        "shown-by-scan-route": "CHỨNG THỰC CHỮ KÝ"
       }
     },
     {
@@ -345,7 +407,9 @@
         "ocr-upscaled": null,
         "oracle-better-ocr-view": "¬ MueL n ca",
         "vlm-blind-crop": "Mục 1",
-        "vlm-blind-crop-2x": "Mục 1"
+        "vlm-blind-crop-2x": "Mục 1",
+        "vlm-blind-crop-2x-bilevel": "Mục 1",
+        "shown-by-scan-route": "Mục 1"
       }
     },
     {
@@ -357,7 +421,9 @@
         "ocr-upscaled": "CÁP BẢN SAO TỪ sO GÓC",
         "oracle-better-ocr-view": "CÁP BẢN SAO TỪ sO GÓC",
         "vlm-blind-crop": "CẤP BẢN SAO TỪ SỔ GỐC",
-        "vlm-blind-crop-2x": "CẤP BẢN SAO TỪ SỔ GỐC"
+        "vlm-blind-crop-2x": "CẤP BẢN SAO TỪ SỔ GỐC",
+        "vlm-blind-crop-2x-bilevel": "CẤP BẢN SAO TỪ SỔ GỐC",
+        "shown-by-scan-route": "CẤP BẢN SAO TỪ SỔ GỐC"
       }
     },
     {
@@ -369,7 +435,9 @@
         "ocr-upscaled": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ số gốc",
         "oracle-better-ocr-view": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ số gốc",
         "vlm-blind-crop": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc",
-        "vlm-blind-crop-2x": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc"
+        "vlm-blind-crop-2x": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc",
+        "vlm-blind-crop-2x-bilevel": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc",
+        "shown-by-scan-route": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc"
       }
     },
     {
@@ -381,7 +449,9 @@
         "ocr-upscaled": "Điều 17. Thủ tục cấp bản sao từ số gốc",
         "oracle-better-ocr-view": "Điều 17. Thủ tục cấp bản sao từ số gốc",
         "vlm-blind-crop": "Điều 17. Thủ tục cấp bản sao từ sổ gốc",
-        "vlm-blind-crop-2x": "Điều 17. Thủ tục cấp bản sao từ sổ gốc"
+        "vlm-blind-crop-2x": "Điều 17. Thủ tục cấp bản sao từ sổ gốc",
+        "vlm-blind-crop-2x-bilevel": "Điều 17. Thủ tục cấp bản sao từ sổ gốc",
+        "shown-by-scan-route": "Điều 17. Thủ tục cấp bản sao từ sổ gốc"
       }
     },
     {
@@ -393,7 +463,9 @@
         "ocr-upscaled": "Mục 2",
         "oracle-better-ocr-view": "Mục 2",
         "vlm-blind-crop": "Mục 2",
-        "vlm-blind-crop-2x": "Mục 2"
+        "vlm-blind-crop-2x": "Mục 2",
+        "vlm-blind-crop-2x-bilevel": "Mục 2",
+        "shown-by-scan-route": "Mục 2"
       }
     },
     {
@@ -405,7 +477,9 @@
         "ocr-upscaled": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
         "oracle-better-ocr-view": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
         "vlm-blind-crop": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
-        "vlm-blind-crop-2x": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH"
+        "vlm-blind-crop-2x": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "vlm-blind-crop-2x-bilevel": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "shown-by-scan-route": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH"
       }
     },
     {
@@ -417,7 +491,9 @@
         "ocr-upscaled": "Điều 18. Giấy tờ, văn ban làm cơ sở để chứng thực ban sao từ",
         "oracle-better-ocr-view": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
         "vlm-blind-crop": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
-        "vlm-blind-crop-2x": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ"
+        "vlm-blind-crop-2x": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
+        "vlm-blind-crop-2x-bilevel": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
+        "shown-by-scan-route": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ"
       }
     },
     {
@@ -429,7 +505,9 @@
         "ocr-upscaled": "ban chính",
         "oracle-better-ocr-view": "bản chính",
         "vlm-blind-crop": "bản chính",
-        "vlm-blind-crop-2x": "bản chính"
+        "vlm-blind-crop-2x": "bản chính",
+        "vlm-blind-crop-2x-bilevel": "bản chính",
+        "shown-by-scan-route": "bản chính"
       }
     },
     {
@@ -441,7 +519,9 @@
         "ocr-upscaled": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
         "oracle-better-ocr-view": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
         "vlm-blind-crop": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
-        "vlm-blind-crop-2x": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và"
+        "vlm-blind-crop-2x": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
+        "vlm-blind-crop-2x-bilevel": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
+        "shown-by-scan-route": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và"
       }
     },
     {
@@ -453,7 +533,9 @@
         "ocr-upscaled": "người thực hiện chứng thực bản sao từ bản chính",
         "oracle-better-ocr-view": "người thực hiện chứng thực bản sao từ bản chính",
         "vlm-blind-crop": "người thực hiện chứng thực bản sao từ bản chính",
-        "vlm-blind-crop-2x": "người thực hiện chứng thực bản sao từ bản chính"
+        "vlm-blind-crop-2x": "người thực hiện chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-bilevel": "người thực hiện chứng thực bản sao từ bản chính",
+        "shown-by-scan-route": "người thực hiện chứng thực bản sao từ bản chính"
       }
     },
     {
@@ -465,7 +547,9 @@
         "ocr-upscaled": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
         "oracle-better-ocr-view": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
         "vlm-blind-crop": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
-        "vlm-blind-crop-2x": "Điều 20. Thủ tục chứng thực bản sao từ bản chính"
+        "vlm-blind-crop-2x": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-bilevel": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
+        "shown-by-scan-route": "Điều 20. Thủ tục chứng thực bản sao từ bản chính"
       }
     },
     {
@@ -477,7 +561,9 @@
         "ocr-upscaled": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
         "oracle-better-ocr-view": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
         "vlm-blind-crop": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
-        "vlm-blind-crop-2x": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính"
+        "vlm-blind-crop-2x": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-bilevel": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
+        "shown-by-scan-route": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính"
       }
     },
     {
@@ -489,7 +575,9 @@
         "ocr-upscaled": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
         "oracle-better-ocr-view": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
         "vlm-blind-crop": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
-        "vlm-blind-crop-2x": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để"
+        "vlm-blind-crop-2x": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
+        "vlm-blind-crop-2x-bilevel": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
+        "shown-by-scan-route": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để"
       }
     },
     {
@@ -501,7 +589,9 @@
         "ocr-upscaled": null,
         "oracle-better-ocr-view": "chứng thực bản sao",
         "vlm-blind-crop": "chứng thực bản sao",
-        "vlm-blind-crop-2x": "chứng thực bản sao"
+        "vlm-blind-crop-2x": "chứng thực bản sao",
+        "vlm-blind-crop-2x-bilevel": "chứng thực bản sao",
+        "shown-by-scan-route": "chứng thực bản sao"
       }
     },
     {
@@ -513,7 +603,9 @@
         "ocr-upscaled": "Mục 3",
         "oracle-better-ocr-view": "Mục 3",
         "vlm-blind-crop": "Mục 3",
-        "vlm-blind-crop-2x": "Mục 3"
+        "vlm-blind-crop-2x": "Mục 3",
+        "vlm-blind-crop-2x-bilevel": "Mục 3",
+        "shown-by-scan-route": "Mục 3"
       }
     },
     {
@@ -525,7 +617,9 @@
         "ocr-upscaled": "CHỨNG THỰC CHỮ KÝ",
         "oracle-better-ocr-view": "CHỨNG THỰC CHỮ KÝ",
         "vlm-blind-crop": "Mục 3\nCHỨNG THỰC CHỮ KÝ",
-        "vlm-blind-crop-2x": "CHỨNG THỰC CHỮ KÝ"
+        "vlm-blind-crop-2x": "CHỨNG THỰC CHỮ KÝ",
+        "vlm-blind-crop-2x-bilevel": "Mục 3\nCHỨNG THỰC CHỮ KÝ",
+        "shown-by-scan-route": "CHỨNG THỰC CHỮ KÝ"
       }
     },
     {
@@ -537,7 +631,9 @@
         "ocr-upscaled": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
         "oracle-better-ocr-view": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
         "vlm-blind-crop": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
-        "vlm-blind-crop-2x": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và"
+        "vlm-blind-crop-2x": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
+        "vlm-blind-crop-2x-bilevel": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
+        "shown-by-scan-route": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và"
       }
     },
     {
@@ -549,7 +645,9 @@
         "ocr-upscaled": "người thực hiện chứng thực chữ ký",
         "oracle-better-ocr-view": "người thực hiện chứng thực chữ ký",
         "vlm-blind-crop": "người thực hiện chứng thực chữ ký",
-        "vlm-blind-crop-2x": "người thực hiện chứng thực chữ ký"
+        "vlm-blind-crop-2x": "người thực hiện chứng thực chữ ký",
+        "vlm-blind-crop-2x-bilevel": "người thực hiện chứng thực chữ ký",
+        "shown-by-scan-route": "người thực hiện chứng thực chữ ký"
       }
     },
     {
@@ -561,7 +659,9 @@
         "ocr-upscaled": "Điều 24. Thủ tục chứng thực chữ ký",
         "oracle-better-ocr-view": "Điều 24. Thủ tục chứng thực chữ ký",
         "vlm-blind-crop": "Điều 24. Thủ tục chứng thực chữ ký",
-        "vlm-blind-crop-2x": "Điều 24. Thủ tục chứng thực chữ ký"
+        "vlm-blind-crop-2x": "Điều 24. Thủ tục chứng thực chữ ký",
+        "vlm-blind-crop-2x-bilevel": "Điều 24. Thủ tục chứng thực chữ ký",
+        "shown-by-scan-route": "Điều 24. Thủ tục chứng thực chữ ký"
       }
     },
     {
@@ -573,7 +673,9 @@
         "ocr-upscaled": "Điều 25. Trường hợp không được chứng thực chữ ký",
         "oracle-better-ocr-view": "Điều 25. Trường hợp không được chứng thực chữ ký",
         "vlm-blind-crop": "Điều 25. Trường hợp không được chứng thực chữ ký",
-        "vlm-blind-crop-2x": "Điều 25. Trường hợp không được chứng thực chữ ký"
+        "vlm-blind-crop-2x": "Điều 25. Trường hợp không được chứng thực chữ ký",
+        "vlm-blind-crop-2x-bilevel": "Điều 25. Trường hợp không được chứng thực chữ ký",
+        "shown-by-scan-route": "Điều 25. Trường hợp không được chứng thực chữ ký"
       }
     },
     {
@@ -585,7 +687,9 @@
         "ocr-upscaled": "Điều 26. Áp dụng trong trường hợp đặc biệt",
         "oracle-better-ocr-view": "Điều 26. Áp dụng trong trường hợp đặc biệt",
         "vlm-blind-crop": "Điều 26. Áp dụng trong trường hợp đặc biệt",
-        "vlm-blind-crop-2x": "Điều 26. Áp dụng trong trường hợp đặc biệt"
+        "vlm-blind-crop-2x": "Điều 26. Áp dụng trong trường hợp đặc biệt",
+        "vlm-blind-crop-2x-bilevel": "Điều 26. Áp dụng trong trường hợp đặc biệt",
+        "shown-by-scan-route": "Điều 26. Áp dụng trong trường hợp đặc biệt"
       }
     },
     {
@@ -597,7 +701,9 @@
         "ocr-upscaled": "Mục 4",
         "oracle-better-ocr-view": "Mục 4",
         "vlm-blind-crop": "Mục 4",
-        "vlm-blind-crop-2x": "Mục 4"
+        "vlm-blind-crop-2x": "Mục 4",
+        "vlm-blind-crop-2x-bilevel": "Mục 4",
+        "shown-by-scan-route": "Mục 4"
       }
     },
     {
@@ -609,7 +715,9 @@
         "ocr-upscaled": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
         "oracle-better-ocr-view": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
         "vlm-blind-crop": "Mục 4\nNGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
-        "vlm-blind-crop-2x": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH"
+        "vlm-blind-crop-2x": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "vlm-blind-crop-2x-bilevel": "Mục 4\nNGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "shown-by-scan-route": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH"
       }
     },
     {
@@ -621,7 +729,9 @@
         "ocr-upscaled": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
         "oracle-better-ocr-view": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
         "vlm-blind-crop": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
-        "vlm-blind-crop-2x": "Điều 27. Tiêu chuẩn, điều kiện của người dịch"
+        "vlm-blind-crop-2x": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
+        "vlm-blind-crop-2x-bilevel": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
+        "shown-by-scan-route": "Điều 27. Tiêu chuẩn, điều kiện của người dịch"
       }
     },
     {
@@ -633,7 +743,9 @@
         "ocr-upscaled": "Điều 28. Cộng tác viên dịch thuật",
         "oracle-better-ocr-view": "Điều 28. Cộng tác viên dịch thuật",
         "vlm-blind-crop": "Điều 28. Cộng tác viên dịch thuật",
-        "vlm-blind-crop-2x": "Điều 28. Cộng tác viên dịch thuật"
+        "vlm-blind-crop-2x": "Điều 28. Cộng tác viên dịch thuật",
+        "vlm-blind-crop-2x-bilevel": "Điều 28. Cộng tác viên dịch thuật",
+        "shown-by-scan-route": "Điều 28. Cộng tác viên dịch thuật"
       }
     },
     {
@@ -645,7 +757,9 @@
         "ocr-upscaled": "Điều 29. Đăng ký chữ ký mẫu",
         "oracle-better-ocr-view": "Điều 29. Đăng ký chữ ký mẫu",
         "vlm-blind-crop": "Điều 29. Đăng ký chữ ký mẫu",
-        "vlm-blind-crop-2x": "Điều 29. Đăng ký chữ ký mẫu"
+        "vlm-blind-crop-2x": "Điều 29. Đăng ký chữ ký mẫu",
+        "vlm-blind-crop-2x-bilevel": "Điều 29. Đăng ký chữ ký mẫu",
+        "shown-by-scan-route": "Điều 29. Đăng ký chữ ký mẫu"
       }
     },
     {
@@ -657,7 +771,9 @@
         "ocr-upscaled": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
         "oracle-better-ocr-view": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
         "vlm-blind-crop": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
-        "vlm-blind-crop-2x": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực"
+        "vlm-blind-crop-2x": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
+        "vlm-blind-crop-2x-bilevel": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
+        "shown-by-scan-route": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực"
       }
     },
     {
@@ -669,7 +785,9 @@
         "ocr-upscaled": "chữ ký người dịch",
         "oracle-better-ocr-view": "chữ ký người dịch",
         "vlm-blind-crop": "chữ ký người dịch",
-        "vlm-blind-crop-2x": "chữ ký người dịch"
+        "vlm-blind-crop-2x": "chữ ký người dịch",
+        "vlm-blind-crop-2x-bilevel": "chữ ký người dịch",
+        "shown-by-scan-route": "chữ ký người dịch"
       }
     },
     {
@@ -681,7 +799,9 @@
         "ocr-upscaled": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
         "oracle-better-ocr-view": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
         "vlm-blind-crop": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
-        "vlm-blind-crop-2x": "Điều 31. Thủ tục chứng thực chữ ký người dịch"
+        "vlm-blind-crop-2x": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-bilevel": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
+        "shown-by-scan-route": "Điều 31. Thủ tục chứng thực chữ ký người dịch"
       }
     },
     {
@@ -693,7 +813,9 @@
         "ocr-upscaled": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
         "oracle-better-ocr-view": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
         "vlm-blind-crop": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
-        "vlm-blind-crop-2x": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký"
+        "vlm-blind-crop-2x": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
+        "vlm-blind-crop-2x-bilevel": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
+        "shown-by-scan-route": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký"
       }
     },
     {
@@ -705,7 +827,9 @@
         "ocr-upscaled": "người dịch",
         "oracle-better-ocr-view": "người dịch",
         "vlm-blind-crop": "người dịch",
-        "vlm-blind-crop-2x": "người dịch"
+        "vlm-blind-crop-2x": "người dịch",
+        "vlm-blind-crop-2x-bilevel": "người dịch",
+        "shown-by-scan-route": "người dịch"
       }
     },
     {
@@ -717,7 +841,9 @@
         "ocr-upscaled": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
         "oracle-better-ocr-view": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
         "vlm-blind-crop": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
-        "vlm-blind-crop-2x": "Điều 33. Thời hạn chứng thực chữ ký người dịch"
+        "vlm-blind-crop-2x": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-bilevel": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
+        "shown-by-scan-route": "Điều 33. Thời hạn chứng thực chữ ký người dịch"
       }
     },
     {
@@ -729,7 +855,9 @@
         "ocr-upscaled": "Chương II",
         "oracle-better-ocr-view": "Chương II",
         "vlm-blind-crop": "Chương III",
-        "vlm-blind-crop-2x": "Chương III"
+        "vlm-blind-crop-2x": "Chương III",
+        "vlm-blind-crop-2x-bilevel": "Chương III",
+        "shown-by-scan-route": "Chương III"
       }
     },
     {
@@ -741,7 +869,9 @@
         "ocr-upscaled": "CHỨNG THỰC HỢP ĐÒNG, GIAO DỊCH",
         "oracle-better-ocr-view": "CHỨNG THỰC HỢP ĐÒNG, GIAO DỊCH",
         "vlm-blind-crop": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
-        "vlm-blind-crop-2x": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH"
+        "vlm-blind-crop-2x": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
+        "vlm-blind-crop-2x-bilevel": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
+        "shown-by-scan-route": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH"
       }
     },
     {
@@ -753,7 +883,9 @@
         "ocr-upscaled": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
         "oracle-better-ocr-view": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
-        "vlm-blind-crop-2x": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch"
+        "vlm-blind-crop-2x": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
+        "shown-by-scan-route": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch"
       }
     },
     {
@@ -765,7 +897,9 @@
         "ocr-upscaled": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
         "oracle-better-ocr-view": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
         "vlm-blind-crop": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
-        "vlm-blind-crop-2x": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao"
+        "vlm-blind-crop-2x": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
+        "vlm-blind-crop-2x-bilevel": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
+        "shown-by-scan-route": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao"
       }
     },
     {
@@ -777,7 +911,9 @@
         "ocr-upscaled": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
         "oracle-better-ocr-view": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
-        "vlm-blind-crop-2x": "dịch và người thực hiện chứng thực hợp đồng, giao dịch"
+        "vlm-blind-crop-2x": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
+        "shown-by-scan-route": "dịch và người thực hiện chứng thực hợp đồng, giao dịch"
       }
     },
     {
@@ -789,7 +925,9 @@
         "ocr-upscaled": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
         "oracle-better-ocr-view": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
-        "vlm-blind-crop-2x": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch"
+        "vlm-blind-crop-2x": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
+        "shown-by-scan-route": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch"
       }
     },
     {
@@ -801,7 +939,9 @@
         "ocr-upscaled": "_— Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
         "oracle-better-ocr-view": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
-        "vlm-blind-crop-2x": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch"
+        "vlm-blind-crop-2x": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
+        "shown-by-scan-route": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch"
       }
     },
     {
@@ -813,7 +953,9 @@
         "ocr-upscaled": "Điều 38. Chứng thực việc sửa đổi, bỗ sung, hủy bỏ hợp đồng, giao dịch",
         "oracle-better-ocr-view": "Điều 38. Chứng thực việc sửa đổi, bỗ sung, hủy bỏ hợp đồng, giao dịch",
         "vlm-blind-crop": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch",
-        "vlm-blind-crop-2x": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch"
+        "vlm-blind-crop-2x": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch",
+        "shown-by-scan-route": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch"
       }
     },
     {
@@ -825,7 +967,9 @@
         "ocr-upscaled": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
         "oracle-better-ocr-view": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
         "vlm-blind-crop": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
-        "vlm-blind-crop-2x": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực"
+        "vlm-blind-crop-2x": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
+        "vlm-blind-crop-2x-bilevel": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
+        "shown-by-scan-route": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực"
       }
     },
     {
@@ -837,7 +981,9 @@
         "ocr-upscaled": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
         "oracle-better-ocr-view": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
         "vlm-blind-crop": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
-        "vlm-blind-crop-2x": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao"
+        "vlm-blind-crop-2x": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
+        "vlm-blind-crop-2x-bilevel": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
+        "shown-by-scan-route": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao"
       }
     },
     {
@@ -849,7 +995,9 @@
         "ocr-upscaled": "dịch đã được chứng thực",
         "oracle-better-ocr-view": "dịch đã được chứng thực",
         "vlm-blind-crop": "dịch đã được chứng thực",
-        "vlm-blind-crop-2x": "dịch đã được chứng thực"
+        "vlm-blind-crop-2x": "dịch đã được chứng thực",
+        "vlm-blind-crop-2x-bilevel": "dịch đã được chứng thực",
+        "shown-by-scan-route": "dịch đã được chứng thực"
       }
     },
     {
@@ -861,7 +1009,9 @@
         "ocr-upscaled": null,
         "oracle-better-ocr-view": ". „ , Chương IV",
         "vlm-blind-crop": "Chương IV",
-        "vlm-blind-crop-2x": "Chương IV"
+        "vlm-blind-crop-2x": "Chương IV",
+        "vlm-blind-crop-2x-bilevel": "Chương IV",
+        "shown-by-scan-route": "Chương IV"
       }
     },
     {
@@ -873,7 +1023,9 @@
         "ocr-upscaled": "QUAN LÝ NHÀ NƯỚC VE CHUNG THỰC",
         "oracle-better-ocr-view": "QUAN LÝ NHÀ NƯỚC VE CHUNG THỰC",
         "vlm-blind-crop": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC",
-        "vlm-blind-crop-2x": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC"
+        "vlm-blind-crop-2x": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC",
+        "vlm-blind-crop-2x-bilevel": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC",
+        "shown-by-scan-route": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC"
       }
     },
     {
@@ -885,7 +1037,9 @@
         "ocr-upscaled": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
         "oracle-better-ocr-view": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
         "vlm-blind-crop": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
-        "vlm-blind-crop-2x": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về"
+        "vlm-blind-crop-2x": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
+        "vlm-blind-crop-2x-bilevel": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
+        "shown-by-scan-route": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về"
       }
     },
     {
@@ -897,7 +1051,9 @@
         "ocr-upscaled": "chứng thực",
         "oracle-better-ocr-view": "chứng thực",
         "vlm-blind-crop": "chứng thực",
-        "vlm-blind-crop-2x": "chứng thực"
+        "vlm-blind-crop-2x": "chứng thực",
+        "vlm-blind-crop-2x-bilevel": "chứng thực",
+        "shown-by-scan-route": "chứng thực"
       }
     },
     {
@@ -909,7 +1065,9 @@
         "ocr-upscaled": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
         "oracle-better-ocr-view": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
         "vlm-blind-crop": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
-        "vlm-blind-crop-2x": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về"
+        "vlm-blind-crop-2x": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
+        "vlm-blind-crop-2x-bilevel": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
+        "shown-by-scan-route": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về"
       }
     },
     {
@@ -921,7 +1079,9 @@
         "ocr-upscaled": "chứng thực",
         "oracle-better-ocr-view": "chứng thực",
         "vlm-blind-crop": "chứng thực",
-        "vlm-blind-crop-2x": "chứng thực"
+        "vlm-blind-crop-2x": "chứng thực",
+        "vlm-blind-crop-2x-bilevel": "chứng thực",
+        "shown-by-scan-route": "chứng thực"
       }
     },
     {
@@ -933,7 +1093,9 @@
         "ocr-upscaled": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
         "oracle-better-ocr-view": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
         "vlm-blind-crop": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
-        "vlm-blind-crop-2x": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý"
+        "vlm-blind-crop-2x": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
+        "vlm-blind-crop-2x-bilevel": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
+        "shown-by-scan-route": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý"
       }
     },
     {
@@ -945,7 +1107,9 @@
         "ocr-upscaled": "nhà nước về chứng thực",
         "oracle-better-ocr-view": "nhà nước về chứng thực",
         "vlm-blind-crop": "nhà nước về chứng thực",
-        "vlm-blind-crop-2x": "nhà nước về chứng thực"
+        "vlm-blind-crop-2x": "nhà nước về chứng thực",
+        "vlm-blind-crop-2x-bilevel": "nhà nước về chứng thực",
+        "shown-by-scan-route": "nhà nước về chứng thực"
       }
     },
     {
@@ -957,7 +1121,9 @@
         "ocr-upscaled": "Điều 44. Xử lý vi phạm",
         "oracle-better-ocr-view": "Điều 44. Xử lý vi phạm",
         "vlm-blind-crop": "Điều 44. Xử lý vi phạm",
-        "vlm-blind-crop-2x": "Điều 44. Xử lý vi phạm"
+        "vlm-blind-crop-2x": "Điều 44. Xử lý vi phạm",
+        "vlm-blind-crop-2x-bilevel": "Điều 44. Xử lý vi phạm",
+        "shown-by-scan-route": "Điều 44. Xử lý vi phạm"
       }
     },
     {
@@ -969,7 +1135,9 @@
         "ocr-upscaled": "Điều 45. Khiêu nại, tô cáo và giải quyêt khiêu nại, to cao",
         "oracle-better-ocr-view": "Điều 45. Khiéu nại, tô cáo và giải quyet khiêu nại, tô cao",
         "vlm-blind-crop": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo",
-        "vlm-blind-crop-2x": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo"
+        "vlm-blind-crop-2x": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo",
+        "vlm-blind-crop-2x-bilevel": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo",
+        "shown-by-scan-route": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo"
       }
     },
     {
@@ -981,7 +1149,9 @@
         "ocr-upscaled": "Chương V _",
         "oracle-better-ocr-view": "ChươngV",
         "vlm-blind-crop": "Chương V",
-        "vlm-blind-crop-2x": "Chương V"
+        "vlm-blind-crop-2x": "Chương V",
+        "vlm-blind-crop-2x-bilevel": "Chương V",
+        "shown-by-scan-route": "Chương V"
       }
     },
     {
@@ -993,7 +1163,9 @@
         "ocr-upscaled": "DIEU KHOẢN THI HANH",
         "oracle-better-ocr-view": "DIEU KHOẢN THI HANH",
         "vlm-blind-crop": "ĐIỀU KHOẢN THI HÀNH",
-        "vlm-blind-crop-2x": "ĐIỀU KHOẢN THI HÀNH"
+        "vlm-blind-crop-2x": "ĐIỀU KHOẢN THI HÀNH",
+        "vlm-blind-crop-2x-bilevel": "ĐIỀU KHOẢN THI HÀNH",
+        "shown-by-scan-route": "ĐIỀU KHOẢN THI HÀNH"
       }
     },
     {
@@ -1005,7 +1177,9 @@
         "ocr-upscaled": "Điều 46. Nhiệm vu của các tô chức hành nghề công chứng",
         "oracle-better-ocr-view": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
         "vlm-blind-crop": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
-        "vlm-blind-crop-2x": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng"
+        "vlm-blind-crop-2x": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
+        "vlm-blind-crop-2x-bilevel": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
+        "shown-by-scan-route": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng"
       }
     },
     {
@@ -1017,7 +1191,9 @@
         "ocr-upscaled": "Điều 47. Điều khoản chuyển tiếp",
         "oracle-better-ocr-view": "Điều 47. Điều khoản chuyển tiếp",
         "vlm-blind-crop": "Điều 47. Điều khoản chuyển tiếp",
-        "vlm-blind-crop-2x": "Điều 47. Điều khoản chuyển tiếp"
+        "vlm-blind-crop-2x": "Điều 47. Điều khoản chuyển tiếp",
+        "vlm-blind-crop-2x-bilevel": "Điều 47. Điều khoản chuyển tiếp",
+        "shown-by-scan-route": "Điều 47. Điều khoản chuyển tiếp"
       }
     },
     {
@@ -1029,7 +1205,9 @@
         "ocr-upscaled": "Điều 48. Hiệu lực thi hành",
         "oracle-better-ocr-view": "Điều 48. Hiệu lực thi hành",
         "vlm-blind-crop": "Điều 48. Hiệu lực thi hành",
-        "vlm-blind-crop-2x": "Điều 48. Hiệu lực thi hành"
+        "vlm-blind-crop-2x": "Điều 48. Hiệu lực thi hành",
+        "vlm-blind-crop-2x-bilevel": "Điều 48. Hiệu lực thi hành",
+        "shown-by-scan-route": "Điều 48. Hiệu lực thi hành"
       }
     },
     {
@@ -1041,7 +1219,9 @@
         "ocr-upscaled": "Điều 49. Trach nhiệm thi hành",
         "oracle-better-ocr-view": "Điều 49. Trách nhiệm thi hành",
         "vlm-blind-crop": "Điều 49. Trách nhiệm thi hành",
-        "vlm-blind-crop-2x": "Điều 49. Trách nhiệm thi hành"
+        "vlm-blind-crop-2x": "Điều 49. Trách nhiệm thi hành",
+        "vlm-blind-crop-2x-bilevel": "Điều 49. Trách nhiệm thi hành",
+        "shown-by-scan-route": "Điều 49. Trách nhiệm thi hành"
       }
     },
     {
@@ -1053,7 +1233,9 @@
         "ocr-upscaled": null,
         "oracle-better-ocr-view": "Phụ lục",
         "vlm-blind-crop": "Phụ lục",
-        "vlm-blind-crop-2x": "Phụ lục"
+        "vlm-blind-crop-2x": "Phụ lục",
+        "vlm-blind-crop-2x-bilevel": "Phụ lục",
+        "shown-by-scan-route": "Phụ lục"
       }
     },
     {
@@ -1065,7 +1247,9 @@
         "ocr-upscaled": "I. LỜI CHỨNG",
         "oracle-better-ocr-view": "I. LỜI CHỨNG",
         "vlm-blind-crop": "I. LỜI CHỨNG",
-        "vlm-blind-crop-2x": "I. LỜI CHỨNG"
+        "vlm-blind-crop-2x": "I. LỜI CHỨNG",
+        "vlm-blind-crop-2x-bilevel": "I. LỜI CHỨNG",
+        "shown-by-scan-route": "I. LỜI CHỨNG"
       }
     },
     {
@@ -1077,7 +1261,9 @@
         "ocr-upscaled": "1. Lời chứng chứng thực bản sao từ bản chính",
         "oracle-better-ocr-view": "1. Lời chứng chứng thực bản sao từ bản chính",
         "vlm-blind-crop": "1. Lời chứng chứng thực bản sao từ bản chính",
-        "vlm-blind-crop-2x": "1. Lời chứng chứng thực bản sao từ bản chính"
+        "vlm-blind-crop-2x": "1. Lời chứng chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-bilevel": "1. Lời chứng chứng thực bản sao từ bản chính",
+        "shown-by-scan-route": "1. Lời chứng chứng thực bản sao từ bản chính"
       }
     },
     {
@@ -1089,7 +1275,9 @@
         "ocr-upscaled": "2. Lời chứng chứng thực chữ ký",
         "oracle-better-ocr-view": "2. Lời chứng chứng thực chữ ký",
         "vlm-blind-crop": "2. Lời chứng chứng thực chữ ký",
-        "vlm-blind-crop-2x": "2. Lời chứng chứng thực chữ ký"
+        "vlm-blind-crop-2x": "2. Lời chứng chứng thực chữ ký",
+        "vlm-blind-crop-2x-bilevel": "2. Lời chứng chứng thực chữ ký",
+        "shown-by-scan-route": "2. Lời chứng chứng thực chữ ký"
       }
     },
     {
@@ -1101,7 +1289,9 @@
         "ocr-upscaled": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
         "oracle-better-ocr-view": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
         "vlm-blind-crop": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
-        "vlm-blind-crop-2x": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản"
+        "vlm-blind-crop-2x": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
+        "vlm-blind-crop-2x-bilevel": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
+        "shown-by-scan-route": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản"
       }
     },
     {
@@ -1113,7 +1303,9 @@
         "ocr-upscaled": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
         "oracle-better-ocr-view": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
         "vlm-blind-crop": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
-        "vlm-blind-crop-2x": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,"
+        "vlm-blind-crop-2x": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
+        "vlm-blind-crop-2x-bilevel": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
+        "shown-by-scan-route": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,"
       }
     },
     {
@@ -1125,7 +1317,9 @@
         "ocr-upscaled": "văn bản",
         "oracle-better-ocr-view": "văn bản",
         "vlm-blind-crop": "văn bản",
-        "vlm-blind-crop-2x": "văn bản"
+        "vlm-blind-crop-2x": "văn bản",
+        "vlm-blind-crop-2x-bilevel": "văn bản",
+        "shown-by-scan-route": "văn bản"
       }
     },
     {
@@ -1137,7 +1331,9 @@
         "ocr-upscaled": "c) Lời chứng chứng thực điểm chỉ",
         "oracle-better-ocr-view": "c) Lời chứng chứng thực điểm chỉ",
         "vlm-blind-crop": "c) Lời chứng chứng thực điểm chỉ",
-        "vlm-blind-crop-2x": "c) Lời chứng chứng thực điểm chỉ"
+        "vlm-blind-crop-2x": "c) Lời chứng chứng thực điểm chỉ",
+        "vlm-blind-crop-2x-bilevel": "c) Lời chứng chứng thực điểm chỉ",
+        "shown-by-scan-route": "c) Lời chứng chứng thực điểm chỉ"
       }
     },
     {
@@ -1149,7 +1345,9 @@
         "ocr-upscaled": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
         "oracle-better-ocr-view": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
         "vlm-blind-crop": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
-        "vlm-blind-crop-2x": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm"
+        "vlm-blind-crop-2x": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
+        "vlm-blind-crop-2x-bilevel": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
+        "shown-by-scan-route": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm"
       }
     },
     {
@@ -1161,7 +1359,9 @@
         "ocr-upscaled": "3. Lời chứng chứng thực chữ ký người dịch",
         "oracle-better-ocr-view": "3. Lời chứng chứng thực chữ ký người dịch",
         "vlm-blind-crop": "3. Lời chứng chứng thực chữ ký người dịch",
-        "vlm-blind-crop-2x": "3. Lời chứng chứng thực chữ ký người dịch"
+        "vlm-blind-crop-2x": "3. Lời chứng chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-bilevel": "3. Lời chứng chứng thực chữ ký người dịch",
+        "shown-by-scan-route": "3. Lời chứng chứng thực chữ ký người dịch"
       }
     },
     {
@@ -1173,7 +1373,9 @@
         "ocr-upscaled": "4. Lời chứng chứng thực hợp đồng, giao dịch",
         "oracle-better-ocr-view": "4. Lời chứng chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop": "4. Lời chứng chứng thực hợp đồng, giao dịch",
-        "vlm-blind-crop-2x": "4. Lời chứng chứng thực hợp đồng, giao dịch"
+        "vlm-blind-crop-2x": "4. Lời chứng chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel": "4. Lời chứng chứng thực hợp đồng, giao dịch",
+        "shown-by-scan-route": "4. Lời chứng chứng thực hợp đồng, giao dịch"
       }
     },
     {
@@ -1185,7 +1387,9 @@
         "ocr-upscaled": "a) Lời chứng chứng thực hợp đồng, giao dịch",
         "oracle-better-ocr-view": "a) Lời chứng chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop": "a) Lời chứng chứng thực hợp đồng, giao dịch",
-        "vlm-blind-crop-2x": "a) Lời chứng chứng thực hợp đồng, giao dịch"
+        "vlm-blind-crop-2x": "a) Lời chứng chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel": "a) Lời chứng chứng thực hợp đồng, giao dịch",
+        "shown-by-scan-route": "a) Lời chứng chứng thực hợp đồng, giao dịch"
       }
     },
     {
@@ -1197,7 +1401,9 @@
         "ocr-upscaled": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
         "oracle-better-ocr-view": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
         "vlm-blind-crop": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
-        "vlm-blind-crop-2x": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản"
+        "vlm-blind-crop-2x": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
+        "vlm-blind-crop-2x-bilevel": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
+        "shown-by-scan-route": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản"
       }
     },
     {
@@ -1209,7 +1415,9 @@
         "ocr-upscaled": "c) Lời chứng chứng thực văn bản khai nhận di sản",
         "oracle-better-ocr-view": "c) Lời chứng chứng thực văn bản khai nhận di sản",
         "vlm-blind-crop": "c) Lời chứng chứng thực văn bản khai nhận di sản",
-        "vlm-blind-crop-2x": "c) Lời chứng chứng thực văn bản khai nhận di sản"
+        "vlm-blind-crop-2x": "c) Lời chứng chứng thực văn bản khai nhận di sản",
+        "vlm-blind-crop-2x-bilevel": "c) Lời chứng chứng thực văn bản khai nhận di sản",
+        "shown-by-scan-route": "c) Lời chứng chứng thực văn bản khai nhận di sản"
       }
     },
     {
@@ -1221,7 +1429,9 @@
         "ocr-upscaled": "đ) Lời chứng chứng thực di chúc",
         "oracle-better-ocr-view": "đ) Lời chứng chứng thực di chúc",
         "vlm-blind-crop": "d) Lời chứng chứng thực di chúc",
-        "vlm-blind-crop-2x": "d) Lời chứng chứng thực di chúc"
+        "vlm-blind-crop-2x": "d) Lời chứng chứng thực di chúc",
+        "vlm-blind-crop-2x-bilevel": "d) Lời chứng chứng thực di chúc",
+        "shown-by-scan-route": "d) Lời chứng chứng thực di chúc"
       }
     },
     {
@@ -1233,7 +1443,9 @@
         "ocr-upscaled": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
         "oracle-better-ocr-view": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
         "vlm-blind-crop": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
-        "vlm-blind-crop-2x": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản"
+        "vlm-blind-crop-2x": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
+        "vlm-blind-crop-2x-bilevel": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
+        "shown-by-scan-route": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản"
       }
     },
     {
@@ -1245,7 +1457,9 @@
         "ocr-upscaled": "Chú thích:",
         "oracle-better-ocr-view": "Chú thích:",
         "vlm-blind-crop": "Chú thích:",
-        "vlm-blind-crop-2x": "Chú thích:"
+        "vlm-blind-crop-2x": "Chú thích:",
+        "vlm-blind-crop-2x-bilevel": "Chú thích:",
+        "shown-by-scan-route": "Chú thích:"
       }
     },
     {
@@ -1257,7 +1471,9 @@
         "ocr-upscaled": "Il. MAU SO CHUNG THỰC",
         "oracle-better-ocr-view": "Il. MAU SO CHUNG THỰC",
         "vlm-blind-crop": "II. MẪU SỔ CHỨNG THỰC",
-        "vlm-blind-crop-2x": "II. MẪU SỔ CHỨNG THỰC"
+        "vlm-blind-crop-2x": "II. MẪU SỔ CHỨNG THỰC",
+        "vlm-blind-crop-2x-bilevel": "II. MẪU SỔ CHỨNG THỰC",
+        "shown-by-scan-route": "II. MẪU SỔ CHỨNG THỰC"
       }
     },
     {
@@ -1269,7 +1485,9 @@
         "ocr-upscaled": "=1. Bìa sô",
         "oracle-better-ocr-view": "1. Bìa sô",
         "vlm-blind-crop": "1. Bìa sổ",
-        "vlm-blind-crop-2x": "1. Bìa sổ"
+        "vlm-blind-crop-2x": "1. Bìa sổ",
+        "vlm-blind-crop-2x-bilevel": "1. Bìa sổ",
+        "shown-by-scan-route": "1. Bìa sổ"
       }
     },
     {
@@ -1281,7 +1499,9 @@
         "ocr-upscaled": "a) Số Chứng thực bản sao từ bản chính",
         "oracle-better-ocr-view": "a) Số Chứng thực bản sao từ bản chính",
         "vlm-blind-crop": "a) Sổ Chứng thực bản sao từ bản chính",
-        "vlm-blind-crop-2x": "a) Sổ Chứng thực bản sao từ bản chính"
+        "vlm-blind-crop-2x": "a) Sổ Chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-bilevel": "a) Sổ Chứng thực bản sao từ bản chính",
+        "shown-by-scan-route": "a) Sổ Chứng thực bản sao từ bản chính"
       }
     },
     {
@@ -1293,7 +1513,9 @@
         "ocr-upscaled": "SỎ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
         "oracle-better-ocr-view": "SỎ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
         "vlm-blind-crop": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
-        "vlm-blind-crop-2x": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH"
+        "vlm-blind-crop-2x": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "vlm-blind-crop-2x-bilevel": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "shown-by-scan-route": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH"
       }
     },
     {
@@ -1305,7 +1527,9 @@
         "ocr-upscaled": "b) Số Chứng thực chữ ký/chứng thực điểm chỉ",
         "oracle-better-ocr-view": "b) Số Chứng thực chữ ký/chứng thực điểm chỉ",
         "vlm-blind-crop": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
-        "vlm-blind-crop-2x": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ"
+        "vlm-blind-crop-2x": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+        "vlm-blind-crop-2x-bilevel": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+        "shown-by-scan-route": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ"
       }
     },
     {
@@ -1317,7 +1541,9 @@
         "ocr-upscaled": "SO CHUNG THỰC CHỮ KY/CHUNG THỰC DIEM CHỈ",
         "oracle-better-ocr-view": "SỎ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ",
         "vlm-blind-crop": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ",
-        "vlm-blind-crop-2x": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ"
+        "vlm-blind-crop-2x": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ",
+        "vlm-blind-crop-2x-bilevel": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ",
+        "shown-by-scan-route": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ"
       }
     },
     {
@@ -1329,7 +1555,9 @@
         "ocr-upscaled": "c) Số Chứng thực chữ ký người dịch",
         "oracle-better-ocr-view": "c) Số Chứng thực chữ ký người dịch",
         "vlm-blind-crop": "c) Sổ Chứng thực chữ ký người dịch",
-        "vlm-blind-crop-2x": "c) Sổ Chứng thực chữ ký người dịch"
+        "vlm-blind-crop-2x": "c) Sổ Chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-bilevel": "c) Sổ Chứng thực chữ ký người dịch",
+        "shown-by-scan-route": "c) Sổ Chứng thực chữ ký người dịch"
       }
     },
     {
@@ -1341,7 +1569,9 @@
         "ocr-upscaled": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
         "oracle-better-ocr-view": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
         "vlm-blind-crop": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
-        "vlm-blind-crop-2x": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+        "vlm-blind-crop-2x": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "vlm-blind-crop-2x-bilevel": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "shown-by-scan-route": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
       }
     },
     {
@@ -1353,7 +1583,9 @@
         "ocr-upscaled": "Độc lập - Tự do - Hạnh phúc",
         "oracle-better-ocr-view": "Độc lập - Tự do - Hạnh phúc",
         "vlm-blind-crop": "Độc lập - Tự do - Hạnh phúc",
-        "vlm-blind-crop-2x": "Độc lập - Tự do - Hạnh phúc"
+        "vlm-blind-crop-2x": "Độc lập - Tự do - Hạnh phúc",
+        "vlm-blind-crop-2x-bilevel": "Độc lập - Tự do - Hạnh phúc",
+        "shown-by-scan-route": "Độc lập - Tự do - Hạnh phúc"
       }
     },
     {
@@ -1365,7 +1597,9 @@
         "ocr-upscaled": "SO CHUNG THỰC CHỮ KÝ NGƯỜI DỊCH",
         "oracle-better-ocr-view": "SỎ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
         "vlm-blind-crop": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
-        "vlm-blind-crop-2x": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH"
+        "vlm-blind-crop-2x": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "vlm-blind-crop-2x-bilevel": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "shown-by-scan-route": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH"
       }
     },
     {
@@ -1377,7 +1611,9 @@
         "ocr-upscaled": "d) Số Chứng thực hợp đồng, giao dịch",
         "oracle-better-ocr-view": "d) Số Chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop": "d) Sổ Chứng thực hợp đồng, giao dịch",
-        "vlm-blind-crop-2x": "d) Sổ Chứng thực hợp đồng, giao dịch"
+        "vlm-blind-crop-2x": "d) Sổ Chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel": "d) Sổ Chứng thực hợp đồng, giao dịch",
+        "shown-by-scan-route": "d) Sổ Chứng thực hợp đồng, giao dịch"
       }
     },
     {
@@ -1389,7 +1625,9 @@
         "ocr-upscaled": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
         "oracle-better-ocr-view": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
         "vlm-blind-crop": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
-        "vlm-blind-crop-2x": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+        "vlm-blind-crop-2x": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "vlm-blind-crop-2x-bilevel": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "shown-by-scan-route": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
       }
     },
     {
@@ -1401,7 +1639,9 @@
         "ocr-upscaled": "Độc lập - Tự do - Hạnh phúc",
         "oracle-better-ocr-view": "Độc lập - Tự do - Hạnh phúc",
         "vlm-blind-crop": "Độc lập - Tự do - Hạnh phúc",
-        "vlm-blind-crop-2x": "Độc lập - Tự do - Hạnh phúc"
+        "vlm-blind-crop-2x": "Độc lập - Tự do - Hạnh phúc",
+        "vlm-blind-crop-2x-bilevel": "Độc lập - Tự do - Hạnh phúc",
+        "shown-by-scan-route": "Độc lập - Tự do - Hạnh phúc"
       }
     },
     {
@@ -1413,7 +1653,9 @@
         "ocr-upscaled": "SO CHUNG THUC HỢP DONG, GIAO DỊCH",
         "oracle-better-ocr-view": "SO CHUNG THỰC HỢP DONG, GIAO DỊCH",
         "vlm-blind-crop": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
-        "vlm-blind-crop-2x": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH"
+        "vlm-blind-crop-2x": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
+        "vlm-blind-crop-2x-bilevel": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
+        "shown-by-scan-route": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH"
       }
     },
     {
@@ -1425,7 +1667,9 @@
         "ocr-upscaled": "2. Nội dung số",
         "oracle-better-ocr-view": "2. Nội dung số",
         "vlm-blind-crop": "2. Nội dung sổ",
-        "vlm-blind-crop-2x": "2. Nội dung sổ"
+        "vlm-blind-crop-2x": "2. Nội dung sổ",
+        "vlm-blind-crop-2x-bilevel": "2. Nội dung sổ",
+        "shown-by-scan-route": "2. Nội dung sổ"
       }
     },
     {
@@ -1437,7 +1681,9 @@
         "ocr-upscaled": "a) Sổ chứng thực bản sao từ bản chính",
         "oracle-better-ocr-view": "a) Sổ chứng thực bản sao từ bản chính",
         "vlm-blind-crop": "a) Sổ chứng thực bản sao từ bản chính",
-        "vlm-blind-crop-2x": "a) Sổ chứng thực bản sao từ bản chính"
+        "vlm-blind-crop-2x": "a) Sổ chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-bilevel": "a) Sổ chứng thực bản sao từ bản chính",
+        "shown-by-scan-route": "a) Sổ chứng thực bản sao từ bản chính"
       }
     },
     {
@@ -1449,7 +1695,9 @@
         "ocr-upscaled": "b) Số Chứng thực chữ ký/chứng thực điểm chỉ",
         "oracle-better-ocr-view": "b) Số Chứng thực chữ ký/chứng thực điểm chỉ",
         "vlm-blind-crop": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
-        "vlm-blind-crop-2x": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ"
+        "vlm-blind-crop-2x": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+        "vlm-blind-crop-2x-bilevel": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+        "shown-by-scan-route": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ"
       }
     },
     {
@@ -1461,7 +1709,9 @@
         "ocr-upscaled": "c) Số Chứng thực chữ ký người dịch",
         "oracle-better-ocr-view": "c) Số Chứng thực chữ ký người dịch",
         "vlm-blind-crop": "c) Sổ Chứng thực chữ ký người dịch",
-        "vlm-blind-crop-2x": "c) Sổ Chứng thực chữ ký người dịch"
+        "vlm-blind-crop-2x": "c) Sổ Chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-bilevel": "c) Sổ Chứng thực chữ ký người dịch",
+        "shown-by-scan-route": "c) Sổ Chứng thực chữ ký người dịch"
       }
     },
     {
@@ -1473,11 +1723,18 @@
         "ocr-upscaled": "d) Số chứng thực hợp đồng, giao dịch",
         "oracle-better-ocr-view": "d) Số chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop": "d) Sổ chứng thực hợp đồng, giao dịch",
-        "vlm-blind-crop-2x": "d) Sổ chứng thực hợp đồng, giao dịch"
+        "vlm-blind-crop-2x": "d) Sổ chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel": "d) Sổ chứng thực hợp đồng, giao dịch",
+        "shown-by-scan-route": "d) Sổ chứng thực hợp đồng, giao dịch"
       }
     }
   ],
   "Failures": [],
-  "ProviderCalls": 28,
-  "ProviderCostUsd": 0.0033409500000000005
+  "ProviderCalls": 40,
+  "ProviderCostUsd": 0.00525605,
+  "CropBytes": {
+    "vlm-blind-crop": 182599,
+    "vlm-blind-crop-2x": 1399425,
+    "vlm-blind-crop-2x-bilevel": 211335
+  }
 }
