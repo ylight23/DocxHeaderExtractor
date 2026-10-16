@@ -104,7 +104,8 @@ static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationTok
     var root = o.OutputPath ?? ".dhx-evidence";
     var selector = new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(root, parallelism: o.Jobs,
         onModelReply: o.ShowRawOutput ? r => PrintModelReply(r) : null,
-        transcriptionOptions: o.Jobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null);
+        transcriptionOptions: o.Jobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null,
+        visionOptions: o.Jobs is { } seeJobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null);
     foreach (var file in ExpandInputs(o.Inputs))
     {
         if (!o.Quiet) Console.Error.WriteLine($"» {Path.GetFileName(file)}");

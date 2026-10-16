@@ -483,6 +483,8 @@ public sealed class ScanAgentTests : IDisposable
         var png = Convert.FromBase64String(handler.Bodies[0]["messages"]![1]!["content"]!.AsArray()
             .First(c => c!["type"]!.GetValue<string>() == "image_url")!["image_url"]!["url"]!.GetValue<string>()["data:image/png;base64,".Length..]);
         Assert.Equal(1, png[24]);
+        Assert.Equal(1024, handler.Bodies[0]["reasoning"]!["max_tokens"]!.GetValue<int>());
+        Assert.Equal("1024", set.Reasoning);
         Assert.Equal((2 * 196, 2 * 56), TesseractOcr.ImageSize(png));
         Assert.Equal([ScanTranscription.Accepted, ScanTranscription.Accepted, ScanTranscription.RejectedMultiline, ScanTranscription.Accepted, ScanTranscription.NotTranscribed],
             set.Lines.Select(l => l.Status));

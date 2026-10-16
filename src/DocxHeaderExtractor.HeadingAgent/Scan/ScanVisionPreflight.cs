@@ -30,7 +30,7 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
     public int LastCalls { get; private set; }
     public double LastCostUsd { get; private set; }
 
-    public sealed record Options(int MaxPages = 300, int MaxReadingsPerPage = 10, int MaxLinesPerPage = 80, int PageWidth = 1000, int Parallelism = 8,
+    public sealed record Options(int MaxPages = 300, int MaxReadingsPerPage = 10, int MaxLinesPerPage = 80, int PageWidth = 1000, int Parallelism = 32,
         double CeilingUsd = 3.0);
 
     static readonly JsonSerializerOptions Json = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };

@@ -227,8 +227,12 @@ the vision model reads when it is shown only the crop: the crop the vision prefl
   about twice as long, with as many runs at once as the machine has processors (`Options.Parallelism`, not part of the
   evidence's parameters, so stored evidence stays valid).
 - Vision observation and transcription run side by side once the OCR evidence exists (both read only it and the page
-  images, both wait on the provider): vision 8 calls at once, transcription 24, the conversation 16 units
-  (`dhx scan-extract --jobs N` sets the transcription's and the conversation's, for a provider that limits the rate).
+  images, both wait on the provider): vision, transcription and the conversation each 32 calls at once
+  (`dhx scan-extract --jobs N` sets all three, for a provider that limits the rate).
+- Transcription reasons with a budget of 1,024 tokens (measured on 023: 120/120 like reasoning on, about 14 s a call
+  against about 50 s). Fresh run of `016` before these two changes (37 pages, Windows): OCR 80 s, transcription 240 s,
+  vision 371 s (37 calls at 8 at once, about 75 s a call), preflight 451 s, conversation 496 s; 15 min 47 s in all,
+  0.123 USD; no unit failure.
 - Measured on 023 (v6, Windows, OCR read back): vision 22 s; transcription 481 s for about 76 calls at 8 at once,
   about 50 s a call with the model's reasoning on, against about 7 s with it off (eval: 12 calls, 20 s); the
   conversation 545 s. Reasoning off read 118/120 (`sổ` → `sô`, `tổ` → `tô`), so it stays on; the eval now also measures

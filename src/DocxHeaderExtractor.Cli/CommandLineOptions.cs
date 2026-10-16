@@ -175,8 +175,9 @@ public sealed class CommandLineOptions
           dhx scan-extract <file.docx> [-o <thư-mục>]    # heading của DOCX chỉ có ảnh trang: OCR + quan sát VLM
                                                          # (qwen/qwen3.7-flash, gửi ảnh trang) + hội thoại V6; Qwen
                                                          # quyết định; key từ OPENROUTER_API_KEY; in JSON
-                                                         # --jobs N: số lần gọi API cùng lúc (mặc định 16 hội
-                                                         # thoại, 24 chép chữ); giảm nếu bị giới hạn tốc độ
+                                                         # --jobs N: số lần gọi API cùng lúc cho xem trang,
+                                                         # chép chữ và hội thoại (mặc định 32); giảm nếu bị
+                                                         # giới hạn tốc độ
           dhx scan-text-eval <file.docx> --gold <gold.json> [-o <thư-mục>]
                                                          # đo độ chính xác chữ: 2 view OCR và VLM chép mù
                                                          # (không xem OCR) so với gold; gửi ảnh cắt dòng

@@ -20,6 +20,8 @@ public sealed record TranscriptionSet(string Version, string Model, string Promp
     IReadOnlyList<string> Failures, int ProviderCalls, double ProviderCostUsd)
 {
     public const string CurrentVersion = "SCAN_VLM_TRANSCRIPTION_V1";
+    /// <summary>The model's reasoning setting the transcriptions were made with (on, off, or a token budget).</summary>
+    public string Reasoning { get; init; } = ScanTranscription.ReasoningOn;
     public int Accepted => Lines.Count(l => l.Status == ScanTranscription.Accepted);
 }
 
@@ -273,8 +275,10 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
     /// <param name="Bilevel">Black and white, pixels repeated (measured on 023 with <paramref name="Mask"/>: 120/120 heading lines, as grey 2x,
     /// in a file 6.6 times smaller).</param>
     /// <param name="Mask">The other lines' boxes that reach into the crop are painted white first (without: the line above copied twice in 120).</param>
-    public sealed record Options(int MaxPages = 300, double Scale = 2.0, int MaxLinesPerRequest = 10, int Parallelism = 24, double? CeilingUsd = null,
-        bool Bilevel = true, bool Mask = true);
+    /// <param name="Reasoning">The model's reasoning: a token budget (measured on 023's heading lines: 1,024 read 120/120 like reasoning on, in about
+    /// 14 s a call against about 50 s; off read 118/120, losing two diacritics), "on" or "off".</param>
+    public sealed record Options(int MaxPages = 300, double Scale = 2.0, int MaxLinesPerRequest = 10, int Parallelism = 32, double? CeilingUsd = null,
+        bool Bilevel = true, bool Mask = true, string Reasoning = "1024");
 
     public TranscriptionSet Run(ScanOcrEvidence evidence, string evidenceEntry, string apiKey, Options? options = null)
     {
@@ -302,11 +306,11 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
             // Room for the second asks and the splits of a batch that stays unreadable (rare): twice the batches' worst cost.
             AgentBudget BudgetFor(int batches) => new(batches * (2 + AgentUnit.TransportRetries) + lines.Length, options.CeilingUsd ?? 2 * batches * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes));
             var (texts, budget) = ScanTranscription.Transcribe(crops, lines.Select(l => l.Line.Id).ToArray(), keys, Path.Combine(storeRoot, "vlm-transcribe"), apiKey, BudgetFor,
-                handlerFactory ?? (() => AgentModel.CreateHandler()), failures, "TRANSCRIBE", options.MaxLinesPerRequest, options.Parallelism);
+                handlerFactory ?? (() => AgentModel.CreateHandler()), failures, "TRANSCRIBE", options.MaxLinesPerRequest, options.Parallelism, options.Reasoning);
             var result = lines.Select((l, k) => new LineTranscription(l.Line.Id, texts[k],
                 ScanTranscription.Guard(texts[k], l.Line.Text, ScanTranscription.Neighbours(l.Page, l.Line).Select(n => n.Text)))).ToArray();
             return new TranscriptionSet(TranscriptionSet.CurrentVersion, AgentProtocol.ChatModel, ScanTranscription.PromptVersion, options.Scale, result,
-                failures, budget.Calls, budget.ActualUsd);
+                failures, budget.Calls, budget.ActualUsd) { Reasoning = options.Reasoning };
         }
         finally
         {

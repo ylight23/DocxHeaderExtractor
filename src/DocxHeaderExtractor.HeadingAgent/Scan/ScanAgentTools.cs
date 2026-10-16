@@ -257,7 +257,7 @@ internal sealed class ScanAgentTools : AgentToolHost
             },
             ["transcription"] = scan.Transcriptions is not { } ts ? new JsonObject { ["asked"] = false } : new JsonObject
             {
-                ["asked"] = true, ["model"] = ts.Model, ["promptVersion"] = ts.PromptVersion, ["cropScale"] = ts.Scale, ["origin"] = "VLM_TRANSCRIBED",
+                ["asked"] = true, ["model"] = ts.Model, ["promptVersion"] = ts.PromptVersion, ["cropScale"] = ts.Scale, ["reasoning"] = ts.Reasoning, ["origin"] = "VLM_TRANSCRIBED",
                 ["seenByModel"] = "only the crop of the line; no OCR reading",
                 ["statuses"] = new JsonObject(ts.Lines.GroupBy(l => l.Status).OrderBy(g => g.Key, StringComparer.Ordinal).Select(g => KeyValuePair.Create(g.Key, (JsonNode?)g.Count()))),
             },
