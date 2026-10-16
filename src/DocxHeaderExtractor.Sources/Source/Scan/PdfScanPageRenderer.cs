@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using System.Runtime.Versioning;
 using PDFtoImage;
 using SkiaSharp;
 
@@ -16,8 +17,16 @@ internal static class PdfScanPageRenderer
     public static IReadOnlyList<RenderedPdfPage> Render(string path, int? maxPages = null, CancellationToken ct = default)
     {
         ct.ThrowIfCancellationRequested();
-        if (!OperatingSystem.IsWindows() && !OperatingSystem.IsLinux() && !OperatingSystem.IsMacOS())
-            throw new PlatformNotSupportedException("PDF_SCAN_RENDERING_REQUIRES_DESKTOP_RUNTIME");
+        if (OperatingSystem.IsWindows() || OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
+            return RenderDesktop(path, maxPages, ct);
+        throw new PlatformNotSupportedException("PDF_SCAN_RENDERING_REQUIRES_DESKTOP_RUNTIME");
+    }
+
+    [SupportedOSPlatform("windows")]
+    [SupportedOSPlatform("linux")]
+    [SupportedOSPlatform("macos")]
+    static IReadOnlyList<RenderedPdfPage> RenderDesktop(string path, int? maxPages, CancellationToken ct)
+    {
         using var stream = File.OpenRead(path);
         var count = Conversion.GetPageCount(stream, leaveOpen: true);
         if (maxPages is { } max) count = Math.Min(count, Math.Max(0, max));
