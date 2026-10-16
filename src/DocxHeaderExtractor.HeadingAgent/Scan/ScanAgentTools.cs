@@ -98,7 +98,7 @@ internal sealed class ScanAgentTools : AgentToolHost
         var l = scan.ScanLines[i];
         return new JsonObject
         {
-            ["alias"] = l.Alias, ["page"] = l.Page, ["readingOrder"] = i, ["text"] = Clip(l.Primary.Text, MaxTextChars),
+            ["alias"] = l.Alias, ["page"] = l.Page, ["readingOrder"] = i, ["text"] = Clip(lines[i].Text, MaxTextChars),
             ["box"] = new JsonObject { ["left"] = l.Primary.Box.Left, ["top"] = l.Primary.Box.Top, ["width"] = l.Primary.Box.Width, ["height"] = l.Primary.Box.Height },
             ["meanConfidence"] = l.Primary.MeanConfidence,
         };
@@ -185,6 +185,20 @@ internal sealed class ScanAgentTools : AgentToolHost
                     differences.Add(new JsonObject { ["views"] = new JsonArray(ScanOcrPreflight.OriginalView, view), ["original"] = d.Original, ["alternative"] = d.Alternative, ["verificationStatus"] = "UNVERIFIED" });
             }
             var o = new JsonObject { ["alias"] = alias, ["page"] = l.Page, ["readings"] = readings, ["differences"] = differences };
+            if (scan.Transcription(alias) is { } t)
+            {
+                var agreeing = scan.OcrViewsAgreeingWithTranscription(alias);
+                if (t.Status == ScanTranscription.Accepted)
+                    readings.Add(new JsonObject
+                    {
+                        ["viewId"] = ScanAgentSource.VlmTranscribedReading, ["origin"] = "VLM_TRANSCRIBED", ["text"] = ScanTranscription.Norm(t.Text!),
+                        ["transcribedBy"] = scan.Transcriptions!.Model, ["ocrViewsThatReadTheSame"] = new JsonArray(agreeing.Select(v => (JsonNode)v).ToArray()),
+                        ["verificationStatus"] = agreeing.Count > 0 ? "CORROBORATED" : "UNVERIFIED",
+                    });
+                else
+                    o["transcriptionRejected"] = new JsonObject { ["status"] = t.Status, ["text"] = t.Text is null ? null : Clip(t.Text, MaxTextChars), ["origin"] = "VLM_TRANSCRIBED" };
+            }
+            o["shownReading"] = scan.DefaultReading(alias);
             if (scan.VisionChoice(alias) is { } c)
             {
                 o["vision"] = new JsonObject { ["origin"] = "VLM_OBSERVATION", ["observedBy"] = scan.VisionModel, ["choice"] = c.Choice };
@@ -198,7 +212,7 @@ internal sealed class ScanAgentTools : AgentToolHost
         }
         var (result, taken) = Fit(TextViews, arguments, aliases.Count, k => new JsonObject
         {
-            ["readBy"] = "the program, from the OCR evidence store and the vision observations as they were written; no reading was corrected",
+            ["readBy"] = "the program, from the OCR evidence store, the vision observations and the vision transcriptions as they were written; no reading was edited",
             ["records"] = new JsonArray(aliases.Take(k).Select(Record).ToArray()),
             ["truncation"] = Truncation(k, aliases.Count, null),
         });
@@ -214,7 +228,7 @@ internal sealed class ScanAgentTools : AgentToolHost
         var described = ShapeSequence.Describe(lines, index[alias]);
         var result = new JsonObject
         {
-            ["readBy"] = "the program, from the form of the primary OCR view's text of every line: the words before the first number, the number, the punctuation after it",
+            ["readBy"] = "the program, from the form of the text shown for every line (the vision transcription where it passed the checks, else the primary OCR view): the words before the first number, the number, the punctuation after it",
             ["version"] = ShapeSequence.Version, ["sequence"] = described,
         };
         if (described is null) result["noKey"] = "no number stands among the first words of this line";
@@ -234,8 +248,19 @@ internal sealed class ScanAgentTools : AgentToolHost
         var ev = scan.Evidence;
         var result = new JsonObject
         {
-            ["readBy"] = "the program, from the source integrity check, the OCR evidence store and the vision observations",
-            ["sourceKind"] = ev.SourceKind, ["pages"] = ev.PageCount, ["lines"] = lines.Count, ["textOrigin"] = "OCR_DERIVED",
+            ["readBy"] = "the program, from the source integrity check, the OCR evidence store, the vision observations and the vision transcriptions",
+            ["sourceKind"] = ev.SourceKind, ["pages"] = ev.PageCount, ["lines"] = lines.Count,
+            ["textShown"] = new JsonObject
+            {
+                ["vlmTranscribed"] = lines.Count(l => scan.DefaultReading(l.Alias) == ScanAgentSource.VlmTranscribedReading),
+                ["ocrOriginal"] = lines.Count(l => scan.DefaultReading(l.Alias) == ScanOcrPreflight.OriginalView),
+            },
+            ["transcription"] = scan.Transcriptions is not { } ts ? new JsonObject { ["asked"] = false } : new JsonObject
+            {
+                ["asked"] = true, ["model"] = ts.Model, ["promptVersion"] = ts.PromptVersion, ["cropScale"] = ts.Scale, ["origin"] = "VLM_TRANSCRIBED",
+                ["seenByModel"] = "only the crop of the line; no OCR reading",
+                ["statuses"] = new JsonObject(ts.Lines.GroupBy(l => l.Status).OrderBy(g => g.Key, StringComparer.Ordinal).Select(g => KeyValuePair.Create(g.Key, (JsonNode?)g.Count()))),
+            },
             ["views"] = new JsonArray(ev.Views.Select(v => (JsonNode)new JsonObject
             {
                 ["viewId"] = v.Spec.ViewId, ["engine"] = v.Spec.EngineVersion, ["languages"] = v.Spec.Languages,

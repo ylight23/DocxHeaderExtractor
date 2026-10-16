@@ -1,27 +1,23 @@
-using System.Globalization;
-using System.Security.Cryptography;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Text.Json.Nodes;
 using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
 
 namespace DocxHeaderExtractor.HeadingAgent.Scan;
 
 /// <summary>
 /// Measures how well each reader reads the lines of a scan against a gold transcription (<c>SCAN_LINE_TEXT_GOLD_V1</c>): the two OCR views,
-/// the better of the two (an oracle no reader can reach), and the vision model transcribing each line crop blind, without any OCR reading
-/// shown, from the black-and-white crop the vision preflight sends and from the same crop enlarged <see cref="EnlargedScale"/> times. It changes no evidence and decides nothing: it
-/// reports exact matches and character error rates so that the owner can choose where the text of a heading comes from.
+/// the better of the two (an oracle no reader can reach), the vision model transcribing each line crop blind (<see cref="ScanTranscription"/>),
+/// without any OCR reading shown, from the black-and-white crop the vision preflight sends and from the same crop enlarged
+/// <see cref="EnlargedScale"/> times, and what the scan route shows: the enlarged transcription where it passes the program's checks, else the
+/// primary OCR reading. It changes no evidence and decides nothing: it reports exact matches and character error rates.
 /// </summary>
 public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler>? handlerFactory = null)
 {
-    public const string GoldVersion = "SCAN_LINE_TEXT_GOLD_V1", ReportVersion = "SCAN_TEXT_EVAL_V1", PromptVersion = "SCAN_VLM_TRANSCRIBE_V1";
-    public const int MaxLinesPerRequest = 10, MaxTextChars = 400;
+    public const string GoldVersion = "SCAN_LINE_TEXT_GOLD_V1", ReportVersion = "SCAN_TEXT_EVAL_V1", PromptVersion = ScanTranscription.PromptVersion;
+    public const int MaxLinesPerRequest = 10;
     public const double MatchIou = 0.5, EnlargedScale = 2.0;
-
-    public const string SystemPrompt = "Each image is one line cropped from a page of a scanned document. Transcribe exactly what each image shows, letter for letter: every diacritic, capital letter, digit and punctuation mark as printed. Do not correct spelling, do not complete words cut at the edge, do not add or remove anything, and never use what you know or expect a document of this kind to say. Write a character you cannot read as ?. Ignore fragments of the lines above and below that are cut by the edge of the image.\n"
-        + "Answer exactly one JSON object and nothing else: {\"protocolVersion\":\"" + PromptVersion + "\",\"lines\":[{\"id\":\"<id>\",\"text\":\"<transcription>\"}]}, with one entry for every image, using the id given just before it.";
+    public const string SystemPrompt = ScanTranscription.SystemPrompt;
 
     public sealed record GoldLine(int N, int Page, PixelBox Box, string Text);
 
@@ -36,7 +32,7 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
     static readonly UTF8Encoding Utf8 = new(encoderShouldEmitUTF8Identifier: false);
 
     public const string Original = ScanOcrPreflight.OriginalView, Upscaled = "ocr-upscaled", BestView = "oracle-better-ocr-view",
-        VlmBilevel = "vlm-blind-crop", VlmEnlarged = "vlm-blind-crop-2x";
+        VlmBilevel = "vlm-blind-crop", VlmEnlarged = "vlm-blind-crop-2x", Shown = "shown-by-scan-route";
 
     public static IReadOnlyList<GoldLine> ReadGold(string path)
     {
@@ -86,12 +82,13 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
                     var ok = image is not null && (enlarged ? TesseractOcr.CropScaled(magick, image, file, gold[k].Box, ScanVisionPreflight.CropPad, EnlargedScale)
                         : TesseractOcr.Crop(magick, image, file, gold[k].Box, ScanVisionPreflight.CropPad));
                     crops[k] = ok ? file : null;
-                    // What the crop is made of, not its bytes: ImageMagick writes the time into every PNG it makes.
                     var sha = evidence.Views[0].Pages.FirstOrDefault(p => p.Page == gold[k].Page)?.ImageSha256 ?? "";
-                    keys[k] = string.Join(":", sha, method, gold[k].Box.Left, gold[k].Box.Top, gold[k].Box.Width, gold[k].Box.Height, ScanVisionPreflight.CropPad, TesseractOcr.BilevelThreshold, EnlargedScale);
+                    keys[k] = method + ":" + ScanTranscription.CropKey(sha, gold[k].Box, ScanVisionPreflight.CropPad, enlarged ? EnlargedScale : 1) + ":" + TesseractOcr.BilevelThreshold;
                     if (!ok) failures.Add($"{method}:L{gold[k].N:000}:CROP_FAILED");
                 }
-                var texts = Transcribe(crops, keys, apiKey, budget, factory, failures, method);
+                var ids = gold.Select(g => "T" + g.N.ToString("000", System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+                var texts = ScanTranscription.Transcribe(crops, ids, keys, Path.Combine(storeRoot, "vlm-transcribe"), apiKey, budget, factory, failures, method,
+                    MaxLinesPerRequest, parallelism: 2);
                 for (var k = 0; k < gold.Count; k++) readings[k][method] = texts[k];
             }
         }
@@ -100,8 +97,15 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
             try { Directory.Delete(work, recursive: true); } catch (IOException) { }
         }
 
+        // What the scan route would show: the enlarged transcription when it passes the checks against the primary OCR reading, else that reading.
+        for (var k = 0; k < gold.Count; k++)
+        {
+            var ocrText = readings[k].GetValueOrDefault(Original);
+            var t = readings[k].GetValueOrDefault(VlmEnlarged);
+            readings[k][Shown] = ocrText is not null && ScanTranscription.Guard(t, ocrText) == ScanTranscription.Accepted ? t : ocrText;
+        }
         var lines = gold.Select((g, k) => new LineResult(g.N, g.Page, g.Text, (IReadOnlyDictionary<string, string?>)readings[k])).ToArray();
-        var methods = new[] { Original, Upscaled, BestView, VlmBilevel, VlmEnlarged };
+        var methods = new[] { Original, Upscaled, BestView, VlmBilevel, VlmEnlarged, Shown };
         var scores = methods.Select(m => Score(m, lines)).ToArray();
         var report = new Report(ReportVersion, evidence.SourceSha256, AgentProtocol.ChatModel, PromptVersion, scores, lines, failures, budget.Calls, budget.ActualUsd);
         var dir = Path.Combine(storeRoot, "eval");
@@ -127,109 +131,7 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
         return union <= 0 ? 0 : inter / union;
     }
 
-    /// <summary>Blind transcriptions, in batches that stay under the transport's byte cap; a batch is stored once per model, prompt and crops.</summary>
-    string?[] Transcribe(string?[] crops, string[] cropKeys, string apiKey, AgentBudget budget, Func<HttpMessageHandler> factory, List<string> failures, string method)
-    {
-        var result = new string?[crops.Length];
-        var pending = Enumerable.Range(0, crops.Length).Where(k => crops[k] is not null).ToList();
-        var batch = 0;
-        while (pending.Count > 0)
-        {
-            var take = new List<int>();
-            var content = new JsonArray();
-            foreach (var k in pending.Take(MaxLinesPerRequest))
-            {
-                var part = new JsonNode[] { Text("id T" + (k + 1).ToString("000", CultureInfo.InvariantCulture)), Image(crops[k]!) };
-                if (take.Count > 0 && Request(content.Select(c => c!.DeepClone()).Concat(part.Select(p => p.DeepClone()))).Bytes > AgentBudget.MaxRequestBytes) break;
-                foreach (var p in part) content.Add(p);
-                take.Add(k);
-            }
-            pending.RemoveRange(0, take.Count);
-            batch++;
-            var request = Request(content.Select(c => c!.DeepClone()));
-            var key = TesseractOcr.Sha256(string.Join("|", AgentProtocol.ChatModel, PromptVersion, SystemPrompt,
-                string.Join(",", take.Select(k => "T" + (k + 1) + "=" + cropKeys[k]))));
-            var file = Path.Combine(storeRoot, "vlm-transcribe", key[..24] + ".json");
-            string? reply = File.Exists(file) ? File.ReadAllText(file, Utf8) : null;
-            if (reply is null)
-            {
-                if (budget.Admit(request) is { } refusal) { failures.Add($"{method}:B{batch:00}:BUDGET:{refusal}"); continue; }
-                try
-                {
-                    using var handler = factory();
-                    using var model = new AgentModel(handler, apiKey, budget);
-                    reply = model.Turn($"EVAL-{method}-B{batch:00}", 1, request).Content ?? "";
-                }
-                catch (ReplyFailure f) { failures.Add($"{method}:B{batch:00}:CALL:{f.Code}"); continue; }
-                if (AgentProtocol.TryUnwrapFence(reply, out var inner)) reply = inner;
-            }
-            var parsed = Parse(reply, take.Select(k => "T" + (k + 1).ToString("000", CultureInfo.InvariantCulture)).ToArray(), out var problem);
-            if (parsed is null) { failures.Add($"{method}:B{batch:00}:{problem}"); continue; }
-            foreach (var k in take) result[k] = parsed.GetValueOrDefault("T" + (k + 1).ToString("000", CultureInfo.InvariantCulture));
-            if (!File.Exists(file))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(file)!);
-                File.WriteAllText(file, reply, Utf8);
-            }
-        }
-        return result;
-    }
-
-    /// <summary>The transcriptions by id; null when the reply is not the expected object. An id not asked, a repeated id or an overlong text is
-    /// left out (that line then has no transcription and scores as wrong).</summary>
-    internal static Dictionary<string, string>? Parse(string reply, IReadOnlyList<string> ids, out string? problem)
-    {
-        problem = null;
-        try
-        {
-            using var doc = JsonDocument.Parse(reply);
-            var root = doc.RootElement;
-            if (root.ValueKind != JsonValueKind.Object || !root.TryGetProperty("protocolVersion", out var v) || v.GetString() != PromptVersion)
-            { problem = "PROTOCOL_VERSION_INVALID"; return null; }
-            if (!root.TryGetProperty("lines", out var ls) || ls.ValueKind != JsonValueKind.Array) { problem = "LINES_MISSING"; return null; }
-            var asked = ids.ToHashSet(StringComparer.Ordinal);
-            var result = new Dictionary<string, string>(StringComparer.Ordinal);
-            foreach (var e in ls.EnumerateArray())
-            {
-                if (e.ValueKind != JsonValueKind.Object || !e.TryGetProperty("id", out var id) || id.ValueKind != JsonValueKind.String
-                    || !e.TryGetProperty("text", out var t) || t.ValueKind != JsonValueKind.String) continue;
-                var key = id.GetString()!;
-                if (!asked.Contains(key) || result.ContainsKey(key) || t.GetString()!.Length > MaxTextChars) continue;
-                result[key] = t.GetString()!;
-            }
-            return result;
-        }
-        catch (JsonException) { problem = "REPLY_NOT_JSON"; return null; }
-    }
-
-    static JsonNode Text(string s) => new JsonObject { ["type"] = "text", ["text"] = s };
-
-    static JsonNode Image(string path) => new JsonObject
-    {
-        ["type"] = "image_url",
-        ["image_url"] = new JsonObject { ["url"] = "data:image/png;base64," + Convert.ToBase64String(File.ReadAllBytes(path)) },
-    };
-
-    static PreparedRequest Request(IEnumerable<JsonNode> content)
-    {
-        var body = new JsonObject
-        {
-            ["model"] = AgentProtocol.ChatModel,
-            ["messages"] = new JsonArray(
-                new JsonObject { ["role"] = "system", ["content"] = SystemPrompt },
-                new JsonObject { ["role"] = "user", ["content"] = new JsonArray(content.ToArray()) }),
-            ["response_format"] = new JsonObject { ["type"] = "json_object" },
-            ["temperature"] = 0,
-            ["max_tokens"] = AgentProtocol.MaxTokens,
-            ["reasoning"] = new JsonObject { ["enabled"] = true },
-            ["provider"] = JsonSerializer.SerializeToNode(new { only = new[] { AgentProtocol.ProviderTag }, ignore = AgentProtocol.Ignore, allow_fallbacks = false, require_parameters = true }),
-            ["stream"] = true,
-            ["usage"] = new JsonObject { ["include"] = true },
-        };
-        var text = body.ToJsonString(new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
-        var bytes = Encoding.UTF8.GetBytes(text);
-        return new PreparedRequest(text, bytes.Length, Convert.ToHexStringLower(SHA256.HashData(bytes)));
-    }
+    internal static Dictionary<string, string>? Parse(string reply, IReadOnlyList<string> ids, out string? problem) => ScanTranscription.Parse(reply, ids, out problem);
 
     public static MethodScore Score(string method, IReadOnlyList<LineResult> lines)
     {
@@ -246,7 +148,7 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
     }
 
     /// <summary>NFC, runs of white space as one space, trimmed: the comparison ignores only how spaces were written.</summary>
-    public static string Norm(string s) => string.Join(' ', s.Normalize(NormalizationForm.FormC).Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
+    public static string Norm(string s) => ScanTranscription.Norm(s);
 
     public static int Distance(string a, string b)
     {

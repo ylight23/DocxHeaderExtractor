@@ -26,6 +26,10 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
     public const string PromptVersion = "SCAN_VLM_PROMPT_V1";
     public const int MaxProposedChars = 400, CropPad = 8, FirstWordsChars = 40;
 
+    /// <summary>The calls sent and their cost in the last <see cref="Run"/> (pages read back from the store cost nothing).</summary>
+    public int LastCalls { get; private set; }
+    public double LastCostUsd { get; private set; }
+
     public sealed record Options(int MaxPages = 300, int MaxReadingsPerPage = 10, int MaxLinesPerPage = 80, int PageWidth = 1000, int Parallelism = 4,
         double CeilingUsd = 3.0);
 
@@ -63,6 +67,8 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
             }, StringComparer.Ordinal);
             result[k] = ObservePage(page, readings, ScanOcrPreflight.PageImagePath(evidenceEntry, page.Page), magick, apiKey, budget, factory, options);
         });
+        LastCalls = budget.Calls;
+        LastCostUsd = budget.ActualUsd;
         return result;
     }
 

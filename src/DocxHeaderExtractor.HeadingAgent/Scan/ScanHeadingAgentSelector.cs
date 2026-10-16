@@ -10,9 +10,10 @@ public sealed record ScanHeadingPart(string Alias, int Page, string LineId, Pixe
 
 /// <summary>
 /// A heading of a scanned document, anchored to page images and OCR evidence, never to an OOXML paragraph that does not exist. TextStatus says
-/// which reading the text comes from (OCR_PRIMARY_VIEW, OCR_OTHER_VIEW, or CORRECTED_UNVERIFIED for a vision proposal); Verification is the
-/// weakest of its parts: CORROBORATED when an OCR view and the vision model read the same, CONFLICT when the vision model chose another reading,
-/// UNVERIFIED otherwise. The agent decided that it is a heading, where it ends and which reading to take.
+/// which reading the text comes from (VLM_TRANSCRIBED for the vision model's blind transcription, OCR_PRIMARY_VIEW, OCR_OTHER_VIEW, or
+/// CORRECTED_UNVERIFIED for a vision proposal); Verification is the weakest of its parts: CORROBORATED when two readers read the same (an OCR
+/// view and the transcription, or an OCR view and the vision model's choice), CONFLICT when the vision model chose another reading than the one
+/// taken, UNVERIFIED otherwise. The agent decided that it is a heading, where it ends and which reading to take.
 /// </summary>
 public sealed record ScanHeading(int Index, IReadOnlyList<ScanHeadingPart> Parts, string Text, string PrimaryReading, string TextStatus, string Verification);
 
@@ -20,7 +21,18 @@ public sealed record ScanHeading(int Index, IReadOnlyList<ScanHeadingPart> Parts
 /// OCR views that could not be made. Hierarchy (levels and parents) is not part of this result yet.</summary>
 public sealed record ScanHeadingResult(string SourceSha256, string SelectorId, IReadOnlyList<ScanHeading> Headings, int UnitsComplete, int UnitsTotal,
     IReadOnlyList<string> UnitFailures, IReadOnlyList<string> ModelAnswers, int ProviderCalls, double ProviderCostUsd,
-    int VisionPagesObserved, IReadOnlyList<string> VisionFailures, IReadOnlyList<OcrViewGap> OcrGaps, int PartsRejected);
+    int VisionPagesObserved, IReadOnlyList<string> VisionFailures, IReadOnlyList<OcrViewGap> OcrGaps, int PartsRejected)
+{
+    /// <summary>Lines transcribed by the vision model, and how many passed the checks and are shown.</summary>
+    public int TranscribedLines { get; init; }
+    public int TranscriptionsAccepted { get; init; }
+    public IReadOnlyDictionary<string, int> TranscriptionStatuses { get; init; } = new Dictionary<string, int>();
+    public IReadOnlyList<string> TranscriptionFailures { get; init; } = [];
+
+    /// <summary>The vision observation and transcription calls sent before the conversation, and their cost; not in ProviderCalls.</summary>
+    public int PreflightCalls { get; init; }
+    public double PreflightCostUsd { get; init; }
+}
 
 /// <summary>
 /// The heading route of a scanned DOCX: OCR preflight (evidence store), vision preflight (observations of the page images by the agent's own
@@ -29,7 +41,8 @@ public sealed record ScanHeadingResult(string SourceSha256, string SelectorId, I
 /// </summary>
 public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageHandler>? handlerFactory = null, int? parallelism = null,
     Action<ModelReply>? onModelReply = null, string? instruction = null, bool vision = true,
-    ScanOcrPreflight.Options? ocrOptions = null, ScanVisionPreflight.Options? visionOptions = null)
+    ScanOcrPreflight.Options? ocrOptions = null, ScanVisionPreflight.Options? visionOptions = null, bool transcribe = true,
+    ScanTranscriptionPreflight.Options? transcriptionOptions = null)
 {
     /// <summary>The folder of the store root that holds the OCR evidence; <c>dhx scan-ocr</c> writes to the same one.</summary>
     public const string OcrFolder = "ocr";
@@ -44,16 +57,23 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
         ArgumentException.ThrowIfNullOrWhiteSpace(apiKey);
         var ocr = new ScanOcrPreflight(Path.Combine(storeRoot, OcrFolder));
         var evidence = ocr.Run(docxPath, ocrOptions);
-        var observations = vision
-            ? new ScanVisionPreflight(Path.Combine(storeRoot, "vlm"), handlerFactory).Run(evidence, ocr.EntryOf(evidence), apiKey, visionOptions)
-            : [];
-        return ExtractFrom(evidence, observations, apiKey, ct);
+        var seer = new ScanVisionPreflight(Path.Combine(storeRoot, "vlm"), handlerFactory);
+        var observations = vision ? seer.Run(evidence, ocr.EntryOf(evidence), apiKey, visionOptions) : [];
+        var transcriptions = transcribe
+            ? new ScanTranscriptionPreflight(storeRoot, handlerFactory).Run(evidence, ocr.EntryOf(evidence), apiKey, transcriptionOptions)
+            : null;
+        return ExtractFrom(evidence, observations, apiKey, ct, transcriptions) with
+        {
+            PreflightCalls = seer.LastCalls + (transcriptions?.ProviderCalls ?? 0),
+            PreflightCostUsd = seer.LastCostUsd + (transcriptions?.ProviderCostUsd ?? 0),
+        };
     }, ct);
 
-    /// <summary>The conversation over stored evidence and observations.</summary>
-    internal ScanHeadingResult ExtractFrom(ScanOcrEvidence evidence, IReadOnlyList<VlmPageObservation> observations, string apiKey, CancellationToken ct)
+    /// <summary>The conversation over stored evidence, observations and transcriptions.</summary>
+    internal ScanHeadingResult ExtractFrom(ScanOcrEvidence evidence, IReadOnlyList<VlmPageObservation> observations, string apiKey, CancellationToken ct,
+        TranscriptionSet? transcriptions = null)
     {
-        var source = new ScanAgentSource(evidence, observations);
+        var source = new ScanAgentSource(evidence, observations, transcriptions);
         var budget = HeadingAgentSelector.BudgetFor(source, instruction);
         using var handler = (handlerFactory ?? (() => AgentModel.CreateHandler()))();
         using var model = new AgentModel(handler, apiKey, budget);
@@ -62,7 +82,13 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
         var (headings, rejected) = Headings(source, selection);
         return new ScanHeadingResult(evidence.SourceSha256, SelectorId, headings, selection.UnitsComplete, selection.UnitsTotal, selection.UnitFailures,
             selection.ModelAnswers, selection.ProviderCalls, selection.ProviderCostUsd, observations.Count(o => o.Failure is null),
-            observations.Where(o => o.Failure is not null).Select(o => $"P{o.Page:000}:{o.Failure}").ToArray(), evidence.Gaps, rejected);
+            observations.Where(o => o.Failure is not null).Select(o => $"P{o.Page:000}:{o.Failure}").ToArray(), evidence.Gaps, rejected)
+        {
+            TranscribedLines = transcriptions?.Lines.Count(l => l.Text is not null) ?? 0,
+            TranscriptionsAccepted = transcriptions?.Accepted ?? 0,
+            TranscriptionStatuses = (transcriptions?.Lines ?? []).GroupBy(l => l.Status).ToDictionary(g => g.Key, g => g.Count()),
+            TranscriptionFailures = transcriptions?.Failures ?? [],
+        };
     }
 
     /// <summary>The selected lines as headings, in reading order: the agent's division when it gave one, else one heading per line. A part whose
@@ -82,11 +108,19 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
             {
                 var line = source.ScanLines[source.Index(alias)];
                 var readings = source.Readings(alias);
-                var view = selection.HeadingReadings?.GetValueOrDefault(alias) ?? ScanOcrPreflight.OriginalView;
+                var view = selection.HeadingReadings?.GetValueOrDefault(alias) ?? source.DefaultReading(alias);
                 if (!readings.TryGetValue(view, out var reading)) { rejected++; continue; }
                 var (start, end) = selection.HeadingExtents?.TryGetValue(alias, out var e) == true ? (e.Start, e.End) : (0, reading.Length);
                 if (start < 0 || end <= start || end > reading.Length) { rejected++; continue; }
-                var agree = readings.Where(r => r.Key != ScanAgentSource.VlmProposedReading && r.Value == reading).Select(r => r.Key).ToList();
+                if (view == ScanAgentSource.VlmTranscribedReading)
+                {
+                    // The transcription was made without any OCR reading in sight: an OCR view that reads the same is a second, independent reader.
+                    var agreeing = source.OcrViewsAgreeingWithTranscription(alias);
+                    parts.Add(new ScanHeadingPart(alias, line.Page, line.Primary.Id, line.Primary.Box, view, "VLM_TRANSCRIBED", reading[start..end], start, end,
+                        line.Primary.Text, agreeing.Prepend(view).ToArray(), agreeing.Count > 0 ? "CORROBORATED" : "UNVERIFIED"));
+                    continue;
+                }
+                var agree = readings.Where(r => r.Key is not (ScanAgentSource.VlmProposedReading or ScanAgentSource.VlmTranscribedReading) && r.Value == reading).Select(r => r.Key).ToList();
                 var choice = source.VisionChoice(alias);
                 var visionAgrees = choice is not null && (choice.Choice == view || (view == ScanAgentSource.VlmProposedReading && choice.Choice == "NONE")
                     || (readings.TryGetValue(choice.Choice, out var chosenText) && chosenText == reading));
@@ -100,6 +134,7 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
             }
             if (parts.Count == 0) continue;
             var status = parts.Any(p => p.ViewId == ScanAgentSource.VlmProposedReading) ? "CORRECTED_UNVERIFIED"
+                : parts.Any(p => p.ViewId == ScanAgentSource.VlmTranscribedReading) ? "VLM_TRANSCRIBED"
                 : parts.Any(p => p.ViewId != ScanOcrPreflight.OriginalView) ? "OCR_OTHER_VIEW" : "OCR_PRIMARY_VIEW";
             var worst = parts.Any(p => p.Verification == "CONFLICT") ? "CONFLICT" : parts.All(p => p.Verification == "CORROBORATED") ? "CORROBORATED" : "UNVERIFIED";
             headings.Add(new ScanHeading(headings.Count + 1, parts, string.Join(" ", parts.Select(p => p.Text)),

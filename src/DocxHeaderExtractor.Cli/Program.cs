@@ -110,7 +110,9 @@ static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationTok
         var result = await selector.ExtractAsync(file, key, ct);
         if (!o.Quiet)
             Console.Error.WriteLine($"  {result.Headings.Count} heading, {result.UnitsComplete}/{result.UnitsTotal} unit, {result.ProviderCalls} POST, " +
-                $"{result.ProviderCostUsd:0.0000} USD, VLM {result.VisionPagesObserved} trang ({result.VisionFailures.Count} lỗi)");
+                $"{result.ProviderCostUsd:0.0000} USD, VLM {result.VisionPagesObserved} trang ({result.VisionFailures.Count} lỗi), " +
+                $"chép {result.TranscriptionsAccepted}/{result.TranscribedLines} dòng dùng được ({result.TranscriptionFailures.Count} lỗi), " +
+                $"tiền xử lý {result.PreflightCalls} POST {result.PreflightCostUsd:0.0000} USD");
         Console.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }));
     }
     return 0;

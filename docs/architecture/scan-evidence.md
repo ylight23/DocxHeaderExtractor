@@ -126,12 +126,22 @@ Not verified: whether `qwen/qwen3.7-flash` accepts image input. `openrouter.ai` 
 this was built in, so every test runs against a fake provider. The first live run will tell; a refusal is recorded
 per page and the route continues on OCR alone.
 
-## 5. The scan route (`SCAN_AGENT_SOURCE_V1`, `SCAN_LINE_FACTS_V1`, `SCAN_AGENT_TOOLS_V1`, `P7_F1_V6_SELECT_OBJECTS_SCAN_V1`)
+## 5. The scan route (`SCAN_AGENT_SOURCE_V2`, `SCAN_LINE_FACTS_V2`, `SCAN_AGENT_TOOLS_V1`, `P7_F1_V6_SELECT_OBJECTS_SCAN_V1`)
 
 `ScanHeadingAgentSelector` (CLI `dhx scan-extract`, key from `OPENROUTER_API_KEY`): OCR preflight, vision preflight,
-then the V6 conversation over `ScanAgentSource`, with the same runner, budget, repairs and core-facts gate as DOCX.
+transcription preflight, then the V6 conversation over `ScanAgentSource`, with the same runner, budget, repairs and
+core-facts gate as DOCX.
 
-- A target is one line of the primary view (`ocr-original`), alias `P003-L012`; its text is that view's reading.
+- Transcription preflight (`SCAN_VLM_TRANSCRIPTION_V1`, prompt `SCAN_VLM_TRANSCRIBE_V1`; owner's decision after §5a):
+  every line of the primary view is cropped from its page image (8 px margin), enlarged 2x, and transcribed by the
+  vision model, which sees only the crops, never an OCR reading. Batches of at most 10 crops under the byte cap, stored
+  in `<root>/vlm-transcribe/` by what the crops are made of, read back on the next run. A transcription is a reading
+  (`vlm-transcribed`, origin `VLM_TRANSCRIBED`) only when it passes two checks against the primary OCR reading of the
+  same box: no line break (`REJECTED_MULTILINE`: the model copied the line above, measured twice in 120 at 1x), and not
+  6 or more characters, or 1.5 times, longer (`REJECTED_LONGER_THAN_OCR`). A rejected one is kept as evidence.
+- A target is one line of the primary view (`ocr-original`), alias `P003-L012`. Its text is the accepted transcription,
+  else that view's reading; the facts say which (`text.shownReading`, `text.transcription`, and the OCR views that read
+  the same), and `get_text_views` lists every reading, the transcription and a rejected one with its reason.
 - Facts per line, each with its origin: layout measured on the page image (box, page size, left edge against the page's
   common edge, margins and centring, gaps above and below, height against the median line), OCR (mean and lowest
   confidence, low-confidence words, overlap, views covering it and whether they differ), typography only as a
@@ -144,9 +154,13 @@ then the V6 conversation over `ScanAgentSource`, with the same runner, budget, r
   `headingExtent` is measured on that reading. A reading not listed is refused (`READING_VIEW_UNKNOWN`) and goes back to
   the agent; the agent never writes a reading of its own.
 - Result (`ScanHeadingResult`): each heading's parts carry page, OCR line id, box, the view taken and its origin, the
-  text, the extent, the primary reading kept beside it, the readings that agree, and a verification:
-  `CORROBORATED` (an OCR view and the vision model read the same), `CONFLICT` (the vision model chose another reading),
-  `UNVERIFIED` otherwise. `TextStatus` is `OCR_PRIMARY_VIEW`, `OCR_OTHER_VIEW` or `CORRECTED_UNVERIFIED`.
+  text, the extent, the primary reading kept beside it, the readings that agree, and a verification: with the
+  transcription, `CORROBORATED` when an OCR view reads the same (two independent readers), else `UNVERIFIED`; with an
+  OCR view, `CORROBORATED` when the vision model chose it, `CONFLICT` when it chose another reading, `UNVERIFIED`
+  otherwise. When the agent names no reading, the part takes the text shown. `TextStatus` is `VLM_TRANSCRIBED`,
+  `OCR_PRIMARY_VIEW`, `OCR_OTHER_VIEW` or `CORRECTED_UNVERIFIED`. The result also counts the transcribed and accepted
+  lines and the preflight calls and cost (vision and transcription; `ProviderCalls` and `ProviderCostUsd` are the
+  conversation's).
   `CORROBORATED` means two readers agree, not that the text is right: on `023` the line `Điều 4. Tham quyền và trách
   nhiệm cap bản sao từ sô gốc` is `CORROBORATED` (the vision model chose the same OCR view).
 - Lines of one heading are joined by the shared grouping step (`PDF_HEADING_GROUPS_V1`): the agent divides each run of
@@ -171,7 +185,22 @@ Measured before the vision transcription, from `ket-qua-023-v2.json` and the loc
 | better of the two views, chosen by the gold (no reader can do this) | 85/120 (71%) | 1.63% |
 | result text (agent's choice among views and vision proposals) | 77/120 (64%) | 1.95% |
 
-So choosing among the OCR views cannot pass 71% on these lines: the readings that are wrong are wrong in both views
+Measured with the vision transcription (Windows, commit `004bbdae`, report in `.dhx-evidence/eval/`): 28 POST, 0.0033 USD.
+
+| Reader | Exact lines | CER |
+|---|---:|---:|
+| `ocr-original` | 73/120 (61%) | 2.33% |
+| `ocr-upscaled` | 74/120 (62%) | 3.04% |
+| better of the two OCR views (oracle) | 84/120 (70%) | 1.70% |
+| vision model, blind, crop as sent by the vision preflight | 118/120 (98%) | 0.27% |
+| vision model, blind, crop enlarged 2x | 120/120 (100%) | 0.00% |
+
+The two misses at 1x read every letter right but added the line above (`Mục 3⏎CHỨNG THỰC CHỮ KÝ`): the crop's margin
+caught part of it. Hence the transcription preflight's checks and the 2x scale. The eval also scores what the route
+shows (`shown-by-scan-route`: the 2x transcription where it passes the checks, else `ocr-original`). One document, its
+heading lines only, against a gold no person has reviewed: not yet a measurement of body text or of other scans.
+
+Before the vision transcription, choosing among the OCR views could not pass 71% on these lines: the readings that are wrong are wrong in both views
 (`sổ` → `số`, `Thẩm` → `Tham`, `ĐIỀU` → `DIEU`, `III` → `II`). Of the 11 heading lines where the vision model's choice
 can be checked, 4 were right; the 7 wrong ones were all an OCR reading it accepted. `dhx scan-text-eval` measures what
 the vision model reads when it is shown only the crop: the crop the vision preflight sends, and the same crop enlarged
@@ -200,6 +229,8 @@ where the tools are missing, so a green suite on a machine without them checks n
 
 ## 7. Not done yet, and known limits
 
+- The transcription preflight is new: not yet run live; cost per document estimated from the eval at about 0.015 USD
+  for `023` (1,084 lines).
 - One live run so far, `023` on Windows (`ket-qua-023.json`, built from `0288e073`): the model accepts the page images
   (34 pages observed, no vision failure); 29/29 units complete, 113 POSTs, 0.0718 USD for the conversation, the vision
   calls not counted in that total. 117 selected lines; all 49 `Điều` and the five `Chương` found (`Chương III` read as

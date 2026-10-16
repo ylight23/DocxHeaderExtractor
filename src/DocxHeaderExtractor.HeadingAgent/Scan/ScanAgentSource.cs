@@ -12,8 +12,10 @@ internal sealed record ScanLine(string Alias, int Page, OcrLine Primary, int Pag
 
 /// <summary>
 /// The source of an agent run over a scanned document: the lines of its primary OCR view (<c>ocr-original</c>) in reading order, under aliases
-/// of the form P003-L012 (page, line), with the other views aligned to them and the vision observations, if any, attached. The document has no
-/// text of its own: every line is OCR_DERIVED, and no reading has been corrected. A segment is a window of lines cut like a DOCX one, by size.
+/// of the form P003-L012 (page, line), with the other views aligned to them and the vision observations and transcriptions, if any, attached.
+/// The document has no text of its own. The text shown for a line is its blind vision transcription (<see cref="VlmTranscribedReading"/>) when
+/// one passed the program's checks, else the primary OCR reading; every reading stays available and none is edited. A segment is a window of
+/// lines cut like a DOCX one, by size.
 /// <para>
 /// The facts are measurements of the page image (box, margins, gaps, line height against the page), of the OCR (confidences, whether another
 /// line overlaps, whether the views read the line the same way) and, only when a vision model was asked, its observation of the typography,
@@ -22,8 +24,8 @@ internal sealed record ScanLine(string Alias, int Page, OcrLine Primary, int Pag
 /// </summary>
 internal sealed class ScanAgentSource : IAgentSource
 {
-    public const string Version = "SCAN_AGENT_SOURCE_V1", FactsVersion = "SCAN_LINE_FACTS_V1";
-    public const string VlmProposedReading = "vlm-proposed";
+    public const string Version = "SCAN_AGENT_SOURCE_V2", FactsVersion = "SCAN_LINE_FACTS_V2";
+    public const string VlmProposedReading = "vlm-proposed", VlmTranscribedReading = "vlm-transcribed";
     public const int Overlap = 20, LeftEdgeTolerancePx = 8, LowConfidence = 60, MaxLowConfidenceWords = 8;
 
     public ScanOcrEvidence Evidence { get; }
@@ -33,6 +35,7 @@ internal sealed class ScanAgentSource : IAgentSource
     public IReadOnlyList<(int Start, int End)> Cores { get; }
     public JsonObject StyleTable { get; }
     public IReadOnlyList<VlmPageObservation> Vision { get; }
+    public TranscriptionSet? Transcriptions { get; }
     public string SourceSha256 { get; }
     public string SourceAliasUniverseSha256 { get; }
     public string EvidenceStoreSha256 { get; }
@@ -40,12 +43,14 @@ internal sealed class ScanAgentSource : IAgentSource
 
     readonly Dictionary<string, VlmLineObservation> seen = new(StringComparer.Ordinal);
     readonly Dictionary<string, VlmReadingChoice> chosen = new(StringComparer.Ordinal);
+    readonly Dictionary<string, LineTranscription> transcribed = new(StringComparer.Ordinal);
     readonly string? visionModel;
 
-    public ScanAgentSource(ScanOcrEvidence evidence, IReadOnlyList<VlmPageObservation>? vision = null)
+    public ScanAgentSource(ScanOcrEvidence evidence, IReadOnlyList<VlmPageObservation>? vision = null, TranscriptionSet? transcriptions = null)
     {
         Evidence = evidence;
         Vision = vision ?? [];
+        Transcriptions = transcriptions;
         var primary = evidence.Views.FirstOrDefault(v => v.Spec.ViewId == ScanOcrPreflight.OriginalView)
             ?? throw new InvalidOperationException("SCAN_PRIMARY_VIEW_MISSING");
         var others = evidence.Views.Where(v => v != primary).ToArray();
@@ -65,9 +70,11 @@ internal sealed class ScanAgentSource : IAgentSource
             }
         if (lines.Count == 0) throw new InvalidOperationException("SCAN_EMPTY_UNIVERSE");
         ScanLines = lines;
-        Lines = lines.Select((l, i) => new AgentSourceLine(l.Alias, i, l.Page, l.Primary.Text, null, null)).ToArray();
-
+        index = lines.Select((l, i) => (l.Alias, i)).ToDictionary(x => x.Alias, x => x.i, StringComparer.Ordinal);
         var byLineId = lines.ToDictionary(l => l.Primary.Id, l => l.Alias, StringComparer.Ordinal);
+        foreach (var t in transcriptions?.Lines ?? []) if (byLineId.TryGetValue(t.LineId, out var alias)) transcribed[alias] = t;
+        Lines = lines.Select((l, i) => new AgentSourceLine(l.Alias, i, l.Page, Text(l.Alias), null, null)).ToArray();
+
         foreach (var page in Vision.Where(p => p.Failure is null))
         {
             visionModel ??= page.Model;
@@ -83,28 +90,48 @@ internal sealed class ScanAgentSource : IAgentSource
             ["version"] = Version, ["documentLines"] = lines.Count, ["stylesTotal"] = 0, ["styles"] = new JsonArray(),
         };
         SourceSha256 = evidence.SourceSha256;
-        SourceAliasUniverseSha256 = Sha(string.Join("\n", lines.Select(l => l.Alias + "\t" + l.Primary.Text)));
+        SourceAliasUniverseSha256 = Sha(string.Join("\n", lines.Select(l => l.Alias + "\t" + Text(l.Alias))));
         EvidenceStoreSha256 = Sha(string.Join("\n", new[] { Version, FactsVersion, evidence.ParametersSha256 }
             .Concat(Vision.Select(v => v.ImageSha256 + ":" + v.PromptVersion + ":" + v.Model))
+            .Concat(transcriptions is null ? [] : [transcriptions.Model + ":" + transcriptions.PromptVersion + ":" + transcriptions.Scale.ToString(System.Globalization.CultureInfo.InvariantCulture)])
             .Concat(lines.Select(l => l.Alias + "\t" + Facts[l.Alias].ToJsonString()))));
     }
 
-    /// <summary>The readings of one line by view id: every OCR view that covers it and, when the vision model proposed one, its reading.</summary>
+    /// <summary>The readings of one line by view id: every OCR view that covers it, the vision transcription when it passed the checks, and,
+    /// when the vision model proposed one, its proposal.</summary>
     public IReadOnlyDictionary<string, string> Readings(string alias)
     {
         var line = ScanLines[Index(alias)];
         var r = new Dictionary<string, string>(StringComparer.Ordinal) { [ScanOcrPreflight.OriginalView] = line.Primary.Text };
         foreach (var (view, (other, _)) in line.OtherViews) r[view] = other.Text;
+        if (transcribed.TryGetValue(alias, out var t) && t.Status == ScanTranscription.Accepted) r[VlmTranscribedReading] = ScanTranscription.Norm(t.Text!);
         if (chosen.TryGetValue(alias, out var c) && !string.IsNullOrWhiteSpace(c.ProposedReading)) r[VlmProposedReading] = c.ProposedReading!;
         return r;
+    }
+
+    /// <summary>The reading shown for a line, and taken when the agent names none: the accepted transcription, else the primary OCR view.</summary>
+    public string DefaultReading(string alias) =>
+        transcribed.TryGetValue(alias, out var t) && t.Status == ScanTranscription.Accepted ? VlmTranscribedReading : ScanOcrPreflight.OriginalView;
+
+    /// <summary>The text shown for a line: its <see cref="DefaultReading"/>.</summary>
+    public string Text(string alias) => Readings(alias)[DefaultReading(alias)];
+
+    public LineTranscription? Transcription(string alias) => transcribed.GetValueOrDefault(alias);
+
+    /// <summary>The OCR views whose reading of the line is the same text as the transcription (after NFC and white space).</summary>
+    public IReadOnlyList<string> OcrViewsAgreeingWithTranscription(string alias)
+    {
+        var r = Readings(alias);
+        if (!r.TryGetValue(VlmTranscribedReading, out var t)) return [];
+        return r.Where(x => x.Key is not (VlmTranscribedReading or VlmProposedReading) && ScanTranscription.Norm(x.Value) == t).Select(x => x.Key).ToArray();
     }
 
     public VlmReadingChoice? VisionChoice(string alias) => chosen.GetValueOrDefault(alias);
     public VlmLineObservation? VisionLine(string alias) => seen.GetValueOrDefault(alias);
     public string? VisionModel => visionModel;
 
-    Dictionary<string, int>? index;
-    public int Index(string alias) => (index ??= Lines.Select((l, i) => (l.Alias, i)).ToDictionary(x => x.Alias, x => x.i, StringComparer.Ordinal))[alias];
+    readonly Dictionary<string, int> index;
+    public int Index(string alias) => index[alias];
 
     public (string[] Decide, int[] Shown) Scope(int segment)
     {
@@ -119,7 +146,7 @@ internal sealed class ScanAgentSource : IAgentSource
     Dictionary<string, JsonObject> ComputeFacts()
     {
         var result = new Dictionary<string, JsonObject>(StringComparer.Ordinal);
-        var repeat = ScanLines.Select((l, i) => (k: Evidence_RepeatKey(l.Primary.Text), i)).Where(x => x.k.Length > 0).ToLookup(x => x.k, x => x.i, StringComparer.Ordinal);
+        var repeat = ScanLines.Select((l, i) => (k: Evidence_RepeatKey(Text(l.Alias)), i)).Where(x => x.k.Length > 0).ToLookup(x => x.k, x => x.i, StringComparer.Ordinal);
         foreach (var page in ScanLines.Select((l, i) => (l, i)).GroupBy(x => x.l.Page))
         {
             var items = page.ToArray();
@@ -166,12 +193,12 @@ internal sealed class ScanAgentSource : IAgentSource
                 var node = new JsonObject
                 {
                     ["alias"] = l.Alias, ["origin"] = "OCR_DERIVED", ["page"] = l.Page,
-                    ["text"] = new JsonObject { ["chars"] = l.Primary.Text.Length, ["words"] = l.Primary.Words.Count },
+                    ["text"] = TextFacts(l),
                     ["layout"] = layout, ["ocr"] = ocr, ["typography"] = typography,
                 };
                 if (chosen.TryGetValue(l.Alias, out var c))
                     node["visionReading"] = new JsonObject { ["origin"] = "VLM_OBSERVATION", ["choice"] = c.Choice, ["proposedReading"] = c.ProposedReading is { Length: > 0 } };
-                var key = Evidence_RepeatKey(l.Primary.Text);
+                var key = Evidence_RepeatKey(Text(l.Alias));
                 if (key.Length > 0 && repeat[key].Where(j => j != i).ToArray() is { Length: > 0 } others)
                     node["repetition"] = new JsonObject
                     {
@@ -182,6 +209,25 @@ internal sealed class ScanAgentSource : IAgentSource
             }
         }
         return result;
+    }
+
+    /// <summary>Which reading the text shown comes from, and how the transcription relates to the OCR views.</summary>
+    JsonObject TextFacts(ScanLine l)
+    {
+        var shown = Text(l.Alias);
+        var o = new JsonObject
+        {
+            ["shownReading"] = DefaultReading(l.Alias), ["chars"] = shown.Length,
+            ["words"] = shown.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length,
+        };
+        if (transcribed.TryGetValue(l.Alias, out var t))
+        {
+            o["transcription"] = t.Status;
+            if (t.Status == ScanTranscription.Accepted)
+                o["ocrViewsAgreeingWithTranscription"] = new JsonArray(OcrViewsAgreeingWithTranscription(l.Alias).Select(v => (JsonNode)v).ToArray());
+        }
+        else o["transcription"] = Transcriptions is null ? "NOT_ASKED" : ScanTranscription.NotTranscribed;
+        return o;
     }
 
     static string Evidence_RepeatKey(string text) => HeadingAgent.Evidence.RepeatKey(text);

@@ -131,7 +131,8 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal("Điều #.", sequence["key"]!.GetValue<string>());
         Assert.Equal(2, sequence["linesWithThisKey"]!.GetValue<int>());
         var integrity = Call(tools, ScanAgentTools.Integrity, new { });
-        Assert.Equal("OCR_DERIVED", integrity["textOrigin"]!.GetValue<string>());
+        Assert.Equal(5, integrity["textShown"]!["ocrOriginal"]!.GetValue<int>());
+        Assert.False(integrity["transcription"]!["asked"]!.GetValue<bool>());
         Assert.Equal(2, integrity["views"]!.AsArray().Count);
         Assert.Equal(1, integrity["vision"]!["pagesObserved"]!.GetValue<int>());
     }
@@ -194,7 +195,7 @@ public sealed class ScanAgentTests : IDisposable
 
     /// <summary>Reads the facts, then selects the two article lines; article 2 in the upscaled view. With <paramref name="firstInvented"/> the
     /// first answer names a reading nobody recorded.</summary>
-    static Func<JsonObject, int, (HttpStatusCode, string)> SelectsArticles(bool firstInvented) => (body, post) =>
+    static Func<JsonObject, int, (HttpStatusCode, string)> SelectsArticles(bool firstInvented, bool namesNoReading = false) => (body, post) =>
     {
         var messages = body["messages"]!.AsArray();
         var targets = JsonNode.Parse(messages[1]!["content"]![0]!["text"]!.GetValue<string>())!["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).ToArray();
@@ -208,6 +209,7 @@ public sealed class ScanAgentTests : IDisposable
             decisions = targets.Select(a => a switch
             {
                 "P001-L002" => (object)new { alias = a, decision = "SELECT", evidenceRefs = new[] { a } },
+                "P001-L004" when namesNoReading => new { alias = a, decision = "SELECT", evidenceRefs = new[] { a } },
                 "P001-L004" => new { alias = a, decision = "SELECT", evidenceRefs = new[] { a }, readingViewId = view },
                 _ => new { alias = a, decision = "NOT_SELECT" },
             }),
@@ -234,7 +236,7 @@ public sealed class ScanAgentTests : IDisposable
         var part = second.Parts.Single();
         Assert.Equal((1, "P001-ocr-original-L004", ScanOcrPreflight.UpscaledView, "OCR_DERIVED"), (part.Page, part.LineId, part.ViewId, part.ReadingOrigin));
         Assert.Equal(new PixelBox(380, 330, 520, 40), part.Box);
-        Assert.StartsWith("scan-v6:SCAN_AGENT_SOURCE_V1:instruction-", result.SelectorId, StringComparison.Ordinal);
+        Assert.StartsWith("scan-v6:" + ScanAgentSource.Version + ":instruction-", result.SelectorId, StringComparison.Ordinal);
         Assert.Equal(ScanAgentProtocol.SystemPrompt, handler.Bodies[0]["messages"]![0]!["content"]![0]!["text"]!.GetValue<string>());
     }
 
@@ -366,5 +368,117 @@ public sealed class ScanAgentTests : IDisposable
 
         Assert.Equal("CALL:TRANSPORT:CLIENT_ERROR", observed.Failure);
         Assert.False(Directory.Exists(Path.Combine(dir, "vlm")) && Directory.GetFiles(Path.Combine(dir, "vlm")).Length > 0);
+    }
+
+    // ---------------- the blind transcription ----------------
+
+    static TranscriptionSet Transcriptions() => new(TranscriptionSet.CurrentVersion, AgentProtocol.ChatModel, ScanTranscription.PromptVersion, 2.0,
+    [
+        new LineTranscription("P001-ocr-original-L001", "Chương I", ScanTranscription.Accepted),
+        new LineTranscription("P001-ocr-original-L004", "Điều 2. Thẩm quyền chứng thực", ScanTranscription.Accepted),
+        new LineTranscription("P001-ocr-original-L005", "1. Nghị định này\nTrưởng phòng thực hiện chứng thực các việc", ScanTranscription.RejectedMultiline),
+    ], [], 1, 0.0001);
+
+    [Theory]
+    [InlineData("Mục 3\nCHỨNG THỰC CHỮ KÝ", "CHỨNG THỰC CHỮ KÝ", ScanTranscription.RejectedMultiline)]   // 023, line 41 at 1x
+    [InlineData("Mục 3 CHỨNG THỰC CHỮ KÝ", "CHỨNG THỰC CHỮ KÝ", ScanTranscription.RejectedLonger)]
+    [InlineData("Chương III", "Chương II", ScanTranscription.Accepted)]
+    [InlineData("Mục 1", "¬ MueL n ca", ScanTranscription.Accepted)]
+    [InlineData("Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc", "Điều 4. Tham quyền và trách nhiệm cap bản sao từ sô gốc", ScanTranscription.Accepted)]
+    [InlineData("   ", "Chương I", ScanTranscription.RejectedEmpty)]
+    [InlineData(null, "Chương I", ScanTranscription.NotTranscribed)]
+    public void A_transcription_is_a_reading_only_on_one_line_and_not_much_longer_than_the_ocr(string? transcription, string ocr, string status) =>
+        Assert.Equal(status, ScanTranscription.Guard(transcription, ocr));
+
+    [Fact]
+    public void An_accepted_transcription_is_the_text_shown_and_every_other_reading_stays()
+    {
+        var source = new ScanAgentSource(Evidence(), [Vision()], Transcriptions());
+
+        Assert.Equal("Điều 2. Thẩm quyền chứng thực", source.Lines[3].Text);
+        Assert.Equal(ScanAgentSource.VlmTranscribedReading, source.DefaultReading("P001-L004"));
+        Assert.Equal("Điều 2. Tham quyền chứng thực", source.Readings("P001-L004")[ScanOcrPreflight.OriginalView]);
+        Assert.Equal([ScanOcrPreflight.UpscaledView], source.OcrViewsAgreeingWithTranscription("P001-L004"));
+        // A rejected transcription is not a reading: the OCR stays the text shown.
+        Assert.Equal(ScanOcrPreflight.OriginalView, source.DefaultReading("P001-L005"));
+        Assert.False(source.Readings("P001-L005").ContainsKey(ScanAgentSource.VlmTranscribedReading));
+        var text = source.Facts["P001-L004"]["text"]!;
+        Assert.Equal((ScanAgentSource.VlmTranscribedReading, ScanTranscription.Accepted), (text["shownReading"]!.GetValue<string>(), text["transcription"]!.GetValue<string>()));
+        Assert.Equal(ScanTranscription.RejectedMultiline, source.Facts["P001-L005"]["text"]!["transcription"]!.GetValue<string>());
+        Assert.Equal(ScanTranscription.NotTranscribed, source.Facts["P001-L002"]["text"]!["transcription"]!.GetValue<string>());
+
+        var tools = ScanAgentFlavor.Instance.CreateTools(source);
+        var records = Call(tools, ScanAgentTools.TextViews, new { aliases = new[] { "P001-L004", "P001-L005" } })["records"]!.AsArray();
+        var transcribed = records[0]!["readings"]!.AsArray().Single(r => r!["viewId"]!.GetValue<string>() == ScanAgentSource.VlmTranscribedReading)!;
+        Assert.Equal(("VLM_TRANSCRIBED", "CORROBORATED"), (transcribed["origin"]!.GetValue<string>(), transcribed["verificationStatus"]!.GetValue<string>()));
+        Assert.Equal(ScanAgentSource.VlmTranscribedReading, records[0]!["shownReading"]!.GetValue<string>());
+        Assert.Equal(ScanTranscription.RejectedMultiline, records[1]!["transcriptionRejected"]!["status"]!.GetValue<string>());
+        var integrity = Call(tools, ScanAgentTools.Integrity, new { });
+        Assert.Equal(2, integrity["textShown"]!["vlmTranscribed"]!.GetValue<int>());
+        Assert.Equal("only the crop of the line; no OCR reading", integrity["transcription"]!["seenByModel"]!.GetValue<string>());
+    }
+
+    [Fact]
+    public void A_heading_takes_the_transcription_when_the_agent_names_no_reading_and_keeps_the_ocr_beside_it()
+    {
+        var handler = new FakeOpenRouter(SelectsArticles(firstInvented: false, namesNoReading: true));
+        var selector = new ScanHeadingAgentSelector(dir, () => handler, parallelism: 1);
+
+        var result = selector.ExtractFrom(Evidence(), [Vision()], "sk-test", CancellationToken.None, Transcriptions());
+
+        Assert.Empty(result.UnitFailures);
+        Assert.Equal(("Điều 1. Phạm vi điều chỉnh", "OCR_PRIMARY_VIEW"), (result.Headings[0].Text, result.Headings[0].TextStatus));
+        var second = result.Headings[1];
+        Assert.Equal(("Điều 2. Thẩm quyền chứng thực", "Điều 2. Tham quyền chứng thực"), (second.Text, second.PrimaryReading));
+        Assert.Equal(("VLM_TRANSCRIBED", "CORROBORATED"), (second.TextStatus, second.Verification));
+        var part = second.Parts.Single();
+        Assert.Equal((ScanAgentSource.VlmTranscribedReading, "VLM_TRANSCRIBED"), (part.ViewId, part.ReadingOrigin));
+        Assert.Equal([ScanAgentSource.VlmTranscribedReading, ScanOcrPreflight.UpscaledView], part.ReadingsThatAgree);
+        Assert.Equal((2, 3), (result.TranscriptionsAccepted, result.TranscribedLines));
+        // The agent saw the transcription as the line's text.
+        Assert.Contains("Điều 2. Thẩm quyền chứng thực", handler.Bodies[0]["messages"]![1]!["content"]![0]!["text"]!.GetValue<string>(), StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void The_transcription_preflight_sends_only_crops_to_the_pinned_model_checks_each_line_and_stores_the_batches()
+    {
+        if (TesseractOcr.FindImageMagick() is null) return;
+        var evidence = Evidence();
+        var entry = Path.Combine(dir, "Hồ sơ scan", "entry");
+        Directory.CreateDirectory(Path.Combine(entry, "pages"));
+        File.WriteAllBytes(Path.Combine(entry, "pages", "page-001.png"), TestPng.Grey(1700, 2200));
+        var answers = new Dictionary<string, string>
+        {
+            ["P001-ocr-original-L001"] = "Chương I", ["P001-ocr-original-L002"] = "Điều 1. Phạm vi điều chỉnh",
+            ["P001-ocr-original-L003"] = "Chương I\n1. Nghị định này quy định về chứng thực", ["P001-ocr-original-L004"] = "Điều 2. Thẩm quyền chứng thực",
+        };
+        var handler = new FakeOpenRouter((body, post) =>
+        {
+            Assert.Equal(ScanTranscription.SystemPrompt, body["messages"]![0]!["content"]!.GetValue<string>());
+            var content = body["messages"]![1]!["content"]!.AsArray();
+            var ids = content.Where(c => c!["type"]!.GetValue<string>() == "text").Select(c => c!["text"]!.GetValue<string>()["id ".Length..]).ToArray();
+            Assert.Equal(ids.Length, content.Count(c => c!["type"]!.GetValue<string>() == "image_url"));
+            Assert.DoesNotContain(content, c => c!["type"]!.GetValue<string>() == "text" && c["text"]!.GetValue<string>().Contains("quyền", StringComparison.Ordinal));
+            return (HttpStatusCode.OK, FakeOpenRouter.Stream(new
+            {
+                content = JsonSerializer.Serialize(new { protocolVersion = ScanTranscription.PromptVersion, lines = ids.Where(answers.ContainsKey).Select(id => new { id, text = answers[id] }) }),
+            }, "stop"));
+        });
+        var preflight = new ScanTranscriptionPreflight(Path.Combine(dir, "store"), () => handler);
+
+        var set = preflight.Run(evidence, entry, "sk-test", new ScanTranscriptionPreflight.Options(MaxLinesPerRequest: 3, Parallelism: 1));
+
+        Assert.Empty(set.Failures);
+        Assert.Equal(2, handler.Posts);
+        Assert.Equal(AgentProtocol.ChatModel, handler.Bodies[0]["model"]!.GetValue<string>());
+        Assert.Equal([ScanTranscription.Accepted, ScanTranscription.Accepted, ScanTranscription.RejectedMultiline, ScanTranscription.Accepted, ScanTranscription.NotTranscribed],
+            set.Lines.Select(l => l.Status));
+        Assert.Equal(3, set.Accepted);
+
+        var again = preflight.Run(evidence, entry, "sk-test", new ScanTranscriptionPreflight.Options(MaxLinesPerRequest: 3, Parallelism: 1));
+
+        Assert.Equal(2, handler.Posts);   // read back from the store
+        Assert.Equal(set.Lines, again.Lines);
+        Assert.Equal(0, again.ProviderCalls);
     }
 }
