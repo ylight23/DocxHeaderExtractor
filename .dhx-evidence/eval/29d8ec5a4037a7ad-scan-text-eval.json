@@ -41,6 +41,18 @@
       "CharacterErrorRate": 0.0027180067950169874
     },
     {
+      "Method": "vlm-blind-crop-2x-masked",
+      "Exact": 119,
+      "Lines": 120,
+      "CharacterErrorRate": 0.00022650056625141563
+    },
+    {
+      "Method": "vlm-blind-crop-2x-bilevel-masked",
+      "Exact": 120,
+      "Lines": 120,
+      "CharacterErrorRate": 0
+    },
+    {
       "Method": "shown-by-scan-route",
       "Exact": 120,
       "Lines": 120,
@@ -59,6 +71,8 @@
         "vlm-blind-crop": "NGHỊ ĐỊNH",
         "vlm-blind-crop-2x": "NGHỊ ĐỊNH",
         "vlm-blind-crop-2x-bilevel": "NGHỊ ĐỊNH",
+        "vlm-blind-crop-2x-masked": "NGHỊ ĐỊNH",
+        "vlm-blind-crop-2x-bilevel-masked": "NGHỊ ĐỊNH",
         "shown-by-scan-route": "NGHỊ ĐỊNH"
       }
     },
@@ -73,6 +87,8 @@
         "vlm-blind-crop": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,",
         "vlm-blind-crop-2x": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,",
         "vlm-blind-crop-2x-bilevel": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,",
+        "vlm-blind-crop-2x-masked": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,",
+        "vlm-blind-crop-2x-bilevel-masked": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,",
         "shown-by-scan-route": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,"
       }
     },
@@ -87,6 +103,8 @@
         "vlm-blind-crop": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x-bilevel": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-masked": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
         "shown-by-scan-route": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch"
       }
     },
@@ -101,6 +119,8 @@
         "vlm-blind-crop": "Chương I",
         "vlm-blind-crop-2x": "Chương I",
         "vlm-blind-crop-2x-bilevel": "Chương I",
+        "vlm-blind-crop-2x-masked": "Chương I",
+        "vlm-blind-crop-2x-bilevel-masked": "Chương I",
         "shown-by-scan-route": "Chương I"
       }
     },
@@ -115,6 +135,8 @@
         "vlm-blind-crop": "NHỮNG QUY ĐỊNH CHUNG",
         "vlm-blind-crop-2x": "NHỮNG QUY ĐỊNH CHUNG",
         "vlm-blind-crop-2x-bilevel": "NHỮNG QUY ĐỊNH CHUNG",
+        "vlm-blind-crop-2x-masked": "NHỮNG QUY ĐỊNH CHUNG",
+        "vlm-blind-crop-2x-bilevel-masked": "NHỮNG QUY ĐỊNH CHUNG",
         "shown-by-scan-route": "NHỮNG QUY ĐỊNH CHUNG"
       }
     },
@@ -129,6 +151,8 @@
         "vlm-blind-crop": "Điều 1. Phạm vi điều chỉnh",
         "vlm-blind-crop-2x": "Điều 1. Phạm vi điều chỉnh",
         "vlm-blind-crop-2x-bilevel": "Điều 1. Phạm vi điều chỉnh",
+        "vlm-blind-crop-2x-masked": "Điều 1. Phạm vi điều chỉnh",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 1. Phạm vi điều chỉnh",
         "shown-by-scan-route": "Điều 1. Phạm vi điều chỉnh"
       }
     },
@@ -143,6 +167,8 @@
         "vlm-blind-crop": "Điều 2. Giải thích từ ngữ",
         "vlm-blind-crop-2x": "Điều 2. Giải thích từ ngữ",
         "vlm-blind-crop-2x-bilevel": "Điều 2. Giải thích từ ngữ",
+        "vlm-blind-crop-2x-masked": "Điều 2. Giải thích từ ngữ",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 2. Giải thích từ ngữ",
         "shown-by-scan-route": "Điều 2. Giải thích từ ngữ"
       }
     },
@@ -157,6 +183,8 @@
         "vlm-blind-crop": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được",
         "vlm-blind-crop-2x": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được",
         "vlm-blind-crop-2x-bilevel": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được",
+        "vlm-blind-crop-2x-masked": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được",
         "shown-by-scan-route": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được"
       }
     },
@@ -171,6 +199,8 @@
         "vlm-blind-crop": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
         "vlm-blind-crop-2x": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
         "vlm-blind-crop-2x-bilevel": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-masked": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
         "shown-by-scan-route": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch"
       }
     },
@@ -185,6 +215,8 @@
         "vlm-blind-crop": "được chứng thực",
         "vlm-blind-crop-2x": "được chứng thực",
         "vlm-blind-crop-2x-bilevel": "được chứng thực",
+        "vlm-blind-crop-2x-masked": "được chứng thực",
+        "vlm-blind-crop-2x-bilevel-masked": "được chứng thực",
         "shown-by-scan-route": "được chứng thực"
       }
     },
@@ -199,6 +231,8 @@
         "vlm-blind-crop": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc",
         "vlm-blind-crop-2x": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc",
         "vlm-blind-crop-2x-bilevel": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc",
+        "vlm-blind-crop-2x-masked": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ số gốc",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc",
         "shown-by-scan-route": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc"
       }
     },
@@ -213,6 +247,8 @@
         "vlm-blind-crop": "Điều 5. Thẩm quyền và trách nhiệm chứng thực",
         "vlm-blind-crop-2x": "Điều 5. Thẩm quyền và trách nhiệm chứng thực",
         "vlm-blind-crop-2x-bilevel": "Điều 5. Thẩm quyền và trách nhiệm chứng thực",
+        "vlm-blind-crop-2x-masked": "Điều 5. Thẩm quyền và trách nhiệm chứng thực",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 5. Thẩm quyền và trách nhiệm chứng thực",
         "shown-by-scan-route": "Điều 5. Thẩm quyền và trách nhiệm chứng thực"
       }
     },
@@ -227,6 +263,8 @@
         "vlm-blind-crop": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao",
         "vlm-blind-crop-2x": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao",
         "vlm-blind-crop-2x-bilevel": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao",
+        "vlm-blind-crop-2x-masked": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao",
         "shown-by-scan-route": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao"
       }
     },
@@ -241,6 +279,8 @@
         "vlm-blind-crop": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
         "vlm-blind-crop-2x": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
         "vlm-blind-crop-2x-bilevel": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
+        "vlm-blind-crop-2x-masked": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
         "shown-by-scan-route": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực"
       }
     },
@@ -255,6 +295,8 @@
         "vlm-blind-crop": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
         "vlm-blind-crop-2x": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
         "vlm-blind-crop-2x-bilevel": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
+        "vlm-blind-crop-2x-masked": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
         "shown-by-scan-route": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực"
       }
     },
@@ -269,6 +311,8 @@
         "vlm-blind-crop": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
         "vlm-blind-crop-2x": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
         "vlm-blind-crop-2x-bilevel": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
+        "vlm-blind-crop-2x-masked": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
         "shown-by-scan-route": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực"
       }
     },
@@ -283,6 +327,8 @@
         "vlm-blind-crop": "Điều 10. Địa điểm chứng thực",
         "vlm-blind-crop-2x": "Điều 10. Địa điểm chứng thực",
         "vlm-blind-crop-2x-bilevel": "Điều 10. Địa điểm chứng thực",
+        "vlm-blind-crop-2x-masked": "Điều 10. Địa điểm chứng thực",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 10. Địa điểm chứng thực",
         "shown-by-scan-route": "Điều 10. Địa điểm chứng thực"
       }
     },
@@ -297,6 +343,8 @@
         "vlm-blind-crop": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x-bilevel": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-masked": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch",
         "shown-by-scan-route": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch"
       }
     },
@@ -311,6 +359,8 @@
         "vlm-blind-crop": "Điều 12. Lời chứng",
         "vlm-blind-crop-2x": "Điều 12. Lời chứng",
         "vlm-blind-crop-2x-bilevel": "Điều 12. Lời chứng",
+        "vlm-blind-crop-2x-masked": "Điều 12. Lời chứng",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 12. Lời chứng",
         "shown-by-scan-route": "Điều 12. Lời chứng"
       }
     },
@@ -325,6 +375,8 @@
         "vlm-blind-crop": "Điều 13. Sổ chứng thực và số chứng thực",
         "vlm-blind-crop-2x": "Điều 13. Sổ chứng thực và số chứng thực",
         "vlm-blind-crop-2x-bilevel": "Điều 13. Sổ chứng thực và số chứng thực",
+        "vlm-blind-crop-2x-masked": "Điều 13. Sổ chứng thực và số chứng thực",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 13. Sổ chứng thực và số chứng thực",
         "shown-by-scan-route": "Điều 13. Sổ chứng thực và số chứng thực"
       }
     },
@@ -339,6 +391,8 @@
         "vlm-blind-crop": "Điều 14. Chế độ lưu trữ",
         "vlm-blind-crop-2x": "Điều 14. Chế độ lưu trữ",
         "vlm-blind-crop-2x-bilevel": "Điều 14. Chế độ lưu trữ",
+        "vlm-blind-crop-2x-masked": "Điều 14. Chế độ lưu trữ",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 14. Chế độ lưu trữ",
         "shown-by-scan-route": "Điều 14. Chế độ lưu trữ"
       }
     },
@@ -353,6 +407,8 @@
         "vlm-blind-crop": "Điều 15. Lệ phí chứng thực, chi phí khác",
         "vlm-blind-crop-2x": "Điều 15. Lệ phí chứng thực, chi phí khác",
         "vlm-blind-crop-2x-bilevel": "Điều 15. Lệ phí chứng thực, chi phí khác",
+        "vlm-blind-crop-2x-masked": "Điều 15. Lệ phí chứng thực, chi phí khác",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 15. Lệ phí chứng thực, chi phí khác",
         "shown-by-scan-route": "Điều 15. Lệ phí chứng thực, chi phí khác"
       }
     },
@@ -367,6 +423,8 @@
         "vlm-blind-crop": "Chương II",
         "vlm-blind-crop-2x": "Chương II",
         "vlm-blind-crop-2x-bilevel": "Chương II",
+        "vlm-blind-crop-2x-masked": "Chương II",
+        "vlm-blind-crop-2x-bilevel-masked": "Chương II",
         "shown-by-scan-route": "Chương II"
       }
     },
@@ -381,6 +439,8 @@
         "vlm-blind-crop": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
         "vlm-blind-crop-2x": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
         "vlm-blind-crop-2x-bilevel": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
+        "vlm-blind-crop-2x-masked": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
+        "vlm-blind-crop-2x-bilevel-masked": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
         "shown-by-scan-route": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,"
       }
     },
@@ -395,6 +455,8 @@
         "vlm-blind-crop": "CHỨNG THỰC CHỮ KÝ",
         "vlm-blind-crop-2x": "CHỨNG THỰC CHỮ KÝ",
         "vlm-blind-crop-2x-bilevel": "CHỨNG THỰC CHỮ KÝ",
+        "vlm-blind-crop-2x-masked": "CHỨNG THỰC CHỮ KÝ",
+        "vlm-blind-crop-2x-bilevel-masked": "CHỨNG THỰC CHỮ KÝ",
         "shown-by-scan-route": "CHỨNG THỰC CHỮ KÝ"
       }
     },
@@ -409,6 +471,8 @@
         "vlm-blind-crop": "Mục 1",
         "vlm-blind-crop-2x": "Mục 1",
         "vlm-blind-crop-2x-bilevel": "Mục 1",
+        "vlm-blind-crop-2x-masked": "Mục 1",
+        "vlm-blind-crop-2x-bilevel-masked": "Mục 1",
         "shown-by-scan-route": "Mục 1"
       }
     },
@@ -423,6 +487,8 @@
         "vlm-blind-crop": "CẤP BẢN SAO TỪ SỔ GỐC",
         "vlm-blind-crop-2x": "CẤP BẢN SAO TỪ SỔ GỐC",
         "vlm-blind-crop-2x-bilevel": "CẤP BẢN SAO TỪ SỔ GỐC",
+        "vlm-blind-crop-2x-masked": "CẤP BẢN SAO TỪ SỔ GỐC",
+        "vlm-blind-crop-2x-bilevel-masked": "CẤP BẢN SAO TỪ SỔ GỐC",
         "shown-by-scan-route": "CẤP BẢN SAO TỪ SỔ GỐC"
       }
     },
@@ -437,6 +503,8 @@
         "vlm-blind-crop": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc",
         "vlm-blind-crop-2x": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc",
         "vlm-blind-crop-2x-bilevel": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc",
+        "vlm-blind-crop-2x-masked": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc",
         "shown-by-scan-route": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc"
       }
     },
@@ -451,6 +519,8 @@
         "vlm-blind-crop": "Điều 17. Thủ tục cấp bản sao từ sổ gốc",
         "vlm-blind-crop-2x": "Điều 17. Thủ tục cấp bản sao từ sổ gốc",
         "vlm-blind-crop-2x-bilevel": "Điều 17. Thủ tục cấp bản sao từ sổ gốc",
+        "vlm-blind-crop-2x-masked": "Điều 17. Thủ tục cấp bản sao từ sổ gốc",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 17. Thủ tục cấp bản sao từ sổ gốc",
         "shown-by-scan-route": "Điều 17. Thủ tục cấp bản sao từ sổ gốc"
       }
     },
@@ -465,6 +535,8 @@
         "vlm-blind-crop": "Mục 2",
         "vlm-blind-crop-2x": "Mục 2",
         "vlm-blind-crop-2x-bilevel": "Mục 2",
+        "vlm-blind-crop-2x-masked": "Mục 2",
+        "vlm-blind-crop-2x-bilevel-masked": "Mục 2",
         "shown-by-scan-route": "Mục 2"
       }
     },
@@ -479,6 +551,8 @@
         "vlm-blind-crop": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
         "vlm-blind-crop-2x": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
         "vlm-blind-crop-2x-bilevel": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "vlm-blind-crop-2x-masked": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "vlm-blind-crop-2x-bilevel-masked": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
         "shown-by-scan-route": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH"
       }
     },
@@ -493,6 +567,8 @@
         "vlm-blind-crop": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
         "vlm-blind-crop-2x": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
         "vlm-blind-crop-2x-bilevel": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
+        "vlm-blind-crop-2x-masked": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
         "shown-by-scan-route": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ"
       }
     },
@@ -507,6 +583,8 @@
         "vlm-blind-crop": "bản chính",
         "vlm-blind-crop-2x": "bản chính",
         "vlm-blind-crop-2x-bilevel": "bản chính",
+        "vlm-blind-crop-2x-masked": "bản chính",
+        "vlm-blind-crop-2x-bilevel-masked": "bản chính",
         "shown-by-scan-route": "bản chính"
       }
     },
@@ -521,6 +599,8 @@
         "vlm-blind-crop": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
         "vlm-blind-crop-2x": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
         "vlm-blind-crop-2x-bilevel": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
+        "vlm-blind-crop-2x-masked": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
         "shown-by-scan-route": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và"
       }
     },
@@ -535,6 +615,8 @@
         "vlm-blind-crop": "người thực hiện chứng thực bản sao từ bản chính",
         "vlm-blind-crop-2x": "người thực hiện chứng thực bản sao từ bản chính",
         "vlm-blind-crop-2x-bilevel": "người thực hiện chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-masked": "người thực hiện chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-bilevel-masked": "người thực hiện chứng thực bản sao từ bản chính",
         "shown-by-scan-route": "người thực hiện chứng thực bản sao từ bản chính"
       }
     },
@@ -549,6 +631,8 @@
         "vlm-blind-crop": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
         "vlm-blind-crop-2x": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
         "vlm-blind-crop-2x-bilevel": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-masked": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
         "shown-by-scan-route": "Điều 20. Thủ tục chứng thực bản sao từ bản chính"
       }
     },
@@ -563,6 +647,8 @@
         "vlm-blind-crop": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
         "vlm-blind-crop-2x": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
         "vlm-blind-crop-2x-bilevel": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-masked": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
         "shown-by-scan-route": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính"
       }
     },
@@ -577,6 +663,8 @@
         "vlm-blind-crop": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
         "vlm-blind-crop-2x": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
         "vlm-blind-crop-2x-bilevel": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
+        "vlm-blind-crop-2x-masked": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
         "shown-by-scan-route": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để"
       }
     },
@@ -591,6 +679,8 @@
         "vlm-blind-crop": "chứng thực bản sao",
         "vlm-blind-crop-2x": "chứng thực bản sao",
         "vlm-blind-crop-2x-bilevel": "chứng thực bản sao",
+        "vlm-blind-crop-2x-masked": "chứng thực bản sao",
+        "vlm-blind-crop-2x-bilevel-masked": "chứng thực bản sao",
         "shown-by-scan-route": "chứng thực bản sao"
       }
     },
@@ -605,6 +695,8 @@
         "vlm-blind-crop": "Mục 3",
         "vlm-blind-crop-2x": "Mục 3",
         "vlm-blind-crop-2x-bilevel": "Mục 3",
+        "vlm-blind-crop-2x-masked": "Mục 3",
+        "vlm-blind-crop-2x-bilevel-masked": "Mục 3",
         "shown-by-scan-route": "Mục 3"
       }
     },
@@ -619,6 +711,8 @@
         "vlm-blind-crop": "Mục 3\nCHỨNG THỰC CHỮ KÝ",
         "vlm-blind-crop-2x": "CHỨNG THỰC CHỮ KÝ",
         "vlm-blind-crop-2x-bilevel": "Mục 3\nCHỨNG THỰC CHỮ KÝ",
+        "vlm-blind-crop-2x-masked": "CHỨNG THỰC CHỮ KÝ",
+        "vlm-blind-crop-2x-bilevel-masked": "CHỨNG THỰC CHỮ KÝ",
         "shown-by-scan-route": "CHỨNG THỰC CHỮ KÝ"
       }
     },
@@ -633,6 +727,8 @@
         "vlm-blind-crop": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
         "vlm-blind-crop-2x": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
         "vlm-blind-crop-2x-bilevel": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
+        "vlm-blind-crop-2x-masked": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
         "shown-by-scan-route": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và"
       }
     },
@@ -647,6 +743,8 @@
         "vlm-blind-crop": "người thực hiện chứng thực chữ ký",
         "vlm-blind-crop-2x": "người thực hiện chứng thực chữ ký",
         "vlm-blind-crop-2x-bilevel": "người thực hiện chứng thực chữ ký",
+        "vlm-blind-crop-2x-masked": "người thực hiện chứng thực chữ ký",
+        "vlm-blind-crop-2x-bilevel-masked": "người thực hiện chứng thực chữ ký",
         "shown-by-scan-route": "người thực hiện chứng thực chữ ký"
       }
     },
@@ -661,6 +759,8 @@
         "vlm-blind-crop": "Điều 24. Thủ tục chứng thực chữ ký",
         "vlm-blind-crop-2x": "Điều 24. Thủ tục chứng thực chữ ký",
         "vlm-blind-crop-2x-bilevel": "Điều 24. Thủ tục chứng thực chữ ký",
+        "vlm-blind-crop-2x-masked": "Điều 24. Thủ tục chứng thực chữ ký",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 24. Thủ tục chứng thực chữ ký",
         "shown-by-scan-route": "Điều 24. Thủ tục chứng thực chữ ký"
       }
     },
@@ -675,6 +775,8 @@
         "vlm-blind-crop": "Điều 25. Trường hợp không được chứng thực chữ ký",
         "vlm-blind-crop-2x": "Điều 25. Trường hợp không được chứng thực chữ ký",
         "vlm-blind-crop-2x-bilevel": "Điều 25. Trường hợp không được chứng thực chữ ký",
+        "vlm-blind-crop-2x-masked": "Điều 25. Trường hợp không được chứng thực chữ ký",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 25. Trường hợp không được chứng thực chữ ký",
         "shown-by-scan-route": "Điều 25. Trường hợp không được chứng thực chữ ký"
       }
     },
@@ -689,6 +791,8 @@
         "vlm-blind-crop": "Điều 26. Áp dụng trong trường hợp đặc biệt",
         "vlm-blind-crop-2x": "Điều 26. Áp dụng trong trường hợp đặc biệt",
         "vlm-blind-crop-2x-bilevel": "Điều 26. Áp dụng trong trường hợp đặc biệt",
+        "vlm-blind-crop-2x-masked": "Điều 26. Áp dụng trong trường hợp đặc biệt",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 26. Áp dụng trong trường hợp đặc biệt",
         "shown-by-scan-route": "Điều 26. Áp dụng trong trường hợp đặc biệt"
       }
     },
@@ -703,6 +807,8 @@
         "vlm-blind-crop": "Mục 4",
         "vlm-blind-crop-2x": "Mục 4",
         "vlm-blind-crop-2x-bilevel": "Mục 4",
+        "vlm-blind-crop-2x-masked": "Mục 4",
+        "vlm-blind-crop-2x-bilevel-masked": "Mục 4",
         "shown-by-scan-route": "Mục 4"
       }
     },
@@ -717,6 +823,8 @@
         "vlm-blind-crop": "Mục 4\nNGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
         "vlm-blind-crop-2x": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
         "vlm-blind-crop-2x-bilevel": "Mục 4\nNGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "vlm-blind-crop-2x-masked": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "vlm-blind-crop-2x-bilevel-masked": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
         "shown-by-scan-route": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH"
       }
     },
@@ -731,6 +839,8 @@
         "vlm-blind-crop": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
         "vlm-blind-crop-2x": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
         "vlm-blind-crop-2x-bilevel": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
+        "vlm-blind-crop-2x-masked": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
         "shown-by-scan-route": "Điều 27. Tiêu chuẩn, điều kiện của người dịch"
       }
     },
@@ -745,6 +855,8 @@
         "vlm-blind-crop": "Điều 28. Cộng tác viên dịch thuật",
         "vlm-blind-crop-2x": "Điều 28. Cộng tác viên dịch thuật",
         "vlm-blind-crop-2x-bilevel": "Điều 28. Cộng tác viên dịch thuật",
+        "vlm-blind-crop-2x-masked": "Điều 28. Cộng tác viên dịch thuật",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 28. Cộng tác viên dịch thuật",
         "shown-by-scan-route": "Điều 28. Cộng tác viên dịch thuật"
       }
     },
@@ -759,6 +871,8 @@
         "vlm-blind-crop": "Điều 29. Đăng ký chữ ký mẫu",
         "vlm-blind-crop-2x": "Điều 29. Đăng ký chữ ký mẫu",
         "vlm-blind-crop-2x-bilevel": "Điều 29. Đăng ký chữ ký mẫu",
+        "vlm-blind-crop-2x-masked": "Điều 29. Đăng ký chữ ký mẫu",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 29. Đăng ký chữ ký mẫu",
         "shown-by-scan-route": "Điều 29. Đăng ký chữ ký mẫu"
       }
     },
@@ -773,6 +887,8 @@
         "vlm-blind-crop": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
         "vlm-blind-crop-2x": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
         "vlm-blind-crop-2x-bilevel": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
+        "vlm-blind-crop-2x-masked": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
         "shown-by-scan-route": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực"
       }
     },
@@ -787,6 +903,8 @@
         "vlm-blind-crop": "chữ ký người dịch",
         "vlm-blind-crop-2x": "chữ ký người dịch",
         "vlm-blind-crop-2x-bilevel": "chữ ký người dịch",
+        "vlm-blind-crop-2x-masked": "chữ ký người dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "chữ ký người dịch",
         "shown-by-scan-route": "chữ ký người dịch"
       }
     },
@@ -801,6 +919,8 @@
         "vlm-blind-crop": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
         "vlm-blind-crop-2x": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
         "vlm-blind-crop-2x-bilevel": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-masked": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
         "shown-by-scan-route": "Điều 31. Thủ tục chứng thực chữ ký người dịch"
       }
     },
@@ -815,6 +935,8 @@
         "vlm-blind-crop": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
         "vlm-blind-crop-2x": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
         "vlm-blind-crop-2x-bilevel": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
+        "vlm-blind-crop-2x-masked": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
         "shown-by-scan-route": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký"
       }
     },
@@ -829,6 +951,8 @@
         "vlm-blind-crop": "người dịch",
         "vlm-blind-crop-2x": "người dịch",
         "vlm-blind-crop-2x-bilevel": "người dịch",
+        "vlm-blind-crop-2x-masked": "người dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "người dịch",
         "shown-by-scan-route": "người dịch"
       }
     },
@@ -843,6 +967,8 @@
         "vlm-blind-crop": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
         "vlm-blind-crop-2x": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
         "vlm-blind-crop-2x-bilevel": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-masked": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
         "shown-by-scan-route": "Điều 33. Thời hạn chứng thực chữ ký người dịch"
       }
     },
@@ -857,6 +983,8 @@
         "vlm-blind-crop": "Chương III",
         "vlm-blind-crop-2x": "Chương III",
         "vlm-blind-crop-2x-bilevel": "Chương III",
+        "vlm-blind-crop-2x-masked": "Chương III",
+        "vlm-blind-crop-2x-bilevel-masked": "Chương III",
         "shown-by-scan-route": "Chương III"
       }
     },
@@ -871,6 +999,8 @@
         "vlm-blind-crop": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
         "vlm-blind-crop-2x": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
         "vlm-blind-crop-2x-bilevel": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
+        "vlm-blind-crop-2x-masked": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
+        "vlm-blind-crop-2x-bilevel-masked": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
         "shown-by-scan-route": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH"
       }
     },
@@ -885,6 +1015,8 @@
         "vlm-blind-crop": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x-bilevel": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-masked": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
         "shown-by-scan-route": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch"
       }
     },
@@ -899,6 +1031,8 @@
         "vlm-blind-crop": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
         "vlm-blind-crop-2x": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
         "vlm-blind-crop-2x-bilevel": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
+        "vlm-blind-crop-2x-masked": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
         "shown-by-scan-route": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao"
       }
     },
@@ -913,6 +1047,8 @@
         "vlm-blind-crop": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x-bilevel": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-masked": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
         "shown-by-scan-route": "dịch và người thực hiện chứng thực hợp đồng, giao dịch"
       }
     },
@@ -927,6 +1063,8 @@
         "vlm-blind-crop": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x-bilevel": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-masked": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
         "shown-by-scan-route": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch"
       }
     },
@@ -941,6 +1079,8 @@
         "vlm-blind-crop": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x-bilevel": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-masked": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
         "shown-by-scan-route": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch"
       }
     },
@@ -955,6 +1095,8 @@
         "vlm-blind-crop": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch",
         "vlm-blind-crop-2x": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch",
         "vlm-blind-crop-2x-bilevel": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-masked": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch",
         "shown-by-scan-route": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch"
       }
     },
@@ -969,6 +1111,8 @@
         "vlm-blind-crop": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
         "vlm-blind-crop-2x": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
         "vlm-blind-crop-2x-bilevel": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
+        "vlm-blind-crop-2x-masked": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
         "shown-by-scan-route": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực"
       }
     },
@@ -983,6 +1127,8 @@
         "vlm-blind-crop": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
         "vlm-blind-crop-2x": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
         "vlm-blind-crop-2x-bilevel": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
+        "vlm-blind-crop-2x-masked": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
         "shown-by-scan-route": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao"
       }
     },
@@ -997,6 +1143,8 @@
         "vlm-blind-crop": "dịch đã được chứng thực",
         "vlm-blind-crop-2x": "dịch đã được chứng thực",
         "vlm-blind-crop-2x-bilevel": "dịch đã được chứng thực",
+        "vlm-blind-crop-2x-masked": "dịch đã được chứng thực",
+        "vlm-blind-crop-2x-bilevel-masked": "dịch đã được chứng thực",
         "shown-by-scan-route": "dịch đã được chứng thực"
       }
     },
@@ -1011,6 +1159,8 @@
         "vlm-blind-crop": "Chương IV",
         "vlm-blind-crop-2x": "Chương IV",
         "vlm-blind-crop-2x-bilevel": "Chương IV",
+        "vlm-blind-crop-2x-masked": "Chương IV",
+        "vlm-blind-crop-2x-bilevel-masked": "Chương IV",
         "shown-by-scan-route": "Chương IV"
       }
     },
@@ -1025,6 +1175,8 @@
         "vlm-blind-crop": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC",
         "vlm-blind-crop-2x": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC",
         "vlm-blind-crop-2x-bilevel": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC",
+        "vlm-blind-crop-2x-masked": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC",
+        "vlm-blind-crop-2x-bilevel-masked": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC",
         "shown-by-scan-route": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC"
       }
     },
@@ -1039,6 +1191,8 @@
         "vlm-blind-crop": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
         "vlm-blind-crop-2x": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
         "vlm-blind-crop-2x-bilevel": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
+        "vlm-blind-crop-2x-masked": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
         "shown-by-scan-route": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về"
       }
     },
@@ -1053,6 +1207,8 @@
         "vlm-blind-crop": "chứng thực",
         "vlm-blind-crop-2x": "chứng thực",
         "vlm-blind-crop-2x-bilevel": "chứng thực",
+        "vlm-blind-crop-2x-masked": "chứng thực",
+        "vlm-blind-crop-2x-bilevel-masked": "chứng thực",
         "shown-by-scan-route": "chứng thực"
       }
     },
@@ -1067,6 +1223,8 @@
         "vlm-blind-crop": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
         "vlm-blind-crop-2x": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
         "vlm-blind-crop-2x-bilevel": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
+        "vlm-blind-crop-2x-masked": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
         "shown-by-scan-route": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về"
       }
     },
@@ -1081,6 +1239,8 @@
         "vlm-blind-crop": "chứng thực",
         "vlm-blind-crop-2x": "chứng thực",
         "vlm-blind-crop-2x-bilevel": "chứng thực",
+        "vlm-blind-crop-2x-masked": "chứng thực",
+        "vlm-blind-crop-2x-bilevel-masked": "chứng thực",
         "shown-by-scan-route": "chứng thực"
       }
     },
@@ -1095,6 +1255,8 @@
         "vlm-blind-crop": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
         "vlm-blind-crop-2x": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
         "vlm-blind-crop-2x-bilevel": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
+        "vlm-blind-crop-2x-masked": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
         "shown-by-scan-route": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý"
       }
     },
@@ -1109,6 +1271,8 @@
         "vlm-blind-crop": "nhà nước về chứng thực",
         "vlm-blind-crop-2x": "nhà nước về chứng thực",
         "vlm-blind-crop-2x-bilevel": "nhà nước về chứng thực",
+        "vlm-blind-crop-2x-masked": "nhà nước về chứng thực",
+        "vlm-blind-crop-2x-bilevel-masked": "nhà nước về chứng thực",
         "shown-by-scan-route": "nhà nước về chứng thực"
       }
     },
@@ -1123,6 +1287,8 @@
         "vlm-blind-crop": "Điều 44. Xử lý vi phạm",
         "vlm-blind-crop-2x": "Điều 44. Xử lý vi phạm",
         "vlm-blind-crop-2x-bilevel": "Điều 44. Xử lý vi phạm",
+        "vlm-blind-crop-2x-masked": "Điều 44. Xử lý vi phạm",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 44. Xử lý vi phạm",
         "shown-by-scan-route": "Điều 44. Xử lý vi phạm"
       }
     },
@@ -1137,6 +1303,8 @@
         "vlm-blind-crop": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo",
         "vlm-blind-crop-2x": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo",
         "vlm-blind-crop-2x-bilevel": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo",
+        "vlm-blind-crop-2x-masked": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo",
         "shown-by-scan-route": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo"
       }
     },
@@ -1151,6 +1319,8 @@
         "vlm-blind-crop": "Chương V",
         "vlm-blind-crop-2x": "Chương V",
         "vlm-blind-crop-2x-bilevel": "Chương V",
+        "vlm-blind-crop-2x-masked": "Chương V",
+        "vlm-blind-crop-2x-bilevel-masked": "Chương V",
         "shown-by-scan-route": "Chương V"
       }
     },
@@ -1165,6 +1335,8 @@
         "vlm-blind-crop": "ĐIỀU KHOẢN THI HÀNH",
         "vlm-blind-crop-2x": "ĐIỀU KHOẢN THI HÀNH",
         "vlm-blind-crop-2x-bilevel": "ĐIỀU KHOẢN THI HÀNH",
+        "vlm-blind-crop-2x-masked": "ĐIỀU KHOẢN THI HÀNH",
+        "vlm-blind-crop-2x-bilevel-masked": "ĐIỀU KHOẢN THI HÀNH",
         "shown-by-scan-route": "ĐIỀU KHOẢN THI HÀNH"
       }
     },
@@ -1179,6 +1351,8 @@
         "vlm-blind-crop": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
         "vlm-blind-crop-2x": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
         "vlm-blind-crop-2x-bilevel": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
+        "vlm-blind-crop-2x-masked": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
         "shown-by-scan-route": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng"
       }
     },
@@ -1193,6 +1367,8 @@
         "vlm-blind-crop": "Điều 47. Điều khoản chuyển tiếp",
         "vlm-blind-crop-2x": "Điều 47. Điều khoản chuyển tiếp",
         "vlm-blind-crop-2x-bilevel": "Điều 47. Điều khoản chuyển tiếp",
+        "vlm-blind-crop-2x-masked": "Điều 47. Điều khoản chuyển tiếp",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 47. Điều khoản chuyển tiếp",
         "shown-by-scan-route": "Điều 47. Điều khoản chuyển tiếp"
       }
     },
@@ -1207,6 +1383,8 @@
         "vlm-blind-crop": "Điều 48. Hiệu lực thi hành",
         "vlm-blind-crop-2x": "Điều 48. Hiệu lực thi hành",
         "vlm-blind-crop-2x-bilevel": "Điều 48. Hiệu lực thi hành",
+        "vlm-blind-crop-2x-masked": "Điều 48. Hiệu lực thi hành",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 48. Hiệu lực thi hành",
         "shown-by-scan-route": "Điều 48. Hiệu lực thi hành"
       }
     },
@@ -1221,6 +1399,8 @@
         "vlm-blind-crop": "Điều 49. Trách nhiệm thi hành",
         "vlm-blind-crop-2x": "Điều 49. Trách nhiệm thi hành",
         "vlm-blind-crop-2x-bilevel": "Điều 49. Trách nhiệm thi hành",
+        "vlm-blind-crop-2x-masked": "Điều 49. Trách nhiệm thi hành",
+        "vlm-blind-crop-2x-bilevel-masked": "Điều 49. Trách nhiệm thi hành",
         "shown-by-scan-route": "Điều 49. Trách nhiệm thi hành"
       }
     },
@@ -1235,6 +1415,8 @@
         "vlm-blind-crop": "Phụ lục",
         "vlm-blind-crop-2x": "Phụ lục",
         "vlm-blind-crop-2x-bilevel": "Phụ lục",
+        "vlm-blind-crop-2x-masked": "Phụ lục",
+        "vlm-blind-crop-2x-bilevel-masked": "Phụ lục",
         "shown-by-scan-route": "Phụ lục"
       }
     },
@@ -1249,6 +1431,8 @@
         "vlm-blind-crop": "I. LỜI CHỨNG",
         "vlm-blind-crop-2x": "I. LỜI CHỨNG",
         "vlm-blind-crop-2x-bilevel": "I. LỜI CHỨNG",
+        "vlm-blind-crop-2x-masked": "I. LỜI CHỨNG",
+        "vlm-blind-crop-2x-bilevel-masked": "I. LỜI CHỨNG",
         "shown-by-scan-route": "I. LỜI CHỨNG"
       }
     },
@@ -1263,6 +1447,8 @@
         "vlm-blind-crop": "1. Lời chứng chứng thực bản sao từ bản chính",
         "vlm-blind-crop-2x": "1. Lời chứng chứng thực bản sao từ bản chính",
         "vlm-blind-crop-2x-bilevel": "1. Lời chứng chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-masked": "1. Lời chứng chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-bilevel-masked": "1. Lời chứng chứng thực bản sao từ bản chính",
         "shown-by-scan-route": "1. Lời chứng chứng thực bản sao từ bản chính"
       }
     },
@@ -1277,6 +1463,8 @@
         "vlm-blind-crop": "2. Lời chứng chứng thực chữ ký",
         "vlm-blind-crop-2x": "2. Lời chứng chứng thực chữ ký",
         "vlm-blind-crop-2x-bilevel": "2. Lời chứng chứng thực chữ ký",
+        "vlm-blind-crop-2x-masked": "2. Lời chứng chứng thực chữ ký",
+        "vlm-blind-crop-2x-bilevel-masked": "2. Lời chứng chứng thực chữ ký",
         "shown-by-scan-route": "2. Lời chứng chứng thực chữ ký"
       }
     },
@@ -1291,6 +1479,8 @@
         "vlm-blind-crop": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
         "vlm-blind-crop-2x": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
         "vlm-blind-crop-2x-bilevel": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
+        "vlm-blind-crop-2x-masked": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
+        "vlm-blind-crop-2x-bilevel-masked": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
         "shown-by-scan-route": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản"
       }
     },
@@ -1305,6 +1495,8 @@
         "vlm-blind-crop": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
         "vlm-blind-crop-2x": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
         "vlm-blind-crop-2x-bilevel": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
+        "vlm-blind-crop-2x-masked": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
+        "vlm-blind-crop-2x-bilevel-masked": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
         "shown-by-scan-route": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,"
       }
     },
@@ -1319,6 +1511,8 @@
         "vlm-blind-crop": "văn bản",
         "vlm-blind-crop-2x": "văn bản",
         "vlm-blind-crop-2x-bilevel": "văn bản",
+        "vlm-blind-crop-2x-masked": "văn bản",
+        "vlm-blind-crop-2x-bilevel-masked": "văn bản",
         "shown-by-scan-route": "văn bản"
       }
     },
@@ -1333,6 +1527,8 @@
         "vlm-blind-crop": "c) Lời chứng chứng thực điểm chỉ",
         "vlm-blind-crop-2x": "c) Lời chứng chứng thực điểm chỉ",
         "vlm-blind-crop-2x-bilevel": "c) Lời chứng chứng thực điểm chỉ",
+        "vlm-blind-crop-2x-masked": "c) Lời chứng chứng thực điểm chỉ",
+        "vlm-blind-crop-2x-bilevel-masked": "c) Lời chứng chứng thực điểm chỉ",
         "shown-by-scan-route": "c) Lời chứng chứng thực điểm chỉ"
       }
     },
@@ -1347,6 +1543,8 @@
         "vlm-blind-crop": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
         "vlm-blind-crop-2x": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
         "vlm-blind-crop-2x-bilevel": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
+        "vlm-blind-crop-2x-masked": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
+        "vlm-blind-crop-2x-bilevel-masked": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
         "shown-by-scan-route": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm"
       }
     },
@@ -1361,6 +1559,8 @@
         "vlm-blind-crop": "3. Lời chứng chứng thực chữ ký người dịch",
         "vlm-blind-crop-2x": "3. Lời chứng chứng thực chữ ký người dịch",
         "vlm-blind-crop-2x-bilevel": "3. Lời chứng chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-masked": "3. Lời chứng chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "3. Lời chứng chứng thực chữ ký người dịch",
         "shown-by-scan-route": "3. Lời chứng chứng thực chữ ký người dịch"
       }
     },
@@ -1375,6 +1575,8 @@
         "vlm-blind-crop": "4. Lời chứng chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x": "4. Lời chứng chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x-bilevel": "4. Lời chứng chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-masked": "4. Lời chứng chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "4. Lời chứng chứng thực hợp đồng, giao dịch",
         "shown-by-scan-route": "4. Lời chứng chứng thực hợp đồng, giao dịch"
       }
     },
@@ -1389,6 +1591,8 @@
         "vlm-blind-crop": "a) Lời chứng chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x": "a) Lời chứng chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x-bilevel": "a) Lời chứng chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-masked": "a) Lời chứng chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "a) Lời chứng chứng thực hợp đồng, giao dịch",
         "shown-by-scan-route": "a) Lời chứng chứng thực hợp đồng, giao dịch"
       }
     },
@@ -1403,6 +1607,8 @@
         "vlm-blind-crop": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
         "vlm-blind-crop-2x": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
         "vlm-blind-crop-2x-bilevel": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
+        "vlm-blind-crop-2x-masked": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
+        "vlm-blind-crop-2x-bilevel-masked": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
         "shown-by-scan-route": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản"
       }
     },
@@ -1417,6 +1623,8 @@
         "vlm-blind-crop": "c) Lời chứng chứng thực văn bản khai nhận di sản",
         "vlm-blind-crop-2x": "c) Lời chứng chứng thực văn bản khai nhận di sản",
         "vlm-blind-crop-2x-bilevel": "c) Lời chứng chứng thực văn bản khai nhận di sản",
+        "vlm-blind-crop-2x-masked": "c) Lời chứng chứng thực văn bản khai nhận di sản",
+        "vlm-blind-crop-2x-bilevel-masked": "c) Lời chứng chứng thực văn bản khai nhận di sản",
         "shown-by-scan-route": "c) Lời chứng chứng thực văn bản khai nhận di sản"
       }
     },
@@ -1431,6 +1639,8 @@
         "vlm-blind-crop": "d) Lời chứng chứng thực di chúc",
         "vlm-blind-crop-2x": "d) Lời chứng chứng thực di chúc",
         "vlm-blind-crop-2x-bilevel": "d) Lời chứng chứng thực di chúc",
+        "vlm-blind-crop-2x-masked": "d) Lời chứng chứng thực di chúc",
+        "vlm-blind-crop-2x-bilevel-masked": "d) Lời chứng chứng thực di chúc",
         "shown-by-scan-route": "d) Lời chứng chứng thực di chúc"
       }
     },
@@ -1445,6 +1655,8 @@
         "vlm-blind-crop": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
         "vlm-blind-crop-2x": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
         "vlm-blind-crop-2x-bilevel": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
+        "vlm-blind-crop-2x-masked": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
+        "vlm-blind-crop-2x-bilevel-masked": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
         "shown-by-scan-route": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản"
       }
     },
@@ -1459,6 +1671,8 @@
         "vlm-blind-crop": "Chú thích:",
         "vlm-blind-crop-2x": "Chú thích:",
         "vlm-blind-crop-2x-bilevel": "Chú thích:",
+        "vlm-blind-crop-2x-masked": "Chú thích:",
+        "vlm-blind-crop-2x-bilevel-masked": "Chú thích:",
         "shown-by-scan-route": "Chú thích:"
       }
     },
@@ -1473,6 +1687,8 @@
         "vlm-blind-crop": "II. MẪU SỔ CHỨNG THỰC",
         "vlm-blind-crop-2x": "II. MẪU SỔ CHỨNG THỰC",
         "vlm-blind-crop-2x-bilevel": "II. MẪU SỔ CHỨNG THỰC",
+        "vlm-blind-crop-2x-masked": "II. MẪU SỔ CHỨNG THỰC",
+        "vlm-blind-crop-2x-bilevel-masked": "II. MẪU SỔ CHỨNG THỰC",
         "shown-by-scan-route": "II. MẪU SỔ CHỨNG THỰC"
       }
     },
@@ -1487,6 +1703,8 @@
         "vlm-blind-crop": "1. Bìa sổ",
         "vlm-blind-crop-2x": "1. Bìa sổ",
         "vlm-blind-crop-2x-bilevel": "1. Bìa sổ",
+        "vlm-blind-crop-2x-masked": "1. Bìa sổ",
+        "vlm-blind-crop-2x-bilevel-masked": "1. Bìa sổ",
         "shown-by-scan-route": "1. Bìa sổ"
       }
     },
@@ -1501,6 +1719,8 @@
         "vlm-blind-crop": "a) Sổ Chứng thực bản sao từ bản chính",
         "vlm-blind-crop-2x": "a) Sổ Chứng thực bản sao từ bản chính",
         "vlm-blind-crop-2x-bilevel": "a) Sổ Chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-masked": "a) Sổ Chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-bilevel-masked": "a) Sổ Chứng thực bản sao từ bản chính",
         "shown-by-scan-route": "a) Sổ Chứng thực bản sao từ bản chính"
       }
     },
@@ -1515,6 +1735,8 @@
         "vlm-blind-crop": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
         "vlm-blind-crop-2x": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
         "vlm-blind-crop-2x-bilevel": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "vlm-blind-crop-2x-masked": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "vlm-blind-crop-2x-bilevel-masked": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
         "shown-by-scan-route": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH"
       }
     },
@@ -1529,6 +1751,8 @@
         "vlm-blind-crop": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
         "vlm-blind-crop-2x": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
         "vlm-blind-crop-2x-bilevel": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+        "vlm-blind-crop-2x-masked": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+        "vlm-blind-crop-2x-bilevel-masked": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
         "shown-by-scan-route": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ"
       }
     },
@@ -1543,6 +1767,8 @@
         "vlm-blind-crop": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ",
         "vlm-blind-crop-2x": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ",
         "vlm-blind-crop-2x-bilevel": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ",
+        "vlm-blind-crop-2x-masked": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ",
+        "vlm-blind-crop-2x-bilevel-masked": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ",
         "shown-by-scan-route": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ"
       }
     },
@@ -1557,6 +1783,8 @@
         "vlm-blind-crop": "c) Sổ Chứng thực chữ ký người dịch",
         "vlm-blind-crop-2x": "c) Sổ Chứng thực chữ ký người dịch",
         "vlm-blind-crop-2x-bilevel": "c) Sổ Chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-masked": "c) Sổ Chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "c) Sổ Chứng thực chữ ký người dịch",
         "shown-by-scan-route": "c) Sổ Chứng thực chữ ký người dịch"
       }
     },
@@ -1571,6 +1799,8 @@
         "vlm-blind-crop": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
         "vlm-blind-crop-2x": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
         "vlm-blind-crop-2x-bilevel": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "vlm-blind-crop-2x-masked": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "vlm-blind-crop-2x-bilevel-masked": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
         "shown-by-scan-route": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
       }
     },
@@ -1585,6 +1815,8 @@
         "vlm-blind-crop": "Độc lập - Tự do - Hạnh phúc",
         "vlm-blind-crop-2x": "Độc lập - Tự do - Hạnh phúc",
         "vlm-blind-crop-2x-bilevel": "Độc lập - Tự do - Hạnh phúc",
+        "vlm-blind-crop-2x-masked": "Độc lập - Tự do - Hạnh phúc",
+        "vlm-blind-crop-2x-bilevel-masked": "Độc lập - Tự do - Hạnh phúc",
         "shown-by-scan-route": "Độc lập - Tự do - Hạnh phúc"
       }
     },
@@ -1599,6 +1831,8 @@
         "vlm-blind-crop": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
         "vlm-blind-crop-2x": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
         "vlm-blind-crop-2x-bilevel": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "vlm-blind-crop-2x-masked": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "vlm-blind-crop-2x-bilevel-masked": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
         "shown-by-scan-route": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH"
       }
     },
@@ -1613,6 +1847,8 @@
         "vlm-blind-crop": "d) Sổ Chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x": "d) Sổ Chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x-bilevel": "d) Sổ Chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-masked": "d) Sổ Chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "d) Sổ Chứng thực hợp đồng, giao dịch",
         "shown-by-scan-route": "d) Sổ Chứng thực hợp đồng, giao dịch"
       }
     },
@@ -1627,6 +1863,8 @@
         "vlm-blind-crop": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
         "vlm-blind-crop-2x": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
         "vlm-blind-crop-2x-bilevel": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "vlm-blind-crop-2x-masked": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "vlm-blind-crop-2x-bilevel-masked": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
         "shown-by-scan-route": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
       }
     },
@@ -1641,6 +1879,8 @@
         "vlm-blind-crop": "Độc lập - Tự do - Hạnh phúc",
         "vlm-blind-crop-2x": "Độc lập - Tự do - Hạnh phúc",
         "vlm-blind-crop-2x-bilevel": "Độc lập - Tự do - Hạnh phúc",
+        "vlm-blind-crop-2x-masked": "Độc lập - Tự do - Hạnh phúc",
+        "vlm-blind-crop-2x-bilevel-masked": "Độc lập - Tự do - Hạnh phúc",
         "shown-by-scan-route": "Độc lập - Tự do - Hạnh phúc"
       }
     },
@@ -1655,6 +1895,8 @@
         "vlm-blind-crop": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
         "vlm-blind-crop-2x": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
         "vlm-blind-crop-2x-bilevel": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
+        "vlm-blind-crop-2x-masked": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
+        "vlm-blind-crop-2x-bilevel-masked": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
         "shown-by-scan-route": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH"
       }
     },
@@ -1669,6 +1911,8 @@
         "vlm-blind-crop": "2. Nội dung sổ",
         "vlm-blind-crop-2x": "2. Nội dung sổ",
         "vlm-blind-crop-2x-bilevel": "2. Nội dung sổ",
+        "vlm-blind-crop-2x-masked": "2. Nội dung sổ",
+        "vlm-blind-crop-2x-bilevel-masked": "2. Nội dung sổ",
         "shown-by-scan-route": "2. Nội dung sổ"
       }
     },
@@ -1683,6 +1927,8 @@
         "vlm-blind-crop": "a) Sổ chứng thực bản sao từ bản chính",
         "vlm-blind-crop-2x": "a) Sổ chứng thực bản sao từ bản chính",
         "vlm-blind-crop-2x-bilevel": "a) Sổ chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-masked": "a) Sổ chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x-bilevel-masked": "a) Sổ chứng thực bản sao từ bản chính",
         "shown-by-scan-route": "a) Sổ chứng thực bản sao từ bản chính"
       }
     },
@@ -1697,6 +1943,8 @@
         "vlm-blind-crop": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
         "vlm-blind-crop-2x": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
         "vlm-blind-crop-2x-bilevel": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+        "vlm-blind-crop-2x-masked": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+        "vlm-blind-crop-2x-bilevel-masked": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
         "shown-by-scan-route": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ"
       }
     },
@@ -1711,6 +1959,8 @@
         "vlm-blind-crop": "c) Sổ Chứng thực chữ ký người dịch",
         "vlm-blind-crop-2x": "c) Sổ Chứng thực chữ ký người dịch",
         "vlm-blind-crop-2x-bilevel": "c) Sổ Chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-masked": "c) Sổ Chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "c) Sổ Chứng thực chữ ký người dịch",
         "shown-by-scan-route": "c) Sổ Chứng thực chữ ký người dịch"
       }
     },
@@ -1725,16 +1975,20 @@
         "vlm-blind-crop": "d) Sổ chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x": "d) Sổ chứng thực hợp đồng, giao dịch",
         "vlm-blind-crop-2x-bilevel": "d) Sổ chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-masked": "d) Sổ chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x-bilevel-masked": "d) Sổ chứng thực hợp đồng, giao dịch",
         "shown-by-scan-route": "d) Sổ chứng thực hợp đồng, giao dịch"
       }
     }
   ],
   "Failures": [],
-  "ProviderCalls": 40,
-  "ProviderCostUsd": 0.00525605,
+  "ProviderCalls": 28,
+  "ProviderCostUsd": 0.003644380000000001,
   "CropBytes": {
     "vlm-blind-crop": 182599,
     "vlm-blind-crop-2x": 1399425,
-    "vlm-blind-crop-2x-bilevel": 211335
+    "vlm-blind-crop-2x-bilevel": 211335,
+    "vlm-blind-crop-2x-masked": 1373185,
+    "vlm-blind-crop-2x-bilevel-masked": 207956
   }
 }
