@@ -12,6 +12,8 @@ public sealed class CommandLineOptions
     public string? OutputPath { get; private set; }
     /// <summary>scan-text-eval: the gold transcription of the lines to read (SCAN_LINE_TEXT_GOLD_V1).</summary>
     public string? GoldPath { get; private set; }
+    /// <summary>scan-extract: calls at once to the provider in the conversation and the transcription (null: the route's defaults).</summary>
+    public int? Jobs { get; private set; }
     public OutlineFormat Format { get; private set; } = OutlineFormat.Json;
     public bool Quiet { get; private set; }
 
@@ -68,6 +70,7 @@ public sealed class CommandLineOptions
                 case "-m" or "--model": llama.ModelPath = Next(a); break;
                 case "-o" or "--out": o.OutputPath = Next(a); break;
                 case "--gold": o.GoldPath = Next(a); break;
+                case "--jobs": o.Jobs = int.TryParse(Next(a), out var jobs) && jobs is >= 1 and <= 64 ? jobs : throw new ArgumentException("--jobs cần số từ 1 đến 64"); break;
                 case "-f" or "--format": o.Format = ParseFormat(Next(a)); break;
                 case "--no-llm": o.Pipeline.DisableLlm = true; break;
                 case "--openrouter":
@@ -172,6 +175,8 @@ public sealed class CommandLineOptions
           dhx scan-extract <file.docx> [-o <thư-mục>]    # heading của DOCX chỉ có ảnh trang: OCR + quan sát VLM
                                                          # (qwen/qwen3.7-flash, gửi ảnh trang) + hội thoại V6; Qwen
                                                          # quyết định; key từ OPENROUTER_API_KEY; in JSON
+                                                         # --jobs N: số lần gọi API cùng lúc (mặc định 16 hội
+                                                         # thoại, 24 chép chữ); giảm nếu bị giới hạn tốc độ
           dhx scan-text-eval <file.docx> --gold <gold.json> [-o <thư-mục>]
                                                          # đo độ chính xác chữ: 2 view OCR và VLM chép mù
                                                          # (không xem OCR) so với gold; gửi ảnh cắt dòng

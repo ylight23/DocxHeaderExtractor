@@ -106,7 +106,8 @@ public sealed class ScanTextEvaluationTests : IDisposable
         Assert.All(report.Lines, l => Assert.NotNull(l.Readings[ScanTextEvaluation.Original]));
         var posts = handler.Posts;
         // At least one request per crop kind; enlarged crops are larger, so they may be split to stay under the transport's byte cap.
-        Assert.InRange(posts, 6, 6 * gold.Length);
+        Assert.InRange(posts, 7, 7 * gold.Length);
+        Assert.Contains(handler.Bodies, b => b["reasoning"]!["max_tokens"]?.GetValue<int>() == 1024);
         Assert.Contains(handler.Bodies, b => b["reasoning"]!["enabled"]!.GetValue<bool>() == false);
         Assert.Equal(gold.Length, score[ScanTextEvaluation.VlmNoReasoning].Exact);
         Assert.All(handler.Bodies, b => Assert.True(System.Text.Encoding.UTF8.GetByteCount(b.ToJsonString()) <= DocxHeaderExtractor.HeadingAgent.AgentBudget.MaxRequestBytes + 4096));

@@ -102,8 +102,9 @@ static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationTok
     var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
     if (string.IsNullOrWhiteSpace(key)) { Console.Error.WriteLine("Chưa có OPENROUTER_API_KEY."); return 2; }
     var root = o.OutputPath ?? ".dhx-evidence";
-    var selector = new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(root,
-        onModelReply: o.ShowRawOutput ? r => PrintModelReply(r) : null);
+    var selector = new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(root, parallelism: o.Jobs,
+        onModelReply: o.ShowRawOutput ? r => PrintModelReply(r) : null,
+        transcriptionOptions: o.Jobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null);
     foreach (var file in ExpandInputs(o.Inputs))
     {
         if (!o.Quiet) Console.Error.WriteLine($"» {Path.GetFileName(file)}");

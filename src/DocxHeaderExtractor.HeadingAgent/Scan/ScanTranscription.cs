@@ -102,7 +102,7 @@ public static class ScanTranscription
     /// </summary>
     internal static (string?[] Texts, AgentBudget Budget) Transcribe(IReadOnlyList<string?> crops, IReadOnlyList<string> ids, IReadOnlyList<string> keys,
         string cacheDir, string apiKey, Func<int, AgentBudget> budgetFor, Func<HttpMessageHandler> factory, List<string> failures, string label,
-        int maxPerRequest, int parallelism, bool reasoning = true)
+        int maxPerRequest, int parallelism, string reasoning = ReasoningOn)
     {
         var batches = new List<List<int>>();
         var current = new List<int>();
@@ -125,17 +125,18 @@ public static class ScanTranscription
 
         var result = new string?[crops.Count];
         var problems = new string?[batches.Count];
-        Parallel.For(0, batches.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, parallelism) }, b =>
+        // A batch whose reply stays unreadable after the second ask is split in two, down to single lines: one crop can make the model answer
+        // with no text (CONTENT_NOT_TEXT, once in 218 batches on 023), and the others then still get read.
+        string? Batch(List<int> take, string name)
         {
-            var take = batches[b];
-            var name = $"{label}-B{b + 1:000}";
             var key = TesseractOcr.Sha256(string.Join("|", AgentProtocol.ChatModel, PromptVersion, SystemPrompt, string.Join(",", take.Select(k => ids[k] + "=" + keys[k])))
-                + (reasoning ? "" : "|reasoning=off"));
+                + (reasoning == ReasoningOn ? "" : "|reasoning=" + reasoning));
             var file = Path.Combine(cacheDir, key[..24] + ".json");
             var asked = take.Select(k => ids[k]).ToArray();
             var reply = File.Exists(file) ? File.ReadAllText(file, Utf8) : null;
             Dictionary<string, string>? parsed = null;
             string? problem = null;
+            var splittable = false;
             if (reply is not null) parsed = Parse(reply, asked, out problem);
             else
             {
@@ -145,7 +146,7 @@ public static class ScanTranscription
                 int attempt = 0, transportRetries = 0, replyRetries = 0;
                 while (parsed is null)
                 {
-                    if (budget.Admit(request) is { } refusal) { problems[b] = $"{name}:BUDGET:{refusal}"; return; }
+                    if (budget.Admit(request) is { } refusal) return $"{name}:BUDGET:{refusal}";
                     try
                     {
                         using var handler = factory();
@@ -154,13 +155,20 @@ public static class ScanTranscription
                     }
                     catch (ReplyFailure f) when (transportRetries < AgentUnit.TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal)) { transportRetries++; continue; }
                     catch (ReplyFailure f) when (replyRetries < 1 && f.Code.StartsWith("CONTENT:", StringComparison.Ordinal)) { replyRetries++; continue; }
-                    catch (ReplyFailure f) { problems[b] = $"{name}:CALL:{f.Code}"; return; }
+                    catch (ReplyFailure f) { problem = "CALL:" + f.Code; splittable = f.Code.StartsWith("CONTENT:", StringComparison.Ordinal); break; }
                     if (AgentProtocol.TryUnwrapFence(reply, out var inner)) reply = inner;
                     parsed = Parse(reply, asked, out problem);
-                    if (parsed is null && replyRetries++ >= 1) break;
+                    if (parsed is null && replyRetries++ >= 1) { splittable = true; break; }
                 }
             }
-            if (parsed is null) { problems[b] = $"{name}:{problem}"; return; }
+            if (parsed is null)
+            {
+                if (!splittable || take.Count < 2) return $"{name}:{problem}";
+                var half = take.Count / 2;
+                var first = Batch(take[..half], name + "a");
+                var second = Batch(take[half..], name + "b");
+                return first is null && second is null ? null : string.Join(";", new[] { first, second }.Where(x => x is not null));
+            }
             foreach (var k in take) result[k] = parsed.GetValueOrDefault(ids[k]);
             if (!File.Exists(file))
             {
@@ -169,7 +177,9 @@ public static class ScanTranscription
                 File.WriteAllText(temp, reply, Utf8);
                 try { File.Move(temp, file); } catch (IOException) when (File.Exists(file)) { File.Delete(temp); }
             }
-        });
+            return null;
+        }
+        Parallel.For(0, batches.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, parallelism) }, b => problems[b] = Batch(batches[b], $"{label}-B{b + 1:000}"));
         failures.AddRange(problems.Where(p => p is not null)!);
         return (result, budget);
     }
@@ -211,7 +221,17 @@ public static class ScanTranscription
 
     /// <summary>One POST body for the audited transport: the pinned model, the transcription prompt, the crops, json_object, the locked provider
     /// block, streaming and usage, as the agent's own requests.</summary>
-    internal static PreparedRequest Request(IEnumerable<JsonNode> content, bool reasoning = true)
+    /// <summary>The model's reasoning: on (the measured setting), off, or a number: its token budget.</summary>
+    public const string ReasoningOn = "on", ReasoningOff = "off";
+
+    static JsonObject ReasoningBlock(string reasoning) => reasoning switch
+    {
+        ReasoningOn => new JsonObject { ["enabled"] = true },
+        ReasoningOff => new JsonObject { ["enabled"] = false },
+        _ => new JsonObject { ["max_tokens"] = int.Parse(reasoning, System.Globalization.CultureInfo.InvariantCulture) },
+    };
+
+    internal static PreparedRequest Request(IEnumerable<JsonNode> content, string reasoning = ReasoningOn)
     {
         var body = new JsonObject
         {
@@ -222,7 +242,7 @@ public static class ScanTranscription
             ["response_format"] = new JsonObject { ["type"] = "json_object" },
             ["temperature"] = 0,
             ["max_tokens"] = AgentProtocol.MaxTokens,
-            ["reasoning"] = new JsonObject { ["enabled"] = reasoning },
+            ["reasoning"] = ReasoningBlock(reasoning),
             ["provider"] = JsonSerializer.SerializeToNode(new { only = new[] { AgentProtocol.ProviderTag }, ignore = AgentProtocol.Ignore, allow_fallbacks = false, require_parameters = true }, Relaxed),
             ["stream"] = true,
             ["usage"] = new JsonObject { ["include"] = true },
@@ -253,7 +273,7 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
     /// <param name="Bilevel">Black and white, pixels repeated (measured on 023 with <paramref name="Mask"/>: 120/120 heading lines, as grey 2x,
     /// in a file 6.6 times smaller).</param>
     /// <param name="Mask">The other lines' boxes that reach into the crop are painted white first (without: the line above copied twice in 120).</param>
-    public sealed record Options(int MaxPages = 300, double Scale = 2.0, int MaxLinesPerRequest = 10, int Parallelism = 8, double? CeilingUsd = null,
+    public sealed record Options(int MaxPages = 300, double Scale = 2.0, int MaxLinesPerRequest = 10, int Parallelism = 24, double? CeilingUsd = null,
         bool Bilevel = true, bool Mask = true);
 
     public TranscriptionSet Run(ScanOcrEvidence evidence, string evidenceEntry, string apiKey, Options? options = null)
@@ -279,7 +299,8 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
                 crops[k] = image is not null && TesseractOcr.CropScaled(magick, image, file, line.Box, CropPad, options.Scale, options.Bilevel, mask) ? file : null;
             });
             failures.AddRange(Enumerable.Range(0, lines.Length).Where(k => crops[k] is null).Select(k => $"{lines[k].Line.Id}:CROP_FAILED"));
-            AgentBudget BudgetFor(int batches) => new(batches * (2 + AgentUnit.TransportRetries), options.CeilingUsd ?? batches * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes));
+            // Room for the second asks and the splits of a batch that stays unreadable (rare): twice the batches' worst cost.
+            AgentBudget BudgetFor(int batches) => new(batches * (2 + AgentUnit.TransportRetries) + lines.Length, options.CeilingUsd ?? 2 * batches * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes));
             var (texts, budget) = ScanTranscription.Transcribe(crops, lines.Select(l => l.Line.Id).ToArray(), keys, Path.Combine(storeRoot, "vlm-transcribe"), apiKey, BudgetFor,
                 handlerFactory ?? (() => AgentModel.CreateHandler()), failures, "TRANSCRIBE", options.MaxLinesPerRequest, options.Parallelism);
             var result = lines.Select((l, k) => new LineTranscription(l.Line.Id, texts[k],

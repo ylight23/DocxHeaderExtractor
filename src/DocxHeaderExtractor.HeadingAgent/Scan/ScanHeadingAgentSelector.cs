@@ -58,7 +58,7 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
 
     readonly string instruction = instruction ?? ScanAgentProtocol.Instruction;
     /// <summary>Calls at once in the conversation: its units wait on the provider, not on this machine.</summary>
-    public const int DefaultParallelism = 8;
+    public const int DefaultParallelism = 16;
 
     readonly int parallelism = parallelism ?? DefaultParallelism;
 

@@ -40,7 +40,8 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
     public const string Original = ScanOcrPreflight.OriginalView, Upscaled = "ocr-upscaled", BestView = "oracle-better-ocr-view",
         VlmBilevel = "vlm-blind-crop", VlmEnlarged = "vlm-blind-crop-2x", VlmEnlargedBilevel = "vlm-blind-crop-2x-bilevel",
         VlmEnlargedMasked = "vlm-blind-crop-2x-masked", VlmEnlargedBilevelMasked = "vlm-blind-crop-2x-bilevel-masked",
-        VlmNoReasoning = "vlm-blind-crop-2x-bilevel-masked-no-reasoning", Shown = "shown-by-scan-route";
+        VlmNoReasoning = "vlm-blind-crop-2x-bilevel-masked-no-reasoning", VlmReasoning1k = "vlm-blind-crop-2x-bilevel-masked-reasoning-1k",
+        Shown = "shown-by-scan-route";
 
     public static IReadOnlyList<GoldLine> ReadGold(string path)
     {
@@ -85,9 +86,10 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
             var primary = evidence.Views.First(v => v.Spec.ViewId == Original);
             foreach (var (method, enlarged, bilevel, masked, reasoning) in new[]
             {
-                (VlmBilevel, false, true, false, true), (VlmEnlarged, true, false, false, true), (VlmEnlargedBilevel, true, true, false, true),
-                (VlmEnlargedMasked, true, false, true, true), (VlmEnlargedBilevelMasked, true, true, true, true),
-                (VlmNoReasoning, true, true, true, false),
+                (VlmBilevel, false, true, false, ScanTranscription.ReasoningOn), (VlmEnlarged, true, false, false, ScanTranscription.ReasoningOn),
+                (VlmEnlargedBilevel, true, true, false, ScanTranscription.ReasoningOn), (VlmEnlargedMasked, true, false, true, ScanTranscription.ReasoningOn),
+                (VlmEnlargedBilevelMasked, true, true, true, ScanTranscription.ReasoningOn), (VlmNoReasoning, true, true, true, ScanTranscription.ReasoningOff),
+                (VlmReasoning1k, true, true, true, "1024"),
             })
             {
                 var crops = new string?[gold.Count];
@@ -136,7 +138,7 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
             readings[k][Shown] = ocrText is not null && ScanTranscription.Guard(t, ocrText, neighbours) == ScanTranscription.Accepted ? t : ocrText;
         }
         var lines = gold.Select((g, k) => new LineResult(g.N, g.Page, g.Text, (IReadOnlyDictionary<string, string?>)readings[k])).ToArray();
-        var methods = new[] { Original, Upscaled, BestView, VlmBilevel, VlmEnlarged, VlmEnlargedBilevel, VlmEnlargedMasked, VlmEnlargedBilevelMasked, VlmNoReasoning, Shown };
+        var methods = new[] { Original, Upscaled, BestView, VlmBilevel, VlmEnlarged, VlmEnlargedBilevel, VlmEnlargedMasked, VlmEnlargedBilevelMasked, VlmNoReasoning, VlmReasoning1k, Shown };
         var scores = methods.Select(m => Score(m, lines)).ToArray();
         var report = new Report(ReportVersion, evidence.SourceSha256, AgentProtocol.ChatModel, PromptVersion, scores, lines, failures, calls, cost, cropBytes, costs);
         var dir = Path.Combine(storeRoot, "eval");

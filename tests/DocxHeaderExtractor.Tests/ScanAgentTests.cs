@@ -584,4 +584,25 @@ public sealed class ScanAgentTests : IDisposable
         AgentUnit.Model late = (unit, turn, req) => ++calls == 1 ? throw new ReplyFailure("TRANSPORT:TIMEOUT_OR_CANCELLED") : model.Turn(unit, turn, req);
         Assert.Equal("COMPLETE", AgentUnit.Run(source, 0, late, HeadingAgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction), retryDelayMs: 0, ScanAgentProtocol.Instruction).Status);
     }
+
+    [Fact]
+    public void A_batch_that_stays_unreadable_is_split_until_only_the_crop_that_breaks_it_is_left_unread()
+    {
+        var crops = Enumerable.Range(1, 4).Select(k => { var f = Path.Combine(dir, $"c{k}.png"); File.WriteAllBytes(f, TestPng.Grey(20, 10)); return (string?)f; }).ToArray();
+        var ids = Enumerable.Range(1, 4).Select(k => $"T{k:000}").ToArray();
+        // Any request holding T002 is answered with no text at all.
+        var handler = new FakeOpenRouter((body, post) =>
+        {
+            var asked = body["messages"]![1]!["content"]!.AsArray().Where(c => c!["type"]!.GetValue<string>() == "text").Select(c => c!["text"]!.GetValue<string>()["id ".Length..]).ToArray();
+            return asked.Contains("T002")
+                ? (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = (string?)null }, "stop"))
+                : (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = JsonSerializer.Serialize(new { protocolVersion = ScanTranscription.PromptVersion, lines = asked.Select(id => new { id, text = "dòng " + id }) }) }, "stop"));
+        });
+        var failures = new List<string>();
+
+        var (texts, _) = ScanTranscription.Transcribe(crops, ids, ids, Path.Combine(dir, "s"), "sk-test", n => new AgentBudget(40, 2), () => handler, failures, "T", 10, 1);
+
+        Assert.Equal(["dòng T001", null, "dòng T003", "dòng T004"], texts);
+        Assert.Equal("T-B001ab:CALL:CONTENT:CONTENT_NOT_TEXT", failures.Single());
+    }
 }
