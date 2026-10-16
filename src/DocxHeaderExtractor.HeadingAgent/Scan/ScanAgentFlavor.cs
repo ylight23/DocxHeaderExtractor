@@ -50,6 +50,7 @@ internal sealed class ScanAgentFlavor : IAgentFlavor
     public string AnswerVersion => SelectScanVersion;
     public bool HeadingExtents => true;
     public bool RequiresCoreFacts => true;
+    public bool RetryReasoningExhausted => true;
     public JsonArray ToolDefinitions() => ScanAgentTools.Definitions();
     public IAgentTools CreateTools(IAgentSource source) => new ScanAgentTools((ScanAgentSource)source);
     public object PayloadItem(AgentSourceLine line) => new { alias = line.Alias, page = line.Page ?? 0, text = line.Text };

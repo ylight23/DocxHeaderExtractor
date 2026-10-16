@@ -548,4 +548,30 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal("T-B001:PROTOCOL_VERSION_INVALID", failures.Single());
         Assert.Empty(Directory.Exists(Path.Combine(dir, "b")) ? Directory.GetFiles(Path.Combine(dir, "b")) : []);   // nothing stored
     }
+
+    [Fact]
+    public void A_reply_whose_reasoning_used_every_token_is_sent_once_more_on_the_scan_route_and_a_second_one_fails_the_unit()
+    {
+        var source = new ScanAgentSource(Evidence(), [Vision()], Transcriptions());
+        var budget = HeadingAgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction);
+        var handler = new FakeOpenRouter(SelectsArticles(firstInvented: false, namesNoReading: true));
+        using var model = new AgentModel(handler, "sk-test", budget);
+        const string exhausted = "AUDIT:FINISH_LENGTH,REASONING_EXHAUSTED";
+        var calls = 0;
+        AgentUnit.Model once = (unit, turn, req) => ++calls == 1 ? throw new ReplyFailure(exhausted) : model.Turn(unit, turn, req);
+
+        var outcome = AgentUnit.Run(source, 0, once, budget, retryDelayMs: 0, ScanAgentProtocol.Instruction);
+
+        Assert.Equal("COMPLETE", outcome.Status);
+        Assert.Equal(1, outcome.TransportRetries);
+        Assert.Equal(outcome.RequestSha256s[0], outcome.RequestSha256s[1]);   // the same bytes
+
+        AgentUnit.Model always = (_, _, _) => throw new ReplyFailure(exhausted);
+        var failed = AgentUnit.Run(source, 0, always, HeadingAgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction), retryDelayMs: 0, ScanAgentProtocol.Instruction);
+
+        Assert.Equal(("FAILED", "CALL:" + exhausted), (failed.Status, failed.Failure));
+        Assert.Equal(2, failed.Posts);
+        Assert.False(((IAgentFlavor)PdfAgentFlavor.Instance).RetryReasoningExhausted);
+        Assert.False(((IAgentFlavor)DocxAgentFlavor.Instance).RetryReasoningExhausted);
+    }
 }

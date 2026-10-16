@@ -142,7 +142,10 @@ core-facts gate as DOCX.
   (`REJECTED_MULTILINE`), not closer to a neighbour, or to a neighbour joined to the line, than to the line itself
   (`REJECTED_NEIGHBOUR_TEXT`: the line above caught by the margin, or a line of specks OCR made over a heading, whose
   crop shows the heading again), and not 10 letters and 2 times longer (`REJECTED_LONGER_THAN_OCR`). A rejected one is
-  kept as evidence. A reply that is not the expected object or not text is asked once more. With the transcription,
+  kept as evidence. A reply that is not the expected object or not text is asked once more. In the conversation, a call
+  whose reply ended with the model's reasoning using every output token (`AUDIT:FINISH_LENGTH,REASONING_EXHAUSTED`,
+  one unit lost in each of the third and fourth live runs) is sent once more, the same bytes: scan route only
+  (owner's decision), PDF and DOCX unchanged. With the transcription,
   the vision preflight asks no reading choices, and choices are not shown.
 - A target is one line of the primary view (`ocr-original`), alias `P003-L012`. Its text is the accepted transcription,
   else that view's reading; the facts say which (`text.shownReading`, `text.transcription`, and the OCR views that read

@@ -119,7 +119,7 @@ internal static class AgentUnit
         shownAliases.UnionWith(styles["styles"]!.AsArray().SelectMany(s => s!["firstLines"]!.AsArray().Select(l => l!["alias"]!.GetValue<string>())));
 
         string? repairedFrom = null;
-        int repairsUsed = 0, retriesUsed = 0, posts = 0, okCalls = 0, messageBytes = 0, emitted = 0;
+        int repairsUsed = 0, retriesUsed = 0, posts = 0, okCalls = 0, messageBytes = 0, emitted = 0, reasoningRetries = 0;
         var fenceUnwrapped = false;
         var coverageAsked = false;
         var targetTexts = flavor.HeadingExtents ? ordered.ToDictionary(a => a, a => lines[tools.PositionOf(a)].Text, StringComparer.Ordinal) : null;
@@ -167,6 +167,16 @@ internal static class AgentUnit
                     // The provider failed this call: the same bytes are sent again after a pause, admitted by the budget like any POST.
                     retriesUsed++;
                     if (retryDelayMs > 0) Thread.Sleep(retryDelayMs);
+                    var again = budget.Admit(req);
+                    if (again is not null) return Done("INCOMPLETE", "BUDGET:" + again);
+                    requestShas.Add(req.Sha256);
+                    posts++;
+                }
+                catch (ReplyFailure f) when (flavor.RetryReasoningExhausted && reasoningRetries < 1 && f.Code.Contains("REASONING_EXHAUSTED", StringComparison.Ordinal))
+                {
+                    // The model spent every output token reasoning and gave no answer: the same bytes once more (scan route only).
+                    reasoningRetries++;
+                    retriesUsed++;
                     var again = budget.Admit(req);
                     if (again is not null) return Done("INCOMPLETE", "BUDGET:" + again);
                     requestShas.Add(req.Sha256);
