@@ -102,7 +102,7 @@ public static class ScanTranscription
     /// </summary>
     internal static (string?[] Texts, AgentBudget Budget) Transcribe(IReadOnlyList<string?> crops, IReadOnlyList<string> ids, IReadOnlyList<string> keys,
         string cacheDir, string apiKey, Func<int, AgentBudget> budgetFor, Func<HttpMessageHandler> factory, List<string> failures, string label,
-        int maxPerRequest, int parallelism)
+        int maxPerRequest, int parallelism, bool reasoning = true)
     {
         var batches = new List<List<int>>();
         var current = new List<int>();
@@ -111,7 +111,7 @@ public static class ScanTranscription
         {
             var part = new JsonNode[] { Text("id " + ids[k]), Image(crops[k]!) };
             if (current.Count > 0 && (current.Count >= maxPerRequest
-                || Request(content.Select(c => c!.DeepClone()).Concat(part.Select(p => p.DeepClone()))).Bytes > AgentBudget.MaxRequestBytes))
+                || Request(content.Select(c => c!.DeepClone()).Concat(part.Select(p => p.DeepClone())), reasoning).Bytes > AgentBudget.MaxRequestBytes))
             {
                 batches.Add(current);
                 current = [];
@@ -129,7 +129,8 @@ public static class ScanTranscription
         {
             var take = batches[b];
             var name = $"{label}-B{b + 1:000}";
-            var key = TesseractOcr.Sha256(string.Join("|", AgentProtocol.ChatModel, PromptVersion, SystemPrompt, string.Join(",", take.Select(k => ids[k] + "=" + keys[k]))));
+            var key = TesseractOcr.Sha256(string.Join("|", AgentProtocol.ChatModel, PromptVersion, SystemPrompt, string.Join(",", take.Select(k => ids[k] + "=" + keys[k])))
+                + (reasoning ? "" : "|reasoning=off"));
             var file = Path.Combine(cacheDir, key[..24] + ".json");
             var asked = take.Select(k => ids[k]).ToArray();
             var reply = File.Exists(file) ? File.ReadAllText(file, Utf8) : null;
@@ -140,7 +141,7 @@ public static class ScanTranscription
             {
                 // A transport failure that may pass, a reply that is not text, or one that is not the expected object (measured on 023: two
                 // PROTOCOL_VERSION_INVALID and one CONTENT_NOT_TEXT in 218 batches) is asked once more, the same request.
-                var request = Request(take.SelectMany(k => new[] { Text("id " + ids[k]), Image(crops[k]!) }));
+                var request = Request(take.SelectMany(k => new[] { Text("id " + ids[k]), Image(crops[k]!) }), reasoning);
                 int attempt = 0, transportRetries = 0, replyRetries = 0;
                 while (parsed is null)
                 {
@@ -210,7 +211,7 @@ public static class ScanTranscription
 
     /// <summary>One POST body for the audited transport: the pinned model, the transcription prompt, the crops, json_object, the locked provider
     /// block, streaming and usage, as the agent's own requests.</summary>
-    internal static PreparedRequest Request(IEnumerable<JsonNode> content)
+    internal static PreparedRequest Request(IEnumerable<JsonNode> content, bool reasoning = true)
     {
         var body = new JsonObject
         {
@@ -221,7 +222,7 @@ public static class ScanTranscription
             ["response_format"] = new JsonObject { ["type"] = "json_object" },
             ["temperature"] = 0,
             ["max_tokens"] = AgentProtocol.MaxTokens,
-            ["reasoning"] = new JsonObject { ["enabled"] = true },
+            ["reasoning"] = new JsonObject { ["enabled"] = reasoning },
             ["provider"] = JsonSerializer.SerializeToNode(new { only = new[] { AgentProtocol.ProviderTag }, ignore = AgentProtocol.Ignore, allow_fallbacks = false, require_parameters = true }, Relaxed),
             ["stream"] = true,
             ["usage"] = new JsonObject { ["include"] = true },
@@ -252,7 +253,7 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
     /// <param name="Bilevel">Black and white, pixels repeated (measured on 023 with <paramref name="Mask"/>: 120/120 heading lines, as grey 2x,
     /// in a file 6.6 times smaller).</param>
     /// <param name="Mask">The other lines' boxes that reach into the crop are painted white first (without: the line above copied twice in 120).</param>
-    public sealed record Options(int MaxPages = 300, double Scale = 2.0, int MaxLinesPerRequest = 10, int Parallelism = 4, double? CeilingUsd = null,
+    public sealed record Options(int MaxPages = 300, double Scale = 2.0, int MaxLinesPerRequest = 10, int Parallelism = 8, double? CeilingUsd = null,
         bool Bilevel = true, bool Mask = true);
 
     public TranscriptionSet Run(ScanOcrEvidence evidence, string evidenceEntry, string apiKey, Options? options = null)

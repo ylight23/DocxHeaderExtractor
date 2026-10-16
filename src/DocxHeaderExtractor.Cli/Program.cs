@@ -113,6 +113,8 @@ static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationTok
                 $"{result.ProviderCostUsd:0.0000} USD, VLM {result.VisionPagesObserved} trang ({result.VisionFailures.Count} lỗi), " +
                 $"chép {result.TranscriptionsAccepted}/{result.TranscribedLines} dòng dùng được ({result.TranscriptionFailures.Count} lỗi), " +
                 $"tiền xử lý {result.PreflightCalls} POST {result.PreflightCostUsd:0.0000} USD");
+        if (!o.Quiet && result.StageSeconds.Count > 0)
+            Console.Error.WriteLine("  thời gian: " + string.Join(", ", result.StageSeconds.Select(kv => $"{kv.Key} {kv.Value:0.0}s")));
         Console.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }));
     }
     return 0;
@@ -130,6 +132,8 @@ static int RunScanTextEval(CommandLineOptions o)
     Console.WriteLine($"{"Cách đọc",-28} {"Đúng hết dòng",14} {"CER",8}");
     foreach (var s in report.Scores)
         Console.WriteLine($"{s.Method,-28} {s.Exact,6}/{s.Lines,-3} ({100.0 * s.Exact / s.Lines,3:0}%) {100 * s.CharacterErrorRate,7:0.00}%");
+    foreach (var (method, c) in report.MethodCosts ?? new Dictionary<string, DocxHeaderExtractor.HeadingAgent.Scan.ScanTextEvaluation.MethodCost>())
+        Console.WriteLine($"  {method}: {c.Seconds:0.0}s, {c.Calls} POST, {c.CostUsd:0.0000} USD");
     foreach (var (method, bytes) in report.CropBytes)
         Console.WriteLine($"  ảnh cắt {method}: {bytes / 1024.0:0.0} KB cho {report.Lines.Count} dòng ({bytes / 1024.0 / report.Lines.Count:0.00} KB/dòng)");
     Console.WriteLine($"{report.ProviderCalls} POST, {report.ProviderCostUsd:0.0000} USD; lỗi: {(report.Failures.Count == 0 ? "không" : string.Join(", ", report.Failures))}");

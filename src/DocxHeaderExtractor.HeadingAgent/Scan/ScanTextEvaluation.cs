@@ -27,15 +27,20 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
 
     /// <param name="CropBytes">The bytes of every crop sent, by method: what the byte cap of a request has to hold (the model is billed by pixels,
     /// which are the same at one scale whatever the format).</param>
+    /// <param name="MethodSeconds">Wall-clock seconds of each method's calls (0 when read back from the store), and their calls and cost.</param>
     public sealed record Report(string Version, string SourceSha256, string Model, string PromptVersion, IReadOnlyList<MethodScore> Scores,
-        IReadOnlyList<LineResult> Lines, IReadOnlyList<string> Failures, int ProviderCalls, double ProviderCostUsd, IReadOnlyDictionary<string, long> CropBytes);
+        IReadOnlyList<LineResult> Lines, IReadOnlyList<string> Failures, int ProviderCalls, double ProviderCostUsd, IReadOnlyDictionary<string, long> CropBytes,
+        IReadOnlyDictionary<string, MethodCost>? MethodCosts = null);
+
+    public sealed record MethodCost(double Seconds, int Calls, double CostUsd);
 
     static readonly JsonSerializerOptions Json = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping, WriteIndented = true };
     static readonly UTF8Encoding Utf8 = new(encoderShouldEmitUTF8Identifier: false);
 
     public const string Original = ScanOcrPreflight.OriginalView, Upscaled = "ocr-upscaled", BestView = "oracle-better-ocr-view",
         VlmBilevel = "vlm-blind-crop", VlmEnlarged = "vlm-blind-crop-2x", VlmEnlargedBilevel = "vlm-blind-crop-2x-bilevel",
-        VlmEnlargedMasked = "vlm-blind-crop-2x-masked", VlmEnlargedBilevelMasked = "vlm-blind-crop-2x-bilevel-masked", Shown = "shown-by-scan-route";
+        VlmEnlargedMasked = "vlm-blind-crop-2x-masked", VlmEnlargedBilevelMasked = "vlm-blind-crop-2x-bilevel-masked",
+        VlmNoReasoning = "vlm-blind-crop-2x-bilevel-masked-no-reasoning", Shown = "shown-by-scan-route";
 
     public static IReadOnlyList<GoldLine> ReadGold(string path)
     {
@@ -71,16 +76,18 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
         var calls = 0;
         var cost = 0.0;
         var cropBytes = new Dictionary<string, long>(StringComparer.Ordinal);
+        var costs = new Dictionary<string, MethodCost>(StringComparer.Ordinal);
         var factory = handlerFactory ?? (() => AgentModel.CreateHandler());
         var work = Path.Combine(Path.GetTempPath(), "dhx-eval-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(work);
         try
         {
             var primary = evidence.Views.First(v => v.Spec.ViewId == Original);
-            foreach (var (method, enlarged, bilevel, masked) in new[]
+            foreach (var (method, enlarged, bilevel, masked, reasoning) in new[]
             {
-                (VlmBilevel, false, true, false), (VlmEnlarged, true, false, false), (VlmEnlargedBilevel, true, true, false),
-                (VlmEnlargedMasked, true, false, true), (VlmEnlargedBilevelMasked, true, true, true),
+                (VlmBilevel, false, true, false, true), (VlmEnlarged, true, false, false, true), (VlmEnlargedBilevel, true, true, false, true),
+                (VlmEnlargedMasked, true, false, true, true), (VlmEnlargedBilevelMasked, true, true, true, true),
+                (VlmNoReasoning, true, true, true, false),
             })
             {
                 var crops = new string?[gold.Count];
@@ -103,8 +110,11 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
                     if (!ok) failures.Add($"{method}:L{gold[k].N:000}:CROP_FAILED");
                 }
                 var ids = gold.Select(g => "T" + g.N.ToString("000", System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+                var started = System.Diagnostics.Stopwatch.StartNew();
                 var (texts, budget) = ScanTranscription.Transcribe(crops, ids, keys, Path.Combine(storeRoot, "vlm-transcribe"), apiKey,
-                    n => new AgentBudget(n * (2 + AgentUnit.TransportRetries), ceilingUsd ?? n * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes)), factory, failures, method, MaxLinesPerRequest, parallelism: 2);
+                    n => new AgentBudget(n * (2 + AgentUnit.TransportRetries), ceilingUsd ?? n * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes)), factory, failures, method,
+                    MaxLinesPerRequest, parallelism: 4, reasoning);
+                costs[method] = new MethodCost(Math.Round(started.Elapsed.TotalSeconds, 1), budget.Calls, budget.ActualUsd);
                 calls += budget.Calls;
                 cost += budget.ActualUsd;
                 for (var k = 0; k < gold.Count; k++) readings[k][method] = texts[k];
@@ -126,9 +136,9 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
             readings[k][Shown] = ocrText is not null && ScanTranscription.Guard(t, ocrText, neighbours) == ScanTranscription.Accepted ? t : ocrText;
         }
         var lines = gold.Select((g, k) => new LineResult(g.N, g.Page, g.Text, (IReadOnlyDictionary<string, string?>)readings[k])).ToArray();
-        var methods = new[] { Original, Upscaled, BestView, VlmBilevel, VlmEnlarged, VlmEnlargedBilevel, VlmEnlargedMasked, VlmEnlargedBilevelMasked, Shown };
+        var methods = new[] { Original, Upscaled, BestView, VlmBilevel, VlmEnlarged, VlmEnlargedBilevel, VlmEnlargedMasked, VlmEnlargedBilevelMasked, VlmNoReasoning, Shown };
         var scores = methods.Select(m => Score(m, lines)).ToArray();
-        var report = new Report(ReportVersion, evidence.SourceSha256, AgentProtocol.ChatModel, PromptVersion, scores, lines, failures, calls, cost, cropBytes);
+        var report = new Report(ReportVersion, evidence.SourceSha256, AgentProtocol.ChatModel, PromptVersion, scores, lines, failures, calls, cost, cropBytes, costs);
         var dir = Path.Combine(storeRoot, "eval");
         Directory.CreateDirectory(dir);
         File.WriteAllText(Path.Combine(dir, evidence.SourceSha256[..16] + "-scan-text-eval.json"), JsonSerializer.Serialize(report, Json), Utf8);

@@ -34,6 +34,10 @@ public sealed record ScanHeadingResult(string SourceSha256, string SelectorId, I
     /// <summary>The vision observation and transcription calls sent before the conversation, and their cost; not in ProviderCalls.</summary>
     public int PreflightCalls { get; init; }
     public double PreflightCostUsd { get; init; }
+
+    /// <summary>Wall-clock seconds of each stage: ocr, vision and transcription (which run side by side, so their sum is not the time spent),
+    /// preflight (ocr to the end of both), conversation. A stage read back from the store takes almost none.</summary>
+    public IReadOnlyDictionary<string, double> StageSeconds { get; init; } = new Dictionary<string, double>();
 }
 
 /// <summary>A transcription the checks refused: the line, why, what the vision model wrote and the primary OCR reading of the same box.</summary>
@@ -53,27 +57,50 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
     public const string OcrFolder = "ocr";
 
     readonly string instruction = instruction ?? ScanAgentProtocol.Instruction;
-    readonly int parallelism = parallelism ?? HeadingAgentSelector.DefaultParallelism;
+    /// <summary>Calls at once in the conversation: its units wait on the provider, not on this machine.</summary>
+    public const int DefaultParallelism = 8;
+
+    readonly int parallelism = parallelism ?? DefaultParallelism;
 
     public string SelectorId => "scan-v6:" + ScanAgentSource.Version + ":instruction-" + AgentProtocol.Sha(instruction)[..8];
 
     public Task<ScanHeadingResult> ExtractAsync(string docxPath, string apiKey, CancellationToken ct) => Task.Run(() =>
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(apiKey);
+        var seconds = new Dictionary<string, double>(StringComparer.Ordinal);
+        var clock = System.Diagnostics.Stopwatch.StartNew();
         var ocr = new ScanOcrPreflight(Path.Combine(storeRoot, OcrFolder));
         var evidence = ocr.Run(docxPath, ocrOptions);
+        seconds["ocr"] = clock.Elapsed.TotalSeconds;
         var seer = new ScanVisionPreflight(Path.Combine(storeRoot, "vlm"), handlerFactory);
         // With the blind transcription, the vision preflight asks no reading choices: choosing among OCR readings drew the model to a wrong one
         // (4 of 11 right on 023's headings), and the agent then took an OCR reading the transcription had read right.
         var seeOptions = visionOptions ?? (transcribe ? new ScanVisionPreflight.Options(MaxReadingsPerPage: 0) : null);
-        var observations = vision ? seer.Run(evidence, ocr.EntryOf(evidence), apiKey, seeOptions) : [];
-        var transcriptions = transcribe
-            ? new ScanTranscriptionPreflight(storeRoot, handlerFactory).Run(evidence, ocr.EntryOf(evidence), apiKey, transcriptionOptions)
-            : null;
-        return ExtractFrom(evidence, observations, apiKey, ct, transcriptions) with
+        IReadOnlyList<VlmPageObservation> observations = [];
+        TranscriptionSet? transcriptions = null;
+        // Both read only the OCR evidence and the page images, and both wait on the provider: they run side by side.
+        Parallel.Invoke(
+            () =>
+            {
+                var t = System.Diagnostics.Stopwatch.StartNew();
+                if (vision) observations = seer.Run(evidence, ocr.EntryOf(evidence), apiKey, seeOptions);
+                lock (seconds) seconds["vision"] = t.Elapsed.TotalSeconds;
+            },
+            () =>
+            {
+                var t = System.Diagnostics.Stopwatch.StartNew();
+                if (transcribe) transcriptions = new ScanTranscriptionPreflight(storeRoot, handlerFactory).Run(evidence, ocr.EntryOf(evidence), apiKey, transcriptionOptions);
+                lock (seconds) seconds["transcription"] = t.Elapsed.TotalSeconds;
+            });
+        seconds["preflight"] = clock.Elapsed.TotalSeconds;
+        var talk = System.Diagnostics.Stopwatch.StartNew();
+        var result = ExtractFrom(evidence, observations, apiKey, ct, transcriptions);
+        seconds["conversation"] = talk.Elapsed.TotalSeconds;
+        return result with
         {
             PreflightCalls = seer.LastCalls + (transcriptions?.ProviderCalls ?? 0),
             PreflightCostUsd = seer.LastCostUsd + (transcriptions?.ProviderCostUsd ?? 0),
+            StageSeconds = seconds.ToDictionary(kv => kv.Key, kv => Math.Round(kv.Value, 1)),
         };
     }, ct);
 

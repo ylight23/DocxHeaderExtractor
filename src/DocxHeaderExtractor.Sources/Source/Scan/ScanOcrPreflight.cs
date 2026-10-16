@@ -24,8 +24,10 @@ public sealed class ScanOcrPreflight(string storeRoot)
 {
     public const string OriginalView = "ocr-original", UpscaledView = "ocr-upscaled";
 
+    /// <param name="Parallelism">Engine processes at once over both views (each runs one thread); null for the machine's processor count. It is
+    /// not part of the evidence's parameters: the same pages read the same at any parallelism.</param>
     public sealed record Options(string Languages = "vie+eng", int PageSegmentationMode = 1, double UpscaleFactor = 1.5, int? MaxPages = null,
-        int Parallelism = 4);
+        int? Parallelism = null);
 
     /// <summary>UTF-8 without a byte order mark, so that the files read the same in every tool.</summary>
     static readonly UTF8Encoding Utf8 = new(encoderShouldEmitUTF8Identifier: false);
@@ -67,13 +69,15 @@ public sealed class ScanOcrPreflight(string storeRoot)
             if (pages.Count == 0) gaps.Add(new OcrViewGap(OriginalView, "NO_PAGE_IMAGES:" + integrity.Kind));
             else
             {
-                views.Add(MakeView(new OcrViewSpec(OriginalView, "none", 1.0, TesseractOcr.EngineName, engineVersion, options.Languages, options.PageSegmentationMode),
-                    pages, imagePaths, tesseract, temp, options.Parallelism, null));
+                var specs = new List<(OcrViewSpec Spec, string? Magick)>
+                {
+                    (new OcrViewSpec(OriginalView, "none", 1.0, TesseractOcr.EngineName, engineVersion, options.Languages, options.PageSegmentationMode), null),
+                };
                 if (magick is null) gaps.Add(new OcrViewGap(UpscaledView, "IMAGEMAGICK_NOT_FOUND"));
                 else
-                    views.Add(MakeView(new OcrViewSpec(UpscaledView, "grey, scaled " + options.UpscaleFactor.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture) + "x (ImageMagick)",
-                        options.UpscaleFactor, TesseractOcr.EngineName, engineVersion, options.Languages, options.PageSegmentationMode),
-                        pages, imagePaths, tesseract, temp, options.Parallelism, magick));
+                    specs.Add((new OcrViewSpec(UpscaledView, "grey, scaled " + options.UpscaleFactor.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture) + "x (ImageMagick)",
+                        options.UpscaleFactor, TesseractOcr.EngineName, engineVersion, options.Languages, options.PageSegmentationMode), magick));
+                views.AddRange(MakeViews(specs, pages, imagePaths, tesseract, temp, Math.Max(1, options.Parallelism ?? Environment.ProcessorCount)));
             }
             var evidence = new ScanOcrEvidence(ScanOcrEvidence.CurrentVersion, integrity.SourceSha256, integrity.Kind.ToString(), pages.Count, parametersSha, views, gaps);
             File.WriteAllText(Path.Combine(temp, "evidence.json"), JsonSerializer.Serialize(evidence, Json), Utf8);
@@ -134,13 +138,21 @@ public sealed class ScanOcrPreflight(string storeRoot)
         return result;
     }
 
-    static OcrView MakeView(OcrViewSpec spec, IReadOnlyList<PageImage> pages, string[] imagePaths, string tesseract, string temp, int parallelism, string? magick)
+    /// <summary>Every page of every view as one queue of engine runs, the heaviest first (the upscaled view's pages take about twice as long), so
+    /// that no worker waits while another view still has pages.</summary>
+    static IEnumerable<OcrView> MakeViews(IReadOnlyList<(OcrViewSpec Spec, string? Magick)> specs, IReadOnlyList<PageImage> pages, string[] imagePaths,
+        string tesseract, string temp, int parallelism)
     {
-        var dir = Path.Combine(temp, "views", spec.ViewId);
-        Directory.CreateDirectory(dir);
-        var result = new OcrPage[pages.Count];
-        Parallel.For(0, pages.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, parallelism) }, k =>
+        var result = specs.Select(_ => new OcrPage[pages.Count]).ToArray();
+        foreach (var (spec, _) in specs) Directory.CreateDirectory(Path.Combine(temp, "views", spec.ViewId));
+        var jobs = Enumerable.Range(0, specs.Count).OrderByDescending(v => specs[v].Spec.Scale)
+            .SelectMany(v => Enumerable.Range(0, pages.Count).Select(k => (View: v, Page: k))).ToArray();
+        Parallel.ForEach(System.Collections.Concurrent.Partitioner.Create(jobs, System.Collections.Concurrent.EnumerablePartitionerOptions.NoBuffering),
+            new ParallelOptions { MaxDegreeOfParallelism = parallelism }, job =>
         {
+            var (spec, magick) = specs[job.View];
+            var k = job.Page;
+            var dir = Path.Combine(temp, "views", spec.ViewId);
             var input = imagePaths[k];
             if (magick is not null)
             {
@@ -151,10 +163,10 @@ public sealed class ScanOcrPreflight(string storeRoot)
             var tsv = TesseractOcr.RecognizeTsv(tesseract, input, spec.Languages, spec.PageSegmentationMode);
             File.WriteAllText(Path.Combine(dir, $"page-{pages[k].Page:000}.tsv"), tsv, Utf8);
             if (magick is not null) File.Delete(input);   // the scaled image is reproducible from the original and the spec
-            result[k] = new OcrPage(pages[k].Page, pages[k].Sha256, pages[k].Width, pages[k].Height, TesseractOcr.Sha256(tsv),
+            result[job.View][k] = new OcrPage(pages[k].Page, pages[k].Sha256, pages[k].Width, pages[k].Height, TesseractOcr.Sha256(tsv),
                 Lines(pages[k].Page, spec.ViewId, TesseractOcr.ParseTsv(tsv, spec.Scale)));
         });
-        return new OcrView(spec, EvidenceOrigin.OcrDerived, result);
+        return specs.Select((s, v) => new OcrView(s.Spec, EvidenceOrigin.OcrDerived, result[v]));
     }
 
     /// <summary>The lines of one page with their measurements: box, mean and lowest confidence, and whether another line overlaps them.</summary>

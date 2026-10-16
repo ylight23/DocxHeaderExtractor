@@ -221,6 +221,19 @@ the vision model reads when it is shown only the crop: the crop the vision prefl
 2x (the scans are black and white already, so a grey crop would be the same image). Each batch is stored once
 (`<root>/vlm-transcribe/`); the report is written to `<root>/eval/`.
 
+## 5b. Speed
+
+- OCR: every page of both views is one queue of engine runs (one thread each), the upscaled pages first since they take
+  about twice as long, with as many runs at once as the machine has processors (`Options.Parallelism`, not part of the
+  evidence's parameters, so stored evidence stays valid).
+- Vision observation and transcription run side by side once the OCR evidence exists (both read only it and the page
+  images, both wait on the provider), each with 8 calls at once; the conversation runs 8 units at once.
+- The result gives the seconds of each stage (`StageSeconds`: ocr, vision, transcription, preflight, conversation); the
+  CLI prints them.
+- `scan-text-eval` also measures transcription with the model's reasoning off (`-no-reasoning`) and gives each
+  method's seconds, calls and cost, to decide whether the route can send it.
+- A second run on the same document reads every preflight stage back from the store.
+
 ## 6. Windows
 
 The scan tools are the same on Windows and Linux. Requirements: .NET 9, Tesseract with the Vietnamese data (the
