@@ -146,7 +146,27 @@ then the V6 conversation over `ScanAgentSource`, with the same runner, budget, r
   `CORROBORATED` (an OCR view and the vision model read the same), `CONFLICT` (the vision model chose another reading),
   `UNVERIFIED` otherwise. `TextStatus` is `OCR_PRIMARY_VIEW`, `OCR_OTHER_VIEW` or `CORRECTED_UNVERIFIED`.
 
-## 6. Not done yet, and known limits
+## 6. Windows
+
+The scan tools are the same on Windows and Linux. Requirements: .NET 9, Tesseract with the Vietnamese data (the
+UB Mannheim installer; tick Vietnamese, or the preflight stops with `TESSERACT_LANGUAGE_MISSING:vie`), ImageMagick on
+`PATH` (without it there is no upscaled view and no vision step, and the evidence says why), `OPENROUTER_API_KEY`.
+
+- Tools are found on `PATH` (`tesseract.exe`, `magick.exe`; `C:\Program Files\Tesseract-OCR\` too). `convert` is not
+  looked for under Windows names: `convert.exe` there is the system's file-system tool.
+- No path reaches an external tool. Images go to Tesseract and ImageMagick on standard input and come back on standard
+  output; .NET reads and writes the files. Tesseract on Windows cannot open a path outside the system code page (a user
+  folder such as `C:\Users\Tuấn`); .NET can. Checked on Linux with a store under `Thư mục của Tuấn/kho evidence` and a
+  source named `Nghị định 23 – bản scan.docx`: the raw TSV of all 34 pages of both views is identical, byte for byte,
+  to the run that passed paths.
+- Arguments are passed one by one, not through a shell, so `%` in `-threshold 55%` is not touched by `cmd`.
+- Files are UTF-8 without a byte order mark; TSV lines may end in `\r\n`.
+
+Not run on a Windows machine yet: the build environment is Linux. The first Windows run of `dhx scan-ocr` will confirm
+it; the tests that need Tesseract or ImageMagick skip themselves where the tools are missing, so a green suite on a
+machine without them checks nothing of this part.
+
+## 7. Not done yet, and known limits
 
 - No live run yet (provider not reachable here); quality of headings, cost per document and whether the model accepts
   images are unmeasured. Gold for the six scans does not exist yet.

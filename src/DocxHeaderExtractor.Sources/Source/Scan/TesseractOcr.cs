@@ -48,23 +48,19 @@ public static class TesseractOcr
     }
 
     /// <summary>Recognises one image and returns the raw TSV. One thread per process, so pages can run side by side.</summary>
+    /// <remarks>The image goes to the engine on its standard input, not as a path: Tesseract on Windows cannot open a path with characters
+    /// outside the system code page (a user folder such as C:\Users\Tuấn), and .NET reads any path. The output is the same byte for byte.</remarks>
     public static string RecognizeTsv(string exe, string imagePath, string languages, int psm)
     {
-        var (code, stdout, stderr) = Run(exe, [imagePath, "stdout", "-l", languages, "--psm", psm.ToString(CultureInfo.InvariantCulture), "tsv"],
-            new Dictionary<string, string> { ["OMP_THREAD_LIMIT"] = "1" });
+        var (code, stdout, stderr) = Run(exe, ["stdin", "stdout", "-l", languages, "--psm", psm.ToString(CultureInfo.InvariantCulture), "tsv"],
+            new Dictionary<string, string> { ["OMP_THREAD_LIMIT"] = "1" }, File.ReadAllBytes(imagePath));
         if (code != 0) throw new InvalidOperationException("TESSERACT_FAILED:" + stderr.Trim().Split('\n').LastOrDefault());
         return stdout;
     }
 
     /// <summary>The second view's image: grey, scaled. Returns false when ImageMagick is missing or fails.</summary>
-    public static bool Upscale(string magick, string input, string output, double scale)
-    {
-        var args = new List<string>();
-        if (Path.GetFileNameWithoutExtension(magick).Equals("magick", StringComparison.OrdinalIgnoreCase)) args.Add("convert");
-        args.AddRange([input, "-colorspace", "Gray", "-resize", (scale * 100).ToString("0.##", CultureInfo.InvariantCulture) + "%", output]);
-        var (code, _, _) = Run(magick, args, null);
-        return code == 0 && File.Exists(output);
-    }
+    public static bool Upscale(string magick, string input, string output, double scale) =>
+        Magick(magick, input, ["-colorspace", "Gray", "-resize", (scale * 100).ToString("0.##", CultureInfo.InvariantCulture) + "%"], output);
 
     /// <summary>
     /// The words of a TSV as lines: the engine's level-5 rows grouped by block, paragraph and line, in its order. Boxes are divided by
@@ -115,38 +111,63 @@ public static class TesseractOcr
     /// <summary>A black-and-white PNG of the page at <paramref name="width"/> pixels wide, for a vision model that sees the whole page. A scan
     /// in grey JPEG is several times larger (paper texture); black and white keeps letters, weight and diacritics.</summary>
     public static bool Downscale(string magick, string input, string output, int width) =>
-        Magick(magick, [input, "-colorspace", "Gray", "-resize", width.ToString(CultureInfo.InvariantCulture) + "x", "-threshold", BilevelThreshold, "-type", "bilevel", "png:" + output], output);
+        Magick(magick, input, ["-colorspace", "Gray", "-resize", width.ToString(CultureInfo.InvariantCulture) + "x", "-threshold", BilevelThreshold, "-type", "bilevel"], output);
 
     /// <summary>A black-and-white PNG of one region of the page at full resolution, with <paramref name="pad"/> pixels around it.</summary>
     public static bool Crop(string magick, string input, string output, PixelBox box, int pad)
     {
         var x = Math.Max(0, box.Left - pad); var y = Math.Max(0, box.Top - pad);
         var geometry = string.Create(CultureInfo.InvariantCulture, $"{box.Width + 2 * pad}x{box.Height + 2 * pad}+{x}+{y}");
-        return Magick(magick, [input, "-crop", geometry, "+repage", "-colorspace", "Gray", "-threshold", BilevelThreshold, "-type", "bilevel", "png:" + output], output);
+        return Magick(magick, input, ["-crop", geometry, "+repage", "-colorspace", "Gray", "-threshold", BilevelThreshold, "-type", "bilevel"], output);
     }
 
-    static bool Magick(string magick, IEnumerable<string> args, string output)
+    /// <summary>Runs ImageMagick on one image and writes a PNG. The image goes in on standard input and comes out on standard output, and .NET
+    /// reads and writes the files, so no path ever reaches the tool (a path outside the system code page fails on Windows).</summary>
+    static bool Magick(string magick, string input, IEnumerable<string> operations, string output)
     {
         var all = new List<string>();
         if (Path.GetFileNameWithoutExtension(magick).Equals("magick", StringComparison.OrdinalIgnoreCase)) all.Add("convert");
-        all.AddRange(args);
-        var (code, _, _) = Run(magick, all, null);
-        return code == 0 && File.Exists(output);
+        all.Add("-");
+        all.AddRange(operations);
+        all.Add("png:-");
+        var (code, bytes, _) = RunRaw(magick, all, null, File.ReadAllBytes(input));
+        if (code != 0 || bytes.Length == 0) return false;
+        File.WriteAllBytes(output, bytes);
+        return true;
     }
 
-    static (int Code, string Stdout, string Stderr) Run(string exe, IEnumerable<string> args, IReadOnlyDictionary<string, string>? env)
+    static (int Code, string Stdout, string Stderr) Run(string exe, IEnumerable<string> args, IReadOnlyDictionary<string, string>? env, byte[]? stdin = null)
+    {
+        var (code, stdout, stderr) = RunRaw(exe, args, env, stdin);
+        return (code, Encoding.UTF8.GetString(stdout), stderr);
+    }
+
+    static (int Code, byte[] Stdout, string Stderr) RunRaw(string exe, IEnumerable<string> args, IReadOnlyDictionary<string, string>? env, byte[]? stdin)
     {
         var psi = new ProcessStartInfo(exe)
         {
-            RedirectStandardOutput = true, RedirectStandardError = true, UseShellExecute = false, CreateNoWindow = true,
-            StandardOutputEncoding = Encoding.UTF8, StandardErrorEncoding = Encoding.UTF8,
+            RedirectStandardOutput = true, RedirectStandardError = true, RedirectStandardInput = stdin is not null, UseShellExecute = false, CreateNoWindow = true,
+            StandardErrorEncoding = Encoding.UTF8,
         };
         foreach (var a in args) psi.ArgumentList.Add(a);
         if (env is not null) foreach (var (k, v) in env) psi.Environment[k] = v;
         using var proc = Process.Start(psi) ?? throw new InvalidOperationException("PROCESS_NOT_STARTED:" + exe);
-        var stdout = proc.StandardOutput.ReadToEndAsync();
+        // Both outputs are read before the input is written, so a child that writes while it reads cannot block on a full pipe.
+        var output = new MemoryStream();
+        var stdout = proc.StandardOutput.BaseStream.CopyToAsync(output);
         var stderr = proc.StandardError.ReadToEndAsync();
+        if (stdin is not null)
+        {
+            try
+            {
+                proc.StandardInput.BaseStream.Write(stdin);
+                proc.StandardInput.BaseStream.Flush();
+            }
+            catch (IOException) { /* the child closed its input early; its exit code and stderr say why */ }
+            finally { proc.StandardInput.Close(); }
+        }
         if (!proc.WaitForExit(TimeoutMs)) { try { proc.Kill(true); } catch (InvalidOperationException) { } throw new TimeoutException("PROCESS_TIMEOUT:" + exe); }
-        return (proc.ExitCode, stdout.Result, stderr.Result);
+        stdout.Wait();
+        return (proc.ExitCode, output.ToArray(), stderr.Result);
     }
 }

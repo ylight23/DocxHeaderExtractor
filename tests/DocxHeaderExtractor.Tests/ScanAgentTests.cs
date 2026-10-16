@@ -313,7 +313,7 @@ public sealed class ScanAgentTests : IDisposable
         var magick = TesseractOcr.FindImageMagick();
         if (magick is null) return;
         var evidence = Evidence();
-        var entry = Path.Combine(dir, "entry");
+        var entry = Path.Combine(dir, "Hồ sơ scan", "entry");
         Directory.CreateDirectory(Path.Combine(entry, "pages"));
         File.WriteAllBytes(Path.Combine(entry, "pages", "page-001.png"), TestPng.Grey(1700, 2200));
         var handler = new FakeOpenRouter((body, post) =>
@@ -357,7 +357,7 @@ public sealed class ScanAgentTests : IDisposable
     {
         var magick = TesseractOcr.FindImageMagick();
         if (magick is null) return;
-        var entry = Path.Combine(dir, "entry");
+        var entry = Path.Combine(dir, "Hồ sơ scan", "entry");
         Directory.CreateDirectory(Path.Combine(entry, "pages"));
         File.WriteAllBytes(Path.Combine(entry, "pages", "page-001.png"), TestPng.Grey(1700, 2200));
         var handler = new FakeOpenRouter((body, post) => (HttpStatusCode.BadRequest, "{\"error\":{\"message\":\"image input not supported\"}}"));

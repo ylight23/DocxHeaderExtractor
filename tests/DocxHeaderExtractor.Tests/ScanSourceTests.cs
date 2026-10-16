@@ -152,7 +152,8 @@ public sealed class ScanSourceTests : IDisposable
     {
         var path = TestRepository.Path("todo10_8/generated-docx/01_phap_quy/023_ND_23-2015_Chung_thuc.docx");
         if (TesseractOcr.FindTesseract() is null || !File.Exists(path) || !TesseractOcr.Languages(TesseractOcr.FindTesseract()!).Contains("vie")) return;
-        var store = Path.Combine(dir, "store");
+        // A folder name with Vietnamese letters and spaces: the engine gets the image on its input, never this path.
+        var store = Path.Combine(dir, "Thư mục của Tuấn", "store");
         var preflight = new ScanOcrPreflight(store);
         var options = new ScanOcrPreflight.Options(MaxPages: 2, Parallelism: 2);
 
