@@ -100,7 +100,8 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
             if (!TesseractOcr.Downscale(magick, imagePath, pageFile, options.PageWidth)) return Failed("IMAGE_DOWNSCALE_FAILED");
             var scale = page.ImageWidth > 0 ? (double)options.PageWidth / page.ImageWidth : 1.0;
             var listed = page.Lines.Take(options.MaxLinesPerPage).ToArray();
-            var content = new JsonArray(
+            var content = new List<JsonNode>
+            {
                 Text(new JsonObject
                 {
                     ["page"] = page.Page,
@@ -112,18 +113,19 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
                         ["firstWords"] = l.Text.Length <= FirstWordsChars ? l.Text : l.Text[..FirstWordsChars],
                     }).ToArray()),
                 }),
-                Image(pageFile));
+                Image(pageFile),
+            };
             var asked = new List<string>();
             foreach (var line in Weakest(page, readings, options.MaxReadingsPerPage))
             {
                 var crop = Path.Combine(work, line.Id + ".png");
                 if (!TesseractOcr.Crop(magick, imagePath, crop, line.Box, CropPad)) continue;
-                var part = new JsonArray(
+                JsonNode[] part = [
                     Text(new JsonObject { ["crop"] = line.Id, ["readings"] = new JsonArray(readings[line.Id].Select(r => (JsonNode)new JsonObject { ["viewId"] = r.Key, ["text"] = r.Value }).ToArray()) }),
-                    Image(crop));
+                    Image(crop)];
                 // A crop is added only while the request stays under the byte cap of the audited transport; the ones left out are not asked.
-                if (Request(content.DeepClone().AsArray().Concat(part.Select(p => p!.DeepClone())).ToArray()).Bytes > AgentBudget.MaxRequestBytes) break;
-                foreach (var p in part) content.Add(p!.DeepClone());
+                if (Request(content.Concat(part)).Bytes > AgentBudget.MaxRequestBytes) break;
+                content.AddRange(part);
                 asked.Add(line.Id);
             }
             var lineIds = listed.Select(l => l.Id).ToArray();
@@ -133,7 +135,7 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
             if (File.Exists(file))
                 return JsonSerializer.Deserialize<VlmPageObservation>(File.ReadAllText(file, Utf8), Json) ?? throw new InvalidOperationException("VLM_OBSERVATION_UNREADABLE");
 
-            var request = Request(content.ToArray());
+            var request = Request(content);
             AgentProtocol.ModelTurn turn;
             using (var handler = factory())
             using (var model = new AgentModel(handler, apiKey, budget, cancellationToken: ct))
