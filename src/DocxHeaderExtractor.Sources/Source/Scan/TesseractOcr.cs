@@ -121,13 +121,18 @@ public static class TesseractOcr
         return Magick(magick, input, ["-crop", geometry, "+repage", "-colorspace", "Gray", "-threshold", BilevelThreshold, "-type", "bilevel"], output);
     }
 
-    /// <summary>A grey PNG of one region of the page with <paramref name="pad"/> pixels around it, enlarged by <paramref name="scale"/> (no threshold):
-    /// a line some 40 pixels high gives a vision model few pixels per diacritic.</summary>
-    public static bool CropScaled(string magick, string input, string output, PixelBox box, int pad, double scale)
+    /// <summary>A PNG of one region of the page with <paramref name="pad"/> pixels around it, enlarged by <paramref name="scale"/>: a line some 40
+    /// pixels high gives a vision model few pixels per diacritic. Grey and smoothed by default; with <paramref name="bilevel"/>, every pixel is
+    /// repeated (no smoothing) and the result is black and white, which for a black-and-white scan keeps every pixel of the source in a file
+    /// about five times smaller.</summary>
+    public static bool CropScaled(string magick, string input, string output, PixelBox box, int pad, double scale, bool bilevel = false)
     {
         var x = Math.Max(0, box.Left - pad); var y = Math.Max(0, box.Top - pad);
         var geometry = string.Create(CultureInfo.InvariantCulture, $"{box.Width + 2 * pad}x{box.Height + 2 * pad}+{x}+{y}");
-        return Magick(magick, input, ["-crop", geometry, "+repage", "-colorspace", "Gray", "-resize", (scale * 100).ToString("0.##", CultureInfo.InvariantCulture) + "%"], output);
+        var resize = (scale * 100).ToString("0.##", CultureInfo.InvariantCulture) + "%";
+        return Magick(magick, input, bilevel
+            ? ["-crop", geometry, "+repage", "-colorspace", "Gray", "-filter", "point", "-resize", resize, "-threshold", BilevelThreshold, "-type", "bilevel"]
+            : ["-crop", geometry, "+repage", "-colorspace", "Gray", "-resize", resize], output);
     }
 
     /// <summary>Runs ImageMagick on one image and writes a PNG. The image goes in on standard input and comes out on standard output, and .NET

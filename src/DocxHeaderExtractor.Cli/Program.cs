@@ -127,9 +127,11 @@ static int RunScanTextEval(CommandLineOptions o)
     var root = o.OutputPath ?? ".dhx-evidence";
     var gold = DocxHeaderExtractor.HeadingAgent.Scan.ScanTextEvaluation.ReadGold(o.GoldPath);
     var report = new DocxHeaderExtractor.HeadingAgent.Scan.ScanTextEvaluation(root).Run(o.Inputs[0], gold, key);
-    Console.WriteLine($"{"Cách đọc",-26} {"Đúng hết dòng",14} {"CER",8}");
+    Console.WriteLine($"{"Cách đọc",-28} {"Đúng hết dòng",14} {"CER",8}");
     foreach (var s in report.Scores)
-        Console.WriteLine($"{s.Method,-26} {s.Exact,6}/{s.Lines,-3} ({100.0 * s.Exact / s.Lines,3:0}%) {100 * s.CharacterErrorRate,7:0.00}%");
+        Console.WriteLine($"{s.Method,-28} {s.Exact,6}/{s.Lines,-3} ({100.0 * s.Exact / s.Lines,3:0}%) {100 * s.CharacterErrorRate,7:0.00}%");
+    foreach (var (method, bytes) in report.CropBytes)
+        Console.WriteLine($"  ảnh cắt {method}: {bytes / 1024.0:0.0} KB cho {report.Lines.Count} dòng ({bytes / 1024.0 / report.Lines.Count:0.00} KB/dòng)");
     Console.WriteLine($"{report.ProviderCalls} POST, {report.ProviderCostUsd:0.0000} USD; lỗi: {(report.Failures.Count == 0 ? "không" : string.Join(", ", report.Failures))}");
     Console.WriteLine($"báo cáo: {Path.Combine(root, "eval", report.SourceSha256[..16] + "-scan-text-eval.json")}");
     return report.Scores.Any(s => s.Method.StartsWith("vlm", StringComparison.Ordinal) && s.Exact == 0 && report.Failures.Count > 0) ? 1 : 0;

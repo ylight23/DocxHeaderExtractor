@@ -8,8 +8,8 @@ namespace DocxHeaderExtractor.HeadingAgent.Scan;
 /// <summary>
 /// Measures how well each reader reads the lines of a scan against a gold transcription (<c>SCAN_LINE_TEXT_GOLD_V1</c>): the two OCR views,
 /// the better of the two (an oracle no reader can reach), the vision model transcribing each line crop blind (<see cref="ScanTranscription"/>),
-/// without any OCR reading shown, from the black-and-white crop the vision preflight sends and from the same crop enlarged
-/// <see cref="EnlargedScale"/> times, and what the scan route shows: the enlarged transcription where it passes the program's checks, else the
+/// without any OCR reading shown, from the black-and-white crop the vision preflight sends, from the same crop enlarged
+/// <see cref="EnlargedScale"/> times in grey (smoothed) and in black and white (pixels repeated), and what the scan route shows: the enlarged transcription where it passes the program's checks, else the
 /// primary OCR reading. It changes no evidence and decides nothing: it reports exact matches and character error rates.
 /// </summary>
 public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler>? handlerFactory = null)
@@ -25,14 +25,16 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
 
     public sealed record MethodScore(string Method, int Exact, int Lines, double CharacterErrorRate);
 
+    /// <param name="CropBytes">The bytes of every crop sent, by method: what the byte cap of a request has to hold (the model is billed by pixels,
+    /// which are the same at one scale whatever the format).</param>
     public sealed record Report(string Version, string SourceSha256, string Model, string PromptVersion, IReadOnlyList<MethodScore> Scores,
-        IReadOnlyList<LineResult> Lines, IReadOnlyList<string> Failures, int ProviderCalls, double ProviderCostUsd);
+        IReadOnlyList<LineResult> Lines, IReadOnlyList<string> Failures, int ProviderCalls, double ProviderCostUsd, IReadOnlyDictionary<string, long> CropBytes);
 
     static readonly JsonSerializerOptions Json = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping, WriteIndented = true };
     static readonly UTF8Encoding Utf8 = new(encoderShouldEmitUTF8Identifier: false);
 
     public const string Original = ScanOcrPreflight.OriginalView, Upscaled = "ocr-upscaled", BestView = "oracle-better-ocr-view",
-        VlmBilevel = "vlm-blind-crop", VlmEnlarged = "vlm-blind-crop-2x", Shown = "shown-by-scan-route";
+        VlmBilevel = "vlm-blind-crop", VlmEnlarged = "vlm-blind-crop-2x", VlmEnlargedBilevel = "vlm-blind-crop-2x-bilevel", Shown = "shown-by-scan-route";
 
     public static IReadOnlyList<GoldLine> ReadGold(string path)
     {
@@ -48,7 +50,7 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
         }).ToArray();
     }
 
-    public Report Run(string docxPath, IReadOnlyList<GoldLine> gold, string apiKey, double ceilingUsd = 1.0, ScanOcrPreflight.Options? ocrOptions = null)
+    public Report Run(string docxPath, IReadOnlyList<GoldLine> gold, string apiKey, double? ceilingUsd = null, ScanOcrPreflight.Options? ocrOptions = null)
     {
         var ocr = new ScanOcrPreflight(Path.Combine(storeRoot, ScanHeadingAgentSelector.OcrFolder));
         var evidence = ocr.Run(docxPath, ocrOptions);
@@ -65,13 +67,16 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
         }
 
         var failures = new List<string>();
-        var budget = new AgentBudget(4 * (gold.Count / MaxLinesPerRequest + 2) * (1 + AgentUnit.TransportRetries), ceilingUsd);
+        // Three crop kinds; grey crops reach the byte cap at about five per request. Each call reserves the worst cost of a request at the cap.
+        var planned = 3 * (gold.Count / 5 + 2);
+        var budget = new AgentBudget(planned * (1 + AgentUnit.TransportRetries), ceilingUsd ?? planned * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes));
+        var cropBytes = new Dictionary<string, long>(StringComparer.Ordinal);
         var factory = handlerFactory ?? (() => AgentModel.CreateHandler());
         var work = Path.Combine(Path.GetTempPath(), "dhx-eval-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(work);
         try
         {
-            foreach (var (method, enlarged) in new[] { (VlmBilevel, false), (VlmEnlarged, true) })
+            foreach (var (method, enlarged, bilevel) in new[] { (VlmBilevel, false, true), (VlmEnlarged, true, false), (VlmEnlargedBilevel, true, true) })
             {
                 var crops = new string?[gold.Count];
                 var keys = new string[gold.Count];
@@ -79,11 +84,12 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
                 {
                     var image = ScanOcrPreflight.PageImagePath(entry, gold[k].Page);
                     var file = Path.Combine(work, $"{method}-{k:000}.png");
-                    var ok = image is not null && (enlarged ? TesseractOcr.CropScaled(magick, image, file, gold[k].Box, ScanVisionPreflight.CropPad, EnlargedScale)
+                    var ok = image is not null && (enlarged ? TesseractOcr.CropScaled(magick, image, file, gold[k].Box, ScanVisionPreflight.CropPad, EnlargedScale, bilevel)
                         : TesseractOcr.Crop(magick, image, file, gold[k].Box, ScanVisionPreflight.CropPad));
                     crops[k] = ok ? file : null;
                     var sha = evidence.Views[0].Pages.FirstOrDefault(p => p.Page == gold[k].Page)?.ImageSha256 ?? "";
                     keys[k] = method + ":" + ScanTranscription.CropKey(sha, gold[k].Box, ScanVisionPreflight.CropPad, enlarged ? EnlargedScale : 1) + ":" + TesseractOcr.BilevelThreshold;
+                    if (ok) cropBytes[method] = cropBytes.GetValueOrDefault(method) + new FileInfo(file).Length;
                     if (!ok) failures.Add($"{method}:L{gold[k].N:000}:CROP_FAILED");
                 }
                 var ids = gold.Select(g => "T" + g.N.ToString("000", System.Globalization.CultureInfo.InvariantCulture)).ToArray();
@@ -105,9 +111,9 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
             readings[k][Shown] = ocrText is not null && ScanTranscription.Guard(t, ocrText) == ScanTranscription.Accepted ? t : ocrText;
         }
         var lines = gold.Select((g, k) => new LineResult(g.N, g.Page, g.Text, (IReadOnlyDictionary<string, string?>)readings[k])).ToArray();
-        var methods = new[] { Original, Upscaled, BestView, VlmBilevel, VlmEnlarged, Shown };
+        var methods = new[] { Original, Upscaled, BestView, VlmBilevel, VlmEnlarged, VlmEnlargedBilevel, Shown };
         var scores = methods.Select(m => Score(m, lines)).ToArray();
-        var report = new Report(ReportVersion, evidence.SourceSha256, AgentProtocol.ChatModel, PromptVersion, scores, lines, failures, budget.Calls, budget.ActualUsd);
+        var report = new Report(ReportVersion, evidence.SourceSha256, AgentProtocol.ChatModel, PromptVersion, scores, lines, failures, budget.Calls, budget.ActualUsd, cropBytes);
         var dir = Path.Combine(storeRoot, "eval");
         Directory.CreateDirectory(dir);
         File.WriteAllText(Path.Combine(dir, evidence.SourceSha256[..16] + "-scan-text-eval.json"), JsonSerializer.Serialize(report, Json), Utf8);

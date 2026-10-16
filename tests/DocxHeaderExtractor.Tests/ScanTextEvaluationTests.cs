@@ -97,12 +97,15 @@ public sealed class ScanTextEvaluationTests : IDisposable
         var score = report.Scores.ToDictionary(s => s.Method);
         Assert.Equal(gold.Length, score[ScanTextEvaluation.VlmBilevel].Exact);
         Assert.Equal(gold.Length, score[ScanTextEvaluation.VlmEnlarged].Exact);
+        Assert.Equal(gold.Length, score[ScanTextEvaluation.VlmEnlargedBilevel].Exact);
+        // Same pixels as the grey 2x crops, far fewer bytes.
+        Assert.True(report.CropBytes[ScanTextEvaluation.VlmEnlargedBilevel] < report.CropBytes[ScanTextEvaluation.VlmEnlarged]);
         Assert.True(score[ScanTextEvaluation.Original].Exact >= 1);
         Assert.True(score[ScanTextEvaluation.BestView].Exact >= Math.Max(score[ScanTextEvaluation.Original].Exact, score[ScanTextEvaluation.Upscaled].Exact));
         Assert.All(report.Lines, l => Assert.NotNull(l.Readings[ScanTextEvaluation.Original]));
         var posts = handler.Posts;
         // At least one request per crop kind; enlarged crops are larger, so they may be split to stay under the transport's byte cap.
-        Assert.InRange(posts, 2, 2 * gold.Length);
+        Assert.InRange(posts, 3, 3 * gold.Length);
         Assert.All(handler.Bodies, b => Assert.True(System.Text.Encoding.UTF8.GetByteCount(b.ToJsonString()) <= DocxHeaderExtractor.HeadingAgent.AgentBudget.MaxRequestBytes + 4096));
 
         var again = evaluation.Run(path, gold, "sk-test", ocrOptions: options);
