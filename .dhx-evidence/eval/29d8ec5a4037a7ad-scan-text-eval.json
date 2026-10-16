@@ -1,0 +1,1483 @@
+{
+  "Version": "SCAN_TEXT_EVAL_V1",
+  "SourceSha256": "29d8ec5a4037a7ad386940a3f9de5222564a9ce05343467b781d1018a714dc4e",
+  "Model": "qwen/qwen3.7-flash",
+  "PromptVersion": "SCAN_VLM_TRANSCRIBE_V1",
+  "Scores": [
+    {
+      "Method": "ocr-original",
+      "Exact": 73,
+      "Lines": 120,
+      "CharacterErrorRate": 0.02332955832389581
+    },
+    {
+      "Method": "ocr-upscaled",
+      "Exact": 74,
+      "Lines": 120,
+      "CharacterErrorRate": 0.030351075877689693
+    },
+    {
+      "Method": "oracle-better-ocr-view",
+      "Exact": 84,
+      "Lines": 120,
+      "CharacterErrorRate": 0.01698754246885617
+    },
+    {
+      "Method": "vlm-blind-crop",
+      "Exact": 118,
+      "Lines": 120,
+      "CharacterErrorRate": 0.0027180067950169874
+    },
+    {
+      "Method": "vlm-blind-crop-2x",
+      "Exact": 120,
+      "Lines": 120,
+      "CharacterErrorRate": 0
+    }
+  ],
+  "Lines": [
+    {
+      "N": 1,
+      "Page": 1,
+      "Gold": "NGHỊ ĐỊNH",
+      "Readings": {
+        "ocr-original": "NGHỊ ĐỊNH",
+        "ocr-upscaled": "NGHỊ ĐỊNH",
+        "oracle-better-ocr-view": "NGHỊ ĐỊNH",
+        "vlm-blind-crop": "NGHỊ ĐỊNH",
+        "vlm-blind-crop-2x": "NGHỊ ĐỊNH"
+      }
+    },
+    {
+      "N": 2,
+      "Page": 1,
+      "Gold": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,",
+      "Readings": {
+        "ocr-original": "Về cấp bản sao từ số gốc, chứng thực bản sao từ bản chính,",
+        "ocr-upscaled": "Về cấp bản sao từ số gốc, chứng thực bản sao từ bản chính,",
+        "oracle-better-ocr-view": "Về cấp bản sao từ số gốc, chứng thực bản sao từ bản chính,",
+        "vlm-blind-crop": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,",
+        "vlm-blind-crop-2x": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,"
+      }
+    },
+    {
+      "N": 3,
+      "Page": 1,
+      "Gold": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
+      "Readings": {
+        "ocr-original": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
+        "ocr-upscaled": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
+        "oracle-better-ocr-view": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch"
+      }
+    },
+    {
+      "N": 4,
+      "Page": 1,
+      "Gold": "Chương I",
+      "Readings": {
+        "ocr-original": "Chương I",
+        "ocr-upscaled": "- Chương I",
+        "oracle-better-ocr-view": "Chương I",
+        "vlm-blind-crop": "Chương I",
+        "vlm-blind-crop-2x": "Chương I"
+      }
+    },
+    {
+      "N": 5,
+      "Page": 1,
+      "Gold": "NHỮNG QUY ĐỊNH CHUNG",
+      "Readings": {
+        "ocr-original": "NHỮNG QUY ĐỊNH CHUNG",
+        "ocr-upscaled": "NHỮNG QUY ĐỊNH CHUNG",
+        "oracle-better-ocr-view": "NHỮNG QUY ĐỊNH CHUNG",
+        "vlm-blind-crop": "NHỮNG QUY ĐỊNH CHUNG",
+        "vlm-blind-crop-2x": "NHỮNG QUY ĐỊNH CHUNG"
+      }
+    },
+    {
+      "N": 6,
+      "Page": 1,
+      "Gold": "Điều 1. Phạm vi điều chỉnh",
+      "Readings": {
+        "ocr-original": "Điều 1. Phạm vi điều chỉnh",
+        "ocr-upscaled": "Điều 1. Phạm vi điều chỉnh",
+        "oracle-better-ocr-view": "Điều 1. Phạm vi điều chỉnh",
+        "vlm-blind-crop": "Điều 1. Phạm vi điều chỉnh",
+        "vlm-blind-crop-2x": "Điều 1. Phạm vi điều chỉnh"
+      }
+    },
+    {
+      "N": 7,
+      "Page": 1,
+      "Gold": "Điều 2. Giải thích từ ngữ",
+      "Readings": {
+        "ocr-original": "Điều 2. Giải thích từ ngữ",
+        "ocr-upscaled": "Điều 2. Giải thích từ ngữ",
+        "oracle-better-ocr-view": "Điều 2. Giải thích từ ngữ",
+        "vlm-blind-crop": "Điều 2. Giải thích từ ngữ",
+        "vlm-blind-crop-2x": "Điều 2. Giải thích từ ngữ"
+      }
+    },
+    {
+      "N": 8,
+      "Page": 2,
+      "Gold": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được",
+      "Readings": {
+        "ocr-original": "Điều 3. Giá trị pháp lý của ban sao được cấp từ số gốc, | bản sao được",
+        "ocr-upscaled": "Điều 3. Giá trị pháp lý của bản sao được cấp từ số gốc, | bản sao được",
+        "oracle-better-ocr-view": "Điều 3. Giá trị pháp lý của bản sao được cấp từ số gốc, | bản sao được",
+        "vlm-blind-crop": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được",
+        "vlm-blind-crop-2x": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được"
+      }
+    },
+    {
+      "N": 9,
+      "Page": 2,
+      "Gold": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
+      "Readings": {
+        "ocr-original": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
+        "ocr-upscaled": "chứng thực từ bản chính, chữ ir ký được chứng thực và hợp đồng, giao dịch",
+        "oracle-better-ocr-view": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
+        "vlm-blind-crop": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
+        "vlm-blind-crop-2x": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch"
+      }
+    },
+    {
+      "N": 10,
+      "Page": 2,
+      "Gold": "được chứng thực",
+      "Readings": {
+        "ocr-original": "được chứng thực",
+        "ocr-upscaled": "được chứng thực",
+        "oracle-better-ocr-view": "được chứng thực",
+        "vlm-blind-crop": "được chứng thực",
+        "vlm-blind-crop-2x": "được chứng thực"
+      }
+    },
+    {
+      "N": 11,
+      "Page": 3,
+      "Gold": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc",
+      "Readings": {
+        "ocr-original": "Điều 4. Tham quyền và trách nhiệm cap bản sao từ sô gốc",
+        "ocr-upscaled": "Điều 4. Tham quyên và trách nhiệm cap ban sao từ so gốc",
+        "oracle-better-ocr-view": "Điều 4. Tham quyền và trách nhiệm cap bản sao từ sô gốc",
+        "vlm-blind-crop": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc",
+        "vlm-blind-crop-2x": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc"
+      }
+    },
+    {
+      "N": 12,
+      "Page": 3,
+      "Gold": "Điều 5. Thẩm quyền và trách nhiệm chứng thực",
+      "Readings": {
+        "ocr-original": "Điều 5. Tham quyền và trách nhiệm chứng thực",
+        "ocr-upscaled": "Điều 5. Tham quyền và trách nhiệm chứng thực",
+        "oracle-better-ocr-view": "Điều 5. Tham quyền và trách nhiệm chứng thực",
+        "vlm-blind-crop": "Điều 5. Thẩm quyền và trách nhiệm chứng thực",
+        "vlm-blind-crop-2x": "Điều 5. Thẩm quyền và trách nhiệm chứng thực"
+      }
+    },
+    {
+      "N": 13,
+      "Page": 4,
+      "Gold": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao",
+      "Readings": {
+        "ocr-original": "Điều 6. Trách nhiệm của cơ quan, to chức tiép nhận ban sao",
+        "ocr-upscaled": "Điều 6. Trách nhiệm của cơ quan, tô chức tiép nhận ban sao",
+        "oracle-better-ocr-view": "Điều 6. Trách nhiệm của cơ quan, to chức tiép nhận ban sao",
+        "vlm-blind-crop": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao",
+        "vlm-blind-crop-2x": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao"
+      }
+    },
+    {
+      "N": 14,
+      "Page": 4,
+      "Gold": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
+      "Readings": {
+        "ocr-original": "Điều 7, Thời hạn thực hiện yêu cầu chứng thực",
+        "ocr-upscaled": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
+        "oracle-better-ocr-view": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
+        "vlm-blind-crop": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
+        "vlm-blind-crop-2x": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực"
+      }
+    },
+    {
+      "N": 15,
+      "Page": 5,
+      "Gold": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
+      "Readings": {
+        "ocr-original": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
+        "ocr-upscaled": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
+        "oracle-better-ocr-view": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
+        "vlm-blind-crop": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
+        "vlm-blind-crop-2x": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực"
+      }
+    },
+    {
+      "N": 16,
+      "Page": 5,
+      "Gold": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
+      "Readings": {
+        "ocr-original": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
+        "ocr-upscaled": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
+        "oracle-better-ocr-view": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
+        "vlm-blind-crop": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
+        "vlm-blind-crop-2x": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực"
+      }
+    },
+    {
+      "N": 17,
+      "Page": 5,
+      "Gold": "Điều 10. Địa điểm chứng thực",
+      "Readings": {
+        "ocr-original": "Điều 10. Địa diém chứng thực",
+        "ocr-upscaled": "Điều 10. Địa điểm chứng thực",
+        "oracle-better-ocr-view": "Điều 10. Địa điểm chứng thực",
+        "vlm-blind-crop": "Điều 10. Địa điểm chứng thực",
+        "vlm-blind-crop-2x": "Điều 10. Địa điểm chứng thực"
+      }
+    },
+    {
+      "N": 18,
+      "Page": 6,
+      "Gold": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch",
+      "Readings": {
+        "ocr-original": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao địch",
+        "ocr-upscaled": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dich",
+        "oracle-better-ocr-view": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao địch",
+        "vlm-blind-crop": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch"
+      }
+    },
+    {
+      "N": 19,
+      "Page": 6,
+      "Gold": "Điều 12. Lời chứng",
+      "Readings": {
+        "ocr-original": "Điều 12. Lời chứng",
+        "ocr-upscaled": "Điều 12. Lời chứng",
+        "oracle-better-ocr-view": "Điều 12. Lời chứng",
+        "vlm-blind-crop": "Điều 12. Lời chứng",
+        "vlm-blind-crop-2x": "Điều 12. Lời chứng"
+      }
+    },
+    {
+      "N": 20,
+      "Page": 6,
+      "Gold": "Điều 13. Sổ chứng thực và số chứng thực",
+      "Readings": {
+        "ocr-original": "Điều 13. Số chứng thực và số chứng thực",
+        "ocr-upscaled": "Điều 13. Số chứng thực và số chứng thực",
+        "oracle-better-ocr-view": "Điều 13. Số chứng thực và số chứng thực",
+        "vlm-blind-crop": "Điều 13. Sổ chứng thực và số chứng thực",
+        "vlm-blind-crop-2x": "Điều 13. Sổ chứng thực và số chứng thực"
+      }
+    },
+    {
+      "N": 21,
+      "Page": 7,
+      "Gold": "Điều 14. Chế độ lưu trữ",
+      "Readings": {
+        "ocr-original": "Điều 14. Chế độ lưu trữ",
+        "ocr-upscaled": "Điều 14. Chế độ lưu trữ",
+        "oracle-better-ocr-view": "Điều 14. Chế độ lưu trữ",
+        "vlm-blind-crop": "Điều 14. Chế độ lưu trữ",
+        "vlm-blind-crop-2x": "Điều 14. Chế độ lưu trữ"
+      }
+    },
+    {
+      "N": 22,
+      "Page": 8,
+      "Gold": "Điều 15. Lệ phí chứng thực, chi phí khác",
+      "Readings": {
+        "ocr-original": "Điều 15. Lệ phí chứng thực, chỉ phí khác",
+        "ocr-upscaled": "Điều 15. Lệ phí chứng thực, chỉ phí khác",
+        "oracle-better-ocr-view": "Điều 15. Lệ phí chứng thực, chỉ phí khác",
+        "vlm-blind-crop": "Điều 15. Lệ phí chứng thực, chi phí khác",
+        "vlm-blind-crop-2x": "Điều 15. Lệ phí chứng thực, chi phí khác"
+      }
+    },
+    {
+      "N": 23,
+      "Page": 8,
+      "Gold": "Chương II",
+      "Readings": {
+        "ocr-original": "Chương II",
+        "ocr-upscaled": "Chương II",
+        "oracle-better-ocr-view": "Chương II",
+        "vlm-blind-crop": "Chương II",
+        "vlm-blind-crop-2x": "Chương II"
+      }
+    },
+    {
+      "N": 24,
+      "Page": 8,
+      "Gold": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
+      "Readings": {
+        "ocr-original": "CẤP BẢN SAO TỪ SO GÓC, CHUNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
+        "ocr-upscaled": "CAP BAN SAO TỪ SO GOC, CHUNG THỰC BAN SAO TU BAN CHINH,",
+        "oracle-better-ocr-view": "CẤP BẢN SAO TỪ SO GÓC, CHUNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
+        "vlm-blind-crop": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
+        "vlm-blind-crop-2x": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,"
+      }
+    },
+    {
+      "N": 25,
+      "Page": 8,
+      "Gold": "CHỨNG THỰC CHỮ KÝ",
+      "Readings": {
+        "ocr-original": "CHỨNG THỰC CHỮ KÝ",
+        "ocr-upscaled": "CHUNG THUC CHU KY",
+        "oracle-better-ocr-view": "CHỨNG THỰC CHỮ KÝ",
+        "vlm-blind-crop": "CHỨNG THỰC CHỮ KÝ",
+        "vlm-blind-crop-2x": "CHỨNG THỰC CHỮ KÝ"
+      }
+    },
+    {
+      "N": 26,
+      "Page": 8,
+      "Gold": "Mục 1",
+      "Readings": {
+        "ocr-original": "¬ MueL n ca",
+        "ocr-upscaled": null,
+        "oracle-better-ocr-view": "¬ MueL n ca",
+        "vlm-blind-crop": "Mục 1",
+        "vlm-blind-crop-2x": "Mục 1"
+      }
+    },
+    {
+      "N": 27,
+      "Page": 8,
+      "Gold": "CẤP BẢN SAO TỪ SỔ GỐC",
+      "Readings": {
+        "ocr-original": "CAP BAN SAO TU SO GOC",
+        "ocr-upscaled": "CÁP BẢN SAO TỪ sO GÓC",
+        "oracle-better-ocr-view": "CÁP BẢN SAO TỪ sO GÓC",
+        "vlm-blind-crop": "CẤP BẢN SAO TỪ SỔ GỐC",
+        "vlm-blind-crop-2x": "CẤP BẢN SAO TỪ SỔ GỐC"
+      }
+    },
+    {
+      "N": 28,
+      "Page": 8,
+      "Gold": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc",
+      "Readings": {
+        "ocr-original": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ số gốc",
+        "ocr-upscaled": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ số gốc",
+        "oracle-better-ocr-view": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ số gốc",
+        "vlm-blind-crop": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc",
+        "vlm-blind-crop-2x": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc"
+      }
+    },
+    {
+      "N": 29,
+      "Page": 8,
+      "Gold": "Điều 17. Thủ tục cấp bản sao từ sổ gốc",
+      "Readings": {
+        "ocr-original": "Điều 17. Thú tục cấp bản sao từ số gốc",
+        "ocr-upscaled": "Điều 17. Thủ tục cấp bản sao từ số gốc",
+        "oracle-better-ocr-view": "Điều 17. Thủ tục cấp bản sao từ số gốc",
+        "vlm-blind-crop": "Điều 17. Thủ tục cấp bản sao từ sổ gốc",
+        "vlm-blind-crop-2x": "Điều 17. Thủ tục cấp bản sao từ sổ gốc"
+      }
+    },
+    {
+      "N": 30,
+      "Page": 9,
+      "Gold": "Mục 2",
+      "Readings": {
+        "ocr-original": "Mục 2",
+        "ocr-upscaled": "Mục 2",
+        "oracle-better-ocr-view": "Mục 2",
+        "vlm-blind-crop": "Mục 2",
+        "vlm-blind-crop-2x": "Mục 2"
+      }
+    },
+    {
+      "N": 31,
+      "Page": 9,
+      "Gold": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+      "Readings": {
+        "ocr-original": "CHỨNG THUC BAN SAO TỪ BAN CHÍNH",
+        "ocr-upscaled": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "oracle-better-ocr-view": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "vlm-blind-crop": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "vlm-blind-crop-2x": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH"
+      }
+    },
+    {
+      "N": 32,
+      "Page": 9,
+      "Gold": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
+      "Readings": {
+        "ocr-original": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
+        "ocr-upscaled": "Điều 18. Giấy tờ, văn ban làm cơ sở để chứng thực ban sao từ",
+        "oracle-better-ocr-view": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
+        "vlm-blind-crop": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
+        "vlm-blind-crop-2x": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ"
+      }
+    },
+    {
+      "N": 33,
+      "Page": 9,
+      "Gold": "bản chính",
+      "Readings": {
+        "ocr-original": "bản chính",
+        "ocr-upscaled": "ban chính",
+        "oracle-better-ocr-view": "bản chính",
+        "vlm-blind-crop": "bản chính",
+        "vlm-blind-crop-2x": "bản chính"
+      }
+    },
+    {
+      "N": 34,
+      "Page": 9,
+      "Gold": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
+      "Readings": {
+        "ocr-original": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
+        "ocr-upscaled": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
+        "oracle-better-ocr-view": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
+        "vlm-blind-crop": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
+        "vlm-blind-crop-2x": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và"
+      }
+    },
+    {
+      "N": 35,
+      "Page": 9,
+      "Gold": "người thực hiện chứng thực bản sao từ bản chính",
+      "Readings": {
+        "ocr-original": "người thực hiện chứng thực bản sao từ bản chính",
+        "ocr-upscaled": "người thực hiện chứng thực bản sao từ bản chính",
+        "oracle-better-ocr-view": "người thực hiện chứng thực bản sao từ bản chính",
+        "vlm-blind-crop": "người thực hiện chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x": "người thực hiện chứng thực bản sao từ bản chính"
+      }
+    },
+    {
+      "N": 36,
+      "Page": 9,
+      "Gold": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
+      "Readings": {
+        "ocr-original": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
+        "ocr-upscaled": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
+        "oracle-better-ocr-view": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
+        "vlm-blind-crop": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x": "Điều 20. Thủ tục chứng thực bản sao từ bản chính"
+      }
+    },
+    {
+      "N": 37,
+      "Page": 10,
+      "Gold": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
+      "Readings": {
+        "ocr-original": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
+        "ocr-upscaled": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
+        "oracle-better-ocr-view": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
+        "vlm-blind-crop": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính"
+      }
+    },
+    {
+      "N": 38,
+      "Page": 10,
+      "Gold": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
+      "Readings": {
+        "ocr-original": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
+        "ocr-upscaled": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
+        "oracle-better-ocr-view": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
+        "vlm-blind-crop": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
+        "vlm-blind-crop-2x": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để"
+      }
+    },
+    {
+      "N": 39,
+      "Page": 10,
+      "Gold": "chứng thực bản sao",
+      "Readings": {
+        "ocr-original": "chứng thực bản sao",
+        "ocr-upscaled": null,
+        "oracle-better-ocr-view": "chứng thực bản sao",
+        "vlm-blind-crop": "chứng thực bản sao",
+        "vlm-blind-crop-2x": "chứng thực bản sao"
+      }
+    },
+    {
+      "N": 40,
+      "Page": 11,
+      "Gold": "Mục 3",
+      "Readings": {
+        "ocr-original": "Mục 3",
+        "ocr-upscaled": "Mục 3",
+        "oracle-better-ocr-view": "Mục 3",
+        "vlm-blind-crop": "Mục 3",
+        "vlm-blind-crop-2x": "Mục 3"
+      }
+    },
+    {
+      "N": 41,
+      "Page": 11,
+      "Gold": "CHỨNG THỰC CHỮ KÝ",
+      "Readings": {
+        "ocr-original": "CHỨNG THỰC CHỮ KÝ",
+        "ocr-upscaled": "CHỨNG THỰC CHỮ KÝ",
+        "oracle-better-ocr-view": "CHỨNG THỰC CHỮ KÝ",
+        "vlm-blind-crop": "Mục 3\nCHỨNG THỰC CHỮ KÝ",
+        "vlm-blind-crop-2x": "CHỨNG THỰC CHỮ KÝ"
+      }
+    },
+    {
+      "N": 42,
+      "Page": 11,
+      "Gold": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
+      "Readings": {
+        "ocr-original": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
+        "ocr-upscaled": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
+        "oracle-better-ocr-view": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
+        "vlm-blind-crop": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
+        "vlm-blind-crop-2x": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và"
+      }
+    },
+    {
+      "N": 43,
+      "Page": 11,
+      "Gold": "người thực hiện chứng thực chữ ký",
+      "Readings": {
+        "ocr-original": "người thực hiện chứng thực chữ ký",
+        "ocr-upscaled": "người thực hiện chứng thực chữ ký",
+        "oracle-better-ocr-view": "người thực hiện chứng thực chữ ký",
+        "vlm-blind-crop": "người thực hiện chứng thực chữ ký",
+        "vlm-blind-crop-2x": "người thực hiện chứng thực chữ ký"
+      }
+    },
+    {
+      "N": 44,
+      "Page": 11,
+      "Gold": "Điều 24. Thủ tục chứng thực chữ ký",
+      "Readings": {
+        "ocr-original": "Điều 24. Thủ tục chứng thực chữ ký",
+        "ocr-upscaled": "Điều 24. Thủ tục chứng thực chữ ký",
+        "oracle-better-ocr-view": "Điều 24. Thủ tục chứng thực chữ ký",
+        "vlm-blind-crop": "Điều 24. Thủ tục chứng thực chữ ký",
+        "vlm-blind-crop-2x": "Điều 24. Thủ tục chứng thực chữ ký"
+      }
+    },
+    {
+      "N": 45,
+      "Page": 12,
+      "Gold": "Điều 25. Trường hợp không được chứng thực chữ ký",
+      "Readings": {
+        "ocr-original": "Điều 25. Trường hợp không được chứng thực chữ ký",
+        "ocr-upscaled": "Điều 25. Trường hợp không được chứng thực chữ ký",
+        "oracle-better-ocr-view": "Điều 25. Trường hợp không được chứng thực chữ ký",
+        "vlm-blind-crop": "Điều 25. Trường hợp không được chứng thực chữ ký",
+        "vlm-blind-crop-2x": "Điều 25. Trường hợp không được chứng thực chữ ký"
+      }
+    },
+    {
+      "N": 46,
+      "Page": 12,
+      "Gold": "Điều 26. Áp dụng trong trường hợp đặc biệt",
+      "Readings": {
+        "ocr-original": "Điều 26. Áp dụng trong trường hợp đặc biệt",
+        "ocr-upscaled": "Điều 26. Áp dụng trong trường hợp đặc biệt",
+        "oracle-better-ocr-view": "Điều 26. Áp dụng trong trường hợp đặc biệt",
+        "vlm-blind-crop": "Điều 26. Áp dụng trong trường hợp đặc biệt",
+        "vlm-blind-crop-2x": "Điều 26. Áp dụng trong trường hợp đặc biệt"
+      }
+    },
+    {
+      "N": 47,
+      "Page": 12,
+      "Gold": "Mục 4",
+      "Readings": {
+        "ocr-original": "Mục 4",
+        "ocr-upscaled": "Mục 4",
+        "oracle-better-ocr-view": "Mục 4",
+        "vlm-blind-crop": "Mục 4",
+        "vlm-blind-crop-2x": "Mục 4"
+      }
+    },
+    {
+      "N": 48,
+      "Page": 12,
+      "Gold": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+      "Readings": {
+        "ocr-original": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "ocr-upscaled": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "oracle-better-ocr-view": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "vlm-blind-crop": "Mục 4\nNGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "vlm-blind-crop-2x": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH"
+      }
+    },
+    {
+      "N": 49,
+      "Page": 12,
+      "Gold": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
+      "Readings": {
+        "ocr-original": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
+        "ocr-upscaled": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
+        "oracle-better-ocr-view": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
+        "vlm-blind-crop": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
+        "vlm-blind-crop-2x": "Điều 27. Tiêu chuẩn, điều kiện của người dịch"
+      }
+    },
+    {
+      "N": 50,
+      "Page": 13,
+      "Gold": "Điều 28. Cộng tác viên dịch thuật",
+      "Readings": {
+        "ocr-original": "Điều 28. Cộng tác viên dịch thuật",
+        "ocr-upscaled": "Điều 28. Cộng tác viên dịch thuật",
+        "oracle-better-ocr-view": "Điều 28. Cộng tác viên dịch thuật",
+        "vlm-blind-crop": "Điều 28. Cộng tác viên dịch thuật",
+        "vlm-blind-crop-2x": "Điều 28. Cộng tác viên dịch thuật"
+      }
+    },
+    {
+      "N": 51,
+      "Page": 13,
+      "Gold": "Điều 29. Đăng ký chữ ký mẫu",
+      "Readings": {
+        "ocr-original": "Điều 29. Đăng ký chữ ký mẫu",
+        "ocr-upscaled": "Điều 29. Đăng ký chữ ký mẫu",
+        "oracle-better-ocr-view": "Điều 29. Đăng ký chữ ký mẫu",
+        "vlm-blind-crop": "Điều 29. Đăng ký chữ ký mẫu",
+        "vlm-blind-crop-2x": "Điều 29. Đăng ký chữ ký mẫu"
+      }
+    },
+    {
+      "N": 52,
+      "Page": 13,
+      "Gold": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
+      "Readings": {
+        "ocr-original": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
+        "ocr-upscaled": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
+        "oracle-better-ocr-view": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
+        "vlm-blind-crop": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
+        "vlm-blind-crop-2x": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực"
+      }
+    },
+    {
+      "N": 53,
+      "Page": 13,
+      "Gold": "chữ ký người dịch",
+      "Readings": {
+        "ocr-original": "chữ ký người dịch",
+        "ocr-upscaled": "chữ ký người dịch",
+        "oracle-better-ocr-view": "chữ ký người dịch",
+        "vlm-blind-crop": "chữ ký người dịch",
+        "vlm-blind-crop-2x": "chữ ký người dịch"
+      }
+    },
+    {
+      "N": 54,
+      "Page": 13,
+      "Gold": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
+      "Readings": {
+        "ocr-original": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
+        "ocr-upscaled": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
+        "oracle-better-ocr-view": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
+        "vlm-blind-crop": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x": "Điều 31. Thủ tục chứng thực chữ ký người dịch"
+      }
+    },
+    {
+      "N": 55,
+      "Page": 14,
+      "Gold": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
+      "Readings": {
+        "ocr-original": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
+        "ocr-upscaled": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
+        "oracle-better-ocr-view": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
+        "vlm-blind-crop": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
+        "vlm-blind-crop-2x": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký"
+      }
+    },
+    {
+      "N": 56,
+      "Page": 14,
+      "Gold": "người dịch",
+      "Readings": {
+        "ocr-original": "người dịch",
+        "ocr-upscaled": "người dịch",
+        "oracle-better-ocr-view": "người dịch",
+        "vlm-blind-crop": "người dịch",
+        "vlm-blind-crop-2x": "người dịch"
+      }
+    },
+    {
+      "N": 57,
+      "Page": 15,
+      "Gold": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
+      "Readings": {
+        "ocr-original": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
+        "ocr-upscaled": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
+        "oracle-better-ocr-view": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
+        "vlm-blind-crop": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x": "Điều 33. Thời hạn chứng thực chữ ký người dịch"
+      }
+    },
+    {
+      "N": 58,
+      "Page": 15,
+      "Gold": "Chương III",
+      "Readings": {
+        "ocr-original": "Chương II",
+        "ocr-upscaled": "Chương II",
+        "oracle-better-ocr-view": "Chương II",
+        "vlm-blind-crop": "Chương III",
+        "vlm-blind-crop-2x": "Chương III"
+      }
+    },
+    {
+      "N": 59,
+      "Page": 15,
+      "Gold": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
+      "Readings": {
+        "ocr-original": "CHUNG THỰC HỢP DONG, GIAO DỊCH",
+        "ocr-upscaled": "CHỨNG THỰC HỢP ĐÒNG, GIAO DỊCH",
+        "oracle-better-ocr-view": "CHỨNG THỰC HỢP ĐÒNG, GIAO DỊCH",
+        "vlm-blind-crop": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
+        "vlm-blind-crop-2x": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH"
+      }
+    },
+    {
+      "N": 60,
+      "Page": 15,
+      "Gold": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
+      "Readings": {
+        "ocr-original": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
+        "ocr-upscaled": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
+        "oracle-better-ocr-view": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch"
+      }
+    },
+    {
+      "N": 61,
+      "Page": 15,
+      "Gold": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
+      "Readings": {
+        "ocr-original": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
+        "ocr-upscaled": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
+        "oracle-better-ocr-view": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
+        "vlm-blind-crop": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
+        "vlm-blind-crop-2x": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao"
+      }
+    },
+    {
+      "N": 62,
+      "Page": 15,
+      "Gold": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
+      "Readings": {
+        "ocr-original": "địch và người thực hiện chứng thực hợp đồng, giao dịch",
+        "ocr-upscaled": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
+        "oracle-better-ocr-view": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x": "dịch và người thực hiện chứng thực hợp đồng, giao dịch"
+      }
+    },
+    {
+      "N": 63,
+      "Page": 15,
+      "Gold": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
+      "Readings": {
+        "ocr-original": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
+        "ocr-upscaled": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
+        "oracle-better-ocr-view": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch"
+      }
+    },
+    {
+      "N": 64,
+      "Page": 16,
+      "Gold": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
+      "Readings": {
+        "ocr-original": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
+        "ocr-upscaled": "_— Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
+        "oracle-better-ocr-view": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch"
+      }
+    },
+    {
+      "N": 65,
+      "Page": 16,
+      "Gold": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch",
+      "Readings": {
+        "ocr-original": "Điều 38. Chứng thực việc sửa đổi, bỗ sung, hủy bỏ hợp đồng, giao dịch",
+        "ocr-upscaled": "Điều 38. Chứng thực việc sửa đổi, bỗ sung, hủy bỏ hợp đồng, giao dịch",
+        "oracle-better-ocr-view": "Điều 38. Chứng thực việc sửa đổi, bỗ sung, hủy bỏ hợp đồng, giao dịch",
+        "vlm-blind-crop": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch",
+        "vlm-blind-crop-2x": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch"
+      }
+    },
+    {
+      "N": 66,
+      "Page": 17,
+      "Gold": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
+      "Readings": {
+        "ocr-original": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
+        "ocr-upscaled": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
+        "oracle-better-ocr-view": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
+        "vlm-blind-crop": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
+        "vlm-blind-crop-2x": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực"
+      }
+    },
+    {
+      "N": 67,
+      "Page": 17,
+      "Gold": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
+      "Readings": {
+        "ocr-original": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
+        "ocr-upscaled": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
+        "oracle-better-ocr-view": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
+        "vlm-blind-crop": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
+        "vlm-blind-crop-2x": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao"
+      }
+    },
+    {
+      "N": 68,
+      "Page": 17,
+      "Gold": "dịch đã được chứng thực",
+      "Readings": {
+        "ocr-original": "dịch đã được chứng thực",
+        "ocr-upscaled": "dịch đã được chứng thực",
+        "oracle-better-ocr-view": "dịch đã được chứng thực",
+        "vlm-blind-crop": "dịch đã được chứng thực",
+        "vlm-blind-crop-2x": "dịch đã được chứng thực"
+      }
+    },
+    {
+      "N": 69,
+      "Page": 17,
+      "Gold": "Chương IV",
+      "Readings": {
+        "ocr-original": ". „ , Chương IV",
+        "ocr-upscaled": null,
+        "oracle-better-ocr-view": ". „ , Chương IV",
+        "vlm-blind-crop": "Chương IV",
+        "vlm-blind-crop-2x": "Chương IV"
+      }
+    },
+    {
+      "N": 70,
+      "Page": 17,
+      "Gold": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC",
+      "Readings": {
+        "ocr-original": "QUAN LÝ NHÀ NƯỚC VE CHUNG THỰC",
+        "ocr-upscaled": "QUAN LÝ NHÀ NƯỚC VE CHUNG THỰC",
+        "oracle-better-ocr-view": "QUAN LÝ NHÀ NƯỚC VE CHUNG THỰC",
+        "vlm-blind-crop": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC",
+        "vlm-blind-crop-2x": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC"
+      }
+    },
+    {
+      "N": 71,
+      "Page": 17,
+      "Gold": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
+      "Readings": {
+        "ocr-original": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
+        "ocr-upscaled": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
+        "oracle-better-ocr-view": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
+        "vlm-blind-crop": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
+        "vlm-blind-crop-2x": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về"
+      }
+    },
+    {
+      "N": 72,
+      "Page": 17,
+      "Gold": "chứng thực",
+      "Readings": {
+        "ocr-original": "chứng thực",
+        "ocr-upscaled": "chứng thực",
+        "oracle-better-ocr-view": "chứng thực",
+        "vlm-blind-crop": "chứng thực",
+        "vlm-blind-crop-2x": "chứng thực"
+      }
+    },
+    {
+      "N": 73,
+      "Page": 18,
+      "Gold": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
+      "Readings": {
+        "ocr-original": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
+        "ocr-upscaled": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
+        "oracle-better-ocr-view": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
+        "vlm-blind-crop": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
+        "vlm-blind-crop-2x": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về"
+      }
+    },
+    {
+      "N": 74,
+      "Page": 18,
+      "Gold": "chứng thực",
+      "Readings": {
+        "ocr-original": "chứng thực",
+        "ocr-upscaled": "chứng thực",
+        "oracle-better-ocr-view": "chứng thực",
+        "vlm-blind-crop": "chứng thực",
+        "vlm-blind-crop-2x": "chứng thực"
+      }
+    },
+    {
+      "N": 75,
+      "Page": 19,
+      "Gold": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
+      "Readings": {
+        "ocr-original": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
+        "ocr-upscaled": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
+        "oracle-better-ocr-view": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
+        "vlm-blind-crop": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
+        "vlm-blind-crop-2x": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý"
+      }
+    },
+    {
+      "N": 76,
+      "Page": 19,
+      "Gold": "nhà nước về chứng thực",
+      "Readings": {
+        "ocr-original": "nhà nước về chứng thực",
+        "ocr-upscaled": "nhà nước về chứng thực",
+        "oracle-better-ocr-view": "nhà nước về chứng thực",
+        "vlm-blind-crop": "nhà nước về chứng thực",
+        "vlm-blind-crop-2x": "nhà nước về chứng thực"
+      }
+    },
+    {
+      "N": 77,
+      "Page": 20,
+      "Gold": "Điều 44. Xử lý vi phạm",
+      "Readings": {
+        "ocr-original": "Điều 44. Xử lý vi phạm",
+        "ocr-upscaled": "Điều 44. Xử lý vi phạm",
+        "oracle-better-ocr-view": "Điều 44. Xử lý vi phạm",
+        "vlm-blind-crop": "Điều 44. Xử lý vi phạm",
+        "vlm-blind-crop-2x": "Điều 44. Xử lý vi phạm"
+      }
+    },
+    {
+      "N": 78,
+      "Page": 21,
+      "Gold": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo",
+      "Readings": {
+        "ocr-original": "Điều 45. Khiéu nại, tô cáo và giải quyet khiêu nại, tô cao",
+        "ocr-upscaled": "Điều 45. Khiêu nại, tô cáo và giải quyêt khiêu nại, to cao",
+        "oracle-better-ocr-view": "Điều 45. Khiéu nại, tô cáo và giải quyet khiêu nại, tô cao",
+        "vlm-blind-crop": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo",
+        "vlm-blind-crop-2x": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo"
+      }
+    },
+    {
+      "N": 79,
+      "Page": 21,
+      "Gold": "Chương V",
+      "Readings": {
+        "ocr-original": "ChươngV",
+        "ocr-upscaled": "Chương V _",
+        "oracle-better-ocr-view": "ChươngV",
+        "vlm-blind-crop": "Chương V",
+        "vlm-blind-crop-2x": "Chương V"
+      }
+    },
+    {
+      "N": 80,
+      "Page": 21,
+      "Gold": "ĐIỀU KHOẢN THI HÀNH",
+      "Readings": {
+        "ocr-original": "DIEU KHOẢN THI HANH",
+        "ocr-upscaled": "DIEU KHOẢN THI HANH",
+        "oracle-better-ocr-view": "DIEU KHOẢN THI HANH",
+        "vlm-blind-crop": "ĐIỀU KHOẢN THI HÀNH",
+        "vlm-blind-crop-2x": "ĐIỀU KHOẢN THI HÀNH"
+      }
+    },
+    {
+      "N": 81,
+      "Page": 21,
+      "Gold": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
+      "Readings": {
+        "ocr-original": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
+        "ocr-upscaled": "Điều 46. Nhiệm vu của các tô chức hành nghề công chứng",
+        "oracle-better-ocr-view": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
+        "vlm-blind-crop": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
+        "vlm-blind-crop-2x": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng"
+      }
+    },
+    {
+      "N": 82,
+      "Page": 21,
+      "Gold": "Điều 47. Điều khoản chuyển tiếp",
+      "Readings": {
+        "ocr-original": "Điều 47. Điều khoản chuyển tiếp",
+        "ocr-upscaled": "Điều 47. Điều khoản chuyển tiếp",
+        "oracle-better-ocr-view": "Điều 47. Điều khoản chuyển tiếp",
+        "vlm-blind-crop": "Điều 47. Điều khoản chuyển tiếp",
+        "vlm-blind-crop-2x": "Điều 47. Điều khoản chuyển tiếp"
+      }
+    },
+    {
+      "N": 83,
+      "Page": 21,
+      "Gold": "Điều 48. Hiệu lực thi hành",
+      "Readings": {
+        "ocr-original": "Điều 48. Hiệu lực thi hành",
+        "ocr-upscaled": "Điều 48. Hiệu lực thi hành",
+        "oracle-better-ocr-view": "Điều 48. Hiệu lực thi hành",
+        "vlm-blind-crop": "Điều 48. Hiệu lực thi hành",
+        "vlm-blind-crop-2x": "Điều 48. Hiệu lực thi hành"
+      }
+    },
+    {
+      "N": 84,
+      "Page": 22,
+      "Gold": "Điều 49. Trách nhiệm thi hành",
+      "Readings": {
+        "ocr-original": "Điều 49. Trách nhiệm thi hành",
+        "ocr-upscaled": "Điều 49. Trach nhiệm thi hành",
+        "oracle-better-ocr-view": "Điều 49. Trách nhiệm thi hành",
+        "vlm-blind-crop": "Điều 49. Trách nhiệm thi hành",
+        "vlm-blind-crop-2x": "Điều 49. Trách nhiệm thi hành"
+      }
+    },
+    {
+      "N": 85,
+      "Page": 23,
+      "Gold": "Phụ lục",
+      "Readings": {
+        "ocr-original": "Phụ lục",
+        "ocr-upscaled": null,
+        "oracle-better-ocr-view": "Phụ lục",
+        "vlm-blind-crop": "Phụ lục",
+        "vlm-blind-crop-2x": "Phụ lục"
+      }
+    },
+    {
+      "N": 86,
+      "Page": 23,
+      "Gold": "I. LỜI CHỨNG",
+      "Readings": {
+        "ocr-original": "L LOI CHUNG",
+        "ocr-upscaled": "I. LỜI CHỨNG",
+        "oracle-better-ocr-view": "I. LỜI CHỨNG",
+        "vlm-blind-crop": "I. LỜI CHỨNG",
+        "vlm-blind-crop-2x": "I. LỜI CHỨNG"
+      }
+    },
+    {
+      "N": 87,
+      "Page": 23,
+      "Gold": "1. Lời chứng chứng thực bản sao từ bản chính",
+      "Readings": {
+        "ocr-original": "1. Lời chứng chứng thực bản sao tử bản chính",
+        "ocr-upscaled": "1. Lời chứng chứng thực bản sao từ bản chính",
+        "oracle-better-ocr-view": "1. Lời chứng chứng thực bản sao từ bản chính",
+        "vlm-blind-crop": "1. Lời chứng chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x": "1. Lời chứng chứng thực bản sao từ bản chính"
+      }
+    },
+    {
+      "N": 88,
+      "Page": 23,
+      "Gold": "2. Lời chứng chứng thực chữ ký",
+      "Readings": {
+        "ocr-original": "2. Lời chứng chứng thực chữ ký",
+        "ocr-upscaled": "2. Lời chứng chứng thực chữ ký",
+        "oracle-better-ocr-view": "2. Lời chứng chứng thực chữ ký",
+        "vlm-blind-crop": "2. Lời chứng chứng thực chữ ký",
+        "vlm-blind-crop-2x": "2. Lời chứng chứng thực chữ ký"
+      }
+    },
+    {
+      "N": 89,
+      "Page": 23,
+      "Gold": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
+      "Readings": {
+        "ocr-original": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
+        "ocr-upscaled": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
+        "oracle-better-ocr-view": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
+        "vlm-blind-crop": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
+        "vlm-blind-crop-2x": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản"
+      }
+    },
+    {
+      "N": 90,
+      "Page": 23,
+      "Gold": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
+      "Readings": {
+        "ocr-original": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
+        "ocr-upscaled": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
+        "oracle-better-ocr-view": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
+        "vlm-blind-crop": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
+        "vlm-blind-crop-2x": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,"
+      }
+    },
+    {
+      "N": 91,
+      "Page": 23,
+      "Gold": "văn bản",
+      "Readings": {
+        "ocr-original": "văn bản",
+        "ocr-upscaled": "văn bản",
+        "oracle-better-ocr-view": "văn bản",
+        "vlm-blind-crop": "văn bản",
+        "vlm-blind-crop-2x": "văn bản"
+      }
+    },
+    {
+      "N": 92,
+      "Page": 24,
+      "Gold": "c) Lời chứng chứng thực điểm chỉ",
+      "Readings": {
+        "ocr-original": "c) Lời chứng chứng thực điểm chỉ",
+        "ocr-upscaled": "c) Lời chứng chứng thực điểm chỉ",
+        "oracle-better-ocr-view": "c) Lời chứng chứng thực điểm chỉ",
+        "vlm-blind-crop": "c) Lời chứng chứng thực điểm chỉ",
+        "vlm-blind-crop-2x": "c) Lời chứng chứng thực điểm chỉ"
+      }
+    },
+    {
+      "N": 93,
+      "Page": 25,
+      "Gold": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
+      "Readings": {
+        "ocr-original": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
+        "ocr-upscaled": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
+        "oracle-better-ocr-view": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
+        "vlm-blind-crop": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
+        "vlm-blind-crop-2x": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm"
+      }
+    },
+    {
+      "N": 94,
+      "Page": 25,
+      "Gold": "3. Lời chứng chứng thực chữ ký người dịch",
+      "Readings": {
+        "ocr-original": "3. Lời chứng chứng thực chữ ký người dịch",
+        "ocr-upscaled": "3. Lời chứng chứng thực chữ ký người dịch",
+        "oracle-better-ocr-view": "3. Lời chứng chứng thực chữ ký người dịch",
+        "vlm-blind-crop": "3. Lời chứng chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x": "3. Lời chứng chứng thực chữ ký người dịch"
+      }
+    },
+    {
+      "N": 95,
+      "Page": 26,
+      "Gold": "4. Lời chứng chứng thực hợp đồng, giao dịch",
+      "Readings": {
+        "ocr-original": "4. Lời chứng chứng thực hợp đồng, giao dịch",
+        "ocr-upscaled": "4. Lời chứng chứng thực hợp đồng, giao dịch",
+        "oracle-better-ocr-view": "4. Lời chứng chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop": "4. Lời chứng chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x": "4. Lời chứng chứng thực hợp đồng, giao dịch"
+      }
+    },
+    {
+      "N": 96,
+      "Page": 26,
+      "Gold": "a) Lời chứng chứng thực hợp đồng, giao dịch",
+      "Readings": {
+        "ocr-original": "a) Lời chứng chứng thực hợp đồng, giao dich",
+        "ocr-upscaled": "a) Lời chứng chứng thực hợp đồng, giao dịch",
+        "oracle-better-ocr-view": "a) Lời chứng chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop": "a) Lời chứng chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x": "a) Lời chứng chứng thực hợp đồng, giao dịch"
+      }
+    },
+    {
+      "N": 97,
+      "Page": 27,
+      "Gold": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
+      "Readings": {
+        "ocr-original": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
+        "ocr-upscaled": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
+        "oracle-better-ocr-view": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
+        "vlm-blind-crop": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
+        "vlm-blind-crop-2x": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản"
+      }
+    },
+    {
+      "N": 98,
+      "Page": 28,
+      "Gold": "c) Lời chứng chứng thực văn bản khai nhận di sản",
+      "Readings": {
+        "ocr-original": "c) Lời chứng chứng thực văn bản khai nhận di san",
+        "ocr-upscaled": "c) Lời chứng chứng thực văn bản khai nhận di sản",
+        "oracle-better-ocr-view": "c) Lời chứng chứng thực văn bản khai nhận di sản",
+        "vlm-blind-crop": "c) Lời chứng chứng thực văn bản khai nhận di sản",
+        "vlm-blind-crop-2x": "c) Lời chứng chứng thực văn bản khai nhận di sản"
+      }
+    },
+    {
+      "N": 99,
+      "Page": 28,
+      "Gold": "d) Lời chứng chứng thực di chúc",
+      "Readings": {
+        "ocr-original": "đ) Lời chứng chứng thực di chúc",
+        "ocr-upscaled": "đ) Lời chứng chứng thực di chúc",
+        "oracle-better-ocr-view": "đ) Lời chứng chứng thực di chúc",
+        "vlm-blind-crop": "d) Lời chứng chứng thực di chúc",
+        "vlm-blind-crop-2x": "d) Lời chứng chứng thực di chúc"
+      }
+    },
+    {
+      "N": 100,
+      "Page": 29,
+      "Gold": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
+      "Readings": {
+        "ocr-original": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
+        "ocr-upscaled": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
+        "oracle-better-ocr-view": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
+        "vlm-blind-crop": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
+        "vlm-blind-crop-2x": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản"
+      }
+    },
+    {
+      "N": 101,
+      "Page": 30,
+      "Gold": "Chú thích:",
+      "Readings": {
+        "ocr-original": "Chủ thích:",
+        "ocr-upscaled": "Chú thích:",
+        "oracle-better-ocr-view": "Chú thích:",
+        "vlm-blind-crop": "Chú thích:",
+        "vlm-blind-crop-2x": "Chú thích:"
+      }
+    },
+    {
+      "N": 102,
+      "Page": 30,
+      "Gold": "II. MẪU SỔ CHỨNG THỰC",
+      "Readings": {
+        "ocr-original": "IL MAU SO CHUNG THỰC",
+        "ocr-upscaled": "Il. MAU SO CHUNG THỰC",
+        "oracle-better-ocr-view": "Il. MAU SO CHUNG THỰC",
+        "vlm-blind-crop": "II. MẪU SỔ CHỨNG THỰC",
+        "vlm-blind-crop-2x": "II. MẪU SỔ CHỨNG THỰC"
+      }
+    },
+    {
+      "N": 103,
+      "Page": 31,
+      "Gold": "1. Bìa sổ",
+      "Readings": {
+        "ocr-original": "1. Bìa sô",
+        "ocr-upscaled": "=1. Bìa sô",
+        "oracle-better-ocr-view": "1. Bìa sô",
+        "vlm-blind-crop": "1. Bìa sổ",
+        "vlm-blind-crop-2x": "1. Bìa sổ"
+      }
+    },
+    {
+      "N": 104,
+      "Page": 31,
+      "Gold": "a) Sổ Chứng thực bản sao từ bản chính",
+      "Readings": {
+        "ocr-original": "a) Số Chứng thực bản sao từ bản chính",
+        "ocr-upscaled": "a) Số Chứng thực bản sao từ bản chính",
+        "oracle-better-ocr-view": "a) Số Chứng thực bản sao từ bản chính",
+        "vlm-blind-crop": "a) Sổ Chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x": "a) Sổ Chứng thực bản sao từ bản chính"
+      }
+    },
+    {
+      "N": 105,
+      "Page": 31,
+      "Gold": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+      "Readings": {
+        "ocr-original": "SO CHUNG THUC BAN SAO TỪ BẢN CHÍNH",
+        "ocr-upscaled": "SỎ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "oracle-better-ocr-view": "SỎ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "vlm-blind-crop": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+        "vlm-blind-crop-2x": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH"
+      }
+    },
+    {
+      "N": 106,
+      "Page": 31,
+      "Gold": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+      "Readings": {
+        "ocr-original": "b) Số Chứng thực chữ ký/chứng thực điểm chỉ",
+        "ocr-upscaled": "b) Số Chứng thực chữ ký/chứng thực điểm chỉ",
+        "oracle-better-ocr-view": "b) Số Chứng thực chữ ký/chứng thực điểm chỉ",
+        "vlm-blind-crop": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+        "vlm-blind-crop-2x": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ"
+      }
+    },
+    {
+      "N": 107,
+      "Page": 31,
+      "Gold": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ",
+      "Readings": {
+        "ocr-original": "SỎ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ",
+        "ocr-upscaled": "SO CHUNG THỰC CHỮ KY/CHUNG THỰC DIEM CHỈ",
+        "oracle-better-ocr-view": "SỎ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ",
+        "vlm-blind-crop": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ",
+        "vlm-blind-crop-2x": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ"
+      }
+    },
+    {
+      "N": 108,
+      "Page": 32,
+      "Gold": "c) Sổ Chứng thực chữ ký người dịch",
+      "Readings": {
+        "ocr-original": "c) Số Chứng thực chữ ký người dich",
+        "ocr-upscaled": "c) Số Chứng thực chữ ký người dịch",
+        "oracle-better-ocr-view": "c) Số Chứng thực chữ ký người dịch",
+        "vlm-blind-crop": "c) Sổ Chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x": "c) Sổ Chứng thực chữ ký người dịch"
+      }
+    },
+    {
+      "N": 109,
+      "Page": 32,
+      "Gold": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+      "Readings": {
+        "ocr-original": "CỘNG HÒA XÃ HỌI CHỦ NGHĨA VIỆT NAM.",
+        "ocr-upscaled": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "oracle-better-ocr-view": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "vlm-blind-crop": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "vlm-blind-crop-2x": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+      }
+    },
+    {
+      "N": 110,
+      "Page": 32,
+      "Gold": "Độc lập - Tự do - Hạnh phúc",
+      "Readings": {
+        "ocr-original": "Độc lập - Tự do - Hạnh phúc",
+        "ocr-upscaled": "Độc lập - Tự do - Hạnh phúc",
+        "oracle-better-ocr-view": "Độc lập - Tự do - Hạnh phúc",
+        "vlm-blind-crop": "Độc lập - Tự do - Hạnh phúc",
+        "vlm-blind-crop-2x": "Độc lập - Tự do - Hạnh phúc"
+      }
+    },
+    {
+      "N": 111,
+      "Page": 32,
+      "Gold": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+      "Readings": {
+        "ocr-original": "SỎ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "ocr-upscaled": "SO CHUNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "oracle-better-ocr-view": "SỎ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "vlm-blind-crop": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+        "vlm-blind-crop-2x": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH"
+      }
+    },
+    {
+      "N": 112,
+      "Page": 32,
+      "Gold": "d) Sổ Chứng thực hợp đồng, giao dịch",
+      "Readings": {
+        "ocr-original": "d) Số Chứng thực hợp đồng, giao dịch",
+        "ocr-upscaled": "d) Số Chứng thực hợp đồng, giao dịch",
+        "oracle-better-ocr-view": "d) Số Chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop": "d) Sổ Chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x": "d) Sổ Chứng thực hợp đồng, giao dịch"
+      }
+    },
+    {
+      "N": 113,
+      "Page": 32,
+      "Gold": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+      "Readings": {
+        "ocr-original": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "ocr-upscaled": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "oracle-better-ocr-view": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "vlm-blind-crop": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+        "vlm-blind-crop-2x": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+      }
+    },
+    {
+      "N": 114,
+      "Page": 32,
+      "Gold": "Độc lập - Tự do - Hạnh phúc",
+      "Readings": {
+        "ocr-original": "Độc lập - Tự do - Hạnh phúc",
+        "ocr-upscaled": "Độc lập - Tự do - Hạnh phúc",
+        "oracle-better-ocr-view": "Độc lập - Tự do - Hạnh phúc",
+        "vlm-blind-crop": "Độc lập - Tự do - Hạnh phúc",
+        "vlm-blind-crop-2x": "Độc lập - Tự do - Hạnh phúc"
+      }
+    },
+    {
+      "N": 115,
+      "Page": 32,
+      "Gold": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
+      "Readings": {
+        "ocr-original": "SO CHUNG THỰC HỢP DONG, GIAO DỊCH",
+        "ocr-upscaled": "SO CHUNG THUC HỢP DONG, GIAO DỊCH",
+        "oracle-better-ocr-view": "SO CHUNG THỰC HỢP DONG, GIAO DỊCH",
+        "vlm-blind-crop": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
+        "vlm-blind-crop-2x": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH"
+      }
+    },
+    {
+      "N": 116,
+      "Page": 33,
+      "Gold": "2. Nội dung sổ",
+      "Readings": {
+        "ocr-original": "2. Nội dung số",
+        "ocr-upscaled": "2. Nội dung số",
+        "oracle-better-ocr-view": "2. Nội dung số",
+        "vlm-blind-crop": "2. Nội dung sổ",
+        "vlm-blind-crop-2x": "2. Nội dung sổ"
+      }
+    },
+    {
+      "N": 117,
+      "Page": 33,
+      "Gold": "a) Sổ chứng thực bản sao từ bản chính",
+      "Readings": {
+        "ocr-original": "a) Số chứng thực bản sao từ bản chính",
+        "ocr-upscaled": "a) Sổ chứng thực bản sao từ bản chính",
+        "oracle-better-ocr-view": "a) Sổ chứng thực bản sao từ bản chính",
+        "vlm-blind-crop": "a) Sổ chứng thực bản sao từ bản chính",
+        "vlm-blind-crop-2x": "a) Sổ chứng thực bản sao từ bản chính"
+      }
+    },
+    {
+      "N": 118,
+      "Page": 33,
+      "Gold": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+      "Readings": {
+        "ocr-original": "b) Số Chứng thực chữ ký/chứng thực điểm chỉ",
+        "ocr-upscaled": "b) Số Chứng thực chữ ký/chứng thực điểm chỉ",
+        "oracle-better-ocr-view": "b) Số Chứng thực chữ ký/chứng thực điểm chỉ",
+        "vlm-blind-crop": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+        "vlm-blind-crop-2x": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ"
+      }
+    },
+    {
+      "N": 119,
+      "Page": 34,
+      "Gold": "c) Sổ Chứng thực chữ ký người dịch",
+      "Readings": {
+        "ocr-original": "c) Số Chứng thực chữ ký người dịch",
+        "ocr-upscaled": "c) Số Chứng thực chữ ký người dịch",
+        "oracle-better-ocr-view": "c) Số Chứng thực chữ ký người dịch",
+        "vlm-blind-crop": "c) Sổ Chứng thực chữ ký người dịch",
+        "vlm-blind-crop-2x": "c) Sổ Chứng thực chữ ký người dịch"
+      }
+    },
+    {
+      "N": 120,
+      "Page": 34,
+      "Gold": "d) Sổ chứng thực hợp đồng, giao dịch",
+      "Readings": {
+        "ocr-original": "d) Số chứng thực hợp đồng, giao dịch",
+        "ocr-upscaled": "d) Số chứng thực hợp đồng, giao dịch",
+        "oracle-better-ocr-view": "d) Số chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop": "d) Sổ chứng thực hợp đồng, giao dịch",
+        "vlm-blind-crop-2x": "d) Sổ chứng thực hợp đồng, giao dịch"
+      }
+    }
+  ],
+  "Failures": [],
+  "ProviderCalls": 28,
+  "ProviderCostUsd": 0.0033409500000000005
+}
