@@ -147,6 +147,12 @@ then the V6 conversation over `ScanAgentSource`, with the same runner, budget, r
   text, the extent, the primary reading kept beside it, the readings that agree, and a verification:
   `CORROBORATED` (an OCR view and the vision model read the same), `CONFLICT` (the vision model chose another reading),
   `UNVERIFIED` otherwise. `TextStatus` is `OCR_PRIMARY_VIEW`, `OCR_OTHER_VIEW` or `CORRECTED_UNVERIFIED`.
+  `CORROBORATED` means two readers agree, not that the text is right: on `023` the line `Điều 4. Tham quyền và trách
+  nhiệm cap bản sao từ sô gốc` is `CORROBORATED` (the vision model chose the same OCR view).
+- Lines of one heading are joined by the shared grouping step (`PDF_HEADING_GROUPS_V1`): the agent divides each run of
+  adjacent selected lines into headings. A run it divided correctly is kept even when another run of the same answer is
+  refused; a repair turn asks only for the runs still open; a run still open after the repairs falls back to one heading
+  per line, and the failure names it (`GROUP-001:PROTOCOL:RUN_MISSING:R7`).
 
 ## 6. Windows
 
@@ -164,14 +170,18 @@ UB Mannheim installer; tick Vietnamese, or the preflight stops with `TESSERACT_L
 - Arguments are passed one by one, not through a shell, so `%` in `-threshold 55%` is not touched by `cmd`.
 - Files are UTF-8 without a byte order mark; TSV lines may end in `\r\n`.
 
-Not run on a Windows machine yet: the build environment is Linux. The first Windows run of `dhx scan-ocr` will confirm
-it; the tests that need Tesseract or ImageMagick skip themselves where the tools are missing, so a green suite on a
-machine without them checks nothing of this part.
+First Windows run (Tesseract 5.4.0, ImageMagick 7.1.2-33): `dhx scan-ocr` on `023`, all 34 pages in both views, no
+gap, about 135 s; `dhx scan-extract` then ran end to end. The tests that need Tesseract or ImageMagick skip themselves
+where the tools are missing, so a green suite on a machine without them checks nothing of this part.
 
 ## 7. Not done yet, and known limits
 
-- No live run yet (provider not reachable here); quality of headings, cost per document and whether the model accepts
-  images are unmeasured. Gold for the six scans does not exist yet.
+- One live run so far, `023` on Windows (`ket-qua-023.json`, built from `0288e073`): the model accepts the page images
+  (34 pages observed, no vision failure); 29/29 units complete, 113 POSTs, 0.0718 USD for the conversation, the vision
+  calls not counted in that total. 117 selected lines; all 49 `Điều` and the five `Chương` found (`Chương III` read as
+  `Chương II` by OCR); `Mục 1` not selected; some numbered clauses (`2. Ủy ban nhân dân xã…`), the motto and `Chủ
+  thích:` selected. The grouping request (26 runs) was refused three times for a missing run, so every heading was one
+  line; fixed since (runs answered correctly are kept). No gold yet, so these are observations, not scores.
 - Hierarchy (levels, parents) is not part of the scan result; writing a scan's outline back into a DOCX needs a new
   document, since the source has no paragraphs to mark.
 - `Mixed` documents run on their native text; their page images are not OCR'd in that route.

@@ -10,8 +10,10 @@ namespace DocxHeaderExtractor.HeadingAgent;
 /// The grouping step after the selection: which of the selected lines belong to one heading. A heading that runs over several lines is made of
 /// lines that are next to each other in the parser's reading order, so C# only builds the candidate runs (two or more selected lines with no
 /// other line between them) and asks the model how each run divides into headings; a run of one line needs no question. C# checks the answer:
-/// every run exactly once, its lines in order, split into contiguous headings of one to eight lines. A run whose answer is refused (after the
-/// repair turns) or whose request failed falls back to the layout rule: consecutive lines of the same page and parser layout block.
+/// every run exactly once, its lines in order, split into contiguous headings of one to eight lines. A run the model divided correctly is kept even
+/// when another run of the same answer is refused, and a repair turn asks only for the runs still without a division. A run that is still refused
+/// after the repair turns, or whose request failed, falls back to the flavor's rule (for PDF: consecutive lines of the same page and parser layout
+/// block).
 /// </summary>
 internal static class AgentGrouping
 {
@@ -27,6 +29,8 @@ internal static class AgentGrouping
 
     internal sealed record Run(string Id, int[] Lines);
 
+    /// <param name="Failures">One entry per request whose runs were not all divided: the unit, the refusal, and the runs that fell back
+    /// (for example <c>GROUP-001:PROTOCOL:RUN_MISSING:R7,R12</c>).</param>
     public sealed record Result(IReadOnlyList<IReadOnlyList<string>> Groups, IReadOnlyList<string> Answers, IReadOnlyList<string> Failures, int Posts);
 
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -50,13 +54,13 @@ internal static class AgentGrouping
         var failures = new List<string>();
         var posts = 0;
         var chunks = runs.Chunk(MaxRunsPerRequest).ToArray();
-        var results = new (Dictionary<string, List<int[]>> Division, string? Answer, string? Failure, int Posts)[chunks.Length];
+        var results = new (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts)[chunks.Length];
         Parallel.For(0, chunks.Length, new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct },
             n => results[n] = AskChunk(source, chunks[n], n + 1, model, budget, retryDelayMs, instruction));
         foreach (var r in results)
         {
             posts += r.Posts;
-            if (r.Answer is not null) answers.Add(r.Answer);
+            answers.AddRange(r.Answers);
             if (r.Failure is not null) failures.Add(r.Failure);
             foreach (var kv in r.Division) division[kv.Key] = kv.Value;
         }
@@ -89,18 +93,22 @@ internal static class AgentGrouping
         return groups.Select(g => g.ToArray()).ToList();
     }
 
-    static (Dictionary<string, List<int[]>> Division, string? Answer, string? Failure, int Posts) AskChunk(
+    static (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts) AskChunk(
         IAgentSource source, Run[] chunk, int number, AgentUnit.Model model, AgentBudget budget, int retryDelayMs, string instruction)
     {
-        var empty = new Dictionary<string, List<int[]>>(StringComparer.Ordinal);
+        // The runs divided so far, from any turn: a correct division of one run is kept when another run of the same answer is refused.
+        var accepted = new Dictionary<string, List<int[]>>(StringComparer.Ordinal);
+        var answers = new List<string>();
         var unitId = "GROUP-" + number.ToString("000");
+        string Fallback(string failure) =>
+            unitId + ":" + failure + ":" + string.Join(",", chunk.Where(r => !accepted.ContainsKey(r.Id)).Select(r => r.Id));
         var history = new JsonArray();
         var payload = Payload(source, chunk, number, instruction);
         int posts = 0, retries = 0, repairs = 0;
         while (true)
         {
             var req = BuildRequest(payload, history, source.Flavor.GroupPrompt);
-            if (budget.Admit(req) is { } refusal) return (empty, null, unitId + ":BUDGET:" + refusal, posts);
+            if (budget.Admit(req) is { } refusal) return (accepted, answers, Fallback("BUDGET:" + refusal), posts);
             posts++;
             AgentProtocol.ModelTurn reply;
             try { reply = model(unitId, 1 + repairs, req); }
@@ -110,32 +118,38 @@ internal static class AgentGrouping
                 if (retryDelayMs > 0) Thread.Sleep(retryDelayMs);
                 continue;
             }
-            catch (ReplyFailure f) { return (empty, null, unitId + ":CALL:" + f.Code, posts); }
-            catch (Exception e) when (e is not OutOfMemoryException) { return (empty, null, unitId + ":MODEL_CALL_FAILED", posts); }
+            catch (ReplyFailure f) { return (accepted, answers, Fallback("CALL:" + f.Code), posts); }
+            catch (Exception e) when (e is not OutOfMemoryException) { return (accepted, answers, Fallback("MODEL_CALL_FAILED"), posts); }
 
             string? failure, detail = null;
-            Dictionary<string, List<int[]>>? parsed = null;
             if (reply.ToolCalls.Count > 0 || reply.FinishReason != "stop") failure = "PROTOCOL:ANSWER_WITH_FINISH_" + (reply.FinishReason ?? "NULL").ToUpperInvariant();
             else
             {
                 var content = reply.Content ?? "";
                 if (TryUnwrapFence(content, out var inner)) content = inner;
-                parsed = Parse(content, chunk, source, out failure, out detail);
+                var parsed = Parse(content, chunk, source, out failure, out detail, accepted.Keys.ToHashSet(StringComparer.Ordinal));
+                if (parsed is { Count: > 0 })
+                {
+                    foreach (var kv in parsed) accepted[kv.Key] = kv.Value;
+                    answers.Add(reply.Content!);
+                }
             }
-            if (parsed is not null) return (parsed, reply.Content, null, posts);
-            if (repairs >= MaxRepairs) return (empty, null, unitId + ":" + failure, posts);
+            if (failure is null) return (accepted, answers, null, posts);
+            if (repairs >= MaxRepairs) return (accepted, answers, Fallback(failure), posts);
             repairs++;
             history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content ?? "" });
-            history.Add(new JsonObject { ["role"] = "user", ["content"] = RepairMessage(failure ?? "UNKNOWN", detail) });
+            history.Add(new JsonObject { ["role"] = "user", ["content"] = RepairMessage(failure, detail, accepted.Count > 0) });
         }
     }
 
     /// <summary>The message sent with a repair turn. The parser knows exactly which lines were left out of a run or put out of order, so it names them
     /// (aliases only; it never says what to decide).</summary>
-    internal static string RepairMessage(string failure, string? detail) =>
+    internal static string RepairMessage(string failure, string? detail, bool someAccepted = false) =>
         "Your answer was refused (" + failure + ")" + (detail is null ? "" : ": " + detail + ".")
         + " Every line of a run belongs to exactly one heading, in the order of the run: a line that is a heading of its own goes in a group of its own, and no line may be left out."
-        + " Give every run exactly once, with groups of 1 to " + MaxHeadingLines + " lines and aliases copied exactly. Send the complete answer again as exactly one JSON object.";
+        + (someAccepted
+            ? " The runs not named here were accepted and are kept. Answer for the runs named here, each exactly once, with groups of 1 to " + MaxHeadingLines + " lines and aliases copied exactly, as exactly one JSON object of the same form."
+            : " Give every run exactly once, with groups of 1 to " + MaxHeadingLines + " lines and aliases copied exactly. Send the complete answer again as exactly one JSON object.");
 
     static string Payload(IAgentSource source, Run[] chunk, int number, string instruction)
     {
@@ -184,8 +198,13 @@ internal static class AgentGrouping
         return new PreparedRequest(text, bytes.Length, Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(bytes)));
     }
 
-    /// <summary>The strict parser of a grouping answer. Null with a failure code when the answer is not a division of every run.</summary>
-    internal static Dictionary<string, List<int[]>>? Parse(string reply, Run[] chunk, IAgentSource source, out string? failure, out string? detail)
+    /// <summary>
+    /// The strict parser of a grouping answer. A fault in the shape of the answer refuses all of it: null with the failure code. Otherwise it returns
+    /// the runs divided correctly, and sets the failure and its detail when a run was divided wrongly or left out. A run in <paramref name="done"/>
+    /// was accepted on an earlier turn: it need not be given again, and when it is, its new division is ignored.
+    /// </summary>
+    internal static Dictionary<string, List<int[]>>? Parse(string reply, Run[] chunk, IAgentSource source, out string? failure, out string? detail,
+        IReadOnlySet<string>? done = null)
     {
         failure = null; detail = null;
         if (Encoding.UTF8.GetByteCount(reply) > VisibleResponseCapBytes) { failure = "PROTOCOL:REPLY_OVER_CAP"; return null; }
@@ -237,13 +256,17 @@ internal static class AgentGrouping
                     problem = ("PROTOCOL:RUN_NOT_COVERED", "run " + id + " is missing " + string.Join(", ", run.Lines[next..].Select(i => source.Lines[i].Alias)));
                 if (problem is { } found) problems.Add(found); else division[id] = groups;
             }
-            foreach (var absent in chunk.Where(r => !division.ContainsKey(r.Id) && !problems.Any(x => x.Text.StartsWith("run " + r.Id + " ", StringComparison.Ordinal))))
+            if (done is not null)
+            {
+                foreach (var id in done) division.Remove(id);
+                problems.RemoveAll(x => done.Any(id => x.Text.StartsWith("run " + id + " ", StringComparison.Ordinal)));
+            }
+            foreach (var absent in chunk.Where(r => done?.Contains(r.Id) != true && !division.ContainsKey(r.Id) && !problems.Any(x => x.Text.StartsWith("run " + r.Id + " ", StringComparison.Ordinal))))
                 problems.Add(("PROTOCOL:RUN_MISSING", "run " + absent.Id + " is not in your answer"));
             if (problems.Count > 0)
             {
                 failure = problems[0].Code;
                 detail = string.Join("; ", problems.Select(x => x.Text));
-                return null;
             }
             return division;
         }

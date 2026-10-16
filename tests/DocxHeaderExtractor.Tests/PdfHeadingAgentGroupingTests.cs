@@ -148,6 +148,50 @@ public sealed class PdfHeadingAgentGroupingTests
         Assert.Equal(new[] { new[] { A(10), A(11), A(12) }, new[] { A(40), A(41), A(42) } }, result.Groups.Select(g => g.ToArray()));
     }
 
+    private static string Answer(params (string Run, string[][] Headings)[] runs) =>
+        JsonSerializer.Serialize(new { protocolVersion = AgentGrouping.GroupVersion, runs = runs.Select(r => new { run = r.Run, headings = r.Headings }) });
+
+    [Fact]
+    public void Runs_divided_correctly_are_kept_and_the_repair_asks_only_for_the_run_left_out()
+    {
+        // Live on 023 (26 runs in one request) the model left a run out on every turn, and the whole answer fell back to one heading per line.
+        var selected = new HashSet<string> { A(10), A(11), A(12), A(40), A(41), A(60), A(61) };
+        var (model, _, bodies) = Scripted((n, _) => n == 1
+            ? Answer(("R1", [[A(10)], [A(11), A(12)]]), ("R3", [[A(60), A(61)]]))
+            : Answer(("R2", [[A(40), A(41)]])));
+
+        var result = AgentGrouping.Group(Source.Value, selected, model, Budget(), 1, CancellationToken.None, retryDelayMs: 0);
+
+        Assert.Empty(result.Failures);
+        Assert.Equal(2, result.Posts);
+        Assert.Equal(2, result.Answers.Count);
+        Assert.Equal(new[] { new[] { A(10) }, new[] { A(11), A(12) }, new[] { A(40), A(41) }, new[] { A(60), A(61) } }, result.Groups.Select(g => g.ToArray()));
+        using var second = JsonDocument.Parse(bodies[1]);
+        var repair = second.RootElement.GetProperty("messages").EnumerateArray().Last().GetProperty("content").GetString()!;
+        Assert.Contains("run R2 is not in your answer", repair, StringComparison.Ordinal);
+        Assert.Contains("were accepted and are kept", repair, StringComparison.Ordinal);
+        Assert.DoesNotContain("run R1", repair, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void A_run_never_answered_falls_back_alone_and_an_accepted_run_keeps_its_first_division()
+    {
+        var selected = new HashSet<string> { A(10), A(11), A(12), A(40), A(41) };
+        // Every turn leaves R2 out; the repair turns also re-send R1 divided another way, which is ignored.
+        var (model, _, _) = Scripted((n, _) => n == 1
+            ? Answer(("R1", [[A(10)], [A(11), A(12)]]))
+            : Answer(("R1", [[A(10), A(11), A(12)]])));
+
+        var result = AgentGrouping.Group(Source.Value, selected, model, Budget(), 1, CancellationToken.None, retryDelayMs: 0);
+
+        Assert.Equal(1 + AgentGrouping.MaxRepairs, result.Posts);
+        Assert.Equal("GROUP-001:PROTOCOL:RUN_MISSING:R2", result.Failures.Single());
+        Assert.Equal(new[] { A(10) }, result.Groups[0]);
+        Assert.Equal(new[] { A(11), A(12) }, result.Groups[1]);
+        // R2 is divided by the fallback rule; nothing selected is lost.
+        Assert.Equal(new[] { A(40), A(41) }, result.Groups.Skip(2).SelectMany(g => g));
+    }
+
     [Fact]
     public void A_repaired_answer_is_accepted_and_a_transport_failure_is_retried()
     {
