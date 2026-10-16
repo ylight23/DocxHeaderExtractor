@@ -1,0 +1,487 @@
+{
+  "kind": "DIAGNOSTIC_NOT_GOLD",
+  "sourceSha256": "f8197a069ea9dfbd6e6c8f6ddb5af9c49fafe3328d7fae90544abe3a3dc86a81",
+  "resultFile": "ket-qua-022.json",
+  "cases": [
+    {
+      "heading": {
+        "Index": 96,
+        "Parts": [
+          {
+            "Alias": "P057-L029",
+            "Page": 57,
+            "LineId": "P057-ocr-original-L029",
+            "Box": {
+              "left": 460,
+              "top": 2149,
+              "width": 1487,
+              "height": 57
+            },
+            "ViewId": "vlm-transcribed",
+            "ReadingOrigin": "VLM_TRANSCRIBED",
+            "Text": "3.",
+            "ExtentStart": 0,
+            "ExtentEnd": 2,
+            "PrimaryReading": "3. Trọng thời hạn 05 ngày làm việc ké từ ngày thanh toán hết các khoản",
+            "ReadingsThatAgree": [
+              "vlm-transcribed"
+            ],
+            "Verification": "UNVERIFIED"
+          }
+        ],
+        "Text": "3.",
+        "PrimaryReading": "3. Trọng thời hạn 05 ngày làm việc ké từ ngày thanh toán hết các khoản",
+        "TextStatus": "VLM_TRANSCRIBED",
+        "Verification": "UNVERIFIED"
+      },
+      "fullBlindTranscription": "3. Trong thời hạn 05 ngày làm việc kể từ ngày thanh toán hết các khoản",
+      "nearbyOcrLines": {
+        "ocr-original": [
+          {
+            "id": "P057-ocr-original-L028",
+            "text": "Luật Quản lý thuế,",
+            "box": {
+              "left": 357,
+              "top": 2046,
+              "width": 376,
+              "height": 56
+            }
+          },
+          {
+            "id": "P057-ocr-original-L029",
+            "text": "3. Trọng thời hạn 05 ngày làm việc ké từ ngày thanh toán hết các khoản",
+            "box": {
+              "left": 460,
+              "top": 2149,
+              "width": 1487,
+              "height": 57
+            }
+          },
+          {
+            "id": "P057-ocr-original-L030",
+            "text": "nợ của doanh nghiệp, doanh nghiệp gửi hồ sơ đăng ký giải thé doanh nghiệp",
+            "box": {
+              "left": 357,
+              "top": 2209,
+              "width": 1589,
+              "height": 58
+            }
+          },
+          {
+            "id": "P057-ocr-original-L031",
+            "text": "đến Phòng Đăng ký kinh doanh nơi doanh nghiệp đặt trụ sở chính. Hồ sơ đăng",
+            "box": {
+              "left": 358,
+              "top": 2267,
+              "width": 1591,
+              "height": 75
+            }
+          }
+        ],
+        "ocr-upscaled": [
+          {
+            "id": "P057-ocr-upscaled-L028",
+            "text": "Luật Quản lý thuế,",
+            "box": {
+              "left": 357,
+              "top": 2046,
+              "width": 376,
+              "height": 56
+            }
+          },
+          {
+            "id": "P057-ocr-upscaled-L029",
+            "text": "3. Trọng thời hạn 05 ngày làm việc ké từ ngày thanh toán hết các khoản",
+            "box": {
+              "left": 460,
+              "top": 2149,
+              "width": 1488,
+              "height": 57
+            }
+          },
+          {
+            "id": "P057-ocr-upscaled-L030",
+            "text": "nợ của doanh nghiệp, doanh nghiệp gửi hồ sơ đăng ký giải thể doanh nghiệp",
+            "box": {
+              "left": 357,
+              "top": 2209,
+              "width": 1589,
+              "height": 58
+            }
+          },
+          {
+            "id": "P057-ocr-upscaled-L031",
+            "text": "đến Phong Đăng ký kính doanh nơi doanh nghiệp đặt trụ sở chính. Hồ sơ đăng",
+            "box": {
+              "left": 358,
+              "top": 2267,
+              "width": 1591,
+              "height": 71
+            }
+          }
+        ]
+      }
+    },
+    {
+      "heading": {
+        "Index": 97,
+        "Parts": [
+          {
+            "Alias": "P057-L034",
+            "Page": 57,
+            "LineId": "P057-ocr-original-L034",
+            "Box": {
+              "left": 460,
+              "top": 2494,
+              "width": 1487,
+              "height": 59
+            },
+            "ViewId": "vlm-transcribed",
+            "ReadingOrigin": "VLM_TRANSCRIBED",
+            "Text": "4.",
+            "ExtentStart": 0,
+            "ExtentEnd": 2,
+            "PrimaryReading": "4. Trước khi nộp hồ sơ đăng ký giải thể doanh nghiệp, doanh nghiệp",
+            "ReadingsThatAgree": [
+              "vlm-transcribed",
+              "ocr-original",
+              "ocr-upscaled"
+            ],
+            "Verification": "CORROBORATED"
+          }
+        ],
+        "Text": "4.",
+        "PrimaryReading": "4. Trước khi nộp hồ sơ đăng ký giải thể doanh nghiệp, doanh nghiệp",
+        "TextStatus": "VLM_TRANSCRIBED",
+        "Verification": "CORROBORATED"
+      },
+      "fullBlindTranscription": "4. Trước khi nộp hồ sơ đăng ký giải thể doanh nghiệp, doanh nghiệp",
+      "nearbyOcrLines": {
+        "ocr-original": [
+          {
+            "id": "P057-ocr-original-L033",
+            "text": "Doanh nghiệp.",
+            "box": {
+              "left": 357,
+              "top": 2399,
+              "width": 295,
+              "height": 47
+            }
+          },
+          {
+            "id": "P057-ocr-original-L034",
+            "text": "4. Trước khi nộp hồ sơ đăng ký giải thể doanh nghiệp, doanh nghiệp",
+            "box": {
+              "left": 460,
+              "top": 2494,
+              "width": 1487,
+              "height": 59
+            }
+          },
+          {
+            "id": "P057-ocr-original-L035",
+            "text": "phải thực hiện thủ tục chấm dứt hoạt động chi nhánh, văn phòng đại diện, dia",
+            "box": {
+              "left": 357,
+              "top": 2554,
+              "width": 1592,
+              "height": 60
+            }
+          },
+          {
+            "id": "P057-ocr-original-L036",
+            "text": "điểm kinh doanh của doanh nghiệp tại Phòng Đăng ký kinh doanh nơi đặt chi",
+            "box": {
+              "left": 358,
+              "top": 2614,
+              "width": 1589,
+              "height": 60
+            }
+          }
+        ],
+        "ocr-upscaled": [
+          {
+            "id": "P057-ocr-upscaled-L033",
+            "text": "Doanh nghiệp.",
+            "box": {
+              "left": 357,
+              "top": 2399,
+              "width": 295,
+              "height": 47
+            }
+          },
+          {
+            "id": "P057-ocr-upscaled-L034",
+            "text": "4. Trước khi nộp hồ sơ đăng ký giải thể doanh nghiệp, doanh nghiệp",
+            "box": {
+              "left": 460,
+              "top": 2494,
+              "width": 1488,
+              "height": 59
+            }
+          },
+          {
+            "id": "P057-ocr-upscaled-L035",
+            "text": "phải thực hiện thủ tục cham dứt hoạt động chi nhánh, văn phòng đại diện, địa",
+            "box": {
+              "left": 357,
+              "top": 2554,
+              "width": 1592,
+              "height": 60
+            }
+          },
+          {
+            "id": "P057-ocr-upscaled-L036",
+            "text": "điểm kinh doanh của doanh nghiệp tại Phòng Đăng ký kinh doanh nơi đặt chỉ",
+            "box": {
+              "left": 358,
+              "top": 2614,
+              "width": 1590,
+              "height": 60
+            }
+          }
+        ]
+      }
+    },
+    {
+      "heading": {
+        "Index": 98,
+        "Parts": [
+          {
+            "Alias": "P058-L002",
+            "Page": 58,
+            "LineId": "P058-ocr-original-L002",
+            "Box": {
+              "left": 465,
+              "top": 205,
+              "width": 1481,
+              "height": 72
+            },
+            "ViewId": "vlm-transcribed",
+            "ReadingOrigin": "VLM_TRANSCRIBED",
+            "Text": "5.",
+            "ExtentStart": 0,
+            "ExtentEnd": 2,
+            "PrimaryReading": "5. Sau khi tiếp nhận hồ sơ đăng ký giải thể doanh nghiệp, Phòng Đăng",
+            "ReadingsThatAgree": [
+              "vlm-transcribed",
+              "ocr-original"
+            ],
+            "Verification": "CORROBORATED"
+          }
+        ],
+        "Text": "5.",
+        "PrimaryReading": "5. Sau khi tiếp nhận hồ sơ đăng ký giải thể doanh nghiệp, Phòng Đăng",
+        "TextStatus": "VLM_TRANSCRIBED",
+        "Verification": "CORROBORATED"
+      },
+      "fullBlindTranscription": "5. Sau khi tiếp nhận hồ sơ đăng ký giải thể doanh nghiệp, Phòng Đăng",
+      "nearbyOcrLines": {
+        "ocr-original": [
+          {
+            "id": "P058-ocr-original-L001",
+            "text": "58",
+            "box": {
+              "left": 1130,
+              "top": 60,
+              "width": 45,
+              "height": 36
+            }
+          },
+          {
+            "id": "P058-ocr-original-L002",
+            "text": "5. Sau khi tiếp nhận hồ sơ đăng ký giải thể doanh nghiệp, Phòng Đăng",
+            "box": {
+              "left": 465,
+              "top": 205,
+              "width": 1481,
+              "height": 72
+            }
+          },
+          {
+            "id": "P058-ocr-original-L003",
+            "text": "ký kinh doanh gửi thông tin về việc doanh nghiệp đăng ký giải thể cho Cơ",
+            "box": {
+              "left": 361,
+              "top": 265,
+              "width": 1586,
+              "height": 71
+            }
+          },
+          {
+            "id": "P058-ocr-original-L004",
+            "text": "quan thuế. Trong thời hạn 02 ngày làm việc ké từ ngày nhận được thông tin",
+            "box": {
+              "left": 363,
+              "top": 327,
+              "width": 1586,
+              "height": 69
+            }
+          }
+        ],
+        "ocr-upscaled": [
+          {
+            "id": "P058-ocr-upscaled-L001",
+            "text": "58",
+            "box": {
+              "left": 1130,
+              "top": 60,
+              "width": 45,
+              "height": 36
+            }
+          },
+          {
+            "id": "P058-ocr-upscaled-L002",
+            "text": "5. Sau khi tiếp nhận hồ SƠ đăng ký giải thể doanh nghiệp, Phòng Đăng",
+            "box": {
+              "left": 465,
+              "top": 205,
+              "width": 1481,
+              "height": 73
+            }
+          },
+          {
+            "id": "P058-ocr-upscaled-L003",
+            "text": "ký kinh doanh gửi thông tin về việc doanh nghiệp đăng ký giải thể cho Cơ",
+            "box": {
+              "left": 361,
+              "top": 265,
+              "width": 1586,
+              "height": 71
+            }
+          },
+          {
+            "id": "P058-ocr-upscaled-L004",
+            "text": "quan thuế. Trong thời hạn 02 ngày làm việc kế từ ngày nhận được thông tin",
+            "box": {
+              "left": 363,
+              "top": 327,
+              "width": 1586,
+              "height": 71
+            }
+          }
+        ]
+      }
+    },
+    {
+      "heading": {
+        "Index": 99,
+        "Parts": [
+          {
+            "Alias": "P058-L012",
+            "Page": 58,
+            "LineId": "P058-ocr-original-L012",
+            "Box": {
+              "left": 467,
+              "top": 854,
+              "width": 1481,
+              "height": 57
+            },
+            "ViewId": "vlm-transcribed",
+            "ReadingOrigin": "VLM_TRANSCRIBED",
+            "Text": "6.",
+            "ExtentStart": 0,
+            "ExtentEnd": 2,
+            "PrimaryReading": "6. Sau thời hạn 180 ngày kế từ ngày Phòng Đăng ký kinh doanh nhận",
+            "ReadingsThatAgree": [
+              "vlm-transcribed",
+              "ocr-upscaled"
+            ],
+            "Verification": "CORROBORATED"
+          }
+        ],
+        "Text": "6.",
+        "PrimaryReading": "6. Sau thời hạn 180 ngày kế từ ngày Phòng Đăng ký kinh doanh nhận",
+        "TextStatus": "VLM_TRANSCRIBED",
+        "Verification": "CORROBORATED"
+      },
+      "fullBlindTranscription": "6. Sau thời hạn 180 ngày kể từ ngày Phòng Đăng ký kinh doanh nhận",
+      "nearbyOcrLines": {
+        "ocr-original": [
+          {
+            "id": "P058-ocr-original-L011",
+            "text": "ra thông báo về việc giải thể của doanh nghiệp.",
+            "box": {
+              "left": 363,
+              "top": 751,
+              "width": 949,
+              "height": 57
+            }
+          },
+          {
+            "id": "P058-ocr-original-L012",
+            "text": "6. Sau thời hạn 180 ngày kế từ ngày Phòng Đăng ký kinh doanh nhận",
+            "box": {
+              "left": 467,
+              "top": 854,
+              "width": 1481,
+              "height": 57
+            }
+          },
+          {
+            "id": "P058-ocr-original-L013",
+            "text": "được thông báo kèm theo nghị quyết, quyết định giải thể của doanh nghiệp",
+            "box": {
+              "left": 364,
+              "top": 914,
+              "width": 1583,
+              "height": 57
+            }
+          },
+          {
+            "id": "P058-ocr-original-L014",
+            "text": "mà Phòng Đăng ký kinh doanh không nhận được hồ sơ đăng ký giải thể của",
+            "box": {
+              "left": 363,
+              "top": 974,
+              "width": 1585,
+              "height": 57
+            }
+          }
+        ],
+        "ocr-upscaled": [
+          {
+            "id": "P058-ocr-upscaled-L011",
+            "text": "ra thông báo về việc giải thé của doanh nghiệp.",
+            "box": {
+              "left": 363,
+              "top": 751,
+              "width": 949,
+              "height": 57
+            }
+          },
+          {
+            "id": "P058-ocr-upscaled-L012",
+            "text": "6. Sau thời hạn 180 ngày kể từ ngày Phòng Đăng ký kinh doanh nhận",
+            "box": {
+              "left": 467,
+              "top": 854,
+              "width": 1481,
+              "height": 58
+            }
+          },
+          {
+            "id": "P058-ocr-upscaled-L013",
+            "text": "được thông báo kèm theo nghị quyết, quyết định giải thé của doanh nghiệp",
+            "box": {
+              "left": 364,
+              "top": 914,
+              "width": 1584,
+              "height": 58
+            }
+          },
+          {
+            "id": "P058-ocr-upscaled-L014",
+            "text": "mà Phòng Đăng ký kinh doanh không nhận được hồ sơ đăng ký giải thể của",
+            "box": {
+              "left": 363,
+              "top": 974,
+              "width": 1585,
+              "height": 58
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
