@@ -22,6 +22,9 @@ public sealed record TranscriptionSet(string Version, string Model, string Promp
     public const string CurrentVersion = "SCAN_VLM_TRANSCRIPTION_V1";
     /// <summary>The model's reasoning setting the transcriptions were made with (on, off, or a token budget).</summary>
     public string Reasoning { get; init; } = ScanTranscription.ReasoningOn;
+    /// <summary>Seconds spent making the crops (one image tool run per line), and the provider calls' durations.</summary>
+    public double CropSeconds { get; init; }
+    public CallStats? Calls { get; init; }
     public int Accepted => Lines.Count(l => l.Status == ScanTranscription.Accepted);
 }
 
@@ -104,7 +107,7 @@ public static class ScanTranscription
     /// </summary>
     internal static (string?[] Texts, AgentBudget Budget) Transcribe(IReadOnlyList<string?> crops, IReadOnlyList<string> ids, IReadOnlyList<string> keys,
         string cacheDir, string apiKey, Func<int, AgentBudget> budgetFor, Func<HttpMessageHandler> factory, List<string> failures, string label,
-        int maxPerRequest, int parallelism, string reasoning = ReasoningOn)
+        int maxPerRequest, int parallelism, string reasoning = ReasoningOn, CallTimings? timings = null)
     {
         var batches = new List<List<int>>();
         var current = new List<int>();
@@ -153,7 +156,7 @@ public static class ScanTranscription
                     {
                         using var handler = factory();
                         using var model = new AgentModel(handler, apiKey, budget);
-                        reply = model.Turn(name, ++attempt, request).Content ?? "";
+                        reply = (timings is null ? model.Turn(name, ++attempt, request) : timings.Time(name, () => model.Turn(name, ++attempt, request))).Content ?? "";
                     }
                     catch (ReplyFailure f) when (transportRetries < AgentUnit.TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal)) { transportRetries++; continue; }
                     catch (ReplyFailure f) when (replyRetries < 1 && f.Code.StartsWith("CONTENT:", StringComparison.Ordinal)) { replyRetries++; continue; }
@@ -291,6 +294,8 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
         Directory.CreateDirectory(work);
         try
         {
+            var cropClock = System.Diagnostics.Stopwatch.StartNew();
+            var timings = new CallTimings();
             var crops = new string?[lines.Length];
             var keys = new string[lines.Length];
             Parallel.For(0, lines.Length, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, k =>
@@ -305,12 +310,13 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
             failures.AddRange(Enumerable.Range(0, lines.Length).Where(k => crops[k] is null).Select(k => $"{lines[k].Line.Id}:CROP_FAILED"));
             // Room for the second asks and the splits of a batch that stays unreadable (rare): twice the batches' worst cost.
             AgentBudget BudgetFor(int batches) => new(batches * (2 + AgentUnit.TransportRetries) + lines.Length, options.CeilingUsd ?? 2 * batches * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes));
+            var cropSeconds = cropClock.Elapsed.TotalSeconds;
             var (texts, budget) = ScanTranscription.Transcribe(crops, lines.Select(l => l.Line.Id).ToArray(), keys, Path.Combine(storeRoot, "vlm-transcribe"), apiKey, BudgetFor,
-                handlerFactory ?? (() => AgentModel.CreateHandler()), failures, "TRANSCRIBE", options.MaxLinesPerRequest, options.Parallelism, options.Reasoning);
+                handlerFactory ?? (() => AgentModel.CreateHandler()), failures, "TRANSCRIBE", options.MaxLinesPerRequest, options.Parallelism, options.Reasoning, timings);
             var result = lines.Select((l, k) => new LineTranscription(l.Line.Id, texts[k],
                 ScanTranscription.Guard(texts[k], l.Line.Text, ScanTranscription.Neighbours(l.Page, l.Line).Select(n => n.Text)))).ToArray();
             return new TranscriptionSet(TranscriptionSet.CurrentVersion, AgentProtocol.ChatModel, ScanTranscription.PromptVersion, options.Scale, result,
-                failures, budget.Calls, budget.ActualUsd) { Reasoning = options.Reasoning };
+                failures, budget.Calls, budget.ActualUsd) { Reasoning = options.Reasoning, CropSeconds = Math.Round(cropSeconds, 1), Calls = timings.Stats() };
         }
         finally
         {

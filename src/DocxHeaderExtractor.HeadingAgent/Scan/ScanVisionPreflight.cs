@@ -29,6 +29,10 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
     /// <summary>The calls sent and their cost in the last <see cref="Run"/> (pages read back from the store cost nothing).</summary>
     public int LastCalls { get; private set; }
     public double LastCostUsd { get; private set; }
+    /// <summary>The durations of the last run's calls.</summary>
+    public CallStats? LastCallTimes { get; private set; }
+
+    CallTimings timings = new();
 
     public sealed record Options(int MaxPages = 300, int MaxReadingsPerPage = 10, int MaxLinesPerPage = 80, int PageWidth = 1000, int Parallelism = 32,
         double CeilingUsd = 3.0);
@@ -46,6 +50,7 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
     public IReadOnlyList<VlmPageObservation> Run(ScanOcrEvidence evidence, string evidenceEntry, string apiKey, Options? options = null)
     {
         options ??= new Options();
+        timings = new CallTimings();
         var magick = TesseractOcr.FindImageMagick() ?? throw new InvalidOperationException("IMAGEMAGICK_NOT_FOUND");
         var primary = evidence.Views.First(v => v.Spec.ViewId == ScanOcrPreflight.OriginalView);
         var others = evidence.Views.Where(v => v != primary).ToArray();
@@ -68,6 +73,7 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
             result[k] = ObservePage(page, readings, ScanOcrPreflight.PageImagePath(evidenceEntry, page.Page), magick, apiKey, budget, factory, options);
         });
         LastCalls = budget.Calls;
+        LastCallTimes = timings.Stats();
         LastCostUsd = budget.ActualUsd;
         return result;
     }
@@ -132,7 +138,7 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
             {
                 var refusal = budget.Admit(request);
                 if (refusal is not null) return Failed("BUDGET:" + refusal, lineIds, asked);
-                try { turn = model.Turn($"VLM-P{page.Page:000}", 1, request); }
+                try { turn = timings.Time($"VLM-P{page.Page:000}", () => model.Turn($"VLM-P{page.Page:000}", 1, request)); }
                 catch (ReplyFailure f) { return Failed("CALL:" + f.Code, lineIds, asked); }
             }
             var reply = turn.Content ?? "";

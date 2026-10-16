@@ -117,6 +117,13 @@ static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationTok
                 $"tiền xử lý {result.PreflightCalls} POST {result.PreflightCostUsd:0.0000} USD");
         if (!o.Quiet && result.StageSeconds.Count > 0)
             Console.Error.WriteLine("  thời gian: " + string.Join(", ", result.StageSeconds.Select(kv => $"{kv.Key} {kv.Value:0.0}s")));
+        if (!o.Quiet && result.CallSeconds.Count > 0)
+        {
+            Console.Error.WriteLine($"  cắt ảnh để chép: {result.TranscriptionCropSeconds:0.0}s");
+            foreach (var (stage, c) in result.CallSeconds)
+                Console.Error.WriteLine($"  gọi API {stage}: {c.Calls} lần, trung vị {c.P50Seconds:0.0}s, p90 {c.P90Seconds:0.0}s, lâu nhất {c.MaxSeconds:0.0}s");
+            Console.Error.WriteLine("  đoạn hội thoại lâu nhất: " + string.Join(", ", result.SlowestUnits.Select(u => $"{u.UnitId} {u.Seconds:0}s/{u.Calls} lần")));
+        }
         Console.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }));
     }
     return 0;

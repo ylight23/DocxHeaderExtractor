@@ -237,6 +237,12 @@ the vision model reads when it is shown only the crop: the crop the vision prefl
   about 50 s a call with the model's reasoning on, against about 7 s with it off (eval: 12 calls, 20 s); the
   conversation 545 s. Reasoning off read 118/120 (`sổ` → `sô`, `tổ` → `tô`), so it stays on; the eval now also measures
   a reasoning budget of 1,024 tokens (`-reasoning-1k`).
+- Fresh run of `011` at these settings (28 pages, Windows, no rate limit): OCR 70 s, vision 90 s, transcription 229 s
+  (side by side with vision), preflight 299 s, conversation 295 s; 9 min 56 s in all, 0.102 USD. The transcription
+  was slower than its calls measured alone (about 104 calls at 32 at once is four rounds, about 57 s a round, against
+  about 14 s a call in the eval at 4 at once). To tell where the time goes, the result now gives the crop seconds
+  (`TranscriptionCropSeconds`; about 0.3 s a crop measured on Linux, each run decoding the whole page), each stage's
+  call durations (`CallSeconds`: count, median, 90th percentile, slowest, sum) and the slowest conversation units.
 - A batch whose reply stays unreadable after the second ask is split in two, down to single lines, so that one crop
   that makes the model answer with no text (`CONTENT_NOT_TEXT`) leaves only itself unread.
 - The result gives the seconds of each stage (`StageSeconds`: ocr, vision, transcription, preflight, conversation); the

@@ -38,6 +38,13 @@ public sealed record ScanHeadingResult(string SourceSha256, string SelectorId, I
     /// <summary>Wall-clock seconds of each stage: ocr, vision and transcription (which run side by side, so their sum is not the time spent),
     /// preflight (ocr to the end of both), conversation. A stage read back from the store takes almost none.</summary>
     public IReadOnlyDictionary<string, double> StageSeconds { get; init; } = new Dictionary<string, double>();
+
+    /// <summary>The provider calls of each stage (vision, transcription, conversation): count, median, 90th percentile, slowest, sum.</summary>
+    public IReadOnlyDictionary<string, CallStats> CallSeconds { get; init; } = new Dictionary<string, CallStats>();
+    /// <summary>Seconds the transcription spent making its crops, before any call.</summary>
+    public double TranscriptionCropSeconds { get; init; }
+    /// <summary>The conversation's units whose calls took longest in all (a unit's calls run one after another).</summary>
+    public IReadOnlyList<UnitTime> SlowestUnits { get; init; } = [];
 }
 
 /// <summary>A transcription the checks refused: the line, why, what the vision model wrote and the primary OCR reading of the same box.</summary>
@@ -101,6 +108,12 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
             PreflightCalls = seer.LastCalls + (transcriptions?.ProviderCalls ?? 0),
             PreflightCostUsd = seer.LastCostUsd + (transcriptions?.ProviderCostUsd ?? 0),
             StageSeconds = seconds.ToDictionary(kv => kv.Key, kv => Math.Round(kv.Value, 1)),
+            CallSeconds = new Dictionary<string, CallStats>(result.CallSeconds)
+            {
+                ["vision"] = seer.LastCallTimes ?? new CallStats(0, 0, 0, 0, 0),
+                ["transcription"] = transcriptions?.Calls ?? new CallStats(0, 0, 0, 0, 0),
+            },
+            TranscriptionCropSeconds = transcriptions?.CropSeconds ?? 0,
         };
     }, ct);
 
@@ -112,7 +125,10 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
         var budget = HeadingAgentSelector.BudgetFor(source, instruction);
         using var handler = (handlerFactory ?? (() => AgentModel.CreateHandler()))();
         using var model = new AgentModel(handler, apiKey, budget);
-        var selection = HeadingAgentSelector.Select(source, HeadingAgentSelector.Traced(model, onModelReply), budget, parallelism, ct, retryDelayMs: 5000,
+        var traced = HeadingAgentSelector.Traced(model, onModelReply);
+        var timings = new CallTimings();
+        AgentUnit.Model timed = (unit, turn, request) => timings.Time(unit, () => traced(unit, turn, request));
+        var selection = HeadingAgentSelector.Select(source, timed, budget, parallelism, ct, retryDelayMs: 5000,
             costOf: () => budget.ActualUsd, instruction);
         var (headings, rejected) = Headings(source, selection);
         return new ScanHeadingResult(evidence.SourceSha256, SelectorId, headings, selection.UnitsComplete, selection.UnitsTotal, selection.UnitFailures,
@@ -126,6 +142,8 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
             TranscriptionRejections = source.ScanLines.Select(l => (l, t: source.Transcription(l.Alias)))
                 .Where(x => x.t is { Status: not (ScanTranscription.Accepted or ScanTranscription.NotTranscribed) })
                 .Select(x => new TranscriptionRejection(x.l.Alias, x.l.Primary.Id, x.t!.Status, x.t.Text, x.l.Primary.Text)).ToArray(),
+            CallSeconds = new Dictionary<string, CallStats> { ["conversation"] = timings.Stats() },
+            SlowestUnits = timings.SlowestUnits(5),
         };
     }
 
