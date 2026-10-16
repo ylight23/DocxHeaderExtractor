@@ -86,14 +86,12 @@ public static class ScanTranscription
     /// <summary>One minus the edit distance over the longer length: 1 for the same text, 0 for nothing in common.</summary>
     public static double Similarity(string a, string b) => a.Length + b.Length == 0 ? 1 : 1 - (double)ScanTextEvaluation.Distance(a, b) / Math.Max(a.Length, b.Length);
 
-    /// <summary>The lines a crop of <paramref name="line"/> may catch: the two before and after it in the page's order, and every line whose box
-    /// shares part of its height.</summary>
-    public static IEnumerable<OcrLine> Neighbours(OcrPage page, OcrLine line)
-    {
-        var at = page.Lines.ToList().FindIndex(l => l.Id == line.Id);
-        return page.Lines.Where((l, i) => l.Id != line.Id && (Math.Abs(i - at) <= 2
-            || Math.Min(l.Box.Top + l.Box.Height, line.Box.Top + line.Box.Height) > Math.Max(l.Box.Top, line.Box.Top)));
-    }
+    /// <summary>The lines whose text a masked crop of <paramref name="line"/> can still show: those whose box overlaps its own (the mask keeps
+    /// the line's own box whole). A line of specks OCR made over a heading is one; the line above, merely close, is painted out.</summary>
+    public static IEnumerable<OcrLine> Neighbours(OcrPage page, OcrLine line) =>
+        page.Lines.Where(l => l.Id != line.Id
+            && Math.Min(l.Box.Left + l.Box.Width, line.Box.Left + line.Box.Width) > Math.Max(l.Box.Left, line.Box.Left)
+            && Math.Min(l.Box.Top + l.Box.Height, line.Box.Top + line.Box.Height) > Math.Max(l.Box.Top, line.Box.Top));
 
     /// <summary>
     /// Sends the crops in batches of at most <paramref name="maxPerRequest"/> that stay under the transport's byte cap, each crop after its id,
@@ -234,13 +232,15 @@ public static class ScanTranscription
     }
 
     /// <summary>What a crop is made of, for the store key: the page image, the box, the margin, the scale.</summary>
-    internal static string CropKey(string imageSha256, PixelBox box, int pad, double scale) =>
-        string.Join(":", imageSha256, box.Left, box.Top, box.Width, box.Height, pad, scale.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture));
+    internal static string CropKey(string imageSha256, PixelBox box, int pad, double scale, bool bilevel = false, IReadOnlyList<PixelBox>? mask = null) =>
+        string.Join(":", imageSha256, box.Left, box.Top, box.Width, box.Height, pad, scale.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture))
+        + (bilevel ? ":bilevel=" + TesseractOcr.BilevelThreshold : "")
+        + (mask is null ? "" : ":mask=" + string.Join(";", mask.Select(m => $"{m.Left},{m.Top},{m.Width},{m.Height}")));
 }
 
 /// <summary>
-/// The transcription preflight of a scanned document: every line of the primary OCR view, cropped from its page image with a margin and
-/// enlarged <see cref="Options.Scale"/> times, transcribed blind by the vision model, and checked (<see cref="ScanTranscription.Guard"/>). Runs
+/// The transcription preflight of a scanned document: every line of the primary OCR view, cropped from its page image with a margin, the
+/// other lines the margin reaches painted out, enlarged <see cref="Options.Scale"/> times in black and white, transcribed blind by the vision model, and checked (<see cref="ScanTranscription.Guard"/>). Runs
 /// before the agent conversation, through the audited transport; batches are stored and read back, so a second run sends nothing.
 /// </summary>
 public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessageHandler>? handlerFactory = null)
@@ -249,7 +249,11 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
 
     /// <param name="CeilingUsd">The cost ceiling of the run; null for the worst case of the batches cut (each call reserves the worst cost of a
     /// request at the byte cap, about 0.026 USD; measured on 023: 0.0167 USD for 119 transcription and 34 vision calls).</param>
-    public sealed record Options(int MaxPages = 300, double Scale = 2.0, int MaxLinesPerRequest = 10, int Parallelism = 4, double? CeilingUsd = null);
+    /// <param name="Bilevel">Black and white, pixels repeated (measured on 023 with <paramref name="Mask"/>: 120/120 heading lines, as grey 2x,
+    /// in a file 6.6 times smaller).</param>
+    /// <param name="Mask">The other lines' boxes that reach into the crop are painted white first (without: the line above copied twice in 120).</param>
+    public sealed record Options(int MaxPages = 300, double Scale = 2.0, int MaxLinesPerRequest = 10, int Parallelism = 4, double? CeilingUsd = null,
+        bool Bilevel = true, bool Mask = true);
 
     public TranscriptionSet Run(ScanOcrEvidence evidence, string evidenceEntry, string apiKey, Options? options = null)
     {
@@ -267,10 +271,11 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
             Parallel.For(0, lines.Length, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, k =>
             {
                 var (page, line) = lines[k];
-                keys[k] = ScanTranscription.CropKey(page.ImageSha256, line.Box, CropPad, options.Scale);
+                var mask = options.Mask ? TesseractOcr.BoxesInCrop(line.Box, CropPad, page.Lines.Where(l => l.Id != line.Id).Select(l => l.Box)) : null;
+                keys[k] = ScanTranscription.CropKey(page.ImageSha256, line.Box, CropPad, options.Scale, options.Bilevel, mask);
                 var image = ScanOcrPreflight.PageImagePath(evidenceEntry, page.Page);
                 var file = Path.Combine(work, $"{k:00000}.png");
-                crops[k] = image is not null && TesseractOcr.CropScaled(magick, image, file, line.Box, CropPad, options.Scale) ? file : null;
+                crops[k] = image is not null && TesseractOcr.CropScaled(magick, image, file, line.Box, CropPad, options.Scale, options.Bilevel, mask) ? file : null;
             });
             failures.AddRange(Enumerable.Range(0, lines.Length).Where(k => crops[k] is null).Select(k => $"{lines[k].Line.Id}:CROP_FAILED"));
             AgentBudget BudgetFor(int batches) => new(batches * (2 + AgentUnit.TransportRetries), options.CeilingUsd ?? batches * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes));

@@ -41,10 +41,11 @@ internal interface IAgentFlavor
     /// <summary>The readings the evidence holds for one line, by view id (a scanned source: its OCR views and a reading a VLM proposed); null when a
     /// line has only its own text (PDF, DOCX). A SELECT may then name one with readingViewId, and its extent is measured on it.</summary>
     IReadOnlyDictionary<string, string>? Readings(IAgentSource source, string alias) => null;
-    /// <summary>Whether a call whose reply ended with the model's reasoning using every output token (AUDIT:...REASONING_EXHAUSTED) is sent once
-    /// more, the same bytes. On for the scan route only (owner's decision 2026-10-16, after it failed one unit in each of two live runs on 023);
-    /// off for PDF and DOCX, whose runs stay as they were qualified.</summary>
-    bool RetryReasoningExhausted => false;
+    /// <summary>Failure codes (matched as parts of the call's failure code) for which a call is sent once more, the same bytes, beyond the transport
+    /// retries every route has. The scan route only (owner's decision 2026-10-16): REASONING_EXHAUSTED (the model's reasoning used every output
+    /// token; one unit lost in each of two live runs on 023) and TIMEOUT_OR_CANCELLED (the call did not end in time; one unit lost in the next).
+    /// Empty for PDF and DOCX, whose runs stay as they were qualified.</summary>
+    IReadOnlyList<string> RetryOnceCodes => [];
     JsonArray ToolDefinitions();
     IAgentTools CreateTools(IAgentSource source);
     /// <summary>One line of the targets or the context in the unit payload.</summary>

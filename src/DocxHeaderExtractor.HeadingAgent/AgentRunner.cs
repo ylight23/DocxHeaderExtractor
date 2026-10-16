@@ -172,9 +172,9 @@ internal static class AgentUnit
                     requestShas.Add(req.Sha256);
                     posts++;
                 }
-                catch (ReplyFailure f) when (flavor.RetryReasoningExhausted && reasoningRetries < 1 && f.Code.Contains("REASONING_EXHAUSTED", StringComparison.Ordinal))
+                catch (ReplyFailure f) when (reasoningRetries < 1 && flavor.RetryOnceCodes.Any(c => f.Code.Contains(c, StringComparison.Ordinal)))
                 {
-                    // The model spent every output token reasoning and gave no answer: the same bytes once more (scan route only).
+                    // A failure the flavor retries once (scan: reasoning used every token, or the call timed out): the same bytes once more.
                     reasoningRetries++;
                     retriesUsed++;
                     var again = budget.Admit(req);

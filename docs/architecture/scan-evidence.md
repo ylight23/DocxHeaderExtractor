@@ -133,19 +133,20 @@ transcription preflight, then the V6 conversation over `ScanAgentSource`, with t
 core-facts gate as DOCX.
 
 - Transcription preflight (`SCAN_VLM_TRANSCRIPTION_V1`, prompt `SCAN_VLM_TRANSCRIBE_V1`; owner's decision after §5a):
-  every line of the primary view is cropped from its page image (8 px margin), enlarged 2x, and transcribed by the
-  vision model, which sees only the crops, never an OCR reading. Batches of at most 10 crops under the byte cap, stored
+  every line of the primary view is cropped from its page image (8 px margin), the other lines' boxes that the margin
+  reaches painted white (the line's own box kept whole), enlarged 2x in black and white (pixels repeated), and
+  transcribed by the vision model, which sees only the crops, never an OCR reading. Batches of at most 10 crops under the byte cap, stored
   in `<root>/vlm-transcribe/` by what the crops are made of, read back on the next run. A transcription is a reading
   (`vlm-transcribed`, origin `VLM_TRANSCRIBED`) only when it passes two checks against the primary OCR reading of the
-  same box and of the lines next to it (the two before and after, and any line sharing part of its height), compared as
+  same box and of the lines whose boxes overlap it (what the mask cannot paint out), compared as
   letters and digits without diacritics, so that dots a form's leaders lost in OCR do not count: no line break
   (`REJECTED_MULTILINE`), not closer to a neighbour, or to a neighbour joined to the line, than to the line itself
   (`REJECTED_NEIGHBOUR_TEXT`: the line above caught by the margin, or a line of specks OCR made over a heading, whose
   crop shows the heading again), and not 10 letters and 2 times longer (`REJECTED_LONGER_THAN_OCR`). A rejected one is
   kept as evidence. A reply that is not the expected object or not text is asked once more. In the conversation, a call
   whose reply ended with the model's reasoning using every output token (`AUDIT:FINISH_LENGTH,REASONING_EXHAUSTED`,
-  one unit lost in each of the third and fourth live runs) is sent once more, the same bytes: scan route only
-  (owner's decision), PDF and DOCX unchanged. With the transcription,
+  one unit lost in each of the third and fourth live runs) or that timed out (`TRANSPORT:TIMEOUT_OR_CANCELLED`, one
+  unit in the fifth) is sent once more, the same bytes: scan route only (owner's decision), PDF and DOCX unchanged. With the transcription,
   the vision preflight asks no reading choices, and choices are not shown.
 - A target is one line of the primary view (`ocr-original`), alias `P003-L012`. Its text is the accepted transcription,
   else that view's reading; the facts say which (`text.shownReading`, `text.transcription`, and the OCR views that read
@@ -242,6 +243,12 @@ where the tools are missing, so a green suite on a machine without them checks n
 
 ## 7. Not done yet, and known limits
 
+- Third live run (`ket-qua-023-v5.json`, commit `d265e2ee`, grey 2x crops): all 1,084 lines transcribed, 1,059
+  accepted (19 refused as a neighbour's text, 6 with a line break). Against the gold: 106/106 heading lines shown from
+  the transcription exact; 113 of 120 gold lines selected; one wrong text (`bỗ sung`, an OCR reading the agent named).
+  `SEG-027` failed with `TIMEOUT_OR_CANCELLED`. Masked crops measured the same day: black and white 120/120, grey
+  119/120; the route now sends black-and-white masked crops (6.6x fewer bytes), and the neighbour check compares only
+  lines whose boxes overlap, since the mask paints out the rest (it had refused form lines like `Bên A`/`Bên B`).
 - Second live run (`ket-qua-023-v4.json`, commit `37417097`): no budget refusal; 1,019 of 1,069 transcriptions passed
   the first checks. Against the gold: 83/83 heading lines shown from the transcription exact; the 8 wrong ones were
   shown from OCR, chosen by the agent where the vision model's choice among OCR readings had confirmed a wrong one

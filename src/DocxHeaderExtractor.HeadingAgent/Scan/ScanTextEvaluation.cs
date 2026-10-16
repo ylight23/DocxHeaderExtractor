@@ -9,7 +9,7 @@ namespace DocxHeaderExtractor.HeadingAgent.Scan;
 /// Measures how well each reader reads the lines of a scan against a gold transcription (<c>SCAN_LINE_TEXT_GOLD_V1</c>): the two OCR views,
 /// the better of the two (an oracle no reader can reach), the vision model transcribing each line crop blind (<see cref="ScanTranscription"/>),
 /// without any OCR reading shown, from the black-and-white crop the vision preflight sends, from the same crop enlarged
-/// <see cref="EnlargedScale"/> times in grey (smoothed) and in black and white (pixels repeated), and what the scan route shows: the enlarged transcription where it passes the program's checks, else the
+/// <see cref="EnlargedScale"/> times in grey (smoothed) and in black and white (pixels repeated), and what the scan route shows: the 2x black-and-white masked transcription where it passes the program's checks, else the
 /// primary OCR reading. It changes no evidence and decides nothing: it reports exact matches and character error rates.
 /// </summary>
 public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler>? handlerFactory = null)
@@ -115,11 +115,11 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
             try { Directory.Delete(work, recursive: true); } catch (IOException) { }
         }
 
-        // What the scan route would show: the enlarged transcription when it passes the checks against the primary OCR reading, else that reading.
+        // What the scan route shows: the 2x black-and-white masked transcription when it passes the checks against the primary OCR reading, else that reading.
         for (var k = 0; k < gold.Count; k++)
         {
             var ocrText = readings[k].GetValueOrDefault(Original);
-            var t = readings[k].GetValueOrDefault(VlmEnlarged);
+            var t = readings[k].GetValueOrDefault(VlmEnlargedBilevelMasked);
             var primary = evidence.Views.First(v => v.Spec.ViewId == Original);
             var neighbours = primary.Pages.FirstOrDefault(p => p.Page == gold[k].Page) is { } page && MatchLine(primary, gold[k]) is { } own
                 ? ScanTranscription.Neighbours(page, own).Select(n => n.Text) : [];

@@ -479,6 +479,11 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Empty(set.Failures);
         Assert.Equal(2, handler.Posts);
         Assert.Equal(AgentProtocol.ChatModel, handler.Bodies[0]["model"]!.GetValue<string>());
+        // Black and white, 2x: a 1-bit PNG twice the size of the line's box with its margin (Chương I: 180x40 + 2x8).
+        var png = Convert.FromBase64String(handler.Bodies[0]["messages"]![1]!["content"]!.AsArray()
+            .First(c => c!["type"]!.GetValue<string>() == "image_url")!["image_url"]!["url"]!.GetValue<string>()["data:image/png;base64,".Length..]);
+        Assert.Equal(1, png[24]);
+        Assert.Equal((2 * 196, 2 * 56), TesseractOcr.ImageSize(png));
         Assert.Equal([ScanTranscription.Accepted, ScanTranscription.Accepted, ScanTranscription.RejectedMultiline, ScanTranscription.Accepted, ScanTranscription.NotTranscribed],
             set.Lines.Select(l => l.Status));
         Assert.Equal(3, set.Accepted);
@@ -571,7 +576,12 @@ public sealed class ScanAgentTests : IDisposable
 
         Assert.Equal(("FAILED", "CALL:" + exhausted), (failed.Status, failed.Failure));
         Assert.Equal(2, failed.Posts);
-        Assert.False(((IAgentFlavor)PdfAgentFlavor.Instance).RetryReasoningExhausted);
-        Assert.False(((IAgentFlavor)DocxAgentFlavor.Instance).RetryReasoningExhausted);
+        Assert.Empty(((IAgentFlavor)PdfAgentFlavor.Instance).RetryOnceCodes);
+        Assert.Empty(((IAgentFlavor)DocxAgentFlavor.Instance).RetryOnceCodes);
+
+        // A call that timed out is sent once more too.
+        calls = 0;
+        AgentUnit.Model late = (unit, turn, req) => ++calls == 1 ? throw new ReplyFailure("TRANSPORT:TIMEOUT_OR_CANCELLED") : model.Turn(unit, turn, req);
+        Assert.Equal("COMPLETE", AgentUnit.Run(source, 0, late, HeadingAgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction), retryDelayMs: 0, ScanAgentProtocol.Instruction).Status);
     }
 }
