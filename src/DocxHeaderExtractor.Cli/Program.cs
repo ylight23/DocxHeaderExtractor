@@ -48,6 +48,7 @@ try
     {
         "info" => RunModelInfo(options),
         "scan-ocr" => RunScanOcr(options),
+        "scan-extract" => await RunScanExtractAsync(options, cts.Token),
         _ => await RunExtractAsync(options, cts.Token),
     };
 }
@@ -89,6 +90,26 @@ static int RunScanOcr(CommandLineOptions o)
             Console.WriteLine($"  so sánh 2 view: {aligned.Count} dòng, {aligned.Count(a => a.LineB is null)} không ghép được, {aligned.Count(a => a.LineB is not null && !a.Identical)} đọc khác nhau ({aligned.Sum(a => a.Differences.Count)} chỗ, đều UNVERIFIED)");
         }
         Console.WriteLine($"  evidence: {root} ({watch.Elapsed.TotalSeconds:0.0}s)");
+    }
+    return 0;
+}
+
+// The heading route of a scanned DOCX: OCR and vision preflight into the evidence store, then the agent decides. Prints the result as JSON.
+static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationToken ct)
+{
+    var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+    if (string.IsNullOrWhiteSpace(key)) { Console.Error.WriteLine("Chưa có OPENROUTER_API_KEY."); return 2; }
+    var root = o.OutputPath ?? ".dhx-evidence";
+    var selector = new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(root,
+        onModelReply: o.ShowRawOutput ? r => PrintModelReply(r) : null);
+    foreach (var file in ExpandInputs(o.Inputs))
+    {
+        if (!o.Quiet) Console.Error.WriteLine($"» {Path.GetFileName(file)}");
+        var result = await selector.ExtractAsync(file, key, ct);
+        if (!o.Quiet)
+            Console.Error.WriteLine($"  {result.Headings.Count} heading, {result.UnitsComplete}/{result.UnitsTotal} unit, {result.ProviderCalls} POST, " +
+                $"{result.ProviderCostUsd:0.0000} USD, VLM {result.VisionPagesObserved} trang ({result.VisionFailures.Count} lỗi)");
+        Console.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }));
     }
     return 0;
 }

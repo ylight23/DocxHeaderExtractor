@@ -109,6 +109,31 @@ public static class TesseractOcr
 
     public static string Sha256(string text) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(text)));
 
+    /// <summary>The share of grey above which a pixel turns white in the black-and-white images a vision model sees.</summary>
+    public const string BilevelThreshold = "55%";
+
+    /// <summary>A black-and-white PNG of the page at <paramref name="width"/> pixels wide, for a vision model that sees the whole page. A scan
+    /// in grey JPEG is several times larger (paper texture); black and white keeps letters, weight and diacritics.</summary>
+    public static bool Downscale(string magick, string input, string output, int width) =>
+        Magick(magick, [input, "-colorspace", "Gray", "-resize", width.ToString(CultureInfo.InvariantCulture) + "x", "-threshold", BilevelThreshold, "-type", "bilevel", "png:" + output], output);
+
+    /// <summary>A black-and-white PNG of one region of the page at full resolution, with <paramref name="pad"/> pixels around it.</summary>
+    public static bool Crop(string magick, string input, string output, PixelBox box, int pad)
+    {
+        var x = Math.Max(0, box.Left - pad); var y = Math.Max(0, box.Top - pad);
+        var geometry = string.Create(CultureInfo.InvariantCulture, $"{box.Width + 2 * pad}x{box.Height + 2 * pad}+{x}+{y}");
+        return Magick(magick, [input, "-crop", geometry, "+repage", "-colorspace", "Gray", "-threshold", BilevelThreshold, "-type", "bilevel", "png:" + output], output);
+    }
+
+    static bool Magick(string magick, IEnumerable<string> args, string output)
+    {
+        var all = new List<string>();
+        if (Path.GetFileNameWithoutExtension(magick).Equals("magick", StringComparison.OrdinalIgnoreCase)) all.Add("convert");
+        all.AddRange(args);
+        var (code, _, _) = Run(magick, all, null);
+        return code == 0 && File.Exists(output);
+    }
+
     static (int Code, string Stdout, string Stderr) Run(string exe, IEnumerable<string> args, IReadOnlyDictionary<string, string>? env)
     {
         var psi = new ProcessStartInfo(exe)

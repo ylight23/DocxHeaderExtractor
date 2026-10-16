@@ -26,7 +26,7 @@ public sealed class ScanSourceTests : IDisposable
     }
 
     /// <summary>A 1x1 PNG.</summary>
-    static readonly byte[] Png = Convert.FromBase64String("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGNgYGD4DwABBAEAwS2OUAAAAABJRU5ErkJggg==");
+    static readonly byte[] Png = TestPng.Grey(1, 1);
 
     /// <summary>A document of <paramref name="pages"/> paragraphs that each hold one image of the page's size, and the given text paragraphs.</summary>
     string Build(string name, int pages, params string[] texts)

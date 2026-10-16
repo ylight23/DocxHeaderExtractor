@@ -92,6 +92,13 @@ public sealed class ScanOcrPreflight(string storeRoot)
         }
     }
 
+    /// <summary>The store entry that holds an evidence (its page images are in its pages directory).</summary>
+    public string EntryOf(ScanOcrEvidence evidence) => Path.Combine(storeRoot, evidence.SourceSha256[..16], evidence.ParametersSha256[..12]);
+
+    /// <summary>The stored image of one page of an entry.</summary>
+    public static string? PageImagePath(string entry, int page) =>
+        Directory.Exists(Path.Combine(entry, "pages")) ? Directory.GetFiles(Path.Combine(entry, "pages"), $"page-{page:000}.*").FirstOrDefault() : null;
+
     /// <summary>The evidence stored in an entry, when it is there and is for this source and these parameters.</summary>
     public static ScanOcrEvidence? TryLoad(string entry, string sourceSha256, string parametersSha256)
     {

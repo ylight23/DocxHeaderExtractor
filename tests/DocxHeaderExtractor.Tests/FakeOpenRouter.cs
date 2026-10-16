@@ -46,15 +46,18 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
 
     /// <summary>The facts calls of a first turn as the route's model makes them: a DOCX unit needs the core facts of every target (every page of
     /// them), so all pages; a PDF unit keeps the qualified single call over its range.</summary>
-    public static object[] FirstTurnFacts(JsonObject body, IReadOnlyList<string> targets) => AnswerVersion(body) == "P7_F1_V6_SELECT_OBJECTS_EXTENT_V1"
+    public static object[] FirstTurnFacts(JsonObject body, IReadOnlyList<string> targets) => AnswerVersion(body) != "P7_F1_V6_SELECT_OBJECTS_V1"
         ? FactsCalls(targets)
         : [new { index = 0, id = "call_" + targets[0], type = "function",
             function = new { name = "get_line_facts", arguments = JsonSerializer.Serialize(new { first = targets[0], last = targets[^1], offset = 0 }) } }];
 
     /// <summary>The answer format the request's system prompt names: the DOCX one carries heading extents.</summary>
-    public static string AnswerVersion(JsonObject body) =>
-        body["messages"]![0]!["content"]![0]!["text"]!.GetValue<string>().Contains("P7_F1_V6_SELECT_OBJECTS_EXTENT_V1", StringComparison.Ordinal)
-            ? "P7_F1_V6_SELECT_OBJECTS_EXTENT_V1" : "P7_F1_V6_SELECT_OBJECTS_V1";
+    public static string AnswerVersion(JsonObject body)
+    {
+        var system = body["messages"]![0]!["content"]![0]!["text"]!.GetValue<string>();
+        return system.Contains("P7_F1_V6_SELECT_OBJECTS_SCAN_V1", StringComparison.Ordinal) ? "P7_F1_V6_SELECT_OBJECTS_SCAN_V1"
+            : system.Contains("P7_F1_V6_SELECT_OBJECTS_EXTENT_V1", StringComparison.Ordinal) ? "P7_F1_V6_SELECT_OBJECTS_EXTENT_V1" : "P7_F1_V6_SELECT_OBJECTS_V1";
+    }
 
     /// <summary>As above, but each segment selects its first TWO targets; a GROUP request (the system prompt is the group prompt, the user
     /// message a plain string) is answered with one heading per run.</summary>

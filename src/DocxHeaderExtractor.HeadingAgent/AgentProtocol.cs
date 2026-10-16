@@ -28,6 +28,9 @@ internal static class AgentProtocol
     /// <summary>The answer format of a flavor that lets a SELECT carry headingExtent: the exact part of the target's text that is the heading
     /// (see <see cref="DocxAgentProtocol"/>). The PDF flavor keeps <see cref="SelectObjectsVersion"/>, so its prompt and parser are unchanged.</summary>
     public const string SelectExtentVersion = "P7_F1_V6_SELECT_OBJECTS_EXTENT_V1";
+    /// <summary>The answer format of a scanned source: a SELECT may also carry readingViewId, the reading of the line it takes (one of the readings
+    /// the evidence holds for that line), and its headingExtent is measured on that reading.</summary>
+    public const string SelectScanVersion = "P7_F1_V6_SELECT_OBJECTS_SCAN_V1";
     public const int MaxEvidenceRefs = 8, MaxInterpretations = 5, MaxFreeTextChars = 1000, MaxReasonChars = 300, MaxMissingNamed = 40;
 
     /// <summary>The instruction production sends: the owner's structural-heading instruction (Task A), adopted 2026-10-14 after the
@@ -240,7 +243,11 @@ internal static class AgentProtocol
     /// <param name="Detail">For a refused headingExtent: what the program measured (the text at the offsets given, where the text given occurs).</param>
     public sealed record SelectReply(bool Ok, string? Failure, string? Status, IReadOnlyDictionary<string, string> Values, Clarification? Clarification,
         string? IncompleteReason, IReadOnlyList<string> Missing, IReadOnlyDictionary<string, IReadOnlyList<string>>? Refs = null, string? Analysis = null,
-        IReadOnlyDictionary<string, string>? Reasons = null, IReadOnlyDictionary<string, HeadingExtent>? Extents = null, string? Detail = null);
+        IReadOnlyDictionary<string, string>? Reasons = null, IReadOnlyDictionary<string, HeadingExtent>? Extents = null, string? Detail = null)
+    {
+        /// <summary>The readingViewId of each SELECT that gave one (scanned sources only).</summary>
+        public IReadOnlyDictionary<string, string> ReadingChoices { get; init; } = new Dictionary<string, string>();
+    }
 
     /// <summary>A heading's extent inside its line: [Start, End) in UTF-16 code units of the line's text, and that exact text.</summary>
     public sealed record HeadingExtent(int Start, int End, string Text);
@@ -270,7 +277,8 @@ internal static class AgentProtocol
     /// An extent is only checked, never moved: its offsets must lie inside the target's text on word boundaries, and its text must be exactly the
     /// text at those offsets.</param>
     public static SelectReply ParseSelect(string reply, IReadOnlyDictionary<string, int> shownOrder, IReadOnlyList<string> decide,
-        string version = SelectObjectsVersion, IReadOnlyDictionary<string, string>? targetTexts = null)
+        string version = SelectObjectsVersion, IReadOnlyDictionary<string, string>? targetTexts = null,
+        IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>>? readings = null)
     {
         SelectReply Fail(string code, IReadOnlyList<string>? missing = null, string? detail = null) =>
             new(false, code, null, new Dictionary<string, string>(), null, null, missing ?? Array.Empty<string>(), Detail: detail);
@@ -326,12 +334,13 @@ internal static class AgentProtocol
             var refsByAlias = new Dictionary<string, IReadOnlyList<string>>(StringComparer.Ordinal);
             var reasons = new Dictionary<string, string>(StringComparer.Ordinal);
             var extents = new Dictionary<string, HeadingExtent>(StringComparer.Ordinal);
+            var readingChoices = new Dictionary<string, string>(StringComparer.Ordinal);
             if (!root.TryGetProperty("decisions", out var ds) || ds.ValueKind != JsonValueKind.Array) return Fail("DECISIONS_MISSING");
             var decideSet = decide.ToHashSet(StringComparer.Ordinal);
             foreach (var d in ds.EnumerateArray())
             {
                 if (d.ValueKind != JsonValueKind.Object || d.EnumerateObject().Any(p => p.Name is not ("alias" or "decision" or "evidenceRefs" or "reason")
-                        && !(p.Name == "headingExtent" && targetTexts is not null)))
+                        && !(p.Name == "headingExtent" && targetTexts is not null) && !(p.Name == "readingViewId" && readings is not null)))
                     return Fail("DECISION_KEYS_INVALID");
                 var alias = Str(d, "alias");
                 if (alias is null) return Fail("ALIAS_MISSING");
@@ -348,10 +357,22 @@ internal static class AgentProtocol
                     if (rs.ValueKind != JsonValueKind.String || rs.GetString()!.Length > MaxReasonChars) return Fail("REASON_INVALID");
                     reasons[alias] = rs.GetString()!;
                 }
+                string? readingView = null;
+                if (d.TryGetProperty("readingViewId", out var rv))
+                {
+                    if (value != "SELECT") return Fail("READING_NOT_ON_SELECT");
+                    var available = readings!.TryGetValue(alias, out var r) ? r : new Dictionary<string, string>();
+                    if (rv.ValueKind != JsonValueKind.String || !available.ContainsKey(rv.GetString()!))
+                        return Fail("READING_VIEW_UNKNOWN", detail: alias + ": readingViewId must be one of " + string.Join(", ", available.Keys));
+                    readingView = rv.GetString()!;
+                    readingChoices[alias] = readingView;
+                }
                 if (d.TryGetProperty("headingExtent", out var he))
                 {
                     if (value != "SELECT") return Fail("HEADING_EXTENT_NOT_ON_SELECT");
-                    if (!targetTexts!.TryGetValue(alias, out var targetText)) return Fail("UNEXPECTED_ALIAS");
+                    string? targetText = null;
+                    if (readingView is not null) targetText = readings![alias][readingView];
+                    else if (!targetTexts!.TryGetValue(alias, out targetText)) return Fail("UNEXPECTED_ALIAS");
                     var (extent, code, detail) = ReadExtent(he, targetText);
                     if (extent is null) return Fail(code!, detail: alias + ": " + detail);
                     extents[alias] = extent;
@@ -362,7 +383,7 @@ internal static class AgentProtocol
             var missing = decide.Where(a => !values.ContainsKey(a)).ToArray();
             if (missing.Length > 0) return Fail("COVERAGE_INCOMPLETE", missing);
             if (status == "INCOMPLETE" && values.Values.All(v => v != "UNRESOLVED")) return Fail("INCOMPLETE_WITHOUT_UNRESOLVED");
-            return new SelectReply(true, null, status, values, null, reason, Array.Empty<string>(), refsByAlias, analysis, reasons, extents);
+            return new SelectReply(true, null, status, values, null, reason, Array.Empty<string>(), refsByAlias, analysis, reasons, extents) { ReadingChoices = readingChoices };
         }
     }
 
@@ -400,7 +421,9 @@ internal static class AgentProtocol
     /// <summary>The message sent with a repair turn: the refusal code and what a valid answer needs; for COVERAGE_INCOMPLETE the targets that got
     /// no decision. It names no decision.</summary>
     public static string RepairMessage(string failure, IReadOnlyList<string>? missing, string? detail = null) =>
-        failure.StartsWith("PROTOCOL:HEADING_EXTENT_", StringComparison.Ordinal)
+        failure == "PROTOCOL:READING_VIEW_UNKNOWN"
+            ? "Your answer was refused (" + failure + "): " + (detail ?? "a readingViewId names no reading of its line") + ". Take readingViewId only from the views get_text_views lists for that line, or leave it out to take the line as the request shows it. Send the complete answer again as exactly one JSON object."
+        : failure.StartsWith("PROTOCOL:HEADING_EXTENT_", StringComparison.Ordinal)
             ? "Your answer was refused (" + failure + "): " + (detail ?? "a headingExtent does not match its target's text")
               + ". start and end are offsets in UTF-16 code units into the target's text exactly as the request and get_line_facts show it (a line break is one space there); text must be exactly that part of the target's text. Send the complete answer again as exactly one JSON object."
         : missing is { Count: > 0 } && failure == "PROTOCOL:TOOL_FACTS_INCOMPLETE"

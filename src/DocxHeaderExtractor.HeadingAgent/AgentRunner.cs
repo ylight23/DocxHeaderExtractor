@@ -83,7 +83,7 @@ internal sealed record AgentUnitOutcome(string UnitId, string Status, string? Fa
     int ToolCallsEmitted, int ToolCallsSucceeded, bool FenceUnwrapped, string? Analysis, IReadOnlyDictionary<string, string>? Reasons,
     string? RepairedFrom, int RepairsUsed, int TransportRetries, IReadOnlyList<string> RequestSha256s,
     IReadOnlyDictionary<string, HeadingExtent>? Extents = null, IReadOnlyList<string>? TargetsWithoutFacts = null, int FactsResultsCut = 0,
-    IReadOnlyList<string>? DetailEvidenceAliases = null);
+    IReadOnlyList<string>? DetailEvidenceAliases = null, IReadOnlyDictionary<string, string>? ReadingChoices = null);
 
 /// <summary>
 /// One unit of the D4.12 method as a conversation (ported from the qualified V6 RunUnit, arm TOOLFACTS_ANALYSIS_V3, with json_object on every
@@ -123,17 +123,20 @@ internal static class AgentUnit
         var fenceUnwrapped = false;
         var coverageAsked = false;
         var targetTexts = flavor.HeadingExtents ? ordered.ToDictionary(a => a, a => lines[tools.PositionOf(a)].Text, StringComparer.Ordinal) : null;
+        var readings = ordered.Select(a => (a, r: flavor.Readings(source, a))).Where(x => x.r is not null).ToDictionary(x => x.a, x => x.r!, StringComparer.Ordinal);
+        IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>>? readingsOrNull = readings.Count > 0 ? readings : null;
         var forcedChoices = new Queue<string>();
         var history = new JsonArray();
         var requestShas = new List<string>();
         var issuedIds = new HashSet<string>(StringComparer.Ordinal);
 
         AgentUnitOutcome Done(string status, string? failure, IReadOnlyDictionary<string, string>? decisions = null, string? analysis = null,
-            IReadOnlyDictionary<string, string>? reasons = null, IReadOnlyDictionary<string, HeadingExtent>? extents = null) =>
+            IReadOnlyDictionary<string, string>? reasons = null, IReadOnlyDictionary<string, HeadingExtent>? extents = null,
+            IReadOnlyDictionary<string, string>? readingChoices = null) =>
             new(unitId, status, failure, decisions ?? ordered.ToDictionary(a => a, _ => "UNRESOLVED", StringComparer.Ordinal), posts, emitted, okCalls,
                 fenceUnwrapped, analysis, reasons, repairedFrom, repairsUsed, retriesUsed, requestShas, extents,
                 ordered.Where(a => !tools.FactsReturnedFor.Contains(a)).ToArray(), tools.FactsResultsCut,
-                ordered.Where(tools.DetailEvidenceAliases.Contains).ToArray());
+                ordered.Where(tools.DetailEvidenceAliases.Contains).ToArray(), readingChoices);
 
         // Repairs have no limit of their own: the budget's call limit stops a unit that keeps failing.
         bool TryRepair(string failure, IReadOnlyList<string>? missing = null, string? detail = null)
@@ -252,7 +255,7 @@ internal static class AgentUnit
             var observed = shownAliases.Concat(tools.ObservedAliases).Distinct(StringComparer.Ordinal).ToDictionary(a => a, tools.PositionOf, StringComparer.Ordinal);
             var content = reply.Content ?? "";
             if (TryUnwrapFence(content, out var inner)) { content = inner; fenceUnwrapped = true; }
-            var parsed = ParseSelect(content, observed, ordered, flavor.AnswerVersion, targetTexts);
+            var parsed = ParseSelect(content, observed, ordered, flavor.AnswerVersion, targetTexts, readingsOrNull);
             if (!parsed.Ok)
             {
                 history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
@@ -277,7 +280,7 @@ internal static class AgentUnit
                 }
                 return Done("INCOMPLETE", coverageAsked ? "COVERAGE:CORE_FACTS_MISSING" : "BUDGET:CORE_FACTS_UNCOVERED");
             }
-            return Done(parsed.Status!, null, parsed.Values, parsed.Analysis, parsed.Reasons, parsed.Extents);
+            return Done(parsed.Status!, null, parsed.Values, parsed.Analysis, parsed.Reasons, parsed.Extents, parsed.ReadingChoices);
         }
         throw new InvalidOperationException("AGENT_TURN_LOOP_EXHAUSTED");
     }

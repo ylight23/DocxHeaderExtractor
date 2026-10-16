@@ -76,7 +76,10 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         }, ct);
     }
 
-    AgentUnit.Model Traced(AgentModel model)
+    AgentUnit.Model Traced(AgentModel model) => Traced(model, onModelReply);
+
+    /// <summary>The model of a run with the diagnostics hook around it: every reply, with the tool results its request added, goes to the hook.</summary>
+    internal static AgentUnit.Model Traced(AgentModel model, Action<ModelReply>? onModelReply)
     {
         // Each request carries the whole conversation of its unit, so the tool results a reply has not reported yet are the new tail.
         var reported = new Dictionary<string, int>(StringComparer.Ordinal);
@@ -147,10 +150,14 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         {
             unit = o.UnitId, decisions = o.Decisions, reasons = o.Reasons, analysis = o.Analysis,
             headingExtents = o.Extents is { Count: > 0 } e ? e.ToDictionary(kv => kv.Key, kv => new { start = kv.Value.Start, end = kv.Value.End, text = kv.Value.Text }) : null,
+            readingViewIds = o.ReadingChoices is { Count: > 0 } rc ? rc : null,
             coreFactsCoverage = new { targetsWithoutFacts = o.TargetsWithoutFacts ?? Array.Empty<string>(), factsResultsCut = o.FactsResultsCut },
             detailEvidenceCoverage = new { aliasesRead = o.DetailEvidenceAliases ?? Array.Empty<string>() },
         }, Compact)).ToArray();
         // Only the extent of a line that its own unit selected counts; every unit decides its own targets, so no alias has two.
+        var readingChoices = complete.Where(o => o.ReadingChoices is not null)
+            .SelectMany(o => o.ReadingChoices!.Where(kv => o.Decisions.GetValueOrDefault(kv.Key) == "SELECT"))
+            .ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.Ordinal);
         var extents = complete.Where(o => o.Extents is not null)
             .SelectMany(o => o.Extents!.Where(kv => o.Decisions.GetValueOrDefault(kv.Key) == "SELECT"))
             .ToDictionary(kv => kv.Key, kv => new DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan(kv.Value.Start, kv.Value.End), StringComparer.Ordinal);
@@ -162,6 +169,6 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         answers = answers.Concat(grouping.Answers.Select(a => JsonSerializer.Serialize(new { grouping = a }, Compact))).ToArray();
         failures.AddRange(grouping.Failures);
         return new HeadingSelection(selected, complete.Length, outcomes.Length, failures, answers, budget.Calls, costOf(), source.Flavor.PlacementContext(source), grouping.Groups,
-            extents.Count > 0 ? extents : null);
+            extents.Count > 0 ? extents : null) { HeadingReadings = readingChoices.Count > 0 ? readingChoices : null };
     }
 }

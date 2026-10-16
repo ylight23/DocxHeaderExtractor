@@ -45,7 +45,12 @@ public sealed record HeadingSelection(
     double ProviderCostUsd,
     HeadingPlacementContext? Placement = null,
     IReadOnlyList<IReadOnlyList<string>>? Groups = null,
-    IReadOnlyDictionary<string, TextOffsetSpan>? HeadingExtents = null);
+    IReadOnlyDictionary<string, TextOffsetSpan>? HeadingExtents = null)
+{
+    /// <summary>Optional, scanned sources only: the reading a selected line was taken in (a view id of the scan's evidence), by alias. Its extent,
+    /// when there is one, is measured on that reading. A selected line without an entry is taken in its primary reading.</summary>
+    public IReadOnlyDictionary<string, string>? HeadingReadings { get; init; }
+}
 
 /// <summary>
 /// Measurements of the document handed to the placement pass: the style table of the whole document and the style of each line (JSON objects as
