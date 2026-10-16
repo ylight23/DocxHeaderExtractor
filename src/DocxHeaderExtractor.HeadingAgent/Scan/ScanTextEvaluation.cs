@@ -93,7 +93,7 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
                 }
                 var ids = gold.Select(g => "T" + g.N.ToString("000", System.Globalization.CultureInfo.InvariantCulture)).ToArray();
                 var (texts, budget) = ScanTranscription.Transcribe(crops, ids, keys, Path.Combine(storeRoot, "vlm-transcribe"), apiKey,
-                    n => new AgentBudget(n * (1 + AgentUnit.TransportRetries), ceilingUsd ?? n * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes)), factory, failures, method, MaxLinesPerRequest, parallelism: 2);
+                    n => new AgentBudget(n * (2 + AgentUnit.TransportRetries), ceilingUsd ?? n * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes)), factory, failures, method, MaxLinesPerRequest, parallelism: 2);
                 calls += budget.Calls;
                 cost += budget.ActualUsd;
                 for (var k = 0; k < gold.Count; k++) readings[k][method] = texts[k];
@@ -109,7 +109,10 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
         {
             var ocrText = readings[k].GetValueOrDefault(Original);
             var t = readings[k].GetValueOrDefault(VlmEnlarged);
-            readings[k][Shown] = ocrText is not null && ScanTranscription.Guard(t, ocrText) == ScanTranscription.Accepted ? t : ocrText;
+            var primary = evidence.Views.First(v => v.Spec.ViewId == Original);
+            var neighbours = primary.Pages.FirstOrDefault(p => p.Page == gold[k].Page) is { } page && MatchLine(primary, gold[k]) is { } own
+                ? ScanTranscription.Neighbours(page, own).Select(n => n.Text) : [];
+            readings[k][Shown] = ocrText is not null && ScanTranscription.Guard(t, ocrText, neighbours) == ScanTranscription.Accepted ? t : ocrText;
         }
         var lines = gold.Select((g, k) => new LineResult(g.N, g.Page, g.Text, (IReadOnlyDictionary<string, string?>)readings[k])).ToArray();
         var methods = new[] { Original, Upscaled, BestView, VlmBilevel, VlmEnlarged, VlmEnlargedBilevel, Shown };
@@ -122,11 +125,13 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
     }
 
     /// <summary>The reading of the view's line that overlaps the gold box most, when it overlaps enough to be the same line.</summary>
-    static string? Match(OcrView view, GoldLine g)
+    static string? Match(OcrView view, GoldLine g) => MatchLine(view, g)?.Text;
+
+    static OcrLine? MatchLine(OcrView view, GoldLine g)
     {
         var page = view.Pages.FirstOrDefault(p => p.Page == g.Page);
-        var best = page?.Lines.Select(l => (Iou: Iou(l.Box, g.Box), l.Text)).MaxBy(x => x.Iou);
-        return best is { } b && b.Iou >= MatchIou ? b.Text : null;
+        var best = page?.Lines.Select(l => (Iou: Iou(l.Box, g.Box), Line: l)).MaxBy(x => x.Iou);
+        return best is { } b && b.Iou >= MatchIou ? b.Line : null;
     }
 
     static double Iou(PixelBox a, PixelBox b)

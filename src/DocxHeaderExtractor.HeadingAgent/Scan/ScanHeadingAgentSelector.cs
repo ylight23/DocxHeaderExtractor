@@ -63,7 +63,10 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
         var ocr = new ScanOcrPreflight(Path.Combine(storeRoot, OcrFolder));
         var evidence = ocr.Run(docxPath, ocrOptions);
         var seer = new ScanVisionPreflight(Path.Combine(storeRoot, "vlm"), handlerFactory);
-        var observations = vision ? seer.Run(evidence, ocr.EntryOf(evidence), apiKey, visionOptions) : [];
+        // With the blind transcription, the vision preflight asks no reading choices: choosing among OCR readings drew the model to a wrong one
+        // (4 of 11 right on 023's headings), and the agent then took an OCR reading the transcription had read right.
+        var seeOptions = visionOptions ?? (transcribe ? new ScanVisionPreflight.Options(MaxReadingsPerPage: 0) : null);
+        var observations = vision ? seer.Run(evidence, ocr.EntryOf(evidence), apiKey, seeOptions) : [];
         var transcriptions = transcribe
             ? new ScanTranscriptionPreflight(storeRoot, handlerFactory).Run(evidence, ocr.EntryOf(evidence), apiKey, transcriptionOptions)
             : null;

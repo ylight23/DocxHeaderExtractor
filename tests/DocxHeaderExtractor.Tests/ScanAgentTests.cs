@@ -381,14 +381,20 @@ public sealed class ScanAgentTests : IDisposable
 
     [Theory]
     [InlineData("Mục 3\nCHỨNG THỰC CHỮ KÝ", "CHỨNG THỰC CHỮ KÝ", ScanTranscription.RejectedMultiline)]   // 023, line 41 at 1x
-    [InlineData("Mục 3 CHỨNG THỰC CHỮ KÝ", "CHỨNG THỰC CHỮ KÝ", ScanTranscription.RejectedLonger)]
+    [InlineData("Mục 3 CHỨNG THỰC CHỮ KÝ", "CHỨNG THỰC CHỮ KÝ", ScanTranscription.RejectedNeighbour, "Mục 3")]   // the line above, no line break
     [InlineData("Chương III", "Chương II", ScanTranscription.Accepted)]
-    [InlineData("Mục 1", "¬ MueL n ca", ScanTranscription.Accepted)]
+    [InlineData("Mục 1", "¬ MueL n ca", ScanTranscription.Accepted, "CHỨNG THỰC CHỮ KÝ")]
     [InlineData("Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc", "Điều 4. Tham quyền và trách nhiệm cap bản sao từ sô gốc", ScanTranscription.Accepted)]
+    // 023 p3: OCR made a line of specks over the heading; its crop shows the heading, which has its own line.
+    [InlineData("Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc", ". À ` là on & z ` AK", ScanTranscription.RejectedNeighbour, "Điều 4. Tham quyền và trách nhiệm cap bản sao từ sô gốc")]
+    [InlineData("Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc", ". À ` là on & z ` AK", ScanTranscription.RejectedLonger)]
+    // A form's leaders: the OCR dropped dots, which are not counted.
+    [InlineData("- Ông/bà....................................Giấy chứng minh nhân dân/Hộ chiếu", "- Ông/bà.............. ri Giấy chứng minh nhân dân/Hộ chiếu", ScanTranscription.Accepted, "(3) số... ...,")]
+    [InlineData("(Bằng chữ...................................................)", "00 1... ................ )", ScanTranscription.Accepted)]
     [InlineData("   ", "Chương I", ScanTranscription.RejectedEmpty)]
     [InlineData(null, "Chương I", ScanTranscription.NotTranscribed)]
-    public void A_transcription_is_a_reading_only_on_one_line_and_not_much_longer_than_the_ocr(string? transcription, string ocr, string status) =>
-        Assert.Equal(status, ScanTranscription.Guard(transcription, ocr));
+    public void A_transcription_is_a_reading_only_on_one_line_its_own_and_not_much_longer_than_the_ocr(string? transcription, string ocr, string status, string? neighbour = null) =>
+        Assert.Equal(status, ScanTranscription.Guard(transcription, ocr, neighbour is null ? null : [neighbour]));
 
     [Fact]
     public void An_accepted_transcription_is_the_text_shown_and_every_other_reading_stays()
@@ -517,5 +523,29 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal(3, planned);
         Assert.Equal(3, budget.Calls);
         Assert.Equal(ids.Select(id => "Điều " + id), texts);
+    }
+
+    [Fact]
+    public void A_reply_in_the_wrong_form_is_asked_once_more_and_a_second_one_is_recorded()
+    {
+        var crop = Path.Combine(dir, "crop.png");
+        File.WriteAllBytes(crop, TestPng.Grey(20, 10));
+        string Good(JsonObject body) => JsonSerializer.Serialize(new { protocolVersion = ScanTranscription.PromptVersion, lines = new[] { new { id = "T001", text = "Mục 1" } } });
+        var once = new FakeOpenRouter((body, post) => (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = post == 1 ? "{\"lines\":[]}" : Good(body) }, "stop")));
+        var failures = new List<string>();
+
+        var (texts, _) = ScanTranscription.Transcribe([crop], ["T001"], ["k1"], Path.Combine(dir, "a"), "sk-test", n => new AgentBudget(4 * n, 1), () => once, failures, "T", 10, 1);
+
+        Assert.Empty(failures);
+        Assert.Equal(["Mục 1"], texts);
+        Assert.Equal(2, once.Posts);
+
+        var never = new FakeOpenRouter((body, post) => (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = "{\"lines\":[]}" }, "stop")));
+        (texts, _) = ScanTranscription.Transcribe([crop], ["T001"], ["k2"], Path.Combine(dir, "b"), "sk-test", n => new AgentBudget(4 * n, 1), () => never, failures, "T", 10, 1);
+
+        Assert.Equal([null], texts);
+        Assert.Equal(2, never.Posts);
+        Assert.Equal("T-B001:PROTOCOL_VERSION_INVALID", failures.Single());
+        Assert.Empty(Directory.Exists(Path.Combine(dir, "b")) ? Directory.GetFiles(Path.Combine(dir, "b")) : []);   // nothing stored
     }
 }

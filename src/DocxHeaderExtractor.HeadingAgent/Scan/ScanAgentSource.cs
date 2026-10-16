@@ -79,7 +79,9 @@ internal sealed class ScanAgentSource : IAgentSource
         {
             visionModel ??= page.Model;
             foreach (var o in page.Lines) if (byLineId.TryGetValue(o.LineId, out var alias)) seen[alias] = o;
-            foreach (var c in page.Readings) if (byLineId.TryGetValue(c.LineId, out var alias)) chosen[alias] = c;
+            // A choice among OCR readings is evidence only where no blind transcription was made: the two are not shown side by side.
+            if (transcriptions is null)
+                foreach (var c in page.Readings) if (byLineId.TryGetValue(c.LineId, out var alias)) chosen[alias] = c;
         }
 
         Facts = ComputeFacts();

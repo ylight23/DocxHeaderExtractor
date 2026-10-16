@@ -137,8 +137,13 @@ core-facts gate as DOCX.
   vision model, which sees only the crops, never an OCR reading. Batches of at most 10 crops under the byte cap, stored
   in `<root>/vlm-transcribe/` by what the crops are made of, read back on the next run. A transcription is a reading
   (`vlm-transcribed`, origin `VLM_TRANSCRIBED`) only when it passes two checks against the primary OCR reading of the
-  same box: no line break (`REJECTED_MULTILINE`: the model copied the line above, measured twice in 120 at 1x), and not
-  6 or more characters, or 1.5 times, longer (`REJECTED_LONGER_THAN_OCR`). A rejected one is kept as evidence.
+  same box and of the lines next to it (the two before and after, and any line sharing part of its height), compared as
+  letters and digits without diacritics, so that dots a form's leaders lost in OCR do not count: no line break
+  (`REJECTED_MULTILINE`), not closer to a neighbour, or to a neighbour joined to the line, than to the line itself
+  (`REJECTED_NEIGHBOUR_TEXT`: the line above caught by the margin, or a line of specks OCR made over a heading, whose
+  crop shows the heading again), and not 10 letters and 2 times longer (`REJECTED_LONGER_THAN_OCR`). A rejected one is
+  kept as evidence. A reply that is not the expected object or not text is asked once more. With the transcription,
+  the vision preflight asks no reading choices, and choices are not shown.
 - A target is one line of the primary view (`ocr-original`), alias `P003-L012`. Its text is the accepted transcription,
   else that view's reading; the facts say which (`text.shownReading`, `text.transcription`, and the OCR views that read
   the same), and `get_text_views` lists every reading, the transcription and a rejected one with its reason.
@@ -194,6 +199,7 @@ Measured with the vision transcription (Windows, commit `004bbdae`, report in `.
 | better of the two OCR views (oracle) | 84/120 (70%) | 1.70% |
 | vision model, blind, crop as sent by the vision preflight | 118/120 (98%) | 0.27% |
 | vision model, blind, crop enlarged 2x | 120/120 (100%) | 0.00% |
+| vision model, blind, crop enlarged 2x in black and white (6.6x fewer bytes) | 118/120 (98%) | 0.27% |
 
 The two misses at 1x read every letter right but added the line above (`Mục 3⏎CHỨNG THỰC CHỮ KÝ`): the crop's margin
 caught part of it. Hence the transcription preflight's checks and the 2x scale. The eval also scores what the route
@@ -229,6 +235,13 @@ where the tools are missing, so a green suite on a machine without them checks n
 
 ## 7. Not done yet, and known limits
 
+- Second live run (`ket-qua-023-v4.json`, commit `37417097`): no budget refusal; 1,019 of 1,069 transcriptions passed
+  the first checks. Against the gold: 83/83 heading lines shown from the transcription exact; the 8 wrong ones were
+  shown from OCR, chosen by the agent where the vision model's choice among OCR readings had confirmed a wrong one
+  (`DIEU KHOẢN THI HANH`), or untranscribed (two `PROTOCOL_VERSION_INVALID` batches and one `CONTENT_NOT_TEXT`). Of the
+  47 refused as longer, 40 were right transcriptions of form lines whose leaders OCR had shortened, and the rest the
+  heading read again from a line of specks: hence the letter-based length, the neighbour check, the second ask, and
+  no reading choices. `SEG-018` failed with `REASONING_EXHAUSTED` (`SEG-001` on the run before).
 - First live run with the transcription (`ket-qua-023-v3.json`, commit `876634af`): grey 2x crops of body lines fit
   about five to a request, so 218 batches were cut where the ceiling was planned for 144 from the line count; 65 were
   refused (`BUDGET:RESERVE_OVER_CEILING`) and 332 of 1,084 lines went untranscribed. Fixed: the budget is made from the
