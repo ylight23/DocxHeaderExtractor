@@ -236,6 +236,15 @@ the vision model reads when it is shown only the crop: the crop the vision prefl
   default; `dhx scan-extract --vision` asks them too, shown beside the measurement (`typography.vision`). Line height
   and alignment were measured already (layout facts).
 
+## 5d. Facts in the request (scan route only)
+
+The V6 method asks the model to read the targets' facts through `get_line_facts` before it answers: one round trip
+of every unit. On `011` the conversation took about as long as its slowest unit (`SEG-000`: 6 calls one after
+another, 250 s of 309 s; median call 20.7 s). On the scan route (owner's decision), the first request now carries
+`targetFacts`: the targets' facts, the same objects `get_line_facts` returns, entered into the coverage ledger as read.
+The model may answer on its first turn; `get_line_facts` still gives the facts of any other line. PDF and DOCX keep
+the forced facts call (`IAgentFlavor.PayloadFacts` is null for them). The selector id says `facts-in-request`.
+
 ## 5b. Speed
 
 - OCR: every page of both views is one queue of engine runs (one thread each), the upscaled pages first since they take

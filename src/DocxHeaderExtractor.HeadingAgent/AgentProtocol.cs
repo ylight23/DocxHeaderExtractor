@@ -116,7 +116,7 @@ internal static class AgentProtocol
     /// <summary>The user message of one unit: the instruction, the document hash, the targets and context (alias, page, text), the target range
     /// and the document style table.</summary>
     public static string Payload(string documentSha256, string unitId, IReadOnlyList<string> decide, IReadOnlyList<AgentSourceLine> shownLines, JsonObject documentStyles,
-        string instruction = Instruction, IAgentFlavor? flavor = null)
+        string instruction = Instruction, IAgentFlavor? flavor = null, JsonArray? targetFacts = null)
     {
         flavor ??= PdfAgentFlavor.Instance;
         var set = decide.ToHashSet(StringComparer.Ordinal);
@@ -138,6 +138,7 @@ internal static class AgentProtocol
             ["context"] = shownLines.Where(l => !set.Contains(l.Alias)).Select(Item).ToList(),
             ["documentStyles"] = documentStyles,
         };
+        if (targetFacts is not null) payload["targetFacts"] = targetFacts;
         return JsonSerializer.Serialize(payload, Options);
     }
 

@@ -46,6 +46,10 @@ internal interface IAgentFlavor
     /// token; one unit lost in each of two live runs on 023) and TIMEOUT_OR_CANCELLED (the call did not end in time; one unit lost in the next).
     /// Empty for PDF and DOCX, whose runs stay as they were qualified.</summary>
     IReadOnlyList<string> RetryOnceCodes => [];
+    /// <summary>The core facts of the targets, put into the first request (targetFacts) so that the model need not ask for them, in the form the
+    /// facts tool returns them; null when the model reads them through the facts tool (PDF, DOCX). The scan route only (owner's decision
+    /// 2026-10-16: one round trip less per unit, the conversation's time being the longest unit's chain of calls).</summary>
+    JsonArray? PayloadFacts(IAgentSource source, IReadOnlyList<string> targets) => null;
     JsonArray ToolDefinitions();
     IAgentTools CreateTools(IAgentSource source);
     /// <summary>One line of the targets or the context in the unit payload.</summary>
@@ -91,4 +95,7 @@ internal interface IAgentTools
     /// <summary>The detail evidence the model asked for: every alias that a successful call of a tool other than the facts tool showed. Not required
     /// of any target; it records what the model chose to read.</summary>
     IReadOnlySet<string> DetailEvidenceAliases { get; }
+    /// <summary>Enters facts the request carried into the coverage ledger, with the aliases they show (repetition samples) as observed: the model
+    /// has them from the first turn, as if a facts call had returned them.</summary>
+    void NoteRequestFacts(IEnumerable<string> aliases, IEnumerable<string> shown);
 }

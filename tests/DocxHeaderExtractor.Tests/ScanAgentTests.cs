@@ -236,7 +236,7 @@ public sealed class ScanAgentTests : IDisposable
         var part = second.Parts.Single();
         Assert.Equal((1, "P001-ocr-original-L004", ScanOcrPreflight.UpscaledView, "OCR_DERIVED"), (part.Page, part.LineId, part.ViewId, part.ReadingOrigin));
         Assert.Equal(new PixelBox(380, 330, 520, 40), part.Box);
-        Assert.StartsWith("scan-v6:" + ScanAgentSource.Version + ":instruction-", result.SelectorId, StringComparison.Ordinal);
+        Assert.StartsWith("scan-v6:" + ScanAgentSource.Version + ":facts-in-request:instruction-", result.SelectorId, StringComparison.Ordinal);
         Assert.Equal(ScanAgentProtocol.SystemPrompt, handler.Bodies[0]["messages"]![0]!["content"]![0]!["text"]!.GetValue<string>());
     }
 
@@ -622,5 +622,37 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal("VLM_OBSERVATION", t["vision"]!["origin"]!.GetValue<string>());
         Assert.False(source.Facts["P001-L002"]["typography"]!["measured"]!.GetValue<bool>());
         Assert.Contains("MEASURED_ON_IMAGE", ScanAgentProtocol.SystemPrompt, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void A_scan_unit_carries_its_targets_facts_so_an_answer_on_the_first_turn_is_complete()
+    {
+        var source = new ScanAgentSource(Evidence(), [], Transcriptions());
+        var budget = HeadingAgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction);
+        // The model answers at once, with no tool call: the facts were in the request.
+        var handler = new FakeOpenRouter((body, post) =>
+        {
+            var payload = JsonNode.Parse(body["messages"]![1]!["content"]![0]!["text"]!.GetValue<string>())!;
+            var targets = payload["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).ToArray();
+            Assert.Equal(targets, payload["targetFacts"]!.AsArray().Select(f => f!["alias"]!.GetValue<string>()));
+            Assert.Equal(source.Facts[targets[0]].ToJsonString(), payload["targetFacts"]![0]!.ToJsonString());
+            var answer = JsonSerializer.Serialize(new
+            {
+                protocolVersion = FakeOpenRouter.AnswerVersion(body), status = "COMPLETE",
+                decisions = targets.Select(a => a == "P001-L002" ? (object)new { alias = a, decision = "SELECT", evidenceRefs = new[] { a } } : new { alias = a, decision = "NOT_SELECT" }),
+            });
+            return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = answer }, "stop"));
+        });
+        using var model = new AgentModel(handler, "sk-test", budget);
+
+        var outcome = AgentUnit.Run(source, 0, model.Turn, budget, retryDelayMs: 0, ScanAgentProtocol.Instruction);
+
+        Assert.Equal(("COMPLETE", 1), (outcome.Status, outcome.Posts));
+        Assert.Empty(outcome.TargetsWithoutFacts!);
+        Assert.Equal("SELECT", outcome.Decisions["P001-L002"]);
+        Assert.Contains("the request carries targetFacts", ScanAgentProtocol.SystemPrompt, StringComparison.Ordinal);
+        // PDF and DOCX keep reading the facts through the tool.
+        Assert.Null(((IAgentFlavor)PdfAgentFlavor.Instance).PayloadFacts(source, ["P001-L002"]));
+        Assert.Null(((IAgentFlavor)DocxAgentFlavor.Instance).PayloadFacts(source, ["P001-L002"]));
     }
 }

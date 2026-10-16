@@ -76,7 +76,7 @@ internal abstract class AgentToolHost : IAgentTools
     public int CacheHits => ledger.Count(c => c.CacheOf is not null);
     public int DocumentLines => lines.Count;
     public int PositionOf(string alias) => index[alias];
-    public bool FactsWereRead => ledger.Any(c => c.Tool == FactsToolName && c.Status == "OK");
+    public bool FactsWereRead => requestFacts || ledger.Any(c => c.Tool == FactsToolName && c.Status == "OK");
     public IReadOnlySet<string> FactsReturnedFor => factsFor;
     public int FactsResultsCut => factsCut;
     public IReadOnlySet<string> DetailEvidenceAliases => ledger.Where(c => c.Status == "OK" && c.Tool != FactsToolName)
@@ -89,6 +89,15 @@ internal abstract class AgentToolHost : IAgentTools
         pendingCut |= cut;
     }
     int IAgentTools.MaxResultBytes => MaxResultBytes;
+
+    bool requestFacts;
+
+    public void NoteRequestFacts(IEnumerable<string> aliases, IEnumerable<string> shown)
+    {
+        requestFacts = true;
+        factsFor.UnionWith(aliases);
+        observed.UnionWith(shown);
+    }
 
     /// <summary>The name a result and the ledger carry: a registered name, or null. A name Qwen made up is never echoed back, so a result's
     /// size does not depend on it (D4.11b).</summary>
