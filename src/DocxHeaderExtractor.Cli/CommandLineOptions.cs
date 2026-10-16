@@ -10,6 +10,8 @@ public sealed class CommandLineOptions
     public string Command { get; private set; } = "extract";
     public List<string> Inputs { get; } = [];
     public string? OutputPath { get; private set; }
+    /// <summary>scan-text-eval: the gold transcription of the lines to read (SCAN_LINE_TEXT_GOLD_V1).</summary>
+    public string? GoldPath { get; private set; }
     public OutlineFormat Format { get; private set; } = OutlineFormat.Json;
     public bool Quiet { get; private set; }
 
@@ -47,7 +49,7 @@ public sealed class CommandLineOptions
         int i = 0;
         // Only verbs the CLI actually dispatches. Anything else is treated as an input path
         // by the default extract route.
-        if (!args[0].StartsWith('-') && args[0] is "extract" or "help" or "info" or "scan-ocr" or "scan-extract")
+        if (!args[0].StartsWith('-') && args[0] is "extract" or "help" or "info" or "scan-ocr" or "scan-extract" or "scan-text-eval")
         {
             o.Command = args[0];
             i = 1;
@@ -65,6 +67,7 @@ public sealed class CommandLineOptions
                 case "-h" or "--help": o.ShowHelp = true; break;
                 case "-m" or "--model": llama.ModelPath = Next(a); break;
                 case "-o" or "--out": o.OutputPath = Next(a); break;
+                case "--gold": o.GoldPath = Next(a); break;
                 case "-f" or "--format": o.Format = ParseFormat(Next(a)); break;
                 case "--no-llm": o.Pipeline.DisableLlm = true; break;
                 case "--openrouter":
@@ -169,6 +172,9 @@ public sealed class CommandLineOptions
           dhx scan-extract <file.docx> [-o <thư-mục>]    # heading của DOCX chỉ có ảnh trang: OCR + quan sát VLM
                                                          # (qwen/qwen3.7-flash, gửi ảnh trang) + hội thoại V6; Qwen
                                                          # quyết định; key từ OPENROUTER_API_KEY; in JSON
+          dhx scan-text-eval <file.docx> --gold <gold.json> [-o <thư-mục>]
+                                                         # đo độ chính xác chữ: 2 view OCR và VLM chép mù
+                                                         # (không xem OCR) so với gold; gửi ảnh cắt dòng
           dhx help                                       # trợ giúp
 
         Tuỳ chọn chính:

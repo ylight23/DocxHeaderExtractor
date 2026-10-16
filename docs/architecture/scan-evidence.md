@@ -154,6 +154,30 @@ then the V6 conversation over `ScanAgentSource`, with the same runner, budget, r
   refused; a repair turn asks only for the runs still open; a run still open after the repairs falls back to one heading
   per line, and the failure names it (`GROUP-001:PROTOCOL:RUN_MISSING:R7`).
 
+## 5a. Reading accuracy (`dhx scan-text-eval`, `SCAN_TEXT_EVAL_V1`, prompt `SCAN_VLM_TRANSCRIBE_V1`)
+
+Gold: `eval/scan-text/023_heading_lines.v1.json` (`SCAN_LINE_TEXT_GOLD_V1`), the 120 lines of the headings of the second live
+run of `023`, each with page and box. Transcribed by Claude from the page images, line by line; not reviewed by a person,
+so not human gold under the a99 gold policy. Lines are compared after NFC and white space only; a line is exact or not, and
+the character error rate (CER) is edit distance over gold letters.
+
+Measured before the vision transcription, from `ket-qua-023-v2.json` and the local OCR store (Tesseract 5.3.4):
+
+| Reader | Exact lines | CER |
+|---|---:|---:|
+| `ocr-original` (Windows run, Tesseract 5.4.0) | 73/120 (61%) | 2.33% |
+| `ocr-original` (Linux, 5.3.4) | 75/120 (62%) | 2.33% |
+| `ocr-upscaled` (Linux, 5.3.4) | 73/120 (61%) | 3.13% |
+| better of the two views, chosen by the gold (no reader can do this) | 85/120 (71%) | 1.63% |
+| result text (agent's choice among views and vision proposals) | 77/120 (64%) | 1.95% |
+
+So choosing among the OCR views cannot pass 71% on these lines: the readings that are wrong are wrong in both views
+(`sổ` → `số`, `Thẩm` → `Tham`, `ĐIỀU` → `DIEU`, `III` → `II`). Of the 11 heading lines where the vision model's choice
+can be checked, 4 were right; the 7 wrong ones were all an OCR reading it accepted. `dhx scan-text-eval` measures what
+the vision model reads when it is shown only the crop: the crop the vision preflight sends, and the same crop enlarged
+2x (the scans are black and white already, so a grey crop would be the same image). Each batch is stored once
+(`<root>/vlm-transcribe/`); the report is written to `<root>/eval/`.
+
 ## 6. Windows
 
 The scan tools are the same on Windows and Linux. Requirements: .NET 9, Tesseract with the Vietnamese data (the

@@ -121,6 +121,15 @@ public static class TesseractOcr
         return Magick(magick, input, ["-crop", geometry, "+repage", "-colorspace", "Gray", "-threshold", BilevelThreshold, "-type", "bilevel"], output);
     }
 
+    /// <summary>A grey PNG of one region of the page with <paramref name="pad"/> pixels around it, enlarged by <paramref name="scale"/> (no threshold):
+    /// a line some 40 pixels high gives a vision model few pixels per diacritic.</summary>
+    public static bool CropScaled(string magick, string input, string output, PixelBox box, int pad, double scale)
+    {
+        var x = Math.Max(0, box.Left - pad); var y = Math.Max(0, box.Top - pad);
+        var geometry = string.Create(CultureInfo.InvariantCulture, $"{box.Width + 2 * pad}x{box.Height + 2 * pad}+{x}+{y}");
+        return Magick(magick, input, ["-crop", geometry, "+repage", "-colorspace", "Gray", "-resize", (scale * 100).ToString("0.##", CultureInfo.InvariantCulture) + "%"], output);
+    }
+
     /// <summary>Runs ImageMagick on one image and writes a PNG. The image goes in on standard input and comes out on standard output, and .NET
     /// reads and writes the files, so no path ever reaches the tool (a path outside the system code page fails on Windows).</summary>
     static bool Magick(string magick, string input, IEnumerable<string> operations, string output)

@@ -49,6 +49,7 @@ try
         "info" => RunModelInfo(options),
         "scan-ocr" => RunScanOcr(options),
         "scan-extract" => await RunScanExtractAsync(options, cts.Token),
+        "scan-text-eval" => RunScanTextEval(options),
         _ => await RunExtractAsync(options, cts.Token),
     };
 }
@@ -113,6 +114,23 @@ static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationTok
         Console.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }));
     }
     return 0;
+}
+
+// Reading accuracy of a scan's lines against a gold transcription: the OCR views and the vision model transcribing blind. Prints the scores.
+static int RunScanTextEval(CommandLineOptions o)
+{
+    var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
+    if (string.IsNullOrWhiteSpace(key)) { Console.Error.WriteLine("Chưa có OPENROUTER_API_KEY."); return 2; }
+    if (o.GoldPath is null || o.Inputs.Count != 1) { Console.Error.WriteLine("Cách dùng: dhx scan-text-eval <file.docx> --gold <gold.json>"); return 2; }
+    var root = o.OutputPath ?? ".dhx-evidence";
+    var gold = DocxHeaderExtractor.HeadingAgent.Scan.ScanTextEvaluation.ReadGold(o.GoldPath);
+    var report = new DocxHeaderExtractor.HeadingAgent.Scan.ScanTextEvaluation(root).Run(o.Inputs[0], gold, key);
+    Console.WriteLine($"{"Cách đọc",-26} {"Đúng hết dòng",14} {"CER",8}");
+    foreach (var s in report.Scores)
+        Console.WriteLine($"{s.Method,-26} {s.Exact,6}/{s.Lines,-3} ({100.0 * s.Exact / s.Lines,3:0}%) {100 * s.CharacterErrorRate,7:0.00}%");
+    Console.WriteLine($"{report.ProviderCalls} POST, {report.ProviderCostUsd:0.0000} USD; lỗi: {(report.Failures.Count == 0 ? "không" : string.Join(", ", report.Failures))}");
+    Console.WriteLine($"báo cáo: {Path.Combine(root, "eval", report.SourceSha256[..16] + "-scan-text-eval.json")}");
+    return report.Scores.Any(s => s.Method.StartsWith("vlm", StringComparison.Ordinal) && s.Exact == 0 && report.Failures.Count > 0) ? 1 : 0;
 }
 
 // Keep the top-level CLI source terminated by a single newline.
