@@ -73,9 +73,9 @@ public static class WebPipelineProjection
         { "complete" => "completed", "partial" => "partial", "not-run" => "skipped", "failed" => "failed", "timed-out" => "failed", _ => "not-recorded" },
             lane is null ? "No lane observation" : $"Producer lane status: {lane.Status}; failure: {lane.FailureClass ?? "none"}"));
         // The PDF lane's model steps since the V6 promotion: line selection per layout segment, then grouping of adjacent selected lines.
-        if (sourceKind is "pdf" or "scan")
+        if (sourceKind is "pdf" or "scan" or "docx")
         {
-            var groupingFallback = lane?.FailureClass?.Contains("GROUP-", StringComparison.Ordinal) == true;
+            var grouping = audit?.Grouping;
             stages.Add(lane?.Status switch
             {
                 "not-run" => new("V6-line-selection", "skipped", $"Producer semantic lane explicitly not-run: {lane.FailureClass ?? "not recorded"}"),
@@ -84,9 +84,14 @@ public static class WebPipelineProjection
                 _ => new("V6-line-selection", "not-recorded", "No lane observation"),
             });
             stages.Add(lane?.Status is "complete" or "partial"
-                ? new("V6-line-grouping", groupingFallback ? "partial" : "completed",
-                    groupingFallback ? "Some runs were grouped by the layout fallback" : "Adjacent selected lines divided into headings")
+                ? new("V6-line-grouping", grouping is null ? "not-recorded" : grouping.UnresolvedAliases > 0 || grouping.FallbackRuns > 0 ? "partial" : "completed",
+                    grouping is null ? "Grouping execution counters not recorded" :
+                    $"Model divisions={grouping.ModelDividedRuns}; actual fallback runs={grouping.FallbackRuns}; disputes={grouping.DisputedRuns}; verification checks={grouping.VerificationChecks}; verified={grouping.VerifiedRuns}; membership disputes={grouping.MembershipDisputes}; boundary disputes={grouping.BoundaryDisputes}; unresolved aliases={grouping.UnresolvedAliases}; ignored review changes={grouping.IgnoredReviewChanges}")
                 : new("V6-line-grouping", lane?.Status == "not-run" ? "skipped" : "not-recorded", "No grouping observation"));
+            stages.Add(grouping is null
+                ? new("V6-group-verification", lane?.Status == "not-run" ? "skipped" : "not-recorded", "No verification counters recorded")
+                : new("V6-group-verification", grouping.UnresolvedAliases > 0 ? "partial" : grouping.VerificationChecks > 0 ? "completed" : "skipped",
+                    $"Checks={grouping.VerificationChecks}; accepted={grouping.VerifiedRuns}; membership disputes={grouping.MembershipDisputes}; boundary disputes={grouping.BoundaryDisputes}; unresolved aliases={grouping.UnresolvedAliases}"));
         }
         stages.Add(new("exact-binding-validation", elements.Length > 0 ? "completed" : "not-recorded",
             elements.Length > 0 ? "Validated structural elements" : "No binding-stage observation"));
@@ -123,7 +128,7 @@ public static class WebPipelineProjection
     { audit.PipelineId, audit.SourceBlocksAvailable, audit.SourceBlocksSelected, audit.SourcePagesAvailable,
         audit.SourcePagesSelected, audit.SemanticLane, audit.SpanLane,
         groundedSourceIds = audit.GroundedBlockIds, decisionCount = audit.BlockDecisions.Count,
-        placementExecution = audit.PlacementExecution, audit.Scan };
+        placementExecution = audit.PlacementExecution, audit.Scan, audit.Grouping };
 
     /// <summary>Keep outline compatibility fields while withholding transport completions/payloads from the Web.</summary>
     public static JsonNode SafeOutline(DocumentOutline outline, JsonSerializerOptions options)

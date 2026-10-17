@@ -83,6 +83,8 @@ public sealed class PdfHeadingAgentGroupingTests
         AgentUnit.Model model = (unit, turn, request) =>
         {
             using var body = JsonDocument.Parse(request.Body);
+            if (FakeOpenRouter.VerificationResponse(System.Text.Json.Nodes.JsonNode.Parse(request.Body)!.AsObject()) is { } verification)
+                return new ModelTurn(verification, [], "stop");
             var content = body.RootElement.GetProperty("messages")[1].GetProperty("content");
             var text = content.ValueKind == JsonValueKind.String ? content.GetString()! : content[0].GetProperty("text").GetString()!;
             using var doc = JsonDocument.Parse(text);
@@ -119,7 +121,7 @@ public sealed class PdfHeadingAgentGroupingTests
                 })
             }), [], "stop");
         };
-        var result = HeadingAgentSelector.Select(source, model, budget, 1, CancellationToken.None, 0, () => 0);
+        var result = HeadingAgentSelector.Select(source, model, budget, 1, CancellationToken.None, 0, () => 0, verifyGroups: false);
         Assert.Contains(kept, result.SelectedAliases);
         Assert.DoesNotContain(unrelated, result.SelectedAliases);
         var expected = mode is "reaffirm" ? new[] { first, second, kept } : mode == "partial" ? new[] { first, kept } : new[] { kept };
@@ -128,6 +130,8 @@ public sealed class PdfHeadingAgentGroupingTests
         Assert.Equal(mode == "budget" ? 0 : mode == "invalid" ? AgentSelectionReview.MaxPosts : 1, reviewCalls);
         Assert.Equal(mode is "reaffirm" or "redispute" ? 2 : 1, groupingCalls);
         Assert.Contains(result.ModelAnswers, a => a.Contains("selection-review") && a.Contains("before") && a.Contains("after"));
+        Assert.Contains(result.ModelAnswers, a => a.Contains("ignoredDecisionChanges"));
+        if (mode is "reject" or "reaffirm" or "partial") Assert.True(result.Grouping!.IgnoredReviewChanges > 0);
         if (mode is "failed" or "invalid" or "redispute" or "budget")
         {
             Assert.NotEmpty(result.UnitFailures);

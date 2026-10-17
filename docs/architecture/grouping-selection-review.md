@@ -3,6 +3,10 @@
 Production change, 2026-10-17: `group-review-v1` is appended to all three selector IDs
 (scan, text PDF and DOCX). The user's heading instruction is unchanged.
 
+The subsequent [independent group verification](grouping-verification.md) extends this flow:
+all accepted proposals are checked, and membership disagreements from verification can also
+request selection review. Selector IDs additionally include `verified-groups-v1`.
+
 Grouping may return a normal division or an explicit disagreement for each run:
 
 ```json

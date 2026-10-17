@@ -334,7 +334,7 @@ public sealed class HeadingExtentTests : IDisposable
         Assert.Empty(selection.UnitFailures);
         Assert.Equal(new TextOffsetSpan(0, Heading.Length), selection.HeadingExtents![article]);
         Assert.Contains("\"headingExtents\":{\"" + article + "\":{\"start\":0,\"end\":26,\"text\":\"Article 8. Prohibited acts\"}}", selection.ModelAnswers[0], StringComparison.Ordinal);
-        Assert.Equal(2, handler.Posts);
+        Assert.Equal(2, handler.Posts - handler.Bodies.Count(FakeOpenRouter.IsVerification));
     }
 
     [Fact]
@@ -346,8 +346,8 @@ public sealed class HeadingExtentTests : IDisposable
         var selection = await new DocxHeadingAgentSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
 
         var article = DocxAgentSource.Load(path, null, out _)!.Lines.Single(l => l.Text.StartsWith(Heading, StringComparison.Ordinal)).Alias;
-        Assert.Equal(3, handler.Posts);
-        var repair = handler.Bodies[^1]["messages"]!.AsArray().Last(m => m!["role"]!.GetValue<string>() == "user")!["content"]!.GetValue<string>();
+        Assert.Equal(3, handler.Posts - handler.Bodies.Count(FakeOpenRouter.IsVerification));
+        var repair = handler.Bodies.Last(b => !FakeOpenRouter.IsVerification(b))["messages"]!.AsArray().Last(m => m!["role"]!.GetValue<string>() == "user")!["content"]!.GetValue<string>();
         Assert.Contains("PROTOCOL:HEADING_EXTENT_TEXT_MISMATCH", repair, StringComparison.Ordinal);
         Assert.Contains("the text at [0,29) is \"Article 8. Prohibited acts 1.\"", repair, StringComparison.Ordinal);
         Assert.Equal(new TextOffsetSpan(0, Heading.Length), selection.HeadingExtents![article]);

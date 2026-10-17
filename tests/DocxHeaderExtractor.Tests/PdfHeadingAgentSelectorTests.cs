@@ -26,11 +26,13 @@ public sealed class PdfHeadingAgentSelectorTests
         Assert.Equal(selection.UnitsTotal, selection.UnitsComplete);
         Assert.Empty(selection.UnitFailures);
         Assert.Equal(Enumerable.Range(0, source.Cores.Count).Select(n => source.Scope(n).Decide[0]).ToHashSet(), selection.SelectedAliases);
-        Assert.Equal(2 * selection.UnitsTotal, selection.ProviderCalls);
-        Assert.Equal(2 * selection.UnitsTotal, handler.Posts);
+        var verificationCalls = handler.Bodies.Count(FakeOpenRouter.IsVerification);
+        Assert.True(verificationCalls > 0);
+        Assert.Equal(2 * selection.UnitsTotal + verificationCalls, selection.ProviderCalls);
+        Assert.Equal(2 * selection.UnitsTotal + verificationCalls, handler.Posts);
         Assert.Equal(0.001 * handler.Posts, selection.ProviderCostUsd, 6);
         Assert.All(handler.Keys, k => Assert.Equal("Bearer sk-test", k));
-        Assert.Equal(selection.UnitsTotal, selection.ModelAnswers.Count);
+        Assert.Equal(selection.UnitsTotal, selection.ModelAnswers.Count(a => a.StartsWith("{\"unit\"", StringComparison.Ordinal)));
     }
 
     [Fact]
@@ -47,7 +49,7 @@ public sealed class PdfHeadingAgentSelectorTests
         // Every segment selected its first two targets; the fake group answer puts each pair together.
         Assert.Equal(source.Cores.Count, selection.Groups!.Count(g => g.Count == 2));
         Assert.Equal(selection.SelectedAliases.Order(), selection.Groups!.SelectMany(g => g).Order());
-        Assert.Equal(2 * selection.UnitsTotal + (int)Math.Ceiling(source.Cores.Count / 40.0), selection.ProviderCalls);
+        Assert.Equal(2 * selection.UnitsTotal + (int)Math.Ceiling(source.Cores.Count / 40.0) + handler.Bodies.Count(FakeOpenRouter.IsVerification), selection.ProviderCalls);
         Assert.Contains(selection.ModelAnswers, a => a.StartsWith("{\"grouping\"", StringComparison.Ordinal));
         Assert.NotNull(selection.Placement);
     }

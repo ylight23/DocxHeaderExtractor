@@ -58,7 +58,7 @@ public sealed class FactsCoverageTests : IDisposable
         var path = Long();
         var handler = new FakeOpenRouter(FirstPageOnly(readsTheRest: false));
         var selection = await new DocxHeadingAgentSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
-        Assert.Equal(2, handler.Posts);
+        Assert.Equal(2, handler.Posts - handler.Bodies.Count(FakeOpenRouter.IsVerification));
         Assert.Equal(1, selection.UnitsComplete);
         Assert.Single(selection.SelectedAliases);
         Assert.Empty(selection.UnitFailures);
@@ -92,7 +92,7 @@ public sealed class FactsCoverageTests : IDisposable
 
         var selection = await new DocxHeadingAgentSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
 
-        Assert.Equal(2, handler.Posts);
+        Assert.Equal(2, handler.Posts - handler.Bodies.Count(FakeOpenRouter.IsVerification));
         Assert.Equal(1, selection.UnitsComplete);
         var audit = JsonNode.Parse(selection.ModelAnswers[0])!;
         Assert.Empty(audit["coreFactsCoverage"]!["targetsWithoutFacts"]!.AsArray());
@@ -121,7 +121,7 @@ public sealed class FactsCoverageTests : IDisposable
         Assert.Equal(1, selection.UnitsComplete);
         Assert.Single(selection.SelectedAliases);
         Assert.Empty(selection.UnitFailures);
-        Assert.Equal(4, handler.Posts);
+        Assert.Equal(4, handler.Posts - handler.Bodies.Count(FakeOpenRouter.IsVerification));
         var audit = JsonNode.Parse(selection.ModelAnswers[0])!;
         Assert.Empty(audit["coreFactsCoverage"]!["targetsWithoutFacts"]!.AsArray());
         Assert.NotEmpty(audit["detailEvidenceCoverage"]!["aliasesRead"]!.AsArray());

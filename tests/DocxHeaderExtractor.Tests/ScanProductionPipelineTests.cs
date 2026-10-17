@@ -77,6 +77,28 @@ public sealed class ScanProductionPipelineTests
     }
 
     [Fact]
+    public async Task Web_grouping_reports_observed_counts_instead_of_guessing_fallback_from_failure_text()
+    {
+        var prepared = Prepared(ScanPath);
+        prepared = prepared with { Selection = prepared.Selection with
+        {
+            UnitFailures = ["GROUP-REVIEW:SELECTION_DISAGREEMENT_UNRESOLVED:P001-L004"],
+            Grouping = new GroupingObservation(ModelDividedRuns: 2, FallbackRuns: 0, DisputedRuns: 1,
+                VerificationChecks: 2, VerifiedRuns: 1, UnresolvedAliases: 1)
+        } };
+        using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
+        var run = await runner.ExtractAsync(ScanPath);
+        var web = WebPipelineProjection.Project(Guid.NewGuid(), "Partial", run.Outline, run, "scan");
+        var grouping = web.Stages.Single(s => s.Id == "V6-line-grouping");
+        Assert.Equal("partial", grouping.Status);
+        Assert.Contains("actual fallback runs=0", grouping.Evidence);
+        Assert.Contains("unresolved aliases=1", grouping.Evidence);
+        Assert.DoesNotContain("layout fallback", grouping.Evidence);
+        Assert.Equal(0, run.Outline.RouteAudit!.Grouping!.FallbackRuns);
+        Assert.Contains("Grouping", JsonSerializer.Serialize(web.Audit));
+    }
+
+    [Fact]
     public async Task Native_docx_keeps_the_native_selector_and_never_calls_the_scan_processor()
     {
         var dir = Path.Combine(Path.GetTempPath(), "dhx-scan-native-" + Guid.NewGuid().ToString("N"));

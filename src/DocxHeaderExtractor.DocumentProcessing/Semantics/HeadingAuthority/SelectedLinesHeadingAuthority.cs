@@ -57,6 +57,7 @@ internal sealed class SelectedLinesHeadingAuthority(
         PipelineExecutionAudit Complete(PipelineExecutionAudit audit, HeadingStructureAssembly assembly) => audit with
         {
             RawModelResponses = selection.ModelAnswers,
+            Grouping = selection.Grouping,
             ModelInputContracts = [selector.SelectorId],
             ValidatedStructures = assembly.Hierarchies.Values.ToArray(),
             SemanticLane = new LaneExecutionAudit(

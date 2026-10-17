@@ -137,12 +137,14 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         var groupReserve = groupPosts * AgentBudget.AttemptUsd(60000);
         var reviewPosts = units * AgentSelectionReview.MaxPosts;
         var reviewReserve = reviewPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
-        return new AgentBudget(posts + groupPosts + reviewPosts, Math.Ceiling((first + spare + groupReserve + reviewReserve) * 1.1 * 100) / 100);
+        var verifyPosts = 4 * Math.Max(1, (source.Lines.Count + AgentGroupVerification.BatchSize - 1) / AgentGroupVerification.BatchSize) * AgentGroupVerification.MaxPosts;
+        var verifyReserve = verifyPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
+        return new AgentBudget(posts + groupPosts + reviewPosts + verifyPosts, Math.Ceiling((first + spare + groupReserve + reviewReserve + verifyReserve) * 1.1 * 100) / 100);
     }
 
     /// <summary>Runs every segment, parallelism at a time, and collects the lines selected by the units whose answer passed.</summary>
     internal static HeadingSelection Select(IAgentSource source, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct,
-        int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0)
+        int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0, bool verifyGroups = true)
     {
         var outcomes = new AgentUnitOutcome[firstSegments > 0 ? Math.Min(firstSegments, source.Cores.Count) : source.Cores.Count];
         Parallel.For(0, outcomes.Length, new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct },
@@ -169,14 +171,20 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         if (budget.HaltReason is { } halt) failures.Add("HALT:" + halt);
         // The selected lines divided into headings: the model decides which adjacent lines form one heading, C# checks the division.
         var grouping = AgentGrouping.Group(source, selected, model, budget, parallelism, ct, retryDelayMs, instruction);
+        if (verifyGroups)
+            grouping = AgentGroupVerification.Verify(source, grouping, extents, readingChoices, model, budget,
+                parallelism, ct, retryDelayMs, instruction);
         grouping = AgentSelectionReview.Resolve(source, grouping, outcomes, selected, extents, readingChoices,
-            model, budget, parallelism, ct, retryDelayMs, instruction);
+            model, budget, parallelism, ct, retryDelayMs, instruction, verifyGroups);
         answers = answers.Concat(grouping.Answers.Select(a => JsonSerializer.Serialize(new { grouping = a }, Compact))).ToArray();
         answers = answers.Concat(grouping.Evidence.Select(a => JsonSerializer.Serialize(new { groupingEvidence = a }, Compact))).ToArray();
         failures.AddRange(grouping.Failures);
         var unresolved = grouping.UnresolvedAliases.ToHashSet(StringComparer.Ordinal);
+        selected.ExceptWith(unresolved);
+        foreach (var alias in unresolved) { extents.Remove(alias); readingChoices.Remove(alias); }
         var unresolvedUnits = Enumerable.Range(0, outcomes.Length).Count(n => outcomes[n].Status == "COMPLETE" && source.Scope(n).Decide.Any(unresolved.Contains));
         return new HeadingSelection(selected, complete.Length - unresolvedUnits, outcomes.Length, failures, answers, budget.Calls, costOf(), source.Flavor.PlacementContext(source), grouping.Groups,
-            extents.Count > 0 ? extents : null) { HeadingReadings = readingChoices.Count > 0 ? readingChoices : null };
+            extents.Count > 0 ? extents : null) { HeadingReadings = readingChoices.Count > 0 ? readingChoices : null,
+                Grouping = grouping.Observation with { UnresolvedAliases = unresolved.Count } };
     }
 }

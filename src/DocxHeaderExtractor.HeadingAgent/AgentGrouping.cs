@@ -2,6 +2,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using DocxHeaderExtractor.DocumentProcessing.Routing;
 using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
 
 namespace DocxHeaderExtractor.HeadingAgent;
@@ -39,13 +40,14 @@ internal static class AgentGrouping
         public IReadOnlyList<Dispute> Disputes { get; init; } = [];
         public IReadOnlyList<string> Evidence { get; init; } = [];
         public IReadOnlyList<string> UnresolvedAliases { get; init; } = [];
+        public GroupingObservation Observation { get; init; } = new();
     }
 
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
     /// <summary>Model-divided runs in document order, layout fallback for protocol failures, and no groups for explicitly disputed runs.</summary>
     public static Result Group(IAgentSource source, IReadOnlySet<string> selected, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct, int retryDelayMs = 5000,
-        string instruction = Instruction, string unitPrefix = "GROUP")
+        string instruction = Instruction, string unitPrefix = "GROUP", object? verificationFeedback = null)
     {
         var chosen = Enumerable.Range(0, source.Lines.Count).Where(i => selected.Contains(source.Lines[i].Alias)).ToArray();
         // Maximal runs of selected lines that are adjacent in reading order.
@@ -66,7 +68,7 @@ internal static class AgentGrouping
         var chunks = runs.Chunk(MaxRunsPerRequest).ToArray();
         var results = new (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts, List<Dispute> Disputes, List<string> Evidence)[chunks.Length];
         Parallel.For(0, chunks.Length, new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct },
-            n => results[n] = AskChunk(source, chunks[n], n + 1, model, budget, retryDelayMs, instruction, unitPrefix));
+            n => results[n] = AskChunk(source, chunks[n], n + 1, model, budget, retryDelayMs, instruction, unitPrefix, verificationFeedback));
         foreach (var r in results)
         {
             posts += r.Posts;
@@ -89,7 +91,8 @@ internal static class AgentGrouping
             }
             else { groups.Add([source.Lines[chosen[k]].Alias]); k++; }
         }
-        return new Result(groups, answers, failures, posts) { Disputes = disputes, Evidence = evidence };
+        return new Result(groups, answers, failures, posts) { Disputes = disputes, Evidence = evidence,
+            Observation = new(ModelDividedRuns: division.Count - disputes.Count, FallbackRuns: runs.Count - division.Count, DisputedRuns: disputes.Count) };
     }
 
     /// <summary>The fallback: consecutive lines of the same page and parser layout block are one heading.</summary>
@@ -106,7 +109,7 @@ internal static class AgentGrouping
     }
 
     static (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts, List<Dispute> Disputes, List<string> Evidence) AskChunk(
-        IAgentSource source, Run[] chunk, int number, AgentUnit.Model model, AgentBudget budget, int retryDelayMs, string instruction, string unitPrefix)
+        IAgentSource source, Run[] chunk, int number, AgentUnit.Model model, AgentBudget budget, int retryDelayMs, string instruction, string unitPrefix, object? verificationFeedback)
     {
         // The runs divided so far, from any turn: a correct division of one run is kept when another run of the same answer is refused.
         var accepted = new Dictionary<string, List<int[]>>(StringComparer.Ordinal);
@@ -118,6 +121,12 @@ internal static class AgentGrouping
             unitId + ":" + failure + ":" + string.Join(",", chunk.Where(r => !accepted.ContainsKey(r.Id)).Select(r => r.Id));
         var history = new JsonArray();
         var payload = Payload(source, chunk, number, instruction);
+        if (verificationFeedback is not null)
+        {
+            var node = JsonNode.Parse(payload)!;
+            node["verificationFeedback"] = JsonSerializer.SerializeToNode(verificationFeedback);
+            payload = node.ToJsonString(Options);
+        }
         int posts = 0, retries = 0, repairs = 0;
         while (true)
         {

@@ -50,6 +50,19 @@ public sealed record HeadingSelection(
     /// <summary>Optional, scanned sources only: the reading a selected line was taken in (a view id of the scan's evidence), by alias. Its extent,
     /// when there is one, is measured on that reading. A selected line without an entry is taken in its primary reading.</summary>
     public IReadOnlyDictionary<string, string>? HeadingReadings { get; init; }
+    public GroupingObservation? Grouping { get; init; }
+}
+
+/// <summary>Actual stage observations, not inferred from failure-code text. Counts accumulate across repair/review passes.</summary>
+public sealed record GroupingObservation(int ModelDividedRuns = 0, int FallbackRuns = 0, int DisputedRuns = 0,
+    int VerificationChecks = 0, int VerifiedRuns = 0, int MembershipDisputes = 0, int BoundaryDisputes = 0,
+    int UnresolvedAliases = 0, int IgnoredReviewChanges = 0)
+{
+    public GroupingObservation Add(GroupingObservation other) => new(ModelDividedRuns + other.ModelDividedRuns,
+        FallbackRuns + other.FallbackRuns, DisputedRuns + other.DisputedRuns, VerificationChecks + other.VerificationChecks,
+        VerifiedRuns + other.VerifiedRuns, MembershipDisputes + other.MembershipDisputes,
+        BoundaryDisputes + other.BoundaryDisputes, UnresolvedAliases + other.UnresolvedAliases,
+        IgnoredReviewChanges + other.IgnoredReviewChanges);
 }
 
 /// <summary>

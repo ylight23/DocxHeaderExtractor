@@ -11,6 +11,10 @@ Grouping can now [report disagreement for a bounded selection review](grouping-s
 instead of being forced to turn mistakenly selected body text into headings. This applies to
 scan, text PDF and DOCX; C# checks the protocol and Qwen decides membership.
 
+All proposed groups also pass [independent model verification](grouping-verification.md),
+including groups without an explicit grouping dispute. Boundary disagreements trigger targeted
+regrouping; membership disagreements trigger selection review. Web reports actual stage counters.
+
 ## Production integration (2026-10-16)
 
 `dhx extract <scan.docx> --openrouter -f json` and the Web upload now detect `ScannedImageOnly`

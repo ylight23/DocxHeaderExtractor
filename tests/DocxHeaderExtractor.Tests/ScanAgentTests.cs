@@ -61,6 +61,8 @@ public sealed class ScanAgentTests : IDisposable
         {
             calls.Add(unit);
             var body = JsonNode.Parse(request.Body)!;
+            if (FakeOpenRouter.VerificationResponse(body.AsObject()) is { } verification)
+                return new AgentProtocol.ModelTurn(verification, [], "stop");
             var content = body["messages"]![1]!["content"]!;
             var payload = JsonNode.Parse(content is JsonArray ? content[0]!["text"]!.GetValue<string>() : content.GetValue<string>())!;
             if (payload["stage"]!.GetValue<string>() == "GROUP")
@@ -305,8 +307,8 @@ public sealed class ScanAgentTests : IDisposable
 
         var result = new ScanHeadingAgentSelector(dir, () => handler, parallelism: 1).ExtractFrom(Evidence(), [Vision()], "sk-test", CancellationToken.None);
 
-        Assert.Equal(3, handler.Posts);
-        Assert.Contains("PROTOCOL:READING_VIEW_UNKNOWN", handler.Bodies[^1]["messages"]!.AsArray().Last(m => m!["role"]!.GetValue<string>() == "user")!["content"]!.GetValue<string>(), StringComparison.Ordinal);
+        Assert.Equal(4, handler.Posts);
+        Assert.Contains("PROTOCOL:READING_VIEW_UNKNOWN", handler.Bodies.Last(b => !FakeOpenRouter.IsVerification(b))["messages"]!.AsArray().Last(m => m!["role"]!.GetValue<string>() == "user")!["content"]!.GetValue<string>(), StringComparison.Ordinal);
         Assert.Equal("Điều 2. Thẩm quyền chứng thực", result.Headings[1].Text);
     }
 

@@ -23,6 +23,7 @@ public sealed record ScanHeadingResult(string SourceSha256, string SelectorId, I
     IReadOnlyList<string> UnitFailures, IReadOnlyList<string> ModelAnswers, int ProviderCalls, double ProviderCostUsd,
     int VisionPagesObserved, IReadOnlyList<string> VisionFailures, IReadOnlyList<OcrViewGap> OcrGaps, int PartsRejected)
 {
+    public GroupingObservation? Grouping { get; init; }
     /// <summary>Lines transcribed by the vision model, and how many passed the checks and are shown.</summary>
     public int TranscribedLines { get; init; }
     public int TranscriptionsAccepted { get; init; }
@@ -151,7 +152,8 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
         TranscriptionSet? transcriptions = null, IReadOnlyDictionary<string, LineTypography>? typography = null,
         Action<ScanAgentSource, HeadingSelection>? onSelected = null)
     {
-        var source = new ScanAgentSource(evidence, observations, transcriptions, typography);
+        var source = new ScanAgentSource(evidence, observations, transcriptions, typography,
+            new ScanOcrPreflight(Path.Combine(storeRoot, OcrFolder)).EntryOf(evidence));
         var budget = HeadingAgentSelector.BudgetFor(source, instruction);
         using var handler = (handlerFactory ?? (() => AgentModel.CreateHandler()))();
         using var model = new AgentModel(handler, apiKey, budget, cancellationToken: ct);
@@ -166,6 +168,7 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
             selection.ModelAnswers, selection.ProviderCalls, selection.ProviderCostUsd, observations.Count(o => o.Failure is null),
             observations.Where(o => o.Failure is not null).Select(o => $"P{o.Page:000}:{o.Failure}").ToArray(), evidence.Gaps, rejected)
         {
+            Grouping = selection.Grouping,
             TranscribedLines = transcriptions?.Lines.Count(l => l.Text is not null) ?? 0,
             TranscriptionsAccepted = transcriptions?.Accepted ?? 0,
             TranscriptionStatuses = (transcriptions?.Lines ?? []).GroupBy(l => l.Status).ToDictionary(g => g.Key, g => g.Count()),

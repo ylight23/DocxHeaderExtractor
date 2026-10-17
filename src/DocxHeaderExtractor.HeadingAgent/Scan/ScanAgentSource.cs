@@ -29,6 +29,7 @@ internal sealed class ScanAgentSource : IAgentSource
     public const int Overlap = 20, LeftEdgeTolerancePx = 8, LowConfidence = 60, MaxLowConfidenceWords = 8;
 
     public ScanOcrEvidence Evidence { get; }
+    public string? EvidenceEntry { get; }
     public IReadOnlyList<ScanLine> ScanLines { get; }
     public IReadOnlyList<AgentSourceLine> Lines { get; }
     public IReadOnlyDictionary<string, JsonObject> Facts { get; }
@@ -50,8 +51,9 @@ internal sealed class ScanAgentSource : IAgentSource
     public IReadOnlyDictionary<string, LineTypography> Typography { get; }
 
     public ScanAgentSource(ScanOcrEvidence evidence, IReadOnlyList<VlmPageObservation>? vision = null, TranscriptionSet? transcriptions = null,
-        IReadOnlyDictionary<string, LineTypography>? typography = null)
+        IReadOnlyDictionary<string, LineTypography>? typography = null, string? evidenceEntry = null)
     {
+        EvidenceEntry = evidenceEntry;
         Typography = typography ?? new Dictionary<string, LineTypography>();
         Evidence = evidence;
         Vision = vision ?? [];

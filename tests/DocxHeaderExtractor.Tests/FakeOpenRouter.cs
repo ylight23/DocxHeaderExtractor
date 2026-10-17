@@ -20,11 +20,34 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
         lock (Keys) Keys.Add(request.Headers.Authorization!.ToString());
         lock (Bodies) Bodies.Add(body);
         var n = Interlocked.Increment(ref posts);
-        var (status, sse) = script(body, n);
+        var (status, sse) = VerificationResponse(body) is { } verification
+            ? (HttpStatusCode.OK, Stream(new { content = verification }, "stop")) : script(body, n);
         return new HttpResponseMessage(status) { Content = new StringContent(sse.Replace("PROVIDER", provider), Encoding.UTF8, "text/event-stream") };
     }
 
     private static string Event(object o) => "data: " + JsonSerializer.Serialize(o) + "\n\n";
+
+    internal static bool IsVerification(JsonObject body) => VerificationPayload(body) is not null;
+    internal static JsonObject? VerificationPayload(JsonObject body)
+    {
+        if (body["messages"]?[1]?["content"] is not JsonValue content || !content.TryGetValue<string>(out var text)) return null;
+        var payload = JsonNode.Parse(text) as JsonObject;
+        return payload?["stage"]?.GetValue<string>() == "GROUP_VERIFICATION" ? payload : null;
+    }
+    internal static string? VerificationResponse(JsonObject body)
+    {
+        var payload = VerificationPayload(body);
+        if (payload is null) return null;
+        return JsonSerializer.Serialize(new
+        {
+            protocolVersion = DocxHeaderExtractor.HeadingAgent.AgentGroupVerification.Version,
+            verdicts = payload["candidates"]!.AsArray().Select(c => new
+            {
+                run = c!["run"]!.GetValue<string>(), decision = "ACCEPT", reason = "Scripted independent verifier acceptance.",
+                evidenceRefs = new[] { c["proposedGroups"]![0]![0]!.GetValue<string>() }
+            })
+        });
+    }
 
     internal static string Stream(object delta, string finish) =>
         ": OPENROUTER PROCESSING\n\n"

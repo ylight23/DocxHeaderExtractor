@@ -54,6 +54,9 @@ public sealed record PipelineExecutionAudit(
     /// <summary>Runtime-only placement observation; frozen audit JSON remains unchanged.</summary>
     [JsonIgnore]
     public HeadingPlacementExecutionObservation? PlacementExecution { get; init; }
+
+    [JsonIgnore]
+    public DocxHeaderExtractor.DocumentProcessing.Routing.GroupingObservation? Grouping { get; init; }
 }
 
 public sealed record PdfSelectedSourceIdentity(
