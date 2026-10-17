@@ -1,5 +1,6 @@
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Diagnostics;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 
 namespace DocxHeaderExtractor.HeadingAgent;
@@ -146,6 +147,8 @@ public abstract class HeadingAgentSelector : IHeadingSelector
     internal static HeadingSelection Select(IAgentSource source, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct,
         int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0, bool verifyGroups = true)
     {
+        var phase = Stopwatch.StartNew();
+        var seconds = new Dictionary<string, double>(StringComparer.Ordinal);
         var outcomes = new AgentUnitOutcome[firstSegments > 0 ? Math.Min(firstSegments, source.Cores.Count) : source.Cores.Count];
         Parallel.For(0, outcomes.Length, new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct },
             n => outcomes[n] = AgentUnit.Run(source, n, model, budget, retryDelayMs, instruction));
@@ -169,13 +172,20 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         var failures = outcomes.Where(o => o.Status != "COMPLETE").Select(o => o.UnitId + ":" + o.Status + ":" + (o.Failure ?? "UNKNOWN")
             + (o.Failure is "COVERAGE:CORE_FACTS_MISSING" or "BUDGET:CORE_FACTS_UNCOVERED" ? ":" + o.TargetsWithoutFacts!.Count + "_TARGETS_WITHOUT_CORE_FACTS" : "")).ToList();
         if (budget.HaltReason is { } halt) failures.Add("HALT:" + halt);
+        seconds["selection"] = phase.Elapsed.TotalSeconds;
+        phase.Restart();
         // The selected lines divided into headings: the model decides which adjacent lines form one heading, C# checks the division.
         var grouping = AgentGrouping.Group(source, selected, model, budget, parallelism, ct, retryDelayMs, instruction);
+        seconds["grouping"] = phase.Elapsed.TotalSeconds;
+        phase.Restart();
         if (verifyGroups)
             grouping = AgentGroupVerification.Verify(source, grouping, extents, readingChoices, model, budget,
                 parallelism, ct, retryDelayMs, instruction);
+        seconds["verification"] = phase.Elapsed.TotalSeconds;
+        phase.Restart();
         grouping = AgentSelectionReview.Resolve(source, grouping, outcomes, selected, extents, readingChoices,
             model, budget, parallelism, ct, retryDelayMs, instruction, verifyGroups);
+        seconds["review"] = phase.Elapsed.TotalSeconds;
         answers = answers.Concat(grouping.Answers.Select(a => JsonSerializer.Serialize(new { grouping = a }, Compact))).ToArray();
         answers = answers.Concat(grouping.Evidence.Select(a => JsonSerializer.Serialize(new { groupingEvidence = a }, Compact))).ToArray();
         failures.AddRange(grouping.Failures);
@@ -185,6 +195,7 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         var unresolvedUnits = Enumerable.Range(0, outcomes.Length).Count(n => outcomes[n].Status == "COMPLETE" && source.Scope(n).Decide.Any(unresolved.Contains));
         return new HeadingSelection(selected, complete.Length - unresolvedUnits, outcomes.Length, failures, answers, budget.Calls, costOf(), source.Flavor.PlacementContext(source), grouping.Groups,
             extents.Count > 0 ? extents : null) { HeadingReadings = readingChoices.Count > 0 ? readingChoices : null,
-                Grouping = grouping.Observation with { UnresolvedAliases = unresolved.Count } };
+                Grouping = grouping.Observation with { UnresolvedAliases = unresolved.Count },
+                StageSeconds = seconds.ToDictionary(kv => kv.Key, kv => Math.Round(kv.Value, 3)) };
     }
 }

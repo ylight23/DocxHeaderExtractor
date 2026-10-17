@@ -58,6 +58,7 @@ internal sealed class SelectedLinesHeadingAuthority(
         {
             RawModelResponses = selection.ModelAnswers,
             Grouping = selection.Grouping,
+            HeadingStageSeconds = selection.StageSeconds,
             ModelInputContracts = [selector.SelectorId],
             ValidatedStructures = assembly.Hierarchies.Values.ToArray(),
             SemanticLane = new LaneExecutionAudit(

@@ -129,6 +129,7 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
         else result = ExtractFrom(evidence, observations, apiKey, ct, transcriptions, typography,
             (source, selection) => prepared = PrepareSelection(source, selection));
         seconds["conversation"] = talk.Elapsed.TotalSeconds;
+        foreach (var kv in result.StageSeconds) seconds[kv.Key] = kv.Value;
         result = result with
         {
             PreflightCalls = seer.LastCalls + (transcriptions?.ProviderCalls ?? 0),
@@ -169,6 +170,7 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
             observations.Where(o => o.Failure is not null).Select(o => $"P{o.Page:000}:{o.Failure}").ToArray(), evidence.Gaps, rejected)
         {
             Grouping = selection.Grouping,
+            StageSeconds = selection.StageSeconds ?? new Dictionary<string, double>(),
             TranscribedLines = transcriptions?.Lines.Count(l => l.Text is not null) ?? 0,
             TranscriptionsAccepted = transcriptions?.Accepted ?? 0,
             TranscriptionStatuses = (transcriptions?.Lines ?? []).GroupBy(l => l.Status).ToDictionary(g => g.Key, g => g.Count()),

@@ -54,6 +54,51 @@ public sealed class HeadingGroupVerificationTests
     }
 
     static string A(int n) => $"P032-L{n:000}";
+
+    [Fact]
+    public void Independent_boundary_repairs_overlap_without_exceeding_jobs_and_keep_output_order()
+    {
+        var source = Source();
+        var expected = new[] { new[] { A(1), A(2) }, new[] { A(5), A(6) }, new[] { A(9), A(10) }, new[] { A(13), A(14) } };
+        var input = new AgentGrouping.Result(expected, [], [], 0);
+        using var firstTwo = new CountdownEvent(2);
+        var active = 0; var maximum = 0; var groupCalls = 0;
+        AgentUnit.Model model = (unit, _, request) =>
+        {
+            var packet = Payload(request);
+            if (packet["stage"]!.GetValue<string>() == "GROUP_VERIFICATION")
+                return new ModelTurn(Verdicts(packet, _ => unit.Contains("REVERIFY", StringComparison.Ordinal) ? "ACCEPT" : "REGROUP"), [], "stop");
+            var current = Interlocked.Increment(ref active);
+            int seen;
+            do { seen = Volatile.Read(ref maximum); } while (current > seen && Interlocked.CompareExchange(ref maximum, current, seen) != seen);
+            try
+            {
+                if (Interlocked.Increment(ref groupCalls) <= 2)
+                {
+                    firstTwo.Signal();
+                    Assert.True(firstTwo.Wait(TimeSpan.FromSeconds(5)), "Independent regroup calls were serialized.");
+                }
+                return new ModelTurn(JsonSerializer.Serialize(new
+                {
+                    protocolVersion = AgentGrouping.GroupVersion,
+                    runs = packet["runs"]!.AsArray().Select(r => new
+                    {
+                        run = r!["run"]!.GetValue<string>(),
+                        headings = new[] { r["lines"]!.AsArray().Select(l => l!["alias"]!.GetValue<string>()).ToArray() }
+                    })
+                }), [], "stop");
+            }
+            finally { Interlocked.Decrement(ref active); }
+        };
+        var result = AgentGroupVerification.Verify(source, input, new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
+            model, new AgentBudget(100, 100), 2, CancellationToken.None, 0, Instruction);
+        Assert.Empty(result.Failures);
+        Assert.Equal(4, groupCalls);
+        Assert.Equal(2, maximum);
+        Assert.Equal(expected, result.Groups.Select(g => g.ToArray()));
+        Assert.Equal(4, result.Observation.BoundaryDisputes);
+        Assert.Equal(4, result.Observation.VerifiedRuns);
+    }
     // Source functions copied from the inspected stored page 32, not a heading Gold or a production phrase filter.
     static ScanAgentSource Source(string? entry = null, string? imageSha = null)
     {
@@ -131,6 +176,8 @@ public sealed class HeadingGroupVerificationTests
             return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = SelectScanVersion, status = "COMPLETE", decisions }), [], "stop");
         };
         var result = HeadingAgentSelector.Select(source, model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);
+        Assert.Equal(new[] { "selection", "grouping", "verification", "review" }, result.StageSeconds!.Keys);
+        Assert.All(result.StageSeconds.Values, seconds => Assert.True(seconds >= 0));
         Assert.Contains(result.Groups!, g => g.SequenceEqual(new[] { A(1), A(2) }));
         Assert.Contains(result.Groups!, g => g.SequenceEqual(new[] { A(3), A(4) }));
         Assert.DoesNotContain(result.Groups!, g => g.Contains(A(10)) && g.Contains(A(12)));

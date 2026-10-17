@@ -51,6 +51,8 @@ public sealed record HeadingSelection(
     /// when there is one, is measured on that reading. A selected line without an entry is taken in its primary reading.</summary>
     public IReadOnlyDictionary<string, string>? HeadingReadings { get; init; }
     public GroupingObservation? Grouping { get; init; }
+    /// <summary>Wall-clock seconds of consecutive heading phases; verification/review include their dependent repairs.</summary>
+    public IReadOnlyDictionary<string, double>? StageSeconds { get; init; }
 }
 
 /// <summary>Actual stage observations, not inferred from failure-code text. Counts accumulate across repair/review passes.</summary>

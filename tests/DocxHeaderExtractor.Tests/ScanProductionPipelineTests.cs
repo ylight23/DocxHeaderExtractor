@@ -84,7 +84,8 @@ public sealed class ScanProductionPipelineTests
         {
             UnitFailures = ["GROUP-REVIEW:SELECTION_DISAGREEMENT_UNRESOLVED:P001-L004"],
             Grouping = new GroupingObservation(ModelDividedRuns: 2, FallbackRuns: 0, DisputedRuns: 1,
-                VerificationChecks: 2, VerifiedRuns: 1, UnresolvedAliases: 1)
+                VerificationChecks: 2, VerifiedRuns: 1, UnresolvedAliases: 1),
+            StageSeconds = new Dictionary<string, double> { ["selection"] = 10, ["grouping"] = 20, ["verification"] = 30, ["review"] = 40 }
         } };
         using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
         var run = await runner.ExtractAsync(ScanPath);
@@ -96,6 +97,7 @@ public sealed class ScanProductionPipelineTests
         Assert.DoesNotContain("layout fallback", grouping.Evidence);
         Assert.Equal(0, run.Outline.RouteAudit!.Grouping!.FallbackRuns);
         Assert.Contains("Grouping", JsonSerializer.Serialize(web.Audit));
+        Assert.Contains("verification 30", web.Stages.Single(s => s.Id == "heading-phase-timing").Evidence);
     }
 
     [Fact]

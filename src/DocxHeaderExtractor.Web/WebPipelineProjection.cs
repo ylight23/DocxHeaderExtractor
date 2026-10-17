@@ -109,6 +109,8 @@ public static class WebPipelineProjection
                 },
                 $"Producer {placement.Status}; requested={placement.RequestedCount}; placed={placement.PlacedCount}; outside-tree={placement.OutOfHierarchyCount}; unresolved={placement.UnresolvedCount}; failure={placement.FailureClass ?? "none"}"));
         stages.Add(new("projection", "completed", "Returned production outline"));
+        if (audit?.HeadingStageSeconds is { Count: > 0 } seconds)
+            stages.Add(new("heading-phase-timing", "completed", string.Join(", ", seconds.Select(kv => $"{kv.Key} {kv.Value:0.0}s"))));
         stages.Add(new("final-result", outcome == "Partial" ? "partial" : "completed", "Validated pipeline task result"));
         return new("web-pipeline-v2", runId, "same-execution", outcome, sourceKind, headings,
             relations, headings.Where(h => h.ParentStatus == "no-validated-parent").Select(h => h.ElementId).ToArray(),
@@ -128,7 +130,7 @@ public static class WebPipelineProjection
     { audit.PipelineId, audit.SourceBlocksAvailable, audit.SourceBlocksSelected, audit.SourcePagesAvailable,
         audit.SourcePagesSelected, audit.SemanticLane, audit.SpanLane,
         groundedSourceIds = audit.GroundedBlockIds, decisionCount = audit.BlockDecisions.Count,
-        placementExecution = audit.PlacementExecution, audit.Scan, audit.Grouping };
+        placementExecution = audit.PlacementExecution, audit.Scan, audit.Grouping, audit.HeadingStageSeconds };
 
     /// <summary>Keep outline compatibility fields while withholding transport completions/payloads from the Web.</summary>
     public static JsonNode SafeOutline(DocumentOutline outline, JsonSerializerOptions options)

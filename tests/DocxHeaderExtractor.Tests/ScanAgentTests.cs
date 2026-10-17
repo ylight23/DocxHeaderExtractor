@@ -287,6 +287,7 @@ public sealed class ScanAgentTests : IDisposable
 
         Assert.Empty(result.UnitFailures);
         Assert.Equal(2, result.Headings.Count);
+        Assert.Contains("verification", result.StageSeconds.Keys);
         var first = result.Headings[0];
         Assert.Equal(("Điều 1. Phạm vi điều chỉnh", "OCR_PRIMARY_VIEW", "UNVERIFIED"), (first.Text, first.TextStatus, first.Verification));
         var second = result.Headings[1];

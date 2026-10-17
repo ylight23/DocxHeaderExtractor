@@ -58,6 +58,7 @@ internal static class AgentGroupVerification
         var evidence = input.Evidence.ToList();
         var answers = input.Answers.ToList();
         var observation = input.Observation;
+        var corrections = new List<(Candidate Candidate, Verdict Verdict)>();
         for (var n = 0; n < checks.Length; n++)
         {
             var check = checks[n];
@@ -79,16 +80,7 @@ internal static class AgentGroupVerification
                         disputes.Add(new(prefix + ":" + candidate.Id, candidate.Aliases, verdict.Reason));
                         break;
                     case "REGROUP" when allowRegroup:
-                        var regroup = AgentGrouping.Group(source, candidate.Aliases.ToHashSet(StringComparer.Ordinal), model, budget,
-                            parallelism, ct, retryDelayMs, instruction, prefix + "-REGROUP-" + candidate.Id,
-                            new { candidate = candidate.Id, proposedGroups = candidate.Groups, verifier = verdict,
-                                task = "Reconsider boundaries only. Membership is unchanged unless you explicitly report dispute." });
-                        var verified = Verify(source, regroup, extents, readings, model, budget, parallelism, ct,
-                            retryDelayMs, instruction, allowRegroup: false, allowMembershipReview: allowMembershipReview, prefix: prefix + "-REVERIFY-" + candidate.Id);
-                        groups.AddRange(verified.Groups); disputes.AddRange(verified.Disputes);
-                        unresolved.UnionWith(verified.UnresolvedAliases); failures.AddRange(verified.Failures);
-                        evidence.AddRange(verified.Evidence); answers.AddRange(verified.Answers);
-                        observation = observation.Add(verified.Observation);
+                        corrections.Add((candidate, verdict));
                         break;
                     default:
                         unresolved.UnionWith(candidate.Aliases);
@@ -96,6 +88,26 @@ internal static class AgentGroupVerification
                         break;
                 }
             }
+        }
+        // Independent boundary repairs need not wait for one another. Each worker runs its
+        // own dependent regroup -> verify sequence serially, so nested loops cannot multiply jobs.
+        var corrected = new AgentGrouping.Result[corrections.Count];
+        Parallel.For(0, corrections.Count, new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct }, index =>
+        {
+            var (candidate, verdict) = corrections[index];
+            var regroup = AgentGrouping.Group(source, candidate.Aliases.ToHashSet(StringComparer.Ordinal), model, budget,
+                1, ct, retryDelayMs, instruction, prefix + "-REGROUP-" + candidate.Id,
+                new { candidate = candidate.Id, proposedGroups = candidate.Groups, verifier = verdict,
+                    task = "Reconsider boundaries only. Membership is unchanged unless you explicitly report dispute." });
+            corrected[index] = Verify(source, regroup, extents, readings, model, budget, 1, ct,
+                retryDelayMs, instruction, allowRegroup: false, allowMembershipReview: allowMembershipReview, prefix: prefix + "-REVERIFY-" + candidate.Id);
+        });
+        foreach (var verified in corrected)
+        {
+            groups.AddRange(verified.Groups); disputes.AddRange(verified.Disputes);
+            unresolved.UnionWith(verified.UnresolvedAliases); failures.AddRange(verified.Failures);
+            evidence.AddRange(verified.Evidence); answers.AddRange(verified.Answers);
+            observation = observation.Add(verified.Observation);
         }
         return input with { Groups = groups.OrderBy(g => positions[g[0]]).ToArray(), Disputes = disputes,
             UnresolvedAliases = unresolved.ToArray(), Failures = failures, Evidence = evidence, Answers = answers,

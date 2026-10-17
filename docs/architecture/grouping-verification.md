@@ -45,6 +45,20 @@ rounds and protocol repairs. Every request passes the shared byte/cost/call budg
 no unbounded semantic retries. Source context tools can provide context beyond the initial
 eight lines; the verifier may return unresolved when it cannot obtain adequate evidence.
 
+Boundary-repair candidates execute concurrently up to `jobs`. Within each worker the dependent
+regroup → reverify sequence remains serial and each nested operation uses one worker, so
+parallelism cannot multiply across nested loops. Results/evidence are combined in candidate
+order and final groups remain in source order. The scheduler changes no prompt, membership
+policy, verification coverage or reasoning setting. A barrier-based regression proves two
+repairs overlap at `jobs=2` without exceeding that cap; this is not a live 023 speed measurement.
+
+The selector records wall-clock `selection`, `grouping`, `verification` and `review` seconds.
+Verification includes boundary repairs; review includes its regroup and re-verification.
+Scan merges these into `StageSeconds` alongside OCR/preflight and total `conversation`.
+`conversation` includes those four heading phases, so do not add them to it as independent
+durations. Web safe audit carries `HeadingStageSeconds` and the execution list shows a
+`heading-phase-timing` row. Timings are measured observations, not a predicted speedup.
+
 `selection.Grouping` and runtime `routeAudit.Grouping` carry actual cumulative observations:
 model-divided runs, fallback runs, explicit disputes, verification checks and acceptances,
 membership/boundary disputes, final unresolved aliases, and ignored review changes. Web safe
