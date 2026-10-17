@@ -217,6 +217,7 @@
   function reset() {
     document.getElementById('pipelineV2')?.classList.add('hidden');
     document.getElementById('v2Diagnostics')?.replaceChildren();
+    document.getElementById('v2PlacementDiagnostics')?.replaceChildren();
   }
   function showFailure(message) {
     reset();

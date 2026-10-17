@@ -114,6 +114,18 @@ public sealed class ScanProductionPipelineTests
     }
 
     [Fact]
+    public async Task Missing_alias_states_do_not_masquerade_selected_count_as_answered_lines()
+    {
+        var prepared = Prepared(ScanPath) with { Selection = Prepared(ScanPath).Selection with { AliasStates = null } };
+        using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
+        var run = await runner.ExtractAsync(ScanPath);
+        var stage = WebPipelineProjection.Project(Guid.NewGuid(), "Completed", run.Outline, run, "scan")
+            .Stages.Single(s => s.Id == "V6-line-selection");
+        Assert.Contains("source-line answer count not recorded", stage.Evidence);
+        Assert.DoesNotContain("Answered source lines=", stage.Evidence);
+    }
+
+    [Fact]
     public async Task Appendix_mixed_run_reaches_model_placement_without_losing_parents_or_outside_tree_headings()
     {
         var (source, selection, _) = AppendixMembershipTests.RunFixture("reject");
