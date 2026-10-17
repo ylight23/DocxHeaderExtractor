@@ -101,6 +101,25 @@ public sealed class ScanProductionPipelineTests
     }
 
     [Fact]
+    public async Task Appendix_mixed_run_reaches_model_placement_without_losing_parents_or_outside_tree_headings()
+    {
+        var (source, selection, _) = AppendixMembershipTests.RunFixture("reject");
+        var prepared = ScanHeadingAgentSelector.PrepareSelection(source, selection) with
+        { SourceSha256 = CanonicalSemanticSourceHash.Compute(ScanPath) };
+        using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared), new AppendixPlacement()));
+        var run = await runner.ExtractAsync(ScanPath);
+        var structured = run.Outline.Headings.Where(h => h.Level is not null).ToArray();
+        Assert.Equal(new[] { "Phụ lục", "I. LỜI CHỨNG", "1. Lời chứng chứng thực bản sao từ bản chính", "2. Lời chứng chứng thực chữ ký",
+            "II. MẪU SỔ CHỨNG THỰC", "1. Bìa sổ", "2. Nội dung sổ" }, structured.Select(h => h.Text));
+        Assert.Equal(new int?[] { 1, 2, 3, 3, 2, 3, 3 }, structured.Select(h => h.Level));
+        Assert.Equal(9, run.Outline.Headings.Count);
+        Assert.Equal(2, run.Outline.Headings.Count(h => h.HierarchyResolution == "model-out-of-hierarchy"));
+        Assert.DoesNotContain(run.Outline.Headings, h => h.Text.StartsWith("Mẫu lời chứng được", StringComparison.Ordinal));
+        Assert.Equal("NOT_SELECT", run.Outline.RouteAudit!.HeadingAliasStates![AppendixMembershipTests.A(3)].FinalSelection);
+        Assert.Equal("READY_FOR_BINDING", run.Outline.RouteAudit.HeadingAliasStates[AppendixMembershipTests.A(1)].BindingStatus);
+    }
+
+    [Fact]
     public async Task Native_docx_keeps_the_native_selector_and_never_calls_the_scan_processor()
     {
         var dir = Path.Combine(Path.GetTempPath(), "dhx-scan-native-" + Guid.NewGuid().ToString("N"));
@@ -260,14 +279,14 @@ public sealed class ScanProductionPipelineTests
         }
     }
 
-    sealed class Factory(FixedScan scan) : IInferenceTransportFactory
+    sealed class Factory(FixedScan scan, IInferenceTransport? placement = null) : IInferenceTransportFactory
     {
         public int TransportCalls;
         public bool SendsDataExternally => true;
         public IScanHeadingSelector CreateScanHeadingSelector() => scan;
         public IHeadingSelector CreateDocxHeadingSelector() => new EmptyNative();
         public Task<IInferenceTransport> CreateAgentRouteAsync(CancellationToken ct = default)
-        { TransportCalls++; return Task.FromResult<IInferenceTransport>(new PlacementTransport()); }
+        { TransportCalls++; return Task.FromResult(placement ?? new PlacementTransport()); }
     }
     sealed class EmptyNative : IHeadingSelector
     {
@@ -286,6 +305,25 @@ public sealed class ScanProductionPipelineTests
         public int SharedPrefixTokens => 0;
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             Task.FromResult("{\"placements\":[{\"alias\":\"P001-L001\",\"parent\":\"ROOT\"},{\"alias\":\"P001-L003\",\"parent\":\"P001-L001\"}]}");
+        public void Dispose() { }
+    }
+    sealed class AppendixPlacement : IAgentRouteInferenceTransport
+    {
+        public string? OpenRouterApiKey => "test-route-key";
+        public string RouteProvider => "test";
+        public string RouteModel => "test";
+        public string ModelName => "test";
+        public int ContextSize => 100_000;
+        public string RuntimeDescription => "scripted appendix parent relations, not a live placement result";
+        public int SharedPrefixTokens => 0;
+        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
+        {
+            // Only the scripted model supplies parent relations; production derives levels from these relations.
+            var parents = new Dictionary<int, string> { [1] = "ROOT", [2] = AppendixMembershipTests.A(1), [4] = AppendixMembershipTests.A(2),
+                [6] = AppendixMembershipTests.A(2), [8] = AppendixMembershipTests.A(1), [9] = AppendixMembershipTests.A(8),
+                [11] = AppendixMembershipTests.A(8), [12] = "NONE", [14] = "NONE" };
+            return Task.FromResult(JsonSerializer.Serialize(new { placements = parents.Select(p => new { alias = AppendixMembershipTests.A(p.Key), parent = p.Value }) }));
+        }
         public void Dispose() { }
     }
     sealed class BlockingHandler : HttpMessageHandler

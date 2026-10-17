@@ -41,6 +41,7 @@ internal static class AgentGrouping
         public IReadOnlyList<string> Evidence { get; init; } = [];
         public IReadOnlyList<string> UnresolvedAliases { get; init; } = [];
         public GroupingObservation Observation { get; init; } = new();
+        public IReadOnlyDictionary<string, string> Memberships { get; init; } = new Dictionary<string, string>();
     }
 
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };

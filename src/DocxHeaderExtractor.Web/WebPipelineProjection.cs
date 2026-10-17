@@ -130,7 +130,7 @@ public static class WebPipelineProjection
     { audit.PipelineId, audit.SourceBlocksAvailable, audit.SourceBlocksSelected, audit.SourcePagesAvailable,
         audit.SourcePagesSelected, audit.SemanticLane, audit.SpanLane,
         groundedSourceIds = audit.GroundedBlockIds, decisionCount = audit.BlockDecisions.Count,
-        placementExecution = audit.PlacementExecution, audit.Scan, audit.Grouping, audit.HeadingStageSeconds };
+        placementExecution = audit.PlacementExecution, audit.Scan, audit.Grouping, audit.HeadingStageSeconds, audit.HeadingAliasStates };
 
     /// <summary>Keep outline compatibility fields while withholding transport completions/payloads from the Web.</summary>
     public static JsonNode SafeOutline(DocumentOutline outline, JsonSerializerOptions options)

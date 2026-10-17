@@ -59,6 +59,8 @@ public sealed record PipelineExecutionAudit(
     public DocxHeaderExtractor.DocumentProcessing.Routing.GroupingObservation? Grouping { get; init; }
     [JsonIgnore]
     public IReadOnlyDictionary<string, double>? HeadingStageSeconds { get; init; }
+    [JsonIgnore]
+    public IReadOnlyDictionary<string, DocxHeaderExtractor.DocumentProcessing.Routing.HeadingAliasState>? HeadingAliasStates { get; init; }
 }
 
 public sealed record PdfSelectedSourceIdentity(

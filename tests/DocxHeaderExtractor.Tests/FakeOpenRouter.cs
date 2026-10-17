@@ -44,7 +44,9 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
             verdicts = payload["candidates"]!.AsArray().Select(c => new
             {
                 run = c!["run"]!.GetValue<string>(), decision = "ACCEPT", reason = "Scripted independent verifier acceptance.",
-                evidenceRefs = new[] { c["proposedGroups"]![0]![0]!.GetValue<string>() }
+                evidenceRefs = new[] { c["proposedGroups"]![0]![0]!.GetValue<string>() },
+                membership = c["proposedGroups"]!.AsArray().SelectMany(g => g!.AsArray()).Select(a => new
+                { alias = a!.GetValue<string>(), status = "HEADING", evidenceRefs = new[] { a.GetValue<string>() } })
             })
         });
     }

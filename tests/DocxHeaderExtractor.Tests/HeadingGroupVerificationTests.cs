@@ -55,6 +55,47 @@ public sealed class HeadingGroupVerificationTests
 
     static string A(int n) => $"P032-L{n:000}";
 
+    [Theory]
+    [InlineData("missing")]
+    [InlineData("duplicate")]
+    [InlineData("out-of-order")]
+    [InlineData("unknown-alias")]
+    [InlineData("unknown-status")]
+    [InlineData("unknown-evidence")]
+    [InlineData("regroup-with-non-heading")]
+    [InlineData("dispute-with-all-heading")]
+    public void Per_alias_membership_requires_complete_ordered_grounded_and_consistent_structured_claims(string mode)
+    {
+        var calls = 0;
+        AgentUnit.Model model = (_, _, request) =>
+        {
+            calls++;
+            var root = JsonNode.Parse(Verdicts(Payload(request), _ => "ACCEPT"))!;
+            var verdict = root["verdicts"]![0]!;
+            var membership = verdict["membership"]!.AsArray();
+            switch (mode)
+            {
+                case "missing": membership.RemoveAt(0); break;
+                case "duplicate": membership[1]!["alias"] = membership[0]!["alias"]!.GetValue<string>(); break;
+                case "out-of-order":
+                    var first = membership[0]!.DeepClone(); membership[0] = membership[1]!.DeepClone(); membership[1] = first; break;
+                case "unknown-alias": membership[0]!["alias"] = "UNKNOWN"; break;
+                case "unknown-status": membership[0]!["status"] = "BODY"; break;
+                case "unknown-evidence": membership[0]!["evidenceRefs"]![0] = "UNKNOWN"; break;
+                case "regroup-with-non-heading": verdict["decision"] = "REGROUP"; membership[0]!["status"] = "NOT_HEADING"; break;
+                case "dispute-with-all-heading": verdict["decision"] = "MEMBERSHIP_DISPUTE"; break;
+            }
+            return new ModelTurn(root.ToJsonString(), [], "stop");
+        };
+        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1), A(2), A(3) }], [], [], 0),
+            new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(20, 100), 1, CancellationToken.None, 0, Instruction);
+        Assert.Empty(result.Groups);
+        Assert.Empty(result.Disputes);
+        Assert.Empty(result.Memberships);
+        Assert.Equal(AgentGroupVerification.MaxPosts, calls);
+        Assert.Contains(result.Failures, f => f.Contains("PROTOCOL:VERIFICATION_INVALID", StringComparison.Ordinal));
+    }
+
     [Fact]
     public void Independent_boundary_repairs_overlap_without_exceeding_jobs_and_keep_output_order()
     {
@@ -120,13 +161,23 @@ public sealed class HeadingGroupVerificationTests
         return JsonNode.Parse(content is JsonArray ? content[0]!["text"]!.GetValue<string>() : content.GetValue<string>())!.AsObject();
     }
 
-    static string Verdicts(JsonObject packet, Func<JsonNode, string> decide, bool invalidRefs = false) => JsonSerializer.Serialize(new
+    static string Verdicts(JsonObject packet, Func<JsonNode, string> decide, bool invalidRefs = false, Func<string, string>? membershipStatus = null) => JsonSerializer.Serialize(new
     {
         protocolVersion = AgentGroupVerification.Version,
-        verdicts = packet["candidates"]!.AsArray().Select(c => new
+        verdicts = packet["candidates"]!.AsArray().Select(c =>
         {
-            run = c!["run"]!.GetValue<string>(), decision = decide(c), reason = "Independent scripted source-based judgement.",
-            evidenceRefs = new[] { invalidRefs ? "UNKNOWN" : c["proposedGroups"]![0]![0]!.GetValue<string>() }
+            var decision = decide(c!);
+            return new
+            {
+                run = c!["run"]!.GetValue<string>(), decision, reason = "Independent scripted source-based judgement.",
+                evidenceRefs = new[] { invalidRefs ? "UNKNOWN" : c["proposedGroups"]![0]![0]!.GetValue<string>() },
+                membership = c["proposedGroups"]!.AsArray().SelectMany(g => g!.AsArray()).Select(a => new
+                {
+                    alias = a!.GetValue<string>(),
+                    status = membershipStatus?.Invoke(a.GetValue<string>()) ?? (decision == "MEMBERSHIP_DISPUTE" ? "NOT_HEADING" : decision == "UNRESOLVED" ? "UNRESOLVED" : "HEADING"),
+                    evidenceRefs = new[] { a.GetValue<string>() }
+                })
+            };
         })
     });
 

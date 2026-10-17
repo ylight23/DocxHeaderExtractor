@@ -193,9 +193,18 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         selected.ExceptWith(unresolved);
         foreach (var alias in unresolved) { extents.Remove(alias); readingChoices.Remove(alias); }
         var unresolvedUnits = Enumerable.Range(0, outcomes.Length).Count(n => outcomes[n].Status == "COMPLETE" && source.Scope(n).Decide.Any(unresolved.Contains));
+        var initial = outcomes.SelectMany(o => o.Decisions).ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.Ordinal);
+        var aliasStates = source.Lines.Where(l => initial.ContainsKey(l.Alias)).ToDictionary(l => l.Alias, l =>
+        {
+            var unknown = unresolved.Contains(l.Alias) || initial[l.Alias] == "UNRESOLVED";
+            var final = selected.Contains(l.Alias) ? "SELECT" : unknown ? "UNRESOLVED" : "NOT_SELECT";
+            return new HeadingAliasState(initial[l.Alias], final, grouping.Memberships.GetValueOrDefault(l.Alias),
+                final == "SELECT" ? "READY_FOR_BINDING" : final == "UNRESOLVED" ? "UNRESOLVED" : "NOT_SELECTED");
+        }, StringComparer.Ordinal);
+        answers = answers.Append(JsonSerializer.Serialize(new { stage = "pre-binding-alias-state", aliases = aliasStates }, Compact)).ToArray();
         return new HeadingSelection(selected, complete.Length - unresolvedUnits, outcomes.Length, failures, answers, budget.Calls, costOf(), source.Flavor.PlacementContext(source), grouping.Groups,
             extents.Count > 0 ? extents : null) { HeadingReadings = readingChoices.Count > 0 ? readingChoices : null,
                 Grouping = grouping.Observation with { UnresolvedAliases = unresolved.Count },
-                StageSeconds = seconds.ToDictionary(kv => kv.Key, kv => Math.Round(kv.Value, 3)) };
+                StageSeconds = seconds.ToDictionary(kv => kv.Key, kv => Math.Round(kv.Value, 3)), AliasStates = aliasStates };
     }
 }

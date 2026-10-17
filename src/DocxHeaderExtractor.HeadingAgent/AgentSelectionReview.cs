@@ -9,7 +9,7 @@ namespace DocxHeaderExtractor.HeadingAgent;
 internal static class AgentSelectionReview
 {
     public const int MaxPosts = 8;
-    public const string Version = "group-review-v1:verified-groups-v1";
+    public const string Version = "group-review-v1:verified-groups-v2-per-alias";
 
     public static AgentGrouping.Result Resolve(IAgentSource source, AgentGrouping.Result grouping,
         AgentUnitOutcome[] original, HashSet<string> selected, Dictionary<string, TextOffsetSpan> extents,
@@ -24,6 +24,7 @@ internal static class AgentSelectionReview
         var reviewed = new HashSet<string>(StringComparer.Ordinal);
         var unresolved = grouping.UnresolvedAliases.ToHashSet(StringComparer.Ordinal);
         var observation = grouping.Observation;
+        var memberships = grouping.Memberships.ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.Ordinal);
         var reviewPosts = 0;
         // Each alias is owned by exactly one original segment. Keep the original segment context and facts,
         // but only apply the new decisions to disputed aliases; other membership decisions stay as recorded.
@@ -84,6 +85,7 @@ internal static class AgentSelectionReview
         var stillDisputed = regroup.Disputes.SelectMany(d => d.Aliases).ToArray();
         unresolved.UnionWith(stillDisputed);
         unresolved.UnionWith(regroup.UnresolvedAliases);
+        foreach (var kv in regroup.Memberships) memberships[kv.Key] = kv.Value;
         if (stillDisputed.Length > 0)
             failures.Add("GROUP-REVIEW:SELECTION_DISAGREEMENT_UNRESOLVED:" + string.Join(",", stillDisputed));
         selected.ExceptWith(disputed);
@@ -93,6 +95,6 @@ internal static class AgentSelectionReview
         var groups = grouping.Groups.Concat(regroup.Groups).OrderBy(g => positions[g[0]]).ToArray();
         return new AgentGrouping.Result(groups, answers, failures, grouping.Posts + reviewPosts + regroup.Posts)
         { Evidence = evidence, Disputes = regroup.Disputes, UnresolvedAliases = unresolved.ToArray(),
-            Observation = observation.Add(regroup.Observation) };
+            Observation = observation.Add(regroup.Observation), Memberships = memberships };
     }
 }

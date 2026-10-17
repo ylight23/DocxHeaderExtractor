@@ -1,6 +1,6 @@
 # Independent heading-group verification
 
-2026-10-17. Production selector IDs now end in `verified-groups-v1` for scan, text PDF,
+2026-10-17. Production selector IDs now end in `verified-groups-v2-per-alias` for scan, text PDF,
 and DOCX. The heading instruction and OCR/transcription caches are unchanged. The additional
 model conversation checks every proposed heading, including singleton and fallback groups.
 Protocol-valid grouping alone no longer admits a heading to binding.
@@ -21,16 +21,29 @@ Flow:
    facts, eight nearby source lines each side, measured layout and document styles. It does not
    receive the proposing model's reasoning as authority. Adjacent proposed headings are checked
    together so false merges and false splits can both be challenged.
-3. `ACCEPT` admits the proposed groups. `MEMBERSHIP_DISPUTE` requests the existing bounded
-   selection review. `REGROUP` requests a targeted division with membership unchanged and the
-   verifier's feedback. `UNRESOLVED` withholds the affected aliases and records partial work.
+3. Every verdict supplies membership (`HEADING`, `NOT_HEADING`, `UNRESOLVED`) for every alias
+   exactly once in source order, with source evidence references per alias. `ACCEPT` and
+   `REGROUP` require all memberships to be `HEADING`. `MEMBERSHIP_DISPUTE` requires at least
+   one non-`HEADING` alias; only those aliases go to selection review. `REGROUP` requests a
+   targeted boundary-only division. The program never reads keywords in `reason` to change a
+   verdict. Inconsistent structured claims are sent back as protocol errors.
 4. A targeted regroup is verified once more; it cannot request another boundary repair. Groups
    produced after selection review are also verified, with no further selection-review cycle.
    Unresolved aliases never become single-line fallback headings.
 
-Verification uses `HEADING_GROUP_VERIFICATION_V1`. Every candidate must receive exactly one
+In a mixed run, confirmed `HEADING` aliases are proposed separately for fresh verification in
+their original source context. Removing contested aliases only cuts candidate pieces at the
+resulting gaps; these pieces are not emitted until a model accepts their boundaries. The fresh
+pass can request its own bounded boundary repair. There is at most one membership refinement
+per verification branch, and only one selection-review cycle. A failed/repeated dispute withholds
+the affected aliases without discarding independently accepted neighbours. At a bound where
+boundaries remain unverified, membership can still be `HEADING` while binding stays unresolved;
+it is never silently rewritten to `NOT_SELECT`.
+
+Verification uses `HEADING_GROUP_VERIFICATION_V2`. Every candidate must receive exactly one
 verdict, a nonempty reason (up to 1000 characters), and 1–8 evidence references to shown or
-successfully returned source aliases. C# validates shape, scope, grounding and budgets;
+successfully returned source aliases, plus complete per-alias membership with 1–8 evidence
+references for each alias. C# validates shape, completeness, scope, consistency, grounding and budgets;
 semantic membership and boundaries remain model decisions. No phrase, regex or pixel-distance
 rule assigns roles to country headers, mottos, form titles, clauses or headings.
 
@@ -71,6 +84,19 @@ Selection review continues to apply only disputed aliases. Its evidence now expl
 verification, regroup and failed visible replies remain in `ModelAnswers` / raw model audit.
 The Web safe audit still withholds raw model responses. Counts describe execution, not measured
 accuracy; an accepted verifier judgement can still be wrong.
+
+`HeadingSelection.AliasStates`, runtime `routeAudit.HeadingAliasStates`, and the
+`pre-binding-alias-state` audit entry record initial selection, final selection, latest model
+verification membership and binding eligibility per alias. `UNRESOLVED` is distinct from
+`NOT_SELECT`; `READY_FOR_BINDING` does not claim a placement, level or validated parent.
+
+Appendix regression uses a synthetic alias distribution based on the inspected stored 023
+page-23 image and the user's expected outline. It checks precise single-alias review, survivor
+verification after an initial dispute or a dispute discovered after regroup, failed review,
+reselected body text and unknown membership. The production-pipeline test supplies scripted
+model parent relations for the seven expected H1/H2/H3 entries and two outside-tree entries.
+Those levels are derived from the scripted relations; they are not hardcoded in production,
+not Gold edits, and not evidence that a live placement model has returned them.
 
 Regression: the stored 023 page-32 image was inspected before writing a synthetic protocol
 fixture. The fixture reproduces separate source functions for a section label, text inside a
