@@ -6,7 +6,7 @@ using System.Text.Json.Nodes;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>A fake OpenRouter: answers each POST with a streamed reply the script chooses.</summary>
-internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Status, string Sse)> script, string provider = "Alibaba") : HttpMessageHandler
+internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Status, string Sse)> script, string provider = "Alibaba", bool autoVerify = true) : HttpMessageHandler
 {
     private int posts;
     public int Posts => posts;
@@ -20,7 +20,7 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
         lock (Keys) Keys.Add(request.Headers.Authorization!.ToString());
         lock (Bodies) Bodies.Add(body);
         var n = Interlocked.Increment(ref posts);
-        var (status, sse) = VerificationResponse(body) is { } verification
+        var (status, sse) = autoVerify && VerificationResponse(body) is { } verification
             ? (HttpStatusCode.OK, Stream(new { content = verification }, "stop")) : script(body, n);
         return new HttpResponseMessage(status) { Content = new StringContent(sse.Replace("PROVIDER", provider), Encoding.UTF8, "text/event-stream") };
     }

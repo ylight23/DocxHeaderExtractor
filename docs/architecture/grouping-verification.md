@@ -5,6 +5,15 @@ and DOCX. The heading instruction and OCR/transcription caches are unchanged. Th
 model conversation checks every proposed heading, including singleton and fallback groups.
 Protocol-valid grouping alone no longer admits a heading to binding.
 
+The verifier explicitly requests a **JSON object** in its system message. Alibaba rejects
+`response_format=json_object` with HTTP 400 when no message contains the word `json`.
+This provider prerequisite is tested through the actual request builder and transport with
+fake HTTP validation (automatic fake verification disabled). A minimal live synthetic probe
+reproduced HTTP 400 without the word and HTTP 200 after adding it; see
+[probe report](../../eval/scan-text/reports/verifier-json-mode-smoke.v1.json). This probe does
+not evaluate document accuracy. The transport exposes the allowlisted diagnostic
+`CLIENT_ERROR:HTTP_400:JSON_MODE_REQUIRES_JSON_MESSAGE` without copying raw provider bodies.
+
 Flow:
 
 1. Selection decides membership; grouping proposes contiguous partitions or reports dispute.

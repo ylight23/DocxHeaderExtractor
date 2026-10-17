@@ -1,0 +1,20 @@
+{
+  "kind": "DIAGNOSTIC_NOT_GOLD",
+  "date": "2026-10-17",
+  "provider": "Alibaba",
+  "model": "qwen/qwen3.7-flash",
+  "input": "Minimal synthetic request for an object with one boolean field; no document content",
+  "responseFormat": "json_object",
+  "before": {
+    "messageContainsJsonWord": false,
+    "httpStatus": 400,
+    "diagnostic": "JSON_MODE_REQUIRES_JSON_MESSAGE"
+  },
+  "after": {
+    "messageContainsJsonWord": true,
+    "httpStatus": 200,
+    "content": { "ok": true },
+    "providerReportedCostUsd": 0.00000225
+  },
+  "limitations": "The live probe uses a minimal non-streaming request with reasoning disabled, not a complete document extraction. Production verifier prompt, request generation and streaming transport are covered separately by offline regression tests."
+}

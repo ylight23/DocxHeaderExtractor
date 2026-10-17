@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using System.Net;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
@@ -12,6 +13,46 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class HeadingGroupVerificationTests
 {
+    const string JsonModeProviderError = "{\"error\":{\"message\":\"'messages' must contain the word 'json' in some form, to use 'response_format' of type 'json_object'.\"}}";
+
+    [Fact]
+    public void Production_verifier_satisfies_the_providers_JSON_mode_message_requirement_through_the_real_transport()
+    {
+        var source = Source();
+        using var handler = new FakeOpenRouter((body, _) =>
+        {
+            // Simulate Alibaba's HTTP validation rather than auto-accepting any verifier request.
+            var mentionsJson = body["messages"]!.AsArray().Any(m =>
+                m!["content"]!.ToString().Contains("json", StringComparison.OrdinalIgnoreCase));
+            if (!mentionsJson) return (HttpStatusCode.BadRequest, JsonModeProviderError);
+            Assert.Equal("json_object", body["response_format"]!["type"]!.GetValue<string>());
+            Assert.Contains("JSON object", body["messages"]![0]!["content"]!.GetValue<string>());
+            return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = FakeOpenRouter.VerificationResponse(body) }, "stop"));
+        }, autoVerify: false);
+        var budget = new AgentBudget(10, 100);
+        using var model = new AgentModel(handler, "sk-test", budget);
+        var result = AgentGroupVerification.Verify(source, new AgentGrouping.Result([new[] { A(1), A(2) }], [], [], 0),
+            new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model.Turn, budget, 1, CancellationToken.None, 0, "Extract structural headings.");
+        Assert.Empty(result.Failures);
+        Assert.Empty(result.UnresolvedAliases);
+        Assert.Single(result.Groups);
+        Assert.Equal(1, handler.Posts);
+        Assert.Equal(1, result.Observation.VerifiedRuns);
+    }
+
+    [Fact]
+    public void Provider_JSON_mode_rejection_reports_the_actionable_cause_without_returning_raw_provider_text()
+    {
+        using var handler = new FakeOpenRouter((_, _) => (HttpStatusCode.BadRequest,
+            JsonModeProviderError.Replace("some form", "some form sk-test private provider text", StringComparison.Ordinal)), autoVerify: false);
+        using var model = new AgentModel(handler, "sk-test", new AgentBudget(10, 100));
+        var request = AgentGrouping.BuildRequest("Return an object.", new JsonArray(), "Use the declared schema.");
+        var error = Assert.Throws<ReplyFailure>(() => model.Turn("VERIFY-001", 1, request));
+        Assert.Equal("TRANSPORT:CLIENT_ERROR:HTTP_400:JSON_MODE_REQUIRES_JSON_MESSAGE", error.Code);
+        Assert.DoesNotContain("sk-test", error.Message);
+        Assert.DoesNotContain("private provider text", error.Message);
+    }
+
     static string A(int n) => $"P032-L{n:000}";
     // Source functions copied from the inspected stored page 32, not a heading Gold or a production phrase filter.
     static ScanAgentSource Source(string? entry = null, string? imageSha = null)

@@ -124,6 +124,11 @@ internal sealed class AgentModel : IDisposable
                 _ => "UNEXPECTED_STATUS",
             };
             if (outcome == "HTTP_OK" && body is null) outcome = "RESPONSE_NOT_UTF8";
+            // Preserve an actionable, allowlisted diagnostic without exposing provider bodies, source text or credentials.
+            if (outcome == "CLIENT_ERROR" && status == 400 && body is not null &&
+                body.Contains("must contain the word", StringComparison.OrdinalIgnoreCase) &&
+                body.Contains("json", StringComparison.OrdinalIgnoreCase) && body.Contains("response_format", StringComparison.OrdinalIgnoreCase))
+                outcome = "CLIENT_ERROR:HTTP_400:JSON_MODE_REQUIRES_JSON_MESSAGE";
             return (outcome, body);
         }
     }
