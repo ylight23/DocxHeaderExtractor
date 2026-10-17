@@ -14,13 +14,17 @@ namespace DocxHeaderExtractor.HeadingAgent;
 internal static class AgentGroupVerification
 {
     public const string Version = "HEADING_GROUP_VERIFICATION_V2";
-    public const int MaxPosts = 3, BatchSize = 8;
+    // Evidence/JSON rounds and transport retries have separate limits. A failed transport
+    // repeats identical prepared bytes and does not consume a model repair round.
+    public const int MaxPosts = 3, TransportRetries = AgentUnit.TransportRetries, MaxCalls = MaxPosts + TransportRetries, BatchSize = 8;
     static readonly JsonSerializerOptions Json = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
     internal sealed record Candidate(string Id, string[][] Groups)
     { public string[] Aliases => Groups.SelectMany(g => g).ToArray(); }
     internal sealed record Membership(string Alias, string Status, string[] EvidenceRefs);
     internal sealed record Verdict(string Run, string Decision, string Reason, string[] EvidenceRefs, Membership[] Membership);
     internal sealed record Check(IReadOnlyList<Verdict> Verdicts, IReadOnlyList<string> Evidence, string? Failure);
+    internal sealed record ProtocolIssue(string? Run, string Code);
+    sealed class VerificationProtocolException(string code) : Exception(code);
 
     public static readonly string Prompt = string.Join("\n",
         "Return exactly one JSON object and nothing else, using the declared schema. Every reply, including an evidence request, must be JSON.",
@@ -52,7 +56,7 @@ internal static class AgentGroupVerification
         var chunks = candidates.Chunk(BatchSize).ToArray();
         var checks = new Check[chunks.Length];
         Parallel.For(0, chunks.Length, new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct },
-            n => checks[n] = Ask(source, chunks[n], extents, readings, model, budget, ct, instruction, prefix + "-" + (n + 1).ToString("000")));
+            n => checks[n] = Ask(source, chunks[n], extents, readings, model, budget, ct, retryDelayMs, instruction, prefix + "-" + (n + 1).ToString("000")));
         var groups = new List<IReadOnlyList<string>>();
         var disputes = input.Disputes.ToList();
         var unresolved = input.UnresolvedAliases.ToHashSet(StringComparer.Ordinal);
@@ -173,17 +177,17 @@ internal static class AgentGroupVerification
 
     static Check Ask(IAgentSource source, Candidate[] candidates, IReadOnlyDictionary<string, TextOffsetSpan> extents,
         IReadOnlyDictionary<string, string> readings, AgentUnit.Model model, AgentBudget budget, CancellationToken ct,
-        string instruction, string unit)
+        int retryDelayMs, string instruction, string unit)
     {
         var tools = source.Flavor.CreateTools(source);
         var positions = source.Lines.Select((l, i) => (l.Alias, i)).ToDictionary(x => x.Alias, x => x.i);
         var shown = candidates.SelectMany(c => Enumerable.Range(Math.Max(0, positions[c.Aliases[0]] - 8),
             Math.Min(source.Lines.Count - 1, positions[c.Aliases[^1]] + 8) - Math.Max(0, positions[c.Aliases[0]] - 8) + 1)).Distinct().Order().ToArray();
         var observed = shown.Select(i => source.Lines[i].Alias).ToHashSet(StringComparer.Ordinal);
-        var packet = JsonSerializer.Serialize(new
+        string Packet(Candidate[] pending) => JsonSerializer.Serialize(new
         {
             stage = "GROUP_VERIFICATION", instruction, documentSha256 = source.SourceSha256,
-            candidates = candidates.Select(c => new { run = c.Id, proposedGroups = c.Groups,
+            candidates = pending.Select(c => new { run = c.Id, proposedGroups = c.Groups,
                 targetFacts = AgentRequestFacts.Read(source, c.Aliases),
                 lines = c.Aliases.Select(a => new { alias = a, source = source.Flavor.GroupLineItem(source, positions[a]),
                     readingViewId = readings.GetValueOrDefault(a), extent = extents.GetValueOrDefault(a),
@@ -194,30 +198,58 @@ internal static class AgentGroupVerification
         }, Json);
         var history = new JsonArray();
         var evidence = new List<string>();
+        var accepted = new Dictionary<string, Verdict>(StringComparer.Ordinal);
+        Check Finish(string? error) => new(candidates.Where(c => accepted.ContainsKey(c.Id)).Select(c => accepted[c.Id]).ToArray(), evidence, error);
         string? failure = null;
-        for (var attempt = 1; attempt <= MaxPosts; attempt++)
+        int posts = 0, retries = 0;
+        for (var round = 1; round <= MaxPosts; round++)
         {
             ct.ThrowIfCancellationRequested();
-            var request = AgentGrouping.BuildRequest(packet, history, Prompt);
-            if (budget.Admit(request) is { } refusal) return new([], evidence, "BUDGET:" + refusal);
+            var pending = candidates.Where(c => !accepted.ContainsKey(c.Id)).ToArray();
+            var request = AgentGrouping.BuildRequest(Packet(pending), history, Prompt);
             ModelTurn reply;
-            try { reply = model(unit, attempt, request); }
-            catch (OperationCanceledException) { throw; }
-            catch (ReplyFailure f)
-            { evidence.Add(JsonSerializer.Serialize(new { unit, attempt, requestSha256 = request.Sha256, failure = f.Code })); return new([], evidence, "CALL:" + f.Code); }
-            catch (Exception e) when (e is not OutOfMemoryException)
-            { return new([], evidence, "MODEL_CALL_FAILED"); }
-            evidence.Add(JsonSerializer.Serialize(new { unit, attempt, requestSha256 = request.Sha256, response = reply.Content }, Json));
+            while (true)
+            {
+                ct.ThrowIfCancellationRequested();
+                if (budget.Admit(request) is { } refusal)
+                {
+                    evidence.Add(JsonSerializer.Serialize(new { unit, round, requestSha256 = request.Sha256, failure = "BUDGET:" + refusal }, Json));
+                    return Finish("BUDGET:" + refusal);
+                }
+                var attempt = ++posts;
+                try { reply = model(unit, attempt, request); break; }
+                catch (OperationCanceledException) { throw; }
+                catch (ReplyFailure f)
+                {
+                    var retry = retries < TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal);
+                    evidence.Add(JsonSerializer.Serialize(new { unit, attempt, round, requestSha256 = request.Sha256,
+                        failure = f.Code, transportRetry = retry, transportRetriesUsed = retries + (retry ? 1 : 0) }, Json));
+                    if (!retry) return Finish("CALL:" + f.Code);
+                    retries++;
+                    if (retryDelayMs > 0 && ct.WaitHandle.WaitOne(retryDelayMs)) ct.ThrowIfCancellationRequested();
+                }
+                catch (Exception e) when (e is not OutOfMemoryException)
+                {
+                    evidence.Add(JsonSerializer.Serialize(new { unit, attempt, round, requestSha256 = request.Sha256, failure = "MODEL_CALL_FAILED" }, Json));
+                    return Finish("MODEL_CALL_FAILED");
+                }
+            }
+            evidence.Add(JsonSerializer.Serialize(new { unit, attempt = posts, round, requestSha256 = request.Sha256, response = reply.Content }, Json));
             var content = reply.Content ?? "";
             if (TryUnwrapFence(content, out var inner)) content = inner;
+            var issues = new List<ProtocolIssue>();
             try
             {
+                Require(reply.FinishReason == "stop", "FINISH_REASON_INVALID");
+                Require(reply.ToolCalls.Count == 0, "UNEXPECTED_TOOL_CALLS");
+                Require(System.Text.Encoding.UTF8.GetByteCount(content) <= VisibleResponseCapBytes, "REPLY_OVER_CAP");
                 var root = JsonNode.Parse(content)!.AsObject();
-                if (reply.FinishReason != "stop" || reply.ToolCalls.Count > 0 ||
-                    System.Text.Encoding.UTF8.GetByteCount(content) > VisibleResponseCapBytes ||
-                    root["protocolVersion"]?.GetValue<string>() != Version) throw new JsonException();
-                if (root["requests"] is JsonArray requests && !root.ContainsKey("verdicts") && root.Count == 2 && attempt < MaxPosts && requests.Count is >= 1 and <= 4)
+                Require(root["protocolVersion"]?.GetValue<string>() == Version, "PROTOCOL_VERSION_INVALID");
+                if (root.ContainsKey("requests"))
                 {
+                    Require(root.Count == 2 && !root.ContainsKey("verdicts") && root["requests"] is JsonArray, "EVIDENCE_REQUEST_INVALID");
+                    var requests = root["requests"]!.AsArray();
+                    Require(round < MaxPosts && requests.Count is >= 1 and <= 4, "EVIDENCE_ROUNDS_EXHAUSTED");
                     var results = new JsonArray();
                     var images = new List<JsonNode>();
                     foreach (var r in requests)
@@ -234,54 +266,93 @@ internal static class AgentGroupVerification
                         }
                         else
                         {
-                            var result = tools.Execute("VERIFY-E" + attempt + "." + results.Count, name, args.ToJsonString());
+                            var result = tools.Execute("VERIFY-E" + round + "." + results.Count, name, args.ToJsonString());
                             results.Add(JsonNode.Parse(result.Content));
                             observed.UnionWith(tools.ObservedAliases);
                         }
                     }
-                    evidence.Add(JsonSerializer.Serialize(new { unit, attempt, evidenceResults = results }, Json));
+                    evidence.Add(JsonSerializer.Serialize(new { unit, attempt = posts, round, evidenceResults = results }, Json));
                     history.Add(new JsonObject { ["role"] = "assistant", ["content"] = content });
                     var parts = new JsonArray(new JsonObject { ["type"] = "text", ["text"] = results.ToJsonString(Json) });
                     foreach (var image in images) parts.Add(image);
                     history.Add(new JsonObject { ["role"] = "user", ["content"] = parts });
                     continue;
                 }
-                if (root.Count != 2 || root["verdicts"] is not JsonArray verdicts || verdicts.Count != candidates.Length) throw new JsonException();
-                var parsed = new List<Verdict>();
-                foreach (var v in verdicts)
+                Require(root.Count == 2 && root["verdicts"] is JsonArray, "VERDICTS_ENVELOPE_INVALID");
+                var verdicts = root["verdicts"]!.AsArray();
+                // Duplicate entries invalidate their own candidate, including when one copy
+                // parses. Other complete, grounded verdicts remain independent.
+                var identified = verdicts.Select(v => (Node: v, Id: StringValue(v, "run"))).ToArray();
+                foreach (var item in identified.Where(v => v.Id is null || !pending.Any(c => c.Id == v.Id)))
+                    issues.Add(new(item.Id, item.Id is null ? "RUN_ID_INVALID" : "RUN_NOT_REQUESTED"));
+                foreach (var candidate in pending)
                 {
-                    var item = v!.AsObject();
-                    var id = item["run"]!.GetValue<string>(); var decision = item["decision"]!.GetValue<string>();
-                    var reason = item["reason"]!.GetValue<string>(); var refs = item["evidenceRefs"]!.AsArray().Select(x => x!.GetValue<string>()).ToArray();
-                    var candidate = candidates.SingleOrDefault(c => c.Id == id);
-                    if (item.Count != 5 || candidate is null || parsed.Any(p => p.Run == id) ||
-                        decision is not ("ACCEPT" or "MEMBERSHIP_DISPUTE" or "REGROUP" or "UNRESOLVED") ||
-                        string.IsNullOrWhiteSpace(reason) || reason.Length > 1000 || refs.Length is < 1 or > 8 || refs.Any(a => !observed.Contains(a))) throw new JsonException();
-                    var membership = item["membership"]!.AsArray().Select(m =>
-                    {
-                        var entry = m!.AsObject();
-                        var alias = entry["alias"]!.GetValue<string>(); var status = entry["status"]!.GetValue<string>();
-                        var evidenceRefs = entry["evidenceRefs"]!.AsArray().Select(e => e!.GetValue<string>()).ToArray();
-                        if (entry.Count != 3 || status is not ("HEADING" or "NOT_HEADING" or "UNRESOLVED") ||
-                            evidenceRefs.Length is < 1 or > 8 || evidenceRefs.Any(a => !observed.Contains(a))) throw new JsonException();
-                        return new Membership(alias, status, evidenceRefs);
-                    }).ToArray();
-                    if (!membership.Select(m => m.Alias).SequenceEqual(candidate.Aliases) ||
-                        (decision is "ACCEPT" or "REGROUP") && membership.Any(m => m.Status != "HEADING") ||
-                        decision == "MEMBERSHIP_DISPUTE" && membership.All(m => m.Status == "HEADING"))
-                        throw new JsonException("MEMBERSHIP_DECISION_INCONSISTENT");
-                    parsed.Add(new(id, decision, reason, refs, membership));
+                    var matches = identified.Where(v => v.Id == candidate.Id).ToArray();
+                    if (matches.Length != 1)
+                    { issues.Add(new(candidate.Id, matches.Length == 0 ? "RUN_MISSING" : "RUN_DUPLICATE")); continue; }
+                    try { accepted.Add(candidate.Id, ParseVerdict(matches[0].Node, candidate, observed)); }
+                    catch (VerificationProtocolException e) { issues.Add(new(candidate.Id, e.Message)); }
+                    catch (Exception e) when (e is JsonException or InvalidOperationException or NullReferenceException or ArgumentException)
+                    { issues.Add(new(candidate.Id, "VERDICT_SHAPE_INVALID")); }
                 }
-                return new(parsed, evidence, null);
             }
+            catch (VerificationProtocolException e) { issues.Add(new(null, e.Message)); }
             catch (Exception e) when (e is JsonException or InvalidOperationException or NullReferenceException or ArgumentException)
-            {
-                failure = "PROTOCOL:VERIFICATION_INVALID";
-                history.Add(new JsonObject { ["role"] = "assistant", ["content"] = content });
-                history.Add(new JsonObject { ["role"] = "user", ["content"] = "Response refused: " + failure + ". Give every candidate and every membership alias exactly once in candidate order, with valid source evidence and a reason. ACCEPT/REGROUP require all HEADING. Non-HEADING aliases require MEMBERSHIP_DISPUTE or UNRESOLVED. Do not invent HEADING/ACCEPT to fix protocol." });
-            }
+            { issues.Add(new(null, "JSON_OR_ENVELOPE_INVALID")); }
+
+            var remaining = candidates.Where(c => !accepted.ContainsKey(c.Id)).Select(c => c.Id).ToArray();
+            evidence.Add(JsonSerializer.Serialize(new { stage = "verification-protocol", unit, attempt = posts, round,
+                acceptedCandidates = candidates.Where(c => accepted.ContainsKey(c.Id)).Select(c => c.Id).ToArray(),
+                pendingCandidates = remaining, issues }, Json));
+            if (remaining.Length == 0) return Finish(null);
+            failure = "PROTOCOL:VERIFICATION_INVALID:" + string.Join(";", issues.Select(i => (i.Run ?? "ENVELOPE") + ":" + i.Code));
+            if (round == MaxPosts) break;
+            history.Add(new JsonObject { ["role"] = "assistant", ["content"] = content });
+            history.Add(new JsonObject { ["role"] = "user", ["content"] =
+                "Response partly refused: " + JsonSerializer.Serialize(new { pendingCandidates = remaining, issues }, Json) +
+                ". Previously accepted candidates are kept and must not be resubmitted. Return only the candidates in the current packet. Give every candidate and every membership alias exactly once in candidate order, with valid source evidence and a reason. ACCEPT/REGROUP require all HEADING. Non-HEADING aliases require MEMBERSHIP_DISPUTE or UNRESOLVED. Do not invent HEADING/ACCEPT to fix protocol." });
         }
-        return new([], evidence, failure ?? "EVIDENCE_ROUNDS_EXHAUSTED");
+        return Finish(failure ?? "EVIDENCE_ROUNDS_EXHAUSTED");
+    }
+
+    static void Require(bool condition, string code)
+    { if (!condition) throw new VerificationProtocolException(code); }
+
+    static string? StringValue(JsonNode? node, string name) =>
+        node is JsonObject obj && obj[name] is JsonValue value && value.TryGetValue<string>(out var text) ? text : null;
+
+    static string[] EvidenceRefs(JsonNode? node, IReadOnlySet<string> observed, string code)
+    {
+        Require(node is JsonArray a && a.Count is >= 1 and <= 8, code);
+        var refs = node!.AsArray().Select(r => r is JsonValue v && v.TryGetValue<string>(out var s) ? s : null).ToArray();
+        Require(refs.All(r => r is not null && observed.Contains(r)), code);
+        return refs.Select(r => r!).ToArray();
+    }
+
+    static Verdict ParseVerdict(JsonNode? node, Candidate candidate, IReadOnlySet<string> observed)
+    {
+        Require(node is JsonObject, "VERDICT_FIELDS_INVALID");
+        var item = node!.AsObject();
+        Require(item.Count == 5 && new[] { "run", "decision", "reason", "evidenceRefs", "membership" }.All(item.ContainsKey), "VERDICT_FIELDS_INVALID");
+        var decision = StringValue(item, "decision");
+        Require(decision is "ACCEPT" or "MEMBERSHIP_DISPUTE" or "REGROUP" or "UNRESOLVED", "DECISION_INVALID");
+        var reason = StringValue(item, "reason");
+        Require(!string.IsNullOrWhiteSpace(reason) && reason.Length <= 1000, "REASON_INVALID");
+        var refs = EvidenceRefs(item["evidenceRefs"], observed, "EVIDENCE_REFS_INVALID");
+        Require(item["membership"] is JsonArray, "MEMBERSHIP_REQUIRED");
+        var membership = new List<Membership>();
+        foreach (var m in item["membership"]!.AsArray())
+        {
+            Require(m is JsonObject entry && entry.Count == 3 && new[] { "alias", "status", "evidenceRefs" }.All(entry.ContainsKey), "MEMBERSHIP_FIELDS_INVALID");
+            var alias = StringValue(m, "alias"); var status = StringValue(m, "status");
+            Require(alias is not null, "MEMBERSHIP_ALIAS_INVALID");
+            Require(status is "HEADING" or "NOT_HEADING" or "UNRESOLVED", "MEMBERSHIP_STATUS_INVALID");
+            membership.Add(new(alias!, status!, EvidenceRefs(m!["evidenceRefs"], observed, "MEMBERSHIP_EVIDENCE_INVALID")));
+        }
+        Require(membership.Select(m => m.Alias).SequenceEqual(candidate.Aliases), "MEMBERSHIP_COVERAGE_INVALID");
+        Require(!((decision is "ACCEPT" or "REGROUP") && membership.Any(m => m.Status != "HEADING")) &&
+            !(decision == "MEMBERSHIP_DISPUTE" && membership.All(m => m.Status == "HEADING")), "MEMBERSHIP_DECISION_INCONSISTENT");
+        return new(candidate.Id, decision!, reason!, refs, membership.ToArray());
     }
 
     static string SelectedText(IAgentSource source, string alias, int position,

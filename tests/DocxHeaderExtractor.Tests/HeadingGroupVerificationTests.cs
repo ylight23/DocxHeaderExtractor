@@ -55,6 +55,220 @@ public sealed class HeadingGroupVerificationTests
 
     static string A(int n) => $"P032-L{n:000}";
 
+    static AgentGrouping.Result EightCandidates() => new(Enumerable.Range(0, 8).Select(i => new[] { A(1 + 2 * i) }).ToArray(), [], [], 0);
+
+    [Theory]
+    [InlineData("missing", "RUN_MISSING")]
+    [InlineData("duplicate", "RUN_DUPLICATE")]
+    [InlineData("fields", "VERDICT_FIELDS_INVALID")]
+    [InlineData("evidence", "EVIDENCE_REFS_INVALID")]
+    [InlineData("membership", "MEMBERSHIP_COVERAGE_INVALID")]
+    [InlineData("status", "MEMBERSHIP_STATUS_INVALID")]
+    [InlineData("inconsistent", "MEMBERSHIP_DECISION_INCONSISTENT")]
+    public void One_bad_verdict_keeps_seven_valid_candidates_and_repairs_only_the_bad_one(string mode, string diagnostic)
+    {
+        var calls = 0;
+        AgentUnit.Model model = (_, _, request) =>
+        {
+            var packet = Payload(request);
+            var response = JsonNode.Parse(Verdicts(packet, _ => "ACCEPT"))!;
+            var verdicts = response["verdicts"]!.AsArray();
+            if (++calls == 1)
+            {
+                var bad = verdicts[3]!;
+                switch (mode)
+                {
+                    case "missing": verdicts.RemoveAt(3); break;
+                    case "duplicate": verdicts.Add(bad.DeepClone()); break;
+                    case "fields": bad.AsObject().Remove("reason"); break;
+                    case "evidence": bad["evidenceRefs"]![0] = "UNKNOWN"; break;
+                    case "membership": bad["membership"]!.AsArray().Clear(); break;
+                    case "status": bad["membership"]![0]!["status"] = "BODY"; break;
+                    case "inconsistent": bad["membership"]![0]!["status"] = "NOT_HEADING"; break;
+                }
+            }
+            else
+            {
+                Assert.Equal("V4", Assert.Single(packet["candidates"]!.AsArray())!["run"]!.GetValue<string>());
+                var repair = JsonNode.Parse(request.Body)!["messages"]!.AsArray().Last()!["content"]!.GetValue<string>();
+                Assert.Contains(diagnostic, repair);
+                Assert.Contains("must not be resubmitted", repair);
+            }
+            return new ModelTurn(response.ToJsonString(), [], "stop");
+        };
+        var input = EightCandidates();
+        var result = AgentGroupVerification.Verify(Source(lineCount: 16), input, new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
+            model, new AgentBudget(20, 100), 1, CancellationToken.None, 0, Instruction);
+        Assert.Equal(2, calls);
+        Assert.Empty(result.Failures);
+        Assert.Empty(result.UnresolvedAliases);
+        Assert.Equal(input.Groups, result.Groups);
+        Assert.Equal(8, result.Observation.VerifiedRuns);
+        Assert.Contains(result.Evidence, e => e.Contains(diagnostic, StringComparison.Ordinal));
+    }
+
+    [Theory]
+    [InlineData("invalid")]
+    [InlineData("transport")]
+    [InlineData("budget")]
+    public void Later_failure_never_discards_accepted_candidates_or_turns_unknown_membership_into_body(string mode)
+    {
+        var calls = 0;
+        var budget = new AgentBudget(mode == "budget" ? 1 : 20, 100);
+        AgentUnit.Model model = (_, _, request) =>
+        {
+            var packet = Payload(request);
+            if (++calls > 1)
+            {
+                Assert.Equal("V4", Assert.Single(packet["candidates"]!.AsArray())!["run"]!.GetValue<string>());
+                if (mode == "transport") throw new ReplyFailure("TRANSPORT:STREAM_ERROR");
+                // Even a repeated/revised verdict for a frozen candidate must not overwrite it.
+                var response = JsonNode.Parse(Verdicts(packet, _ => "ACCEPT"))!;
+                response["verdicts"]![0]!["membership"]!.AsArray().Clear();
+                var stale = JsonNode.Parse(Verdicts(PayloadOfFrozenCandidate(), _ => "MEMBERSHIP_DISPUTE"))!["verdicts"]![0]!.DeepClone();
+                response["verdicts"]!.AsArray().Add(stale);
+                return new ModelTurn(response.ToJsonString(), [], "stop");
+            }
+            var first = JsonNode.Parse(Verdicts(packet, _ => "ACCEPT"))!;
+            first["verdicts"]!.AsArray().RemoveAt(3);
+            return new ModelTurn(first.ToJsonString(), [], "stop");
+        };
+        var result = AgentGroupVerification.Verify(Source(lineCount: 16), EightCandidates(), new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
+            model, budget, 1, CancellationToken.None, 0, Instruction);
+        Assert.Equal(7, result.Groups.Count);
+        Assert.Equal(new[] { A(7) }, result.UnresolvedAliases);
+        Assert.Equal(7, result.Observation.VerifiedRuns);
+        Assert.Equal("HEADING", result.Memberships[A(1)]);
+        Assert.False(result.Memberships.ContainsKey(A(7)));
+        Assert.Empty(result.Disputes);
+        Assert.NotEmpty(result.Failures);
+        Assert.Equal(mode == "invalid" ? AgentGroupVerification.MaxPosts : mode == "transport" ? 2 + AgentGroupVerification.TransportRetries : 1, calls);
+
+        static JsonObject PayloadOfFrozenCandidate() => new() { ["candidates"] = new JsonArray(new JsonObject
+        { ["run"] = "V1", ["proposedGroups"] = new JsonArray(new JsonArray(A(1))) }) };
+    }
+
+    [Theory]
+    [InlineData("TRANSPORT:STREAM_ERROR", true)]
+    [InlineData("TRANSPORT:STREAM_INCOMPLETE", true)]
+    [InlineData("TRANSPORT:TRANSPORT_ERROR", true)]
+    [InlineData("TRANSPORT:RATE_LIMITED_NO_RETRY", true)]
+    [InlineData("TRANSPORT:SERVER_ERROR_NO_RETRY", true)]
+    [InlineData("TRANSPORT:CLIENT_ERROR", false)]
+    [InlineData("TRANSPORT:PAYMENT_REQUIRED", false)]
+    [InlineData("AUDIT:USAGE_MISSING", false)]
+    [InlineData("ENDPOINT_OR_MODEL_UNEXPECTED", false)]
+    public void Transport_retries_are_bounded_allowlisted_audited_and_send_identical_bytes(string failure, bool retry)
+    {
+        var requests = new List<PreparedRequest>();
+        var attempts = new List<int>();
+        var budget = new AgentBudget(20, 100);
+        AgentUnit.Model model = (_, attempt, request) =>
+        {
+            requests.Add(request); attempts.Add(attempt);
+            if (requests.Count <= AgentGroupVerification.TransportRetries) throw new ReplyFailure(failure);
+            return new ModelTurn(Verdicts(Payload(request), _ => "ACCEPT"), [], "stop");
+        };
+        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
+            new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, budget, 1, CancellationToken.None, 0, Instruction);
+        Assert.Equal(retry ? 1 + AgentGroupVerification.TransportRetries : 1, requests.Count);
+        Assert.Equal(requests.Count, budget.Calls);
+        Assert.Equal(Enumerable.Range(1, requests.Count), attempts);
+        Assert.All(requests, r => Assert.Equal(requests[0], r));
+        Assert.Equal(retry ? 1 : 0, result.Groups.Count);
+        Assert.Equal(retry ? 0 : 1, result.UnresolvedAliases.Count);
+        Assert.Contains(result.Evidence, e => e.Contains(failure, StringComparison.Ordinal) && e.Contains("transportRetry", StringComparison.Ordinal));
+    }
+
+    [Theory]
+    [InlineData("cancel")]
+    [InlineData("budget")]
+    [InlineData("exhausted")]
+    public void Retry_obeys_cancellation_budget_and_exhaustion(string mode)
+    {
+        using var cts = new CancellationTokenSource();
+        var calls = 0;
+        var budget = new AgentBudget(mode == "budget" ? 1 : 20, 100);
+        AgentUnit.Model model = (_, _, _) =>
+        {
+            calls++;
+            if (mode == "cancel") cts.Cancel();
+            throw new ReplyFailure("TRANSPORT:STREAM_ERROR");
+        };
+        AgentGrouping.Result Run() => AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
+            new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, budget, 1, cts.Token, mode == "cancel" ? 10000 : 0, Instruction);
+        if (mode == "cancel") Assert.ThrowsAny<OperationCanceledException>(() => Run());
+        else
+        {
+            var result = Run();
+            Assert.Empty(result.Groups);
+            Assert.Empty(result.Memberships);
+            Assert.Equal(new[] { A(1) }, result.UnresolvedAliases);
+            Assert.Contains(result.Failures, f => f.Contains(mode == "budget" ? "BUDGET:CALL_LIMIT" : "CALL:TRANSPORT:STREAM_ERROR", StringComparison.Ordinal));
+        }
+        Assert.Equal(mode == "exhausted" ? 1 + AgentGroupVerification.TransportRetries : 1, calls);
+    }
+
+    [Fact]
+    public void Real_stream_failure_is_retried_without_reading_partial_content_as_a_verdict()
+    {
+        using var handler = new FakeOpenRouter((body, number) => (HttpStatusCode.OK,
+            number == 1 ? "data: {\"error\":{\"message\":\"temporary\"}}\n\ndata: [DONE]\n\n"
+                : FakeOpenRouter.Stream(new { content = FakeOpenRouter.VerificationResponse(body) }, "stop")), autoVerify: false);
+        var budget = new AgentBudget(10, 100);
+        using var model = new AgentModel(handler, "sk-test", budget);
+        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
+            new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model.Turn, budget, 1, CancellationToken.None, 0, Instruction);
+        Assert.Equal(2, handler.Posts);
+        Assert.Equal(2, budget.Calls);
+        Assert.Single(result.Groups);
+        Assert.Empty(result.Failures);
+        Assert.Contains(result.Evidence, e => e.Contains("TRANSPORT:STREAM_ERROR", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void Transport_retry_limit_is_shared_across_JSON_rounds_and_does_not_reset_on_repair()
+    {
+        var calls = 0;
+        AgentUnit.Model model = (_, _, request) =>
+        {
+            if (++calls % 2 == 1) throw new ReplyFailure("TRANSPORT:STREAM_ERROR");
+            return new ModelTurn("{\"protocolVersion\":\"" + AgentGroupVerification.Version + "\",\"verdicts\":[]}", [], "stop");
+        };
+        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
+            new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(20, 100), 1, CancellationToken.None, 0, Instruction);
+        Assert.Equal(AgentGroupVerification.MaxCalls, calls);
+        Assert.Empty(result.Groups);
+        Assert.Equal(new[] { A(1) }, result.UnresolvedAliases);
+        Assert.Equal(3, result.Evidence.Count(e => e.Contains("\"transportRetry\":true", StringComparison.Ordinal)));
+        Assert.Equal(3, result.Evidence.Count(e => e.Contains("\"stage\":\"verification-protocol\"", StringComparison.Ordinal)));
+    }
+
+    [Theory]
+    [InlineData("version", "PROTOCOL_VERSION_INVALID")]
+    [InlineData("bytes", "REPLY_OVER_CAP")]
+    [InlineData("finish", "FINISH_REASON_INVALID")]
+    [InlineData("json", "JSON_OR_ENVELOPE_INVALID")]
+    [InlineData("envelope", "VERDICTS_ENVELOPE_INVALID")]
+    public void Invalid_envelope_cannot_release_individual_verdicts_and_reports_the_specific_gate(string mode, string diagnostic)
+    {
+        AgentUnit.Model model = (_, _, request) =>
+        {
+            var response = JsonNode.Parse(Verdicts(Payload(request), _ => "ACCEPT"))!;
+            if (mode == "version") response["protocolVersion"] = "UNKNOWN";
+            if (mode == "envelope") response["extra"] = true;
+            var content = mode == "json" ? "{" : response.ToJsonString();
+            if (mode == "bytes") content += new string(' ', VisibleResponseCapBytes);
+            return new ModelTurn(content, [], mode == "finish" ? "length" : "stop");
+        };
+        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
+            new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(20, 100), 1, CancellationToken.None, 0, Instruction);
+        Assert.Empty(result.Groups);
+        Assert.Empty(result.Memberships);
+        Assert.Equal(new[] { A(1) }, result.UnresolvedAliases);
+        Assert.Contains(result.Failures, f => f.Contains(diagnostic, StringComparison.Ordinal));
+    }
+
     [Theory]
     [InlineData("missing")]
     [InlineData("duplicate")]
@@ -141,13 +355,13 @@ public sealed class HeadingGroupVerificationTests
         Assert.Equal(4, result.Observation.VerifiedRuns);
     }
     // Source functions copied from the inspected stored page 32, not a heading Gold or a production phrase filter.
-    static ScanAgentSource Source(string? entry = null, string? imageSha = null)
+    static ScanAgentSource Source(string? entry = null, string? imageSha = null, int lineCount = 14)
     {
         string[] texts = ["Chương II", "QUY ĐỊNH CHUNG", "Điều 3. Tên điều", "tiếp nối tên điều",
             "nội dung", "nội dung", "nội dung", "nội dung", "c) Sổ Chứng thực chữ ký người dịch",
             "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM", "Độc lập - Tự do - Hạnh phúc", "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
             "d) Sổ Chứng thực hợp đồng, giao dịch", "nội dung"];
-        var lines = texts.Select((t, i) => new OcrLine($"P032-ocr-original-L{i + 1:000}", t,
+        var lines = texts.Concat(Enumerable.Repeat("context", Math.Max(0, lineCount - texts.Length))).Select((t, i) => new OcrLine($"P032-ocr-original-L{i + 1:000}", t,
             new PixelBox(30, 20 + i * 30, 340, 20), 95, 95, false, [])).ToArray();
         var view = new OcrView(new OcrViewSpec("ocr-original", "none", 1, "test", "1", "vie", 1), EvidenceOrigin.OcrDerived,
             [new OcrPage(32, imageSha ?? new string('a', 64), 420, 500, new string('b', 64), lines)]);

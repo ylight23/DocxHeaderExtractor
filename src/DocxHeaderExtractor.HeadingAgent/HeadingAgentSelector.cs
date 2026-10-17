@@ -138,7 +138,7 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         var groupReserve = groupPosts * AgentBudget.AttemptUsd(60000);
         var reviewPosts = units * AgentSelectionReview.MaxPosts;
         var reviewReserve = reviewPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
-        var verifyPosts = 4 * Math.Max(1, (source.Lines.Count + AgentGroupVerification.BatchSize - 1) / AgentGroupVerification.BatchSize) * AgentGroupVerification.MaxPosts;
+        var verifyPosts = 4 * Math.Max(1, (source.Lines.Count + AgentGroupVerification.BatchSize - 1) / AgentGroupVerification.BatchSize) * AgentGroupVerification.MaxCalls;
         var verifyReserve = verifyPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
         return new AgentBudget(posts + groupPosts + reviewPosts + verifyPosts, Math.Ceiling((first + spare + groupReserve + reviewReserve + verifyReserve) * 1.1 * 100) / 100);
     }

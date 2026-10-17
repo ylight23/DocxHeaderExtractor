@@ -53,10 +53,33 @@ through an explicit `requests` reply, up to four requests per round. Scan also s
 crops the union of the boxes with 32-pixel padding and supplies a black/white PNG at original
 scale. Unavailable/mismatched images are reported as unavailable evidence, not inferred content.
 Crop metadata and hashes are retained; the base64 image is not copied into output audit.
-There are at most three POST attempts per verification conversation, including evidence
-rounds and protocol repairs. Every request passes the shared byte/cost/call budget. There are
+There are at most three model-response rounds per verification conversation, including evidence
+rounds and protocol repairs. Up to three transport retries are shared across that conversation
+(at most six POSTs total). The retry allowlist is the agent's existing transient stream/network,
+rate-limit and server-error list; client/payment/audit/endpoint failures do not qualify. A transport
+retry sends identical prepared bytes without advancing the response round, checks cancellation
+during the delay, and passes the shared byte/cost/call budget again. Both successful and failed
+attempts carry request hashes; retry decisions and exhausted/budget outcomes are recorded.
+The document's default reserve includes this bounded allowance. There are
 no unbounded semantic retries. Source context tools can provide context beyond the initial
 eight lines; the verifier may return unresolved when it cannot obtain adequate evidence.
+
+Within a valid response envelope, schema, complete ordered membership and source evidence are
+checked independently for each candidate. A duplicate run invalidates that candidate rather
+than choosing either copy. Valid verdicts are frozen in source order; later malformed replies,
+transport failures or budget exhaustion cannot discard or overwrite them. Repair packets contain
+only pending candidates and retain original source context. Missing/invalid candidates remain
+unresolved; a transport failure never supplies a semantic `NOT_HEADING` judgement. Global guards
+(JSON envelope/version, finish reason, tool-call mode and byte cap) still fail closed for the whole
+new response. The audit records specific envelope/candidate error codes, accepted IDs and pending
+IDs for each response round, alongside the original visible response. Recovered protocol/transport
+errors remain in evidence without making a fully recovered batch partial.
+
+Offline regressions inject one bad verdict among eight candidates, failed repairs, stale verdict
+overwrites, exhausted transport retries, budget refusal and cancellation. An HTTP/SSE fixture
+exercises a real stream-error path followed by success. These are synthetic fault replays, not a
+replay of the user's 023 execution: its raw verifier responses have not been supplied or found in
+the local evidence cache. No claim is made that these changes correct model hierarchy judgements.
 
 Boundary-repair candidates execute concurrently up to `jobs`. Within each worker the dependent
 regroup → reverify sequence remains serial and each nested operation uses one worker, so
