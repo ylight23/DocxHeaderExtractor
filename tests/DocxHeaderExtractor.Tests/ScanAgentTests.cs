@@ -52,6 +52,63 @@ public sealed class ScanAgentTests : IDisposable
             [new VlmLineObservation("P001-ocr-original-L004", "yes", "same", "left")],
             [new VlmReadingChoice("P001-ocr-original-L004", choice, proposal)], [], null, null);
 
+    [Fact]
+    public void Grouping_disagreement_reviews_scan_membership_and_uses_the_reviewed_reading_and_extent()
+    {
+        var source = new ScanAgentSource(Evidence(), [Vision()]);
+        var calls = new List<string>();
+        AgentUnit.Model model = (unit, turn, request) =>
+        {
+            calls.Add(unit);
+            var body = JsonNode.Parse(request.Body)!;
+            var content = body["messages"]![1]!["content"]!;
+            var payload = JsonNode.Parse(content is JsonArray ? content[0]!["text"]!.GetValue<string>() : content.GetValue<string>())!;
+            if (payload["stage"]!.GetValue<string>() == "GROUP")
+            {
+                var runs = payload["runs"]!.AsArray();
+                return new AgentProtocol.ModelTurn(new JsonObject
+                {
+                    ["protocolVersion"] = AgentGrouping.GroupVersion,
+                    ["runs"] = new JsonArray(runs.Select(r => (JsonNode)new JsonObject
+                    {
+                        ["run"] = r!["run"]!.DeepClone(),
+                        ["dispute"] = new JsonObject
+                        {
+                            ["aliases"] = new JsonArray(r["lines"]!.AsArray().Select(l => l!["alias"]!.DeepClone()).ToArray()),
+                            ["reason"] = "One line appears to be numbered body text."
+                        }
+                    }).ToArray())
+                }.ToJsonString(), [], "stop");
+            }
+            var review = payload["selectionReview"] is not null;
+            var decisions = new JsonArray();
+            foreach (var t in payload["targets"]!.AsArray())
+            {
+                var alias = t!["alias"]!.GetValue<string>();
+                var select = review ? alias == "P001-L004" : alias is "P001-L001" or "P001-L003" or "P001-L004";
+                var decision = new JsonObject { ["alias"] = alias, ["decision"] = select ? "SELECT" : "NOT_SELECT" };
+                if (select)
+                {
+                    decision["evidenceRefs"] = new JsonArray(JsonValue.Create(alias));
+                    decision["reason"] = "Structural heading according to the instruction and context.";
+                    decision["readingViewId"] = review ? ScanOcrPreflight.UpscaledView : ScanOcrPreflight.OriginalView;
+                    if (review) decision["headingExtent"] = new JsonObject { ["start"] = 0, ["end"] = 7, ["text"] = "Điều 2." };
+                }
+                decisions.Add(decision);
+            }
+            return new AgentProtocol.ModelTurn(new JsonObject
+            { ["protocolVersion"] = AgentProtocol.SelectScanVersion, ["status"] = "COMPLETE", ["decisions"] = decisions }.ToJsonString(), [], "stop");
+        };
+        var result = HeadingAgentSelector.Select(source, model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);
+        Assert.Empty(result.UnitFailures);
+        Assert.Equal(new[] { "P001-L001", "P001-L004" }, result.SelectedAliases.Order());
+        Assert.Equal(ScanOcrPreflight.UpscaledView, result.HeadingReadings!["P001-L004"]);
+        Assert.False(result.HeadingReadings.ContainsKey("P001-L003"));
+        Assert.Equal(new DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan(0, 7), result.HeadingExtents!["P001-L004"]);
+        Assert.Equal("Điều 2.", ScanHeadingAgentSelector.Headings(source, result).Headings.Last().Text);
+        Assert.Single(calls, c => c.StartsWith("REVIEW-SEG-", StringComparison.Ordinal));
+    }
+
     // ---------------- the source ----------------
 
     [Fact]

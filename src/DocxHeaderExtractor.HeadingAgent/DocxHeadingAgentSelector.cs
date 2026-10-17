@@ -18,7 +18,7 @@ public sealed class DocxHeadingAgentSelector : HeadingAgentSelector
         string? instruction = null, int firstSegments = 0, ExtractionOptions? extraction = null)
         : base(handlerFactory, parallelism, onModelReply, instruction ?? DocxAgentProtocol.Instruction, firstSegments) => this.extraction = extraction;
 
-    public override string SelectorId => "docx-v6:" + DocxAgentSource.Version + ":facts-in-request:instruction-" + InstructionTag;
+    public override string SelectorId => "docx-v6:" + DocxAgentSource.Version + ":facts-in-request:instruction-" + InstructionTag + ":" + AgentSelectionReview.Version;
 
     private protected override IAgentSource Load(string path) =>
         DocxAgentSource.Load(path, extraction, out var failure) ?? throw new InvalidOperationException("DOCX_AGENT_SOURCE_REFUSED:" + failure);

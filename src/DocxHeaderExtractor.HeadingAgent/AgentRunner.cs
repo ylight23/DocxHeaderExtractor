@@ -1,4 +1,6 @@
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
 
@@ -99,14 +101,16 @@ internal sealed record AgentUnitOutcome(string UnitId, string Status, string? Fa
 /// </summary>
 internal static class AgentUnit
 {
+    static readonly JsonSerializerOptions ReviewJson = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
     public const int TransportRetries = 3;
     public static readonly string[] RetriableTransport = ["TRANSPORT:STREAM_ERROR", "TRANSPORT:STREAM_INCOMPLETE", "TRANSPORT:RATE_LIMITED_NO_RETRY", "TRANSPORT:SERVER_ERROR_NO_RETRY", "TRANSPORT:TRANSPORT_ERROR"];
 
     public delegate ModelTurn Model(string unitId, int turn, PreparedRequest request);
 
-    public static AgentUnitOutcome Run(IAgentSource source, int segment, Model model, AgentBudget budget, int retryDelayMs = 5000, string instruction = Instruction)
+    public static AgentUnitOutcome Run(IAgentSource source, int segment, Model model, AgentBudget budget, int retryDelayMs = 5000, string instruction = Instruction,
+        JsonObject? selectionReview = null, int maxPosts = int.MaxValue)
     {
-        var unitId = AgentSource.SegmentId(segment);
+        var unitId = (selectionReview is null ? "" : "REVIEW-") + AgentSource.SegmentId(segment);
         var (decide, shownIdx) = source.Scope(segment);
         var lines = source.Lines;
         var flavor = source.Flavor;
@@ -116,6 +120,12 @@ internal static class AgentUnit
         var styles = tools.DocumentStyles();
         var requestFacts = flavor.PayloadFacts(source, ordered);
         var payload = Payload(source.SourceSha256, unitId, ordered, shownIdx.Select(i => lines[i]).ToArray(), styles, instruction, flavor, requestFacts);
+        if (selectionReview is not null)
+        {
+            var reviewPayload = JsonNode.Parse(payload)!.AsObject();
+            reviewPayload["selectionReview"] = selectionReview.DeepClone();
+            payload = reviewPayload.ToJsonString(ReviewJson);
+        }
         if (requestFacts is not null)
             tools.NoteRequestFacts(ordered, requestFacts.SelectMany(f => flavor.FactReferences(f!)));
         // The style table shows the first lines of each style: they are in the request, so the model may cite them.
@@ -154,6 +164,7 @@ internal static class AgentUnit
 
         for (int turn = 1; turn <= MaxPostsPerUnit + 2 * repairsUsed; turn++)
         {
+            if (posts >= maxPosts) return Done("INCOMPLETE", "REVIEW_POST_LIMIT");
             var toolChoice = forcedChoices.Count > 0 ? forcedChoices.Dequeue() : turn <= MaxToolTurns ? "auto" : "none";
             var req = Build(payload, history, toolChoice, flavor);
             var refusal = budget.Admit(req);
@@ -170,6 +181,7 @@ internal static class AgentUnit
                     // The provider failed this call: the same bytes are sent again after a pause, admitted by the budget like any POST.
                     retriesUsed++;
                     if (retryDelayMs > 0) Thread.Sleep(retryDelayMs);
+                    if (posts >= maxPosts) return Done("INCOMPLETE", "REVIEW_POST_LIMIT");
                     var again = budget.Admit(req);
                     if (again is not null) return Done("INCOMPLETE", "BUDGET:" + again);
                     requestShas.Add(req.Sha256);
@@ -180,6 +192,7 @@ internal static class AgentUnit
                     // A failure the flavor retries once (scan: reasoning used every token, or the call timed out): the same bytes once more.
                     reasoningRetries++;
                     retriesUsed++;
+                    if (posts >= maxPosts) return Done("INCOMPLETE", "REVIEW_POST_LIMIT");
                     var again = budget.Admit(req);
                     if (again is not null) return Done("INCOMPLETE", "BUDGET:" + again);
                     requestShas.Add(req.Sha256);

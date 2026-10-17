@@ -7,6 +7,10 @@ The first-request facts delivery is now also enabled for native text PDF and DOC
 [target facts in the first production request](target-facts-in-request.md). This changes fact delivery, not the
 user's heading instruction. Historical statements below that PDF/DOCX requests were unchanged describe the earlier scan work.
 
+Grouping can now [report disagreement for a bounded selection review](grouping-selection-review.md)
+instead of being forced to turn mistakenly selected body text into headings. This applies to
+scan, text PDF and DOCX; C# checks the protocol and Qwen decides membership.
+
 ## Production integration (2026-10-16)
 
 `dhx extract <scan.docx> --openrouter -f json` and the Web upload now detect `ScannedImageOnly`

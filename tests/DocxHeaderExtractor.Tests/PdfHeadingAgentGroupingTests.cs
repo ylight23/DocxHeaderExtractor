@@ -43,6 +43,121 @@ public sealed class PdfHeadingAgentGroupingTests
     private static string[] RunAliases(JsonElement payload, string id) =>
         payload.GetProperty("runs").EnumerateArray().Single(r => r.GetProperty("run").GetString() == id).GetProperty("lines").EnumerateArray().Select(l => l.GetProperty("alias").GetString()!).ToArray();
 
+    private static string Disagreement(JsonElement payload) => JsonSerializer.Serialize(new
+    {
+        protocolVersion = AgentGrouping.GroupVersion,
+        runs = payload.GetProperty("runs").EnumerateArray().Select(r => new
+        {
+            run = r.GetProperty("run").GetString(),
+            dispute = new { aliases = RunAliases(payload, r.GetProperty("run").GetString()!), reason = "These lines appear to continue body text; reconsider selection." }
+        })
+    });
+
+    [Fact]
+    public void Explicit_disagreement_is_retained_without_repair_or_layout_fallback()
+    {
+        var (model, _, _) = Scripted((_, p) => Disagreement(p));
+        var result = AgentGrouping.Group(Source.Value, new HashSet<string> { A(10), A(11), A(20) }, model, Budget(), 1, CancellationToken.None, 0);
+        Assert.Empty(result.Failures);
+        Assert.Equal(1, result.Posts);
+        Assert.Equal(new[] { A(10), A(11) }, Assert.Single(result.Disputes).Aliases);
+        Assert.Equal(new[] { A(20) }, Assert.Single(result.Groups));
+        Assert.Contains("dispute", Assert.Single(result.Evidence));
+    }
+
+    [Theory]
+    [InlineData("reject")]
+    [InlineData("reaffirm")]
+    [InlineData("partial")]
+    [InlineData("failed")]
+    [InlineData("redispute")]
+    [InlineData("invalid")]
+    [InlineData("budget")]
+    public void Disagreement_goes_back_to_selection_once_and_only_disputed_decisions_can_change(string mode)
+    {
+        var source = Source.Value;
+        var core = source.Cores.First(c => c.End - c.Start >= 6);
+        var first = A(core.Start + 1); var second = A(core.Start + 2); var kept = A(core.Start + 4); var unrelated = A(core.Start + 5);
+        var groupingCalls = 0; var reviewCalls = 0;
+        var budget = Budget();
+        AgentUnit.Model model = (unit, turn, request) =>
+        {
+            using var body = JsonDocument.Parse(request.Body);
+            var content = body.RootElement.GetProperty("messages")[1].GetProperty("content");
+            var text = content.ValueKind == JsonValueKind.String ? content.GetString()! : content[0].GetProperty("text").GetString()!;
+            using var doc = JsonDocument.Parse(text);
+            var payload = doc.RootElement;
+            if (payload.GetProperty("stage").GetString() == "GROUP")
+            {
+                groupingCalls++;
+                if (mode == "budget") budget.Halt("TEST");
+                return new ModelTurn(groupingCalls == 1 || mode == "redispute"
+                    ? Disagreement(payload) : Division(payload, id => [RunAliases(payload, id)]), [], "stop");
+            }
+            var reviewing = payload.TryGetProperty("selectionReview", out var review);
+            if (reviewing)
+            {
+                reviewCalls++;
+                Assert.StartsWith("REVIEW-SEG-", unit);
+                Assert.Equal(Instruction, payload.GetProperty("instruction").GetString());
+                Assert.True(payload.GetProperty("targetFacts").GetArrayLength() > 0);
+                Assert.Equal(new[] { first, second }, review.GetProperty("disputedAliases").EnumerateArray().Select(x => x.GetString()));
+                Assert.True(review.TryGetProperty("previousSelection", out _));
+                if (mode == "failed") throw new ReplyFailure("TEST_FAILURE");
+                if (mode == "invalid") return new ModelTurn("not json", [], "stop");
+            }
+            return new ModelTurn(JsonSerializer.Serialize(new
+            {
+                protocolVersion = source.Flavor.AnswerVersion,
+                status = "COMPLETE",
+                decisions = payload.GetProperty("targets").EnumerateArray().Select(t =>
+                {
+                    var alias = t.GetProperty("alias").GetString()!;
+                    var select = !reviewing ? alias == first || alias == second || alias == kept
+                        : alias == unrelated || ((mode is "reaffirm" or "redispute") && (alias == first || alias == second)) || mode == "partial" && alias == first;
+                    return new { alias, decision = select ? "SELECT" : "NOT_SELECT", evidenceRefs = new[] { alias } };
+                })
+            }), [], "stop");
+        };
+        var result = HeadingAgentSelector.Select(source, model, budget, 1, CancellationToken.None, 0, () => 0);
+        Assert.Contains(kept, result.SelectedAliases);
+        Assert.DoesNotContain(unrelated, result.SelectedAliases);
+        var expected = mode is "reaffirm" ? new[] { first, second, kept } : mode == "partial" ? new[] { first, kept } : new[] { kept };
+        Assert.Equal(expected.Order(), result.SelectedAliases.Order());
+        Assert.Equal(expected.Order(), result.Groups!.SelectMany(g => g).Order());
+        Assert.Equal(mode == "budget" ? 0 : mode == "invalid" ? AgentSelectionReview.MaxPosts : 1, reviewCalls);
+        Assert.Equal(mode is "reaffirm" or "redispute" ? 2 : 1, groupingCalls);
+        Assert.Contains(result.ModelAnswers, a => a.Contains("selection-review") && a.Contains("before") && a.Contains("after"));
+        if (mode is "failed" or "invalid" or "redispute" or "budget")
+        {
+            Assert.NotEmpty(result.UnitFailures);
+            Assert.Equal(result.UnitsTotal - 1, result.UnitsComplete);
+        }
+        else { Assert.Empty(result.UnitFailures); Assert.Equal(result.UnitsTotal, result.UnitsComplete); }
+    }
+
+    [Theory]
+    [InlineData("missing-alias")]
+    [InlineData("unknown-alias")]
+    [InlineData("empty-reason")]
+    [InlineData("both-fields")]
+    public void A_dispute_must_cover_its_exact_run_and_cannot_also_give_headings(string mode)
+    {
+        var source = Source.Value;
+        var run = new AgentGrouping.Run("R1", [10, 11]);
+        var aliases = mode == "missing-alias" ? new[] { A(10) } : mode == "unknown-alias" ? new[] { A(10), "unknown" } : new[] { A(10), A(11) };
+        var item = new System.Text.Json.Nodes.JsonObject
+        {
+            ["run"] = "R1",
+            ["dispute"] = JsonSerializer.SerializeToNode(new { aliases, reason = mode == "empty-reason" ? " " : "Review membership" })
+        };
+        if (mode == "both-fields") item["headings"] = JsonSerializer.SerializeToNode(new[] { new[] { A(10), A(11) } });
+        var reply = new System.Text.Json.Nodes.JsonObject
+        { ["protocolVersion"] = AgentGrouping.GroupVersion, ["runs"] = new System.Text.Json.Nodes.JsonArray(item) };
+        Assert.Null(AgentGrouping.Parse(reply.ToJsonString(), [run], source, out var failure, out _));
+        Assert.Equal("PROTOCOL:DISPUTE_INVALID", failure);
+    }
+
     [Fact]
     public void Only_runs_of_two_or_more_adjacent_selected_lines_are_asked_about()
     {
