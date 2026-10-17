@@ -56,6 +56,10 @@ public sealed record PipelineExecutionAudit(
     public HeadingPlacementExecutionObservation? PlacementExecution { get; init; }
     [JsonIgnore]
     public int? SelectionProviderCalls { get; init; }
+    [JsonIgnore]
+    public int? SelectionLinesAnswered { get; init; }
+    [JsonIgnore]
+    public int? SelectionLinesTotal { get; init; }
     /// <summary>Selector-recorded attempts plus placement logical calls; excludes placement transport-internal retries.</summary>
     [JsonIgnore]
     public int? HeadingProviderCalls => SelectionProviderCalls is { } count ? count + (PlacementExecution?.LogicalCalls ?? 0) : null;

@@ -58,6 +58,8 @@ internal sealed class SelectedLinesHeadingAuthority(
         {
             RawModelResponses = selection.ModelAnswers.Concat(assembly.PlacementObservation?.ModelEvidence ?? []).ToArray(),
             SelectionProviderCalls = selection.ProviderCalls,
+            SelectionLinesAnswered = selection.AliasStates?.Count ?? selection.SelectedAliases.Count,
+            SelectionLinesTotal = atomCount,
             Grouping = selection.Grouping,
             HeadingStageSeconds = new Dictionary<string, double>(selection.StageSeconds ?? new Dictionary<string, double>())
             { ["hierarchy"] = assembly.PlacementObservation?.Seconds ?? 0 },

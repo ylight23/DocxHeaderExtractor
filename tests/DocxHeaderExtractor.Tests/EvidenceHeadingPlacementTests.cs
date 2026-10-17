@@ -160,22 +160,28 @@ public sealed class EvidenceHeadingPlacementTests
     }
 
     [Fact]
-    public async Task Source_context_tool_uses_original_lines_and_does_not_promote_unbound_text()
+    public async Task Source_search_discovers_not_selected_lines_without_promoting_them()
     {
         var (bound, evidence, parents) = Fixture();
         using var model = new Model(p =>
         {
             if (IsVerification(p) && p["evidenceResults"]!.AsArray().Count == 0)
                 return JsonSerializer.Serialize(new { protocolVersion = EvidenceHeadingPlacement.Version,
-                    requests = new[] { new { name = "get_source_context", alias = Intro, before = 1, after = 1 } } });
-            if (IsVerification(p)) Assert.Contains("Mẫu lời chứng bao gồm", p["evidenceResults"]!.ToJsonString(new JsonSerializerOptions { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }));
+                    requests = new[] { new { name = "search_source_text", query = "Mẫu lời chứng", offset = 0, limit = 12 } } });
+            if (IsVerification(p))
+            {
+                var results = p["evidenceResults"]!.ToJsonString(new JsonSerializerOptions { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+                Assert.Contains("Mẫu lời chứng bao gồm", results);
+                Assert.Contains("NOT_SELECT", results);
+                Assert.Contains(Intro, results);
+            }
             return HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!;
         });
         var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
         Assert.Equal(0, result.Observation.UnresolvedCount);
         Assert.DoesNotContain(result.Headings, h => h.Alias == Intro);
         Assert.Equal(6, result.Observation.LogicalCalls);
-        Assert.Contains(result.Observation.ModelEvidence, e => e.Contains("get_source_context", StringComparison.Ordinal));
+        Assert.Contains(result.Observation.ModelEvidence, e => e.Contains("search_source_text", StringComparison.Ordinal));
     }
 
     [Fact]

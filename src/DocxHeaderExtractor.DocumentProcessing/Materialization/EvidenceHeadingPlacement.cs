@@ -30,6 +30,10 @@ internal static class EvidenceHeadingPlacement
         Never choose ROOT or an earlier unrelated parent merely because the actual ancestor is unavailable.
         If source shows an unavailable ancestor, do not invent or restore it: leave the child unresolved.
         The model decides whether a missing line is an ancestor; C# supplies only source and execution facts.
+        Discover source lines even when selection marked them NOT_SELECT by using the literal,
+        case-insensitive search tool: {"name":"search_source_text","query":"<text>","offset":0,"limit":12}.
+        It searches every source line, including NOT_SELECT, and returns source aliases as evidence only;
+        it does not restore a line as a heading. Use get_source_context on a returned alias for surroundings.
         For more source return {"protocolVersion":"HEADING_HIERARCHY_EVIDENCE_V1","requests":[
         {"name":"get_source_context","alias":"<source alias>","before":4,"after":4}]} or use
         {"name":"get_source_range","first":"<alias>","last":"<alias>"}. Up to 4 requests per round,
@@ -183,7 +187,7 @@ internal static class EvidenceHeadingPlacement
                     proposedRelations = graph.Select(p => new { alias = p.Key, parent = p.Value }), toPlace = pending,
                     upstreamWithheld = withheld.Select(l => new { alias = l.Alias, sourceId = l.SourceId, ordinal = l.Ordinal, page = l.Page, text = l.Text,
                         selection = source.AliasStates.GetValueOrDefault(l.Alias) }), sourceContext = context.Select(l => Line(l, false)),
-                    evidenceTools = new[] { "get_source_context(alias,before,after)", "get_source_range(first,last)" },
+                    evidenceTools = new[] { "search_source_text(query,offset,limit)", "get_source_context(alias,before,after)", "get_source_range(first,last)" },
                     evidenceResults = evidenceRounds, protocolErrors = errors,
                     repairFeedback = feedback?.Where(p => pending.Contains(p.Key)).Select(p => new { alias = p.Key, p.Value.Reason, p.Value.EvidenceRefs })
                 }, Json);
@@ -215,6 +219,25 @@ internal static class EvidenceHeadingPlacement
                         Require(round < MaxRounds && requests.Count is >= 1 and <= 4, "EVIDENCE_ROUNDS_EXHAUSTED");
                         foreach (var request in requests)
                         {
+                            if (Text(request, "name") == "search_source_text")
+                            {
+                                var query = Text(request, "query");
+                                var offset = Int(request, "offset");
+                                var limit = Int(request, "limit");
+                                if (query is null || query.Length is < 2 or > 128 || offset is null or < 0 || limit is null or < 1 or > 12)
+                                {
+                                    evidenceRounds.Add(new { request, status = "INVALID_ARGUMENTS", lines = Array.Empty<object>(), hasMore = false, nextOffset = (int?)null });
+                                    continue;
+                                }
+                                var matches = lines.Select((line, index) => (line, index))
+                                    .Where(pair => pair.line.Text.Contains(query, StringComparison.OrdinalIgnoreCase)).Skip(offset.Value).Take(limit.Value + 1).ToArray();
+                                var hasMore = matches.Length > limit.Value;
+                                var results = matches.Take(limit.Value).Select(pair => pair.line).ToArray();
+                                shown.UnionWith(results.Select(l => l.Alias));
+                                evidenceRounds.Add(new { request, status = "OK", lines = results.Select(l => Line(l, true)).ToArray(), hasMore,
+                                    nextOffset = hasMore ? offset.Value + results.Length : (int?)null });
+                                continue;
+                            }
                             var read = ReadSource(request, lines, position);
                             shown.UnionWith(read.Select(l => l.Alias));
                             evidenceRounds.Add(new { request, status = read.Length > 0 ? "OK" : "INVALID_ARGUMENTS", lines = read.Select(l => Line(l, true)).ToArray() });
@@ -268,6 +291,7 @@ internal static class EvidenceHeadingPlacement
     sealed class HierarchyProtocolException(string code) : InvalidOperationException(code);
     static void Require(bool valid, string code) { if (!valid) throw new HierarchyProtocolException(code); }
     static string? Text(JsonNode? node, string key) => node is JsonObject o && o[key] is JsonValue v && v.TryGetValue<string>(out var s) ? s : null;
+    static int? Int(JsonNode? node, string key) => node is JsonObject o && o[key] is JsonValue v && v.TryGetValue<int>(out var value) ? value : null;
     static string[] Strings(JsonNode? node) => node!.AsArray().Select(v => v!.GetValue<string>()).ToArray();
 
     static SemanticSourceAtom[] ReadSource(JsonNode? request, SemanticSourceAtom[] lines, IReadOnlyDictionary<string, int> positions)

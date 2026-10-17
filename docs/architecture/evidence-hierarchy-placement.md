@@ -17,6 +17,10 @@ from a line already unresolved at selection or verification.
 Full styles are not duplicated into every outline row and every upstream marker. Read-only
 `get_source_context(alias,before,after)` and `get_source_range(first,last)` operate
 on the same immutable source snapshot and return full style measurements for requested lines.
+`search_source_text(query,offset,limit)` is a bounded, case-insensitive literal search across
+all source lines, including lines explicitly marked `NOT_SELECT`; it returns at most 12 matching
+lines per request and supports pagination. Search results are source evidence only. They do not
+restore excluded lines as headings or change membership.
 Each request returns at most 24 source lines; at most
 four tools per response round. Successful returned aliases extend the evidence-reference
 catalog. Missing/invalid tool arguments do not manufacture source evidence. This is a text and
@@ -61,7 +65,10 @@ four-worker cap, preserves source order and checks six normal logical calls (3 p
 ## Same-execution audit
 
 `PlacementExecution` reports the contract, logical call count, wall seconds, verified count and
-repair count. Logical calls exclude internal transport retries. Scan provenance now records
+repair count. The safe Web audit shows each edge's proposed parent, verifier status, resolution
+basis, blocking aliases and evidence references. Its source-state table includes every explicit
+upstream selection answer, including `NOT_SELECT`, and can be filtered by alias or status.
+Logical calls exclude internal transport retries. Scan provenance now records
 these logical calls instead of assuming placement always costs one call. The Web displays
 these observations and the `hierarchy` timing; that duration is included in scan `structure`.
 Text-PDF and DOCX provenance use selector-recorded calls plus hierarchy logical calls, rather
@@ -83,3 +90,10 @@ audit excludes these payloads and shows only identities, statuses and observatio
 outline cannot substitute for the actual execution's source trace and placement responses.
 No claim is made about the loss stage of the user's previous 023 execution: those raw responses
 have not been supplied or recovered in this workspace.
+
+The Web distinguishes explicit source-line answers from final semantic-unit completeness. The
+older `UnitsComplete` count includes downstream grouping/review outcomes; it must not be read as
+the number of raw selection answers. A hierarchy-only replay needs the exact same-execution bound
+headings, source snapshot, upstream states and placement evidence. The 023 hierarchy replay was
+not run here because the prior 61-heading execution snapshot is not present in the workspace;
+re-running extraction would also rerun selection and would not isolate hierarchy.

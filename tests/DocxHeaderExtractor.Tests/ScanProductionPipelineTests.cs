@@ -28,7 +28,12 @@ public sealed class ScanProductionPipelineTests
         var selection = new HeadingSelection(lines.Take(3).Select(l => l.Alias).ToHashSet(), 1, 1, [], [], 2, .01,
             new HeadingPlacementContext("{}", new Dictionary<string, string>(), ScanAgentProtocol.PlacementNote),
             new IReadOnlyList<string>[] { new[] { lines[0].Alias, lines[1].Alias }, new[] { lines[2].Alias } },
-            new Dictionary<string, TextOffsetSpan> { [lines[2].Alias] = new(0, "Điều 1. Phạm vi".Length) });
+            new Dictionary<string, TextOffsetSpan> { [lines[2].Alias] = new(0, "Điều 1. Phạm vi".Length) })
+        {
+            AliasStates = lines.ToDictionary(l => l.Alias, l => l.Alias == lines[3].Alias
+                ? new HeadingAliasState("NOT_SELECT", "NOT_SELECT", null, "NOT_SELECTED")
+                : new HeadingAliasState("SELECT", "SELECT", "HEADING", "READY_FOR_BINDING"))
+        };
         return new(CanonicalSemanticSourceHash.Compute(path), lines, selection,
             new(3, .002, 2, .01, 4, 4, new Dictionary<string, int> { ["ACCEPTED"] = 4 }, [], [], [], new Dictionary<string, double>()));
     }
@@ -71,6 +76,10 @@ public sealed class ScanProductionPipelineTests
         Assert.Equal("scan", web.SourceKind);
         Assert.Equal(2, web.Headings.Count);
         Assert.NotNull(web.Headings[0].Sources[0].Coordinates!.Scan);
+        Assert.Contains("Answered source lines=4/4", web.Stages.Single(s => s.Id == "V6-line-selection").Evidence);
+        Assert.Contains("ProposedParentAlias", JsonSerializer.Serialize(web.Audit));
+        Assert.Contains("VerificationStatus", JsonSerializer.Serialize(web.Audit));
+        Assert.Contains("NOT_SELECT", JsonSerializer.Serialize(web.Audit));
         var safe = WebPipelineProjection.SafeOutline(run.Outline, new JsonSerializerOptions());
         Assert.NotNull(safe["routeAudit"]!["Scan"]);
         Assert.Throws<NotSupportedException>(() => V6DocumentRunner.WriteOutline(ScanPath, run.Outline, "unused.docx", new PipelineOptions().Extraction));
@@ -90,6 +99,10 @@ public sealed class ScanProductionPipelineTests
         using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
         var run = await runner.ExtractAsync(ScanPath);
         var web = WebPipelineProjection.Project(Guid.NewGuid(), "Partial", run.Outline, run, "scan");
+        var selection = web.Stages.Single(s => s.Id == "V6-line-selection");
+        Assert.Equal("completed", selection.Status);
+        Assert.Contains("Answered source lines=4/4", selection.Evidence);
+        Assert.Contains("downstream semantic units complete=1/1", selection.Evidence);
         var grouping = web.Stages.Single(s => s.Id == "V6-line-grouping");
         Assert.Equal("partial", grouping.Status);
         Assert.Contains("actual fallback runs=0", grouping.Evidence);

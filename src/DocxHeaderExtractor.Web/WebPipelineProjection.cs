@@ -79,8 +79,8 @@ public static class WebPipelineProjection
             stages.Add(lane?.Status switch
             {
                 "not-run" => new("V6-line-selection", "skipped", $"Producer semantic lane explicitly not-run: {lane.FailureClass ?? "not recorded"}"),
-                "complete" => new("V6-line-selection", "completed", $"Segments decided: {lane.Completed}/{lane.Scheduled}"),
-                "partial" => new("V6-line-selection", "partial", $"Segments decided: {lane.Completed}/{lane.Scheduled}"),
+                "complete" => new("V6-line-selection", SelectionStageStatus(audit, lane), SelectionEvidence(audit, lane)),
+                "partial" => new("V6-line-selection", SelectionStageStatus(audit, lane), SelectionEvidence(audit, lane)),
                 _ => new("V6-line-selection", "not-recorded", "No lane observation"),
             });
             stages.Add(lane?.Status is "complete" or "partial"
@@ -130,7 +130,18 @@ public static class WebPipelineProjection
     { audit.PipelineId, audit.SourceBlocksAvailable, audit.SourceBlocksSelected, audit.SourcePagesAvailable,
         audit.SourcePagesSelected, audit.SemanticLane, audit.SpanLane, audit.ModelInputContracts, audit.SelectionProviderCalls,
         groundedSourceIds = audit.GroundedBlockIds, decisionCount = audit.BlockDecisions.Count,
-        placementExecution = audit.PlacementExecution, audit.Scan, audit.Grouping, audit.HeadingStageSeconds, audit.HeadingAliasStates };
+        placementExecution = audit.PlacementExecution, audit.SelectionLinesAnswered, audit.SelectionLinesTotal,
+        audit.Scan, audit.Grouping, audit.HeadingStageSeconds, audit.HeadingAliasStates };
+
+    private static string SelectionEvidence(PipelineExecutionAudit? audit, LaneExecutionAudit lane) =>
+        audit?.SelectionLinesAnswered is { } answered && audit.SelectionLinesTotal is { } total
+            ? $"Answered source lines={answered}/{total}; downstream semantic units complete={lane.Completed}/{lane.Scheduled}"
+            : $"Downstream semantic units complete={lane.Completed}/{lane.Scheduled}; source-line answer count not recorded";
+
+    private static string SelectionStageStatus(PipelineExecutionAudit? audit, LaneExecutionAudit lane) =>
+        audit?.SelectionLinesAnswered is { } answered && audit.SelectionLinesTotal is { } total
+            ? answered == total ? "completed" : "partial"
+            : lane.Status == "complete" ? "completed" : "partial";
 
     /// <summary>Keep outline compatibility fields while withholding transport completions/payloads from the Web.</summary>
     public static JsonNode SafeOutline(DocumentOutline outline, JsonSerializerOptions options)

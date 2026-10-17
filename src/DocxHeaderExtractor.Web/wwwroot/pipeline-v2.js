@@ -67,6 +67,7 @@
     document.getElementById('v2Inspector').replaceChildren(element('p', 'Select a heading to inspect same-execution evidence.'));
     const summary = document.getElementById('v2Summary');
     document.getElementById('v2Diagnostics').replaceChildren();
+    document.getElementById('v2PlacementDiagnostics')?.replaceChildren();
     if (!model || model.availability !== 'same-execution') {
       summary.textContent = 'Authority graph unavailable; compatibility outline below is not a hierarchy tree.';
       tree.append(element('p', 'Same-execution authority was not retained. No hierarchy has been inferred.'));
@@ -155,9 +156,63 @@
     bucket('Chưa xác định vị trí (cha chưa được phát)', forest.unresolved);
     const stages = document.getElementById('v2Stages'); stages.replaceChildren();
     for (const stage of model.stages) stages.append(element('li', `${stage.id} — ${stage.status}: ${stage.evidence}`));
+    renderPlacementDiagnostics(model.audit?.placementExecution, model.audit?.headingAliasStates);
     document.getElementById('v2Diagnostics').textContent = JSON.stringify({ executionId: model.executionId,
       outcome: model.outcome, sourceKind: model.sourceKind, summary: model.summary,
       checkpoints: model.checkpoints, provenance: model.provenance, audit: model.audit }, null, 2);
+  }
+  function renderPlacementDiagnostics(placement, aliasStates) {
+    const host = document.getElementById('v2PlacementDiagnostics');
+    if (!host || !placement) return;
+    host.replaceChildren(element('h3', 'Hierarchy placement — quyết định từng heading'));
+    const decisions = placement.decisions || [];
+    if (decisions.length) {
+      const table = element('table', null, 'v2-audit-table');
+      const head = element('tr');
+      for (const label of ['Alias', 'Cha đề xuất', 'Verifier', 'Cơ sở', 'Alias chặn', 'Bằng chứng']) head.append(element('th', label));
+      table.append(head);
+      for (const d of decisions) {
+        const row = element('tr');
+        for (const value of [d.alias, d.proposedParentAlias, d.verificationStatus, d.resolutionBasis,
+          (d.blockingAliases || []).join(', '), (d.evidenceRefs || []).join(', ')]) row.append(element('td', value ?? '—'));
+        table.append(row);
+      }
+      host.append(table);
+    }
+    const traced = new Map((placement.sourceTrace || []).map(s => [s.alias, s]));
+    const states = Object.entries(aliasStates || {}).map(([alias, state]) => ({
+      alias, sourceId: traced.get(alias)?.sourceId ?? alias,
+      initialSelection: state.initialSelection, finalSelection: state.finalSelection,
+      verificationMembership: state.verificationMembership, bindingStatus: state.bindingStatus,
+      placementResolution: traced.get(alias)?.placementResolution ?? 'not-bound'
+    }));
+    const excluded = states.filter(s => s.finalSelection === 'NOT_SELECT');
+    host.append(element('p', `Nguồn: ${states.length} dòng có trạng thái; selection đánh dấu NOT_SELECT=${excluded.length}. Các dòng này chỉ là bằng chứng nguồn, không được phục hồi thành heading.`));
+    if (states.length) {
+      const details = element('details'); details.append(element('summary', 'Trạng thái upstream theo dòng nguồn'));
+      const filter = element('input'); filter.type = 'search'; filter.placeholder = 'Lọc theo alias, trạng thái hoặc source ID';
+      filter.setAttribute('aria-label', 'Lọc trạng thái upstream');
+      const tableHost = element('div');
+      const drawStates = () => {
+        const table = element('table', null, 'v2-audit-table');
+        const head = element('tr');
+        for (const label of ['Alias', 'Source ID', 'Selection ban đầu', 'Selection cuối', 'Membership', 'Binding', 'Hierarchy']) head.append(element('th', label));
+        table.append(head);
+        const needle = filter.value.trim().toLowerCase();
+        for (const s of states) {
+          const values = [s.alias, s.sourceId, s.initialSelection, s.finalSelection, s.verificationMembership, s.bindingStatus, s.placementResolution];
+          if (needle && !values.some(value => String(value ?? '').toLowerCase().includes(needle))) continue;
+          const row = element('tr');
+          for (const value of values) row.append(element('td', value ?? '—'));
+          table.append(row);
+        }
+        tableHost.replaceChildren(table);
+      };
+      filter.addEventListener('input', drawStates);
+      details.addEventListener('toggle', () => { if (details.open && !tableHost.childElementCount) drawStates(); });
+      details.append(filter, tableHost); host.append(details);
+    }
+    if (placement.failures?.length) host.append(element('p', 'Placement protocol failures: ' + placement.failures.join('; ')));
   }
   function reset() {
     document.getElementById('pipelineV2')?.classList.add('hidden');
@@ -172,7 +227,7 @@
     document.getElementById('v2Inspector').replaceChildren();
     document.getElementById('v2Stages').replaceChildren(element('li', 'execution — failed: server error event; sub-stages not-recorded'));
   }
-  const api = { buildForest, render, reset, showFailure };
+  const api = { buildForest, render, reset, showFailure, renderPlacementDiagnostics };
   if (typeof module !== 'undefined') module.exports = api;
   global.WebPipelineV2 = api;
 })(typeof window !== 'undefined' ? window : globalThis);
