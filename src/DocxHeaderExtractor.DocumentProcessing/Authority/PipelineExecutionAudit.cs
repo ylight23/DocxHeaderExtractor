@@ -54,6 +54,11 @@ public sealed record PipelineExecutionAudit(
     /// <summary>Runtime-only placement observation; frozen audit JSON remains unchanged.</summary>
     [JsonIgnore]
     public HeadingPlacementExecutionObservation? PlacementExecution { get; init; }
+    [JsonIgnore]
+    public int? SelectionProviderCalls { get; init; }
+    /// <summary>Selector-recorded attempts plus placement logical calls; excludes placement transport-internal retries.</summary>
+    [JsonIgnore]
+    public int? HeadingProviderCalls => SelectionProviderCalls is { } count ? count + (PlacementExecution?.LogicalCalls ?? 0) : null;
 
     [JsonIgnore]
     public DocxHeaderExtractor.DocumentProcessing.Routing.GroupingObservation? Grouping { get; init; }

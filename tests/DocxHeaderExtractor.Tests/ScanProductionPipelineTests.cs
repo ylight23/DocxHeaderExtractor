@@ -62,8 +62,8 @@ public sealed class ScanProductionPipelineTests
         Assert.Equal(new PixelBox(100, 100, 900, 50), evidence.Scan!.Box);
         Assert.Equal("Chuong I", evidence.Scan.PrimaryReading);
         Assert.Equal("Chương I", evidence.Scan.Readings["vlm-transcribed"]);
-        Assert.Equal(6, run.Result.Provenance.ProviderCalls);
-        Assert.Equal(1, run.Outline.RouteAudit!.Scan!.PlacementCalls);
+        Assert.Equal(7, run.Result.Provenance.ProviderCalls);
+        Assert.Equal(2, run.Outline.RouteAudit!.Scan!.PlacementCalls);
         Assert.Equal(.002, run.Outline.RouteAudit!.Scan!.PreflightCostUsd);
         Assert.Equal("complete", run.Outline.RouteAudit.SemanticLane!.Status);
         Assert.Contains("scanSources", JsonSerializer.Serialize(run.Outline), StringComparison.Ordinal);
@@ -304,7 +304,7 @@ public sealed class ScanProductionPipelineTests
         public string RuntimeDescription => "test";
         public int SharedPrefixTokens => 0;
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
-            Task.FromResult("{\"placements\":[{\"alias\":\"P001-L001\",\"parent\":\"ROOT\"},{\"alias\":\"P001-L003\",\"parent\":\"P001-L001\"}]}");
+            Task.FromResult(HierarchyTestProtocol.Reply(userMessage, new Dictionary<string, string> { ["P001-L001"] = "ROOT", ["P001-L003"] = "P001-L001" })!);
         public void Dispose() { }
     }
     sealed class AppendixPlacement : IAgentRouteInferenceTransport
@@ -322,7 +322,7 @@ public sealed class ScanProductionPipelineTests
             var parents = new Dictionary<int, string> { [1] = "ROOT", [2] = AppendixMembershipTests.A(1), [4] = AppendixMembershipTests.A(2),
                 [6] = AppendixMembershipTests.A(2), [8] = AppendixMembershipTests.A(1), [9] = AppendixMembershipTests.A(8),
                 [11] = AppendixMembershipTests.A(8), [12] = "NONE", [14] = "NONE" };
-            return Task.FromResult(JsonSerializer.Serialize(new { placements = parents.Select(p => new { alias = AppendixMembershipTests.A(p.Key), parent = p.Value }) }));
+            return Task.FromResult(HierarchyTestProtocol.Reply(userMessage, parents.ToDictionary(p => AppendixMembershipTests.A(p.Key), p => p.Value))!);
         }
         public void Dispose() { }
     }

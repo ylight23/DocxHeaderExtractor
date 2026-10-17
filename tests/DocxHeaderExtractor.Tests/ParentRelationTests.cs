@@ -110,7 +110,8 @@ public sealed class ParentRelationTests : IDisposable
         public int SharedPrefixTokens => 0;
 
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
-            Task.FromResult(reply);
+            Task.FromResult(HierarchyTestProtocol.Reply(userMessage, JsonNode.Parse(reply)!["placements"]!.AsArray()
+                .ToDictionary(p => p!["alias"]!.GetValue<string>(), p => p!["parent"]!.GetValue<string>())) ?? reply);
 
         public void Dispose() { }
     }

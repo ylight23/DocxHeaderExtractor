@@ -117,14 +117,19 @@ internal static class HeadingHierarchyResolver
             var resolved = parentBySourceId.TryGetValue(heading.SourceId, out var parentSourceId);
             var level = 1;
             if (resolved && parentSourceId is not null)
-                level = levels.TryGetValue(parentSourceId, out var parentLevel) ? parentLevel + 1 : 1;
-            levels[heading.SourceId] = Math.Clamp(level, 1, 9);
+            {
+                // Only a completely resolved ancestor chain supplies depth. An unresolved
+                // parent is not a root and must not give its children an invented level.
+                resolved = levels.TryGetValue(parentSourceId, out var parentLevel);
+                if (resolved) level = parentLevel + 1;
+            }
+            if (resolved) levels[heading.SourceId] = Math.Clamp(level, 1, 9);
             // Identity ownership lives in the semantic stage. Hierarchy only consumes its stable
             // key to mark the primary occurrence without re-defining same-node semantics.
             var nodeKey = CanonicalSemanticIdentityResolver.CreateNodeKey(heading);
             result.Add(new DerivedHeadingHierarchy(
                 heading.SourceId,
-                levels[heading.SourceId],
+                resolved ? levels[heading.SourceId] : 1,
                 resolved ? parentSourceId : null,
                 outsideHierarchy.Contains(heading.SourceId) ? OutOfHierarchy
                     : !resolved ? Unresolved

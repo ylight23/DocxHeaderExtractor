@@ -106,7 +106,7 @@ public static class PdfExtractionPipeline
             new DocumentExtractionProvenance(
                 "pdf-v6-selected-lines",
                 "pdf-source-document",
-                authority.Audit?.RawModelResponses.Count ?? 0)
+                authority.Audit?.HeadingProviderCalls ?? authority.Audit?.RawModelResponses.Count ?? 0)
             {
                 ExecutionContract = ExecutionContracts.ExplicitUploadedPdfCanonical,
             });

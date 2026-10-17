@@ -107,7 +107,7 @@ public static class WebPipelineProjection
                     "placement-not-required" => "skipped",
                     _ => "not-recorded",
                 },
-                $"Producer {placement.Status}; requested={placement.RequestedCount}; placed={placement.PlacedCount}; outside-tree={placement.OutOfHierarchyCount}; unresolved={placement.UnresolvedCount}; failure={placement.FailureClass ?? "none"}"));
+                $"Producer {placement.Status}; requested={placement.RequestedCount}; placed={placement.PlacedCount}; outside-tree={placement.OutOfHierarchyCount}; unresolved={placement.UnresolvedCount}; failure={placement.FailureClass ?? "none"}; verified={placement.VerifiedCount}; repair edges={placement.RepairCount}; logical calls={placement.LogicalCalls}; {placement.Seconds:0.0}s; contract={placement.Contract ?? "legacy"}"));
         stages.Add(new("projection", "completed", "Returned production outline"));
         if (audit?.HeadingStageSeconds is { Count: > 0 } seconds)
             stages.Add(new("heading-phase-timing", "completed", string.Join(", ", seconds.Select(kv => $"{kv.Key} {kv.Value:0.0}s"))));
@@ -128,7 +128,7 @@ public static class WebPipelineProjection
 
     public static object? SafeAudit(PipelineExecutionAudit? audit) => audit is null ? null : new
     { audit.PipelineId, audit.SourceBlocksAvailable, audit.SourceBlocksSelected, audit.SourcePagesAvailable,
-        audit.SourcePagesSelected, audit.SemanticLane, audit.SpanLane,
+        audit.SourcePagesSelected, audit.SemanticLane, audit.SpanLane, audit.ModelInputContracts, audit.SelectionProviderCalls,
         groundedSourceIds = audit.GroundedBlockIds, decisionCount = audit.BlockDecisions.Count,
         placementExecution = audit.PlacementExecution, audit.Scan, audit.Grouping, audit.HeadingStageSeconds, audit.HeadingAliasStates };
 

@@ -56,11 +56,13 @@ internal sealed class SelectedLinesHeadingAuthority(
 
         PipelineExecutionAudit Complete(PipelineExecutionAudit audit, HeadingStructureAssembly assembly) => audit with
         {
-            RawModelResponses = selection.ModelAnswers,
+            RawModelResponses = selection.ModelAnswers.Concat(assembly.PlacementObservation?.ModelEvidence ?? []).ToArray(),
+            SelectionProviderCalls = selection.ProviderCalls,
             Grouping = selection.Grouping,
-            HeadingStageSeconds = selection.StageSeconds,
+            HeadingStageSeconds = new Dictionary<string, double>(selection.StageSeconds ?? new Dictionary<string, double>())
+            { ["hierarchy"] = assembly.PlacementObservation?.Seconds ?? 0 },
             HeadingAliasStates = selection.AliasStates,
-            ModelInputContracts = [selector.SelectorId],
+            ModelInputContracts = [selector.SelectorId, EvidenceHeadingPlacement.Version],
             ValidatedStructures = assembly.Hierarchies.Values.ToArray(),
             SemanticLane = new LaneExecutionAudit(
                 selection.UnitsComplete == selection.UnitsTotal ? "complete" : "partial",
@@ -69,7 +71,11 @@ internal sealed class SelectedLinesHeadingAuthority(
                     : JsonSerializer.Serialize(new { unitFailures = selection.UnitFailures, selectedAliasesNotInSource = unknown, headingExtentsRejected = extentsRejected, atoms = atomCount })),
             SpanLane = new LaneExecutionAudit("selected-lines", decisions.Count, assembly.Validated.Count, 0, decisions.Count - assembly.Validated.Count),
         };
-        var evidence = selection.Placement is { } p ? new HeadingPlacementEvidence(p.DocumentStylesJson, p.StyleJsonByAlias, p.MeasurementsNote) : null;
+        var p = selection.Placement;
+        var evidence = new HeadingPlacementEvidence(p?.DocumentStylesJson ?? "{}", p?.StyleJsonByAlias ?? new Dictionary<string, string>(), p?.MeasurementsNote)
+        { Source = new(source.Atoms, selection.AliasStates ?? selection.SelectedAliases.ToDictionary(a => a,
+            _ => new HeadingAliasState("SELECT", "SELECT", null, "READY_FOR_BINDING")), source.SourceSha256)
+            { LocationByAlias = source.Evidence.ToDictionary(e => e.SourceAlias, e => e.LocationFacts) } };
         return new HeadingAuthorityResult(decisions, bound, placementTransport, Complete, evidence);
     }
 
@@ -143,7 +149,7 @@ internal sealed class SelectedLinesHeadingAuthority(
 /// <param name="Decisions">Exact heading extents the authority selected.</param>
 /// <param name="BoundHeadings">The same headings as bound semantic claims, input to placement and hierarchy.</param>
 /// <param name="PlacementTransport">Transport for the bounded placement follow-up; null when none ran.</param>
-/// <param name="PlacementEvidence">Optional measurements for the placement pass (the PDF lane's style table); null keeps the packet unchanged.</param>
+/// <param name="PlacementEvidence">Source context, upstream states and optional style measurements for placement.</param>
 /// <param name="CompleteAudit">
 /// Adds the authority's own audit facts (raw responses, contracts, lane telemetry) to the route audit
 /// once the shared stages have run.

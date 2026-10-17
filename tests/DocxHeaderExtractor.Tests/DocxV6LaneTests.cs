@@ -49,7 +49,7 @@ public sealed class DocxV6LaneTests : IDisposable
         Assert.Equal(DocxHeadingPipeline.RouteId, run.Outline.DeterministicRoute);
         Assert.Equal(DocxHeadingPipeline.RouteId, heading.Reason);
         Assert.Equal(3, heading.Structure.Elements.Count);
-        Assert.Equal(new[] { FixedSelector.Id }, heading.Audit!.ModelInputContracts);
+        Assert.Contains(FixedSelector.Id, heading.Audit!.ModelInputContracts);
         Assert.Equal("complete", heading.Audit.SemanticLane!.Status);
         Assert.Equal(new[] { "Chapter I", "GENERAL PROVISIONS", "Article 1. Scope" }, run.Outline.Headings.Select(h => h.Text));
     }
@@ -65,8 +65,8 @@ public sealed class DocxV6LaneTests : IDisposable
 
         await pipeline.RunDocumentExecutionAsync(path);
 
-        Assert.Equal(1, transport.PlacementCalls);
-        Assert.Contains(DocxAgentProtocol.PlacementNote.ReplaceLineEndings("\n"), transport.LastPrompt!, StringComparison.Ordinal);
+        Assert.Equal(2, transport.PlacementCalls);
+        Assert.Equal(DocxAgentProtocol.PlacementNote, System.Text.Json.Nodes.JsonNode.Parse(transport.LastPacket!)!["measurementsNote"]!.GetValue<string>());
         Assert.Contains("json", transport.LastPrompt!, StringComparison.OrdinalIgnoreCase);
     }
 
@@ -126,6 +126,7 @@ public sealed class DocxV6LaneTests : IDisposable
     {
         public int PlacementCalls { get; private set; }
         public string? LastPrompt { get; private set; }
+        public string? LastPacket { get; private set; }
         public string? OpenRouterApiKey => key;
         public string RouteProvider => "test";
         public string RouteModel => "test";
@@ -138,7 +139,8 @@ public sealed class DocxV6LaneTests : IDisposable
         {
             PlacementCalls++;
             LastPrompt = systemPrompt;
-            return Task.FromResult("{\"placements\":[]}");
+            LastPacket = userMessage;
+            return Task.FromResult(HierarchyTestProtocol.Reply(userMessage)!);
         }
 
         public void Dispose() { }

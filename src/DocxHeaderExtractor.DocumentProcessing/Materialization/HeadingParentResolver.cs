@@ -82,6 +82,9 @@ internal static class HeadingParentResolver
         ArgumentNullException.ThrowIfNull(bound);
         ArgumentNullException.ThrowIfNull(transport);
 
+        if (evidence?.Source is not null)
+            return await EvidenceHeadingPlacement.PlaceAsync(bound, transport, cancellationToken, evidence).ConfigureAwait(false);
+
         var derived = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(bound);
         var unplaced = derived
             .Where(item => item.Resolution == HeadingHierarchyResolver.Unresolved)

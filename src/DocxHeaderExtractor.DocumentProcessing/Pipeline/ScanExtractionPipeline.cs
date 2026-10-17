@@ -53,7 +53,7 @@ internal static class ScanExtractionPipeline
             {
                 PipelineId = RouteId,
                 Scan = prepared.Diagnostics with
-                { PlacementCalls = transport is not null && assembly.PlacementObservation?.RequestedCount > 0 ? 1 : 0, StageSeconds = stageSeconds },
+                { PlacementCalls = assembly.PlacementObservation?.LogicalCalls ?? 0, StageSeconds = stageSeconds },
                 PlacementExecution = assembly.PlacementObservation,
             };
             if (options.DisableLlm)

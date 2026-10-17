@@ -127,7 +127,7 @@ public sealed class DocxExtractionPipeline : IDisposable
                 new DocumentExtractionProvenance(
                     route,
                     "docx-source-document",
-                    _options.DisableLlm ? 0 : audit?.RawModelResponses.Count ?? 0));
+                    _options.DisableLlm ? 0 : audit?.HeadingProviderCalls ?? audit?.RawModelResponses.Count ?? 0));
             var outline = new DocumentOutline
             {
                 File = Path.GetFileName(inputPath),
