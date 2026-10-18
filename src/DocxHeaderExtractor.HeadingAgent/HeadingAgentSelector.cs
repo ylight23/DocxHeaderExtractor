@@ -136,6 +136,8 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         // so reserve one chunk per 2 * MaxRunsPerRequest lines, for both initial grouping and possible review regroup, including retries/repairs.
         var groupPosts = GroupingPostsReserveForLines(source.Lines.Count);
         var groupReserve = groupPosts * AgentBudget.AttemptUsd(60000);
+        var boundaryGroupPosts = SemanticBoundaryGroupingPostsReserveForLines(source.Lines.Count);
+        var boundaryGroupReserve = boundaryGroupPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
         var reviewPosts = units * AgentSelectionReview.MaxPosts;
         var reviewReserve = reviewPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
         // Initial + review verification, each with the bounded semantic boundary cycles.
@@ -143,7 +145,8 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         var verifyPosts = 2 * (1 + AgentGroupVerification.MaxBoundaryRepairCycles)
             * Math.Max(1, (source.Lines.Count + AgentGroupVerification.BatchSize - 1) / AgentGroupVerification.BatchSize) * AgentGroupVerification.MaxCalls;
         var verifyReserve = verifyPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
-        return new AgentBudget(posts + groupPosts + reviewPosts + verifyPosts, Math.Ceiling((first + spare + groupReserve + reviewReserve + verifyReserve) * 1.1 * 100) / 100);
+        return new AgentBudget(posts + groupPosts + boundaryGroupPosts + reviewPosts + verifyPosts,
+            Math.Ceiling((first + spare + groupReserve + boundaryGroupReserve + reviewReserve + verifyReserve) * 1.1 * 100) / 100);
     }
 
     internal static int GroupingPostsReserveForLines(int lineCount)
@@ -151,6 +154,18 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         var groupChunks = Math.Max(1, (lineCount + (2 * AgentGrouping.MaxRunsPerRequest) - 1) / (2 * AgentGrouping.MaxRunsPerRequest));
         // Both initial grouping and a possible REVIEW-GROUP regroup can consume this worst-case reserve.
         return 2 * groupChunks * (1 + AgentGrouping.MaxRepairs) * (1 + AgentUnit.TransportRetries);
+    }
+
+    internal static int SemanticBoundaryGroupingPostsReserveForLines(int lineCount)
+    {
+        // Unlike initial/review GROUP, independent candidates do not share grouping requests.
+        // At a fixed cycle their aliases are disjoint (including survivor refinement), and each
+        // provider-backed run needs at least two lines. Thus floor(lines / 2) also bounds chunks
+        // across all candidates, even when refinement splits one candidate into several runs.
+        // Reserve both initial/review verification trees and every semantic cycle. AskChunk's
+        // retry counter is shared across its protocol rounds, so its maximum is additive.
+        return 2 * AgentGroupVerification.MaxBoundaryRepairCycles * (lineCount / 2)
+            * (1 + AgentGrouping.MaxRepairs + AgentUnit.TransportRetries);
     }
 
     /// <summary>Runs every segment, parallelism at a time, and collects the lines selected by the units whose answer passed.</summary>

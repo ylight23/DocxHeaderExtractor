@@ -577,6 +577,58 @@ public sealed class HeadingGroupVerificationTests
         Assert.Equal(2, result.Provenance.Max(p => p.BoundaryRepairCycle));
         Assert.DoesNotContain(result.Provenance.Where(p => p.Stage == "grouping" && p.BoundaryRepairCycle == 2), p => p.Decision == "FALLBACK");
     }
+    [Fact]
+    public void Many_candidates_can_use_both_boundary_cycles_without_borrowing_verifier_reserve()
+    {
+        const int candidateCount = 24, lineCount = candidateCount * 3;
+        var source = Source(lineCount: lineCount);
+        var input = new AgentGrouping.Result(Enumerable.Range(0, candidateCount)
+            .Select(i => new[] { A(3 * i + 1), A(3 * i + 2) }).ToArray(), [], [], 0);
+        var reservedPosts = HeadingAgentSelector.SemanticBoundaryGroupingPostsReserveForLines(lineCount);
+        Assert.Equal(2 * 2 * (lineCount / 2) * 6, reservedPosts);
+        // This second ledger admits GROUP requests only: verification cannot subsidize them.
+        var groupingOnly = new AgentBudget(reservedPosts,
+            reservedPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes));
+        var documentBudget = HeadingAgentSelector.BudgetFor(source);
+        var units = source.Cores.Count;
+        var selectionPosts = units * (1 + MaxToolTurns + AgentUnit.TransportRetries + 2 * 4);
+        var verificationPosts = 2 * (1 + AgentGroupVerification.MaxBoundaryRepairCycles)
+            * ((lineCount + AgentGroupVerification.BatchSize - 1) / AgentGroupVerification.BatchSize) * AgentGroupVerification.MaxCalls;
+        Assert.Equal(selectionPosts + HeadingAgentSelector.GroupingPostsReserveForLines(lineCount)
+            + units * AgentSelectionReview.MaxPosts + verificationPosts + reservedPosts, documentBudget.MaxCalls);
+        for (var pass = 0; pass < 2; pass++)
+        {
+            var attempts = new System.Collections.Concurrent.ConcurrentDictionary<string, int>();
+            AgentUnit.Model model = (unit, _, request) =>
+            {
+                var packet = Payload(request);
+                if (packet["stage"]!.GetValue<string>() == "GROUP_VERIFICATION")
+                    return new ModelTurn(Verdicts(packet, _ => unit.Contains("CYCLE-2", StringComparison.Ordinal)
+                        ? "ACCEPT" : "REGROUP"), [], "stop");
+                Assert.Null(groupingOnly.Admit(request));
+                var attempt = attempts.AddOrUpdate(unit, 1, (_, n) => n + 1);
+                if (attempt <= AgentUnit.TransportRetries) throw new ReplyFailure("TRANSPORT:STREAM_ERROR");
+                if (attempt <= AgentUnit.TransportRetries + AgentGrouping.MaxRepairs)
+                    return new ModelTurn("{}", [], "stop");
+                return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = AgentGrouping.GroupVersion,
+                    runs = packet["runs"]!.AsArray().Select(r => new { run = r!["run"]!.GetValue<string>(),
+                        headings = new[] { r["lines"]!.AsArray().Select(l => l!["alias"]!.GetValue<string>()).ToArray() } }) }), [], "stop");
+            };
+            var result = AgentGroupVerification.Verify(source, input, new Dictionary<string, TextOffsetSpan>(),
+                new Dictionary<string, string>(), model, documentBudget, 4, CancellationToken.None, 0, Instruction);
+            Assert.Empty(result.Failures);
+            Assert.Empty(result.UnresolvedAliases);
+            Assert.Equal(candidateCount, result.Groups.Count);
+            Assert.Equal(candidateCount * 2, attempts.Count);
+            Assert.All(attempts.Values, n => Assert.Equal(6, n));
+            Assert.Equal(2, result.Provenance.Max(p => p.BoundaryRepairCycle));
+        }
+        Assert.Equal(2 * candidateCount * 2 * 6, groupingOnly.Calls);
+        Assert.Null(groupingOnly.HaltReason);
+        Assert.Null(documentBudget.HaltReason);
+        Assert.InRange(groupingOnly.ReservedUsd, 0, groupingOnly.CeilingUsd);
+    }
+
     // Source functions copied from the inspected stored page 32, not a heading Gold or a production phrase filter.
     static ScanAgentSource Source(string? entry = null, string? imageSha = null, int lineCount = 14, string[]? sourceTexts = null)
     {
