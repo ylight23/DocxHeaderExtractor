@@ -81,7 +81,8 @@ public sealed record GroupingObservation(int ModelDividedRuns = 0, int FallbackR
     IReadOnlyList<GroupingFieldDiagnostic>? FieldDiagnostics = null,
     IReadOnlyList<GroupingCoverageDiagnostic>? CoverageDiagnostics = null,
     IReadOnlyList<GroupingPartitionObservation>? Partitions = null,
-    IReadOnlyList<GroupingVerifierEvidenceObservation>? VerifierEvidence = null)
+    IReadOnlyList<GroupingVerifierEvidenceObservation>? VerifierEvidence = null,
+    IReadOnlyList<BoundaryRepairObservation>? BoundaryRepairs = null)
 {
     public GroupingObservation Add(GroupingObservation other) => new(ModelDividedRuns + other.ModelDividedRuns,
         FallbackRuns + other.FallbackRuns, DisputedRuns + other.DisputedRuns, VerificationChecks + other.VerificationChecks,
@@ -91,13 +92,20 @@ public sealed record GroupingObservation(int ModelDividedRuns = 0, int FallbackR
         (FieldDiagnostics ?? []).Concat(other.FieldDiagnostics ?? []).ToArray(),
         (CoverageDiagnostics ?? []).Concat(other.CoverageDiagnostics ?? []).ToArray(),
         (Partitions ?? []).Concat(other.Partitions ?? []).ToArray(),
-        (VerifierEvidence ?? []).Concat(other.VerifierEvidence ?? []).ToArray());
+        (VerifierEvidence ?? []).Concat(other.VerifierEvidence ?? []).ToArray(),
+        (BoundaryRepairs ?? []).Concat(other.BoundaryRepairs ?? []).ToArray());
 }
 
 /// <summary>Actual verifier-input partition. Null comparison means no prior partition or a changed alias scope.</summary>
 public sealed record GroupingPartitionObservation(string Phase, string UnitId, string CandidateId, string CandidateKey,
     int BoundaryRepairCycle, IReadOnlyList<string> CandidateAliases,
     IReadOnlyList<IReadOnlyList<string>>? InputGroups, IReadOnlyList<IReadOnlyList<string>> OutputGroups, bool? ChangedFromInput);
+
+/// <summary>Repair invocation result before recursive verification, including repairs that stop without another verifier call.</summary>
+public sealed record BoundaryRepairObservation(string Phase, string ParentUnitId, string CandidateId, string CandidateKey,
+    IReadOnlyList<string> CandidateAliases, int FromCycle, int ToCycle,
+    IReadOnlyList<IReadOnlyList<string>> InputGroups, IReadOnlyList<IReadOnlyList<string>> OutputGroups,
+    bool? Changed, string Result, string? FailureClass);
 
 /// <summary>Shared conversation scope, not evidence attribution to individual candidates. Aliases and registered tool names only.</summary>
 public sealed record GroupingVerifierEvidenceObservation(string UnitId, int BoundaryRepairCycle,

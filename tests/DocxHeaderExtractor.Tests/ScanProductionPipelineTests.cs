@@ -133,7 +133,10 @@ public sealed class ScanProductionPipelineTests
                     ["P001-L001", "P001-L002"], [["P001-L001", "P001-L002"]], [["P001-L001"], ["P001-L002"]], true)],
                 VerifierEvidence: [new GroupingVerifierEvidenceObservation("VERIFY-001", 2, [["P001-L001", "P001-L002"]],
                     ["P001-L001", "P001-L002"], [new GroupingEvidenceToolObservation(1, "get_scan_crop", "OK", ["P001-L001"], true, true)],
-                    ["P001-L001", "P001-L002"])]),
+                    ["P001-L001", "P001-L002"])],
+                BoundaryRepairs: [new BoundaryRepairObservation("VERIFY-REGROUP-V1", "VERIFY-001", "V1", "alias-scope-key",
+                    ["P001-L001", "P001-L002"], 0, 1, [["P001-L001", "P001-L002"]], [["P001-L001", "P001-L002"]],
+                    false, "NO_PROGRESS", "BOUNDARY_REPAIR_NO_PROGRESS")]),
             StageSeconds = new Dictionary<string, double> { ["selection"] = 10, ["grouping"] = 20, ["verification"] = 30, ["review"] = 40 }
         } };
         using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
@@ -164,6 +167,9 @@ public sealed class ScanProductionPipelineTests
         Assert.Equal("P001-L002", safeGrouping["Partitions"]![0]!["OutputGroups"]![1]![0]!.GetValue<string>());
         Assert.True(safeGrouping["VerifierEvidence"]![0]!["UsedScanCrop"]!.GetValue<bool>());
         Assert.Equal("get_scan_crop", safeGrouping["VerifierEvidence"]![0]!["Requests"]![0]!["ToolName"]!.GetValue<string>());
+        Assert.Equal("NO_PROGRESS", safeGrouping["BoundaryRepairs"]![0]!["Result"]!.GetValue<string>());
+        Assert.Equal("BOUNDARY_REPAIR_NO_PROGRESS", safeGrouping["BoundaryRepairs"]![0]!["FailureClass"]!.GetValue<string>());
+        Assert.False(safeGrouping["BoundaryRepairs"]![0]!["Changed"]!.GetValue<bool>());
         Assert.Contains("verification 30", web.Stages.Single(s => s.Id == "heading-phase-timing").Evidence);
     }
 

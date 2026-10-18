@@ -88,7 +88,7 @@ internal static class AgentGroupVerification
         var observation = input.Observation;
         var memberships = input.Memberships.ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.Ordinal);
         var provenance = input.Provenance.ToList();
-        var corrections = new List<(Candidate Candidate, Verdict Verdict, bool MembershipRefinement)>();
+        var corrections = new List<(Candidate Candidate, Verdict Verdict, bool MembershipRefinement, string ParentUnit)>();
         for (var n = 0; n < checks.Length; n++)
         {
             var check = checks[n];
@@ -137,7 +137,7 @@ internal static class AgentGroupVerification
                         if (confirmed.Count > 0)
                         {
                             if (allowMembershipRefinement)
-                                corrections.Add((new Candidate(candidate.Id, ConfirmedPieces(candidate, confirmed)), verdict, true));
+                                corrections.Add((new Candidate(candidate.Id, ConfirmedPieces(candidate, confirmed)), verdict, true, prefix + "-" + (n + 1).ToString("000")));
                             else
                             {
                                 unresolved.UnionWith(confirmed);
@@ -147,7 +147,7 @@ internal static class AgentGroupVerification
                         break;
                     case "REGROUP" when allowRegroup && boundaryRepairCycle < MaxBoundaryRepairCycles
                         && verdict.Membership.All(m => m.Status == "HEADING"):
-                        corrections.Add((candidate, verdict, false));
+                        corrections.Add((candidate, verdict, false, prefix + "-" + (n + 1).ToString("000")));
                         break;
                     default:
                         unresolved.UnionWith(candidate.Aliases);
@@ -161,7 +161,7 @@ internal static class AgentGroupVerification
         var corrected = new AgentGrouping.Result[corrections.Count];
         Parallel.For(0, corrections.Count, new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct }, index =>
         {
-            var (candidate, verdict, refinement) = corrections[index];
+            var (candidate, verdict, refinement, parentUnit) = corrections[index];
             if (refinement)
             {
                 var remaining = new AgentGrouping.Result(candidate.Groups, [], [], 0)
@@ -174,12 +174,31 @@ internal static class AgentGroupVerification
             }
             var nextCycle = boundaryRepairCycle + 1;
             var cycleSuffix = nextCycle == 1 ? "" : "-CYCLE-" + nextCycle;
+            var repairPhase = prefix + "-REGROUP-" + candidate.Id + cycleSuffix;
             var regroup = AgentGrouping.Group(source, candidate.Aliases.ToHashSet(StringComparer.Ordinal), model, budget,
-                1, ct, retryDelayMs, instruction, prefix + "-REGROUP-" + candidate.Id + cycleSuffix,
+                1, ct, retryDelayMs, instruction, repairPhase,
                 new { candidate = candidate.Id, proposedGroups = candidate.Groups, verifier = verdict,
                     boundaryRepairCycle = nextCycle, maxBoundaryRepairCycles = MaxBoundaryRepairCycles,
                     task = "Reconsider boundaries only. Membership is unchanged unless you explicitly report dispute." });
+            ct.ThrowIfCancellationRequested();
             regroup = regroup with { Provenance = regroup.Provenance.Select(p => p with { BoundaryRepairCycle = nextCycle }).ToArray() };
+            var repair = ObserveBoundaryRepair(repairPhase, parentUnit, candidate, boundaryRepairCycle, regroup);
+            regroup = regroup with { Observation = regroup.Observation with
+                { BoundaryRepairs = (regroup.Observation.BoundaryRepairs ?? []).Append(repair).ToArray() } };
+            if (repair.Result == "NO_PROGRESS")
+            {
+                const string code = "BOUNDARY_REPAIR_NO_PROGRESS";
+                corrected[index] = regroup with
+                {
+                    Groups = [], UnresolvedAliases = candidate.Aliases,
+                    Failures = regroup.Failures.Append(repairPhase + ":" + code + ":" + candidate.Id).ToArray(),
+                    Memberships = candidate.Aliases.ToDictionary(a => a, a => memberships[a], StringComparer.Ordinal),
+                    Provenance = regroup.Provenance.Concat(candidate.Aliases.Select(a =>
+                        new HeadingAliasProvenance(a, "boundary-repair-result", repairPhase, candidate.Id, "NO_PROGRESS", memberships[a], [code], verdict.EvidenceRefs)
+                        { BoundaryRepairCycle = nextCycle })).ToArray()
+                };
+                return;
+            }
             corrected[index] = Verify(source, regroup, extents, readings, model, budget, 1, ct,
                 retryDelayMs, instruction, allowRegroup: allowRegroup, allowMembershipReview: allowMembershipReview,
                 prefix: prefix + "-REVERIFY-" + candidate.Id + cycleSuffix, allowMembershipRefinement: allowMembershipRefinement,
@@ -197,6 +216,24 @@ internal static class AgentGroupVerification
         return input with { Groups = groups.OrderBy(g => positions[g[0]]).ToArray(), Disputes = disputes,
             UnresolvedAliases = unresolved.ToArray(), Failures = failures, Evidence = evidence, Answers = answers,
             Observation = observation, Memberships = memberships, Provenance = provenance };
+    }
+
+    internal static BoundaryRepairObservation ObserveBoundaryRepair(string phase, string parentUnit, Candidate input, int fromCycle,
+        AgentGrouping.Result repair)
+    {
+        var comparison = ObservePartition(phase, parentUnit, new(input.Id, repair.Groups.Select(g => g.ToArray()).ToArray()), fromCycle + 1, input.Groups);
+        // Only a complete, successful model division qualifies. Layout fallback, disputes, missing
+        // model divisions (including singleton runs), terminal protocol failures and scope changes
+        // retain their existing verification/review path instead of activating this guard.
+        var modelDivided = repair.Failures.Count == 0 && repair.Observation.FallbackRuns == 0 && repair.Observation.ModelDividedRuns > 0
+            && input.Aliases.All(a => repair.Provenance.Any(p => p.Alias == a && p.Stage == "grouping" && p.Decision == "DIVIDED"));
+        var result = repair.Disputes.Count > 0 ? "DISPUTED"
+            : !modelDivided || comparison.ChangedFromInput is null ? "FAILED"
+            : comparison.ChangedFromInput.Value ? "CHANGED" : "NO_PROGRESS";
+        var failure = result == "NO_PROGRESS" ? "BOUNDARY_REPAIR_NO_PROGRESS"
+            : result == "FAILED" ? comparison.ChangedFromInput is null ? "SCOPE_CHANGED_OR_INCOMPLETE" : "NO_VALID_MODEL_DIVISION" : null;
+        return new(phase, parentUnit, input.Id, Sha(JsonSerializer.Serialize(input.Aliases)), input.Aliases, fromCycle, fromCycle + 1,
+            input.Groups.Select(g => (IReadOnlyList<string>)g.ToArray()).ToArray(), comparison.OutputGroups, comparison.ChangedFromInput, result, failure);
     }
 
     internal static GroupingPartitionObservation ObservePartition(string phase, string unit, Candidate candidate, int cycle,

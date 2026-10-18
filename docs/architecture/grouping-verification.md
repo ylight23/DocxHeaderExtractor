@@ -28,7 +28,11 @@ Flow:
    targeted boundary-only division. The program never reads keywords in `reason` to change a
    verdict. Inconsistent structured claims are sent back as protocol errors.
 4. Boundary verification starts at cycle 0. `REGROUP` with every membership still `HEADING`
-   may trigger boundary repair 1, followed by fresh verification at cycle 1. The same condition
+   may trigger boundary repair 1. A complete valid model division with unchanged ordered
+   alias scope and unchanged ordered partition stops immediately with
+   `BOUNDARY_REPAIR_NO_PROGRESS`, before another verifier call; affected aliases remain
+   unresolved with their `HEADING` membership intact. A changed proposal proceeds to fresh
+   verification at cycle 1. The same condition
    may trigger boundary repair 2, followed by final verification at cycle 2. `ACCEPT` admits the
    verified groups; `REGROUP` at cycle 2 withholds the candidate as unresolved. Membership
    disputes and unknown membership retain their existing review/refinement handling; they do
@@ -76,6 +80,15 @@ cycle, including survivor refinement, and each provider-backed run requires at l
 The regroup cost reserve uses the request byte cap. There are
 no unbounded semantic retries. Source context tools can provide context beyond the initial
 eight lines; the verifier may return unresolved when it cannot obtain adequate evidence.
+
+The no-progress check applies only to a successful model division covering the complete
+candidate: no terminal grouping failure, no fallback, no dispute, positive model-divided run
+count and `DIVIDED` provenance for every alias. A recovered protocol round may still produce
+a valid final division. Terminal protocol failure, `FALLBACK`, `DISPUTED`, singleton runs with
+no model division, and alias-scope changes keep their existing verification/review handling;
+they do not activate this guard. The check compares the new partition to the proposal just
+rejected by `REGROUP`, not to an unrelated earlier branch or any document-specific pattern.
+It introduces no acceptance authority and does not promise higher recall.
 
 Within a valid response envelope, schema, complete ordered membership and source evidence are
 checked independently for each candidate. A duplicate run invalidates that candidate rather
@@ -146,10 +159,20 @@ change between cycles and are not trajectory identity. Group and alias order are
 `[[A,B],[C]]` differs from `[[A],[B,C]]`. C# computes `ChangedFromInput` by structural sequence
 comparison only when the flattened alias scopes match. It is null at initial verification or
 when no comparable prior partition is supplied; survivor refinement keeps its cycle but may
-change alias scope/key. These observations neither authorize headings nor stop no-op repairs.
+change alias scope/key. These snapshots do not authorize headings; the separate no-progress
+guard below can stop an unchanged valid model repair before a new verifier snapshot exists.
 The snapshot describes verifier input, not an accepted model partition; fallback proposals
 remain subject to verification. A grouping dispute that produces no verifier candidate has
 no partition snapshot; its existing grouping/dispute provenance remains available.
+
+`Grouping.BoundaryRepairs` retains a `BoundaryRepairObservation` for every semantic regroup
+invocation **before** recursive verification. It records the rejecting verifier's `ParentUnitId`,
+candidate ID/key/ordered aliases, repair `Phase` (matching grouping batch phase), from/to cycle,
+ordered input/output groups, nullable `Changed`, result (`NO_PROGRESS`, `CHANGED`, `DISPUTED`,
+`FAILED`) and a safe failure class. A stopped no-op therefore retains its output partition
+without pretending that verifier cycle N+1 ran. Its aliases carry `boundary-repair-result`
+provenance with `NO_PROGRESS` and `BOUNDARY_REPAIR_NO_PROGRESS`. Merge logic preserves these
+observations across independent parallel repairs and review/survivor branches.
 
 Safe `Grouping.VerifierEvidence` records the **shared conversation scope**: unit, cycle,
 ordered alias lists of all candidates, initially visible aliases, final observed aliases,
@@ -178,11 +201,23 @@ partitions: verification can request source context/spans/facts and scan crops, 
 tool conversation. Feedback includes the proposed groups and verdict/reason/evidence references,
 but not the verifier's returned tool evidence or crop images. This difference alone does not
 prove that a particular live repair lacked evidence: that conclusion needs its recorded tool
-history and partitions. No no-progress guard, extra semantic cycle or evidence-capable repair
-is implemented by this instrumentation. Regressions cover unchanged/changed partitions across
+history and partitions. Zero tool requests rules out additional-tool/crop asymmetry for that
+execution, but not base-context asymmetry: the verifier's initial packet includes target facts,
+±8 source lines, styles and selected reading/span, while the scan grouper receives run
+alias/page/text/layout and one clipped neighbour on each side. Comparing REGROUP EvidenceRefs
+against actual run/before/after source-item aliases can identify a missing source item. Its
+alias identifier may already be in feedback; that is not the same as receiving the source
+item. An in-scope evidence ref does not establish parity of facts, styles or context breadth,
+and unavailable raw reasons prevent ruling out quoted/paraphrased evidence in feedback.
+No static-evidence mirroring, suggestedGroups canary, third cycle, hierarchy change or ancestor
+recovery is introduced here. Regressions cover unchanged/changed partitions across
 two cycles, changing candidate IDs with stable alias keys, scope changes, shared extra context,
 successful/unavailable scan crops and unknown tool names. A production scan fixture confirms
-both observation collections survive through `WebPipelineProjection.SafeAudit` without raw capture.
+partition and verifier-evidence observations survive through `WebPipelineProjection.SafeAudit` without raw capture.
+No-progress regressions assert no subsequent verifier call, preserved independent headings,
+safe repair-result projection, and exclusion of fallback/disputed/failed/scope-changing repairs.
+Two-cycle and concurrency fixtures propose genuinely changed partitions at each repair; they
+do not obtain acceptance by repeatedly verifying an unchanged, previously rejected proposal.
 
 Appendix regression uses a synthetic alias distribution based on the inspected stored 023
 page-23 image and the user's expected outline. It checks precise single-alias review, survivor
