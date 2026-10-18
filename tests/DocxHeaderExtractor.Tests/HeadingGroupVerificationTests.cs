@@ -494,6 +494,12 @@ public sealed class HeadingGroupVerificationTests
         Assert.Contains(result.Provenance, p => p.Decision == "REGROUP" && p.Membership == "HEADING");
         Assert.Contains(result.Provenance, p => p.UnitId.StartsWith("VERIFY-REVERIFY", StringComparison.Ordinal) && p.Decision == "ACCEPT");
         Assert.Equal(secondCycle ? 2 : 1, result.Provenance.Max(p => p.BoundaryRepairCycle));
+        Assert.Equal(secondCycle ? 12 : 8, result.Observation.Partitions!.Count);
+        Assert.All(result.Observation.Partitions.GroupBy(p => p.CandidateKey), trajectory =>
+        {
+            Assert.Equal(secondCycle ? 3 : 2, trajectory.Count());
+            Assert.All(trajectory.Skip(1), p => Assert.False(p.ChangedFromInput));
+        });
     }
 
     [Theory]
@@ -544,6 +550,83 @@ public sealed class HeadingGroupVerificationTests
             Assert.Equal(aliases, result.UnresolvedAliases);
             Assert.All(aliases, a => Assert.Equal(terminal == "MEMBERSHIP_DISPUTE" ? "NOT_HEADING" : terminal == "UNRESOLVED" ? "UNRESOLVED" : "HEADING", result.Memberships[a]));
         }
+    }
+
+    [Theory]
+    [InlineData(false, false)]
+    [InlineData(true, false)]
+    [InlineData(true, true)]
+    public void Partition_trajectory_compares_ordered_boundaries_and_joins_aliases_despite_changed_candidate_IDs(bool firstChange, bool secondChange)
+    {
+        string[][] original = [[A(3), A(4)], [A(5)]];
+        string[][] revised = [[A(3)], [A(4), A(5)]];
+        var groupCalls = 0;
+        AgentUnit.Model model = (_, _, request) =>
+        {
+            var packet = Payload(request);
+            if (packet["stage"]!.GetValue<string>() == "GROUP_VERIFICATION")
+                return new ModelTurn(Verdicts(packet, c => c["proposedGroups"]![0]![0]!.GetValue<string>() == A(1) ? "ACCEPT" : "REGROUP"), [], "stop");
+            var output = ++groupCalls == 2 && secondChange ? new[] { new[] { A(3), A(4), A(5) } } : firstChange ? revised : original;
+            return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = AgentGrouping.GroupVersion,
+                runs = packet["runs"]!.AsArray().Select(r => new { run = r!["run"]!.GetValue<string>(), headings = output }) }), [], "stop");
+        };
+        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }, .. original], [], [], 0),
+            new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(100, 100),
+            1, CancellationToken.None, 0, Instruction);
+        var trajectory = result.Observation.Partitions!.Where(p => p.CandidateAliases.Contains(A(3))).ToArray();
+        Assert.Equal(new[] { 0, 1, 2 }, trajectory.Select(p => p.BoundaryRepairCycle));
+        Assert.Equal(new[] { "V2", "V1", "V1" }, trajectory.Select(p => p.CandidateId));
+        Assert.Single(trajectory.Select(p => p.CandidateKey).Distinct());
+        Assert.All(trajectory, p => Assert.Equal(new[] { A(3), A(4), A(5) }, p.CandidateAliases));
+        Assert.Null(trajectory[0].InputGroups);
+        Assert.Null(trajectory[0].ChangedFromInput);
+        Assert.Equal(firstChange, trajectory[1].ChangedFromInput);
+        Assert.Equal(secondChange, trajectory[2].ChangedFromInput);
+        Assert.Equal(JsonSerializer.Serialize(trajectory[0].OutputGroups), JsonSerializer.Serialize(trajectory[1].InputGroups));
+        Assert.Equal(JsonSerializer.Serialize(trajectory[1].OutputGroups), JsonSerializer.Serialize(trajectory[2].InputGroups));
+        Assert.Equal(2, groupCalls); // Observations do not introduce an early no-progress stop.
+        Assert.All(result.Observation.VerifierEvidence!, e =>
+        {
+            Assert.Empty(e.Requests);
+            Assert.False(e.UsedScanCrop);
+            Assert.Equal(e.InitialObservedAliases, e.ObservedAliases);
+        });
+        Assert.Equal(new[] { A(3), A(4), A(5) }, result.UnresolvedAliases);
+        var changedScope = AgentGroupVerification.ObservePartition("SURVIVORS", "u", new("new-id", [[A(3)], [A(5)]]), 2, original);
+        Assert.Null(changedScope.ChangedFromInput);
+        Assert.NotEqual(trajectory[0].CandidateKey, changedScope.CandidateKey);
+    }
+
+    [Fact]
+    public void Evidence_metadata_tracks_shared_scope_extra_context_failed_crop_and_safe_tool_names()
+    {
+        var calls = 0;
+        AgentUnit.Model model = (_, _, request) => ++calls == 1
+            ? new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = AgentGroupVerification.Version,
+                requests = new object[] {
+                    new { name = "get_source_context", arguments = (object)new { alias = A(28), before = 1, after = 1 } },
+                    new { name = "get_scan_crop", arguments = (object)new { aliases = new[] { A(1) } } },
+                    new { name = "private-source-name", arguments = (object)new { } } } }), [], "stop")
+            : new ModelTurn(Verdicts(Payload(request), _ => "ACCEPT"), [], "stop");
+        var result = AgentGroupVerification.Verify(Source(lineCount: 40, sourceTexts: Enumerable.Repeat("PRIVATE_SOURCE_TEXT_CANARY", 40).ToArray()),
+            new AgentGrouping.Result([new[] { A(1) }, new[] { A(3) }], [], [], 0),
+            new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(20, 100),
+            1, CancellationToken.None, 0, Instruction);
+        Assert.Empty(result.Failures);
+        var observation = Assert.Single(result.Observation.VerifierEvidence!);
+        Assert.Equal(2, observation.CandidateAliases.Count); // Tools belong to this shared conversation, not one candidate.
+        Assert.DoesNotContain(A(28), observation.InitialObservedAliases);
+        Assert.Contains(A(28), observation.ObservedAliases);
+        Assert.Equal(new[] { "get_source_context", "get_scan_crop", "UNREGISTERED" }, observation.Requests.Select(r => r.ToolName));
+        Assert.Contains(A(28), observation.Requests[0].ReturnedAliases);
+        Assert.Equal("UNAVAILABLE", observation.Requests[1].Status);
+        Assert.Empty(observation.Requests[1].ReturnedAliases);
+        Assert.False(observation.UsedScanCrop);
+        var safe = JsonSerializer.Serialize(result.Observation);
+        Assert.DoesNotContain("private-source-name", safe);
+        Assert.DoesNotContain("Independent scripted source-based judgement", safe);
+        Assert.DoesNotContain("PRIVATE_SOURCE_TEXT_CANARY", safe);
+        Assert.DoesNotContain("base64", safe);
     }
 
     [Fact]
@@ -763,8 +846,10 @@ public sealed class HeadingGroupVerificationTests
         Assert.InRange(calls, 0, AgentGroupVerification.MaxPosts);
     }
 
-    [Fact]
-    public void Verifier_can_request_a_hashed_scan_crop_and_read_only_context_before_deciding()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void Verifier_can_request_a_hashed_scan_crop_and_read_only_context_before_deciding(bool exhaustBudgetAfterEvidence)
     {
         var directory = Path.Combine(Path.GetTempPath(), "dhx-verify-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(Path.Combine(directory, "pages"));
@@ -791,11 +876,18 @@ public sealed class HeadingGroupVerificationTests
                 return new ModelTurn(Verdicts(Payload(request), _ => "UNRESOLVED"), [], "stop");
             };
             var result = AgentGroupVerification.Verify(source, new AgentGrouping.Result([new[] { A(10), A(11), A(12) }], [], [], 0),
-                new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(10, 100), 1, CancellationToken.None, 0, Instruction);
-            Assert.Equal(2, calls);
+                new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model,
+                new AgentBudget(exhaustBudgetAfterEvidence ? 1 : 10, 100), 1, CancellationToken.None, 0, Instruction);
+            Assert.Equal(exhaustBudgetAfterEvidence ? 1 : 2, calls);
             Assert.Contains(result.Evidence, e => e.Contains("cropSha256", StringComparison.Ordinal));
             Assert.DoesNotContain(result.Evidence, e => e.Contains("data:image", StringComparison.Ordinal));
             Assert.Empty(result.Groups);
+            var observations = result.Observation.VerifierEvidence!;
+            Assert.All(observations, o => Assert.Equal(!exhaustBudgetAfterEvidence, o.UsedScanCrop));
+            Assert.All(observations, o => Assert.Contains(o.Requests, t => t.ToolName == "get_scan_crop"
+                && t.ScanCropReturned && t.Status == "OK" && t.ReturnedAliases.Contains(A(10))));
+            Assert.DoesNotContain("data:image", JsonSerializer.Serialize(observations));
+            Assert.DoesNotContain("cropSha256", JsonSerializer.Serialize(observations));
         }
         finally { Directory.Delete(directory, true); }
     }

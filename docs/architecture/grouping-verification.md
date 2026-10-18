@@ -134,18 +134,42 @@ verification membership and binding eligibility per alias. `UNRESOLVED` is disti
 `NOT_SELECT`; `READY_FOR_BINDING` does not claim a placement, level or validated parent.
 
 Alias provenance records `BoundaryRepairCycle`, grouping status (`DIVIDED`, `DISPUTED`,
-`FALLBACK`), verifier decision, evidence references and reason length. It does **not** record
-the proposed partition, raw reason or returned tool evidence. `DIVIDED` at successive cycles
-does not establish whether a partition changed. Comparing cycles requires ordered groups of
-ordered aliases from the same execution, matched by unit/candidate and source aliases; candidate
-IDs can change during repair. Missing partitions must be reported as `not-recorded`, with
-transition comparisons `unknown`, never inferred as `same` from repeated `REGROUP` verdicts.
+`FALLBACK`), verifier decision, evidence references and reason length. `DIVIDED` at successive
+cycles does not establish whether a partition changed. Safe `Grouping.Partitions` now records
+the actual proposed partition presented to each verifier candidate, including cycle 0, even
+when the verifier ultimately refuses it. Each `GroupingPartitionObservation` contains phase,
+unit, candidate ID, cycle, ordered candidate aliases, prior rejected `InputGroups` (when passed
+from boundary repair), new `OutputGroups`, and nullable `ChangedFromInput`.
+
+`CandidateKey` is SHA-256 of the JSON-encoded ordered candidate aliases. Candidate IDs may
+change between cycles and are not trajectory identity. Group and alias order are preserved:
+`[[A,B],[C]]` differs from `[[A],[B,C]]`. C# computes `ChangedFromInput` by structural sequence
+comparison only when the flattened alias scopes match. It is null at initial verification or
+when no comparable prior partition is supplied; survivor refinement keeps its cycle but may
+change alias scope/key. These observations neither authorize headings nor stop no-op repairs.
+The snapshot describes verifier input, not an accepted model partition; fallback proposals
+remain subject to verification. A grouping dispute that produces no verifier candidate has
+no partition snapshot; its existing grouping/dispute provenance remains available.
+
+Safe `Grouping.VerifierEvidence` records the **shared conversation scope**: unit, cycle,
+ordered alias lists of all candidates, initially visible aliases, final observed aliases,
+and requests with round, registered tool name, status, returned aliases and crop-return flag.
+Unknown tool names become `UNREGISTERED`, not arbitrary provider strings. Tool results are
+shared by the batch and must not be attributed to a specific candidate merely because its
+alias appears in the batch. `SuppliedToVerifier` means a subsequent POST containing the tool
+history was admitted and attempted; it does not claim successful transport or model attention.
+`UsedScanCrop` requires both a successful crop and that subsequent POST. Failed/unavailable
+crops retain their status without claiming image use. No tool arguments, source text, reason,
+prompt, image bytes or tool-result bodies enter these observations.
 
 The selector retains grouping responses and verification/tool evidence in `ModelAnswers`
 (including `groupingEvidence` envelopes), which the authority carries as `RawModelResponses`.
 This is retention in the execution object, not a durable raw-response cache. Web `SafeAudit`
-omits those fields. `/api/extract` emits optional raw reply events only when `showRaw` is enabled;
-a saved safe-only NDJSON result cannot reconstruct an omitted partition or verifier reason.
+omits those raw fields but includes the partition/evidence observations above regardless of
+`showRaw`. `/api/extract` emits optional raw reply events only when `showRaw` is enabled.
+Older safe-only results, including execution `d8faadf8-4988-4fbf-8fc8-26f75e29e88d` before this
+instrumentation, cannot reconstruct omitted partitions or verifier reasons. Missing snapshots
+must remain `not-recorded`, with transitions `unknown`, not inferred from repeated verdicts.
 OCR/transcription cache entries are not a substitute for grouping responses from that execution.
 
 There is a capability difference to investigate if a recorded trajectory shows unchanged
@@ -155,7 +179,10 @@ tool conversation. Feedback includes the proposed groups and verdict/reason/evid
 but not the verifier's returned tool evidence or crop images. This difference alone does not
 prove that a particular live repair lacked evidence: that conclusion needs its recorded tool
 history and partitions. No no-progress guard, extra semantic cycle or evidence-capable repair
-is implemented by this documentation change.
+is implemented by this instrumentation. Regressions cover unchanged/changed partitions across
+two cycles, changing candidate IDs with stable alias keys, scope changes, shared extra context,
+successful/unavailable scan crops and unknown tool names. A production scan fixture confirms
+both observation collections survive through `WebPipelineProjection.SafeAudit` without raw capture.
 
 Appendix regression uses a synthetic alias distribution based on the inspected stored 023
 page-23 image and the user's expected outline. It checks precise single-alias review, survivor

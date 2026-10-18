@@ -31,6 +31,7 @@ internal static class AgentGroupVerification
         public IReadOnlyList<GroupingFieldDiagnostic> FieldDiagnostics { get; init; } = [];
         public IReadOnlyList<HeadingAliasProvenance> Provenance { get; init; } = [];
         public IReadOnlyList<GroupingCoverageDiagnostic> CoverageDiagnostics { get; init; } = [];
+        public GroupingVerifierEvidenceObservation? VerifierEvidence { get; init; }
     }
     internal sealed record ProtocolIssue(string? Run, string Code);
     internal sealed record FieldTypeIssue([property: JsonPropertyName("field")] string Field,
@@ -59,7 +60,7 @@ internal static class AgentGroupVerification
         IReadOnlyDictionary<string, TextOffsetSpan> extents, IReadOnlyDictionary<string, string> readings,
         AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct, int retryDelayMs,
         string instruction, bool allowRegroup = true, bool allowMembershipReview = true, string prefix = "VERIFY", bool allowMembershipRefinement = true,
-        int boundaryRepairCycle = 0)
+        int boundaryRepairCycle = 0, IReadOnlyList<IReadOnlyList<string>>? boundaryInputGroups = null)
     {
         if (input.Groups.Count == 0) return input;
         var positions = source.Lines.Select((l, i) => (l.Alias, i)).ToDictionary(x => x.Alias, x => x.i);
@@ -95,7 +96,10 @@ internal static class AgentGroupVerification
             provenance.AddRange(check.Provenance);
             observation = observation with { VerificationChecks = observation.VerificationChecks + chunks[n].Length,
                 FieldDiagnostics = (observation.FieldDiagnostics ?? []).Concat(check.FieldDiagnostics).ToArray(),
-                CoverageDiagnostics = (observation.CoverageDiagnostics ?? []).Concat(check.CoverageDiagnostics).ToArray() };
+                CoverageDiagnostics = (observation.CoverageDiagnostics ?? []).Concat(check.CoverageDiagnostics).ToArray(),
+                VerifierEvidence = (observation.VerifierEvidence ?? []).Concat(check.VerifierEvidence is { } ev ? [ev] : []).ToArray(),
+                Partitions = (observation.Partitions ?? []).Concat(chunks[n].Select(c => ObservePartition(prefix,
+                    prefix + "-" + (n + 1).ToString("000"), c, boundaryRepairCycle, boundaryInputGroups))).ToArray() };
             if (check.Failure is not null) failures.Add(prefix + "-" + (n + 1).ToString("000") + ":" + check.Failure);
             foreach (var candidate in chunks[n])
             {
@@ -164,7 +168,8 @@ internal static class AgentGroupVerification
                 { Memberships = candidate.Aliases.ToDictionary(a => a, a => memberships[a], StringComparer.Ordinal) };
                 corrected[index] = Verify(source, remaining, extents, readings, model, budget, 1, ct,
                     retryDelayMs, instruction, allowRegroup: allowRegroup, allowMembershipReview: allowMembershipReview,
-                    prefix: prefix + "-SURVIVORS-" + candidate.Id, allowMembershipRefinement: false, boundaryRepairCycle: boundaryRepairCycle);
+                    prefix: prefix + "-SURVIVORS-" + candidate.Id, allowMembershipRefinement: false, boundaryRepairCycle: boundaryRepairCycle,
+                    boundaryInputGroups: boundaryInputGroups);
                 return;
             }
             var nextCycle = boundaryRepairCycle + 1;
@@ -178,7 +183,7 @@ internal static class AgentGroupVerification
             corrected[index] = Verify(source, regroup, extents, readings, model, budget, 1, ct,
                 retryDelayMs, instruction, allowRegroup: allowRegroup, allowMembershipReview: allowMembershipReview,
                 prefix: prefix + "-REVERIFY-" + candidate.Id + cycleSuffix, allowMembershipRefinement: allowMembershipRefinement,
-                boundaryRepairCycle: nextCycle);
+                boundaryRepairCycle: nextCycle, boundaryInputGroups: candidate.Groups);
         });
         foreach (var verified in corrected)
         {
@@ -192,6 +197,19 @@ internal static class AgentGroupVerification
         return input with { Groups = groups.OrderBy(g => positions[g[0]]).ToArray(), Disputes = disputes,
             UnresolvedAliases = unresolved.ToArray(), Failures = failures, Evidence = evidence, Answers = answers,
             Observation = observation, Memberships = memberships, Provenance = provenance };
+    }
+
+    internal static GroupingPartitionObservation ObservePartition(string phase, string unit, Candidate candidate, int cycle,
+        IReadOnlyList<IReadOnlyList<string>>? prior)
+    {
+        var aliases = candidate.Aliases;
+        // Preserve source and group order. Group boundaries matter even when flattened aliases match.
+        var comparable = prior is not null && prior.SelectMany(g => g).SequenceEqual(aliases, StringComparer.Ordinal);
+        bool? changed = comparable ? prior!.Count != candidate.Groups.Length
+            || prior.Where((g, i) => !g.SequenceEqual(candidate.Groups[i], StringComparer.Ordinal)).Any() : null;
+        return new(phase, unit, candidate.Id, Sha(JsonSerializer.Serialize(aliases)), cycle, aliases,
+            prior?.Select(g => (IReadOnlyList<string>)g.ToArray()).ToArray(),
+            candidate.Groups.Select(g => (IReadOnlyList<string>)g.ToArray()).ToArray(), changed);
     }
 
     // Removing model-disputed aliases can interrupt a proposed group. These are only candidate
@@ -221,6 +239,9 @@ internal static class AgentGroupVerification
         var shown = candidates.SelectMany(c => Enumerable.Range(Math.Max(0, positions[c.Aliases[0]] - 8),
             Math.Min(source.Lines.Count - 1, positions[c.Aliases[^1]] + 8) - Math.Max(0, positions[c.Aliases[0]] - 8) + 1)).Distinct().Order().ToArray();
         var observed = shown.Select(i => source.Lines[i].Alias).ToHashSet(StringComparer.Ordinal);
+        var initiallyObserved = shown.Select(i => source.Lines[i].Alias).ToArray();
+        var toolObservations = new List<GroupingEvidenceToolObservation>();
+        var declaredToolNames = source.Flavor.ToolDefinitions().Select(t => t!["function"]!["name"]!.GetValue<string>()).ToHashSet(StringComparer.Ordinal);
         string Packet(Candidate[] pending) => JsonSerializer.Serialize(new
         {
             stage = "GROUP_VERIFICATION", instruction, documentSha256 = source.SourceSha256,
@@ -240,7 +261,9 @@ internal static class AgentGroupVerification
         var provenance = new List<HeadingAliasProvenance>();
         var coverageDiagnostics = new List<GroupingCoverageDiagnostic>();
         Check Finish(string? error) => new(candidates.Where(c => accepted.ContainsKey(c.Id)).Select(c => accepted[c.Id]).ToArray(), evidence, error)
-        { FieldDiagnostics = allFieldDiagnostics.ToArray(), Provenance = provenance.ToArray(), CoverageDiagnostics = coverageDiagnostics.ToArray() };
+        { FieldDiagnostics = allFieldDiagnostics.ToArray(), Provenance = provenance.ToArray(), CoverageDiagnostics = coverageDiagnostics.ToArray(),
+            VerifierEvidence = new(unit, boundaryRepairCycle, candidates.Select(c => (IReadOnlyList<string>)c.Aliases).ToArray(),
+                initiallyObserved, toolObservations.ToArray(), source.Lines.Where(l => observed.Contains(l.Alias)).Select(l => l.Alias).ToArray()) };
         string? failure = null;
         int posts = 0, retries = 0;
         for (var round = 1; round <= MaxPosts; round++)
@@ -258,6 +281,11 @@ internal static class AgentGroupVerification
                     return Finish("BUDGET:" + refusal);
                 }
                 var attempt = ++posts;
+                // An available tool result is only supplied once a subsequent verifier POST is admitted.
+                // This does not claim the model attended to it or that the transport completed.
+                for (var t = 0; t < toolObservations.Count; t++)
+                    if (toolObservations[t].Round < round)
+                        toolObservations[t] = toolObservations[t] with { SuppliedToVerifier = true };
                 try { reply = model(unit, attempt, request); break; }
                 catch (OperationCanceledException) { throw; }
                 catch (ReplyFailure f)
@@ -298,11 +326,16 @@ internal static class AgentGroupVerification
                     {
                         ct.ThrowIfCancellationRequested();
                         var name = r!["name"]!.GetValue<string>();
+                        var toolIndex = toolObservations.Count;
+                        var safeName = name == "get_scan_crop" || declaredToolNames.Contains(name) ? name : "UNREGISTERED";
+                        toolObservations.Add(new(round, safeName, "NOT_EXECUTED", [], false));
                         var args = r["arguments"]!.AsObject();
                         if (name == "get_scan_crop")
                         {
                             var crop = Crop(source, args, out var image);
                             results.Add(crop);
+                            toolObservations[toolIndex] = new(round, "get_scan_crop", crop["status"]!.GetValue<string>(),
+                                image is null ? [] : crop["aliases"]!.AsArray().Select(a => a!.GetValue<string>()).Where(positions.ContainsKey).ToArray(), image is not null);
                             if (image is not null)
                             { images.Add(image); observed.UnionWith(crop["aliases"]!.AsArray().Select(a => a!.GetValue<string>())); }
                         }
@@ -310,6 +343,8 @@ internal static class AgentGroupVerification
                         {
                             var result = tools.Execute("VERIFY-E" + round + "." + results.Count, name, args.ToJsonString());
                             results.Add(JsonNode.Parse(result.Content));
+                            toolObservations[toolIndex] = new(round, result.Tool, result.Status,
+                                result.ReturnedAliases.Where(positions.ContainsKey).ToArray(), false);
                             observed.UnionWith(tools.ObservedAliases);
                         }
                     }

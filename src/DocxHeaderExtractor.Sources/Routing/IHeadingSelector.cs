@@ -79,7 +79,9 @@ public sealed record GroupingObservation(int ModelDividedRuns = 0, int FallbackR
     int VerificationChecks = 0, int VerifiedRuns = 0, int MembershipDisputes = 0, int BoundaryDisputes = 0,
     int UnresolvedAliases = 0, int IgnoredReviewChanges = 0, IReadOnlyList<GroupingBatchTiming>? Batches = null,
     IReadOnlyList<GroupingFieldDiagnostic>? FieldDiagnostics = null,
-    IReadOnlyList<GroupingCoverageDiagnostic>? CoverageDiagnostics = null)
+    IReadOnlyList<GroupingCoverageDiagnostic>? CoverageDiagnostics = null,
+    IReadOnlyList<GroupingPartitionObservation>? Partitions = null,
+    IReadOnlyList<GroupingVerifierEvidenceObservation>? VerifierEvidence = null)
 {
     public GroupingObservation Add(GroupingObservation other) => new(ModelDividedRuns + other.ModelDividedRuns,
         FallbackRuns + other.FallbackRuns, DisputedRuns + other.DisputedRuns, VerificationChecks + other.VerificationChecks,
@@ -87,8 +89,26 @@ public sealed record GroupingObservation(int ModelDividedRuns = 0, int FallbackR
         BoundaryDisputes + other.BoundaryDisputes, UnresolvedAliases + other.UnresolvedAliases,
         IgnoredReviewChanges + other.IgnoredReviewChanges, (Batches ?? []).Concat(other.Batches ?? []).ToArray(),
         (FieldDiagnostics ?? []).Concat(other.FieldDiagnostics ?? []).ToArray(),
-        (CoverageDiagnostics ?? []).Concat(other.CoverageDiagnostics ?? []).ToArray());
+        (CoverageDiagnostics ?? []).Concat(other.CoverageDiagnostics ?? []).ToArray(),
+        (Partitions ?? []).Concat(other.Partitions ?? []).ToArray(),
+        (VerifierEvidence ?? []).Concat(other.VerifierEvidence ?? []).ToArray());
 }
+
+/// <summary>Actual verifier-input partition. Null comparison means no prior partition or a changed alias scope.</summary>
+public sealed record GroupingPartitionObservation(string Phase, string UnitId, string CandidateId, string CandidateKey,
+    int BoundaryRepairCycle, IReadOnlyList<string> CandidateAliases,
+    IReadOnlyList<IReadOnlyList<string>>? InputGroups, IReadOnlyList<IReadOnlyList<string>> OutputGroups, bool? ChangedFromInput);
+
+/// <summary>Shared conversation scope, not evidence attribution to individual candidates. Aliases and registered tool names only.</summary>
+public sealed record GroupingVerifierEvidenceObservation(string UnitId, int BoundaryRepairCycle,
+    IReadOnlyList<IReadOnlyList<string>> CandidateAliases, IReadOnlyList<string> InitialObservedAliases,
+    IReadOnlyList<GroupingEvidenceToolObservation> Requests, IReadOnlyList<string> ObservedAliases)
+{
+    public bool UsedScanCrop => Requests.Any(r => r.ScanCropReturned && r.SuppliedToVerifier);
+}
+
+public sealed record GroupingEvidenceToolObservation(int Round, string ToolName, string Status,
+    IReadOnlyList<string> ReturnedAliases, bool ScanCropReturned, bool SuppliedToVerifier = false);
 
 /// <summary>Wall-clock timing for one initial or review grouping request batch; offsets are relative to that Group invocation.</summary>
 public sealed record GroupingBatchTiming(string Phase, string UnitId, int Runs, int Posts, int Repairs,
