@@ -15,6 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DocxHeaderExtractor.HeadingAgent\DocxHeaderExtractor.HeadingAgent.csproj" />
     <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
   </ItemGroup>
 

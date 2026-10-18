@@ -177,9 +177,7 @@ internal static class AgentGroupVerification
             var repairPhase = prefix + "-REGROUP-" + candidate.Id + cycleSuffix;
             var regroup = AgentGrouping.Group(source, candidate.Aliases.ToHashSet(StringComparer.Ordinal), model, budget,
                 1, ct, retryDelayMs, instruction, repairPhase,
-                new { candidate = candidate.Id, proposedGroups = candidate.Groups, verifier = verdict,
-                    boundaryRepairCycle = nextCycle, maxBoundaryRepairCycles = MaxBoundaryRepairCycles,
-                    task = "Reconsider boundaries only. Membership is unchanged unless you explicitly report dispute." });
+                BoundaryFeedback(candidate, verdict, nextCycle));
             ct.ThrowIfCancellationRequested();
             regroup = regroup with { Provenance = regroup.Provenance.Select(p => p with { BoundaryRepairCycle = nextCycle }).ToArray() };
             var repair = ObserveBoundaryRepair(repairPhase, parentUnit, candidate, boundaryRepairCycle, regroup);
@@ -267,7 +265,12 @@ internal static class AgentGroupVerification
         return groups.ToArray();
     }
 
-    static Check Ask(IAgentSource source, Candidate[] candidates, IReadOnlyDictionary<string, TextOffsetSpan> extents,
+    internal static object BoundaryFeedback(Candidate candidate, Verdict verdict, int nextCycle) =>
+        new { candidate = candidate.Id, proposedGroups = candidate.Groups, verifier = verdict,
+            boundaryRepairCycle = nextCycle, maxBoundaryRepairCycles = MaxBoundaryRepairCycles,
+            task = "Reconsider boundaries only. Membership is unchanged unless you explicitly report dispute." };
+
+    internal static Check Ask(IAgentSource source, Candidate[] candidates, IReadOnlyDictionary<string, TextOffsetSpan> extents,
         IReadOnlyDictionary<string, string> readings, AgentUnit.Model model, AgentBudget budget, CancellationToken ct,
         int retryDelayMs, string instruction, string unit, int boundaryRepairCycle)
     {
