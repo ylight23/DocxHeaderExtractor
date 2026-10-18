@@ -496,7 +496,7 @@ internal static class AgentGroupVerification
             string.Join(",", shape.InvalidTypes.Select(t => t.Field + "(expected=" + t.Expected + ",actual=" + t.Actual + ")")));
     }
 
-    static Verdict ParseVerdict(JsonNode? node, Candidate candidate, IReadOnlySet<string> observed, List<FieldDiagnostic> diagnostics,
+    internal static Verdict ParseVerdict(JsonNode? node, Candidate candidate, IReadOnlySet<string> observed, List<FieldDiagnostic> diagnostics,
         Action<string[]> observeCoverage)
     {
         RequireFields(node, candidate.Id, "verdict", VerdictFields, diagnostics, "VERDICT");
