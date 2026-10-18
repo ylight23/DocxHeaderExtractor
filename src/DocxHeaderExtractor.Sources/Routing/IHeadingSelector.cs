@@ -63,18 +63,25 @@ public sealed record HeadingAliasState(string InitialSelection, string FinalSele
 /// <summary>Actual stage observations, not inferred from failure-code text. Counts accumulate across repair/review passes.</summary>
 public sealed record GroupingObservation(int ModelDividedRuns = 0, int FallbackRuns = 0, int DisputedRuns = 0,
     int VerificationChecks = 0, int VerifiedRuns = 0, int MembershipDisputes = 0, int BoundaryDisputes = 0,
-    int UnresolvedAliases = 0, int IgnoredReviewChanges = 0, IReadOnlyList<GroupingBatchTiming>? Batches = null)
+    int UnresolvedAliases = 0, int IgnoredReviewChanges = 0, IReadOnlyList<GroupingBatchTiming>? Batches = null,
+    IReadOnlyList<GroupingFieldDiagnostic>? FieldDiagnostics = null)
 {
     public GroupingObservation Add(GroupingObservation other) => new(ModelDividedRuns + other.ModelDividedRuns,
         FallbackRuns + other.FallbackRuns, DisputedRuns + other.DisputedRuns, VerificationChecks + other.VerificationChecks,
         VerifiedRuns + other.VerifiedRuns, MembershipDisputes + other.MembershipDisputes,
         BoundaryDisputes + other.BoundaryDisputes, UnresolvedAliases + other.UnresolvedAliases,
-        IgnoredReviewChanges + other.IgnoredReviewChanges, (Batches ?? []).Concat(other.Batches ?? []).ToArray());
+        IgnoredReviewChanges + other.IgnoredReviewChanges, (Batches ?? []).Concat(other.Batches ?? []).ToArray(),
+        (FieldDiagnostics ?? []).Concat(other.FieldDiagnostics ?? []).ToArray());
 }
 
 /// <summary>Wall-clock timing for one initial or review grouping request batch; offsets are relative to that Group invocation.</summary>
 public sealed record GroupingBatchTiming(string Phase, string UnitId, int Runs, int Posts, int Repairs,
     double StartedAtSeconds, double CompletedAtSeconds, double ElapsedSeconds);
+
+/// <summary>Protocol field names and types only; contains no provider completion or metadata values.</summary>
+public sealed record GroupingFieldTypeIssue(string Field, string Expected, string Actual);
+public sealed record GroupingFieldDiagnostic(string UnitId, int Attempt, int Round, string? Run, string Path,
+    IReadOnlyList<string> Missing, IReadOnlyList<string> Unexpected, IReadOnlyList<GroupingFieldTypeIssue> InvalidTypes, bool ProtocolAccepted);
 
 /// <summary>
 /// Measurements of the document handed to the placement pass: the style table of the whole document and the style of each line (JSON objects as

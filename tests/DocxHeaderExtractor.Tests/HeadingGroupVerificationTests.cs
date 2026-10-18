@@ -60,7 +60,11 @@ public sealed class HeadingGroupVerificationTests
     [Theory]
     [InlineData("missing", "RUN_MISSING")]
     [InlineData("duplicate", "RUN_DUPLICATE")]
-    [InlineData("fields", "VERDICT_FIELDS_INVALID")]
+    [InlineData("fields", "VERDICT_REQUIRED_FIELDS_MISSING")]
+    [InlineData("reason-type", "VERDICT_FIELD_TYPES_INVALID")]
+    [InlineData("membership-type", "VERDICT_FIELD_TYPES_INVALID")]
+    [InlineData("member-fields", "MEMBERSHIP_REQUIRED_FIELDS_MISSING")]
+    [InlineData("member-type", "MEMBERSHIP_FIELD_TYPES_INVALID")]
     [InlineData("evidence", "EVIDENCE_REFS_INVALID")]
     [InlineData("membership", "MEMBERSHIP_COVERAGE_INVALID")]
     [InlineData("status", "MEMBERSHIP_STATUS_INVALID")]
@@ -81,6 +85,10 @@ public sealed class HeadingGroupVerificationTests
                     case "missing": verdicts.RemoveAt(3); break;
                     case "duplicate": verdicts.Add(bad.DeepClone()); break;
                     case "fields": bad.AsObject().Remove("reason"); break;
+                    case "reason-type": bad["reason"] = 12; break;
+                    case "membership-type": bad["membership"] = new JsonObject(); break;
+                    case "member-fields": bad["membership"]![0]!.AsObject().Remove("evidenceRefs"); break;
+                    case "member-type": bad["membership"]![0]!["status"] = true; break;
                     case "evidence": bad["evidenceRefs"]![0] = "UNKNOWN"; break;
                     case "membership": bad["membership"]!.AsArray().Clear(); break;
                     case "status": bad["membership"]![0]!["status"] = "BODY"; break;
@@ -105,6 +113,116 @@ public sealed class HeadingGroupVerificationTests
         Assert.Equal(input.Groups, result.Groups);
         Assert.Equal(8, result.Observation.VerifiedRuns);
         Assert.Contains(result.Evidence, e => e.Contains(diagnostic, StringComparison.Ordinal));
+    }
+
+    [Theory]
+    [InlineData("verdict")]
+    [InlineData("membership")]
+    [InlineData("both")]
+    public void Unknown_verdict_and_membership_fields_are_audited_without_changing_semantic_authority_or_repairing(string mode)
+    {
+        var calls = 0;
+        AgentUnit.Model model = (_, _, request) =>
+        {
+            calls++;
+            var response = JsonNode.Parse(Verdicts(Payload(request), _ => "ACCEPT"))!;
+            foreach (var verdict in response["verdicts"]!.AsArray())
+            {
+                if (mode is "verdict" or "both") verdict!["confidence"] = 0.9;
+                if (mode is "membership" or "both")
+                    foreach (var member in verdict!["membership"]!.AsArray()) member!["statusOverride"] = "NOT_HEADING";
+            }
+            return new ModelTurn(response.ToJsonString(), [], "stop");
+        };
+        var input = EightCandidates();
+        var result = AgentGroupVerification.Verify(Source(lineCount: 16), input, new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
+            model, new AgentBudget(20, 100), 1, CancellationToken.None, 0, Instruction);
+        Assert.Equal(1, calls);
+        Assert.Empty(result.Failures);
+        Assert.Empty(result.UnresolvedAliases);
+        Assert.Equal(input.Groups, result.Groups);
+        Assert.All(result.Memberships.Values, status => Assert.Equal("HEADING", status));
+        Assert.Equal(mode == "both" ? 16 : 8, result.Observation.FieldDiagnostics!.Count);
+        Assert.All(result.Observation.FieldDiagnostics, d => Assert.True(d.ProtocolAccepted));
+        var protocol = result.Evidence.Select(e => JsonNode.Parse(e)!).Single(e => e["stage"]?.GetValue<string>() == "verification-protocol");
+        var diagnostics = protocol["fieldDiagnostics"]!.AsArray();
+        Assert.Equal(mode == "both" ? 16 : 8, diagnostics.Count);
+        Assert.All(diagnostics, d =>
+        {
+            Assert.Empty(d!["missing"]!.AsArray());
+            Assert.Empty(d["invalidTypes"]!.AsArray());
+            Assert.Single(d["unexpected"]!.AsArray());
+        });
+    }
+
+    [Fact]
+    public void Refused_fields_report_missing_unexpected_and_actual_types_in_audit_and_repair()
+    {
+        var requests = new List<string>();
+        AgentUnit.Model model = (_, _, request) =>
+        {
+            requests.Add(request.Body);
+            var response = JsonNode.Parse(Verdicts(Payload(request), _ => "ACCEPT"))!;
+            var verdict = response["verdicts"]![0]!.AsObject();
+            verdict.Remove("reason");
+            verdict["confidence"] = 0.9;
+            verdict["membership"] = "not an array";
+            return new ModelTurn(response.ToJsonString(), [], "stop");
+        };
+        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
+            new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(20, 100),
+            1, CancellationToken.None, 0, Instruction);
+        Assert.Empty(result.Groups);
+        Assert.Equal(new[] { A(1) }, result.UnresolvedAliases);
+        Assert.All(result.Observation.FieldDiagnostics!, d => Assert.False(d.ProtocolAccepted));
+        var protocol = result.Evidence.Select(e => JsonNode.Parse(e)!).First(e => e["stage"]?.GetValue<string>() == "verification-protocol");
+        var diagnostic = Assert.Single(protocol["fieldDiagnostics"]!.AsArray())!;
+        Assert.Equal("V1", diagnostic["run"]!.GetValue<string>());
+        Assert.Equal("reason", Assert.Single(diagnostic["missing"]!.AsArray())!.GetValue<string>());
+        Assert.Equal("confidence", Assert.Single(diagnostic["unexpected"]!.AsArray())!.GetValue<string>());
+        var type = Assert.Single(diagnostic["invalidTypes"]!.AsArray())!;
+        Assert.Equal("membership", type["field"]!.GetValue<string>());
+        Assert.Equal("Array", type["expected"]!.GetValue<string>());
+        Assert.Equal("String", type["actual"]!.GetValue<string>());
+        var repair = JsonNode.Parse(requests[1])!["messages"]!.AsArray().Last()!["content"]!.GetValue<string>();
+        Assert.Contains("\"missing\":[\"reason\"]", repair);
+        Assert.Contains("\"unexpected\":[\"confidence\"]", repair);
+        Assert.Contains("\"expected\":\"Array\"", repair);
+    }
+
+    [Fact]
+    public void Appendix_cover_and_book_title_false_merge_can_be_split_only_by_model_regroup_and_independent_acceptance()
+    {
+        // A protocol regression for the reported source functions, not a claim that a scripted model proves live semantic accuracy.
+        var source = Source(sourceTexts: ["II. MẪU SỔ CHỨNG THỰC", "1. Bìa sổ", "a) Sổ Chứng thực bản sao từ bản chính", "Nội dung biểu mẫu"]);
+        var groupingCalls = 0;
+        AgentUnit.Model model = (unit, _, request) =>
+        {
+            var packet = Payload(request);
+            if (packet["stage"]!.GetValue<string>() == "GROUP_VERIFICATION")
+            {
+                Assert.Contains(packet["context"]!.AsArray(), line => line!["text"]?.GetValue<string>() == "II. MẪU SỔ CHỨNG THỰC");
+                return new ModelTurn(Verdicts(packet, _ => unit.Contains("REVERIFY", StringComparison.Ordinal) ? "ACCEPT" : "REGROUP"), [], "stop");
+            }
+            groupingCalls++;
+            return new ModelTurn(JsonSerializer.Serialize(new
+            {
+                protocolVersion = AgentGrouping.GroupVersion,
+                runs = packet["runs"]!.AsArray().Select(run => new
+                {
+                    run = run!["run"]!.GetValue<string>(), headings = new[] { new[] { A(2) }, new[] { A(3) } }
+                })
+            }), [], "stop");
+        };
+        var result = AgentGroupVerification.Verify(source, new AgentGrouping.Result([new[] { A(2), A(3) }], [], [], 0),
+            new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(20, 100),
+            1, CancellationToken.None, 0, Instruction);
+        Assert.Empty(result.Failures);
+        Assert.Empty(result.UnresolvedAliases);
+        Assert.Equal(1, groupingCalls);
+        Assert.Equal(new[] { new[] { A(2) }, new[] { A(3) } }, result.Groups.Select(g => g.ToArray()));
+        Assert.Equal(1, result.Observation.BoundaryDisputes);
+        Assert.Equal(1, result.Observation.VerifiedRuns);
     }
 
     [Theory]
@@ -355,9 +473,9 @@ public sealed class HeadingGroupVerificationTests
         Assert.Equal(4, result.Observation.VerifiedRuns);
     }
     // Source functions copied from the inspected stored page 32, not a heading Gold or a production phrase filter.
-    static ScanAgentSource Source(string? entry = null, string? imageSha = null, int lineCount = 14)
+    static ScanAgentSource Source(string? entry = null, string? imageSha = null, int lineCount = 14, string[]? sourceTexts = null)
     {
-        string[] texts = ["Chương II", "QUY ĐỊNH CHUNG", "Điều 3. Tên điều", "tiếp nối tên điều",
+        string[] texts = sourceTexts ?? ["Chương II", "QUY ĐỊNH CHUNG", "Điều 3. Tên điều", "tiếp nối tên điều",
             "nội dung", "nội dung", "nội dung", "nội dung", "c) Sổ Chứng thực chữ ký người dịch",
             "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM", "Độc lập - Tự do - Hạnh phúc", "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
             "d) Sổ Chứng thực hợp đồng, giao dịch", "nội dung"];

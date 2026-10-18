@@ -95,7 +95,8 @@ public sealed class ScanProductionPipelineTests
             Grouping = new GroupingObservation(ModelDividedRuns: 2, FallbackRuns: 0, DisputedRuns: 1,
                 VerificationChecks: 2, VerifiedRuns: 1, UnresolvedAliases: 1,
                 Batches: [new GroupingBatchTiming("GROUP", "GROUP-001", 8, 2, 1, 0, 12.5, 12.5),
-                    new GroupingBatchTiming("REVIEW-GROUP", "REVIEW-GROUP-001", 1, 1, 0, 0, 1.5, 1.5)]),
+                    new GroupingBatchTiming("REVIEW-GROUP", "REVIEW-GROUP-001", 1, 1, 0, 0, 1.5, 1.5)],
+                FieldDiagnostics: [new GroupingFieldDiagnostic("VERIFY-001", 1, 1, "V1", "verdict", [], ["confidence"], [], true)]),
             StageSeconds = new Dictionary<string, double> { ["selection"] = 10, ["grouping"] = 20, ["verification"] = 30, ["review"] = 40 }
         } };
         using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
@@ -115,6 +116,8 @@ public sealed class ScanProductionPipelineTests
         Assert.Contains("offset within REVIEW-GROUP invocation", grouping.Evidence);
         Assert.Equal(0, run.Outline.RouteAudit!.Grouping!.FallbackRuns);
         Assert.Contains("Grouping", JsonSerializer.Serialize(web.Audit));
+        Assert.Contains("FieldDiagnostics", JsonSerializer.Serialize(web.Audit));
+        Assert.Contains("confidence", JsonSerializer.Serialize(web.Audit));
         Assert.Contains("verification 30", web.Stages.Single(s => s.Id == "heading-phase-timing").Evidence);
     }
 

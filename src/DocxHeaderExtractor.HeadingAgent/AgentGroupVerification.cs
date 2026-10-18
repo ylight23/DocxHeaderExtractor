@@ -2,7 +2,9 @@ using System.Security.Cryptography;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
 using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
@@ -22,9 +24,20 @@ internal static class AgentGroupVerification
     { public string[] Aliases => Groups.SelectMany(g => g).ToArray(); }
     internal sealed record Membership(string Alias, string Status, string[] EvidenceRefs);
     internal sealed record Verdict(string Run, string Decision, string Reason, string[] EvidenceRefs, Membership[] Membership);
-    internal sealed record Check(IReadOnlyList<Verdict> Verdicts, IReadOnlyList<string> Evidence, string? Failure);
+    internal sealed record Check(IReadOnlyList<Verdict> Verdicts, IReadOnlyList<string> Evidence, string? Failure)
+    { public IReadOnlyList<GroupingFieldDiagnostic> FieldDiagnostics { get; init; } = []; }
     internal sealed record ProtocolIssue(string? Run, string Code);
+    internal sealed record FieldTypeIssue([property: JsonPropertyName("field")] string Field,
+        [property: JsonPropertyName("expected")] string Expected, [property: JsonPropertyName("actual")] string Actual);
+    internal sealed record FieldDiagnostic([property: JsonPropertyName("run")] string? Run,
+        [property: JsonPropertyName("path")] string Path, [property: JsonPropertyName("missing")] string[] Missing,
+        [property: JsonPropertyName("unexpected")] string[] Unexpected, [property: JsonPropertyName("invalidTypes")] FieldTypeIssue[] InvalidTypes);
     sealed class VerificationProtocolException(string code) : Exception(code);
+    static readonly (string Name, JsonValueKind Kind)[] VerdictFields =
+        [("run", JsonValueKind.String), ("decision", JsonValueKind.String), ("reason", JsonValueKind.String),
+         ("evidenceRefs", JsonValueKind.Array), ("membership", JsonValueKind.Array)];
+    static readonly (string Name, JsonValueKind Kind)[] MembershipFields =
+        [("alias", JsonValueKind.String), ("status", JsonValueKind.String), ("evidenceRefs", JsonValueKind.Array)];
 
     public static readonly string Prompt = string.Join("\n",
         "Return exactly one JSON object and nothing else, using the declared schema. Every reply, including an evidence request, must be JSON.",
@@ -70,7 +83,8 @@ internal static class AgentGroupVerification
         {
             var check = checks[n];
             evidence.AddRange(check.Evidence);
-            observation = observation with { VerificationChecks = observation.VerificationChecks + chunks[n].Length };
+            observation = observation with { VerificationChecks = observation.VerificationChecks + chunks[n].Length,
+                FieldDiagnostics = (observation.FieldDiagnostics ?? []).Concat(check.FieldDiagnostics).ToArray() };
             if (check.Failure is not null) failures.Add(prefix + "-" + (n + 1).ToString("000") + ":" + check.Failure);
             foreach (var candidate in chunks[n])
             {
@@ -199,7 +213,9 @@ internal static class AgentGroupVerification
         var history = new JsonArray();
         var evidence = new List<string>();
         var accepted = new Dictionary<string, Verdict>(StringComparer.Ordinal);
-        Check Finish(string? error) => new(candidates.Where(c => accepted.ContainsKey(c.Id)).Select(c => accepted[c.Id]).ToArray(), evidence, error);
+        var allFieldDiagnostics = new List<GroupingFieldDiagnostic>();
+        Check Finish(string? error) => new(candidates.Where(c => accepted.ContainsKey(c.Id)).Select(c => accepted[c.Id]).ToArray(), evidence, error)
+        { FieldDiagnostics = allFieldDiagnostics.ToArray() };
         string? failure = null;
         int posts = 0, retries = 0;
         for (var round = 1; round <= MaxPosts; round++)
@@ -238,6 +254,7 @@ internal static class AgentGroupVerification
             var content = reply.Content ?? "";
             if (TryUnwrapFence(content, out var inner)) content = inner;
             var issues = new List<ProtocolIssue>();
+            var fieldDiagnostics = new List<FieldDiagnostic>();
             try
             {
                 Require(reply.FinishReason == "stop", "FINISH_REASON_INVALID");
@@ -284,13 +301,16 @@ internal static class AgentGroupVerification
                 // parses. Other complete, grounded verdicts remain independent.
                 var identified = verdicts.Select(v => (Node: v, Id: StringValue(v, "run"))).ToArray();
                 foreach (var item in identified.Where(v => v.Id is null || !pending.Any(c => c.Id == v.Id)))
+                {
+                    ObserveFields(item.Node, item.Id, "verdict", VerdictFields, fieldDiagnostics);
                     issues.Add(new(item.Id, item.Id is null ? "RUN_ID_INVALID" : "RUN_NOT_REQUESTED"));
+                }
                 foreach (var candidate in pending)
                 {
                     var matches = identified.Where(v => v.Id == candidate.Id).ToArray();
                     if (matches.Length != 1)
                     { issues.Add(new(candidate.Id, matches.Length == 0 ? "RUN_MISSING" : "RUN_DUPLICATE")); continue; }
-                    try { accepted.Add(candidate.Id, ParseVerdict(matches[0].Node, candidate, observed)); }
+                    try { accepted.Add(candidate.Id, ParseVerdict(matches[0].Node, candidate, observed, fieldDiagnostics)); }
                     catch (VerificationProtocolException e) { issues.Add(new(candidate.Id, e.Message)); }
                     catch (Exception e) when (e is JsonException or InvalidOperationException or NullReferenceException or ArgumentException)
                     { issues.Add(new(candidate.Id, "VERDICT_SHAPE_INVALID")); }
@@ -301,15 +321,19 @@ internal static class AgentGroupVerification
             { issues.Add(new(null, "JSON_OR_ENVELOPE_INVALID")); }
 
             var remaining = candidates.Where(c => !accepted.ContainsKey(c.Id)).Select(c => c.Id).ToArray();
+            allFieldDiagnostics.AddRange(fieldDiagnostics.Select(d => new GroupingFieldDiagnostic(unit, posts, round, d.Run, d.Path,
+                d.Missing, d.Unexpected, d.InvalidTypes.Select(t => new GroupingFieldTypeIssue(t.Field, t.Expected, t.Actual)).ToArray(),
+                d.Run is not null && accepted.ContainsKey(d.Run))));
             evidence.Add(JsonSerializer.Serialize(new { stage = "verification-protocol", unit, attempt = posts, round,
                 acceptedCandidates = candidates.Where(c => accepted.ContainsKey(c.Id)).Select(c => c.Id).ToArray(),
-                pendingCandidates = remaining, issues }, Json));
+                pendingCandidates = remaining, issues, fieldDiagnostics }, Json));
             if (remaining.Length == 0) return Finish(null);
             failure = "PROTOCOL:VERIFICATION_INVALID:" + string.Join(";", issues.Select(i => (i.Run ?? "ENVELOPE") + ":" + i.Code));
             if (round == MaxPosts) break;
             history.Add(new JsonObject { ["role"] = "assistant", ["content"] = content });
             history.Add(new JsonObject { ["role"] = "user", ["content"] =
-                "Response partly refused: " + JsonSerializer.Serialize(new { pendingCandidates = remaining, issues }, Json) +
+                "Response partly refused: " + JsonSerializer.Serialize(new { pendingCandidates = remaining, issues,
+                    fieldDiagnostics = fieldDiagnostics.Where(d => d.Run is null || remaining.Contains(d.Run)).ToArray() }, Json) +
                 ". Previously accepted candidates are kept and must not be resubmitted. Return only the candidates in the current packet. Give every candidate and every membership alias exactly once in candidate order, with valid source evidence and a reason. ACCEPT/REGROUP require all HEADING. Non-HEADING aliases require MEMBERSHIP_DISPUTE or UNRESOLVED. Do not invent HEADING/ACCEPT to fix protocol." });
         }
         return Finish(failure ?? "EVIDENCE_ROUNDS_EXHAUSTED");
@@ -329,11 +353,37 @@ internal static class AgentGroupVerification
         return refs.Select(r => r!).ToArray();
     }
 
-    static Verdict ParseVerdict(JsonNode? node, Candidate candidate, IReadOnlySet<string> observed)
+    // Extra fields are recorded by name only and never participate in a semantic verdict.
+    // Required fields, their types and all grounding/coverage checks remain fail-closed.
+    static FieldDiagnostic ObserveFields(JsonNode? node, string? run, string path,
+        (string Name, JsonValueKind Kind)[] expected, List<FieldDiagnostic> diagnostics)
     {
-        Require(node is JsonObject, "VERDICT_FIELDS_INVALID");
+        var obj = node as JsonObject;
+        var missing = expected.Where(f => obj is null || !obj.ContainsKey(f.Name)).Select(f => f.Name).ToArray();
+        var unexpected = obj?.Select(p => p.Key).Except(expected.Select(f => f.Name), StringComparer.Ordinal).ToArray() ?? [];
+        var invalidTypes = obj is null
+            ? new[] { new FieldTypeIssue("$", "Object", (node?.GetValueKind() ?? JsonValueKind.Null).ToString()) }
+            : expected.Where(f => obj.ContainsKey(f.Name) && (obj[f.Name]?.GetValueKind() ?? JsonValueKind.Null) != f.Kind)
+                .Select(f => new FieldTypeIssue(f.Name, f.Kind.ToString(), (obj[f.Name]?.GetValueKind() ?? JsonValueKind.Null).ToString())).ToArray();
+        var diagnostic = new FieldDiagnostic(run, path, missing, unexpected, invalidTypes);
+        if (missing.Length > 0 || unexpected.Length > 0 || invalidTypes.Length > 0) diagnostics.Add(diagnostic);
+        return diagnostic;
+    }
+
+    static void RequireFields(JsonNode? node, string run, string path, (string Name, JsonValueKind Kind)[] expected,
+        List<FieldDiagnostic> diagnostics, string prefix)
+    {
+        var shape = ObserveFields(node, run, path, expected, diagnostics);
+        Require(node is JsonObject, prefix + "_OBJECT_REQUIRED:" + path);
+        Require(shape.Missing.Length == 0, prefix + "_REQUIRED_FIELDS_MISSING:" + path + ":" + string.Join(",", shape.Missing));
+        Require(shape.InvalidTypes.Length == 0, prefix + "_FIELD_TYPES_INVALID:" + path + ":" +
+            string.Join(",", shape.InvalidTypes.Select(t => t.Field + "(expected=" + t.Expected + ",actual=" + t.Actual + ")")));
+    }
+
+    static Verdict ParseVerdict(JsonNode? node, Candidate candidate, IReadOnlySet<string> observed, List<FieldDiagnostic> diagnostics)
+    {
+        RequireFields(node, candidate.Id, "verdict", VerdictFields, diagnostics, "VERDICT");
         var item = node!.AsObject();
-        Require(item.Count == 5 && new[] { "run", "decision", "reason", "evidenceRefs", "membership" }.All(item.ContainsKey), "VERDICT_FIELDS_INVALID");
         var decision = StringValue(item, "decision");
         Require(decision is "ACCEPT" or "MEMBERSHIP_DISPUTE" or "REGROUP" or "UNRESOLVED", "DECISION_INVALID");
         var reason = StringValue(item, "reason");
@@ -343,7 +393,7 @@ internal static class AgentGroupVerification
         var membership = new List<Membership>();
         foreach (var m in item["membership"]!.AsArray())
         {
-            Require(m is JsonObject entry && entry.Count == 3 && new[] { "alias", "status", "evidenceRefs" }.All(entry.ContainsKey), "MEMBERSHIP_FIELDS_INVALID");
+            RequireFields(m, candidate.Id, "membership[" + membership.Count + "]", MembershipFields, diagnostics, "MEMBERSHIP");
             var alias = StringValue(m, "alias"); var status = StringValue(m, "status");
             Require(alias is not null, "MEMBERSHIP_ALIAS_INVALID");
             Require(status is "HEADING" or "NOT_HEADING" or "UNRESOLVED", "MEMBERSHIP_STATUS_INVALID");
