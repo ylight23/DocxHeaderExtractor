@@ -53,7 +53,7 @@ public sealed class PdfHeadingAgentGroupingTests
         var active = 0;
         var maxActive = 0;
         var overlapped = 0;
-        var (model, payloads, _) = Scripted((_, p) =>
+        var (model, payloads, _) = Scripted((call, p) =>
         {
             var now = Interlocked.Increment(ref active);
             int seen;
@@ -61,7 +61,11 @@ public sealed class PdfHeadingAgentGroupingTests
             while (Interlocked.CompareExchange(ref maxActive, now, seen) != seen);
             try
             {
-                if (barrier.SignalAndWait(TimeSpan.FromSeconds(5))) Interlocked.Exchange(ref overlapped, 1);
+                if (call <= 2)
+                {
+                    if (!barrier.SignalAndWait(TimeSpan.FromSeconds(5))) throw new TimeoutException("Grouping requests did not overlap.");
+                    Interlocked.Exchange(ref overlapped, 1);
+                }
                 return Division(p, id => [RunAliases(p, id)]);
             }
             finally { Interlocked.Decrement(ref active); }

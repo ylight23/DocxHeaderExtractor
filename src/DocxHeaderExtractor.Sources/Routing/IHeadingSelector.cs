@@ -73,7 +73,7 @@ public sealed record GroupingObservation(int ModelDividedRuns = 0, int FallbackR
 }
 
 /// <summary>Wall-clock timing for one initial or review grouping request batch; offsets are relative to that Group invocation.</summary>
-public sealed record GroupingBatchTiming(string UnitId, int Runs, int Posts, int Repairs,
+public sealed record GroupingBatchTiming(string Phase, string UnitId, int Runs, int Posts, int Repairs,
     double StartedAtSeconds, double CompletedAtSeconds, double ElapsedSeconds);
 
 /// <summary>

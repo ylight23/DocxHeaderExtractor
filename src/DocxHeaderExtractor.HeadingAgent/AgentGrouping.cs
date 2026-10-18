@@ -80,7 +80,7 @@ internal static class AgentGrouping
                 var result = AskChunk(source, chunks[n], n + 1, model, budget, retryDelayMs, instruction, unitPrefix, verificationFeedback);
                 var completed = groupClock.Elapsed.TotalSeconds;
                 results[n] = result;
-                batchTimings[n] = new GroupingBatchTiming(unitPrefix + "-" + (n + 1).ToString("000"), chunks[n].Length,
+                batchTimings[n] = new GroupingBatchTiming(unitPrefix, unitPrefix + "-" + (n + 1).ToString("000"), chunks[n].Length,
                     result.Posts, result.Repairs, Math.Round(started, 3), Math.Round(completed, 3), Math.Round(completed - started, 3));
             });
         foreach (var r in results)
