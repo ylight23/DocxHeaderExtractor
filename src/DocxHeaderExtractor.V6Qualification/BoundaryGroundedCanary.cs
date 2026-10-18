@@ -37,19 +37,31 @@ internal static class BoundaryGroundedCanary
         if (original.Run != candidate.Id || original.Decision != "REGROUP" ||
             !original.Membership.Select(m => m.Alias).SequenceEqual(candidate.Aliases) || original.Membership.Any(m => m.Status != "HEADING"))
             throw new InvalidOperationException("INVALID_FROZEN_REGROUP_SEED");
+        return Evaluate(source, packet, seed["extents"]!.Deserialize<Dictionary<string, TextOffsetSpan>>()!,
+            seed["readings"]!.Deserialize<Dictionary<string, string>>()!, model, budget, ct, retainPrivate, original);
+    }
+
+    internal static Result Evaluate(IAgentSource source, JsonObject packet,
+        IReadOnlyDictionary<string, TextOffsetSpan> extents, IReadOnlyDictionary<string, string> readings,
+        AgentUnit.Model model, AgentBudget budget, CancellationToken ct, Action<string, string>? retainPrivate = null,
+        AgentGroupVerification.Verdict? frozenComplaint = null, bool independentOnly = false)
+    {
+        if (independentOnly && (frozenComplaint is not null || packet.ContainsKey("frozenComplaint")))
+            throw new InvalidOperationException("INDEPENDENT_VERIFIER_MUST_NOT_RECEIVE_COMPLAINT");
+        var target = packet["candidates"]!.AsArray().Single()!.AsObject();
+        var groups = target["proposedGroups"]!.Deserialize<string[][]>()!;
+        var candidate = new AgentGroupVerification.Candidate(target["run"]!.GetValue<string>(), groups);
         ValidatePartition(source, candidate.Aliases, groups);
         var observed = candidate.Aliases.ToHashSet(StringComparer.Ordinal);
         foreach (var line in packet["context"]!.AsArray()) observed.Add(line!["alias"]!.GetValue<string>());
-        var extents = seed["extents"]!.Deserialize<Dictionary<string, TextOffsetSpan>>()!;
-        var readings = seed["readings"]!.Deserialize<Dictionary<string, string>>()!;
         var sha = Sha(packet.ToJsonString());
         var rounds = new List<Round>();
         Result Done(string status, string[][]? suggestion = null, string? independent = null, bool accept = false, string? failure = null) =>
             new(status, sha, candidate.Aliases, groups, suggestion, independent, accept, failure, rounds.ToArray());
         var groundedPacket = (JsonObject)packet.DeepClone();
-        groundedPacket["stage"] = "QUALIFICATION_GROUNDED_REGROUP";
+        groundedPacket["stage"] = independentOnly ? "QUALIFICATION_GROUNDED_INDEPENDENT" : "QUALIFICATION_GROUNDED_REGROUP";
         groundedPacket.Remove("evidenceTools"); groundedPacket.Remove("scanCropTool");
-        groundedPacket["frozenComplaint"] = JsonSerializer.SerializeToNode(original);
+        if (frozenComplaint is not null) groundedPacket["frozenComplaint"] = JsonSerializer.SerializeToNode(frozenComplaint);
         var responseTemplate = new
         {
             protocolVersion = Version,
@@ -74,7 +86,7 @@ internal static class BoundaryGroundedCanary
             var request = AgentGrouping.BuildRequest(groundedPacket.ToJsonString(), history, prompt);
             if (budget.Admit(request) is { } refusal) return Done("UNRESOLVED", failure: refusal);
             ct.ThrowIfCancellationRequested();
-            var turn = model("D-VERIFIER", round, request);
+            var turn = model(independentOnly ? "E-INDEPENDENT" : "D-VERIFIER", round, request);
             retainPrivate?.Invoke("verifier-round-" + round, JsonSerializer.Serialize(new { request, turn }));
             ct.ThrowIfCancellationRequested();
             var bytes = turn.Content is null ? 0 : Encoding.UTF8.GetByteCount(turn.Content);
@@ -134,6 +146,9 @@ internal static class BoundaryGroundedCanary
             }
             if (decision == "ACCEPT") return Done("GROUNDED_ACCEPT_CURRENT", accept: true);
             if (decision != "REGROUP") return Done("UNRESOLVED", failure: "VERDICT_" + decision);
+            // E is the final independent check: a different valid suggestion is a grounded rejection,
+            // not permission to apply a second repair or start another verifier conversation.
+            if (independentOnly) return Done("GROUNDED_REGROUP_REJECT_CURRENT", suggested);
             ct.ThrowIfCancellationRequested();
             var check = AgentGroupVerification.Ask(source, [new("V1", suggested!)], extents, readings, model, budget, ct, 0,
                 source is ScanAgentSource ? ScanAgentProtocol.Instruction : Instruction, "D-INDEPENDENT", 1);

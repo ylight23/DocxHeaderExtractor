@@ -11,7 +11,7 @@ public sealed class BoundaryGroundedCanaryTests
     static readonly string[][] Input = [[A(1), A(2)], [A(3)]];
     static readonly string[][] Changed = [[A(1)], [A(2), A(3)]];
     const string Secret = "PRIVATE_COMPLAINT";
-    static JsonObject Seed()
+    internal static JsonObject Seed()
     {
         var source = BoundaryStaticCanaryTests.Source();
         var aliases = Input.SelectMany(g => g).ToArray();
