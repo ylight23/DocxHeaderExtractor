@@ -16,9 +16,9 @@ internal static class BoundarySuggestedCanaryCommand
     }
     internal static int Run(string[] args)
     {
-        if (args.Length != 6 || args[5] != "--live")
+        if (args.Length != 6 || args[5] != "--live" || args[0] is not ("boundary-suggested-c" or "boundary-grounded-d"))
         {
-            Console.Error.WriteLine("boundary-suggested-c <ab-manifest.json> <seed.json> <frozen.json> <new-output-directory> --live");
+            Console.Error.WriteLine("boundary-suggested-c|boundary-grounded-d <ab-manifest.json> <seed.json> <frozen.json> <new-output-directory> --live");
             return 2;
         }
         var json = new JsonSerializerOptions(JsonSerializerDefaults.Web) { WriteIndented = true };
@@ -66,11 +66,15 @@ internal static class BoundarySuggestedCanaryCommand
             Console.WriteLine(unit + " POST " + turn);
             return provider.Turn(unit, turn, request);
         };
-        var result = BoundarySuggestedCanary.Run(source, seed, model, budget, ct,
-            (name, text) => File.WriteAllText(Path.Combine(output, "private", name + ".json"), text));
+        void Retain(string name, string text) => File.WriteAllText(Path.Combine(output, "private", name + ".json"), text);
+        var grounded = args[0] == "boundary-grounded-d";
+        object result = grounded ? BoundaryGroundedCanary.Run(source, seed, model, budget, ct, Retain)
+            : BoundarySuggestedCanary.Run(source, seed, model, budget, ct, Retain);
         File.WriteAllText(Path.Combine(output, "report.json"), JsonSerializer.Serialize(new
         {
-            qualificationOnly = true, productionAuthorization = false, experiment = "C: fresh proposer with frozen C0 complaint",
+            qualificationOnly = true, productionAuthorization = false,
+            experiment = grounded ? "D: grounded REGROUP and bounded consistency repair with frozen C0 complaint"
+                : "C: fresh proposer with frozen C0 complaint",
             source.SourceSha256, source.SourceAliasUniverseSha256, source.EvidenceStoreSha256,
             providerPosts = budget.Calls, costUsd = budget.ActualUsd, result
         }, json));
