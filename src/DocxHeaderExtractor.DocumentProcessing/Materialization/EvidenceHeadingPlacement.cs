@@ -15,7 +15,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Materialization;
 internal static class EvidenceHeadingPlacement
 {
     internal const string Version = "HEADING_HIERARCHY_EVIDENCE_V1";
-    internal const int BatchSize = 16, Jobs = 4, MaxRounds = 3, RequestCap = 98304, ResponseCap = 16384;
+    internal const int BatchSize = 16, Jobs = 4, MaxRounds = 3, RequestCap = 98304, ResponseCap = 131072;
     static readonly JsonSerializerOptions Json = new() { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
     internal const string SourcePrompt = """
         Return exactly one JSON object using protocolVersion HEADING_HIERARCHY_EVIDENCE_V1.
@@ -81,6 +81,7 @@ internal static class EvidenceHeadingPlacement
         var withheldAliases = withheld.Select(l => l.Alias).ToHashSet(StringComparer.Ordinal);
         var trace = new ConcurrentQueue<(string Id, int Round, string Json)>();
         var failures = new ConcurrentQueue<string>();
+        var callObservations = new ConcurrentQueue<HeadingPlacementCallObservation>();
         var calls = 0;
         var verdicts = new Dictionary<string, Verdict>(StringComparer.Ordinal);
         var proposed = new Dictionary<string, string>(StringComparer.Ordinal);
@@ -122,6 +123,7 @@ internal static class EvidenceHeadingPlacement
             Contract = Version, LogicalCalls = calls, Seconds = Math.Round(clock.Elapsed.TotalSeconds, 1),
             VerifiedCount = verdicts.Count(v => v.Value.Decision == "ACCEPT"), RepairCount = repair.Length,
             Failures = failures.Order(StringComparer.Ordinal).ToArray(),
+            Calls = callObservations.OrderBy(c => c.UnitId, StringComparer.Ordinal).ThenBy(c => c.Round).ToArray(),
             FailureClass = result.Observation.UnresolvedCount > 0 ? "HIERARCHY_UNRESOLVED" : null,
             Decisions = result.Observation.Decisions.Select(d => d with
             {
@@ -197,22 +199,40 @@ internal static class EvidenceHeadingPlacement
                 void Log(object observation) => trace.Enqueue((id, round, JsonSerializer.Serialize(observation)));
                 if (requestBytes > RequestCap)
                 { failures.Enqueue(id + ":REQUEST_OVER_CAP"); Log(new { stage, id, round, logicalRequestSha256 = hash, logicalRequestBytes = requestBytes, failure = "REQUEST_OVER_CAP" }); break; }
-                string raw;
+                StructuredInferenceReply reply;
+                var outputBudget = OutputBudget(verification, pending.Length);
                 var callClock = Stopwatch.StartNew();
                 try
                 {
                     Interlocked.Increment(ref calls);
-                    raw = await transport.BoundaryCutAsync(prompt, packet, token, pending.Length).ConfigureAwait(false);
+                    reply = transport is IStructuredInferenceTransport structured
+                        ? await structured.CompleteStructuredAsync(prompt, packet, outputBudget, token).ConfigureAwait(false)
+                        : new(await transport.BoundaryCutAsync(prompt, packet, token, pending.Length).ConfigureAwait(false), null, null);
                 }
                 catch (OperationCanceledException) { throw; }
                 catch (Exception e) when (e is not OutOfMemoryException)
-                { failures.Enqueue(id + ":TRANSPORT_FAILURE:" + e.GetType().Name); Log(new { stage, id, round, logicalRequestSha256 = hash, logicalRequestBytes = requestBytes, failure = "TRANSPORT_FAILURE", exceptionType = e.GetType().Name, seconds = callClock.Elapsed.TotalSeconds }); break; }
-                Log(new { stage, id, round, logicalRequestSha256 = hash, logicalRequestBytes = requestBytes, request = packet, response = raw, seconds = callClock.Elapsed.TotalSeconds });
+                {
+                    failures.Enqueue(id + ":TRANSPORT_FAILURE:" + e.GetType().Name);
+                    callObservations.Enqueue(new(id, stage, round, pending.Length, outputBudget, null, null, 0, false,
+                        Math.Round(callClock.Elapsed.TotalSeconds, 3), ["TRANSPORT_FAILURE:" + e.GetType().Name], []));
+                    Log(new { stage, id, round, logicalRequestSha256 = hash, logicalRequestBytes = requestBytes, failure = "TRANSPORT_FAILURE", exceptionType = e.GetType().Name, seconds = callClock.Elapsed.TotalSeconds });
+                    break;
+                }
+                var seconds = callClock.Elapsed.TotalSeconds;
+                var raw = reply.Content;
+                var responseBytes = Encoding.UTF8.GetByteCount(raw);
+                var content = UnwrapJsonFence(raw, out var jsonFence);
+                long? jsonErrorLine = null, jsonErrorBytePosition = null;
+                Log(new { stage, id, round, logicalRequestSha256 = hash, logicalRequestBytes = requestBytes, request = packet,
+                    response = raw, seconds, requestedMaxOutputTokens = outputBudget, reply.MaxOutputTokens, reply.FinishReason });
                 errors.Clear();
                 try
                 {
-                    Require(Encoding.UTF8.GetByteCount(raw) <= ResponseCap, "RESPONSE_OVER_CAP");
-                    var root = JsonNode.Parse(raw)!.AsObject();
+                    Require(reply.FinishReason is null or "stop", "FINISH_REASON_" + reply.FinishReason?.ToUpperInvariant());
+                    Require(responseBytes <= ResponseCap, "RESPONSE_OVER_CAP");
+                    var parsed = JsonNode.Parse(content);
+                    Require(parsed is JsonObject, "ROOT_OBJECT_REQUIRED");
+                    var root = parsed!.AsObject();
                     Require(root["protocolVersion"]?.GetValue<string>() == Version && root.Count == 2, "ENVELOPE_INVALID");
                     if (root["requests"] is JsonArray requests)
                     {
@@ -278,14 +298,43 @@ internal static class EvidenceHeadingPlacement
                         { errors.Add(alias + ":" + (e is HierarchyProtocolException ? e.Message : "ROW_INVALID")); }
                     }
                 }
-                catch (Exception e) when (e is JsonException or InvalidOperationException or ArgumentException or NullReferenceException)
+                catch (JsonException e)
+                { errors.Add("JSON_INVALID"); jsonErrorLine = e.LineNumber; jsonErrorBytePosition = e.BytePositionInLine; }
+                catch (Exception e) when (e is InvalidOperationException or ArgumentException or NullReferenceException)
                 { errors.Add(e is HierarchyProtocolException ? e.Message : "JSON_INVALID"); }
-                Log(new { stage, id, round, protocolErrors = errors.ToArray(), accepted = verification ? checks.Keys.ToArray() : parents.Keys.ToArray() });
+                finally
+                {
+                    var accepted = verification ? checks.Keys.ToArray() : parents.Keys.ToArray();
+                    callObservations.Enqueue(new(id, stage, round, pending.Length, outputBudget, reply.MaxOutputTokens,
+                        reply.FinishReason, responseBytes, jsonFence, Math.Round(seconds, 3), errors.ToArray(), accepted)
+                    { JsonErrorLine = jsonErrorLine, JsonErrorBytePosition = jsonErrorBytePosition });
+                    Log(new { stage, id, round, protocolErrors = errors.ToArray(), accepted, jsonErrorLine, jsonErrorBytePosition });
+                }
                 if (verification ? checks.Count == aliases.Length : parents.Count == aliases.Length) break;
                 if (round == MaxRounds) failures.Enqueue(id + ":PROTOCOL:" + string.Join(";", errors));
             }
             return new(parents, checks);
         }
+    }
+
+    // Rich verification verdicts carry a reason and source references per edge, unlike the small proposal rows.
+    internal static int OutputBudget(bool verification, int targetCount) => verification
+        ? 512 + targetCount * 1024 : Math.Max(256, 96 + targetCount * 128);
+
+    static string UnwrapJsonFence(string reply, out bool unwrapped)
+    {
+        unwrapped = false;
+        var text = reply.Trim();
+        const string fence = "```";
+        if (!text.StartsWith(fence, StringComparison.Ordinal) || !text.EndsWith(fence, StringComparison.Ordinal)) return text;
+        var lineEnd = text.IndexOf('\n');
+        if (lineEnd < 0 || lineEnd >= text.Length - fence.Length) return text;
+        var label = text[fence.Length..lineEnd].Trim();
+        if (label.Length > 0 && label != "json") return text;
+        var body = text[(lineEnd + 1)..^fence.Length].Trim();
+        if (body.Length < 2 || body[0] != '{' || body[^1] != '}' || body.Contains(fence, StringComparison.Ordinal)) return text;
+        unwrapped = true;
+        return body;
     }
 
     sealed class HierarchyProtocolException(string code) : InvalidOperationException(code);

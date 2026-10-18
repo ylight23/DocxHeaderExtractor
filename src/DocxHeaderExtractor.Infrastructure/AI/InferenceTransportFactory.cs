@@ -66,7 +66,7 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
 
     /// <summary>Capability/authorization wrapper for the only qualified PDF production transport.</summary>
     private sealed class AgentRouteOpenRouterTransport(OpenRouterInferenceTransport inner, string apiKey)
-        : IAgentRouteInferenceTransport
+        : IAgentRouteInferenceTransport, IStructuredInferenceTransport
     {
         public string? OpenRouterApiKey => string.IsNullOrWhiteSpace(apiKey) ? null : apiKey;
         public string RouteProvider => "OpenRouter/Alibaba";
@@ -79,6 +79,9 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage,
             CancellationToken ct = default, int expectedItemCount = 0) =>
             inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount);
+
+        public Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage,
+            int maxOutputTokens, CancellationToken ct = default) => inner.CompleteStructuredAsync(systemPrompt, userMessage, maxOutputTokens, ct);
 
         public void Dispose() => inner.Dispose();
     }

@@ -73,6 +73,125 @@ public sealed class EvidenceHeadingPlacementTests
     }
 
     [Theory]
+    [InlineData("json")]
+    [InlineData("")]
+    public async Task One_complete_JSON_object_in_a_fence_is_unwrapped_and_still_requires_independent_verification(string label)
+    {
+        var (bound, evidence, parents) = Fixture();
+        using var model = new Model(p => "```" + label + "\n" + HierarchyTestProtocol.Reply(p.ToJsonString(), parents) + "\n```");
+        var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        Assert.Equal(0, result.Observation.UnresolvedCount);
+        Assert.Equal(bound.Length, result.Observation.VerifiedCount);
+        Assert.All(result.Observation.Calls, c =>
+        {
+            Assert.True(c.JsonFence);
+            Assert.Equal("stop", c.FinishReason);
+            Assert.Equal(c.RequestedMaxOutputTokens, c.MaxOutputTokens);
+            Assert.Empty(c.ProtocolErrors);
+        });
+        Assert.All(result.Observation.Calls.Where(c => c.Phase == "HIERARCHY_VERIFY"), c =>
+            Assert.Equal(512 + c.TargetCount * 1024, c.RequestedMaxOutputTokens));
+    }
+
+    [Theory]
+    [InlineData("prose")]
+    [InlineData("two-objects")]
+    [InlineData("truncated")]
+    public async Task Invalid_JSON_is_not_salvaged_into_hierarchy_and_records_parse_positions(string mode)
+    {
+        var (bound, evidence, parents) = Fixture();
+        using var model = new Model(p =>
+        {
+            var response = HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!;
+            return !IsVerification(p) ? response : mode switch
+            {
+                "prose" => "Here is the result:\n```json\n" + response + "\n```",
+                "two-objects" => response + "\n" + response,
+                _ => response[..^2]
+            };
+        });
+        var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        Assert.Equal(bound.Length, result.Observation.UnresolvedCount);
+        Assert.Equal(0, result.Observation.VerifiedCount);
+        Assert.All(result.Observation.Calls.Where(c => c.Phase == "HIERARCHY_VERIFY"), c =>
+        {
+            Assert.Contains("JSON_INVALID", c.ProtocolErrors);
+            Assert.NotNull(c.JsonErrorLine);
+            Assert.NotNull(c.JsonErrorBytePosition);
+        });
+    }
+
+    [Fact]
+    public async Task Rich_verdicts_with_allowed_reason_lengths_are_not_rejected_by_the_old_16KB_cap()
+    {
+        var (bound, evidence, parents) = Fixture();
+        using var model = new Model(p =>
+        {
+            var response = JsonNode.Parse(HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!)!;
+            if (IsVerification(p)) foreach (var row in response["verdicts"]!.AsArray()) row!["reason"] = new string('x', 1000);
+            return response.ToJsonString();
+        });
+        var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        Assert.Equal(0, result.Observation.UnresolvedCount);
+        Assert.Contains(result.Observation.Calls, c => c.Phase == "HIERARCHY_VERIFY" && c.ResponseBytes > 16384);
+    }
+
+    [Fact]
+    public async Task Token_exhaustion_is_reported_as_finish_length_even_if_content_is_parseable_and_never_authorizes_edges()
+    {
+        var (bound, evidence, parents) = Fixture();
+        using var model = new Model(p => HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!)
+        { Finish = p => IsVerification(p) ? "length" : "stop" };
+        var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        Assert.Equal(bound.Length, result.Observation.UnresolvedCount);
+        Assert.Equal(0, result.Observation.VerifiedCount);
+        var chunks = (bound.Length + EvidenceHeadingPlacement.BatchSize - 1) / EvidenceHeadingPlacement.BatchSize;
+        Assert.Equal(chunks * (1 + EvidenceHeadingPlacement.MaxRounds), result.Observation.LogicalCalls);
+        Assert.All(result.Observation.Calls.Where(c => c.Phase == "HIERARCHY_VERIFY"), c =>
+        {
+            Assert.Equal("length", c.FinishReason);
+            Assert.Contains("FINISH_REASON_LENGTH", c.ProtocolErrors);
+            Assert.Null(c.JsonErrorLine);
+            Assert.Empty(c.AcceptedAliases);
+        });
+    }
+
+    [Fact]
+    public async Task Sixty_unresolved_can_include_three_valid_edges_when_missing_roots_and_invalid_verifier_batches_block_the_chains()
+    {
+        var lines = Enumerable.Range(0, 61).Select(i => new SemanticSourceAtom("L" + i, "S" + i, i, 1, i, 0, "Section " + i)).ToArray();
+        var bound = lines.Skip(1).Select(l => new CanonicalSemanticBoundHeading(l.Alias, l.SourceId, l.Ordinal, l.Text,
+            "ESTABLISHES_STRUCTURE", "heading", "document_body", [], 0, l.Text.Length)).ToArray();
+        var evidence = new HeadingPlacementEvidence("{}", new Dictionary<string, string>())
+        { Source = new(lines, new Dictionary<string, HeadingAliasState> { ["L0"] = new("SELECT", "UNRESOLVED", null, "UNRESOLVED") }) };
+        var parents = bound.ToDictionary(h => h.Alias, h => h.SourceOrdinal <= 16 ? "UNRESOLVED" : h.Alias == "L17" ? "ROOT" : "L17");
+        var accepted = new HashSet<string> { "L49", "L54", "L60" };
+        using var model = new Model(p =>
+        {
+            var response = JsonNode.Parse(HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!)!;
+            if (!IsVerification(p)) return response.ToJsonString();
+            var targets = Aliases(p);
+            if (targets.All(a => int.Parse(a[1..]) <= 16))
+            {
+                foreach (var row in response["verdicts"]!.AsArray())
+                { row!["decision"] = "MISSING_ANCESTOR"; row["blockingAliases"] = new JsonArray("L0"); }
+                return response.ToJsonString();
+            }
+            if (!targets.Any(accepted.Contains)) return "{";
+            response["verdicts"] = new JsonArray(response["verdicts"]!.AsArray()
+                .Where(row => accepted.Contains(row!["alias"]!.GetValue<string>())).Select(row => row!.DeepClone()).ToArray());
+            return response.ToJsonString();
+        });
+        var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        Assert.Equal(60, result.Observation.UnresolvedCount);
+        Assert.Equal(0, result.Observation.PlacedCount);
+        Assert.Equal(3, result.Observation.VerifiedCount);
+        Assert.Equal(16, result.Observation.Decisions.Count(d => d.VerificationStatus == "MISSING_ANCESTOR"));
+        Assert.Equal(41, result.Observation.Decisions.Count(d => d.VerificationStatus == "NO_VALID_VERDICT"));
+        Assert.All(result.Observation.Decisions.Where(d => accepted.Contains(d.Alias)), d => Assert.Equal("ancestor-chain-unresolved", d.ResolutionBasis));
+    }
+
+    [Theory]
     [InlineData("selection")]
     [InlineData("verification")]
     [InlineData("binding")]
@@ -308,13 +427,16 @@ public sealed class EvidenceHeadingPlacementTests
     static bool IsVerification(JsonNode p) => p["stage"]!.GetValue<string>() is "HIERARCHY_VERIFY" or "HIERARCHY_REVERIFY";
     static string[] Aliases(JsonNode p) => p["toPlace"]!.AsArray().Select(a => a!.GetValue<string>()).ToArray();
 
-    sealed class Model(Func<JsonNode, CancellationToken, Task<string>> script) : IInferenceTransport
+    sealed class Model(Func<JsonNode, CancellationToken, Task<string>> script) : IStructuredInferenceTransport
     {
         public Model(Func<JsonNode, string> sync) : this((p, _) => Task.FromResult(sync(p))) { }
         public string ModelName => "offline scripted hierarchy";
         public int ContextSize => 100_000;
         public string RuntimeDescription => "No API calls";
         public int SharedPrefixTokens => 0;
+        public Func<JsonNode, string?> Finish { get; init; } = _ => "stop";
+        public async Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage, int maxOutputTokens, CancellationToken ct = default)
+        { return new(await BoundaryCutAsync(systemPrompt, userMessage, ct), Finish(JsonNode.Parse(userMessage)!), maxOutputTokens); }
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
         { Assert.Contains("JSON", systemPrompt); return script(JsonNode.Parse(userMessage)!, ct); }
         public void Dispose() { }

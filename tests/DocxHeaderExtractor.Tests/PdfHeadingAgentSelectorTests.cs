@@ -49,7 +49,8 @@ public sealed class PdfHeadingAgentSelectorTests
         // Every segment selected its first two targets; the fake group answer puts each pair together.
         Assert.Equal(source.Cores.Count, selection.Groups!.Count(g => g.Count == 2));
         Assert.Equal(selection.SelectedAliases.Order(), selection.Groups!.SelectMany(g => g).Order());
-        Assert.Equal(2 * selection.UnitsTotal + (int)Math.Ceiling(source.Cores.Count / 40.0) + handler.Bodies.Count(FakeOpenRouter.IsVerification), selection.ProviderCalls);
+        Assert.Equal(2 * selection.UnitsTotal + (int)Math.Ceiling(source.Cores.Count / (double)AgentGrouping.MaxRunsPerRequest)
+            + handler.Bodies.Count(FakeOpenRouter.IsVerification), selection.ProviderCalls);
         Assert.Contains(selection.ModelAnswers, a => a.StartsWith("{\"grouping\"", StringComparison.Ordinal));
         Assert.NotNull(selection.Placement);
     }

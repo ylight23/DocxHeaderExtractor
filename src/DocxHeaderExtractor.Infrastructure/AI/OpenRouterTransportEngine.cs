@@ -67,6 +67,10 @@ internal sealed class OpenRouterTransportEngine : IDisposable
         string userMessage,
         CancellationToken ct = default,
         int expectedItemCount = 0)
+        => (await CompleteStructuredAsync(systemPrompt, userMessage, BoundaryOutputBudget(userMessage, expectedItemCount), ct)).Content;
+
+    public async Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage,
+        int maxOutputTokens, CancellationToken ct = default)
     {
         // Fail here rather than at the provider. This request is about to be sent with
         // response_format json_object, and that option constrains what the messages must contain;
@@ -75,7 +79,8 @@ internal sealed class OpenRouterTransportEngine : IDisposable
         TransportCompatibility.EnsureCompatible(
             systemPrompt, userMessage, TransportCompatibility.JsonObjectResponseFormat);
 
-        var maxTokens = BoundaryOutputBudget(userMessage, expectedItemCount);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(maxOutputTokens);
+        var maxTokens = Math.Min(maxOutputTokens, _options.MaxOutputTokens);
         var body = RequestBody(systemPrompt, userMessage, maxTokens);
         var payloadBytes = JsonSerializer.SerializeToUtf8Bytes(body);
         using var logical = ProviderCallTelemetry.Start(_options.Observability, new ProviderLogicalCallMetadata
@@ -93,8 +98,8 @@ internal sealed class OpenRouterTransportEngine : IDisposable
             Model = _options.Model,
         });
         _options.DebugLog?.Invoke($"[OpenRouter] LLM REQUEST model={_options.Model} payload={Encoding.UTF8.GetString(payloadBytes)}");
-        var (content, _) = await ExecuteLoopAsync(payloadBytes, maxTokens, systemPrompt, userMessage, "BOUNDARY_CUT", logical, ct);
-        return content;
+        var (content, finishReason) = await ExecuteLoopAsync(payloadBytes, maxTokens, systemPrompt, userMessage, "BOUNDARY_CUT", logical, ct);
+        return new StructuredInferenceReply(content, finishReason, maxTokens);
     }
 
     /// <summary>

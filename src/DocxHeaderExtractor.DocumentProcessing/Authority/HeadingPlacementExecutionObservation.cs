@@ -20,9 +20,20 @@ public sealed record HeadingPlacementExecutionObservation(
     public int VerifiedCount { get; init; }
     public int RepairCount { get; init; }
     public IReadOnlyList<string> Failures { get; init; } = [];
+    public IReadOnlyList<HeadingPlacementCallObservation> Calls { get; init; } = [];
     public IReadOnlyList<HeadingPlacementSourceObservation> SourceTrace { get; init; } = [];
     [System.Text.Json.Serialization.JsonIgnore]
     public IReadOnlyList<string> ModelEvidence { get; init; } = [];
+}
+
+/// <summary>Safe response-envelope diagnostics; no source, prompt or provider completion text.
+/// JSON error offsets are zero-based within the parsed content after removing an optional single JSON fence.</summary>
+public sealed record HeadingPlacementCallObservation(string UnitId, string Phase, int Round, int TargetCount,
+    int RequestedMaxOutputTokens, int? MaxOutputTokens, string? FinishReason, int ResponseBytes, bool JsonFence,
+    double Seconds, IReadOnlyList<string> ProtocolErrors, IReadOnlyList<string> AcceptedAliases)
+{
+    public long? JsonErrorLine { get; init; }
+    public long? JsonErrorBytePosition { get; init; }
 }
 
 public sealed record HeadingPlacementDecisionObservation(

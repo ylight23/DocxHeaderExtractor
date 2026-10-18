@@ -27,6 +27,15 @@ public interface IInferenceTransport : IDisposable
         int expectedItemCount = 0);
 }
 
+/// <summary>A structured caller owns its completion budget; providers report the enforced cap and terminal finish reason.</summary>
+public interface IStructuredInferenceTransport : IInferenceTransport
+{
+    Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage,
+        int maxOutputTokens, CancellationToken ct = default);
+}
+
+public sealed record StructuredInferenceReply(string Content, string? FinishReason, int? MaxOutputTokens);
+
 /// <summary>
 /// Composition-root seam for inference providers. DocumentProcessing consumes the neutral transport contract;
 /// provider construction belongs to Infrastructure.
