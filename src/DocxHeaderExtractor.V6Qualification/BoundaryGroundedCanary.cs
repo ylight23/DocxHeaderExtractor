@@ -15,7 +15,10 @@ internal static class BoundaryGroundedCanary
     internal const int MaxProtocolRounds = 3;
     static readonly string[] RequiredFields = ["run", "decision", "reason", "evidenceRefs", "membership", "currentGroups", "suggestedGroups"];
     internal sealed record Round(int Number, string? FinishReason, int ResponseBytes, string? Decision,
-        string[][]? CurrentGroups, string[][]? SuggestedGroups, string? ProtocolError, string[] MissingFields);
+        string[][]? CurrentGroups, string[][]? SuggestedGroups, string? ProtocolError, string[] MissingFields)
+    {
+        public IReadOnlyDictionary<string, string> Membership { get; init; } = new Dictionary<string, string>();
+    }
     internal sealed record Result(string Status, string SeedPacketSha256, string[] Aliases, string[][] InputGroups,
         string[][]? SuggestedGroups, string? IndependentVerdict, bool QualifiedAccept, string? Failure,
         IReadOnlyList<Round> Rounds);
@@ -84,6 +87,7 @@ internal static class BoundaryGroundedCanary
             string[][]? current = null, suggested = null;
             string? error = null;
             string[] missingFields = [];
+            IReadOnlyDictionary<string, string> membership = new Dictionary<string, string>();
             try
             {
                 var root = JsonNode.Parse(turn.Content)!.AsObject();
@@ -100,6 +104,7 @@ internal static class BoundaryGroundedCanary
                 var parsed = AgentGroupVerification.ParseVerdict(verdict, candidate, observed, diagnostics, _ => { });
                 if (diagnostics.Count != 0) throw new FormatException();
                 decision = parsed.Decision;
+                membership = parsed.Membership.ToDictionary(m => m.Alias, m => m.Status, StringComparer.Ordinal);
                 ValidatePartition(source, candidate.Aliases, current);
                 if (!Equal(current, groups)) throw new ConsistencyException("BOUNDARY_CURRENT_GROUPS_MISMATCH");
                 if (decision == "REGROUP")
@@ -113,7 +118,8 @@ internal static class BoundaryGroundedCanary
             catch (ConsistencyException e) { error = e.Message; }
             catch (Exception e) when (e is not OperationCanceledException) { error = "GROUNDED_VERDICT_PROTOCOL_INVALID"; }
             // Only validated source-alias partitions can enter safe observations, even for an invalid response.
-            rounds.Add(new(round, turn.FinishReason, bytes, decision, Safe(current), Safe(suggested), error, missingFields));
+            rounds.Add(new(round, turn.FinishReason, bytes, decision, Safe(current), Safe(suggested), error, missingFields)
+                { Membership = membership });
             if (error is not null)
             {
                 if (round == MaxProtocolRounds) return Done("UNRESOLVED", failure: error);

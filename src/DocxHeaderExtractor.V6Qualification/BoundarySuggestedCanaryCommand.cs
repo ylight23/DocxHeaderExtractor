@@ -30,15 +30,7 @@ internal static class BoundarySuggestedCanaryCommand
         using var cancellation = new CancellationTokenSource();
         Console.CancelKeyPress += (_, e) => { e.Cancel = true; cancellation.Cancel(); };
         var ct = cancellation.Token;
-        var evidence = JsonSerializer.Deserialize<ScanOcrEvidence>(File.ReadAllText(manifest.OcrEvidence), json)!;
-        if (Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(manifest.SourceDocument))) != evidence.SourceSha256)
-            throw new InvalidOperationException("CANARY_SOURCE_HASH_MISMATCH");
-        var transcription = new ScanTranscriptionPreflight(manifest.StoreRoot, () => new CacheOnly())
-            .Run(evidence, manifest.EvidenceEntry, "qualification-cache-only", ct: ct);
-        if (transcription.ProviderCalls != 0 || transcription.Failures.Count != 0)
-            throw new InvalidOperationException("CANARY_REQUIRES_COMPLETE_CACHED_TRANSCRIPTION");
-        var typography = ScanTypography.MeasureAll(evidence, manifest.EvidenceEntry, TesseractOcr.FindImageMagick(), ct);
-        var source = new ScanAgentSource(evidence, transcriptions: transcription, typography: typography, evidenceEntry: manifest.EvidenceEntry);
+        var source = LoadSource(manifest, ct);
         if (frozen["SourceSha256"]?.GetValue<string>() != source.SourceSha256 ||
             frozen["SourceAliasUniverseSha256"]?.GetValue<string>() != source.SourceAliasUniverseSha256 ||
             frozen["EvidenceStoreSha256"]?.GetValue<string>() != source.EvidenceStoreSha256 ||
@@ -80,5 +72,19 @@ internal static class BoundarySuggestedCanaryCommand
         }, json));
         Console.WriteLine("qualification complete; safe report.json saved; no production headings emitted");
         return 0;
+    }
+
+    internal static ScanAgentSource LoadSource(BoundaryStaticCanaryCommand.Manifest manifest, CancellationToken ct)
+    {
+        var json = new JsonSerializerOptions(JsonSerializerDefaults.Web);
+        var evidence = JsonSerializer.Deserialize<ScanOcrEvidence>(File.ReadAllText(manifest.OcrEvidence), json)!;
+        if (Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(manifest.SourceDocument))) != evidence.SourceSha256)
+            throw new InvalidOperationException("CANARY_SOURCE_HASH_MISMATCH");
+        var transcription = new ScanTranscriptionPreflight(manifest.StoreRoot, () => new CacheOnly())
+            .Run(evidence, manifest.EvidenceEntry, "qualification-cache-only", ct: ct);
+        if (transcription.ProviderCalls != 0 || transcription.Failures.Count != 0)
+            throw new InvalidOperationException("CANARY_REQUIRES_COMPLETE_CACHED_TRANSCRIPTION");
+        var typography = ScanTypography.MeasureAll(evidence, manifest.EvidenceEntry, TesseractOcr.FindImageMagick(), ct);
+        return new(evidence, transcriptions: transcription, typography: typography, evidenceEntry: manifest.EvidenceEntry);
     }
 }
