@@ -201,12 +201,17 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         foreach (var alias in unresolved) { extents.Remove(alias); readingChoices.Remove(alias); }
         var unresolvedUnits = Enumerable.Range(0, outcomes.Length).Count(n => outcomes[n].Status == "COMPLETE" && source.Scope(n).Decide.Any(unresolved.Contains));
         var initial = outcomes.SelectMany(o => o.Decisions).ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.Ordinal);
+        var selectionProvenance = outcomes.SelectMany(o => o.Decisions.Select(d => new HeadingAliasProvenance(d.Key,
+            "selection", o.UnitId, null, d.Value, null, o.Status == "COMPLETE" ? [] : [o.Failure ?? o.Status], [])
+            { ReasonLength = o.Reasons?.GetValueOrDefault(d.Key)?.Length }));
+        var provenanceByAlias = selectionProvenance.Concat(grouping.Provenance).ToLookup(p => p.Alias, StringComparer.Ordinal);
         var aliasStates = source.Lines.Where(l => initial.ContainsKey(l.Alias)).ToDictionary(l => l.Alias, l =>
         {
             var unknown = unresolved.Contains(l.Alias) || initial[l.Alias] == "UNRESOLVED";
             var final = selected.Contains(l.Alias) ? "SELECT" : unknown ? "UNRESOLVED" : "NOT_SELECT";
             return new HeadingAliasState(initial[l.Alias], final, grouping.Memberships.GetValueOrDefault(l.Alias),
-                final == "SELECT" ? "READY_FOR_BINDING" : final == "UNRESOLVED" ? "UNRESOLVED" : "NOT_SELECTED");
+                final == "SELECT" ? "READY_FOR_BINDING" : final == "UNRESOLVED" ? "UNRESOLVED" : "NOT_SELECTED")
+            { Provenance = provenanceByAlias[l.Alias].ToArray() };
         }, StringComparer.Ordinal);
         answers = answers.Append(JsonSerializer.Serialize(new { stage = "pre-binding-alias-state", aliases = aliasStates }, Compact)).ToArray();
         return new HeadingSelection(selected, complete.Length - unresolvedUnits, outcomes.Length, failures, answers, budget.Calls, costOf(), source.Flavor.PlacementContext(source), grouping.Groups,

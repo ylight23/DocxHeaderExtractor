@@ -1,6 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Routing;
 
 namespace DocxHeaderExtractor.HeadingAgent;
 
@@ -25,6 +26,7 @@ internal static class AgentSelectionReview
         var unresolved = grouping.UnresolvedAliases.ToHashSet(StringComparer.Ordinal);
         var observation = grouping.Observation;
         var memberships = grouping.Memberships.ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.Ordinal);
+        var provenance = grouping.Provenance.ToList();
         var reviewPosts = 0;
         // Each alias is owned by exactly one original segment. Keep the original segment context and facts,
         // but only apply the new decisions to disputed aliases; other membership decisions stay as recorded.
@@ -49,6 +51,10 @@ internal static class AgentSelectionReview
         {
             var (segment, targets) = affected[index];
             var outcome = outcomes[index];
+            foreach (var alias in targets)
+                provenance.Add(new(alias, "selection-review", outcome.UnitId, null, outcome.Decisions.GetValueOrDefault(alias), null,
+                    outcome.Status == "COMPLETE" ? [] : [outcome.Failure ?? outcome.Status], [])
+                    { ReasonLength = outcome.Reasons?.GetValueOrDefault(alias)?.Length });
             reviewPosts += outcome.Posts;
             var ignored = outcome.Decisions.Where(kv => !targets.Contains(kv.Key) &&
                 original[segment].Decisions.GetValueOrDefault(kv.Key) != kv.Value).ToDictionary(kv => kv.Key, kv => kv.Value);
@@ -95,6 +101,7 @@ internal static class AgentSelectionReview
         var groups = grouping.Groups.Concat(regroup.Groups).OrderBy(g => positions[g[0]]).ToArray();
         return new AgentGrouping.Result(groups, answers, failures, grouping.Posts + reviewPosts + regroup.Posts)
         { Evidence = evidence, Disputes = regroup.Disputes, UnresolvedAliases = unresolved.ToArray(),
-            Observation = observation.Add(regroup.Observation), Memberships = memberships };
+            Observation = observation.Add(regroup.Observation), Memberships = memberships,
+            Provenance = provenance.Concat(regroup.Provenance).ToArray() };
     }
 }

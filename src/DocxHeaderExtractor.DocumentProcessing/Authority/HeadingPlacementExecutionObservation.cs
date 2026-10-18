@@ -19,11 +19,29 @@ public sealed record HeadingPlacementExecutionObservation(
     public double Seconds { get; init; }
     public int VerifiedCount { get; init; }
     public int RepairCount { get; init; }
+    public IReadOnlyList<HeadingPlacementGraphConflict> GraphConflicts { get; init; } = [];
+    public IReadOnlyList<string> GraphRepairAliases { get; init; } = [];
+    public IReadOnlyList<string> GraphUnresolvedAliases { get; init; } = [];
     public IReadOnlyList<string> Failures { get; init; } = [];
     public IReadOnlyList<HeadingPlacementCallObservation> Calls { get; init; } = [];
     public IReadOnlyList<HeadingPlacementSourceObservation> SourceTrace { get; init; } = [];
+    public IReadOnlyList<HeadingMissingAncestorBlocker> MissingAncestorBlockers { get; init; } = [];
     [System.Text.Json.Serialization.JsonIgnore]
     public IReadOnlyList<string> ModelEvidence { get; init; } = [];
+}
+
+/// <summary>Structural contradictions in model claims; never a semantic choice of a replacement parent.</summary>
+public sealed record HeadingPlacementGraphConflict(string Checkpoint, string Code, string ParentAlias,
+    IReadOnlyList<string> Children);
+
+/// <summary>Unique model-reported blockers and their upstream producer provenance. Counts overlap for multi-line ancestors.</summary>
+public sealed record HeadingMissingAncestorBlocker(string Alias, string SourceId, IReadOnlyList<string> BlockedHeadingAliases,
+    string? InitialSelection, string? FinalSelection, string? VerificationMembership, string BindingStatus,
+    string ProvenanceAvailability, IReadOnlyList<DocxHeaderExtractor.DocumentProcessing.Routing.HeadingAliasProvenance> Provenance)
+{
+    public int BlockedHeadingCount => BlockedHeadingAliases.Count;
+    [System.Text.Json.Serialization.JsonIgnore]
+    public string? SourceText { get; init; }
 }
 
 /// <summary>Safe response-envelope diagnostics; no source, prompt or provider completion text.

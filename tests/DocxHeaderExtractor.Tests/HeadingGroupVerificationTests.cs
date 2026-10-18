@@ -113,6 +113,11 @@ public sealed class HeadingGroupVerificationTests
         Assert.Equal(input.Groups, result.Groups);
         Assert.Equal(8, result.Observation.VerifiedRuns);
         Assert.Contains(result.Evidence, e => e.Contains(diagnostic, StringComparison.Ordinal));
+        Assert.Contains(result.Provenance, p => p.Alias == A(7) && p.CandidateId == "V4" && p.Round == 1
+            && p.FailureCodes.Any(c => c == diagnostic || c.StartsWith(diagnostic + ":", StringComparison.Ordinal)));
+        Assert.Contains(result.Provenance, p => p.Alias == A(7) && p.Round == 2 && p.Decision == "ACCEPT" && p.Membership == "HEADING");
+        Assert.DoesNotContain(result.Provenance, p => p.Alias != A(7)
+            && p.FailureCodes.Any(c => c == diagnostic || c.StartsWith(diagnostic + ":", StringComparison.Ordinal)));
     }
 
     [Theory]
@@ -471,6 +476,8 @@ public sealed class HeadingGroupVerificationTests
         Assert.Equal(expected, result.Groups.Select(g => g.ToArray()));
         Assert.Equal(4, result.Observation.BoundaryDisputes);
         Assert.Equal(4, result.Observation.VerifiedRuns);
+        Assert.Contains(result.Provenance, p => p.Decision == "REGROUP" && p.Membership == "HEADING");
+        Assert.Contains(result.Provenance, p => p.UnitId.StartsWith("VERIFY-REVERIFY", StringComparison.Ordinal) && p.Decision == "ACCEPT");
     }
     // Source functions copied from the inspected stored page 32, not a heading Gold or a production phrase filter.
     static ScanAgentSource Source(string? entry = null, string? imageSha = null, int lineCount = 14, string[]? sourceTexts = null)

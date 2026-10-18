@@ -44,6 +44,7 @@ internal static class AgentGrouping
         public IReadOnlyList<string> UnresolvedAliases { get; init; } = [];
         public GroupingObservation Observation { get; init; } = new();
         public IReadOnlyDictionary<string, string> Memberships { get; init; } = new Dictionary<string, string>();
+        public IReadOnlyList<HeadingAliasProvenance> Provenance { get; init; } = [];
     }
 
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -105,7 +106,16 @@ internal static class AgentGrouping
             }
             else { groups.Add([source.Lines[chosen[k]].Alias]); k++; }
         }
-        return new Result(groups, answers, failures, posts) { Disputes = disputes, Evidence = evidence,
+        var provenance = runs.SelectMany((run, index) => run.Lines.Select(i =>
+        {
+            var dispute = disputes.FirstOrDefault(d => d.RunId == run.Id);
+            var failure = results[index / MaxRunsPerRequest].Failure;
+            return new HeadingAliasProvenance(source.Lines[i].Alias, "grouping", unitPrefix + "-" + (index / MaxRunsPerRequest + 1).ToString("000"), run.Id,
+                dispute is not null ? "DISPUTED" : division.ContainsKey(run.Id) ? "DIVIDED" : "FALLBACK", null,
+                !division.ContainsKey(run.Id) ? ["GROUP_DIVISION_UNRESOLVED"] : [], [])
+                { ReasonLength = dispute?.Reason.Length, UnitFailureContext = failure };
+        })).ToArray();
+        return new Result(groups, answers, failures, posts) { Disputes = disputes, Evidence = evidence, Provenance = provenance,
             Observation = new(ModelDividedRuns: division.Count - disputes.Count, FallbackRuns: runs.Count - division.Count, DisputedRuns: disputes.Count,
                 Batches: batchTimings) };
     }

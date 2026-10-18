@@ -53,6 +53,14 @@ public sealed class PdfHeadingAgentSelectorTests
             + handler.Bodies.Count(FakeOpenRouter.IsVerification), selection.ProviderCalls);
         Assert.Contains(selection.ModelAnswers, a => a.StartsWith("{\"grouping\"", StringComparison.Ordinal));
         Assert.NotNull(selection.Placement);
+        Assert.All(selection.SelectedAliases, alias =>
+        {
+            var state = selection.AliasStates![alias];
+            Assert.Equal("recorded", state.ProvenanceAvailability);
+            Assert.Contains(state.Provenance, p => p.Stage == "selection" && p.Decision == "SELECT");
+            Assert.Contains(state.Provenance, p => p.Stage == "grouping" && p.Decision == "DIVIDED");
+            Assert.Contains(state.Provenance, p => p.Stage == "verification-final" && p.Decision == "ACCEPT");
+        });
     }
 
     [Fact]

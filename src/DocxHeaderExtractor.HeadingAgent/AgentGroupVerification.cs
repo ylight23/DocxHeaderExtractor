@@ -25,7 +25,10 @@ internal static class AgentGroupVerification
     internal sealed record Membership(string Alias, string Status, string[] EvidenceRefs);
     internal sealed record Verdict(string Run, string Decision, string Reason, string[] EvidenceRefs, Membership[] Membership);
     internal sealed record Check(IReadOnlyList<Verdict> Verdicts, IReadOnlyList<string> Evidence, string? Failure)
-    { public IReadOnlyList<GroupingFieldDiagnostic> FieldDiagnostics { get; init; } = []; }
+    {
+        public IReadOnlyList<GroupingFieldDiagnostic> FieldDiagnostics { get; init; } = [];
+        public IReadOnlyList<HeadingAliasProvenance> Provenance { get; init; } = [];
+    }
     internal sealed record ProtocolIssue(string? Run, string Code);
     internal sealed record FieldTypeIssue([property: JsonPropertyName("field")] string Field,
         [property: JsonPropertyName("expected")] string Expected, [property: JsonPropertyName("actual")] string Actual);
@@ -78,17 +81,24 @@ internal static class AgentGroupVerification
         var answers = input.Answers.ToList();
         var observation = input.Observation;
         var memberships = input.Memberships.ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.Ordinal);
+        var provenance = input.Provenance.ToList();
         var corrections = new List<(Candidate Candidate, Verdict Verdict, bool MembershipRefinement)>();
         for (var n = 0; n < checks.Length; n++)
         {
             var check = checks[n];
             evidence.AddRange(check.Evidence);
+            provenance.AddRange(check.Provenance);
             observation = observation with { VerificationChecks = observation.VerificationChecks + chunks[n].Length,
                 FieldDiagnostics = (observation.FieldDiagnostics ?? []).Concat(check.FieldDiagnostics).ToArray() };
             if (check.Failure is not null) failures.Add(prefix + "-" + (n + 1).ToString("000") + ":" + check.Failure);
             foreach (var candidate in chunks[n])
             {
                 var verdict = check.Verdicts.SingleOrDefault(v => v.Run == candidate.Id);
+                foreach (var alias in candidate.Aliases)
+                    provenance.Add(new(alias, "verification-final", prefix + "-" + (n + 1).ToString("000"), candidate.Id,
+                        verdict?.Decision ?? "NO_VALID_VERDICT", verdict?.Membership.SingleOrDefault(m => m.Alias == alias)?.Status,
+                        verdict is null ? ["NO_VALID_VERDICT"] : [], verdict?.EvidenceRefs ?? [])
+                        { ReasonLength = verdict?.Reason.Length, UnitFailureContext = check.Failure });
                 if (verdict is not null)
                 {
                     foreach (var item in verdict.Membership) memberships[item.Alias] = item.Status;
@@ -165,10 +175,11 @@ internal static class AgentGroupVerification
             evidence.AddRange(verified.Evidence); answers.AddRange(verified.Answers);
             observation = observation.Add(verified.Observation);
             foreach (var kv in verified.Memberships) memberships[kv.Key] = kv.Value;
+            provenance.AddRange(verified.Provenance);
         }
         return input with { Groups = groups.OrderBy(g => positions[g[0]]).ToArray(), Disputes = disputes,
             UnresolvedAliases = unresolved.ToArray(), Failures = failures, Evidence = evidence, Answers = answers,
-            Observation = observation, Memberships = memberships };
+            Observation = observation, Memberships = memberships, Provenance = provenance };
     }
 
     // Removing model-disputed aliases can interrupt a proposed group. These are only candidate
@@ -214,8 +225,9 @@ internal static class AgentGroupVerification
         var evidence = new List<string>();
         var accepted = new Dictionary<string, Verdict>(StringComparer.Ordinal);
         var allFieldDiagnostics = new List<GroupingFieldDiagnostic>();
+        var provenance = new List<HeadingAliasProvenance>();
         Check Finish(string? error) => new(candidates.Where(c => accepted.ContainsKey(c.Id)).Select(c => accepted[c.Id]).ToArray(), evidence, error)
-        { FieldDiagnostics = allFieldDiagnostics.ToArray() };
+        { FieldDiagnostics = allFieldDiagnostics.ToArray(), Provenance = provenance.ToArray() };
         string? failure = null;
         int posts = 0, retries = 0;
         for (var round = 1; round <= MaxPosts; round++)
@@ -321,6 +333,17 @@ internal static class AgentGroupVerification
             { issues.Add(new(null, "JSON_OR_ENVELOPE_INVALID")); }
 
             var remaining = candidates.Where(c => !accepted.ContainsKey(c.Id)).Select(c => c.Id).ToArray();
+            foreach (var candidate in pending)
+            {
+                var verdict = accepted.GetValueOrDefault(candidate.Id);
+                foreach (var alias in candidate.Aliases)
+                {
+                    var membership = verdict?.Membership.SingleOrDefault(m => m.Alias == alias);
+                    provenance.Add(new(alias, "verification-protocol", unit, candidate.Id, verdict?.Decision,
+                        membership?.Status, issues.Where(i => i.Run is null || i.Run == candidate.Id).Select(i => i.Code).ToArray(),
+                        membership?.EvidenceRefs ?? []) { Round = round, ReasonLength = verdict?.Reason.Length });
+                }
+            }
             allFieldDiagnostics.AddRange(fieldDiagnostics.Select(d => new GroupingFieldDiagnostic(unit, posts, round, d.Run, d.Path,
                 d.Missing, d.Unexpected, d.InvalidTypes.Select(t => new GroupingFieldTypeIssue(t.Field, t.Expected, t.Actual)).ToArray(),
                 d.Run is not null && accepted.ContainsKey(d.Run))));

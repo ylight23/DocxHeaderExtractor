@@ -10,7 +10,7 @@ using DocxHeaderExtractor.DocumentProcessing.Inference;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Materialization;
 
-/// <summary>Source-grounded parent proposals, independent edge verification, then one targeted repair.
+/// <summary>Source-grounded parent proposals, independent verification, and bounded edge/graph repair.
 /// C# owns identities, coverage and graph arithmetic; models own ancestry and source-function judgements.</summary>
 internal static class EvidenceHeadingPlacement
 {
@@ -60,6 +60,14 @@ internal static class EvidenceHeadingPlacement
         in bound headings. Other decisions require empty blockingAliases. UNRESOLVED is not NOT_HEADING.
         REJECT challenges the proposed edge, not heading membership. Never return levels or new headings.
         """;
+    internal const string GraphRepairPrompt = """
+        graphConflicts reports incompatible parent claims, not a semantic correction: an accepted NONE
+        heading cannot also be an accepted parent. Reconsider every toPlace relation from source evidence.
+        Either the outside-tree claim or the child-parent claims may be wrong. Do not assume the parent
+        must be ROOT, or that the children must keep their earlier parents. Never add or restore headings.
+        For verification, independently check the repaired graph and source, not the repair's authority.
+        Use the same declared placements/verdicts schema and preserve uncertainty when evidence is insufficient.
+        """;
 
     sealed record Verdict(string Decision, string Reason, string[] EvidenceRefs, string[] BlockingAliases);
     sealed record PhaseResult(Dictionary<string, string> Parents, Dictionary<string, Verdict> Verdicts);
@@ -85,6 +93,8 @@ internal static class EvidenceHeadingPlacement
         var calls = 0;
         var verdicts = new Dictionary<string, Verdict>(StringComparer.Ordinal);
         var proposed = new Dictionary<string, string>(StringComparer.Ordinal);
+        var graphConflicts = new List<HeadingPlacementGraphConflict>();
+        var graphBlocked = new HashSet<string>(StringComparer.Ordinal);
         foreach (var h in ordered)
             if (h.RelationHints.FirstOrDefault(r => r.StartsWith("parent-node:", StringComparison.Ordinal)) is { } relation)
                 proposed[h.Alias] = relation[12..];
@@ -96,6 +106,7 @@ internal static class EvidenceHeadingPlacement
         var initial = await RunBatches(ordered.Where(h => proposed.ContainsKey(h.Alias)).Select(h => h.Alias).ToArray(),
             "HIERARCHY_VERIFY", proposed, null).ConfigureAwait(false);
         foreach (var v in initial) foreach (var p in v.Verdicts) verdicts[p.Key] = p.Value;
+        graphConflicts.AddRange(FindGraphConflicts("after-initial-verification"));
 
         var repair = ordered.Where(h => verdicts.GetValueOrDefault(h.Alias)?.Decision == "REJECT").Select(h => h.Alias).ToArray();
         var repaired = await RunBatches(repair, "HIERARCHY_REPAIR", proposed, verdicts).ConfigureAwait(false);
@@ -109,10 +120,48 @@ internal static class EvidenceHeadingPlacement
         var rechecked = await RunBatches(ordered.Where(h => recheck.Contains(h.Alias)).Select(h => h.Alias).ToArray(), "HIERARCHY_REVERIFY", proposed, null).ConfigureAwait(false);
         foreach (var v in rechecked) foreach (var p in v.Verdicts) verdicts[p.Key] = p.Value;
 
+        // One graph repair cycle, separate from edge REJECT repair. C# detects the contradiction,
+        // but only the model may change either side of it. Revoke old approvals before rechecking.
+        var conflictsToRepair = FindGraphConflicts("after-edge-repair");
+        graphConflicts.AddRange(conflictsToRepair);
+        var graphRepair = InSourceOrder(conflictsToRepair.SelectMany(c => c.Children.Prepend(c.ParentAlias)));
+        if (graphRepair.Length > 0)
+        {
+            var affected = DescendantsOf(graphRepair);
+            var graphRepaired = await RunBatches(graphRepair, "HIERARCHY_GRAPH_REPAIR", proposed, null, conflictsToRepair).ConfigureAwait(false);
+            var newParents = graphRepaired.SelectMany(p => p.Parents).ToDictionary(p => p.Key, p => p.Value, StringComparer.Ordinal);
+            foreach (var alias in graphRepair) proposed.Remove(alias);
+            foreach (var p in newParents) proposed[p.Key] = p.Value;
+            affected.UnionWith(DescendantsOf(graphRepair));
+            foreach (var alias in affected) verdicts.Remove(alias);
+            var graphReverified = await RunBatches(InSourceOrder(affected.Where(proposed.ContainsKey)),
+                "HIERARCHY_GRAPH_REVERIFY", proposed, null, conflictsToRepair).ConfigureAwait(false);
+            foreach (var v in graphReverified) foreach (var p in v.Verdicts) verdicts[p.Key] = p.Value;
+            foreach (var conflict in conflictsToRepair)
+            {
+                var component = conflict.Children.Prepend(conflict.ParentAlias).ToArray();
+                if (component.Any(a => !newParents.ContainsKey(a) || verdicts.GetValueOrDefault(a)?.Decision != "ACCEPT"))
+                {
+                    graphBlocked.UnionWith(component);
+                    failures.Enqueue("HIERARCHY_GRAPH:REPAIR_UNVERIFIED:" + conflict.ParentAlias);
+                }
+            }
+            // A repair can introduce a new contradiction with an existing outside-tree node.
+            // Do not recurse: quarantine every remaining conflicting component.
+            var remaining = FindGraphConflicts("after-graph-reverify");
+            graphConflicts.AddRange(remaining);
+            foreach (var conflict in remaining)
+            {
+                graphBlocked.Add(conflict.ParentAlias);
+                graphBlocked.UnionWith(conflict.Children);
+                failures.Enqueue("HIERARCHY_GRAPH:OUTSIDE_PARENT_CONFLICT:" + conflict.ParentAlias);
+            }
+        }
+
         var placed = ordered.Select(h => h with
         {
             RelationHints = h.RelationHints.Where(r => !r.StartsWith("parent-node:", StringComparison.Ordinal)).Concat(
-                verdicts.GetValueOrDefault(h.Alias)?.Decision == "ACCEPT" && proposed.TryGetValue(h.Alias, out var parent)
+                !graphBlocked.Contains(h.Alias) && verdicts.GetValueOrDefault(h.Alias)?.Decision == "ACCEPT" && proposed.TryGetValue(h.Alias, out var parent)
                     && parent != "UNRESOLVED" ? ["parent-node:" + parent] : Array.Empty<string>()).ToArray()
         }).ToArray();
         var requested = ordered.Select(h => h.SourceId).ToHashSet(StringComparer.Ordinal);
@@ -121,7 +170,19 @@ internal static class EvidenceHeadingPlacement
         return result with { Observation = result.Observation with
         {
             Contract = Version, LogicalCalls = calls, Seconds = Math.Round(clock.Elapsed.TotalSeconds, 1),
-            VerifiedCount = verdicts.Count(v => v.Value.Decision == "ACCEPT"), RepairCount = repair.Length,
+            VerifiedCount = verdicts.Count(v => v.Value.Decision == "ACCEPT" && !graphBlocked.Contains(v.Key)), RepairCount = repair.Length,
+            GraphConflicts = graphConflicts, GraphRepairAliases = graphRepair, GraphUnresolvedAliases = InSourceOrder(graphBlocked),
+            MissingAncestorBlockers = verdicts.Where(v => v.Value.Decision == "MISSING_ANCESTOR")
+                .SelectMany(v => v.Value.BlockingAliases.Select(a => (Alias: a, Child: v.Key)))
+                .GroupBy(p => p.Alias, StringComparer.Ordinal).OrderBy(g => position[g.Key]).Select(g =>
+                {
+                    var line = lines[position[g.Key]];
+                    var state = source.AliasStates.GetValueOrDefault(g.Key);
+                    return new HeadingMissingAncestorBlocker(g.Key, line.SourceId, InSourceOrder(g.Select(p => p.Child)),
+                        state?.InitialSelection, state?.FinalSelection, state?.VerificationMembership,
+                        state?.BindingStatus == "READY_FOR_BINDING" ? "BINDING_REJECTED" : state?.BindingStatus ?? "NOT_BOUND",
+                        state?.ProvenanceAvailability ?? "not-recorded", state?.Provenance ?? []) { SourceText = line.Text };
+                }).ToArray(),
             Failures = failures.Order(StringComparer.Ordinal).ToArray(),
             Calls = callObservations.OrderBy(c => c.UnitId, StringComparer.Ordinal).ThenBy(c => c.Round).ToArray(),
             FailureClass = result.Observation.UnresolvedCount > 0 ? "HIERARCHY_UNRESOLVED" : null,
@@ -129,7 +190,7 @@ internal static class EvidenceHeadingPlacement
             {
                 ProposedParentAlias = proposed.GetValueOrDefault(d.Alias),
                 VerificationStatus = verdicts.GetValueOrDefault(d.Alias)?.Decision ?? "NO_VALID_VERDICT",
-                ResolutionBasis = verdicts.GetValueOrDefault(d.Alias)?.Decision switch
+                ResolutionBasis = graphBlocked.Contains(d.Alias) ? "graph-conflict-unresolved" : verdicts.GetValueOrDefault(d.Alias)?.Decision switch
                 {
                     "MISSING_ANCESTOR" => "model-missing-ancestor", "UNRESOLVED" => "model-unresolved",
                     "REJECT" => "model-rejected", "ACCEPT" when d.Resolution == HeadingHierarchyResolver.Unresolved => "ancestor-chain-unresolved",
@@ -146,23 +207,46 @@ internal static class EvidenceHeadingPlacement
                     ownerByAlias.TryGetValue(l.Alias, out var owner) ? hierarchy[owner].Resolution : "not-bound");
             }).ToArray(),
             ModelEvidence = trace.OrderBy(t => t.Id.StartsWith("HIERARCHY_PLACE", StringComparison.Ordinal) ? 0
-                : t.Id.StartsWith("HIERARCHY_VERIFY", StringComparison.Ordinal) ? 1 : t.Id.StartsWith("HIERARCHY_REPAIR", StringComparison.Ordinal) ? 2 : 3)
+                : t.Id.StartsWith("HIERARCHY_VERIFY", StringComparison.Ordinal) ? 1 : t.Id.StartsWith("HIERARCHY_REPAIR", StringComparison.Ordinal) ? 2
+                : t.Id.StartsWith("HIERARCHY_REVERIFY", StringComparison.Ordinal) ? 3 : t.Id.StartsWith("HIERARCHY_GRAPH_REPAIR", StringComparison.Ordinal) ? 4 : 5)
                 .ThenBy(t => t.Id, StringComparer.Ordinal).ThenBy(t => t.Round).Select(t => t.Json).ToArray()
         }};
 
-        async Task<PhaseResult[]> RunBatches(string[] aliases, string stage, IReadOnlyDictionary<string, string> graph, IReadOnlyDictionary<string, Verdict>? feedback)
+        string[] InSourceOrder(IEnumerable<string> aliases)
+        {
+            var selected = aliases.ToHashSet(StringComparer.Ordinal);
+            return ordered.Where(h => selected.Contains(h.Alias)).Select(h => h.Alias).ToArray();
+        }
+
+        HashSet<string> DescendantsOf(IEnumerable<string> aliases)
+        {
+            var affected = aliases.ToHashSet(StringComparer.Ordinal);
+            foreach (var h in ordered)
+                if (proposed.TryGetValue(h.Alias, out var parent) && affected.Contains(parent)) affected.Add(h.Alias);
+            return affected;
+        }
+
+        HeadingPlacementGraphConflict[] FindGraphConflicts(string checkpoint) => ordered
+            .Where(h => verdicts.GetValueOrDefault(h.Alias)?.Decision == "ACCEPT" && proposed.GetValueOrDefault(h.Alias) == "NONE")
+            .Select(h => new HeadingPlacementGraphConflict(checkpoint, "OUTSIDE_PARENT_CONFLICT", h.Alias,
+                ordered.Where(c => verdicts.GetValueOrDefault(c.Alias)?.Decision == "ACCEPT" && proposed.GetValueOrDefault(c.Alias) == h.Alias)
+                    .Select(c => c.Alias).ToArray()))
+            .Where(c => c.Children.Count > 0).ToArray();
+
+        async Task<PhaseResult[]> RunBatches(string[] aliases, string stage, IReadOnlyDictionary<string, string> graph, IReadOnlyDictionary<string, Verdict>? feedback,
+            IReadOnlyList<HeadingPlacementGraphConflict>? graphFeedback = null)
         {
             var chunks = aliases.Chunk(BatchSize).ToArray();
             var output = new PhaseResult[chunks.Length];
             await Parallel.ForEachAsync(Enumerable.Range(0, chunks.Length), new ParallelOptions { MaxDegreeOfParallelism = Jobs, CancellationToken = ct },
-                async (index, token) => output[index] = await Ask(chunks[index], stage, graph, feedback, stage + "-" + (index + 1).ToString("000"), token).ConfigureAwait(false)).ConfigureAwait(false);
+                async (index, token) => output[index] = await Ask(chunks[index], stage, graph, feedback, stage + "-" + (index + 1).ToString("000"), token, graphFeedback).ConfigureAwait(false)).ConfigureAwait(false);
             return output;
         }
 
         async Task<PhaseResult> Ask(string[] aliases, string stage, IReadOnlyDictionary<string, string> graph,
-            IReadOnlyDictionary<string, Verdict>? feedback, string id, CancellationToken token)
+            IReadOnlyDictionary<string, Verdict>? feedback, string id, CancellationToken token, IReadOnlyList<HeadingPlacementGraphConflict>? graphFeedback)
         {
-            var verification = stage is "HIERARCHY_VERIFY" or "HIERARCHY_REVERIFY";
+            var verification = stage is "HIERARCHY_VERIFY" or "HIERARCHY_REVERIFY" or "HIERARCHY_GRAPH_REVERIFY";
             var parents = new Dictionary<string, string>(StringComparer.Ordinal);
             var checks = new Dictionary<string, Verdict>(StringComparer.Ordinal);
             var shown = parts.Concat(withheld.Select(l => l.Alias)).ToHashSet(StringComparer.Ordinal);
@@ -171,8 +255,10 @@ internal static class EvidenceHeadingPlacement
             shown.UnionWith(context.Select(l => l.Alias));
             var evidenceRounds = new List<object>();
             var errors = new List<string>();
+            object? Selection(string alias) => source.AliasStates.TryGetValue(alias, out var state)
+                ? new { state.InitialSelection, state.FinalSelection, state.VerificationMembership, state.BindingStatus } : null;
             object Line(SemanticSourceAtom l, bool fullStyle) => new { alias = l.Alias, sourceId = l.SourceId, ordinal = l.Ordinal, page = l.Page, row = l.Row, segment = l.Segment, text = l.Text,
-                selection = source.AliasStates.GetValueOrDefault(l.Alias),
+                selection = Selection(l.Alias),
                 location = source.LocationByAlias.GetValueOrDefault(l.Alias),
                 style = fullStyle && evidence.StyleJsonByAlias.TryGetValue(l.Alias, out var style) ? JsonNode.Parse(style) : null };
             for (var round = 1; round <= MaxRounds; round++)
@@ -188,12 +274,20 @@ internal static class EvidenceHeadingPlacement
                     documentStyles = JsonNode.Parse(evidence.DocumentStylesJson), measurementsNote = evidence.MeasurementsNote,
                     proposedRelations = graph.Select(p => new { alias = p.Key, parent = p.Value }), toPlace = pending,
                     upstreamWithheld = withheld.Select(l => new { alias = l.Alias, sourceId = l.SourceId, ordinal = l.Ordinal, page = l.Page, text = l.Text,
-                        selection = source.AliasStates.GetValueOrDefault(l.Alias) }), sourceContext = context.Select(l => Line(l, false)),
+                        selection = Selection(l.Alias) }), sourceContext = context.Select(l => Line(l, false)),
                     evidenceTools = new[] { "search_source_text(query,offset,limit)", "get_source_context(alias,before,after)", "get_source_range(first,last)" },
                     evidenceResults = evidenceRounds, protocolErrors = errors,
                     repairFeedback = feedback?.Where(p => pending.Contains(p.Key)).Select(p => new { alias = p.Key, p.Value.Reason, p.Value.EvidenceRefs })
                 }, Json);
-                var prompt = SourcePrompt + "\n" + (verification ? VerifyPrompt : ProposalPrompt);
+                if (graphFeedback is not null)
+                {
+                    var graphPacket = JsonNode.Parse(packet)!.AsObject();
+                    graphPacket["graphConflicts"] = JsonSerializer.SerializeToNode(graphFeedback.Select(c => new
+                        { code = c.Code, parent = c.ParentAlias, children = c.Children }), Json);
+                    packet = graphPacket.ToJsonString(Json);
+                }
+                var prompt = SourcePrompt + "\n" + (verification ? VerifyPrompt : ProposalPrompt)
+                    + (graphFeedback is null ? "" : "\n" + GraphRepairPrompt);
                 var hash = Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(prompt + "\n" + packet)));
                 var requestBytes = Encoding.UTF8.GetByteCount(packet) + Encoding.UTF8.GetByteCount(prompt);
                 void Log(object observation) => trace.Enqueue((id, round, JsonSerializer.Serialize(observation)));

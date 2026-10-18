@@ -12,7 +12,7 @@ internal static class HierarchyTestProtocol
         var packet = JsonNode.Parse(packetText)!;
         if (packet["protocolVersion"]?.GetValue<string>() != EvidenceHeadingPlacement.Version) return null;
         var aliases = packet["toPlace"]!.AsArray().Select(a => a!.GetValue<string>()).ToArray();
-        if (packet["stage"]!.GetValue<string>() is "HIERARCHY_VERIFY" or "HIERARCHY_REVERIFY")
+        if (packet["stage"]!.GetValue<string>() is "HIERARCHY_VERIFY" or "HIERARCHY_REVERIFY" or "HIERARCHY_GRAPH_REVERIFY")
             return Accept(packet, aliases);
         return JsonSerializer.Serialize(new { protocolVersion = EvidenceHeadingPlacement.Version,
             placements = aliases.Select(a => new { alias = a, parent = parents?.GetValueOrDefault(a) ?? "ROOT" }) });

@@ -198,12 +198,20 @@ public sealed class EvidenceHeadingPlacementTests
     public async Task Missing_ancestors_are_traced_and_children_are_not_promoted_or_put_under_the_previous_chapter(string missingStage)
     {
         var (bound, evidence, correct) = Fixture(missingStage);
+        if (missingStage == "verification")
+        {
+            var states = evidence.Source!.AliasStates.ToDictionary(p => p.Key, p => p.Value);
+            states[C5] = states[C5] with { Provenance = [new(C5, "verification-protocol", "VERIFY-TEST", "V1", null, null,
+                ["MEMBERSHIP_COVERAGE_INVALID"], []) { Round = 3 }] };
+            evidence = evidence with { Source = evidence.Source with { AliasStates = states } };
+        }
         var wrong = new Dictionary<string, string>(correct) { [D35] = "ROOT", [D47] = C4, ["P022-L001"] = C4, ["P022-L006"] = C4 };
         var blocked = new Dictionary<string, string> { [D35] = C3, [D47] = C5, ["P022-L001"] = C5, ["P022-L006"] = C5 };
         using var model = new Model(p =>
         {
             var withheld = p["upstreamWithheld"]!.AsArray();
             Assert.Contains(withheld, l => l!["alias"]!.GetValue<string>() == C3);
+            Assert.All(withheld, l => Assert.Null(l!["selection"]?["Provenance"]));
             Assert.DoesNotContain(p["headings"]!.AsArray(), h => h!["alias"]!.GetValue<string>() == C3);
             var root = JsonNode.Parse(HierarchyTestProtocol.Reply(p.ToJsonString(), wrong)!)!;
             if (IsVerification(p)) foreach (var row in root["verdicts"]!.AsArray())
@@ -231,6 +239,16 @@ public sealed class EvidenceHeadingPlacementTests
         { Assert.Equal("MISSING_ANCESTOR", d.VerificationStatus); Assert.Equal(new[] { blocked[d.Alias] }, d.BlockingAliases); });
         Assert.Equal(bound.Length, result.Headings.Count);
         Assert.Equal(0, result.Observation.RepairCount);
+        Assert.Equal(2, result.Observation.MissingAncestorBlockers.Count);
+        var chapterBlocker = Assert.Single(result.Observation.MissingAncestorBlockers, b => b.Alias == C5);
+        Assert.Equal(3, chapterBlocker.BlockedHeadingCount);
+        Assert.Equal(new[] { D47, "P022-L001", "P022-L006" }, chapterBlocker.BlockedHeadingAliases);
+        Assert.Equal(missingStage == "verification" ? "recorded" : "not-recorded", chapterBlocker.ProvenanceAvailability);
+        if (missingStage == "verification")
+            Assert.Contains(chapterBlocker.Provenance, p => p.UnitId == "VERIFY-TEST" && p.FailureCodes.Contains("MEMBERSHIP_COVERAGE_INVALID"));
+        Assert.Equal(missingStage == "binding" ? "BINDING_REJECTED" : "UNRESOLVED", chapterBlocker.BindingStatus);
+        Assert.Equal("Chương V", chapterBlocker.SourceText);
+        Assert.DoesNotContain("SourceText", JsonSerializer.Serialize(result.Observation));
     }
 
     [Fact]
