@@ -133,15 +133,21 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         });
         var spare = (posts - units) * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
         // Grouping batches up to MaxRunsPerRequest adjacent selected-line runs. In the worst case, every other source line is selected,
-        // so reserve one chunk per 2 * MaxRunsPerRequest lines, including transport retries and repair turns.
-        var groupChunks = Math.Max(1, (source.Lines.Count + (2 * AgentGrouping.MaxRunsPerRequest) - 1) / (2 * AgentGrouping.MaxRunsPerRequest));
-        var groupPosts = groupChunks * (1 + AgentGrouping.MaxRepairs) * (1 + AgentUnit.TransportRetries);
+        // so reserve one chunk per 2 * MaxRunsPerRequest lines, for both initial grouping and possible review regroup, including retries/repairs.
+        var groupPosts = GroupingPostsReserveForLines(source.Lines.Count);
         var groupReserve = groupPosts * AgentBudget.AttemptUsd(60000);
         var reviewPosts = units * AgentSelectionReview.MaxPosts;
         var reviewReserve = reviewPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
         var verifyPosts = 4 * Math.Max(1, (source.Lines.Count + AgentGroupVerification.BatchSize - 1) / AgentGroupVerification.BatchSize) * AgentGroupVerification.MaxCalls;
         var verifyReserve = verifyPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
         return new AgentBudget(posts + groupPosts + reviewPosts + verifyPosts, Math.Ceiling((first + spare + groupReserve + reviewReserve + verifyReserve) * 1.1 * 100) / 100);
+    }
+
+    internal static int GroupingPostsReserveForLines(int lineCount)
+    {
+        var groupChunks = Math.Max(1, (lineCount + (2 * AgentGrouping.MaxRunsPerRequest) - 1) / (2 * AgentGrouping.MaxRunsPerRequest));
+        // Both initial grouping and a possible REVIEW-GROUP regroup can consume this worst-case reserve.
+        return 2 * groupChunks * (1 + AgentGrouping.MaxRepairs) * (1 + AgentUnit.TransportRetries);
     }
 
     /// <summary>Runs every segment, parallelism at a time, and collects the lines selected by the units whose answer passed.</summary>

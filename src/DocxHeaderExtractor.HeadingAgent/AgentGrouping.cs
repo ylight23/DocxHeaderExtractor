@@ -2,6 +2,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Diagnostics;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
 
@@ -69,8 +70,18 @@ internal static class AgentGrouping
         var evidence = new List<string>();
         var chunks = runs.Chunk(MaxRunsPerRequest).ToArray();
         var results = new (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts, List<Dispute> Disputes, List<string> Evidence)[chunks.Length];
+        var batchTimings = new GroupingBatchTiming[chunks.Length];
+        var groupClock = Stopwatch.StartNew();
         Parallel.For(0, chunks.Length, new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct },
-            n => results[n] = AskChunk(source, chunks[n], n + 1, model, budget, retryDelayMs, instruction, unitPrefix, verificationFeedback));
+            n =>
+            {
+                var started = groupClock.Elapsed.TotalSeconds;
+                var result = AskChunk(source, chunks[n], n + 1, model, budget, retryDelayMs, instruction, unitPrefix, verificationFeedback);
+                var completed = groupClock.Elapsed.TotalSeconds;
+                results[n] = result;
+                batchTimings[n] = new GroupingBatchTiming(unitPrefix + "-" + (n + 1).ToString("000"), chunks[n].Length,
+                    result.Posts, Math.Round(started, 3), Math.Round(completed, 3), Math.Round(completed - started, 3));
+            });
         foreach (var r in results)
         {
             posts += r.Posts;
@@ -94,7 +105,8 @@ internal static class AgentGrouping
             else { groups.Add([source.Lines[chosen[k]].Alias]); k++; }
         }
         return new Result(groups, answers, failures, posts) { Disputes = disputes, Evidence = evidence,
-            Observation = new(ModelDividedRuns: division.Count - disputes.Count, FallbackRuns: runs.Count - division.Count, DisputedRuns: disputes.Count) };
+            Observation = new(ModelDividedRuns: division.Count - disputes.Count, FallbackRuns: runs.Count - division.Count, DisputedRuns: disputes.Count,
+                Batches: batchTimings) };
     }
 
     /// <summary>The fallback: consecutive lines of the same page and parser layout block are one heading.</summary>

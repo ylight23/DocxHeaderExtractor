@@ -46,18 +46,48 @@ public sealed class PdfHeadingAgentGroupingTests
     [Fact]
     public void Large_grouping_sets_are_split_into_parallel_bounded_requests()
     {
-        var selected = Enumerable.Range(0, 9)
+        var selected = Enumerable.Range(0, 17)
             .SelectMany(i => new[] { A(i * 3), A(i * 3 + 1) })
             .ToHashSet(StringComparer.Ordinal);
-        var (model, payloads, _) = Scripted((_, p) => Division(p, id => [RunAliases(p, id)]));
+        using var barrier = new Barrier(2);
+        var active = 0;
+        var maxActive = 0;
+        var overlapped = 0;
+        var (model, payloads, _) = Scripted((_, p) =>
+        {
+            var now = Interlocked.Increment(ref active);
+            int seen;
+            do { seen = maxActive; if (seen >= now) break; }
+            while (Interlocked.CompareExchange(ref maxActive, now, seen) != seen);
+            try
+            {
+                if (barrier.SignalAndWait(TimeSpan.FromSeconds(5))) Interlocked.Exchange(ref overlapped, 1);
+                return Division(p, id => [RunAliases(p, id)]);
+            }
+            finally { Interlocked.Decrement(ref active); }
+        });
 
-        var result = AgentGrouping.Group(Source.Value, selected, model, Budget(), parallelism: 4, CancellationToken.None, retryDelayMs: 0);
+        var result = AgentGrouping.Group(Source.Value, selected, model, Budget(), parallelism: 2, CancellationToken.None, retryDelayMs: 0);
 
         Assert.Empty(result.Failures);
-        Assert.Equal(2, result.Posts);
-        Assert.Equal(new[] { 1, AgentGrouping.MaxRunsPerRequest }, payloads.Select(p => p.GetProperty("runs").GetArrayLength()).Order());
-        Assert.Equal(9, result.Groups.Count);
+        Assert.Equal(3, result.Posts);
+        Assert.Equal(new[] { 1, 8, 8 }, payloads.Select(p => p.GetProperty("runs").GetArrayLength()).Order());
+        Assert.Equal(1, overlapped);
+        Assert.Equal(2, maxActive);
+        Assert.Equal(17, result.Groups.Count);
         Assert.Equal(selected.Order(), result.Groups.SelectMany(g => g).Order());
+        Assert.Equal(3, result.Observation.Batches!.Count);
+        Assert.All(result.Observation.Batches, batch => Assert.True(batch.CompletedAtSeconds >= batch.StartedAtSeconds));
+    }
+
+    [Fact]
+    public void Budget_reserves_initial_grouping_and_possible_review_regroup_batches()
+    {
+        const int sourceLines = 1055;
+        var chunks = (sourceLines + (2 * AgentGrouping.MaxRunsPerRequest) - 1) / (2 * AgentGrouping.MaxRunsPerRequest);
+        var perPass = chunks * (1 + AgentGrouping.MaxRepairs) * (1 + AgentUnit.TransportRetries);
+
+        Assert.Equal(2 * perPass, HeadingAgentSelector.GroupingPostsReserveForLines(sourceLines));
     }
 
     private static string Disagreement(JsonElement payload) => JsonSerializer.Serialize(new

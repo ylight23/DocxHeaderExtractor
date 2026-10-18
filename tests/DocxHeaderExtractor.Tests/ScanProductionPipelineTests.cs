@@ -93,7 +93,9 @@ public sealed class ScanProductionPipelineTests
         {
             UnitFailures = ["GROUP-REVIEW:SELECTION_DISAGREEMENT_UNRESOLVED:P001-L004"],
             Grouping = new GroupingObservation(ModelDividedRuns: 2, FallbackRuns: 0, DisputedRuns: 1,
-                VerificationChecks: 2, VerifiedRuns: 1, UnresolvedAliases: 1),
+                VerificationChecks: 2, VerifiedRuns: 1, UnresolvedAliases: 1,
+                Batches: [new GroupingBatchTiming("GROUP-001", 8, 2, 0, 12.5, 12.5),
+                    new GroupingBatchTiming("REVIEW-GROUP-001", 1, 1, 0, 1.5, 1.5)]),
             StageSeconds = new Dictionary<string, double> { ["selection"] = 10, ["grouping"] = 20, ["verification"] = 30, ["review"] = 40 }
         } };
         using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
@@ -108,6 +110,8 @@ public sealed class ScanProductionPipelineTests
         Assert.Contains("actual fallback runs=0", grouping.Evidence);
         Assert.Contains("unresolved aliases=1", grouping.Evidence);
         Assert.DoesNotContain("layout fallback", grouping.Evidence);
+        Assert.Contains("GROUP-001: 8 runs, 2 POST, 12.5s", grouping.Evidence);
+        Assert.Contains("REVIEW-GROUP-001: 1 runs, 1 POST, 1.5s", grouping.Evidence);
         Assert.Equal(0, run.Outline.RouteAudit!.Grouping!.FallbackRuns);
         Assert.Contains("Grouping", JsonSerializer.Serialize(web.Audit));
         Assert.Contains("verification 30", web.Stages.Single(s => s.Id == "heading-phase-timing").Evidence);
