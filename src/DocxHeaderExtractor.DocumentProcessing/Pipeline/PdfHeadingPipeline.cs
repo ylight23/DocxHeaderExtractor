@@ -91,7 +91,7 @@ internal static class PdfHeadingPipeline
     private static async Task<HeadingPipelineResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IAgentRouteInferenceTransport authorized,
         IHeadingSelector selector, string pdfPath, string apiKey, LaneExecutionLease lease, CancellationToken ct)
     {
-        var leaseBound = new LeaseBoundInferenceTransport(authorized, lease);
+        var leaseBound = LeaseBoundInferenceTransport.Bind(authorized, lease);
         var authority = new SelectedLinesHeadingAuthority(
             selector,
             pdfPath,

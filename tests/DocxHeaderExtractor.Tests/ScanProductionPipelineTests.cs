@@ -1,5 +1,6 @@
 using System.Net;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
@@ -9,6 +10,7 @@ using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
 using DocxHeaderExtractor.HeadingAgent;
 using DocxHeaderExtractor.HeadingAgent.Scan;
+using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.V6Runner;
 using DocxHeaderExtractor.Web;
 
@@ -83,6 +85,34 @@ public sealed class ScanProductionPipelineTests
         var safe = WebPipelineProjection.SafeOutline(run.Outline, new JsonSerializerOptions());
         Assert.NotNull(safe["routeAudit"]!["Scan"]);
         Assert.Throws<NotSupportedException>(() => V6DocumentRunner.WriteOutline(ScanPath, run.Outline, "unused.docx", new PipelineOptions().Extraction));
+    }
+
+    [Fact]
+    public async Task Scan_runner_keeps_structured_budget_and_terminal_metadata_through_its_actual_lease_wrapper()
+    {
+        using var handler = new FakeOpenRouter((body, _) =>
+        {
+            var packet = body["messages"]![1]!["content"]!.GetValue<string>();
+            var verify = JsonNode.Parse(packet)!["stage"]!.GetValue<string>() == "HIERARCHY_VERIFY";
+            Assert.Equal(verify ? 2560 : 352, body["max_tokens"]!.GetValue<int>());
+            var parents = new Dictionary<string, string> { ["P001-L001"] = "ROOT", ["P001-L003"] = "P001-L001" };
+            return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = HierarchyTestProtocol.Reply(packet, parents) }, "stop"));
+        }, autoVerify: false);
+        using var http = new HttpClient(handler);
+        using var transport = new OpenRouterInferenceTransport(http, new RemoteInferenceOptions { ApiKey = "sk-test" });
+        using var runner = new V6DocumentRunner(new PipelineOptions(),
+            new Factory(new FixedScan(Prepared(ScanPath)), new StructuredPlacementTransport(transport)));
+        var run = await runner.ExtractAsync(ScanPath);
+        Assert.Equal(2, handler.Posts);
+        Assert.Equal(new int?[] { 1, 2 }, run.Outline.Headings.Select(h => h.Level));
+        var calls = run.Outline.RouteAudit!.PlacementExecution!.Calls;
+        Assert.All(calls, c => Assert.Equal("stop", c.FinishReason));
+        var verifyCall = Assert.Single(calls, c => c.Phase == "HIERARCHY_VERIFY");
+        Assert.Equal(2560, verifyCall.RequestedMaxOutputTokens);
+        Assert.Equal(2560, verifyCall.MaxOutputTokens);
+        var web = WebPipelineProjection.Project(Guid.NewGuid(), "Completed", run.Outline, run, "scan");
+        Assert.Contains("FinishReason", JsonSerializer.Serialize(web.Audit));
+        Assert.Contains("MaxOutputTokens", JsonSerializer.Serialize(web.Audit));
     }
 
     [Fact]
@@ -327,7 +357,7 @@ public sealed class ScanProductionPipelineTests
         public Task<HeadingSelection> SelectAsync(string path, string apiKey, CancellationToken ct) =>
             Task.FromResult(new HeadingSelection(new HashSet<string>(), 1, 1, [], [], 0, 0));
     }
-    sealed class PlacementTransport : IAgentRouteInferenceTransport
+    class PlacementTransport : IAgentRouteInferenceTransport
     {
         public string? OpenRouterApiKey => "test-route-key";
         public string RouteProvider => "test";
@@ -339,6 +369,12 @@ public sealed class ScanProductionPipelineTests
         public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             Task.FromResult(HierarchyTestProtocol.Reply(userMessage, new Dictionary<string, string> { ["P001-L001"] = "ROOT", ["P001-L003"] = "P001-L001" })!);
         public void Dispose() { }
+    }
+    sealed class StructuredPlacementTransport(OpenRouterInferenceTransport inner) : PlacementTransport, IStructuredInferenceTransport
+    {
+        public Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage,
+            int maxOutputTokens, CancellationToken ct = default) =>
+            inner.CompleteStructuredAsync(systemPrompt, userMessage, maxOutputTokens, ct);
     }
     sealed class AppendixPlacement : IAgentRouteInferenceTransport
     {

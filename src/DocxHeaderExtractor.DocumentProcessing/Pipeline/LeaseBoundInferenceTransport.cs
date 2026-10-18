@@ -6,16 +6,22 @@ namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 /// The transport of a lane execution: every provider call the shared stages make (placement) starts only while the lane's lease is active and
 /// publishes only if it still is, so late provider work after a timeout or a cancel is quarantined, for the PDF and the DOCX route alike.
 /// </summary>
-internal sealed class LeaseBoundInferenceTransport : IInferenceTransport
+internal class LeaseBoundInferenceTransport : IInferenceTransport
 {
     private readonly IInferenceTransport _inner;
     private readonly LaneExecutionLease _lease;
 
-    public LeaseBoundInferenceTransport(IInferenceTransport inner, LaneExecutionLease lease)
+    private LeaseBoundInferenceTransport(IInferenceTransport inner, LaneExecutionLease lease)
     {
         _inner = inner;
         _lease = lease;
     }
+
+    // Preserve optional capabilities through the lane boundary without advertising them for legacy providers.
+    public static IInferenceTransport Bind(IInferenceTransport inner, LaneExecutionLease lease) =>
+        inner is IStructuredInferenceTransport structured
+            ? new StructuredLeaseBoundInferenceTransport(structured, lease)
+            : new LeaseBoundInferenceTransport(inner, lease);
 
     public string ModelName => _inner.ModelName;
     public int ContextSize => _inner.ContextSize;
@@ -25,7 +31,7 @@ internal sealed class LeaseBoundInferenceTransport : IInferenceTransport
         StartAndObserve(() => _inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount));
     public void Dispose() { }
 
-    private Task<T> StartAndObserve<T>(Func<Task<T>> start)
+    protected Task<T> StartAndObserve<T>(Func<Task<T>> start)
     {
         Task<T>? task = null;
         if (!_lease.TryStartDownstream(() => task = start())) throw new LaneLeaseLostException();
@@ -37,5 +43,13 @@ internal sealed class LeaseBoundInferenceTransport : IInferenceTransport
         var result = await task.ConfigureAwait(false);
         if (!lease.IsActive) throw new LaneLeaseLostException();
         return result;
+    }
+
+    private sealed class StructuredLeaseBoundInferenceTransport(IStructuredInferenceTransport inner, LaneExecutionLease lease)
+        : LeaseBoundInferenceTransport(inner, lease), IStructuredInferenceTransport
+    {
+        public Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage,
+            int maxOutputTokens, CancellationToken ct = default) =>
+            StartAndObserve(() => inner.CompleteStructuredAsync(systemPrompt, userMessage, maxOutputTokens, ct));
     }
 }

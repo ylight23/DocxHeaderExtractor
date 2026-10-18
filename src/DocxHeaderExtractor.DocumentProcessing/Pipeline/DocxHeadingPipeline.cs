@@ -70,7 +70,7 @@ internal static class DocxHeadingPipeline
         DocumentSourceSnapshot source, string docxPath, IAgentRouteInferenceTransport authorized, IHeadingSelector selector, string apiKey,
         LaneExecutionLease lease, CancellationToken ct)
     {
-        var leaseBound = new LeaseBoundInferenceTransport(authorized, lease);
+        var leaseBound = LeaseBoundInferenceTransport.Bind(authorized, lease);
         var authority = new SelectedLinesHeadingAuthority(
             selector,
             docxPath,

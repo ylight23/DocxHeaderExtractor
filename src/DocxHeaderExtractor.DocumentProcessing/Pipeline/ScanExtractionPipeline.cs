@@ -37,7 +37,7 @@ internal static class ScanExtractionPipeline
             if (source.Atoms.Count == 0) throw new InvalidOperationException("SCAN_EMPTY_UNIVERSE");
             var fixedSelector = new PreparedSelector(selector.SelectorId, prepared.Selection);
             var authority = new SelectedLinesHeadingAuthority(fixedSelector, path, key ?? "", new Dictionary<string, string>(),
-                transport is null ? null : new LeaseBoundInferenceTransport(transport, lease),
+                transport is null ? null : LeaseBoundInferenceTransport.Bind(transport, lease),
                 () => { if (!lease.IsActive) throw new LaneLeaseLostException(); });
             var decided = await authority.DecideAsync(source, laneCt).ConfigureAwait(false);
             options.Log?.Invoke("Scan: bind, place and materialize headings");

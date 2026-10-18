@@ -4,6 +4,7 @@ using DocxHeaderExtractor.Core.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Materialization;
+using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Tests;
@@ -57,8 +58,13 @@ public sealed class StructuredInferenceTransportTests
         Assert.IsAssignableFrom<IStructuredInferenceTransport>(transport);
     }
 
-    [Fact]
-    public async Task Hierarchy_uses_the_rich_verdict_budget_and_reports_terminal_metadata_through_production_transport()
+    [Theory]
+    [InlineData("stop", 32768, 16896)]
+    [InlineData("stop", 8192, 8192)]
+    [InlineData("length", 32768, 16896)]
+    [InlineData("length", 8192, 8192)]
+    public async Task Hierarchy_preserves_budget_metadata_and_finish_authority_through_the_lane_lease(
+        string finish, int configuredCap, int expectedCap)
     {
         var lines = Enumerable.Range(0, 16).Select(i => new SemanticSourceAtom("L" + i, "S" + i, i, 1, i, 0, "Section " + i)).ToArray();
         var bound = lines.Select(l => new CanonicalSemanticBoundHeading(l.Alias, l.SourceId, l.Ordinal, l.Text,
@@ -69,16 +75,28 @@ public sealed class StructuredInferenceTransportTests
         {
             var packet = body["messages"]![1]!["content"]!.GetValue<string>();
             var verify = JsonNode.Parse(packet)!["stage"]!.GetValue<string>() == "HIERARCHY_VERIFY";
-            Assert.Equal(EvidenceHeadingPlacement.OutputBudget(verify, 16), body["max_tokens"]!.GetValue<int>());
-            return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = HierarchyTestProtocol.Reply(packet) }, "stop"));
+            Assert.Equal(verify ? expectedCap : EvidenceHeadingPlacement.OutputBudget(false, 16), body["max_tokens"]!.GetValue<int>());
+            return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = HierarchyTestProtocol.Reply(packet) }, verify ? finish : "stop"));
         }, autoVerify: false);
         using var http = new HttpClient(handler);
-        using var transport = new OpenRouterInferenceTransport(http, new RemoteInferenceOptions { ApiKey = "sk-test" });
-        var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, transport, CancellationToken.None, evidence);
-        Assert.Equal(16, result.Observation.VerifiedCount);
-        Assert.Equal(0, result.Observation.UnresolvedCount);
-        Assert.Equal(2, handler.Posts);
-        Assert.All(result.Observation.Calls, c => Assert.Equal("stop", c.FinishReason));
-        Assert.Equal(16896, result.Observation.Calls.Single(c => c.Phase == "HIERARCHY_VERIFY").MaxOutputTokens);
+        using var transport = new OpenRouterInferenceTransport(http, new RemoteInferenceOptions { ApiKey = "sk-test", MaxOutputTokens = configuredCap });
+        using var leaseBound = LeaseBoundInferenceTransport.Bind(transport, new LaneExecutionLease());
+        var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, leaseBound, CancellationToken.None, evidence);
+        var completed = finish == "stop";
+        Assert.Equal(completed ? 16 : 0, result.Observation.VerifiedCount);
+        Assert.Equal(completed ? 16 : 0, result.Observation.PlacedCount);
+        Assert.Equal(completed ? 0 : 16, result.Observation.UnresolvedCount);
+        Assert.Equal(completed ? 2 : 4, handler.Posts);
+        Assert.All(result.Observation.Calls.Where(c => c.Phase == "HIERARCHY_VERIFY"), c =>
+        {
+            Assert.Equal(finish, c.FinishReason);
+            Assert.Equal(16896, c.RequestedMaxOutputTokens);
+            Assert.Equal(expectedCap, c.MaxOutputTokens);
+            if (!completed)
+            {
+                Assert.Empty(c.AcceptedAliases);
+                Assert.Contains("FINISH_REASON_LENGTH", c.ProtocolErrors);
+            }
+        });
     }
 }
