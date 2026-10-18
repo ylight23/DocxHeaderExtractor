@@ -69,7 +69,8 @@ internal static class AgentGrouping
         var disputes = new List<Dispute>();
         var evidence = new List<string>();
         var chunks = runs.Chunk(MaxRunsPerRequest).ToArray();
-        var results = new (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts, List<Dispute> Disputes, List<string> Evidence)[chunks.Length];
+        var results = new (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts, int Repairs,
+            List<Dispute> Disputes, List<string> Evidence)[chunks.Length];
         var batchTimings = new GroupingBatchTiming[chunks.Length];
         var groupClock = Stopwatch.StartNew();
         Parallel.For(0, chunks.Length, new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct },
@@ -80,7 +81,7 @@ internal static class AgentGrouping
                 var completed = groupClock.Elapsed.TotalSeconds;
                 results[n] = result;
                 batchTimings[n] = new GroupingBatchTiming(unitPrefix + "-" + (n + 1).ToString("000"), chunks[n].Length,
-                    result.Posts, Math.Round(started, 3), Math.Round(completed, 3), Math.Round(completed - started, 3));
+                    result.Posts, result.Repairs, Math.Round(started, 3), Math.Round(completed, 3), Math.Round(completed - started, 3));
             });
         foreach (var r in results)
         {
@@ -122,7 +123,8 @@ internal static class AgentGrouping
         return groups.Select(g => g.ToArray()).ToList();
     }
 
-    static (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts, List<Dispute> Disputes, List<string> Evidence) AskChunk(
+    static (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts, int Repairs,
+        List<Dispute> Disputes, List<string> Evidence) AskChunk(
         IAgentSource source, Run[] chunk, int number, AgentUnit.Model model, AgentBudget budget, int retryDelayMs, string instruction, string unitPrefix, object? verificationFeedback)
     {
         // The runs divided so far, from any turn: a correct division of one run is kept when another run of the same answer is refused.
@@ -145,7 +147,7 @@ internal static class AgentGrouping
         while (true)
         {
             var req = BuildRequest(payload, history, source.Flavor.GroupPrompt);
-            if (budget.Admit(req) is { } refusal) return (accepted, answers, Fallback("BUDGET:" + refusal), posts, disputes, evidence);
+            if (budget.Admit(req) is { } refusal) return (accepted, answers, Fallback("BUDGET:" + refusal), posts, repairs, disputes, evidence);
             posts++;
             AgentProtocol.ModelTurn reply;
             try { reply = model(unitId, 1 + repairs, req); }
@@ -155,8 +157,8 @@ internal static class AgentGrouping
                 if (retryDelayMs > 0) Thread.Sleep(retryDelayMs);
                 continue;
             }
-            catch (ReplyFailure f) { return (accepted, answers, Fallback("CALL:" + f.Code), posts, disputes, evidence); }
-            catch (Exception e) when (e is not OutOfMemoryException) { return (accepted, answers, Fallback("MODEL_CALL_FAILED"), posts, disputes, evidence); }
+            catch (ReplyFailure f) { return (accepted, answers, Fallback("CALL:" + f.Code), posts, repairs, disputes, evidence); }
+            catch (Exception e) when (e is not OutOfMemoryException) { return (accepted, answers, Fallback("MODEL_CALL_FAILED"), posts, repairs, disputes, evidence); }
 
             string? failure, detail = null;
             if (reply.ToolCalls.Count > 0 || reply.FinishReason != "stop") failure = "PROTOCOL:ANSWER_WITH_FINISH_" + (reply.FinishReason ?? "NULL").ToUpperInvariant();
@@ -174,8 +176,8 @@ internal static class AgentGrouping
                 }
             }
             evidence.Add(JsonSerializer.Serialize(new { unit = unitId, turn = 1 + repairs, requestSha256 = req.Sha256, response = reply.Content, failure }, Options));
-            if (failure is null) return (accepted, answers, null, posts, disputes, evidence);
-            if (repairs >= MaxRepairs) return (accepted, answers, Fallback(failure), posts, disputes, evidence);
+            if (failure is null) return (accepted, answers, null, posts, repairs, disputes, evidence);
+            if (repairs >= MaxRepairs) return (accepted, answers, Fallback(failure), posts, repairs, disputes, evidence);
             repairs++;
             history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content ?? "" });
             history.Add(new JsonObject { ["role"] = "user", ["content"] = RepairMessage(failure, detail, accepted.Count > 0) });

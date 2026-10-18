@@ -88,7 +88,7 @@ public static class WebPipelineProjection
                     grouping is null ? "Grouping execution counters not recorded" :
                     $"Model divisions={grouping.ModelDividedRuns}; actual fallback runs={grouping.FallbackRuns}; disputes={grouping.DisputedRuns}; verification checks={grouping.VerificationChecks}; verified={grouping.VerifiedRuns}; membership disputes={grouping.MembershipDisputes}; boundary disputes={grouping.BoundaryDisputes}; unresolved aliases={grouping.UnresolvedAliases}; ignored review changes={grouping.IgnoredReviewChanges}" +
                     (grouping.Batches is { Count: > 0 } batches ? "; batches=" + string.Join(" | ", batches.Select(b =>
-                        $"{b.UnitId}: {b.Runs} runs, {b.Posts} POST, {b.ElapsedSeconds:0.0}s ({b.StartedAtSeconds:0.0}–{b.CompletedAtSeconds:0.0}s)") ) : ""))
+                        $"{b.UnitId}: {b.Runs} runs, {b.Posts} POST, {b.Repairs} repairs, {b.ElapsedSeconds:0.0}s ({b.StartedAtSeconds:0.0}–{b.CompletedAtSeconds:0.0}s)") ) : ""))
                 : new("V6-line-grouping", lane?.Status == "not-run" ? "skipped" : "not-recorded", "No grouping observation"));
             stages.Add(grouping is null
                 ? new("V6-group-verification", lane?.Status == "not-run" ? "skipped" : "not-recorded", "No verification counters recorded")

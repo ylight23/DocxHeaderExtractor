@@ -73,7 +73,8 @@ public sealed record GroupingObservation(int ModelDividedRuns = 0, int FallbackR
 }
 
 /// <summary>Wall-clock timing for one initial or review grouping request batch; offsets are relative to that Group invocation.</summary>
-public sealed record GroupingBatchTiming(string UnitId, int Runs, int Posts, double StartedAtSeconds, double CompletedAtSeconds, double ElapsedSeconds);
+public sealed record GroupingBatchTiming(string UnitId, int Runs, int Posts, int Repairs,
+    double StartedAtSeconds, double CompletedAtSeconds, double ElapsedSeconds);
 
 /// <summary>
 /// Measurements of the document handed to the placement pass: the style table of the whole document and the style of each line (JSON objects as
