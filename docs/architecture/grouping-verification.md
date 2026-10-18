@@ -1,6 +1,6 @@
 # Independent heading-group verification
 
-2026-10-17. Production selector IDs now end in `verified-groups-v2-per-alias` for scan, text PDF,
+Updated 2026-10-18. Production selector IDs now end in `verified-groups-v2-per-alias` for scan, text PDF,
 and DOCX. The heading instruction and OCR/transcription caches are unchanged. The additional
 model conversation checks every proposed heading, including singleton and fallback groups.
 Protocol-valid grouping alone no longer admits a heading to binding.
@@ -27,14 +27,21 @@ Flow:
    one non-`HEADING` alias; only those aliases go to selection review. `REGROUP` requests a
    targeted boundary-only division. The program never reads keywords in `reason` to change a
    verdict. Inconsistent structured claims are sent back as protocol errors.
-4. A targeted regroup is verified once more; it cannot request another boundary repair. Groups
+4. Boundary verification starts at cycle 0. `REGROUP` with every membership still `HEADING`
+   may trigger boundary repair 1, followed by fresh verification at cycle 1. The same condition
+   may trigger boundary repair 2, followed by final verification at cycle 2. `ACCEPT` admits the
+   verified groups; `REGROUP` at cycle 2 withholds the candidate as unresolved. Membership
+   disputes and unknown membership retain their existing review/refinement handling; they do
+   not qualify for boundary-only repair. `MaxBoundaryRepairCycles = 2` is a semantic limit,
+   separate from protocol repair rounds within a grouping or verification request. Groups
    produced after selection review are also verified, with no further selection-review cycle.
    Unresolved aliases never become single-line fallback headings.
 
 In a mixed run, confirmed `HEADING` aliases are proposed separately for fresh verification in
 their original source context. Removing contested aliases only cuts candidate pieces at the
 resulting gaps; these pieces are not emitted until a model accepts their boundaries. The fresh
-pass can request its own bounded boundary repair. There is at most one membership refinement
+pass preserves the incoming boundary cycle and may use only the remaining boundary repairs;
+survivor refinement does not reset the cycle counter. There is at most one membership refinement
 per verification branch, and only one selection-review cycle. A failed/repeated dispute withholds
 the affected aliases without discarding independently accepted neighbours. At a bound where
 boundaries remain unverified, membership can still be `HEADING` while binding stays unresolved;
@@ -60,7 +67,13 @@ rate-limit and server-error list; client/payment/audit/endpoint failures do not 
 retry sends identical prepared bytes without advancing the response round, checks cancellation
 during the delay, and passes the shared byte/cost/call budget again. Both successful and failed
 attempts carry request hashes; retry decisions and exhausted/budget outcomes are recorded.
-The document's default reserve includes this bounded allowance. There are
+The document's default reserve includes this bounded allowance. Semantic regroup POSTs have
+a separate reserve from initial/review grouping and verification: two initial/review trees,
+two boundary cycles, at most `floor(sourceLines / 2)` provider-backed grouping chunks per cycle,
+and up to `1 + AgentGrouping.MaxRepairs + AgentUnit.TransportRetries` POSTs per chunk.
+Independent candidates do not share grouping requests. Their aliases are disjoint at a given
+cycle, including survivor refinement, and each provider-backed run requires at least two lines.
+The regroup cost reserve uses the request byte cap. There are
 no unbounded semantic retries. Source context tools can provide context beyond the initial
 eight lines; the verifier may return unresolved when it cannot obtain adequate evidence.
 
@@ -86,7 +99,14 @@ regroup → reverify sequence remains serial and each nested operation uses one 
 parallelism cannot multiply across nested loops. Results/evidence are combined in candidate
 order and final groups remain in source order. The scheduler changes no prompt, membership
 policy, verification coverage or reasoning setting. A barrier-based regression proves two
-repairs overlap at `jobs=2` without exceeding that cap; this is not a live 023 speed measurement.
+repairs overlap at `jobs=2` without exceeding that cap across one or two boundary cycles; this
+is not a live 023 speed measurement. `Second_semantic_boundary_repair_is_bounded_and_never_overrides_changed_membership`
+covers `REGROUP → REGROUP → ACCEPT`, `REGROUP → REGROUP → REGROUP`, changed membership,
+and protocol repair within a semantic cycle. `Membership_refinement_does_not_reset_the_semantic_boundary_cycle_limit`
+locks cycle preservation through survivor verification. The budget regression
+`Many_candidates_can_use_both_boundary_cycles_without_borrowing_verifier_reserve` exercises
+24 independent candidates, both semantic cycles and both initial/review passes, exhausting
+the per-request protocol/transport allowance against a separate GROUP-only admission ledger.
 
 The selector records wall-clock `selection`, `grouping`, `verification` and `review` seconds.
 Verification includes boundary repairs; review includes its regroup and re-verification.
@@ -112,6 +132,30 @@ accuracy; an accepted verifier judgement can still be wrong.
 `pre-binding-alias-state` audit entry record initial selection, final selection, latest model
 verification membership and binding eligibility per alias. `UNRESOLVED` is distinct from
 `NOT_SELECT`; `READY_FOR_BINDING` does not claim a placement, level or validated parent.
+
+Alias provenance records `BoundaryRepairCycle`, grouping status (`DIVIDED`, `DISPUTED`,
+`FALLBACK`), verifier decision, evidence references and reason length. It does **not** record
+the proposed partition, raw reason or returned tool evidence. `DIVIDED` at successive cycles
+does not establish whether a partition changed. Comparing cycles requires ordered groups of
+ordered aliases from the same execution, matched by unit/candidate and source aliases; candidate
+IDs can change during repair. Missing partitions must be reported as `not-recorded`, with
+transition comparisons `unknown`, never inferred as `same` from repeated `REGROUP` verdicts.
+
+The selector retains grouping responses and verification/tool evidence in `ModelAnswers`
+(including `groupingEvidence` envelopes), which the authority carries as `RawModelResponses`.
+This is retention in the execution object, not a durable raw-response cache. Web `SafeAudit`
+omits those fields. `/api/extract` emits optional raw reply events only when `showRaw` is enabled;
+a saved safe-only NDJSON result cannot reconstruct an omitted partition or verifier reason.
+OCR/transcription cache entries are not a substitute for grouping responses from that execution.
+
+There is a capability difference to investigate if a recorded trajectory shows unchanged
+partitions: verification can request source context/spans/facts and scan crops, while
+`AgentGrouping.Group` receives its run packet and `verificationFeedback`, without an evidence
+tool conversation. Feedback includes the proposed groups and verdict/reason/evidence references,
+but not the verifier's returned tool evidence or crop images. This difference alone does not
+prove that a particular live repair lacked evidence: that conclusion needs its recorded tool
+history and partitions. No no-progress guard, extra semantic cycle or evidence-capable repair
+is implemented by this documentation change.
 
 Appendix regression uses a synthetic alias distribution based on the inspected stored 023
 page-23 image and the user's expected outline. It checks precise single-alias review, survivor
