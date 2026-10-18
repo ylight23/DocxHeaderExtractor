@@ -71,20 +71,23 @@ public sealed record HeadingAliasProvenance(string Alias, string Stage, string U
     public int? Round { get; init; }
     public int? ReasonLength { get; init; }
     public string? UnitFailureContext { get; init; }
+    public int BoundaryRepairCycle { get; init; }
 }
 
 /// <summary>Actual stage observations, not inferred from failure-code text. Counts accumulate across repair/review passes.</summary>
 public sealed record GroupingObservation(int ModelDividedRuns = 0, int FallbackRuns = 0, int DisputedRuns = 0,
     int VerificationChecks = 0, int VerifiedRuns = 0, int MembershipDisputes = 0, int BoundaryDisputes = 0,
     int UnresolvedAliases = 0, int IgnoredReviewChanges = 0, IReadOnlyList<GroupingBatchTiming>? Batches = null,
-    IReadOnlyList<GroupingFieldDiagnostic>? FieldDiagnostics = null)
+    IReadOnlyList<GroupingFieldDiagnostic>? FieldDiagnostics = null,
+    IReadOnlyList<GroupingCoverageDiagnostic>? CoverageDiagnostics = null)
 {
     public GroupingObservation Add(GroupingObservation other) => new(ModelDividedRuns + other.ModelDividedRuns,
         FallbackRuns + other.FallbackRuns, DisputedRuns + other.DisputedRuns, VerificationChecks + other.VerificationChecks,
         VerifiedRuns + other.VerifiedRuns, MembershipDisputes + other.MembershipDisputes,
         BoundaryDisputes + other.BoundaryDisputes, UnresolvedAliases + other.UnresolvedAliases,
         IgnoredReviewChanges + other.IgnoredReviewChanges, (Batches ?? []).Concat(other.Batches ?? []).ToArray(),
-        (FieldDiagnostics ?? []).Concat(other.FieldDiagnostics ?? []).ToArray());
+        (FieldDiagnostics ?? []).Concat(other.FieldDiagnostics ?? []).ToArray(),
+        (CoverageDiagnostics ?? []).Concat(other.CoverageDiagnostics ?? []).ToArray());
 }
 
 /// <summary>Wall-clock timing for one initial or review grouping request batch; offsets are relative to that Group invocation.</summary>
@@ -95,6 +98,11 @@ public sealed record GroupingBatchTiming(string Phase, string UnitId, int Runs, 
 public sealed record GroupingFieldTypeIssue(string Field, string Expected, string Actual);
 public sealed record GroupingFieldDiagnostic(string UnitId, int Attempt, int Round, string? Run, string Path,
     IReadOnlyList<string> Missing, IReadOnlyList<string> Unexpected, IReadOnlyList<GroupingFieldTypeIssue> InvalidTypes, bool ProtocolAccepted);
+
+/// <summary>Observed membership identity/order, retained even when the strict coverage gate refuses a verdict.</summary>
+public sealed record GroupingCoverageDiagnostic(string UnitId, int Attempt, int Round, string Run, int BoundaryRepairCycle,
+    IReadOnlyList<string> ExpectedAliases, IReadOnlyList<string> ObservedAliases, IReadOnlyList<string> MissingAliases,
+    IReadOnlyList<string> UnexpectedAliases, IReadOnlyList<string> DuplicateAliases, bool SequenceMatches);
 
 /// <summary>
 /// Measurements of the document handed to the placement pass: the style table of the whole document and the style of each line (JSON objects as

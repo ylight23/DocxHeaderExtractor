@@ -19,6 +19,8 @@ internal static class AgentGroupVerification
     // Evidence/JSON rounds and transport retries have separate limits. A failed transport
     // repeats identical prepared bytes and does not consume a model repair round.
     public const int MaxPosts = 3, TransportRetries = AgentUnit.TransportRetries, MaxCalls = MaxPosts + TransportRetries, BatchSize = 8;
+    // Semantic boundary cycles are separate from JSON repairs inside each grouping/verifier call.
+    public const int MaxBoundaryRepairCycles = 2;
     static readonly JsonSerializerOptions Json = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
     internal sealed record Candidate(string Id, string[][] Groups)
     { public string[] Aliases => Groups.SelectMany(g => g).ToArray(); }
@@ -28,6 +30,7 @@ internal static class AgentGroupVerification
     {
         public IReadOnlyList<GroupingFieldDiagnostic> FieldDiagnostics { get; init; } = [];
         public IReadOnlyList<HeadingAliasProvenance> Provenance { get; init; } = [];
+        public IReadOnlyList<GroupingCoverageDiagnostic> CoverageDiagnostics { get; init; } = [];
     }
     internal sealed record ProtocolIssue(string? Run, string Code);
     internal sealed record FieldTypeIssue([property: JsonPropertyName("field")] string Field,
@@ -55,7 +58,8 @@ internal static class AgentGroupVerification
     public static AgentGrouping.Result Verify(IAgentSource source, AgentGrouping.Result input,
         IReadOnlyDictionary<string, TextOffsetSpan> extents, IReadOnlyDictionary<string, string> readings,
         AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct, int retryDelayMs,
-        string instruction, bool allowRegroup = true, bool allowMembershipReview = true, string prefix = "VERIFY", bool allowMembershipRefinement = true)
+        string instruction, bool allowRegroup = true, bool allowMembershipReview = true, string prefix = "VERIFY", bool allowMembershipRefinement = true,
+        int boundaryRepairCycle = 0)
     {
         if (input.Groups.Count == 0) return input;
         var positions = source.Lines.Select((l, i) => (l.Alias, i)).ToDictionary(x => x.Alias, x => x.i);
@@ -72,7 +76,8 @@ internal static class AgentGroupVerification
         var chunks = candidates.Chunk(BatchSize).ToArray();
         var checks = new Check[chunks.Length];
         Parallel.For(0, chunks.Length, new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct },
-            n => checks[n] = Ask(source, chunks[n], extents, readings, model, budget, ct, retryDelayMs, instruction, prefix + "-" + (n + 1).ToString("000")));
+            n => checks[n] = Ask(source, chunks[n], extents, readings, model, budget, ct, retryDelayMs, instruction,
+                prefix + "-" + (n + 1).ToString("000"), boundaryRepairCycle));
         var groups = new List<IReadOnlyList<string>>();
         var disputes = input.Disputes.ToList();
         var unresolved = input.UnresolvedAliases.ToHashSet(StringComparer.Ordinal);
@@ -89,7 +94,8 @@ internal static class AgentGroupVerification
             evidence.AddRange(check.Evidence);
             provenance.AddRange(check.Provenance);
             observation = observation with { VerificationChecks = observation.VerificationChecks + chunks[n].Length,
-                FieldDiagnostics = (observation.FieldDiagnostics ?? []).Concat(check.FieldDiagnostics).ToArray() };
+                FieldDiagnostics = (observation.FieldDiagnostics ?? []).Concat(check.FieldDiagnostics).ToArray(),
+                CoverageDiagnostics = (observation.CoverageDiagnostics ?? []).Concat(check.CoverageDiagnostics).ToArray() };
             if (check.Failure is not null) failures.Add(prefix + "-" + (n + 1).ToString("000") + ":" + check.Failure);
             foreach (var candidate in chunks[n])
             {
@@ -98,7 +104,7 @@ internal static class AgentGroupVerification
                     provenance.Add(new(alias, "verification-final", prefix + "-" + (n + 1).ToString("000"), candidate.Id,
                         verdict?.Decision ?? "NO_VALID_VERDICT", verdict?.Membership.SingleOrDefault(m => m.Alias == alias)?.Status,
                         verdict is null ? ["NO_VALID_VERDICT"] : [], verdict?.EvidenceRefs ?? [])
-                        { ReasonLength = verdict?.Reason.Length, UnitFailureContext = check.Failure });
+                        { ReasonLength = verdict?.Reason.Length, UnitFailureContext = check.Failure, BoundaryRepairCycle = boundaryRepairCycle });
                 if (verdict is not null)
                 {
                     foreach (var item in verdict.Membership) memberships[item.Alias] = item.Status;
@@ -135,7 +141,8 @@ internal static class AgentGroupVerification
                             }
                         }
                         break;
-                    case "REGROUP" when allowRegroup:
+                    case "REGROUP" when allowRegroup && boundaryRepairCycle < MaxBoundaryRepairCycles
+                        && verdict.Membership.All(m => m.Status == "HEADING"):
                         corrections.Add((candidate, verdict, false));
                         break;
                     default:
@@ -156,17 +163,22 @@ internal static class AgentGroupVerification
                 var remaining = new AgentGrouping.Result(candidate.Groups, [], [], 0)
                 { Memberships = candidate.Aliases.ToDictionary(a => a, a => memberships[a], StringComparer.Ordinal) };
                 corrected[index] = Verify(source, remaining, extents, readings, model, budget, 1, ct,
-                    retryDelayMs, instruction, allowRegroup: true, allowMembershipReview: allowMembershipReview,
-                    prefix: prefix + "-SURVIVORS-" + candidate.Id, allowMembershipRefinement: false);
+                    retryDelayMs, instruction, allowRegroup: allowRegroup, allowMembershipReview: allowMembershipReview,
+                    prefix: prefix + "-SURVIVORS-" + candidate.Id, allowMembershipRefinement: false, boundaryRepairCycle: boundaryRepairCycle);
                 return;
             }
+            var nextCycle = boundaryRepairCycle + 1;
+            var cycleSuffix = nextCycle == 1 ? "" : "-CYCLE-" + nextCycle;
             var regroup = AgentGrouping.Group(source, candidate.Aliases.ToHashSet(StringComparer.Ordinal), model, budget,
-                1, ct, retryDelayMs, instruction, prefix + "-REGROUP-" + candidate.Id,
+                1, ct, retryDelayMs, instruction, prefix + "-REGROUP-" + candidate.Id + cycleSuffix,
                 new { candidate = candidate.Id, proposedGroups = candidate.Groups, verifier = verdict,
+                    boundaryRepairCycle = nextCycle, maxBoundaryRepairCycles = MaxBoundaryRepairCycles,
                     task = "Reconsider boundaries only. Membership is unchanged unless you explicitly report dispute." });
+            regroup = regroup with { Provenance = regroup.Provenance.Select(p => p with { BoundaryRepairCycle = nextCycle }).ToArray() };
             corrected[index] = Verify(source, regroup, extents, readings, model, budget, 1, ct,
-                retryDelayMs, instruction, allowRegroup: false, allowMembershipReview: allowMembershipReview,
-                prefix: prefix + "-REVERIFY-" + candidate.Id, allowMembershipRefinement: allowMembershipRefinement);
+                retryDelayMs, instruction, allowRegroup: allowRegroup, allowMembershipReview: allowMembershipReview,
+                prefix: prefix + "-REVERIFY-" + candidate.Id + cycleSuffix, allowMembershipRefinement: allowMembershipRefinement,
+                boundaryRepairCycle: nextCycle);
         });
         foreach (var verified in corrected)
         {
@@ -202,7 +214,7 @@ internal static class AgentGroupVerification
 
     static Check Ask(IAgentSource source, Candidate[] candidates, IReadOnlyDictionary<string, TextOffsetSpan> extents,
         IReadOnlyDictionary<string, string> readings, AgentUnit.Model model, AgentBudget budget, CancellationToken ct,
-        int retryDelayMs, string instruction, string unit)
+        int retryDelayMs, string instruction, string unit, int boundaryRepairCycle)
     {
         var tools = source.Flavor.CreateTools(source);
         var positions = source.Lines.Select((l, i) => (l.Alias, i)).ToDictionary(x => x.Alias, x => x.i);
@@ -226,8 +238,9 @@ internal static class AgentGroupVerification
         var accepted = new Dictionary<string, Verdict>(StringComparer.Ordinal);
         var allFieldDiagnostics = new List<GroupingFieldDiagnostic>();
         var provenance = new List<HeadingAliasProvenance>();
+        var coverageDiagnostics = new List<GroupingCoverageDiagnostic>();
         Check Finish(string? error) => new(candidates.Where(c => accepted.ContainsKey(c.Id)).Select(c => accepted[c.Id]).ToArray(), evidence, error)
-        { FieldDiagnostics = allFieldDiagnostics.ToArray(), Provenance = provenance.ToArray() };
+        { FieldDiagnostics = allFieldDiagnostics.ToArray(), Provenance = provenance.ToArray(), CoverageDiagnostics = coverageDiagnostics.ToArray() };
         string? failure = null;
         int posts = 0, retries = 0;
         for (var round = 1; round <= MaxPosts; round++)
@@ -322,7 +335,11 @@ internal static class AgentGroupVerification
                     var matches = identified.Where(v => v.Id == candidate.Id).ToArray();
                     if (matches.Length != 1)
                     { issues.Add(new(candidate.Id, matches.Length == 0 ? "RUN_MISSING" : "RUN_DUPLICATE")); continue; }
-                    try { accepted.Add(candidate.Id, ParseVerdict(matches[0].Node, candidate, observed, fieldDiagnostics)); }
+                    try { accepted.Add(candidate.Id, ParseVerdict(matches[0].Node, candidate, observed, fieldDiagnostics,
+                        aliases => coverageDiagnostics.Add(new(unit, posts, round, candidate.Id, boundaryRepairCycle,
+                            candidate.Aliases, aliases, candidate.Aliases.Except(aliases).ToArray(), aliases.Except(candidate.Aliases).ToArray(),
+                            aliases.GroupBy(a => a, StringComparer.Ordinal).Where(g => g.Count() > 1).Select(g => g.Key).ToArray(),
+                            aliases.SequenceEqual(candidate.Aliases))))); }
                     catch (VerificationProtocolException e) { issues.Add(new(candidate.Id, e.Message)); }
                     catch (Exception e) when (e is JsonException or InvalidOperationException or NullReferenceException or ArgumentException)
                     { issues.Add(new(candidate.Id, "VERDICT_SHAPE_INVALID")); }
@@ -341,7 +358,7 @@ internal static class AgentGroupVerification
                     var membership = verdict?.Membership.SingleOrDefault(m => m.Alias == alias);
                     provenance.Add(new(alias, "verification-protocol", unit, candidate.Id, verdict?.Decision,
                         membership?.Status, issues.Where(i => i.Run is null || i.Run == candidate.Id).Select(i => i.Code).ToArray(),
-                        membership?.EvidenceRefs ?? []) { Round = round, ReasonLength = verdict?.Reason.Length });
+                        membership?.EvidenceRefs ?? []) { Round = round, ReasonLength = verdict?.Reason.Length, BoundaryRepairCycle = boundaryRepairCycle });
                 }
             }
             allFieldDiagnostics.AddRange(fieldDiagnostics.Select(d => new GroupingFieldDiagnostic(unit, posts, round, d.Run, d.Path,
@@ -349,7 +366,8 @@ internal static class AgentGroupVerification
                 d.Run is not null && accepted.ContainsKey(d.Run))));
             evidence.Add(JsonSerializer.Serialize(new { stage = "verification-protocol", unit, attempt = posts, round,
                 acceptedCandidates = candidates.Where(c => accepted.ContainsKey(c.Id)).Select(c => c.Id).ToArray(),
-                pendingCandidates = remaining, issues, fieldDiagnostics }, Json));
+                pendingCandidates = remaining, issues, fieldDiagnostics,
+                coverageDiagnostics = coverageDiagnostics.Where(d => d.Attempt == posts).ToArray() }, Json));
             if (remaining.Length == 0) return Finish(null);
             failure = "PROTOCOL:VERIFICATION_INVALID:" + string.Join(";", issues.Select(i => (i.Run ?? "ENVELOPE") + ":" + i.Code));
             if (round == MaxPosts) break;
@@ -403,7 +421,8 @@ internal static class AgentGroupVerification
             string.Join(",", shape.InvalidTypes.Select(t => t.Field + "(expected=" + t.Expected + ",actual=" + t.Actual + ")")));
     }
 
-    static Verdict ParseVerdict(JsonNode? node, Candidate candidate, IReadOnlySet<string> observed, List<FieldDiagnostic> diagnostics)
+    static Verdict ParseVerdict(JsonNode? node, Candidate candidate, IReadOnlySet<string> observed, List<FieldDiagnostic> diagnostics,
+        Action<string[]> observeCoverage)
     {
         RequireFields(node, candidate.Id, "verdict", VerdictFields, diagnostics, "VERDICT");
         var item = node!.AsObject();
@@ -422,7 +441,9 @@ internal static class AgentGroupVerification
             Require(status is "HEADING" or "NOT_HEADING" or "UNRESOLVED", "MEMBERSHIP_STATUS_INVALID");
             membership.Add(new(alias!, status!, EvidenceRefs(m!["evidenceRefs"], observed, "MEMBERSHIP_EVIDENCE_INVALID")));
         }
-        Require(membership.Select(m => m.Alias).SequenceEqual(candidate.Aliases), "MEMBERSHIP_COVERAGE_INVALID");
+        var aliases = membership.Select(m => m.Alias).ToArray();
+        observeCoverage(aliases);
+        Require(aliases.SequenceEqual(candidate.Aliases), "MEMBERSHIP_COVERAGE_INVALID");
         Require(!((decision is "ACCEPT" or "REGROUP") && membership.Any(m => m.Status != "HEADING")) &&
             !(decision == "MEMBERSHIP_DISPUTE" && membership.All(m => m.Status == "HEADING")), "MEMBERSHIP_DECISION_INCONSISTENT");
         return new(candidate.Id, decision!, reason!, refs, membership.ToArray());

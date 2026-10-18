@@ -32,6 +32,7 @@ def export(audit_path, source_path, ocr_path, output_prefix):
     states = get(audit, "headingAliasStates", {})
     trace = {get(s, "alias"): s for s in get(placement, "sourceTrace", [])}
     recorded = {get(b, "alias"): b for b in get(placement, "missingAncestorBlockers", [])}
+    coverage_history = get(get(audit, "grouping", {}), "coverageDiagnostics", []) or []
     blockers = {}
     missing = [d for d in get(placement, "decisions", []) if get(d, "verificationStatus") == "MISSING_ANCESTOR"]
     for decision in missing:
@@ -46,6 +47,13 @@ def export(audit_path, source_path, ocr_path, output_prefix):
         terminal_protocol = next((p for p in reversed(provenance) if get(p, "stage") == "verification-protocol"
                                   and get(p, "unitId") == get(terminal, "unitId")
                                   and get(p, "candidateId") == get(terminal, "candidateId")), None)
+        terminal_coverage = next((c for c in reversed(coverage_history) if get(c, "unitId") == get(terminal, "unitId")
+                                  and get(c, "run") == get(terminal, "candidateId")
+                                  and get(c, "round") == get(terminal_protocol, "round")), None)
+        # Older audits identify candidate members but did not retain the provider's sequence.
+        candidate_members = [a for a, s in trace.items() if any(
+            get(p, "unitId") == get(terminal, "unitId") and get(p, "candidateId") == get(terminal, "candidateId")
+            for p in get(states.get(a, {}), "provenance", []))] if terminal else []
         rows.append({
             "alias": alias, "sourceId": source_id, "text": texts.get(source_id),
             "textBasis": "hash-matched ocr-original; not a recovered model-selected reading",
@@ -58,6 +66,10 @@ def export(audit_path, source_path, ocr_path, output_prefix):
             "provenance": provenance,
             "terminalVerification": terminal,
             "terminalProtocolIssues": get(terminal_protocol, "failureCodes", []),
+            "boundaryRepairCycle": get(terminal, "boundaryRepairCycle"),
+            "terminalCoverageAvailability": "recorded" if terminal_coverage else "not-recorded",
+            "terminalCoverage": terminal_coverage,
+            "candidateMembersInSourceOrder": candidate_members,
             "failureCodes": sorted({code for p in provenance for code in get(p, "failureCodes", [])}),
         })
     if any(r["text"] is None for r in rows):
@@ -78,6 +90,7 @@ def export(audit_path, source_path, ocr_path, output_prefix):
             "An absent per-alias history is not-recorded. Global unit failures are context, not an inferred alias-specific cause.",
             "Text comes from hash-matched primary OCR, not reconstructed model replies.",
             "Protocol history can contain recovered failures; the terminal verifier decision identifies the remaining loss.",
+            "For older audits, candidate members in source order are available, but the original expected/observed packet sequences are not invented.",
         ],
     }
     output_prefix.parent.mkdir(parents=True, exist_ok=True)
@@ -88,13 +101,23 @@ def export(audit_path, source_path, ocr_path, output_prefix):
 
     md = [f"Execution `{report['executionId']}`: {len(rows)} unique source aliases block {report['uniqueBlockedHeadings']} unique headings.",
           "", "Text: hash-matched primary OCR. Counts overlap for multi-line ancestors.", "",
-          "| Blocker alias | Text | Blocked headings | Initial | Final | Verifier membership | Binding | Terminal verifier | Protocol history |",
-          "|---|---|---:|---|---|---|---|---|---|"]
+          "| Blocker alias | Text | Blocked headings | Initial | Final | Verifier membership | Binding | Terminal verifier | Boundary cycle | Protocol history |",
+          "|---|---|---:|---|---|---|---|---|---|---|"]
     for row in rows:
         reason = "; ".join(row["failureCodes"]) or ("none recorded" if row["provenance"] else "not-recorded")
         terminal = get(row["terminalVerification"], "decision", "not-recorded")
         md.append("| " + " | ".join(cell(v) for v in [row["alias"], row["text"], row["blockedHeadingCount"], row["initialSelection"],
-                  row["finalSelection"], row["verificationMembership"], row["bindingStatus"], terminal, reason]) + " |")
+                  row["finalSelection"], row["verificationMembership"], row["bindingStatus"], terminal, row["boundaryRepairCycle"], reason]) + " |")
+    for row in rows:
+        if "MEMBERSHIP_COVERAGE_INVALID" not in row["terminalProtocolIssues"]:
+            continue
+        md.extend(["", f"Terminal coverage for `{row['alias']}`:", ""])
+        if row["terminalCoverage"]:
+            for name in ("ExpectedAliases", "ObservedAliases", "MissingAliases", "UnexpectedAliases", "DuplicateAliases", "SequenceMatches"):
+                md.append(f"- {name}: `{json.dumps(get(row['terminalCoverage'], name), ensure_ascii=False)}`")
+        else:
+            md.extend([f"- Candidate members (source order): `{json.dumps(row['candidateMembersInSourceOrder'])}`",
+                       "- Exact expected/observed sequences, duplicates and missing aliases: not-recorded in this execution."])
     md.extend(["", *["- " + note for note in report["limitations"]], ""])
     output_prefix.with_suffix(".md").write_text("\n".join(md), encoding="utf-8")
     return report

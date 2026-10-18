@@ -431,10 +431,24 @@ public sealed class HeadingGroupVerificationTests
         Assert.Empty(result.Memberships);
         Assert.Equal(AgentGroupVerification.MaxPosts, calls);
         Assert.Contains(result.Failures, f => f.Contains("PROTOCOL:VERIFICATION_INVALID", StringComparison.Ordinal));
+        if (mode is "missing" or "duplicate" or "out-of-order" or "unknown-alias")
+        {
+            var coverage = Assert.Single(result.Observation.CoverageDiagnostics!, d => d.Round == AgentGroupVerification.MaxPosts);
+            Assert.Equal(new[] { A(1), A(2), A(3) }, coverage.ExpectedAliases);
+            Assert.False(coverage.SequenceMatches);
+            Assert.Equal(mode == "missing" ? new[] { A(2), A(3) }
+                : mode == "duplicate" ? new[] { A(1), A(1), A(3) }
+                : mode == "out-of-order" ? new[] { A(2), A(1), A(3) } : new[] { "UNKNOWN", A(2), A(3) }, coverage.ObservedAliases);
+            Assert.Equal(mode == "out-of-order" ? Array.Empty<string>() : new[] { mode == "duplicate" ? A(2) : A(1) }, coverage.MissingAliases);
+            Assert.Equal(mode == "duplicate" ? new[] { A(1) } : Array.Empty<string>(), coverage.DuplicateAliases);
+            Assert.Equal(mode == "unknown-alias" ? new[] { "UNKNOWN" } : Array.Empty<string>(), coverage.UnexpectedAliases);
+        }
     }
 
-    [Fact]
-    public void Independent_boundary_repairs_overlap_without_exceeding_jobs_and_keep_output_order()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void Independent_boundary_repairs_overlap_without_exceeding_jobs_and_keep_output_order(bool secondCycle)
     {
         var source = Source();
         var expected = new[] { new[] { A(1), A(2) }, new[] { A(5), A(6) }, new[] { A(9), A(10) }, new[] { A(13), A(14) } };
@@ -445,7 +459,8 @@ public sealed class HeadingGroupVerificationTests
         {
             var packet = Payload(request);
             if (packet["stage"]!.GetValue<string>() == "GROUP_VERIFICATION")
-                return new ModelTurn(Verdicts(packet, _ => unit.Contains("REVERIFY", StringComparison.Ordinal) ? "ACCEPT" : "REGROUP"), [], "stop");
+                return new ModelTurn(Verdicts(packet, _ => unit.Contains("REVERIFY", StringComparison.Ordinal)
+                    && (!secondCycle || unit.Contains("CYCLE-2", StringComparison.Ordinal)) ? "ACCEPT" : "REGROUP"), [], "stop");
             var current = Interlocked.Increment(ref active);
             int seen;
             do { seen = Volatile.Read(ref maximum); } while (current > seen && Interlocked.CompareExchange(ref maximum, current, seen) != seen);
@@ -471,13 +486,96 @@ public sealed class HeadingGroupVerificationTests
         var result = AgentGroupVerification.Verify(source, input, new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
             model, new AgentBudget(100, 100), 2, CancellationToken.None, 0, Instruction);
         Assert.Empty(result.Failures);
-        Assert.Equal(4, groupCalls);
+        Assert.Equal(secondCycle ? 8 : 4, groupCalls);
         Assert.Equal(2, maximum);
         Assert.Equal(expected, result.Groups.Select(g => g.ToArray()));
-        Assert.Equal(4, result.Observation.BoundaryDisputes);
+        Assert.Equal(secondCycle ? 8 : 4, result.Observation.BoundaryDisputes);
         Assert.Equal(4, result.Observation.VerifiedRuns);
         Assert.Contains(result.Provenance, p => p.Decision == "REGROUP" && p.Membership == "HEADING");
         Assert.Contains(result.Provenance, p => p.UnitId.StartsWith("VERIFY-REVERIFY", StringComparison.Ordinal) && p.Decision == "ACCEPT");
+        Assert.Equal(secondCycle ? 2 : 1, result.Provenance.Max(p => p.BoundaryRepairCycle));
+    }
+
+    [Theory]
+    [InlineData("ACCEPT", false)]
+    [InlineData("ACCEPT", true)]
+    [InlineData("REGROUP", false)]
+    [InlineData("MEMBERSHIP_DISPUTE", false)]
+    [InlineData("UNRESOLVED", false)]
+    public void Second_semantic_boundary_repair_is_bounded_and_never_overrides_changed_membership(string terminal, bool protocolRepair)
+    {
+        var groupCalls = 0;
+        var verificationCalls = 0;
+        var aliases = new[] { A(1), A(2), A(3) };
+        AgentUnit.Model model = (_, _, request) =>
+        {
+            var packet = Payload(request);
+            if (packet["stage"]!.GetValue<string>() == "GROUP_VERIFICATION")
+            {
+                var decision = ++verificationCalls <= 2 ? "REGROUP" : terminal;
+                return new ModelTurn(Verdicts(packet, _ => decision), [], "stop");
+            }
+            Assert.Equal("GROUP", packet["stage"]!.GetValue<string>());
+            groupCalls++;
+            if (protocolRepair && groupCalls % 2 == 1) return new ModelTurn("{}", [], "stop");
+            return new ModelTurn(JsonSerializer.Serialize(new
+            {
+                protocolVersion = AgentGrouping.GroupVersion,
+                runs = packet["runs"]!.AsArray().Select(r => new { run = r!["run"]!.GetValue<string>(), headings = new[] { aliases } })
+            }), [], "stop");
+        };
+        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([aliases], [], [], 0),
+            new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(100, 100),
+            1, CancellationToken.None, 0, Instruction, allowMembershipReview: false);
+        Assert.Equal(protocolRepair ? 4 : 2, groupCalls);
+        Assert.Equal(3, verificationCalls);
+        Assert.All(result.Provenance.Where(p => p.Stage == "verification-final" && p.BoundaryRepairCycle == 2),
+            p => Assert.Equal(terminal, p.Decision));
+        Assert.Equal(new[] { 0, 1, 2 }, result.Provenance.Where(p => p.Stage == "verification-final").Select(p => p.BoundaryRepairCycle).Distinct());
+        if (terminal == "ACCEPT")
+        {
+            Assert.Single(result.Groups);
+            Assert.Empty(result.UnresolvedAliases);
+            Assert.Empty(result.Failures);
+        }
+        else
+        {
+            Assert.Empty(result.Groups);
+            Assert.Equal(aliases, result.UnresolvedAliases);
+            Assert.All(aliases, a => Assert.Equal(terminal == "MEMBERSHIP_DISPUTE" ? "NOT_HEADING" : terminal == "UNRESOLVED" ? "UNRESOLVED" : "HEADING", result.Memberships[a]));
+        }
+    }
+
+    [Fact]
+    public void Membership_refinement_does_not_reset_the_semantic_boundary_cycle_limit()
+    {
+        var groupCalls = 0;
+        var verificationCalls = 0;
+        var aliases = new[] { A(1), A(2), A(3) };
+        AgentUnit.Model model = (_, _, request) =>
+        {
+            var packet = Payload(request);
+            if (packet["stage"]!.GetValue<string>() == "GROUP_VERIFICATION")
+            {
+                var decision = ++verificationCalls == 3 ? "MEMBERSHIP_DISPUTE" : "REGROUP";
+                return new ModelTurn(Verdicts(packet, _ => decision, membershipStatus:
+                    a => decision == "MEMBERSHIP_DISPUTE" && a == A(2) ? "NOT_HEADING" : "HEADING"), [], "stop");
+            }
+            Assert.Equal("GROUP", packet["stage"]!.GetValue<string>());
+            groupCalls++;
+            return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = AgentGrouping.GroupVersion,
+                runs = packet["runs"]!.AsArray().Select(r => new { run = r!["run"]!.GetValue<string>(), headings = new[] { aliases } }) }), [], "stop");
+        };
+        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([aliases], [], [], 0),
+            new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(100, 100),
+            1, CancellationToken.None, 0, Instruction, allowMembershipReview: false);
+        Assert.Equal(2, groupCalls);
+        Assert.Equal(4, verificationCalls);
+        Assert.Equal("NOT_HEADING", result.Memberships[A(2)]);
+        Assert.Empty(result.Groups);
+        Assert.Equal(aliases.Order(), result.UnresolvedAliases.Order());
+        Assert.Equal(2, result.Provenance.Max(p => p.BoundaryRepairCycle));
+        Assert.DoesNotContain(result.Provenance.Where(p => p.Stage == "grouping" && p.BoundaryRepairCycle == 2), p => p.Decision == "FALLBACK");
     }
     // Source functions copied from the inspected stored page 32, not a heading Gold or a production phrase filter.
     static ScanAgentSource Source(string? entry = null, string? imageSha = null, int lineCount = 14, string[]? sourceTexts = null)
@@ -582,7 +680,7 @@ public sealed class HeadingGroupVerificationTests
             Assert.Equal(0, result.UnitsComplete);
         }
         else Assert.Empty(result.UnitFailures);
-        Assert.Equal(mode == "membership" ? 1 : 2, groupCalls);
+        Assert.Equal(mode == "membership" ? 1 : mode == "repeated-boundary" ? 3 : 2, groupCalls);
     }
 
     [Theory]
