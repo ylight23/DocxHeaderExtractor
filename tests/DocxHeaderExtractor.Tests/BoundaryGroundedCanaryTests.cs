@@ -173,6 +173,34 @@ public sealed class BoundaryGroundedCanaryTests
     }
 
     [Fact]
+    public void Missing_membership_and_evidence_are_named_in_repair_and_complete_template_is_preserved()
+    {
+        AgentUnit.Model model = (unit, round, request) =>
+        {
+            Assert.Equal("D-VERIFIER", unit);
+            if (round == 1)
+            {
+                var root = JsonNode.Parse(Reply("ACCEPT", Input, null))!;
+                root["verdicts"]![0]!.AsObject().Remove("membership");
+                root["verdicts"]![0]!.AsObject().Remove("evidenceRefs");
+                return new(root.ToJsonString(), [], "stop");
+            }
+            var messages = JsonNode.Parse(request.Body)!["messages"]!.AsArray();
+            var repair = JsonNode.Parse(messages[^1]!["content"]!.GetValue<string>())!;
+            Assert.Equal(new[] { "evidenceRefs", "membership" }, repair["missingFields"]!.Deserialize<string[]>());
+            var template = repair["responseTemplate"]!["verdicts"]![0]!;
+            Assert.Equal(3, template["membership"]!.AsArray().Count);
+            Assert.NotNull(template["evidenceRefs"]);
+            Assert.NotNull(template["currentGroups"]);
+            Assert.True(template.AsObject().ContainsKey("suggestedGroups"));
+            return new(Reply("ACCEPT", Input, null), [], "stop");
+        };
+        var result = BoundaryGroundedCanary.Run(BoundaryStaticCanaryTests.Source(), Seed(), model, new(12, 1), default);
+        Assert.Equal("GROUNDED_ACCEPT_CURRENT", result.Status);
+        Assert.Equal(new[] { "evidenceRefs", "membership" }, result.Rounds[0].MissingFields);
+    }
+
+    [Fact]
     public void Exhausted_budget_does_not_send_consistency_repair()
     {
         int calls = 0;

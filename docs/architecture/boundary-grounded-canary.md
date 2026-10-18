@@ -10,6 +10,8 @@ The command shares C's frozen-source loader and checks the source document, alia
 
 The qualification schema is `QUALIFICATION_GROUNDED_REGROUP_V1`. It retains the production verdict's run, decision, reason, evidence references and exact ordered per-alias membership. It adds two required fields:
 
+The prompt publishes one complete seven-field response template. It retains production semantic instructions but removes the old response-schema and tool-request paragraphs, so the schema extension does not compete with a second schema. Protocol repair repeats the complete template and names missing required fields using only fixed contract field names. `currentGroups` and `suggestedGroups` never replace membership or evidence references. Safe round observations include `MissingFields` for these format failures.
+
 | Field | Constraint |
 |---|---|
 | `currentGroups` | Exactly equals the input `proposedGroups`, including ordered group boundaries, for every decision |

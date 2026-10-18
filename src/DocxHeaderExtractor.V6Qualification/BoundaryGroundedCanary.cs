@@ -13,8 +13,9 @@ internal static class BoundaryGroundedCanary
 {
     internal const string Version = "QUALIFICATION_GROUNDED_REGROUP_V1";
     internal const int MaxProtocolRounds = 3;
+    static readonly string[] RequiredFields = ["run", "decision", "reason", "evidenceRefs", "membership", "currentGroups", "suggestedGroups"];
     internal sealed record Round(int Number, string? FinishReason, int ResponseBytes, string? Decision,
-        string[][]? CurrentGroups, string[][]? SuggestedGroups, string? ProtocolError);
+        string[][]? CurrentGroups, string[][]? SuggestedGroups, string? ProtocolError, string[] MissingFields);
     internal sealed record Result(string Status, string SeedPacketSha256, string[] Aliases, string[][] InputGroups,
         string[][]? SuggestedGroups, string? IndependentVerdict, bool QualifiedAccept, string? Failure,
         IReadOnlyList<Round> Rounds);
@@ -46,8 +47,23 @@ internal static class BoundaryGroundedCanary
         groundedPacket["stage"] = "QUALIFICATION_GROUNDED_REGROUP";
         groundedPacket.Remove("evidenceTools"); groundedPacket.Remove("scanCropTool");
         groundedPacket["frozenComplaint"] = JsonSerializer.SerializeToNode(original);
-        var prompt = AgentGroupVerification.Prompt + "\nQUALIFICATION OVERRIDE: no tools. Return protocolVersion " + Version +
-            ". For the single verdict add currentGroups and suggestedGroups. currentGroups must exactly echo proposedGroups, including ordered group boundaries, for EVERY decision. For REGROUP, suggestedGroups must be a DIFFERENT valid ordered partition covering every candidate alias exactly once, in contiguous nonempty groups of at most 8 lines. For other decisions suggestedGroups must be null. A reason cannot replace structural consistency. If current boundaries are correct, ACCEPT; do not invent boundary changes merely to satisfy REGROUP. Otherwise provide a genuinely different valid partition, or report membership dispute/unresolved as appropriate. A suggestion has no authority until a fresh independent verifier accepts it. Protocol consistency repairs stay in this conversation and do not open a semantic boundary cycle.";
+        var responseTemplate = new
+        {
+            protocolVersion = Version,
+            verdicts = new[] { new
+            {
+                run = candidate.Id, decision = "ACCEPT|REGROUP|MEMBERSHIP_DISPUTE|UNRESOLVED",
+                reason = "<1 to 1000 characters>", evidenceRefs = new[] { candidate.Aliases[0] },
+                membership = candidate.Aliases.Select(a => new { alias = a, status = "HEADING|NOT_HEADING|UNRESOLVED", evidenceRefs = new[] { a } }),
+                currentGroups = groups, suggestedGroups = (string[][]?)null
+            } }
+        };
+        // Retain semantic instructions, but publish ONE complete schema rather than append a conflicting schema extension.
+        var semanticPrompt = string.Join("\n", AgentGroupVerification.Prompt.Split('\n').Where(line =>
+            !line.StartsWith("Otherwise return exactly", StringComparison.Ordinal) &&
+            !line.StartsWith("You may ask for evidence", StringComparison.Ordinal)));
+        var prompt = semanticPrompt + "\nQUALIFICATION CONTRACT: no tools. Return protocolVersion " + Version +
+            ". Every verdict MUST contain ALL seven fields: run, decision, reason, evidenceRefs, membership, currentGroups, suggestedGroups. Include complete per-alias membership and evidenceRefs even for ACCEPT; currentGroups and suggestedGroups do not replace them. currentGroups must exactly echo proposedGroups, including ordered group boundaries, for EVERY decision. For REGROUP, suggestedGroups must be a DIFFERENT valid ordered partition covering every candidate alias exactly once, in contiguous nonempty groups of at most 8 lines. For other decisions suggestedGroups must be null. A reason cannot replace structural consistency. If current boundaries are correct, ACCEPT; do not invent boundary changes merely to satisfy REGROUP. Otherwise provide a genuinely different valid partition, or report membership dispute/unresolved as appropriate. A suggestion has no authority until a fresh independent verifier accepts it. Protocol consistency repairs stay in this conversation and do not open a semantic boundary cycle.\nComplete response template (choose ONE decision and ONE membership status per alias; replace suggestedGroups:null with a different valid partition only for REGROUP):\n" + JsonSerializer.Serialize(responseTemplate);
         var history = new JsonArray();
         for (int round = 1; round <= MaxProtocolRounds; round++)
         {
@@ -61,18 +77,21 @@ internal static class BoundaryGroundedCanary
             var bytes = turn.Content is null ? 0 : Encoding.UTF8.GetByteCount(turn.Content);
             if (turn.FinishReason != "stop" || turn.ToolCalls.Count != 0 || turn.Content is null || bytes > 131072)
             {
-                rounds.Add(new(round, turn.FinishReason, bytes, null, null, null, "VERIFIER_INCOMPLETE_OR_TOOL_CALL"));
+                rounds.Add(new(round, turn.FinishReason, bytes, null, null, null, "VERIFIER_INCOMPLETE_OR_TOOL_CALL", []));
                 return Done("UNRESOLVED", failure: "VERIFIER_INCOMPLETE_OR_TOOL_CALL");
             }
             string? decision = null;
             string[][]? current = null, suggested = null;
             string? error = null;
+            string[] missingFields = [];
             try
             {
                 var root = JsonNode.Parse(turn.Content)!.AsObject();
                 if (root.Count != 2 || root["protocolVersion"]?.GetValue<string>() != Version || root["verdicts"]!.AsArray().Count != 1)
                     throw new FormatException();
                 var verdict = root["verdicts"]![0]!.DeepClone().AsObject();
+                missingFields = RequiredFields.Where(field => !verdict.ContainsKey(field)).ToArray();
+                if (missingFields.Length != 0) throw new FormatException();
                 current = verdict["currentGroups"]!.Deserialize<string[][]>()!;
                 suggested = verdict["suggestedGroups"]?.Deserialize<string[][]>();
                 if (!verdict.Remove("currentGroups") || !verdict.Remove("suggestedGroups")) throw new FormatException();
@@ -94,14 +113,15 @@ internal static class BoundaryGroundedCanary
             catch (ConsistencyException e) { error = e.Message; }
             catch (Exception e) when (e is not OperationCanceledException) { error = "GROUNDED_VERDICT_PROTOCOL_INVALID"; }
             // Only validated source-alias partitions can enter safe observations, even for an invalid response.
-            rounds.Add(new(round, turn.FinishReason, bytes, decision, Safe(current), Safe(suggested), error));
+            rounds.Add(new(round, turn.FinishReason, bytes, decision, Safe(current), Safe(suggested), error, missingFields));
             if (error is not null)
             {
                 if (round == MaxProtocolRounds) return Done("UNRESOLVED", failure: error);
                 history.Add(new JsonObject { ["role"] = "assistant", ["content"] = turn.Content });
                 history.Add(new JsonObject { ["role"] = "user", ["content"] = JsonSerializer.Serialize(new
                 {
-                    stage = "PROTOCOL_CONSISTENCY_REPAIR", error, run = candidate.Id, proposedGroups = groups,
+                    stage = "PROTOCOL_CONSISTENCY_REPAIR", error, missingFields, responseTemplate,
+                    run = candidate.Id, proposedGroups = groups,
                     requirement = "Echo exactly this current partition. REGROUP requires a different valid partition. If these boundaries are correct, ACCEPT with suggestedGroups:null; otherwise provide a different valid partition or report dispute/unresolved. Do not alter membership to evade a boundary consistency error."
                 }) });
                 continue;
