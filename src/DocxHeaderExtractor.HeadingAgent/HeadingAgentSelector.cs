@@ -132,9 +132,10 @@ public abstract class HeadingAgentSelector : IHeadingSelector
             return AgentBudget.AttemptUsd(AgentProtocol.Build(payload, new System.Text.Json.Nodes.JsonArray(), "auto", flavor).Bytes);
         });
         var spare = (posts - units) * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
-        // The grouping step: at most one request per 40 runs of adjacent selected lines (a run needs two lines, so at most one chunk per 80 lines),
-        // each with its transport retries and repair turns; its requests are far smaller than a segment's.
-        var groupPosts = 2 * Math.Max(1, (source.Lines.Count + 79) / 80) * (1 + AgentGrouping.MaxRepairs) * (1 + AgentUnit.TransportRetries);
+        // Grouping batches up to MaxRunsPerRequest adjacent selected-line runs. In the worst case, every other source line is selected,
+        // so reserve one chunk per 2 * MaxRunsPerRequest lines, including transport retries and repair turns.
+        var groupChunks = Math.Max(1, (source.Lines.Count + (2 * AgentGrouping.MaxRunsPerRequest) - 1) / (2 * AgentGrouping.MaxRunsPerRequest));
+        var groupPosts = groupChunks * (1 + AgentGrouping.MaxRepairs) * (1 + AgentUnit.TransportRetries);
         var groupReserve = groupPosts * AgentBudget.AttemptUsd(60000);
         var reviewPosts = units * AgentSelectionReview.MaxPosts;
         var reviewReserve = reviewPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);

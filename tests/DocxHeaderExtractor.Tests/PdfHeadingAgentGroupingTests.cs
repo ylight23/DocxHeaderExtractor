@@ -43,6 +43,23 @@ public sealed class PdfHeadingAgentGroupingTests
     private static string[] RunAliases(JsonElement payload, string id) =>
         payload.GetProperty("runs").EnumerateArray().Single(r => r.GetProperty("run").GetString() == id).GetProperty("lines").EnumerateArray().Select(l => l.GetProperty("alias").GetString()!).ToArray();
 
+    [Fact]
+    public void Large_grouping_sets_are_split_into_parallel_bounded_requests()
+    {
+        var selected = Enumerable.Range(0, 9)
+            .SelectMany(i => new[] { A(i * 3), A(i * 3 + 1) })
+            .ToHashSet(StringComparer.Ordinal);
+        var (model, payloads, _) = Scripted((_, p) => Division(p, id => [RunAliases(p, id)]));
+
+        var result = AgentGrouping.Group(Source.Value, selected, model, Budget(), parallelism: 4, CancellationToken.None, retryDelayMs: 0);
+
+        Assert.Empty(result.Failures);
+        Assert.Equal(2, result.Posts);
+        Assert.Equal(new[] { 1, AgentGrouping.MaxRunsPerRequest }, payloads.Select(p => p.GetProperty("runs").GetArrayLength()).Order());
+        Assert.Equal(9, result.Groups.Count);
+        Assert.Equal(selected.Order(), result.Groups.SelectMany(g => g).Order());
+    }
+
     private static string Disagreement(JsonElement payload) => JsonSerializer.Serialize(new
     {
         protocolVersion = AgentGrouping.GroupVersion,
