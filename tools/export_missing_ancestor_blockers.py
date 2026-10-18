@@ -42,6 +42,10 @@ def export(audit_path, source_path, ocr_path, output_prefix):
         state, source, observed = states.get(alias, {}), trace.get(alias, {}), recorded.get(alias, {})
         source_id = get(source, "sourceId", get(observed, "sourceId"))
         provenance = get(observed, "provenance", get(state, "provenance", []))
+        terminal = next((p for p in reversed(provenance) if get(p, "stage") == "verification-final"), None)
+        terminal_protocol = next((p for p in reversed(provenance) if get(p, "stage") == "verification-protocol"
+                                  and get(p, "unitId") == get(terminal, "unitId")
+                                  and get(p, "candidateId") == get(terminal, "candidateId")), None)
         rows.append({
             "alias": alias, "sourceId": source_id, "text": texts.get(source_id),
             "textBasis": "hash-matched ocr-original; not a recovered model-selected reading",
@@ -52,6 +56,8 @@ def export(audit_path, source_path, ocr_path, output_prefix):
             "bindingStatus": get(source, "bindingStatus", get(observed, "bindingStatus", "not-recorded")),
             "provenanceAvailability": "recorded" if provenance else "not-recorded",
             "provenance": provenance,
+            "terminalVerification": terminal,
+            "terminalProtocolIssues": get(terminal_protocol, "failureCodes", []),
             "failureCodes": sorted({code for p in provenance for code in get(p, "failureCodes", [])}),
         })
     if any(r["text"] is None for r in rows):
@@ -71,6 +77,7 @@ def export(audit_path, source_path, ocr_path, output_prefix):
             "Counts overlap when multiple source lines block the same heading; do not sum per-alias counts.",
             "An absent per-alias history is not-recorded. Global unit failures are context, not an inferred alias-specific cause.",
             "Text comes from hash-matched primary OCR, not reconstructed model replies.",
+            "Protocol history can contain recovered failures; the terminal verifier decision identifies the remaining loss.",
         ],
     }
     output_prefix.parent.mkdir(parents=True, exist_ok=True)
@@ -81,12 +88,13 @@ def export(audit_path, source_path, ocr_path, output_prefix):
 
     md = [f"Execution `{report['executionId']}`: {len(rows)} unique source aliases block {report['uniqueBlockedHeadings']} unique headings.",
           "", "Text: hash-matched primary OCR. Counts overlap for multi-line ancestors.", "",
-          "| Blocker alias | Text | Blocked headings | Initial | Final | Verifier membership | Binding | Failure/reason provenance |",
-          "|---|---|---:|---|---|---|---|---|"]
+          "| Blocker alias | Text | Blocked headings | Initial | Final | Verifier membership | Binding | Terminal verifier | Protocol history |",
+          "|---|---|---:|---|---|---|---|---|---|"]
     for row in rows:
-        reason = "; ".join(row["failureCodes"]) or ("history recorded; no protocol failure" if row["provenance"] else "not-recorded")
+        reason = "; ".join(row["failureCodes"]) or ("none recorded" if row["provenance"] else "not-recorded")
+        terminal = get(row["terminalVerification"], "decision", "not-recorded")
         md.append("| " + " | ".join(cell(v) for v in [row["alias"], row["text"], row["blockedHeadingCount"], row["initialSelection"],
-                  row["finalSelection"], row["verificationMembership"], row["bindingStatus"], reason]) + " |")
+                  row["finalSelection"], row["verificationMembership"], row["bindingStatus"], terminal, reason]) + " |")
     md.extend(["", *["- " + note for note in report["limitations"]], ""])
     output_prefix.with_suffix(".md").write_text("\n".join(md), encoding="utf-8")
     return report
