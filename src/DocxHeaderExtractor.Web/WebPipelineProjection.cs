@@ -109,7 +109,10 @@ public static class WebPipelineProjection
                     "placement-not-required" => "skipped",
                     _ => "not-recorded",
                 },
-                $"Producer {placement.Status}; requested={placement.RequestedCount}; placed={placement.PlacedCount}; outside-tree={placement.OutOfHierarchyCount}; unresolved={placement.UnresolvedCount}; failure={placement.FailureClass ?? "none"}; verified={placement.VerifiedCount}; repair edges={placement.RepairCount}; logical calls={placement.LogicalCalls}; {placement.Seconds:0.0}s; contract={placement.Contract ?? "legacy"}"));
+                $"Producer {placement.Status}; requested={placement.RequestedCount}; placed={placement.PlacedCount}; outside-tree={placement.OutOfHierarchyCount}; unresolved={placement.UnresolvedCount}; failure={placement.FailureClass ?? "none"}; verified={placement.VerifiedCount}; repair edges={placement.RepairCount}; logical calls={placement.LogicalCalls}; {placement.Seconds:0.0}s; contract={placement.Contract ?? "legacy"}" +
+                (placement.UnresolvedSummary is { } counts
+                    ? $"; direct-unverified={counts.DirectUnverified}; ancestor-chain-blocked={counts.AncestorChainBlocked}; missing-ancestor(model)={counts.MissingAncestor}; protocol-no-verdict={counts.ProtocolNoVerdict}; model-unresolved={counts.ModelUnresolved}; model-rejected={counts.ModelRejected}; graph-conflict={counts.GraphConflictBlocked}"
+                    : "")));
         stages.Add(new("projection", "completed", "Returned production outline"));
         if (audit?.HeadingStageSeconds is { Count: > 0 } seconds)
             stages.Add(new("heading-phase-timing", "completed", string.Join(", ", seconds.Select(kv => $"{kv.Key} {kv.Value:0.0}s"))));

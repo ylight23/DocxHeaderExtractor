@@ -19,6 +19,8 @@ public sealed record HeadingPlacementExecutionObservation(
     public double Seconds { get; init; }
     public int VerifiedCount { get; init; }
     public int RepairCount { get; init; }
+    public IReadOnlyList<HeadingPlacementEdgeRepairObservation> EdgeRepairs { get; init; } = [];
+    public HeadingPlacementUnresolvedSummary? UnresolvedSummary { get; init; }
     public IReadOnlyList<HeadingPlacementGraphConflict> GraphConflicts { get; init; } = [];
     public IReadOnlyList<string> GraphRepairAliases { get; init; } = [];
     public IReadOnlyList<string> GraphUnresolvedAliases { get; init; } = [];
@@ -68,3 +70,13 @@ public sealed record HeadingPlacementDecisionObservation(
 
 public sealed record HeadingPlacementSourceObservation(string Alias, string SourceId, string? InitialSelection,
     string? FinalSelection, string? VerificationMembership, string BindingStatus, string PlacementResolution);
+
+/// <summary>One bounded edge repair, with fresh verification outcome; proposals have no authority.</summary>
+public sealed record HeadingPlacementEdgeRepairObservation(string Alias, string InitialVerificationStatus,
+    bool ProposalReceived, string ReverificationStatus);
+
+/// <summary>Unresolved = DirectUnverified + AncestorChainBlocked. The other fields partition DirectUnverified.
+/// MissingAncestor counts terminal model-reported missing ancestry, not independently established source truth.
+/// ProtocolNoVerdict means no valid terminal verdict, including a failed repair proposal.</summary>
+public sealed record HeadingPlacementUnresolvedSummary(int DirectUnverified, int AncestorChainBlocked,
+    int MissingAncestor, int ProtocolNoVerdict, int ModelUnresolved, int ModelRejected, int GraphConflictBlocked);

@@ -146,7 +146,7 @@ public sealed class EvidenceHeadingPlacementTests
         Assert.Equal(bound.Length, result.Observation.UnresolvedCount);
         Assert.Equal(0, result.Observation.VerifiedCount);
         var chunks = (bound.Length + EvidenceHeadingPlacement.BatchSize - 1) / EvidenceHeadingPlacement.BatchSize;
-        Assert.Equal(chunks * (1 + EvidenceHeadingPlacement.MaxRounds), result.Observation.LogicalCalls);
+        Assert.Equal(chunks * (2 + 2 * EvidenceHeadingPlacement.MaxRounds), result.Observation.LogicalCalls);
         Assert.All(result.Observation.Calls.Where(c => c.Phase == "HIERARCHY_VERIFY"), c =>
         {
             Assert.Equal("length", c.FinishReason);
@@ -188,6 +188,11 @@ public sealed class EvidenceHeadingPlacementTests
         Assert.Equal(3, result.Observation.VerifiedCount);
         Assert.Equal(16, result.Observation.Decisions.Count(d => d.VerificationStatus == "MISSING_ANCESTOR"));
         Assert.Equal(41, result.Observation.Decisions.Count(d => d.VerificationStatus == "NO_VALID_VERDICT"));
+        Assert.Equal(57, result.Observation.RepairCount);
+        Assert.Equal(57, result.Observation.UnresolvedSummary!.DirectUnverified);
+        Assert.Equal(3, result.Observation.UnresolvedSummary.AncestorChainBlocked);
+        Assert.Equal(16, result.Observation.UnresolvedSummary.MissingAncestor);
+        Assert.Equal(41, result.Observation.UnresolvedSummary.ProtocolNoVerdict);
         Assert.All(result.Observation.Decisions.Where(d => accepted.Contains(d.Alias)), d => Assert.Equal("ancestor-chain-unresolved", d.ResolutionBasis));
     }
 
@@ -238,7 +243,8 @@ public sealed class EvidenceHeadingPlacementTests
         Assert.All(result.Observation.Decisions.Where(d => blocked.ContainsKey(d.Alias)), d =>
         { Assert.Equal("MISSING_ANCESTOR", d.VerificationStatus); Assert.Equal(new[] { blocked[d.Alias] }, d.BlockingAliases); });
         Assert.Equal(bound.Length, result.Headings.Count);
-        Assert.Equal(0, result.Observation.RepairCount);
+        Assert.Equal(blocked.Count, result.Observation.RepairCount);
+        Assert.Equal(blocked.Count, result.Observation.UnresolvedSummary!.MissingAncestor);
         Assert.Equal(2, result.Observation.MissingAncestorBlockers.Count);
         var chapterBlocker = Assert.Single(result.Observation.MissingAncestorBlockers, b => b.Alias == C5);
         Assert.Equal(3, chapterBlocker.BlockedHeadingCount);
@@ -252,7 +258,7 @@ public sealed class EvidenceHeadingPlacementTests
     }
 
     [Fact]
-    public async Task Rejected_parent_is_repaired_once_and_its_descendant_chain_is_reverified_without_reextracting()
+    public async Task Rejected_parent_is_repaired_once_and_accepted_descendants_resolve_without_reverification()
     {
         var (bound, evidence, correct) = Fixture();
         var wrong = new Dictionary<string, string>(correct) { [Part1] = "ROOT" };
@@ -263,7 +269,7 @@ public sealed class EvidenceHeadingPlacementTests
             var response = JsonNode.Parse(HierarchyTestProtocol.Reply(p.ToJsonString(), stage == "HIERARCHY_REPAIR" ? correct : wrong)!)!;
             if (stage == "HIERARCHY_VERIFY")
                 foreach (var row in response["verdicts"]!.AsArray().Where(v => v!["alias"]!.GetValue<string>() == Part1)) row!["decision"] = "REJECT";
-            if (stage == "HIERARCHY_REVERIFY") Assert.Equal(new[] { Part1, Child, "P024-L001" }, Aliases(p));
+            if (stage == "HIERARCHY_REVERIFY") Assert.Equal(new[] { Part1 }, Aliases(p));
             return response.ToJsonString();
         });
         var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
@@ -272,6 +278,125 @@ public sealed class EvidenceHeadingPlacementTests
         Assert.Equal(1, result.Observation.RepairCount);
         Assert.Equal(6, result.Observation.LogicalCalls);
         Assert.Equal(0, result.Observation.UnresolvedCount);
+    }
+
+    [Theory]
+    [InlineData("REJECT")]
+    [InlineData("UNRESOLVED")]
+    [InlineData("MISSING_ANCESTOR")]
+    [InlineData("NO_VALID_VERDICT")]
+    [InlineData("NO_PROPOSAL")]
+    public async Task Every_non_accept_gets_one_parent_repair_and_fresh_verification_preserving_accepted_descendants(string initialStatus)
+    {
+        var (bound, evidence, parents) = Fixture();
+        var repairCalls = 0; var reverifyCalls = 0;
+        using var model = new Model(p =>
+        {
+            var stage = p["stage"]!.GetValue<string>();
+            var reply = JsonNode.Parse(HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!)!;
+            if (stage == "HIERARCHY_PLACE" && initialStatus == "NO_PROPOSAL")
+                reply["placements"] = new JsonArray(reply["placements"]!.AsArray()
+                    .Where(r => r!["alias"]!.GetValue<string>() != Part1).Select(r => r!.DeepClone()).ToArray());
+            if (stage == "HIERARCHY_VERIFY")
+            {
+                var entry = reply["verdicts"]!.AsArray().SingleOrDefault(r => r!["alias"]!.GetValue<string>() == Part1);
+                if (entry is not null)
+                {
+                    if (initialStatus == "NO_VALID_VERDICT") reply["verdicts"]!.AsArray().Remove(entry);
+                    else
+                    {
+                        entry["decision"] = initialStatus;
+                        if (initialStatus == "MISSING_ANCESTOR")
+                        {
+                            entry["blockingAliases"] = new JsonArray(Intro);
+                            entry["evidenceRefs"] = new JsonArray(Part1, Intro);
+                        }
+                    }
+                }
+            }
+            if (stage == "HIERARCHY_REPAIR")
+            {
+                repairCalls++;
+                Assert.Equal(new[] { Part1 }, Aliases(p));
+                var feedback = Assert.Single(p["repairFeedback"]!.AsArray())!;
+                Assert.Equal(initialStatus == "NO_PROPOSAL" ? "NO_VALID_VERDICT" : initialStatus, feedback["decision"]!.GetValue<string>());
+                if (initialStatus == "MISSING_ANCESTOR") Assert.Equal(Intro, feedback["blockingAliases"]![0]!.GetValue<string>());
+            }
+            if (stage == "HIERARCHY_REVERIFY")
+            {
+                reverifyCalls++;
+                Assert.Empty(p["protocolErrors"]!.AsArray()); // Fresh conversation.
+                Assert.Empty(p["evidenceResults"]!.AsArray());
+                Assert.Null(p["repairFeedback"]);
+                Assert.Equal(new[] { Part1 }, Aliases(p)); // Accepted children are never resampled.
+            }
+            return reply.ToJsonString();
+        });
+        var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        Assert.Equal(1, repairCalls); Assert.Equal(1, reverifyCalls);
+        Assert.Equal(1, result.Observation.RepairCount);
+        var repair = Assert.Single(result.Observation.EdgeRepairs);
+        Assert.True(repair.ProposalReceived);
+        Assert.Equal("ACCEPT", repair.ReverificationStatus);
+        Assert.Equal(bound.Length, result.Headings.Count);
+        Assert.Equal(0, result.Observation.UnresolvedCount);
+        Assert.Equal(0, result.Observation.UnresolvedSummary!.DirectUnverified);
+        Assert.Equal(0, result.Observation.UnresolvedSummary.AncestorChainBlocked);
+        Assert.Equal(3, HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(result.Headings).Single(h => h.SourceId == "id:" + Child).Level);
+        Assert.DoesNotContain(Intro, result.Headings.Select(h => h.Alias));
+    }
+
+    [Theory]
+    [InlineData("REJECT")]
+    [InlineData("UNRESOLVED")]
+    [InlineData("MISSING_ANCESTOR")]
+    [InlineData("NO_VALID_VERDICT")]
+    [InlineData("FAILED_PROPOSAL")]
+    public async Task Non_accept_repair_is_bounded_and_never_authorizes_a_proposal_without_fresh_accept(string terminal)
+    {
+        var (bound, evidence, parents) = Fixture();
+        var repairCalls = 0;
+        using var model = new Model(p =>
+        {
+            var stage = p["stage"]!.GetValue<string>();
+            if (stage == "HIERARCHY_REPAIR")
+            {
+                repairCalls++;
+                if (terminal == "FAILED_PROPOSAL") return "{";
+            }
+            var reply = JsonNode.Parse(HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!)!;
+            if (stage == "HIERARCHY_VERIFY")
+                foreach (var r in reply["verdicts"]!.AsArray().Where(r => r!["alias"]!.GetValue<string>() == Part1)) r!["decision"] = "UNRESOLVED";
+            if (stage == "HIERARCHY_REVERIFY")
+            {
+                Assert.Equal(new[] { Part1 }, Aliases(p));
+                var entry = Assert.Single(reply["verdicts"]!.AsArray())!;
+                if (terminal == "NO_VALID_VERDICT") reply["verdicts"]!.AsArray().Clear();
+                else
+                {
+                    entry["decision"] = terminal;
+                    if (terminal == "MISSING_ANCESTOR")
+                    {
+                        entry["blockingAliases"] = new JsonArray(Intro);
+                        entry["evidenceRefs"] = new JsonArray(Part1, Intro);
+                    }
+                }
+            }
+            return reply.ToJsonString();
+        });
+        var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        Assert.Equal(terminal == "FAILED_PROPOSAL" ? EvidenceHeadingPlacement.MaxRounds : 1, repairCalls);
+        Assert.Equal(1, result.Observation.RepairCount);
+        Assert.Equal(3, result.Observation.UnresolvedCount); // Parent and two accepted children.
+        var summary = result.Observation.UnresolvedSummary!;
+        Assert.Equal(1, summary.DirectUnverified); Assert.Equal(2, summary.AncestorChainBlocked);
+        Assert.Equal(terminal == "MISSING_ANCESTOR" ? 1 : 0, summary.MissingAncestor);
+        Assert.Equal(terminal is "NO_VALID_VERDICT" or "FAILED_PROPOSAL" ? 1 : 0, summary.ProtocolNoVerdict);
+        Assert.Equal(terminal == "REJECT" ? 1 : 0, summary.ModelRejected);
+        Assert.Equal(terminal == "UNRESOLVED" ? 1 : 0, summary.ModelUnresolved);
+        Assert.Equal(summary.DirectUnverified, summary.MissingAncestor + summary.ProtocolNoVerdict + summary.ModelRejected + summary.ModelUnresolved + summary.GraphConflictBlocked);
+        Assert.All(result.Headings.Where(h => h.Alias == Part1), h => Assert.Empty(h.RelationHints));
+        Assert.Equal(terminal != "FAILED_PROPOSAL", Assert.Single(result.Observation.EdgeRepairs).ProposalReceived);
     }
 
     [Fact]
@@ -388,8 +513,8 @@ public sealed class EvidenceHeadingPlacementTests
         var child = result.Observation.Decisions.Single(d => d.Alias == Child);
         Assert.Equal("ACCEPT", child.VerificationStatus);
         Assert.Equal("ancestor-chain-unresolved", child.ResolutionBasis);
-        Assert.Equal(0, result.Observation.RepairCount);
-        Assert.Equal(6, result.Observation.LogicalCalls);
+        Assert.Equal(1, result.Observation.RepairCount);
+        Assert.Equal(10, result.Observation.LogicalCalls);
     }
 
     [Fact]

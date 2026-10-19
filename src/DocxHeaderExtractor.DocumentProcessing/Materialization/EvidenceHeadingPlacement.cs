@@ -108,19 +108,22 @@ internal static class EvidenceHeadingPlacement
         foreach (var v in initial) foreach (var p in v.Verdicts) verdicts[p.Key] = p.Value;
         graphConflicts.AddRange(FindGraphConflicts("after-initial-verification"));
 
-        var repair = ordered.Where(h => verdicts.GetValueOrDefault(h.Alias)?.Decision == "REJECT").Select(h => h.Alias).ToArray();
+        // One targeted parent repair for every edge lacking independent ACCEPT, including absent
+        // proposals/verdicts. This never adds a heading or promotes a missing ancestor.
+        var repair = ordered.Where(h => verdicts.GetValueOrDefault(h.Alias)?.Decision != "ACCEPT").Select(h => h.Alias).ToArray();
+        var repairOrigins = repair.ToDictionary(a => a, a => verdicts.GetValueOrDefault(a)?.Decision ?? "NO_VALID_VERDICT", StringComparer.Ordinal);
         var repaired = await RunBatches(repair, "HIERARCHY_REPAIR", proposed, verdicts).ConfigureAwait(false);
         var repairParents = repaired.SelectMany(p => p.Parents).ToDictionary(p => p.Key, p => p.Value, StringComparer.Ordinal);
+        foreach (var a in repair) proposed.Remove(a);
         foreach (var p in repairParents) proposed[p.Key] = p.Value;
-        // Old REJECTs cannot authorize a new relation. Recheck only newly proposed repair edges.
+        // Only fresh independent ACCEPT can authorize a repair. Existing accepted descendant
+        // edges are unchanged; the resolver derives their chains after parent repair.
         var recheck = repairParents.Keys.ToHashSet(StringComparer.Ordinal);
-        foreach (var h in ordered)
-            if (proposed.TryGetValue(h.Alias, out var parent) && recheck.Contains(parent)) recheck.Add(h.Alias);
-        foreach (var a in repair.Concat(recheck)) verdicts.Remove(a);
+        foreach (var a in repair) verdicts.Remove(a);
         var rechecked = await RunBatches(ordered.Where(h => recheck.Contains(h.Alias)).Select(h => h.Alias).ToArray(), "HIERARCHY_REVERIFY", proposed, null).ConfigureAwait(false);
         foreach (var v in rechecked) foreach (var p in v.Verdicts) verdicts[p.Key] = p.Value;
 
-        // One graph repair cycle, separate from edge REJECT repair. C# detects the contradiction,
+        // One graph repair cycle, separate from non-accept edge repair. C# detects the contradiction,
         // but only the model may change either side of it. Revoke old approvals before rechecking.
         var conflictsToRepair = FindGraphConflicts("after-edge-repair");
         graphConflicts.AddRange(conflictsToRepair);
@@ -167,11 +170,36 @@ internal static class EvidenceHeadingPlacement
         var requested = ordered.Select(h => h.SourceId).ToHashSet(StringComparer.Ordinal);
         var result = HeadingParentResolver.Observe(placed, requested, ordered.Length == 0 ? "placement-not-required" : "placement-accepted", proposed.Count);
         var hierarchy = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(placed).ToDictionary(h => h.SourceId);
+        var decisions = result.Observation.Decisions.Select(d => d with
+            {
+                ProposedParentAlias = proposed.GetValueOrDefault(d.Alias),
+                VerificationStatus = verdicts.GetValueOrDefault(d.Alias)?.Decision ?? "NO_VALID_VERDICT",
+                ResolutionBasis = graphBlocked.Contains(d.Alias) ? "graph-conflict-unresolved" : verdicts.GetValueOrDefault(d.Alias)?.Decision switch
+                {
+                    "MISSING_ANCESTOR" => "model-missing-ancestor", "UNRESOLVED" => "model-unresolved",
+                    "REJECT" => "model-rejected", "ACCEPT" when d.Resolution == HeadingHierarchyResolver.Unresolved => "ancestor-chain-unresolved",
+                    "ACCEPT" => "verified-edge", _ => "no-valid-verdict"
+                },
+                BlockingAliases = verdicts.GetValueOrDefault(d.Alias)?.BlockingAliases ?? [],
+                EvidenceRefs = verdicts.GetValueOrDefault(d.Alias)?.EvidenceRefs ?? []
+            }).ToArray();
+        var unresolvedDecisions = decisions.Where(d => d.Resolution == HeadingHierarchyResolver.Unresolved).ToArray();
+        var edgeReverification = rechecked.SelectMany(r => r.Verdicts).ToDictionary(p => p.Key, p => p.Value, StringComparer.Ordinal);
         return result with { Observation = result.Observation with
         {
             Contract = Version, LogicalCalls = calls, Seconds = Math.Round(clock.Elapsed.TotalSeconds, 1),
             VerifiedCount = verdicts.Count(v => v.Value.Decision == "ACCEPT" && !graphBlocked.Contains(v.Key)), RepairCount = repair.Length,
             GraphConflicts = graphConflicts, GraphRepairAliases = graphRepair, GraphUnresolvedAliases = InSourceOrder(graphBlocked),
+            EdgeRepairs = repair.Select(a => new HeadingPlacementEdgeRepairObservation(a, repairOrigins[a],
+                repairParents.ContainsKey(a), edgeReverification.GetValueOrDefault(a)?.Decision ?? "NO_VALID_VERDICT")).ToArray(),
+            UnresolvedSummary = new(
+                unresolvedDecisions.Count(d => d.ResolutionBasis != "ancestor-chain-unresolved"),
+                unresolvedDecisions.Count(d => d.ResolutionBasis == "ancestor-chain-unresolved"),
+                unresolvedDecisions.Count(d => d.ResolutionBasis == "model-missing-ancestor"),
+                unresolvedDecisions.Count(d => d.ResolutionBasis == "no-valid-verdict"),
+                unresolvedDecisions.Count(d => d.ResolutionBasis == "model-unresolved"),
+                unresolvedDecisions.Count(d => d.ResolutionBasis == "model-rejected"),
+                unresolvedDecisions.Count(d => d.ResolutionBasis == "graph-conflict-unresolved")),
             MissingAncestorBlockers = verdicts.Where(v => v.Value.Decision == "MISSING_ANCESTOR")
                 .SelectMany(v => v.Value.BlockingAliases.Select(a => (Alias: a, Child: v.Key)))
                 .GroupBy(p => p.Alias, StringComparer.Ordinal).OrderBy(g => position[g.Key]).Select(g =>
@@ -186,19 +214,7 @@ internal static class EvidenceHeadingPlacement
             Failures = failures.Order(StringComparer.Ordinal).ToArray(),
             Calls = callObservations.OrderBy(c => c.UnitId, StringComparer.Ordinal).ThenBy(c => c.Round).ToArray(),
             FailureClass = result.Observation.UnresolvedCount > 0 ? "HIERARCHY_UNRESOLVED" : null,
-            Decisions = result.Observation.Decisions.Select(d => d with
-            {
-                ProposedParentAlias = proposed.GetValueOrDefault(d.Alias),
-                VerificationStatus = verdicts.GetValueOrDefault(d.Alias)?.Decision ?? "NO_VALID_VERDICT",
-                ResolutionBasis = graphBlocked.Contains(d.Alias) ? "graph-conflict-unresolved" : verdicts.GetValueOrDefault(d.Alias)?.Decision switch
-                {
-                    "MISSING_ANCESTOR" => "model-missing-ancestor", "UNRESOLVED" => "model-unresolved",
-                    "REJECT" => "model-rejected", "ACCEPT" when d.Resolution == HeadingHierarchyResolver.Unresolved => "ancestor-chain-unresolved",
-                    "ACCEPT" => "verified-edge", _ => "no-valid-verdict"
-                },
-                BlockingAliases = verdicts.GetValueOrDefault(d.Alias)?.BlockingAliases ?? [],
-                EvidenceRefs = verdicts.GetValueOrDefault(d.Alias)?.EvidenceRefs ?? []
-            }).ToArray(),
+            Decisions = decisions,
             SourceTrace = lines.Where(l => parts.Contains(l.Alias) || withheldAliases.Contains(l.Alias)).Select(l =>
             {
                 var s = source.AliasStates.GetValueOrDefault(l.Alias);
@@ -277,7 +293,11 @@ internal static class EvidenceHeadingPlacement
                         selection = Selection(l.Alias) }), sourceContext = context.Select(l => Line(l, false)),
                     evidenceTools = new[] { "search_source_text(query,offset,limit)", "get_source_context(alias,before,after)", "get_source_range(first,last)" },
                     evidenceResults = evidenceRounds, protocolErrors = errors,
-                    repairFeedback = feedback?.Where(p => pending.Contains(p.Key)).Select(p => new { alias = p.Key, p.Value.Reason, p.Value.EvidenceRefs })
+                    repairFeedback = feedback is null ? null : pending.Select(a => new { alias = a,
+                        decision = feedback.GetValueOrDefault(a)?.Decision ?? "NO_VALID_VERDICT",
+                        reason = feedback.GetValueOrDefault(a)?.Reason,
+                        evidenceRefs = feedback.GetValueOrDefault(a)?.EvidenceRefs ?? [],
+                        blockingAliases = feedback.GetValueOrDefault(a)?.BlockingAliases ?? [] })
                 }, Json);
                 if (graphFeedback is not null)
                 {

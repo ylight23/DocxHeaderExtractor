@@ -165,6 +165,10 @@
     const host = document.getElementById('v2PlacementDiagnostics');
     if (!host || !placement) return;
     host.replaceChildren(element('h3', 'Hierarchy placement — quyết định từng heading'));
+    const counts = placement.unresolvedSummary;
+    if (counts) host.append(element('p',
+      `Unresolved=${placement.unresolvedCount}: direct-unverified=${counts.directUnverified}; ancestor-chain-blocked=${counts.ancestorChainBlocked}. ` +
+      `Direct: missing-ancestor (model)=${counts.missingAncestor}; protocol-no-verdict=${counts.protocolNoVerdict}; model-unresolved=${counts.modelUnresolved}; model-rejected=${counts.modelRejected}; graph-conflict=${counts.graphConflictBlocked}.`));
     const decisions = placement.decisions || [];
     if (decisions.length) {
       const table = element('table', null, 'v2-audit-table');

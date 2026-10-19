@@ -74,7 +74,7 @@ public sealed class StructuredInferenceTransportTests
         using var handler = new FakeOpenRouter((body, _) =>
         {
             var packet = body["messages"]![1]!["content"]!.GetValue<string>();
-            var verify = JsonNode.Parse(packet)!["stage"]!.GetValue<string>() == "HIERARCHY_VERIFY";
+            var verify = JsonNode.Parse(packet)!["stage"]!.GetValue<string>() is "HIERARCHY_VERIFY" or "HIERARCHY_REVERIFY";
             Assert.Equal(verify ? expectedCap : EvidenceHeadingPlacement.OutputBudget(false, 16), body["max_tokens"]!.GetValue<int>());
             return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = HierarchyTestProtocol.Reply(packet) }, verify ? finish : "stop"));
         }, autoVerify: false);
@@ -86,8 +86,8 @@ public sealed class StructuredInferenceTransportTests
         Assert.Equal(completed ? 16 : 0, result.Observation.VerifiedCount);
         Assert.Equal(completed ? 16 : 0, result.Observation.PlacedCount);
         Assert.Equal(completed ? 0 : 16, result.Observation.UnresolvedCount);
-        Assert.Equal(completed ? 2 : 4, handler.Posts);
-        Assert.All(result.Observation.Calls.Where(c => c.Phase == "HIERARCHY_VERIFY"), c =>
+        Assert.Equal(completed ? 2 : 8, handler.Posts);
+        Assert.All(result.Observation.Calls.Where(c => c.Phase is "HIERARCHY_VERIFY" or "HIERARCHY_REVERIFY"), c =>
         {
             Assert.Equal(finish, c.FinishReason);
             Assert.Equal(16896, c.RequestedMaxOutputTokens);

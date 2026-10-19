@@ -37,6 +37,9 @@ test('a failed execution clears placement diagnostics from the prior successful 
     summary: { accepted: 0, unknownLevel: 0, requiresReview: 0 },
     stages: [], checkpoints: [], provenance: {},
     audit: { placementExecution: {
+      unresolvedCount: 3,
+      unresolvedSummary: { directUnverified: 1, ancestorChainBlocked: 2, missingAncestor: 1,
+        protocolNoVerdict: 0, modelUnresolved: 0, modelRejected: 0, graphConflictBlocked: 0 },
       decisions: [{ alias: 'P021-L012', proposedParentAlias: 'P021-L010',
         verificationStatus: 'MISSING_ANCESTOR', resolutionBasis: 'model-missing-ancestor',
         blockingAliases: ['P021-L010'], evidenceRefs: ['P021-L012', 'P021-L010'] }],
@@ -44,6 +47,9 @@ test('a failed execution clears placement diagnostics from the prior successful 
     }, headingAliasStates: {} },
   });
   assert.ok(elements.v2PlacementDiagnostics.children.length > 0);
+  const metrics = elements.v2PlacementDiagnostics.children.find(e => e.textContent?.includes('direct-unverified='));
+  assert.match(metrics.textContent, /Unresolved=3: direct-unverified=1; ancestor-chain-blocked=2/);
+  assert.match(metrics.textContent, /missing-ancestor \(model\)=1/);
 
   window.WebPipelineV2.showFailure('new execution failed');
   assert.deepEqual(elements.v2PlacementDiagnostics.children, []);
