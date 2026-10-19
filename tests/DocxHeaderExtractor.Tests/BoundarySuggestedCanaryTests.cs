@@ -57,9 +57,9 @@ public sealed class BoundarySuggestedCanaryTests
                 independent++;
                 Assert.DoesNotContain("PRIVATE_REASON", request.Body);
                 Assert.DoesNotContain("frozenComplaint", request.Body);
-                Assert.DoesNotContain("suggestedGroups", request.Body);
-                return new(JsonSerializer.Serialize(new { protocolVersion = AgentGroupVerification.Version,
-                    verdicts = new[] { Verdict(independentDecision, aliases) } }), [], "stop");
+                Assert.Null(BoundaryStaticCanary.Packet(request)["suggestedGroups"]);
+                return new(GroundedVerifierFixture.Reply(JsonSerializer.Serialize(new { protocolVersion = AgentGroupVerification.Version,
+                    verdicts = new[] { Verdict(independentDecision, aliases) } }), BoundaryStaticCanary.Packet(request)), [], "stop");
             }
             Assert.Contains("PRIVATE_REASON", request.Body);
             var verdict = Verdict(mode == "recant" ? "ACCEPT" : "REGROUP", aliases);
@@ -86,16 +86,13 @@ public sealed class BoundarySuggestedCanaryTests
     }
 
     [Fact]
-    public void Production_verdict_still_ignores_and_reports_suggested_groups()
+    public void Production_verdict_refuses_ungrounded_suggested_groups()
     {
         var verdict = Verdict("REGROUP", [A(1)]);
         verdict["suggestedGroups"] = new JsonArray(new JsonArray(A(1)));
         var diagnostics = new List<AgentGroupVerification.FieldDiagnostic>();
-        var parsed = AgentGroupVerification.ParseVerdict(verdict,
-            new("V1", [[A(1)]]), new HashSet<string> { A(1) }, diagnostics, _ => { });
-        Assert.Equal("REGROUP", parsed.Decision);
-        Assert.Contains("suggestedGroups", Assert.Single(diagnostics).Unexpected);
-        Assert.DoesNotContain("suggestedGroups", JsonSerializer.Serialize(parsed));
+        Assert.ThrowsAny<Exception>(() => AgentGroupVerification.ParseVerdict(verdict,
+            new("V1", [[A(1)]]), new HashSet<string> { A(1) }, diagnostics, _ => { }));
     }
 
     [Fact]

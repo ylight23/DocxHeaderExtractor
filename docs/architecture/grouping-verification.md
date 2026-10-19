@@ -1,6 +1,6 @@
 # Independent heading-group verification
 
-Updated 2026-10-18. Production selector IDs now end in `verified-groups-v2-per-alias` for scan, text PDF,
+Updated 2026-10-19. Production selector IDs now include `verified-groups-v3-grounded-regroup` for scan, text PDF,
 and DOCX. The heading instruction and OCR/transcription caches are unchanged. The additional
 model conversation checks every proposed heading, including singleton and fallback groups.
 Protocol-valid grouping alone no longer admits a heading to binding.
@@ -51,12 +51,34 @@ the affected aliases without discarding independently accepted neighbours. At a 
 boundaries remain unverified, membership can still be `HEADING` while binding stays unresolved;
 it is never silently rewritten to `NOT_SELECT`.
 
-Verification uses `HEADING_GROUP_VERIFICATION_V2`. Every candidate must receive exactly one
+Verification uses `HEADING_GROUP_VERIFICATION_V3`. Every candidate must receive exactly one
 verdict, a nonempty reason (up to 1000 characters), and 1–8 evidence references to shown or
 successfully returned source aliases, plus complete per-alias membership with 1–8 evidence
 references for each alias. C# validates shape, completeness, scope, consistency, grounding and budgets;
 semantic membership and boundaries remain model decisions. No phrase, regex or pixel-distance
 rule assigns roles to country headers, mottos, form titles, clauses or headings.
+
+For REGROUP, two additional fields are mandatory: `currentGroups` must exactly echo the input
+`proposedGroups`, and `suggestedGroups` must be a different valid ordered partition. Each alias
+appears exactly once in source order, with nonempty contiguous groups of at most eight lines.
+Missing/invalid groups, mismatched current groups, and identical suggestions are protocol errors.
+In particular, equality of suggestion and input raises `BOUNDARY_VERDICT_SELF_CONTRADICTORY`.
+The actual assistant response and deterministic consistency feedback remain in the SAME verifier
+conversation under the existing three-round bound; no semantic boundary cycle is consumed.
+An ACCEPT after that protocol repair is handled as an ordinary verified ACCEPT. Other decisions
+may omit the two fields or use null, and may echo the exact currentGroups with a null/omitted
+suggestion; membership and evidence requirements are unchanged.
+
+Suggestions have NO repair authority. Valid suggestions are recorded in the share-safe
+`grouping.boundaryVerdicts` observations, including unit, attempt, round, candidate, cycle,
+alias-only current/suggested partitions, error code and `applied=false`. Invalid arbitrary alias
+strings are not retained as partitions; reason/source text is excluded. The existing grouper
+repair path still decides its own partition. Its feedback deliberately omits the two new verdict
+properties, so this promotion does not silently turn the verifier proposal into repair input.
+No-progress detection, the two-cycle semantic cap, survivor refinement and hierarchy fail-closed
+are unchanged. Older V2 REGROUP replies are not accepted under the V3 production contract.
+Historical canary V2 prompt bytes are frozen separately in qualification for request-hash replay;
+the qualification harness's explicit membership-only parser use has no production caller.
 
 The verifier may request existing read-only source tools (context, source spans, facts, etc.)
 through an explicit `requests` reply, up to four requests per round. Scan also supplies

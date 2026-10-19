@@ -25,7 +25,7 @@ public sealed class BoundaryStaticCanaryTests
             transcriptions: transcription);
     }
 
-    static string Verdict(JsonObject packet, string decision) => JsonSerializer.Serialize(new
+    static string Verdict(JsonObject packet, string decision) => GroundedVerifierFixture.Reply(JsonSerializer.Serialize(new
     {
         protocolVersion = AgentGroupVerification.Version,
         verdicts = packet["candidates"]!.AsArray().Select(c => new
@@ -34,7 +34,7 @@ public sealed class BoundaryStaticCanaryTests
             evidenceRefs = new[] { A(1) }, membership = c["proposedGroups"]!.AsArray().SelectMany(g => g!.AsArray()).Select(a =>
                 new { alias = a!.GetValue<string>(), status = "HEADING", evidenceRefs = new[] { a.GetValue<string>() } })
         })
-    });
+    }), packet);
 
     [Theory]
     [InlineData(false, true, "ACCEPT")]

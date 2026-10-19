@@ -37,7 +37,7 @@ internal static class BoundarySuggestedCanary
         proposalPacket["stage"] = "QUALIFICATION_BOUNDARY_SUGGESTION";
         proposalPacket.Remove("evidenceTools"); proposalPacket.Remove("scanCropTool");
         proposalPacket["frozenComplaint"] = JsonSerializer.SerializeToNode(original);
-        var prompt = AgentGroupVerification.Prompt + "\nQUALIFICATION OVERRIDE: no tools. Return protocolVersion " + Version +
+        var prompt = FrozenVerifierV2.Prompt + "\nQUALIFICATION OVERRIDE: no tools. Return protocolVersion " + Version +
             ". Keep the verdict schema, and add suggestedGroups to the single verdict. For REGROUP, suggestedGroups is an ordered partition of every candidate alias exactly once, with contiguous nonempty groups of at most 8 lines. Express the structural correction you propose. You may return the same partition if that is your actual conclusion; never invent changes to satisfy this experiment. For other decisions use suggestedGroups:null. Suggestions have no authority and require fresh independent verification.";
         var request = AgentGrouping.BuildRequest(proposalPacket.ToJsonString(), [], prompt);
         if (budget.Admit(request) is { } refusal) return Done("UNRESOLVED", failure: refusal);
@@ -61,7 +61,7 @@ internal static class BoundarySuggestedCanary
             foreach (var line in packet["context"]!.AsArray()) observed.Add(line!["alias"]!.GetValue<string>());
             if (verdict["run"]?.GetValue<string>() != candidate.Id) throw new FormatException();
             var diagnostics = new List<AgentGroupVerification.FieldDiagnostic>();
-            var parsed = AgentGroupVerification.ParseVerdict(verdict, candidate, observed, diagnostics, _ => { });
+            var parsed = AgentGroupVerification.ParseMembershipVerdict(verdict, candidate, observed, diagnostics, _ => { });
             if (diagnostics.Count != 0) throw new FormatException();
             if (parsed.Decision != "REGROUP")
             {

@@ -763,7 +763,9 @@ public sealed class HeadingGroupVerificationTests
     {
         var groupCalls = 0;
         var verificationCalls = 0;
-        var aliases = new[] { A(1), A(2), A(3) };
+        // Two multi-alias survivor scopes can still make valid different proposals at cycle 2.
+        // Singleton REGROUP is now necessarily self-contradictory and belongs to protocol-repair tests.
+        var aliases = new[] { A(1), A(2), A(3), A(4), A(5) };
         AgentUnit.Model model = (_, _, request) =>
         {
             var packet = Payload(request);
@@ -771,21 +773,21 @@ public sealed class HeadingGroupVerificationTests
             {
                 var decision = ++verificationCalls == 3 ? "MEMBERSHIP_DISPUTE" : "REGROUP";
                 return new ModelTurn(Verdicts(packet, _ => decision, membershipStatus:
-                    a => decision == "MEMBERSHIP_DISPUTE" && a == A(2) ? "NOT_HEADING" : "HEADING"), [], "stop");
+                    a => decision == "MEMBERSHIP_DISPUTE" && a == A(3) ? "NOT_HEADING" : "HEADING"), [], "stop");
             }
             Assert.Equal("GROUP", packet["stage"]!.GetValue<string>());
             groupCalls++;
             return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = AgentGrouping.GroupVersion,
                 runs = packet["runs"]!.AsArray().Select(r => new { run = r!["run"]!.GetValue<string>(),
                     headings = groupCalls == 1 ? new[] { new[] { aliases[0] }, aliases[1..] }
-                        : new[] { aliases[..2], new[] { aliases[2] } } }) }), [], "stop");
+                        : new[] { aliases[..3], aliases[3..] } }) }), [], "stop");
         };
         var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([aliases], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(100, 100),
             1, CancellationToken.None, 0, Instruction, allowMembershipReview: false);
         Assert.Equal(2, groupCalls);
         Assert.Equal(4, verificationCalls);
-        Assert.Equal("NOT_HEADING", result.Memberships[A(2)]);
+        Assert.Equal("NOT_HEADING", result.Memberships[A(3)]);
         Assert.Empty(result.Groups);
         Assert.Equal(aliases.Order(), result.UnresolvedAliases.Order());
         Assert.Equal(2, result.Provenance.Max(p => p.BoundaryRepairCycle));
@@ -875,6 +877,8 @@ public sealed class HeadingGroupVerificationTests
             return new
             {
                 run = c!["run"]!.GetValue<string>(), decision, reason = "Independent scripted source-based judgement.",
+                currentGroups = decision == "REGROUP" ? c["proposedGroups"]!.Deserialize<string[][]>() : null,
+                suggestedGroups = decision == "REGROUP" ? GroundedVerifierFixture.Different(c["proposedGroups"]!.Deserialize<string[][]>()!) : null,
                 evidenceRefs = new[] { invalidRefs ? "UNKNOWN" : c["proposedGroups"]![0]![0]!.GetValue<string>() },
                 membership = c["proposedGroups"]!.AsArray().SelectMany(g => g!.AsArray()).Select(a => new
                 {

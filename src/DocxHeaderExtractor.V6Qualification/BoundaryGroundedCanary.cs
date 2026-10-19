@@ -74,7 +74,7 @@ internal static class BoundaryGroundedCanary
             } }
         };
         // Retain semantic instructions, but publish ONE complete schema rather than append a conflicting schema extension.
-        var semanticPrompt = string.Join("\n", AgentGroupVerification.Prompt.Split('\n').Where(line =>
+        var semanticPrompt = string.Join("\n", FrozenVerifierV2.Prompt.Split('\n').Where(line =>
             !line.StartsWith("Otherwise return exactly", StringComparison.Ordinal) &&
             !line.StartsWith("You may ask for evidence", StringComparison.Ordinal)));
         var prompt = semanticPrompt + "\nQUALIFICATION CONTRACT: no tools. Return protocolVersion " + Version +
@@ -113,7 +113,7 @@ internal static class BoundaryGroundedCanary
                 if (!verdict.Remove("currentGroups") || !verdict.Remove("suggestedGroups")) throw new FormatException();
                 if (verdict["run"]?.GetValue<string>() != candidate.Id) throw new FormatException();
                 var diagnostics = new List<AgentGroupVerification.FieldDiagnostic>();
-                var parsed = AgentGroupVerification.ParseVerdict(verdict, candidate, observed, diagnostics, _ => { });
+                var parsed = AgentGroupVerification.ParseMembershipVerdict(verdict, candidate, observed, diagnostics, _ => { });
                 if (diagnostics.Count != 0) throw new FormatException();
                 decision = parsed.Decision;
                 membership = parsed.Membership.ToDictionary(m => m.Alias, m => m.Status, StringComparer.Ordinal);

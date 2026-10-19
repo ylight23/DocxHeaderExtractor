@@ -82,7 +82,8 @@ public sealed record GroupingObservation(int ModelDividedRuns = 0, int FallbackR
     IReadOnlyList<GroupingCoverageDiagnostic>? CoverageDiagnostics = null,
     IReadOnlyList<GroupingPartitionObservation>? Partitions = null,
     IReadOnlyList<GroupingVerifierEvidenceObservation>? VerifierEvidence = null,
-    IReadOnlyList<BoundaryRepairObservation>? BoundaryRepairs = null)
+    IReadOnlyList<BoundaryRepairObservation>? BoundaryRepairs = null,
+    IReadOnlyList<GroupingBoundaryVerdictObservation>? BoundaryVerdicts = null)
 {
     public GroupingObservation Add(GroupingObservation other) => new(ModelDividedRuns + other.ModelDividedRuns,
         FallbackRuns + other.FallbackRuns, DisputedRuns + other.DisputedRuns, VerificationChecks + other.VerificationChecks,
@@ -93,8 +94,14 @@ public sealed record GroupingObservation(int ModelDividedRuns = 0, int FallbackR
         (CoverageDiagnostics ?? []).Concat(other.CoverageDiagnostics ?? []).ToArray(),
         (Partitions ?? []).Concat(other.Partitions ?? []).ToArray(),
         (VerifierEvidence ?? []).Concat(other.VerifierEvidence ?? []).ToArray(),
-        (BoundaryRepairs ?? []).Concat(other.BoundaryRepairs ?? []).ToArray());
+        (BoundaryRepairs ?? []).Concat(other.BoundaryRepairs ?? []).ToArray(),
+        (BoundaryVerdicts ?? []).Concat(other.BoundaryVerdicts ?? []).ToArray());
 }
+
+/// <summary>Alias-only boundary proposals. Applied is always false: suggestions have no repair authority.</summary>
+public sealed record GroupingBoundaryVerdictObservation(string UnitId, int Attempt, int Round, string Run, int BoundaryRepairCycle,
+    IReadOnlyList<string> CandidateAliases, string? Decision, IReadOnlyList<IReadOnlyList<string>>? CurrentGroups,
+    IReadOnlyList<IReadOnlyList<string>>? SuggestedGroups, string? ProtocolError, bool Applied);
 
 /// <summary>Actual verifier-input partition. Null comparison means no prior partition or a changed alias scope.</summary>
 public sealed record GroupingPartitionObservation(string Phase, string UnitId, string CandidateId, string CandidateKey,

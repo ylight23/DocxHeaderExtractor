@@ -10,7 +10,7 @@ namespace DocxHeaderExtractor.HeadingAgent;
 internal static class AgentSelectionReview
 {
     public const int MaxPosts = 8;
-    public const string Version = "group-review-v1:verified-groups-v2-per-alias:candidate-repair-transport-retry";
+    public const string Version = "group-review-v1:verified-groups-v3-grounded-regroup:candidate-repair-transport-retry";
 
     public static AgentGrouping.Result Resolve(IAgentSource source, AgentGrouping.Result grouping,
         AgentUnitOutcome[] original, HashSet<string> selected, Dictionary<string, TextOffsetSpan> extents,

@@ -14,6 +14,8 @@ public sealed class BoundaryGroundedCohortTests
         return JsonSerializer.SerializeToNode(new
         {
             run = candidate["run"]!.GetValue<string>(), decision, reason = "PRIVATE_COHORT_REASON", evidenceRefs = new[] { aliases[0] },
+            currentGroups = decision == "REGROUP" ? candidate["proposedGroups"]!.Deserialize<string[][]>() : null,
+            suggestedGroups = decision == "REGROUP" ? GroundedVerifierFixture.Different(candidate["proposedGroups"]!.Deserialize<string[][]>()!) : null,
             membership = aliases.Select(a => new { alias = a, status = "HEADING", evidenceRefs = new[] { a } })
         })!.AsObject();
     }

@@ -126,9 +126,9 @@ public sealed class BoundaryGroundedCanaryTests
             Assert.Equal("D-INDEPENDENT", unit);
             Assert.DoesNotContain(Secret, request.Body);
             Assert.DoesNotContain("frozenComplaint", request.Body);
-            Assert.DoesNotContain("suggestedGroups", request.Body);
-            return new(JsonSerializer.Serialize(new { protocolVersion = AgentGroupVerification.Version,
-                verdicts = new[] { Verdict(independentDecision) } }), [], "stop");
+            Assert.Null(BoundaryStaticCanary.Packet(request)["suggestedGroups"]);
+            return new(GroundedVerifierFixture.Reply(JsonSerializer.Serialize(new { protocolVersion = AgentGroupVerification.Version,
+                verdicts = new[] { Verdict(independentDecision) } }), BoundaryStaticCanary.Packet(request)), [], "stop");
         };
         var result = BoundaryGroundedCanary.Run(BoundaryStaticCanaryTests.Source(), Seed(), model, new(12, 1), default);
         Assert.Equal(1, independentCalls);

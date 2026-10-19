@@ -50,7 +50,7 @@ internal static class BoundaryGroundedIndependentCommand
         if (originalReplies.Length != 1) throw new InvalidOperationException("E_EXPECTS_SINGLE_ORIGINAL_INDEPENDENT_POST");
         var expected = originalReplies[0]["requestSha256"]!.GetValue<string>();
         var originalRequest = AgentGrouping.BuildRequest(packet.ToJsonString(new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }),
-            [], AgentGroupVerification.Prompt);
+            [], FrozenVerifierV2.Prompt);
         if (originalRequest.Sha256 != expected) throw new InvalidOperationException("E_ORIGINAL_INDEPENDENT_REQUEST_RECONSTRUCTION_MISMATCH");
         return new(item.Id, packet, seed["extents"]!.Deserialize<Dictionary<string, TextOffsetSpan>>()!,
             seed["readings"]!.Deserialize<Dictionary<string, string>>()!, expected);

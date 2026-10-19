@@ -15,7 +15,7 @@ namespace DocxHeaderExtractor.HeadingAgent;
 /// including singleton and fallback groups. C# checks coverage, evidence references and response shape.</summary>
 internal static class AgentGroupVerification
 {
-    public const string Version = "HEADING_GROUP_VERIFICATION_V2";
+    public const string Version = "HEADING_GROUP_VERIFICATION_V3";
     // Evidence/JSON rounds and transport retries have separate limits. A failed transport
     // repeats identical prepared bytes and does not consume a model repair round.
     public const int MaxPosts = 3, TransportRetries = AgentUnit.TransportRetries, MaxCalls = MaxPosts + TransportRetries, BatchSize = 8;
@@ -25,13 +25,18 @@ internal static class AgentGroupVerification
     internal sealed record Candidate(string Id, string[][] Groups)
     { public string[] Aliases => Groups.SelectMany(g => g).ToArray(); }
     internal sealed record Membership(string Alias, string Status, string[] EvidenceRefs);
-    internal sealed record Verdict(string Run, string Decision, string Reason, string[] EvidenceRefs, Membership[] Membership);
+    internal sealed record Verdict(string Run, string Decision, string Reason, string[] EvidenceRefs, Membership[] Membership)
+    {
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] public string[][]? CurrentGroups { get; init; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] public string[][]? SuggestedGroups { get; init; }
+    }
     internal sealed record Check(IReadOnlyList<Verdict> Verdicts, IReadOnlyList<string> Evidence, string? Failure)
     {
         public IReadOnlyList<GroupingFieldDiagnostic> FieldDiagnostics { get; init; } = [];
         public IReadOnlyList<HeadingAliasProvenance> Provenance { get; init; } = [];
         public IReadOnlyList<GroupingCoverageDiagnostic> CoverageDiagnostics { get; init; } = [];
         public GroupingVerifierEvidenceObservation? VerifierEvidence { get; init; }
+        public IReadOnlyList<GroupingBoundaryVerdictObservation> BoundaryVerdicts { get; init; } = [];
     }
     internal sealed record ProtocolIssue(string? Run, string Code);
     internal sealed record FieldTypeIssue([property: JsonPropertyName("field")] string Field,
@@ -53,8 +58,9 @@ internal static class AgentGroupVerification
         "Distinguish headings that organize the enclosing document from text printed inside a reproduced form, example or quotation. A title inside reproduced material is not automatically a structural heading of the enclosing document. Use context and, when needed, source images to judge its function; if you cannot distinguish them, request evidence or return UNRESOLVED.",
         "For every candidate, give membership for EVERY alias in candidate order, exactly once: HEADING, NOT_HEADING, or UNRESOLVED, each with 1 to 8 evidenceRefs from shown or successfully returned source aliases. These are your semantic judgements. UNRESOLVED is not NOT_HEADING. Identify precise disputed aliases even when valid headings surround them. Never classify all lines alike just because they share a candidate.",
         "Choose ACCEPT only when all memberships are HEADING and boundaries are correct. Choose REGROUP only when ALL memberships are HEADING but boundaries are wrong. If ANY membership is NOT_HEADING or UNRESOLVED, use MEMBERSHIP_DISPUTE or UNRESOLVED instead; do not force non-heading text into a boundary-only repair. MEMBERSHIP_DISPUTE requires at least one non-HEADING alias. UNRESOLVED may also report unknown boundaries despite known membership. Give a reason and evidenceRefs containing 1 to 8 source aliases actually shown in the packet or returned evidence.",
+        "REGROUP additionally REQUIRES currentGroups to exactly echo the candidate's proposedGroups, including ordered boundaries, and suggestedGroups to be a DIFFERENT valid ordered partition of every candidate alias exactly once, in contiguous nonempty groups of at most 8 lines. A structurally identical suggestion is BOUNDARY_VERDICT_SELF_CONTRADICTORY and will be refused. If the current boundaries are correct, ACCEPT; do not invent changes to satisfy REGROUP. For other decisions omit suggestedGroups or use null; currentGroups may be omitted/null or exactly echo the input. A suggestion is recorded for audit only: it is not authorized or automatically applied. Membership and evidenceRefs remain mandatory for every decision.",
         "You may ask for evidence before deciding: return {\"protocolVersion\":\"" + Version + "\",\"requests\":[{\"name\":\"<read-only evidence tool>\",\"arguments\":{}}]}. evidenceTools lists available tools. get_scan_crop takes aliases (1 to 24 lines on one page) and optional fullWidth true to include the page edges and surrounding frame; it returns their image region with coordinates when available. Tool failures are not evidence. If needed evidence is unavailable, return UNRESOLVED. At most two evidence rounds; then decide from available evidence or return UNRESOLVED.",
-        "Otherwise return exactly {\"protocolVersion\":\"" + Version + "\",\"verdicts\":[{\"run\":\"<id>\",\"decision\":\"ACCEPT|MEMBERSHIP_DISPUTE|REGROUP|UNRESOLVED\",\"membership\":[{\"alias\":\"<each candidate alias>\",\"status\":\"HEADING|NOT_HEADING|UNRESOLVED\",\"evidenceRefs\":[\"<source alias>\"]}],\"reason\":\"<1 to 1000 characters>\",\"evidenceRefs\":[\"<alias>\"]}]}. Give every candidate once, no duplicates or extra fields. Do not add levels or parents.");
+        "Otherwise return exactly {\"protocolVersion\":\"" + Version + "\",\"verdicts\":[{\"run\":\"<id>\",\"decision\":\"ACCEPT|MEMBERSHIP_DISPUTE|REGROUP|UNRESOLVED\",\"membership\":[{\"alias\":\"<each candidate alias>\",\"status\":\"HEADING|NOT_HEADING|UNRESOLVED\",\"evidenceRefs\":[\"<source alias>\"]}],\"reason\":\"<1 to 1000 characters>\",\"evidenceRefs\":[\"<alias>\"],\"currentGroups\":null,\"suggestedGroups\":null}]}. For REGROUP replace BOTH nulls with the required current and different suggested partition arrays. Give every candidate once, no duplicates or extra fields. Do not add levels or parents.");
 
     public static AgentGrouping.Result Verify(IAgentSource source, AgentGrouping.Result input,
         IReadOnlyDictionary<string, TextOffsetSpan> extents, IReadOnlyDictionary<string, string> readings,
@@ -97,6 +103,7 @@ internal static class AgentGroupVerification
             observation = observation with { VerificationChecks = observation.VerificationChecks + chunks[n].Length,
                 FieldDiagnostics = (observation.FieldDiagnostics ?? []).Concat(check.FieldDiagnostics).ToArray(),
                 CoverageDiagnostics = (observation.CoverageDiagnostics ?? []).Concat(check.CoverageDiagnostics).ToArray(),
+                BoundaryVerdicts = (observation.BoundaryVerdicts ?? []).Concat(check.BoundaryVerdicts).ToArray(),
                 VerifierEvidence = (observation.VerifierEvidence ?? []).Concat(check.VerifierEvidence is { } ev ? [ev] : []).ToArray(),
                 Partitions = (observation.Partitions ?? []).Concat(chunks[n].Select(c => ObservePartition(prefix,
                     prefix + "-" + (n + 1).ToString("000"), c, boundaryRepairCycle, boundaryInputGroups))).ToArray() };
@@ -266,7 +273,7 @@ internal static class AgentGroupVerification
     }
 
     internal static object BoundaryFeedback(Candidate candidate, Verdict verdict, int nextCycle) =>
-        new { candidate = candidate.Id, proposedGroups = candidate.Groups, verifier = verdict,
+        new { candidate = candidate.Id, proposedGroups = candidate.Groups, verifier = verdict with { CurrentGroups = null, SuggestedGroups = null },
             boundaryRepairCycle = nextCycle, maxBoundaryRepairCycles = MaxBoundaryRepairCycles,
             task = "Reconsider boundaries only. Membership is unchanged unless you explicitly report dispute." };
 
@@ -300,8 +307,9 @@ internal static class AgentGroupVerification
         var allFieldDiagnostics = new List<GroupingFieldDiagnostic>();
         var provenance = new List<HeadingAliasProvenance>();
         var coverageDiagnostics = new List<GroupingCoverageDiagnostic>();
+        var boundaryVerdicts = new List<GroupingBoundaryVerdictObservation>();
         Check Finish(string? error) => new(candidates.Where(c => accepted.ContainsKey(c.Id)).Select(c => accepted[c.Id]).ToArray(), evidence, error)
-        { FieldDiagnostics = allFieldDiagnostics.ToArray(), Provenance = provenance.ToArray(), CoverageDiagnostics = coverageDiagnostics.ToArray(),
+        { FieldDiagnostics = allFieldDiagnostics.ToArray(), Provenance = provenance.ToArray(), CoverageDiagnostics = coverageDiagnostics.ToArray(), BoundaryVerdicts = boundaryVerdicts.ToArray(),
             VerifierEvidence = new(unit, boundaryRepairCycle, candidates.Select(c => (IReadOnlyList<string>)c.Aliases).ToArray(),
                 initiallyObserved, toolObservations.ToArray(), source.Lines.Where(l => observed.Contains(l.Alias)).Select(l => l.Alias).ToArray()) };
         string? failure = null;
@@ -418,6 +426,11 @@ internal static class AgentGroupVerification
                     catch (VerificationProtocolException e) { issues.Add(new(candidate.Id, e.Message)); }
                     catch (Exception e) when (e is JsonException or InvalidOperationException or NullReferenceException or ArgumentException)
                     { issues.Add(new(candidate.Id, "VERDICT_SHAPE_INVALID")); }
+                    var decision = StringValue(matches[0].Node, "decision");
+                    boundaryVerdicts.Add(new(unit, posts, round, candidate.Id, boundaryRepairCycle, candidate.Aliases,
+                        decision is "ACCEPT" or "REGROUP" or "MEMBERSHIP_DISPUTE" or "UNRESOLVED" ? decision : null,
+                        SafePartition(matches[0].Node?["currentGroups"], candidate), SafePartition(matches[0].Node?["suggestedGroups"], candidate),
+                        issues.FirstOrDefault(i => i.Run == candidate.Id)?.Code, false));
                 }
             }
             catch (VerificationProtocolException e) { issues.Add(new(null, e.Message)); }
@@ -451,6 +464,8 @@ internal static class AgentGroupVerification
                 "Response partly refused: " + JsonSerializer.Serialize(new { pendingCandidates = remaining, issues,
                     fieldDiagnostics = fieldDiagnostics.Where(d => d.Run is null || remaining.Contains(d.Run)).ToArray() }, Json) +
                 ". Previously accepted candidates are kept and must not be resubmitted. Return only the candidates in the current packet. Give every candidate and every membership alias exactly once in candidate order, with valid source evidence and a reason. ACCEPT/REGROUP require all HEADING. Non-HEADING aliases require MEMBERSHIP_DISPUTE or UNRESOLVED. Do not invent HEADING/ACCEPT to fix protocol." });
+            history[^1]!["content"] = history[^1]!["content"]!.GetValue<string>() +
+                " REGROUP must echo proposedGroups as currentGroups and provide a DIFFERENT valid suggestedGroups. The actual current partition is in the packet. If current boundaries are correct, ACCEPT instead; otherwise provide a different valid partition or dispute/unresolved. Do not alter membership to evade boundary consistency checks. This is protocol repair, not a semantic boundary cycle.";
         }
         return Finish(failure ?? "EVIDENCE_ROUNDS_EXHAUSTED");
     }
@@ -499,7 +514,34 @@ internal static class AgentGroupVerification
     internal static Verdict ParseVerdict(JsonNode? node, Candidate candidate, IReadOnlySet<string> observed, List<FieldDiagnostic> diagnostics,
         Action<string[]> observeCoverage)
     {
-        RequireFields(node, candidate.Id, "verdict", VerdictFields, diagnostics, "VERDICT");
+        var verdict = ParseMembershipVerdict(node, candidate, observed, diagnostics, observeCoverage);
+        var item = node!.AsObject();
+        string[][]? current = null, suggested = null;
+        if (verdict.Decision == "REGROUP" || item["currentGroups"] is not null)
+        {
+            current = SafePartition(item["currentGroups"], candidate);
+            Require(current is not null, "BOUNDARY_CURRENT_GROUPS_INVALID");
+            Require(EqualPartition(current!, candidate.Groups), "BOUNDARY_CURRENT_GROUPS_MISMATCH");
+        }
+        if (verdict.Decision == "REGROUP")
+        {
+            suggested = SafePartition(item["suggestedGroups"], candidate);
+            Require(suggested is not null, "BOUNDARY_SUGGESTED_GROUPS_INVALID");
+            Require(!EqualPartition(suggested!, candidate.Groups), "BOUNDARY_VERDICT_SELF_CONTRADICTORY");
+        }
+        else Require(item["suggestedGroups"] is null, "BOUNDARY_SUGGESTION_REQUIRES_REGROUP");
+        return verdict with { CurrentGroups = current, SuggestedGroups = suggested };
+    }
+
+    // Shared semantic field validator for qualification's separately grounded protocols.
+    // Production Ask always uses ParseVerdict, which has no grounding-bypass switch.
+    internal static Verdict ParseMembershipVerdict(JsonNode? node, Candidate candidate, IReadOnlySet<string> observed, List<FieldDiagnostic> diagnostics,
+        Action<string[]> observeCoverage)
+    {
+        var boundaryFields = new[] { "currentGroups", "suggestedGroups" }
+            .Where(name => node is JsonObject o && o.ContainsKey(name))
+            .Select(name => (name, node![name]?.GetValueKind() ?? JsonValueKind.Null));
+        RequireFields(node, candidate.Id, "verdict", VerdictFields.Concat(boundaryFields).ToArray(), diagnostics, "VERDICT");
         var item = node!.AsObject();
         var decision = StringValue(item, "decision");
         Require(decision is "ACCEPT" or "MEMBERSHIP_DISPUTE" or "REGROUP" or "UNRESOLVED", "DECISION_INVALID");
@@ -522,6 +564,18 @@ internal static class AgentGroupVerification
         Require(!((decision is "ACCEPT" or "REGROUP") && membership.Any(m => m.Status != "HEADING")) &&
             !(decision == "MEMBERSHIP_DISPUTE" && membership.All(m => m.Status == "HEADING")), "MEMBERSHIP_DECISION_INCONSISTENT");
         return new(candidate.Id, decision!, reason!, refs, membership.ToArray());
+    }
+
+    internal static bool EqualPartition(string[][] a, string[][] b) => a.Length == b.Length && a.Zip(b).All(p => p.First.SequenceEqual(p.Second));
+    static string[][]? SafePartition(JsonNode? node, Candidate candidate)
+    {
+        try
+        {
+            var groups = node?.Deserialize<string[][]>();
+            return groups is { Length: > 0 } && groups.All(g => g is { Length: >= 1 and <= 8 }) &&
+                groups.SelectMany(g => g).SequenceEqual(candidate.Aliases) ? groups : null;
+        }
+        catch (Exception e) when (e is JsonException or InvalidOperationException or NotSupportedException) { return null; }
     }
 
     static string SelectedText(IAgentSource source, string alias, int position,

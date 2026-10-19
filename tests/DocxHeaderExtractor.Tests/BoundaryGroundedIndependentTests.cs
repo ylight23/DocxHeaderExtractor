@@ -75,7 +75,7 @@ public sealed class BoundaryGroundedIndependentTests
         var seed = BoundaryGroundedCanaryTests.Seed();
         var packet = seed["packet"]!.DeepClone().AsObject();
         packet["candidates"]![0]!["proposedGroups"] = JsonSerializer.SerializeToNode(Proposal);
-        var request = AgentGrouping.BuildRequest(packet.ToJsonString(new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), [], AgentGroupVerification.Prompt);
+        var request = AgentGrouping.BuildRequest(packet.ToJsonString(new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping }), [], FrozenVerifierV2.Prompt);
         var report = JsonSerializer.SerializeToNode(new { report = new { outcomes = new[] { new
         {
             id = "V17", category = "CHANGED_INDEPENDENT_REJECT_OR_UNRESOLVED",

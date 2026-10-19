@@ -60,7 +60,7 @@ public sealed class AppendixMembershipTests
                         }).ToArray())
                     });
                 }
-                return new ModelTurn(new JsonObject { ["protocolVersion"] = AgentGroupVerification.Version, ["verdicts"] = verdicts }.ToJsonString(), [], "stop");
+                return new ModelTurn(GroundedVerifierFixture.Reply(new JsonObject { ["protocolVersion"] = AgentGroupVerification.Version, ["verdicts"] = verdicts }.ToJsonString(), packet), [], "stop");
             }
             if (stage == "GROUP")
             {
