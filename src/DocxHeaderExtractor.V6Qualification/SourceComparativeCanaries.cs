@@ -31,7 +31,7 @@ internal static class SourceComparativeCanaries
         new("V24-CONTROL", PageAliases(11, 1, 12), [["P011-L001", "P011-L002"], ["P011-L003", "P011-L004"]], [["P011-L001", "P011-L002", "P011-L003", "P011-L004"]], ["A", "B", "A"])
     ];
 
-    static string[] PageAliases(int page, int first, int last) => Enumerable.Range(first, last - first + 1)
+    internal static string[] PageAliases(int page, int first, int last) => Enumerable.Range(first, last - first + 1)
         .Select(line => $"P{page:000}-L{line:000}").ToArray();
 
     internal static JsonObject BoundaryPacket(ScanAgentSource source, Case item)

@@ -10,7 +10,7 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class SourceComparativeCanariesTests
 {
-    static ScanAgentSource Source()
+    internal static ScanAgentSource Source()
     {
         var pages = new List<OcrPage>();
         foreach (var page in new[] { 8, 11, 26 })

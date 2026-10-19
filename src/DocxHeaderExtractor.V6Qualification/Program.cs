@@ -10,7 +10,7 @@ internal static class Program
 {
     private static int Main(string[] args)
     {
-        if (args.FirstOrDefault() is "boundary-static-ab" or "boundary-suggested-c" or "boundary-grounded-d" or "boundary-grounded-cohort" or "boundary-grounded-e" or "boundary-oscillation-canary" or "hierarchy-comparative-canary")
+        if (args.FirstOrDefault() is "boundary-static-ab" or "boundary-suggested-c" or "boundary-grounded-d" or "boundary-grounded-cohort" or "boundary-grounded-e" or "boundary-oscillation-canary" or "hierarchy-comparative-canary" or "boundary-label-swap-canary" or "hierarchy-single-child-canary")
         {
             try { return args[0] switch
             {
@@ -19,11 +19,13 @@ internal static class Program
                 "boundary-grounded-e" => BoundaryGroundedIndependentCommand.Run(args),
                 "boundary-oscillation-canary" => SourceComparativeCanaries.Run(args, hierarchy: false),
                 "hierarchy-comparative-canary" => SourceComparativeCanaries.Run(args, hierarchy: true),
+                "boundary-label-swap-canary" => AdjudicationBiasCanaries.Run(args, hierarchy: false),
+                "hierarchy-single-child-canary" => AdjudicationBiasCanaries.Run(args, hierarchy: true),
                 _ => BoundarySuggestedCanaryCommand.Run(args)
             }; }
             catch (Exception e) { Console.Error.WriteLine("Qualification aborted (" + e.GetType().Name + "); raw payload withheld."); return 1; }
         }
-        Console.Error.WriteLine("Qualification commands: boundary-static-ab, boundary-suggested-c, boundary-grounded-d, boundary-grounded-cohort, boundary-grounded-e, boundary-oscillation-canary, hierarchy-comparative-canary (explicit --live required). See git history for retired commands.");
+        Console.Error.WriteLine("Qualification commands: boundary-static-ab, boundary-suggested-c, boundary-grounded-d, boundary-grounded-cohort, boundary-grounded-e, boundary-oscillation-canary, hierarchy-comparative-canary, boundary-label-swap-canary, hierarchy-single-child-canary (explicit --live required). See git history for retired commands.");
         return 2;
     }
 }
