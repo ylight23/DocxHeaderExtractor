@@ -347,7 +347,7 @@ public sealed class HeadingExtentTests : IDisposable
 
         var article = DocxAgentSource.Load(path, null, out _)!.Lines.Single(l => l.Text.StartsWith(Heading, StringComparison.Ordinal)).Alias;
         Assert.Equal(3, handler.Posts - handler.Bodies.Count(FakeOpenRouter.IsVerification));
-        var repair = handler.Bodies.Last(b => !FakeOpenRouter.IsVerification(b))["messages"]!.AsArray().Last(m => m!["role"]!.GetValue<string>() == "user")!["content"]!.GetValue<string>();
+        var repair = handler.Bodies.Last(b => !FakeOpenRouter.IsVerification(b))["messages"]!.AsArray().Last(m => m!["role"]!.GetValue<string>() == "user")!["content"]!.Text();
         Assert.Contains("PROTOCOL:HEADING_EXTENT_TEXT_MISMATCH", repair, StringComparison.Ordinal);
         Assert.Contains("the text at [0,29) is \"Article 8. Prohibited acts 1.\"", repair, StringComparison.Ordinal);
         Assert.Equal(new TextOffsetSpan(0, Heading.Length), selection.HeadingExtents![article]);

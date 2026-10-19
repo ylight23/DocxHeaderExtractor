@@ -94,7 +94,7 @@ public sealed class P7F1V6DirectD411jTests : IDisposable
         var (decide, ctx) = P7F1V6DirectCanary410.Scope(marked, segment);
         var request = C.FirstRequest(A.Arm.Prefetch, marked, segment).Body;
         using var body = JsonDocument.Parse(request);
-        using var payload = JsonDocument.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var payload = JsonDocument.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
         foreach (var line in payload.RootElement.GetProperty("targets").EnumerateArray().Concat(payload.RootElement.GetProperty("context").EnumerateArray()))
             Assert.StartsWith("§", line.GetProperty("text").GetString());
         // Tool results.
@@ -308,7 +308,7 @@ public sealed class P7F1V6DirectD411jTests : IDisposable
         var http = new Handler(body =>
         {
             using var d = JsonDocument.Parse(body);
-            using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+            using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
             var targets = p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!);
             return Sse(body, new JsonObject
             {

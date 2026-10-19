@@ -35,7 +35,7 @@ public sealed class P7F1V6DirectD411hTests : IDisposable
     static JsonElement PayloadOf(P7F1V6Protocol.PreparedRequest r)
     {
         using var d = JsonDocument.Parse(r.Body);
-        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
         return p.RootElement.Clone();
     }
 
@@ -473,7 +473,7 @@ public sealed class P7F1V6DirectD411hTests : IDisposable
         var http = new Handler(body =>
         {
             using var d = JsonDocument.Parse(body);
-            using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+            using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
             return Sse(body, Final(p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!)));
         });
         Assert.StartsWith("AUTHORIZATION_REFUSED:", Assert.Throws<InvalidOperationException>(() =>

@@ -30,8 +30,14 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
     internal static bool IsVerification(JsonObject body) => VerificationPayload(body) is not null;
     internal static JsonObject? VerificationPayload(JsonObject body)
     {
-        if (body["messages"]?[1]?["content"] is not JsonValue content || !content.TryGetValue<string>(out var text)) return null;
-        var payload = JsonNode.Parse(text) as JsonObject;
+        var content = body["messages"]?[1]?["content"];
+        var block = content is JsonArray blocks ? blocks.FirstOrDefault() : content;
+        if (block?["text"] is null && content is not JsonValue) return null;
+        if (block?["text"] is not JsonValue value && content is not JsonValue) return null;
+        var text = block is JsonObject ? block["text"]!.GetValue<string>() : content!.GetValue<string>();
+        JsonObject? payload;
+        try { payload = JsonNode.Parse(text) as JsonObject; }
+        catch (System.Text.Json.JsonException) { return null; }   // a text block that is not JSON (a transcription prompt) is no verification
         return payload?["stage"]?.GetValue<string>() == "GROUP_VERIFICATION" ? payload : null;
     }
     internal static string? VerificationResponse(JsonObject body)
@@ -89,9 +95,9 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
     public static (HttpStatusCode, string) FactsThenFirstTwoTargetsThenGroup(JsonObject body, int post)
     {
         var messages = body["messages"]!.AsArray();
-        if (messages[1]!["content"] is JsonValue)
+        var text = messages[1]!["content"]!.Text();
+        if (JsonNode.Parse(text) is JsonObject { } payload && payload["stage"]?.GetValue<string>() == "GROUP")
         {
-            var payload = JsonNode.Parse(messages[1]!["content"]!.GetValue<string>())!;
             var runs = payload["runs"]!.AsArray().Select(r => new
             {
                 run = r!["run"]!.GetValue<string>(),
@@ -99,7 +105,7 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
             });
             return (HttpStatusCode.OK, Stream(new { content = JsonSerializer.Serialize(new { protocolVersion = "PDF_HEADING_GROUPS_V1", runs }) }, "stop"));
         }
-        var unit = JsonNode.Parse(messages[1]!["content"]![0]!["text"]!.GetValue<string>())!;
+        var unit = JsonNode.Parse(text)!;
         var targets = unit["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).ToArray();
         if (!messages.Any(m => m!["role"]!.GetValue<string>() == "tool"))
             return (HttpStatusCode.OK, Stream(new { tool_calls = FirstTurnFacts(body, targets) }, "tool_calls"));

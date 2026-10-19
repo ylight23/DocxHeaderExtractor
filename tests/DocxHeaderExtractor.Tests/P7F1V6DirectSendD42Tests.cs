@@ -268,7 +268,7 @@ public sealed class P7F1V6DirectSendD42Tests : IDisposable
         // This records the parser's verdict on real output; it is not a judgement of the model's selections.
         var path = Path.Combine(TestRepository.Root(), PinnedDir, P7F1V6DirectCanarySend.ResponseFile);
         using var doc = JsonDocument.Parse(File.ReadAllText(path));
-        var content = doc.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString()!;
+        var content = doc.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").Text()!;
         var lines = new[] { "S0001", "S0002", "S0003", "S0004" }.Select(a => new P7F1V6Direct.Line(a, 1, "x")).ToList();
         var r = P7F1V6Direct.Parse(content, lines, 0, 4);
         Assert.False(r.Ok);

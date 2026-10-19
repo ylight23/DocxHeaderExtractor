@@ -76,7 +76,7 @@ public sealed class ScanTextEvaluationTests : IDisposable
         var handler = new FakeOpenRouter((body, post) =>
         {
             var content = body["messages"]![1]!["content"]!.AsArray();
-            Assert.Equal(ScanTextEvaluation.SystemPrompt, body["messages"]![0]!["content"]!.GetValue<string>());
+            Assert.Equal(ScanTextEvaluation.SystemPrompt, body["messages"]![0]!["content"]!.Text());
             var ids = content.Where(c => c!["type"]!.GetValue<string>() == "text").Select(c => c!["text"]!.GetValue<string>()["id ".Length..]).ToArray();
             Assert.Equal(ids.Length, content.Count(c => c!["type"]!.GetValue<string>() == "image_url"));
             return (HttpStatusCode.OK, FakeOpenRouter.Stream(new

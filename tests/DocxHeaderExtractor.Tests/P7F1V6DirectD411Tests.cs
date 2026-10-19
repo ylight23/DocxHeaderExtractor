@@ -53,12 +53,12 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         {
             var req = P7F1V6DirectCanary410.FirstRequest(f, U.Value, "SEG-008");
             using var body = JsonDocument.Parse(req.Body);
-            var payload = body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!;
+            var payload = body.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!;
             Assert.DoesNotContain("protocolVersion", payload);
             Assert.DoesNotContain("responseVersion", payload);
             Assert.DoesNotContain("P7_F1_V6_SELECT", payload);
             // The reply version is still stated, by the pinned system prompt only.
-            Assert.Contains(P7F1V6DirectTwoStage.SelectVersion(f), body.RootElement.GetProperty("messages")[0].GetProperty("content").GetString());
+            Assert.Contains(P7F1V6DirectTwoStage.SelectVersion(f), body.RootElement.GetProperty("messages")[0].GetProperty("content").Text());
         }
     }
 
@@ -122,7 +122,7 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
     {
         var path = Path.Combine(TestRepository.Root(), "artifacts", "v5-p7-f1-v6-d4-contractfix", "d410-canary", "arm-B", "raw", rawKey + ".json");
         using var doc = JsonDocument.Parse(File.ReadAllBytes(path));
-        return doc.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString()!;
+        return doc.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").Text()!;
     }
 
     /// <summary>COUNTERFACTUAL. The recorded replies are edited in memory to show which check each copied field trips. An edited reply is
@@ -415,7 +415,7 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
 
     static string[] Targets(P7F1V6Protocol.PreparedRequest r)
     {
-        using var p = JsonDocument.Parse(Body(r).GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var p = JsonDocument.Parse(Body(r).GetProperty("messages")[1].GetProperty("content").Text()!);
         return p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
     }
 
@@ -454,7 +454,7 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         Assert.Equal(P7F1V6AgentTools.Compare, call.GetProperty("function").GetProperty("name").GetString());
         Assert.Equal("tool", msgs[3].GetProperty("role").GetString());
         Assert.Equal("call_a", msgs[3].GetProperty("tool_call_id").GetString());
-        var toolContent = msgs[3].GetProperty("content").GetString()!;
+        var toolContent = msgs[3].GetProperty("content").Text()!;
         Assert.Contains("\"evidenceId\":\"E1.01\"", toolContent);
         Assert.Contains(L(o), toolContent);
         Assert.Equal("auto", turn2.GetProperty("tool_choice").GetString());
@@ -553,7 +553,7 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         Assert.Equal(expected, Enumerable.Range(3, 9).Select(i => msgs[i].GetProperty("tool_call_id").GetString()!));
         Assert.Equal(8, outcome.ToolCalls.Count(c => c.Status == "OK"));
         Assert.Equal("PER_TURN_CALL_CAP_EXCEEDED", outcome.ToolCalls.Last().ErrorCode);
-        Assert.Contains("\"status\":\"REJECTED\"", msgs[11].GetProperty("content").GetString());
+        Assert.Contains("\"status\":\"REJECTED\"", msgs[11].GetProperty("content").Text());
     }
 
     public static TheoryData<string?, string?, string> BadIdTurns => new()
@@ -667,7 +667,7 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
     /// <summary>The bytes of the tool messages actually sent back in the last request, read from that request.</summary>
     static int ToolMessageBytesIn(P7F1V6Protocol.PreparedRequest req) =>
         Body(req).GetProperty("messages").EnumerateArray().Where(m => m.GetProperty("role").GetString() == "tool")
-            .Sum(m => Encoding.UTF8.GetByteCount(m.GetProperty("content").GetString()!));
+            .Sum(m => Encoding.UTF8.GetByteCount(m.GetProperty("content").Text()!));
 
     public static TheoryData<int, int> Floods => new() { { 8, 3 }, { 9, 3 }, { 20, 3 }, { 60, 1 }, { 60, 3 } };
 
@@ -754,11 +754,11 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         var agent = P7F1V6DirectAgentCanary.FirstRequest(A.Arm.Auto, U.Value, "SEG-001");
         var b = P7F1V6DirectCanary410.FirstRequest(P7F1V6DirectTwoStage.SelectFormat.Objects, U.Value, "SEG-001");
         var ab = Body(agent); var bb = Body(b);
-        var payload = ab.GetProperty("messages")[1].GetProperty("content").GetString()!;
+        var payload = ab.GetProperty("messages")[1].GetProperty("content").Text()!;
         Assert.DoesNotContain("protocolVersion", payload);
         Assert.DoesNotContain("responseVersion", payload);
         Assert.DoesNotContain("retrievalAllowed", payload);
-        Assert.Equal(A.AutoPrompt, ab.GetProperty("messages")[0].GetProperty("content").GetString());
+        Assert.Equal(A.AutoPrompt, ab.GetProperty("messages")[0].GetProperty("content").Text());
         foreach (var field in new[] { "model", "temperature", "max_tokens", "provider", "usage" })
             Assert.Equal(bb.GetProperty(field).GetRawText(), ab.GetProperty(field).GetRawText());
         // D4.11g: arm B forces JSON with response_format; the agent's tool turns do not.
@@ -770,7 +770,7 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         Assert.True(ab.GetProperty("stream").GetBoolean());
         Assert.False(bb.TryGetProperty("stream", out _));
         // Same targets and context as arm B.
-        using var bp = JsonDocument.Parse(bb.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var bp = JsonDocument.Parse(bb.GetProperty("messages")[1].GetProperty("content").Text()!);
         using var ap = JsonDocument.Parse(payload);
         Assert.Equal(bp.RootElement.GetProperty("targets").GetRawText(), ap.RootElement.GetProperty("targets").GetRawText());
         Assert.Equal(bp.RootElement.GetProperty("context").GetRawText(), ap.RootElement.GetProperty("context").GetRawText());
@@ -922,7 +922,7 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
     static string[] TargetsOfBody(string body)
     {
         using var d = JsonDocument.Parse(body);
-        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
         return p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
     }
 
@@ -961,7 +961,7 @@ public sealed class P7F1V6DirectD411Tests : IDisposable
         Assert.Equal("call_s1", msgs[2].GetProperty("tool_calls")[0].GetProperty("id").GetString());
         Assert.Equal(args, msgs[2].GetProperty("tool_calls")[0].GetProperty("function").GetProperty("arguments").GetString());
         Assert.Equal("call_s1", msgs[3].GetProperty("tool_call_id").GetString());
-        Assert.Equal(call.ContentSha256, Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(msgs[3].GetProperty("content").GetString()!))));
+        Assert.Equal(call.ContentSha256, Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(msgs[3].GetProperty("content").Text()!))));
         Assert.Equal(new[] { L(t) }, outcome.Evidence.EvidenceUsed);
         // The store keeps the raw SSE bytes, not the assembled view.
         Assert.All(model.Ledger, l =>

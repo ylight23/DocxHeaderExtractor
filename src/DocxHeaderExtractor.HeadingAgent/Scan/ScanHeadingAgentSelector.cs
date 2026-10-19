@@ -66,6 +66,8 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
     /// <summary>The folder of the store root that holds the selection answers already paid for (<see cref="SelectionCache"/>); with
     /// reuseSelection false (CLI <c>--fresh-selection</c>) it is neither read nor written.</summary>
     public const string SelectionFolder = "selection";
+    /// <summary>The folder of the store root that holds the grouping answers already paid for (<see cref="GroupingCache"/>).</summary>
+    public const string GroupingFolder = "grouping";
 
     readonly string instruction = instruction ?? ScanAgentProtocol.Instruction;
     /// <summary>Calls at once in the conversation: its units wait on the provider, not on this machine.</summary>
@@ -165,7 +167,8 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
         var timings = new CallTimings();
         AgentUnit.Model timed = (unit, turn, request) => timings.Time(unit, () => traced(unit, turn, request));
         var selection = HeadingAgentSelector.Select(source, timed, budget, parallelism, ct, retryDelayMs: 5000,
-            costOf: () => budget.ActualUsd, instruction, cache: reuseSelection ? new SelectionCache(Path.Combine(storeRoot, SelectionFolder)) : null);
+            costOf: () => budget.ActualUsd, instruction, cache: reuseSelection ? new SelectionCache(Path.Combine(storeRoot, SelectionFolder)) : null,
+            groupingCache: reuseSelection ? new GroupingCache(Path.Combine(storeRoot, GroupingFolder)) : null);
         var (headings, rejected) = Headings(source, selection);
         onSelected?.Invoke(source, selection);
         return new ScanHeadingResult(evidence.SourceSha256, SelectorId, headings, selection.UnitsComplete, selection.UnitsTotal, selection.UnitFailures,

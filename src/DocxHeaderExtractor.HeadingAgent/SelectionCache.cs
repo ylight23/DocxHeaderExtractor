@@ -52,3 +52,47 @@ internal sealed class SelectionCache(string root)
         catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }   // a cache that cannot be written only costs a call next time
     }
 }
+
+/// <summary>
+/// Grouping answers already paid for, the same way as <see cref="SelectionCache"/>: a batch's division is stored under the SHA-256 of its first
+/// request (its runs, their lines, the context and the group prompt), and read back only when that request is byte for byte the same. Only a
+/// batch in which every run was divided is stored. The division is stored as aliases, so a reading back maps them to the same source lines.
+/// </summary>
+internal sealed class GroupingCache(string root)
+{
+    public const string Version = "GROUPING_CACHE_V1";
+
+    sealed record Entry(string Version, string SourceSha256, string FirstRequestSha256, Dictionary<string, List<List<string>>> Division);
+
+    string PathOf(string sourceSha256, string firstRequestSha256) =>
+        Path.Combine(root, sourceSha256[..Math.Min(16, sourceSha256.Length)], firstRequestSha256 + ".json");
+
+    /// <summary>The stored division of the batch (run id to its groups of aliases), or null when none is stored or it cannot be read.</summary>
+    public Dictionary<string, List<List<string>>>? TryLoad(string sourceSha256, string firstRequestSha256)
+    {
+        var path = PathOf(sourceSha256, firstRequestSha256);
+        if (!File.Exists(path)) return null;
+        try
+        {
+            var entry = JsonSerializer.Deserialize<Entry>(File.ReadAllText(path));
+            return entry is null || entry.Version != Version || entry.SourceSha256 != sourceSha256 || entry.FirstRequestSha256 != firstRequestSha256
+                ? null : entry.Division;
+        }
+        catch (Exception e) when (e is IOException or JsonException or UnauthorizedAccessException or NotSupportedException) { return null; }
+    }
+
+    public void Store(string sourceSha256, string firstRequestSha256, Dictionary<string, List<List<string>>> division)
+    {
+        var path = PathOf(sourceSha256, firstRequestSha256);
+        if (File.Exists(path)) return;
+        try
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+            var temp = path + "." + Guid.NewGuid().ToString("N") + ".tmp";
+            File.WriteAllText(temp, JsonSerializer.Serialize(new Entry(Version, sourceSha256, firstRequestSha256, division)));
+            try { File.Move(temp, path, overwrite: false); }
+            catch (IOException) { File.Delete(temp); }
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }
+    }
+}

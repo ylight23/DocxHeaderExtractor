@@ -65,7 +65,7 @@ public sealed class ScanAgentTests : IDisposable
         AgentUnit.Model model = (unit, turn, request) =>
         {
             if (++posts <= failures) throw new ReplyFailure(code);
-            var payload = JsonNode.Parse(JsonNode.Parse(request.Body)!["messages"]![1]!["content"]!.GetValue<string>())!;
+            var payload = JsonNode.Parse(JsonNode.Parse(request.Body)!["messages"]![1]!["content"]!.Text())!;
             var runs = payload["runs"]!.AsArray().Select(r => (JsonNode)new JsonObject
             {
                 ["run"] = r!["run"]!.GetValue<string>(),
@@ -355,7 +355,7 @@ public sealed class ScanAgentTests : IDisposable
         var result = new ScanHeadingAgentSelector(dir, () => handler, parallelism: 1).ExtractFrom(Evidence(), [Vision()], "sk-test", CancellationToken.None);
 
         Assert.Equal(3, handler.Posts);
-        Assert.Contains("PROTOCOL:READING_VIEW_UNKNOWN", handler.Bodies.Last(b => !FakeOpenRouter.IsVerification(b))["messages"]!.AsArray().Last(m => m!["role"]!.GetValue<string>() == "user")!["content"]!.GetValue<string>(), StringComparison.Ordinal);
+        Assert.Contains("PROTOCOL:READING_VIEW_UNKNOWN", handler.Bodies.Last(b => !FakeOpenRouter.IsVerification(b))["messages"]!.AsArray().Last(m => m!["role"]!.GetValue<string>() == "user")!["content"]!.Text(), StringComparison.Ordinal);
         Assert.Equal("Điều 2. Thẩm quyền chứng thực", result.Headings[1].Text);
     }
 
@@ -452,7 +452,7 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal(AgentProtocol.ChatModel, request["model"]!.GetValue<string>());
         Assert.Equal(2, request["messages"]![1]!["content"]!.AsArray().Count(c => c!["type"]!.GetValue<string>() == "image_url"));
         Assert.StartsWith("data:image/png;base64,", request["messages"]![1]!["content"]![1]!["image_url"]!["url"]!.GetValue<string>(), StringComparison.Ordinal);
-        Assert.Equal(ScanVisionPreflight.SystemPrompt, request["messages"]![0]!["content"]!.GetValue<string>());
+        Assert.Equal(ScanVisionPreflight.SystemPrompt, request["messages"]![0]!["content"]!.Text());
         Assert.Single(Directory.GetFiles(Path.Combine(dir, "vlm")));
 
         var again = preflight.Run(evidence, entry, "sk-test", new ScanVisionPreflight.Options(Parallelism: 1)).Single();
@@ -569,7 +569,7 @@ public sealed class ScanAgentTests : IDisposable
         };
         var handler = new FakeOpenRouter((body, post) =>
         {
-            Assert.Equal(ScanTranscription.SystemPrompt, body["messages"]![0]!["content"]!.GetValue<string>());
+            Assert.Equal(ScanTranscription.SystemPrompt, body["messages"]![0]!["content"]!.Text());
             var content = body["messages"]![1]!["content"]!.AsArray();
             var ids = content.Where(c => c!["type"]!.GetValue<string>() == "text").Select(c => c!["text"]!.GetValue<string>()["id ".Length..]).ToArray();
             Assert.Equal(ids.Length, content.Count(c => c!["type"]!.GetValue<string>() == "image_url"));

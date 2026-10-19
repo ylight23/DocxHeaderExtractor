@@ -139,7 +139,7 @@ public sealed class P7F1V6SegmentationTests
         Assert.DoesNotContain("Layout facts:", P7F1V6DirectAgent.PrefetchPromptRange);
         // Every shown line has facts, and none are about lines that are not shown.
         using var body = System.Text.Json.JsonDocument.Parse(geometry.Body);
-        using var payload = System.Text.Json.JsonDocument.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var payload = System.Text.Json.JsonDocument.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
         var shown = payload.RootElement.GetProperty("targets").EnumerateArray().Concat(payload.RootElement.GetProperty("context").EnumerateArray())
             .Select(x => x.GetProperty("alias").GetString()).ToList();
         var facts = payload.RootElement.GetProperty("observations").GetProperty("layoutFacts").GetProperty("lines").EnumerateArray().Select(x => x.GetProperty("alias").GetString()).ToList();

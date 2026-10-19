@@ -73,7 +73,7 @@ public sealed class StructuredInferenceTransportTests
         { Source = new(lines, new Dictionary<string, DocxHeaderExtractor.DocumentProcessing.Routing.HeadingAliasState>()) };
         using var handler = new FakeOpenRouter((body, _) =>
         {
-            var packet = body["messages"]![1]!["content"]!.GetValue<string>();
+            var packet = body["messages"]![1]!["content"]!.Text();
             Assert.Equal("HIERARCHY_PLACE", JsonNode.Parse(packet)!["stage"]!.GetValue<string>());
             Assert.Equal(expectedCap, body["max_tokens"]!.GetValue<int>());
             return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = HierarchyTestProtocol.Reply(packet) }, finish));

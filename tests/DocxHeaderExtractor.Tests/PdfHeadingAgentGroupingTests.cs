@@ -27,7 +27,7 @@ public sealed class PdfHeadingAgentGroupingTests
             var n = Interlocked.Increment(ref post);
             if (throwOn?.Invoke(n) is { } code) throw new ReplyFailure(code);
             using var body = JsonDocument.Parse(req.Body);
-            var payload = JsonDocument.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!).RootElement.Clone();
+            var payload = JsonDocument.Parse(body.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!).RootElement.Clone();
             lock (payloads) { payloads.Add(payload); bodies.Add(req.Body); }
             return new ModelTurn(script(n, payload), [], "stop");
         }, payloads, bodies);
@@ -300,7 +300,7 @@ public sealed class PdfHeadingAgentGroupingTests
         Assert.Empty(result.Answers);
         // The repair turns carry the refused reply and a message naming the refusal.
         using var last = JsonDocument.Parse(bodies[^1]);
-        Assert.Contains("was refused", last.RootElement.GetProperty("messages").EnumerateArray().Last().GetProperty("content").GetString());
+        Assert.Contains("was refused", last.RootElement.GetProperty("messages").EnumerateArray().Last().GetProperty("content").Text());
         // Fallback: consecutive lines of one page and one layout block stay together, and Group keeps every selected line. (The production
         // selector then withholds these FALLBACK aliases as UNRESOLVED: Persistent_dispute_shaped_reply_is_protocol_failure_and_remains_fail_closed.)
         Assert.Equal(new[] { A(10), A(11), A(12) }.Order(), result.Groups.SelectMany(g => g).Order());
@@ -337,7 +337,7 @@ public sealed class PdfHeadingAgentGroupingTests
         Assert.Contains(A(10) + "|" + A(11), groups);
         Assert.Contains(A(20) + "|" + A(21), groups);
         using var repair = JsonDocument.Parse(bodies[1]);
-        var message = repair.RootElement.GetProperty("messages").EnumerateArray().Last().GetProperty("content").GetString()!;
+        var message = repair.RootElement.GetProperty("messages").EnumerateArray().Last().GetProperty("content").Text()!;
         Assert.Contains("PROTOCOL:KEY_REPEATED", message);
         Assert.Contains("one \"runs\" array that lists every run", message);
     }
@@ -394,7 +394,7 @@ public sealed class PdfHeadingAgentGroupingTests
         Assert.Empty(result.Failures);
         Assert.Equal(2, result.Posts);
         using var second = JsonDocument.Parse(bodies[1]);
-        var repair = second.RootElement.GetProperty("messages").EnumerateArray().Last().GetProperty("content").GetString()!;
+        var repair = second.RootElement.GetProperty("messages").EnumerateArray().Last().GetProperty("content").Text()!;
         Assert.Contains("run R1 is missing " + A(12), repair, StringComparison.Ordinal);
         Assert.Contains("run R2 is missing " + A(42), repair, StringComparison.Ordinal);
         Assert.Contains("Selection has already decided that every alias in each run is a heading", repair, StringComparison.Ordinal);
@@ -420,7 +420,7 @@ public sealed class PdfHeadingAgentGroupingTests
         Assert.Equal(2, result.Answers.Count);
         Assert.Equal(new[] { new[] { A(10) }, new[] { A(11), A(12) }, new[] { A(40), A(41) }, new[] { A(60), A(61) } }, result.Groups.Select(g => g.ToArray()));
         using var second = JsonDocument.Parse(bodies[1]);
-        var repair = second.RootElement.GetProperty("messages").EnumerateArray().Last().GetProperty("content").GetString()!;
+        var repair = second.RootElement.GetProperty("messages").EnumerateArray().Last().GetProperty("content").Text()!;
         Assert.Contains("run R2 is not in your answer", repair, StringComparison.Ordinal);
         Assert.Contains("were accepted and are kept", repair, StringComparison.Ordinal);
         Assert.DoesNotContain("run R1", repair, StringComparison.Ordinal);
@@ -488,7 +488,7 @@ public sealed class PdfHeadingAgentGroupingTests
         Assert.Equal(ChatModel, root.GetProperty("model").GetString());
         Assert.Equal("alibaba", root.GetProperty("provider").GetProperty("only")[0].GetString());
         Assert.Equal(Instruction, payloads.Single().GetProperty("instruction").GetString());
-        Assert.Equal(AgentGrouping.GroupPrompt, root.GetProperty("messages")[0].GetProperty("content").GetString());
+        Assert.Equal(AgentGrouping.GroupPrompt, root.GetProperty("messages")[0].GetProperty("content").Text());
         Assert.Contains("JSON", AgentGrouping.GroupPrompt, StringComparison.Ordinal);
     }
 }

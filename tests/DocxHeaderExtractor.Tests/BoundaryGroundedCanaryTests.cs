@@ -61,9 +61,9 @@ public sealed class BoundaryGroundedCanaryTests
             }
             Assert.Equal(2, round);
             Assert.Equal(4, messages.Count);
-            Assert.Equal(firstReply, messages[2]!["content"]!.GetValue<string>());
+            Assert.Equal(firstReply, messages[2]!["content"]!.Text());
             Assert.Equal("assistant", messages[2]!["role"]!.GetValue<string>());
-            var feedback = JsonNode.Parse(messages[3]!["content"]!.GetValue<string>())!;
+            var feedback = JsonNode.Parse(messages[3]!["content"]!.Text())!;
             Assert.Equal("PROTOCOL_CONSISTENCY_REPAIR", feedback["stage"]!.GetValue<string>());
             Assert.Equal(error, feedback["error"]!.GetValue<string>());
             Assert.True(JsonNode.DeepEquals(JsonSerializer.SerializeToNode(Input), feedback["proposedGroups"]));
@@ -186,7 +186,7 @@ public sealed class BoundaryGroundedCanaryTests
                 return new(root.ToJsonString(), [], "stop");
             }
             var messages = JsonNode.Parse(request.Body)!["messages"]!.AsArray();
-            var repair = JsonNode.Parse(messages[^1]!["content"]!.GetValue<string>())!;
+            var repair = JsonNode.Parse(messages[^1]!["content"]!.Text())!;
             Assert.Equal(new[] { "evidenceRefs", "membership" }, repair["missingFields"]!.Deserialize<string[]>());
             var template = repair["responseTemplate"]!["verdicts"]![0]!;
             Assert.Equal(3, template["membership"]!.AsArray().Count);

@@ -254,8 +254,8 @@ public sealed class P7F1V6D31aTests
         Assert.NotEmpty(afterSearch);
         var msgs = Root(P7F1V6Protocol.Envelope(P7F1V6Protocol.SystemPrompt(P7F1V6Hier.Kind.Synthesis), afterSearch[0], Tag, MaxTokens))
             .GetProperty("messages").EnumerateArray().ToArray();
-        Assert.DoesNotContain(injected, msgs[0].GetProperty("content").GetString()!, StringComparison.Ordinal);
-        Assert.True(HasStringValue(Root(msgs[1].GetProperty("content").GetString()!), injected),
+        Assert.DoesNotContain(injected, msgs[0].GetProperty("content").Text()!, StringComparison.Ordinal);
+        Assert.True(HasStringValue(Root(msgs[1].GetProperty("content").Text()!), injected),
             "the search result must carry the source text as a JSON string value in the user message");
     }
 

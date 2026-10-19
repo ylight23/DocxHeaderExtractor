@@ -75,7 +75,7 @@ public sealed class P7F1V6DirectD45aTests : IDisposable
     static string[] DecideOf(string requestBody)
     {
         using var doc = JsonDocument.Parse(requestBody);
-        using var p = JsonDocument.Parse(doc.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var p = JsonDocument.Parse(doc.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
         return p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
     }
 
@@ -295,7 +295,7 @@ public sealed class P7F1V6DirectD45aTests : IDisposable
             if (unit == "SEG-002")
             {
                 using var doc = JsonDocument.Parse(req.Body);
-                using var p = JsonDocument.Parse(doc.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+                using var p = JsonDocument.Parse(doc.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
                 var d = p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!).ToArray();
                 return JsonSerializer.Serialize(new { protocolVersion = P7F1V6DirectV2.ResponseVersion, status = "COMPLETE",
                     decisions = d.Select(a => new { alias = a, decision = "NOT_SELECT", evidenceRefs = new[] { a } }), headings = Array.Empty<object>() });

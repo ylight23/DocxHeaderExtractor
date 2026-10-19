@@ -93,7 +93,14 @@ internal static class BoundaryStaticCanary
     }
 
     internal static JsonObject Packet(PreparedRequest request) =>
-        JsonNode.Parse(JsonNode.Parse(request.Body)!["messages"]![1]!["content"]!.GetValue<string>())!.AsObject();
+        JsonNode.Parse(ContentText(request.Body))!.AsObject();
+
+    /// <summary>The packet text of the second message: a plain string, or the first block of the cache-marked array the group requests send.</summary>
+    static string ContentText(string body)
+    {
+        var content = JsonNode.Parse(body)!["messages"]![1]!["content"]!;
+        return content is JsonArray blocks ? blocks[0]!["text"]!.GetValue<string>() : content.GetValue<string>();
+    }
 
     static string InstructionFor(IAgentSource source) => source is DocxHeaderExtractor.HeadingAgent.Scan.ScanAgentSource
         ? DocxHeaderExtractor.HeadingAgent.Scan.ScanAgentProtocol.Instruction : Instruction;

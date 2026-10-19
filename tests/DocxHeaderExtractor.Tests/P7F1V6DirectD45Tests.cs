@@ -41,7 +41,7 @@ public sealed class P7F1V6DirectD45Tests : IDisposable
     static JsonElement Payload(string body)
     {
         using var doc = JsonDocument.Parse(body);
-        using var p = JsonDocument.Parse(doc.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var p = JsonDocument.Parse(doc.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
         return p.RootElement.Clone();
     }
 

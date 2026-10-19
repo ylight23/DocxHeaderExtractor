@@ -25,7 +25,7 @@ public sealed class P7F1V6DirectD4Tests : IDisposable
     static string UserPayload(P7F1V6Protocol.PreparedRequest req)
     {
         using var doc = JsonDocument.Parse(req.Body);
-        return doc.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!;
+        return doc.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!;
     }
 
     static string Reply(params (string Alias, string Decision, string Ref)[] items) =>
@@ -193,7 +193,7 @@ public sealed class P7F1V6DirectD4Tests : IDisposable
     {
         var built = P7F1V6DirectCanary.Build();
         using var doc = JsonDocument.Parse(built.Request.Body);
-        var content = doc.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!;
+        var content = doc.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!;
         Assert.DoesNotContain("RFC", content, StringComparison.Ordinal);
         Assert.DoesNotContain("HTTP/2", content, StringComparison.Ordinal);
     }

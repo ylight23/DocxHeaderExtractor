@@ -70,7 +70,7 @@ public sealed class SourceComparativeCanariesTests
             var body = JsonNode.Parse(request.Body)!;
             var messages = body["messages"]!.AsArray();
             Assert.Equal(2, messages.Count);
-            var packet = JsonNode.Parse(messages[1]! ["content"]!.GetValue<string>())!;
+            var packet = JsonNode.Parse(messages[1]! ["content"]!.Text())!;
             Assert.Equal(SourceComparativeCanaries.BoundaryProtocol, packet["protocol"]!.GetValue<string>());
             Assert.DoesNotContain("oldReason", request.Body);
             return new(JsonSerializer.Serialize(new { protocol = SourceComparativeCanaries.BoundaryProtocol,

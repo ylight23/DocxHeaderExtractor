@@ -92,8 +92,8 @@ public sealed class P7F1V6ProtocolD31Tests
             Assert.Equal(2, msgs.Length);
             Assert.Equal("system", msgs[0].GetProperty("role").GetString());
             Assert.Equal("user", msgs[1].GetProperty("role").GetString());
-            Assert.Equal(P7F1V6Protocol.SystemPrompt(kind), msgs[0].GetProperty("content").GetString());
-            Assert.Equal(payload, msgs[1].GetProperty("content").GetString());
+            Assert.Equal(P7F1V6Protocol.SystemPrompt(kind), msgs[0].GetProperty("content").Text());
+            Assert.Equal(payload, msgs[1].GetProperty("content").Text());
             Assert.Equal("json_object", e.GetProperty("response_format").GetProperty("type").GetString());
             Assert.Equal(0, e.GetProperty("temperature").GetInt32());
             Assert.Equal(MaxTokens, e.GetProperty("max_tokens").GetInt32());
@@ -104,7 +104,7 @@ public sealed class P7F1V6ProtocolD31Tests
             Assert.False(e.TryGetProperty("tools", out _));
             Assert.False(e.TryGetProperty("tool_choice", out _));
             Assert.False(e.TryGetProperty("reasoning", out _));
-            Assert.Equal(Compact(payload), Compact(msgs[1].GetProperty("content").GetString()!));
+            Assert.Equal(Compact(payload), Compact(msgs[1].GetProperty("content").Text()!));
         }
     }
 
@@ -140,11 +140,11 @@ public sealed class P7F1V6ProtocolD31Tests
         foreach (var (kind, payload) in nodeKinds)
         {
             var msgs = Root(P7F1V6Protocol.Envelope(P7F1V6Protocol.SystemPrompt(kind), payload, Tag, MaxTokens)).GetProperty("messages").EnumerateArray().ToArray();
-            Assert.Equal(P7F1V6Protocol.SystemPrompt(kind), msgs[0].GetProperty("content").GetString());
-            Assert.DoesNotContain(injected, msgs[0].GetProperty("content").GetString()!, StringComparison.Ordinal);
+            Assert.Equal(P7F1V6Protocol.SystemPrompt(kind), msgs[0].GetProperty("content").Text());
+            Assert.DoesNotContain(injected, msgs[0].GetProperty("content").Text()!, StringComparison.Ordinal);
             // the line is data where it is shown; a node that was not given the line does not carry it
             if (payload.Contains(injected, StringComparison.Ordinal))
-                Assert.Contains(injected, msgs[1].GetProperty("content").GetString()!, StringComparison.Ordinal);
+                Assert.Contains(injected, msgs[1].GetProperty("content").Text()!, StringComparison.Ordinal);
         }
         // as a JSON string value: the source line is a text field, never a key or a structure
         var firstLocal = nodeKinds.First(x => x.K == P7F1V6Hier.Kind.Local).P;

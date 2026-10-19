@@ -134,7 +134,7 @@ public sealed class P7F1V6DirectD411fTests : IDisposable
             {
                 if (turn <= 2) return new A.ModelTurn(null, new[] { new A.ToolCall($"c{turn}", P7F1V6AgentTools.SourceSpan, same) }, "tool_calls");
                 using var d = JsonDocument.Parse(req.Body);
-                using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+                using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
                 var targets = p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!);
                 return new A.ModelTurn(new JsonObject
                 {

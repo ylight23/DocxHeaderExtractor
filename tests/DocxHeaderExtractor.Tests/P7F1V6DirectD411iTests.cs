@@ -33,7 +33,7 @@ public sealed class P7F1V6DirectD411iTests : IDisposable
     static JsonElement PayloadOf(P7F1V6Protocol.PreparedRequest r)
     {
         using var d = JsonDocument.Parse(r.Body);
-        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
         return p.RootElement.Clone();
     }
 
@@ -60,7 +60,7 @@ public sealed class P7F1V6DirectD411iTests : IDisposable
         var withRange = C.FirstRequest(mode, u, segment);
         var (decide, _) = P7F1V6DirectCanary410.Scope(u, segment);
         using var body = JsonDocument.Parse(withRange.Body);
-        var payloadText = body.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!;
+        var payloadText = body.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!;
         var fields = $"\"targetFirstAlias\":\"{decide[0]}\",\"targetLastAlias\":\"{decide[^1]}\",";
         Assert.Contains(fields, payloadText);
         Assert.Equal(1, Regex_Count(payloadText, "targetFirstAlias"));
@@ -344,7 +344,7 @@ public sealed class P7F1V6DirectD411iTests : IDisposable
         var http = new Handler(body =>
         {
             using var d = JsonDocument.Parse(body);
-            using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+            using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
             return Sse(body, Decisions(p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!)));
         });
         Assert.StartsWith("AUTHORIZATION_REFUSED:", Assert.Throws<InvalidOperationException>(() =>

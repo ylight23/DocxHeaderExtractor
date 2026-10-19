@@ -54,7 +54,7 @@ internal static class AgentGrouping
 
     /// <summary>Model-divided runs in document order and layout fallback for protocol failures.</summary>
     public static Result Group(IAgentSource source, IReadOnlySet<string> selected, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct, int retryDelayMs = 5000,
-        string instruction = Instruction, string unitPrefix = "GROUP", object? verificationFeedback = null)
+        string instruction = Instruction, string unitPrefix = "GROUP", object? verificationFeedback = null, GroupingCache? cache = null)
     {
         var chosen = Enumerable.Range(0, source.Lines.Count).Where(i => selected.Contains(source.Lines[i].Alias)).ToArray();
         // Maximal runs of selected lines that are adjacent in reading order.
@@ -80,7 +80,13 @@ internal static class AgentGrouping
             n =>
             {
                 var started = groupClock.Elapsed.TotalSeconds;
-                var result = AskChunk(source, chunks[n], n + 1, model, budget, retryDelayMs, instruction, unitPrefix, verificationFeedback);
+                // A batch whose first request was answered before is read back, not asked again (the qualification feedback is never cached).
+                var key = cache is null || verificationFeedback is not null ? null : BatchKey(source, chunks[n], n + 1, instruction);
+                var result = key is not null && cache!.TryLoad(source.SourceSha256, key) is { } stored && FromStored(source, chunks[n], stored) is { } reused
+                    ? reused
+                    : AskChunk(source, chunks[n], n + 1, model, budget, retryDelayMs, instruction, unitPrefix, verificationFeedback);
+                if (key is not null && result.Failure is null && result.Division.Count == chunks[n].Length)
+                    cache!.Store(source.SourceSha256, key, ToStored(source, result.Division));
                 var completed = groupClock.Elapsed.TotalSeconds;
                 results[n] = result;
                 batchTimings[n] = new GroupingBatchTiming(unitPrefix, unitPrefix + "-" + (n + 1).ToString("000"), chunks[n].Length,
@@ -119,6 +125,39 @@ internal static class AgentGrouping
             Observation = new(ModelDividedRuns: division.Count, FallbackRuns: runs.Count - division.Count, DisputedRuns: 0,
                 Batches: batchTimings) };
     }
+
+    /// <summary>The SHA-256 of the first request a batch sends: the same runs and lines give the same key.</summary>
+    internal static string BatchKey(IAgentSource source, Run[] chunk, int number, string instruction) =>
+        BuildRequest(Payload(source, chunk, number, instruction), new JsonArray(), source.Flavor.GroupPrompt).Sha256;
+
+    /// <summary>The stored division as line indices, when it covers every run of the batch with lines that still exist; otherwise null (asked again).</summary>
+    static (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts, int Repairs, List<string> Evidence)? FromStored(
+        IAgentSource source, Run[] chunk, Dictionary<string, List<List<string>>> stored)
+    {
+        var index = new Dictionary<string, int>(StringComparer.Ordinal);
+        for (int i = 0; i < source.Lines.Count; i++) index[source.Lines[i].Alias] = i;
+        var division = new Dictionary<string, List<int[]>>(StringComparer.Ordinal);
+        foreach (var run in chunk)
+        {
+            if (!stored.TryGetValue(run.Id, out var groups)) return null;
+            var parts = new List<int[]>();
+            foreach (var group in groups)
+            {
+                var lines = new int[group.Count];
+                for (int k = 0; k < group.Count; k++)
+                {
+                    if (!index.TryGetValue(group[k], out var at)) return null;
+                    lines[k] = at;
+                }
+                parts.Add(lines);
+            }
+            division[run.Id] = parts;
+        }
+        return (division, [], null, 0, 0, []);
+    }
+
+    static Dictionary<string, List<List<string>>> ToStored(IAgentSource source, Dictionary<string, List<int[]>> division) =>
+        division.ToDictionary(kv => kv.Key, kv => kv.Value.Select(g => g.Select(i => source.Lines[i].Alias).ToList()).ToList(), StringComparer.Ordinal);
 
     /// <summary>The fallback: consecutive lines of the same page and parser layout block are one heading.</summary>
     internal static List<int[]> LayoutRule(AgentSource source, int[] lines)
@@ -238,9 +277,12 @@ internal static class AgentGrouping
     /// <summary>One POST body: the group prompt and the payload, json_object, no tools. The provider block, streaming and usage are the agent's.</summary>
     internal static PreparedRequest BuildRequest(string payload, JsonArray history, string? groupPrompt = null)
     {
+        // The group prompt and the batch payload are cache-marked like the selection's blocks: a repair turn re-sends both unchanged.
+        static JsonNode Marked(string text) =>
+            new JsonArray(new JsonObject { ["type"] = "text", ["text"] = text, ["cache_control"] = new JsonObject { ["type"] = "ephemeral" } });
         var messages = new JsonArray(
-            new JsonObject { ["role"] = "system", ["content"] = groupPrompt ?? GroupPrompt },
-            new JsonObject { ["role"] = "user", ["content"] = payload });
+            new JsonObject { ["role"] = "system", ["content"] = Marked(groupPrompt ?? GroupPrompt) },
+            new JsonObject { ["role"] = "user", ["content"] = Marked(payload) });
         foreach (var m in history) messages.Add(m!.DeepClone());
         var body = new JsonObject
         {

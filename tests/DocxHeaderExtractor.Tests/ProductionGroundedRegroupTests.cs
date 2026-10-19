@@ -11,7 +11,7 @@ public sealed class ProductionGroundedRegroupTests
     static string A(int n) => $"P001-L{n:000}";
     static readonly string[][] Groups = [[A(1), A(2)], [A(3)]];
     static JsonObject Packet(PreparedRequest request) =>
-        JsonNode.Parse(JsonNode.Parse(request.Body)!["messages"]![1]!["content"]!.GetValue<string>())!.AsObject();
+        JsonNode.Parse(JsonNode.Parse(request.Body)!["messages"]![1]!["content"]!.Text())!.AsObject();
     static JsonObject Verdict(JsonNode c, string decision, string fault = "")
     {
         var groups = c["proposedGroups"]!.Deserialize<string[][]>()!;
@@ -66,8 +66,8 @@ public sealed class ProductionGroundedRegroupTests
             Assert.Equal("GROUP_VERIFICATION", packet["stage"]!.GetValue<string>());
             if (round == 1) { first = Reply(packet, "REGROUP", "same"); return new(first, [], "stop"); }
             var messages = JsonNode.Parse(request.Body)!["messages"]!.AsArray();
-            Assert.Equal(first, messages[2]!["content"]!.GetValue<string>());
-            Assert.Contains("BOUNDARY_VERDICT_SELF_CONTRADICTORY", messages[3]!["content"]!.GetValue<string>());
+            Assert.Equal(first, messages[2]!["content"]!.Text());
+            Assert.Contains("BOUNDARY_VERDICT_SELF_CONTRADICTORY", messages[3]!["content"]!.Text());
             return new(Reply(packet, "ACCEPT"), [], "stop");
         };
         var result = AgentGroupVerification.Verify(BoundaryStaticCanaryTests.Source(), new(Groups, [], [], 0),

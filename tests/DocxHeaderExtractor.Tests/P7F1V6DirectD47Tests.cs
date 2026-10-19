@@ -37,8 +37,8 @@ public sealed class P7F1V6DirectD47Tests
             new[] { new P7F1V6Direct.Line("L0000:S0", 1, "x") }, Array.Empty<P7F1V6DirectV2.Retrieval>());
         using var body = JsonDocument.Parse(req.Body);
         var messages = body.RootElement.GetProperty("messages");
-        Assert.Equal(P7F1V6DirectV2.SystemPrompt, messages[0].GetProperty("content").GetString());
-        using var payload = JsonDocument.Parse(messages[1].GetProperty("content").GetString()!);
+        Assert.Equal(P7F1V6DirectV2.SystemPrompt, messages[0].GetProperty("content").Text());
+        using var payload = JsonDocument.Parse(messages[1].GetProperty("content").Text()!);
         Assert.Equal(UserInstruction, payload.RootElement.GetProperty("instruction").GetString());
         Assert.Equal(P7F1V6Core.InstructionSha256(UserInstruction), payload.RootElement.GetProperty("instructionSha256").GetString());
     }

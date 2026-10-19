@@ -149,7 +149,8 @@ public abstract class HeadingAgentSelector : IHeadingSelector
 
     /// <summary>Runs every segment, parallelism at a time, and collects the lines selected by the units whose answer passed.</summary>
     internal static HeadingSelection Select(IAgentSource source, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct,
-        int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0, SelectionCache? cache = null)
+        int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0, SelectionCache? cache = null,
+        GroupingCache? groupingCache = null)
     {
         var phase = Stopwatch.StartNew();
         var seconds = new Dictionary<string, double>(StringComparer.Ordinal);
@@ -190,7 +191,7 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         seconds["selection"] = phase.Elapsed.TotalSeconds;
         phase.Restart();
         // The selected lines divided into headings: the model decides which adjacent lines form one heading, C# checks the division.
-        var grouping = AgentGrouping.Group(source, selected, model, budget, parallelism, ct, retryDelayMs, instruction);
+        var grouping = AgentGrouping.Group(source, selected, model, budget, parallelism, ct, retryDelayMs, instruction, cache: groupingCache);
         seconds["grouping"] = phase.Elapsed.TotalSeconds;
         // Grouping output is admitted by its strict parser and C# source-order/coverage checks.
         // Semantic verifier and selection-review agents are qualification-only; neither can alter

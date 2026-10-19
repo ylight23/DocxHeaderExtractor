@@ -26,7 +26,7 @@ public sealed class HeadingGroupVerificationTests
                 m!["content"]!.ToString().Contains("json", StringComparison.OrdinalIgnoreCase));
             if (!mentionsJson) return (HttpStatusCode.BadRequest, JsonModeProviderError);
             Assert.Equal("json_object", body["response_format"]!["type"]!.GetValue<string>());
-            Assert.Contains("JSON object", body["messages"]![0]!["content"]!.GetValue<string>());
+            Assert.Contains("JSON object", body["messages"]![0]!["content"]!.Text());
             return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = FakeOpenRouter.VerificationResponse(body) }, "stop"));
         }, autoVerify: false);
         var budget = new AgentBudget(10, 100);
@@ -98,7 +98,7 @@ public sealed class HeadingGroupVerificationTests
             else
             {
                 Assert.Equal("V4", Assert.Single(packet["candidates"]!.AsArray())!["run"]!.GetValue<string>());
-                var repair = JsonNode.Parse(request.Body)!["messages"]!.AsArray().Last()!["content"]!.GetValue<string>();
+                var repair = JsonNode.Parse(request.Body)!["messages"]!.AsArray().Last()!["content"]!.Text();
                 Assert.Contains(diagnostic, repair);
                 Assert.Contains("must not be resubmitted", repair);
             }
@@ -140,7 +140,7 @@ public sealed class HeadingGroupVerificationTests
             {
                 Assert.Equal("V41", Assert.Single(packet["candidates"]!.AsArray())!["run"]!.GetValue<string>());
                 var messages = JsonNode.Parse(request.Body)!["messages"]!.AsArray();
-                var feedback = messages.Last()!["content"]!.GetValue<string>();
+                var feedback = messages.Last()!["content"]!.Text();
                 var begin = feedback.IndexOf('{');
                 var end = feedback.IndexOf("}. Previously accepted", StringComparison.Ordinal);
                 var diagnostics = JsonNode.Parse(feedback[begin..(end + 1)])!;
@@ -260,7 +260,7 @@ public sealed class HeadingGroupVerificationTests
         Assert.Equal("membership", type["field"]!.GetValue<string>());
         Assert.Equal("Array", type["expected"]!.GetValue<string>());
         Assert.Equal("String", type["actual"]!.GetValue<string>());
-        var repair = JsonNode.Parse(requests[1])!["messages"]!.AsArray().Last()!["content"]!.GetValue<string>();
+        var repair = JsonNode.Parse(requests[1])!["messages"]!.AsArray().Last()!["content"]!.Text();
         Assert.Contains("\"missing\":[\"reason\"]", repair);
         Assert.Contains("\"unexpected\":[\"confidence\"]", repair);
         Assert.Contains("\"expected\":\"Array\"", repair);

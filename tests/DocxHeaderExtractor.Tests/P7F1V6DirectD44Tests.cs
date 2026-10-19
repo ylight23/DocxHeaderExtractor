@@ -24,7 +24,7 @@ public sealed class P7F1V6DirectD44Tests
     static JsonElement Payload(P7F1V6Protocol.PreparedRequest req)
     {
         using var doc = JsonDocument.Parse(req.Body);
-        using var p = JsonDocument.Parse(doc.RootElement.GetProperty("messages")[1].GetProperty("content").GetString()!);
+        using var p = JsonDocument.Parse(doc.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
         return p.RootElement.Clone();
     }
 

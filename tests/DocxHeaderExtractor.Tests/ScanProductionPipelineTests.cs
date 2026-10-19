@@ -92,7 +92,7 @@ public sealed class ScanProductionPipelineTests
     {
         using var handler = new FakeOpenRouter((body, _) =>
         {
-            var packet = body["messages"]![1]!["content"]!.GetValue<string>();
+            var packet = body["messages"]![1]!["content"]!.Text();
             Assert.Equal("HIERARCHY_PLACE", JsonNode.Parse(packet)!["stage"]!.GetValue<string>());
             Assert.Equal(352, body["max_tokens"]!.GetValue<int>());
             var parents = new Dictionary<string, string> { ["P001-L001"] = "ROOT", ["P001-L003"] = "P001-L001" };

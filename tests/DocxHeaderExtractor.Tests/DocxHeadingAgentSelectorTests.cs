@@ -73,10 +73,10 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
         Assert.Empty(handler.Bodies.Where(FakeOpenRouter.IsVerification));
         Assert.Equal(2 * selection.UnitsTotal + 1, selection.ProviderCalls);
         // The group request carries the DOCX grouping prompt, and its lines carry a style and no page.
-        var group = handler.Bodies.Single(b => b["messages"]![1]!["content"] is JsonValue && !FakeOpenRouter.IsVerification(b));
-        Assert.Equal(DocxAgentFlavor.Instance.GroupPrompt, group["messages"]![0]!["content"]!.ToString());
-        Assert.Contains("\"style\"", group["messages"]![1]!["content"]!.GetValue<string>(), StringComparison.Ordinal);
-        Assert.DoesNotContain("\"page\"", group["messages"]![1]!["content"]!.GetValue<string>(), StringComparison.Ordinal);
+        var group = handler.Bodies.Single(b => b["messages"]![1]!["content"]!.Text().Contains("\"stage\":\"GROUP\"", StringComparison.Ordinal) && !FakeOpenRouter.IsVerification(b));
+        Assert.Equal(DocxAgentFlavor.Instance.GroupPrompt, group["messages"]![0]!["content"]!.Text());
+        Assert.Contains("\"style\"", group["messages"]![1]!["content"]!.Text(), StringComparison.Ordinal);
+        Assert.DoesNotContain("\"page\"", group["messages"]![1]!["content"]!.Text(), StringComparison.Ordinal);
     }
 
     [Fact]

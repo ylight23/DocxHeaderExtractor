@@ -551,7 +551,7 @@ public sealed class P7F1V6StableRunTests
         {
             Assert.False(p.RootElement.TryGetProperty("observations", out _));
             Assert.Equal(8, d.RootElement.GetProperty("tools").GetArrayLength());
-            Assert.Equal(A.ToolFactsPromptRange, d.RootElement.GetProperty("messages")[0].GetProperty("content").GetString());
+            Assert.Equal(A.ToolFactsPromptRange, d.RootElement.GetProperty("messages")[0].GetProperty("content").Text());
         }
         Assert.Contains("first reply must be tool calls to get_line_facts", A.ToolFactsPromptRange);
         Assert.DoesNotContain("get_line_facts", A.FactsPromptRange);
@@ -878,7 +878,7 @@ public sealed class P7F1V6StableRunTests
         Assert.True(ds.GetProperty("styles").GetArrayLength() > 0);
         Assert.False(p.RootElement.TryGetProperty("observations", out _));
         Assert.Equal(8, d.RootElement.GetProperty("tools").GetArrayLength());
-        var prompt = d.RootElement.GetProperty("messages")[0].GetProperty("content").GetString()!;
+        var prompt = d.RootElement.GetProperty("messages")[0].GetProperty("content").Text()!;
         Assert.Equal(A.ToolFactsAnalysisV3PromptRange, prompt);
         Assert.Contains("this request shows no layout", prompt);
         Assert.Contains("Document styles:", prompt);
