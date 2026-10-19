@@ -149,13 +149,21 @@ public abstract class HeadingAgentSelector : IHeadingSelector
 
     /// <summary>Runs every segment, parallelism at a time, and collects the lines selected by the units whose answer passed.</summary>
     internal static HeadingSelection Select(IAgentSource source, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct,
-        int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0)
+        int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0, SelectionCache? cache = null)
     {
         var phase = Stopwatch.StartNew();
         var seconds = new Dictionary<string, double>(StringComparer.Ordinal);
         var outcomes = new AgentUnitOutcome[firstSegments > 0 ? Math.Min(firstSegments, source.Cores.Count) : source.Cores.Count];
+        // With a cache, a unit whose first request is byte for byte one already answered COMPLETE takes that answer and makes no call.
+        AgentUnitOutcome RunOrReuse(int n)
+        {
+            if (cache?.TryLoad(source.SourceSha256, AgentUnit.FirstRequestSha256(source, n, instruction)) is { } reused) return reused;
+            var outcome = AgentUnit.Run(source, n, model, budget, retryDelayMs, instruction);
+            cache?.Store(source.SourceSha256, outcome);
+            return outcome;
+        }
         Parallel.For(0, outcomes.Length, new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct },
-            n => outcomes[n] = AgentUnit.Run(source, n, model, budget, retryDelayMs, instruction));
+            n => outcomes[n] = RunOrReuse(n));
         var complete = outcomes.Where(o => o.Status == "COMPLETE").ToArray();
         var selected = complete.SelectMany(o => o.Decisions.Where(d => d.Value == "SELECT").Select(d => d.Key)).ToHashSet(StringComparer.Ordinal);
         var answers = complete.Select(o => JsonSerializer.Serialize(new
@@ -176,6 +184,9 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         var failures = outcomes.Where(o => o.Status != "COMPLETE").Select(o => o.UnitId + ":" + o.Status + ":" + (o.Failure ?? "UNKNOWN")
             + (o.Failure is "COVERAGE:CORE_FACTS_MISSING" or "BUDGET:CORE_FACTS_UNCOVERED" ? ":" + o.TargetsWithoutFacts!.Count + "_TARGETS_WITHOUT_CORE_FACTS" : "")).ToList();
         if (budget.HaltReason is { } halt) failures.Add("HALT:" + halt);
+        var reusedUnits = outcomes.Where(o => o.Reused).Select(o => o.UnitId).ToArray();
+        if (reusedUnits.Length > 0)
+            answers = answers.Append(JsonSerializer.Serialize(new { stage = "selection-reuse", cache = SelectionCache.Version, units = reusedUnits }, Compact)).ToArray();
         seconds["selection"] = phase.Elapsed.TotalSeconds;
         phase.Restart();
         // The selected lines divided into headings: the model decides which adjacent lines form one heading, C# checks the division.

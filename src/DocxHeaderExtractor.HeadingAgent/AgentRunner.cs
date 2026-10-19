@@ -85,7 +85,11 @@ internal sealed record AgentUnitOutcome(string UnitId, string Status, string? Fa
     int ToolCallsEmitted, int ToolCallsSucceeded, bool FenceUnwrapped, string? Analysis, IReadOnlyDictionary<string, string>? Reasons,
     string? RepairedFrom, int RepairsUsed, int TransportRetries, IReadOnlyList<string> RequestSha256s,
     IReadOnlyDictionary<string, HeadingExtent>? Extents = null, IReadOnlyList<string>? TargetsWithoutFacts = null, int FactsResultsCut = 0,
-    IReadOnlyList<string>? DetailEvidenceAliases = null, IReadOnlyDictionary<string, string>? ReadingChoices = null);
+    IReadOnlyList<string>? DetailEvidenceAliases = null, IReadOnlyDictionary<string, string>? ReadingChoices = null)
+{
+    /// <summary>The outcome was read back from the selection cache: no call was made for it in this run.</summary>
+    public bool Reused { get; init; }
+}
 
 /// <summary>
 /// One unit of the D4.12 method as a conversation (ported from the qualified V6 RunUnit, arm TOOLFACTS_ANALYSIS_V3, with json_object on every
@@ -106,6 +110,19 @@ internal static class AgentUnit
     public static readonly string[] RetriableTransport = ["TRANSPORT:STREAM_ERROR", "TRANSPORT:STREAM_INCOMPLETE", "TRANSPORT:RATE_LIMITED_NO_RETRY", "TRANSPORT:SERVER_ERROR_NO_RETRY", "TRANSPORT:TRANSPORT_ERROR"];
 
     public delegate ModelTurn Model(string unitId, int turn, PreparedRequest request);
+
+    /// <summary>The SHA-256 of the first request <see cref="Run"/> sends for a segment (no history, tool_choice auto): it carries the model,
+    /// the system prompt, the tools, the instruction and the payload with its facts, so it names everything the unit's answer depends on.</summary>
+    public static string FirstRequestSha256(IAgentSource source, int segment, string instruction = Instruction)
+    {
+        var (decide, shownIdx) = source.Scope(segment);
+        var flavor = source.Flavor;
+        var tools = flavor.CreateTools(source);
+        var ordered = decide.OrderBy(tools.PositionOf).ToList();
+        var payload = Payload(source.SourceSha256, AgentSource.SegmentId(segment), ordered, shownIdx.Select(i => source.Lines[i]).ToArray(),
+            tools.DocumentStyles(), instruction, flavor, flavor.PayloadFacts(source, ordered));
+        return Build(payload, new JsonArray(), "auto", flavor).Sha256;
+    }
 
     public static AgentUnitOutcome Run(IAgentSource source, int segment, Model model, AgentBudget budget, int retryDelayMs = 5000, string instruction = Instruction,
         JsonObject? selectionReview = null, int maxPosts = int.MaxValue)
@@ -135,6 +152,9 @@ internal static class AgentUnit
         int repairsUsed = 0, retriesUsed = 0, posts = 0, okCalls = 0, messageBytes = 0, emitted = 0, reasoningRetries = 0;
         var fenceUnwrapped = false;
         var coverageAsked = false;
+        string? lastRefused = null;
+        // A refused answer sent again word for word after a repair message will not change on a third try (temperature 0): stop instead of paying for it.
+        bool Unchanged(string? content) { var same = lastRefused is not null && content == lastRefused; lastRefused = content; return same; }
         var targetTexts = flavor.HeadingExtents ? ordered.ToDictionary(a => a, a => lines[tools.PositionOf(a)].Text, StringComparer.Ordinal) : null;
         var readings = ordered.Select(a => (a, r: flavor.Readings(source, a))).Where(x => x.r is not null).ToDictionary(x => x.a, x => x.r!, StringComparer.Ordinal);
         IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>>? readingsOrNull = readings.Count > 0 ? readings : null;
@@ -274,6 +294,7 @@ internal static class AgentUnit
             // A reply without tool calls is the final answer. It must come after the facts were read.
             if (!tools.FactsWereRead)
             {
+                if (Unchanged(reply.Content)) return Done("FAILED", "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED:UNCHANGED");
                 history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
                 TryRepair("PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED");
                 continue;
@@ -284,6 +305,7 @@ internal static class AgentUnit
             var parsed = ParseSelect(content, observed, ordered, flavor.AnswerVersion, targetTexts, readingsOrNull);
             if (!parsed.Ok)
             {
+                if (Unchanged(reply.Content)) return Done("FAILED", "PROTOCOL:" + parsed.Failure + ":UNCHANGED");
                 history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
                 TryRepair("PROTOCOL:" + parsed.Failure, parsed.Missing, parsed.Detail);
                 continue;

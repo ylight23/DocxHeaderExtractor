@@ -86,7 +86,8 @@ public sealed class StructuredInferenceTransportTests
         Assert.Equal(0, result.Observation.VerifiedCount);
         Assert.Equal(completed ? 16 : 0, result.Observation.PlacedCount);
         Assert.Equal(completed ? 0 : 16, result.Observation.UnresolvedCount);
-        Assert.Equal(completed ? 1 : 3, handler.Posts);
+        // A reply cut at the length limit comes back the same on the next round, so the rounds stop after one repeat.
+        Assert.Equal(completed ? 1 : 2, handler.Posts);
         Assert.All(result.Observation.Calls, c =>
         {
             Assert.Equal(finish, c.FinishReason);

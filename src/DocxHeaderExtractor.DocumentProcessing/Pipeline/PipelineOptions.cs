@@ -19,5 +19,7 @@ public sealed class PipelineOptions
     public string ScanEvidenceRoot { get; set; } = ".dhx-evidence";
     public int? ScanJobs { get; set; }
     public bool ScanVision { get; set; }
+    /// <summary>Reuse a scan unit's selection answer when its first request is unchanged (stored under the evidence root); false asks again.</summary>
+    public bool ScanReuseSelection { get; set; } = true;
 
 }

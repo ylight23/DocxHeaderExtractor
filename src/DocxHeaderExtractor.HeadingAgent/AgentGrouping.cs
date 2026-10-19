@@ -14,8 +14,9 @@ namespace DocxHeaderExtractor.HeadingAgent;
 /// other line between them) and asks the model how each run divides into headings; a run of one line needs no question. C# checks the answer:
 /// every run exactly once, its lines in order, split into contiguous headings of one to eight lines. A run the model divided correctly is kept even
 /// when another run of the same answer is refused, and a repair turn asks only for the runs still without a division. A run that is still refused
-/// after the repair turns, or whose request failed, falls back to the flavor's rule (for PDF: consecutive lines of the same page and parser layout
-/// block).
+/// after the repair turns, or whose request failed, is divided by the flavor's rule (for PDF: consecutive lines of the same page and parser layout
+/// block) and its lines carry the provenance FALLBACK. <see cref="Group"/> returns those groups for audit and qualification; the production
+/// selector does not bind them: it withholds the FALLBACK aliases as UNRESOLVED (fail closed), so a boundary nobody accepted is never guessed.
 /// Grouping has no membership authority: every selected alias must be assigned to one boundary group. A dispute-shaped
 /// answer is a protocol failure and receives the bounded protocol repair; persistent failures remain unresolved.
 /// </summary>
@@ -152,6 +153,7 @@ internal static class AgentGrouping
             payload = node.ToJsonString(Options);
         }
         int posts = 0, retries = 0, repairs = 0;
+        string? lastRefused = null;
         while (true)
         {
             var req = BuildRequest(payload, history, source.Flavor.GroupPrompt);
@@ -183,6 +185,9 @@ internal static class AgentGrouping
             }
             evidence.Add(JsonSerializer.Serialize(new { unit = unitId, turn = 1 + repairs, requestSha256 = req.Sha256, response = reply.Content, failure }, Options));
             if (failure is null) return (accepted, answers, null, posts, repairs, evidence);
+            // The same refused reply word for word after a repair message: another repair at temperature 0 would only repeat it again.
+            if (lastRefused is not null && reply.Content == lastRefused) return (accepted, answers, Fallback(failure + ":UNCHANGED"), posts, repairs, evidence);
+            lastRefused = reply.Content;
             if (repairs >= MaxRepairs) return (accepted, answers, Fallback(failure), posts, repairs, evidence);
             repairs++;
             history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content ?? "" });
@@ -262,6 +267,15 @@ internal static class AgentGrouping
         {
             var root = doc.RootElement;
             if (root.ValueKind != JsonValueKind.Object || root.EnumerateObject().Any(p => p.Name is not ("protocolVersion" or "runs"))) { failure = "PROTOCOL:ROOT_KEYS_INVALID"; return null; }
+            // JsonDocument accepts a repeated key and TryGetProperty reads only its last value, so {"runs":[R1],"runs":[R2]} would silently
+            // lose R1 and the repair would wrongly say R1 is missing (023, GROUP-003: one "runs" per run, refused three times the same way).
+            if (RepeatedKey(root) is { } repeated)
+            {
+                failure = "PROTOCOL:KEY_REPEATED";
+                detail = "the key \"" + repeated.Name + "\" appears " + repeated.Count + " times in one object; give it once"
+                    + (repeated.Name == "runs" ? ", as one \"runs\" array that lists every run" : "");
+                return null;
+            }
             if (!root.TryGetProperty("protocolVersion", out var v) || v.ValueKind != JsonValueKind.String || v.GetString() != GroupVersion) { failure = "PROTOCOL:PROTOCOL_VERSION_INVALID"; return null; }
             if (!root.TryGetProperty("runs", out var rs) || rs.ValueKind != JsonValueKind.Array) { failure = "PROTOCOL:RUNS_MISSING"; return null; }
             var byId = chunk.ToDictionary(r => r.Id, StringComparer.Ordinal);

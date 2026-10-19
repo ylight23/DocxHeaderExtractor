@@ -30,7 +30,7 @@ public sealed class V6DocumentRunner : IDisposable
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(factory);
         var scanSelector = factory.CreateScanHeadingSelector() ?? new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(options.ScanEvidenceRoot,
-                parallelism: options.ScanJobs, onModelReply: onModelReply, vision: options.ScanVision,
+                parallelism: options.ScanJobs, onModelReply: onModelReply, vision: options.ScanVision, reuseSelection: options.ScanReuseSelection,
                 transcriptionOptions: options.ScanJobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null,
                 visionOptions: options.ScanJobs is { } seeJobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null);
         _docxLane = new DocxExtractionPipeline(options, factory,

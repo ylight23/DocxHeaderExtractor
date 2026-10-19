@@ -16,6 +16,8 @@ public sealed class CommandLineOptions
     public int? Jobs { get; private set; }
     /// <summary>scan-extract: also ask the vision model about every page's typography (off: it is measured on the images).</summary>
     public bool Vision { get; private set; }
+    /// <summary>Scan: ask the selection again instead of reusing the answers already paid for (to sample the model anew).</summary>
+    public bool FreshSelection { get; private set; }
     public OutlineFormat Format { get; private set; } = OutlineFormat.Json;
     public bool Quiet { get; private set; }
 
@@ -73,6 +75,7 @@ public sealed class CommandLineOptions
                 case "-o" or "--out": o.OutputPath = Next(a); break;
                 case "--gold": o.GoldPath = Next(a); break;
                 case "--vision": o.Vision = true; break;
+                case "--fresh-selection": o.FreshSelection = true; break;
                 case "--jobs": o.Jobs = int.TryParse(Next(a), out var jobs) && jobs is >= 1 and <= 64 ? jobs : throw new ArgumentException("--jobs cần số từ 1 đến 64"); break;
                 case "-f" or "--format": o.Format = ParseFormat(Next(a)); break;
                 case "--no-llm": o.Pipeline.DisableLlm = true; break;
@@ -183,6 +186,9 @@ public sealed class CommandLineOptions
                                                          # --jobs N: số lần gọi API cùng lúc cho xem trang,
                                                          # chép chữ và hội thoại (mặc định 32); giảm nếu bị
                                                          # giới hạn tốc độ
+                                                         # chạy lại cùng file: selection đã trả tiền được
+                                                         # dùng lại (.dhx-evidence/selection); --fresh-selection:
+                                                         # hỏi lại model (đo độ dao động)
           dhx scan-text-eval <file.docx> --gold <gold.json> [-o <thư-mục>]
                                                          # đo độ chính xác chữ: 2 view OCR và VLM chép mù
                                                          # (không xem OCR) so với gold; gửi ảnh cắt dòng

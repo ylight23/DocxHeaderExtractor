@@ -152,6 +152,7 @@ internal static class EvidenceHeadingPlacement
         {
             var accepted = new Dictionary<string, string>(StringComparer.Ordinal);
             var errors = new List<string>();
+            string? lastRefused = null;   // a refused reply sent again word for word ends the rounds: it would not change on the next one
             var context = aliases.SelectMany(alias =>
             {
                 var index = positions.GetValueOrDefault(alias, -1);
@@ -213,9 +214,12 @@ internal static class EvidenceHeadingPlacement
                     Require(bytes <= ResponseCap, "RESPONSE_OVER_CAP");
                     using var document = JsonDocument.Parse(content);
                     var root = document.RootElement;
-                    Require(root.ValueKind == JsonValueKind.Object && root.EnumerateObject().Count() == 2, "ROOT_KEYS_INVALID");
-                    Require(root.GetProperty("protocolVersion").GetString() == Version, "PROTOCOL_VERSION_INVALID");
-                    var rows = root.GetProperty("placements");
+                    // TryGetProperty, not GetProperty: two keys with the wrong names pass the count check, and a KeyNotFoundException
+                    // would escape every catch below and end the whole extraction instead of costing one repair round.
+                    if (root.ValueKind != JsonValueKind.Object || root.EnumerateObject().Count() != 2
+                        || !root.TryGetProperty("protocolVersion", out var version) || !root.TryGetProperty("placements", out var rows))
+                        throw new ProtocolException("ROOT_KEYS_INVALID");
+                    Require(version.ValueKind == JsonValueKind.String && version.GetString() == Version, "PROTOCOL_VERSION_INVALID");
                     Require(rows.ValueKind == JsonValueKind.Array, "PLACEMENTS_ARRAY_REQUIRED");
                     var observed = rows.EnumerateArray().Select(row => row.ValueKind == JsonValueKind.Object && row.TryGetProperty("alias", out var alias) &&
                         alias.ValueKind == JsonValueKind.String ? alias.GetString()! : "").ToArray();
@@ -223,9 +227,11 @@ internal static class EvidenceHeadingPlacement
                         pending.ToHashSet(StringComparer.Ordinal).SetEquals(observed), "COVERAGE_INVALID");
                     foreach (var row in rows.EnumerateArray())
                     {
-                        Require(row.EnumerateObject().Count() == 2, "ROW_FIELDS_INVALID");
-                        var alias = row.GetProperty("alias").GetString()!;
-                        var parent = row.GetProperty("parent").GetString();
+                        if (row.EnumerateObject().Count() != 2 || !row.TryGetProperty("parent", out var parentElement)
+                            || parentElement.ValueKind is not (JsonValueKind.String or JsonValueKind.Null))
+                            throw new ProtocolException("ROW_FIELDS_INVALID");
+                        var alias = row.GetProperty("alias").GetString()!;   // present and a string: the coverage check above read it
+                        var parent = parentElement.GetString();
                         Require(!string.IsNullOrWhiteSpace(parent), "PARENT_REQUIRED");
                         Require(parent is "ROOT" or "NONE" or "UNRESOLVED" ||
                             parent is not null && byAlias.TryGetValue(parent, out var p) && p.SourceOrdinal < byAlias[alias].SourceOrdinal,
@@ -242,6 +248,8 @@ internal static class EvidenceHeadingPlacement
                     rawEvidence.Enqueue((unitId, round, JsonSerializer.Serialize(new { stage = "HIERARCHY_PLACE", unitId, round,
                         request = packet, response = raw, responseBytes = bytes, requestedMaxOutputTokens = outputBudget,
                         reply.MaxOutputTokens, reply.FinishReason, protocolErrors = errors.ToArray() }, Json)));
+                    if (raw == lastRefused) break;
+                    lastRefused = raw;
                     continue;
                 }
                 catch (Exception exception) when (exception is InvalidOperationException or ArgumentException)
@@ -252,6 +260,11 @@ internal static class EvidenceHeadingPlacement
                     request = packet, response = raw, responseBytes = bytes, requestedMaxOutputTokens = outputBudget,
                     reply.MaxOutputTokens, reply.FinishReason, protocolErrors = errors.ToArray() }, Json)));
                 if (accepted.Count == aliases.Length) break;
+                if (errors.Count > 0)
+                {
+                    if (raw == lastRefused) break;
+                    lastRefused = raw;
+                }
             }
             if (accepted.Count != aliases.Length) failures.Enqueue(unitId + ":NO_VALID_PARENT_PROPOSAL");
             return accepted;

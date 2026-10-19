@@ -111,7 +111,7 @@ static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationTok
     var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
     if (string.IsNullOrWhiteSpace(key)) { Console.Error.WriteLine("Chưa có OPENROUTER_API_KEY."); return 2; }
     var root = o.OutputPath ?? ".dhx-evidence";
-    var selector = new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(root, parallelism: o.Jobs, vision: o.Vision,
+    var selector = new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(root, parallelism: o.Jobs, vision: o.Vision, reuseSelection: !o.FreshSelection,
         onModelReply: o.ShowRawOutput ? r => PrintModelReply(r) : null,
         transcriptionOptions: o.Jobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null,
         visionOptions: o.Jobs is { } seeJobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null);
@@ -215,6 +215,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
     // không có validator, không có guardrail đích ghi (chủ dự án chấp nhận, 2026-10-15).
     o.Pipeline.ScanJobs = o.Jobs;
     o.Pipeline.ScanVision = o.Vision;
+    o.Pipeline.ScanReuseSelection = !o.FreshSelection;
     using var runner = new V6DocumentRunner(o.Pipeline, new InferenceTransportFactory(o.Provider),
         o.ShowRawOutput ? r => PrintModelReply(r) : null);
     var outputs = new List<string>();

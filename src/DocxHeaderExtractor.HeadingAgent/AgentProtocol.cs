@@ -271,6 +271,26 @@ internal static class AgentProtocol
         return refs;
     }
 
+    /// <summary>The first key that appears more than once in any object of <paramref name="e"/>, with its count; null when every key is unique.</summary>
+    internal static (string Name, int Count)? RepeatedKey(JsonElement e)
+    {
+        switch (e.ValueKind)
+        {
+            case JsonValueKind.Object:
+                foreach (var g in e.EnumerateObject().GroupBy(p => p.Name, StringComparer.Ordinal))
+                    if (g.Count() > 1) return (g.Key, g.Count());
+                foreach (var p in e.EnumerateObject())
+                    if (RepeatedKey(p.Value) is { } inner) return inner;
+                return null;
+            case JsonValueKind.Array:
+                foreach (var item in e.EnumerateArray())
+                    if (RepeatedKey(item) is { } inner) return inner;
+                return null;
+            default:
+                return null;
+        }
+    }
+
     /// <summary>The strict parser of a final answer (objects format, agent mode, analysis and reasons allowed). A missing or extra alias is
     /// reported, never filled in; a decision is never changed. shownOrder holds every alias the model saw.</summary>
     /// <param name="version">The protocolVersion the answer must carry: the flavor's answer format.</param>
@@ -290,6 +310,9 @@ internal static class AgentProtocol
         {
             var root = doc.RootElement;
             if (root.ValueKind != JsonValueKind.Object) return Fail("ROOT_NOT_OBJECT");
+            // A repeated key would be read only at its last value (JsonDocument), so the other decisions would look missing.
+            if (RepeatedKey(root) is { } repeated)
+                return Fail("KEY_REPEATED", detail: "the key \"" + repeated.Name + "\" appears " + repeated.Count + " times in one object; give it once");
             var decisionKeys = new[] { "decisions" };
             var allowed = decisionKeys.Concat(new[] { "protocolVersion", "status", "retrieve", "clarification", "incompleteReason", "analysis" }).ToHashSet();
             if (root.EnumerateObject().Any(p => !allowed.Contains(p.Name))) return Fail("ROOT_KEYS_INVALID");
@@ -427,6 +450,9 @@ internal static class AgentProtocol
         : failure.StartsWith("PROTOCOL:HEADING_EXTENT_", StringComparison.Ordinal)
             ? "Your answer was refused (" + failure + "): " + (detail ?? "a headingExtent does not match its target's text")
               + ". start and end are offsets in UTF-16 code units into the target's text exactly as the request and get_line_facts show it (a line break is one space there); text must be exactly that part of the target's text. Send the complete answer again as exactly one JSON object."
+        : failure == "PROTOCOL:KEY_REPEATED"
+            ? "Your answer was refused (" + failure + "): " + (detail ?? "a key appears more than once in one object")
+              + ". Give every decision in one \"decisions\" array and send the complete answer again as exactly one JSON object."
         : missing is { Count: > 0 } && failure == "PROTOCOL:TOOL_FACTS_INCOMPLETE"
             ? "Your answer was not taken yet (" + failure + "): get_line_facts has not returned facts for these targets: " + string.Join(", ", missing.Take(MaxMissingNamed))
               + (missing.Count > MaxMissingNamed ? " and " + (missing.Count - MaxMissingNamed) + " more" : "")

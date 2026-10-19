@@ -203,10 +203,11 @@ public sealed class PdfHeadingAgentGroupingTests
         };
         var result = HeadingAgentSelector.Select(source, model, Budget(), 1, CancellationToken.None, 0, () => 0);
         Assert.True(groupingCalls > 0, string.Join("; ", result.UnitFailures) + " | " + string.Join(" | ", result.ModelAnswers));
-        Assert.Equal(1 + AgentGrouping.MaxRepairs, groupingCalls);
+        // The same refused reply twice: the second repair is not sent.
+        Assert.Equal(2, groupingCalls);
         Assert.All(selected, alias => Assert.DoesNotContain(alias, result.SelectedAliases));
         Assert.DoesNotContain(result.Groups!.SelectMany(g => g), alias => selected.Contains(alias));
-        Assert.Contains(result.UnitFailures, f => f.Contains("PROTOCOL:RUN_KEYS_INVALID", StringComparison.Ordinal));
+        Assert.Contains(result.UnitFailures, f => f.Contains("PROTOCOL:RUN_KEYS_INVALID:UNCHANGED", StringComparison.Ordinal));
     }
 
     [Fact]
@@ -287,7 +288,9 @@ public sealed class PdfHeadingAgentGroupingTests
             "run-missing" => JsonSerializer.Serialize(new { protocolVersion = AgentGrouping.GroupVersion, runs = Array.Empty<object>() }),
             _ => "here are the headings",
         };
-        var (model, payloads, bodies) = Scripted((_, p) => Bad(p));
+        // Each turn's refusal differs (here only in trailing spaces), so both repair turns are used; a reply repeated word for word stops
+        // earlier (A_refused_reply_repeated_word_for_word_stops_after_one_repair).
+        var (model, payloads, bodies) = Scripted((n, p) => Bad(p) + new string(' ', n));
 
         var result = AgentGrouping.Group(Source.Value, selected, model, Budget(), 1, CancellationToken.None, retryDelayMs: 0);
 
@@ -298,7 +301,8 @@ public sealed class PdfHeadingAgentGroupingTests
         // The repair turns carry the refused reply and a message naming the refusal.
         using var last = JsonDocument.Parse(bodies[^1]);
         Assert.Contains("was refused", last.RootElement.GetProperty("messages").EnumerateArray().Last().GetProperty("content").GetString());
-        // Fallback: consecutive lines of one page and one layout block stay together; nothing selected is lost.
+        // Fallback: consecutive lines of one page and one layout block stay together, and Group keeps every selected line. (The production
+        // selector then withholds these FALLBACK aliases as UNRESOLVED: Persistent_dispute_shaped_reply_is_protocol_failure_and_remains_fail_closed.)
         Assert.Equal(new[] { A(10), A(11), A(12) }.Order(), result.Groups.SelectMany(g => g).Order());
         var source = Source.Value;
         foreach (var g in result.Groups.Where(g => g.Count > 1))
@@ -307,6 +311,73 @@ public sealed class PdfHeadingAgentGroupingTests
                 var i = source.Lines.ToList().FindIndex(l => l.Alias == alias);
                 Assert.Equal(source.Blocks[i - 1], source.Blocks[i]);
             });
+    }
+
+    // 023, GROUP-003: the model divided every run right but wrote one "runs" key per run. JsonDocument keeps only the last, so the old parser
+    // called the other runs missing and the model repeated the same answer until they fell back.
+    [Fact]
+    public void A_repeated_runs_key_is_refused_by_name_and_the_repaired_answer_keeps_every_run()
+    {
+        var selected = new HashSet<string> { A(10), A(11), A(20), A(21) };
+        var (model, payloads, bodies) = Scripted((n, p) =>
+        {
+            var ids = p.GetProperty("runs").EnumerateArray().Select(r => r.GetProperty("run").GetString()!).ToArray();
+            if (n > 1) return Division(p, id => [RunAliases(p, id)]);
+            var repeated = string.Join(",", ids.Select(id => "\"runs\":[" + JsonSerializer.Serialize(new { run = id, headings = new[] { RunAliases(p, id) } }) + "]"));
+            return "{\"protocolVersion\":\"" + AgentGrouping.GroupVersion + "\"," + repeated + "}";
+        });
+
+        var result = AgentGrouping.Group(Source.Value, selected, model, Budget(), 1, CancellationToken.None, retryDelayMs: 0);
+
+        Assert.Equal(2, result.Posts);
+        Assert.Empty(result.Failures);
+        Assert.Equal(2, result.Observation.ModelDividedRuns);
+        Assert.Equal(0, result.Observation.FallbackRuns);
+        var groups = result.Groups.Select(g => string.Join("|", g)).ToArray();
+        Assert.Contains(A(10) + "|" + A(11), groups);
+        Assert.Contains(A(20) + "|" + A(21), groups);
+        using var repair = JsonDocument.Parse(bodies[1]);
+        var message = repair.RootElement.GetProperty("messages").EnumerateArray().Last().GetProperty("content").GetString()!;
+        Assert.Contains("PROTOCOL:KEY_REPEATED", message);
+        Assert.Contains("one \"runs\" array that lists every run", message);
+    }
+
+    [Fact]
+    public void A_repeated_key_inside_a_run_is_found_too()
+    {
+        using var doc = JsonDocument.Parse("{\"runs\":[{\"run\":\"R1\",\"headings\":[[\"a\"]],\"headings\":[[\"b\"]]}]}");
+        Assert.Equal(("headings", 2), AgentProtocol.RepeatedKey(doc.RootElement));
+        using var clean = JsonDocument.Parse("{\"runs\":[{\"run\":\"R1\",\"headings\":[[\"a\"]]}]}");
+        Assert.Null(AgentProtocol.RepeatedKey(clean.RootElement));
+    }
+
+    [Fact]
+    public void A_selection_answer_with_a_repeated_decisions_key_is_refused_by_name_not_as_missing_targets()
+    {
+        var shown = new Dictionary<string, int>(StringComparer.Ordinal) { ["a"] = 0, ["b"] = 1 };
+        var reply = "{\"protocolVersion\":\"" + SelectObjectsVersion + "\",\"status\":\"COMPLETE\","
+            + "\"decisions\":[{\"alias\":\"a\",\"decision\":\"NOT_SELECT\"}],\"decisions\":[{\"alias\":\"b\",\"decision\":\"NOT_SELECT\"}]}";
+
+        var parsed = ParseSelect(reply, shown, ["a", "b"]);
+
+        Assert.False(parsed.Ok);
+        Assert.Equal("KEY_REPEATED", parsed.Failure);
+        var message = RepairMessage("PROTOCOL:" + parsed.Failure, parsed.Missing, parsed.Detail);
+        Assert.Contains("\"decisions\" appears 2 times", message);
+        Assert.Contains("one \"decisions\" array", message);
+    }
+
+    [Fact]
+    public void A_refused_reply_repeated_word_for_word_stops_after_one_repair()
+    {
+        var selected = new HashSet<string> { A(10), A(11), A(12) };
+        var (model, _, _) = Scripted((_, p) => Division(p, id => [[A(10), A(11)]]));   // A(12) left out, every time the same
+
+        var result = AgentGrouping.Group(Source.Value, selected, model, Budget(), 1, CancellationToken.None, retryDelayMs: 0);
+
+        Assert.Equal(2, result.Posts);
+        Assert.Equal("GROUP-001:PROTOCOL:RUN_NOT_COVERED:UNCHANGED:R1", result.Failures.Single());
+        Assert.Equal(1, result.Observation.FallbackRuns);
     }
 
     [Fact]
@@ -359,7 +430,8 @@ public sealed class PdfHeadingAgentGroupingTests
     public void A_run_never_answered_falls_back_alone_and_an_accepted_run_keeps_its_first_division()
     {
         var selected = new HashSet<string> { A(10), A(11), A(12), A(40), A(41) };
-        // Every turn leaves R2 out; the repair turns also re-send R1 divided another way, which is ignored.
+        // Every turn leaves R2 out; the repair turns also re-send R1 divided another way, which is ignored. The third reply repeats the second
+        // word for word, so it ends the repairs as UNCHANGED (here at the same post the repair limit would).
         var (model, _, _) = Scripted((n, _) => n == 1
             ? Answer(("R1", [[A(10)], [A(11), A(12)]]))
             : Answer(("R1", [[A(10), A(11), A(12)]])));
@@ -367,7 +439,7 @@ public sealed class PdfHeadingAgentGroupingTests
         var result = AgentGrouping.Group(Source.Value, selected, model, Budget(), 1, CancellationToken.None, retryDelayMs: 0);
 
         Assert.Equal(1 + AgentGrouping.MaxRepairs, result.Posts);
-        Assert.Equal("GROUP-001:PROTOCOL:RUN_MISSING:R2", result.Failures.Single());
+        Assert.Equal("GROUP-001:PROTOCOL:RUN_MISSING:UNCHANGED:R2", result.Failures.Single());
         Assert.Equal(new[] { A(10) }, result.Groups[0]);
         Assert.Equal(new[] { A(11), A(12) }, result.Groups[1]);
         // R2 is divided by the fallback rule; nothing selected is lost.

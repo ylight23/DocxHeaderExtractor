@@ -105,6 +105,31 @@ public sealed class EvidenceHeadingPlacementTests
             d => Assert.Equal(HeadingHierarchyResolver.Unresolved, d.Resolution));
     }
 
+    // Two fields with the wrong names pass the field-count checks; they must be a protocol error, not an exception that ends the extraction.
+    [Theory]
+    [InlineData("row", "ROW_FIELDS_INVALID")]
+    [InlineData("root", "ROOT_KEYS_INVALID")]
+    public async Task A_misnamed_key_is_a_protocol_error_and_the_headings_stay_unresolved(string where, string code)
+    {
+        var (bound, evidence, _) = Fixture();
+        using var model = new Model(p =>
+        {
+            var rows = p["toPlace"]!.AsArray().Select(a => where == "row"
+                ? (object)new { alias = a!.GetValue<string>(), parentAlias = "ROOT" }
+                : new { alias = a!.GetValue<string>(), parent = "ROOT" }).ToArray();
+            return where == "row"
+                ? JsonSerializer.Serialize(new { protocolVersion = EvidenceHeadingPlacement.Version, placements = rows })
+                : JsonSerializer.Serialize(new { protocolVersion = EvidenceHeadingPlacement.Version, rows });
+        });
+
+        var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+
+        Assert.Equal(bound.Length, result.Headings.Count);
+        Assert.Contains(result.Observation.Calls.SelectMany(c => c.ProtocolErrors), e => e == code);
+        Assert.Contains(result.Observation.Failures, f => f.Contains("NO_VALID_PARENT_PROPOSAL", StringComparison.Ordinal));
+        Assert.All(result.Headings, h => Assert.DoesNotContain(h.RelationHints, r => r.StartsWith("parent-node:", StringComparison.Ordinal)));
+    }
+
     [Fact]
     public async Task Empty_input_needs_no_model_call()
     {

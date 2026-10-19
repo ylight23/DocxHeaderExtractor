@@ -746,7 +746,7 @@ public sealed class HeadingGroupVerificationTests
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(50, 100),
             1, CancellationToken.None, 0, Instruction);
         Assert.Equal(2, verificationCalls);
-        Assert.Equal(1 + AgentGrouping.MaxRepairs, groupingCalls);
+        Assert.Equal(2, groupingCalls);   // the same refused reply ("{}") twice ends the grouping repairs
         Assert.Equal(2, result.Groups.Count);
         Assert.Empty(result.UnresolvedAliases);
         Assert.DoesNotContain(result.Failures, f => f.Contains("BOUNDARY_REPAIR_NO_PROGRESS", StringComparison.Ordinal));
