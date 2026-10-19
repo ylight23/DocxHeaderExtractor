@@ -54,7 +54,9 @@ builder.Services.AddHttpClient("LmStudio", client =>
     client.Timeout = TimeSpan.FromMinutes(10);
 });
 builder.Logging.SetMinimumLevel(LogLevel.Warning);
-builder.WebHost.UseUrls(Environment.GetEnvironmentVariable("DHX_UI_URL") ?? "http://localhost:5099");
+var configuredUiUrl = Environment.GetEnvironmentVariable("DHX_UI_URL");
+if (!string.IsNullOrWhiteSpace(configuredUiUrl)) builder.WebHost.UseUrls(configuredUiUrl);
+else if (string.IsNullOrWhiteSpace(builder.Configuration["urls"])) builder.WebHost.UseUrls("http://localhost:5099");
 
 var app = builder.Build();
 
@@ -366,8 +368,13 @@ app.MapPost("/api/extract", async (
 DocxHeaderExtractor.Infrastructure.AI.LlamaInferenceTransport.ConfigureNativeLogging(verbose: false, gpuLayerCount: int.MaxValue);
 
 Console.OutputEncoding = Encoding.UTF8;
-Console.WriteLine($"dhx-ui đang chạy: {string.Join(", ", app.Urls.DefaultIfEmpty("http://localhost:5099"))}");
-Console.WriteLine("Ctrl+C để dừng.");
+app.Lifetime.ApplicationStarted.Register(() =>
+{
+    Console.WriteLine($"dhx-ui đang chạy: {string.Join(", ", app.Urls)}");
+    Console.WriteLine($"Build: {typeof(Program).Assembly.GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
+        .Cast<System.Reflection.AssemblyInformationalVersionAttribute>().Single().InformationalVersion}");
+    Console.WriteLine("Ctrl+C để dừng.");
+});
 app.Run();
 
 // One model reply as a stream event: what the model streamed, the tool calls it made, the tool results it was given, and its content.

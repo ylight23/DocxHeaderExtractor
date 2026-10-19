@@ -104,7 +104,32 @@ Endpoint bắt buộc là loopback (`localhost`, `127.0.0.1`, `::1`). CLI tươn
 
 ### Web UI
 
-`.\dhx-ui.cmd`, mở `http://localhost:5099`. Trang cho chọn backend, chạy trích xuất, duyệt từng
+Chạy `.\dhx-ui.cmd`, rồi mở URL được in sau dòng `dhx-ui đang chạy` (mặc định
+`http://localhost:5099`). Launcher build trực tiếp từ source với Vulkan và dùng
+`dotnet watch --no-hot-reload`: lưu thay đổi C#, project tham chiếu hoặc `wwwroot` sẽ
+build và restart backend. Giữ cửa sổ lệnh này mở; `Ctrl+C` dừng watcher. Dừng backend
+publish cũ một lần trước khi chuyển sang launcher này để tránh trùng cổng. Chạy DLL
+trong `out-vulkan-ui` trực tiếp sẽ không tự cập nhật theo source.
+
+Lệnh .NET tương đương, chạy tại gốc repo:
+
+```powershell
+dotnet watch --project src/DocxHeaderExtractor.Web/DocxHeaderExtractor.Web.csproj --no-hot-reload run -c Release -p:UseVulkan=true --no-launch-profile
+```
+
+Chỉ build, không khởi động server:
+
+```powershell
+dotnet build src/DocxHeaderExtractor.Web/DocxHeaderExtractor.Web.csproj -c Release -p:UseVulkan=true
+```
+
+Backend in URL và build SHA sau khi bind thành công; `/api/build` trả version của
+assembly Web và HeadingAgent thực sự đang được nạp. Có thể đổi cổng bằng
+`.\dhx-ui.cmd --urls http://localhost:5101` hoặc `DHX_UI_URL` (biến môi trường ưu tiên).
+Build lỗi không cho phép khởi động bản DLL cũ thay thế. Auto restart có thể ngắt
+execution đang chạy, nên hoàn tất phép đo live trước khi lưu code.
+
+Trang cho chọn backend, chạy trích xuất, duyệt từng
 heading và tải bản `.docx` đã ghi outline sau khi duyệt xong. Nhãn người dùng sửa được lưu
 append-only tại `%LOCALAPPDATA%\DocxHeaderExtractor\verified-corrections.jsonl` (đổi bằng
 `DHX_CORRECTION_MEMORY`); pipeline không đọc ngược lại file này.
