@@ -154,6 +154,7 @@ internal static class AgentGrouping
         }
         int posts = 0, retries = 0, repairs = 0;
         string? lastRefused = null;
+        var retriedOnce = false;
         while (true)
         {
             var req = BuildRequest(payload, history, source.Flavor.GroupPrompt);
@@ -165,6 +166,13 @@ internal static class AgentGrouping
             {
                 retries++;
                 if (retryDelayMs > 0) Thread.Sleep(retryDelayMs);
+                continue;
+            }
+            // The flavor's retry-once failures (scan: a timeout, or reasoning that used every token) get one more try, as a selection unit
+            // does: without it one slow call withheld every run of the batch (023: three batches timed out at 300 s, 19 runs lost).
+            catch (ReplyFailure f) when (!retriedOnce && source.Flavor.RetryOnceCodes.Any(c => f.Code.Contains(c, StringComparison.Ordinal)))
+            {
+                retriedOnce = true;
                 continue;
             }
             catch (ReplyFailure f) { return (accepted, answers, Fallback("CALL:" + f.Code), posts, repairs, evidence); }

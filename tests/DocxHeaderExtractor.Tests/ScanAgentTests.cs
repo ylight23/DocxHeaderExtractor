@@ -52,6 +52,35 @@ public sealed class ScanAgentTests : IDisposable
             [new VlmLineObservation("P001-ocr-original-L004", "yes", "same", "left")],
             [new VlmReadingChoice("P001-ocr-original-L004", choice, proposal)], [], null, null);
 
+    // 023: three grouping batches timed out once at 300 s and the whole batch was withheld; a selection unit retries such a failure once.
+    [Theory]
+    [InlineData("TRANSPORT:TIMEOUT_OR_CANCELLED", 1, true)]
+    [InlineData("TRANSPORT:TIMEOUT_OR_CANCELLED", 2, false)]
+    [InlineData("TRANSPORT:SOME_OTHER_FAILURE", 1, false)]
+    public void Grouping_retries_a_timeout_once_and_other_call_failures_not_at_all(string code, int failures, bool recovered)
+    {
+        var source = new ScanAgentSource(Evidence(), [Vision()]);
+        var selected = new HashSet<string> { source.Lines[2].Alias, source.Lines[3].Alias };
+        var posts = 0;
+        AgentUnit.Model model = (unit, turn, request) =>
+        {
+            if (++posts <= failures) throw new ReplyFailure(code);
+            var payload = JsonNode.Parse(JsonNode.Parse(request.Body)!["messages"]![1]!["content"]!.GetValue<string>())!;
+            var runs = payload["runs"]!.AsArray().Select(r => (JsonNode)new JsonObject
+            {
+                ["run"] = r!["run"]!.GetValue<string>(),
+                ["headings"] = new JsonArray(new JsonArray(r["lines"]!.AsArray().Select(l => (JsonNode)JsonValue.Create(l!["alias"]!.GetValue<string>())!).ToArray())),
+            }).ToArray();
+            return new AgentProtocol.ModelTurn(new JsonObject { ["protocolVersion"] = AgentGrouping.GroupVersion, ["runs"] = new JsonArray(runs) }.ToJsonString(), [], "stop");
+        };
+
+        var result = AgentGrouping.Group(source, selected, model, new AgentBudget(1000, 100), 1, CancellationToken.None, retryDelayMs: 0);
+
+        if (recovered) { Assert.Empty(result.Failures); Assert.Equal(1, result.Observation.ModelDividedRuns); }
+        else { Assert.Single(result.Failures); Assert.Equal(1, result.Observation.FallbackRuns); }
+        Assert.Equal(failures + (recovered ? 1 : 0), posts);
+    }
+
     [Fact]
     public void Production_grouping_repairs_dispute_shaped_protocol_without_reopening_membership()
     {
