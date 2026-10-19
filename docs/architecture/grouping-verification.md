@@ -29,10 +29,10 @@ Flow:
    verdict. Inconsistent structured claims are sent back as protocol errors.
 4. Boundary verification starts at cycle 0. `REGROUP` with every membership still `HEADING`
    may trigger boundary repair 1. A complete valid model division with unchanged ordered
-   alias scope and unchanged ordered partition stops immediately with
-   `BOUNDARY_REPAIR_NO_PROGRESS`, before another verifier call; affected aliases remain
-   unresolved with their `HEADING` membership intact. A changed proposal proceeds to fresh
-   verification at cycle 1. The same condition
+   alias scope and unchanged ordered partition records `NO_PROGRESS` as informational
+   disagreement, preserving the proposal and its `HEADING` membership. Both unchanged and
+   changed proposals proceed to fresh grounded verification at cycle 1. Only `ACCEPT`
+   authorizes either proposal. Another all-`HEADING` `REGROUP`
    may trigger boundary repair 2, followed by final verification at cycle 2. `ACCEPT` admits the
    verified groups; `REGROUP` at cycle 2 withholds the candidate as unresolved. Membership
    disputes and unknown membership retain their existing review/refinement handling; they do
@@ -103,12 +103,12 @@ The regroup cost reserve uses the request byte cap. There are
 no unbounded semantic retries. Source context tools can provide context beyond the initial
 eight lines; the verifier may return unresolved when it cannot obtain adequate evidence.
 
-The no-progress check applies only to a successful model division covering the complete
+The informational no-progress classification applies only to a successful model division covering the complete
 candidate: no terminal grouping failure, no fallback, no dispute, positive model-divided run
 count and `DIVIDED` provenance for every alias. A recovered protocol round may still produce
 a valid final division. Terminal protocol failure, `FALLBACK`, `DISPUTED`, singleton runs with
 no model division, and alias-scope changes keep their existing verification/review handling;
-they do not activate this guard. The check compares the new partition to the proposal just
+they do not receive this classification. The comparison checks the new partition against the proposal just
 rejected by `REGROUP`, not to an unrelated earlier branch or any document-specific pattern.
 It introduces no acceptance authority and does not promise higher recall.
 
@@ -181,8 +181,8 @@ change between cycles and are not trajectory identity. Group and alias order are
 `[[A,B],[C]]` differs from `[[A],[B,C]]`. C# computes `ChangedFromInput` by structural sequence
 comparison only when the flattened alias scopes match. It is null at initial verification or
 when no comparable prior partition is supplied; survivor refinement keeps its cycle but may
-change alias scope/key. These snapshots do not authorize headings; the separate no-progress
-guard below can stop an unchanged valid model repair before a new verifier snapshot exists.
+change alias scope/key. These snapshots do not authorize headings. An unchanged valid
+model repair still receives a fresh grounded verification snapshot at the next cycle.
 The snapshot describes verifier input, not an accepted model partition; fallback proposals
 remain subject to verification. A grouping dispute that produces no verifier candidate has
 no partition snapshot; its existing grouping/dispute provenance remains available.
@@ -191,9 +191,11 @@ no partition snapshot; its existing grouping/dispute provenance remains availabl
 invocation **before** recursive verification. It records the rejecting verifier's `ParentUnitId`,
 candidate ID/key/ordered aliases, repair `Phase` (matching grouping batch phase), from/to cycle,
 ordered input/output groups, nullable `Changed`, result (`NO_PROGRESS`, `CHANGED`, `DISPUTED`,
-`FAILED`) and a safe failure class. A stopped no-op therefore retains its output partition
-without pretending that verifier cycle N+1 ran. Its aliases carry `boundary-repair-result`
-provenance with `NO_PROGRESS` and `BOUNDARY_REPAIR_NO_PROGRESS`. Merge logic preserves these
+`FAILED`) and a safe failure class. An unchanged valid division has `Result=NO_PROGRESS`
+and no failure class; it retains its output partition and proceeds to the next bounded
+verifier cycle. Its aliases carry informational `boundary-repair-result` provenance with
+`NO_PROGRESS`, without a terminal failure code. Suggested partitions remain audit-only.
+Merge logic preserves these
 observations across independent parallel repairs and review/survivor branches.
 
 Safe `Grouping.VerifierEvidence` records the **shared conversation scope**: unit, cycle,

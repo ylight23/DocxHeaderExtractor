@@ -559,10 +559,11 @@ public sealed class HeadingGroupVerificationTests
     }
 
     [Theory]
-    [InlineData(0, false)]
-    [InlineData(0, true)]
-    [InlineData(1, false)]
-    public void Unchanged_valid_model_repair_stops_before_another_verifier_and_keeps_independent_headings(int fromCycle, bool protocolRepair)
+    [InlineData(0, false, 2)]
+    [InlineData(0, true, 2)]
+    [InlineData(1, false, 2)]
+    [InlineData(0, false, 3)]
+    public void Unchanged_valid_model_repair_recovers_only_after_fresh_verifier_accepts_and_keeps_independent_headings(int fromCycle, bool protocolRepair, int acceptAtCall)
     {
         var calls = 0; var groupCalls = 0;
         string[][] rejected = [[A(1)], [A(2)]];
@@ -572,7 +573,7 @@ public sealed class HeadingGroupVerificationTests
             if (packet["stage"]!.GetValue<string>() == "GROUP_VERIFICATION")
             {
                 calls++;
-                return new ModelTurn(Verdicts(packet, c => c["proposedGroups"]![0]![0]!.GetValue<string>() == A(5) ? "ACCEPT" : "REGROUP"), [], "stop");
+                return new ModelTurn(Verdicts(packet, c => calls >= acceptAtCall || c["proposedGroups"]![0]![0]!.GetValue<string>() == A(5) ? "ACCEPT" : "REGROUP"), [], "stop");
             }
             if (++groupCalls == 1 && protocolRepair) return new ModelTurn("{}", [], "stop");
             return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = AgentGrouping.GroupVersion,
@@ -581,19 +582,24 @@ public sealed class HeadingGroupVerificationTests
         var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([.. rejected, new[] { A(5) }], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(50, 100),
             1, CancellationToken.None, 0, Instruction, boundaryRepairCycle: fromCycle);
-        Assert.Equal(1, calls);
-        Assert.Equal(protocolRepair ? 2 : 1, groupCalls);
-        Assert.Equal(new[] { A(1), A(2) }, result.UnresolvedAliases);
-        Assert.Equal(new[] { A(5) }, Assert.Single(result.Groups));
+        Assert.Equal(acceptAtCall, calls);
+        Assert.Equal(acceptAtCall - 1 + (protocolRepair ? 1 : 0), groupCalls);
+        Assert.Empty(result.UnresolvedAliases);
+        Assert.Equal(JsonSerializer.Serialize(new[] { new[] { A(1) }, new[] { A(2) }, new[] { A(5) } }), JsonSerializer.Serialize(result.Groups));
         Assert.Equal("HEADING", result.Memberships[A(1)]);
-        Assert.Contains(result.Failures, f => f.Contains("BOUNDARY_REPAIR_NO_PROGRESS", StringComparison.Ordinal));
-        var repair = Assert.Single(result.Observation.BoundaryRepairs!);
-        Assert.Equal("NO_PROGRESS", repair.Result);
-        Assert.False(repair.Changed);
-        Assert.Equal(fromCycle, repair.FromCycle);
-        Assert.Equal(fromCycle + 1, repair.ToCycle);
-        Assert.Equal(JsonSerializer.Serialize(repair.InputGroups), JsonSerializer.Serialize(repair.OutputGroups));
-        Assert.Equal(2, result.Observation.Partitions!.Count); // Only the two initial candidates; no next-cycle verifier snapshot.
+        Assert.Empty(result.Failures);
+        Assert.Equal(acceptAtCall - 1, result.Observation.BoundaryRepairs!.Count);
+        Assert.All(result.Observation.BoundaryRepairs, repair =>
+        {
+            Assert.Null(repair.FailureClass);
+            Assert.Equal("NO_PROGRESS", repair.Result);
+            Assert.False(repair.Changed);
+            Assert.InRange(repair.FromCycle, fromCycle, fromCycle + acceptAtCall - 2);
+            Assert.Equal(repair.FromCycle + 1, repair.ToCycle);
+            Assert.Equal(JsonSerializer.Serialize(repair.InputGroups), JsonSerializer.Serialize(repair.OutputGroups));
+        });
+        Assert.Equal(acceptAtCall + 1, result.Observation.Partitions!.Count); // Two initial candidates plus fresh bounded verification.
+        Assert.Equal(fromCycle + acceptAtCall - 1, result.Observation.Partitions.Last().BoundaryRepairCycle);
         Assert.Contains(result.Provenance, p => p.Stage == "boundary-repair-result" && p.Decision == "NO_PROGRESS"
             && p.BoundaryRepairCycle == fromCycle + 1);
     }
@@ -604,7 +610,7 @@ public sealed class HeadingGroupVerificationTests
     [InlineData("protocol-failure")]
     [InlineData("scope-changed")]
     [InlineData("no-model-division")]
-    public void No_progress_guard_excludes_non_model_divisions_failures_disputes_and_scope_changes(string mode)
+    public void No_progress_observation_excludes_non_model_divisions_failures_disputes_and_scope_changes(string mode)
     {
         string[][] groups = [[A(1)], [A(2)]];
         var input = new AgentGroupVerification.Candidate("V9", groups);
@@ -700,17 +706,20 @@ public sealed class HeadingGroupVerificationTests
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(100, 100),
             1, CancellationToken.None, 0, Instruction);
         var trajectory = result.Observation.Partitions!.Where(p => p.CandidateAliases.Contains(A(3))).ToArray();
-        var expectedCycles = !firstChange ? new[] { 0 } : !secondChange ? new[] { 0, 1 } : new[] { 0, 1, 2 };
+        var expectedCycles = new[] { 0, 1, 2 };
         Assert.Equal(expectedCycles, trajectory.Select(p => p.BoundaryRepairCycle));
         Assert.Equal(expectedCycles.Select(c => c == 0 ? "V2" : "V1"), trajectory.Select(p => p.CandidateId));
         Assert.Single(trajectory.Select(p => p.CandidateKey).Distinct());
         Assert.All(trajectory, p => Assert.Equal(new[] { A(3), A(4), A(5) }, p.CandidateAliases));
         Assert.Null(trajectory[0].InputGroups);
         Assert.Null(trajectory[0].ChangedFromInput);
-        Assert.All(trajectory.Skip(1), p => Assert.True(p.ChangedFromInput));
+        Assert.Equal(firstChange, trajectory[1].ChangedFromInput);
+        Assert.Equal(secondChange, trajectory[2].ChangedFromInput);
         for (var i = 1; i < trajectory.Length; i++)
             Assert.Equal(JsonSerializer.Serialize(trajectory[i - 1].OutputGroups), JsonSerializer.Serialize(trajectory[i].InputGroups));
-        Assert.Equal(firstChange ? 2 : 1, groupCalls);
+        Assert.Equal(2, groupCalls);
+        Assert.DoesNotContain(result.Groups, g => g.Contains(A(3)));
+        Assert.Equal(new[] { A(3), A(4), A(5) }, result.UnresolvedAliases);
         var terminalRepair = result.Observation.BoundaryRepairs!.Last();
         Assert.Equal(firstChange && secondChange ? "CHANGED" : "NO_PROGRESS", terminalRepair.Result);
         Assert.Equal(firstChange && secondChange, terminalRepair.Changed);
@@ -948,7 +957,9 @@ public sealed class HeadingGroupVerificationTests
         if (mode == "repeated-boundary")
         {
             Assert.Equal(5, result.Grouping.UnresolvedAliases);
-            Assert.Contains(result.UnitFailures, f => f.Contains("BOUNDARY_REPAIR_NO_PROGRESS", StringComparison.Ordinal));
+            Assert.DoesNotContain(result.UnitFailures, f => f.Contains("BOUNDARY_REPAIR_NO_PROGRESS", StringComparison.Ordinal));
+            Assert.Equal(2, result.Grouping.BoundaryRepairs!.Count);
+            Assert.Equal(new[] { "CHANGED", "NO_PROGRESS" }, result.Grouping.BoundaryRepairs.Select(r => r.Result));
             Assert.Equal(0, result.UnitsComplete);
         }
         else Assert.Empty(result.UnitFailures);

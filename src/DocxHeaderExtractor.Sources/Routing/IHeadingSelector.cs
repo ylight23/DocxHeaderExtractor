@@ -108,7 +108,7 @@ public sealed record GroupingPartitionObservation(string Phase, string UnitId, s
     int BoundaryRepairCycle, IReadOnlyList<string> CandidateAliases,
     IReadOnlyList<IReadOnlyList<string>>? InputGroups, IReadOnlyList<IReadOnlyList<string>> OutputGroups, bool? ChangedFromInput);
 
-/// <summary>Repair invocation result before recursive verification, including repairs that stop without another verifier call.</summary>
+/// <summary>Repair invocation result before recursive verification; unchanged valid divisions remain informational.</summary>
 public sealed record BoundaryRepairObservation(string Phase, string ParentUnitId, string CandidateId, string CandidateKey,
     IReadOnlyList<string> CandidateAliases, int FromCycle, int ToCycle,
     IReadOnlyList<IReadOnlyList<string>> InputGroups, IReadOnlyList<IReadOnlyList<string>> OutputGroups,

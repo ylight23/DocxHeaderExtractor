@@ -69,6 +69,15 @@ var json = new JsonSerializerOptions
 };
 json.Converters.Add(new JsonStringEnumConverter());
 
+// Read metadata from the loaded assemblies, so a stale backend can be identified without inference.
+app.MapGet("/api/build", () => Results.Json(new
+{
+    webVersion = typeof(Program).Assembly.GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
+        .Cast<System.Reflection.AssemblyInformationalVersionAttribute>().Single().InformationalVersion,
+    headingAgentVersion = typeof(HeadingAgentSelector).Assembly.GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
+        .Cast<System.Reflection.AssemblyInformationalVersionAttribute>().Single().InformationalVersion,
+}, json));
+
 // Danh sách mô hình .gguf tìm thấy, kèm cửa sổ ngữ cảnh nên dùng cho từng họ mô hình.
 app.MapGet("/api/models", () => Results.Json(ModelCatalog.List(), json));
 

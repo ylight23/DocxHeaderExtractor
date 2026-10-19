@@ -192,17 +192,14 @@ internal static class AgentGroupVerification
                 { BoundaryRepairs = (regroup.Observation.BoundaryRepairs ?? []).Append(repair).ToArray() } };
             if (repair.Result == "NO_PROGRESS")
             {
-                const string code = "BOUNDARY_REPAIR_NO_PROGRESS";
-                corrected[index] = regroup with
+                // An unchanged proposal records disagreement; only the next verifier may authorize it.
+                regroup = regroup with
                 {
-                    Groups = [], UnresolvedAliases = candidate.Aliases,
-                    Failures = regroup.Failures.Append(repairPhase + ":" + code + ":" + candidate.Id).ToArray(),
                     Memberships = candidate.Aliases.ToDictionary(a => a, a => memberships[a], StringComparer.Ordinal),
                     Provenance = regroup.Provenance.Concat(candidate.Aliases.Select(a =>
-                        new HeadingAliasProvenance(a, "boundary-repair-result", repairPhase, candidate.Id, "NO_PROGRESS", memberships[a], [code], verdict.EvidenceRefs)
+                        new HeadingAliasProvenance(a, "boundary-repair-result", repairPhase, candidate.Id, "NO_PROGRESS", memberships[a], [], verdict.EvidenceRefs)
                         { BoundaryRepairCycle = nextCycle })).ToArray()
                 };
-                return;
             }
             corrected[index] = Verify(source, regroup, extents, readings, model, budget, 1, ct,
                 retryDelayMs, instruction, allowRegroup: allowRegroup, allowMembershipReview: allowMembershipReview,
@@ -229,14 +226,13 @@ internal static class AgentGroupVerification
         var comparison = ObservePartition(phase, parentUnit, new(input.Id, repair.Groups.Select(g => g.ToArray()).ToArray()), fromCycle + 1, input.Groups);
         // Only a complete, successful model division qualifies. Layout fallback, disputes, missing
         // model divisions (including singleton runs), terminal protocol failures and scope changes
-        // retain their existing verification/review path instead of activating this guard.
+        // are distinguished from a valid unchanged proposal in the observation.
         var modelDivided = repair.Failures.Count == 0 && repair.Observation.FallbackRuns == 0 && repair.Observation.ModelDividedRuns > 0
             && input.Aliases.All(a => repair.Provenance.Any(p => p.Alias == a && p.Stage == "grouping" && p.Decision == "DIVIDED"));
         var result = repair.Disputes.Count > 0 ? "DISPUTED"
             : !modelDivided || comparison.ChangedFromInput is null ? "FAILED"
             : comparison.ChangedFromInput.Value ? "CHANGED" : "NO_PROGRESS";
-        var failure = result == "NO_PROGRESS" ? "BOUNDARY_REPAIR_NO_PROGRESS"
-            : result == "FAILED" ? comparison.ChangedFromInput is null ? "SCOPE_CHANGED_OR_INCOMPLETE" : "NO_VALID_MODEL_DIVISION" : null;
+        var failure = result == "FAILED" ? comparison.ChangedFromInput is null ? "SCOPE_CHANGED_OR_INCOMPLETE" : "NO_VALID_MODEL_DIVISION" : null;
         return new(phase, parentUnit, input.Id, Sha(JsonSerializer.Serialize(input.Aliases)), input.Aliases, fromCycle, fromCycle + 1,
             input.Groups.Select(g => (IReadOnlyList<string>)g.ToArray()).ToArray(), comparison.OutputGroups, comparison.ChangedFromInput, result, failure);
     }
