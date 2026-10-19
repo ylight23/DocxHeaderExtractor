@@ -53,7 +53,7 @@ public sealed class ScanAgentTests : IDisposable
             [new VlmReadingChoice("P001-ocr-original-L004", choice, proposal)], [], null, null);
 
     [Fact]
-    public void Production_grouping_dispute_does_not_reopen_scan_membership()
+    public void Production_grouping_repairs_dispute_shaped_protocol_without_reopening_membership()
     {
         var source = new ScanAgentSource(Evidence(), [Vision()]);
         var calls = new List<string>();
@@ -67,6 +67,21 @@ public sealed class ScanAgentTests : IDisposable
             var payload = JsonNode.Parse(content is JsonArray ? content[0]!["text"]!.GetValue<string>() : content.GetValue<string>())!;
             if (payload["stage"]!.GetValue<string>() == "GROUP")
             {
+                if (calls.Count(c => c.StartsWith("GROUP-", StringComparison.Ordinal)) > 1)
+                {
+                    var validRuns = new JsonArray();
+                    foreach (var r in payload["runs"]!.AsArray())
+                    {
+                        var aliases = r!["lines"]!.AsArray().Select(l => l!["alias"]!.DeepClone()).ToArray();
+                        validRuns.Add(new JsonObject
+                        {
+                            ["run"] = r["run"]!.DeepClone(),
+                            ["headings"] = new JsonArray(aliases.Select(a => (JsonNode)new JsonArray(a)).ToArray())
+                        });
+                    }
+                    return new AgentProtocol.ModelTurn(new JsonObject
+                    { ["protocolVersion"] = AgentGrouping.GroupVersion, ["runs"] = validRuns }.ToJsonString(), [], "stop");
+                }
                 var runs = payload["runs"]!.AsArray();
                 return new AgentProtocol.ModelTurn(new JsonObject
                 {
@@ -103,11 +118,13 @@ public sealed class ScanAgentTests : IDisposable
         };
         var result = HeadingAgentSelector.Select(source, model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);
         Assert.Empty(result.UnitFailures);
-        Assert.Equal(new[] { "P001-L001" }, result.SelectedAliases.Order());
-        Assert.DoesNotContain("P001-L004", result.HeadingReadings!.Keys);
-        Assert.False(result.HeadingReadings.ContainsKey("P001-L003"));
-        Assert.True(result.HeadingExtents is null || !result.HeadingExtents.ContainsKey("P001-L004"));
-        Assert.Single(ScanHeadingAgentSelector.Headings(source, result).Headings);
+        Assert.Equal(new[] { "P001-L001", "P001-L003", "P001-L004" }, result.SelectedAliases.Order());
+        Assert.Contains("P001-L004", result.HeadingReadings!.Keys);
+        Assert.Contains("P001-L003", result.HeadingReadings.Keys);
+        Assert.Equal(3, ScanHeadingAgentSelector.Headings(source, result).Headings.Count);
+        Assert.Equal(2, calls.Count(c => c.StartsWith("GROUP-", StringComparison.Ordinal)));
+        Assert.Equal(0, result.Grouping!.DisputedRuns);
+        Assert.Equal(0, result.Grouping.BoundaryDisputes);
         Assert.DoesNotContain(calls, c => c.StartsWith("REVIEW-SEG-", StringComparison.Ordinal));
     }
 

@@ -105,26 +105,22 @@ public sealed class PdfHeadingAgentGroupingTests
     });
 
     [Fact]
-    public void Explicit_disagreement_is_retained_without_repair_or_layout_fallback()
+    public void Dispute_is_rejected_as_protocol_and_valid_partition_repairs_it()
     {
-        var (model, _, _) = Scripted((_, p) => Disagreement(p));
+        var calls = 0;
+        var (model, _, _) = Scripted((_, p) => ++calls == 1 ? Disagreement(p) : Division(p, id => [RunAliases(p, id)]));
         var result = AgentGrouping.Group(Source.Value, new HashSet<string> { A(10), A(11), A(20) }, model, Budget(), 1, CancellationToken.None, 0);
         Assert.Empty(result.Failures);
-        Assert.Equal(1, result.Posts);
-        Assert.Equal(new[] { A(10), A(11) }, Assert.Single(result.Disputes).Aliases);
-        Assert.Equal(new[] { A(20) }, Assert.Single(result.Groups));
-        Assert.Contains("dispute", Assert.Single(result.Evidence));
+        Assert.Equal(2, result.Posts);
+        Assert.Empty(result.Disputes);
+        Assert.Equal(new[] { new[] { A(10), A(11) }, new[] { A(20) } }, result.Groups.Select(g => g.ToArray()));
+        Assert.Equal(1, result.Observation.ModelDividedRuns);
+        Assert.Equal(0, result.Observation.DisputedRuns);
+        Assert.Contains("PROTOCOL:RUN_KEYS_INVALID", string.Join(" ", result.Evidence));
     }
 
-    [Theory]
-    [InlineData("reject")]
-    [InlineData("reaffirm")]
-    [InlineData("partial")]
-    [InlineData("failed")]
-    [InlineData("redispute")]
-    [InlineData("invalid")]
-    [InlineData("budget")]
-    public void Production_does_not_reopen_selection_or_call_a_group_verifier_after_a_dispute(string mode)
+    [Fact]
+    public void Dispute_shaped_reply_gets_protocol_repair_and_cannot_reopen_selection()
     {
         var source = Source.Value;
         var core = source.Cores.First(c => c.End - c.Start >= 6);
@@ -134,8 +130,6 @@ public sealed class PdfHeadingAgentGroupingTests
         AgentUnit.Model model = (unit, turn, request) =>
         {
             using var body = JsonDocument.Parse(request.Body);
-            if (FakeOpenRouter.VerificationResponse(System.Text.Json.Nodes.JsonNode.Parse(request.Body)!.AsObject()) is { } verification)
-                return new ModelTurn(verification, [], "stop");
             var content = body.RootElement.GetProperty("messages")[1].GetProperty("content");
             var text = content.ValueKind == JsonValueKind.String ? content.GetString()! : content[0].GetProperty("text").GetString()!;
             using var doc = JsonDocument.Parse(text);
@@ -143,21 +137,14 @@ public sealed class PdfHeadingAgentGroupingTests
             if (payload.GetProperty("stage").GetString() == "GROUP")
             {
                 groupingCalls++;
-                if (mode == "budget") budget.Halt("TEST");
-                return new ModelTurn(groupingCalls == 1 || mode == "redispute"
+                return new ModelTurn(groupingCalls == 1
                     ? Disagreement(payload) : Division(payload, id => [RunAliases(payload, id)]), [], "stop");
             }
             var reviewing = payload.TryGetProperty("selectionReview", out var review);
             if (reviewing)
             {
                 reviewCalls++;
-                Assert.StartsWith("REVIEW-SEG-", unit);
-                Assert.Equal(Instruction, payload.GetProperty("instruction").GetString());
-                Assert.True(payload.GetProperty("targetFacts").GetArrayLength() > 0);
-                Assert.Equal(new[] { first, second }, review.GetProperty("disputedAliases").EnumerateArray().Select(x => x.GetString()));
-                Assert.True(review.TryGetProperty("previousSelection", out _));
-                if (mode == "failed") throw new ReplyFailure("TEST_FAILURE");
-                if (mode == "invalid") return new ModelTurn("not json", [], "stop");
+                throw new InvalidOperationException("Production must not invoke selection review.");
             }
             return new ModelTurn(JsonSerializer.Serialize(new
             {
@@ -166,45 +153,76 @@ public sealed class PdfHeadingAgentGroupingTests
                 decisions = payload.GetProperty("targets").EnumerateArray().Select(t =>
                 {
                     var alias = t.GetProperty("alias").GetString()!;
-                    var select = !reviewing ? alias == first || alias == second || alias == kept
-                        : alias == unrelated || ((mode is "reaffirm" or "redispute") && (alias == first || alias == second)) || mode == "partial" && alias == first;
+                    var select = alias == first || alias == second || alias == kept;
                     return new { alias, decision = select ? "SELECT" : "NOT_SELECT", evidenceRefs = new[] { alias } };
                 })
             }), [], "stop");
         };
         var result = HeadingAgentSelector.Select(source, model, budget, 1, CancellationToken.None, 0, () => 0);
+        Assert.Contains(first, result.SelectedAliases);
+        Assert.Contains(second, result.SelectedAliases);
         Assert.Contains(kept, result.SelectedAliases);
         Assert.DoesNotContain(unrelated, result.SelectedAliases);
-        var expected = new[] { kept };
+        var expected = new[] { first, second, kept };
         Assert.Equal(expected.Order(), result.SelectedAliases.Order());
         Assert.Equal(expected.Order(), result.Groups!.SelectMany(g => g).Order());
         Assert.Equal(0, reviewCalls);
-        Assert.Equal(1, groupingCalls);
+        Assert.Equal(2, groupingCalls);
         Assert.DoesNotContain(result.ModelAnswers, a => a.Contains("selection-review", StringComparison.Ordinal));
         Assert.Equal(0, result.Grouping!.VerificationChecks);
-        Assert.Equal(result.UnitsTotal - 1, result.UnitsComplete);
+        Assert.Equal(result.UnitsTotal, result.UnitsComplete);
     }
 
-    [Theory]
-    [InlineData("missing-alias")]
-    [InlineData("unknown-alias")]
-    [InlineData("empty-reason")]
-    [InlineData("both-fields")]
-    public void A_dispute_must_cover_its_exact_run_and_cannot_also_give_headings(string mode)
+    [Fact]
+    public void Persistent_dispute_shaped_reply_is_protocol_failure_and_remains_fail_closed()
+    {
+        var source = Source.Value;
+        var core = source.Cores.First(c => c.End - c.Start >= 6);
+        var selected = new[] { A(core.Start + 1), A(core.Start + 2) };
+        var groupingCalls = 0;
+        AgentUnit.Model model = (unit, turn, request) =>
+        {
+            using var body = JsonDocument.Parse(request.Body);
+            if (FakeOpenRouter.VerificationResponse(System.Text.Json.Nodes.JsonNode.Parse(request.Body)!.AsObject()) is { } verification)
+                return new ModelTurn(verification, [], "stop");
+            var content = body.RootElement.GetProperty("messages")[1].GetProperty("content");
+            var text = content.ValueKind == JsonValueKind.String ? content.GetString()! : content[0].GetProperty("text").GetString()!;
+            using var payload = JsonDocument.Parse(text);
+            if (payload.RootElement.GetProperty("stage").GetString() == "GROUP")
+            {
+                groupingCalls++;
+                return new ModelTurn(Disagreement(payload.RootElement), [], "stop");
+            }
+            var targets = payload.RootElement.GetProperty("targets").EnumerateArray();
+            return new ModelTurn(JsonSerializer.Serialize(new
+            {
+                protocolVersion = source.Flavor.AnswerVersion,
+                status = "COMPLETE",
+                decisions = targets.Select(t => new { alias = t.GetProperty("alias").GetString(), decision = selected.Contains(t.GetProperty("alias").GetString()!) ? "SELECT" : "NOT_SELECT", evidenceRefs = new[] { t.GetProperty("alias").GetString()! } })
+            }), [], "stop");
+        };
+        var result = HeadingAgentSelector.Select(source, model, Budget(), 1, CancellationToken.None, 0, () => 0);
+        Assert.True(groupingCalls > 0, string.Join("; ", result.UnitFailures) + " | " + string.Join(" | ", result.ModelAnswers));
+        Assert.Equal(1 + AgentGrouping.MaxRepairs, groupingCalls);
+        Assert.All(selected, alias => Assert.DoesNotContain(alias, result.SelectedAliases));
+        Assert.DoesNotContain(result.Groups!.SelectMany(g => g), alias => selected.Contains(alias));
+        Assert.Contains(result.UnitFailures, f => f.Contains("PROTOCOL:RUN_KEYS_INVALID", StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void Dispute_is_not_a_valid_grouping_contract_field()
     {
         var source = Source.Value;
         var run = new AgentGrouping.Run("R1", [10, 11]);
-        var aliases = mode == "missing-alias" ? new[] { A(10) } : mode == "unknown-alias" ? new[] { A(10), "unknown" } : new[] { A(10), A(11) };
         var item = new System.Text.Json.Nodes.JsonObject
         {
             ["run"] = "R1",
-            ["dispute"] = JsonSerializer.SerializeToNode(new { aliases, reason = mode == "empty-reason" ? " " : "Review membership" })
+            ["dispute"] = JsonSerializer.SerializeToNode(new { aliases = new[] { A(10), A(11) }, reason = "Review membership" })
         };
-        if (mode == "both-fields") item["headings"] = JsonSerializer.SerializeToNode(new[] { new[] { A(10), A(11) } });
         var reply = new System.Text.Json.Nodes.JsonObject
         { ["protocolVersion"] = AgentGrouping.GroupVersion, ["runs"] = new System.Text.Json.Nodes.JsonArray(item) };
         Assert.Null(AgentGrouping.Parse(reply.ToJsonString(), [run], source, out var failure, out _));
-        Assert.Equal("PROTOCOL:DISPUTE_INVALID", failure);
+        Assert.Equal("PROTOCOL:RUN_KEYS_INVALID", failure);
     }
 
     [Fact]
@@ -308,7 +326,7 @@ public sealed class PdfHeadingAgentGroupingTests
         var repair = second.RootElement.GetProperty("messages").EnumerateArray().Last().GetProperty("content").GetString()!;
         Assert.Contains("run R1 is missing " + A(12), repair, StringComparison.Ordinal);
         Assert.Contains("run R2 is missing " + A(42), repair, StringComparison.Ordinal);
-        Assert.Contains("a line that is a heading of its own goes in a group of its own", repair, StringComparison.Ordinal);
+        Assert.Contains("Selection has already decided that every alias in each run is a heading", repair, StringComparison.Ordinal);
         Assert.Equal(new[] { new[] { A(10), A(11), A(12) }, new[] { A(40), A(41), A(42) } }, result.Groups.Select(g => g.ToArray()));
     }
 

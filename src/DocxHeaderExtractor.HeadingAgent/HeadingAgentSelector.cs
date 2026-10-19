@@ -27,7 +27,7 @@ public sealed record ModelReplyToolCall(string? Name, string Arguments);
 /// </summary>
 public abstract class HeadingAgentSelector : IHeadingSelector
 {
-    internal const string BindingPolicyVersion = "selection-grouping-csharp-validation-v1:no-semantic-verifier-authority";
+    internal const string BindingPolicyVersion = "selection-boundary-grouping-csharp-validation-v2:no-semantic-membership-veto";
     const int ExtraPostsPerUnit = AgentUnit.TransportRetries + 2 * 4;
     static readonly JsonSerializerOptions Compact = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
@@ -187,14 +187,13 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         answers = answers.Concat(grouping.Answers.Select(a => JsonSerializer.Serialize(new { grouping = a }, Compact))).ToArray();
         answers = answers.Concat(grouping.Evidence.Select(a => JsonSerializer.Serialize(new { groupingEvidence = a }, Compact))).ToArray();
         failures.AddRange(grouping.Failures);
-        // A disputed or protocol-fallback run has no validated division. Keep its source
-        // selection in provenance, but withhold it from binding rather than asking another
-        // semantic judge to overrule the selection/grouping result.
+        // A grouping dispute is no longer a valid production result. The parser treats it as
+        // a protocol error and, after bounded repair, only failed/fallback aliases are withheld.
         var unresolved = grouping.UnresolvedAliases
-            .Concat(grouping.Disputes.SelectMany(dispute => dispute.Aliases))
             .Concat(grouping.Provenance.Where(item => item.Decision == "FALLBACK").Select(item => item.Alias))
             .ToHashSet(StringComparer.Ordinal);
         selected.ExceptWith(unresolved);
+        var bindingGroups = grouping.Groups.Where(group => group.All(selected.Contains)).ToArray();
         foreach (var alias in unresolved) { extents.Remove(alias); readingChoices.Remove(alias); }
         var unresolvedUnits = Enumerable.Range(0, outcomes.Length).Count(n => outcomes[n].Status == "COMPLETE" && source.Scope(n).Decide.Any(unresolved.Contains));
         var initial = outcomes.SelectMany(o => o.Decisions).ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.Ordinal);
@@ -211,7 +210,7 @@ public abstract class HeadingAgentSelector : IHeadingSelector
             { Provenance = provenanceByAlias[l.Alias].ToArray() };
         }, StringComparer.Ordinal);
         answers = answers.Append(JsonSerializer.Serialize(new { stage = "pre-binding-alias-state", aliases = aliasStates }, Compact)).ToArray();
-        return new HeadingSelection(selected, complete.Length - unresolvedUnits, outcomes.Length, failures, answers, budget.Calls, costOf(), source.Flavor.PlacementContext(source), grouping.Groups,
+        return new HeadingSelection(selected, complete.Length - unresolvedUnits, outcomes.Length, failures, answers, budget.Calls, costOf(), source.Flavor.PlacementContext(source), bindingGroups,
             extents.Count > 0 ? extents : null) { HeadingReadings = readingChoices.Count > 0 ? readingChoices : null,
                 Grouping = grouping.Observation with { UnresolvedAliases = unresolved.Count },
                 StageSeconds = seconds.ToDictionary(kv => kv.Key, kv => Math.Round(kv.Value, 3)), AliasStates = aliasStates };

@@ -7,9 +7,11 @@ The first-request facts delivery is now also enabled for native text PDF and DOC
 [target facts in the first production request](target-facts-in-request.md). This changes fact delivery, not the
 user's heading instruction. Historical statements below that PDF/DOCX requests were unchanged describe the earlier scan work.
 
-Grouping can report a dispute, but production no longer reopens selection or asks an independent
-semantic verifier to accept/reject the partition. C# validates protocol shape, exact coverage,
-contiguity and source order. Disputed or protocol-fallback runs stay unresolved. See
+Selection owns membership, and grouping can only partition selected aliases; the production
+contract has no semantic dispute result. A dispute-shaped answer is repaired as a protocol error.
+Production no longer asks an independent semantic verifier to accept/reject the partition. C# validates
+protocol shape, exact coverage, contiguity and source order. Persistent protocol/transport failures stay
+unresolved. See
 [grouping verification](grouping-verification.md) for the authority rollback and qualification-only
 status of the previous verifier experiments.
 

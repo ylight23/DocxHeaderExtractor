@@ -11,8 +11,9 @@ Production now follows:
 1. Selection returns selected source aliases.
 2. The grouping model returns contiguous ordered groups.
 3. C# validates protocol shape, exact run coverage, alias ownership, contiguity and source order.
-4. Only validated groups are bound. A grouping dispute or failed/fallback division remains
-   unresolved; it does not rewrite selection membership or trigger a second semantic review.
+4. Only validated groups are bound. Grouping has no semantic dispute response; malformed or
+   incomplete protocol/transport results remain unresolved after bounded repair and do not rewrite
+   selection membership.
 
 `AgentGroupVerification` and the historical canary artifacts remain available for qualification
 tests and analysis. Their verdicts, boundary suggestions, cycle observations, and ACCEPT states
