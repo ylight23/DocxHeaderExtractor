@@ -458,9 +458,14 @@ internal static class AgentGroupVerification
             history.Add(new JsonObject { ["role"] = "assistant", ["content"] = content });
             history.Add(new JsonObject { ["role"] = "user", ["content"] =
                 "Response partly refused: " + JsonSerializer.Serialize(new { pendingCandidates = remaining, issues,
+                    membershipCoverage = coverageDiagnostics.Where(d => d.Round == round && remaining.Contains(d.Run) && !d.SequenceMatches)
+                        .Select(d => new { run = d.Run, expectedAliases = d.ExpectedAliases, observedAliases = d.ObservedAliases,
+                            missingAliases = d.MissingAliases, unexpectedAliases = d.UnexpectedAliases,
+                            duplicateAliases = d.DuplicateAliases, sequenceMatches = d.SequenceMatches }).ToArray(),
                     fieldDiagnostics = fieldDiagnostics.Where(d => d.Run is null || remaining.Contains(d.Run)).ToArray() }, Json) +
                 ". Previously accepted candidates are kept and must not be resubmitted. Return only the candidates in the current packet. Give every candidate and every membership alias exactly once in candidate order, with valid source evidence and a reason. ACCEPT/REGROUP require all HEADING. Non-HEADING aliases require MEMBERSHIP_DISPUTE or UNRESOLVED. Do not invent HEADING/ACCEPT to fix protocol." });
             history[^1]!["content"] = history[^1]!["content"]!.GetValue<string>() +
+                " For MEMBERSHIP_COVERAGE_INVALID, return the COMPLETE membership array in expectedAliases order across ALL proposedGroups, including second and later groups. Each alias needs its own status and evidenceRefs; currentGroups does not supply membership. Include every missing alias even if its status is UNRESOLVED. Return the full pending verdict, not only a patch for missing aliases. Choose statuses and the consistent decision from source; coverage repair never requires HEADING or ACCEPT." +
                 " REGROUP must echo proposedGroups as currentGroups and provide a DIFFERENT valid suggestedGroups. The actual current partition is in the packet. If current boundaries are correct, ACCEPT instead; otherwise provide a different valid partition or dispute/unresolved. Do not alter membership to evade boundary consistency checks. This is protocol repair, not a semantic boundary cycle.";
         }
         return Finish(failure ?? "EVIDENCE_ROUNDS_EXHAUSTED");

@@ -116,8 +116,14 @@ Within a valid response envelope, schema, complete ordered membership and source
 checked independently for each candidate. A duplicate run invalidates that candidate rather
 than choosing either copy. Valid verdicts are frozen in source order; later malformed replies,
 transport failures or budget exhaustion cannot discard or overwrite them. Repair packets contain
-only pending candidates and retain original source context. Missing/invalid candidates remain
-unresolved; a transport failure never supplies a semantic `NOT_HEADING` judgement. Global guards
+only pending candidates and retain original source context. For ordered membership coverage
+failures, the next round also includes `membershipCoverage` for that round's pending candidates:
+expected/observed aliases, missing/unexpected/duplicate aliases and sequence equality. Feedback
+requires the complete membership array across every proposed group, with model-chosen status
+and source evidence for each alias. A complete `currentGroups` cannot substitute for membership;
+the model must return the full pending verdict, not only missing rows. No status is prefilled,
+no candidate is split or accepted by C#, and the existing three-round limit is unchanged.
+Missing/invalid candidates remain unresolved; a transport failure never supplies a semantic `NOT_HEADING` judgement. Global guards
 (JSON envelope/version, finish reason, tool-call mode and byte cap) still fail closed for the whole
 new response. The audit records specific envelope/candidate error codes, accepted IDs and pending
 IDs for each response round, alongside the original visible response. Recovered protocol/transport

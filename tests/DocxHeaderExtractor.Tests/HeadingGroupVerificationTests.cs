@@ -121,6 +121,77 @@ public sealed class HeadingGroupVerificationTests
     }
 
     [Theory]
+    [InlineData("ACCEPT")]
+    [InlineData("MEMBERSHIP_DISPUTE")]
+    [InlineData("persistent-omission")]
+    public void Coverage_repair_identifies_missing_later_group_members_without_using_currentGroups_as_authority(string outcome)
+    {
+        // Synthetic shape replay of the reported four-alias/two-group failure; not a model replay or Gold.
+        string[][] groups = [[A(1), A(2)], [A(3), A(4)]];
+        var candidates = new[] { new AgentGroupVerification.Candidate("V41", groups),
+            new AgentGroupVerification.Candidate("V42", [[A(6)]]) };
+        var calls = 0;
+        AgentUnit.Model model = (unit, _, request) =>
+        {
+            Assert.Equal("VERIFY-006", unit);
+            var packet = Payload(request);
+            calls++;
+            if (calls > 1)
+            {
+                Assert.Equal("V41", Assert.Single(packet["candidates"]!.AsArray())!["run"]!.GetValue<string>());
+                var messages = JsonNode.Parse(request.Body)!["messages"]!.AsArray();
+                var feedback = messages.Last()!["content"]!.GetValue<string>();
+                var begin = feedback.IndexOf('{');
+                var end = feedback.IndexOf("}. Previously accepted", StringComparison.Ordinal);
+                var diagnostics = JsonNode.Parse(feedback[begin..(end + 1)])!;
+                Assert.Equal(new[] { "V41" }, diagnostics["pendingCandidates"]!.Deserialize<string[]>());
+                var coverage = Assert.Single(diagnostics["membershipCoverage"]!.AsArray())!;
+                Assert.Equal("V41", coverage["run"]!.GetValue<string>());
+                Assert.Equal(new[] { A(1), A(2), A(3), A(4) }, coverage["expectedAliases"]!.Deserialize<string[]>());
+                Assert.Equal(new[] { A(1), A(2) }, coverage["observedAliases"]!.Deserialize<string[]>());
+                Assert.Equal(new[] { A(3), A(4) }, coverage["missingAliases"]!.Deserialize<string[]>());
+                Assert.Empty(coverage["unexpectedAliases"]!.AsArray());
+                Assert.Empty(coverage["duplicateAliases"]!.AsArray());
+                Assert.False(coverage["sequenceMatches"]!.GetValue<bool>());
+                Assert.Contains("across ALL proposedGroups", feedback);
+                Assert.Contains("currentGroups does not supply membership", feedback);
+                Assert.Contains("coverage repair never requires HEADING or ACCEPT", feedback);
+            }
+            var response = JsonNode.Parse(Verdicts(packet,
+                c => calls > 1 && outcome == "MEMBERSHIP_DISPUTE" ? "MEMBERSHIP_DISPUTE" : "ACCEPT",
+                membershipStatus: a => calls > 1 && outcome == "MEMBERSHIP_DISPUTE" && (a == A(3) || a == A(4)) ? "UNRESOLVED" : "HEADING"))!;
+            var target = response["verdicts"]!.AsArray().Single(r => r!["run"]!.GetValue<string>() == "V41")!;
+            target["currentGroups"] = JsonSerializer.SerializeToNode(groups); // Full graph never substitutes for membership.
+            if (calls == 1 || outcome == "persistent-omission")
+            {
+                var membership = target["membership"]!.AsArray();
+                membership.RemoveAt(3); membership.RemoveAt(2);
+            }
+            return new ModelTurn(response.ToJsonString(), [], "stop");
+        };
+        var result = AgentGroupVerification.Ask(Source(), candidates, new Dictionary<string, TextOffsetSpan>(),
+            new Dictionary<string, string>(), model, new AgentBudget(20, 100), CancellationToken.None,
+            0, Instruction, "VERIFY-006", 0);
+        Assert.Equal(outcome == "persistent-omission" ? AgentGroupVerification.MaxPosts : 2, calls);
+        Assert.Equal("ACCEPT", result.Verdicts.Single(v => v.Run == "V42").Decision);
+        if (outcome == "persistent-omission")
+        {
+            Assert.Single(result.Verdicts);
+            Assert.Contains("MEMBERSHIP_COVERAGE_INVALID", result.Failure);
+            Assert.All(result.CoverageDiagnostics.Where(d => d.Run == "V41"), d => Assert.False(d.SequenceMatches));
+        }
+        else
+        {
+            Assert.Null(result.Failure);
+            var verdict = result.Verdicts.Single(v => v.Run == "V41");
+            Assert.Equal(outcome, verdict.Decision);
+            Assert.Equal(new[] { A(1), A(2), A(3), A(4) }, verdict.Membership.Select(m => m.Alias));
+            Assert.All(verdict.Membership.Skip(2), m => Assert.Equal(outcome == "ACCEPT" ? "HEADING" : "UNRESOLVED", m.Status));
+            Assert.True(result.CoverageDiagnostics.Last().SequenceMatches);
+        }
+    }
+
+    [Theory]
     [InlineData("verdict")]
     [InlineData("membership")]
     [InlineData("both")]
