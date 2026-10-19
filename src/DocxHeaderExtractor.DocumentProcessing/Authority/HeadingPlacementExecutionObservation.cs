@@ -71,7 +71,7 @@ public sealed record HeadingPlacementDecisionObservation(
 public sealed record HeadingPlacementSourceObservation(string Alias, string SourceId, string? InitialSelection,
     string? FinalSelection, string? VerificationMembership, string BindingStatus, string PlacementResolution);
 
-/// <summary>One bounded edge repair, with fresh verification outcome; proposals have no authority.</summary>
+/// <summary>Legacy audit shape retained for compatibility; current production placement does not repair or reverify edges.</summary>
 public sealed record HeadingPlacementEdgeRepairObservation(string Alias, string InitialVerificationStatus,
     bool ProposalReceived, string ReverificationStatus);
 

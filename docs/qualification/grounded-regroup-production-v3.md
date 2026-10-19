@@ -1,6 +1,6 @@
-# Production V3 grounded REGROUP promotion
+# Historical: Production V3 grounded REGROUP promotion
 
-Date: 2026-10-19. The production verifier now uses `HEADING_GROUP_VERIFICATION_V3`, with selector/provenance version `verified-groups-v3-grounded-regroup`.
+Date: 2026-10-19. This note records a prior production policy and its qualification evidence. It is superseded by the authority rollback in [grouping verification](../architecture/grouping-verification.md): the grounded verifier is qualification-only and no longer gates production binding.
 
 REGROUP must provide an exact current partition echo and a different valid suggested partition. Membership coverage/order, evidence grounding and all-HEADING requirements remain mandatory. Self-contradiction is refused with `BOUNDARY_VERDICT_SELF_CONTRADICTORY` and repaired in the same verifier conversation within its existing three-response budget. An ACCEPT after repair follows ordinary acceptance. A valid current echo is also allowed on ACCEPT; a suggestion is not accepted on non-REGROUP decisions.
 

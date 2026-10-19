@@ -70,7 +70,7 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
 
     readonly int parallelism = parallelism ?? DefaultParallelism;
 
-    public string SelectorId => "scan-v6:" + ScanAgentSource.Version + ":facts-in-request:instruction-" + AgentProtocol.Sha(instruction)[..8] + ":" + AgentSelectionReview.Version;
+    public string SelectorId => "scan-v6:" + ScanAgentSource.Version + ":facts-in-request:instruction-" + AgentProtocol.Sha(instruction)[..8] + ":" + HeadingAgentSelector.BindingPolicyVersion;
 
     public async Task<ScanHeadingResult> ExtractAsync(string docxPath, string apiKey, CancellationToken ct)
     {

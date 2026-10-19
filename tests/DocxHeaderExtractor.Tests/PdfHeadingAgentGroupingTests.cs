@@ -85,13 +85,13 @@ public sealed class PdfHeadingAgentGroupingTests
     }
 
     [Fact]
-    public void Budget_reserves_initial_grouping_and_possible_review_regroup_batches()
+    public void Production_budget_reserves_grouping_only_without_semantic_review_or_verifier()
     {
         const int sourceLines = 1055;
         var chunks = (sourceLines + (2 * AgentGrouping.MaxRunsPerRequest) - 1) / (2 * AgentGrouping.MaxRunsPerRequest);
         var perPass = chunks * (1 + AgentGrouping.MaxRepairs) * (1 + AgentUnit.TransportRetries);
 
-        Assert.Equal(2 * perPass, HeadingAgentSelector.GroupingPostsReserveForLines(sourceLines));
+        Assert.Equal(perPass, HeadingAgentSelector.GroupingPostsReserveForLines(sourceLines));
     }
 
     private static string Disagreement(JsonElement payload) => JsonSerializer.Serialize(new
@@ -124,7 +124,7 @@ public sealed class PdfHeadingAgentGroupingTests
     [InlineData("redispute")]
     [InlineData("invalid")]
     [InlineData("budget")]
-    public void Disagreement_goes_back_to_selection_once_and_only_disputed_decisions_can_change(string mode)
+    public void Production_does_not_reopen_selection_or_call_a_group_verifier_after_a_dispute(string mode)
     {
         var source = Source.Value;
         var core = source.Cores.First(c => c.End - c.Start >= 6);
@@ -172,23 +172,17 @@ public sealed class PdfHeadingAgentGroupingTests
                 })
             }), [], "stop");
         };
-        var result = HeadingAgentSelector.Select(source, model, budget, 1, CancellationToken.None, 0, () => 0, verifyGroups: false);
+        var result = HeadingAgentSelector.Select(source, model, budget, 1, CancellationToken.None, 0, () => 0);
         Assert.Contains(kept, result.SelectedAliases);
         Assert.DoesNotContain(unrelated, result.SelectedAliases);
-        var expected = mode is "reaffirm" ? new[] { first, second, kept } : mode == "partial" ? new[] { first, kept } : new[] { kept };
+        var expected = new[] { kept };
         Assert.Equal(expected.Order(), result.SelectedAliases.Order());
         Assert.Equal(expected.Order(), result.Groups!.SelectMany(g => g).Order());
-        Assert.Equal(mode == "budget" ? 0 : mode == "invalid" ? AgentSelectionReview.MaxPosts : 1, reviewCalls);
-        Assert.Equal(mode is "reaffirm" or "redispute" ? 2 : 1, groupingCalls);
-        Assert.Contains(result.ModelAnswers, a => a.Contains("selection-review") && a.Contains("before") && a.Contains("after"));
-        Assert.Contains(result.ModelAnswers, a => a.Contains("ignoredDecisionChanges"));
-        if (mode is "reject" or "reaffirm" or "partial") Assert.True(result.Grouping!.IgnoredReviewChanges > 0);
-        if (mode is "failed" or "invalid" or "redispute" or "budget")
-        {
-            Assert.NotEmpty(result.UnitFailures);
-            Assert.Equal(result.UnitsTotal - 1, result.UnitsComplete);
-        }
-        else { Assert.Empty(result.UnitFailures); Assert.Equal(result.UnitsTotal, result.UnitsComplete); }
+        Assert.Equal(0, reviewCalls);
+        Assert.Equal(1, groupingCalls);
+        Assert.DoesNotContain(result.ModelAnswers, a => a.Contains("selection-review", StringComparison.Ordinal));
+        Assert.Equal(0, result.Grouping!.VerificationChecks);
+        Assert.Equal(result.UnitsTotal - 1, result.UnitsComplete);
     }
 
     [Theory]

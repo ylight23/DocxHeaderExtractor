@@ -70,9 +70,9 @@ public sealed class PdfV6SelectedLinesLaneTests
         Assert.Contains(FixedSelector.Id, heading.Audit!.ModelInputContracts);
         Assert.Contains(DocxHeaderExtractor.DocumentProcessing.Materialization.EvidenceHeadingPlacement.Version, heading.Audit.ModelInputContracts);
         Assert.Equal("complete", heading.Audit.SemanticLane!.Status);
-        // A proposal and an independent, source-grounded verification conversation.
-        Assert.Equal(2, transport.PlacementCalls);
-        Assert.Equal(5, run.Result.Provenance.ProviderCalls); // 3 selector attempts + 2 logical hierarchy calls
+        // One parent-proposal pass; no semantic verifier gate follows it.
+        Assert.Equal(1, transport.PlacementCalls);
+        Assert.Equal(4, run.Result.Provenance.ProviderCalls); // 3 selector attempts + 1 hierarchy proposal call
         Assert.Equal(2, heading.Structure.Elements.Count);
     }
 
@@ -112,7 +112,7 @@ public sealed class PdfV6SelectedLinesLaneTests
         Assert.Equal("2d057c62aaf69297afa46f3dec8d8b88720893491c5620ecfcc51562e9e03884", P7F1V6Core.InstructionSha256(AgentProtocol.InstructionD412));
         Assert.Equal(AgentProtocol.InstructionStructuralV1, AgentProtocol.Instruction);
         Assert.Equal("c5c5b6939b99d4cb907a59b2da472d14e1ffc7e35067c1ae48ca0f0ccabdb793", P7F1V6Core.InstructionSha256(AgentProtocol.Instruction));
-        Assert.Equal("p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:facts-in-request:instruction-c5c5b693:" + AgentSelectionReview.Version, selector.SelectorId);
+        Assert.Equal("p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:facts-in-request:instruction-c5c5b693:" + HeadingAgentSelector.BindingPolicyVersion, selector.SelectorId);
         Assert.Contains("at every level of its outline", AgentProtocol.Instruction, StringComparison.Ordinal);
         Assert.Contains("It does not need to summarize that content", AgentProtocol.Instruction, StringComparison.Ordinal);
     }
@@ -139,15 +139,15 @@ public sealed class PdfV6SelectedLinesLaneTests
 
         using var plain = new NoCallTransport("route-key");
         await PdfExtractionPipeline.RunWithSelectorAsync(file, new PipelineOptions(), plain, new FixedSelector(aliases));
-        Assert.Equal(2, plain.PlacementCalls);
-        Assert.Contains("Independently verify", plain.LastPrompt);
+        Assert.Equal(1, plain.PlacementCalls);
+        Assert.Contains("Propose only", plain.LastPrompt);
         Assert.Contains("sourceContext", plain.LastPacket!, StringComparison.Ordinal);
 
         using var withStyles = new NoCallTransport("route-key");
         var agentSource = AgentSource.Load(TestRepository.Path(Pdf), out _)!;
         var context = agentSource.Flavor.PlacementContext(agentSource);
         await PdfExtractionPipeline.RunWithSelectorAsync(file, new PipelineOptions(), withStyles, new FixedSelector(aliases, context));
-        Assert.Contains("Independently verify", withStyles.LastPrompt);
+        Assert.Contains("Propose only", withStyles.LastPrompt);
         using var packet = JsonDocument.Parse(withStyles.LastPacket!);
         Assert.True(packet.RootElement.TryGetProperty("upstreamWithheld", out _));
         Assert.True(packet.RootElement.TryGetProperty("sourceContext", out _));

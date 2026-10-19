@@ -69,8 +69,8 @@ public sealed class ScanProductionPipelineTests
         Assert.Equal(new PixelBox(100, 100, 900, 50), evidence.Scan!.Box);
         Assert.Equal("Chuong I", evidence.Scan.PrimaryReading);
         Assert.Equal("Chương I", evidence.Scan.Readings["vlm-transcribed"]);
-        Assert.Equal(7, run.Result.Provenance.ProviderCalls);
-        Assert.Equal(2, run.Outline.RouteAudit!.Scan!.PlacementCalls);
+        Assert.Equal(6, run.Result.Provenance.ProviderCalls);
+        Assert.Equal(1, run.Outline.RouteAudit!.Scan!.PlacementCalls);
         Assert.Equal(.002, run.Outline.RouteAudit!.Scan!.PreflightCostUsd);
         Assert.Equal("complete", run.Outline.RouteAudit.SemanticLane!.Status);
         Assert.Contains("scanSources", JsonSerializer.Serialize(run.Outline), StringComparison.Ordinal);
@@ -93,8 +93,8 @@ public sealed class ScanProductionPipelineTests
         using var handler = new FakeOpenRouter((body, _) =>
         {
             var packet = body["messages"]![1]!["content"]!.GetValue<string>();
-            var verify = JsonNode.Parse(packet)!["stage"]!.GetValue<string>() == "HIERARCHY_VERIFY";
-            Assert.Equal(verify ? 2560 : 352, body["max_tokens"]!.GetValue<int>());
+            Assert.Equal("HIERARCHY_PLACE", JsonNode.Parse(packet)!["stage"]!.GetValue<string>());
+            Assert.Equal(352, body["max_tokens"]!.GetValue<int>());
             var parents = new Dictionary<string, string> { ["P001-L001"] = "ROOT", ["P001-L003"] = "P001-L001" };
             return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = HierarchyTestProtocol.Reply(packet, parents) }, "stop"));
         }, autoVerify: false);
@@ -103,13 +103,13 @@ public sealed class ScanProductionPipelineTests
         using var runner = new V6DocumentRunner(new PipelineOptions(),
             new Factory(new FixedScan(Prepared(ScanPath)), new StructuredPlacementTransport(transport)));
         var run = await runner.ExtractAsync(ScanPath);
-        Assert.Equal(2, handler.Posts);
+        Assert.Equal(1, handler.Posts);
         Assert.Equal(new int?[] { 1, 2 }, run.Outline.Headings.Select(h => h.Level));
         var calls = run.Outline.RouteAudit!.PlacementExecution!.Calls;
         Assert.All(calls, c => Assert.Equal("stop", c.FinishReason));
-        var verifyCall = Assert.Single(calls, c => c.Phase == "HIERARCHY_VERIFY");
-        Assert.Equal(2560, verifyCall.RequestedMaxOutputTokens);
-        Assert.Equal(2560, verifyCall.MaxOutputTokens);
+        var proposalCall = Assert.Single(calls, c => c.Phase == "HIERARCHY_PLACE");
+        Assert.Equal(352, proposalCall.RequestedMaxOutputTokens);
+        Assert.Equal(352, proposalCall.MaxOutputTokens);
         var web = WebPipelineProjection.Project(Guid.NewGuid(), "Completed", run.Outline, run, "scan");
         Assert.Contains("FinishReason", JsonSerializer.Serialize(web.Audit));
         Assert.Contains("MaxOutputTokens", JsonSerializer.Serialize(web.Audit));
@@ -186,7 +186,7 @@ public sealed class ScanProductionPipelineTests
     }
 
     [Fact]
-    public async Task Appendix_mixed_run_reaches_model_placement_without_losing_parents_or_outside_tree_headings()
+    public async Task Appendix_uses_the_validated_grouping_partition_without_semantic_verifier_repair()
     {
         var (source, selection, _) = AppendixMembershipTests.RunFixture("reject");
         var prepared = ScanHeadingAgentSelector.PrepareSelection(source, selection) with
@@ -194,18 +194,20 @@ public sealed class ScanProductionPipelineTests
         using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared), new AppendixPlacement()));
         var run = await runner.ExtractAsync(ScanPath);
         var structured = run.Outline.Headings.Where(h => h.Level is not null).ToArray();
-        Assert.Equal(new[] { "Phụ lục", "I. LỜI CHỨNG", "1. Lời chứng chứng thực bản sao từ bản chính", "2. Lời chứng chứng thực chữ ký",
-            "II. MẪU SỔ CHỨNG THỰC", "1. Bìa sổ", "2. Nội dung sổ" }, structured.Select(h => h.Text));
+        Assert.Equal("Phụ lục", structured[0].Text);
+        Assert.StartsWith("I. LỜI CHỨNG Mẫu lời chứng được đánh máy hoặc khắc", structured[1].Text, StringComparison.Ordinal);
+        Assert.Equal(new[] { "1. Lời chứng chứng thực bản sao từ bản chính", "2. Lời chứng chứng thực chữ ký",
+            "II. MẪU SỔ CHỨNG THỰC", "1. Bìa sổ", "2. Nội dung sổ" }, structured.Skip(2).Select(h => h.Text));
         Assert.Equal(new int?[] { 1, 2, 3, 3, 2, 3, 3 }, structured.Select(h => h.Level));
         Assert.Equal(9, run.Outline.Headings.Count);
         Assert.Equal(2, run.Outline.Headings.Count(h => h.HierarchyResolution == "model-out-of-hierarchy"));
-        Assert.DoesNotContain(run.Outline.Headings, h => h.Text.StartsWith("Mẫu lời chứng được", StringComparison.Ordinal));
-        Assert.Equal("NOT_SELECT", run.Outline.RouteAudit!.HeadingAliasStates![AppendixMembershipTests.A(3)].FinalSelection);
+        Assert.Contains(run.Outline.Headings, h => h.Text.Contains("Mẫu lời chứng được", StringComparison.Ordinal));
+        Assert.Equal("SELECT", run.Outline.RouteAudit!.HeadingAliasStates![AppendixMembershipTests.A(3)].FinalSelection);
         Assert.Equal("READY_FOR_BINDING", run.Outline.RouteAudit.HeadingAliasStates[AppendixMembershipTests.A(1)].BindingStatus);
         var safeAudit = JsonSerializer.SerializeToNode(WebPipelineProjection.SafeAudit(run.Outline.RouteAudit))!;
-        Assert.NotEmpty(selection.Grouping!.Partitions!);
-        Assert.Equal(JsonSerializer.SerializeToNode(selection.Grouping.Partitions)!.ToJsonString(), safeAudit["Grouping"]!["Partitions"]!.ToJsonString());
-        Assert.Equal(JsonSerializer.SerializeToNode(selection.Grouping.VerifierEvidence)!.ToJsonString(), safeAudit["Grouping"]!["VerifierEvidence"]!.ToJsonString());
+        Assert.Equal(0, selection.Grouping!.VerificationChecks);
+        Assert.Null(selection.Grouping.Partitions);
+        Assert.Null(selection.Grouping.VerifierEvidence);
         Assert.Null(safeAudit["RawModelResponses"]);
     }
 

@@ -27,6 +27,7 @@ public sealed record ModelReplyToolCall(string? Name, string Arguments);
 /// </summary>
 public abstract class HeadingAgentSelector : IHeadingSelector
 {
+    internal const string BindingPolicyVersion = "selection-grouping-csharp-validation-v1:no-semantic-verifier-authority";
     const int ExtraPostsPerUnit = AgentUnit.TransportRetries + 2 * 4;
     static readonly JsonSerializerOptions Compact = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
@@ -133,44 +134,22 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         });
         var spare = (posts - units) * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
         // Grouping batches up to MaxRunsPerRequest adjacent selected-line runs. In the worst case, every other source line is selected,
-        // so reserve one chunk per 2 * MaxRunsPerRequest lines, for both initial grouping and possible review regroup, including retries/repairs.
+        // so reserve one chunk per 2 * MaxRunsPerRequest lines, including protocol/transport repairs.
         var groupPosts = GroupingPostsReserveForLines(source.Lines.Count);
         var groupReserve = groupPosts * AgentBudget.AttemptUsd(60000);
-        var boundaryGroupPosts = SemanticBoundaryGroupingPostsReserveForLines(source.Lines.Count);
-        var boundaryGroupReserve = boundaryGroupPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
-        var reviewPosts = units * AgentSelectionReview.MaxPosts;
-        var reviewReserve = reviewPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
-        // Initial + review verification, each with the bounded semantic boundary cycles.
-        // MaxCalls still owns protocol rounds/transport retries inside each verifier invocation.
-        var verifyPosts = 2 * (1 + AgentGroupVerification.MaxBoundaryRepairCycles)
-            * Math.Max(1, (source.Lines.Count + AgentGroupVerification.BatchSize - 1) / AgentGroupVerification.BatchSize) * AgentGroupVerification.MaxCalls;
-        var verifyReserve = verifyPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
-        return new AgentBudget(posts + groupPosts + boundaryGroupPosts + reviewPosts + verifyPosts,
-            Math.Ceiling((first + spare + groupReserve + boundaryGroupReserve + reviewReserve + verifyReserve) * 1.1 * 100) / 100);
+        return new AgentBudget(posts + groupPosts,
+            Math.Ceiling((first + spare + groupReserve) * 1.1 * 100) / 100);
     }
 
     internal static int GroupingPostsReserveForLines(int lineCount)
     {
         var groupChunks = Math.Max(1, (lineCount + (2 * AgentGrouping.MaxRunsPerRequest) - 1) / (2 * AgentGrouping.MaxRunsPerRequest));
-        // Both initial grouping and a possible REVIEW-GROUP regroup can consume this worst-case reserve.
-        return 2 * groupChunks * (1 + AgentGrouping.MaxRepairs) * (1 + AgentUnit.TransportRetries);
-    }
-
-    internal static int SemanticBoundaryGroupingPostsReserveForLines(int lineCount)
-    {
-        // Unlike initial/review GROUP, independent candidates do not share grouping requests.
-        // At a fixed cycle their aliases are disjoint (including survivor refinement), and each
-        // provider-backed run needs at least two lines. Thus floor(lines / 2) also bounds chunks
-        // across all candidates, even when refinement splits one candidate into several runs.
-        // Reserve both initial/review verification trees and every semantic cycle. AskChunk's
-        // retry counter is shared across its protocol rounds, so its maximum is additive.
-        return 2 * AgentGroupVerification.MaxBoundaryRepairCycles * (lineCount / 2)
-            * (1 + AgentGrouping.MaxRepairs + AgentUnit.TransportRetries);
+        return groupChunks * (1 + AgentGrouping.MaxRepairs) * (1 + AgentUnit.TransportRetries);
     }
 
     /// <summary>Runs every segment, parallelism at a time, and collects the lines selected by the units whose answer passed.</summary>
     internal static HeadingSelection Select(IAgentSource source, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct,
-        int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0, bool verifyGroups = true)
+        int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0)
     {
         var phase = Stopwatch.StartNew();
         var seconds = new Dictionary<string, double>(StringComparer.Ordinal);
@@ -202,19 +181,19 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         // The selected lines divided into headings: the model decides which adjacent lines form one heading, C# checks the division.
         var grouping = AgentGrouping.Group(source, selected, model, budget, parallelism, ct, retryDelayMs, instruction);
         seconds["grouping"] = phase.Elapsed.TotalSeconds;
-        phase.Restart();
-        if (verifyGroups)
-            grouping = AgentGroupVerification.Verify(source, grouping, extents, readingChoices, model, budget,
-                parallelism, ct, retryDelayMs, instruction);
-        seconds["verification"] = phase.Elapsed.TotalSeconds;
-        phase.Restart();
-        grouping = AgentSelectionReview.Resolve(source, grouping, outcomes, selected, extents, readingChoices,
-            model, budget, parallelism, ct, retryDelayMs, instruction, verifyGroups);
-        seconds["review"] = phase.Elapsed.TotalSeconds;
+        // Grouping output is admitted by its strict parser and C# source-order/coverage checks.
+        // Semantic verifier and selection-review agents are qualification-only; neither can alter
+        // membership or veto a structurally valid group in the production path.
         answers = answers.Concat(grouping.Answers.Select(a => JsonSerializer.Serialize(new { grouping = a }, Compact))).ToArray();
         answers = answers.Concat(grouping.Evidence.Select(a => JsonSerializer.Serialize(new { groupingEvidence = a }, Compact))).ToArray();
         failures.AddRange(grouping.Failures);
-        var unresolved = grouping.UnresolvedAliases.ToHashSet(StringComparer.Ordinal);
+        // A disputed or protocol-fallback run has no validated division. Keep its source
+        // selection in provenance, but withhold it from binding rather than asking another
+        // semantic judge to overrule the selection/grouping result.
+        var unresolved = grouping.UnresolvedAliases
+            .Concat(grouping.Disputes.SelectMany(dispute => dispute.Aliases))
+            .Concat(grouping.Provenance.Where(item => item.Decision == "FALLBACK").Select(item => item.Alias))
+            .ToHashSet(StringComparer.Ordinal);
         selected.ExceptWith(unresolved);
         foreach (var alias in unresolved) { extents.Remove(alias); readingChoices.Remove(alias); }
         var unresolvedUnits = Enumerable.Range(0, outcomes.Length).Count(n => outcomes[n].Status == "COMPLETE" && source.Scope(n).Decide.Any(unresolved.Contains));

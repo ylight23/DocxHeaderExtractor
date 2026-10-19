@@ -35,15 +35,15 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
         Assert.Equal(selection.UnitsTotal, selection.UnitsComplete);
         Assert.Empty(selection.UnitFailures);
         Assert.Equal(Enumerable.Range(0, source.Cores.Count).Select(n => source.Scope(n).Decide[0]).ToHashSet(), selection.SelectedAliases);
-        // Facts (every page of them, the core facts of every target), then the answer.
-        var verificationCalls = handler.Bodies.Count(FakeOpenRouter.IsVerification);
-        Assert.True(verificationCalls > 0);
-        Assert.Equal(2 * selection.UnitsTotal + verificationCalls, selection.ProviderCalls);
-        Assert.Equal(2 * selection.UnitsTotal + verificationCalls, handler.Posts);
+        // Facts and selection answer are the only per-segment calls. Semantic group verification
+        // is deliberately absent from the production binding path.
+        Assert.Empty(handler.Bodies.Where(FakeOpenRouter.IsVerification));
+        Assert.Equal(2 * selection.UnitsTotal, selection.ProviderCalls);
+        Assert.Equal(2 * selection.UnitsTotal, handler.Posts);
         Assert.All(handler.Keys, k => Assert.Equal("Bearer sk-test", k));
 
         // Every request carries the DOCX prompt and the six DOCX tools; the facts a unit read are the DOCX facts.
-        Assert.All(handler.Bodies.Where(b => !FakeOpenRouter.IsVerification(b)), b =>
+        Assert.All(handler.Bodies, b =>
         {
             Assert.Equal(DocxAgentProtocol.SystemPrompt, b["messages"]![0]!["content"]![0]!["text"]!.GetValue<string>());
             Assert.Equal(DocxAgentTools.Definitions().ToJsonString(), b["tools"]!.ToJsonString());
@@ -52,6 +52,7 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
         Assert.NotEmpty(toolMessages);
         Assert.All(toolMessages, m => Assert.Contains(DocxAgentSource.FactsVersion, m!["content"]!.ToJsonString(), StringComparison.Ordinal));
         Assert.StartsWith("docx-v6:", selector.SelectorId, StringComparison.Ordinal);
+        Assert.Contains(HeadingAgentSelector.BindingPolicyVersion, selector.SelectorId, StringComparison.Ordinal);
         Assert.NotNull(selection.Placement);
         Assert.Equal(DocxAgentProtocol.PlacementNote, selection.Placement!.MeasurementsNote);
     }
@@ -69,7 +70,8 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
         Assert.Empty(selection.UnitFailures);
         Assert.Equal(source.Cores.Count, selection.Groups!.Count(g => g.Count == 2));
         Assert.Equal(selection.SelectedAliases.Order(), selection.Groups!.SelectMany(g => g).Order());
-        Assert.Equal(2 * selection.UnitsTotal + 1 + handler.Bodies.Count(FakeOpenRouter.IsVerification), selection.ProviderCalls);
+        Assert.Empty(handler.Bodies.Where(FakeOpenRouter.IsVerification));
+        Assert.Equal(2 * selection.UnitsTotal + 1, selection.ProviderCalls);
         // The group request carries the DOCX grouping prompt, and its lines carry a style and no page.
         var group = handler.Bodies.Single(b => b["messages"]![1]!["content"] is JsonValue && !FakeOpenRouter.IsVerification(b));
         Assert.Equal(DocxAgentFlavor.Instance.GroupPrompt, group["messages"]![0]!["content"]!.ToString());

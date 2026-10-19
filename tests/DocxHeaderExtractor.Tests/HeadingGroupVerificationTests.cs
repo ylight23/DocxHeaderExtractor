@@ -873,60 +873,6 @@ public sealed class HeadingGroupVerificationTests
         Assert.Equal(2, result.Provenance.Max(p => p.BoundaryRepairCycle));
         Assert.DoesNotContain(result.Provenance.Where(p => p.Stage == "grouping" && p.BoundaryRepairCycle == 2), p => p.Decision == "FALLBACK");
     }
-    [Fact]
-    public void Many_candidates_can_use_both_boundary_cycles_without_borrowing_verifier_reserve()
-    {
-        const int candidateCount = 24, lineCount = candidateCount * 3;
-        var source = Source(lineCount: lineCount);
-        var input = new AgentGrouping.Result(Enumerable.Range(0, candidateCount)
-            .Select(i => new[] { A(3 * i + 1), A(3 * i + 2) }).ToArray(), [], [], 0);
-        var reservedPosts = HeadingAgentSelector.SemanticBoundaryGroupingPostsReserveForLines(lineCount);
-        Assert.Equal(2 * 2 * (lineCount / 2) * 6, reservedPosts);
-        // This second ledger admits GROUP requests only: verification cannot subsidize them.
-        var groupingOnly = new AgentBudget(reservedPosts,
-            reservedPosts * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes));
-        var documentBudget = HeadingAgentSelector.BudgetFor(source);
-        var units = source.Cores.Count;
-        var selectionPosts = units * (1 + MaxToolTurns + AgentUnit.TransportRetries + 2 * 4);
-        var verificationPosts = 2 * (1 + AgentGroupVerification.MaxBoundaryRepairCycles)
-            * ((lineCount + AgentGroupVerification.BatchSize - 1) / AgentGroupVerification.BatchSize) * AgentGroupVerification.MaxCalls;
-        Assert.Equal(selectionPosts + HeadingAgentSelector.GroupingPostsReserveForLines(lineCount)
-            + units * AgentSelectionReview.MaxPosts + verificationPosts + reservedPosts, documentBudget.MaxCalls);
-        for (var pass = 0; pass < 2; pass++)
-        {
-            var attempts = new System.Collections.Concurrent.ConcurrentDictionary<string, int>();
-            AgentUnit.Model model = (unit, _, request) =>
-            {
-                var packet = Payload(request);
-                if (packet["stage"]!.GetValue<string>() == "GROUP_VERIFICATION")
-                    return new ModelTurn(Verdicts(packet, _ => unit.Contains("CYCLE-2", StringComparison.Ordinal)
-                        ? "ACCEPT" : "REGROUP"), [], "stop");
-                Assert.Null(groupingOnly.Admit(request));
-                var attempt = attempts.AddOrUpdate(unit, 1, (_, n) => n + 1);
-                if (attempt <= AgentUnit.TransportRetries) throw new ReplyFailure("TRANSPORT:STREAM_ERROR");
-                if (attempt <= AgentUnit.TransportRetries + AgentGrouping.MaxRepairs)
-                    return new ModelTurn("{}", [], "stop");
-                return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = AgentGrouping.GroupVersion,
-                    runs = packet["runs"]!.AsArray().Select(r => new { run = r!["run"]!.GetValue<string>(),
-                        headings = unit.Contains("CYCLE-2", StringComparison.Ordinal)
-                            ? new[] { r["lines"]!.AsArray().Select(l => l!["alias"]!.GetValue<string>()).ToArray() }
-                            : r["lines"]!.AsArray().Select(l => new[] { l!["alias"]!.GetValue<string>() }).ToArray() }) }), [], "stop");
-            };
-            var result = AgentGroupVerification.Verify(source, input, new Dictionary<string, TextOffsetSpan>(),
-                new Dictionary<string, string>(), model, documentBudget, 4, CancellationToken.None, 0, Instruction);
-            Assert.Empty(result.Failures);
-            Assert.Empty(result.UnresolvedAliases);
-            Assert.Equal(candidateCount, result.Groups.Count);
-            Assert.Equal(candidateCount * 2, attempts.Count);
-            Assert.All(attempts.Values, n => Assert.Equal(6, n));
-            Assert.Equal(2, result.Provenance.Max(p => p.BoundaryRepairCycle));
-        }
-        Assert.Equal(2 * candidateCount * 2 * 6, groupingOnly.Calls);
-        Assert.Null(groupingOnly.HaltReason);
-        Assert.Null(documentBudget.HaltReason);
-        Assert.InRange(groupingOnly.ReservedUsd, 0, groupingOnly.CeilingUsd);
-    }
-
     // Source functions copied from the inspected stored page 32, not a heading Gold or a production phrase filter.
     static ScanAgentSource Source(string? entry = null, string? imageSha = null, int lineCount = 14, string[]? sourceTexts = null)
     {
@@ -974,7 +920,7 @@ public sealed class HeadingGroupVerificationTests
     [InlineData("boundary")]
     [InlineData("membership")]
     [InlineData("repeated-boundary")]
-    public void Accepted_but_wrong_form_group_is_checked_without_a_grouping_dispute(string mode)
+    public void Production_keeps_a_CSharp_validated_group_without_semantic_verifier_veto(string mode)
     {
         var source = Source();
         var groupCalls = 0; var selectionReviews = 0; var verificationCalls = 0;
@@ -1016,25 +962,18 @@ public sealed class HeadingGroupVerificationTests
             return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = SelectScanVersion, status = "COMPLETE", decisions }), [], "stop");
         };
         var result = HeadingAgentSelector.Select(source, model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);
-        Assert.Equal(new[] { "selection", "grouping", "verification", "review" }, result.StageSeconds!.Keys);
+        Assert.Equal(new[] { "selection", "grouping" }, result.StageSeconds!.Keys);
         Assert.All(result.StageSeconds.Values, seconds => Assert.True(seconds >= 0));
         Assert.Contains(result.Groups!, g => g.SequenceEqual(new[] { A(1), A(2) }));
         Assert.Contains(result.Groups!, g => g.SequenceEqual(new[] { A(3), A(4) }));
-        Assert.DoesNotContain(result.Groups!, g => g.Contains(A(10)) && g.Contains(A(12)));
-        Assert.True(verificationCalls >= 2);
+        Assert.Contains(result.Groups!, g => g.SequenceEqual(new[] { A(10), A(11), A(12) }));
+        Assert.Equal(0, verificationCalls);
         Assert.Equal(0, result.Grouping!.FallbackRuns);
-        Assert.Equal(mode == "membership" ? 1 : 0, selectionReviews);
-        if (mode == "membership") Assert.DoesNotContain(A(10), result.SelectedAliases);
-        if (mode == "repeated-boundary")
-        {
-            Assert.Equal(5, result.Grouping.UnresolvedAliases);
-            Assert.DoesNotContain(result.UnitFailures, f => f.Contains("BOUNDARY_REPAIR_NO_PROGRESS", StringComparison.Ordinal));
-            Assert.Equal(2, result.Grouping.BoundaryRepairs!.Count);
-            Assert.Equal(new[] { "CHANGED", "NO_PROGRESS" }, result.Grouping.BoundaryRepairs.Select(r => r.Result));
-            Assert.Equal(0, result.UnitsComplete);
-        }
-        else Assert.Empty(result.UnitFailures);
-        Assert.Equal(mode == "membership" ? 1 : mode == "repeated-boundary" ? 3 : 2, groupCalls);
+        Assert.Equal(0, selectionReviews);
+        Assert.Contains(A(10), result.SelectedAliases);
+        Assert.Empty(result.UnitFailures);
+        Assert.Equal(1, groupCalls);
+        Assert.Equal(0, result.Grouping.VerificationChecks);
     }
 
     [Theory]

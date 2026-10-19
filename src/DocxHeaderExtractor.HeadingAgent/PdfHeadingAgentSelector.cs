@@ -15,7 +15,7 @@ public sealed class PdfHeadingAgentSelector : HeadingAgentSelector
         string? instruction = null, int firstSegments = 0)
         : base(handlerFactory, parallelism, onModelReply, instruction, firstSegments) { }
 
-    public override string SelectorId => "p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:facts-in-request:instruction-" + InstructionTag + ":" + AgentSelectionReview.Version;
+    public override string SelectorId => "p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:facts-in-request:instruction-" + InstructionTag + ":" + BindingPolicyVersion;
 
     private protected override IAgentSource Load(string path) =>
         AgentSource.Load(path, out var failure) ?? throw new InvalidOperationException("PDF_AGENT_SOURCE_REFUSED:" + failure);

@@ -47,9 +47,9 @@ internal static class HeadingStructureAssembler
         // would have no element to stand on: its child would show a depth with no parent, and the relation would be dropped without a trace.
         var validatedIds = validated.Select(item => item.SourceId).ToHashSet(StringComparer.Ordinal);
         var bound = authority.BoundHeadings.Where(item => validatedIds.Contains(item.SourceId)).ToArray();
-        // Selector routes carry source context and upstream gaps into bounded parent proposal,
-        // independent verification and one targeted repair. Other authorities keep their existing
-        // narrow placement contract. Unresolved ancestry remains a legitimate outcome.
+        // Selector routes carry source context and upstream gaps into a bounded parent-proposal
+        // pass, followed only by deterministic graph validation. Other authorities keep their
+        // existing narrow placement contract. Unresolved ancestry remains a legitimate outcome.
         var placement = authority.PlacementTransport is null
             ? HeadingParentResolver.Observe(bound,
                 HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(bound)

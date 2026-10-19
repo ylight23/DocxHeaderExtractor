@@ -7,13 +7,11 @@ The first-request facts delivery is now also enabled for native text PDF and DOC
 [target facts in the first production request](target-facts-in-request.md). This changes fact delivery, not the
 user's heading instruction. Historical statements below that PDF/DOCX requests were unchanged describe the earlier scan work.
 
-Grouping can now [report disagreement for a bounded selection review](grouping-selection-review.md)
-instead of being forced to turn mistakenly selected body text into headings. This applies to
-scan, text PDF and DOCX; C# checks the protocol and Qwen decides membership.
-
-All proposed groups also pass [independent model verification](grouping-verification.md),
-including groups without an explicit grouping dispute. Boundary disagreements trigger targeted
-regrouping; membership disagreements trigger selection review. Web reports actual stage counters.
+Grouping can report a dispute, but production no longer reopens selection or asks an independent
+semantic verifier to accept/reject the partition. C# validates protocol shape, exact coverage,
+contiguity and source order. Disputed or protocol-fallback runs stay unresolved. See
+[grouping verification](grouping-verification.md) for the authority rollback and qualification-only
+status of the previous verifier experiments.
 
 ## Production integration (2026-10-16)
 

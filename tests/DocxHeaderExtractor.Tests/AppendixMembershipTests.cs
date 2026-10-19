@@ -100,29 +100,24 @@ public sealed class AppendixMembershipTests
     [InlineData("reselected")]
     [InlineData("unknown")]
     [InlineData("boundary-after-repair")]
-    public void Mixed_run_preserves_independently_verified_headings_and_reviews_only_the_precise_alias(string mode)
+    public void Mixed_run_is_bound_from_grouping_without_reopening_selection_for_review(string mode)
     {
         var (_, result, targets) = RunFixture(mode);
-        Assert.Equal(HeadingLines.Select(A).Order(), result.SelectedAliases.Order());
+        Assert.Equal(HeadingLines.Append(3).Select(A).Order(), result.SelectedAliases.Order());
         Assert.Equal(result.SelectedAliases.Order(), result.Groups!.SelectMany(g => g).Order());
-        foreach (var target in targets) Assert.Equal(new[] { A(3) }, target);
-        Assert.Equal(mode == "unknown" ? 0 : 1, targets.Count);
+        Assert.Empty(targets);
+        Assert.Equal(0, result.Grouping!.VerificationChecks);
         foreach (var alias in HeadingLines.Select(A))
         {
             Assert.Equal("READY_FOR_BINDING", result.AliasStates![alias].BindingStatus);
-            Assert.Equal("HEADING", result.AliasStates[alias].VerificationMembership);
         }
         var bad = result.AliasStates![A(3)];
-        Assert.Equal(mode is "reject" or "boundary-after-repair" ? "NOT_SELECT" : "UNRESOLVED", bad.FinalSelection);
-        Assert.Equal(mode == "unknown" ? "UNRESOLVED" : "NOT_HEADING", bad.VerificationMembership);
+        Assert.Equal("SELECT", bad.FinalSelection);
+        Assert.Equal("READY_FOR_BINDING", bad.BindingStatus);
         Assert.Contains(result.ModelAnswers, a => a.Contains("pre-binding-alias-state", StringComparison.Ordinal));
-        if (mode is "review-fails" or "reselected" or "unknown")
-        {
-            Assert.Equal(1, result.Grouping!.UnresolvedAliases);
-            Assert.Equal(0, result.UnitsComplete);
-        }
-        else { Assert.Empty(result.UnitFailures); Assert.Equal(1, result.UnitsComplete); }
+        Assert.Empty(result.UnitFailures);
+        Assert.Equal(1, result.UnitsComplete);
         Assert.Equal(0, result.Grouping!.FallbackRuns);
-        if (mode == "boundary-after-repair") Assert.Equal(1, result.Grouping.BoundaryDisputes);
+        Assert.Equal(0, result.Grouping.BoundaryDisputes);
     }
 }

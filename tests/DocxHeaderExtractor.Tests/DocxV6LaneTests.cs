@@ -65,7 +65,7 @@ public sealed class DocxV6LaneTests : IDisposable
 
         await pipeline.RunDocumentExecutionAsync(path);
 
-        Assert.Equal(2, transport.PlacementCalls);
+        Assert.Equal(1, transport.PlacementCalls);
         Assert.Equal(DocxAgentProtocol.PlacementNote, System.Text.Json.Nodes.JsonNode.Parse(transport.LastPacket!)!["measurementsNote"]!.GetValue<string>());
         Assert.Contains("json", transport.LastPrompt!, StringComparison.OrdinalIgnoreCase);
     }

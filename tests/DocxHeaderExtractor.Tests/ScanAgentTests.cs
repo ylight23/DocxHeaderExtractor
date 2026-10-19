@@ -53,7 +53,7 @@ public sealed class ScanAgentTests : IDisposable
             [new VlmReadingChoice("P001-ocr-original-L004", choice, proposal)], [], null, null);
 
     [Fact]
-    public void Grouping_disagreement_reviews_scan_membership_and_uses_the_reviewed_reading_and_extent()
+    public void Production_grouping_dispute_does_not_reopen_scan_membership()
     {
         var source = new ScanAgentSource(Evidence(), [Vision()]);
         var calls = new List<string>();
@@ -103,12 +103,12 @@ public sealed class ScanAgentTests : IDisposable
         };
         var result = HeadingAgentSelector.Select(source, model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);
         Assert.Empty(result.UnitFailures);
-        Assert.Equal(new[] { "P001-L001", "P001-L004" }, result.SelectedAliases.Order());
-        Assert.Equal(ScanOcrPreflight.UpscaledView, result.HeadingReadings!["P001-L004"]);
+        Assert.Equal(new[] { "P001-L001" }, result.SelectedAliases.Order());
+        Assert.DoesNotContain("P001-L004", result.HeadingReadings!.Keys);
         Assert.False(result.HeadingReadings.ContainsKey("P001-L003"));
-        Assert.Equal(new DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan(0, 7), result.HeadingExtents!["P001-L004"]);
-        Assert.Equal("Điều 2.", ScanHeadingAgentSelector.Headings(source, result).Headings.Last().Text);
-        Assert.Single(calls, c => c.StartsWith("REVIEW-SEG-", StringComparison.Ordinal));
+        Assert.True(result.HeadingExtents is null || !result.HeadingExtents.ContainsKey("P001-L004"));
+        Assert.Single(ScanHeadingAgentSelector.Headings(source, result).Headings);
+        Assert.DoesNotContain(calls, c => c.StartsWith("REVIEW-SEG-", StringComparison.Ordinal));
     }
 
     // ---------------- the source ----------------
@@ -287,7 +287,7 @@ public sealed class ScanAgentTests : IDisposable
 
         Assert.Empty(result.UnitFailures);
         Assert.Equal(2, result.Headings.Count);
-        Assert.Contains("verification", result.StageSeconds.Keys);
+        Assert.DoesNotContain("verification", result.StageSeconds.Keys);
         var first = result.Headings[0];
         Assert.Equal(("Điều 1. Phạm vi điều chỉnh", "OCR_PRIMARY_VIEW", "UNVERIFIED"), (first.Text, first.TextStatus, first.Verification));
         var second = result.Headings[1];
@@ -308,7 +308,7 @@ public sealed class ScanAgentTests : IDisposable
 
         var result = new ScanHeadingAgentSelector(dir, () => handler, parallelism: 1).ExtractFrom(Evidence(), [Vision()], "sk-test", CancellationToken.None);
 
-        Assert.Equal(4, handler.Posts);
+        Assert.Equal(3, handler.Posts);
         Assert.Contains("PROTOCOL:READING_VIEW_UNKNOWN", handler.Bodies.Last(b => !FakeOpenRouter.IsVerification(b))["messages"]!.AsArray().Last(m => m!["role"]!.GetValue<string>() == "user")!["content"]!.GetValue<string>(), StringComparison.Ordinal);
         Assert.Equal("Điều 2. Thẩm quyền chứng thực", result.Headings[1].Text);
     }

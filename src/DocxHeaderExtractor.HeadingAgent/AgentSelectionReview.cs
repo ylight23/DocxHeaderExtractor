@@ -5,8 +5,7 @@ using DocxHeaderExtractor.DocumentProcessing.Routing;
 
 namespace DocxHeaderExtractor.HeadingAgent;
 
-/// <summary>A model-reported grouping disagreement gets one selection review, then at most one regroup.
-/// C# validates scope and protocol; unresolved disagreements are withheld, never relabelled as body text.</summary>
+/// <summary>Qualification-only historical selection-review helper. Production selectors do not call this class.</summary>
 internal static class AgentSelectionReview
 {
     public const int MaxPosts = 8;
@@ -15,7 +14,7 @@ internal static class AgentSelectionReview
     public static AgentGrouping.Result Resolve(IAgentSource source, AgentGrouping.Result grouping,
         AgentUnitOutcome[] original, HashSet<string> selected, Dictionary<string, TextOffsetSpan> extents,
         Dictionary<string, string> readings, AgentUnit.Model model, AgentBudget budget, int parallelism,
-        CancellationToken ct, int retryDelayMs, string instruction, bool verifyGroups = true)
+        CancellationToken ct, int retryDelayMs, string instruction)
     {
         if (grouping.Disputes.Count == 0) return grouping;
         var disputed = grouping.Disputes.SelectMany(d => d.Aliases).ToHashSet(StringComparer.Ordinal);
@@ -82,9 +81,6 @@ internal static class AgentSelectionReview
         ct.ThrowIfCancellationRequested();
         // Only reconsider runs affected by disagreement; accepted divisions are kept verbatim.
         var regroup = AgentGrouping.Group(source, reviewed, model, budget, parallelism, ct, retryDelayMs, instruction, "REVIEW-GROUP");
-        if (verifyGroups)
-            regroup = AgentGroupVerification.Verify(source, regroup, extents, readings, model, budget, parallelism, ct,
-                retryDelayMs, instruction, allowMembershipReview: false, prefix: "REVIEW-VERIFY");
         evidence.AddRange(regroup.Evidence.Select(e => JsonSerializer.Serialize(new { stage = "review-regroup", evidence = e })));
         answers.AddRange(regroup.Answers);
         failures.AddRange(regroup.Failures);
