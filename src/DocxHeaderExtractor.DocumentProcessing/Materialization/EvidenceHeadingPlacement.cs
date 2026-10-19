@@ -112,14 +112,19 @@ internal static class EvidenceHeadingPlacement
         // proposals/verdicts. This never adds a heading or promotes a missing ancestor.
         var repair = ordered.Where(h => verdicts.GetValueOrDefault(h.Alias)?.Decision != "ACCEPT").Select(h => h.Alias).ToArray();
         var repairOrigins = repair.ToDictionary(a => a, a => verdicts.GetValueOrDefault(a)?.Decision ?? "NO_VALID_VERDICT", StringComparer.Ordinal);
+        var beforeRepair = new Dictionary<string, string>(proposed, StringComparer.Ordinal);
         var repaired = await RunBatches(repair, "HIERARCHY_REPAIR", proposed, verdicts).ConfigureAwait(false);
         var repairParents = repaired.SelectMany(p => p.Parents).ToDictionary(p => p.Key, p => p.Value, StringComparer.Ordinal);
         foreach (var a in repair) proposed.Remove(a);
         foreach (var p in repairParents) proposed[p.Key] = p.Value;
-        // Only fresh independent ACCEPT can authorize a repair. Existing accepted descendant
-        // edges are unchanged; the resolver derives their chains after parent repair.
-        var recheck = repairParents.Keys.ToHashSet(StringComparer.Ordinal);
-        foreach (var a in repair) verdicts.Remove(a);
+        // ACCEPT covers the ancestor chain too. Retain descendant approvals only when
+        // all repaired ancestor parent values are unchanged, including relation presence.
+        var changedAncestors = repair.Where(a => beforeRepair.GetValueOrDefault(a) != proposed.GetValueOrDefault(a)).ToArray();
+        var edgeAffected = DescendantsOf(changedAncestors, beforeRepair);
+        edgeAffected.UnionWith(DescendantsOf(changedAncestors));
+        var descendantRecheck = InSourceOrder(edgeAffected.Where(a => verdicts.GetValueOrDefault(a)?.Decision == "ACCEPT"));
+        var recheck = repairParents.Keys.Concat(descendantRecheck).ToHashSet(StringComparer.Ordinal);
+        foreach (var a in repair.Concat(descendantRecheck)) verdicts.Remove(a);
         var rechecked = await RunBatches(ordered.Where(h => recheck.Contains(h.Alias)).Select(h => h.Alias).ToArray(), "HIERARCHY_REVERIFY", proposed, null).ConfigureAwait(false);
         foreach (var v in rechecked) foreach (var p in v.Verdicts) verdicts[p.Key] = p.Value;
 
@@ -234,11 +239,12 @@ internal static class EvidenceHeadingPlacement
             return ordered.Where(h => selected.Contains(h.Alias)).Select(h => h.Alias).ToArray();
         }
 
-        HashSet<string> DescendantsOf(IEnumerable<string> aliases)
+        HashSet<string> DescendantsOf(IEnumerable<string> aliases, IReadOnlyDictionary<string, string>? graph = null)
         {
+            graph ??= proposed;
             var affected = aliases.ToHashSet(StringComparer.Ordinal);
             foreach (var h in ordered)
-                if (proposed.TryGetValue(h.Alias, out var parent) && affected.Contains(parent)) affected.Add(h.Alias);
+                if (graph.TryGetValue(h.Alias, out var parent) && affected.Contains(parent)) affected.Add(h.Alias);
             return affected;
         }
 

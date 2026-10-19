@@ -9,12 +9,18 @@ heading text, membership, binding or Gold, and no missing ancestor is added auto
    Feedback includes the prior decision, reason, evidence refs and blocking aliases. A
    missing verdict is explicitly marked NO_VALID_VERDICT, not interpreted as a rejection.
 3. Remove old proposals and verdicts for those targets, install only validated repair
-   proposals, and run a fresh `HIERARCHY_REVERIFY` on those edges only. It has no prior
-   verifier/repair conversation history. Only independent ACCEPT authorizes a relation.
+   proposals, and compare old/new parent values (including relation presence). Run fresh
+   `HIERARCHY_REVERIFY` on repaired edges and accepted descendants whose ancestor graph
+   changed. It has no prior verifier/repair conversation history. Only independent ACCEPT
+   authorizes a relation.
    Protocol/evidence rounds remain bounded by MaxRounds=3; semantic edge repair occurs once.
-4. Accepted descendant edges retain their approvals because their immediate parents did
-   not change. Derive hierarchy again: a newly verified parent chain can place them; a
-   missing or unverified chain still leaves them unresolved. No descendant is auto-promoted.
+4. ACCEPT verifies the ancestor chain as well as the immediate edge. If every repaired
+   ancestor retains exactly its old parent value, descendant approvals remain valid and
+   the resolver only derives the chain again. Otherwise, revoke accepted descendants
+   reachable in either the old or new graph, and fresh reverify them in the same bounded
+   pass. Adding/removing a relation also counts as structural change. Failed or missing
+   re-verification never reuses the old ACCEPT. Independent branches are not resampled.
+   Missing or unverified chains stay unresolved; no descendant is auto-promoted.
 
 Existing graph-consistency repair is separate and unchanged: contradictory NONE-as-parent
 claims require model repair and fresh verification of the affected graph, including
@@ -42,6 +48,6 @@ repair; terminal metrics are computed from final decisions. The Web diagnostics 
 these counters next to the per-heading decision table.
 
 Offline regressions cover every non-ACCEPT input, missing proposals, fresh independent
-acceptance, preserved accepted descendants, persistent uncertainty, malformed repair,
+acceptance, selectively preserved/reverified accepted descendants, persistent uncertainty, malformed repair,
 strict evidence validation, finish_reason=length, and the existing graph-conflict gate.
 These tests establish policy and authority boundaries, not live extraction accuracy.

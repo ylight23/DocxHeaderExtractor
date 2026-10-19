@@ -258,7 +258,7 @@ public sealed class EvidenceHeadingPlacementTests
     }
 
     [Fact]
-    public async Task Rejected_parent_is_repaired_once_and_accepted_descendants_resolve_without_reverification()
+    public async Task Changed_parent_is_repaired_once_and_accepted_descendants_require_fresh_verification()
     {
         var (bound, evidence, correct) = Fixture();
         var wrong = new Dictionary<string, string>(correct) { [Part1] = "ROOT" };
@@ -269,7 +269,7 @@ public sealed class EvidenceHeadingPlacementTests
             var response = JsonNode.Parse(HierarchyTestProtocol.Reply(p.ToJsonString(), stage == "HIERARCHY_REPAIR" ? correct : wrong)!)!;
             if (stage == "HIERARCHY_VERIFY")
                 foreach (var row in response["verdicts"]!.AsArray().Where(v => v!["alias"]!.GetValue<string>() == Part1)) row!["decision"] = "REJECT";
-            if (stage == "HIERARCHY_REVERIFY") Assert.Equal(new[] { Part1 }, Aliases(p));
+            if (stage == "HIERARCHY_REVERIFY") Assert.Equal(new[] { Part1, Child, "P024-L001" }, Aliases(p));
             return response.ToJsonString();
         });
         var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
@@ -278,6 +278,62 @@ public sealed class EvidenceHeadingPlacementTests
         Assert.Equal(1, result.Observation.RepairCount);
         Assert.Equal(6, result.Observation.LogicalCalls);
         Assert.Equal(0, result.Observation.UnresolvedCount);
+    }
+
+    [Theory]
+    [InlineData("ACCEPT")]
+    [InlineData("UNRESOLVED")]
+    [InlineData("NO_VALID_VERDICT")]
+    [InlineData("length")]
+    public async Task Changed_ancestor_invalidates_the_transitive_accepted_chain_but_not_independent_branches(string terminal)
+    {
+        var (bound, evidence, parents) = Fixture();
+        var changed = new Dictionary<string, string>(parents) { [Appendix] = C5 };
+        string[] affected = [Appendix, Part1, Child, "P024-L001", "P027-L001", "P027-L002", "P028-L001"];
+        var repairs = 0; var reverifies = 0;
+        using var model = new Model(p =>
+        {
+            var stage = p["stage"]!.GetValue<string>();
+            if (stage == "HIERARCHY_REPAIR")
+            {
+                repairs++;
+                Assert.Equal(new[] { Appendix }, Aliases(p));
+            }
+            var reply = JsonNode.Parse(HierarchyTestProtocol.Reply(p.ToJsonString(), stage == "HIERARCHY_REPAIR" ? changed : parents)!)!;
+            if (stage == "HIERARCHY_VERIFY")
+                foreach (var r in reply["verdicts"]!.AsArray().Where(r => r!["alias"]!.GetValue<string>() == Appendix)) r!["decision"] = "UNRESOLVED";
+            if (stage == "HIERARCHY_REVERIFY")
+            {
+                if (++reverifies == 1) Assert.Equal(affected, Aliases(p));
+                Assert.All(Aliases(p), a => Assert.Contains(a, affected));
+                Assert.DoesNotContain(C3, Aliases(p));
+                var entry = reply["verdicts"]!.AsArray().SingleOrDefault(r => r!["alias"]!.GetValue<string>() == Part1);
+                if (entry is not null)
+                {
+                    if (terminal == "UNRESOLVED") entry["decision"] = "UNRESOLVED";
+                    if (terminal == "NO_VALID_VERDICT") reply["verdicts"]!.AsArray().Remove(entry);
+                }
+            }
+            return reply.ToJsonString();
+        }) { Finish = p => terminal == "length" && p["stage"]!.GetValue<string>() == "HIERARCHY_REVERIFY" ? "length" : "stop" };
+        var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        Assert.Equal(1, repairs);
+        Assert.Equal(terminal is "NO_VALID_VERDICT" or "length" ? EvidenceHeadingPlacement.MaxRounds : 1, reverifies);
+        Assert.Equal(1, result.Observation.RepairCount);
+        var hierarchy = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(result.Headings).ToDictionary(h => h.SourceId[3..]);
+        Assert.Equal(HeadingHierarchyResolver.ResolvedRoot, hierarchy[C3].Resolution);
+        if (terminal == "ACCEPT")
+        {
+            Assert.Equal(4, hierarchy[Child].Level);
+            Assert.Equal(0, result.Observation.UnresolvedCount);
+        }
+        else
+        {
+            Assert.Equal(HeadingHierarchyResolver.Unresolved, hierarchy[Child].Resolution);
+            Assert.DoesNotContain(result.Headings.Single(h => h.Alias == Part1).RelationHints, r => r.StartsWith("parent-node:"));
+            Assert.Equal(terminal == "length" ? "NO_VALID_VERDICT" : terminal,
+                result.Observation.Decisions.Single(d => d.Alias == Part1).VerificationStatus);
+        }
     }
 
     [Theory]
@@ -328,7 +384,7 @@ public sealed class EvidenceHeadingPlacementTests
                 Assert.Empty(p["protocolErrors"]!.AsArray()); // Fresh conversation.
                 Assert.Empty(p["evidenceResults"]!.AsArray());
                 Assert.Null(p["repairFeedback"]);
-                Assert.Equal(new[] { Part1 }, Aliases(p)); // Accepted children are never resampled.
+                Assert.Equal(initialStatus == "NO_PROPOSAL" ? new[] { Part1, Child, "P024-L001" } : new[] { Part1 }, Aliases(p)); // Reverify children only when relation presence changes.
             }
             return reply.ToJsonString();
         });
@@ -369,6 +425,11 @@ public sealed class EvidenceHeadingPlacementTests
                 foreach (var r in reply["verdicts"]!.AsArray().Where(r => r!["alias"]!.GetValue<string>() == Part1)) r!["decision"] = "UNRESOLVED";
             if (stage == "HIERARCHY_REVERIFY")
             {
+                if (terminal == "FAILED_PROPOSAL")
+                {
+                    Assert.Equal(new[] { Child, "P024-L001" }, Aliases(p));
+                    return reply.ToJsonString();
+                }
                 Assert.Equal(new[] { Part1 }, Aliases(p));
                 var entry = Assert.Single(reply["verdicts"]!.AsArray())!;
                 if (terminal == "NO_VALID_VERDICT") reply["verdicts"]!.AsArray().Clear();
