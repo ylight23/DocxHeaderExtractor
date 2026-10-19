@@ -10,18 +10,20 @@ internal static class Program
 {
     private static int Main(string[] args)
     {
-        if (args.FirstOrDefault() is "boundary-static-ab" or "boundary-suggested-c" or "boundary-grounded-d" or "boundary-grounded-cohort" or "boundary-grounded-e")
+        if (args.FirstOrDefault() is "boundary-static-ab" or "boundary-suggested-c" or "boundary-grounded-d" or "boundary-grounded-cohort" or "boundary-grounded-e" or "boundary-oscillation-canary" or "hierarchy-comparative-canary")
         {
             try { return args[0] switch
             {
                 "boundary-static-ab" => BoundaryStaticCanaryCommand.Run(args),
                 "boundary-grounded-cohort" => BoundaryGroundedCohortCommand.Run(args),
                 "boundary-grounded-e" => BoundaryGroundedIndependentCommand.Run(args),
+                "boundary-oscillation-canary" => SourceComparativeCanaries.Run(args, hierarchy: false),
+                "hierarchy-comparative-canary" => SourceComparativeCanaries.Run(args, hierarchy: true),
                 _ => BoundarySuggestedCanaryCommand.Run(args)
             }; }
             catch (Exception e) { Console.Error.WriteLine("Qualification aborted (" + e.GetType().Name + "); raw payload withheld."); return 1; }
         }
-        Console.Error.WriteLine("Qualification commands: boundary-static-ab, boundary-suggested-c, boundary-grounded-d, boundary-grounded-cohort, boundary-grounded-e (explicit --live required). See git history for retired commands.");
+        Console.Error.WriteLine("Qualification commands: boundary-static-ab, boundary-suggested-c, boundary-grounded-d, boundary-grounded-cohort, boundary-grounded-e, boundary-oscillation-canary, hierarchy-comparative-canary (explicit --live required). See git history for retired commands.");
         return 2;
     }
 }
