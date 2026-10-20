@@ -192,7 +192,6 @@ internal static class AgentGrouping
             payload = node.ToJsonString(Options);
         }
         int posts = 0, retries = 0, repairs = 0;
-        string? lastRefused = null;
         var retriedOnce = false;
         while (true)
         {
@@ -232,9 +231,6 @@ internal static class AgentGrouping
             }
             evidence.Add(JsonSerializer.Serialize(new { unit = unitId, turn = 1 + repairs, requestSha256 = req.Sha256, response = reply.Content, failure }, Options));
             if (failure is null) return (accepted, answers, null, posts, repairs, evidence);
-            // The same refused reply word for word after a repair message: another repair at temperature 0 would only repeat it again.
-            if (lastRefused is not null && reply.Content == lastRefused) return (accepted, answers, Fallback(failure + ":UNCHANGED"), posts, repairs, evidence);
-            lastRefused = reply.Content;
             if (repairs >= MaxRepairs) return (accepted, answers, Fallback(failure), posts, repairs, evidence);
             repairs++;
             history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content ?? "" });

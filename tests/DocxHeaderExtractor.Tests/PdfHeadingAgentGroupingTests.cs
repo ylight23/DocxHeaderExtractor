@@ -203,11 +203,11 @@ public sealed class PdfHeadingAgentGroupingTests
         };
         var result = HeadingAgentSelector.Select(source, model, Budget(), 1, CancellationToken.None, 0, () => 0);
         Assert.True(groupingCalls > 0, string.Join("; ", result.UnitFailures) + " | " + string.Join(" | ", result.ModelAnswers));
-        // The same refused reply twice: the second repair is not sent.
-        Assert.Equal(2, groupingCalls);
+        // A refused reply is repaired up to the limit; a repeated one is not a reason to stop.
+        Assert.Equal(1 + AgentGrouping.MaxRepairs, groupingCalls);
         Assert.All(selected, alias => Assert.DoesNotContain(alias, result.SelectedAliases));
         Assert.DoesNotContain(result.Groups!.SelectMany(g => g), alias => selected.Contains(alias));
-        Assert.Contains(result.UnitFailures, f => f.Contains("PROTOCOL:RUN_KEYS_INVALID:UNCHANGED", StringComparison.Ordinal));
+        Assert.Contains(result.UnitFailures, f => f.Contains("PROTOCOL:RUN_KEYS_INVALID", StringComparison.Ordinal));
     }
 
     [Fact]
@@ -368,15 +368,15 @@ public sealed class PdfHeadingAgentGroupingTests
     }
 
     [Fact]
-    public void A_refused_reply_repeated_word_for_word_stops_after_one_repair()
+    public void A_refused_reply_repeated_word_for_word_is_still_repaired_to_the_limit()
     {
         var selected = new HashSet<string> { A(10), A(11), A(12) };
         var (model, _, _) = Scripted((_, p) => Division(p, id => [[A(10), A(11)]]));   // A(12) left out, every time the same
 
         var result = AgentGrouping.Group(Source.Value, selected, model, Budget(), 1, CancellationToken.None, retryDelayMs: 0);
 
-        Assert.Equal(2, result.Posts);
-        Assert.Equal("GROUP-001:PROTOCOL:RUN_NOT_COVERED:UNCHANGED:R1", result.Failures.Single());
+        Assert.Equal(1 + AgentGrouping.MaxRepairs, result.Posts);
+        Assert.Equal("GROUP-001:PROTOCOL:RUN_NOT_COVERED:R1", result.Failures.Single());
         Assert.Equal(1, result.Observation.FallbackRuns);
     }
 
@@ -430,8 +430,7 @@ public sealed class PdfHeadingAgentGroupingTests
     public void A_run_never_answered_falls_back_alone_and_an_accepted_run_keeps_its_first_division()
     {
         var selected = new HashSet<string> { A(10), A(11), A(12), A(40), A(41) };
-        // Every turn leaves R2 out; the repair turns also re-send R1 divided another way, which is ignored. The third reply repeats the second
-        // word for word, so it ends the repairs as UNCHANGED (here at the same post the repair limit would).
+        // Every turn leaves R2 out; the repair turns also re-send R1 divided another way, which is ignored.
         var (model, _, _) = Scripted((n, _) => n == 1
             ? Answer(("R1", [[A(10)], [A(11), A(12)]]))
             : Answer(("R1", [[A(10), A(11), A(12)]])));
@@ -439,7 +438,7 @@ public sealed class PdfHeadingAgentGroupingTests
         var result = AgentGrouping.Group(Source.Value, selected, model, Budget(), 1, CancellationToken.None, retryDelayMs: 0);
 
         Assert.Equal(1 + AgentGrouping.MaxRepairs, result.Posts);
-        Assert.Equal("GROUP-001:PROTOCOL:RUN_MISSING:UNCHANGED:R2", result.Failures.Single());
+        Assert.Equal("GROUP-001:PROTOCOL:RUN_MISSING:R2", result.Failures.Single());
         Assert.Equal(new[] { A(10) }, result.Groups[0]);
         Assert.Equal(new[] { A(11), A(12) }, result.Groups[1]);
         // R2 is divided by the fallback rule; nothing selected is lost.
