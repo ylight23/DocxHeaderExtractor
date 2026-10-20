@@ -92,6 +92,57 @@ public sealed class EvidenceHeadingPlacementTests
         Assert.All(result.Observation.Calls, c => Assert.Equal("HIERARCHY_PLACE", c.Phase));
     }
 
+    // 023: a row that names a later heading as its parent was refused three times with the same answer, because the next round said only
+    // PARENT_INVALID. The next packet now names the refused alias, its ordinal and what was wrong with its parent.
+    [Fact]
+    public async Task A_refused_parent_is_named_by_alias_in_the_next_round()
+    {
+        var (bound, evidence, parents) = Fixture();
+        parents[C3] = D35;   // a heading later in the source
+        var packets = new List<JsonNode>();
+        using var model = new Model(p =>
+        {
+            packets.Add(p.DeepClone());
+            return HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!;
+        });
+
+        var result = await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+
+        // The two batches run side by side: take the packets that carry the refused row.
+        var batch = packets.Where(p => p["toPlace"]!.AsArray().Any(a => a!.GetValue<string>() == C3)).ToArray();
+        Assert.Null(batch[0]["protocolDetails"]);
+        var details = batch[1]["protocolDetails"]!.AsArray().Select(d => d!.GetValue<string>()).ToArray();
+        Assert.Single(details);
+        Assert.StartsWith(C3 + " ", details[0], StringComparison.Ordinal);
+        Assert.Contains(D35, details[0], StringComparison.Ordinal);
+        Assert.Contains("earlier in the source", details[0], StringComparison.Ordinal);
+        Assert.Contains(result.Observation.Calls, c => c.ProtocolErrors.Contains("PARENT_INVALID"));
+    }
+
+    // Batches run in order, and a later batch is told the parents and levels the earlier ones decided, as a fact.
+    [Fact]
+    public async Task Later_batches_carry_the_parents_and_levels_the_earlier_batches_decided()
+    {
+        var (bound, evidence, parents) = Fixture();
+        var packets = new List<JsonNode>();
+        using var model = new Model(p =>
+        {
+            packets.Add(p.DeepClone());
+            return HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!;
+        });
+
+        await HeadingParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+
+        Assert.Equal(2, packets.Count);   // 25 targets in batches of 16 and 9
+        Assert.Empty(packets[0]["decidedHeadings"]!.AsArray());
+        var decided = packets[1]["decidedHeadings"]!.AsArray().ToDictionary(d => d!["alias"]!.GetValue<string>(), d => d!);
+        Assert.Equal(16, decided.Count);
+        Assert.Equal(1, decided["P008-L013"]["level"]!.GetValue<int>());                 // Chương II under ROOT
+        Assert.Equal(2, decided["P011-L001"]["level"]!.GetValue<int>());                 // Mục 3 under Chương II
+        Assert.Equal(2, decided[D35]["level"]!.GetValue<int>());                         // Điều 35 under Chương III
+        Assert.Equal(C3, decided[D35]["parent"]!.GetValue<string>());
+    }
+
     [Fact]
     public async Task Malformed_parent_proposal_fails_closed_without_a_verifier_or_repair_call()
     {

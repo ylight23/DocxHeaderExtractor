@@ -39,7 +39,11 @@ internal static class DocxAgentProtocol
 
     /// <summary>The instruction a DOCX run sends: the production structural instruction, formatting as one kind of evidence among several, and
     /// the extent of a heading that shares its paragraph with body text.</summary>
-    public const string Instruction = AgentProtocol.InstructionStructuralV1 + "\n" + AgentProtocol.FormattingEvidenceParagraph + "\n" + HeadingExtentParagraph;
+    /// <summary>Layout is where a line sits, not what it does: a line is a heading only when its text names a unit of the structure, and a numbered
+    /// paragraph inside a unit that already has its heading is that unit's content (023: clauses inside an article were selected on spacing alone).</summary>
+    const string LayoutIsNotFunctionParagraph = "Every fact the program gives about a line (its layout, its typography, the OCR engine's paragraphs, other occurrences of its text, how confidently it was read) is a measurement to weigh, not a decision: no fact by itself makes a line a heading or rules it out, and the decision rests on what the text does in the document's structure. Layout (spacing, indentation, margins, emphasis) shows where a line sits on the page, not what it does in the document. Layout alone never makes a line a heading: a line is a heading only when its text names a unit of the document's structure. A numbered clause or paragraph that stands inside a unit which already has its heading (for example the numbered clauses inside an article) is content of that unit, not the heading of a new one. Text that the document reproduces as a sample or a form (the sample's own title block, its field labels, the blanks to fill in) is content of the unit that presents it, not a heading of the document, even when it is set like a heading.";
+
+    public const string Instruction = AgentProtocol.InstructionStructuralV1 + "\n" + AgentProtocol.FormattingEvidenceParagraph + "\n" + HeadingExtentParagraph + "\n" + LayoutIsNotFunctionParagraph;
 
     /// <summary>The grouping prompt: the shared one, saying what a line carries in this kind of document.</summary>
     public static readonly string GroupPrompt = AgentGrouping.GroupPrompt.Replace(

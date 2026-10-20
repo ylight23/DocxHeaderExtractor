@@ -18,8 +18,9 @@ internal sealed record ScanLine(string Alias, int Page, OcrLine Primary, int Pag
 /// lines cut like a DOCX one, by size.
 /// <para>
 /// The facts are measurements of the page image (box, margins, gaps, line height against the page), of the OCR (confidences, whether another
-/// line overlaps, whether the views read the line the same way) and, only when a vision model was asked, its observation of the typography,
-/// marked as such. A scan has no font data: without a vision observation the facts say that typography was not measured.
+/// line overlaps, whether the views read the line the same way), and of the typography: stroke width and ink measured on the page image against the
+/// page median (MEASURED_ON_IMAGE), plus, only when a vision model was asked, its observation marked as such. A scan has no font data, so the
+/// facts never give a font size or a weight; where the image could not be measured, the facts say so.
 /// </para>
 /// </summary>
 internal sealed class ScanAgentSource : IAgentSource
@@ -47,6 +48,33 @@ internal sealed class ScanAgentSource : IAgentSource
     readonly Dictionary<string, LineTranscription> transcribed = new(StringComparer.Ordinal);
     readonly string? visionModel;
 
+    /// <summary>
+    /// The OCR engine's own page segmentation of the primary view, read back from the stored TSV of each page: for every line, its block and
+    /// paragraph numbers on the page, its place in the paragraph and how many lines the paragraph has. It is the engine's grouping (by indentation
+    /// and spacing), a measurement like the boxes, never a decision about headings. A page whose TSV cannot be read, or whose lines do not match
+    /// the stored ones one for one, gets no entry.
+    /// </summary>
+    static Dictionary<string, (int Block, int Paragraph, int LineInParagraph, int LinesInParagraph)> OcrParagraphs(string? entry, OcrView primary)
+    {
+        var map = new Dictionary<string, (int, int, int, int)>(StringComparer.Ordinal);
+        if (entry is null) return map;
+        foreach (var page in primary.Pages)
+        {
+            string tsv;
+            try { tsv = File.ReadAllText(Path.Combine(entry, "views", primary.Spec.ViewId, $"page-{page.Page:000}.tsv")); }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException) { continue; }
+            var keys = TesseractOcr.ParseTsv(tsv, 1.0).Select(l => l.Key.Split('.')).ToArray();
+            if (keys.Length != page.Lines.Count) continue;
+            var groups = keys.Select(k => (Block: int.Parse(k[0]), Paragraph: int.Parse(k[1]))).ToArray();
+            for (var i = 0; i < groups.Length; i++)
+                map[page.Lines[i].Id] = (groups[i].Block, groups[i].Paragraph, groups.Take(i + 1).Count(g => g == groups[i]), groups.Count(g => g == groups[i]));
+        }
+        return map;
+    }
+
+    /// <summary>The OCR engine's paragraph of each primary line, by OCR line id (<see cref="OcrParagraphs"/>); empty without a stored entry.</summary>
+    readonly Dictionary<string, (int Block, int Paragraph, int LineInParagraph, int LinesInParagraph)> paragraphs;
+
     /// <summary>The type of each line measured on its page image (<see cref="ScanTypography"/>), by OCR line id; empty when not measured.</summary>
     public IReadOnlyDictionary<string, LineTypography> Typography { get; }
 
@@ -63,6 +91,7 @@ internal sealed class ScanAgentSource : IAgentSource
         var others = evidence.Views.Where(v => v != primary).ToArray();
         var alignments = others.ToDictionary(v => v.Spec.ViewId, v => OcrViewComparer.Compare(primary, v).ToDictionary(a => a.LineA, StringComparer.Ordinal));
         var otherLines = others.ToDictionary(v => v.Spec.ViewId, v => v.Pages.SelectMany(p => p.Lines).ToDictionary(l => l.Id, StringComparer.Ordinal));
+        paragraphs = OcrParagraphs(evidenceEntry, primary);
 
         var lines = new List<ScanLine>();
         foreach (var page in primary.Pages)
@@ -95,7 +124,7 @@ internal sealed class ScanAgentSource : IAgentSource
         Cores = DocxAgentSource.CoresOf(lines.Select(l => Facts[l.Alias].ToJsonString().Length + l.Alias.Length + 12).ToArray());
         StyleTable = new JsonObject
         {
-            ["readBy"] = "the program: a scanned document has no font styles to count; what is known of a line's typography is in its facts (typography), from a vision model when one was asked",
+            ["readBy"] = "the program: a scanned document has no font styles to count; what is known of a line's typography is in its facts (typography): measured on the page image against the page median, and a vision model's observation too when one was asked",
             ["version"] = Version, ["documentLines"] = lines.Count, ["stylesTotal"] = 0, ["styles"] = new JsonArray(),
         };
         SourceSha256 = evidence.SourceSha256;
@@ -180,6 +209,12 @@ internal sealed class ScanAgentSource : IAgentSource
                     ["lineHeightVsPageMedian"] = Math.Round(box.Height / medianHeight, 2),
                 };
                 if (right is { } r) { layout["leftMarginPx"] = box.Left; layout["rightMarginPx"] = r; layout["centredOffsetPx"] = (box.Left - r) / 2; }
+                if (paragraphs.TryGetValue(l.Primary.Id, out var par))
+                    layout["ocrParagraph"] = new JsonObject
+                    {
+                        ["origin"] = "TESSERACT_PAGE_SEGMENTATION", ["block"] = par.Block, ["paragraph"] = par.Paragraph,
+                        ["lineInParagraph"] = par.LineInParagraph, ["linesInParagraph"] = par.LinesInParagraph,
+                    };
                 if (k > 0) layout["gapAbovePx"] = box.Top - items[k - 1].l.Primary.Box.Bottom;
                 if (k + 1 < items.Length) layout["gapBelowPx"] = items[k + 1].l.Primary.Box.Top - box.Bottom;
 

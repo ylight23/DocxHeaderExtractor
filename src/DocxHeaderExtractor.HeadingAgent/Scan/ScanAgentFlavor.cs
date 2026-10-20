@@ -38,7 +38,7 @@ internal static class ScanAgentProtocol
     /// <summary>The instruction a scan run sends: the DOCX one (structural headings, formatting as one kind of evidence, the exact extent).</summary>
     public const string Instruction = DocxAgentProtocol.Instruction;
 
-    public const string PlacementNote = "A scanned document carries no style objects: its headings have no style here.";
+    public const string PlacementNote = "Each heading may carry \"layout\" (its box and page, its position against the page: the left edge, the right margin, the offset from centre, the gaps above and below) and \"typography\" (stroke width and ink, measured on the page image and compared with the page median). These are measurements from the image. A scanned document declares no font size, no bold and no outline level, so none of those is given here.";
 }
 
 /// <summary>The scan flavor: lines of page images, the scan tools, the scan answer format with readings, and the readings of each line.</summary>

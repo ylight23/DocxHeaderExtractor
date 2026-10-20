@@ -140,14 +140,14 @@ public sealed class PdfV6SelectedLinesLaneTests
         using var plain = new NoCallTransport("route-key");
         await PdfExtractionPipeline.RunWithSelectorAsync(file, new PipelineOptions(), plain, new FixedSelector(aliases));
         Assert.Equal(1, plain.PlacementCalls);
-        Assert.Contains("Propose only", plain.LastPrompt);
+        Assert.Contains("propose its", plain.LastPrompt);   // the parent definition of the placement prompt
         Assert.Contains("sourceContext", plain.LastPacket!, StringComparison.Ordinal);
 
         using var withStyles = new NoCallTransport("route-key");
         var agentSource = AgentSource.Load(TestRepository.Path(Pdf), out _)!;
         var context = agentSource.Flavor.PlacementContext(agentSource);
         await PdfExtractionPipeline.RunWithSelectorAsync(file, new PipelineOptions(), withStyles, new FixedSelector(aliases, context));
-        Assert.Contains("Propose only", withStyles.LastPrompt);
+        Assert.Contains("propose its", withStyles.LastPrompt);
         using var packet = JsonDocument.Parse(withStyles.LastPacket!);
         Assert.True(packet.RootElement.TryGetProperty("upstreamWithheld", out _));
         Assert.True(packet.RootElement.TryGetProperty("sourceContext", out _));

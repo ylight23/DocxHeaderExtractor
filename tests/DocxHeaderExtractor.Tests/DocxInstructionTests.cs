@@ -11,8 +11,11 @@ public sealed class DocxInstructionTests
     [Fact]
     public void The_docx_instruction_makes_formatting_one_piece_of_evidence_and_asks_for_the_heading_extent()
     {
-        Assert.Equal(AgentProtocol.InstructionStructuralV1 + "\n" + AgentProtocol.FormattingEvidenceParagraph + "\n" + DocxAgentProtocol.HeadingExtentParagraph,
-            DocxAgentProtocol.Instruction);
+        Assert.StartsWith(AgentProtocol.InstructionStructuralV1 + "\n" + AgentProtocol.FormattingEvidenceParagraph + "\n" + DocxAgentProtocol.HeadingExtentParagraph + "\n",
+            DocxAgentProtocol.Instruction, StringComparison.Ordinal);
+        Assert.Contains("Layout alone never makes a line a heading", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
+        Assert.Contains("is a measurement to weigh, not a decision", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
+        Assert.Contains("reproduces as a sample or a form", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
         Assert.Contains("one kind of evidence", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
         Assert.Contains("does not by itself make a line a heading", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
         Assert.Contains("determine its exact extent", DocxAgentProtocol.Instruction, StringComparison.Ordinal);

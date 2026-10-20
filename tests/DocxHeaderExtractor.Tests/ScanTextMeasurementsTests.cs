@@ -104,6 +104,7 @@ public sealed class ScanTextMeasurementsTests
     public void Adding_measurements_keeps_the_scan_system_prompt_and_user_instruction_byte_for_byte()
     {
         Assert.Equal("af5aed029378ec9a2485c0988f1c3b5699a185e563771a97c154c98167342b8a", AgentProtocol.Sha(ScanAgentProtocol.SystemPrompt));
-        Assert.Equal("fe5c457bf55691e1c053d8d7b15b0d50bac3bd247b30605faa6c94cde0ec5790", AgentProtocol.Sha(ScanAgentProtocol.Instruction));
+        // The instruction now also says every fact is a measurement to weigh, layout is not function, and reproduced samples or forms are content (2026-10-20).
+        Assert.Equal("af68381203672a2304bdd1a4b73afd3ed7553e8f0b65016b97752e20b0103e1e", AgentProtocol.Sha(ScanAgentProtocol.Instruction));
     }
 }
