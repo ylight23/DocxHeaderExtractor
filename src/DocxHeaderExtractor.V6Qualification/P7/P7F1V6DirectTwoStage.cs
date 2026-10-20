@@ -18,7 +18,7 @@ namespace DocxHeaderExtractor.V6Qualification.P7;
 /// creates or splits a group, and never reads the reasoning to change an answer. Variant A (decisions and groups in one reply) is
 /// <see cref="P7F1V6DirectV2"/>, kept as the baseline.
 /// </summary>
-internal static class P7F1V6DirectTwoStage
+internal static partial class P7F1V6DirectTwoStage
 {
     public const string SelectRequestVersion = "P7_F1_V6_SELECT_REQUEST_V3";   // D4.11: no version fields in the payload (D4.10 replies copied them); pinned by code, plan and request SHA
     public const string GroupRequestVersion = "P7_F1_V6_GROUP_REQUEST_V1";
@@ -62,18 +62,6 @@ internal static class P7F1V6DirectTwoStage
         "{\"protocolVersion\":\"" + SelectCompactVersion + "\",\"status\":\"INCOMPLETE\",\"targetCount\":4,\"blocks\":[{\"start\":0,\"firstAlias\":\"<alias from targets>\",\"lastAlias\":\"<alias from targets>\",\"codes\":\"NUNN\"}],\"selectedEvidence\":[],\"incompleteReason\":\"<why>\"}",
         NeedsLine, Needs(SelectCompactVersion), ClarifyLine, Clarify(SelectCompactVersion),
         "Rules: every target gets exactly one letter, in target order, and no letter is given for context. U only with status INCOMPLETE. firstAlias and lastAlias must be the aliases of the targets at those positions. selectedEvidence lists each S exactly once, may list U, and never lists N. Do not add headings, levels, parents or other fields.");
-
-    public static readonly string GroupPrompt = string.Join("\n",
-        Intro,
-        "In this step the lines selected by the earlier step are fixed. targets are selected lines you must place in headings; context shows other lines, each with selected true or false. Each line has alias, page, text and layout. Every alias appears once: in targets or in context, never in both.",
-        "Group the targets into headings: a heading is one selected line, or several selected lines that together form one heading, in document order. A heading may include selected lines from context. Every target is in exactly one heading. Only lines with selected true may be parts. You cannot change what was selected: if you think a line was selected or left out wrongly, list it in reviewRequests with a reason, and still group the selected targets.",
-        ReplyLine,
-        "Status COMPLETE: every target is in exactly one heading.",
-        "{\"protocolVersion\":\"" + GroupVersion + "\",\"status\":\"COMPLETE\",\"groups\":[{\"parts\":[\"<alias from targets>\",\"<selected alias from targets or context>\"]}],\"reviewRequests\":[{\"alias\":\"<alias from targets or context>\",\"reason\":\"<why>\"}]}",
-        "Status INCOMPLETE: you cannot group some targets from the evidence you have; give the groups you can and say why.",
-        "{\"protocolVersion\":\"" + GroupVersion + "\",\"status\":\"INCOMPLETE\",\"groups\":[],\"incompleteReason\":\"<why>\"}",
-        NeedsLine, Needs(GroupVersion),
-        "Rules: parts are 1 to 8 aliases in document order. A heading that needs more than 8 parts is reported with status INCOMPLETE, never truncated. Do not add levels, parents or other fields.");
 
     public const string SelectObjectsPromptSha256 = "1ae3392a5de67572dceef15f5421a63a3f3b6b88084a03f2300376dae17ddcbe";
     public const string SelectCompactPromptSha256 = "7142c22c0a57f3ad2119ff23699dfc57fdae5ebfcbe108dad425db04d12b5b86";
