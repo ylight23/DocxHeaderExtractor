@@ -85,7 +85,8 @@ internal sealed record AgentUnitOutcome(string UnitId, string Status, string? Fa
     int ToolCallsEmitted, int ToolCallsSucceeded, bool FenceUnwrapped, string? Analysis, IReadOnlyDictionary<string, string>? Reasons,
     string? RepairedFrom, int RepairsUsed, int TransportRetries, IReadOnlyList<string> RequestSha256s,
     IReadOnlyDictionary<string, HeadingExtent>? Extents = null, IReadOnlyList<string>? TargetsWithoutFacts = null, int FactsResultsCut = 0,
-    IReadOnlyList<string>? DetailEvidenceAliases = null, IReadOnlyDictionary<string, string>? ReadingChoices = null)
+    IReadOnlyList<string>? DetailEvidenceAliases = null, IReadOnlyDictionary<string, string>? ReadingChoices = null,
+    int ToolRounds = 0, bool DecidedBeforeTools = false)
 {
     /// <summary>The outcome was read back from the selection cache: no call was made for it in this run.</summary>
     public bool Reused { get; init; }
@@ -150,6 +151,9 @@ internal static class AgentUnit
 
         string? repairedFrom = null;
         int repairsUsed = 0, retriesUsed = 0, posts = 0, okCalls = 0, messageBytes = 0, emitted = 0, reasoningRetries = 0;
+        // Counters for the experiment: replies that called tools, and whether such a reply already carried decisions.
+        int toolRounds = 0;
+        bool decidedBeforeTools = false;
         var fenceUnwrapped = false;
         var coverageAsked = false;
         string? lastRefused = null;
@@ -169,7 +173,7 @@ internal static class AgentUnit
             new(unitId, status, failure, decisions ?? ordered.ToDictionary(a => a, _ => "UNRESOLVED", StringComparer.Ordinal), posts, emitted, okCalls,
                 fenceUnwrapped, analysis, reasons, repairedFrom, repairsUsed, retriesUsed, requestShas, extents,
                 ordered.Where(a => !tools.FactsReturnedFor.Contains(a)).ToArray(), tools.FactsResultsCut,
-                ordered.Where(tools.DetailEvidenceAliases.Contains).ToArray(), readingChoices);
+                ordered.Where(tools.DetailEvidenceAliases.Contains).ToArray(), readingChoices, toolRounds, decidedBeforeTools);
 
         // Repairs have no limit of their own: the budget's call limit stops a unit that keeps failing.
         bool TryRepair(string failure, IReadOnlyList<string>? missing = null, string? detail = null)
@@ -237,6 +241,8 @@ internal static class AgentUnit
 
             if (reply.ToolCalls.Count > 0)
             {
+                toolRounds++;
+                if (reply.Content is { Length: > 0 } before && before.Contains("\"decisions\"", StringComparison.Ordinal)) decidedBeforeTools = true;
                 if (toolChoice == "none")
                 {
                     if (reply.ToolCalls.Any(c => string.IsNullOrEmpty(c.Id))) { budget.NoteContract(false); return Done("FAILED", "PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP"); }

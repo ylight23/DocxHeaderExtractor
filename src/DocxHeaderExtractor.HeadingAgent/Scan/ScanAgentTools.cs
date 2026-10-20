@@ -13,8 +13,8 @@ internal sealed class ScanAgentTools : AgentToolHost
 {
     public const string Version = "SCAN_AGENT_TOOLS_V1";
     public const string LineFacts = "get_line_facts", SourceContext = "get_source_context", SearchText = "search_document_text",
-        TextViews = "get_text_views", Sequence = "get_shape_sequence", Integrity = "get_source_integrity";
-    public static readonly string[] Names = [SourceContext, SearchText, TextViews, Sequence, Integrity];
+        TextViews = "get_text_views", Integrity = "get_source_integrity";
+    public static readonly string[] Names = [SourceContext, SearchText, TextViews, Integrity];
     public const int MaxFactLines = 24, MaxFactRange = 400, MaxNeighbours = 6, MaxViewAliases = 8, MaxSearchLimit = 50, MaxQueryChars = 200, MinQueryChars = 2, MaxTextChars = 200;
 
     readonly ScanAgentSource scan;
@@ -33,14 +33,13 @@ internal sealed class ScanAgentTools : AgentToolHost
         SourceContext => Context(args, returned),
         SearchText => Search(args, returned),
         TextViews => Views(args, returned),
-        Sequence => SequenceOf(args, returned),
         _ => IntegrityOf(args, returned),
     };
 
     public static JsonArray Definitions()
     {
         var all = new JsonArray(
-            Tool(SourceContext, "Read the lines before and after one line in reading order (across pages), each with its page, its text as the primary OCR view reads it, its box and its mean OCR confidence.",
+            Tool(SourceContext, "Read the lines before and after one line in reading order (across pages), each with its page, its text as shown and its box.",
                 new JsonObject { ["alias"] = AliasArg("The line to read around."), ["before"] = Int(0, MaxNeighbours, "Lines before it."), ["after"] = Int(0, MaxNeighbours, "Lines after it.") },
                 "alias", "before", "after"),
             Tool(SearchText, "Find the lines whose text contains the query in any OCR view, in reading order. mode literal matches exactly; mode normalized ignores case, Vietnamese diacritics and all whitespace. Each match names the views that contain it.",
@@ -50,16 +49,14 @@ internal sealed class ScanAgentTools : AgentToolHost
                     ["mode"] = new JsonObject { ["type"] = "string", ["enum"] = new JsonArray("literal", "normalized") },
                     ["offset"] = Int(0, 100000, "Matches to skip."), ["limit"] = Int(1, MaxSearchLimit, "Maximum matches to return."),
                 }, "query", "mode", "offset", "limit"),
-            Tool(TextViews, "Read every reading of up to 8 lines: each OCR view's text with its confidences and its low-confidence words, the stretches where the views differ (UNVERIFIED), and the vision model's choice between them and the reading it proposed, when one was asked (VLM_OBSERVATION). Nothing here says which reading is right.",
+            Tool(TextViews, "Read every reading of up to 8 lines: each OCR view's text with its mean and lowest confidence and every word with its confidence, the stretches where the views differ, the vision transcription with the OCR views that read the same, and the vision model's choice between them and the reading it proposed, when one was asked (VLM_OBSERVATION). Nothing here says which reading is right.",
                 new JsonObject
                 {
                     ["aliases"] = new JsonObject { ["type"] = "array", ["minItems"] = 1, ["maxItems"] = MaxViewAliases, ["items"] = AliasArg("A line alias."), ["description"] = "Aliases of the lines to read." },
                 }, "aliases"),
-            Tool(Sequence, "Read the numbered sequence a line belongs to, from the form of the text only: its key is the words before its first number (at most two), # for the number, and the punctuation right after it. Returns the key and number, how many lines share the key, the neighbours in the sequence, where the numbers skip, repeat or go down, and for every skip the lines between the neighbours that carry exactly a missing number under another form (a misread label). The result says what the numbers do, not what any line is.",
-                new JsonObject { ["alias"] = AliasArg("The line whose sequence to read.") }, "alias"),
             Tool(Integrity, "Read how the document carries its content and how its readings were made: its kind (scanned pages), pages, each OCR view with its engine, version, languages and preprocessing, the views that could not be made, and the vision observations (model, pages observed, failures).",
                 new JsonObject(), []));
-        all.Add(Tool(LineFacts, "Read the facts the program measured for the lines from one alias to another in reading order (at most " + MaxFactLines + " per call; use offset to continue where a result was cut). For each line: origin OCR_DERIVED, page, text size, layout (box in pixels of the page image, page size, left edge against the page's common edge and how many lines share it, margins and centring, gaps above and below, line height against the page median), ocr (mean and lowest confidence, low-confidence words, whether another line overlaps it, how many views cover it and whether they read it differently), typography (from a vision model, marked VLM_OBSERVATION, or not measured), the vision model's reading choice when it was asked, and a repetition summary. Measurements and observations only: no label and no decision.",
+        all.Add(Tool(LineFacts, "Read the facts the program measured for the lines from one alias to another in reading order (at most " + MaxFactLines + " per call; use offset to continue where a result was cut). For each line, each fact taken from the line itself: origin OCR_DERIVED, page, text size, layout (box in pixels of the page image, page size, margins), typography measured on the page image from the line's own box (stroke width, stroke per height, ink share, runs; MEASURED_ON_IMAGE, or not measured) and a vision model's observation when one was asked (VLM_OBSERVATION), the reading shown and its leading token, numbered prefix and ending punctuation, and the vision model's reading choice when it was asked. Measurements and observations only: no label and no decision.",
             new JsonObject
             {
                 ["first"] = AliasArg("The first line of the range."),
@@ -100,7 +97,6 @@ internal sealed class ScanAgentTools : AgentToolHost
         {
             ["alias"] = l.Alias, ["page"] = l.Page, ["readingOrder"] = i, ["text"] = Clip(lines[i].Text, MaxTextChars),
             ["box"] = new JsonObject { ["left"] = l.Primary.Box.Left, ["top"] = l.Primary.Box.Top, ["width"] = l.Primary.Box.Width, ["height"] = l.Primary.Box.Height },
-            ["meanConfidence"] = l.Primary.MeanConfidence,
         };
     }
 
@@ -155,8 +151,7 @@ internal sealed class ScanAgentTools : AgentToolHost
     {
         ["viewId"] = viewId, ["origin"] = origin, ["text"] = line.Text,
         ["meanConfidence"] = line.MeanConfidence, ["minConfidence"] = line.MinConfidence,
-        ["lowConfidenceWords"] = new JsonArray(line.Words.Where(w => w.Confidence < ScanAgentSource.LowConfidence).Take(ScanAgentSource.MaxLowConfidenceWords)
-            .Select(w => (JsonNode)new JsonObject { ["text"] = w.Text, ["confidence"] = w.Confidence }).ToArray()),
+        ["words"] = new JsonArray(line.Words.Select(w => (JsonNode)new JsonObject { ["text"] = w.Text, ["confidence"] = w.Confidence }).ToArray()),
     };
 
     (JsonNode?, JsonNode?, bool) Views(JsonElement args, List<string> returned)
@@ -182,7 +177,7 @@ internal sealed class ScanAgentTools : AgentToolHost
             {
                 readings.Add(Reading(view, other, "OCR_DERIVED"));
                 foreach (var d in diffs)
-                    differences.Add(new JsonObject { ["views"] = new JsonArray(ScanOcrPreflight.OriginalView, view), ["original"] = d.Original, ["alternative"] = d.Alternative, ["verificationStatus"] = "UNVERIFIED" });
+                    differences.Add(new JsonObject { ["views"] = new JsonArray(ScanOcrPreflight.OriginalView, view), ["original"] = d.Original, ["alternative"] = d.Alternative });
             }
             var o = new JsonObject { ["alias"] = alias, ["page"] = l.Page, ["readings"] = readings, ["differences"] = differences };
             if (scan.Transcription(alias) is { } t)
@@ -193,7 +188,6 @@ internal sealed class ScanAgentTools : AgentToolHost
                     {
                         ["viewId"] = ScanAgentSource.VlmTranscribedReading, ["origin"] = "VLM_TRANSCRIBED", ["text"] = ScanTranscription.Norm(t.Text!),
                         ["transcribedBy"] = scan.Transcriptions!.Model, ["ocrViewsThatReadTheSame"] = new JsonArray(agreeing.Select(v => (JsonNode)v).ToArray()),
-                        ["verificationStatus"] = agreeing.Count > 0 ? "CORROBORATED" : "UNVERIFIED",
                     });
                 else
                     o["transcriptionRejected"] = new JsonObject { ["status"] = t.Status, ["text"] = t.Text is null ? null : Clip(t.Text, MaxTextChars), ["origin"] = "VLM_TRANSCRIBED" };
@@ -204,7 +198,7 @@ internal sealed class ScanAgentTools : AgentToolHost
                 o["vision"] = new JsonObject { ["origin"] = "VLM_OBSERVATION", ["observedBy"] = scan.VisionModel, ["choice"] = c.Choice };
                 if (c.ProposedReading is { Length: > 0 } p)
                 {
-                    readings.Add(new JsonObject { ["viewId"] = ScanAgentSource.VlmProposedReading, ["origin"] = "CORRECTION_CANDIDATE", ["text"] = p, ["proposedBy"] = scan.VisionModel, ["verificationStatus"] = "UNVERIFIED" });
+                    readings.Add(new JsonObject { ["viewId"] = ScanAgentSource.VlmProposedReading, ["origin"] = "CORRECTION_CANDIDATE", ["text"] = p, ["proposedBy"] = scan.VisionModel });
                 }
             }
             o["readingViewIds"] = new JsonArray(scan.Readings(alias).Keys.Select(k => (JsonNode)k).ToArray());
@@ -218,28 +212,6 @@ internal sealed class ScanAgentTools : AgentToolHost
         });
         returned.AddRange(aliases.Take(taken));
         return (arguments, result, taken < aliases.Count);
-    }
-
-    (JsonNode?, JsonNode?, bool) SequenceOf(JsonElement args, List<string> returned)
-    {
-        Keys(args, "alias");
-        var alias = Alias(args, "alias");
-        var arguments = new JsonObject { ["alias"] = alias };
-        var described = ShapeSequence.Describe(lines, index[alias]);
-        var result = new JsonObject
-        {
-            ["readBy"] = "the program, from the form of the text shown for every line (the vision transcription where it passed the checks, else the primary OCR view): the words before the first number, the number, the punctuation after it",
-            ["version"] = ShapeSequence.Version, ["sequence"] = described,
-        };
-        if (described is null) result["noKey"] = "no number stands among the first words of this line";
-        if (Body("E0.00", Sequence, "OK", null, arguments, result).Length + ResultMargin > MaxResultBytes) throw new InvalidOperationException("SCAN_TOOL_SEQUENCE_OVER_CAP");
-        if (described is not null)
-            foreach (var node in described.AsObject().Where(kv => kv.Value is JsonArray).SelectMany(kv => kv.Value!.AsArray())
-                         .SelectMany(n => n?["missingNumberUnderAnotherKey"] is JsonArray c ? c.Prepend(n) : [n]))
-                foreach (var key in new[] { "alias", "afterAlias", "beforeAlias", "fromAlias", "toAlias" })
-                    if (node?[key] is JsonValue v) returned.Add(v.GetValue<string>());
-        returned.Add(alias);
-        return (arguments, result, false);
     }
 
     (JsonNode?, JsonNode?, bool) IntegrityOf(JsonElement args, List<string> returned)

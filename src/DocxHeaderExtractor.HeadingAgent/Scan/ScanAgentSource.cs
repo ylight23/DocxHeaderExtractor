@@ -27,7 +27,31 @@ internal sealed class ScanAgentSource : IAgentSource
 {
     public const string Version = "SCAN_AGENT_SOURCE_V4", FactsVersion = "SCAN_LINE_FACTS_V4";
     public const string VlmProposedReading = "vlm-proposed", VlmTranscribedReading = "vlm-transcribed";
-    public const int Overlap = 20, LeftEdgeTolerancePx = 8, LowConfidence = 60, MaxLowConfidenceWords = 8;
+    public const int Overlap = 20, LowConfidence = 60, MaxLowConfidenceWords = 8;
+    /// <summary>A unit of scan lines holds at most this many lines.</summary>
+    public const int CoreLines = 48;
+
+    /// <summary>The units, by page as the PDF's LAYOUT_PAGE_BLOCK_48_V1 cuts them, with no layout block: a whole page when it has at most
+    /// <see cref="CoreLines"/> lines, else slices of that many lines in reading order; consecutive pieces are packed while the unit stays within
+    /// <see cref="CoreLines"/> lines. Only page numbers and line counts decide; no fact and no byte budget does.</summary>
+    internal static IReadOnlyList<(int Start, int End)> PageCores(IReadOnlyList<int> pages)
+    {
+        var pieces = new List<(int Start, int End)>();
+        for (var s = 0; s < pages.Count;)
+        {
+            var e = s; while (e < pages.Count && pages[e] == pages[s]) e++;
+            for (var k = s; k < e; k += CoreLines) pieces.Add((k, Math.Min(e, k + CoreLines)));
+            s = e;
+        }
+        var cores = new List<(int, int)>();
+        for (var u = 0; u < pieces.Count;)
+        {
+            var start = pieces[u].Start; var end = pieces[u].End; u++;
+            while (u < pieces.Count && pieces[u].End - start <= CoreLines) { end = pieces[u].End; u++; }
+            cores.Add((start, end));
+        }
+        return cores;
+    }
 
     public ScanOcrEvidence Evidence { get; }
     public string? EvidenceEntry { get; }
@@ -48,33 +72,6 @@ internal sealed class ScanAgentSource : IAgentSource
     readonly Dictionary<string, LineTranscription> transcribed = new(StringComparer.Ordinal);
     readonly string? visionModel;
 
-    /// <summary>
-    /// The OCR engine's own page segmentation of the primary view, read back from the stored TSV of each page: for every line, its block and
-    /// paragraph numbers on the page, its place in the paragraph and how many lines the paragraph has. It is the engine's grouping (by indentation
-    /// and spacing), a measurement like the boxes, never a decision about headings. A page whose TSV cannot be read, or whose lines do not match
-    /// the stored ones one for one, gets no entry.
-    /// </summary>
-    static Dictionary<string, (int Block, int Paragraph, int LineInParagraph, int LinesInParagraph)> OcrParagraphs(string? entry, OcrView primary)
-    {
-        var map = new Dictionary<string, (int, int, int, int)>(StringComparer.Ordinal);
-        if (entry is null) return map;
-        foreach (var page in primary.Pages)
-        {
-            string tsv;
-            try { tsv = File.ReadAllText(Path.Combine(entry, "views", primary.Spec.ViewId, $"page-{page.Page:000}.tsv")); }
-            catch (Exception e) when (e is IOException or UnauthorizedAccessException) { continue; }
-            var keys = TesseractOcr.ParseTsv(tsv, 1.0).Select(l => l.Key.Split('.')).ToArray();
-            if (keys.Length != page.Lines.Count) continue;
-            var groups = keys.Select(k => (Block: int.Parse(k[0]), Paragraph: int.Parse(k[1]))).ToArray();
-            for (var i = 0; i < groups.Length; i++)
-                map[page.Lines[i].Id] = (groups[i].Block, groups[i].Paragraph, groups.Take(i + 1).Count(g => g == groups[i]), groups.Count(g => g == groups[i]));
-        }
-        return map;
-    }
-
-    /// <summary>The OCR engine's paragraph of each primary line, by OCR line id (<see cref="OcrParagraphs"/>); empty without a stored entry.</summary>
-    readonly Dictionary<string, (int Block, int Paragraph, int LineInParagraph, int LinesInParagraph)> paragraphs;
-
     /// <summary>The type of each line measured on its page image (<see cref="ScanTypography"/>), by OCR line id; empty when not measured.</summary>
     public IReadOnlyDictionary<string, LineTypography> Typography { get; }
 
@@ -91,7 +88,6 @@ internal sealed class ScanAgentSource : IAgentSource
         var others = evidence.Views.Where(v => v != primary).ToArray();
         var alignments = others.ToDictionary(v => v.Spec.ViewId, v => OcrViewComparer.Compare(primary, v).ToDictionary(a => a.LineA, StringComparer.Ordinal));
         var otherLines = others.ToDictionary(v => v.Spec.ViewId, v => v.Pages.SelectMany(p => p.Lines).ToDictionary(l => l.Id, StringComparer.Ordinal));
-        paragraphs = OcrParagraphs(evidenceEntry, primary);
 
         var lines = new List<ScanLine>();
         foreach (var page in primary.Pages)
@@ -121,10 +117,11 @@ internal sealed class ScanAgentSource : IAgentSource
         }
 
         Facts = ComputeFacts();
-        Cores = DocxAgentSource.CoresOf(lines.Select(l => Facts[l.Alias].ToJsonString().Length + l.Alias.Length + 12).ToArray());
+        // Units follow the pages, as the PDF's do, and nothing else: neither the facts nor the text decide where a unit ends.
+        Cores = PageCores(lines.Select(l => l.Page).ToArray());
         StyleTable = new JsonObject
         {
-            ["readBy"] = "the program: a scanned document has no font styles to count; what is known of a line's typography is in its facts (typography): measured on the page image against the page median, and a vision model's observation too when one was asked",
+            ["readBy"] = "the program: a scanned document has no font styles to count; what is known of a line's typography is in its facts (typography): measured on the page image from the line's own box, and a vision model's observation too when one was asked",
             ["version"] = Version, ["documentLines"] = lines.Count, ["stylesTotal"] = 0, ["styles"] = new JsonArray(),
         };
         SourceSha256 = evidence.SourceSha256;
@@ -186,54 +183,27 @@ internal sealed class ScanAgentSource : IAgentSource
     {
         var result = new Dictionary<string, JsonObject>(StringComparer.Ordinal);
         var surface = ScanTextMeasurements.Build(Lines, DefaultReading);
-        var repeat = ScanLines.Select((l, i) => (k: Evidence_RepeatKey(Text(l.Alias)), i)).Where(x => x.k.Length > 0).ToLookup(x => x.k, x => x.i, StringComparer.Ordinal);
         foreach (var page in ScanLines.Select((l, i) => (l, i)).GroupBy(x => x.l.Page))
         {
             var items = page.ToArray();
-            var heights = items.Select(x => (double)x.l.Primary.Box.Height).Order().ToArray();
-            var medianHeight = heights[heights.Length / 2];
-            var lefts = items.Select(x => x.l.Primary.Box.Left).ToArray();
-            var common = lefts.Select(e => (Edge: e, Count: lefts.Count(o => Math.Abs(o - e) <= LeftEdgeTolerancePx)))
-                .OrderByDescending(x => x.Count).ThenBy(x => x.Edge).First();
             for (var k = 0; k < items.Length; k++)
             {
-                var (l, i) = items[k];
+                var (l, _) = items[k];
                 var box = l.Primary.Box;
                 var right = l.PageWidth > 0 ? l.PageWidth - box.Right : (int?)null;
                 var layout = new JsonObject
                 {
                     ["box"] = new JsonObject { ["left"] = box.Left, ["top"] = box.Top, ["width"] = box.Width, ["height"] = box.Height },
                     ["page"] = new JsonObject { ["width"] = l.PageWidth, ["height"] = l.PageHeight },
-                    ["leftEdgeOffsetFromPageCommonPx"] = box.Left - common.Edge,
-                    ["leftEdgeSharedBy"] = lefts.Count(o => Math.Abs(o - box.Left) <= LeftEdgeTolerancePx) - 1,
-                    ["lineHeightVsPageMedian"] = Math.Round(box.Height / medianHeight, 2),
                 };
                 if (right is { } r) { layout["leftMarginPx"] = box.Left; layout["rightMarginPx"] = r; layout["centredOffsetPx"] = (box.Left - r) / 2; }
-                if (paragraphs.TryGetValue(l.Primary.Id, out var par))
-                    layout["ocrParagraph"] = new JsonObject
-                    {
-                        ["origin"] = "TESSERACT_PAGE_SEGMENTATION", ["block"] = par.Block, ["paragraph"] = par.Paragraph,
-                        ["lineInParagraph"] = par.LineInParagraph, ["linesInParagraph"] = par.LinesInParagraph,
-                    };
-                if (k > 0) layout["gapAbovePx"] = box.Top - items[k - 1].l.Primary.Box.Bottom;
-                if (k + 1 < items.Length) layout["gapBelowPx"] = items[k + 1].l.Primary.Box.Top - box.Bottom;
 
-                var low = l.Primary.Words.Where(w => w.Confidence < LowConfidence).ToArray();
-                var ocr = new JsonObject
-                {
-                    ["meanConfidence"] = l.Primary.MeanConfidence, ["minConfidence"] = l.Primary.MinConfidence,
-                    ["lowConfidenceWords"] = low.Length, ["overlapsOtherLine"] = l.Primary.OverlapsOtherLine,
-                    ["viewsCoveringLine"] = 1 + l.OtherViews.Count,
-                    ["viewsReadItDifferently"] = l.OtherViews.Values.Any(v => v.Differences.Count > 0),
-                    ["differencesWithOtherViews"] = l.OtherViews.Values.Sum(v => v.Differences.Count),
-                };
                 JsonObject typography;
                 if (Typography.TryGetValue(l.Primary.Id, out var mt))
                     typography = new JsonObject
                     {
                         ["origin"] = "MEASURED_ON_IMAGE", ["measured"] = true,
-                        ["strokeWidthPx"] = mt.StrokeWidthPx, ["strokeVsPageMedian"] = mt.StrokeVsPageMedian,
-                        ["strokePerHeightVsPageMedian"] = mt.StrokePerHeightVsPageMedian, ["inkVsPageMedian"] = mt.InkVsPageMedian,
+                        ["strokeWidthPx"] = mt.StrokeWidthPx, ["strokePerHeight"] = mt.StrokePerHeight, ["inkShare"] = mt.InkShare, ["runs"] = mt.Runs,
                     };
                 else if (seen.ContainsKey(l.Alias))
                     typography = new JsonObject { ["measured"] = false, ["reason"] = "the page image could not be read; see vision" };
@@ -250,17 +220,10 @@ internal sealed class ScanAgentSource : IAgentSource
                     ["alias"] = l.Alias, ["origin"] = "OCR_DERIVED", ["page"] = l.Page,
                     ["text"] = TextFacts(l),
                     ["surface"] = surface[l.Alias],
-                    ["layout"] = layout, ["ocr"] = ocr, ["typography"] = typography,
+                    ["layout"] = layout, ["typography"] = typography,
                 };
                 if (chosen.TryGetValue(l.Alias, out var c))
                     node["visionReading"] = new JsonObject { ["origin"] = "VLM_OBSERVATION", ["choice"] = c.Choice, ["proposedReading"] = c.ProposedReading is { Length: > 0 } };
-                var key = Evidence_RepeatKey(Text(l.Alias));
-                if (key.Length > 0 && repeat[key].Where(j => j != i).ToArray() is { Length: > 0 } others)
-                    node["repetition"] = new JsonObject
-                    {
-                        ["otherOccurrences"] = others.Length,
-                        ["sampleAliases"] = new JsonArray(others.Take(2).Select(j => (JsonNode)ScanLines[j].Alias).ToArray()),
-                    };
                 result[l.Alias] = node;
             }
         }

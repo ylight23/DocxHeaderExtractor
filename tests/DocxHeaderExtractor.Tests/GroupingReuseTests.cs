@@ -109,7 +109,7 @@ public sealed class GroupingReuseTests : IDisposable
             Assert.Equal("text", block["type"]!.GetValue<string>());
             Assert.Equal("ephemeral", block["cache_control"]!["type"]!.GetValue<string>());
         }
-        Assert.Equal(AgentGrouping.GroupPrompt, body["messages"]![0]!["content"]![0]!["text"]!.GetValue<string>());
+        Assert.Equal(GroupingPrompts.Shared, body["messages"]![0]!["content"]![0]!["text"]!.GetValue<string>());
         Assert.Equal(payload, body["messages"]![1]!["content"]![0]!["text"]!.GetValue<string>());
     }
 }

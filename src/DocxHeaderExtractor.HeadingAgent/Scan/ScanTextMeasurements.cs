@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace DocxHeaderExtractor.HeadingAgent.Scan;
 
-/// <summary>Literal observations of the declared reading and its neighbours. No heading, body,
+/// <summary>Literal observations of the declared reading itself, each line on its own. No heading, body,
 /// sentence-completion or containment labels are inferred. A preceding numbered label is only a
 /// position in reading order; its words are never matched against a language-specific vocabulary.</summary>
 internal static partial class ScanTextMeasurements
@@ -18,7 +18,6 @@ internal static partial class ScanTextMeasurements
     {
         var shapes = lines.Select(l => ShapeOf(l.Text)).ToArray();
         var result = new Dictionary<string, JsonObject>(StringComparer.Ordinal);
-        int? previousNamed = null;
         for (var i = 0; i < lines.Count; i++)
         {
             var line = lines[i];
@@ -26,30 +25,7 @@ internal static partial class ScanTextMeasurements
             if (LeadingToken(line.Text) is { } leading) facts["leadingToken"] = leading;
             if (shapes[i] is { } shape) facts["numberedPrefix"] = Shape(shape);
             Ending(facts, line.Text);
-            if (i > 0)
-            {
-                var previous = Reference(lines[i - 1], readingOf);
-                Ending(previous, lines[i - 1].Text);
-                facts["previousLine"] = previous;
-            }
-            if (i + 1 < lines.Count)
-            {
-                var next = Reference(lines[i + 1], readingOf);
-                next["firstLetter"] = FirstLetter(lines[i + 1].Text);
-                if (LeadingToken(lines[i + 1].Text) is { } token) next["leadingToken"] = token;
-                facts["nextLine"] = next;
-            }
-            if (previousNamed is { } at)
-            {
-                var preceding = Reference(lines[at], readingOf);
-                preceding["numberedPrefix"] = Shape(shapes[at]!.Value);
-                preceding["linesBetween"] = i - at - 1;
-                facts["nearestPrecedingNamedNumber"] = preceding;
-            }
             result[line.Alias] = facts;
-            // The prefix can be ANY words (including OCR errors or an inline reference). This does
-            // not declare it a heading, nor declare later lines its children.
-            if (shapes[i] is { } named && named.Key.IndexOf('#') > 0) previousNamed = i;
         }
         return result;
     }
@@ -98,10 +74,4 @@ internal static partial class ScanTextMeasurements
         return null;
     }
 
-    /// <summary>These references were actually shown, but do not count as returning the referenced lines' core facts.</summary>
-    internal static IEnumerable<string> ReferencedAliases(JsonNode facts)
-    {
-        foreach (var field in new[] { "previousLine", "nextLine", "nearestPrecedingNamedNumber" })
-            if (facts["surface"]?[field]?["alias"] is JsonValue alias) yield return alias.GetValue<string>();
-    }
 }

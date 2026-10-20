@@ -57,7 +57,7 @@ internal sealed class DocxAgentFlavor : IAgentFlavor
             DocxAgentProtocol.PlacementNote);
     }
 
-    public string GroupPrompt => DocxAgentProtocol.GroupPrompt;
+    public string GroupPrompt => GroupingPrompts.Docx;
 
     public object GroupLineItem(IAgentSource source, int index)
     {

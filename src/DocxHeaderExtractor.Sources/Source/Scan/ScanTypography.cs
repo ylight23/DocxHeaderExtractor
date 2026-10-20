@@ -1,23 +1,18 @@
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Scan;
 
 /// <summary>
-/// What the page image shows of one OCR line's type, measured, not judged: the mean length of the horizontal runs of dark pixels in its box (the
-/// width of its vertical strokes: thick in bold type) and the share of its box that is dark, each also against the median of the page's lines
-/// (lines with fewer than <see cref="ScanTypography.MinRuns"/> runs, specks, are left out of the median). Height against the page is in the
-/// layout facts already.
+/// What the page image shows of one OCR line's type, measured on its own box and nothing else: the mean length of the horizontal runs of dark
+/// pixels in the box (the width of the vertical strokes, in pixels), the same per pixel of the box's height, the share of the box that is dark,
+/// and the number of runs counted.
 /// </summary>
-public sealed record LineTypography(string LineId, double StrokeWidthPx, double StrokeVsPageMedian, double StrokePerHeightVsPageMedian,
-    double InkShare, double InkVsPageMedian, int Runs);
+public sealed record LineTypography(string LineId, double StrokeWidthPx, double StrokePerHeight, double InkShare, int Runs);
 
 /// <summary>
-/// Measures the type of every line of a page on its image (<see cref="PngRaster"/>, dark at the bilevel threshold). Measured on 023 against the
-/// gold heading lines: every bold line at 1.29 times the page's median stroke or more (10th percentile; median 1.35), every regular heading line
-/// and 98% of the body at 1.06 or less; the body lines above 1.15 were bold in the image too (the title block, signature, motto).
+/// Measures the type of every line of a page on its image (<see cref="PngRaster"/>, dark at the bilevel threshold).
 /// </summary>
 public static class ScanTypography
 {
-    public const string Version = "SCAN_TYPOGRAPHY_V1";
-    public const int MinRuns = 20;
+    public const string Version = "SCAN_TYPOGRAPHY_V2";
 
     public static IReadOnlyList<LineTypography> Measure(PngRaster raster, OcrPage page)
     {
@@ -40,14 +35,8 @@ public static class ScanTypography
             var area = Math.Max(1, (x1 - x0) * (y1 - y0));
             return (line, stroke: runs == 0 ? 0 : (double)runLength / runs, ink: (double)dark / area, runs: (int)Math.Min(int.MaxValue, runs));
         }).ToArray();
-        var counted = raw.Where(r => r.runs >= MinRuns).ToArray();
-        double Median(IEnumerable<double> v) { var s = v.Order().ToArray(); return s.Length == 0 ? 0 : s[s.Length / 2]; }
-        var stroke = Median(counted.Select(r => r.stroke));
-        var perHeight = Median(counted.Select(r => r.stroke / Math.Max(1, r.line.Box.Height)));
-        var ink = Median(counted.Select(r => r.ink));
-        double Ratio(double v, double m) => m <= 0 ? 0 : Math.Round(v / m, 2);
-        return raw.Select(r => new LineTypography(r.line.Id, Math.Round(r.stroke, 2), Ratio(r.stroke, stroke),
-            Ratio(r.stroke / Math.Max(1, r.line.Box.Height), perHeight), Math.Round(r.ink, 3), Ratio(r.ink, ink), r.runs)).ToArray();
+        return raw.Select(r => new LineTypography(r.line.Id, Math.Round(r.stroke, 2),
+            Math.Round(r.stroke / Math.Max(1, r.line.Box.Height), 4), Math.Round(r.ink, 3), r.runs)).ToArray();
     }
 
     /// <summary>Every line of the primary view measured, page by page in parallel; a page whose image cannot be read has no measurements.</summary>

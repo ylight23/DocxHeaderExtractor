@@ -13,9 +13,10 @@ public sealed class DocxInstructionTests
     {
         Assert.StartsWith(AgentProtocol.InstructionStructuralV1 + "\n" + AgentProtocol.FormattingEvidenceParagraph + "\n" + DocxAgentProtocol.HeadingExtentParagraph + "\n",
             DocxAgentProtocol.Instruction, StringComparison.Ordinal);
-        Assert.Contains("Layout alone never makes a line a heading", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
-        Assert.Contains("is a measurement to weigh, not a decision", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
-        Assert.Contains("reproduces as a sample or a form", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
+        Assert.Contains("is a measurement to weigh, not a decision: no fact by itself makes a line a heading or rules it out", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
+        // Neutral: no rule about one kind of fact, no example, no scope decision about samples or forms.
+        Assert.DoesNotContain("Layout alone never makes a line a heading", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
+        Assert.DoesNotContain("reproduces as a sample or a form", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
         Assert.Contains("one kind of evidence", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
         Assert.Contains("does not by itself make a line a heading", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
         Assert.Contains("determine its exact extent", DocxAgentProtocol.Instruction, StringComparison.Ordinal);
@@ -51,7 +52,7 @@ public sealed class DocxInstructionTests
     [Fact]
     public void The_prompt_view_shows_the_grouping_prompt_of_both_routes()
     {
-        Assert.Equal(AgentGrouping.GroupPrompt, PromptCatalog.Pdf.GroupPrompt);
-        Assert.Equal(DocxAgentProtocol.GroupPrompt, PromptCatalog.Docx.GroupPrompt);
+        Assert.Equal(GroupingPrompts.Shared, PromptCatalog.Pdf.GroupPrompt);
+        Assert.Equal(GroupingPrompts.Docx, PromptCatalog.Docx.GroupPrompt);
     }
 }

@@ -171,12 +171,14 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal("OCR_DERIVED", facts["origin"]!.GetValue<string>());
         Assert.Equal("VLM_OBSERVATION", facts["typography"]!["vision"]!["origin"]!.GetValue<string>());
         Assert.Equal("yes", facts["typography"]!["vision"]!["appearsBold"]!.GetValue<string>());
-        Assert.True(facts["ocr"]!["viewsReadItDifferently"]!.GetValue<bool>());
-        Assert.Equal(55, facts["ocr"]!["minConfidence"]!.GetValue<double>());
+        // The OCR confidence and view-disagreement facts are left out of the request: they describe the OCR, not the text the model reads.
+        Assert.False(facts.ContainsKey("ocr"));
         Assert.False(source.Facts["P001-L001"]["typography"]!["measured"]!.GetValue<bool>());
         // Chương I stands in the middle of the page; the body lines share the page's common left edge.
-        Assert.Equal(1, Math.Sign(source.Facts["P001-L002"]["layout"]!["leftEdgeOffsetFromPageCommonPx"]!.GetValue<int>()));
-        Assert.Equal(60, source.Facts["P001-L002"]["layout"]!["gapAbovePx"]!.GetValue<int>());
+        // A line's layout is its own box and the page; nothing about its neighbours is in it.
+        Assert.False(source.Facts["P001-L002"]["layout"]!.AsObject().ContainsKey("gapAbovePx"));
+        Assert.False(source.Facts["P001-L002"]["layout"]!.AsObject().ContainsKey("leftEdgeOffsetFromPageCommonPx"));
+        Assert.False(source.Facts["P001-L002"].AsObject().ContainsKey("repetition"));
         Assert.Single(source.Cores);
     }
 
@@ -209,11 +211,16 @@ public sealed class ScanAgentTests : IDisposable
 
         Assert.Equal(2, record["readings"]!.AsArray().Count);
         var diff = record["differences"]!.AsArray().Single()!;
-        Assert.Equal(("Tham", "Thẩm", "UNVERIFIED"), (diff["original"]!.GetValue<string>(), diff["alternative"]!.GetValue<string>(), diff["verificationStatus"]!.GetValue<string>()));
+        Assert.Equal(("Tham", "Thẩm"), (diff["original"]!.GetValue<string>(), diff["alternative"]!.GetValue<string>()));
+        Assert.Null(diff["verificationStatus"]);
         Assert.Equal(ScanOcrPreflight.UpscaledView, record["vision"]!["choice"]!.GetValue<string>());
         Assert.Equal("VLM_OBSERVATION", record["vision"]!["origin"]!.GetValue<string>());
         Assert.Equal([ScanOcrPreflight.OriginalView, ScanOcrPreflight.UpscaledView], record["readingViewIds"]!.AsArray().Select(v => v!.GetValue<string>()));
-        Assert.Contains("Tham", record["readings"]![0]!["lowConfidenceWords"]!.AsArray().Select(w => w!["text"]!.GetValue<string>()));
+        // Every word comes with its confidence; no threshold picks some of them out.
+        var words = record["readings"]![0]!["words"]!.AsArray();
+        Assert.Contains("Tham", words.Select(w => w!["text"]!.GetValue<string>()));
+        Assert.All(words, w => Assert.NotNull(w!["confidence"]));
+        Assert.Null(record["readings"]![0]!["lowConfidenceWords"]);
     }
 
     [Fact]
@@ -229,13 +236,11 @@ public sealed class ScanAgentTests : IDisposable
     }
 
     [Fact]
-    public void The_sequence_tool_and_the_integrity_tool_report_observations()
+    public void The_integrity_tool_reports_observations_and_no_tool_compares_a_line_with_the_others()
     {
         var tools = ScanAgentFlavor.Instance.CreateTools(new ScanAgentSource(Evidence(), [Vision()]));
 
-        var sequence = Call(tools, ScanAgentTools.Sequence, new { alias = "P001-L002" })["sequence"]!;
-        Assert.Equal("Điều #.", sequence["key"]!.GetValue<string>());
-        Assert.Equal(2, sequence["linesWithThisKey"]!.GetValue<int>());
+        Assert.DoesNotContain("get_shape_sequence", ScanAgentTools.Names);
         var integrity = Call(tools, ScanAgentTools.Integrity, new { });
         Assert.Equal(5, integrity["textShown"]!["ocrOriginal"]!.GetValue<int>());
         Assert.False(integrity["transcription"]!["asked"]!.GetValue<bool>());
@@ -354,8 +359,9 @@ public sealed class ScanAgentTests : IDisposable
 
         var result = new ScanHeadingAgentSelector(dir, () => handler, parallelism: 1).ExtractFrom(Evidence(), [Vision()], "sk-test", CancellationToken.None);
 
-        Assert.Equal(3, handler.Posts);
-        Assert.Contains("PROTOCOL:READING_VIEW_UNKNOWN", handler.Bodies.Last(b => !FakeOpenRouter.IsVerification(b))["messages"]!.AsArray().Last(m => m!["role"]!.GetValue<string>() == "user")!["content"]!.Text(), StringComparison.Ordinal);
+        // The selection audit (SELECTION_AUDIT) is a call of its own and is not part of the selection being tested.
+        Assert.Equal(3, handler.Bodies.Count(b => !b.ToJsonString().Contains("SELECTION_AUDIT", StringComparison.Ordinal)));
+        Assert.Contains("PROTOCOL:READING_VIEW_UNKNOWN", handler.Bodies.Last(b => !FakeOpenRouter.IsVerification(b) && !b.ToJsonString().Contains("SELECTION_AUDIT", StringComparison.Ordinal))["messages"]!.AsArray().Last(m => m!["role"]!.GetValue<string>() == "user")!["content"]!.Text(), StringComparison.Ordinal);
         Assert.Equal("Điều 2. Thẩm quyền chứng thực", result.Headings[1].Text);
     }
 
@@ -523,7 +529,9 @@ public sealed class ScanAgentTests : IDisposable
         var tools = ScanAgentFlavor.Instance.CreateTools(source);
         var records = Call(tools, ScanAgentTools.TextViews, new { aliases = new[] { "P001-L004", "P001-L005" } })["records"]!.AsArray();
         var transcribed = records[0]!["readings"]!.AsArray().Single(r => r!["viewId"]!.GetValue<string>() == ScanAgentSource.VlmTranscribedReading)!;
-        Assert.Equal(("VLM_TRANSCRIBED", "CORROBORATED"), (transcribed["origin"]!.GetValue<string>(), transcribed["verificationStatus"]!.GetValue<string>()));
+        Assert.Equal("VLM_TRANSCRIBED", transcribed["origin"]!.GetValue<string>());
+        Assert.NotEmpty(transcribed["ocrViewsThatReadTheSame"]!.AsArray());
+        Assert.Null(transcribed["verificationStatus"]);
         Assert.Equal(ScanAgentSource.VlmTranscribedReading, records[0]!["shownReading"]!.GetValue<string>());
         Assert.Equal(ScanTranscription.RejectedMultiline, records[1]!["transcriptionRejected"]!["status"]!.GetValue<string>());
         var integrity = Call(tools, ScanAgentTools.Integrity, new { });
@@ -715,20 +723,44 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal("T-B001ab:CALL:CONTENT:CONTENT_NOT_TEXT", failures.Single());
     }
 
+    [Theory]
+    [InlineData(new[] { 30, 30, 60 }, "0-30 30-60 60-108 108-120")]   // whole pages; a long page in slices of 48
+    [InlineData(new[] { 10, 10, 40 }, "0-20 20-60")]                  // short pages are packed while the unit stays within 48 lines
+    public void Scan_units_follow_the_pages_like_the_pdf(int[] linesPerPage, string expected)
+    {
+        var pages = linesPerPage.SelectMany((n, p) => Enumerable.Repeat(p + 1, n)).ToArray();
+        Assert.Equal(expected, string.Join(" ", ScanAgentSource.PageCores(pages).Select(c => $"{c.Start}-{c.End}")));
+    }
+
+    [Fact]
+    public void Unit_boundaries_are_the_same_whatever_the_facts_say()
+    {
+        // The facts change between these two sources (a vision observation, a measured type); the units do not.
+        var plain = new ScanAgentSource(Evidence());
+        var measured = new Dictionary<string, LineTypography>
+        {
+            ["P001-ocr-original-L004"] = new("P001-ocr-original-L004", 9.5, 2.2, 0.4, 900),
+        };
+        var seen = new ScanAgentSource(Evidence(), [Vision()], null, measured);
+
+        Assert.NotEqual(plain.Facts["P001-L004"]["typography"]!.ToJsonString(), seen.Facts["P001-L004"]["typography"]!.ToJsonString());
+        Assert.Equal(plain.Cores, seen.Cores);
+    }
+
     [Fact]
     public void The_facts_carry_the_type_measured_on_the_image_and_a_vision_observation_only_beside_it()
     {
         var measured = new Dictionary<string, LineTypography>
         {
-            ["P001-ocr-original-L004"] = new("P001-ocr-original-L004", 6.2, 1.38, 1.4, 0.21, 1.3, 400),
+            ["P001-ocr-original-L004"] = new("P001-ocr-original-L004", 6.2, 1.4, 0.21, 400),
         };
         var source = new ScanAgentSource(Evidence(), [Vision()], null, measured);
 
         var t = source.Facts["P001-L004"]["typography"]!;
-        Assert.Equal(("MEASURED_ON_IMAGE", 1.38), (t["origin"]!.GetValue<string>(), t["strokeVsPageMedian"]!.GetValue<double>()));
+        Assert.Equal(("MEASURED_ON_IMAGE", 6.2), (t["origin"]!.GetValue<string>(), t["strokeWidthPx"]!.GetValue<double>()));
         Assert.Equal("VLM_OBSERVATION", t["vision"]!["origin"]!.GetValue<string>());
         Assert.False(source.Facts["P001-L002"]["typography"]!["measured"]!.GetValue<bool>());
-        Assert.Contains("MEASURED_ON_IMAGE", ScanAgentProtocol.SystemPrompt, StringComparison.Ordinal);
+        Assert.Contains("measured on the page image", ScanAgentProtocol.SystemPrompt, StringComparison.Ordinal);
     }
 
     [Fact]
@@ -757,7 +789,7 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal(("COMPLETE", 1), (outcome.Status, outcome.Posts));
         Assert.Empty(outcome.TargetsWithoutFacts!);
         Assert.Equal("SELECT", outcome.Decisions["P001-L002"]);
-        Assert.Contains("the request carries targetFacts", ScanAgentProtocol.SystemPrompt, StringComparison.Ordinal);
+        Assert.Contains("carries targetFacts", ScanAgentProtocol.SystemPrompt, StringComparison.Ordinal);
         // PDF and DOCX supply their own route facts too; checked with real sources in TargetsFactsInRequestTests.
     }
 
@@ -786,12 +818,10 @@ public sealed class ScanAgentTests : IDisposable
         const string numbered = "P001-L003";
         var facts = source.Facts[numbered];
         Assert.Equal("1.", facts["surface"]!["leadingToken"]!["text"]!.GetValue<string>());
-        Assert.Equal("P001-L002", facts["surface"]!["nearestPrecedingNamedNumber"]!["alias"]!.GetValue<string>());
+        Assert.Null(facts["surface"]!["nearestPrecedingNamedNumber"]);
         var tools = ScanAgentFlavor.Instance.CreateTools(source);
         var called = Call(tools, ScanAgentTools.LineFacts, new { first = numbered, last = numbered, offset = 0 });
         Assert.Equal(facts.ToJsonString(), called["facts"]![0]!.ToJsonString());
-        Assert.Contains("P001-L002", tools.ObservedAliases);
-        Assert.Contains("P001-L004", tools.ObservedAliases);
         Assert.Equal([numbered], tools.FactsReturnedFor); // mentioned neighbours do not acquire core facts coverage
 
         using var handler = new FakeOpenRouter((body, _) =>
@@ -810,48 +840,5 @@ public sealed class ScanAgentTests : IDisposable
         var result = new ScanHeadingAgentSelector(dir, () => handler).ExtractFrom(Evidence(), [], "test-key", CancellationToken.None);
         Assert.Equal("1. Nghị định này quy định về chứng thực", Assert.Single(result.Headings).Text);
         Assert.Empty(result.UnitFailures);
-    }
-
-    [Fact]
-    public void A_preceding_label_outside_the_context_window_is_citable_from_the_fact_that_actually_shows_it()
-    {
-        var original = Evidence();
-        var view = original.Views[0];
-        var page = view.Pages[0];
-        var source = new ScanAgentSource(original with { Views = [view with { Pages = [page with
-        {
-            Lines = Enumerable.Range(1, 120).Select(n => Line(ScanOcrPreflight.OriginalView, n,
-                n == 1 ? "Điều 17. Hồ sơ" : n == 120 ? "2. Trường hợp chuyển đổi," : "Nội dung được đọc nguyên văn.",
-                300, n * 45, 1000)).ToArray(),
-        }] }] });
-        const string preceding = "P001-L001", target = "P001-L120";
-        var segment = source.Cores.Count - 1;
-        Assert.DoesNotContain(preceding, source.Scope(segment).Shown.Select(i => source.Lines[i].Alias));
-        foreach (var n in Enumerable.Range(0, source.Cores.Count))
-        {
-            var (decide, shown) = source.Scope(n);
-            var payload = AgentProtocol.Payload(source.SourceSha256, AgentSource.SegmentId(n), decide,
-                shown.Select(i => source.Lines[i]).ToArray(), source.StyleTable, ScanAgentProtocol.Instruction, source.Flavor,
-                source.Flavor.PayloadFacts(source, decide));
-            Assert.InRange(AgentProtocol.Build(payload, new JsonArray(), "auto", source.Flavor).Bytes, 1, AgentBudget.MaxRequestBytes);
-        }
-        using var handler = new FakeOpenRouter((body, _) =>
-        {
-            var payload = JsonNode.Parse(body["messages"]![1]!["content"]![0]!["text"]!.GetValue<string>())!;
-            return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = JsonSerializer.Serialize(new
-            {
-                protocolVersion = AgentProtocol.SelectScanVersion, status = "COMPLETE",
-                decisions = payload["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).Select(a => a == target
-                    ? (object)new { alias = a, decision = "SELECT", evidenceRefs = new[] { a, preceding } }
-                    : new { alias = a, decision = "NOT_SELECT" }),
-            }) }, "stop"));
-        });
-        var budget = HeadingAgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction);
-        using var model = new AgentModel(handler, "test-key", budget);
-        var result = AgentUnit.Run(source, segment, model.Turn, budget, retryDelayMs: 0, ScanAgentProtocol.Instruction);
-        Assert.Equal("COMPLETE", result.Status);
-        Assert.Equal("SELECT", result.Decisions[target]);
-        Assert.Equal(1, result.Posts);
-        Assert.Empty(result.TargetsWithoutFacts!);
     }
 }

@@ -34,7 +34,7 @@ internal sealed class PdfAgentFlavor : IAgentFlavor
                 .ToDictionary(kv => kv.Key, kv => kv.Value["style"]!.ToJsonString(Compact), StringComparer.Ordinal));
     }
 
-    public string GroupPrompt => AgentGrouping.GroupPrompt;
+    public string GroupPrompt => GroupingPrompts.Shared;
     public object GroupLineItem(IAgentSource source, int index) =>
         new { alias = source.Lines[index].Alias, page = source.Lines[index].Page ?? 0, text = source.Lines[index].Text, layout = Evidence.CompactLayout(source.Lines[index].Bbox, source.Lines[index].Typography) };
     public object GroupContextItem(IAgentSource source, int index) =>

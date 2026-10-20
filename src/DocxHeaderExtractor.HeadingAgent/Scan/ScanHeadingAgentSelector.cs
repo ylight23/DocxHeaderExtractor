@@ -24,6 +24,7 @@ public sealed record ScanHeadingResult(string SourceSha256, string SelectorId, I
     int VisionPagesObserved, IReadOnlyList<string> VisionFailures, IReadOnlyList<OcrViewGap> OcrGaps, int PartsRejected)
 {
     public GroupingObservation? Grouping { get; init; }
+    public ToolUseStats? ToolUse { get; init; }
     /// <summary>Lines transcribed by the vision model, and how many passed the checks and are shown.</summary>
     public int TranscribedLines { get; init; }
     public int TranscriptionsAccepted { get; init; }
@@ -168,7 +169,8 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
         AgentUnit.Model timed = (unit, turn, request) => timings.Time(unit, () => traced(unit, turn, request));
         var selection = HeadingAgentSelector.Select(source, timed, budget, parallelism, ct, retryDelayMs: 5000,
             costOf: () => budget.ActualUsd, instruction, cache: reuseSelection ? new SelectionCache(Path.Combine(storeRoot, SelectionFolder)) : null,
-            groupingCache: reuseSelection ? new GroupingCache(Path.Combine(storeRoot, GroupingFolder)) : null);
+            groupingCache: reuseSelection ? new GroupingCache(Path.Combine(storeRoot, GroupingFolder)) : null,
+            audit: (answers, headings) => SelectionAudit.Run(source, answers, headings, traced, parallelism, ct));
         var (headings, rejected) = Headings(source, selection);
         onSelected?.Invoke(source, selection);
         return new ScanHeadingResult(evidence.SourceSha256, SelectorId, headings, selection.UnitsComplete, selection.UnitsTotal, selection.UnitFailures,
@@ -176,6 +178,7 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
             observations.Where(o => o.Failure is not null).Select(o => $"P{o.Page:000}:{o.Failure}").ToArray(), evidence.Gaps, rejected)
         {
             Grouping = selection.Grouping,
+            ToolUse = selection.ToolUse,
             StageSeconds = selection.StageSeconds ?? new Dictionary<string, double>(),
             TranscribedLines = transcriptions?.Lines.Count(l => l.Text is not null) ?? 0,
             TranscriptionsAccepted = transcriptions?.Accepted ?? 0,

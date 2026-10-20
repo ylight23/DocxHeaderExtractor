@@ -11,9 +11,9 @@ public sealed record RoutePrompts(string Instruction, string SystemPrompt, strin
 /// <summary>Public view of the prompts the PDF and DOCX routes send. The protocol classes stay internal.</summary>
 public static class PromptCatalog
 {
-    public static RoutePrompts Pdf { get; } = new(AgentProtocol.Instruction, AgentProtocol.SystemPrompt, AgentGrouping.GroupPrompt);
+    public static RoutePrompts Pdf { get; } = new(AgentProtocol.Instruction, AgentProtocol.SystemPrompt, GroupingPrompts.Shared);
 
-    public static RoutePrompts Docx { get; } = new(DocxAgentProtocol.Instruction, DocxAgentProtocol.SystemPrompt, DocxAgentProtocol.GroupPrompt);
+    public static RoutePrompts Docx { get; } = new(DocxAgentProtocol.Instruction, DocxAgentProtocol.SystemPrompt, GroupingPrompts.Docx);
 
     public static RoutePrompts Scan { get; } = new(ScanAgentProtocol.Instruction, ScanAgentProtocol.SystemPrompt, ScanAgentFlavor.Instance.GroupPrompt);
 }

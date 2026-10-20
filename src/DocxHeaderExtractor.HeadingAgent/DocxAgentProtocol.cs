@@ -39,21 +39,10 @@ internal static class DocxAgentProtocol
 
     /// <summary>The instruction a DOCX run sends: the production structural instruction, formatting as one kind of evidence among several, and
     /// the extent of a heading that shares its paragraph with body text.</summary>
-    /// <summary>Layout is where a line sits, not what it does: a line is a heading only when its text names a unit of the structure, and a numbered
-    /// paragraph inside a unit that already has its heading is that unit's content (023: clauses inside an article were selected on spacing alone).</summary>
-    const string LayoutIsNotFunctionParagraph = "Every fact the program gives about a line (its layout, its typography, the OCR engine's paragraphs, other occurrences of its text, how confidently it was read) is a measurement to weigh, not a decision: no fact by itself makes a line a heading or rules it out, and the decision rests on what the text does in the document's structure. Layout (spacing, indentation, margins, emphasis) shows where a line sits on the page, not what it does in the document. Layout alone never makes a line a heading: a line is a heading only when its text names a unit of the document's structure. A numbered clause or paragraph that stands inside a unit which already has its heading (for example the numbered clauses inside an article) is content of that unit, not the heading of a new one. Text that the document reproduces as a sample or a form (the sample's own title block, its field labels, the blanks to fill in) is content of the unit that presents it, not a heading of the document, even when it is set like a heading.";
+    /// <summary>Facts are measurements to weigh: none decides on its own. No example, no rule about one kind of fact, no scope decision.</summary>
+    const string LayoutIsNotFunctionParagraph = "Every fact the program gives about a line is a measurement to weigh, not a decision: no fact by itself makes a line a heading or rules it out.";
 
     public const string Instruction = AgentProtocol.InstructionStructuralV1 + "\n" + AgentProtocol.FormattingEvidenceParagraph + "\n" + HeadingExtentParagraph + "\n" + LayoutIsNotFunctionParagraph;
-
-    /// <summary>The grouping prompt: the shared one, saying what a line carries in this kind of document.</summary>
-    public static readonly string GroupPrompt = AgentGrouping.GroupPrompt.Replace(
-        "Each line has alias, page, text and layout;",
-        "Each line has alias, text and its style (style name, font size, bold, numbering label and level, alignment, when it has them);", StringComparison.Ordinal)
-        + "\n" + GroupingFactsLine;
-
-    /// <summary>Two measurements of the document, given to every line of a grouping request. They describe the document; they say nothing about what
-    /// a heading is, and no example is given.</summary>
-    const string GroupingFactsLine = "Each line also carries shape: its first two words, with every number or roman numeral written as #. And shapeCount: how many lines of the whole document have that shape. Both are measurements of the document, not labels; what they mean for the division is for you to judge.";
 
     /// <summary>What the style objects of the placement pass hold for a DOCX (the default sentence describes a PDF's size, weight and rank).</summary>
     public const string PlacementNote = "Each heading may also carry \"style\" (the style name, the outline level it declares, sizePt, bold, italic, allCaps, alignment, the numbering label and level, rankInDocument: the place of its style among the distinct styles of the whole document, 1 being the largest, and linesWithThisStyleInDocument), and \"documentStyles\" lists those distinct styles with the first lines set in each. They are measurements of the document, not labels and not decisions: you decide each relation.";

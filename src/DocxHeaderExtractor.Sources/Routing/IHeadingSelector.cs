@@ -54,7 +54,11 @@ public sealed record HeadingSelection(
     /// <summary>Wall-clock seconds of consecutive heading phases; verification/review include their dependent repairs.</summary>
     public IReadOnlyDictionary<string, double>? StageSeconds { get; init; }
     public IReadOnlyDictionary<string, HeadingAliasState>? AliasStates { get; init; }
+    /// <summary>Experiment counters: units that called tools, the tool-calling replies, and units whose tool-calling reply already carried decisions.</summary>
+    public ToolUseStats? ToolUse { get; init; }
 }
+
+public sealed record ToolUseStats(int UnitsWithToolRounds, int ToolRounds, int UnitsDecidedBeforeTools);
 
 /// <summary>Per-alias state immediately before binding. Unknown membership is never rewritten as NOT_SELECT.</summary>
 public sealed record HeadingAliasState(string InitialSelection, string FinalSelection, string? VerificationMembership,

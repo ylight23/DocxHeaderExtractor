@@ -252,11 +252,11 @@ public sealed class ScanSourceTests : IDisposable
 
         var measured = ScanTypography.Measure(new PngRaster(width, height, grey), page).ToDictionary(t => t.LineId);
 
+        // Each line is measured on its own box: the stroke width is the line's own, and a thicker line reads as thicker.
         Assert.Equal(2.0, measured["P001-ocr-original-L001"].StrokeWidthPx);
-        Assert.Equal(1.0, measured["P001-ocr-original-L001"].StrokeVsPageMedian);
-        Assert.Equal(2.0, measured["P001-ocr-original-L006"].StrokeVsPageMedian);
-        Assert.Equal(2.0, measured["P001-ocr-original-L006"].InkVsPageMedian);
-        // The speck has too few runs to count in the median, and is still measured.
+        Assert.Equal(4.0, measured["P001-ocr-original-L006"].StrokeWidthPx);
+        Assert.True(measured["P001-ocr-original-L006"].InkShare > measured["P001-ocr-original-L001"].InkShare);
+        // The speck is measured as well, with its own count of runs.
         Assert.Equal(1, measured["P001-ocr-original-L031"].Runs);
     }
 }

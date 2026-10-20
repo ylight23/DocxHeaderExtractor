@@ -9,7 +9,7 @@ public sealed class ScanTextMeasurementsTests
     static AgentSourceLine L(int i, string text, int page = 1) => new($"P{page:000}-L{i + 1:000}", i, page, text, null, null);
 
     [Fact]
-    public void A_numbered_line_has_its_literal_token_punctuation_and_preceding_named_number_not_a_parent_claim()
+    public void A_numbered_line_has_its_literal_token_and_its_own_ending_and_no_fact_about_another_line()
     {
         AgentSourceLine[] lines = [L(0, "Điều 17. Hồ sơ"), L(1, "2. Trường hợp chuyển đổi công ty,"), L(2, "được thực hiện như sau.")];
         var facts = ScanTextMeasurements.Build(lines, _ => "vlm-transcribed")[lines[1].Alias];
@@ -18,17 +18,19 @@ public sealed class ScanTextMeasurementsTests
         Assert.Equal("2.", facts["leadingToken"]!["text"]!.GetValue<string>());
         Assert.Equal("decimal", facts["leadingToken"]!["form"]!.GetValue<string>());
         Assert.Equal(",", facts["endingPunctuation"]!.GetValue<string>());
-        Assert.Equal("đ", facts["nextLine"]!["firstLetter"]!["text"]!.GetValue<string>());
-        Assert.Equal("lower", facts["nextLine"]!["firstLetter"]!["case"]!.GetValue<string>());
-        var preceding = facts["nearestPrecedingNamedNumber"]!;
-        Assert.Equal(lines[0].Alias, preceding["alias"]!.GetValue<string>());
-        Assert.Equal("Điều #.", preceding["numberedPrefix"]!["key"]!.GetValue<string>());
-        Assert.Equal(17, preceding["numberedPrefix"]!["value"]!.GetValue<int>());
-        Assert.Equal(0, preceding["linesBetween"]!.GetValue<int>());
-        Assert.Null(facts["parent"]);
-        Assert.Null(facts["isHeading"]);
-        Assert.Null(facts["isBody"]);
-        Assert.Null(facts["sentenceComplete"]);
+        Assert.Null(facts["previousLine"]);
+        Assert.Null(facts["nextLine"]);
+        Assert.Null(facts["nearestPrecedingNamedNumber"]);
+    }
+
+    [Fact]
+    public void A_line_has_the_same_facts_whatever_lines_are_around_it()
+    {
+        AgentSourceLine[] alone = [L(0, "2. Trường hợp chuyển đổi công ty,")];
+        AgentSourceLine[] crowded = [L(0, "Điều 17. Hồ sơ"), L(1, "2. Trường hợp chuyển đổi công ty,"), L(2, "được thực hiện như sau.")];
+        var a = ScanTextMeasurements.Build(alone, _ => "vlm-transcribed")[alone[0].Alias];
+        var b = ScanTextMeasurements.Build(crowded, _ => "vlm-transcribed")[crowded[1].Alias];
+        Assert.True(JsonNode.DeepEquals(a, b));
     }
 
     [Theory]
@@ -46,9 +48,6 @@ public sealed class ScanTextMeasurementsTests
         Assert.Equal(start, facts["leadingToken"]!["start"]!.GetValue<int>());
         Assert.Equal(end, facts["leadingToken"]!["end"]!.GetValue<int>());
         Assert.Equal(token, text[start..end]);
-        Assert.Null(facts["previousLine"]);
-        Assert.Null(facts["nextLine"]);
-        Assert.Null(facts["nearestPrecedingNamedNumber"]);
     }
 
     [Theory]
@@ -56,29 +55,11 @@ public sealed class ScanTextMeasurementsTests
     [InlineData("Banana 17. Any words", "Banana #.", 17)]
     [InlineData("Chương IV GENERAL", "Chương #", 4)]
     [InlineData("Điều 17 của văn bản khác", "Điều #", 17)]
-    public void A_preceding_label_is_found_by_its_form_even_for_arbitrary_words_or_a_cross_reference(string text, string key, int value)
+    public void A_numbered_prefix_is_read_from_the_line_itself_by_its_form(string text, string key, int value)
     {
-        AgentSourceLine[] lines = [L(0, text), L(1, "85", 2), L(2, "a) hồ sơ", 2)];
-        var facts = ScanTextMeasurements.Build(lines, _ => "ocr-original")[lines[2].Alias];
-        var preceding = facts["nearestPrecedingNamedNumber"]!;
-        Assert.Equal(lines[0].Alias, preceding["alias"]!.GetValue<string>());
-        Assert.Equal(1, preceding["page"]!.GetValue<int>());
-        Assert.Equal(key, preceding["numberedPrefix"]!["key"]!.GetValue<string>());
-        Assert.Equal(value, preceding["numberedPrefix"]!["value"]!.GetValue<int>());
-        Assert.Equal(1, preceding["linesBetween"]!.GetValue<int>());
-        Assert.Equal(lines[1].Alias, facts["previousLine"]!["alias"]!.GetValue<string>());
-    }
-
-    [Fact]
-    public void Punctuation_and_case_are_reported_without_guessing_whether_a_sentence_continues()
-    {
-        AgentSourceLine[] lines = [L(0, "Hồ sơ,\"  "), L(1, "Được thực hiện."), L(2, "123")];
-        var facts = ScanTextMeasurements.Build(lines, _ => "ocr-original");
-        Assert.Equal(",\"", facts[lines[0].Alias]["endingPunctuation"]!.GetValue<string>());
-        Assert.Equal("upper", facts[lines[0].Alias]["nextLine"]!["firstLetter"]!["case"]!.GetValue<string>());
-        Assert.Equal(",\"", facts[lines[1].Alias]["previousLine"]!["endingPunctuation"]!.GetValue<string>());
-        Assert.Null(facts[lines[1].Alias]["nextLine"]!["firstLetter"]);
-        Assert.Equal("", facts[lines[2].Alias]["endingPunctuation"]!.GetValue<string>());
+        var facts = ScanTextMeasurements.Build([L(0, text)], _ => "ocr-original").Values.Single();
+        Assert.Equal(key, facts["numberedPrefix"]!["key"]!.GetValue<string>());
+        Assert.Equal(value, facts["numberedPrefix"]!["value"]!.GetValue<int>());
     }
 
     [Fact]
@@ -90,21 +71,10 @@ public sealed class ScanTextMeasurementsTests
     }
 
     [Fact]
-    public void A_label_is_always_strictly_preceding_and_does_not_use_a_future_label()
-    {
-        AgentSourceLine[] lines = [L(0, "1. Hồ sơ"), L(1, "Điều 18. Đăng ký"), L(2, "1. Thông tin"), L(3, "Điều 19. Xử lý")];
-        var facts = ScanTextMeasurements.Build(lines, _ => "ocr-original");
-        Assert.Null(facts[lines[0].Alias]["nearestPrecedingNamedNumber"]);
-        Assert.Null(facts[lines[1].Alias]["nearestPrecedingNamedNumber"]);
-        Assert.Equal(lines[1].Alias, facts[lines[2].Alias]["nearestPrecedingNamedNumber"]!["alias"]!.GetValue<string>());
-        Assert.Equal(lines[1].Alias, facts[lines[3].Alias]["nearestPrecedingNamedNumber"]!["alias"]!.GetValue<string>());
-    }
-
-    [Fact]
     public void Adding_measurements_keeps_the_scan_system_prompt_and_user_instruction_byte_for_byte()
     {
-        Assert.Equal("af5aed029378ec9a2485c0988f1c3b5699a185e563771a97c154c98167342b8a", AgentProtocol.Sha(ScanAgentProtocol.SystemPrompt));
-        // The instruction now also says every fact is a measurement to weigh, layout is not function, and reproduced samples or forms are content (2026-10-20).
-        Assert.Equal("af68381203672a2304bdd1a4b73afd3ed7553e8f0b65016b97752e20b0103e1e", AgentProtocol.Sha(ScanAgentProtocol.Instruction));
+        Assert.Equal("303a6aecf08e63dc4c403370cbd4cc22365b1e7dbabdb097f4041ecc766e5885", AgentProtocol.Sha(ScanAgentProtocol.SystemPrompt));
+        // The instruction now also says every fact is a measurement to weigh and none decides on its own; no example, no scope decision (2026-10-20).
+        Assert.Equal("17d4b6a950b2d940cf2112170a5efb83df22aa508f8a6920e796d1326d85bdd2", AgentProtocol.Sha(ScanAgentProtocol.Instruction));
     }
 }

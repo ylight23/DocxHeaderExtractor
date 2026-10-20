@@ -150,7 +150,7 @@ public abstract class HeadingAgentSelector : IHeadingSelector
     /// <summary>Runs every segment, parallelism at a time, and collects the lines selected by the units whose answer passed.</summary>
     internal static HeadingSelection Select(IAgentSource source, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct,
         int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0, SelectionCache? cache = null,
-        GroupingCache? groupingCache = null)
+        GroupingCache? groupingCache = null, Func<IReadOnlyList<string>, IReadOnlyList<IReadOnlyList<string>>, IReadOnlyList<string>>? audit = null)
     {
         var phase = Stopwatch.StartNew();
         var seconds = new Dictionary<string, double>(StringComparer.Ordinal);
@@ -222,9 +222,12 @@ public abstract class HeadingAgentSelector : IHeadingSelector
             { Provenance = provenanceByAlias[l.Alias].ToArray() };
         }, StringComparer.Ordinal);
         answers = answers.Append(JsonSerializer.Serialize(new { stage = "pre-binding-alias-state", aliases = aliasStates }, Compact)).ToArray();
+        // Audit only (scan): its verdicts are appended to the answers and change no decision.
+        if (audit is not null) answers = answers.Concat(audit(answers, bindingGroups)).ToArray();
         return new HeadingSelection(selected, complete.Length - unresolvedUnits, outcomes.Length, failures, answers, budget.Calls, costOf(), source.Flavor.PlacementContext(source), bindingGroups,
             extents.Count > 0 ? extents : null) { HeadingReadings = readingChoices.Count > 0 ? readingChoices : null,
                 Grouping = grouping.Observation with { UnresolvedAliases = unresolved.Count },
-                StageSeconds = seconds.ToDictionary(kv => kv.Key, kv => Math.Round(kv.Value, 3)), AliasStates = aliasStates };
+                StageSeconds = seconds.ToDictionary(kv => kv.Key, kv => Math.Round(kv.Value, 3)), AliasStates = aliasStates,
+                ToolUse = new ToolUseStats(outcomes.Count(o => o.ToolRounds > 0), outcomes.Sum(o => o.ToolRounds), outcomes.Count(o => o.DecidedBeforeTools)) };
     }
 }
