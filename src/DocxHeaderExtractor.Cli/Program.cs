@@ -47,7 +47,6 @@ try
     return options.Command switch
     {
         "info" => RunModelInfo(options),
-        "scan-ocr" => RunScanOcr(options),
         "scan-extract" => await RunScanExtractAsync(options, cts.Token),
         "scan-text-eval" => RunScanTextEval(options),
         "scan-heading-eval" => RunScanHeadingEval(options),
@@ -66,45 +65,6 @@ catch (Exception ex)
         Console.Error.WriteLine(ex);
     return 1;
 }
-// OCR preflight: writes the evidence store of each scanned DOCX and prints what it holds. It changes no document and decides nothing.
-static int RunScanOcr(CommandLineOptions o)
-{
-    // The same store scan-extract reads (<root>/ocr), so its OCR is not done twice.
-    var root = Path.Combine(o.OutputPath ?? ".dhx-evidence", DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector.OcrFolder);
-    var preflight = new DocxHeaderExtractor.DocumentProcessing.Source.Scan.ScanOcrPreflight(root);
-    foreach (var file in ExpandInputs(o.Inputs))
-    {
-        if (DocxHeaderExtractor.DocumentProcessing.Routing.UploadedSourceDetector.Detect(file) == DocxHeaderExtractor.DocumentProcessing.Routing.SourceType.Pdf)
-        {
-            var pdf = DocxHeaderExtractor.DocumentProcessing.Source.Pdf.PdfSourceIntegrity.Read(file);
-            Console.WriteLine($"» {Path.GetFileName(file)}: {pdf.Kind}, {pdf.Pages} trang, {pdf.ScanPages.Count} trang cần OCR");
-        }
-        else
-        {
-            var integrity = DocxHeaderExtractor.DocumentProcessing.Source.Docx.DocxSourceIntegrity.Read(file);
-            Console.WriteLine($"» {Path.GetFileName(file)}: {integrity.Kind}, {integrity.PageImages} ảnh trang, {integrity.TextChars} ký tự OOXML");
-            if (integrity.PageImages == 0) continue;
-        }
-        var watch = System.Diagnostics.Stopwatch.StartNew();
-        var evidence = preflight.Run(file);
-        foreach (var view in evidence.Views)
-        {
-            var lines = view.Pages.SelectMany(p => p.Lines).ToArray();
-            var words = lines.SelectMany(l => l.Words).ToArray();
-            Console.WriteLine($"  {view.Spec.ViewId}: {view.Pages.Count} trang, {lines.Length} dòng, {words.Length} từ, confidence TB {(words.Length == 0 ? 0 : words.Average(w => w.Confidence)):0.0}, " +
-                $"từ <60: {words.Count(w => w.Confidence < 60)}, dòng chồng dòng khác: {lines.Count(l => l.OverlapsOtherLine)}");
-        }
-        foreach (var gap in evidence.Gaps) Console.WriteLine($"  thiếu view {gap.ViewId}: {gap.Reason}");
-        if (evidence.Views.Count == 2)
-        {
-            var aligned = DocxHeaderExtractor.DocumentProcessing.Source.Scan.OcrViewComparer.Compare(evidence.Views[0], evidence.Views[1]);
-            Console.WriteLine($"  so sánh 2 view: {aligned.Count} dòng, {aligned.Count(a => a.LineB is null)} không ghép được, {aligned.Count(a => a.LineB is not null && !a.Identical)} đọc khác nhau ({aligned.Sum(a => a.Differences.Count)} chỗ, đều UNVERIFIED)");
-        }
-        Console.WriteLine($"  evidence: {root} ({watch.Elapsed.TotalSeconds:0.0}s)");
-    }
-    return 0;
-}
-
 // The heading route of a scanned DOCX: OCR and vision preflight into the evidence store, then the agent decides. Prints the result as JSON.
 static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationToken ct)
 {

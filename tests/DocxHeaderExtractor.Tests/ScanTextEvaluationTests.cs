@@ -20,13 +20,13 @@ public sealed class ScanTextEvaluationTests : IDisposable
     }
 
     [Fact]
-    public void The_gold_of_023_holds_its_111_heading_lines_with_boxes()
+    public void The_gold_of_023_holds_its_112_heading_lines_with_boxes()
     {
         var gold = ScanTextEvaluation.ReadGold(TestRepository.Path(Gold));
 
-        Assert.Equal(111, gold.Count);
-        Assert.Equal(Enumerable.Range(1, 111), gold.Select(g => g.N));
-        Assert.Equal("Chương III", gold[55].Text);
+        Assert.Equal(112, gold.Count);
+        Assert.Equal(Enumerable.Range(1, 112), gold.Select(g => g.N));
+        Assert.Equal("Chương III", gold[57].Text);
         Assert.All(gold, g => Assert.True(g.Box.Width > 0 && g.Box.Height > 0 && g.Page is >= 1 and <= 34));
     }
 

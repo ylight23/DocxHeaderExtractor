@@ -1,6 +1,6 @@
 {
  "version": "SCAN_LINE_TEXT_GOLD_V1",
- "provenance": "CHỐT 2026-10-21 bởi chủ dự án: 111 dòng của run s060 (scan-extract, hybrid store, paragraph units, one selection pass, sibling check) là Gold của 023. Chốt theo nội dung, không duyệt từng dòng. Khoản đánh số trong thân Điều không phải heading; mục đánh số và chữ cái của Phụ lục là heading. Gold cũ 120 dòng (Claude đọc từ ảnh, alias Tesseract) giữ tại 023_heading_lines.v0_replaced_2026-10-21.json.",
+ "provenance": "CHỐT 2026-10-21 bởi chủ dự án: 111 dòng của run s060 (scan-extract, hybrid store, paragraph units, one selection pass, sibling check) là Gold của 023. Chốt theo nội dung, không duyệt từng dòng. Khoản đánh số trong thân Điều không phải heading; mục đánh số và chữ cái của Phụ lục là heading. Sửa 2026-10-21 theo yêu cầu chủ dự án: thêm 2 dòng nối của tiêu đề Điều 3 (P002-L022, P002-L023), như Điều 41–43 đã có; bỏ dòng Chú thích P030-L001 theo quyết định chủ dự án (không chọn); gold nay 112 dòng. Gold cũ 120 dòng (Claude đọc từ ảnh, alias Tesseract) giữ tại 023_heading_lines.v0_replaced_2026-10-21.json.",
  "source": "todo10_8/generated-docx/01_phap_quy/023_ND_23-2015_Chung_thuc.docx",
  "sourceSha256": "29d8ec5a4037a7ad386940a3f9de5222564a9ce05343467b781d1018a714dc4e",
  "selection": "the 111 lines of the 86 headings of run s060 (selector scan-v6:SCAN_AGENT_SOURCE_V4:facts-in-request:instruction-fd013d02:selection-boundary-grouping-csharp-validation-v2:no-semantic-membership-veto); boxes are in pixels of the original page image",
@@ -111,6 +111,32 @@
   },
   {
    "n": 9,
+   "page": 2,
+   "box": {
+    "left": 314,
+    "top": 1304,
+    "width": 1214,
+    "height": 39
+   },
+   "alias": "P002-L022",
+   "text": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch",
+   "reviewStatus": "OWNER_EDIT_2026-10-21_DIEU3_DONG_NOI"
+  },
+  {
+   "n": 10,
+   "page": 2,
+   "box": {
+    "left": 314,
+    "top": 1354,
+    "width": 279,
+    "height": 34
+   },
+   "alias": "P002-L023",
+   "text": "được chứng thực",
+   "reviewStatus": "OWNER_EDIT_2026-10-21_DIEU3_DONG_NOI"
+  },
+  {
+   "n": 11,
    "page": 3,
    "box": {
     "left": 386,
@@ -123,7 +149,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 10,
+   "n": 12,
    "page": 3,
    "box": {
     "left": 387,
@@ -136,7 +162,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 11,
+   "n": 13,
    "page": 4,
    "box": {
     "left": 396,
@@ -149,7 +175,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 12,
+   "n": 14,
    "page": 4,
    "box": {
     "left": 399,
@@ -162,7 +188,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 13,
+   "n": 15,
    "page": 5,
    "box": {
     "left": 389,
@@ -175,7 +201,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 14,
+   "n": 16,
    "page": 5,
    "box": {
     "left": 388,
@@ -188,7 +214,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 15,
+   "n": 17,
    "page": 5,
    "box": {
     "left": 397,
@@ -201,7 +227,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 16,
+   "n": 18,
    "page": 6,
    "box": {
     "left": 36,
@@ -214,7 +240,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 17,
+   "n": 19,
    "page": 6,
    "box": {
     "left": 390,
@@ -227,7 +253,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 18,
+   "n": 20,
    "page": 6,
    "box": {
     "left": 393,
@@ -240,7 +266,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 19,
+   "n": 21,
    "page": 7,
    "box": {
     "left": 390,
@@ -253,7 +279,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 20,
+   "n": 22,
    "page": 8,
    "box": {
     "left": 392,
@@ -266,7 +292,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 21,
+   "n": 23,
    "page": 8,
    "box": {
     "left": 834,
@@ -279,7 +305,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 22,
+   "n": 24,
    "page": 8,
    "box": {
     "left": 334,
@@ -292,7 +318,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 23,
+   "n": 25,
    "page": 8,
    "box": {
     "left": 719,
@@ -305,7 +331,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 24,
+   "n": 26,
    "page": 8,
    "box": {
     "left": 871,
@@ -318,7 +344,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 25,
+   "n": 27,
    "page": 8,
    "box": {
     "left": 698,
@@ -331,7 +357,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 26,
+   "n": 28,
    "page": 8,
    "box": {
     "left": 394,
@@ -344,7 +370,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 27,
+   "n": 29,
    "page": 8,
    "box": {
     "left": 397,
@@ -357,7 +383,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 28,
+   "n": 30,
    "page": 9,
    "box": {
     "left": 864,
@@ -370,7 +396,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 29,
+   "n": 31,
    "page": 9,
    "box": {
     "left": 569,
@@ -383,7 +409,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 30,
+   "n": 32,
    "page": 9,
    "box": {
     "left": 388,
@@ -396,7 +422,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 31,
+   "n": 33,
    "page": 9,
    "box": {
     "left": 309,
@@ -409,7 +435,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 32,
+   "n": 34,
    "page": 9,
    "box": {
     "left": 388,
@@ -422,7 +448,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 33,
+   "n": 35,
    "page": 9,
    "box": {
     "left": 310,
@@ -435,7 +461,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 34,
+   "n": 36,
    "page": 9,
    "box": {
     "left": 389,
@@ -448,7 +474,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 35,
+   "n": 37,
    "page": 10,
    "box": {
     "left": 34,
@@ -461,7 +487,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 36,
+   "n": 38,
    "page": 10,
    "box": {
     "left": 396,
@@ -474,7 +500,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 37,
+   "n": 39,
    "page": 10,
    "box": {
     "left": 34,
@@ -487,7 +513,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 38,
+   "n": 40,
    "page": 11,
    "box": {
     "left": 860,
@@ -500,7 +526,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 39,
+   "n": 41,
    "page": 11,
    "box": {
     "left": 709,
@@ -513,7 +539,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 40,
+   "n": 42,
    "page": 11,
    "box": {
     "left": 387,
@@ -526,7 +552,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 41,
+   "n": 43,
    "page": 11,
    "box": {
     "left": 307,
@@ -539,7 +565,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 42,
+   "n": 44,
    "page": 11,
    "box": {
     "left": 386,
@@ -552,7 +578,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 43,
+   "n": 45,
    "page": 12,
    "box": {
     "left": 393,
@@ -565,7 +591,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 44,
+   "n": 46,
    "page": 12,
    "box": {
     "left": 394,
@@ -578,7 +604,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 45,
+   "n": 47,
    "page": 12,
    "box": {
     "left": 877,
@@ -591,7 +617,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 46,
+   "n": 48,
    "page": 12,
    "box": {
     "left": 484,
@@ -604,7 +630,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 47,
+   "n": 49,
    "page": 12,
    "box": {
     "left": 400,
@@ -617,7 +643,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 48,
+   "n": 50,
    "page": 13,
    "box": {
     "left": 389,
@@ -630,7 +656,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 49,
+   "n": 51,
    "page": 13,
    "box": {
     "left": 389,
@@ -643,7 +669,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 50,
+   "n": 52,
    "page": 13,
    "box": {
     "left": 390,
@@ -656,7 +682,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 51,
+   "n": 53,
    "page": 13,
    "box": {
     "left": 313,
@@ -669,7 +695,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 52,
+   "n": 54,
    "page": 13,
    "box": {
     "left": 394,
@@ -682,7 +708,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 53,
+   "n": 55,
    "page": 14,
    "box": {
     "left": 397,
@@ -695,7 +721,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 54,
+   "n": 56,
    "page": 14,
    "box": {
     "left": 318,
@@ -708,7 +734,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 55,
+   "n": 57,
    "page": 15,
    "box": {
     "left": 385,
@@ -721,7 +747,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 56,
+   "n": 58,
    "page": 15,
    "box": {
     "left": 821,
@@ -734,7 +760,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 57,
+   "n": 59,
    "page": 15,
    "box": {
     "left": 582,
@@ -747,7 +773,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 58,
+   "n": 60,
    "page": 15,
    "box": {
     "left": 387,
@@ -760,7 +786,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 59,
+   "n": 61,
    "page": 15,
    "box": {
     "left": 389,
@@ -773,7 +799,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 60,
+   "n": 62,
    "page": 15,
    "box": {
     "left": 309,
@@ -786,7 +812,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 61,
+   "n": 63,
    "page": 15,
    "box": {
     "left": 391,
@@ -799,7 +825,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 62,
+   "n": 64,
    "page": 16,
    "box": {
     "left": 395,
@@ -812,7 +838,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 63,
+   "n": 65,
    "page": 16,
    "box": {
     "left": 397,
@@ -825,7 +851,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 64,
+   "n": 66,
    "page": 17,
    "box": {
     "left": 389,
@@ -838,7 +864,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 65,
+   "n": 67,
    "page": 17,
    "box": {
     "left": 389,
@@ -851,7 +877,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 66,
+   "n": 68,
    "page": 17,
    "box": {
     "left": 310,
@@ -864,7 +890,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 67,
+   "n": 69,
    "page": 17,
    "box": {
     "left": 827,
@@ -877,7 +903,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 68,
+   "n": 70,
    "page": 17,
    "box": {
     "left": 577,
@@ -890,7 +916,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 69,
+   "n": 71,
    "page": 17,
    "box": {
     "left": 394,
@@ -903,7 +929,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 70,
+   "n": 72,
    "page": 17,
    "box": {
     "left": 316,
@@ -916,7 +942,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 71,
+   "n": 73,
    "page": 18,
    "box": {
     "left": 391,
@@ -929,7 +955,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 72,
+   "n": 74,
    "page": 18,
    "box": {
     "left": 314,
@@ -942,7 +968,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 73,
+   "n": 75,
    "page": 19,
    "box": {
     "left": 385,
@@ -955,7 +981,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 74,
+   "n": 76,
    "page": 19,
    "box": {
     "left": 309,
@@ -968,7 +994,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 75,
+   "n": 77,
    "page": 20,
    "box": {
     "left": 399,
@@ -981,7 +1007,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 76,
+   "n": 78,
    "page": 21,
    "box": {
     "left": 388,
@@ -994,7 +1020,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 77,
+   "n": 79,
    "page": 21,
    "box": {
     "left": 833,
@@ -1007,7 +1033,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 78,
+   "n": 80,
    "page": 21,
    "box": {
     "left": 706,
@@ -1020,7 +1046,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 79,
+   "n": 81,
    "page": 21,
    "box": {
     "left": 390,
@@ -1033,7 +1059,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 80,
+   "n": 82,
    "page": 21,
    "box": {
     "left": 389,
@@ -1046,7 +1072,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 81,
+   "n": 83,
    "page": 21,
    "box": {
     "left": 391,
@@ -1059,7 +1085,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 82,
+   "n": 84,
    "page": 22,
    "box": {
     "left": 390,
@@ -1072,7 +1098,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 83,
+   "n": 85,
    "page": 23,
    "box": {
     "left": 438,
@@ -1085,7 +1111,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 84,
+   "n": 86,
    "page": 23,
    "box": {
     "left": 371,
@@ -1098,7 +1124,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 85,
+   "n": 87,
    "page": 23,
    "box": {
     "left": 374,
@@ -1111,7 +1137,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 86,
+   "n": 88,
    "page": 23,
    "box": {
     "left": 367,
@@ -1124,7 +1150,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 87,
+   "n": 89,
    "page": 23,
    "box": {
     "left": 366,
@@ -1137,7 +1163,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 88,
+   "n": 90,
    "page": 23,
    "box": {
     "left": 367,
@@ -1150,7 +1176,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 89,
+   "n": 91,
    "page": 23,
    "box": {
     "left": 291,
@@ -1163,7 +1189,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 90,
+   "n": 92,
    "page": 24,
    "box": {
     "left": 34,
@@ -1176,7 +1202,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 91,
+   "n": 93,
    "page": 25,
    "box": {
     "left": 374,
@@ -1189,7 +1215,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 92,
+   "n": 94,
    "page": 25,
    "box": {
     "left": 296,
@@ -1202,7 +1228,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 93,
+   "n": 95,
    "page": 25,
    "box": {
     "left": 369,
@@ -1215,7 +1241,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 94,
+   "n": 96,
    "page": 26,
    "box": {
     "left": 36,
@@ -1228,7 +1254,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 95,
+   "n": 97,
    "page": 26,
    "box": {
     "left": 32,
@@ -1241,7 +1267,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 96,
+   "n": 98,
    "page": 27,
    "box": {
     "left": 369,
@@ -1254,7 +1280,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 97,
+   "n": 99,
    "page": 28,
    "box": {
     "left": 386,
@@ -1267,7 +1293,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 98,
+   "n": 100,
    "page": 28,
    "box": {
     "left": 378,
@@ -1280,7 +1306,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 99,
+   "n": 101,
    "page": 29,
    "box": {
     "left": 372,
@@ -1293,20 +1319,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 100,
-   "page": 30,
-   "box": {
-    "left": 388,
-    "top": 192,
-    "width": 168,
-    "height": 28
-   },
-   "alias": "P030-L001",
-   "text": "Chú thích:",
-   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
-  },
-  {
-   "n": 101,
+   "n": 102,
    "page": 30,
    "box": {
     "left": 382,
@@ -1319,7 +1332,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 102,
+   "n": 103,
    "page": 31,
    "box": {
     "left": 379,
@@ -1332,7 +1345,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 103,
+   "n": 104,
    "page": 31,
    "box": {
     "left": 373,
@@ -1345,7 +1358,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 104,
+   "n": 105,
    "page": 31,
    "box": {
     "left": 390,
@@ -1358,7 +1371,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 105,
+   "n": 106,
    "page": 32,
    "box": {
     "left": 407,
@@ -1371,7 +1384,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 106,
+   "n": 107,
    "page": 32,
    "box": {
     "left": 34,
@@ -1384,7 +1397,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 107,
+   "n": 108,
    "page": 33,
    "box": {
     "left": 401,
@@ -1397,7 +1410,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 108,
+   "n": 109,
    "page": 33,
    "box": {
     "left": 400,
@@ -1410,7 +1423,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 109,
+   "n": 110,
    "page": 33,
    "box": {
     "left": 390,
@@ -1423,7 +1436,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 110,
+   "n": 111,
    "page": 34,
    "box": {
     "left": 399,
@@ -1436,7 +1449,7 @@
    "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
-   "n": 111,
+   "n": 112,
    "page": 34,
    "box": {
     "left": 406,

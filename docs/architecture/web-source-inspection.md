@@ -26,7 +26,7 @@ OCR preparation and no provider. `node --test tests/web-source-detection.test.cj
 including out-of-order inspection responses and missing-key/offline behavior.
 
 The production PDF handler repeats the same `PdfSourceIntegrity` check as the Web. CLI extraction and Web therefore
-make the same route choice. `scan-ocr` also accepts PDF directly. `PDFtoImage` 5.4.0/PDFium is now a production source
+make the same route choice. The retired `scan-ocr` command also accepted PDF directly. `PDFtoImage` 5.4.0/PDFium is now a production source
 dependency; it renders full pages rather than extracting embedded images, so it preserves overlaid text/stamps.
 The raster version, DPI and renderer version enter only PDF's OCR cache key and `pageImageBasis`; existing DOCX OCR
 entries keep their keys. Coordinates remain top-left image pixels of the stored raster, not PDF points. Mixed PDFs

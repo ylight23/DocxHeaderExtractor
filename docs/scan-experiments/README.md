@@ -6,7 +6,7 @@ Bảng số liệu đầy đủ từng lần chạy: [table-runs-s046-s060.md](t
 
 ## Cảnh báo khi đọc số
 
-- **Gold đã được thay ngày 2026-10-21** theo yêu cầu của chủ dự án: `eval/scan-text/023_heading_lines.v1.json` nay là 111 dòng của run `s060` (chấp nhận theo nội dung, chưa duyệt từng dòng). Gold cũ 120 dòng (Claude đọc từ ảnh, alias Tesseract) được giữ ở `023_heading_lines.v0_replaced_2026-10-21.json`.
+- **Gold đã được thay ngày 2026-10-21** theo yêu cầu của chủ dự án: `eval/scan-text/023_heading_lines.v1.json` nay là 112 dòng của run `s060` (sửa 2026-10-21: thêm 2 dòng nối P002-L022, P002-L023 của tiêu đề Điều 3; bỏ dòng "Chú thích:" P030-L001) (chấp nhận theo nội dung, chưa duyệt từng dòng). Gold cũ 120 dòng (Claude đọc từ ảnh, alias Tesseract) được giữ ở `023_heading_lines.v0_replaced_2026-10-21.json`.
 - **Số F1 trong bảng là theo Gold cũ.** Với Gold mới, `s060` đạt F1 1,0 theo định nghĩa, nên số đo lại chỉ là độ giống với `s060`, không đo được chất lượng.
 - **F1 hybrid và Tesseract không so sánh được trên Gold cũ** vì alias lệch (Điều 1–7, 37, 38, 45, 47–49 không khớp dù đúng).
 - **Gold không có khoản đánh số nào.** Theo định nghĩa đã được chủ dự án chốt ngày 2026-10-21 (xem memory `project_scan_023_accepted_output`), khoản trong thân văn bản không phải heading, mục đánh số và chữ cái của Phụ lục là heading. Gold chưa được cập nhật theo định nghĩa này.
@@ -73,3 +73,9 @@ Chưa đủ để so sánh cắt theo trang với cắt theo đoạn về độ 
 1. Chạy cấu hình promote trên Tesseract (`scan-extract` không dùng `-o` hybrid store), ít nhất ba lần, và so với `s046/prod` trên cùng Gold.
 2. Cập nhật Gold theo alias đang dùng và theo định nghĩa khoản đã chốt, qua quy trình duyệt từng mục của bạn.
 3. Chạy toàn bộ bộ test và commit khi bạn yêu cầu.
+
+## Cập nhật 2026-10-21
+
+- Production đã đổi: nguồn dòng là OpenCV (`--segmented-lines` mặc định). Tesseract chỉ còn qua `--tesseract-lines`. Lệnh `scan-ocr` đã bỏ.
+- Tỷ lệ phóng giữ ở 2. So sánh scale 1 và scale 2, và so sánh OpenCV với Tesseract, xem [2026-10-21-scale-and-ocr-comparison.md](2026-10-21-scale-and-ocr-comparison.md).
+- Mục "Điều chưa được kiểm chứng" phía trên là lịch sử của cấu hình Tesseract. Phần OpenCV đã được chạy trên 023 qua replay Haiku và một lần scale 1 trên Qwen.

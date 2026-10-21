@@ -62,7 +62,7 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
     ScanOcrPreflight.Options? ocrOptions = null, ScanVisionPreflight.Options? visionOptions = null, bool transcribe = true,
     ScanTranscriptionPreflight.Options? transcriptionOptions = null, bool reuseSelection = true, bool paragraphUnits = true, bool segmentedLines = true) : IScanHeadingSelector
 {
-    /// <summary>The folder of the store root that holds the OCR evidence; <c>dhx scan-ocr</c> writes to the same one.</summary>
+    /// <summary>The folder of the store root that holds the evidence: the OpenCV segments, or the Tesseract OCR with <c>--tesseract-lines</c>.</summary>
     public const string OcrFolder = "ocr";
     /// <summary>The folder of the store root that holds the selection answers already paid for (<see cref="SelectionCache"/>); with
     /// reuseSelection false (CLI <c>--fresh-selection</c>) it is neither read nor written.</summary>
