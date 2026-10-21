@@ -465,6 +465,7 @@ internal static class AgentProtocol
 
     public static string RepairMessage(string failure) => failure switch
     {
+        "PROTOCOL:TOOL_CROP_REQUIRED_NOT_REQUESTED" => "Your answer was refused (" + failure + "): the lines were not seen. Call get_scan_crop now for the targets and the lines next to them (one page per call, at most 24 lines), then send the answer.",
         "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED" => "Your answer was refused (" + failure + "): the facts were not read. Call get_line_facts now for the targets (from targetFirstAlias to targetLastAlias; one call covers at most 24 lines), then send the answer.",
         "PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP" => "Your tool calls were not run (" + failure + "): no tool rounds are left. Send the answer now as exactly one JSON object.",
         "PROTOCOL:EVIDENCE_NOT_SHOWN" => "Your answer was refused (" + failure + "): evidenceRefs must list aliases of lines you saw (in targets, context or tool results), never evidence ids such as E1.01. Send the complete answer again as exactly one JSON object.",

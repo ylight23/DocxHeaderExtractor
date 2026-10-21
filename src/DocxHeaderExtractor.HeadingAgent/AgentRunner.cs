@@ -34,6 +34,8 @@ internal sealed class AgentBudget(int maxCalls, double ceilingUsd)
     public int Calls { get; private set; }
     public double ReservedUsd { get; private set; }
     public double ActualUsd { get; private set; }
+    /// <summary>The largest request admitted, in bytes: 128 KB by default; a scan run raises it (its request carries the context lines' facts).</summary>
+    public int ByteCap { get; set; } = MaxRequestBytes;
     public string? HaltReason { get; private set; }
     public int ConsecutiveContractFailures { get; private set; }
 
@@ -66,7 +68,7 @@ internal sealed class AgentBudget(int maxCalls, double ceilingUsd)
             var worst = AttemptUsd(request.Bytes);
             if (HaltReason is not null) return "HALTED:" + HaltReason;
             if (Calls >= MaxCalls) return "CALL_LIMIT";
-            if (request.Bytes > MaxRequestBytes) return "REQUEST_OVER_BYTE_CAP";
+            if (request.Bytes > ByteCap) return "REQUEST_OVER_BYTE_CAP";
             if (request.Bytes > PromptTokenBudget) return "REQUEST_OVER_TOKEN_BUDGET";
             if (ReservedUsd + worst > CeilingUsd) return "RESERVE_OVER_CEILING";
             Calls++;
@@ -112,9 +114,14 @@ internal static class AgentUnit
 
     public delegate ModelTurn Model(string unitId, int turn, PreparedRequest request);
 
+    /// <summary>Scan only: a reply without a facts-tool call is refused and repaired (the gate reads tool calls, not facts in the request).</summary>
+    internal const bool ScanRequiresFactsTool = false;
+    /// <summary>Scan only: the context lines' facts in the request (contextFacts). Off: the request then stays the size the PDF and DOCX routes send.</summary>
+    internal const bool ScanContextFacts = false;
+
     /// <summary>The SHA-256 of the first request <see cref="Run"/> sends for a segment (no history, tool_choice auto): it carries the model,
     /// the system prompt, the tools, the instruction and the payload with its facts, so it names everything the unit's answer depends on.</summary>
-    public static string FirstRequestSha256(IAgentSource source, int segment, string instruction = Instruction)
+    public static string FirstRequestSha256(IAgentSource source, int segment, string instruction = Instruction, string? precedingAlias = null)
     {
         var (decide, shownIdx) = source.Scope(segment);
         var flavor = source.Flavor;
@@ -122,11 +129,36 @@ internal static class AgentUnit
         var ordered = decide.OrderBy(tools.PositionOf).ToList();
         var payload = Payload(source.SourceSha256, AgentSource.SegmentId(segment), ordered, shownIdx.Select(i => source.Lines[i]).ToArray(),
             tools.DocumentStyles(), instruction, flavor, flavor.PayloadFacts(source, ordered));
+        payload = WithContextFacts(payload, source, shownIdx, ordered);
+        payload = WithPrecedingSelected(payload, source, precedingAlias);
         return Build(payload, new JsonArray(), "auto", flavor).Sha256;
     }
 
+    /// <summary>Scan only: the context lines' facts, as contextFacts, so a target is compared with the lines next to it from the request itself.</summary>
+    internal static string WithContextFacts(string payload, IAgentSource source, IReadOnlyList<int> shown, IReadOnlyList<string> decide)
+    {
+        if (!ScanContextFacts || source is not DocxHeaderExtractor.HeadingAgent.Scan.ScanAgentSource scan) return payload;
+        var targets = decide.ToHashSet(StringComparer.Ordinal);
+        var items = shown.Select(i => scan.Lines[i].Alias).Where(a => !targets.Contains(a))
+            .Select(a => (JsonNode)new JsonObject { ["alias"] = a, ["facts"] = scan.Facts[a].DeepClone() }).ToArray();
+        var node = JsonNode.Parse(payload)!.AsObject();
+        node["contextFacts"] = new JsonArray(items);
+        return node.ToJsonString(ReviewJson);
+    }
+
+    /// <summary>The request of a unit that follows the earlier answers: precedingSelected names the nearest line before the unit's targets that those
+    /// answers selected, with its page and text. Without an alias the payload is returned as it is, so no other request changes.</summary>
+    internal static string WithPrecedingSelected(string payload, IAgentSource source, string? alias)
+    {
+        if (alias is null) return payload;
+        var line = source.Lines.Single(l => l.Alias == alias);
+        var node = JsonNode.Parse(payload)!.AsObject();
+        node["precedingSelected"] = new JsonObject { ["alias"] = alias, ["page"] = JsonValue.Create(line.Page), ["text"] = line.Text };
+        return node.ToJsonString(ReviewJson);
+    }
+
     public static AgentUnitOutcome Run(IAgentSource source, int segment, Model model, AgentBudget budget, int retryDelayMs = 5000, string instruction = Instruction,
-        JsonObject? selectionReview = null, int maxPosts = int.MaxValue)
+        JsonObject? selectionReview = null, int maxPosts = int.MaxValue, string? precedingAlias = null)
     {
         var unitId = (selectionReview is null ? "" : "REVIEW-") + AgentSource.SegmentId(segment);
         var (decide, shownIdx) = source.Scope(segment);
@@ -144,6 +176,8 @@ internal static class AgentUnit
             reviewPayload["selectionReview"] = selectionReview.DeepClone();
             payload = reviewPayload.ToJsonString(ReviewJson);
         }
+        payload = WithContextFacts(payload, source, shownIdx, ordered);
+        payload = WithPrecedingSelected(payload, source, precedingAlias);
         if (requestFacts is not null)
             tools.NoteRequestFacts(ordered, requestFacts.SelectMany(f => flavor.FactReferences(f!)));
         // The style table shows the first lines of each style: they are in the request, so the model may cite them.
@@ -180,7 +214,7 @@ internal static class AgentUnit
         {
             repairedFrom ??= failure;
             repairsUsed++;
-            if (failure is "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED" or "PROTOCOL:TOOL_FACTS_INCOMPLETE") { forcedChoices.Enqueue("auto"); forcedChoices.Enqueue("none"); }
+            if (failure is "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED" or "PROTOCOL:TOOL_CROP_REQUIRED_NOT_REQUESTED" or "PROTOCOL:TOOL_FACTS_INCOMPLETE") { forcedChoices.Enqueue("auto"); forcedChoices.Enqueue("none"); }
             else forcedChoices.Enqueue("none");
             history.Add(new JsonObject { ["role"] = "user", ["content"] = RepairMessage(failure, missing, detail) });
             return true;
@@ -294,15 +328,23 @@ internal static class AgentUnit
                 }
                 history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content, ["tool_calls"] = assistantCalls });
                 foreach (var r in results) history.Add(r);
+                // An image a tool returned (a scan crop) cannot travel in a tool message: the images follow as one user message, in call order.
+                var images = tools.TakeImages();
+                if (images.Count > 0)
+                    history.Add(new JsonObject { ["role"] = "user", ["content"] = new JsonArray(images.Prepend(new JsonObject { ["type"] = "text", ["text"] = "The images get_scan_crop returned in this turn, in call order." }).Select(n => (JsonNode)n).ToArray()) });
                 continue;
             }
 
             // A reply without tool calls is the final answer. It must come after the facts were read.
-            if (!tools.FactsWereRead)
+            // The scan route requires a facts-tool call: facts in the request are not enough (its model never called the tool otherwise).
+            var scanGate = ScanRequiresFactsTool && source is DocxHeaderExtractor.HeadingAgent.Scan.ScanAgentSource;
+            var factsRead = scanGate ? tools.ToolFactsRead : tools.FactsWereRead;
+            var gateCode = scanGate ? "PROTOCOL:TOOL_CROP_REQUIRED_NOT_REQUESTED" : "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED";
+            if (!factsRead)
             {
-                if (Unchanged(reply.Content)) return Done("FAILED", "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED:UNCHANGED");
+                if (Unchanged(reply.Content)) return Done("FAILED", gateCode + ":UNCHANGED");
                 history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content });
-                TryRepair("PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED");
+                TryRepair(gateCode);
                 continue;
             }
             var observed = shownAliases.Concat(tools.ObservedAliases).Distinct(StringComparer.Ordinal).ToDictionary(a => a, tools.PositionOf, StringComparer.Ordinal);

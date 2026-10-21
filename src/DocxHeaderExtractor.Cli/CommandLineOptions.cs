@@ -18,11 +18,17 @@ public sealed class CommandLineOptions
     public bool Vision { get; private set; }
     /// <summary>Scan: ask the selection again instead of reusing the answers already paid for (to sample the model anew).</summary>
     public bool FreshSelection { get; private set; }
+    /// <summary>Scan (production): units are cut at the paragraphs measured from the line gaps and packed across pages. <c>--page-units</c> returns to the
+    /// earlier cut, one unit per page (kept as the experiment it was).</summary>
+    public bool ParagraphUnits { get; private set; } = true;
+    /// <summary>Scan: the text lines come from OpenCV (stamp rings removed, ink bands), not from an OCR engine; the vision model reads them.</summary>
+    public bool SegmentedLines { get; private set; } = true;
     public OutlineFormat Format { get; private set; } = OutlineFormat.Json;
     public bool Quiet { get; private set; }
 
-    /// <summary>Explicit opt-in: provider payload diagnostics may contain document text.</summary>
-    public bool ShowRawOutput { get; private set; }
+    /// <summary>On by default for every route (PDF, DOCX, scan): each model reply is printed as it arrives, and provider payload diagnostics may
+    /// contain document text. <c>--no-raw</c> turns it off.</summary>
+    public bool ShowRawOutput { get; private set; } = true;
 
     /// <summary>In cả stack trace khi một tài liệu lỗi.</summary>
     public bool Verbose { get; private set; }
@@ -76,6 +82,10 @@ public sealed class CommandLineOptions
                 case "--gold": o.GoldPath = Next(a); break;
                 case "--vision": o.Vision = true; break;
                 case "--fresh-selection": o.FreshSelection = true; break;
+                case "--paragraph-units": o.ParagraphUnits = true; break;
+                case "--page-units": o.ParagraphUnits = false; break;
+                case "--segmented-lines": o.SegmentedLines = true; break;
+                case "--tesseract-lines": o.SegmentedLines = false; break;
                 case "--jobs": o.Jobs = int.TryParse(Next(a), out var jobs) && jobs is >= 1 and <= 64 ? jobs : throw new ArgumentException("--jobs cần số từ 1 đến 64"); break;
                 case "-f" or "--format": o.Format = ParseFormat(Next(a)); break;
                 case "--no-llm": o.Pipeline.DisableLlm = true; break;
@@ -132,6 +142,7 @@ public sealed class CommandLineOptions
                     o.Provider.Remote.ContextSize = int.Parse(Next(a));
                     break;
                 case "--show-raw": o.ShowRawOutput = true; break;
+                case "--no-raw": o.ShowRawOutput = false; break;
 
                 case "--ctx": llama.ContextSize = uint.Parse(Next(a)); llama.AutoContextSize = false; break;
                 case "--threads" or "-t": llama.Threads = int.Parse(Next(a)); break;
@@ -215,7 +226,8 @@ public sealed class CommandLineOptions
               --sglang-endpoint u   Chat endpoint
               --sglang-api-key k    Bearer token cho gateway
               --sglang-context n    Context gateway khai
-              --show-raw            Log request/response remote (có thể chứa nội dung tài liệu)
+              --show-raw            Mặc định bật: in từng phản hồi của model và log request/response remote (có thể chứa nội dung tài liệu)
+              --no-raw              Tắt in phản hồi của model
           -q, --quiet               Không in tiến trình
           -v, --verbose             In stack trace khi một tài liệu lỗi
 

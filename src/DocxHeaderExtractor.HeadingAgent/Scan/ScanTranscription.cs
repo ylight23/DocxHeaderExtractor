@@ -67,6 +67,8 @@ public static class ScanTranscription
         if (transcription is null) return NotTranscribed;
         if (transcription.Contains('\n') || transcription.Contains('\r')) return RejectedMultiline;
         if (Norm(transcription).Length == 0) return RejectedEmpty;
+        // A line no OCR engine read (segmented evidence) has no OCR text to compare with: only the checks above apply.
+        if (string.IsNullOrWhiteSpace(ocr)) return Accepted;
         var t = Skeleton(transcription);
         var own = Skeleton(ocr);
         var self = Similarity(t, own);
@@ -159,7 +161,7 @@ public static class ScanTranscription
                     try
                     {
                         using var handler = factory();
-                        using var model = new AgentModel(handler, apiKey, budget, cancellationToken: ct);
+                        using var model = new AgentModel(handler, apiKey, budget, cancellationToken: ct, rateLimitRetries: AgentModel.ProductionRateLimitRetries);
                         reply = (timings is null ? model.Turn(name, ++attempt, request) : timings.Time(name, () => model.Turn(name, ++attempt, request))).Content ?? "";
                     }
                     catch (ReplyFailure f) when (transportRetries < AgentUnit.TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal)) { transportRetries++; continue; }
@@ -285,7 +287,7 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
     /// <param name="Reasoning">The model's reasoning: a token budget (measured on 023's heading lines: 1,024 read 120/120 like reasoning on, in about
     /// 14 s a call against about 50 s; off read 118/120, losing two diacritics), "on" or "off".</param>
     public sealed record Options(int MaxPages = 300, double Scale = 2.0, int MaxLinesPerRequest = 10, int Parallelism = 32, double? CeilingUsd = null,
-        bool Bilevel = true, bool Mask = true, string Reasoning = "1024");
+        bool Bilevel = true, bool Mask = true, string Reasoning = "1024", string CropReader = "opencv");
 
     public TranscriptionSet Run(ScanOcrEvidence evidence, string evidenceEntry, string apiKey, Options? options = null, CancellationToken ct = default)
     {
@@ -311,13 +313,16 @@ public sealed class ScanTranscriptionPreflight(string storeRoot, Func<HttpMessag
             {
                 var page = lines[group.First()].Page;
                 var image = ScanOcrPreflight.PageImagePath(evidenceEntry, page.Page);
-                var raster = image is not null && options.Bilevel && options.Scale == Math.Floor(options.Scale) ? PngRaster.Load(image, magick) : null;
+                // The crop reader: "opencv" (default; the page read as grey by OpenCV) or "managed" (the PNG reader kept for comparison).
+                var raster = image is not null && options.Bilevel && options.Scale == Math.Floor(options.Scale)
+                    ? (options.CropReader == "managed" ? PngRaster.Load(image, magick) : PngRaster.LoadGrey(image) ?? PngRaster.Load(image, magick))
+                    : null;
                 foreach (var k in group)
                 {
                     ct.ThrowIfCancellationRequested();
                     var line = lines[k].Line;
                     var mask = options.Mask ? TesseractOcr.BoxesInCrop(line.Box, CropPad, page.Lines.Where(l => l.Id != line.Id).Select(l => l.Box)) : null;
-                    keys[k] = ScanTranscription.CropKey(page.ImageSha256, line.Box, CropPad, options.Scale, options.Bilevel, mask);
+                    keys[k] = ScanTranscription.CropKey(page.ImageSha256, line.Box, CropPad, options.Scale, options.Bilevel, mask) + ":reader=" + options.CropReader;
                     var file = Path.Combine(work, $"{k:00000}.png");
                     if (raster is not null)
                     {

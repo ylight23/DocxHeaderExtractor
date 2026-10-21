@@ -306,23 +306,27 @@ internal static class AgentGrouping
         {
             var root = doc.RootElement;
             if (root.ValueKind != JsonValueKind.Object || root.EnumerateObject().Any(p => p.Name is not ("protocolVersion" or "runs"))) { failure = "PROTOCOL:ROOT_KEYS_INVALID"; return null; }
-            // JsonDocument accepts a repeated key and TryGetProperty reads only its last value, so {"runs":[R1],"runs":[R2]} would silently
-            // lose R1 and the repair would wrongly say R1 is missing (023, GROUP-003: one "runs" per run, refused three times the same way).
-            if (RepeatedKey(root) is { } repeated)
+            // The model writes "runs" once per run after another, {"runs":[R1],"runs":[R2]} (023 GROUP-001, 2026-10-21: six repairs asked it to
+            // join them and it repeated the key each time). JsonDocument keeps every occurrence, so each one is read as a list of runs, in order,
+            // and no run is lost. A run listed twice is still refused (RUN_LISTED_TWICE), and a key repeated anywhere else still is refused.
+            var runLists = root.EnumerateObject().Where(p => p.Name == "runs").Select(p => p.Value).ToList();
+            var repeated = root.EnumerateObject().Where(p => p.Name != "runs").GroupBy(p => p.Name, StringComparer.Ordinal)
+                .Where(g => g.Count() > 1).Select(g => ((string Name, int Count)?)(g.Key, g.Count())).FirstOrDefault()
+                ?? runLists.Select(RepeatedKey).FirstOrDefault(x => x is not null);
+            if (repeated is { } rep)
             {
                 failure = "PROTOCOL:KEY_REPEATED";
-                detail = "the key \"" + repeated.Name + "\" appears " + repeated.Count + " times in one object; give it once"
-                    + (repeated.Name == "runs" ? ", as one \"runs\" array that lists every run" : "");
+                detail = "the key \"" + rep.Name + "\" appears " + rep.Count + " times in one object; give it once";
                 return null;
             }
             if (!root.TryGetProperty("protocolVersion", out var v) || v.ValueKind != JsonValueKind.String || v.GetString() != GroupVersion) { failure = "PROTOCOL:PROTOCOL_VERSION_INVALID"; return null; }
-            if (!root.TryGetProperty("runs", out var rs) || rs.ValueKind != JsonValueKind.Array) { failure = "PROTOCOL:RUNS_MISSING"; return null; }
+            if (runLists.Count == 0 || runLists.Any(a => a.ValueKind != JsonValueKind.Array)) { failure = "PROTOCOL:RUNS_MISSING"; return null; }
             var byId = chunk.ToDictionary(r => r.Id, StringComparer.Ordinal);
             var division = new Dictionary<string, List<int[]>>(StringComparer.Ordinal);
             // A fault in the shape of the answer is returned at once. A fault in one run's division is collected, so one repair message names
             // every run that is wrong (a model that dropped a line in one run usually did the same in another).
             var problems = new List<(string Code, string Text)>();
-            foreach (var r in rs.EnumerateArray())
+            foreach (var r in runLists.SelectMany(a => a.EnumerateArray()))
             {
                 if (r.ValueKind != JsonValueKind.Object || r.EnumerateObject().Any(p => p.Name is not ("run" or "headings"))) { failure = "PROTOCOL:RUN_KEYS_INVALID"; return null; }
                 var id = r.TryGetProperty("run", out var rid) && rid.ValueKind == JsonValueKind.String ? rid.GetString()! : null;

@@ -593,7 +593,7 @@ internal static class AgentGroupVerification
         { image = null; return new() { ["status"] = "UNAVAILABLE", ["tool"] = "get_scan_crop" }; }
     }
 
-    static JsonObject ReadCrop(IAgentSource source, JsonObject args, out JsonNode? image)
+    internal static JsonObject ReadCrop(IAgentSource source, JsonObject args, out JsonNode? image)
     {
         image = null;
         if (source is not ScanAgentSource scan || scan.EvidenceEntry is null) return new() { ["status"] = "UNAVAILABLE", ["tool"] = "get_scan_crop" };

@@ -60,7 +60,7 @@ public sealed record TranscriptionRejection(string Alias, string LineId, string 
 public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageHandler>? handlerFactory = null, int? parallelism = null,
     Action<ModelReply>? onModelReply = null, string? instruction = null, bool vision = false,
     ScanOcrPreflight.Options? ocrOptions = null, ScanVisionPreflight.Options? visionOptions = null, bool transcribe = true,
-    ScanTranscriptionPreflight.Options? transcriptionOptions = null, bool reuseSelection = true) : IScanHeadingSelector
+    ScanTranscriptionPreflight.Options? transcriptionOptions = null, bool reuseSelection = true, bool paragraphUnits = true, bool segmentedLines = true) : IScanHeadingSelector
 {
     /// <summary>The folder of the store root that holds the OCR evidence; <c>dhx scan-ocr</c> writes to the same one.</summary>
     public const string OcrFolder = "ocr";
@@ -69,6 +69,10 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
     public const string SelectionFolder = "selection";
     /// <summary>The folder of the store root that holds the grouping answers already paid for (<see cref="GroupingCache"/>).</summary>
     public const string GroupingFolder = "grouping";
+    /// <summary>The folder of the store root that holds one transcript per run: every request and raw reply, with the run's status beside it.</summary>
+    public const string TranscriptFolder = "transcripts";
+    /// <summary>The largest scan request admitted: the context lines' facts make a request larger than the 128 KB default.</summary>
+    public const int ScanRequestByteCap = 262144;
 
     readonly string instruction = instruction ?? ScanAgentProtocol.Instruction;
     /// <summary>Calls at once in the conversation: its units wait on the provider, not on this machine.</summary>
@@ -94,7 +98,9 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
         var seconds = new Dictionary<string, double>(StringComparer.Ordinal);
         var clock = System.Diagnostics.Stopwatch.StartNew();
         var ocr = new ScanOcrPreflight(Path.Combine(storeRoot, OcrFolder));
-        var evidence = ocr.Run(docxPath, ocrOptions, ct);
+        // Segmented lines: the evidence is made with OpenCV and the stamp-ring removal, no OCR engine; the vision model reads each line.
+        var evidence = segmentedLines ? new DocxHeaderExtractor.DocumentProcessing.Source.Scan.ScanSegmentPreflight(Path.Combine(storeRoot, OcrFolder)).Run(docxPath, ct)
+            : ocr.Run(docxPath, ocrOptions, ct);
         seconds["ocr"] = clock.Elapsed.TotalSeconds;
         // The type of every line, measured on the page images in .NET: what the vision model was asked page by page (bold, size) before.
         var typeClock = System.Diagnostics.Stopwatch.StartNew();
@@ -159,18 +165,22 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
         TranscriptionSet? transcriptions = null, IReadOnlyDictionary<string, LineTypography>? typography = null,
         Action<ScanAgentSource, HeadingSelection>? onSelected = null)
     {
-        var source = new ScanAgentSource(evidence, observations, transcriptions, typography,
-            new ScanOcrPreflight(Path.Combine(storeRoot, OcrFolder)).EntryOf(evidence));
+        var entry = new ScanOcrPreflight(Path.Combine(storeRoot, OcrFolder)).EntryOf(evidence);
+        var source = new ScanAgentSource(evidence, observations, transcriptions, typography, entry, ScanFrames.MeasureAll(evidence, entry, ct), paragraphUnits);
         var budget = HeadingAgentSelector.BudgetFor(source, instruction);
+        budget.ByteCap = ScanRequestByteCap;
         using var handler = (handlerFactory ?? (() => AgentModel.CreateHandler()))();
-        using var model = new AgentModel(handler, apiKey, budget, cancellationToken: ct);
+        using var model = new AgentModel(handler, apiKey, budget, cancellationToken: ct, rateLimitRetries: AgentModel.ProductionRateLimitRetries);
         var traced = HeadingAgentSelector.Traced(model, onModelReply);
+        // Every call of the run (selection, grouping, audit) is recorded with its request and raw reply before any parser sees it.
+        using var transcript = new ScanRunTranscript(Path.Combine(storeRoot, TranscriptFolder), Guid.NewGuid().ToString("N")[..12]);
+        AgentUnit.Model recorded = (unit, turn, request) => transcript.Record(unit, turn, request, () => traced(unit, turn, request));
         var timings = new CallTimings();
-        AgentUnit.Model timed = (unit, turn, request) => timings.Time(unit, () => traced(unit, turn, request));
+        AgentUnit.Model timed = (unit, turn, request) => timings.Time(unit, () => recorded(unit, turn, request));
         var selection = HeadingAgentSelector.Select(source, timed, budget, parallelism, ct, retryDelayMs: 5000,
             costOf: () => budget.ActualUsd, instruction, cache: reuseSelection ? new SelectionCache(Path.Combine(storeRoot, SelectionFolder)) : null,
             groupingCache: reuseSelection ? new GroupingCache(Path.Combine(storeRoot, GroupingFolder)) : null,
-            audit: (answers, headings) => SelectionAudit.Run(source, answers, headings, traced, parallelism, ct));
+            audit: (answers, headings) => SelectionAudit.Run(source, answers, headings, recorded, parallelism, ct), siblingReview: true);
         var (headings, rejected) = Headings(source, selection);
         onSelected?.Invoke(source, selection);
         return new ScanHeadingResult(evidence.SourceSha256, SelectorId, headings, selection.UnitsComplete, selection.UnitsTotal, selection.UnitFailures,

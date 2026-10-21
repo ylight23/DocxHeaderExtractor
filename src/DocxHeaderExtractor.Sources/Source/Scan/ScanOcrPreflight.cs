@@ -127,10 +127,10 @@ public sealed class ScanOcrPreflight(string storeRoot)
         return evidence;
     }
 
-    sealed record PageImage(int Page, byte[] Bytes, string Extension, string Sha256, int Width, int Height);
+    internal sealed record PageImage(int Page, byte[] Bytes, string Extension, string Sha256, int Width, int Height);
 
     /// <summary>The images that cover a page, in body order, numbered from 1.</summary>
-    static IReadOnlyList<PageImage> PageImages(string docxPath, DocxSourceIntegrity integrity, int? maxPages)
+    internal static IReadOnlyList<PageImage> PageImages(string docxPath, DocxSourceIntegrity integrity, int? maxPages)
     {
         using var doc = WordprocessingDocument.Open(docxPath, false);
         var main = doc.MainDocumentPart!;

@@ -13,8 +13,10 @@ internal sealed class ScanAgentTools : AgentToolHost
 {
     public const string Version = "SCAN_AGENT_TOOLS_V1";
     public const string LineFacts = "get_line_facts", SourceContext = "get_source_context", SearchText = "search_document_text",
-        TextViews = "get_text_views", Integrity = "get_source_integrity";
-    public static readonly string[] Names = [SourceContext, SearchText, TextViews, Integrity];
+        TextViews = "get_text_views", Integrity = "get_source_integrity", Crop = "get_scan_crop";
+    public static readonly string[] Names = [SourceContext, SearchText, TextViews, Integrity, Crop];
+    /// <summary>The most lines one crop holds, all on one page.</summary>
+    public const int MaxCropLines = 24;
     public const int MaxFactLines = 24, MaxFactRange = 400, MaxNeighbours = 6, MaxViewAliases = 8, MaxSearchLimit = 50, MaxQueryChars = 200, MinQueryChars = 2, MaxTextChars = 200;
 
     readonly ScanAgentSource scan;
@@ -23,6 +25,8 @@ internal sealed class ScanAgentTools : AgentToolHost
 
     protected override string ToolsVersion => Version;
     protected override string FactsToolName => LineFacts;
+    // A scan's facts carry no type style; the crop shows the type itself, so it is the evidence a scan run requires (AgentUnit.ScanRequiresFactsTool).
+    protected override string RequiredEvidenceTool => Crop;
     protected override bool IsRegistered(string? name) => name is not null && (Names.Contains(name, StringComparer.Ordinal) || name == LineFacts);
     public override IReadOnlyList<string> ReservedNames => Names;
     public override JsonObject DocumentStyles() => (JsonObject)scan.StyleTable.DeepClone();
@@ -33,6 +37,7 @@ internal sealed class ScanAgentTools : AgentToolHost
         SourceContext => Context(args, returned),
         SearchText => Search(args, returned),
         TextViews => Views(args, returned),
+        Crop => CropOf(args, returned),
         _ => IntegrityOf(args, returned),
     };
 
@@ -56,6 +61,11 @@ internal sealed class ScanAgentTools : AgentToolHost
                 }, "aliases"),
             Tool(Integrity, "Read how the document carries its content and how its readings were made: its kind (scanned pages), pages, each OCR view with its engine, version, languages and preprocessing, the views that could not be made, and the vision observations (model, pages observed, failures).",
                 new JsonObject(), []));
+        all.Add(Tool(Crop, "See up to " + MaxCropLines + " lines of one page as an image cut from the page image (black and white, 32 px around them): the type itself, its weight, size and indentation, and the places of the lines against each other.",
+            new JsonObject
+            {
+                ["aliases"] = new JsonObject { ["type"] = "array", ["minItems"] = 1, ["maxItems"] = MaxCropLines, ["items"] = AliasArg("A line alias."), ["description"] = "Lines of one page to see together." },
+            }, "aliases"));
         all.Add(Tool(LineFacts, "Read the facts the program measured for the lines from one alias to another in reading order (at most " + MaxFactLines + " per call; use offset to continue where a result was cut). For each line, each fact taken from the line itself: origin OCR_DERIVED, page, text size, layout (box in pixels of the page image, page size, margins), typography measured on the page image from the line's own box (stroke width, stroke per height, ink share, runs; MEASURED_ON_IMAGE, or not measured) and a vision model's observation when one was asked (VLM_OBSERVATION), the reading shown and its leading token, numbered prefix and ending punctuation, and the vision model's reading choice when it was asked. Measurements and observations only: no label and no decision.",
             new JsonObject
             {
@@ -64,6 +74,20 @@ internal sealed class ScanAgentTools : AgentToolHost
                 ["offset"] = Int(0, 100000, "How many lines of the range to skip."),
             }, "first", "last", "offset"));
         return all;
+    }
+
+    /// <summary>The crop of the lines named: the result says what was cut, and the image goes to the conversation after the tool results.</summary>
+    (JsonNode?, JsonNode?, bool) CropOf(JsonElement args, List<string> returned)
+    {
+        Keys(args, "aliases");
+        var arguments = JsonNode.Parse(args.GetRawText())!.AsObject();
+        var result = AgentGroupVerification.ReadCrop(scan, arguments, out var image);
+        if (image is JsonObject picture && result["status"]?.GetValue<string>() == "OK")
+        {
+            PendingImages.Add(picture);
+            returned.AddRange(arguments["aliases"]!.AsArray().Select(a => a!.GetValue<string>()));
+        }
+        return (arguments, result, false);
     }
 
     (JsonNode?, JsonNode?, bool) FactsOfRange(JsonElement args, List<string> returned)

@@ -63,6 +63,11 @@ internal abstract class AgentToolHost : IAgentTools
     protected abstract bool IsRegistered(string? name);
     /// <summary>The tool the first answer must follow.</summary>
     protected abstract string FactsToolName { get; }
+    /// <summary>The tool whose successful call counts as reading the evidence when a route requires the call (the facts tool unless a route names another).</summary>
+    protected virtual string RequiredEvidenceTool => FactsToolName;
+    /// <summary>Images returned by tool calls and not yet taken by the conversation.</summary>
+    protected readonly List<JsonObject> PendingImages = [];
+    public IReadOnlyList<JsonObject> TakeImages() { var taken = PendingImages.ToArray(); PendingImages.Clear(); return taken; }
     /// <summary>Runs the handler the name selects. Returns the arguments as recorded, the result, and whether the result was cut.</summary>
     protected abstract (JsonNode?, JsonNode?, bool) Dispatch(string name, JsonElement args, List<string> returned);
     public abstract IReadOnlyList<string> ReservedNames { get; }
@@ -76,7 +81,8 @@ internal abstract class AgentToolHost : IAgentTools
     public int CacheHits => ledger.Count(c => c.CacheOf is not null);
     public int DocumentLines => lines.Count;
     public int PositionOf(string alias) => index[alias];
-    public bool FactsWereRead => requestFacts || ledger.Any(c => c.Tool == FactsToolName && c.Status == "OK");
+    public bool FactsWereRead => requestFacts || ToolFactsRead;
+    public bool ToolFactsRead => ledger.Any(c => c.Tool == RequiredEvidenceTool && c.Status == "OK");
     public IReadOnlySet<string> FactsReturnedFor => factsFor;
     public int FactsResultsCut => factsCut;
     public IReadOnlySet<string> DetailEvidenceAliases => ledger.Where(c => c.Status == "OK" && c.Tool != FactsToolName)

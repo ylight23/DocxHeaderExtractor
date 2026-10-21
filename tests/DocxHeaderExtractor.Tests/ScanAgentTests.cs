@@ -178,7 +178,8 @@ public sealed class ScanAgentTests : IDisposable
         // A line's layout is its own box and the page; nothing about its neighbours is in it.
         Assert.False(source.Facts["P001-L002"]["layout"]!.AsObject().ContainsKey("gapAbovePx"));
         Assert.False(source.Facts["P001-L002"]["layout"]!.AsObject().ContainsKey("leftEdgeOffsetFromPageCommonPx"));
-        Assert.False(source.Facts["P001-L002"].AsObject().ContainsKey("repetition"));
+        // The repetition count is a number of other lines with the same text; no list of them and no label.
+        Assert.Equal(0, source.Facts["P001-L002"]["repetition"]!["otherOccurrences"]!.GetValue<int>());
         Assert.Single(source.Cores);
     }
 
@@ -255,7 +256,9 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Contains("VLM_OBSERVATION: a model's judgement, not a measurement", ScanAgentProtocol.SystemPrompt, StringComparison.Ordinal);
         Assert.Contains(AgentProtocol.SelectScanVersion, ScanAgentProtocol.SystemPrompt, StringComparison.Ordinal);
         Assert.Contains("\"readingViewId\":\"<a viewId from get_text_views>\"", ScanAgentProtocol.AnswerBody, StringComparison.Ordinal);
-        Assert.Equal(DocxAgentProtocol.Instruction, ScanAgentProtocol.Instruction);
+        // The scan instruction is the DOCX one plus the repetition paragraph; the DOCX instruction itself is unchanged.
+        Assert.StartsWith(DocxAgentProtocol.Instruction + "\n", ScanAgentProtocol.Instruction, StringComparison.Ordinal);
+        Assert.Contains("repetition count in the facts", ScanAgentProtocol.Instruction, StringComparison.Ordinal);
     }
 
     // ---------------- the answer contract ----------------
@@ -730,6 +733,18 @@ public sealed class ScanAgentTests : IDisposable
     {
         var pages = linesPerPage.SelectMany((n, p) => Enumerable.Repeat(p + 1, n)).ToArray();
         Assert.Equal(expected, string.Join(" ", ScanAgentSource.PageCores(pages).Select(c => $"{c.Start}-{c.End}")));
+    }
+
+    [Fact]
+    public void A_line_inside_a_drawn_frame_carries_the_frame_and_a_line_outside_carries_none()
+    {
+        var frames = new Dictionary<string, DrawnFrame> { ["P001-ocr-original-L004"] = new(10, 20, 900, 300) };
+        var source = new ScanAgentSource(Evidence(), frames: frames);
+
+        var inside = source.Facts["P001-L004"]["layout"]!["drawnFrame"]!;
+        Assert.Equal(("MEASURED_ON_IMAGE", 900), (inside["origin"]!.GetValue<string>(), inside["width"]!.GetValue<int>()));
+        Assert.Null(source.Facts["P001-L002"]["layout"]!["drawnFrame"]);
+        Assert.Contains("drawnFrame", ScanAgentProtocol.SystemPrompt, StringComparison.Ordinal);
     }
 
     [Fact]

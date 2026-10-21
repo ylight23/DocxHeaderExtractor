@@ -17,6 +17,9 @@
   <ItemGroup>
     <PackageReference Include="DocumentFormat.OpenXml" />
     <PackageReference Include="PdfPig" />
+    <PackageReference Include="OpenCvSharp4" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" />
+    <PackageReference Include="OpenCvSharp4.official.runtime.linux-x64" />
     <PackageReference Include="PDFtoImage" />
   </ItemGroup>
 

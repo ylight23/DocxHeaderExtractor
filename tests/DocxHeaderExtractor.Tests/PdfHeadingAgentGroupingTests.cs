@@ -316,30 +316,44 @@ public sealed class PdfHeadingAgentGroupingTests
     // 023, GROUP-003: the model divided every run right but wrote one "runs" key per run. JsonDocument keeps only the last, so the old parser
     // called the other runs missing and the model repeated the same answer until they fell back.
     [Fact]
-    public void A_repeated_runs_key_is_refused_by_name_and_the_repaired_answer_keeps_every_run()
+    public void A_runs_key_written_once_per_run_is_read_as_one_list_and_no_run_is_lost()
     {
         var selected = new HashSet<string> { A(10), A(11), A(20), A(21) };
         var (model, payloads, bodies) = Scripted((n, p) =>
         {
             var ids = p.GetProperty("runs").EnumerateArray().Select(r => r.GetProperty("run").GetString()!).ToArray();
-            if (n > 1) return Division(p, id => [RunAliases(p, id)]);
             var repeated = string.Join(",", ids.Select(id => "\"runs\":[" + JsonSerializer.Serialize(new { run = id, headings = new[] { RunAliases(p, id) } }) + "]"));
             return "{\"protocolVersion\":\"" + AgentGrouping.GroupVersion + "\"," + repeated + "}";
         });
 
         var result = AgentGrouping.Group(Source.Value, selected, model, Budget(), 1, CancellationToken.None, retryDelayMs: 0);
 
-        Assert.Equal(2, result.Posts);
+        Assert.Equal(1, result.Posts);
         Assert.Empty(result.Failures);
         Assert.Equal(2, result.Observation.ModelDividedRuns);
         Assert.Equal(0, result.Observation.FallbackRuns);
         var groups = result.Groups.Select(g => string.Join("|", g)).ToArray();
         Assert.Contains(A(10) + "|" + A(11), groups);
         Assert.Contains(A(20) + "|" + A(21), groups);
+    }
+
+    [Fact]
+    public void A_run_listed_twice_across_repeated_runs_keys_is_still_refused()
+    {
+        var selected = new HashSet<string> { A(10), A(11) };
+        var (model, payloads, bodies) = Scripted((n, p) =>
+        {
+            if (n > 1) return Division(p, id => [RunAliases(p, id)]);
+            var run = JsonSerializer.Serialize(new { run = "R1", headings = new[] { RunAliases(p, "R1") } });
+            return "{\"protocolVersion\":\"" + AgentGrouping.GroupVersion + "\",\"runs\":[" + run + "],\"runs\":[" + run + "]}";
+        });
+
+        var result = AgentGrouping.Group(Source.Value, selected, model, Budget(), 1, CancellationToken.None, retryDelayMs: 0);
+
+        Assert.Equal(2, result.Posts);
         using var repair = JsonDocument.Parse(bodies[1]);
         var message = repair.RootElement.GetProperty("messages").EnumerateArray().Last().GetProperty("content").Text()!;
-        Assert.Contains("PROTOCOL:KEY_REPEATED", message);
-        Assert.Contains("one \"runs\" array that lists every run", message);
+        Assert.Contains("PROTOCOL:RUN_LISTED_TWICE", message);
     }
 
     [Fact]

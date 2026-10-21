@@ -89,6 +89,10 @@ internal interface IAgentTools
     IReadOnlySet<string> ObservedAliases { get; }
     /// <summary>Whether facts were supplied in the request or a facts-tool call succeeded.</summary>
     bool FactsWereRead { get; }
+    /// <summary>Whether a facts-tool call succeeded: reading facts from the request does not count (the scan route requires the call).</summary>
+    bool ToolFactsRead { get; }
+    /// <summary>The images the tool calls since the last take returned (a scan crop), in call order; they travel in a user message after the tool results.</summary>
+    IReadOnlyList<JsonObject> TakeImages();
     /// <summary>The ledger of evidence coverage: every line whose own facts were supplied in the request or returned by a successful facts call (not the lines a result only
     /// mentions). It says which targets the model has read the facts of; it decides nothing.</summary>
     IReadOnlySet<string> FactsReturnedFor { get; }

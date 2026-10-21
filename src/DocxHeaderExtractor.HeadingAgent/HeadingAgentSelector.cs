@@ -8,7 +8,7 @@ namespace DocxHeaderExtractor.HeadingAgent;
 /// <summary>One model reply as the diagnostics hook sees it: the unit, the turn, the reasoning the model streamed (null when it streamed none),
 /// the tool calls it made, its visible content, and the tool results the request before it added to the conversation. No decision reads any of it.</summary>
 public sealed record ModelReply(string Unit, int Turn, string? Reasoning, IReadOnlyList<ModelReplyToolCall> ToolCalls, string? Content, string? FinishReason,
-    IReadOnlyList<ModelToolResult> ToolResults);
+    IReadOnlyList<ModelToolResult> ToolResults, string RequestSha256 = "", string? PrecedingSelected = null);
 
 /// <summary>A tool result the conversation received: the call it answers and the content the tool returned.</summary>
 public sealed record ModelToolResult(string? ToolCallId, string Content);
@@ -73,12 +73,19 @@ public abstract class HeadingAgentSelector : IHeadingSelector
             var source = Load(path);
             var budget = BudgetFor(source, instruction);
             using var handler = handlerFactory();
-            using var model = new AgentModel(handler, apiKey, budget);
+            using var model = new AgentModel(handler, apiKey, budget, rateLimitRetries: AgentModel.ProductionRateLimitRetries);
             return Select(source, Traced(model), budget, parallelism, ct, retryDelayMs: 5000, costOf: () => budget.ActualUsd, instruction, firstSegments);
         }, ct);
     }
 
     AgentUnit.Model Traced(AgentModel model) => Traced(model, onModelReply);
+
+    /// <summary>The alias named by a request's precedingSelected, read from the request body; null when the request names none. Diagnostics only.</summary>
+    internal static string? PrecedingSelectedAliasOf(string body)
+    {
+        var match = System.Text.RegularExpressions.Regex.Match(body, @"precedingSelected\\?""\s*:\s*\{\s*\\?""alias\\?""\s*:\s*\\?""([^""\\]+)");
+        return match.Success ? match.Groups[1].Value : null;
+    }
 
     /// <summary>The model of a run with the diagnostics hook around it: every reply, with the tool results its request added, goes to the hook.</summary>
     internal static AgentUnit.Model Traced(AgentModel model, Action<ModelReply>? onModelReply)
@@ -91,7 +98,8 @@ public abstract class HeadingAgentSelector : IHeadingSelector
             var results = onModelReply is null ? Array.Empty<ModelToolResult>() : NewToolResults(request.Body, unitId, reported, gate);
             var reply = model.Turn(unitId, turn, request);
             onModelReply?.Invoke(new ModelReply(unitId, turn, reply.Reasoning,
-                reply.ToolCalls.Select(c => new ModelReplyToolCall(c.Name, c.Arguments)).ToArray(), reply.Content, reply.FinishReason, results));
+                reply.ToolCalls.Select(c => new ModelReplyToolCall(c.Name, c.Arguments)).ToArray(), reply.Content, reply.FinishReason, results,
+                request.Sha256, PrecedingSelectedAliasOf(request.Body)));
             return reply;
         };
     }
@@ -118,27 +126,40 @@ public abstract class HeadingAgentSelector : IHeadingSelector
     }
 
     /// <summary>The budget of one document: one first post per segment plus every segment's tool rounds, transport retries and four repairs, and
-    /// the reserve of every first request plus those spare posts at the byte cap, plus 10%.</summary>
-    internal static AgentBudget BudgetFor(IAgentSource source, string instruction = AgentProtocol.Instruction)
+    /// the reserve of every first request plus those spare posts at the byte cap, plus 10%. With precedingSelection every unit may get a second
+    /// answer, so the posts and the first requests are counted twice.</summary>
+    internal static AgentBudget BudgetFor(IAgentSource source, string instruction = AgentProtocol.Instruction, bool precedingSelection = false)
     {
         var units = source.Cores.Count;
-        var posts = units + units * AgentProtocol.MaxToolTurns + units * ExtraPostsPerUnit;
+        var passes = precedingSelection ? 2 : 1;
+        var posts = passes * (units + units * AgentProtocol.MaxToolTurns + units * ExtraPostsPerUnit);
         var flavor = source.Flavor;
         var styles = flavor.CreateTools(source).DocumentStyles();
-        var first = Enumerable.Range(0, units).Sum(n =>
+        var first = passes * Enumerable.Range(0, units).Sum(n =>
         {
             var (decide, shown) = source.Scope(n);
             var payload = AgentProtocol.Payload(source.SourceSha256, AgentSource.SegmentId(n), decide, shown.Select(i => source.Lines[i]).ToArray(), styles, instruction, flavor,
                 flavor.PayloadFacts(source, decide));
+            payload = AgentUnit.WithContextFacts(payload, source, shown, decide);
             return AgentBudget.AttemptUsd(AgentProtocol.Build(payload, new System.Text.Json.Nodes.JsonArray(), "auto", flavor).Bytes);
         });
-        var spare = (posts - units) * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
+        var spare = (posts - passes * units) * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
         // Grouping batches up to MaxRunsPerRequest adjacent selected-line runs. In the worst case, every other source line is selected,
         // so reserve one chunk per 2 * MaxRunsPerRequest lines, including protocol/transport repairs.
         var groupPosts = GroupingPostsReserveForLines(source.Lines.Count);
         var groupReserve = groupPosts * AgentBudget.AttemptUsd(60000);
         return new AgentBudget(posts + groupPosts,
             Math.Ceiling((first + spare + groupReserve) * 1.1 * 100) / 100);
+    }
+
+    /// <summary>The nearest line in a unit's shown context, before its first target, that the first answers selected; null when there is none.</summary>
+    internal static string? PrecedingSelectedAlias(IAgentSource source, int segment, IReadOnlySet<string> selected)
+    {
+        var (_, shown) = source.Scope(segment);
+        var core = source.Cores[segment].Start;
+        for (var k = shown.Length - 1; k >= 0; k--)
+            if (shown[k] < core && selected.Contains(source.Lines[shown[k]].Alias)) return source.Lines[shown[k]].Alias;
+        return null;
     }
 
     internal static int GroupingPostsReserveForLines(int lineCount)
@@ -150,21 +171,34 @@ public abstract class HeadingAgentSelector : IHeadingSelector
     /// <summary>Runs every segment, parallelism at a time, and collects the lines selected by the units whose answer passed.</summary>
     internal static HeadingSelection Select(IAgentSource source, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct,
         int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0, SelectionCache? cache = null,
-        GroupingCache? groupingCache = null, Func<IReadOnlyList<string>, IReadOnlyList<IReadOnlyList<string>>, IReadOnlyList<string>>? audit = null)
+        GroupingCache? groupingCache = null, Func<IReadOnlyList<string>, IReadOnlyList<IReadOnlyList<string>>, IReadOnlyList<string>>? audit = null,
+        bool precedingSelection = false, bool siblingReview = false)
     {
         var phase = Stopwatch.StartNew();
         var seconds = new Dictionary<string, double>(StringComparer.Ordinal);
         var outcomes = new AgentUnitOutcome[firstSegments > 0 ? Math.Min(firstSegments, source.Cores.Count) : source.Cores.Count];
         // With a cache, a unit whose first request is byte for byte one already answered COMPLETE takes that answer and makes no call.
-        AgentUnitOutcome RunOrReuse(int n)
+        AgentUnitOutcome RunOrReuse(int n, string? precedingAlias = null)
         {
-            if (cache?.TryLoad(source.SourceSha256, AgentUnit.FirstRequestSha256(source, n, instruction)) is { } reused) return reused;
-            var outcome = AgentUnit.Run(source, n, model, budget, retryDelayMs, instruction);
+            if (cache?.TryLoad(source.SourceSha256, AgentUnit.FirstRequestSha256(source, n, instruction, precedingAlias)) is { } reused) return reused;
+            var outcome = AgentUnit.Run(source, n, model, budget, retryDelayMs, instruction, precedingAlias: precedingAlias);
             cache?.Store(source.SourceSha256, outcome);
             return outcome;
         }
-        Parallel.For(0, outcomes.Length, new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct },
-            n => outcomes[n] = RunOrReuse(n));
+        var parallel = new ParallelOptions { MaxDegreeOfParallelism = parallelism, CancellationToken = ct };
+        Parallel.For(0, outcomes.Length, parallel, n => outcomes[n] = RunOrReuse(n));
+        // Every unit decides from its own context only, so a heading that lies before its context is not seen. With precedingSelection, a unit
+        // whose shown context before its targets holds a line the first answers selected is asked again with that line named as
+        // precedingSelected; the second answer replaces the first. A unit with no such line keeps its first answer, so no call is repeated.
+        if (precedingSelection)
+        {
+            var firstSelected = outcomes.Where(o => o.Status == "COMPLETE").SelectMany(o => o.Decisions.Where(d => d.Value == "SELECT").Select(d => d.Key))
+                .ToHashSet(StringComparer.Ordinal);
+            Parallel.For(0, outcomes.Length, parallel, n =>
+            {
+                if (PrecedingSelectedAlias(source, n, firstSelected) is { } alias) outcomes[n] = RunOrReuse(n, alias);
+            });
+        }
         var complete = outcomes.Where(o => o.Status == "COMPLETE").ToArray();
         var selected = complete.SelectMany(o => o.Decisions.Where(d => d.Value == "SELECT").Select(d => d.Key)).ToHashSet(StringComparer.Ordinal);
         var answers = complete.Select(o => JsonSerializer.Serialize(new
@@ -188,6 +222,13 @@ public abstract class HeadingAgentSelector : IHeadingSelector
         var reusedUnits = outcomes.Where(o => o.Reused).Select(o => o.UnitId).ToArray();
         if (reusedUnits.Length > 0)
             answers = answers.Append(JsonSerializer.Serialize(new { stage = "selection-reuse", cache = SelectionCache.Version, units = reusedUnits }, Compact)).ToArray();
+        // Lines of one numbered sequence are decided in separate units; a sequence whose decisions disagree is asked again once, as a whole.
+        if (siblingReview)
+        {
+            var (siblingAnswers, siblingFailures) = AgentSiblingReview.Run(source, complete, selected, extents, readingChoices, model, parallelism, instruction, ct);
+            answers = answers.Concat(siblingAnswers).ToArray();
+            failures.AddRange(siblingFailures);
+        }
         seconds["selection"] = phase.Elapsed.TotalSeconds;
         phase.Restart();
         // The selected lines divided into headings: the model decides which adjacent lines form one heading, C# checks the division.

@@ -23,14 +23,27 @@ internal sealed class AgentModel : IDisposable
     readonly AgentBudget budget;
     readonly CancellationToken cancellationToken;
     readonly object usageGate = new();
+    readonly int rateLimitRetries;
+    readonly int rateLimitBaseDelayMs;
 
-    public AgentModel(HttpMessageHandler handler, string apiKey, AgentBudget budget, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
+    /// <summary>How many times a production call waits and sends again when the provider answers 429 (too many requests).</summary>
+    public const int ProductionRateLimitRetries = 5;
+
+    /// <param name="rateLimitRetries">On 429 the same bytes are sent again after a wait that doubles each time from
+    /// <paramref name="rateLimitBaseDelayMs"/>, with jitter so parallel calls do not come back together. 0 (the default) fails at once, as before.</param>
+    public AgentModel(HttpMessageHandler handler, string apiKey, AgentBudget budget, TimeSpan? timeout = null, CancellationToken cancellationToken = default,
+        int rateLimitRetries = 0, int rateLimitBaseDelayMs = 4000)
     {
         if (string.IsNullOrWhiteSpace(apiKey)) throw new ArgumentException("API_KEY_MISSING", nameof(apiKey));
         client = new HttpClient(handler, disposeHandler: false) { Timeout = timeout ?? TimeSpan.FromSeconds(300) };
         this.apiKey = apiKey; this.budget = budget;
         this.cancellationToken = cancellationToken;
+        this.rateLimitRetries = rateLimitRetries; this.rateLimitBaseDelayMs = rateLimitBaseDelayMs;
     }
+
+    /// <summary>How many 429 answers were waited out and sent again.</summary>
+    public int RateLimitWaits => rateLimitWaits;
+    int rateLimitWaits;
 
     public int PromptTokens { get; private set; }
     public int CompletionTokens { get; private set; }
@@ -54,6 +67,15 @@ internal sealed class AgentModel : IDisposable
     {
         var reserve = AgentBudget.AttemptUsd(request.Bytes);
         var (outcome, body) = Send(request);
+        for (var k = 0; outcome == "RATE_LIMITED_NO_RETRY" && k < rateLimitRetries; k++)
+        {
+            // The provider said too many requests: a 429 costs nothing, so the same bytes go again after a doubling wait with jitter.
+            var wait = rateLimitBaseDelayMs * (1 << k);
+            wait = wait / 2 + Random.Shared.Next(wait / 2 + 1);
+            if (cancellationToken.WaitHandle.WaitOne(wait)) cancellationToken.ThrowIfCancellationRequested();
+            Interlocked.Increment(ref rateLimitWaits);
+            (outcome, body) = Send(request);
+        }
         if (outcome != "HTTP_OK")
         {
             if (outcome is "BOUNDARY_SHA_MISMATCH" or "PREPARED_SHA_MISMATCH") budget.Halt(outcome);

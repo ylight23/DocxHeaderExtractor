@@ -28,6 +28,8 @@ internal sealed class ScanAgentSource : IAgentSource
     public const string Version = "SCAN_AGENT_SOURCE_V4", FactsVersion = "SCAN_LINE_FACTS_V4";
     public const string VlmProposedReading = "vlm-proposed", VlmTranscribedReading = "vlm-transcribed";
     public const int Overlap = 20, LowConfidence = 60, MaxLowConfidenceWords = 8;
+    /// <summary>Lines shown as context before and after a unit's own lines: enough to reach the heading of the section a unit's lines belong to.</summary>
+    public const int ContextLines = 40;
     /// <summary>A unit of scan lines holds at most this many lines.</summary>
     public const int CoreLines = 48;
 
@@ -53,6 +55,66 @@ internal sealed class ScanAgentSource : IAgentSource
         return cores;
     }
 
+    /// <summary>The paragraph experiment's units. Inside each page a line starts a paragraph where the space above it is large for that page: the
+    /// gap (the top of the line less the bottom of the line above) is capped at the page's 90th percentile, and the paragraph cut is the two-group
+    /// split of the capped gaps that separates them best (Otsu). A page's first line always starts a paragraph. Paragraphs longer than
+    /// <see cref="CoreLines"/> are sliced, and consecutive paragraphs are packed into units while a unit stays within <see cref="CoreLines"/> lines,
+    /// across pages. Only the measured gaps and the line counts decide; no fixed threshold and no text.</summary>
+    internal static IReadOnlyList<(int Start, int End)> ParagraphCores(IReadOnlyList<ScanLine> lines)
+    {
+        var starts = new bool[lines.Count];
+        for (var s = 0; s < lines.Count;)
+        {
+            var e = s; while (e < lines.Count && lines[e].Page == lines[s].Page) e++;
+            starts[s] = true;
+            var gaps = Enumerable.Range(s + 1, e - s - 1)
+                .Select(i => (double)Math.Max(0, lines[i].Primary.Box.Top - (lines[i - 1].Primary.Box.Top + lines[i - 1].Primary.Box.Height))).ToArray();
+            if (gaps.Length > 0)
+            {
+                var sorted = gaps.OrderBy(g => g).ToArray();
+                var top = sorted[Math.Min(sorted.Length - 1, (int)(0.9 * sorted.Length))];
+                var cut = OtsuCut(gaps.Select(g => Math.Min(g, top)).ToArray());
+                if (cut is { } c)
+                    for (var i = s + 1; i < e; i++)
+                        if (Math.Min(gaps[i - s - 1], top) > c) starts[i] = true;
+            }
+            s = e;
+        }
+        var pieces = new List<(int Start, int End)>();
+        for (var k = 0; k < lines.Count;)
+        {
+            var e = k + 1; while (e < lines.Count && !starts[e]) e++;
+            for (var q = k; q < e; q += CoreLines) pieces.Add((q, Math.Min(e, q + CoreLines)));
+            k = e;
+        }
+        var cores = new List<(int, int)>();
+        for (var u = 0; u < pieces.Count;)
+        {
+            var start = pieces[u].Start; var end = pieces[u].End; u++;
+            while (u < pieces.Count && pieces[u].End - start <= CoreLines) { end = pieces[u].End; u++; }
+            cores.Add((start, end));
+        }
+        return cores;
+    }
+
+    /// <summary>The split of values into two groups that separates them best, as the cut between the groups; null when there are fewer than three.</summary>
+    static double? OtsuCut(IReadOnlyList<double> values)
+    {
+        if (values.Count < 3) return null;
+        var v = values.OrderBy(x => x).ToArray();
+        var total = v.Sum();
+        double best = -1, cut = 0, left = 0;
+        for (var i = 1; i < v.Length; i++)
+        {
+            left += v[i - 1];
+            var a = (double)i; var b = v.Length - i;
+            var meanA = left / a; var meanB = (total - left) / b;
+            var score = a * b * (meanA - meanB) * (meanA - meanB);
+            if (score > best) { best = score; cut = (v[i - 1] + v[i]) / 2; }
+        }
+        return cut;
+    }
+
     public ScanOcrEvidence Evidence { get; }
     public string? EvidenceEntry { get; }
     public IReadOnlyList<ScanLine> ScanLines { get; }
@@ -75,11 +137,16 @@ internal sealed class ScanAgentSource : IAgentSource
     /// <summary>The type of each line measured on its page image (<see cref="ScanTypography"/>), by OCR line id; empty when not measured.</summary>
     public IReadOnlyDictionary<string, LineTypography> Typography { get; }
 
+    /// <summary>The frame drawn on the page (<see cref="ScanFrames"/>) that encloses each line, by OCR line id; a line outside every frame has no entry.</summary>
+    public IReadOnlyDictionary<string, DrawnFrame> Frames { get; }
+
     public ScanAgentSource(ScanOcrEvidence evidence, IReadOnlyList<VlmPageObservation>? vision = null, TranscriptionSet? transcriptions = null,
-        IReadOnlyDictionary<string, LineTypography>? typography = null, string? evidenceEntry = null)
+        IReadOnlyDictionary<string, LineTypography>? typography = null, string? evidenceEntry = null,
+        IReadOnlyDictionary<string, DrawnFrame>? frames = null, bool paragraphUnits = false)
     {
         EvidenceEntry = evidenceEntry;
         Typography = typography ?? new Dictionary<string, LineTypography>();
+        Frames = frames ?? new Dictionary<string, DrawnFrame>();
         Evidence = evidence;
         Vision = vision ?? [];
         Transcriptions = transcriptions;
@@ -118,7 +185,8 @@ internal sealed class ScanAgentSource : IAgentSource
 
         Facts = ComputeFacts();
         // Units follow the pages, as the PDF's do, and nothing else: neither the facts nor the text decide where a unit ends.
-        Cores = PageCores(lines.Select(l => l.Page).ToArray());
+        // Production cuts units at paragraph boundaries measured from the line gaps and packs them across pages; PageCores is the earlier cut (CLI --page-units).
+        Cores = paragraphUnits ? ParagraphCores(lines) : PageCores(lines.Select(l => l.Page).ToArray());
         StyleTable = new JsonObject
         {
             ["readBy"] = "the program: a scanned document has no font styles to count; what is known of a line's typography is in its facts (typography): measured on the page image from the line's own box, and a vision model's observation too when one was asked",
@@ -172,9 +240,9 @@ internal sealed class ScanAgentSource : IAgentSource
     public (string[] Decide, int[] Shown) Scope(int segment)
     {
         var (core, end) = Cores[segment];
-        var from = Math.Max(0, core - Overlap);
+        var from = Math.Max(0, core - ContextLines);
         return (Enumerable.Range(core, end - core).Select(i => Lines[i].Alias).ToArray(),
-            Enumerable.Range(from, Math.Min(Lines.Count, end + Overlap) - from).ToArray());
+            Enumerable.Range(from, Math.Min(Lines.Count, end + ContextLines) - from).ToArray());
     }
 
     static string Sha(string s) => Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(s)));
@@ -183,6 +251,8 @@ internal sealed class ScanAgentSource : IAgentSource
     {
         var result = new Dictionary<string, JsonObject>(StringComparer.Ordinal);
         var surface = ScanTextMeasurements.Build(Lines, DefaultReading);
+        // How many other lines of the document carry the same text word for word: a count, not a decision about the line.
+        var repeat = ScanLines.Select((l, i) => (k: Evidence_RepeatKey(Text(l.Alias)), i)).Where(x => x.k.Length > 0).ToLookup(x => x.k, x => x.i, StringComparer.Ordinal);
         foreach (var page in ScanLines.Select((l, i) => (l, i)).GroupBy(x => x.l.Page))
         {
             var items = page.ToArray();
@@ -197,6 +267,9 @@ internal sealed class ScanAgentSource : IAgentSource
                     ["page"] = new JsonObject { ["width"] = l.PageWidth, ["height"] = l.PageHeight },
                 };
                 if (right is { } r) { layout["leftMarginPx"] = box.Left; layout["rightMarginPx"] = r; layout["centredOffsetPx"] = (box.Left - r) / 2; }
+                // The rectangle drawn on the page around the line, measured on the image (OpenCV); absent when no drawn frame encloses it.
+                if (Frames.TryGetValue(l.Primary.Id, out var frame))
+                    layout["drawnFrame"] = new JsonObject { ["origin"] = "MEASURED_ON_IMAGE", ["left"] = frame.Left, ["top"] = frame.Top, ["width"] = frame.Width, ["height"] = frame.Height };
 
                 JsonObject typography;
                 if (Typography.TryGetValue(l.Primary.Id, out var mt))
@@ -224,6 +297,8 @@ internal sealed class ScanAgentSource : IAgentSource
                 };
                 if (chosen.TryGetValue(l.Alias, out var c))
                     node["visionReading"] = new JsonObject { ["origin"] = "VLM_OBSERVATION", ["choice"] = c.Choice, ["proposedReading"] = c.ProposedReading is { Length: > 0 } };
+                var key = Evidence_RepeatKey(Text(l.Alias));
+                node["repetition"] = new JsonObject { ["otherOccurrences"] = key.Length == 0 ? 0 : repeat[key].Count(j => j != index[l.Alias]) };
                 result[l.Alias] = node;
             }
         }

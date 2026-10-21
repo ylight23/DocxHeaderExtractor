@@ -138,7 +138,7 @@ public sealed class ScanVisionPreflight(string storeRoot, Func<HttpMessageHandle
             var request = Request(content);
             AgentProtocol.ModelTurn turn;
             using (var handler = factory())
-            using (var model = new AgentModel(handler, apiKey, budget, cancellationToken: ct))
+            using (var model = new AgentModel(handler, apiKey, budget, cancellationToken: ct, rateLimitRetries: AgentModel.ProductionRateLimitRetries))
             {
                 var refusal = budget.Admit(request);
                 if (refusal is not null) return Failed("BUDGET:" + refusal, lineIds, asked);

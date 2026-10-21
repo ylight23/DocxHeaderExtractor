@@ -1,1449 +1,1452 @@
 {
  "version": "SCAN_LINE_TEXT_GOLD_V1",
- "provenance": "CLAUDE_TRANSCRIBED_FROM_PAGE_IMAGES: read by Claude from the page images of the source, line by line; not reviewed by a person. Not human gold under the a99 gold policy.",
+ "provenance": "CHỐT 2026-10-21 bởi chủ dự án: 111 dòng của run s060 (scan-extract, hybrid store, paragraph units, one selection pass, sibling check) là Gold của 023. Chốt theo nội dung, không duyệt từng dòng. Khoản đánh số trong thân Điều không phải heading; mục đánh số và chữ cái của Phụ lục là heading. Gold cũ 120 dòng (Claude đọc từ ảnh, alias Tesseract) giữ tại 023_heading_lines.v0_replaced_2026-10-21.json.",
  "source": "todo10_8/generated-docx/01_phap_quy/023_ND_23-2015_Chung_thuc.docx",
  "sourceSha256": "29d8ec5a4037a7ad386940a3f9de5222564a9ce05343467b781d1018a714dc4e",
- "selection": "the 120 lines of the headings in ket-qua-023-v2.json; boxes are in pixels of the original page image",
+ "selection": "the 111 lines of the 86 headings of run s060 (selector scan-v6:SCAN_AGENT_SOURCE_V4:facts-in-request:instruction-fd013d02:selection-boundary-grouping-csharp-validation-v2:no-semantic-membership-veto); boxes are in pixels of the original page image",
  "lines": [
   {
    "n": 1,
    "page": 1,
    "box": {
-    "left": 799,
-    "top": 458,
-    "width": 218,
-    "height": 43
+    "left": 807,
+    "top": 456,
+    "width": 206,
+    "height": 36
    },
-   "alias": "P001-L005",
-   "text": "NGHỊ ĐỊNH"
+   "alias": "P001-L007",
+   "text": "NGHỊ ĐỊNH",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 2,
    "page": 1,
    "box": {
-    "left": 423,
-    "top": 494,
-    "width": 977,
+    "left": 427,
+    "top": 495,
+    "width": 973,
     "height": 44
    },
-   "alias": "P001-L006",
-   "text": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,"
+   "alias": "P001-L008",
+   "text": "Về cấp bản sao từ sổ gốc, chứng thực bản sao từ bản chính,",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 3,
    "page": 1,
    "box": {
-    "left": 467,
-    "top": 536,
-    "width": 889,
-    "height": 46
+    "left": 468,
+    "top": 543,
+    "width": 886,
+    "height": 38
    },
-   "alias": "P001-L007",
-   "text": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch"
+   "alias": "P001-L009",
+   "text": "chứng thực chữ ký và chứng thực hợp đồng, giao dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 4,
    "page": 1,
    "box": {
     "left": 834,
-    "top": 1024,
-    "width": 158,
+    "top": 1023,
+    "width": 155,
     "height": 34
    },
-   "alias": "P001-L012",
-   "text": "Chương I"
+   "alias": "P001-L014",
+   "text": "Chương I",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 5,
    "page": 1,
    "box": {
-    "left": 678,
-    "top": 1061,
-    "width": 470,
-    "height": 37
+    "left": 681,
+    "top": 1062,
+    "width": 464,
+    "height": 35
    },
-   "alias": "P001-L013",
-   "text": "NHỮNG QUY ĐỊNH CHUNG"
+   "alias": "P001-L015",
+   "text": "NHỮNG QUY ĐỊNH CHUNG",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 6,
    "page": 1,
    "box": {
-    "left": 380,
-    "top": 1133,
-    "width": 448,
-    "height": 43
+    "left": 381,
+    "top": 1140,
+    "width": 445,
+    "height": 29
    },
-   "alias": "P001-L014",
-   "text": "Điều 1. Phạm vi điều chỉnh"
+   "alias": "P001-L016",
+   "text": "Điều 1. Phạm vi điều chỉnh",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 7,
    "page": 1,
    "box": {
-    "left": 381,
-    "top": 1460,
-    "width": 415,
-    "height": 41
+    "left": 382,
+    "top": 1466,
+    "width": 413,
+    "height": 31
    },
-   "alias": "P001-L020",
-   "text": "Điều 2. Giải thích từ ngữ"
+   "alias": "P001-L022",
+   "text": "Điều 2. Giải thích từ ngữ",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 8,
    "page": 2,
    "box": {
-    "left": 391,
-    "top": 1247,
-    "width": 1139,
-    "height": 68
+    "left": 395,
+    "top": 1251,
+    "width": 1134,
+    "height": 47
    },
-   "alias": "P002-L022",
-   "text": "Điều 3. Giá trị pháp lý của bản sao được cấp từ sổ gốc, bản sao được"
+   "alias": "P002-L021",
+   "text": "Điều 3. Giá trị pháp lý của bản sao được",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 9,
-   "page": 2,
+   "page": 3,
    "box": {
-    "left": 313,
-    "top": 1296,
-    "width": 1216,
-    "height": 48
+    "left": 386,
+    "top": 153,
+    "width": 947,
+    "height": 51
    },
-   "alias": "P002-L023",
-   "text": "chứng thực từ bản chính, chữ ký được chứng thực và hợp đồng, giao dịch"
+   "alias": "P003-L001",
+   "text": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 10,
-   "page": 2,
+   "page": 3,
    "box": {
-    "left": 314,
-    "top": 1354,
-    "width": 281,
-    "height": 35
+    "left": 387,
+    "top": 522,
+    "width": 788,
+    "height": 42
    },
-   "alias": "P002-L024",
-   "text": "được chứng thực"
+   "alias": "P003-L007",
+   "text": "Điều 5. Thẩm quyền và trách nhiệm chứng thực",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 11,
-   "page": 3,
+   "page": 4,
    "box": {
-    "left": 382,
-    "top": 162,
-    "width": 952,
-    "height": 42
+    "left": 396,
+    "top": 1346,
+    "width": 1280,
+    "height": 44
    },
-   "alias": "P003-L002",
-   "text": "Điều 4. Thẩm quyền và trách nhiệm cấp bản sao từ sổ gốc"
+   "alias": "P004-L023",
+   "text": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 12,
-   "page": 3,
+   "page": 4,
    "box": {
-    "left": 383,
-    "top": 521,
-    "width": 793,
-    "height": 44
+    "left": 399,
+    "top": 1831,
+    "width": 1277,
+    "height": 42
    },
-   "alias": "P003-L008",
-   "text": "Điều 5. Thẩm quyền và trách nhiệm chứng thực"
+   "alias": "P004-L032",
+   "text": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 13,
-   "page": 4,
+   "page": 5,
    "box": {
-    "left": 392,
-    "top": 1354,
-    "width": 994,
-    "height": 36
+    "left": 389,
+    "top": 165,
+    "width": 896,
+    "height": 43
    },
-   "alias": "P004-L024",
-   "text": "Điều 6. Trách nhiệm của cơ quan, tổ chức tiếp nhận bản sao"
+   "alias": "P005-L001",
+   "text": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 14,
-   "page": 4,
+   "page": 5,
    "box": {
-    "left": 395,
-    "top": 1820,
-    "width": 778,
-    "height": 73
+    "left": 388,
+    "top": 642,
+    "width": 928,
+    "height": 41
    },
-   "alias": "P004-L033",
-   "text": "Điều 7. Thời hạn thực hiện yêu cầu chứng thực"
+   "alias": "P005-L010",
+   "text": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 15,
    "page": 5,
    "box": {
-    "left": 385,
-    "top": 159,
-    "width": 900,
-    "height": 50
+    "left": 397,
+    "top": 1803,
+    "width": 489,
+    "height": 35
    },
-   "alias": "P005-L001",
-   "text": "Điều 8. Quyền, nghĩa vụ của người yêu cầu chứng thực"
+   "alias": "P005-L031",
+   "text": "Điều 10. Địa điểm chứng thực",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 16,
-   "page": 5,
+   "page": 6,
    "box": {
-    "left": 387,
-    "top": 639,
-    "width": 930,
+    "left": 36,
+    "top": 486,
+    "width": 1484,
     "height": 44
    },
-   "alias": "P005-L010",
-   "text": "Điều 9. Nghĩa vụ, quyền của người thực hiện chứng thực"
+   "alias": "P006-L007",
+   "text": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 17,
-   "page": 5,
+   "page": 6,
    "box": {
-    "left": 395,
-    "top": 1796,
-    "width": 492,
-    "height": 43
+    "left": 390,
+    "top": 734,
+    "width": 314,
+    "height": 35
    },
-   "alias": "P005-L031",
-   "text": "Điều 10. Địa điểm chứng thực"
+   "alias": "P006-L011",
+   "text": "Điều 12. Lời chứng",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 18,
    "page": 6,
    "box": {
-    "left": 387,
-    "top": 484,
-    "width": 1134,
-    "height": 46
+    "left": 393,
+    "top": 1518,
+    "width": 669,
+    "height": 42
    },
-   "alias": "P006-L007",
-   "text": "Điều 11. Tiếng nói và chữ viết dùng trong chứng thực hợp đồng, giao dịch"
+   "alias": "P006-L024",
+   "text": "Điều 13. Sổ chứng thực và số chứng thực",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 19,
-   "page": 6,
+   "page": 7,
    "box": {
-    "left": 387,
-    "top": 727,
-    "width": 317,
-    "height": 42
+    "left": 390,
+    "top": 1219,
+    "width": 391,
+    "height": 30
    },
-   "alias": "P006-L011",
-   "text": "Điều 12. Lời chứng"
+   "alias": "P007-L019",
+   "text": "Điều 14. Chế độ lưu trữ",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 20,
-   "page": 6,
+   "page": 8,
    "box": {
-    "left": 391,
-    "top": 1516,
-    "width": 672,
-    "height": 44
+    "left": 392,
+    "top": 166,
+    "width": 665,
+    "height": 37
    },
-   "alias": "P006-L024",
-   "text": "Điều 13. Sổ chứng thực và số chứng thực"
+   "alias": "P008-L001",
+   "text": "Điều 15. Lệ phí chứng thực, chi phí khác",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 21,
-   "page": 7,
+   "page": 8,
    "box": {
-    "left": 389,
-    "top": 1212,
-    "width": 393,
-    "height": 42
+    "left": 834,
+    "top": 864,
+    "width": 170,
+    "height": 30
    },
-   "alias": "P007-L019",
-   "text": "Điều 14. Chế độ lưu trữ"
+   "alias": "P008-L013",
+   "text": "Chương II",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 22,
    "page": 8,
    "box": {
-    "left": 391,
-    "top": 160,
-    "width": 667,
-    "height": 43
+    "left": 334,
+    "top": 895,
+    "width": 1170,
+    "height": 42
    },
-   "alias": "P008-L001",
-   "text": "Điều 15. Lệ phí chứng thực, chi phí khác"
+   "alias": "P008-L014",
+   "text": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 23,
    "page": 8,
    "box": {
-    "left": 834,
-    "top": 864,
-    "width": 172,
-    "height": 43
+    "left": 719,
+    "top": 940,
+    "width": 398,
+    "height": 34
    },
-   "alias": "P008-L013",
-   "text": "Chương II"
+   "alias": "P008-L015",
+   "text": "CHỨNG THỰC CHỮ KÝ",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 24,
    "page": 8,
    "box": {
-    "left": 334,
-    "top": 897,
-    "width": 1171,
-    "height": 41
+    "left": 871,
+    "top": 1033,
+    "width": 94,
+    "height": 27
    },
-   "alias": "P008-L014",
-   "text": "CẤP BẢN SAO TỪ SỔ GỐC, CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH,"
+   "alias": "P008-L016",
+   "text": "Mục 1",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 25,
    "page": 8,
    "box": {
-    "left": 719,
-    "top": 932,
-    "width": 403,
-    "height": 48
+    "left": 698,
+    "top": 1067,
+    "width": 446,
+    "height": 35
    },
-   "alias": "P008-L015",
-   "text": "CHỨNG THỰC CHỮ KÝ"
+   "alias": "P008-L017",
+   "text": "CẤP BẢN SAO TỪ SỔ GỐC",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 26,
    "page": 8,
    "box": {
-    "left": 811,
-    "top": 1033,
-    "width": 298,
-    "height": 42
+    "left": 394,
+    "top": 1129,
+    "width": 1073,
+    "height": 45
    },
-   "alias": "P008-L016",
-   "text": "Mục 1"
+   "alias": "P008-L018",
+   "text": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 27,
    "page": 8,
    "box": {
-    "left": 697,
-    "top": 1068,
-    "width": 447,
-    "height": 33
-   },
-   "alias": "P008-L017",
-   "text": "CẤP BẢN SAO TỪ SỔ GỐC"
-  },
-  {
-   "n": 28,
-   "page": 8,
-   "box": {
-    "left": 390,
-    "top": 1129,
-    "width": 1078,
-    "height": 46
-   },
-   "alias": "P008-L018",
-   "text": "Điều 16. Cá nhân, tổ chức có quyền yêu cầu cấp bản sao từ sổ gốc"
-  },
-  {
-   "n": 29,
-   "page": 8,
-   "box": {
-    "left": 393,
+    "left": 397,
     "top": 1489,
-    "width": 634,
+    "width": 629,
     "height": 44
    },
    "alias": "P008-L024",
-   "text": "Điều 17. Thủ tục cấp bản sao từ sổ gốc"
+   "text": "Điều 17. Thủ tục cấp bản sao từ sổ gốc",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
+  },
+  {
+   "n": 28,
+   "page": 9,
+   "box": {
+    "left": 864,
+    "top": 595,
+    "width": 97,
+    "height": 28
+   },
+   "alias": "P009-L009",
+   "text": "Mục 2",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
+  },
+  {
+   "n": 29,
+   "page": 9,
+   "box": {
+    "left": 569,
+    "top": 629,
+    "width": 688,
+    "height": 37
+   },
+   "alias": "P009-L010",
+   "text": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 30,
    "page": 9,
    "box": {
-    "left": 861,
-    "top": 595,
-    "width": 101,
-    "height": 35
+    "left": 388,
+    "top": 704,
+    "width": 1127,
+    "height": 41
    },
-   "alias": "P009-L009",
-   "text": "Mục 2"
+   "alias": "P009-L011",
+   "text": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 31,
    "page": 9,
    "box": {
-    "left": 569,
-    "top": 629,
-    "width": 691,
-    "height": 46
+    "left": 309,
+    "top": 758,
+    "width": 160,
+    "height": 28
    },
-   "alias": "P009-L010",
-   "text": "CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH"
+   "alias": "P009-L012",
+   "text": "bản chính",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 32,
    "page": 9,
    "box": {
-    "left": 384,
-    "top": 702,
-    "width": 1136,
-    "height": 45
+    "left": 388,
+    "top": 1021,
+    "width": 1130,
+    "height": 40
    },
-   "alias": "P009-L011",
-   "text": "Điều 18. Giấy tờ, văn bản làm cơ sở để chứng thực bản sao từ"
+   "alias": "P009-L016",
+   "text": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 33,
    "page": 9,
    "box": {
-    "left": 308,
-    "top": 758,
-    "width": 163,
-    "height": 27
+    "left": 310,
+    "top": 1068,
+    "width": 808,
+    "height": 38
    },
-   "alias": "P009-L012",
-   "text": "bản chính"
+   "alias": "P009-L017",
+   "text": "người thực hiện chứng thực bản sao từ bản chính",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 34,
    "page": 9,
    "box": {
-    "left": 385,
-    "top": 1017,
-    "width": 1134,
-    "height": 44
+    "left": 389,
+    "top": 1468,
+    "width": 825,
+    "height": 37
    },
-   "alias": "P009-L016",
-   "text": "Điều 19. Trách nhiệm của người yêu cầu chứng thực bản sao và"
+   "alias": "P009-L024",
+   "text": "Điều 20. Thủ tục chứng thực bản sao từ bản chính",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 35,
-   "page": 9,
+   "page": 10,
    "box": {
-    "left": 309,
-    "top": 1068,
-    "width": 810,
-    "height": 39
+    "left": 34,
+    "top": 834,
+    "width": 1341,
+    "height": 37
    },
-   "alias": "P009-L017",
-   "text": "người thực hiện chứng thực bản sao từ bản chính"
+   "alias": "P010-L013",
+   "text": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 36,
-   "page": 9,
+   "page": 10,
    "box": {
-    "left": 387,
-    "top": 1464,
-    "width": 828,
-    "height": 41
+    "left": 396,
+    "top": 1232,
+    "width": 1280,
+    "height": 45
    },
-   "alias": "P009-L024",
-   "text": "Điều 20. Thủ tục chứng thực bản sao từ bản chính"
+   "alias": "P010-L021",
+   "text": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 37,
    "page": 10,
    "box": {
-    "left": 391,
-    "top": 828,
-    "width": 986,
-    "height": 43
-   },
-   "alias": "P010-L013",
-   "text": "Điều 21. Gia hạn thời gian chứng thực bản sao từ bản chính"
-  },
-  {
-   "n": 38,
-   "page": 10,
-   "box": {
-    "left": 392,
-    "top": 1232,
-    "width": 1135,
-    "height": 45
-   },
-   "alias": "P010-L021",
-   "text": "Điều 22. Bản chính giấy tờ, văn bản không được dùng làm cơ sở để"
-  },
-  {
-   "n": 39,
-   "page": 10,
-   "box": {
-    "left": 315,
+    "left": 34,
     "top": 1286,
-    "width": 322,
+    "width": 1642,
     "height": 36
    },
    "alias": "P010-L022",
-   "text": "chứng thực bản sao"
+   "text": "chứng thực bản sao",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
+  },
+  {
+   "n": 38,
+   "page": 11,
+   "box": {
+    "left": 860,
+    "top": 178,
+    "width": 98,
+    "height": 28
+   },
+   "alias": "P011-L001",
+   "text": "Mục 3",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
+  },
+  {
+   "n": 39,
+   "page": 11,
+   "box": {
+    "left": 709,
+    "top": 214,
+    "width": 396,
+    "height": 34
+   },
+   "alias": "P011-L002",
+   "text": "CHỨNG THỰC CHỮ KÝ",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 40,
    "page": 11,
    "box": {
-    "left": 857,
-    "top": 178,
-    "width": 101,
-    "height": 35
+    "left": 387,
+    "top": 283,
+    "width": 1124,
+    "height": 41
    },
-   "alias": "P011-L001",
-   "text": "Mục 3"
+   "alias": "P011-L003",
+   "text": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 41,
    "page": 11,
    "box": {
-    "left": 709,
-    "top": 206,
-    "width": 400,
-    "height": 51
+    "left": 307,
+    "top": 334,
+    "width": 572,
+    "height": 38
    },
-   "alias": "P011-L002",
-   "text": "CHỨNG THỰC CHỮ KÝ"
+   "alias": "P011-L004",
+   "text": "người thực hiện chứng thực chữ ký",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 42,
    "page": 11,
    "box": {
-    "left": 382,
-    "top": 279,
-    "width": 1130,
-    "height": 46
+    "left": 386,
+    "top": 719,
+    "width": 587,
+    "height": 36
    },
-   "alias": "P011-L003",
-   "text": "Điều 23. Trách nhiệm của người yêu cầu chứng thực chữ ký và"
+   "alias": "P011-L011",
+   "text": "Điều 24. Thủ tục chứng thực chữ ký",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 43,
-   "page": 11,
+   "page": 12,
    "box": {
-    "left": 306,
-    "top": 333,
-    "width": 576,
-    "height": 40
+    "left": 393,
+    "top": 565,
+    "width": 868,
+    "height": 38
    },
-   "alias": "P011-L004",
-   "text": "người thực hiện chứng thực chữ ký"
+   "alias": "P012-L008",
+   "text": "Điều 25. Trường hợp không được chứng thực chữ ký",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 44,
-   "page": 11,
+   "page": 12,
    "box": {
-    "left": 384,
-    "top": 716,
-    "width": 592,
-    "height": 40
+    "left": 394,
+    "top": 1144,
+    "width": 723,
+    "height": 42
    },
-   "alias": "P011-L011",
-   "text": "Điều 24. Thủ tục chứng thực chữ ký"
+   "alias": "P012-L018",
+   "text": "Điều 26. Áp dụng trong trường hợp đặc biệt",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 45,
    "page": 12,
    "box": {
-    "left": 391,
-    "top": 560,
-    "width": 873,
-    "height": 42
+    "left": 877,
+    "top": 1572,
+    "width": 98,
+    "height": 27
    },
-   "alias": "P012-L008",
-   "text": "Điều 25. Trường hợp không được chứng thực chữ ký"
+   "alias": "P012-L026",
+   "text": "Mục 4",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 46,
    "page": 12,
    "box": {
-    "left": 393,
-    "top": 1143,
-    "width": 728,
-    "height": 43
+    "left": 484,
+    "top": 1606,
+    "width": 882,
+    "height": 40
    },
-   "alias": "P012-L018",
-   "text": "Điều 26. Áp dụng trong trường hợp đặc biệt"
+   "alias": "P012-L027",
+   "text": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 47,
    "page": 12,
    "box": {
-    "left": 874,
-    "top": 1572,
-    "width": 102,
-    "height": 34
+    "left": 400,
+    "top": 1681,
+    "width": 751,
+    "height": 41
    },
-   "alias": "P012-L026",
-   "text": "Mục 4"
+   "alias": "P012-L028",
+   "text": "Điều 27. Tiêu chuẩn, điều kiện của người dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 48,
-   "page": 12,
+   "page": 13,
    "box": {
-    "left": 481,
-    "top": 1599,
-    "width": 888,
-    "height": 48
+    "left": 389,
+    "top": 175,
+    "width": 539,
+    "height": 39
    },
-   "alias": "P012-L027",
-   "text": "NGƯỜI DỊCH, CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH"
+   "alias": "P013-L001",
+   "text": "Điều 28. Cộng tác viên dịch thuật",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 49,
-   "page": 12,
+   "page": 13,
    "box": {
-    "left": 397,
-    "top": 1681,
-    "width": 755,
-    "height": 42
+    "left": 389,
+    "top": 926,
+    "width": 484,
+    "height": 35
    },
-   "alias": "P012-L028",
-   "text": "Điều 27. Tiêu chuẩn, điều kiện của người dịch"
+   "alias": "P013-L014",
+   "text": "Điều 29. Đăng ký chữ ký mẫu",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 50,
    "page": 13,
    "box": {
-    "left": 387,
-    "top": 174,
-    "width": 545,
-    "height": 41
+    "left": 390,
+    "top": 1224,
+    "width": 1131,
+    "height": 37
    },
-   "alias": "P013-L001",
-   "text": "Điều 28. Cộng tác viên dịch thuật"
+   "alias": "P013-L019",
+   "text": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 51,
    "page": 13,
    "box": {
-    "left": 388,
-    "top": 919,
-    "width": 487,
-    "height": 42
+    "left": 313,
+    "top": 1275,
+    "width": 296,
+    "height": 34
    },
-   "alias": "P013-L014",
-   "text": "Điều 29. Đăng ký chữ ký mẫu"
+   "alias": "P013-L020",
+   "text": "chữ ký người dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 52,
    "page": 13,
    "box": {
-    "left": 389,
-    "top": 1220,
-    "width": 1133,
-    "height": 41
+    "left": 394,
+    "top": 1702,
+    "width": 775,
+    "height": 37
    },
-   "alias": "P013-L019",
-   "text": "Điều 30. Trách nhiệm của người dịch và người thực hiện chứng thực"
+   "alias": "P013-L027",
+   "text": "Điều 31. Thủ tục chứng thực chữ ký người dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 53,
-   "page": 13,
+   "page": 14,
    "box": {
-    "left": 313,
-    "top": 1275,
-    "width": 298,
-    "height": 35
+    "left": 397,
+    "top": 1658,
+    "width": 1125,
+    "height": 43
    },
-   "alias": "P013-L020",
-   "text": "chữ ký người dịch"
+   "alias": "P014-L028",
+   "text": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 54,
-   "page": 13,
+   "page": 14,
    "box": {
-    "left": 392,
-    "top": 1697,
-    "width": 779,
-    "height": 42
+    "left": 318,
+    "top": 1711,
+    "width": 170,
+    "height": 34
    },
-   "alias": "P013-L027",
-   "text": "Điều 31. Thủ tục chứng thực chữ ký người dịch"
+   "alias": "P014-L029",
+   "text": "người dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 55,
-   "page": 14,
+   "page": 15,
    "box": {
-    "left": 393,
-    "top": 1657,
-    "width": 1132,
-    "height": 44
+    "left": 385,
+    "top": 438,
+    "width": 797,
+    "height": 39
    },
-   "alias": "P014-L028",
-   "text": "Điều 32. Giấy tờ, văn bản không được dịch để chứng thực chữ ký"
+   "alias": "P015-L006",
+   "text": "Điều 33. Thời hạn chứng thực chữ ký người dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 56,
-   "page": 14,
+   "page": 15,
    "box": {
-    "left": 317,
-    "top": 1711,
-    "width": 173,
-    "height": 35
+    "left": 821,
+    "top": 662,
+    "width": 183,
+    "height": 30
    },
-   "alias": "P014-L029",
-   "text": "người dịch"
+   "alias": "P015-L010",
+   "text": "Chương III",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 57,
    "page": 15,
    "box": {
-    "left": 384,
-    "top": 436,
-    "width": 799,
-    "height": 41
+    "left": 582,
+    "top": 701,
+    "width": 663,
+    "height": 35
    },
-   "alias": "P015-L006",
-   "text": "Điều 33. Thời hạn chứng thực chữ ký người dịch"
+   "alias": "P015-L011",
+   "text": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 58,
    "page": 15,
    "box": {
-    "left": 820,
-    "top": 662,
-    "width": 187,
-    "height": 42
+    "left": 387,
+    "top": 763,
+    "width": 807,
+    "height": 40
    },
-   "alias": "P015-L010",
-   "text": "Chương III"
+   "alias": "P015-L012",
+   "text": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 59,
    "page": 15,
    "box": {
-    "left": 582,
-    "top": 700,
-    "width": 667,
-    "height": 37
+    "left": 389,
+    "top": 997,
+    "width": 1131,
+    "height": 45
    },
-   "alias": "P015-L011",
-   "text": "CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH"
+   "alias": "P015-L016",
+   "text": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 60,
    "page": 15,
    "box": {
-    "left": 384,
-    "top": 759,
-    "width": 812,
-    "height": 45
+    "left": 309,
+    "top": 1048,
+    "width": 917,
+    "height": 38
    },
-   "alias": "P015-L012",
-   "text": "Điều 34. Phạm vi chứng thực hợp đồng, giao dịch"
+   "alias": "P015-L017",
+   "text": "dịch và người thực hiện chứng thực hợp đồng, giao dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 61,
    "page": 15,
    "box": {
-    "left": 385,
-    "top": 990,
-    "width": 1136,
-    "height": 52
+    "left": 391,
+    "top": 1523,
+    "width": 801,
+    "height": 38
    },
-   "alias": "P015-L016",
-   "text": "Điều 35. Trách nhiệm của người yêu cầu chứng thực hợp đồng, giao"
+   "alias": "P015-L026",
+   "text": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 62,
-   "page": 15,
+   "page": 16,
    "box": {
-    "left": 309,
-    "top": 1041,
-    "width": 919,
-    "height": 45
+    "left": 395,
+    "top": 1618,
+    "width": 1281,
+    "height": 42
    },
-   "alias": "P015-L017",
-   "text": "dịch và người thực hiện chứng thực hợp đồng, giao dịch"
+   "alias": "P016-L030",
+   "text": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 63,
-   "page": 15,
+   "page": 16,
    "box": {
-    "left": 388,
-    "top": 1517,
-    "width": 806,
-    "height": 44
+    "left": 397,
+    "top": 1856,
+    "width": 1094,
+    "height": 45
    },
-   "alias": "P015-L026",
-   "text": "Điều 36. Thủ tục chứng thực hợp đồng, giao dịch"
+   "alias": "P016-L034",
+   "text": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 64,
-   "page": 16,
+   "page": 17,
    "box": {
-    "left": 391,
-    "top": 1616,
-    "width": 828,
-    "height": 44
+    "left": 389,
+    "top": 552,
+    "width": 1098,
+    "height": 42
    },
-   "alias": "P016-L031",
-   "text": "Điều 37. Thời hạn chứng thực hợp đồng, giao dịch"
+   "alias": "P017-L009",
+   "text": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 65,
-   "page": 16,
+   "page": 17,
    "box": {
-    "left": 393,
-    "top": 1855,
-    "width": 1100,
-    "height": 46
+    "left": 389,
+    "top": 1039,
+    "width": 1129,
+    "height": 42
    },
-   "alias": "P016-L035",
-   "text": "Điều 38. Chứng thực việc sửa đổi, bổ sung, hủy bỏ hợp đồng, giao dịch"
+   "alias": "P017-L018",
+   "text": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 66,
    "page": 17,
    "box": {
-    "left": 385,
-    "top": 550,
-    "width": 1103,
-    "height": 44
+    "left": 310,
+    "top": 1091,
+    "width": 408,
+    "height": 35
    },
-   "alias": "P017-L009",
-   "text": "Điều 39. Sửa lỗi sai sót trong hợp đồng, giao dịch đã được chứng thực"
+   "alias": "P017-L019",
+   "text": "dịch đã được chứng thực",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 67,
    "page": 17,
    "box": {
-    "left": 386,
-    "top": 1035,
-    "width": 1132,
-    "height": 47
+    "left": 827,
+    "top": 1751,
+    "width": 182,
+    "height": 31
    },
-   "alias": "P017-L018",
-   "text": "Điều 40. Cấp bản sao có chứng thực từ bản chính hợp đồng, giao"
+   "alias": "P017-L031",
+   "text": "Chương IV",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 68,
    "page": 17,
    "box": {
-    "left": 309,
-    "top": 1091,
-    "width": 410,
-    "height": 35
+    "left": 577,
+    "top": 1784,
+    "width": 685,
+    "height": 43
    },
-   "alias": "P017-L019",
-   "text": "dịch đã được chứng thực"
+   "alias": "P017-L032",
+   "text": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 69,
    "page": 17,
    "box": {
-    "left": 638,
-    "top": 1752,
-    "width": 374,
-    "height": 43
+    "left": 394,
+    "top": 1866,
+    "width": 1129,
+    "height": 39
    },
-   "alias": "P017-L031",
-   "text": "Chương IV"
+   "alias": "P017-L033",
+   "text": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 70,
    "page": 17,
    "box": {
-    "left": 576,
-    "top": 1787,
-    "width": 687,
-    "height": 41
+    "left": 316,
+    "top": 1916,
+    "width": 183,
+    "height": 34
    },
-   "alias": "P017-L032",
-   "text": "QUẢN LÝ NHÀ NƯỚC VỀ CHỨNG THỰC"
+   "alias": "P017-L034",
+   "text": "chứng thực",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 71,
-   "page": 17,
+   "page": 18,
    "box": {
     "left": 391,
-    "top": 1859,
-    "width": 1132,
-    "height": 46
+    "top": 840,
+    "width": 1131,
+    "height": 37
    },
-   "alias": "P017-L033",
-   "text": "Điều 41. Trách nhiệm của Bộ Tư pháp trong quản lý nhà nước về"
+   "alias": "P018-L012",
+   "text": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 72,
-   "page": 17,
-   "box": {
-    "left": 315,
-    "top": 1916,
-    "width": 186,
-    "height": 35
-   },
-   "alias": "P017-L034",
-   "text": "chứng thực"
-  },
-  {
-   "n": 73,
-   "page": 18,
-   "box": {
-    "left": 389,
-    "top": 833,
-    "width": 1134,
-    "height": 44
-   },
-   "alias": "P018-L012",
-   "text": "Điều 42. Trách nhiệm của Bộ Ngoại giao trong quản lý nhà nước về"
-  },
-  {
-   "n": 74,
    "page": 18,
    "box": {
     "left": 314,
     "top": 886,
-    "width": 184,
-    "height": 35
+    "width": 183,
+    "height": 34
    },
    "alias": "P018-L013",
-   "text": "chứng thực"
+   "text": "chứng thực",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
+  },
+  {
+   "n": 73,
+   "page": 19,
+   "box": {
+    "left": 385,
+    "top": 333,
+    "width": 1125,
+    "height": 43
+   },
+   "alias": "P019-L004",
+   "text": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
+  },
+  {
+   "n": 74,
+   "page": 19,
+   "box": {
+    "left": 309,
+    "top": 388,
+    "width": 392,
+    "height": 34
+   },
+   "alias": "P019-L005",
+   "text": "nhà nước về chứng thực",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 75,
-   "page": 19,
+   "page": 20,
    "box": {
-    "left": 384,
-    "top": 328,
-    "width": 1128,
-    "height": 50
+    "left": 399,
+    "top": 1863,
+    "width": 376,
+    "height": 35
    },
-   "alias": "P019-L004",
-   "text": "Điều 43. Trách nhiệm của Ủy ban nhân dân các cấp trong quản lý"
+   "alias": "P020-L031",
+   "text": "Điều 44. Xử lý vi phạm",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 76,
-   "page": 19,
+   "page": 21,
    "box": {
-    "left": 308,
-    "top": 388,
-    "width": 394,
-    "height": 35
+    "left": 388,
+    "top": 435,
+    "width": 923,
+    "height": 45
    },
-   "alias": "P019-L005",
-   "text": "nhà nước về chứng thực"
+   "alias": "P021-L006",
+   "text": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 77,
-   "page": 20,
+   "page": 21,
    "box": {
-    "left": 397,
-    "top": 1857,
-    "width": 380,
-    "height": 41
+    "left": 833,
+    "top": 686,
+    "width": 166,
+    "height": 29
    },
-   "alias": "P020-L031",
-   "text": "Điều 44. Xử lý vi phạm"
+   "alias": "P021-L010",
+   "text": "Chương V",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 78,
    "page": 21,
    "box": {
-    "left": 385,
-    "top": 444,
-    "width": 926,
-    "height": 38
+    "left": 706,
+    "top": 726,
+    "width": 420,
+    "height": 29
    },
-   "alias": "P021-L007",
-   "text": "Điều 45. Khiếu nại, tố cáo và giải quyết khiếu nại, tố cáo"
+   "alias": "P021-L011",
+   "text": "ĐIỀU KHOẢN THI HÀNH",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 79,
    "page": 21,
    "box": {
-    "left": 833,
-    "top": 686,
-    "width": 170,
-    "height": 34
+    "left": 390,
+    "top": 784,
+    "width": 948,
+    "height": 41
    },
-   "alias": "P021-L011",
-   "text": "Chương V"
+   "alias": "P021-L012",
+   "text": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 80,
    "page": 21,
    "box": {
-    "left": 705,
-    "top": 721,
-    "width": 424,
-    "height": 34
+    "left": 389,
+    "top": 1001,
+    "width": 535,
+    "height": 41
    },
-   "alias": "P021-L012",
-   "text": "ĐIỀU KHOẢN THI HÀNH"
+   "alias": "P021-L016",
+   "text": "Điều 47. Điều khoản chuyển tiếp",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 81,
    "page": 21,
    "box": {
-    "left": 386,
-    "top": 781,
-    "width": 952,
-    "height": 46
+    "left": 391,
+    "top": 1506,
+    "width": 432,
+    "height": 30
    },
-   "alias": "P021-L013",
-   "text": "Điều 46. Nhiệm vụ của các tổ chức hành nghề công chứng"
+   "alias": "P021-L026",
+   "text": "Điều 48. Hiệu lực thi hành",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 82,
-   "page": 21,
+   "page": 22,
    "box": {
-    "left": 387,
-    "top": 993,
-    "width": 537,
-    "height": 50
+    "left": 390,
+    "top": 179,
+    "width": 501,
+    "height": 29
    },
-   "alias": "P021-L017",
-   "text": "Điều 47. Điều khoản chuyển tiếp"
+   "alias": "P022-L001",
+   "text": "Điều 49. Trách nhiệm thi hành",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 83,
-   "page": 21,
+   "page": 23,
    "box": {
-    "left": 390,
-    "top": 1500,
-    "width": 435,
-    "height": 42
+    "left": 438,
+    "top": 89,
+    "width": 781,
+    "height": 265
    },
-   "alias": "P021-L027",
-   "text": "Điều 48. Hiệu lực thi hành"
+   "alias": "P023-L001",
+   "text": "Phụ lục MẪU LỜI CHỨNG, MẪU SỔ CHỨNG THỰC (Ban hành kèm theo Nghị định số 23/2015/NĐ- ngày 02 tháng 02 năm 2015 của Chính phủ,",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 84,
-   "page": 22,
+   "page": 23,
    "box": {
-    "left": 389,
-    "top": 172,
-    "width": 504,
-    "height": 43
+    "left": 371,
+    "top": 479,
+    "width": 237,
+    "height": 33
    },
-   "alias": "P022-L002",
-   "text": "Điều 49. Trách nhiệm thi hành"
+   "alias": "P023-L002",
+   "text": "I. LỜI CHỨNG",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 85,
    "page": 23,
    "box": {
-    "left": 834,
-    "top": 191,
-    "width": 122,
-    "height": 34
+    "left": 374,
+    "top": 621,
+    "width": 700,
+    "height": 37
    },
-   "alias": "P023-L001",
-   "text": "Phụ lục"
+   "alias": "P023-L004",
+   "text": "1. Lời chứng chứng thực bản sao từ bản chính",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 86,
    "page": 23,
    "box": {
-    "left": 368,
-    "top": 479,
-    "width": 242,
-    "height": 33
+    "left": 367,
+    "top": 973,
+    "width": 493,
+    "height": 37
    },
-   "alias": "P023-L002",
-   "text": "I. LỜI CHỨNG"
+   "alias": "P023-L009",
+   "text": "2. Lời chứng chứng thực chữ ký",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 87,
    "page": 23,
    "box": {
-    "left": 371,
-    "top": 621,
-    "width": 706,
-    "height": 37
+    "left": 366,
+    "top": 1042,
+    "width": 1032,
+    "height": 38
    },
-   "alias": "P023-L004",
-   "text": "1. Lời chứng chứng thực bản sao từ bản chính"
+   "alias": "P023-L010",
+   "text": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 88,
    "page": 23,
    "box": {
-    "left": 366,
-    "top": 974,
-    "width": 497,
-    "height": 35
+    "left": 367,
+    "top": 1877,
+    "width": 1131,
+    "height": 39
    },
-   "alias": "P023-L009",
-   "text": "2. Lời chứng chứng thực chữ ký"
+   "alias": "P023-L023",
+   "text": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 89,
    "page": 23,
    "box": {
-    "left": 366,
-    "top": 1035,
-    "width": 1035,
-    "height": 45
+    "left": 291,
+    "top": 1926,
+    "width": 114,
+    "height": 28
    },
-   "alias": "P023-L010",
-   "text": "a) Lời chứng chứng thực chữ ký của một người trong một giấy tờ, văn bản"
+   "alias": "P023-L024",
+   "text": "văn bản",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 90,
-   "page": 23,
+   "page": 24,
    "box": {
-    "left": 365,
-    "top": 1870,
-    "width": 1133,
-    "height": 46
+    "left": 34,
+    "top": 1261,
+    "width": 1644,
+    "height": 50
    },
-   "alias": "P023-L017",
-   "text": "b) Lời chứng chứng thực chữ ký của nhiều người trong một giấy tờ,"
+   "alias": "P024-L019",
+   "text": "c) Lời chứng chứng thực điểm chỉ",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 91,
-   "page": 23,
+   "page": 25,
    "box": {
-    "left": 288,
-    "top": 1925,
-    "width": 119,
-    "height": 28
+    "left": 374,
+    "top": 180,
+    "width": 1126,
+    "height": 41
    },
-   "alias": "P023-L018",
-   "text": "văn bản"
+   "alias": "P025-L001",
+   "text": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 92,
-   "page": 24,
+   "page": 25,
    "box": {
-    "left": 377,
-    "top": 1267,
-    "width": 524,
-    "height": 44
+    "left": 296,
+    "top": 230,
+    "width": 131,
+    "height": 29
    },
-   "alias": "P024-L014",
-   "text": "c) Lời chứng chứng thực điểm chỉ"
+   "alias": "P025-L002",
+   "text": "chỉ được",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 93,
    "page": 25,
    "box": {
-    "left": 373,
-    "top": 173,
-    "width": 1130,
-    "height": 49
+    "left": 369,
+    "top": 1087,
+    "width": 669,
+    "height": 37
    },
-   "alias": "P025-L001",
-   "text": "d) Lời chứng chứng thực trong trường hợp không thể ký, điểm"
+   "alias": "P025-L015",
+   "text": "3. Lời chứng chứng thực chữ ký người dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 94,
-   "page": 25,
+   "page": 26,
    "box": {
-    "left": 368,
-    "top": 1088,
-    "width": 673,
-    "height": 35
+    "left": 36,
+    "top": 322,
+    "width": 1037,
+    "height": 45
    },
-   "alias": "P025-L015",
-   "text": "3. Lời chứng chứng thực chữ ký người dịch"
+   "alias": "P026-L004",
+   "text": "4. Lời chứng chứng thực hợp đồng, giao dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 95,
    "page": 26,
    "box": {
-    "left": 380,
-    "top": 323,
-    "width": 695,
-    "height": 43
+    "left": 32,
+    "top": 399,
+    "width": 1041,
+    "height": 44
    },
-   "alias": "P026-L003",
-   "text": "4. Lời chứng chứng thực hợp đồng, giao dịch"
+   "alias": "P026-L005",
+   "text": "a) Lời chứng chứng thực hợp đồng, giao dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 96,
-   "page": 26,
-   "box": {
-    "left": 379,
-    "top": 399,
-    "width": 697,
-    "height": 43
-   },
-   "alias": "P026-L004",
-   "text": "a) Lời chứng chứng thực hợp đồng, giao dịch"
-  },
-  {
-   "n": 97,
    "page": 27,
    "box": {
-    "left": 367,
-    "top": 195,
-    "width": 947,
+    "left": 369,
+    "top": 194,
+    "width": 942,
     "height": 44
    },
    "alias": "P027-L001",
-   "text": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản"
+   "text": "b) Lời chứng chứng thực văn bản thỏa thuận phân chia di sản",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
+  },
+  {
+   "n": 97,
+   "page": 28,
+   "box": {
+    "left": 386,
+    "top": 190,
+    "width": 770,
+    "height": 37
+   },
+   "alias": "P028-L002",
+   "text": "c) Lời chứng chứng thực văn bản khai nhận di sản",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 98,
    "page": 28,
    "box": {
-    "left": 386,
-    "top": 191,
-    "width": 773,
-    "height": 35
+    "left": 378,
+    "top": 1428,
+    "width": 1298,
+    "height": 37
    },
-   "alias": "P028-L001",
-   "text": "c) Lời chứng chứng thực văn bản khai nhận di sản"
+   "alias": "P028-L021",
+   "text": "d) Lời chứng chứng thực di chúc",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 99,
-   "page": 28,
+   "page": 29,
    "box": {
-    "left": 377,
-    "top": 1429,
-    "width": 506,
-    "height": 36
+    "left": 372,
+    "top": 786,
+    "width": 816,
+    "height": 39
    },
-   "alias": "P028-L015",
-   "text": "d) Lời chứng chứng thực di chúc"
+   "alias": "P029-L010",
+   "text": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 100,
-   "page": 29,
+   "page": 30,
    "box": {
-    "left": 371,
-    "top": 780,
-    "width": 820,
-    "height": 46
+    "left": 388,
+    "top": 192,
+    "width": 168,
+    "height": 28
    },
-   "alias": "P029-L010",
-   "text": "đ) Lời chứng chứng thực văn bản từ chối nhận di sản"
+   "alias": "P030-L001",
+   "text": "Chú thích:",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 101,
    "page": 30,
    "box": {
-    "left": 388,
-    "top": 192,
-    "width": 169,
-    "height": 28
+    "left": 382,
+    "top": 1727,
+    "width": 444,
+    "height": 34
    },
-   "alias": "P030-L001",
-   "text": "Chú thích:"
+   "alias": "P030-L025",
+   "text": "II. MẪU SỔ CHỨNG THỰC",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 102,
-   "page": 30,
+   "page": 31,
    "box": {
     "left": 379,
-    "top": 1726,
-    "width": 447,
-    "height": 39
+    "top": 197,
+    "width": 130,
+    "height": 29
    },
-   "alias": "P030-L026",
-   "text": "II. MẪU SỔ CHỨNG THỰC"
+   "alias": "P031-L002",
+   "text": "1. Bìa sổ",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 103,
    "page": 31,
    "box": {
-    "left": 376,
-    "top": 198,
-    "width": 133,
-    "height": 27
+    "left": 373,
+    "top": 297,
+    "width": 596,
+    "height": 43
    },
-   "alias": "P031-L001",
-   "text": "1. Bìa sổ"
+   "alias": "P031-L003",
+   "text": "a) Sổ Chứng thực bản sao từ bản chính",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 104,
    "page": 31,
    "box": {
-    "left": 372,
-    "top": 297,
-    "width": 599,
+    "left": 390,
+    "top": 1216,
+    "width": 714,
     "height": 43
    },
-   "alias": "P031-L002",
-   "text": "a) Sổ Chứng thực bản sao từ bản chính"
+   "alias": "P031-L011",
+   "text": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 105,
-   "page": 31,
+   "page": 32,
    "box": {
-    "left": 510,
-    "top": 574,
-    "width": 808,
-    "height": 44
+    "left": 407,
+    "top": 186,
+    "width": 561,
+    "height": 37
    },
-   "alias": "P031-L005",
-   "text": "SỔ CHỨNG THỰC BẢN SAO TỪ BẢN CHÍNH"
+   "alias": "P032-L002",
+   "text": "c) Sổ Chứng thực chữ ký người dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 106,
-   "page": 31,
+   "page": 32,
    "box": {
-    "left": 387,
-    "top": 1215,
-    "width": 720,
-    "height": 44
+    "left": 34,
+    "top": 1043,
+    "width": 936,
+    "height": 43
    },
-   "alias": "P031-L010",
-   "text": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ"
+   "alias": "P032-L010",
+   "text": "d) Sổ Chứng thực hợp đồng, giao dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 107,
-   "page": 31,
+   "page": 33,
    "box": {
-    "left": 421,
-    "top": 1540,
-    "width": 977,
-    "height": 44
+    "left": 401,
+    "top": 554,
+    "width": 226,
+    "height": 34
    },
-   "alias": "P031-L013",
-   "text": "SỔ CHỨNG THỰC CHỮ KÝ/CHỨNG THỰC ĐIỂM CHỈ"
+   "alias": "P033-L007",
+   "text": "2. Nội dung sổ",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 108,
-   "page": 32,
+   "page": 33,
    "box": {
-    "left": 406,
-    "top": 179,
-    "width": 565,
-    "height": 43
+    "left": 400,
+    "top": 627,
+    "width": 589,
+    "height": 38
    },
-   "alias": "P032-L001",
-   "text": "c) Sổ Chứng thực chữ ký người dịch"
+   "alias": "P033-L008",
+   "text": "a) Sổ chứng thực bản sao từ bản chính",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 109,
-   "page": 32,
+   "page": 33,
    "box": {
-    "left": 612,
-    "top": 280,
-    "width": 632,
-    "height": 35
+    "left": 390,
+    "top": 1597,
+    "width": 717,
+    "height": 37
    },
-   "alias": "P032-L002",
-   "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+   "alias": "P033-L025",
+   "text": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 110,
-   "page": 32,
+   "page": 34,
    "box": {
-    "left": 725,
-    "top": 321,
-    "width": 403,
-    "height": 31
+    "left": 399,
+    "top": 989,
+    "width": 562,
+    "height": 36
    },
-   "alias": "P032-L003",
-   "text": "Độc lập - Tự do - Hạnh phúc"
+   "alias": "P034-L018",
+   "text": "c) Sổ Chứng thực chữ ký người dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   },
   {
    "n": 111,
-   "page": 32,
-   "box": {
-    "left": 550,
-    "top": 451,
-    "width": 752,
-    "height": 44
-   },
-   "alias": "P032-L004",
-   "text": "SỔ CHỨNG THỰC CHỮ KÝ NGƯỜI DỊCH"
-  },
-  {
-   "n": 112,
-   "page": 32,
-   "box": {
-    "left": 379,
-    "top": 1043,
-    "width": 593,
-    "height": 42
-   },
-   "alias": "P032-L009",
-   "text": "d) Sổ Chứng thực hợp đồng, giao dịch"
-  },
-  {
-   "n": 113,
-   "page": 32,
-   "box": {
-    "left": 601,
-    "top": 1150,
-    "width": 634,
-    "height": 34
-   },
-   "alias": "P032-L010",
-   "text": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
-  },
-  {
-   "n": 114,
-   "page": 32,
-   "box": {
-    "left": 715,
-    "top": 1190,
-    "width": 405,
-    "height": 31
-   },
-   "alias": "P032-L011",
-   "text": "Độc lập - Tự do - Hạnh phúc"
-  },
-  {
-   "n": 115,
-   "page": 32,
-   "box": {
-    "left": 524,
-    "top": 1295,
-    "width": 786,
-    "height": 42
-   },
-   "alias": "P032-L012",
-   "text": "SỔ CHỨNG THỰC HỢP ĐỒNG, GIAO DỊCH"
-  },
-  {
-   "n": 116,
-   "page": 33,
-   "box": {
-    "left": 399,
-    "top": 545,
-    "width": 228,
-    "height": 43
-   },
-   "alias": "P033-L007",
-   "text": "2. Nội dung sổ"
-  },
-  {
-   "n": 117,
-   "page": 33,
-   "box": {
-    "left": 399,
-    "top": 618,
-    "width": 593,
-    "height": 47
-   },
-   "alias": "P033-L008",
-   "text": "a) Sổ chứng thực bản sao từ bản chính"
-  },
-  {
-   "n": 118,
-   "page": 33,
-   "box": {
-    "left": 388,
-    "top": 1589,
-    "width": 721,
-    "height": 45
-   },
-   "alias": "P033-L029",
-   "text": "b) Sổ Chứng thực chữ ký/chứng thực điểm chỉ"
-  },
-  {
-   "n": 119,
-   "page": 34,
-   "box": {
-    "left": 399,
-    "top": 983,
-    "width": 565,
-    "height": 42
-   },
-   "alias": "P034-L018",
-   "text": "c) Sổ Chứng thực chữ ký người dịch"
-  },
-  {
-   "n": 120,
    "page": 34,
    "box": {
     "left": 406,
-    "top": 1612,
-    "width": 585,
-    "height": 44
+    "top": 1619,
+    "width": 582,
+    "height": 37
    },
    "alias": "P034-L030",
-   "text": "d) Sổ chứng thực hợp đồng, giao dịch"
+   "text": "d) Sổ chứng thực hợp đồng, giao dịch",
+   "reviewStatus": "OWNER_ACCEPTED_WHOLESALE_2026-10-21"
   }
  ]
 }

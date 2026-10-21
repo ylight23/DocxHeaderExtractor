@@ -73,8 +73,8 @@ public sealed class ScanTextMeasurementsTests
     [Fact]
     public void Adding_measurements_keeps_the_scan_system_prompt_and_user_instruction_byte_for_byte()
     {
-        Assert.Equal("303a6aecf08e63dc4c403370cbd4cc22365b1e7dbabdb097f4041ecc766e5885", AgentProtocol.Sha(ScanAgentProtocol.SystemPrompt));
+        Assert.Equal("5e166a6325dd6c90dc914ca266b04392b691d1157ab619aeb81735621a751383", AgentProtocol.Sha(ScanAgentProtocol.SystemPrompt));
         // The instruction now also says every fact is a measurement to weigh and none decides on its own; no example, no scope decision (2026-10-20).
-        Assert.Equal("17d4b6a950b2d940cf2112170a5efb83df22aa508f8a6920e796d1326d85bdd2", AgentProtocol.Sha(ScanAgentProtocol.Instruction));
+        Assert.Equal("fd013d024c87d41eec392ed4cd03d61bb29842dfc56d0000f0050154342d23b3", AgentProtocol.Sha(ScanAgentProtocol.Instruction));
     }
 }

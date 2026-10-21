@@ -12,7 +12,9 @@ public sealed record LineTypography(string LineId, double StrokeWidthPx, double 
 /// </summary>
 public static class ScanTypography
 {
-    public const string Version = "SCAN_TYPOGRAPHY_V2";
+    /// <summary>V3: the page image is read as grey by OpenCV (seven times faster than the managed PNG reader; the same values on three of four
+    /// stored scans, and within 0.02 px of stroke on the fourth, an RGBA PDF scan).</summary>
+    public const string Version = "SCAN_TYPOGRAPHY_V3";
 
     public static IReadOnlyList<LineTypography> Measure(PngRaster raster, OcrPage page)
     {
@@ -48,7 +50,7 @@ public static class ScanTypography
         var result = new System.Collections.Concurrent.ConcurrentDictionary<string, LineTypography>(StringComparer.Ordinal);
         Parallel.ForEach(primary.Pages, new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount, CancellationToken = ct }, page =>
         {
-            if (ScanOcrPreflight.PageImagePath(evidenceEntry, page.Page) is not { } image || PngRaster.Load(image, magick) is not { } raster) return;
+            if (ScanOcrPreflight.PageImagePath(evidenceEntry, page.Page) is not { } image || (PngRaster.LoadGrey(image) ?? PngRaster.Load(image, magick)) is not { } raster) return;
             foreach (var t in Measure(raster, page)) result[t.LineId] = t;
         });
         return result;

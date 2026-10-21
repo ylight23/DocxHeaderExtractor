@@ -111,7 +111,7 @@ static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationTok
     var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
     if (string.IsNullOrWhiteSpace(key)) { Console.Error.WriteLine("Chưa có OPENROUTER_API_KEY."); return 2; }
     var root = o.OutputPath ?? ".dhx-evidence";
-    var selector = new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(root, parallelism: o.Jobs, vision: o.Vision, reuseSelection: !o.FreshSelection,
+    var selector = new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(root, parallelism: o.Jobs, vision: o.Vision, reuseSelection: !o.FreshSelection, paragraphUnits: o.ParagraphUnits, segmentedLines: o.SegmentedLines,
         onModelReply: o.ShowRawOutput ? r => PrintModelReply(r) : null,
         transcriptionOptions: o.Jobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null,
         visionOptions: o.Jobs is { } seeJobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null);
@@ -301,7 +301,8 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
 // --show-raw: what the model streamed and wrote for one reply. Reasoning and content are the model's own text.
 static void PrintModelReply(DocxHeaderExtractor.HeadingAgent.ModelReply r)
 {
-    Console.Error.WriteLine($"--- [{r.Unit}] lượt {r.Turn} ({r.FinishReason ?? "—"}) ---");
+    var request = r.RequestSha256.Length >= 12 ? r.RequestSha256[..12] : "-";
+    Console.Error.WriteLine($"--- [{r.Unit}] lượt {r.Turn} ({r.FinishReason ?? "—"}) req={request} preceding={r.PrecedingSelected ?? "-"} ---");
     if (!string.IsNullOrEmpty(r.Reasoning)) Console.Error.WriteLine($"[suy luận]\n{r.Reasoning}");
     foreach (var c in r.ToolCalls) Console.Error.WriteLine($"[gọi tool] {c.Name} {c.Arguments}");
     foreach (var x in r.ToolResults) Console.Error.WriteLine($"[kết quả tool trước lượt này] {x.Content}");

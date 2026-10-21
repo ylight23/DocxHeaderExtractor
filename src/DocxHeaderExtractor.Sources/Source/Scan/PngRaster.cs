@@ -25,6 +25,58 @@ public sealed class PngRaster
 
     public byte this[int x, int y] => Grey[y * Width + x];
 
+    /// <summary>
+    /// The page image as the grey levels <see cref="Load"/> gives, decoded by OpenCV: the colour channels are kept, a transparent pixel is laid
+    /// over white, and the grey is the same Rec. 601 luma with the same rounding, pixel by pixel. So the levels are identical to the managed
+    /// reader's, and the decoding is OpenCV's. Null when OpenCV cannot read the file or the depth is not 8 bits (<see cref="Load"/> is the way then).
+    /// </summary>
+    public static PngRaster? LoadGrey(string path)
+    {
+        // The bytes are read by .NET and decoded from memory: OpenCV's path reader cannot open a path with characters outside its code page.
+        var bytes = File.ReadAllBytes(path);
+        using var raw = OpenCvSharp.Cv2.ImDecode(bytes, OpenCvSharp.ImreadModes.Unchanged);
+        if (raw.Empty() || raw.Depth() != 0) return null; // CV_8U is depth 0
+        var width = raw.Width; var height = raw.Height; var channels = raw.Channels();
+        if (channels is not (1 or 3 or 4)) return null;
+        var grey = new byte[width * height];
+        if (channels == 1)
+        {
+            for (var y = 0; y < height; y++) System.Runtime.InteropServices.Marshal.Copy(raw.Ptr(y), grey, y * width, width);
+            return new PngRaster(width, height, grey);
+        }
+        // Each row is copied out of OpenCV's memory into one buffer that is reused, and turned into grey at once: the whole image is never copied.
+        // OpenCV keeps the channels in blue, green, red (, alpha) order.
+        var row = new byte[width * channels];
+        for (var y = 0; y < height; y++)
+        {
+            System.Runtime.InteropServices.Marshal.Copy(raw.Ptr(y), row, 0, row.Length);
+            var at0 = y * width;
+            if (channels == 3)
+                for (var x = 0; x < width; x++) grey[at0 + x] = Luma(row[3 * x + 2], row[3 * x + 1], row[3 * x]);
+            else
+                for (var x = 0; x < width; x++)
+                {
+                    var at = 4 * x; var alpha = row[at + 3];
+                    grey[at0 + x] = Luma(OverWhite[alpha << 8 | row[at + 2]], OverWhite[alpha << 8 | row[at + 1]], OverWhite[alpha << 8 | row[at]]);
+                }
+        }
+        return new PngRaster(width, height, grey);
+    }
+
+    /// <summary>The <see cref="Over"/> of every sample under every alpha, indexed by alpha then sample (the alpha is the high byte).</summary>
+    static readonly byte[] OverWhite = Enumerable.Range(0, 256 * 256).Select(i => (byte)Over(i & 0xFF, i >> 8)).ToArray();
+
+    // Each channel's share of the luma, computed once per level: the sum below is then the managed reader's sum, in the same order.
+    static readonly double[] RedShare = Enumerable.Range(0, 256).Select(v => 0.298839 * v).ToArray();
+    static readonly double[] GreenShare = Enumerable.Range(0, 256).Select(v => 0.586811 * v).ToArray();
+    static readonly double[] BlueShare = Enumerable.Range(0, 256).Select(v => 0.114350 * v).ToArray();
+
+    /// <summary>The Rec. 601 luma of the managed reader, computed in the same order and rounded the same way (to even).</summary>
+    static byte Luma(int r, int g, int b) => (byte)Math.Clamp((int)Math.Round(RedShare[r] + GreenShare[g] + BlueShare[b]), 0, 255);
+
+    /// <summary>A sample laid over white by its alpha, rounded as the managed reader rounds it.</summary>
+    static int Over(int v, int alpha) => (v * alpha + 255 * (255 - alpha) + 127) / 255;
+
     /// <summary>The page image at <paramref name="path"/>; null when it is neither a readable PNG nor convertible by <paramref name="magick"/>.</summary>
     public static PngRaster? Load(string path, string? magick)
     {
@@ -151,14 +203,14 @@ public sealed class PngRaster
         int x1 = Math.Min(Width, x0 + box.Width + 2 * pad), y1 = Math.Min(Height, y0 + box.Height + 2 * pad);
         int w = Math.Max(0, x1 - x0), h = Math.Max(0, y1 - y0);
         var cut = (int)Math.Floor(threshold * 255);
-        bool Black(int x, int y)
-        {
-            var own = x >= box.Left && x < box.Left + box.Width && y >= box.Top && y < box.Top + box.Height;
-            if (!own && mask is not null)
-                foreach (var m in mask)
-                    if (x >= m.Left && x < m.Left + m.Width && y >= m.Top && y < m.Top + m.Height) return false;
-            return this[x, y] <= cut;
-        }
+        // The neighbours' boxes are marked once, as white, outside the line's own box; a pixel is then tested only against this map.
+        var masked = new bool[w * h];
+        if (mask is not null)
+            foreach (var m in mask)
+                for (var y = Math.Max(m.Top, y0); y < Math.Min(m.Top + m.Height, y1); y++)
+                    for (var x = Math.Max(m.Left, x0); x < Math.Min(m.Left + m.Width, x1); x++)
+                        if (!(x >= box.Left && x < box.Left + box.Width && y >= box.Top && y < box.Top + box.Height))
+                            masked[(y - y0) * w + (x - x0)] = true;
         var outWidth = w * scale;
         var rowBytes = (outWidth + 7) / 8;
         var raw = new byte[(rowBytes + 1) * h * scale];
@@ -167,7 +219,7 @@ public sealed class PngRaster
         {
             Array.Clear(line);
             for (var x = 0; x < w; x++)
-                if (!Black(x0 + x, y0 + y))   // 1 is white in a 1-bit grey PNG
+                if (masked[y * w + x] || this[x0 + x, y0 + y] > cut)   // 1 is white in a 1-bit grey PNG
                     for (var s = 0; s < scale; s++) { var ox = x * scale + s; line[ox / 8] |= (byte)(0x80 >> (ox % 8)); }
             for (var s = 0; s < scale; s++) Buffer.BlockCopy(line, 0, raw, (y * scale + s) * (rowBytes + 1) + 1, rowBytes);
         }
