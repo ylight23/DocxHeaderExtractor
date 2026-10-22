@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DocxHeaderExtractor.V6Runner\DocxHeaderExtractor.V6Runner.csproj" />
-    <ProjectReference Include="..\DocxHeaderExtractor.Application\DocxHeaderExtractor.Application.csproj" />
+    <ProjectReference Include="..\DocxHeaderExtractor.Contracts\DocxHeaderExtractor.Contracts.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.Sources\DocxHeaderExtractor.Sources.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.DocumentProcessing\DocxHeaderExtractor.DocumentProcessing.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.Infrastructure\DocxHeaderExtractor.Infrastructure.csproj" />

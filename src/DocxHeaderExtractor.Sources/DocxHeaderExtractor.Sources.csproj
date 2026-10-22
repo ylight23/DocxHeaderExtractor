@@ -23,4 +23,8 @@
     <PackageReference Include="PDFtoImage" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DocxHeaderExtractor.Contracts\DocxHeaderExtractor.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.Application", "src\DocxHeaderExtractor.Application\DocxHeaderExtractor.Application.csproj", "{8DF36816-EBE2-449A-9C3F-4F68A12E3C0C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.DocumentProcessing", "src\DocxHeaderExtractor.DocumentProcessing\DocxHeaderExtractor.DocumentProcessing.csproj", "{FBFF8A16-B8C9-4780-9969-48B155F9867E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.Infrastructure", "src\DocxHeaderExtractor.Infrastructure\DocxHeaderExtractor.Infrastructure.csproj", "{E6A53B9A-3F1D-4BE7-8B3A-6DF3DD9F0B8C}"
@@ -25,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.Heading
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.Sources", "src\DocxHeaderExtractor.Sources\DocxHeaderExtractor.Sources.csproj", "{9BF12F83-515B-491D-BF6F-F59D58636540}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.Contracts", "src\DocxHeaderExtractor.Contracts\DocxHeaderExtractor.Contracts.csproj", "{8976D7D2-D858-4667-8525-56887C3786B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,14 +35,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8DF36816-EBE2-449A-9C3F-4F68A12E3C0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8DF36816-EBE2-449A-9C3F-4F68A12E3C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8DF36816-EBE2-449A-9C3F-4F68A12E3C0C}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{8DF36816-EBE2-449A-9C3F-4F68A12E3C0C}.Debug|x64.Build.0 = Debug|Any CPU
-		{8DF36816-EBE2-449A-9C3F-4F68A12E3C0C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8DF36816-EBE2-449A-9C3F-4F68A12E3C0C}.Debug|x86.Build.0 = Debug|Any CPU
-		{8DF36816-EBE2-449A-9C3F-4F68A12E3C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8DF36816-EBE2-449A-9C3F-4F68A12E3C0C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FBFF8A16-B8C9-4780-9969-48B155F9867E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FBFF8A16-B8C9-4780-9969-48B155F9867E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBFF8A16-B8C9-4780-9969-48B155F9867E}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -131,12 +123,23 @@ Global
 		{9BF12F83-515B-491D-BF6F-F59D58636540}.Release|x64.Build.0 = Release|Any CPU
 		{9BF12F83-515B-491D-BF6F-F59D58636540}.Release|x86.ActiveCfg = Release|Any CPU
 		{9BF12F83-515B-491D-BF6F-F59D58636540}.Release|x86.Build.0 = Release|Any CPU
+		{8976D7D2-D858-4667-8525-56887C3786B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8976D7D2-D858-4667-8525-56887C3786B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8976D7D2-D858-4667-8525-56887C3786B5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8976D7D2-D858-4667-8525-56887C3786B5}.Debug|x64.Build.0 = Debug|Any CPU
+		{8976D7D2-D858-4667-8525-56887C3786B5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8976D7D2-D858-4667-8525-56887C3786B5}.Debug|x86.Build.0 = Debug|Any CPU
+		{8976D7D2-D858-4667-8525-56887C3786B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8976D7D2-D858-4667-8525-56887C3786B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8976D7D2-D858-4667-8525-56887C3786B5}.Release|x64.ActiveCfg = Release|Any CPU
+		{8976D7D2-D858-4667-8525-56887C3786B5}.Release|x64.Build.0 = Release|Any CPU
+		{8976D7D2-D858-4667-8525-56887C3786B5}.Release|x86.ActiveCfg = Release|Any CPU
+		{8976D7D2-D858-4667-8525-56887C3786B5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8DF36816-EBE2-449A-9C3F-4F68A12E3C0C} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{FBFF8A16-B8C9-4780-9969-48B155F9867E} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{E6A53B9A-3F1D-4BE7-8B3A-6DF3DD9F0B8C} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{F0D26F66-8B36-4B7F-A9EC-15DACC01E4B3} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
@@ -145,5 +148,6 @@ Global
 		{63F905E1-E1D4-4DD6-96F8-F5CBFF30110C} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{00DD1AAD-86EE-445D-A68F-9D7D53BCB8E1} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{9BF12F83-515B-491D-BF6F-F59D58636540} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{8976D7D2-D858-4667-8525-56887C3786B5} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 	EndGlobalSection
 EndGlobal

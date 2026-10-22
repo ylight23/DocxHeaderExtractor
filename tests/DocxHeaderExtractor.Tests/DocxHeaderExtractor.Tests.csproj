@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DocxHeaderExtractor.Application\DocxHeaderExtractor.Application.csproj" />
+    <ProjectReference Include="..\..\src\DocxHeaderExtractor.Contracts\DocxHeaderExtractor.Contracts.csproj" />
     <!-- Phân tích tham số dòng lệnh quyết định cả ngân sách chunk lẫn backend, nên nó cần test
          thật chứ không chỉ chạy tay một lần. -->
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Cli\DocxHeaderExtractor.Cli.csproj" />

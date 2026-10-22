@@ -1,13 +1,5 @@
 namespace DocxHeaderExtractor.DocumentProcessing.Routing;
 
-/// <summary>What the uploaded file actually is, read from its bytes rather than its name.</summary>
-public enum SourceType
-{
-    Unknown,
-    Docx,
-    Pdf,
-}
-
 /// <summary>
 /// Identifies an uploaded file by its content.
 /// <para>

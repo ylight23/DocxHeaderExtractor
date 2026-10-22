@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DocxHeaderExtractor.Application\DocxHeaderExtractor.Application.csproj" />
+    <ProjectReference Include="..\DocxHeaderExtractor.Contracts\DocxHeaderExtractor.Contracts.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.Sources\DocxHeaderExtractor.Sources.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.DocumentProcessing\DocxHeaderExtractor.DocumentProcessing.csproj" />
   </ItemGroup>
