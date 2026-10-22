@@ -6,7 +6,7 @@ Cập nhật 2026-10-22. Đây là trạng thái đang chạy của code; lịch
 
 - Mỗi định dạng có đúng một tuyến, không có đường dự phòng: DOCX, PDF và bản scan đều lấy heading qua
   selector, và selector mặc định là agent V6 (Qwen qua OpenRouter, một hội thoại mỗi cửa sổ).
-- CLI và Web gọi thẳng tuyến V6 qua `V6DocumentRunner`. Không còn project `AgentHarness`, không còn MCP.
+- CLI và Web gọi thẳng tuyến V6 qua `DocumentRunner`. Không còn project `AgentHarness`, không còn MCP.
 - `.doc`, `.rtf`, `.odt` được chuyển sang OOXML trước khi vào tuyến.
 - AI quyết định (dòng nào là heading, cách nhóm, đề xuất cha); C# kiểm tra và dựng cấu trúc.
 
@@ -19,13 +19,13 @@ Cập nhật 2026-10-22. Đây là trạng thái đang chạy của code; lịch
 | `HeadingAgent` | Agent V6: selector PDF, DOCX và scan; prompt, tool, vòng gọi model | `Sources` |
 | `DocumentProcessing` | Pipeline: nhận file, các lane, harness, các bước kiểm tra và dựng cấu trúc, đầu ra, writeback | `Contracts`, `Sources` |
 | `Infrastructure` | Transport provider (OpenRouter, LM Studio, SGLang, Llama local), factory chọn route, store run | `Contracts`, `Sources` |
-| `V6Runner` | `V6DocumentRunner`: nối agent vào pipeline, chuyển `.doc`, ghi outline | `HeadingAgent`, `DocumentProcessing` |
-| `Cli` | Lệnh `dhx`; gọi `V6DocumentRunner` trực tiếp | `V6Runner`, `Infrastructure` |
-| `Web` | Giao diện `dhx-ui`; gọi `V6DocumentRunner` trực tiếp, stream sự kiện tiến độ | `V6Runner`, `Infrastructure` |
+| `App` | `DocumentRunner`: nối agent vào pipeline, chuyển `.doc`, ghi outline | `HeadingAgent`, `DocumentProcessing` |
+| `Cli` | Lệnh `dhx`; gọi `DocumentRunner` trực tiếp | `App`, `Infrastructure` |
+| `Web` | Giao diện `dhx-ui`; gọi `DocumentRunner` trực tiếp, stream sự kiện tiến độ | `App`, `Infrastructure` |
 
 Quy tắc phụ thuộc: `Contracts` không phụ thuộc gì; `Sources` không biết pipeline; `HeadingAgent` chỉ thấy
 `Sources`; `DocumentProcessing` không biết agent (chỉ biết `IHeadingSelector`); `Infrastructure` chỉ cài đặt
-interface của `Contracts`. `V6Runner` là chỗ duy nhất nối agent với pipeline.
+interface của `Contracts`. `App` là chỗ duy nhất nối agent với pipeline.
 
 Quy ước: namespace = tên project + đường dẫn thư mục. Tên file = tên type. Tên type ngắn nhưng vẫn đủ nghĩa
 khi đứng một mình trong code; bỏ các tiền tố mà thư mục đã nói rõ (`Output/Outline/OutlineProjection.cs`,
@@ -35,7 +35,7 @@ không phải `HeadingOutlineProjection`; `Audit/RunAudit.cs`, không phải `Pi
 
 ```text
 CLI (dhx) / Web (dhx-ui)
-  -> V6DocumentRunner.ExtractAsync(file)
+  -> DocumentRunner.ExtractAsync(file)
        -> Sources/Detect/SourceDetector (đọc byte, không đọc đuôi)
        -> .doc/.rtf/.odt: Sources/Docx/OfficeConverter.EnsureDocx
        -> Intake/Router
@@ -50,7 +50,7 @@ CLI (dhx) / Web (dhx-ui)
             -> Structure/Materializer       (dựng cấu trúc; Structure/StructureAssembler nối các bước)
             -> Audit/RunAudit
        -> Output/ExtractionOutput: Final, Product, Outline, Sections -> Output/RunResult
-  -> (tuỳ chọn) V6DocumentRunner.WriteOutline -> Writeback: bản sao .docx với w:outlineLvl
+  -> (tuỳ chọn) DocumentRunner.WriteOutline -> Writeback: bản sao .docx với w:outlineLvl
 ```
 
 Nếu tuyến không ở route agent đã ủy quyền, không có selector hoặc không có khóa provider, nó từ chối trước khi
@@ -81,6 +81,9 @@ gọi mô hình, theo đúng thứ tự đó (`AGENT_ROUTE_AUTHORIZATION_REQUIRE
 · `Markers/` (đánh số, nhãn) · `Aliases/` (alias, ranh giới text). Các bộ kiểm tra cấu trúc (`StructureFactory`,
 `ProposalValidator`, `RelationValidator`) nằm ở `DocumentProcessing/Structure/`, `IdentityResolver` ở
 `DocumentProcessing/Hierarchy/`: chỉ các bước đó dùng chúng.
+
+Host: `Cli` có `Program.cs` (đọc tham số, chọn lệnh) và `Commands/` (mỗi lệnh một file: `ExtractCommand`, `ScanCommands`,
+`InfoCommand`); `Web` có `Program.cs` (dựng host, endpoint ngắn) và `Endpoints/` (`ExtractEndpoint`, `InspectEndpoint`).
 
 `HeadingAgent`, theo vòng của agent: `Selectors/` (điểm vào) · `Formats/` (nguồn và cách trình bày theo
 định dạng) · `Protocol/` (những gì model đọc) · `Runtime/` (gọi model, ngân sách, cache) · `Tools/` (tool và sổ

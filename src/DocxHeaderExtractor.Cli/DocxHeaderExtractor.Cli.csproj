@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DocxHeaderExtractor.V6Runner\DocxHeaderExtractor.V6Runner.csproj" />
+    <ProjectReference Include="..\DocxHeaderExtractor.App\DocxHeaderExtractor.App.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.Sources\DocxHeaderExtractor.Sources.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.DocumentProcessing\DocxHeaderExtractor.DocumentProcessing.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.Infrastructure\DocxHeaderExtractor.Infrastructure.csproj" />

@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.Web", "src\DocxHeaderExtractor.Web\DocxHeaderExtractor.Web.csproj", "{E9F952F6-DEF5-4334-A5DC-2F6B8422B439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.V6Runner", "src\DocxHeaderExtractor.V6Runner\DocxHeaderExtractor.V6Runner.csproj", "{63F905E1-E1D4-4DD6-96F8-F5CBFF30110C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.App", "src\DocxHeaderExtractor.App\DocxHeaderExtractor.App.csproj", "{63F905E1-E1D4-4DD6-96F8-F5CBFF30110C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.HeadingAgent", "src\DocxHeaderExtractor.HeadingAgent\DocxHeaderExtractor.HeadingAgent.csproj", "{00DD1AAD-86EE-445D-A68F-9D7D53BCB8E1}"
 EndProject

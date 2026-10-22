@@ -29,7 +29,7 @@ scan -> ScanSourceAdapter -+          v
       Output/Final/FinalProjection -> Output/Product/ProductProjector
 ```
 
-Hosts (2026-10-15): the CLI and the Web call `V6DocumentRunner` directly; there is no separate harness project
+Hosts (2026-10-15): the CLI and the Web call `DocumentRunner` directly; there is no separate harness project
 between them and the pipelines. The runner routes the file, converts `.doc`/`.rtf`/`.odt` first, and writes the
 outline when asked.
 

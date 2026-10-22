@@ -14,10 +14,11 @@ using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Selectors;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 
-namespace DocxHeaderExtractor.V6Runner;
+namespace DocxHeaderExtractor.App;
 
 /// <summary>
-/// The V6 runner the Web and CLI hosts call directly: the file is routed to the lane that owns its format (the DOCX
+/// The composition root the Web and CLI hosts call directly: it builds the V6 agent selectors and hands them to the pipeline,
+/// which the agent never references. The file is routed to the lane that owns its format (the DOCX
 /// pipeline or the PDF handler), each lane takes its heading selector from the transport factory or the V6 default, and a
 /// .doc/.rtf/.odt is converted to OOXML first. Writeback of the outline goes through the same converter.
 /// <para>
@@ -25,14 +26,14 @@ namespace DocxHeaderExtractor.V6Runner;
 /// guardrail. The owner accepted that on 2026-10-15.
 /// </para>
 /// </summary>
-public sealed class V6DocumentRunner : IDisposable
+public sealed class DocumentRunner : IDisposable
 {
     private readonly DocxPipeline _docxLane;
     private readonly PdfHandler _pdfLane;
     private readonly Router _dispatcher;
 
     /// <param name="onModelReply">Diagnostics only: called with every model reply. Null records nothing.</param>
-    public V6DocumentRunner(PipelineOptions options, IInferenceTransportFactory factory, Action<ModelReply>? onModelReply = null)
+    public DocumentRunner(PipelineOptions options, IInferenceTransportFactory factory, Action<ModelReply>? onModelReply = null)
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(factory);

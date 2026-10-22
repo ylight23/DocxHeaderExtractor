@@ -16,7 +16,7 @@ using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 using DocxHeaderExtractor.Infrastructure.AI;
-using DocxHeaderExtractor.V6Runner;
+using DocxHeaderExtractor.App;
 using DocxHeaderExtractor.Web;
 
 namespace DocxHeaderExtractor.Tests;
@@ -54,7 +54,7 @@ public sealed class ScanProductionPipelineTests
         var path = pdf ? ScanPath.Replace("generated-docx", "heading_corpus_100").Replace(".docx", ".pdf") : ScanPath;
         var scan = new FixedScan(Prepared(path));
         var factory = new Factory(scan);
-        using var runner = new V6DocumentRunner(new PipelineOptions(), factory);
+        using var runner = new DocumentRunner(new PipelineOptions(), factory);
         var run = await runner.ExtractAsync(path);
 
         Assert.Equal(1, scan.Calls);
@@ -90,7 +90,7 @@ public sealed class ScanProductionPipelineTests
         Assert.Contains("NOT_SELECT", JsonSerializer.Serialize(web.Audit));
         var safe = WebPipelineProjection.SafeOutline(run.Outline, new JsonSerializerOptions());
         Assert.NotNull(safe["routeAudit"]!["Scan"]);
-        Assert.Throws<NotSupportedException>(() => V6DocumentRunner.WriteOutline(ScanPath, run.Outline, "unused.docx", new PipelineOptions().Extraction));
+        Assert.Throws<NotSupportedException>(() => DocumentRunner.WriteOutline(ScanPath, run.Outline, "unused.docx", new PipelineOptions().Extraction));
     }
 
     [Fact]
@@ -106,7 +106,7 @@ public sealed class ScanProductionPipelineTests
         }, autoVerify: false);
         using var http = new HttpClient(handler);
         using var transport = new OpenRouterInferenceTransport(http, new RemoteInferenceOptions { ApiKey = "sk-test" });
-        using var runner = new V6DocumentRunner(new PipelineOptions(),
+        using var runner = new DocumentRunner(new PipelineOptions(),
             new Factory(new FixedScan(Prepared(ScanPath)), new StructuredPlacementTransport(transport)));
         var run = await runner.ExtractAsync(ScanPath);
         Assert.Equal(1, handler.Posts);
@@ -145,7 +145,7 @@ public sealed class ScanProductionPipelineTests
                     false, "NO_PROGRESS", "BOUNDARY_REPAIR_NO_PROGRESS")]),
             StageSeconds = new Dictionary<string, double> { ["selection"] = 10, ["grouping"] = 20, ["verification"] = 30, ["review"] = 40 }
         } };
-        using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
+        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
         var run = await runner.ExtractAsync(ScanPath);
         var web = WebPipelineProjection.Project(Guid.NewGuid(), "Partial", run.Outline, run, "scan");
         var selection = web.Stages.Single(s => s.Id == "V6-line-selection");
@@ -183,7 +183,7 @@ public sealed class ScanProductionPipelineTests
     public async Task Missing_alias_states_do_not_masquerade_selected_count_as_answered_lines()
     {
         var prepared = Prepared(ScanPath) with { Selection = Prepared(ScanPath).Selection with { AliasStates = null } };
-        using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
+        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
         var run = await runner.ExtractAsync(ScanPath);
         var stage = WebPipelineProjection.Project(Guid.NewGuid(), "Completed", run.Outline, run, "scan")
             .Stages.Single(s => s.Id == "V6-line-selection");
@@ -197,7 +197,7 @@ public sealed class ScanProductionPipelineTests
         var (source, selection, _) = AppendixMembershipTests.RunFixture("reject");
         var prepared = ScanSelector.PrepareSelection(source, selection) with
         { SourceSha256 = SourceHash.Compute(ScanPath) };
-        using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared), new AppendixPlacement()));
+        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared), new AppendixPlacement()));
         var run = await runner.ExtractAsync(ScanPath);
         var structured = run.Outline.Headings.Where(h => h.Level is not null).ToArray();
         Assert.Equal("Phụ lục", structured[0].Text);
@@ -226,7 +226,7 @@ public sealed class ScanProductionPipelineTests
         {
             var path = DocxTestDocument.Create(Path.Combine(dir, "native.docx"));
             var scan = new FixedScan(Prepared(ScanPath));
-            using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(scan));
+            using var runner = new DocumentRunner(new PipelineOptions(), new Factory(scan));
             var run = await runner.ExtractAsync(path);
             Assert.Equal(0, scan.Calls);
             Assert.Equal("docx-v6-selected-lines", run.Outline.DeterministicRoute);
@@ -239,7 +239,7 @@ public sealed class ScanProductionPipelineTests
     {
         var scan = new FixedScan(Prepared(ScanPath));
         var factory = new Factory(scan);
-        using var runner = new V6DocumentRunner(new PipelineOptions { DisableLlm = true }, factory);
+        using var runner = new DocumentRunner(new PipelineOptions { DisableLlm = true }, factory);
         var run = await runner.ExtractAsync(ScanPath);
         Assert.Null(scan.Key);
         Assert.Equal(0, factory.TransportCalls);
@@ -257,7 +257,7 @@ public sealed class ScanProductionPipelineTests
         var p = Prepared(ScanPath);
         p = preflight ? p with { Diagnostics = p.Diagnostics with { TranscriptionFailures = ["TRANSCRIBE-B001:CALL:FAILED"] } }
             : p with { Selection = p.Selection with { UnitsComplete = 1, UnitsTotal = 2, UnitFailures = ["SEG-002:FAILED"] } };
-        using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
+        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
         var run = await runner.ExtractAsync(ScanPath);
         Assert.Equal("partial", run.Outline.RouteAudit!.SemanticLane!.Status);
         Assert.Contains(preflight ? "SCAN_PREFLIGHT_INCOMPLETE" : "SEG-002:FAILED", run.Outline.RouteAudit.SemanticLane.FailureClass!, StringComparison.Ordinal);
@@ -267,7 +267,7 @@ public sealed class ScanProductionPipelineTests
     public async Task A_source_from_another_file_is_refused_before_binding_or_placement()
     {
         var p = Prepared(ScanPath) with { SourceSha256 = new string('0', 64) };
-        using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
+        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
         var failure = await Assert.ThrowsAsync<InvalidOperationException>(() => runner.ExtractAsync(ScanPath));
         Assert.Equal("SCAN_SOURCE_HASH_MISMATCH", failure.Message);
     }
@@ -277,7 +277,7 @@ public sealed class ScanProductionPipelineTests
     {
         var p = Prepared(ScanPath);
         p = p with { Lines = p.Lines.Select((l, i) => i == 0 ? l with { Text = "invented heading" } : l).ToArray() };
-        using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
+        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
         var failure = await Assert.ThrowsAsync<InvalidOperationException>(() => runner.ExtractAsync(ScanPath));
         Assert.StartsWith("SCAN_SOURCE_READING_MISMATCH", failure.Message);
     }
@@ -287,7 +287,7 @@ public sealed class ScanProductionPipelineTests
     {
         var p = Prepared(ScanPath);
         p = p with { Selection = p.Selection with { HeadingExtents = new Dictionary<string, TextOffsetSpan> { [p.Lines[2].Alias] = new(0, 9999) } } };
-        using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
+        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
         var run = await runner.ExtractAsync(ScanPath);
         Assert.Single(run.Outline.Headings);
         Assert.Equal("partial", run.Outline.RouteAudit!.SemanticLane!.Status);
@@ -299,7 +299,7 @@ public sealed class ScanProductionPipelineTests
     {
         var started = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
         var scan = new FixedScan(Prepared(ScanPath)) { BeforeReturn = async ct => { started.SetResult(); await Task.Delay(Timeout.Infinite, ct); } };
-        using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(scan));
+        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(scan));
         using var cts = new CancellationTokenSource();
         var task = runner.ExtractAsync(ScanPath, cts.Token);
         await started.Task.WaitAsync(TimeSpan.FromSeconds(60));

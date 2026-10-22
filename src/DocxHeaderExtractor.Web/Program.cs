@@ -1,27 +1,12 @@
-using System.Collections.Concurrent;
 using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.Channels;
-using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.DocumentProcessing.Audit;
-using DocxHeaderExtractor.DocumentProcessing.Output;
-using DocxHeaderExtractor.DocumentProcessing.Harness;
-using DocxHeaderExtractor.DocumentProcessing.Intake;
-using DocxHeaderExtractor.Sources.Detect;
-using DocxHeaderExtractor.HeadingAgent.Grouping;
-using DocxHeaderExtractor.HeadingAgent.Protocol;
-using DocxHeaderExtractor.HeadingAgent.Runtime;
-using DocxHeaderExtractor.HeadingAgent.Selectors;
-using DocxHeaderExtractor.HeadingAgent.Tools;
-using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.Contracts.Runtime;
 using DocxHeaderExtractor.Contracts.Tasks;
-using DocxHeaderExtractor.V6Runner;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
 using DocxHeaderExtractor.Infrastructure.Runtime;
 using DocxHeaderExtractor.Infrastructure.Sources;
 using DocxHeaderExtractor.Web;
-using DocumentFormat.OpenXml.Packaging;
+using DocxHeaderExtractor.Web.Endpoints;
 using Microsoft.AspNetCore.Http.Features;
 
 // Content root phải là thư mục chứa dll, không phải thư mục làm việc: dhx-ui.cmd chạy từ gốc
@@ -33,13 +18,8 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
     ContentRootPath = AppContext.BaseDirectory,
 });
 
-// Trần upload phải đặt ở CẢ HAI tầng, nếu không tầng thấp hơn quyết định trong im lặng: Kestrel
-// mặc định chặn ở 30 MB và ném BadHttpRequestException TRƯỚC khi handler chạy, nên trình duyệt chỉ
-// thấy ERR_CONNECTION_RESET chứ không nhận được thông báo lỗi nào. Một hằng số cho cả hai để chúng
-// không đi lệch nhau.
-const long MaxUploadBytes = 128L * 1024 * 1024;
-builder.Services.Configure<FormOptions>(o => o.MultipartBodyLengthLimit = MaxUploadBytes);
-builder.WebHost.ConfigureKestrel(o => o.Limits.MaxRequestBodySize = MaxUploadBytes);
+builder.Services.Configure<FormOptions>(o => o.MultipartBodyLengthLimit = Uploads.MaxBytes);
+builder.WebHost.ConfigureKestrel(o => o.Limits.MaxRequestBodySize = Uploads.MaxBytes);
 builder.Services.AddSingleton<LlamaModelCache>();
 builder.Services.AddSingleton<WebTransportFactoryResolver>(sp => selection =>
     new WebInferenceTransportFactory(selection, sp.GetRequiredService<IHttpClientFactory>(),
@@ -68,14 +48,6 @@ var app = builder.Build();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
-var json = new JsonSerializerOptions
-{
-    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-};
-json.Converters.Add(new JsonStringEnumConverter());
-
 // Read metadata from the loaded assemblies, so a stale backend can be identified without inference.
 app.MapGet("/api/build", () => Results.Json(new
 {
@@ -83,16 +55,16 @@ app.MapGet("/api/build", () => Results.Json(new
         .Cast<System.Reflection.AssemblyInformationalVersionAttribute>().Single().InformationalVersion,
     headingAgentVersion = typeof(AgentSelector).Assembly.GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
         .Cast<System.Reflection.AssemblyInformationalVersionAttribute>().Single().InformationalVersion,
-}, json));
+}, WebJson.Options));
 
 // Danh sách mô hình .gguf tìm thấy, kèm cửa sổ ngữ cảnh nên dùng cho từng họ mô hình.
-app.MapGet("/api/models", () => Results.Json(ModelCatalog.List(), json));
+app.MapGet("/api/models", () => Results.Json(ModelCatalog.List(), WebJson.Options));
 
 app.MapGet("/api/lmstudio/models", async (LmStudioModelDiscovery discovery, CancellationToken ct) =>
 {
     try
     {
-        return Results.Json(await discovery.ListAsync(ct), json);
+        return Results.Json(await discovery.ListAsync(ct), WebJson.Options);
     }
     catch (Exception ex) when (ex is HttpRequestException or FormatException or InvalidOperationException)
     {
@@ -104,40 +76,12 @@ app.MapGet("/api/lmstudio/models", async (LmStudioModelDiscovery discovery, Canc
 });
 
 // Mặc định lấy thẳng từ Core, để giao diện luôn khớp với lệnh CLI tương ứng.
-app.MapGet("/api/defaults", () => Results.Json(Defaults.Current(), json));
+app.MapGet("/api/defaults", () => Results.Json(Defaults.Current(), WebJson.Options));
 
 // Prompt và instruction mà agent gửi đi, chỉ để hiển thị. Chúng là hằng số trong mã nguồn: giao diện không sửa được.
-app.MapGet("/api/prompts", () => Results.Json(new { pdf = PromptCatalog.Pdf, docx = PromptCatalog.Docx, scan = PromptCatalog.Scan }, json));
+app.MapGet("/api/prompts", () => Results.Json(new { pdf = PromptCatalog.Pdf, docx = PromptCatalog.Docx, scan = PromptCatalog.Scan }, WebJson.Options));
 
-// Source inspection is local only: no OCR, model or provider call. The uploaded copy is removed after the response.
-app.MapPost("/api/inspect", async (HttpRequest req, CancellationToken ct) =>
-{
-    if (!req.HasFormContentType) return Results.BadRequest(new { message = "Cần multipart/form-data." });
-    string? work = null;
-    try
-    {
-        var form = await req.ReadFormAsync(ct);
-        var upload = form.Files["file"];
-        if (upload is null || upload.Length == 0) return Results.BadRequest(new { message = "Chưa chọn file." });
-        work = Path.Combine(Path.GetTempPath(), "dhx-inspect", Guid.NewGuid().ToString("N"));
-        Directory.CreateDirectory(work);
-        var path = Path.Combine(work, SafeName(upload.FileName));
-        await using (var stream = File.Create(path)) await upload.CopyToAsync(stream, ct);
-        return Results.Json(SourceInspection.Read(path, ct), json);
-    }
-    catch (BadHttpRequestException ex) when (ex.StatusCode == StatusCodes.Status413PayloadTooLarge)
-    {
-        return Results.Json(new { message = $"File quá lớn (trần {MaxUploadBytes / (1024 * 1024)} MB)." }, statusCode: 413);
-    }
-    catch (Exception ex) when (ex is not OperationCanceledException)
-    {
-        return Results.BadRequest(new { message = "Không đọc được cấu trúc file. Hãy kiểm tra file có hợp lệ và không bị khóa." });
-    }
-    finally
-    {
-        if (work is not null) { try { Directory.Delete(work, recursive: true); } catch (IOException) { } }
-    }
-});
+app.MapPost("/api/inspect", InspectEndpoint.HandleAsync);
 
 // Bản .docx đã gắn outline chỉ sống trong bộ nhớ tới lần tải đầu tiên. Không có đường dẫn nào do
 // client chỉ định: đích ghi luôn nằm trong thư mục tạm của chính request đó.
@@ -151,221 +95,7 @@ app.MapGet("/api/outline/{runId:guid}.docx", (Guid runId, WritebackStore store) 
             entry.FileName);
 });
 
-app.MapPost("/api/extract", async (
-    HttpRequest req,
-    HttpResponse res,
-    WritebackStore writebackStore,
-    WebTransportFactoryResolver transportFactory,
-    CancellationToken ct) =>
-{
-    if (!req.HasFormContentType)
-    {
-        res.StatusCode = StatusCodes.Status400BadRequest;
-        await res.WriteAsync("Cần multipart/form-data.", ct);
-        return;
-    }
-
-    IFormCollection form;
-    try
-    {
-        form = await req.ReadFormAsync(ct);
-    }
-    catch (BadHttpRequestException ex)
-    {
-        // Vượt trần thì Kestrel huỷ kết nối; không bắt ở đây thì phía trình duyệt chỉ thấy
-        // ERR_CONNECTION_RESET và không có cách nào biết vì sao.
-        res.StatusCode = StatusCodes.Status413PayloadTooLarge;
-        await res.WriteAsync($"File quá lớn (trần {MaxUploadBytes / (1024 * 1024)} MB): {ex.Message}", ct);
-        return;
-    }
-    catch (InvalidDataException)
-    {
-        res.StatusCode = StatusCodes.Status400BadRequest;
-        await res.WriteAsync("Multipart upload không hợp lệ.", ct);
-        return;
-    }
-
-    var upload = form.Files["file"];
-    if (upload is null || upload.Length == 0)
-    {
-        res.StatusCode = StatusCodes.Status400BadRequest;
-        await res.WriteAsync("Chưa chọn file.", ct);
-        return;
-    }
-
-    // NDJSON: mỗi dòng một sự kiện, để trình duyệt hiện tiến độ trong lúc mô hình còn chạy.
-    res.ContentType = "application/x-ndjson; charset=utf-8";
-    res.Headers.CacheControl = "no-store";
-
-    var events = Channel.CreateUnbounded<object>();
-
-    async Task EmitAsync(object payload)
-    {
-        var line = JsonSerializer.Serialize(payload, json);
-        await res.WriteAsync(line + "\n", Encoding.UTF8, ct);
-        await res.Body.FlushAsync(ct);
-    }
-
-    var work = Path.Combine(Path.GetTempPath(), "dhx-ui", Guid.NewGuid().ToString("N"));
-    Directory.CreateDirectory(work);
-    var inputPath = Path.Combine(work, SafeName(upload.FileName));
-
-    try
-    {
-        await using (var fs = File.Create(inputPath))
-            await upload.CopyToAsync(fs, ct);
-
-        var inspection = SourceInspection.Read(inputPath, ct);
-        await EmitAsync(new { type = "source", source = inspection });
-        if (!inspection.Supported)
-        {
-            await EmitAsync(new { type = "error", message = inspection.Message });
-            return;
-        }
-        var options = RequestOptions.Build(form, out var problem, out var provider, inspection);
-        if (problem is not null)
-        {
-            await EmitAsync(new { type = "error", message = problem });
-            return;
-        }
-
-        // Production Web does not publish free-form provider diagnostics (which may contain
-        // source text, completions or credentials). Structured harness events remain visible.
-        options.Log = _ => { };
-        RequestOptions.ConfigureProviderDiagnostics(form, provider, _ => { });
-
-        // Một quyết định duy nhất về định dạng, đọc từ byte, dùng chung cho mọi bước phía sau.
-        var uploadedType = SourceDetector.Detect(inputPath);
-
-        // Hai backend dùng tài nguyên máy này cần khóa. OpenRouter có thể chạy đồng thời và không
-        // được giữ hàng chỉ vì GPU local/LM Studio đang bận.
-        var gateHeld = false;
-        var usesLocalCompute = provider.Backend is InferenceBackend.Local or InferenceBackend.LmStudio;
-        if (!options.DisableLlm && usesLocalCompute && !await Gate.WaitAsync(0, ct))
-        {
-            await EmitAsync(new { type = "log", message = "Đang có tài liệu khác chạy — xếp hàng chờ…" });
-            await Gate.WaitAsync(ct);
-            gateHeld = true;
-        }
-        else if (!options.DisableLlm && usesLocalCompute)
-            gateHeld = true;
-
-        try
-        {
-            // The factory deliberately resolves DOCX and PDF separately. In particular, an
-            // OpenRouter instance constructed directly here would not carry the PDF production
-            // authorization marker, while local/LM Studio remain valid DOCX backends only.
-            // Chạy thẳng tuyến V6 (agent PDF/DOCX), giống CLI: không qua harness. Tiến độ stream dưới dạng sự kiện
-            // "agent" để giữ nhật ký trên giao diện.
-            // Phản hồi của mô hình chỉ được giữ và trả về khi người dùng tự bật "Hiện phản hồi của mô hình".
-            var showRaw = form["showRaw"].ToString() is "1" or "true" or "on";
-            // Each reply is written to the stream as soon as the model returns it; units run in parallel, so replies interleave.
-            using var runner = new V6DocumentRunner(options, transportFactory(provider),
-                showRaw ? r => events.Writer.TryWrite(ReplyEvent(r)) : null);
-
-            // Đích ghi do server đặt bên trong thư mục tạm của request, không bao giờ lấy từ form:
-            // một đường dẫn do client chỉ định là đường để ghi đè file bất kỳ trên máy chủ.
-            var wantsWriteback = form["writeback"].ToString() is "1" or "true" or "on";
-            var writebackTarget = wantsWriteback
-                ? Path.Combine(work, Path.GetFileNameWithoutExtension(SafeName(upload.FileName)) + ".outline.docx")
-                : null;
-
-            var runId = Guid.NewGuid();
-            void Stage(string stage, string kind, string message) => events.Writer.TryWrite(new
-            {
-                type = "agent",
-                runId,
-                timestamp = DateTimeOffset.UtcNow,
-                stage,
-                kind,
-                message,
-            });
-            var run = Task.Run(async () =>
-            {
-                Stage("extract", "Started", "Bắt đầu trích xuất tài liệu.");
-                var execution = await runner.ExtractAsync(inputPath, ct: ct);
-                var outline = execution.Outline;
-                Stage("extract", outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed",
-                    $"Tuyến {outline.DeterministicRoute} trả {outline.Headings.Count} heading từ {outline.ParagraphCount} đơn vị nguồn.");
-                OutlineWritebackReport? written = null;
-                if (writebackTarget is not null && outline.DeterministicRoute == "scan-v6-selected-lines")
-                    Stage("writeback", "Skipped", "Bản scan có tọa độ ảnh; chưa hỗ trợ ghi heading vào đoạn Word.");
-                else if (writebackTarget is not null)
-                {
-                    Stage("writeback", "Started", "Ghi outline vào bản sao.");
-                    written = V6DocumentRunner.WriteOutline(inputPath, outline, writebackTarget, options.Extraction);
-                    Stage("writeback", "Completed", $"Đã ghi {written.Applied} heading, bỏ qua {written.Skipped} mục.");
-                }
-                return (Outline: outline, Execution: execution, Writeback: written);
-            }, ct);
-            _ = run.ContinueWith(_ => events.Writer.TryComplete(), TaskScheduler.Default);
-
-            await foreach (var evt in events.Reader.ReadAllAsync(ct))
-                await EmitAsync(evt);
-
-            var (outline, execution, writeback) = await run;
-
-            // Đọc vào bộ nhớ trước khi finally xoá thư mục tạm; link chỉ tải được đúng một lần.
-            string? download = null;
-            if (writeback is { } written && File.Exists(written.OutputPath))
-            {
-                writebackStore.Put(
-                    runId,
-                    await File.ReadAllBytesAsync(written.OutputPath, ct),
-                    Path.GetFileName(written.OutputPath));
-                download = $"/api/outline/{runId}.docx";
-            }
-
-            var requiresReview = outline.Headings.Count(h =>
-                h.DecisionStatus == HeadingDecisionStatus.RequiresReview || h.Disputed);
-            await EmitAsync(new
-            {
-                type = "result",
-                outline = WebPipelineProjection.SafeOutline(outline, json),
-                pipeline = WebPipelineProjection.Project(runId, outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed", outline, execution, execution.Result.DocumentIdentity.SourceKind),
-                stats = Stats.From(outline),
-                sourceType = uploadedType.ToString().ToLowerInvariant(),
-                sourceInspection = inspection,
-                agent = new
-                {
-                    runId,
-                    outcome = outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed",
-                    steps = writeback is null ? 1 : 2,
-                    repairAttempts = 0,
-                    requiresReview,
-                    message = $"Trích xuất {outline.Headings.Count} heading từ {outline.ParagraphCount} đoạn."
-                        + (requiresReview == 0 ? "" : $" Còn {requiresReview} mục cần xem lại."),
-                    writebackApplied = writeback?.Applied,
-                    download,
-                },
-            });
-        }
-        finally
-        {
-            if (gateHeld) Gate.Release();
-        }
-    }
-    catch (OperationCanceledException)
-    {
-        // Người dùng đóng tab hoặc bấm huỷ — không còn gì để gửi.
-    }
-    catch (Exception ex)
-    {
-        // A refusal about the input format names only the format; it carries no provider payload, so it can be shown.
-        var message = ex is NotSupportedException or FileNotFoundException
-            ? ex.Message
-            : $"Execution failed ({ex.GetType().Name}). Provider payload and source diagnostics are withheld.";
-        try { await EmitAsync(new { type = "error",
-            message,
-            pipeline = new { schemaVersion = "web-pipeline-v2", availability = "unavailable", outcome = "Failed",
-                stages = new[] { new WebPipelineStage("execution", "failed", "Server exception; sub-stages not-recorded") } } }); }
-        catch (Exception) { /* kết nối đã đứt */ }
-    }
-    finally
-    {
-        try { Directory.Delete(work, recursive: true); } catch (IOException) { }
-    }
-});
+app.MapPost("/api/extract", ExtractEndpoint.HandleAsync);
 
 // Cấu hình log của llama.cpp một lần cho cả tiến trình, trước khi có request nào chạm native lib.
 // Native backend selection is process-wide, while GPU layer count remains per model load. Prefer
@@ -381,27 +111,6 @@ app.Lifetime.ApplicationStarted.Register(() =>
     Console.WriteLine("Ctrl+C để dừng.");
 });
 app.Run();
-
-// One model reply as a stream event: what the model streamed, the tool calls it made, the tool results it was given, and its content.
-static object ReplyEvent(ModelReply r) => new
-{
-    type = "reply",
-    unit = r.Unit,
-    turn = r.Turn,
-    reasoning = r.Reasoning,
-    finishReason = r.FinishReason,
-    content = r.Content,
-    toolCalls = r.ToolCalls.Select(c => new { name = c.Name, arguments = c.Arguments }).ToArray(),
-    toolResults = r.ToolResults.Select(x => new { toolCallId = x.ToolCallId, content = x.Content }).ToArray(),
-};
-
-// Tên file người dùng tải lên không được phép thoát khỏi thư mục làm việc.
-static string SafeName(string name)
-{
-    var bare = Path.GetFileName(name);
-    foreach (var c in Path.GetInvalidFileNameChars()) bare = bare.Replace(c, '_');
-    return string.IsNullOrWhiteSpace(bare) ? "upload.docx" : bare;
-}
 
 // Public để integration test khởi động đúng host WebApplicationFactory, không cần facade riêng.
 public partial class Program

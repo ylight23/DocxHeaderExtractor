@@ -13,7 +13,7 @@
     <InternalsVisibleTo Include="DocxHeaderExtractor.DocumentProcessing" />
     <InternalsVisibleTo Include="DocxHeaderExtractor.HeadingAgent" />
     <InternalsVisibleTo Include="DocxHeaderExtractor.Infrastructure" />
-    <InternalsVisibleTo Include="DocxHeaderExtractor.V6Runner" />
+    <InternalsVisibleTo Include="DocxHeaderExtractor.App" />
     <InternalsVisibleTo Include="dhx" />
     <InternalsVisibleTo Include="dhx-ui" />
     <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
