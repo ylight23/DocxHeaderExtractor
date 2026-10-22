@@ -15,7 +15,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Materialization;
 /// </summary>
 internal static class HeadingParentResolver
 {
-    internal const string RawPlacementPrompt = """
+    private const string RawPlacementPrompt = """
         You are the structural stage of the A99 canonical document pipeline. The heading list below
         is already settled: do not add, remove, rename or re-judge any entry. Decide one thing only
         — where each heading in "toPlace" sits relative to the others.
