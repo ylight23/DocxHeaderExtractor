@@ -3,9 +3,12 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using DocxHeaderExtractor.Agents;
+using DocxHeaderExtractor.Agents.Budget;
+using DocxHeaderExtractor.Agents.Transport;
 using DocxHeaderExtractor.Contracts.Agents;
-using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
 
 namespace DocxHeaderExtractor.HeadingAgent.Placement;
 
@@ -14,11 +17,40 @@ namespace DocxHeaderExtractor.HeadingAgent.Placement;
 /// the source lines around its targets, the lines withheld upstream, and the parents and levels the earlier batches settled; a reply that breaks
 /// the protocol is refused and the refused row is named in the next round. It only proposes: the pipeline's ParentResolver checks every
 /// relation against the graph and keeps what passes.
+/// <para>
+/// Every round goes through the shared OpenRouter wire (<see cref="OpenRouterWire"/>, <see cref="AgentModel"/>), the same as the selectors:
+/// the locked provider and model, the stream guard, the usage audit and a budget. The placement keeps its own call settings: no reasoning,
+/// an output cap sized to the rows asked for, and data_collection=deny.
+/// </para>
 /// </summary>
 public sealed class HeadingPlacer : IHeadingPlacer
 {
     public const string Version = "HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION";
     internal const int BatchSize = 16, MaxRounds = 3, RequestCap = 98304, ResponseCap = 131072;
+    /// <summary>How many times a round the transport failed is sent again, the same bytes.</summary>
+    internal const int TransportRetries = 2;
+    /// <summary>The budget of one placement: generous, so it stops a runaway run, not a normal one.</summary>
+    internal const int MaxCalls = 400;
+    internal const double CeilingUsd = 3.0;
+
+    readonly Func<PreparedRequest, ModelTurn>? model;
+    readonly HttpMessageHandler? handler;
+
+    /// <summary>The production placer: each round goes to the provider with the run's key.</summary>
+    public HeadingPlacer() { }
+
+    /// <summary>A placer whose rounds go to <paramref name="model"/> instead of the provider (tests, offline replay).</summary>
+    internal HeadingPlacer(Func<PreparedRequest, ModelTurn> model) => this.model = model;
+
+    /// <summary>A placer whose rounds take the production path over <paramref name="handler"/> (tests of the wire, without a network).</summary>
+    internal HeadingPlacer(HttpMessageHandler handler) => this.handler = handler;
+
+    /// <summary>The call settings of a placement round: no reasoning, an output cap for the rows asked for, data_collection=deny.</summary>
+    internal static WireOptions Wire(int outputBudget) => new(outputBudget, ReasoningEffort: "none", DenyDataCollection: true);
+
+    /// <summary>The request of one round, as it goes to the provider.</summary>
+    internal static PreparedRequest Request(string packet, int outputBudget) =>
+        OpenRouterWire.Build(SourcePrompt, packet, new JsonArray(), null, null, Wire(outputBudget));
     static readonly JsonSerializerOptions Json = new() { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
     private const string RawSourcePrompt = """
@@ -48,10 +80,17 @@ public sealed class HeadingPlacer : IHeadingPlacer
 
     public string Contract => Version;
 
-    public async Task<PlacementProposal> ProposeAsync(PlacementRequest request, IInferenceTransport transport, CancellationToken ct)
+    public async Task<PlacementProposal> ProposeAsync(PlacementRequest request, ModelAccess access, CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(request);
-        ArgumentNullException.ThrowIfNull(transport);
+        ArgumentNullException.ThrowIfNull(access);
+        var budget = new AgentBudget(MaxCalls, CeilingUsd);
+        using var ownHandler = model is null && handler is null ? AgentModel.CreateHandler() : null;
+        var wire = handler ?? ownHandler;
+        using var client = wire is null ? null : new AgentModel(wire, access.ApiKey, budget, cancellationToken: ct,
+            rateLimitRetries: AgentModel.ProductionRateLimitRetries);
+        ModelTurn Send(string unitId, int round, PreparedRequest prepared) =>
+            model is not null ? model(prepared) : SendThroughWire(client!, budget, unitId, round, prepared);
         var ordered = request.Ordered;
         var evidence = request.Evidence;
         var source = evidence.Source ?? throw new ArgumentException("PLACEMENT_SOURCE_REQUIRED", nameof(request));
@@ -159,20 +198,22 @@ public sealed class HeadingPlacer : IHeadingPlacer
                     errors.Add("REQUEST_OVER_CAP");
                     break;
                 }
-                StructuredInferenceReply reply;
+                (string Content, string? FinishReason, int? MaxOutputTokens) reply;
                 var outputBudget = OutputBudget(pending.Length);
                 var callClock = Stopwatch.StartNew();
                 try
                 {
                     Interlocked.Increment(ref logicalCalls);
-                    reply = transport is IStructuredInferenceTransport structured
-                        ? await structured.CompleteStructuredAsync(SourcePrompt, packet, outputBudget, token).ConfigureAwait(false)
-                        : new(await transport.CompleteAsync(SourcePrompt, packet, token, pending.Length).ConfigureAwait(false), null, null);
+                    access.EnsureActive();
+                    var prepared = Request(packet, outputBudget);
+                    var turn = await Task.Run(() => Send(unitId, round, prepared), token).ConfigureAwait(false);
+                    access.EnsureActive();   // a reply that comes back after the lane ended is not used
+                    reply = (turn.Content ?? "", turn.FinishReason, outputBudget);
                 }
                 catch (OperationCanceledException) { throw; }
                 catch (Exception exception) when (exception is not OutOfMemoryException)
                 {
-                    errors.Add("TRANSPORT_FAILURE:" + exception.GetType().Name);
+                    errors.Add("TRANSPORT_FAILURE:" + (exception is ReplyFailure failure ? failure.Code : exception.GetType().Name));
                     calls.Enqueue(new(unitId, "HIERARCHY_PLACE", round, pending.Length, outputBudget, null, null, 0, false,
                         Math.Round(callClock.Elapsed.TotalSeconds, 3), errors.ToArray(), accepted.Keys.ToArray()));
                     break;
@@ -247,6 +288,19 @@ public sealed class HeadingPlacer : IHeadingPlacer
             }
             if (accepted.Count != aliases.Length) failures.Enqueue(unitId + ":NO_VALID_PARENT_PROPOSAL");
             return accepted;
+        }
+    }
+
+    /// <summary>One round through the shared wire: the budget admits it first; a transport failure is sent again, the same bytes, up to
+    /// <see cref="TransportRetries"/> times.</summary>
+    static ModelTurn SendThroughWire(AgentModel client, AgentBudget budget, string unitId, int round, PreparedRequest request)
+    {
+        for (var attempt = 0; ; attempt++)
+        {
+            var refusal = budget.Admit(request);
+            if (refusal is not null) throw new ReplyFailure("BUDGET:" + refusal);
+            try { return client.Turn(unitId, round, request); }
+            catch (ReplyFailure f) when (attempt < TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal)) { }
         }
     }
 

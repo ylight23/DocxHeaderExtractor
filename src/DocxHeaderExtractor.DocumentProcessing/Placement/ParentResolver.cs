@@ -1,6 +1,5 @@
 using System.Diagnostics;
 using DocxHeaderExtractor.Contracts.Agents;
-using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Hierarchy;
@@ -19,12 +18,12 @@ internal static class ParentResolver
         PlacementAudit Observation);
 
     internal static async Task<PlacementResult> PlaceAsync(
-        IReadOnlyList<CanonicalSemanticBoundHeading> bound, IHeadingPlacer placer, IInferenceTransport transport,
+        IReadOnlyList<CanonicalSemanticBoundHeading> bound, IHeadingPlacer placer, ModelAccess access,
         HeadingPlacementEvidence evidence, CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(bound);
         ArgumentNullException.ThrowIfNull(placer);
-        ArgumentNullException.ThrowIfNull(transport);
+        ArgumentNullException.ThrowIfNull(access);
         ArgumentNullException.ThrowIfNull(evidence);
         var clock = Stopwatch.StartNew();
         var ordered = bound.OrderBy(h => h.SourceOrdinal).ThenBy(h => h.Start).ToArray();
@@ -35,7 +34,7 @@ internal static class ParentResolver
         var ownerByAlias = ordered.SelectMany(h => (h.Parts.Count > 0 ? h.Parts.Select(p => p.Alias) : [h.Alias])
             .Select(alias => (Alias: alias, h.SourceId))).ToDictionary(p => p.Alias, p => p.SourceId, StringComparer.Ordinal);
 
-        var proposal = await placer.ProposeAsync(new PlacementRequest(ordered, evidence), transport, ct).ConfigureAwait(false);
+        var proposal = await placer.ProposeAsync(new PlacementRequest(ordered, evidence), access, ct).ConfigureAwait(false);
         var proposed = new Dictionary<string, string>(StringComparer.Ordinal);
         foreach (var (alias, parent) in proposal.Parents) proposed[alias] = parent;
         var statusByAlias = new Dictionary<string, string>(proposal.Basis, StringComparer.Ordinal);

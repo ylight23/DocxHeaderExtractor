@@ -3,7 +3,6 @@ using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
-using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Sources.Snapshot;
@@ -29,7 +28,7 @@ internal sealed class SelectionAuthority(
     string pdfPath,
     string apiKey,
     IReadOnlyDictionary<string, string> layoutBlockByAtom,
-    IInferenceTransport? placementTransport,
+    ModelAccess? placementAccess,
     IHeadingPlacer? placer,
     Action ensureActive)
 {
@@ -81,7 +80,7 @@ internal sealed class SelectionAuthority(
         { Source = new(source.Atoms, selection.AliasStates ?? selection.SelectedAliases.ToDictionary(a => a,
             _ => new HeadingAliasState("SELECT", "SELECT", null, "READY_FOR_BINDING")), source.SourceSha256)
             { LocationByAlias = source.Evidence.ToDictionary(e => e.SourceAlias, e => e.LocationFacts) } };
-        return new SelectionResult(decisions, bound, placementTransport, Complete, evidence, placer);
+        return new SelectionResult(decisions, bound, placementAccess, Complete, evidence, placer);
     }
 
     /// <summary>

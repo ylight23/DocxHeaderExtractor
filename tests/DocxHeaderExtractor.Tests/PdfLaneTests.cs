@@ -67,7 +67,7 @@ public sealed class PdfLaneTests
         using var transport = new NoCallTransport("route-key");
         var file = UploadedFile.FromLocalPath(TestRepository.Path(Pdf));
 
-        var run = await PdfPipeline.RunAsync(file, new PipelineOptions(), transport, new HeadingAgents(Pdf: selector, Placer: new HeadingPlacer()));
+        var run = await PdfPipeline.RunAsync(file, new PipelineOptions(), transport, new HeadingAgents(Pdf: selector, Placer: transport.Placement.Placer));
 
         Assert.Equal(1, selector.Calls);
         Assert.Equal("route-key", selector.Key);
@@ -94,7 +94,7 @@ public sealed class PdfLaneTests
 
         var selector = new FixedSelector(new HashSet<string>());
         using var keyless = new NoCallTransport(null);
-        var noKey = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfPipeline.RunAsync(file, new PipelineOptions(), keyless, new HeadingAgents(Pdf: selector, Placer: new HeadingPlacer())));
+        var noKey = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfPipeline.RunAsync(file, new PipelineOptions(), keyless, new HeadingAgents(Pdf: selector, Placer: keyless.Placement.Placer)));
         Assert.StartsWith("PDF_HEADING_SELECTOR_KEY_MISSING", noKey.Message);
         Assert.Equal(0, selector.Calls);
         Assert.Equal(0, keyed.PlacementCalls + keyless.PlacementCalls);
@@ -105,7 +105,7 @@ public sealed class PdfLaneTests
     {
         var selector = new FixedSelector(new HashSet<string>());
         var file = UploadedFile.FromLocalPath(TestRepository.Path(Pdf));
-        var run = await PdfPipeline.RunAsync(file, new PipelineOptions { DisableLlm = true }, null, new HeadingAgents(Pdf: selector, Placer: new HeadingPlacer()));
+        var run = await PdfPipeline.RunAsync(file, new PipelineOptions { DisableLlm = true }, null, new HeadingAgents(Pdf: selector, Placer: new PlacementScript().Placer));
         Assert.Equal(0, selector.Calls);
         Assert.Empty(run.HeadingPipeline!.Structure.Elements);
     }
@@ -145,7 +145,7 @@ public sealed class PdfLaneTests
         var file = UploadedFile.FromLocalPath(TestRepository.Path(Pdf));
 
         using var plain = new NoCallTransport("route-key");
-        await PdfPipeline.RunAsync(file, new PipelineOptions(), plain, new HeadingAgents(Pdf: new FixedSelector(aliases), Placer: new HeadingPlacer()));
+        await PdfPipeline.RunAsync(file, new PipelineOptions(), plain, new HeadingAgents(Pdf: new FixedSelector(aliases), Placer: plain.Placement.Placer));
         Assert.Equal(1, plain.PlacementCalls);
         Assert.Contains("propose its", plain.LastPrompt);   // the parent definition of the placement prompt
         Assert.Contains("sourceContext", plain.LastPacket!, StringComparison.Ordinal);
@@ -153,7 +153,7 @@ public sealed class PdfLaneTests
         using var withStyles = new NoCallTransport("route-key");
         var agentSource = AgentSource.Load(TestRepository.Path(Pdf), out _)!;
         var context = agentSource.Flavor.PlacementContext(agentSource);
-        await PdfPipeline.RunAsync(file, new PipelineOptions(), withStyles, new HeadingAgents(Pdf: new FixedSelector(aliases, context), Placer: new HeadingPlacer()));
+        await PdfPipeline.RunAsync(file, new PipelineOptions(), withStyles, new HeadingAgents(Pdf: new FixedSelector(aliases, context), Placer: withStyles.Placement.Placer));
         Assert.Contains("propose its", withStyles.LastPrompt);
         using var packet = JsonDocument.Parse(withStyles.LastPacket!);
         Assert.True(packet.RootElement.TryGetProperty("upstreamWithheld", out _));
@@ -210,9 +210,11 @@ public sealed class PdfLaneTests
 
     private class NoCallTransport(string? key) : IAgentRouteInferenceTransport
     {
-        public int PlacementCalls { get; private set; }
-        public string? LastPrompt { get; private set; }
-        public string? LastPacket { get; private set; }
+        /// <summary>The placer of the run: placement goes through it, not through this transport.</summary>
+        public PlacementScript Placement { get; } = new();
+        public int PlacementCalls => Placement.Calls;
+        public string? LastPrompt => Placement.LastPrompt;
+        public string? LastPacket => Placement.LastPacket;
         public string? OpenRouterApiKey => key;
         public string RouteProvider => "test";
         public string RouteModel => "test";
@@ -221,12 +223,8 @@ public sealed class PdfLaneTests
         public string RuntimeDescription => "V6 lane test; no provider";
         public int SharedPrefixTokens => 0;
 
-        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
-        {
-            PlacementCalls++;
-            LastPrompt = systemPrompt; LastPacket = userMessage;
-            return Task.FromResult(HierarchyTestProtocol.Reply(userMessage)!);
-        }
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
+            throw new InvalidOperationException("NO_TRANSPORT_CALL: placement goes through the placer");
 
         public void Dispose() { }
     }

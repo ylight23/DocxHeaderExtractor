@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Contracts.Models;
 
 namespace DocxHeaderExtractor.Contracts.Agents;
@@ -7,7 +6,8 @@ namespace DocxHeaderExtractor.Contracts.Agents;
 /// The parent-placement agent: for each settled heading, it proposes the heading whose section contains it. It decides nothing; the
 /// pipeline checks every proposal against the graph (an earlier heading, ROOT, NONE or UNRESOLVED) and keeps only what passes.
 /// <para>
-/// The transport is given per call, not held: the pipeline binds it to the lane's lease for each run, so a late reply is refused there.
+/// The access to the model is given per call, not held: the pipeline ties it to the lane's lease for each run, so a call after the lane
+/// has ended is refused.
 /// </para>
 /// </summary>
 public interface IHeadingPlacer
@@ -15,8 +15,12 @@ public interface IHeadingPlacer
     /// <summary>The protocol the placer speaks, recorded in the route audit (for example its protocolVersion).</summary>
     string Contract { get; }
 
-    Task<PlacementProposal> ProposeAsync(PlacementRequest request, IInferenceTransport transport, CancellationToken ct);
+    Task<PlacementProposal> ProposeAsync(PlacementRequest request, ModelAccess access, CancellationToken ct);
 }
+
+/// <summary>What an agent needs to call the model in one run: the provider key of the authorized route, and a check that throws once the
+/// lane that started the run has ended (its result would no longer be used).</summary>
+public sealed record ModelAccess(string ApiKey, Action EnsureActive);
 
 /// <summary>What the placer reads.</summary>
 /// <param name="Ordered">The settled headings in document order. A heading that already carries a parent relation keeps it.</param>

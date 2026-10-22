@@ -9,6 +9,15 @@ namespace DocxHeaderExtractor.Agents;
 /// <summary>One request body, built once: the bytes measured, sent and hashed are this value.</summary>
 internal sealed record PreparedRequest(string Body, int Bytes, string Sha256);
 
+/// <summary>What a call sets beyond its messages and tools. <see cref="Default"/> is the selectors' qualified request.</summary>
+/// <param name="MaxTokens">The completion cap.</param>
+/// <param name="ReasoningEffort">Null sends reasoning enabled, as the selectors do; otherwise OpenRouter's reasoning effort ("none" turns it off).</param>
+/// <param name="DenyDataCollection">Asks the provider not to keep the data for training (data_collection=deny).</param>
+internal sealed record WireOptions(int MaxTokens = OpenRouterWire.MaxTokens, string? ReasoningEffort = null, bool DenyDataCollection = false)
+{
+    public static WireOptions Default { get; } = new();
+}
+
 /// <summary>One tool call of an assistant turn, as the response states it.</summary>
 internal sealed record ToolCall(string? Id, string? Name, string Arguments);
 
@@ -31,10 +40,13 @@ internal static class OpenRouterWire
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
     /// <summary>One POST body: model, messages (system prompt and payload as cache-marked text blocks, then the history), json_object, temperature
-    /// 0, max_tokens, reasoning enabled, the tools, this turn's tool_choice, the locked provider block, streaming and usage.</summary>
-    public static PreparedRequest Build(string systemPrompt, string payload, JsonArray history, string toolChoice, JsonArray tools)
+    /// 0, max_tokens, reasoning, the tools and this turn's tool_choice when the call declares tools, the locked provider block, streaming and
+    /// usage. Without <paramref name="options"/> the body is the selectors' qualified request.</summary>
+    public static PreparedRequest Build(string systemPrompt, string payload, JsonArray history, string? toolChoice, JsonArray? tools,
+        WireOptions? options = null)
     {
-        if (toolChoice is not ("auto" or "none")) throw new ArgumentException("TOOL_CHOICE_INVALID", nameof(toolChoice));
+        options ??= WireOptions.Default;
+        if (tools is not null && toolChoice is not ("auto" or "none")) throw new ArgumentException("TOOL_CHOICE_INVALID", nameof(toolChoice));
         static JsonNode Content(string text) =>
             new JsonArray(new JsonObject { ["type"] = "text", ["text"] = text, ["cache_control"] = new JsonObject { ["type"] = "ephemeral" } });
         var messages = new JsonArray(
@@ -47,14 +59,21 @@ internal static class OpenRouterWire
             ["messages"] = messages,
             ["response_format"] = new JsonObject { ["type"] = "json_object" },
             ["temperature"] = 0,
-            ["max_tokens"] = MaxTokens,
-            ["reasoning"] = new JsonObject { ["enabled"] = true },
-            ["tools"] = tools,
-            ["tool_choice"] = toolChoice,
-            ["provider"] = JsonSerializer.SerializeToNode(new { only = new[] { ProviderTag }, ignore = Ignore, allow_fallbacks = false, require_parameters = true }, Options),
-            ["stream"] = true,
-            ["usage"] = new JsonObject { ["include"] = true },
+            ["max_tokens"] = options.MaxTokens,
+            ["reasoning"] = options.ReasoningEffort is null
+                ? new JsonObject { ["enabled"] = true }
+                : new JsonObject { ["effort"] = options.ReasoningEffort },
         };
+        if (tools is not null)
+        {
+            body["tools"] = tools;
+            body["tool_choice"] = toolChoice;
+        }
+        body["provider"] = options.DenyDataCollection
+            ? JsonSerializer.SerializeToNode(new { only = new[] { ProviderTag }, ignore = Ignore, allow_fallbacks = false, require_parameters = true, data_collection = "deny" }, Options)
+            : JsonSerializer.SerializeToNode(new { only = new[] { ProviderTag }, ignore = Ignore, allow_fallbacks = false, require_parameters = true }, Options);
+        body["stream"] = true;
+        body["usage"] = new JsonObject { ["include"] = true };
         var text = body.ToJsonString(Options);
         var bytes = Encoding.UTF8.GetBytes(text);
         return new PreparedRequest(text, bytes.Length, Convert.ToHexStringLower(SHA256.HashData(bytes)));

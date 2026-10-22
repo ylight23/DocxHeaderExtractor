@@ -18,6 +18,7 @@ using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.App;
 using DocxHeaderExtractor.Web;
 using DocxHeaderExtractor.Agents.Budget;
+using DocxHeaderExtractor.HeadingAgent.Placement;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -104,10 +105,8 @@ public sealed class ScanProductionPipelineTests
             var parents = new Dictionary<string, string> { ["P001-L001"] = "ROOT", ["P001-L003"] = "P001-L001" };
             return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = HierarchyTestProtocol.Reply(packet, parents) }, "stop"));
         }, autoVerify: false);
-        using var http = new HttpClient(handler);
-        using var transport = new OpenRouterInferenceTransport(http, new RemoteInferenceOptions { ApiKey = "sk-test" });
         using var runner = new DocumentRunner(new PipelineOptions(),
-            new Factory(new FixedScan(Prepared(ScanPath)), new StructuredPlacementTransport(transport)));
+            new Factory(new FixedScan(Prepared(ScanPath)), new HeadingPlacer(handler)));
         var run = await runner.ExtractAsync(ScanPath);
         Assert.Equal(1, handler.Posts);
         Assert.Equal(new int?[] { 1, 2 }, run.Outline.Headings.Select(h => h.Level));
@@ -197,7 +196,7 @@ public sealed class ScanProductionPipelineTests
         var (source, selection, _) = AppendixMembershipTests.RunFixture("reject");
         var prepared = ScanSelector.PrepareSelection(source, selection) with
         { SourceSha256 = SourceHash.Compute(ScanPath) };
-        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared), new AppendixPlacement()));
+        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared), AppendixPlacement.Placer));
         var run = await runner.ExtractAsync(ScanPath);
         var structured = run.Outline.Headings.Where(h => h.Level is not null).ToArray();
         Assert.Equal("Phụ lục", structured[0].Text);
@@ -377,14 +376,17 @@ public sealed class ScanProductionPipelineTests
         }
     }
 
-    sealed class Factory(FixedScan scan, IInferenceTransport? placement = null) : IInferenceTransportFactory
+    sealed class Factory(FixedScan scan, IHeadingPlacer? placer = null) : IInferenceTransportFactory
     {
         public int TransportCalls;
         public bool SendsDataExternally => true;
         public IScanHeadingSelector CreateScanHeadingSelector() => scan;
         public IHeadingSelector CreateDocxHeadingSelector() => new EmptyNative();
+        /// <summary>The scripted placer: P001-L001 is a top-level section and P001-L003 sits under it. No provider is called.</summary>
+        public IHeadingPlacer CreateHeadingPlacer() => placer ?? new PlacementScript(packet => HierarchyTestProtocol.Reply(packet.ToJsonString(),
+            new Dictionary<string, string> { ["P001-L001"] = "ROOT", ["P001-L003"] = "P001-L001" })).Placer;
         public Task<IInferenceTransport> CreateAgentRouteAsync(CancellationToken ct = default)
-        { TransportCalls++; return Task.FromResult(placement ?? new PlacementTransport()); }
+        { TransportCalls++; return Task.FromResult<IInferenceTransport>(new PlacementTransport()); }
     }
     sealed class EmptyNative : IHeadingSelector
     {
@@ -402,33 +404,19 @@ public sealed class ScanProductionPipelineTests
         public string RuntimeDescription => "test";
         public int SharedPrefixTokens => 0;
         public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
-            Task.FromResult(HierarchyTestProtocol.Reply(userMessage, new Dictionary<string, string> { ["P001-L001"] = "ROOT", ["P001-L003"] = "P001-L001" })!);
+            throw new InvalidOperationException("NO_TRANSPORT_CALL: placement goes through the placer");
         public void Dispose() { }
     }
-    sealed class StructuredPlacementTransport(OpenRouterInferenceTransport inner) : PlacementTransport, IStructuredInferenceTransport
+    static class AppendixPlacement
     {
-        public Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage,
-            int maxOutputTokens, CancellationToken ct = default) =>
-            inner.CompleteStructuredAsync(systemPrompt, userMessage, maxOutputTokens, ct);
-    }
-    sealed class AppendixPlacement : IAgentRouteInferenceTransport
-    {
-        public string? OpenRouterApiKey => "test-route-key";
-        public string RouteProvider => "test";
-        public string RouteModel => "test";
-        public string ModelName => "test";
-        public int ContextSize => 100_000;
-        public string RuntimeDescription => "scripted appendix parent relations, not a live placement result";
-        public int SharedPrefixTokens => 0;
-        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
+        /// <summary>Only the scripted model supplies parent relations; production derives levels from these relations.</summary>
+        public static IHeadingPlacer Placer => new PlacementScript(packet =>
         {
-            // Only the scripted model supplies parent relations; production derives levels from these relations.
             var parents = new Dictionary<int, string> { [1] = "ROOT", [2] = AppendixMembershipTests.A(1), [4] = AppendixMembershipTests.A(2),
                 [6] = AppendixMembershipTests.A(2), [8] = AppendixMembershipTests.A(1), [9] = AppendixMembershipTests.A(8),
                 [11] = AppendixMembershipTests.A(8), [12] = "NONE", [14] = "NONE" };
-            return Task.FromResult(HierarchyTestProtocol.Reply(userMessage, parents.ToDictionary(p => AppendixMembershipTests.A(p.Key), p => p.Value))!);
-        }
-        public void Dispose() { }
+            return HierarchyTestProtocol.Reply(packet.ToJsonString(), parents.ToDictionary(p => AppendixMembershipTests.A(p.Key), p => p.Value));
+        }).Placer;
     }
     sealed class BlockingHandler : HttpMessageHandler
     {

@@ -5,11 +5,11 @@ using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
-using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Hierarchy;
 using DocxHeaderExtractor.DocumentProcessing.Placement;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.HeadingAgent.Placement;
+using System.Net;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -52,7 +52,7 @@ public sealed class HeadingPlacerTests
     {
         var (bound, evidence, parents) = Fixture();
         using var model = new Model(p => HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!);
-        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
+        var result = await ParentResolver.PlaceAsync(bound, model.Placer, PlacementScript.Access, evidence, CancellationToken.None);
         var hierarchy = HierarchyResolver.DeriveHierarchyFromModelRelations(result.Headings).ToDictionary(h => h.SourceId[3..]);
         Assert.Equal(1, hierarchy[C3].Level);
         Assert.Equal(2, hierarchy[D35].Level);
@@ -73,7 +73,7 @@ public sealed class HeadingPlacerTests
         var (bound, evidence, parents) = Fixture();
         parents[D47] = D46; // A same-chapter but semantically false parent is still a legal earlier bound node.
         using var model = new Model(p => HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!);
-        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
+        var result = await ParentResolver.PlaceAsync(bound, model.Placer, PlacementScript.Access, evidence, CancellationToken.None);
         var hierarchy = HierarchyResolver.DeriveHierarchyFromModelRelations(result.Headings).Single(h => h.SourceId == "id:" + D47);
         Assert.Equal("id:" + D46, hierarchy.ParentSourceId);
         Assert.Equal(3, hierarchy.Level);
@@ -86,7 +86,7 @@ public sealed class HeadingPlacerTests
         var (bound, evidence, parents) = Fixture();
         parents[C3] = D35;
         using var model = new Model(p => HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!);
-        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
+        var result = await ParentResolver.PlaceAsync(bound, model.Placer, PlacementScript.Access, evidence, CancellationToken.None);
         var chapter = result.Headings.Single(h => h.Alias == C3);
         Assert.DoesNotContain(chapter.RelationHints, h => h.StartsWith("parent-node:", StringComparison.Ordinal));
         Assert.Equal(HierarchyResolver.Unresolved,
@@ -110,7 +110,7 @@ public sealed class HeadingPlacerTests
             return HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!;
         });
 
-        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
+        var result = await ParentResolver.PlaceAsync(bound, model.Placer, PlacementScript.Access, evidence, CancellationToken.None);
 
         // The two batches run side by side: take the packets that carry the refused row.
         var batch = packets.Where(p => p["toPlace"]!.AsArray().Any(a => a!.GetValue<string>() == C3)).ToArray();
@@ -135,7 +135,7 @@ public sealed class HeadingPlacerTests
             return HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!;
         });
 
-        await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
+        await ParentResolver.PlaceAsync(bound, model.Placer, PlacementScript.Access, evidence, CancellationToken.None);
 
         Assert.Equal(2, packets.Count);   // 25 targets in batches of 16 and 9
         Assert.Empty(packets[0]["decidedHeadings"]!.AsArray());
@@ -152,7 +152,7 @@ public sealed class HeadingPlacerTests
     {
         var (bound, evidence, _) = Fixture();
         using var model = new Model(_ => "not json");
-        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
+        var result = await ParentResolver.PlaceAsync(bound, model.Placer, PlacementScript.Access, evidence, CancellationToken.None);
         Assert.Equal(bound.Length, result.Headings.Count);
         Assert.All(result.Observation.Calls, c => Assert.Equal("HIERARCHY_PLACE", c.Phase));
         Assert.Equal(0, result.Observation.VerifiedCount);
@@ -177,7 +177,7 @@ public sealed class HeadingPlacerTests
                 : JsonSerializer.Serialize(new { protocolVersion = HeadingPlacer.Version, rows });
         });
 
-        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
+        var result = await ParentResolver.PlaceAsync(bound, model.Placer, PlacementScript.Access, evidence, CancellationToken.None);
 
         Assert.Equal(bound.Length, result.Headings.Count);
         Assert.Contains(result.Observation.Calls.SelectMany(c => c.ProtocolErrors), e => e == code);
@@ -190,21 +190,69 @@ public sealed class HeadingPlacerTests
     {
         var (_, evidence, _) = Fixture();
         using var model = new Model(_ => throw new InvalidOperationException("must not call"));
-        var result = await ParentResolver.PlaceAsync([], new HeadingPlacer(), model, evidence, CancellationToken.None);
+        var result = await ParentResolver.PlaceAsync([], model.Placer, PlacementScript.Access, evidence, CancellationToken.None);
         Assert.Equal(0, result.Observation.LogicalCalls);
         Assert.Equal(0, result.Observation.VerifiedCount);
     }
 
-    sealed class Model(Func<JsonNode, string> script) : IStructuredInferenceTransport
+    // The placer takes the production path: the shared OpenRouter wire, with the placement's own call settings.
+    [Theory]
+    [InlineData("stop")]
+    [InlineData("length")]
+    public async Task A_placement_round_goes_through_the_shared_wire_with_the_placement_settings(string finish)
     {
-        public string ModelName => "offline scripted proposal";
-        public int ContextSize => 100_000;
-        public string RuntimeDescription => "No API calls";
-        public int SharedPrefixTokens => 0;
-        public Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage, int maxOutputTokens, CancellationToken ct = default) =>
-            Task.FromResult(new StructuredInferenceReply(script(JsonNode.Parse(userMessage)!), "stop", maxOutputTokens));
-        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
-            Task.FromResult(script(JsonNode.Parse(userMessage)!));
+        var lines = Enumerable.Range(0, 16).Select(i => new SemanticSourceAtom("L" + i, "S" + i, i, 1, i, 0, "Section " + i)).ToArray();
+        var bound = lines.Select(l => new CanonicalSemanticBoundHeading(l.Alias, l.SourceId, l.Ordinal, l.Text,
+            "ESTABLISHES_STRUCTURE", "heading", "document_body", [], 0, l.Text.Length)).ToArray();
+        var evidence = new HeadingPlacementEvidence("{}", new Dictionary<string, string>())
+        { Source = new(lines, new Dictionary<string, HeadingAliasState>()) };
+        using var handler = new FakeOpenRouter((body, _) =>
+        {
+            var packet = body["messages"]![1]!["content"]!.Text();
+            Assert.Equal("HIERARCHY_PLACE", JsonNode.Parse(packet)!["stage"]!.GetValue<string>());
+            Assert.Equal("qwen/qwen3.7-flash", body["model"]!.GetValue<string>());
+            Assert.Equal(2144, body["max_tokens"]!.GetValue<int>());   // 16 rows asked for
+            Assert.Equal("none", body["reasoning"]!["effort"]!.GetValue<string>());
+            Assert.Equal("deny", body["provider"]!["data_collection"]!.GetValue<string>());
+            Assert.Null(body["tools"]);
+            return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = HierarchyTestProtocol.Reply(packet) }, finish));
+        }, autoVerify: false);
+
+        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(handler), new ModelAccess("sk-route", () => { }), evidence,
+            CancellationToken.None);
+
+        var completed = finish == "stop";
+        Assert.Equal(completed ? 16 : 0, result.Observation.PlacedCount);
+        Assert.Equal(completed ? 0 : 16, result.Observation.UnresolvedCount);
+        // A reply cut at the token cap fails the usage audit: the round ends without a proposal and is not sent again.
+        Assert.Equal(1, handler.Posts);
+        Assert.Equal(["Bearer sk-route"], handler.Keys);
+        var call = Assert.Single(result.Observation.Calls);
+        Assert.Equal(2144, call.RequestedMaxOutputTokens);
+        if (completed) Assert.Equal("stop", call.FinishReason);
+        else Assert.Contains("TRANSPORT_FAILURE:AUDIT:FINISH_LENGTH", call.ProtocolErrors);
+    }
+
+    // The access ends with the lane: a reply that comes back after it is not used, and no further round is sent.
+    [Fact]
+    public async Task A_reply_that_comes_back_after_the_lane_ended_is_not_used()
+    {
+        var (bound, evidence, parents) = Fixture();
+        var active = true;
+        var script = new PlacementScript(p => { active = false; return HierarchyTestProtocol.Reply(p.ToJsonString(), parents); });
+        var access = new ModelAccess("sk-test", () => { if (!active) throw new InvalidOperationException("LANE_ENDED"); });
+
+        var result = await ParentResolver.PlaceAsync(bound, script.Placer, access, evidence, CancellationToken.None);
+
+        Assert.Equal(1, script.Calls);
+        Assert.All(result.Headings, h => Assert.DoesNotContain(h.RelationHints, r => r.StartsWith("parent-node:", StringComparison.Ordinal)));
+        Assert.Contains(result.Observation.Calls.SelectMany(c => c.ProtocolErrors), e => e == "TRANSPORT_FAILURE:InvalidOperationException");
+    }
+
+    sealed class Model(Func<JsonNode, string> script) : IDisposable
+    {
+        readonly PlacementScript recorder = new(script);
+        public HeadingPlacer Placer => recorder.Placer;
         public void Dispose() { }
     }
 }

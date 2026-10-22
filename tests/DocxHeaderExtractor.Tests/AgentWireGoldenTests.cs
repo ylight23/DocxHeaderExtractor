@@ -3,7 +3,6 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Placement;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Formats;
@@ -143,47 +142,18 @@ public sealed class AgentWireGoldenTests
         ]);
     }
 
-    /// <summary>A transport that records what each call sends (system prompt and user message, by SHA-256, with the output budget) and answers
-    /// from a script.</summary>
-    private sealed class Recorder(Func<JsonNode?, string> script) : IStructuredInferenceTransport
-    {
-        public JsonArray Requests { get; } = [];
-        public string ModelName => "recorded";
-        public int ContextSize => 100_000;
-        public string RuntimeDescription => "No API calls";
-        public int SharedPrefixTokens => 0;
-
-        public Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage, int maxOutputTokens, CancellationToken ct = default)
-        {
-            Requests.Add($"{Sha(systemPrompt + "\0" + userMessage)} max={maxOutputTokens}");
-            return Task.FromResult(new StructuredInferenceReply(script(JsonNode.Parse(userMessage)), "stop", maxOutputTokens));
-        }
-
-        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
-        {
-            Requests.Add($"{Sha(systemPrompt + "\0" + userMessage)} expected={expectedItemCount}");
-            return Task.FromResult(script(JsonNode.Parse(userMessage)));
-        }
-
-        public void Dispose() { }
-    }
-
-    /// <summary>The source-grounded placement conversation: two batches, one row refused and named in the next round, and what it decided.</summary>
+    /// <summary>The source-grounded placement conversation: two batches, one row refused and named in the next round, and what it decided.
+    /// Every round is recorded as the request the provider would receive.</summary>
     private static JsonObject PlacementWithEvidence()
     {
         var (bound, evidence, parents) = HeadingPlacerTests.Fixture();
         parents[HeadingPlacerTests.C3] = HeadingPlacerTests.D35;   // a later heading: refused, then named in the next round
-        using var model = new Recorder(p => HierarchyTestProtocol.Reply(p!.ToJsonString(), parents)!);
-        var result = ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None).GetAwaiter().GetResult();
-        return Placement(model, result);
-    }
-
-    private static JsonObject Placement(Recorder model, ParentResolver.PlacementResult result)
-    {
+        var script = new PlacementScript(p => HierarchyTestProtocol.Reply(p.ToJsonString(), parents));
+        var result = ParentResolver.PlaceAsync(bound, script.Placer, PlacementScript.Access, evidence, CancellationToken.None).GetAwaiter().GetResult();
         var observation = result.Observation with { Seconds = 0, Calls = result.Observation.Calls.Select(c => c with { Seconds = 0 }).ToArray() };
         return new JsonObject
         {
-            ["requests"] = model.Requests.DeepClone(),
+            ["requests"] = new JsonArray(script.Requests.Select(r => (JsonNode)r.Sha256).ToArray()),
             ["parents"] = Sha(string.Join("\n", result.Headings.Select(h => h.Alias + " " + string.Join(",", h.RelationHints)))),
             ["observation"] = Sha(JsonSerializer.Serialize(observation)),
         };

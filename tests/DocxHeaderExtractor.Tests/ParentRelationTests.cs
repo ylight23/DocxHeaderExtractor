@@ -1,5 +1,4 @@
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
@@ -44,7 +43,7 @@ public sealed class ParentRelationTests : IDisposable
         }.ToJsonString());
         var selector = new FixedSelector(new HashSet<string> { chapter.Alias, general.Alias });
         var authority = new SelectionAuthority(selector, path, "sk-test", new Dictionary<string, string>(StringComparer.Ordinal),
-            placement, new HeadingPlacer(), () => { });
+            PlacementScript.Access, placement.Placer, () => { });
 
         var decided = await authority.DecideAsync(source, CancellationToken.None);
         var assembly = await StructureAssembler.AssembleAsync(source, decided, PrimaryOccurrences.EverySourceOccurrence,
@@ -85,8 +84,10 @@ public sealed class ParentRelationTests : IDisposable
         {
             ["placements"] = new JsonArray(new JsonObject { ["alias"] = article.Alias, ["parent"] = general.Alias }),
         }.ToJsonString());
+        var evidence = new HeadingPlacementEvidence("{}", new Dictionary<string, string>())
+        { Source = new(source.Atoms, new Dictionary<string, HeadingAliasState>()) };
         var authority = new SelectionResult(decisions,
-            new[] { Bound(chapter), Bound(general), Bound(article) }, placement, (audit, _) => audit, null);
+            new[] { Bound(chapter), Bound(general), Bound(article) }, PlacementScript.Access, (audit, _) => audit, evidence, placement.Placer);
 
         var assembly = await StructureAssembler.AssembleAsync(source, authority, PrimaryOccurrences.EverySourceOccurrence,
             CancellationToken.None);
@@ -105,17 +106,10 @@ public sealed class ParentRelationTests : IDisposable
             Task.FromResult(new HeadingSelection(aliases, 1, 1, [], ["{}"], 1, 0.0));
     }
 
-    private sealed class FixedPlacement(string reply) : IInferenceTransport
+    /// <summary>A placer that proposes the given relations for the rows asked for.</summary>
+    private sealed class FixedPlacement(string reply)
     {
-        public string ModelName => "fixed";
-        public int ContextSize => 1 << 20;
-        public string RuntimeDescription => "parent relation test";
-        public int SharedPrefixTokens => 0;
-
-        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
-            Task.FromResult(HierarchyTestProtocol.Reply(userMessage, JsonNode.Parse(reply)!["placements"]!.AsArray()
-                .ToDictionary(p => p!["alias"]!.GetValue<string>(), p => p!["parent"]!.GetValue<string>())) ?? reply);
-
-        public void Dispose() { }
+        public HeadingPlacer Placer { get; } = new PlacementScript(packet => HierarchyTestProtocol.Reply(packet.ToJsonString(),
+            JsonNode.Parse(reply)!["placements"]!.AsArray().ToDictionary(p => p!["alias"]!.GetValue<string>(), p => p!["parent"]!.GetValue<string>())) ?? reply).Placer;
     }
 }

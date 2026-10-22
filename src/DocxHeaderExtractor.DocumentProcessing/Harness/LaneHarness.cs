@@ -122,7 +122,7 @@ internal static class LaneHarness
             assembly.Structure.Elements.Select(value => value.Id).ToHashSet(StringComparer.Ordinal))
         { SourceCatalog = source.Catalog, ProjectionContext = assembly.ProjectionContext };
 
-    /// <summary>The selected-lines authority decides on <paramref name="source"/>, with the placement transport bound to the lane lease.</summary>
+    /// <summary>The selected-lines authority decides on <paramref name="source"/>; the placer's access to the model ends with the lane lease.</summary>
     private static Task<SelectionResult> DecideAsync(
         DocumentSourceSnapshot source,
         IHeadingSelector selector,
@@ -132,14 +132,17 @@ internal static class LaneHarness
         IReadOnlyDictionary<string, string> layoutBlockByAtom,
         IInferenceTransport? transport,
         LaneLease lease,
-        CancellationToken ct) =>
-        new SelectionAuthority(
+        CancellationToken ct)
+    {
+        void EnsureActive() { if (!lease.IsActive) throw new LaneLeaseLostException(); }
+        return new SelectionAuthority(
             selector,
             path,
             apiKey,
             layoutBlockByAtom,
-            transport is null ? null : LeaseTransport.Bind(transport, lease),
+            transport is null ? null : new ModelAccess(apiKey, EnsureActive),
             placer,
-            () => { if (!lease.IsActive) throw new LaneLeaseLostException(); })
+            EnsureActive)
         .DecideAsync(source, ct);
+    }
 }

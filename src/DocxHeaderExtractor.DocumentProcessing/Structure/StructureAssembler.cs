@@ -33,13 +33,13 @@ internal static class StructureAssembler
         var validatedIds = validated.Select(item => item.SourceId).ToHashSet(StringComparer.Ordinal);
         var bound = authority.BoundHeadings.Where(item => validatedIds.Contains(item.SourceId)).ToArray();
         // The placer proposes parents from the source context and the upstream gaps; ParentResolver keeps only what the graph allows.
-        // Without a transport (the model disabled) placement is not requested. Unresolved ancestry remains a legitimate outcome.
-        var placement = authority.PlacementTransport is null || authority.Placer is null
+        // With the model disabled there is no access, and placement is not requested. Unresolved ancestry remains a legitimate outcome.
+        var placement = authority.PlacementAccess is null || authority.Placer is null
             ? ParentResolver.Observe(bound,
                 HierarchyResolver.DeriveHierarchyFromModelRelations(bound)
                     .Where(item => item.Resolution == HierarchyResolver.Unresolved)
                     .Select(item => item.SourceId).ToHashSet(StringComparer.Ordinal), "placement-not-requested")
-            : await ParentResolver.PlaceAsync(bound, authority.Placer, authority.PlacementTransport,
+            : await ParentResolver.PlaceAsync(bound, authority.Placer, authority.PlacementAccess,
                 authority.PlacementEvidence ?? throw new InvalidOperationException("PLACEMENT_EVIDENCE_REQUIRED"), cancellationToken).ConfigureAwait(false);
         var placed = placement.Headings;
         // The alias catalog spans the whole document while contexts hold only the occurrences the
