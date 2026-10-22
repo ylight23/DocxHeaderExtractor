@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 

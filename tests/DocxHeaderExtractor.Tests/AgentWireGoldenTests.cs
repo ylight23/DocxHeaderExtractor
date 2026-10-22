@@ -12,7 +12,6 @@ using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 using DocxHeaderExtractor.Agents.Budget;
 using DocxHeaderExtractor.Agents;
-using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.HeadingAgent.Placement;
 
 namespace DocxHeaderExtractor.Tests;

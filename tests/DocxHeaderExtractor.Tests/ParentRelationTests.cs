@@ -1,12 +1,10 @@
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Structure;
-using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
 using DocxHeaderExtractor.Contracts.Agents;
-using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.HeadingAgent.Placement;

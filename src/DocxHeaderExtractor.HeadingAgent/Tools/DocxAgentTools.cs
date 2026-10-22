@@ -3,7 +3,6 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.HeadingAgent.Formats;
-using DocxHeaderExtractor.HeadingAgent.Protocol;
 
 namespace DocxHeaderExtractor.HeadingAgent.Tools;
 

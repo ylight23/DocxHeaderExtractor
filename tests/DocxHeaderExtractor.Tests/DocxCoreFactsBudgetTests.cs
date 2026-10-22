@@ -3,7 +3,6 @@ using System.Text.Json.Nodes;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DocxHeaderExtractor.HeadingAgent.Formats;
-using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 using Xunit.Abstractions;

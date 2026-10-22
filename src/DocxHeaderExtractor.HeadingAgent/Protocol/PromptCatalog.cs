@@ -1,6 +1,5 @@
 using DocxHeaderExtractor.HeadingAgent.Scan;
 using DocxHeaderExtractor.HeadingAgent.Grouping;
-using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Protocol;
 

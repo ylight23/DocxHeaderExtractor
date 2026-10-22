@@ -1,7 +1,6 @@
 using System.Text.Json.Serialization;
 using DocxHeaderExtractor.DocumentProcessing.Hierarchy;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.DocumentProcessing.Output;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Audit;
 

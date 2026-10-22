@@ -1,5 +1,4 @@
 using System.Net;
-using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 using DocxHeaderExtractor.Agents.Budget;

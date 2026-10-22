@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Agents;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Audit;

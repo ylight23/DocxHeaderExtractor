@@ -2,9 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Grouping;
-using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
-using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.Agents.Budget;
 using DocxHeaderExtractor.Agents;
 

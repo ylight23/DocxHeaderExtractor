@@ -3,9 +3,7 @@ using DocxHeaderExtractor.DocumentProcessing.Lanes.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Provider;
-using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Sources.Docx;
-using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 
 namespace DocxHeaderExtractor.Tests;

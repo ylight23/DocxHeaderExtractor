@@ -1,7 +1,6 @@
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.DocumentProcessing.Output.Outline;
-using DocxHeaderExtractor.DocumentProcessing.Output.Product;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Output.Final;
 

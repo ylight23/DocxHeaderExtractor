@@ -1,7 +1,6 @@
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Sources.Pdf;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Tools;

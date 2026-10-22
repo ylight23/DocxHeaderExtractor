@@ -1,7 +1,6 @@
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using DocxHeaderExtractor.DocumentProcessing.Output;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Output.Outline;
 

@@ -1,6 +1,5 @@
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Output.Outline;
-using DocxHeaderExtractor.DocumentProcessing.Output.Product;
 using System.Text.Json.Serialization;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 

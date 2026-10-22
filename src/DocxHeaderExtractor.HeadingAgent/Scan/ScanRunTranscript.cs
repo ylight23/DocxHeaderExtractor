@@ -1,11 +1,9 @@
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Selectors;
-using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.Agents;
 
 namespace DocxHeaderExtractor.HeadingAgent.Scan;

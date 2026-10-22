@@ -3,7 +3,6 @@ using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Sources.Snapshot;
 using DocxHeaderExtractor.Sources.Pdf;
-using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Formats;

@@ -1,15 +1,12 @@
 extern alias WebApp;
 
-using System.Net;
 using System.Text.Json;
 using DocxHeaderExtractor.App;
 using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.Contracts.Agents;
-using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Contracts.Scan;
 using DocxHeaderExtractor.Web;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;

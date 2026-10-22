@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Lanes.Pdf;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Provider;

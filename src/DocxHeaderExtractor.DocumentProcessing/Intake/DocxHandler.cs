@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Lanes.Docx;
 using DocxHeaderExtractor.Contracts.Routing;

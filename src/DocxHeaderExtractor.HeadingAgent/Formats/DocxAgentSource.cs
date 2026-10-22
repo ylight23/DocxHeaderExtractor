@@ -6,7 +6,6 @@ using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Docx;
 using DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
 using DocxHeaderExtractor.Sources.Docx;
-using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Formats;

@@ -2,9 +2,7 @@ using System.Text.Json;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
-using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Structure;
-using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Sources.Snapshot;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Selection;

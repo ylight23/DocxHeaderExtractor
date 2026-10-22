@@ -1,6 +1,5 @@
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
-using DocxHeaderExtractor.DocumentProcessing.Output;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Harness;
 

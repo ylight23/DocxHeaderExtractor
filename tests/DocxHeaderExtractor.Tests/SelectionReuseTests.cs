@@ -1,9 +1,7 @@
 using System.Text.Json;
 using DocxHeaderExtractor.Contracts.Agents;
-using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Grouping;
-using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Selectors;
 using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;

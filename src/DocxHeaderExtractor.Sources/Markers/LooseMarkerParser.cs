@@ -1,6 +1,5 @@
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Sources.Pdf;
-using DocxHeaderExtractor.Sources.Snapshot;
 
 namespace DocxHeaderExtractor.Sources.Markers;
 

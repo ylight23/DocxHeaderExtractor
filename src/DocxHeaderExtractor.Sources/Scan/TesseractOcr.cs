@@ -3,7 +3,6 @@ using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using DocxHeaderExtractor.Contracts.Scan;
-using DocxHeaderExtractor.Sources.Snapshot;
 
 namespace DocxHeaderExtractor.Sources.Scan;
 

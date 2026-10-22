@@ -1,6 +1,4 @@
-using System.Text;
 using System.Text.Json;
-using DocxHeaderExtractor.Sources.Snapshot;
 using DocxHeaderExtractor.Sources.Pdf;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;

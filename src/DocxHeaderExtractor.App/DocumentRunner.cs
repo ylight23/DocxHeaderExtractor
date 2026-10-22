@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.Contracts.Docx;
@@ -9,10 +8,8 @@ using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Sources.Detect;
-using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Selectors;
-using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.App;
 

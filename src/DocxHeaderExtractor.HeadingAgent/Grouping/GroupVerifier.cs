@@ -12,7 +12,6 @@ using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
-using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.Agents.Budget;
 using DocxHeaderExtractor.Agents;
 

@@ -1,5 +1,3 @@
-using DocxHeaderExtractor.Contracts.Models;
-
 namespace DocxHeaderExtractor.Contracts.Agents;
 
 /// <summary>

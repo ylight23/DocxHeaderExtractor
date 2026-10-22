@@ -1,17 +1,14 @@
 using System.Text.Json;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Lanes.Pdf;
-using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Pdf;
 using DocxHeaderExtractor.HeadingAgent.Formats;
-using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Selectors;
-using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.HeadingAgent.Placement;
 
 namespace DocxHeaderExtractor.Tests;

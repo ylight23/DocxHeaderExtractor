@@ -1,13 +1,10 @@
-using System.Collections.Concurrent;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Agents;
-using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Hierarchy;
 using DocxHeaderExtractor.DocumentProcessing.Placement;
-using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.HeadingAgent.Placement;
 using System.Net;
 

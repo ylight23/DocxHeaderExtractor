@@ -1,5 +1,4 @@
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 

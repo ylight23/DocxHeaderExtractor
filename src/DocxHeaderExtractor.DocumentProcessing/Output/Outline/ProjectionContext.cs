@@ -1,5 +1,4 @@
 using System.Collections.Frozen;
-using DocxHeaderExtractor.DocumentProcessing.Output.Product;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Output.Outline;
 

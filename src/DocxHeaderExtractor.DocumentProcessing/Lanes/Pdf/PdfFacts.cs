@@ -1,9 +1,7 @@
 using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Pdf;
 using DocxHeaderExtractor.Sources.Markers;
-using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
-using DocxHeaderExtractor.DocumentProcessing.Output;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Lanes.Pdf;
 

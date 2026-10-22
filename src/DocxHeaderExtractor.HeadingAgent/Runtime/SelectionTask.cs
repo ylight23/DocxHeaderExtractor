@@ -3,7 +3,6 @@ using DocxHeaderExtractor.Agents;
 using DocxHeaderExtractor.Agents.Conversation;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
-using DocxHeaderExtractor.HeadingAgent.Tools;
 using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 
 namespace DocxHeaderExtractor.HeadingAgent.Runtime;

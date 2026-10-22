@@ -1,6 +1,5 @@
 using DocxHeaderExtractor.Contracts.Chunking;
 using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.DocumentProcessing.Output;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Harness;
 

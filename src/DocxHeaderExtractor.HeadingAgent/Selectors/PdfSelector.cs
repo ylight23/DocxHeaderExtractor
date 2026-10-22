@@ -1,5 +1,4 @@
 using DocxHeaderExtractor.HeadingAgent.Formats;
-using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Selectors;

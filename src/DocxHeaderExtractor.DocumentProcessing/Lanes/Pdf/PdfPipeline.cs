@@ -1,6 +1,5 @@
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Sources.Pdf;
-using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.Contracts.Agents;

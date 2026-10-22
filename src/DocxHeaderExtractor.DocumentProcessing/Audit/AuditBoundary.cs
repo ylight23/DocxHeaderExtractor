@@ -1,5 +1,3 @@
-using DocxHeaderExtractor.DocumentProcessing.Output;
-
 namespace DocxHeaderExtractor.DocumentProcessing.Audit;
 
 /// <summary>

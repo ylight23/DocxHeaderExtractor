@@ -1,10 +1,8 @@
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.DocumentProcessing.Output.Outline;
 using DocxHeaderExtractor.DocumentProcessing.Output.Product;
 using DocxHeaderExtractor.DocumentProcessing.Binding;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Snapshot;
-using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Hierarchy;
 using DocxHeaderExtractor.DocumentProcessing.Placement;

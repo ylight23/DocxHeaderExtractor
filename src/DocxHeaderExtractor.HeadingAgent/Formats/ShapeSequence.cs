@@ -1,6 +1,5 @@
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 

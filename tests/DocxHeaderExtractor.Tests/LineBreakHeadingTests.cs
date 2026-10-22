@@ -1,11 +1,9 @@
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Contracts.Agents;
-using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.DocumentProcessing.Binding;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Docx;

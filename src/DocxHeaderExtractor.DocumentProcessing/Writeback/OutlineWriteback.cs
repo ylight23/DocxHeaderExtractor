@@ -1,6 +1,5 @@
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-using DocxHeaderExtractor.DocumentProcessing.Audit;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Writeback;
 

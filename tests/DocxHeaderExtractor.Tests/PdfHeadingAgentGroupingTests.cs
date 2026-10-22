@@ -4,7 +4,6 @@ using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Selectors;
-using DocxHeaderExtractor.HeadingAgent.Tools;
 using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 using DocxHeaderExtractor.Agents.Budget;
 using DocxHeaderExtractor.Agents;

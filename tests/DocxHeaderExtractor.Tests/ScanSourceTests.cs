@@ -4,7 +4,6 @@ using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.Contracts.Scan;
 using DocxHeaderExtractor.Sources.Scan;
 using DocxHeaderExtractor.HeadingAgent.Formats;
-using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 using A = DocumentFormat.OpenXml.Drawing;

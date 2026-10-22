@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 

@@ -1,5 +1,4 @@
 using DocxHeaderExtractor.DocumentProcessing.Output.Outline;
-using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 
 namespace DocxHeaderExtractor.Cli;

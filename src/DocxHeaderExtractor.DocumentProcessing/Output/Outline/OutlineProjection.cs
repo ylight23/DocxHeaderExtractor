@@ -1,5 +1,4 @@
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.DocumentProcessing.Output;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Output.Outline;
 

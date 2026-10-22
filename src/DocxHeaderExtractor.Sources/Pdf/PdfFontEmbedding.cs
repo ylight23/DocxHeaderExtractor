@@ -1,7 +1,6 @@
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Core;
 using UglyToad.PdfPig.Tokens;
-using DocxHeaderExtractor.Sources.Snapshot;
 
 namespace DocxHeaderExtractor.Sources.Pdf;
 

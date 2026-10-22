@@ -1,10 +1,8 @@
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
 using DocxHeaderExtractor.Sources.Snapshot;
 using DocxHeaderExtractor.Sources.Pdf;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
-using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Formats;
 

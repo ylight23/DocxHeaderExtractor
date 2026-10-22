@@ -5,7 +5,6 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Agents;
 using DocxHeaderExtractor.HeadingAgent.Formats;
-using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Protocol;
 

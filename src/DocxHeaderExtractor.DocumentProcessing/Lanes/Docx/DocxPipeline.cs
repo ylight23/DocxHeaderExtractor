@@ -5,7 +5,6 @@ using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Structure;
-using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Lanes.Scan;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
