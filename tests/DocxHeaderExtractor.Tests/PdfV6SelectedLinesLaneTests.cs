@@ -15,6 +15,7 @@ namespace DocxHeaderExtractor.Tests;
 /// The PDF lane after the V6 promotion (2026-10-14): an <see cref="IHeadingSelector"/> is the only heading authority. These tests use a
 /// selector that answers from a fixed alias set and a transport that makes no provider call.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class PdfV6SelectedLinesLaneTests
 {
     private const string Pdf = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";

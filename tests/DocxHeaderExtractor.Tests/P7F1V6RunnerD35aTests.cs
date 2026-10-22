@@ -7,6 +7,7 @@ namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D3.5a (offline): the evidence-based preflight, the mode separation, the response audit, the dispatch rules, the mock
 /// end-to-end path, per-run retention, and the source path checks. No connection is opened; every port here is a fake.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6RunnerD35aTests : IDisposable
 {
     const string Rfc = "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf";
@@ -340,54 +341,6 @@ public sealed class P7F1V6RunnerD35aTests : IDisposable
     }
 
     // ---------------- mock end-to-end ----------------
-
-    [Fact] public void The_mock_end_to_end_path_runs_the_protocol_through_dispatch_and_the_audit()
-    {
-        var (inv, sha) = WriteInventory("mock-e2e", E1Rows);
-        var safe = P7F1V6SafeRawStore.CreateRun(SafeRoot());
-        var mock = P7F1V6Preflight.Result.Build(Evidence(P7F1V6Preflight.RunMode.Mock, inv, sha, safeRoot: safe.RunDirectory));
-        var cands = new P7F1V6Hier.Cand[]
-        {
-            new("L0001:S0", 1, "Intro"), new("L0002:S0", 1, "Body"), new("L0003:S0", 1, "Intro"), new("L0004:S0", 2, "Summary"),
-        };
-        // One shard: interpretation, local, reconcile and global are four calls, inside the six-call limit.
-        // Two shards would need seven calls and stop at the limit; that case is tested separately below.
-        var opts = new P7F1V6Hier.Options("Trích xuất các mục có tiêu đề", "src-sha", ShardSize: 4, Context: 1, FanIn: 3, PassUpCap: 8,
-            SourceUniverseSha256: "u", ParserVersion: "p", EvidenceStoreVersion: "e", SafeStore: safe, RequireSafeStore: true);
-        var (run, state, port) = P7F1V6MockRun.Run(cands, opts, mock);
-        Assert.True(run.RunStatus == "PROTOCOL_RESOLVED", run.RunStatus + " | stop=" + state.StopReason + " | " + string.Join(";", run.Violations.Take(4)));
-        Assert.Null(state.StopReason);
-        Assert.Equal(run.Nodes.Count, port.Calls);
-        Assert.Equal(port.Calls, state.Attempts);
-        Assert.Empty(safe.VerifyOnDisk());
-    }
-
-    [Fact] public void A_run_that_needs_more_calls_than_the_limit_stops_at_the_limit_and_says_so()
-    {
-        var (inv, sha) = WriteInventory("mock-limit", E1Rows);
-        var safe = P7F1V6SafeRawStore.CreateRun(SafeRoot());
-        var mock = P7F1V6Preflight.Result.Build(Evidence(P7F1V6Preflight.RunMode.Mock, inv, sha, safeRoot: safe.RunDirectory));
-        var cands = new P7F1V6Hier.Cand[]
-        {
-            new("L0001:S0", 1, "Intro"), new("L0002:S0", 1, "Body"), new("L0003:S0", 1, "Intro"), new("L0004:S0", 2, "Summary"),
-        };
-        var opts = new P7F1V6Hier.Options("Trích xuất các mục có tiêu đề", "src-sha", ShardSize: 2, Context: 1, FanIn: 3, PassUpCap: 8,
-            SourceUniverseSha256: "u", ParserVersion: "p", EvidenceStoreVersion: "e", SafeStore: safe, RequireSafeStore: true);
-        var (run, state, port) = P7F1V6MockRun.Run(cands, opts, mock);
-        Assert.Equal("CALL_LIMIT_EXCEEDED", state.StopReason);
-        Assert.Equal(P7F1V6Runner.MaxCalls, port.Calls);
-        Assert.NotEqual("PROTOCOL_RESOLVED", run.RunStatus);
-    }
-
-    [Fact] public void The_mock_run_refuses_a_live_preflight_result()
-    {
-        var (inv, sha) = WriteInventory("mock-refuse", E1Rows);
-        var live = P7F1V6Preflight.Result.Build(Evidence(P7F1V6Preflight.RunMode.Live, inv, sha));
-        var cands = new P7F1V6Hier.Cand[] { new("L0001:S0", 1, "Intro") };
-        var opts = new P7F1V6Hier.Options("x", "src-sha", ShardSize: 2, Context: 1, FanIn: 3, PassUpCap: 8,
-            SourceUniverseSha256: "u", ParserVersion: "p", EvidenceStoreVersion: "e");
-        Assert.Throws<InvalidOperationException>(() => P7F1V6MockRun.Run(cands, opts, live));
-    }
 
     // ---------------- retention: per-run review, root-bound deletion ----------------
 

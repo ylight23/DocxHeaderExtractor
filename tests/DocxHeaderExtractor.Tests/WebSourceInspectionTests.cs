@@ -18,6 +18,7 @@ using WebProgram = WebApp::Program;
 
 namespace DocxHeaderExtractor.Tests;
 
+[Trait("Category", "Slow")]
 public sealed class WebSourceInspectionTests : IDisposable
 {
     readonly string dir = Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), "dhx-web-inspect-test-" + Guid.NewGuid().ToString("N"))).FullName;

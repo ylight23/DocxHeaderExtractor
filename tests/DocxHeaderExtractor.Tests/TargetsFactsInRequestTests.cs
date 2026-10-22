@@ -7,6 +7,7 @@ using DocxHeaderExtractor.HeadingAgent;
 
 namespace DocxHeaderExtractor.Tests;
 
+[Trait("Category", "Slow")]
 public sealed class TargetsFactsInRequestTests : IDisposable
 {
     const string Pdf = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";

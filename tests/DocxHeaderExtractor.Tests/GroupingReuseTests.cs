@@ -8,6 +8,7 @@ namespace DocxHeaderExtractor.Tests;
 /// A grouping batch answered before is read back instead of asked again, when its first request is byte for byte the same; the group
 /// requests carry cache marks like the selection's. No network.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class GroupingReuseTests : IDisposable
 {
     private const string Pdf = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";

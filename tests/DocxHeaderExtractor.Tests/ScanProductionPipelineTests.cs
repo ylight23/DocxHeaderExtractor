@@ -16,6 +16,7 @@ using DocxHeaderExtractor.Web;
 
 namespace DocxHeaderExtractor.Tests;
 
+[Trait("Category", "Slow")]
 public sealed class ScanProductionPipelineTests
 {
     static string ScanPath => TestRepository.Path("todo10_8/generated-docx/01_phap_quy/023_ND_23-2015_Chung_thuc.docx");
@@ -296,7 +297,7 @@ public sealed class ScanProductionPipelineTests
         using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(scan));
         using var cts = new CancellationTokenSource();
         var task = runner.ExtractAsync(ScanPath, cts.Token);
-        await started.Task.WaitAsync(TimeSpan.FromSeconds(5));
+        await started.Task.WaitAsync(TimeSpan.FromSeconds(60));
         cts.Cancel();
         await Assert.ThrowsAnyAsync<OperationCanceledException>(() => task);
     }
@@ -313,7 +314,7 @@ public sealed class ScanProductionPipelineTests
             using var handler = new BlockingHandler();
             var task = Task.Run(() => ScanTranscription.Transcribe([crop], ["T1"], ["key"], Path.Combine(dir, "cache"), "test-key",
                 _ => new AgentBudget(10, 1), () => handler, [], "T", 10, 1, ct: cts.Token));
-            await handler.Started.Task.WaitAsync(TimeSpan.FromSeconds(5));
+            await handler.Started.Task.WaitAsync(TimeSpan.FromSeconds(60));
             cts.Cancel();
             await Assert.ThrowsAnyAsync<OperationCanceledException>(() => task);
             Assert.Equal(1, handler.Calls);
@@ -347,7 +348,7 @@ public sealed class ScanProductionPipelineTests
             using var deadline = new CancellationTokenSource(TimeSpan.FromSeconds(10));
             while (!File.Exists(marker)) await Task.Delay(20, deadline.Token);
             cts.Cancel();
-            await Assert.ThrowsAnyAsync<OperationCanceledException>(() => task.WaitAsync(TimeSpan.FromSeconds(5)));
+            await Assert.ThrowsAnyAsync<OperationCanceledException>(() => task.WaitAsync(TimeSpan.FromSeconds(60)));
         }
         finally { cts.Cancel(); try { await task; } catch (OperationCanceledException) { } File.Delete(marker); }
     }

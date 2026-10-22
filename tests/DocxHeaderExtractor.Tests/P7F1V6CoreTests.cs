@@ -5,6 +5,7 @@ using DocxHeaderExtractor.V6Qualification.P7;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D1: V6 core contracts (instruction pin, interpretation, decision passes, evidence proof, resolution). Offline.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6CoreTests
 {
     const string Req = "D094-V6-C1";

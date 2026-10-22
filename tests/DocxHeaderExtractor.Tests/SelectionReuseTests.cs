@@ -9,6 +9,7 @@ namespace DocxHeaderExtractor.Tests;
 /// Budget: a selection answer already paid for is reused when the unit's first request is byte for byte the same, and a refused reply that comes
 /// back word for word after a repair ends the repairs. C# changes no decision in either case. No network.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class SelectionReuseTests : IDisposable
 {
     private const string Pdf = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";

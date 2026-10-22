@@ -11,6 +11,7 @@ namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D4.11 (offline): arm B only, no version field in the SELECT request, strict reply version; the V6 evidence-tool
 /// registry and the native tool-calling agent loop, with scripted models and fake HTTP only. No network.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6DirectD411Tests : IDisposable
 {
     const string Key = "sk-or-TEST-not-a-real-key-d411-0000";

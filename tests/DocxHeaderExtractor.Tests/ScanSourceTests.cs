@@ -14,6 +14,7 @@ namespace DocxHeaderExtractor.Tests;
 /// signature paragraph; the preflight writes immutable OCR evidence with two views and their provenance, and the comparer only says where the
 /// views read a line differently.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class ScanSourceTests : IDisposable
 {
     readonly string dir = Path.Combine(Path.GetTempPath(), "dhx-scan-" + Guid.NewGuid().ToString("N"));

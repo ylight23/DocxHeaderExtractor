@@ -10,6 +10,7 @@ namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D4.11f (offline): prompt V3 (heading extraction as the user defines it), the per-unit tool-result cache, the frozen
 /// call/provider/document of the plan, and the raw publication step. Scripted models and temp directories only. No network.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6DirectD411fTests : IDisposable
 {
     readonly string scratch = Path.Combine(Path.GetTempPath(), "dhx-d411f-" + Guid.NewGuid().ToString("N"));
@@ -241,112 +242,4 @@ public sealed class P7F1V6DirectD411fTests : IDisposable
         return (plan, planSha, root, runs.ToArray());
     }
 
-    [Fact]
-    public void Publish_CopiesTheRunsUnchanged_AndWritesAManifestWithHashes()
-    {
-        var (plan, planSha, _, runs) = MakeRuns(sseText: arm => "data: {\"choices\":[{\"delta\":{\"content\":\"Tiêu đề — “đóng”\"}}]}\r\n\r\ndata: [DONE]\r\n\r\n" + arm);
-        var outDir = Path.Combine(scratch, "out");
-        var r = P7F1V6Publication.Publish(plan, outDir, runs, "sk-or-REAL-KEY-NOT-IN-ANY-FILE-000000");
-        Assert.Null(r.Refusal);
-        Assert.Equal(6, r.Files.Count);                                              // per arm: summary, one raw SSE, one request
-        Assert.Equal(2, r.Files.Count(f => f.Kind == "raw-sse"));
-        foreach (var arm in new[] { "AUTO", "EVIDENCE_FIRST" })
-        {
-            var stored = Directory.GetFiles(Path.Combine(runs[arm == "AUTO" ? 0 : 1]), "*.bin").Single();
-            var copied = Directory.GetFiles(Path.Combine(outDir, "arm-" + arm, "raw"), "*.sse").Single();
-            Assert.Equal(File.ReadAllBytes(stored), File.ReadAllBytes(copied));         // byte for byte, CRLF and non-ASCII included
-            Assert.Equal(Path.GetFileNameWithoutExtension(stored), Path.GetFileNameWithoutExtension(copied));
-        }
-        using var manifest = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(outDir, "publication-manifest.json")));
-        Assert.Equal(planSha, manifest.RootElement.GetProperty("planSha256").GetString());
-        Assert.All(manifest.RootElement.GetProperty("files").EnumerateArray(), f =>
-            Assert.Equal(f.GetProperty("sha256").GetString(), Sha(File.ReadAllBytes(Path.Combine(outDir, f.GetProperty("file").GetString()!)))));
-    }
-
-    [Fact]
-    public void Publish_RefusesWithoutAConsumedMarker_ForAnotherPlan_AndForRunsInTwoRoots()
-    {
-        var (plan, _, root, runs) = MakeRuns();
-        File.Delete(Directory.GetFiles(root, "consumed-*.json").Single());
-        Assert.Equal("NO_CONSUMED_MARKER_FOR_PLAN", P7F1V6Publication.Publish(plan, Path.Combine(scratch, "o1"), runs, null).Refusal);
-
-        var (plan2, _, _, runs2) = MakeRuns(summaryPlanSha: new string('a', 64));
-        Assert.Equal("RUN_BELONGS_TO_ANOTHER_PLAN", P7F1V6Publication.Publish(plan2, Path.Combine(scratch, "o2"), runs2, null).Refusal);
-
-        var (plan3, _, _, runs3) = MakeRuns();
-        var elsewhere = Path.Combine(scratch, "elsewhere");
-        Directory.CreateDirectory(elsewhere);
-        var moved = Path.Combine(elsewhere, "run-EVIDENCE_FIRST");
-        Directory.Move(runs3[1], moved);
-        Assert.Equal("RUNS_NOT_IN_ONE_SAFE_ROOT", P7F1V6Publication.Publish(plan3, Path.Combine(scratch, "o3"), new[] { runs3[0], moved }, null).Refusal);
-        Assert.False(Directory.Exists(Path.Combine(scratch, "o3")));
-    }
-
-    [Fact]
-    public void Publish_RefusesAStoredResponseWhoseHashIsNotItsName()
-    {
-        var (plan, _, _, runs) = MakeRuns();
-        var bin = Directory.GetFiles(runs[0], "*.bin").Single();
-        File.AppendAllText(bin, "tampered");
-        Assert.Equal("STORED_RESPONSE_HASH_MISMATCH", P7F1V6Publication.Publish(plan, Path.Combine(scratch, "o"), runs, null).Refusal);
-    }
-
-    [Theory]
-    [InlineData("the key sk-or-v1-abcdef0123456789abcdef is here", null, "KEY_SHAPED_STRING_IN_FILE")]
-    [InlineData("a custom secret OPENROUTER-SECRET-VALUE-42 leaked", "OPENROUTER-SECRET-VALUE-42", "API_KEY_IN_FILE")]
-    public void Publish_RefusesTheWholePublication_IfAnyFileHoldsTheKey_AndCopiesNothing(string leak, string? apiKey, string code)
-    {
-        var (plan, _, _, runs) = MakeRuns(sseText: arm => arm == "EVIDENCE_FIRST" ? "data: {\"choices\":[]}\n\n" + leak + "\n\ndata: [DONE]\n\n" : "data: [DONE]\n\n");
-        var outDir = Path.Combine(scratch, "out-key");
-        Assert.Equal(code, P7F1V6Publication.Publish(plan, outDir, runs, apiKey).Refusal);
-        Assert.False(Directory.Exists(outDir));                                        // the clean arm was not copied either
-    }
-
-    [Fact]
-    public void Publish_WithGzip_WritesLosslessFiles_AndTheManifestKeepsTheHashOfTheReceivedBytes()
-    {
-        var (plan, _, _, runs) = MakeRuns(sseText: arm => "data: {\"choices\":[{\"delta\":{\"content\":\"Tiêu đề — “đóng”\"}}]}\r\n\r\ndata: [DONE]\r\n\r\n" + arm + new string('x', 5000));
-        var outDir = Path.Combine(scratch, "out-gz");
-        var r = P7F1V6Publication.Publish(plan, outDir, runs, "sk-or-REAL-KEY-NOT-IN-ANY-FILE-000000", compressRawSse: true);
-        Assert.Null(r.Refusal);
-        Assert.Equal(2, r.Files.Count(f => f.Kind == "raw-sse-gz"));
-        Assert.Empty(r.Files.Where(f => f.Kind == "raw-sse"));
-        for (int i = 0; i < 2; i++)
-        {
-            var arm = i == 0 ? "AUTO" : "EVIDENCE_FIRST";
-            var stored = Directory.GetFiles(runs[i], "*.bin").Single();
-            var gz = Directory.GetFiles(Path.Combine(outDir, "arm-" + arm, "raw"), "*.sse.gz").Single();
-            using var back = new System.IO.Compression.GZipStream(File.OpenRead(gz), System.IO.Compression.CompressionMode.Decompress);
-            using var ms = new MemoryStream();
-            back.CopyTo(ms);
-            Assert.Equal(File.ReadAllBytes(stored), ms.ToArray());                               // lossless, CRLF and non-ASCII included
-            Assert.True(new FileInfo(gz).Length < new FileInfo(stored).Length);
-            var entry = r.Files.Single(f => f.File.EndsWith(Path.GetFileName(gz), StringComparison.Ordinal));
-            Assert.Equal(Path.GetFileNameWithoutExtension(stored), entry.UncompressedSha256);     // the received bytes' hash is the safe-store name
-            Assert.Equal(new FileInfo(stored).Length, entry.UncompressedBytes);
-            Assert.Equal(Sha(File.ReadAllBytes(gz)), entry.Sha256);
-        }
-        using var manifest = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(outDir, "publication-manifest.json")));
-        Assert.Contains("gzip", manifest.RootElement.GetProperty("note").GetString());
-        Assert.Contains("public heading corpus", manifest.RootElement.GetProperty("note").GetString());
-    }
-
-    [Fact]
-    public void Publish_WithGzip_StillRefusesAKeyAnywhere_AndCopiesNothing()
-    {
-        var (plan, _, _, runs) = MakeRuns(sseText: arm => arm == "EVIDENCE_FIRST"
-            ? "data: {\"choices\":[]}\n\nthe key sk-or-v1-abcdef0123456789abcdef\n\ndata: [DONE]\n\n" : "data: [DONE]\n\n");
-        var outDir = Path.Combine(scratch, "out-gz-key");
-        Assert.Equal("KEY_SHAPED_STRING_IN_FILE", P7F1V6Publication.Publish(plan, outDir, runs, null, compressRawSse: true).Refusal);
-        Assert.False(Directory.Exists(outDir));
-    }
-
-    [Fact]
-    public void Publish_NeverOverwrites()
-    {
-        var (plan, _, _, runs) = MakeRuns();
-        var outDir = Path.Combine(scratch, "out-twice");
-        Assert.Null(P7F1V6Publication.Publish(plan, outDir, runs, null).Refusal);
-        Assert.Equal("OUTPUT_EXISTS", P7F1V6Publication.Publish(plan, outDir, runs, null).Refusal);
-    }
 }

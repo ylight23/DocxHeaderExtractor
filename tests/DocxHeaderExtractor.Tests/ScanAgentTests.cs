@@ -13,6 +13,7 @@ namespace DocxHeaderExtractor.Tests;
 /// observations, each marked with its origin; tools that only read that evidence; an answer format in which the agent may take one of the
 /// recorded readings; and headings anchored to page, box and view. The agent decides; the program measures, stores and checks.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class ScanAgentTests : IDisposable
 {
     readonly string dir = Path.Combine(Path.GetTempPath(), "dhx-scan-agent-" + Guid.NewGuid().ToString("N"));

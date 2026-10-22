@@ -13,6 +13,7 @@ namespace DocxHeaderExtractor.Tests;
 /// call away. These tests measure the real size of the core facts of a unit over ordinary and unusual documents, and hold the design target:
 /// the core facts of every target of a unit arrive in at most 32 KB of tool messages, leaving the rest of the unit's 64 KB for detail.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class DocxCoreFactsBudgetTests(ITestOutputHelper output) : IDisposable
 {
     public const int CoreTargetBytes = 32768;

@@ -6,6 +6,7 @@ using UglyToad.PdfPig.Writer;
 
 namespace DocxHeaderExtractor.Tests;
 
+[Trait("Category", "Slow")]
 public sealed class PdfScanSourceTests : IDisposable
 {
     readonly string dir = Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), "dhx-pdf-scan-" + Guid.NewGuid().ToString("N"))).FullName;

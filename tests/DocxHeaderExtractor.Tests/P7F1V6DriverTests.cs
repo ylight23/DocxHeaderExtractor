@@ -8,6 +8,7 @@ namespace DocxHeaderExtractor.Tests;
 /// Issue #9 D1: the V6 driver end to end, with scripted models (no provider), on the real RFC 094 document. Scripted models
 /// prove the protocol supports the paths; they do not prove Qwen's reasoning. Offline only.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6DriverTests
 {
     const string Rfc = "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf";

@@ -8,6 +8,7 @@ namespace DocxHeaderExtractor.Tests;
 /// The evidence tools of the DOCX agent over the OOXML record: what each returns, that every result fits its cap, that bad arguments are
 /// refused under the call's own id, and that the facts tool is what the first answer waits for. No network.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class DocxAgentToolsTests : IDisposable
 {
     private readonly string dir = Path.Combine(Path.GetTempPath(), "dhx-docx-tools-" + Guid.NewGuid().ToString("N"));

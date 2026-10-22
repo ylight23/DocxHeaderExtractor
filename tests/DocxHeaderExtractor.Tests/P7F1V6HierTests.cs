@@ -6,6 +6,7 @@ using DocxHeaderExtractor.V6Qualification.P7;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D2.1 (offline): hierarchical reconciliation with scripted models on pages 1–2 of the real RFC 094.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6HierTests
 {
     const string Rfc = "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf";

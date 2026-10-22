@@ -11,6 +11,7 @@ using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
 
 namespace DocxHeaderExtractor.Tests;
 
+[Trait("Category", "Slow")]
 public sealed class HeadingGroupVerificationTests
 {
     const string JsonModeProviderError = "{\"error\":{\"message\":\"'messages' must contain the word 'json' in some form, to use 'response_format' of type 'json_object'.\"}}";
@@ -540,7 +541,9 @@ public sealed class HeadingGroupVerificationTests
                 if (Interlocked.Increment(ref groupCalls) <= 2)
                 {
                     firstTwo.Signal();
-                    Assert.True(firstTwo.Wait(TimeSpan.FromSeconds(5)), "Independent regroup calls were serialized.");
+                    // Generous on purpose: in a loaded full run the thread pool can start the second job seconds late. Serialized calls
+                    // still fail, because the first call then waits for a second one that never starts.
+                    Assert.True(firstTwo.Wait(TimeSpan.FromSeconds(60)), "Independent regroup calls were serialized.");
                 }
                 return new ModelTurn(JsonSerializer.Serialize(new
                 {

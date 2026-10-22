@@ -7,6 +7,7 @@ namespace DocxHeaderExtractor.Tests;
 /// <summary>Issue #9 D4.3 (offline): the DIRECT-F1 V2 contract (status, UNRESOLVED, clarification, retrieval, multipart headings), the
 /// document driver with its resolve pass, and the scorer on real multipart Gold. Every model here is scripted: these tests check the protocol
 /// and the C# side only. They are not evidence of what Qwen does.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6DirectD43Tests : IDisposable
 {
     const string Registry = "eval/a99-closed-loop/gold-current/registry.v1.json";

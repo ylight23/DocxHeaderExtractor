@@ -3,6 +3,7 @@ using DocxHeaderExtractor.V6Qualification.P7;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D4.12 (offline): the two ways V6 can cut a document into segments. The default stays the fixed 48-line cut; the layout cut is the F1Q arm-B rule.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6SegmentationTests
 {
     static P7F1V6Universe Universe(string folder, string file)

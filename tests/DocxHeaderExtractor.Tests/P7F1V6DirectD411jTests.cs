@@ -12,6 +12,7 @@ namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D4.11j (offline): the minimal contact redaction, the owner-supplied document loader and the owner-document trial plan. A small PDF of
 /// the public corpus stands in for the owner's file. Scripted models and fake HTTP only. No network.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6DirectD411jTests : IDisposable
 {
     const string Key = "sk-or-TEST-not-a-real-key-d411j-0000";
@@ -34,30 +35,6 @@ public sealed class P7F1V6DirectD411jTests : IDisposable
     }
 
     // ================= redaction =================
-
-    [Theory]
-    [InlineData("tel: 0912503028; email:", "tel: [PHONE]; email:", 1)]
-    [InlineData("lqtuan@mst.gov.vn.", "[EMAIL].", 1)]
-    [InlineData("Liên hệ 091 250 3028 hoặc +84 912 503 028 hoặc 091-250-3028 hoặc 024.3943.1234", "Liên hệ [PHONE] hoặc [PHONE] hoặc [PHONE] hoặc [PHONE]", 4)]
-    [InlineData("a.b-c+d@sub.example.org và x@y.vn", "[EMAIL] và [EMAIL]", 2)]
-    [InlineData("Thời gian: 14 giờ 00 phút, ngày 23 tháng 9 năm 2026", "Thời gian: 14 giờ 00 phút, ngày 23 tháng 9 năm 2026", 0)]
-    [InlineData("Số: 113/GM-BKHCN, 13:30 – 14:00, page 2024, Article 0.5", "Số: 113/GM-BKHCN, 13:30 – 14:00, page 2024, Article 0.5", 0)]
-    [InlineData("", "", 0)]
-    public void Redaction_ReplacesOnlyPhonesAndEmails(string text, string expected, int spans)
-    {
-        Assert.Equal(expected, P7F1V6Redaction.Apply(text, out var n));
-        Assert.Equal(spans, n);
-        Assert.Equal(expected, P7F1V6Redaction.Apply(text));
-    }
-
-    [Fact]
-    public void Redaction_IsIdempotent_AndLeavesPlaceholdersAlone()
-    {
-        var once = P7F1V6Redaction.Apply("0912503028 lqtuan@mst.gov.vn");
-        Assert.Equal("[PHONE] [EMAIL]", once);
-        Assert.Equal(once, P7F1V6Redaction.Apply(once, out var n));
-        Assert.Equal(0, n);
-    }
 
     // ================= the loader =================
 

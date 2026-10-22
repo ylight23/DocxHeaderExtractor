@@ -6,6 +6,7 @@ using DocxHeaderExtractor.V6Qualification.P7;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D1: read tools search_document_text and get_page_text on real development PDFs, and the byte cap. Offline.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6ToolsTests
 {
     const string Rfc = "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf";

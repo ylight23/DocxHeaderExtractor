@@ -8,6 +8,7 @@ using F = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectTwoStage.SelectForm
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D4.10 (offline): the B/C development canary on SEG-001, SEG-008 and SEG-009. Scripted models and fake HTTP only.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6DirectD410Tests : IDisposable
 {
     const string Key = "sk-or-TEST-not-a-real-key-d410-0000";

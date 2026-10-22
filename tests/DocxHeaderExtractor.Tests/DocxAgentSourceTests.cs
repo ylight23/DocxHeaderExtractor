@@ -10,6 +10,7 @@ namespace DocxHeaderExtractor.Tests;
 /// The DOCX agent source: the paragraphs under the aliases of the route's source snapshot, the identity hashes, the segments and the facts read
 /// from the OOXML. A small document built here pins what each fact says; a real document of the corpus pins the invariants. No network.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class DocxAgentSourceTests : IDisposable
 {
     private readonly string dir = Path.Combine(Path.GetTempPath(), "dhx-docx-agent-" + Guid.NewGuid().ToString("N"));

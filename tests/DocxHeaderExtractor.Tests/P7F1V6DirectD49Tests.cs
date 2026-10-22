@@ -8,6 +8,7 @@ namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D4.9 (offline): the two-stage protocol (SELECT membership, then GROUP), with the object (B) and compact (C) Stage 1
 /// formats. Every model here is scripted, including adversarial ones; these tests check the protocol and the C# side only.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6DirectD49Tests
 {
     const string Task = "Trích xuất tất cả heading";

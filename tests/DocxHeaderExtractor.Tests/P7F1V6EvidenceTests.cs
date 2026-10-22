@@ -8,6 +8,7 @@ namespace DocxHeaderExtractor.Tests;
 /// Issue #9 D1 (review round 2): interpretation completeness, partial lines and span reading, evidence completeness,
 /// exact byte caps and the raw store. Scripted models only; offline.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6EvidenceTests
 {
     const string Rfc = "todo10_8/heading_corpus_100/07_system_generated/094_RFC9113_HTTP_2.pdf";

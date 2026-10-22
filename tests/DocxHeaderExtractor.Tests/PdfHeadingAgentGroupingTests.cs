@@ -8,6 +8,7 @@ namespace DocxHeaderExtractor.Tests;
 /// The grouping step: C# builds runs of selected lines that are adjacent in reading order, the model divides each run into headings, C# checks the
 /// division and falls back to the layout rule for a run it cannot accept. No network.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class PdfHeadingAgentGroupingTests
 {
     private const string Pdf = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
@@ -63,7 +64,8 @@ public sealed class PdfHeadingAgentGroupingTests
             {
                 if (call <= 2)
                 {
-                    if (!barrier.SignalAndWait(TimeSpan.FromSeconds(5))) throw new TimeoutException("Grouping requests did not overlap.");
+                    // Generous on purpose: a loaded full run can start the other request seconds late; serialized requests still time out.
+                    if (!barrier.SignalAndWait(TimeSpan.FromSeconds(60))) throw new TimeoutException("Grouping requests did not overlap.");
                     Interlocked.Exchange(ref overlapped, 1);
                 }
                 return Division(p, id => [RunAliases(p, id)]);

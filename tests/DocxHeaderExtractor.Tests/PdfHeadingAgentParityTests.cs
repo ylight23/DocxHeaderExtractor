@@ -15,6 +15,7 @@ namespace DocxHeaderExtractor.Tests;
 /// declarations, the first request of every segment (only the prompt and targetFacts differ from the pinned D4.12 reference), the result of every kind
 /// of tool call, and whole conversations driven by the same scripted model, with repairs, a fenced answer and a transport retry.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class PdfHeadingAgentParityTests
 {
     private const string Pdf = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";

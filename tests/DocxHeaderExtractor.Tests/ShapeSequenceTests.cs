@@ -8,6 +8,7 @@ namespace DocxHeaderExtractor.Tests;
 /// The numbered sequences of a document, from the form of its lines only: the key is the words before the first number, # and the punctuation
 /// after it; a sequence reports where its numbers skip, repeat or go down. No line is called a heading.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class ShapeSequenceTests(ITestOutputHelper output)
 {
     [Theory]

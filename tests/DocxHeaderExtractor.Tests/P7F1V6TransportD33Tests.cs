@@ -6,6 +6,7 @@ using DocxHeaderExtractor.V6Qualification.P7;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D3.3 (offline): the transport against a mock HttpMessageHandler. No connection is opened.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6TransportD33Tests
 {
     const string Key = "test-key-not-real";

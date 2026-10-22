@@ -9,6 +9,7 @@ namespace DocxHeaderExtractor.Tests;
 /// <summary>Issue #9 D4.5a (offline): the live authorization gate, one campaign per plan, the safe root checks, retention of the run summary,
 /// and the early stop on consecutive contract failures. Every HTTP response is from a fake handler; no connection is opened. Approvals here
 /// are written by the test in a scratch directory, playing the user; they are not approvals of anything real.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6DirectD45aTests : IDisposable
 {
     const string Key = "sk-or-TEST-not-a-real-key-d45a-00000";

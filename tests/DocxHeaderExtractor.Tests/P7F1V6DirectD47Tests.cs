@@ -5,6 +5,7 @@ namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D4.7 (offline): the clarified task A-STRUCTURAL-OCCURRENCES. The user's instruction is carried verbatim as user content;
 /// the system prompt stays V2.3; the plan labels the evaluation as development, not held-out, and keeps task A as the historical baseline.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6DirectD47Tests
 {
     const string UserInstruction =

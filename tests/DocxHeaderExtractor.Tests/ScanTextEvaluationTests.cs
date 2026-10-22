@@ -6,6 +6,7 @@ using DocxHeaderExtractor.HeadingAgent.Scan;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>The reading-accuracy measurement: the gold file, the comparison, and a run over 023 with a scripted vision model. No network.</summary>
+[Trait("Category", "Slow")]
 public sealed class ScanTextEvaluationTests : IDisposable
 {
     const string Docx = "todo10_8/generated-docx/01_phap_quy/023_ND_23-2015_Chung_thuc.docx";

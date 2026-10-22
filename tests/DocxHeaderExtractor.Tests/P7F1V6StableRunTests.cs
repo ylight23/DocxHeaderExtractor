@@ -10,6 +10,7 @@ using T = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectOwnerTrial;
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D4.12 (offline): the single-fence unwrap and a plan that pins it.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6StableRunTests
 {
     const string Obj = "{\"a\":1}";

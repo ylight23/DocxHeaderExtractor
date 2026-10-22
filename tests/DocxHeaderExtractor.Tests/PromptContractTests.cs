@@ -10,6 +10,7 @@ namespace DocxHeaderExtractor.Tests;
 /// The PDF prompt's fact passages (UseLine, FactsToolLine) name only fields that the request or a get_line_facts result really carries,
 /// and the pagination they describe is the one the tool does. Checked against a real PDF source, not against a copy of the text.
 /// </summary>
+[Trait("Category", "Slow")]
 public sealed class PromptContractTests
 {
     private const string Pdf = "todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf";

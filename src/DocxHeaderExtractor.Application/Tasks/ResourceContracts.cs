@@ -20,35 +20,6 @@ public sealed record InputResource(
     string MediaType,
     string Locator);
 
-public sealed record AgentTaskPermissions(
-    bool AllowExternalDataTransfer = false,
-    bool AllowExternalMutation = false);
-
-public sealed record TaskBudget(
-    int? MaxSteps = null,
-    int? MaxProviderCalls = null,
-    long? MaxInputBytes = null,
-    TimeSpan? MaxWallTime = null);
-
-/// <summary>
-/// Generic task request. Multiple resources are first-class; document-specific request types are
-/// compatibility adapters at the outer boundary.
-/// </summary>
-public sealed record AgentTaskRequest(
-    string UserPrompt,
-    IReadOnlyList<InputResource> Resources,
-    AgentTaskPermissions Permissions,
-    string? RequestedAction = null,
-    string OutputPreference = "default",
-    TaskBudget? Budget = null,
-    string? IdempotencyKey = null)
-{
-    public AgentTaskRequest(string userPrompt, IEnumerable<InputResource> resources)
-        : this(userPrompt, resources.ToArray(), new AgentTaskPermissions())
-    {
-    }
-}
-
 public sealed record ResolvedInputResource(
     InputResource Resource,
     Stream Content,

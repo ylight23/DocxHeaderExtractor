@@ -6,12 +6,12 @@ using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 using DocxHeaderExtractor.V6Qualification.P7;
 using A = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectAgent;
-using C = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectPrefetchCanary;
 
 namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D4.11h (offline): the program-read evidence (prefetch) put in the request, the CONTROL arm that equals the D4.11g AUTO
 /// request byte for byte, three identical repetitions, and the plan. Scripted models and fake HTTP only. No network.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6DirectD411hTests : IDisposable
 {
     const string Key = "sk-or-TEST-not-a-real-key-d411h-0000";
@@ -182,47 +182,6 @@ public sealed class P7F1V6DirectD411hTests : IDisposable
 
     // ================= the arms =================
 
-    [Theory]
-    [InlineData("SEG-001")]
-    [InlineData("SEG-008")]
-    public void Control_IsTheD411gAutoRequest_ByteForByte(string segment)
-    {
-        var control = P7F1V6DirectAgentCanary.FirstRequest(A.Arm.Auto, U.Value, segment);
-        Assert.Equal(C.D411gAutoFirstRequests[segment], control.Sha256);
-        Assert.Equal(A.AutoPromptSha256, A.Sha(A.AutoPrompt));
-    }
-
-    [Theory]
-    [InlineData("SEG-001")]
-    [InlineData("SEG-008")]
-    public void Prefetch_IsTheControlRequestPlusOneLineAndAnObservationsObjectAtTheEnd(string segment)
-    {
-        var control = P7F1V6DirectAgentCanary.FirstRequest(A.Arm.Auto, U.Value, segment);
-        var prefetch = P7F1V6DirectAgentCanary.FirstRequest(A.Arm.Prefetch, U.Value, segment);
-        using var cb = JsonDocument.Parse(control.Body);
-        using var pb = JsonDocument.Parse(prefetch.Body);
-        // Everything but the user message and the system message is the same.
-        foreach (var name in cb.RootElement.EnumerateObject().Where(p => p.Name != "messages"))
-            Assert.Equal(name.Value.GetRawText(), pb.RootElement.GetProperty(name.Name).GetRawText());
-        Assert.Equal(cb.RootElement.EnumerateObject().Select(p => p.Name), pb.RootElement.EnumerateObject().Select(p => p.Name));
-        // System prompt: one added line, nothing else.
-        var cs = A.AutoPrompt.Split('\n'); var ps = A.PrefetchPrompt.Split('\n');
-        Assert.Equal(cs.Length + 1, ps.Length);
-        Assert.Single(ps.Except(cs));
-        Assert.Equal(cs, ps.Where(l => cs.Contains(l)));
-        Assert.StartsWith("Observations: the request ends with observations", ps.Single(l => !cs.Contains(l)));
-        Assert.Equal(A.PrefetchPromptSha256, A.Sha(A.PrefetchPrompt));
-        // User message: every property before observations is identical; observations is last.
-        var cp = PayloadOf(control); var pp = PayloadOf(prefetch);
-        var names = pp.EnumerateObject().Select(p => p.Name).ToArray();
-        Assert.Equal("observations", names[^1]);
-        Assert.Equal(cp.EnumerateObject().Select(p => p.Name), names.Take(names.Length - 1));
-        foreach (var p in cp.EnumerateObject()) Assert.Equal(p.Value.GetRawText(), pp.GetProperty(p.Name).GetRawText());
-        Assert.False(cp.TryGetProperty("observations", out _));
-        Assert.True(prefetch.Bytes > control.Bytes);
-        Assert.True(prefetch.Bytes < C.MaxRequestBytes);
-    }
-
     [Fact]
     public void PrefetchPrompt_StatesWhatTheObservationsAre_AndNamesNoKindOfLine()
     {
@@ -313,192 +272,5 @@ public sealed class P7F1V6DirectD411hTests : IDisposable
         Assert.Equal("COMPLETE", outcome.Unit.Status);
         Assert.Equal(1, outcome.Evidence.ToolSucceeded);
         Assert.True(outcome.Evidence.ObservationTargetsListed > 0);
-    }
-
-    // ================= three identical repetitions =================
-
-    [Fact]
-    public void RunArms_GoesRepetitionBySegmentByArm_WithIdenticalRequestsAndRepetitionInTheLedgerId()
-    {
-        var seen = new List<(string Arm, string Unit, string Sha)>();
-        A.AgentModel Model(string arm) => (unit, turn, req) => { seen.Add((arm, unit, req.Sha256)); return Answer(Final(TargetsIn(req))); };
-        var budgets = C.Arms.ToDictionary(a => a.Arm, _ => C.NewArmBudget());
-        var state = C.RunArms(U.Value, C.Arms.ToDictionary(a => a.Arm, a => Model(a.Arm)), budgets);
-
-        Assert.Equal(new[] { "CONTROL", "PREFETCH" }, state.Select(s => s.Arm));
-        Assert.All(state, s => { Assert.Equal(6, s.Units.Count); Assert.Equal(6, s.Budget.Calls); Assert.All(s.Units, u => Assert.Equal("COMPLETE", u.Outcome.Unit.Status)); });
-        // Order: repetition, segment, arm.
-        Assert.Equal(new[]
-        {
-            "CONTROL SEG-001#r1", "PREFETCH SEG-001#r1", "CONTROL SEG-008#r1", "PREFETCH SEG-008#r1",
-            "CONTROL SEG-001#r2", "PREFETCH SEG-001#r2", "CONTROL SEG-008#r2", "PREFETCH SEG-008#r2",
-            "CONTROL SEG-001#r3", "PREFETCH SEG-001#r3", "CONTROL SEG-008#r3", "PREFETCH SEG-008#r3",
-        }, seen.Select(x => x.Arm + " " + x.Unit));
-        // The repetitions are the same request, byte for byte; the arms differ.
-        foreach (var arm in new[] { "CONTROL", "PREFETCH" })
-            foreach (var seg in new[] { "SEG-001", "SEG-008" })
-                Assert.Single(seen.Where(x => x.Arm == arm && x.Unit.StartsWith(seg)).Select(x => x.Sha).Distinct());
-        Assert.NotEqual(seen.First(x => x.Arm == "CONTROL").Sha, seen.First(x => x.Arm == "PREFETCH").Sha);
-        Assert.Equal(new[] { 1, 1, 2, 2, 3, 3 }, state[0].Units.Select(u => u.Rep));
-    }
-
-    [Theory]
-    [InlineData("overview")]
-    [InlineData("pages")]
-    public void EvenIfEveryUnitCallsToolsOnEveryTurn_NoUnitIsStoppedByTheCallLimitOrTheReserve(string scenario)
-    {
-        var pages = U.Value.Lines.Select(l => l.Page).Distinct().ToArray();
-        A.ModelTurn Model(int turn, P7F1V6Protocol.PreparedRequest req) => turn <= A.MaxToolTurns
-            ? new A.ModelTurn(null, (scenario == "overview"
-                ? new[] { new A.ToolCall($"c{turn}", P7F1V6AgentTools.DocumentOverview, "{}") }
-                : Enumerable.Range(0, 8).Select(k => new A.ToolCall($"c{turn}_{k}", P7F1V6AgentTools.PageLayout,
-                    JsonSerializer.Serialize(new { page = pages[(turn * 8 + k) % pages.Length], offset = 0, limit = 40 }))).ToArray()), "tool_calls")
-            : Answer(Final(TargetsIn(req)));
-        var budgets = C.Arms.ToDictionary(a => a.Arm, _ => C.NewArmBudget());
-        var state = C.RunArms(U.Value, C.Arms.ToDictionary(a => a.Arm, a => (A.AgentModel)((unit, turn, req) => Model(turn, req))), budgets);
-        foreach (var s in state)
-        {
-            Assert.Equal(24, s.Budget.Calls);                                              // 6 units x 4 posts: the most a unit can use
-            Assert.Empty(s.Budget.Refusals);
-            Assert.Null(s.Budget.HaltReason);
-            Assert.True(s.Budget.ReservedUsd <= C.CeilingUsdPerArm, s.Budget.ReservedUsd.ToString());
-            Assert.All(s.Units, u => Assert.Equal("COMPLETE", u.Outcome.Unit.Status));
-        }
-    }
-
-    // ================= plan and execute =================
-
-    static readonly Lazy<byte[]> PlanBytes = new(() => C.Serialize(C.PinnedValues(TestRepository.Root(), "TEST_COMMIT")));
-
-    [Fact]
-    public void Plan_PinsTheArms_TheControlIdentity_TheMeasuredObservations_AndTheBudget()
-    {
-        using var doc = JsonDocument.Parse(PlanBytes.Value);
-        var p = doc.RootElement;
-        Assert.Equal(C.PlanArtifact, p.GetProperty("artifact").GetString());
-        Assert.False(p.GetProperty("approvalToSend").GetBoolean());
-        Assert.Equal(48, p.GetProperty("budget").GetProperty("maxCalls").GetInt32());
-        Assert.Equal(1.30, p.GetProperty("budget").GetProperty("ceilingUsd").GetDouble(), 9);
-        Assert.Contains("raisedFrom", p.GetProperty("budget").ToString());
-        Assert.Equal(0, p.GetProperty("retries").GetInt32());
-        Assert.Equal(3, p.GetProperty("repetitions").GetProperty("perArmAndSegment").GetInt32());
-        var arms = p.GetProperty("arms").EnumerateArray().ToList();
-        Assert.Equal(new[] { "CONTROL", "PREFETCH" }, arms.Select(a => a.GetProperty("arm").GetString()));
-        Assert.All(arms, a =>
-        {
-            var b = a.GetProperty("budget");
-            Assert.Equal(24, b.GetProperty("maxCalls").GetInt32());
-            Assert.True(b.GetProperty("worstCaseReserveUsd").GetDouble() <= b.GetProperty("ceilingUsd").GetDouble());
-            Assert.Equal(2, a.GetProperty("firstRequests").GetArrayLength());
-        });
-        Assert.Equal(A.AutoPromptSha256, arms[0].GetProperty("promptSha256").GetString());
-        Assert.Equal(A.PrefetchPromptSha256, arms[1].GetProperty("promptSha256").GetString());
-        // CONTROL first requests are the D4.11g AUTO ones.
-        var controlFirst = arms[0].GetProperty("firstRequests").EnumerateArray().ToDictionary(f => f.GetProperty("unitId").GetString()!, f => f.GetProperty("sha256").GetString()!);
-        Assert.Equal(C.D411gAutoFirstRequests, controlFirst);
-        // Measured observations per segment.
-        var measured = p.GetProperty("prefetch").GetProperty("measuredPerSegment").EnumerateArray().ToDictionary(m => m.GetProperty("segment").GetString()!);
-        Assert.Equal(46, measured["SEG-001"].GetProperty("listed").GetInt32());
-        Assert.Equal(0, measured["SEG-001"].GetProperty("omitted").GetInt32());
-        Assert.Equal(NewTools().Prefetch(Decide("SEG-008")).Bytes, measured["SEG-008"].GetProperty("observationBytes").GetInt32());
-        Assert.Contains("only criterion", p.GetProperty("prefetch").GetProperty("rule").GetString());
-        Assert.Contains("indication, not a significance test", string.Join("|", p.GetProperty("readingRules").EnumerateArray().Select(x => x.GetString())));
-        Assert.Contains("Gold and earlier answers are never used", p.GetProperty("prefetch").GetProperty("notSharedWithAnyAnswer").GetString());
-        var frozen = p.GetProperty("frozen");
-        Assert.Equal(P7F1V6DirectD45.Document, frozen.GetProperty("document").GetString());
-        Assert.Equal(U.Value.UniverseSha256, frozen.GetProperty("universeSha256").GetString());
-        Assert.False(frozen.GetProperty("provider").GetProperty("allowFallbacks").GetBoolean());
-        Assert.Equal(new[] { "alibaba/us-east-1" }, frozen.GetProperty("provider").GetProperty("ignore").EnumerateArray().Select(x => x.GetString()));
-    }
-
-    [Fact]
-    public void Plan_Verify_RefusesADriftedObservationRule_AnotherSha_AndAnotherCommit()
-    {
-        var plan = Path.Combine(scratch, "plan.json");
-        File.WriteAllBytes(plan, PlanBytes.Value);
-        var sha = Convert.ToHexStringLower(SHA256.HashData(PlanBytes.Value));
-        Assert.Empty(C.Verify(TestRepository.Root(), plan, sha, "TEST_COMMIT"));
-        Assert.Contains("PLAN_SHA_NOT_CONFIRMED", C.Verify(TestRepository.Root(), plan, new string('0', 64), "TEST_COMMIT"));
-        Assert.Contains("CODE_COMMIT_DIFFERS", C.Verify(TestRepository.Root(), plan, sha, "OTHER"));
-        var node = JsonNode.Parse(PlanBytes.Value)!.AsObject();
-        node["prefetch"]!["rule"] = "A target is listed if it looks like a contents line";
-        var bytes = Encoding.UTF8.GetBytes(node.ToJsonString(new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }) + "\n");
-        var drift = Path.Combine(scratch, "drift.json");
-        File.WriteAllBytes(drift, bytes);
-        Assert.Contains("PINNED_VALUES_DIFFER", C.Verify(TestRepository.Root(), drift, Convert.ToHexStringLower(SHA256.HashData(bytes)), "TEST_COMMIT"));
-    }
-
-    sealed class Handler(Func<string, string> respond) : HttpMessageHandler
-    {
-        public List<string> Bodies { get; } = new();
-        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct)
-        {
-            var body = await request.Content!.ReadAsStringAsync(ct);
-            lock (Bodies) Bodies.Add(body);
-            return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(respond(body), Encoding.UTF8, "text/event-stream") };
-        }
-    }
-
-    static string Sse(string requestBody, string content)
-    {
-        var prompt = Encoding.UTF8.GetByteCount(requestBody) / 4;
-        var sb = new StringBuilder();
-        void Data(object o) => sb.Append("data: ").Append(JsonSerializer.Serialize(o)).Append("\n\n");
-        var head = new { id = "gen-mock", provider = "Alibaba", model = "qwen/qwen3.7-flash" };
-        Data(new { head.id, head.provider, head.model, choices = new[] { new { index = 0, delta = (object)new { role = "assistant", reasoning = "thinking" } } } });
-        Data(new { head.id, head.provider, head.model, choices = new[] { new { index = 0, delta = (object)new { content } } } });
-        Data(new { head.id, head.provider, head.model, choices = new[] { new { index = 0, delta = (object)new { }, finish_reason = "stop", native_finish_reason = "stop" } } });
-        Data(new { head.id, head.provider, head.model, choices = Array.Empty<object>(),
-            usage = new { prompt_tokens = prompt, completion_tokens = 300, cost = P7F1V6Usage.Cost(prompt, 300), completion_tokens_details = new { reasoning_tokens = 200 },
-                prompt_tokens_details = new { cached_tokens = 0, cache_write_tokens = 0 } } });
-        sb.Append("data: [DONE]\n\n");
-        return sb.ToString();
-    }
-
-    string SafeRoot(string name)
-    {
-        var root = Path.Combine(scratch, name);
-        Directory.CreateDirectory(root);
-        if (OperatingSystem.IsWindows()) P7F1V6SafeRawStore.RestrictRootToCurrentUser(root);
-        return root;
-    }
-
-    [Fact]
-    public void Execute_SendsNothingWithoutAuthorization_ThenRunsTwelvePostsWithRepetitionsInTheLedger_Once()
-    {
-        var plan = Path.Combine(scratch, "plan.json");
-        File.WriteAllBytes(plan, PlanBytes.Value);
-        var sha = Convert.ToHexStringLower(SHA256.HashData(PlanBytes.Value));
-        var root = SafeRoot("safe");
-        var http = new Handler(body =>
-        {
-            using var d = JsonDocument.Parse(body);
-            using var p = JsonDocument.Parse(d.RootElement.GetProperty("messages")[1].GetProperty("content").Text()!);
-            return Sse(body, Final(p.RootElement.GetProperty("targets").EnumerateArray().Select(x => x.GetProperty("alias").GetString()!)));
-        });
-        Assert.StartsWith("AUTHORIZATION_REFUSED:", Assert.Throws<InvalidOperationException>(() =>
-            C.Execute(TestRepository.Root(), plan, sha, "TEST_COMMIT", Path.Combine(scratch, "none.json"), Key, http, root)).Message, StringComparison.Ordinal);
-        Assert.Empty(http.Bodies);
-
-        var auth = Path.Combine(scratch, "auth.json");
-        File.WriteAllBytes(auth, P7F1V6DirectAuthorization.Approve(P7F1V6DirectAuthorization.Draft(plan, root), "TEST_USER", "TEST approval",
-            "TEST: allow", P7F1V6RoutePolicy.RouteAllowed(P7F1V6Protocol.ProviderTag).Blocking, DateTime.UtcNow));
-        var arms = C.Execute(TestRepository.Root(), plan, sha, "TEST_COMMIT", auth, Key, http, root);
-
-        Assert.Equal(12, http.Bodies.Count);
-        Assert.Equal(new[] { "CONTROL", "PREFETCH" }, arms.Select(a => a.Arm));
-        Assert.All(arms, a =>
-        {
-            Assert.Equal(6, a.Ledger.Count);
-            Assert.Equal(new[] { "SEG-001#r1", "SEG-008#r1", "SEG-001#r2", "SEG-008#r2", "SEG-001#r3", "SEG-008#r3" }, a.Ledger.Select(l => l.UnitId));
-            Assert.All(a.Units, u => Assert.Equal("COMPLETE", u.Outcome.Unit.Status));
-            Assert.All(a.Ledger, l => Assert.Equal("PASSED_AUDIT_TO_PARSER", l.Verdict));
-        });
-        Assert.Equal(0, http.Bodies.Count(b => b.Contains("\"response_format\"")));              // every first turn is without it
-        Assert.Equal(6, http.Bodies.Count(b => b.Contains("\\\"observations\\\":{")));                      // only the PREFETCH requests carry observations
-        Assert.NotEqual(arms[0].SafeRunDirectory, arms[1].SafeRunDirectory);
-        Assert.DoesNotContain(http.Bodies, b => b.Contains(Key, StringComparison.Ordinal));
-        Assert.Throws<InvalidOperationException>(() => C.Execute(TestRepository.Root(), plan, sha, "TEST_COMMIT", auth, Key, http, root));
-        Assert.Equal(12, http.Bodies.Count);
     }
 }

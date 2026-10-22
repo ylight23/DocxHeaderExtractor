@@ -8,6 +8,7 @@ namespace DocxHeaderExtractor.Tests;
 /// <summary>Issue #9 D4.5 (offline): the scorer gate (official only after finalization), finalization across batches and with nothing
 /// selected, the audited reply model over mock HTTP, and the pinned plan with its verification. No connection is opened; every model and
 /// every HTTP response here is scripted. The oracle reads the Gold to play a perfect model for capacity checks; it is not a model result.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6DirectD45Tests : IDisposable
 {
     const string Key = "sk-or-TEST-not-a-real-key-d45-000000";

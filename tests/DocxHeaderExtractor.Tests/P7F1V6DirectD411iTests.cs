@@ -11,6 +11,7 @@ namespace DocxHeaderExtractor.Tests;
 
 /// <summary>Issue #9 D4.11i (offline): the stated target range, segments chosen by fixed rules, five repetitions, one document per plan.
 /// Scripted models and fake HTTP only. No network.</summary>
+[Trait("Category", "Slow")]
 public sealed class P7F1V6DirectD411iTests : IDisposable
 {
     const string Key = "sk-or-TEST-not-a-real-key-d411i-0000";
