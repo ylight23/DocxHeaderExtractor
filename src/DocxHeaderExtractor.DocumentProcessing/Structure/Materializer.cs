@@ -1,6 +1,5 @@
 using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Sources.Semantics.Validation;
 using DocxHeaderExtractor.DocumentProcessing.Output.Outline;
 using DocxHeaderExtractor.DocumentProcessing.Output.Product;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
@@ -124,7 +123,7 @@ internal static class Materializer
             // relabels them. Every materialized decision still awaits review.
             var decision = new StructuralDecision(
                 origin, nameof(HeadingDecisionStatus.RequiresReview), item.ValidationBasis);
-            var element = StructuralProposalValidator.Materialize(
+            var element = ProposalValidator.Materialize(
                 sourceOccurrence, proposal, elementIdBySourceId[item.SourceId], decision,
                 elementIdBySourceId.Values.ToHashSet(StringComparer.Ordinal));
             if (element is null)
@@ -151,7 +150,7 @@ internal static class Materializer
                     parentElementId, element.Id, StructuralRelationType.ParentChild));
         }
 
-        return new HeadingStructureMaterialization(ValidatedStructureFactory.Create(elements, relationProposals),
+        return new HeadingStructureMaterialization(StructureFactory.Create(elements, relationProposals),
             new ProjectionContext(projectionMetadata, stableIds));
     }
 

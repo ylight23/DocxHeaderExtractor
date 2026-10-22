@@ -1,5 +1,5 @@
 using DocxHeaderExtractor.Contracts.Inference;
-using DocxHeaderExtractor.Sources.OpenXmlLayer;
+using DocxHeaderExtractor.Sources.Docx.Reader;
 using DocxHeaderExtractor.DocumentProcessing.Lanes.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Contracts.Routing;
@@ -138,7 +138,7 @@ public sealed class DocxLaneTests : IDisposable
         public string RuntimeDescription => "V6 DOCX lane test; no provider";
         public int SharedPrefixTokens => 0;
 
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
         {
             PlacementCalls++;
             LastPrompt = systemPrompt;
@@ -156,7 +156,7 @@ public sealed class DocxLaneTests : IDisposable
         public int ContextSize => 1;
         public string RuntimeDescription => "test";
         public int SharedPrefixTokens => 0;
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) => throw new NotSupportedException();
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) => throw new NotSupportedException();
         public void Dispose() { }
     }
 }

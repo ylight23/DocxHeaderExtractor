@@ -3,14 +3,14 @@ using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using DocxHeaderExtractor.Contracts.Scan;
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Snapshot;
 
 namespace DocxHeaderExtractor.Sources.Scan;
 
 /// <summary>
 /// The external tools of the OCR preflight: Tesseract (recognition, TSV output with word boxes and confidences) and ImageMagick (the
 /// preprocessing of a second view). Both are optional: when one is missing the preflight records why a view could not be made. Like
-/// <c>OfficeDocumentConverter</c>, they run as child processes with their arguments passed one by one and a time limit.
+/// <c>OfficeConverter</c>, they run as child processes with their arguments passed one by one and a time limit.
 /// </summary>
 public static class TesseractOcr
 {

@@ -7,7 +7,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.Sources.Pdf;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.Contracts.Scan;
 
 namespace DocxHeaderExtractor.Sources.Scan;
@@ -50,7 +50,7 @@ public sealed class ScanOcrPreflight(string storeRoot)
         using var cancellation = TesseractOcr.WithCancellation(ct);
         ct.ThrowIfCancellationRequested();
         options ??= new Options();
-        var isPdf = UploadedSourceDetector.Detect(docxPath) == SourceType.Pdf;
+        var isPdf = SourceDetector.Detect(docxPath) == SourceType.Pdf;
         var integrity = isPdf ? null : DocxSourceIntegrity.Read(docxPath);
         var sourceSha = integrity?.SourceSha256 ?? Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(docxPath)));
         var sourceKind = integrity?.Kind.ToString() ?? PdfSourceIntegrity.Read(docxPath, ct).Kind;

@@ -3,7 +3,7 @@ using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.DocumentProcessing.Output.Product;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.Sources.OpenXmlLayer;
+using DocxHeaderExtractor.Sources.Docx.Reader;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Writeback;
 

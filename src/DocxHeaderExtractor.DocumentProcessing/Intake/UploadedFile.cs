@@ -1,6 +1,6 @@
 using System.Security.Cryptography;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.Sources.Detect;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Intake;
 
@@ -43,7 +43,7 @@ public sealed record UploadedFile
         return new UploadedFile(
             originalFileName ?? Path.GetFileName(localPath),
             localPath,
-            UploadedSourceDetector.Detect(localPath),
+            SourceDetector.Detect(localPath),
             Sha256Of(localPath));
     }
 

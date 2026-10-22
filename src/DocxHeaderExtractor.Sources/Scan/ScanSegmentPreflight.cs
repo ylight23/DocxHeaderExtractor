@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.Sources.Pdf;
 using MessagePack;
@@ -26,7 +26,7 @@ public sealed class ScanSegmentPreflight(string storeRoot)
     /// <summary>Reads the evidence back when it exists for this source; otherwise makes it from the page images and writes it.</summary>
     public ScanOcrEvidence Run(string docxPath, CancellationToken ct = default)
     {
-        var isPdf = UploadedSourceDetector.Detect(docxPath) == SourceType.Pdf;
+        var isPdf = SourceDetector.Detect(docxPath) == SourceType.Pdf;
         var integrity = isPdf ? null : DocxSourceIntegrity.Read(docxPath);
         var sourceSha = integrity?.SourceSha256 ?? Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(docxPath)));
         var sourceKind = integrity?.Kind.ToString() ?? PdfSourceIntegrity.Read(docxPath, ct).Kind;

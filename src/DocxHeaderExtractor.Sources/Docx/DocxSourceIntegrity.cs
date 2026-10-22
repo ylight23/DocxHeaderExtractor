@@ -3,7 +3,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Dw = DocumentFormat.OpenXml.Drawing.Wordprocessing;
 using A = DocumentFormat.OpenXml.Drawing;
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Snapshot;
 
 namespace DocxHeaderExtractor.Sources.Docx;
 

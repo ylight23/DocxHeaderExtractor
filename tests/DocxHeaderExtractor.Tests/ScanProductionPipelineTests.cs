@@ -4,7 +4,7 @@ using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
-using DocxHeaderExtractor.Sources.Provenance;
+using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Contracts.Scan;
@@ -42,7 +42,7 @@ public sealed class ScanProductionPipelineTests
                 ? new HeadingAliasState("NOT_SELECT", "NOT_SELECT", null, "NOT_SELECTED")
                 : new HeadingAliasState("SELECT", "SELECT", "HEADING", "READY_FOR_BINDING"))
         };
-        return new(CanonicalSemanticSourceHash.Compute(path), lines, selection,
+        return new(SourceHash.Compute(path), lines, selection,
             new(3, .002, 2, .01, 4, 4, new Dictionary<string, int> { ["ACCEPTED"] = 4 }, [], [], [], new Dictionary<string, double>()));
     }
 
@@ -196,7 +196,7 @@ public sealed class ScanProductionPipelineTests
     {
         var (source, selection, _) = AppendixMembershipTests.RunFixture("reject");
         var prepared = ScanSelector.PrepareSelection(source, selection) with
-        { SourceSha256 = CanonicalSemanticSourceHash.Compute(ScanPath) };
+        { SourceSha256 = SourceHash.Compute(ScanPath) };
         using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared), new AppendixPlacement()));
         var run = await runner.ExtractAsync(ScanPath);
         var structured = run.Outline.Headings.Where(h => h.Level is not null).ToArray();
@@ -401,7 +401,7 @@ public sealed class ScanProductionPipelineTests
         public int ContextSize => 100_000;
         public string RuntimeDescription => "test";
         public int SharedPrefixTokens => 0;
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             Task.FromResult(HierarchyTestProtocol.Reply(userMessage, new Dictionary<string, string> { ["P001-L001"] = "ROOT", ["P001-L003"] = "P001-L001" })!);
         public void Dispose() { }
     }
@@ -420,7 +420,7 @@ public sealed class ScanProductionPipelineTests
         public int ContextSize => 100_000;
         public string RuntimeDescription => "scripted appendix parent relations, not a live placement result";
         public int SharedPrefixTokens => 0;
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
         {
             // Only the scripted model supplies parent relations; production derives levels from these relations.
             var parents = new Dictionary<int, string> { [1] = "ROOT", [2] = AppendixMembershipTests.A(1), [4] = AppendixMembershipTests.A(2),

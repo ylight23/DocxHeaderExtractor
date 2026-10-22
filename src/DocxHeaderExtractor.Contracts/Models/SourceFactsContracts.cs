@@ -1,4 +1,3 @@
-
 namespace DocxHeaderExtractor.Contracts.Models;
 
 /// <summary>

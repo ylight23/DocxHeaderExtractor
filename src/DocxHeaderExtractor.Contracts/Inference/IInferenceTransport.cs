@@ -20,7 +20,7 @@ public interface IInferenceTransport : IDisposable
     /// Guessing was a real defect: the budget was derived by counting a field name, so renaming a
     /// field in the request silently collapsed the budget to its floor and truncated the reply.
     /// </param>
-    Task<string> BoundaryCutAsync(
+    Task<string> CompleteAsync(
         string systemPrompt,
         string userMessage,
         CancellationToken ct = default,

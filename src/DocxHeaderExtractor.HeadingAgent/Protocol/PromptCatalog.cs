@@ -17,5 +17,5 @@ public static class PromptCatalog
 
     public static RoutePrompts Docx { get; } = new(DocxAgentProtocol.Instruction, DocxAgentProtocol.SystemPrompt, GroupingPrompts.Docx);
 
-    public static RoutePrompts Scan { get; } = new(ScanAgentProtocol.Instruction, ScanAgentProtocol.SystemPrompt, ScanAgentFlavor.Instance.GroupPrompt);
+    public static RoutePrompts Scan { get; } = new(ScanAgentProtocol.Instruction, ScanAgentProtocol.SystemPrompt, ScanFormat.Instance.GroupPrompt);
 }

@@ -28,7 +28,7 @@ public sealed class DocxLineShapeTests : IDisposable
     [InlineData("", "")]
     public void The_shape_keeps_the_words_and_writes_every_number_as_hash(string text, string expected)
     {
-        Assert.Equal(expected, DocxAgentFlavor.Shape(text));
+        Assert.Equal(expected, DocxFormat.Shape(text));
     }
 
     [Fact]
@@ -37,7 +37,7 @@ public sealed class DocxLineShapeTests : IDisposable
         var source = DocxAgentSource.Load(DocxTestDocument.Create(Path.Combine(dir, "shape.docx")), null, out _)!;
         var chapter = Enumerable.Range(0, source.Lines.Count).First(i => source.Lines[i].Text == "Chapter I");
 
-        var item = JsonSerializer.Serialize(DocxAgentFlavor.Instance.GroupLineItem(source, chapter));
+        var item = JsonSerializer.Serialize(DocxFormat.Instance.GroupLineItem(source, chapter));
 
         Assert.Contains("\"shape\":\"Chapter #\"", item, StringComparison.Ordinal);
         Assert.Contains("\"shapeCount\":1", item, StringComparison.Ordinal);

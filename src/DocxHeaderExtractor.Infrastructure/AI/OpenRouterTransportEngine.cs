@@ -45,7 +45,7 @@ internal sealed class OpenRouterTransportEngine : IDisposable
     public int SharedPrefixTokens => 0;
 
     /// <summary>
-    /// Nhiệm vụ hẹp — xem <see cref="IInferenceTransport.BoundaryCutAsync"/>.
+    /// Nhiệm vụ hẹp — xem <see cref="IInferenceTransport.CompleteAsync"/>.
     /// <para>
     /// OpenRouter streaming transport V1: the configuration the production re-baseline qualified.
     /// The request streams (<c>stream=true</c>, <c>usage.include=true</c>); the reply is read as raw
@@ -62,7 +62,7 @@ internal sealed class OpenRouterTransportEngine : IDisposable
     /// as transport.
     /// </para>
     /// </summary>
-    public async Task<string> BoundaryCutAsync(
+    public async Task<string> CompleteAsync(
         string systemPrompt,
         string userMessage,
         CancellationToken ct = default,
@@ -105,7 +105,7 @@ internal sealed class OpenRouterTransportEngine : IDisposable
     /// <summary>
     /// Generic execution surface for a caller that has already frozen its own complete provider
     /// request body (V5's semantic-claim execution, for one). Reuses the exact same HTTP/SSE
-    /// transport, retry and telemetry machinery as <see cref="BoundaryCutAsync"/> without recomputing
+    /// transport, retry and telemetry machinery as <see cref="CompleteAsync"/> without recomputing
     /// a request body or a completion budget here - the caller's frozen bytes are sent exactly as
     /// given, never rebuilt. <paramref name="maxTokens"/>, <paramref name="systemPrompt"/> and
     /// <paramref name="userMessage"/> are metadata for telemetry/compatibility only; they play no
@@ -436,7 +436,7 @@ internal sealed class OpenRouterTransportEngine : IDisposable
 
         public string Content => _content.ToString();
         // A json_object response never carries delta.tool_calls, so this stays empty for every
-        // existing caller (BoundaryCutAsync/ExecuteAsync) - purely additive for ExecuteToolCallAsync.
+        // existing caller (CompleteAsync/ExecuteAsync) - purely additive for ExecuteToolCallAsync.
         public IReadOnlyList<OpenRouterToolCallDelta> ToolCallFragments => _toolCallFragments;
         public string? FinishReason { get; private set; }
         public bool DoneObserved { get; private set; }

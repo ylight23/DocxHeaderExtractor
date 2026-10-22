@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Markers;
 
 namespace DocxHeaderExtractor.Sources.Pdf;
 
@@ -87,13 +87,13 @@ internal static class PdfSourceContextBuilder
             .Where(annotation => annotation is not null)
             .Cast<PdfLineBlockAnnotation>()
             .ToArray();
-        var marker = SourceMarkerFactsParser.Parse(displayText);
+        var marker = MarkerParser.Parse(displayText);
         var evidence = new List<string>
         {
             block.LineCount == 1 ? "standalone_line" : "multi_line_cluster",
             marker is null ? "no_marker" : $"marker:{marker.Value.Family}",
         };
-        var looseMarker = LooseLabelledMarkerParser.ParseCanonical(displayText);
+        var looseMarker = LooseMarkerParser.ParseCanonical(displayText);
         if (looseMarker is not null &&
             PdfTextUtilities.CanonicalForMatch(displayText).Length <
             PdfTextUtilities.CanonicalForMatch(looseMarker).Length + 6)

@@ -1,0 +1,19 @@
+using DocxHeaderExtractor.Contracts.Models;
+
+namespace DocxHeaderExtractor.Sources.Aliases;
+
+public static class AliasCatalog
+{
+    /// <summary>Builds stable aliases from the canonical source catalog, in source order.</summary>
+    public static IReadOnlyList<SemanticSourceAlias> FromCatalog(DocumentSourceCatalog catalog)
+    {
+        ArgumentNullException.ThrowIfNull(catalog);
+        return catalog.Units
+            .OrderBy(unit => unit.SourceOrdinal)
+            .ThenBy(unit => unit.SourceId, StringComparer.Ordinal)
+            .Select((unit, index) => new SemanticSourceAlias(
+                $"S{index + 1:0000}", unit.SourceId, unit.SourceOrdinal, unit.Text, unit.SourceSpan,
+                unit.SourceAnchor))
+            .ToArray();
+    }
+}

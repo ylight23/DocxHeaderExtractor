@@ -1,6 +1,6 @@
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.Sources.Pdf;
 
@@ -13,7 +13,7 @@ public sealed record SourceInspection(string Format, string Kind, string Route, 
     public static SourceInspection Read(string path, CancellationToken ct = default)
     {
         ct.ThrowIfCancellationRequested();
-        switch (UploadedSourceDetector.Detect(path))
+        switch (SourceDetector.Detect(path))
         {
             case SourceType.Docx:
                 var docx = DocxSourceIntegrity.Read(path);

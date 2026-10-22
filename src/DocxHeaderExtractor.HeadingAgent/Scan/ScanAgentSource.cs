@@ -132,7 +132,7 @@ internal sealed class ScanAgentSource : IAgentSource
     public string SourceSha256 { get; }
     public string SourceAliasUniverseSha256 { get; }
     public string EvidenceStoreSha256 { get; }
-    public IAgentFlavor Flavor => ScanAgentFlavor.Instance;
+    public IAgentFormat Flavor => ScanFormat.Instance;
 
     readonly Dictionary<string, VlmLineObservation> seen = new(StringComparer.Ordinal);
     readonly Dictionary<string, VlmReadingChoice> chosen = new(StringComparer.Ordinal);

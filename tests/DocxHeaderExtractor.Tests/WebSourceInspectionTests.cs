@@ -3,7 +3,7 @@ extern alias WebApp;
 using System.Net;
 using System.Text.Json;
 using DocxHeaderExtractor.Contracts.Inference;
-using DocxHeaderExtractor.Sources.Provenance;
+using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Contracts.Scan;
@@ -161,7 +161,7 @@ public sealed class WebSourceInspectionTests : IDisposable
             Calls++;
             var line = new ScanSourceLine("P001-L001", "P001-ocr-original-L001", 1, new PixelBox(10, 10, 100, 20), 200, 300,
                 "Body", "Body", "ocr-original", new Dictionary<string, string> { ["ocr-original"] = "Body" }, null, "{}");
-            return Task.FromResult(new ScanDocumentSelection(CanonicalSemanticSourceHash.Compute(path), [line],
+            return Task.FromResult(new ScanDocumentSelection(SourceHash.Compute(path), [line],
                 new HeadingSelection(new HashSet<string>(), 0, 0, [], [], 0, 0),
                 new ScanRunDiagnostics(0, 0, 0, 0, 0, 0, new Dictionary<string, int>(), [], [], [], new Dictionary<string, double>())));
         }

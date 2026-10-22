@@ -1,10 +1,10 @@
-using DocxHeaderExtractor.Sources.Provenance;
+using DocxHeaderExtractor.Sources.Detect;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Snapshot;
 
 namespace DocxHeaderExtractor.Sources.Pdf;
 
@@ -45,7 +45,7 @@ internal static class PdfSourceAdapter
         using (var document = UglyToad.PdfPig.PdfDocument.Open(pdfPath))
             segments = PdfLineExtraction.ExtractLines(document);
 
-        return BuildWithDetails(segments, sourceSha256: CanonicalSemanticSourceHash.Compute(pdfPath));
+        return BuildWithDetails(segments, sourceSha256: SourceHash.Compute(pdfPath));
     }
 
     internal static PdfSourceBuildResult BuildWithDetails(
@@ -92,8 +92,8 @@ internal static class PdfSourceAdapter
                 contexts[atom.SourceId], atom.Alias, atom.Ordinal, bodyFontSize))
             .ToArray();
 
-        var catalog = DocumentSourceCatalogBuilder.FromPdfParserBlocks(atomBlocks, segments);
-        // Deliberately not SemanticSourceAliasCatalog.FromCatalog(catalog): that scheme renumbers
+        var catalog = CatalogBuilder.FromPdfParserBlocks(atomBlocks, segments);
+        // Deliberately not AliasCatalog.FromCatalog(catalog): that scheme renumbers
         // to S0001.. running numbers, the addressing this whole rearrangement retired. An atom's
         // own alias (L{row}:S{segment}) is its coordinate identity everywhere, including here.
         var aliases = atoms

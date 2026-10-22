@@ -39,9 +39,9 @@ internal sealed class WebInferenceTransportFactory(
         public string RuntimeDescription => inner.RuntimeDescription;
         public int SharedPrefixTokens => inner.SharedPrefixTokens;
 
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage,
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage,
             CancellationToken ct = default, int expectedItemCount = 0) =>
-            inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount);
+            inner.CompleteAsync(systemPrompt, userMessage, ct, expectedItemCount);
 
         public void Dispose() { }
     }

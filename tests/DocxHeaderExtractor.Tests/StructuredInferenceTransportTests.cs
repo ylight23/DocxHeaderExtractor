@@ -44,7 +44,7 @@ public sealed class StructuredInferenceTransportTests
         }, autoVerify: false);
         using var http = new HttpClient(handler);
         using var transport = new OpenRouterInferenceTransport(http, new RemoteInferenceOptions { ApiKey = "sk-test" });
-        Assert.Equal("{}", await transport.BoundaryCutAsync("Return JSON.", "{}", expectedItemCount: 16));
+        Assert.Equal("{}", await transport.CompleteAsync("Return JSON.", "{}", expectedItemCount: 16));
     }
 
     [Fact]

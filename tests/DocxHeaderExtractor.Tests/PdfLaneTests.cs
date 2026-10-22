@@ -234,7 +234,7 @@ public sealed class PdfLaneTests
         public string RuntimeDescription => "V6 lane test; no provider";
         public int SharedPrefixTokens => 0;
 
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
         {
             PlacementCalls++;
             LastPrompt = systemPrompt; LastPacket = userMessage;
@@ -253,7 +253,7 @@ public sealed class PdfLaneTests
         public int ContextSize => 1;
         public string RuntimeDescription => "test";
         public int SharedPrefixTokens => 0;
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) => throw new NotSupportedException();
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) => throw new NotSupportedException();
         public void Dispose() { }
     }
 }

@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Snapshot;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Binding;

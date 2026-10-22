@@ -51,8 +51,8 @@ public sealed class SglangInferenceTransport : IInferenceTransport
     public string RuntimeDescription => $"SGLang/vLLM gateway RPC · {_options.Endpoint.Authority}";
     public int SharedPrefixTokens => 0;
 
-    /// <summary>Nhiệm vụ hẹp — xem <see cref="IInferenceTransport.BoundaryCutAsync"/>.</summary>
-    public async Task<string> BoundaryCutAsync(
+    /// <summary>Nhiệm vụ hẹp — xem <see cref="IInferenceTransport.CompleteAsync"/>.</summary>
+    public async Task<string> CompleteAsync(
         string systemPrompt,
         string userMessage,
         CancellationToken ct = default,

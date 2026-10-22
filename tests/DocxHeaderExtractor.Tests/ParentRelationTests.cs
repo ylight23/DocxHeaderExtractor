@@ -5,7 +5,7 @@ using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
-using DocxHeaderExtractor.Sources.OpenXmlLayer;
+using DocxHeaderExtractor.Sources.Docx.Reader;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
@@ -111,7 +111,7 @@ public sealed class ParentRelationTests : IDisposable
         public string RuntimeDescription => "parent relation test";
         public int SharedPrefixTokens => 0;
 
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             Task.FromResult(HierarchyTestProtocol.Reply(userMessage, JsonNode.Parse(reply)!["placements"]!.AsArray()
                 .ToDictionary(p => p!["alias"]!.GetValue<string>(), p => p!["parent"]!.GetValue<string>())) ?? reply);
 

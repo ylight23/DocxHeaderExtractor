@@ -4,7 +4,7 @@ using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.Sources.Scan;
-using DocxHeaderExtractor.Sources.Provenance;
+using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Lanes.Scan;
@@ -24,13 +24,13 @@ internal static class ScanLane
         var key = options.DisableLlm ? null : ((IAgentRouteInferenceTransport)transport!).OpenRouterApiKey
             ?? throw new InvalidOperationException("SCAN_HEADING_SELECTOR_KEY_MISSING");
         var started = Environment.TickCount64;
-        var sourceSha = CanonicalSemanticSourceHash.Compute(path);
+        var sourceSha = SourceHash.Compute(path);
         var result = await LaneHarness.CompleteAsync(async (lease, laneCt) =>
         {
             options.Log?.Invoke("Scan: OCR/VLM preflight and heading selection");
             var prepared = await selector.PrepareAsync(path, key, laneCt).ConfigureAwait(false);
             laneCt.ThrowIfCancellationRequested();
-            if (prepared.SourceSha256 != sourceSha || sourceSha != CanonicalSemanticSourceHash.Compute(path))
+            if (prepared.SourceSha256 != sourceSha || sourceSha != SourceHash.Compute(path))
                 throw new InvalidOperationException("SCAN_SOURCE_HASH_MISMATCH");
             var source = ScanSourceAdapter.Build(prepared);
             if (source.Atoms.Count == 0) throw new InvalidOperationException("SCAN_EMPTY_UNIVERSE");
@@ -62,7 +62,7 @@ internal static class ScanLane
             return LaneHarness.Result(options.DisableLlm ? "scan-llm-disabled" : RouteId, source, assembly, audit);
         }, LaneOptions.Default.LaneDeadline, Messages, ct).ConfigureAwait(false);
         ct.ThrowIfCancellationRequested();
-        if (sourceSha != CanonicalSemanticSourceHash.Compute(path)) throw new InvalidOperationException("SCAN_SOURCE_CHANGED_DURING_RUN");
+        if (sourceSha != SourceHash.Compute(path)) throw new InvalidOperationException("SCAN_SOURCE_CHANGED_DURING_RUN");
         var catalog = result.SourceCatalog!;
         var diagnostics = result.Audit!.Scan!;
         return ExtractionOutput.Build(

@@ -1,8 +1,9 @@
-using DocxHeaderExtractor.Sources.Semantics.Binding;
-using DocxHeaderExtractor.Sources.Provenance;
+using DocxHeaderExtractor.Sources.Aliases;
+using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Markers;
+using DocxHeaderExtractor.Sources.Snapshot;
 
 namespace DocxHeaderExtractor.Sources.Docx;
 
@@ -34,7 +35,7 @@ internal static class DocxSourceAdapter
             var sourceParagraph = paragraphs[index];
             var id = sourceParagraph.SourceId;
             const string scope = "document_body";
-            var marker = SourceMarkerFactsParser.Parse(sourceParagraph.Text);
+            var marker = MarkerParser.Parse(sourceParagraph.Text);
             var evidence = new List<string>
             {
                 sourceParagraph.Text.Length <= 180 ? "short_source_paragraph" : "long_source_paragraph",
@@ -50,12 +51,12 @@ internal static class DocxSourceAdapter
             result.Add(id, context);
             headingContexts.Add(id, headingContext);
         }
-        var catalog = DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument);
-        var aliases = SemanticSourceAliasCatalog.FromCatalog(catalog).ToArray();
+        var catalog = CatalogBuilder.FromSourceDocument(sourceDocument);
+        var aliases = AliasCatalog.FromCatalog(catalog).ToArray();
         var aliasesBySourceId = aliases.ToDictionary(item => item.SourceId, StringComparer.Ordinal);
         var universeEvidence = result.Values.OrderBy(item => item.Source.SourceOrdinal)
             .Select(item => EvidenceOf(item, aliasesBySourceId[item.Source.SourceId].Alias)).ToArray();
-        var sourceHash = CanonicalSemanticSourceHash.Compute(sourceDocument.SourcePath);
+        var sourceHash = SourceHash.Compute(sourceDocument.SourcePath);
         // The atoms of a DOCX are its paragraphs: no page, row or segment of a PDF line, only the alias, the OOXML identity, the reading order and the text.
         var atoms = result.Values.OrderBy(item => item.Source.SourceOrdinal)
             .Select(item => new SemanticSourceAtom(aliasesBySourceId[item.Source.SourceId].Alias, item.Source.SourceId, item.Source.SourceOrdinal, 0,

@@ -102,7 +102,7 @@ internal static class ParentResolver
         string raw;
         try
         {
-            raw = await transport.BoundaryCutAsync(
+            raw = await transport.CompleteAsync(
                 evidence is null ? PlacementPrompt : evidence.MeasurementsNote is { } note ? PlacementPromptWithNote(note) : PlacementPromptWithEvidence,
                 packet,
                 cancellationToken,

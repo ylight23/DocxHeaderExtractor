@@ -76,9 +76,9 @@ public sealed class InferenceTransportFactory : IInferenceTransportFactory
         public string RuntimeDescription => inner.RuntimeDescription;
         public int SharedPrefixTokens => inner.SharedPrefixTokens;
 
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage,
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage,
             CancellationToken ct = default, int expectedItemCount = 0) =>
-            inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount);
+            inner.CompleteAsync(systemPrompt, userMessage, ct, expectedItemCount);
 
         public Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage,
             int maxOutputTokens, CancellationToken ct = default) => inner.CompleteStructuredAsync(systemPrompt, userMessage, maxOutputTokens, ct);

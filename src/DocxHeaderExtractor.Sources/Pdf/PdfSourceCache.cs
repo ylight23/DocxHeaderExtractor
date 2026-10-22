@@ -1,7 +1,8 @@
 using MessagePack;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Cache;
+using DocxHeaderExtractor.Sources.Snapshot;
 
 namespace DocxHeaderExtractor.Sources.Pdf;
 
@@ -23,8 +24,8 @@ internal static class PdfSourceCache
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(pdfPath);
         ArgumentException.ThrowIfNullOrWhiteSpace(cacheRoot);
-        var fileSha = SourceCacheStore.FileSha(pdfPath);
-        var key = SourceCacheStore.Key(Schema, fileSha, Path.GetFullPath(pdfPath), string.Empty);
+        var fileSha = CacheStore.FileSha(pdfPath);
+        var key = CacheStore.Key(Schema, fileSha, Path.GetFullPath(pdfPath), string.Empty);
 
         if (LoadParts(cacheRoot, fileSha, key) is { } cached) return cached;
 
@@ -35,11 +36,11 @@ internal static class PdfSourceCache
 
     static PdfSourceBuildResult? LoadParts(string cacheRoot, string fileSha, string key)
     {
-        var core = Task.Run(() => SourceCacheStore.TryLoadBinary<PdfCoreCachePart>(PartFile(cacheRoot, fileSha, key, "core"), PartSchema("core"), key));
-        var catalog = Task.Run(() => SourceCacheStore.TryLoad<PdfCatalogCachePart>(PartFile(cacheRoot, fileSha, key, "catalog"), PartSchema("catalog"), key));
-        var evidence = Task.Run(() => SourceCacheStore.TryLoadBinary<PdfEvidenceCachePart>(PartFile(cacheRoot, fileSha, key, "evidence"), PartSchema("evidence"), key));
-        var blocks = Task.Run(() => SourceCacheStore.TryLoadBinary<PdfBlocksCachePart>(PartFile(cacheRoot, fileSha, key, "blocks"), PartSchema("blocks"), key));
-        var contexts = Task.Run(() => SourceCacheStore.TryLoadBinary<PdfContextsCachePart>(PartFile(cacheRoot, fileSha, key, "contexts"), PartSchema("contexts"), key));
+        var core = Task.Run(() => CacheStore.TryLoadBinary<PdfCoreCachePart>(PartFile(cacheRoot, fileSha, key, "core"), PartSchema("core"), key));
+        var catalog = Task.Run(() => CacheStore.TryLoad<PdfCatalogCachePart>(PartFile(cacheRoot, fileSha, key, "catalog"), PartSchema("catalog"), key));
+        var evidence = Task.Run(() => CacheStore.TryLoadBinary<PdfEvidenceCachePart>(PartFile(cacheRoot, fileSha, key, "evidence"), PartSchema("evidence"), key));
+        var blocks = Task.Run(() => CacheStore.TryLoadBinary<PdfBlocksCachePart>(PartFile(cacheRoot, fileSha, key, "blocks"), PartSchema("blocks"), key));
+        var contexts = Task.Run(() => CacheStore.TryLoadBinary<PdfContextsCachePart>(PartFile(cacheRoot, fileSha, key, "contexts"), PartSchema("contexts"), key));
         Task.WaitAll(core, catalog, evidence, blocks, contexts);
 
         if (core.Result is not { } c || catalog.Result is not { } k || evidence.Result is not { } e || blocks.Result is not { } b || contexts.Result is not { } x)
@@ -82,17 +83,17 @@ internal static class PdfSourceCache
         // The PDF route never sets an alias's anchor. A build that would lose one is not stored, rather than stored without it.
         if (s.Aliases.Any(a => a.SourceAnchor is not null)) throw new InvalidOperationException("pdf-source-cache-alias-anchor-not-cached");
         var aliases = s.Aliases.Select(a => new PdfAliasRow(a.Alias, a.SourceId, a.SourceOrdinal, a.Text, a.SourceSpan)).ToList();
-        SourceCacheStore.StoreBinary(PartFile(cacheRoot, fileSha, key, "core"), PartSchema("core"), key, new PdfCoreCachePart(
+        CacheStore.StoreBinary(PartFile(cacheRoot, fileSha, key, "core"), PartSchema("core"), key, new PdfCoreCachePart(
             s.Atoms, s.Occurrences, s.OccurrenceContexts, aliases, s.OrdinalBySourceId,
             s.SourceAliasUniverseHash, s.ModelVisibleEvidenceHash, s.SourceSha256, s.SourceKind, s.DocumentId,
             d.LayoutBlockByAtom, d.ParserLineCount));
-        SourceCacheStore.Store(PartFile(cacheRoot, fileSha, key, "catalog"), PartSchema("catalog"), key, new PdfCatalogCachePart(s.Catalog));
+        CacheStore.Store(PartFile(cacheRoot, fileSha, key, "catalog"), PartSchema("catalog"), key, new PdfCatalogCachePart(s.Catalog));
         var rows = s.Evidence.Select(e => new PdfEvidenceRow(
             e.SourceAlias, e.SourceId, e.SourceOrdinal, e.ExactSourceText, e.StructuralScope, e.ContainerFacts,
             e.StyleFacts, e.NumberingFacts, e.RunFormattingFacts, e.ObservedEvidence, e.LocationFacts)).ToList();
-        SourceCacheStore.StoreBinary(PartFile(cacheRoot, fileSha, key, "evidence"), PartSchema("evidence"), key, new PdfEvidenceCachePart(rows));
-        SourceCacheStore.StoreBinary(PartFile(cacheRoot, fileSha, key, "blocks"), PartSchema("blocks"), key, new PdfBlocksCachePart(d.Blocks));
-        SourceCacheStore.StoreBinary(PartFile(cacheRoot, fileSha, key, "contexts"), PartSchema("contexts"), key, new PdfContextsCachePart(d.Contexts));
+        CacheStore.StoreBinary(PartFile(cacheRoot, fileSha, key, "evidence"), PartSchema("evidence"), key, new PdfEvidenceCachePart(rows));
+        CacheStore.StoreBinary(PartFile(cacheRoot, fileSha, key, "blocks"), PartSchema("blocks"), key, new PdfBlocksCachePart(d.Blocks));
+        CacheStore.StoreBinary(PartFile(cacheRoot, fileSha, key, "contexts"), PartSchema("contexts"), key, new PdfContextsCachePart(d.Contexts));
     }
 
     /// <summary>One part's file: <c>&lt;root&gt;/&lt;file sha16&gt;/pdf-&lt;key&gt;/&lt;part&gt;.msgpack</c>, or <c>.json</c> for the catalog, which stays JSON.</summary>

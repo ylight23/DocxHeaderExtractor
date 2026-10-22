@@ -28,8 +28,8 @@ internal class LeaseTransport : IInferenceTransport
     public int ContextSize => _inner.ContextSize;
     public string RuntimeDescription => _inner.RuntimeDescription;
     public int SharedPrefixTokens => _inner.SharedPrefixTokens;
-    public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
-        StartAndObserve(() => _inner.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount));
+    public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
+        StartAndObserve(() => _inner.CompleteAsync(systemPrompt, userMessage, ct, expectedItemCount));
     public void Dispose() { }
 
     protected Task<T> StartAndObserve<T>(Func<Task<T>> start)

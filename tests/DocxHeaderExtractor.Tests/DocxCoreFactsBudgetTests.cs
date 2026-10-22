@@ -69,7 +69,7 @@ public sealed class DocxCoreFactsBudgetTests(ITestOutputHelper output) : IDispos
     /// <summary>Reads every core fact of one unit the way the model does: get_line_facts over the unit's targets, page after page.</summary>
     static (int Bytes, int Calls, HashSet<string> Covered) ReadCore(DocxAgentSource source, int segment)
     {
-        var tools = DocxAgentFlavor.Instance.CreateTools(source);
+        var tools = DocxFormat.Instance.CreateTools(source);
         var (decide, _) = source.Scope(segment);
         int bytes = 0, calls = 0, offset = 0;
         while (true)
@@ -185,7 +185,7 @@ public sealed class DocxCoreFactsBudgetTests(ITestOutputHelper output) : IDispos
     {
         var path = Build("detail", [() => Plain("Intro"), () => Heavy(1, 600, breaks: 12, runs: 16), () => Plain("Intro")]);
         var source = DocxAgentSource.Load(path, null, out _)!;
-        var tools = DocxAgentFlavor.Instance.CreateTools(source);
+        var tools = DocxFormat.Instance.CreateTools(source);
         var heavy = source.Lines[1].Alias;
 
         var line = JsonNode.Parse(tools.Execute("E1.01", "get_line_facts", JsonSerializer.Serialize(new { first = source.Lines[0].Alias, last = source.Lines[2].Alias, offset = 0 })).Content)!;
@@ -210,7 +210,7 @@ public sealed class DocxCoreFactsBudgetTests(ITestOutputHelper output) : IDispos
     {
         var path = Build("repeat", Enumerable.Range(0, 6).Select<int, Func<Paragraph>>(i => () => Plain(i == 0 ? "First" : "Contents")));
         var source = DocxAgentSource.Load(path, null, out _)!;
-        var tools = DocxAgentFlavor.Instance.CreateTools(source);
+        var tools = DocxFormat.Instance.CreateTools(source);
 
         var facts = JsonNode.Parse(tools.Execute("E1.01", "get_line_facts", JsonSerializer.Serialize(new { first = source.Lines[0].Alias, last = source.Lines[5].Alias, offset = 0 })).Content)!["result"]!["facts"]!.AsArray();
 

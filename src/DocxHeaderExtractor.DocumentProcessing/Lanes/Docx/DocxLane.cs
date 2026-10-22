@@ -1,5 +1,5 @@
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Sources.Semantics.Validation;
+using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
@@ -29,7 +29,7 @@ internal static class DocxLane
         ArgumentNullException.ThrowIfNull(sourceDocument);
         var source = DocxSourceAdapter.Build(sourceDocument).Snapshot;
         if (source.Occurrences.Count == 0)
-            return new LaneResult(ValidatedStructureFactory.Create([]), null, "empty-docx-source");
+            return new LaneResult(StructureFactory.Create([]), null, "empty-docx-source");
         // A DOCX has no parser layout blocks and no pages; the selector gives the division into headings itself.
         var lane = new LaneHarness.Input(
             RouteId,
@@ -38,7 +38,7 @@ internal static class DocxLane
             source.Occurrences.Select(item => new SourceBlockAudit(item.Id, 0, item.Text)).ToArray(),
             0);
         if (transport is null)
-            return new LaneResult(ValidatedStructureFactory.Create([]), LaneHarness.SourceOnlyAudit(lane), "docx-llm-disabled") { SourceCatalog = source.Catalog };
+            return new LaneResult(StructureFactory.Create([]), LaneHarness.SourceOnlyAudit(lane), "docx-llm-disabled") { SourceCatalog = source.Catalog };
         var access = LaneHarness.Authorize(transport, selector, Refusals);
 
         return await LaneHarness.CompleteAsync(

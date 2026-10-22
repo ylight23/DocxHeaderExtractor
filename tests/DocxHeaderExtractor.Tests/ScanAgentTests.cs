@@ -214,7 +214,7 @@ public sealed class ScanAgentTests : IDisposable
     public void The_text_views_tool_shows_every_reading_where_they_differ_and_the_vision_choice_without_choosing()
     {
         var source = new ScanAgentSource(Evidence(), [Vision()]);
-        var tools = ScanAgentFlavor.Instance.CreateTools(source);
+        var tools = ScanFormat.Instance.CreateTools(source);
 
         var record = Call(tools, ScanAgentTools.TextViews, new { aliases = new[] { "P001-L004" } })["records"]![0]!;
 
@@ -235,7 +235,7 @@ public sealed class ScanAgentTests : IDisposable
     [Fact]
     public void Search_reads_every_view_and_says_which_one_holds_the_text()
     {
-        var tools = ScanAgentFlavor.Instance.CreateTools(new ScanAgentSource(Evidence()));
+        var tools = ScanFormat.Instance.CreateTools(new ScanAgentSource(Evidence()));
 
         var result = Call(tools, ScanAgentTools.SearchText, new { query = "Thẩm quyền", mode = "literal", offset = 0, limit = 10 });
 
@@ -247,7 +247,7 @@ public sealed class ScanAgentTests : IDisposable
     [Fact]
     public void The_integrity_tool_reports_observations_and_no_tool_compares_a_line_with_the_others()
     {
-        var tools = ScanAgentFlavor.Instance.CreateTools(new ScanAgentSource(Evidence(), [Vision()]));
+        var tools = ScanFormat.Instance.CreateTools(new ScanAgentSource(Evidence(), [Vision()]));
 
         Assert.DoesNotContain("get_shape_sequence", ScanAgentTools.Names);
         var integrity = Call(tools, ScanAgentTools.Integrity, new { });
@@ -537,7 +537,7 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal(ScanTranscription.RejectedMultiline, source.Facts["P001-L005"]["text"]!["transcription"]!.GetValue<string>());
         Assert.Equal(ScanTranscription.NotTranscribed, source.Facts["P001-L002"]["text"]!["transcription"]!.GetValue<string>());
 
-        var tools = ScanAgentFlavor.Instance.CreateTools(source);
+        var tools = ScanFormat.Instance.CreateTools(source);
         var records = Call(tools, ScanAgentTools.TextViews, new { aliases = new[] { "P001-L004", "P001-L005" } })["records"]!.AsArray();
         var transcribed = records[0]!["readings"]!.AsArray().Single(r => r!["viewId"]!.GetValue<string>() == ScanAgentSource.VlmTranscribedReading)!;
         Assert.Equal("VLM_TRANSCRIBED", transcribed["origin"]!.GetValue<string>());
@@ -704,8 +704,8 @@ public sealed class ScanAgentTests : IDisposable
 
         Assert.Equal(("FAILED", "CALL:" + exhausted), (failed.Status, failed.Failure));
         Assert.Equal(2, failed.Posts);
-        Assert.Empty(((IAgentFlavor)PdfAgentFlavor.Instance).RetryOnceCodes);
-        Assert.Empty(((IAgentFlavor)DocxAgentFlavor.Instance).RetryOnceCodes);
+        Assert.Empty(((IAgentFormat)PdfFormat.Instance).RetryOnceCodes);
+        Assert.Empty(((IAgentFormat)DocxFormat.Instance).RetryOnceCodes);
 
         // A call that timed out is sent once more too.
         calls = 0;
@@ -842,7 +842,7 @@ public sealed class ScanAgentTests : IDisposable
         var facts = source.Facts[numbered];
         Assert.Equal("1.", facts["surface"]!["leadingToken"]!["text"]!.GetValue<string>());
         Assert.Null(facts["surface"]!["nearestPrecedingNamedNumber"]);
-        var tools = ScanAgentFlavor.Instance.CreateTools(source);
+        var tools = ScanFormat.Instance.CreateTools(source);
         var called = Call(tools, ScanAgentTools.LineFacts, new { first = numbered, last = numbered, offset = 0 });
         Assert.Equal(facts.ToJsonString(), called["facts"]![0]!.ToJsonString());
         Assert.Equal([numbered], tools.FactsReturnedFor); // mentioned neighbours do not acquire core facts coverage

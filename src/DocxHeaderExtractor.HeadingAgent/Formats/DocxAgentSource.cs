@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.Sources.OpenXmlLayer;
+using DocxHeaderExtractor.Sources.Docx.Reader;
 using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Tools;
@@ -67,7 +67,7 @@ internal sealed class DocxAgentSource : IAgentSource
     public IReadOnlyList<DocxAgentLine> Paragraphs { get; }
     /// <summary>The paragraphs as the agent's conversation reads them: alias, order and text; a paragraph has no page, box or typography.</summary>
     public IReadOnlyList<AgentSourceLine> Lines { get; }
-    public IAgentFlavor Flavor => DocxAgentFlavor.Instance;
+    public IAgentFormat Flavor => DocxFormat.Instance;
     /// <summary>The decided range of each segment, [Start, End) into <see cref="Lines"/>, covering every paragraph once.</summary>
     public IReadOnlyList<(int Start, int End)> Cores { get; }
     public IReadOnlyDictionary<string, JsonObject> Facts { get; }

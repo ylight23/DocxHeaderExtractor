@@ -44,9 +44,9 @@ internal static partial class AgentProtocol
     /// <summary>The user message of one unit: the instruction, the document hash, the targets and context (alias, page, text), the target range
     /// and the document style table.</summary>
     public static string Payload(string documentSha256, string unitId, IReadOnlyList<string> decide, IReadOnlyList<AgentSourceLine> shownLines, JsonObject documentStyles,
-        string instruction = Instruction, IAgentFlavor? flavor = null, JsonArray? targetFacts = null)
+        string instruction = Instruction, IAgentFormat? flavor = null, JsonArray? targetFacts = null)
     {
-        flavor ??= PdfAgentFlavor.Instance;
+        flavor ??= PdfFormat.Instance;
         var set = decide.ToHashSet(StringComparer.Ordinal);
         var shown = shownLines.Select(l => l.Alias).ToList();
         if (shown.Distinct(StringComparer.Ordinal).Count() != shown.Count) throw new ArgumentException("SHOWN_ALIAS_REPEATED", nameof(shownLines));
@@ -72,9 +72,9 @@ internal static partial class AgentProtocol
 
     /// <summary>One POST body: model, messages (system prompt and payload as cache-marked text blocks, then the history), json_object, temperature
     /// 0, max_tokens, reasoning enabled, the eight tools, this turn's tool_choice, the locked provider block, streaming and usage.</summary>
-    public static PreparedRequest Build(string payload, JsonArray history, string toolChoice, IAgentFlavor? flavor = null)
+    public static PreparedRequest Build(string payload, JsonArray history, string toolChoice, IAgentFormat? flavor = null)
     {
-        flavor ??= PdfAgentFlavor.Instance;
+        flavor ??= PdfFormat.Instance;
         if (toolChoice is not ("auto" or "none")) throw new ArgumentException("TOOL_CHOICE_INVALID", nameof(toolChoice));
         static JsonNode Content(string text) =>
             new JsonArray(new JsonObject { ["type"] = "text", ["text"] = text, ["cache_control"] = new JsonObject { ["type"] = "ephemeral" } });
@@ -362,7 +362,7 @@ internal static partial class AgentProtocol
             return (null, "HEADING_EXTENT_TEXT_MISMATCH", "the text at [" + start + "," + end + ") is " + JsonSerializer.Serialize(found, Options) + "; " + Where());
         if (given.Trim().Length != given.Length)
             return (null, "HEADING_EXTENT_EDGE_WHITESPACE", "the extent must not start or end with a space or a line break");
-        var boundaries = DocxHeaderExtractor.Sources.Semantics.Binding.SourceTextBoundaryMap.For(text);
+        var boundaries = DocxHeaderExtractor.Sources.Aliases.TextBoundaryMap.For(text);
         if (!boundaries.Contains(start) || !boundaries.Contains(end))
             return (null, "HEADING_EXTENT_NOT_ON_BOUNDARY", "start and end must not cut a word or a number");
         return (new HeadingExtent(start, end, given), null, null);

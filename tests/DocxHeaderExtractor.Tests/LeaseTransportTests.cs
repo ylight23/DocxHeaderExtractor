@@ -35,7 +35,7 @@ public sealed class LeaseTransportTests
         using var inner = new LegacyTransport();
         using var bound = LeaseTransport.Bind(inner, new LaneLease());
         Assert.False(bound is IStructuredInferenceTransport);
-        Assert.Equal("{}", await bound.BoundaryCutAsync("JSON", "{}", expectedItemCount: 16));
+        Assert.Equal("{}", await bound.CompleteAsync("JSON", "{}", expectedItemCount: 16));
         Assert.Equal(16, inner.ExpectedItems);
     }
 
@@ -53,7 +53,7 @@ public sealed class LeaseTransportTests
             Calls++;
             return reply;
         }
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default,
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default,
             int expectedItemCount = 0) => throw new InvalidOperationException("Structured capability was lost.");
         public void Dispose() { }
     }
@@ -65,7 +65,7 @@ public sealed class LeaseTransportTests
         public int ContextSize => 32768;
         public string RuntimeDescription => "test";
         public int SharedPrefixTokens => 0;
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default,
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default,
             int expectedItemCount = 0)
         {
             ExpectedItems = expectedItemCount;

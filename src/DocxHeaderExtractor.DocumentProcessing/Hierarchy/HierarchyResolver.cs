@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.Sources.Semantics.Identity;
 using DocxHeaderExtractor.Contracts.Models;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Hierarchy;
@@ -126,7 +125,7 @@ internal static class HierarchyResolver
             if (resolved) levels[heading.SourceId] = Math.Clamp(level, 1, 9);
             // Identity ownership lives in the semantic stage. Hierarchy only consumes its stable
             // key to mark the primary occurrence without re-defining same-node semantics.
-            var nodeKey = CanonicalSemanticIdentityResolver.CreateNodeKey(heading);
+            var nodeKey = IdentityResolver.CreateNodeKey(heading);
             result.Add(new DerivedHeadingHierarchy(
                 heading.SourceId,
                 resolved ? levels[heading.SourceId] : 1,

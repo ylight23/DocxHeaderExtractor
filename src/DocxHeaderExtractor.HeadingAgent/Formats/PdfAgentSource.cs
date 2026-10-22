@@ -2,7 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Snapshot;
 using DocxHeaderExtractor.Sources.Pdf;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
@@ -49,7 +49,7 @@ internal sealed class AgentSource : IAgentSource
     /// <summary>The decided range of each segment, [Start, End) into <see cref="Lines"/>, covering every line once.</summary>
     public IReadOnlyList<(int Start, int End)> Cores { get; }
     public IReadOnlyDictionary<string, System.Text.Json.Nodes.JsonObject> LayoutFacts { get; }
-    public IAgentFlavor Flavor => PdfAgentFlavor.Instance;
+    public IAgentFormat Flavor => PdfFormat.Instance;
 
     public static string SegmentId(int n) => $"SEG-{n:000}";
 

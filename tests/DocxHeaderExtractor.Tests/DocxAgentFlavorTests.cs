@@ -53,7 +53,7 @@ public sealed class DocxAgentFlavorTests : IDisposable
     {
         var source = Source();
         var flavor = source.Flavor;
-        Assert.Same(DocxAgentFlavor.Instance, flavor);
+        Assert.Same(DocxFormat.Instance, flavor);
         Assert.Equal("{\"alias\":\"" + source.Lines[2].Alias + "\",\"text\":\"Article 1. Scope\"}", JsonSerializer.Serialize(flavor.PayloadItem(source.Lines[2])));
 
         var (decide, shown) = source.Scope(0);

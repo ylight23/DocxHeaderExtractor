@@ -1,4 +1,3 @@
-
 namespace DocxHeaderExtractor.DocumentProcessing.Hierarchy;
 
 /// <summary>Resolved parent and level of a validated heading: the product of hierarchy resolution, owned by materialization.</summary>

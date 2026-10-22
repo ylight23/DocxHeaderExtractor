@@ -1,5 +1,5 @@
 using MessagePack;
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Markers;
 
 namespace DocxHeaderExtractor.Sources.Pdf;
 
@@ -22,7 +22,7 @@ internal sealed record PdfSourceFacts(
 {
     /// <summary>Parser-derived only; model proposals cannot alter this marker fact.</summary>
     [Key(10)]
-    public SourceMarkerFact? Marker { get; init; }
+    public MarkerFact? Marker { get; init; }
 
     /// <summary>
     /// Format the document declares about this occurrence, as opposed to where it sits. A PDF has

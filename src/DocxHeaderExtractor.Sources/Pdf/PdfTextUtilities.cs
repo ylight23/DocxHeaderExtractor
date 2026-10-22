@@ -1,4 +1,3 @@
-
 namespace DocxHeaderExtractor.Sources.Pdf;
 
 internal static class PdfTextUtilities

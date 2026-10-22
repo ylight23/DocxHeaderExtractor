@@ -234,7 +234,7 @@ internal static class EvidencePlacement
                     Interlocked.Increment(ref logicalCalls);
                     reply = transport is IStructuredInferenceTransport structured
                         ? await structured.CompleteStructuredAsync(SourcePrompt, packet, outputBudget, token).ConfigureAwait(false)
-                        : new(await transport.BoundaryCutAsync(SourcePrompt, packet, token, pending.Length).ConfigureAwait(false), null, null);
+                        : new(await transport.CompleteAsync(SourcePrompt, packet, token, pending.Length).ConfigureAwait(false), null, null);
                 }
                 catch (OperationCanceledException) { throw; }
                 catch (Exception exception) when (exception is not OutOfMemoryException)

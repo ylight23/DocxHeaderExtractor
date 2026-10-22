@@ -1,10 +1,10 @@
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Snapshot;
 
 namespace DocxHeaderExtractor.Sources.Pdf;
 
 /// <summary>PDF adapter output: common source IR plus parser-only diagnostics used by the PDF route.</summary>
 internal sealed record PdfSourceBuildResult(
-    Common.DocumentSourceSnapshot Snapshot,
+    DocumentSourceSnapshot Snapshot,
     PdfSourceDetails Details);
 
 internal sealed record PdfSourceDetails(

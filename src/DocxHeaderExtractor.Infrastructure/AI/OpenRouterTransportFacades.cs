@@ -30,8 +30,8 @@ public sealed class OpenRouterInferenceTransport : IStructuredInferenceTransport
         set => _engine.RetryWait = value;
     }
 
-    public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default,
-        int expectedItemCount = 0) => _engine.BoundaryCutAsync(systemPrompt, userMessage, ct, expectedItemCount);
+    public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default,
+        int expectedItemCount = 0) => _engine.CompleteAsync(systemPrompt, userMessage, ct, expectedItemCount);
 
     public Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage,
         int maxOutputTokens, CancellationToken ct = default) => _engine.CompleteStructuredAsync(systemPrompt, userMessage, maxOutputTokens, ct);

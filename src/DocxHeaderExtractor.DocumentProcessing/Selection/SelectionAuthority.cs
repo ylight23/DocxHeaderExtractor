@@ -8,7 +8,7 @@ using DocxHeaderExtractor.DocumentProcessing.Placement;
 using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Snapshot;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Selection;
 

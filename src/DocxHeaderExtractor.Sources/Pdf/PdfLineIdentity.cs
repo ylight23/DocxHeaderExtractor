@@ -1,4 +1,3 @@
-
 namespace DocxHeaderExtractor.Sources.Pdf;
 
 /// <summary>

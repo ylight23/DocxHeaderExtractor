@@ -1,0 +1,27 @@
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
+
+namespace DocxHeaderExtractor.Sources.Snapshot;
+
+/// <summary>
+/// Immutable source IR shared by format adapters and heading authority. Parser objects stay in
+/// format-owned adapter results; this record carries only source-derived identities and evidence.
+/// </summary>
+internal sealed record DocumentSourceSnapshot(
+    IReadOnlyList<SemanticSourceAtom> Atoms,
+    IReadOnlyList<DocumentOccurrence> Occurrences,
+    IReadOnlyList<CanonicalSemanticSourceEvidence> Evidence,
+    string SourceAliasUniverseHash,
+    string ModelVisibleEvidenceHash,
+    string SourceSha256,
+    IReadOnlyDictionary<string, OccurrenceContext> OccurrenceContexts,
+    DocumentSourceCatalog Catalog,
+    IReadOnlyList<SemanticSourceAlias> Aliases,
+    IReadOnlyDictionary<string, int> OrdinalBySourceId)
+{
+    public string SourceKind { get; init; } = "unknown";
+
+    /// <summary>Caller-visible identity of the source document, used to label requests.</summary>
+    public string DocumentId { get; init; } = string.Empty;
+
+}

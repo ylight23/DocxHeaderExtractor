@@ -1,6 +1,6 @@
 using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Pdf;
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Markers;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
@@ -31,8 +31,8 @@ internal static class PdfFacts
             var heading = eligible[order];
             var context = contexts[heading.SourceId];
             var source = context.Source;
-            var marker = SourceMarkerFactsParser.Parse(source.RawText) ?? source.Marker;
-            var path = SourceMarkerFactsParser.ArabicPath(source.RawText);
+            var marker = MarkerParser.Parse(source.RawText) ?? source.Marker;
+            var path = MarkerParser.ArabicPath(source.RawText);
             var parent = FindMarkerPrefixParent(observed, path);
             var hasResolvedRelation = path is { Length: 1 } || parent is not null;
             var parentResolution = parent is not null

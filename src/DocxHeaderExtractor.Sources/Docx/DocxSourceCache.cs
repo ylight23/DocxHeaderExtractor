@@ -1,7 +1,7 @@
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.Sources.OpenXmlLayer;
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Docx.Reader;
+using DocxHeaderExtractor.Sources.Cache;
 
 namespace DocxHeaderExtractor.Sources.Docx;
 
@@ -20,15 +20,15 @@ internal static class DocxSourceCache
         ArgumentException.ThrowIfNullOrWhiteSpace(docxPath);
         if (cacheRoot is null) return new OpenXmlDocumentSource(extraction).Read(docxPath);
 
-        var fileSha = SourceCacheStore.FileSha(docxPath);
+        var fileSha = CacheStore.FileSha(docxPath);
         var fullPath = Path.GetFullPath(docxPath);
-        var key = SourceCacheStore.Key(Schema, fileSha, fullPath, SourceCacheStore.Fingerprint(extraction ?? new ExtractionOptions()));
-        var file = SourceCacheStore.EntryPath(cacheRoot, fileSha, key, "docx-", ".msgpack");
+        var key = CacheStore.Key(Schema, fileSha, fullPath, CacheStore.Fingerprint(extraction ?? new ExtractionOptions()));
+        var file = CacheStore.EntryPath(cacheRoot, fileSha, key, "docx-", ".msgpack");
 
-        if (SourceCacheStore.TryLoadBinary<SourceDocument>(file, Schema, key) is { } cached) return cached;
+        if (CacheStore.TryLoadBinary<SourceDocument>(file, Schema, key) is { } cached) return cached;
 
         var read = new OpenXmlDocumentSource(extraction).Read(docxPath);
-        SourceCacheStore.StoreBinary(file, Schema, key, read);
+        CacheStore.StoreBinary(file, Schema, key, read);
         return read;
     }
 }

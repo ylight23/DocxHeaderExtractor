@@ -1,10 +1,10 @@
-using DocxHeaderExtractor.Sources.Semantics.Validation;
+using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Snapshot;
 using DocxHeaderExtractor.Sources.Pdf;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 
@@ -32,7 +32,7 @@ internal static class PdfLane
         ArgumentNullException.ThrowIfNull(pdfDetails);
         ArgumentException.ThrowIfNullOrWhiteSpace(sourceName);
         if (pdfDetails.ParserLineCount == 0 || pdfDetails.Blocks.Count == 0)
-            return new LaneResult(ValidatedStructureFactory.Create([]), null, "pdf-no-text-layer") { SourceCatalog = authority.Catalog };
+            return new LaneResult(StructureFactory.Create([]), null, "pdf-no-text-layer") { SourceCatalog = authority.Catalog };
         var lane = new LaneHarness.Input(
             AuthorityId,
             authority,
@@ -40,7 +40,7 @@ internal static class PdfLane
             pdfDetails.Blocks.Select(block => new SourceBlockAudit(block.Id, block.Page, block.DisplayText)).ToArray(),
             pdfDetails.Blocks.Select(block => block.Page).Distinct().Count());
         if (transport is null)
-            return new LaneResult(ValidatedStructureFactory.Create([]), LaneHarness.SourceOnlyAudit(lane), "pdf-function-conditioned-llm-disabled")
+            return new LaneResult(StructureFactory.Create([]), LaneHarness.SourceOnlyAudit(lane), "pdf-function-conditioned-llm-disabled")
             { SourceCatalog = authority.Catalog };
         var access = LaneHarness.Authorize(transport, selector, Refusals);
 

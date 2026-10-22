@@ -135,7 +135,7 @@ public sealed class FactsCoverageTests : IDisposable
     public void The_core_facts_ledger_counts_the_lines_a_facts_call_returned_and_the_detail_ledger_the_lines_the_other_tools_showed()
     {
         var source = DocxAgentSource.Load(Long(), null, out _)!;
-        var tools = DocxAgentFlavor.Instance.CreateTools(source);
+        var tools = DocxFormat.Instance.CreateTools(source);
         var lines = source.Lines;
 
         int Facts(string id, int offset)
@@ -161,7 +161,7 @@ public sealed class FactsCoverageTests : IDisposable
     [Fact]
     public void Core_facts_requirements_are_unchanged_by_how_the_facts_are_delivered()
     {
-        Assert.True(DocxAgentFlavor.Instance.RequiresCoreFacts);
-        Assert.False(PdfAgentFlavor.Instance.RequiresCoreFacts);
+        Assert.True(DocxFormat.Instance.RequiresCoreFacts);
+        Assert.False(PdfFormat.Instance.RequiresCoreFacts);
     }
 }

@@ -3,12 +3,12 @@ using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Contracts.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Writeback;
-using DocxHeaderExtractor.Sources.OpenXmlLayer;
+using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Lanes.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Selectors;
@@ -55,17 +55,17 @@ public sealed class V6DocumentRunner : IDisposable
         CancellationToken ct = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(inputPath);
-        if (UploadedSourceDetector.Detect(inputPath) != SourceType.Unknown)
+        if (SourceDetector.Detect(inputPath) != SourceType.Unknown)
             return await DispatchAsync(inputPath, ct).ConfigureAwait(false);
 
-        var conversion = OfficeDocumentConverter.EnsureDocx(inputPath);
+        var conversion = OfficeConverter.EnsureDocx(inputPath);
         try
         {
             return await DispatchAsync(conversion.Path, ct).ConfigureAwait(false);
         }
         finally
         {
-            OfficeDocumentConverter.Cleanup(conversion);
+            OfficeConverter.Cleanup(conversion);
         }
     }
 
@@ -95,7 +95,7 @@ public sealed class V6DocumentRunner : IDisposable
             ?? throw new InvalidOperationException(
                 "Outline không mang DocumentProductOutput - route tạo ra nó không phải V6 authority.");
 
-        var conversion = OfficeDocumentConverter.EnsureDocx(inputPath);
+        var conversion = OfficeConverter.EnsureDocx(inputPath);
         try
         {
             var result = ProductWriteback.Apply(
@@ -108,7 +108,7 @@ public sealed class V6DocumentRunner : IDisposable
         }
         finally
         {
-            OfficeDocumentConverter.Cleanup(conversion);
+            OfficeConverter.Cleanup(conversion);
         }
     }
 

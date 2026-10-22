@@ -22,14 +22,14 @@ internal interface IAgentSource
     IReadOnlyList<(int Start, int End)> Cores { get; }
     /// <summary>The targets of one segment and the lines shown with them, as line indices.</summary>
     (string[] Decide, int[] Shown) Scope(int segment);
-    IAgentFlavor Flavor { get; }
+    IAgentFormat Flavor { get; }
 }
 
 /// <summary>
 /// What differs between kinds of document in the method: the system prompt, the declared tools (and the object that runs them), and how a line
 /// appears in a request. The conversation itself - facts supplied in the request, optional tool rounds, repairs, retries, budget - is the same for every kind.
 /// </summary>
-internal interface IAgentFlavor
+internal interface IAgentFormat
 {
     string SystemPrompt { get; }
     /// <summary>The protocolVersion of this flavor's answer format.</summary>

@@ -8,7 +8,7 @@ using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
@@ -235,7 +235,7 @@ app.MapPost("/api/extract", async (
         RequestOptions.ConfigureProviderDiagnostics(form, provider, _ => { });
 
         // Một quyết định duy nhất về định dạng, đọc từ byte, dùng chung cho mọi bước phía sau.
-        var uploadedType = UploadedSourceDetector.Detect(inputPath);
+        var uploadedType = SourceDetector.Detect(inputPath);
 
         // Hai backend dùng tài nguyên máy này cần khóa. OpenRouter có thể chạy đồng thời và không
         // được giữ hàng chỉ vì GPU local/LM Studio đang bận.

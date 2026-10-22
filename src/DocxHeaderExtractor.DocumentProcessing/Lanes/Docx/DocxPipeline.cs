@@ -1,9 +1,9 @@
-using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Snapshot;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Sources.Semantics.Validation;
+using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Lanes.Scan;
@@ -74,7 +74,7 @@ public sealed class DocxPipeline : IDisposable
         ArgumentException.ThrowIfNullOrWhiteSpace(inputPath);
         // The uploaded file decides everything that follows, and it is identified by its bytes.
         // Naming a PDF ".docx" must fail here rather than inside an OOXML reader.
-        var uploadedType = UploadedSourceDetector.Detect(inputPath);
+        var uploadedType = SourceDetector.Detect(inputPath);
         if (uploadedType != SourceType.Docx)
             throw new NotSupportedException(
                 $"DocxPipeline nhận đầu vào OOXML đã chuẩn hoá (.docx/.docm); " +
@@ -95,7 +95,7 @@ public sealed class DocxPipeline : IDisposable
         const string route = DocxLane.RouteId;
 
         // Without an audit (an empty source, or the model disabled) the route returns the source only.
-        var structure = audit is null ? ValidatedStructureFactory.Create([]) : authority.Structure;
+        var structure = audit is null ? StructureFactory.Create([]) : authority.Structure;
         IReadOnlySet<string> emittedIds = audit is null
             ? new HashSet<string>(StringComparer.Ordinal)
             : authority.EmittedElementIds ?? structure.Elements.Select(element => element.Id).ToHashSet(StringComparer.Ordinal);
@@ -116,7 +116,7 @@ public sealed class DocxPipeline : IDisposable
             authority,
             structure,
             emittedIds,
-            DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument),
+            CatalogBuilder.FromSourceDocument(sourceDocument),
             _options,
             started);
         _options.Log?.Invoke($"Authority route {route}: validated={execution.Outline.Headings.Count}; {authority.Reason}");

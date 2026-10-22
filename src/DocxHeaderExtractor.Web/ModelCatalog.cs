@@ -1,4 +1,3 @@
-
 namespace DocxHeaderExtractor.Web;
 
 public sealed record ModelEntry(string Name, string Path, double SizeGb, bool Recommended);

@@ -203,7 +203,7 @@ public sealed class EvidencePlacementTests
         public int SharedPrefixTokens => 0;
         public Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage, int maxOutputTokens, CancellationToken ct = default) =>
             Task.FromResult(new StructuredInferenceReply(script(JsonNode.Parse(userMessage)!), "stop", maxOutputTokens));
-        public Task<string> BoundaryCutAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
             Task.FromResult(script(JsonNode.Parse(userMessage)!));
         public void Dispose() { }
     }

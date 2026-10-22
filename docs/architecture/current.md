@@ -36,8 +36,8 @@ không phải `HeadingOutlineProjection`; `Audit/RunAudit.cs`, không phải `Pi
 ```text
 CLI (dhx) / Web (dhx-ui)
   -> V6DocumentRunner.ExtractAsync(file)
-       -> UploadedSourceDetector (đọc byte, không đọc đuôi)
-       -> .doc/.rtf/.odt: OfficeDocumentConverter.EnsureDocx
+       -> Sources/Detect/SourceDetector (đọc byte, không đọc đuôi)
+       -> .doc/.rtf/.odt: Sources/Docx/OfficeConverter.EnsureDocx
        -> Intake/Router
             DOCX -> Intake/DocxHandler -> Lanes/Docx/DocxPipeline -> DocxLane
             PDF  -> Intake/PdfHandler  -> Lanes/Pdf/PdfPipeline   -> PdfLane
@@ -75,6 +75,12 @@ gọi mô hình, theo đúng thứ tự đó (`AGENT_ROUTE_AUTHORIZATION_REQUIRE
 | `Audit/` | Ghi lại lần chạy (`RunAudit`, `PlacementAudit`, `HierarchyAudit`) |
 | `Output/` | Đầu ra: `Final/`, `Product/`, `Outline/`, `Sections/`; `ExtractionOutput`, `RunResult` |
 | `Writeback/` | Ghi outline vào bản sao `.docx` |
+
+`Sources`, theo các bước dựng nguồn: `Detect/` (nhận dạng file, hash) · `Docx/` (adapter, cache, chuyển `.doc`;
+`Docx/Reader/` đọc OOXML) · `Pdf/` · `Scan/` · `Snapshot/` (snapshot nguồn, catalog) · `Cache/` (kho cache MessagePack)
+· `Markers/` (đánh số, nhãn) · `Aliases/` (alias, ranh giới text). Các bộ kiểm tra cấu trúc (`StructureFactory`,
+`ProposalValidator`, `RelationValidator`) nằm ở `DocumentProcessing/Structure/`, `IdentityResolver` ở
+`DocumentProcessing/Hierarchy/`: chỉ các bước đó dùng chúng.
 
 `HeadingAgent`, theo vòng của agent: `Selectors/` (điểm vào) · `Formats/` (nguồn và cách trình bày theo
 định dạng) · `Protocol/` (những gì model đọc) · `Runtime/` (gọi model, ngân sách, cache) · `Tools/` (tool và sổ

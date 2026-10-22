@@ -259,10 +259,10 @@ public sealed class LlamaInferenceTransport : IInferenceTransport
     }
 
     /// <summary>
-    /// Xem <see cref="IInferenceTransport.BoundaryCutAsync"/>. Stateless, không grammar, không
+    /// Xem <see cref="IInferenceTransport.CompleteAsync"/>. Stateless, không grammar, không
     /// prefix cache; sampler greedy (Temperature=0, TopK=1, Seed cố định) để tái lập được.
     /// </summary>
-    public async Task<string> BoundaryCutAsync(
+    public async Task<string> CompleteAsync(
         string systemPrompt,
         string userMessage,
         CancellationToken ct = default,

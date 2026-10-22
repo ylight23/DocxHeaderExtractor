@@ -1,6 +1,6 @@
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.Sources.Detect;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -28,7 +28,7 @@ public sealed class UploadedSourceDetectorTests : IDisposable
     {
         var path = Write("plain.pdf", "%PDF-1.4\n%rest"u8.ToArray());
 
-        Assert.Equal(SourceType.Pdf, UploadedSourceDetector.Detect(path));
+        Assert.Equal(SourceType.Pdf, SourceDetector.Detect(path));
     }
 
     [Fact]
@@ -38,7 +38,7 @@ public sealed class UploadedSourceDetectorTests : IDisposable
         Array.Fill(junk, (byte)'\n');
         var path = Write("junk.pdf", junk.Concat("%PDF-1.7\n%rest"u8.ToArray()).ToArray());
 
-        Assert.Equal(SourceType.Pdf, UploadedSourceDetector.Detect(path));
+        Assert.Equal(SourceType.Pdf, SourceDetector.Detect(path));
     }
 
     [Fact]
@@ -46,13 +46,13 @@ public sealed class UploadedSourceDetectorTests : IDisposable
     {
         var path = Write("text.pdf", new byte[1100].Select((_, i) => (byte)'a').Concat("%PDF-1.4"u8.ToArray()).ToArray());
 
-        Assert.Equal(SourceType.Unknown, UploadedSourceDetector.Detect(path));
+        Assert.Equal(SourceType.Unknown, SourceDetector.Detect(path));
     }
 
     [Fact]
     public void A_short_or_empty_file_is_unknown()
     {
-        Assert.Equal(SourceType.Unknown, UploadedSourceDetector.Detect(Write("empty.pdf", [])));
-        Assert.Equal(SourceType.Unknown, UploadedSourceDetector.Detect(Write("short.pdf", "%PD"u8.ToArray())));
+        Assert.Equal(SourceType.Unknown, SourceDetector.Detect(Write("empty.pdf", [])));
+        Assert.Equal(SourceType.Unknown, SourceDetector.Detect(Write("short.pdf", "%PD"u8.ToArray())));
     }
 }
