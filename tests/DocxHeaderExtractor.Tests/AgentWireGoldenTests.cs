@@ -46,10 +46,7 @@ public sealed class AgentWireGoldenTests
         ["selectionAudit"] = Sha(SelectionAudit.Prompt),
         ["scan.transcription"] = Sha(ScanTranscription.SystemPrompt),
         ["scan.vision"] = Sha(ScanVisionPreflight.SystemPrompt),
-        // SourcePrompt is a multi-line raw string literal sent as it is, so its line breaks are those of the checkout (LF in this repository's
-        // usual checkout; CRLF under core.autocrlf=true). It is pinned in its LF form so this test holds on any checkout; the sent bytes would
-        // still follow the checkout until the prompt is normalized like the placement prompts below.
-        ["placement.source"] = Sha(EvidenceHeadingPlacement.SourcePrompt.ReplaceLineEndings("\n")),
+        ["placement.source"] = Sha(EvidenceHeadingPlacement.SourcePrompt),
         ["placement"] = Sha(HeadingParentResolver.PlacementPrompt),
         ["placement.withEvidence"] = Sha(HeadingParentResolver.PlacementPromptWithEvidence),
         // The repair messages a refused answer receives: every code with its own wording, and the forms that name targets or a detail.
