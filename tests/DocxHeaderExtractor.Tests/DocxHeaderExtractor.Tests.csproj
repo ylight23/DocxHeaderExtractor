@@ -28,7 +28,6 @@
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Cli\DocxHeaderExtractor.Cli.csproj" />
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Sources\DocxHeaderExtractor.Sources.csproj" />
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Infrastructure\DocxHeaderExtractor.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\src\DocxHeaderExtractor.V6Qualification\DocxHeaderExtractor.V6Qualification.csproj" />
     <!-- Chỉ để kiểm giới hạn của WritebackStore: nó giữ tài liệu của người dùng trong bộ nhớ nên
          các mức trần phải có test, không thể chỉ tin vào review. -->
     <ProjectReference Include="..\..\src\DocxHeaderExtractor.Web\DocxHeaderExtractor.Web.csproj" Aliases="global,WebApp" />
