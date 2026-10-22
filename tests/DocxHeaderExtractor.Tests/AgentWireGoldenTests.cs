@@ -13,6 +13,8 @@ using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 using DocxHeaderExtractor.Agents.Budget;
 using DocxHeaderExtractor.Agents;
+using DocxHeaderExtractor.Contracts.Agents;
+using DocxHeaderExtractor.HeadingAgent.Placement;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -53,9 +55,7 @@ public sealed class AgentWireGoldenTests
         ["selectionAudit"] = Sha(SelectionAudit.Prompt),
         ["scan.transcription"] = Sha(ScanTranscription.SystemPrompt),
         ["scan.vision"] = Sha(ScanVisionPreflight.SystemPrompt),
-        ["placement.source"] = Sha(EvidencePlacement.SourcePrompt),
-        ["placement"] = Sha(ParentResolver.PlacementPrompt),
-        ["placement.withEvidence"] = Sha(ParentResolver.PlacementPromptWithEvidence),
+        ["placement.source"] = Sha(HeadingPlacer.SourcePrompt),
         // The repair messages a refused answer receives: every code with its own wording, and the forms that name targets or a detail.
         ["repair.TOOL_CROP_REQUIRED_NOT_REQUESTED"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:TOOL_CROP_REQUIRED_NOT_REQUESTED")),
         ["repair.TOOL_FACTS_REQUIRED_NOT_REQUESTED"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED")),
@@ -171,22 +171,10 @@ public sealed class AgentWireGoldenTests
     /// <summary>The source-grounded placement conversation: two batches, one row refused and named in the next round, and what it decided.</summary>
     private static JsonObject PlacementWithEvidence()
     {
-        var (bound, evidence, parents) = EvidencePlacementTests.Fixture();
-        parents[EvidencePlacementTests.C3] = EvidencePlacementTests.D35;   // a later heading: refused, then named in the next round
+        var (bound, evidence, parents) = HeadingPlacerTests.Fixture();
+        parents[HeadingPlacerTests.C3] = HeadingPlacerTests.D35;   // a later heading: refused, then named in the next round
         using var model = new Recorder(p => HierarchyTestProtocol.Reply(p!.ToJsonString(), parents)!);
-        var result = ParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence).GetAwaiter().GetResult();
-        return Placement(model, result);
-    }
-
-    /// <summary>The single-call placement used without source evidence: the plain packet, and the packet with style measurements.</summary>
-    private static JsonObject PlacementWithoutSource(bool measurements)
-    {
-        var (bound, _, _) = EvidencePlacementTests.Fixture();
-        var evidence = measurements
-            ? new DocxHeaderExtractor.Contracts.Authority.HeadingPlacementEvidence("{\"styles\":[]}", new Dictionary<string, string> { [bound[0].Alias] = "{\"sizePt\":14}" })
-            : null;
-        using var model = new Recorder(_ => "not json");
-        var result = ParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence).GetAwaiter().GetResult();
+        var result = ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None).GetAwaiter().GetResult();
         return Placement(model, result);
     }
 
@@ -223,8 +211,6 @@ public sealed class AgentWireGoldenTests
     private static JsonObject Conversations() => new()
     {
         ["placement.evidence"] = PlacementWithEvidence(),
-        ["placement.plain"] = PlacementWithoutSource(measurements: false),
-        ["placement.measurements"] = PlacementWithoutSource(measurements: true),
         ["unit.docx"] = Unit(DocxAgentSource.Load(TestRepository.Path(Docx), null, out var failure) ?? throw new InvalidOperationException(failure)),
         ["unit.scan"] = Unit(ProductionGroundedRegroupTests.Source()),
     };

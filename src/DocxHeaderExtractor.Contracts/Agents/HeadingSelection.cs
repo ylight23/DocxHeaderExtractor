@@ -1,6 +1,6 @@
 using DocxHeaderExtractor.Contracts.Models;
 
-namespace DocxHeaderExtractor.Contracts.Routing;
+namespace DocxHeaderExtractor.Contracts.Agents;
 
 /// <summary>What a selector decided for one PDF.</summary>
 /// <param name="SelectedAliases">Lines selected as headings. A heading that runs over several lines has each of its lines here.</param>

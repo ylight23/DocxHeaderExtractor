@@ -147,6 +147,7 @@ Bộ test có 445 test (khoảng 1–3 phút), không gọi provider; lọc nhan
 (web, MCP, Gold, các thí nghiệm V4-V5/P6-P7, code V6 chỉ để qualify) đã xóa theo quyết định của chủ dự án; xem lịch sử git.
 Gold duy nhất nằm ở `eval/a99-closed-loop/gold/`; mỗi thay đổi Gold cần người duyệt từng mục.
 Cấu trúc code hiện tại: [docs/architecture/current.md](docs/architecture/current.md).
+Thay hoặc thêm agent: [docs/architecture/extending.md](docs/architecture/extending.md).
 
 ## Giới hạn đã biết
 

@@ -19,8 +19,6 @@
     "scan.transcription": "4f8571d90a71ec48d7b85809c2b5c01051d1c0b1e62698d960219998d447efcb",
     "scan.vision": "ce27d8b07b1d5b7e4412d5e234763f65364259132165db26a842b71af80d34b5",
     "placement.source": "c612d55992ec5994f7ca255474af4c9967aaff9c44aec90b331203a532a1d7fc",
-    "placement": "dd6de6a7088be176f89797842183d0be38774d838652606c3128019ac0d47e9f",
-    "placement.withEvidence": "7402bb4e684883137eb2342ae619b7db1db8e01804f3924964d335e966575bf1",
     "repair.TOOL_CROP_REQUIRED_NOT_REQUESTED": "2b294d240a3d7e39f6bb76fcc76e18c3ac1322c930a254de0c0929e39bba5145",
     "repair.TOOL_FACTS_REQUIRED_NOT_REQUESTED": "7c13de1d8d4cf20c2fb7887af4f33a4f881e35a5e3a46ecceabb760154965ee7",
     "repair.TOOL_CALL_AFTER_TOOL_CAP": "539394eb5c810c3f529f712ea562beedf4f45c66fa7fddce8ca57512cf1964ba",
@@ -213,20 +211,6 @@
       ],
       "parents": "e324d3041ff17a2fe39a804dd04c000060ca3de6e537a9a64e90a5fc7692c95e",
       "observation": "f0b4eb3e4f1a90d66b118d82b5ea11613b859eaa76a8460a1a86df18c9fb5f6c"
-    },
-    "placement.plain": {
-      "requests": [
-        "c630e5b7b7f18d156be0c3c027230004e61fc32d2af16e156f57cac3fce19070 expected=23"
-      ],
-      "parents": "c3c2b0c5a49a003d5dc4758da2a762a7a48f362a2cba80a8915590ee934bb065",
-      "observation": "3cc49a543457fea8bfa96e6eea479feef7b78d221dece7672ba96f15b502c1e8"
-    },
-    "placement.measurements": {
-      "requests": [
-        "02334d4bc0421e94d3529d383046cdc5e3a8ffbe126dc17b1664c9a33e52a713 expected=23"
-      ],
-      "parents": "c3c2b0c5a49a003d5dc4758da2a762a7a48f362a2cba80a8915590ee934bb065",
-      "observation": "3cc49a543457fea8bfa96e6eea479feef7b78d221dece7672ba96f15b502c1e8"
     },
     "unit.docx": {
       "requests": [

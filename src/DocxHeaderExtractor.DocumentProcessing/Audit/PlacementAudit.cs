@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.DocumentProcessing.Output;
+using DocxHeaderExtractor.Contracts.Agents;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Audit;
 
@@ -27,7 +28,7 @@ public sealed record PlacementAudit(
     public IReadOnlyList<string> GraphRepairAliases { get; init; } = [];
     public IReadOnlyList<string> GraphUnresolvedAliases { get; init; } = [];
     public IReadOnlyList<string> Failures { get; init; } = [];
-    public IReadOnlyList<HeadingPlacementCallObservation> Calls { get; init; } = [];
+    public IReadOnlyList<PlacementCall> Calls { get; init; } = [];
     public IReadOnlyList<HeadingPlacementSourceObservation> SourceTrace { get; init; } = [];
     public IReadOnlyList<HeadingMissingAncestorBlocker> MissingAncestorBlockers { get; init; } = [];
     [System.Text.Json.Serialization.JsonIgnore]
@@ -41,21 +42,11 @@ public sealed record HeadingPlacementGraphConflict(string Checkpoint, string Cod
 /// <summary>Unique model-reported blockers and their upstream producer provenance. Counts overlap for multi-line ancestors.</summary>
 public sealed record HeadingMissingAncestorBlocker(string Alias, string SourceId, IReadOnlyList<string> BlockedHeadingAliases,
     string? InitialSelection, string? FinalSelection, string? VerificationMembership, string BindingStatus,
-    string ProvenanceAvailability, IReadOnlyList<DocxHeaderExtractor.Contracts.Routing.HeadingAliasProvenance> Provenance)
+    string ProvenanceAvailability, IReadOnlyList<DocxHeaderExtractor.Contracts.Agents.HeadingAliasProvenance> Provenance)
 {
     public int BlockedHeadingCount => BlockedHeadingAliases.Count;
     [System.Text.Json.Serialization.JsonIgnore]
     public string? SourceText { get; init; }
-}
-
-/// <summary>Safe response-envelope diagnostics; no source, prompt or provider completion text.
-/// JSON error offsets are zero-based within the parsed content after removing an optional single JSON fence.</summary>
-public sealed record HeadingPlacementCallObservation(string UnitId, string Phase, int Round, int TargetCount,
-    int RequestedMaxOutputTokens, int? MaxOutputTokens, string? FinishReason, int ResponseBytes, bool JsonFence,
-    double Seconds, IReadOnlyList<string> ProtocolErrors, IReadOnlyList<string> AcceptedAliases)
-{
-    public long? JsonErrorLine { get; init; }
-    public long? JsonErrorBytePosition { get; init; }
 }
 
 public sealed record HeadingPlacementDecisionObservation(

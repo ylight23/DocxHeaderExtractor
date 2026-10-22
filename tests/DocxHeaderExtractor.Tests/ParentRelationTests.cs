@@ -6,10 +6,11 @@ using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
-using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Docx;
+using DocxHeaderExtractor.HeadingAgent.Placement;
 
 
 namespace DocxHeaderExtractor.Tests;
@@ -43,7 +44,7 @@ public sealed class ParentRelationTests : IDisposable
         }.ToJsonString());
         var selector = new FixedSelector(new HashSet<string> { chapter.Alias, general.Alias });
         var authority = new SelectionAuthority(selector, path, "sk-test", new Dictionary<string, string>(StringComparer.Ordinal),
-            placement, () => { });
+            placement, new HeadingPlacer(), () => { });
 
         var decided = await authority.DecideAsync(source, CancellationToken.None);
         var assembly = await StructureAssembler.AssembleAsync(source, decided, PrimaryOccurrences.EverySourceOccurrence,

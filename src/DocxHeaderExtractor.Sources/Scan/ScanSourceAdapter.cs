@@ -1,6 +1,7 @@
 using System.Text.Json;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Models.Inference;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.Sources.Snapshot;
 

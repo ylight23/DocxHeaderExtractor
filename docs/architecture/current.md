@@ -1,6 +1,6 @@
 # Kiến trúc hiện tại
 
-Cập nhật 2026-10-22. Đây là trạng thái đang chạy của code; lịch sử các giai đoạn trước nằm trong git.
+Cập nhật 2026-10-23. Đây là trạng thái đang chạy của code; lịch sử các giai đoạn trước nằm trong git.
 
 ## Tóm tắt
 
@@ -14,19 +14,20 @@ Cập nhật 2026-10-22. Đây là trạng thái đang chạy của code; lịch
 
 | Project | Vai trò | Phụ thuộc |
 |---|---|---|
-| `Contracts` | Kiểu dùng chung: model nguồn và cấu trúc, `IHeadingSelector`, interface transport (`Inference/`), `ChunkingOptions` | — |
+| `Contracts` | Kiểu dùng chung: model nguồn và cấu trúc; `Agents/` (mọi thứ agent nhận và trả: `IHeadingSelector`, `IHeadingPlacer`, `HeadingAgents`); interface transport (`Inference/`); `ChunkingOptions` | — |
 | `Sources` | Đọc nguồn OOXML, PDF và scan; snapshot nguồn, alias, cache | `Contracts` |
 | `Agents` | Lớp wire dùng chung của agent: route OpenRouter đã qualify, gửi request, đọc phản hồi, ngân sách, SSE, audit usage. Không biết tài liệu, heading hay tool | — |
-| `HeadingAgent` | Agent V6: selector PDF, DOCX và scan; prompt, tool, vòng lặp hội thoại (`AgentUnit`) | `Agents`, `Sources` |
+| `HeadingAgent` | Agent V6: selector PDF, DOCX và scan, agent đặt cha (`HeadingPlacer`); prompt, tool, vòng lặp hội thoại (`AgentUnit`) | `Agents`, `Sources` |
 | `DocumentProcessing` | Pipeline: nhận file, các lane, harness, các bước kiểm tra và dựng cấu trúc, đầu ra, writeback | `Contracts`, `Sources` |
 | `Infrastructure` | Transport provider (OpenRouter, LM Studio, SGLang, Llama local), factory chọn route, store run | `Contracts`, `Sources` |
-| `App` | `DocumentRunner`: nối agent vào pipeline, chuyển `.doc`, ghi outline | `HeadingAgent`, `DocumentProcessing` |
+| `App` | `HeadingAgentSetup`: nơi duy nhất lắp agent mặc định; `DocumentRunner`: chạy pipeline, chuyển `.doc`, ghi outline | `HeadingAgent`, `DocumentProcessing` |
 | `Cli` | Lệnh `dhx`; gọi `DocumentRunner` trực tiếp | `App`, `Infrastructure` |
 | `Web` | Giao diện `dhx-ui`; gọi `DocumentRunner` trực tiếp, stream sự kiện tiến độ | `App`, `Infrastructure` |
 
 Quy tắc phụ thuộc: `Contracts` không phụ thuộc gì; `Sources` không biết pipeline; `HeadingAgent` chỉ thấy
-`Sources`; `DocumentProcessing` không biết agent (chỉ biết `IHeadingSelector`); `Infrastructure` chỉ cài đặt
-interface của `Contracts`. `App` là chỗ duy nhất nối agent với pipeline.
+`Agents` và `Sources`; `DocumentProcessing` không biết agent (chỉ biết interface trong `Contracts/Agents`); `Infrastructure`
+chỉ cài đặt interface của `Contracts`. `App` là chỗ duy nhất nối agent với pipeline. Cách thêm hoặc thay agent:
+[extending.md](extending.md).
 
 Quy ước: namespace = tên project + đường dẫn thư mục. Tên file = tên type. Tên type ngắn nhưng vẫn đủ nghĩa
 khi đứng một mình trong code; bỏ các tiền tố mà thư mục đã nói rõ (`Output/Outline/OutlineProjection.cs`,
@@ -46,7 +47,7 @@ CLI (dhx) / Web (dhx-ui)
          mỗi lane chạy trong Harness/LaneHarness (lease, deadline, checkpoint của PDF):
             Selection/SelectionAuthority   (IHeadingSelector = agent V6 quyết định)
             -> Binding/DecisionBinder       (gắn và kiểm tra quyết định vào nguồn)
-            -> Placement/ParentResolver     (agent đề xuất cha, C# kiểm tra đồ thị)
+            -> Placement/ParentResolver     (IHeadingPlacer = HeadingPlacer đề xuất cha, C# kiểm tra đồ thị)
             -> Hierarchy/HierarchyResolver  (dựng cấp bậc)
             -> Structure/Materializer       (dựng cấu trúc; Structure/StructureAssembler nối các bước)
             -> Audit/RunAudit
@@ -54,9 +55,9 @@ CLI (dhx) / Web (dhx-ui)
   -> (tuỳ chọn) DocumentRunner.WriteOutline -> Writeback: bản sao .docx với w:outlineLvl
 ```
 
-Nếu tuyến không ở route agent đã ủy quyền, không có selector hoặc không có khóa provider, nó từ chối trước khi
-gọi mô hình, theo đúng thứ tự đó (`AGENT_ROUTE_AUTHORIZATION_REQUIRED`, `*_HEADING_SELECTOR_REQUIRED`,
-`*_HEADING_SELECTOR_KEY_MISSING`). Với `--no-llm` hoặc `DisableLlm`, tuyến trả nguồn không có heading
+Nếu tuyến không ở route agent đã ủy quyền, không có selector, không có khóa provider hoặc không có placer, nó từ chối
+trước khi gọi mô hình, theo đúng thứ tự đó (`AGENT_ROUTE_AUTHORIZATION_REQUIRED`, `*_HEADING_SELECTOR_REQUIRED`,
+`*_HEADING_SELECTOR_KEY_MISSING`, `HEADING_PLACER_REQUIRED`). Với `--no-llm` hoặc `DisableLlm`, tuyến trả nguồn không có heading
 (`docx-llm-disabled`, `pdf-function-conditioned-llm-disabled`, `scan-llm-disabled`).
 
 ## Thư mục theo bước
@@ -70,7 +71,7 @@ gọi mô hình, theo đúng thứ tự đó (`AGENT_ROUTE_AUTHORIZATION_REQUIRE
 | `Harness/` | Phần chạy chung của mọi lane: `LaneHarness`, lease, deadline, checkpoint, transport gắn lease, options |
 | `Selection/` | Biến câu trả lời của selector thành heading (`SelectionAuthority`, `SelectionResult`) |
 | `Binding/` | Gắn và kiểm tra quyết định vào nguồn (`DecisionBinder`) |
-| `Placement/` | Agent đề xuất cha (`EvidencePlacement`), C# kiểm tra (`ParentResolver`) |
+| `Placement/` | C# kiểm tra đề xuất cha của agent (`ParentResolver`): chỉ giữ ROOT, NONE, UNRESOLVED hoặc một heading đứng trước |
 | `Hierarchy/` | Dựng cấp bậc (`HierarchyResolver`) |
 | `Structure/` | Dựng cấu trúc (`Materializer`), nối các bước 4→7 (`StructureAssembler`) |
 | `Audit/` | Ghi lại lần chạy (`RunAudit`, `PlacementAudit`, `HierarchyAudit`) |
@@ -88,13 +89,13 @@ Host: `Cli` có `Program.cs` (đọc tham số, chọn lệnh) và `Commands/` (
 
 `HeadingAgent`, theo vòng của agent: `Selectors/` (điểm vào) · `Formats/` (nguồn và cách trình bày theo
 định dạng) · `Protocol/` (những gì model đọc) · `Runtime/` (gọi model, ngân sách, cache) · `Tools/` (tool và sổ
-ghi lần gọi) · `Grouping/` (chia nhóm, kiểm tra nhóm) · `Scan/` (OCR/VLM và selector scan).
+ghi lần gọi) · `Grouping/` (chia nhóm, kiểm tra nhóm) · `Placement/` (agent đặt cha) · `Scan/` (OCR/VLM và selector scan).
 
 ## Ranh giới trách nhiệm
 
 - Nguồn (`Sources`) giữ sự kiện nguồn: text, alias, toạ độ, style, đánh số. Không quyết định heading.
-- Agent (`HeadingAgent`, và `Placement/EvidencePlacement`) quyết định dòng nào là heading, cách nhóm và đề
-  xuất cha. Agent chỉ gọi provider qua khóa của tuyến đã ủy quyền.
+- Agent (`HeadingAgent`) quyết định dòng nào là heading, cách nhóm và đề xuất cha. Mọi lần gọi model đều nằm
+  trong agent; agent chỉ gọi provider qua khóa của tuyến đã ủy quyền.
 - Harness (`Harness/`) chạy lane: ủy quyền, lease, deadline, checkpoint. Không quyết định heading, không biết
   định dạng.
 - Các bước `Binding` → `Structure` chỉ kiểm tra và dựng cấu trúc từ kết quả agent. Không lấy heading từ chỗ khác.
@@ -117,7 +118,7 @@ chạy được trích xuất. Việc xóa hẳn mã local là một bước ri�
 
 ## Kiểm thử
 
-`dotnet test tests/DocxHeaderExtractor.Tests` (445 test, khoảng 1–3 phút, không gọi provider). Lọc nhanh:
+`dotnet test tests/DocxHeaderExtractor.Tests` (444 test, khoảng 1–3 phút, không gọi provider). Lọc nhanh:
 `--filter "Category!=Slow"`. Hai golden giữ hành vi khi refactor: `Golden/v6-parity-src089.json.gz` (đầu ra
-tuyến V6) và `Golden/agent-wire.json` (prompt, khai báo tool, kết quả tool gửi cho model). Ghi lại golden wire có
+tuyến V6) và `Golden/agent-wire.json` (prompt, khai báo tool, kết quả tool và byte của từng request trong các hội thoại mẫu). Ghi lại golden wire có
 chủ ý bằng `DHX_RECORD_WIRE_GOLDEN=1`.

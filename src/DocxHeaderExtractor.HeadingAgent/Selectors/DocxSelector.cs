@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.HeadingAgent.Selectors;
 /// of context on each side; the first request shows alias, text, the style table and targetFacts with the paragraphs' existing
 /// core facts. The facts tool remains available for other paragraphs. The conversation is <see cref="AgentSelector"/>'s.
 /// </summary>
-public sealed class DocxSelector : AgentSelector, DocxHeaderExtractor.Contracts.Routing.IPrimedDocumentSelector
+public sealed class DocxSelector : AgentSelector, DocxHeaderExtractor.Contracts.Agents.IPrimedDocumentSelector
 {
     readonly ExtractionOptions? extraction;
 

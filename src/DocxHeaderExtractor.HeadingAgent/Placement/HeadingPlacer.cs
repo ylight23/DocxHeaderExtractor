@@ -3,21 +3,22 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Audit;
-using DocxHeaderExtractor.DocumentProcessing.Output;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Hierarchy;
+using DocxHeaderExtractor.Contracts.Models;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Placement;
+namespace DocxHeaderExtractor.HeadingAgent.Placement;
 
-/// <summary>Collects parent proposals, then applies only deterministic C# graph validation.
-/// No semantic verifier or model repair can authorize, revoke, or rewrite a proposed relation.</summary>
-internal static class EvidencePlacement
+/// <summary>
+/// The parent-placement agent of the heading lanes. The settled headings go to the model in batches of <see cref="BatchSize"/>, each with
+/// the source lines around its targets, the lines withheld upstream, and the parents and levels the earlier batches settled; a reply that breaks
+/// the protocol is refused and the refused row is named in the next round. It only proposes: the pipeline's ParentResolver checks every
+/// relation against the graph and keeps what passes.
+/// </summary>
+public sealed class HeadingPlacer : IHeadingPlacer
 {
-    internal const string Version = "HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION";
-    internal const int BatchSize = 16, Jobs = 4, MaxRounds = 3, RequestCap = 98304, ResponseCap = 131072;
+    public const string Version = "HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION";
+    internal const int BatchSize = 16, MaxRounds = 3, RequestCap = 98304, ResponseCap = 131072;
     static readonly JsonSerializerOptions Json = new() { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
     private const string RawSourcePrompt = """
@@ -45,22 +46,22 @@ internal static class EvidencePlacement
 
     internal static int OutputBudget(int targetCount) => Math.Max(256, 96 + targetCount * 128);
 
-    internal static async Task<ParentResolver.PlacementResult> PlaceAsync(
-        IReadOnlyList<CanonicalSemanticBoundHeading> bound, IInferenceTransport transport, CancellationToken ct,
-        HeadingPlacementEvidence evidence)
+    public string Contract => Version;
+
+    public async Task<PlacementProposal> ProposeAsync(PlacementRequest request, IInferenceTransport transport, CancellationToken ct)
     {
-        var clock = Stopwatch.StartNew();
-        var ordered = bound.OrderBy(h => h.SourceOrdinal).ThenBy(h => h.Start).ToArray();
-        var source = evidence.Source!;
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(transport);
+        var ordered = request.Ordered;
+        var evidence = request.Evidence;
+        var source = evidence.Source ?? throw new ArgumentException("PLACEMENT_SOURCE_REQUIRED", nameof(request));
         var lines = source.Lines.OrderBy(l => l.Ordinal).ToArray();
         var positions = lines.Select((line, index) => (line.Alias, index)).ToDictionary(x => x.Alias, x => x.index, StringComparer.Ordinal);
         var byAlias = ordered.ToDictionary(h => h.Alias, StringComparer.Ordinal);
         var parts = ordered.SelectMany(h => h.Parts.Count > 0 ? h.Parts.Select(p => p.Alias) : [h.Alias]).ToHashSet(StringComparer.Ordinal);
-        var ownerByAlias = ordered.SelectMany(h => (h.Parts.Count > 0 ? h.Parts.Select(p => p.Alias) : [h.Alias])
-            .Select(alias => (Alias: alias, h.SourceId))).ToDictionary(p => p.Alias, p => p.SourceId, StringComparer.Ordinal);
         var withheld = lines.Where(line => !parts.Contains(line.Alias) && source.AliasStates.TryGetValue(line.Alias, out var state) &&
             (state.InitialSelection == "SELECT" || state.FinalSelection == "UNRESOLVED" || state.BindingStatus == "READY_FOR_BINDING")).ToArray();
-        var calls = new ConcurrentQueue<HeadingPlacementCallObservation>();
+        var calls = new ConcurrentQueue<PlacementCall>();
         var failures = new ConcurrentQueue<string>();
         var rawEvidence = new ConcurrentQueue<(string Id, int Round, string Json)>();
         var logicalCalls = 0;
@@ -90,77 +91,9 @@ internal static class EvidencePlacement
         foreach (var alias in targets.Where(alias => !proposed.ContainsKey(alias)))
             statusByAlias[alias] = "PROTOCOL_NO_PROPOSAL";
 
-        // A relation is usable only when it names ROOT/NONE or an earlier bound heading.
-        // The hierarchy resolver independently derives depth and rejects unresolved, missing,
-        // forward, self, and out-of-tree parents. No semantic ACCEPT is required.
-        var placed = ordered.Select(heading =>
-        {
-            if (!proposed.TryGetValue(heading.Alias, out var parent)) return heading;
-            var valid = parent is "ROOT" or "NONE" or "UNRESOLVED" ||
-                byAlias.TryGetValue(parent, out var parentHeading) && parentHeading.SourceOrdinal < heading.SourceOrdinal;
-            if (!valid)
-            {
-                statusByAlias[heading.Alias] = "CSharpGraphValidationRejected";
-                failures.Enqueue("HIERARCHY_GRAPH:INVALID_PARENT:" + heading.Alias);
-                return heading with { RelationHints = heading.RelationHints.Where(hint => !hint.StartsWith("parent-node:", StringComparison.Ordinal)).ToArray() };
-            }
-            return heading with { RelationHints = heading.RelationHints.Where(hint => !hint.StartsWith("parent-node:", StringComparison.Ordinal))
-                .Append("parent-node:" + parent).ToArray() };
-        }).ToArray();
-
-        var requested = ordered.Select(h => h.SourceId).ToHashSet(StringComparer.Ordinal);
-        var result = ParentResolver.Observe(placed, requested, ordered.Length == 0 ? "placement-not-required" : "placement-proposed",
-            proposed.Count, failures.IsEmpty ? null : "CSharpGraphValidation");
-        var hierarchy = HierarchyResolver.DeriveHierarchyFromModelRelations(placed).ToDictionary(h => h.SourceId, StringComparer.Ordinal);
-        var decisions = result.Observation.Decisions.Select(decision => decision with
-        {
-            ProposedParentAlias = proposed.GetValueOrDefault(decision.Alias),
-            VerificationStatus = "NOT_RUN",
-            ResolutionBasis = statusByAlias.GetValueOrDefault(decision.Alias) switch
-            {
-                "CSharpGraphValidationRejected" => "csharp-graph-validation-rejected",
-                "UPSTREAM_PROPOSAL" => "upstream-parent-proposal",
-                "MODEL_PROPOSAL" => hierarchy[decision.SourceId].Resolution == HierarchyResolver.Unresolved
-                    ? "model-proposal-unresolved-or-invalid" : "model-parent-proposal",
-                _ => "no-parent-proposal"
-            }
-        }).ToArray();
-        var unresolved = decisions.Where(d => d.Resolution == HierarchyResolver.Unresolved).ToArray();
-        var sourceTrace = lines.Select(line =>
-        {
-            source.AliasStates.TryGetValue(line.Alias, out var state);
-            ownerByAlias.TryGetValue(line.Alias, out var owner);
-            return new HeadingPlacementSourceObservation(line.Alias, line.SourceId, state?.InitialSelection, state?.FinalSelection,
-                state?.VerificationMembership, parts.Contains(line.Alias) ? "BOUND" : state?.BindingStatus ?? "NOT_BOUND",
-                owner is not null && hierarchy.TryGetValue(owner, out var resolved) ? resolved.Resolution : "not-bound");
-        }).ToArray();
-        var observation = result.Observation with
-        {
-            Contract = Version,
-            LogicalCalls = logicalCalls,
-            Seconds = Math.Round(clock.Elapsed.TotalSeconds, 1),
-            VerifiedCount = 0,
-            RepairCount = 0,
-            EdgeRepairs = [],
-            GraphConflicts = [],
-            GraphRepairAliases = [],
-            GraphUnresolvedAliases = [],
-            Failures = failures.ToArray(),
-            Calls = calls.ToArray(),
-            SourceTrace = sourceTrace,
-            ModelEvidence = rawEvidence.OrderBy(item => item.Id, StringComparer.Ordinal).ThenBy(item => item.Round)
-                .Select(item => item.Json).ToArray(),
-            UnresolvedSummary = new(
-                unresolved.Count(d => d.ResolutionBasis != "ancestor-chain-unresolved"),
-                unresolved.Count(d => d.ResolutionBasis == "ancestor-chain-unresolved"),
-                0,
-                unresolved.Count(d => d.ResolutionBasis == "no-parent-proposal"),
-                unresolved.Count(d => d.ResolutionBasis == "model-proposal-unresolved-or-invalid"),
-                0,
-                unresolved.Count(d => d.ResolutionBasis == "csharp-graph-validation-rejected")),
-            Decisions = decisions
-        };
-        return result with { Observation = observation };
+        return new PlacementProposal(proposed.ToArray(), statusByAlias, calls.ToArray(), failures.ToArray(),
+            rawEvidence.OrderBy(item => item.Id, StringComparer.Ordinal).ThenBy(item => item.Round).Select(item => item.Json).ToArray(),
+            logicalCalls);
 
         // The level a decided heading takes from its parent chain: ROOT is level 1; a chain that ends in NONE, UNRESOLVED or an unknown alias has none.
         int? LevelOf(string alias, int depth = 0)

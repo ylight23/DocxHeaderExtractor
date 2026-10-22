@@ -4,7 +4,7 @@ using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Lanes.Pdf;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
-using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Pdf;
@@ -14,6 +14,7 @@ using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Selectors;
 using DocxHeaderExtractor.HeadingAgent.Tools;
+using DocxHeaderExtractor.HeadingAgent.Placement;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -66,7 +67,7 @@ public sealed class PdfLaneTests
         using var transport = new NoCallTransport("route-key");
         var file = UploadedFile.FromLocalPath(TestRepository.Path(Pdf));
 
-        var run = await PdfPipeline.RunWithSelectorAsync(file, new PipelineOptions(), transport, selector);
+        var run = await PdfPipeline.RunAsync(file, new PipelineOptions(), transport, new HeadingAgents(Pdf: selector, Placer: new HeadingPlacer()));
 
         Assert.Equal(1, selector.Calls);
         Assert.Equal("route-key", selector.Key);
@@ -75,7 +76,7 @@ public sealed class PdfLaneTests
         Assert.Equal(SelectionAuthority.AuthorityId, heading.Reason);
         Assert.Equal(2, heading.Structure.Elements.Count);
         Assert.Contains(FixedSelector.Id, heading.Audit!.ModelInputContracts);
-        Assert.Contains(DocxHeaderExtractor.DocumentProcessing.Placement.EvidencePlacement.Version, heading.Audit.ModelInputContracts);
+        Assert.Contains(HeadingPlacer.Version, heading.Audit.ModelInputContracts);
         Assert.Equal("complete", heading.Audit.SemanticLane!.Status);
         // One parent-proposal pass; no semantic verifier gate follows it.
         Assert.Equal(1, transport.PlacementCalls);
@@ -93,7 +94,7 @@ public sealed class PdfLaneTests
 
         var selector = new FixedSelector(new HashSet<string>());
         using var keyless = new NoCallTransport(null);
-        var noKey = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfPipeline.RunWithSelectorAsync(file, new PipelineOptions(), keyless, selector));
+        var noKey = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfPipeline.RunAsync(file, new PipelineOptions(), keyless, new HeadingAgents(Pdf: selector, Placer: new HeadingPlacer())));
         Assert.StartsWith("PDF_HEADING_SELECTOR_KEY_MISSING", noKey.Message);
         Assert.Equal(0, selector.Calls);
         Assert.Equal(0, keyed.PlacementCalls + keyless.PlacementCalls);
@@ -104,7 +105,7 @@ public sealed class PdfLaneTests
     {
         var selector = new FixedSelector(new HashSet<string>());
         var file = UploadedFile.FromLocalPath(TestRepository.Path(Pdf));
-        var run = await PdfPipeline.RunWithSelectorAsync(file, new PipelineOptions { DisableLlm = true }, null, selector);
+        var run = await PdfPipeline.RunAsync(file, new PipelineOptions { DisableLlm = true }, null, new HeadingAgents(Pdf: selector, Placer: new HeadingPlacer()));
         Assert.Equal(0, selector.Calls);
         Assert.Empty(run.HeadingPipeline!.Structure.Elements);
     }
@@ -144,7 +145,7 @@ public sealed class PdfLaneTests
         var file = UploadedFile.FromLocalPath(TestRepository.Path(Pdf));
 
         using var plain = new NoCallTransport("route-key");
-        await PdfPipeline.RunWithSelectorAsync(file, new PipelineOptions(), plain, new FixedSelector(aliases));
+        await PdfPipeline.RunAsync(file, new PipelineOptions(), plain, new HeadingAgents(Pdf: new FixedSelector(aliases), Placer: new HeadingPlacer()));
         Assert.Equal(1, plain.PlacementCalls);
         Assert.Contains("propose its", plain.LastPrompt);   // the parent definition of the placement prompt
         Assert.Contains("sourceContext", plain.LastPacket!, StringComparison.Ordinal);
@@ -152,7 +153,7 @@ public sealed class PdfLaneTests
         using var withStyles = new NoCallTransport("route-key");
         var agentSource = AgentSource.Load(TestRepository.Path(Pdf), out _)!;
         var context = agentSource.Flavor.PlacementContext(agentSource);
-        await PdfPipeline.RunWithSelectorAsync(file, new PipelineOptions(), withStyles, new FixedSelector(aliases, context));
+        await PdfPipeline.RunAsync(file, new PipelineOptions(), withStyles, new HeadingAgents(Pdf: new FixedSelector(aliases, context), Placer: new HeadingPlacer()));
         Assert.Contains("propose its", withStyles.LastPrompt);
         using var packet = JsonDocument.Parse(withStyles.LastPacket!);
         Assert.True(packet.RootElement.TryGetProperty("upstreamWithheld", out _));
@@ -187,19 +188,6 @@ public sealed class PdfLaneTests
         var twice = SelectionAuthority.FromGroups(atoms, selected, [[a.Alias, b.Alias], [b.Alias, other.Alias]], blocks);
         Assert.Equal(new[] { a.Alias, b.Alias }, twice[0].Parts!.Select(p => p.Alias));
         Assert.Equal(selected.Order(), twice.SelectMany(d => d.Parts!.Select(p => p.Alias)).Order());
-    }
-
-    [Fact]
-    public void Without_evidence_the_placement_packet_is_the_one_the_stage_always_sent()
-    {
-        var headings = new[]
-        {
-            new CanonicalSemanticBoundHeading("L0001:S0", "id-1", 0, "Chapter I", "ESTABLISHES_STRUCTURE", "heading", "document_body", [], 0, 9),
-            new CanonicalSemanticBoundHeading("L0002:S0", "id-2", 1, "GENERAL", "ESTABLISHES_STRUCTURE", "heading", "document_body", [], 0, 7),
-        };
-        var packet = DocxHeaderExtractor.DocumentProcessing.Placement.ParentResolver.PlacementPacket(
-            headings, new HashSet<string> { "id-2" }, evidence: null);
-        Assert.Equal("{\"headings\":[{\"alias\":\"L0001:S0\",\"text\":\"Chapter I\"},{\"alias\":\"L0002:S0\",\"text\":\"GENERAL\"}],\"toPlace\":[\"L0002:S0\"]}", packet);
     }
 
     private static string Sha256Hex(string text) =>

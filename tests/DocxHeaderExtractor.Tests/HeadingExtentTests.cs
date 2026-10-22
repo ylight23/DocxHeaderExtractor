@@ -9,7 +9,7 @@ using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
-using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.DocumentProcessing.Binding;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
@@ -210,7 +210,7 @@ public sealed class HeadingExtentTests : IDisposable
         var selector = new Fixed(new HeadingSelection(new HashSet<string> { article.Alias }, 1, 1, [], ["{}"], 1, 0.0,
             HeadingExtents: new Dictionary<string, TextOffsetSpan> { [article.Alias] = new(0, Heading.Length) }));
 
-        var decided = await new SelectionAuthority(selector, path, "sk-test", new Dictionary<string, string>(), null, () => { })
+        var decided = await new SelectionAuthority(selector, path, "sk-test", new Dictionary<string, string>(), null, null, () => { })
             .DecideAsync(source, CancellationToken.None);
 
         var decision = Assert.Single(decided.Decisions);
@@ -229,7 +229,7 @@ public sealed class HeadingExtentTests : IDisposable
         var chapter = source.Atoms.Single(a => a.Text == "Chapter I");
 
         var decided = await new SelectionAuthority(new Fixed(new HeadingSelection(new HashSet<string> { chapter.Alias }, 1, 1, [], ["{}"], 1, 0.0)),
-            path, "sk-test", new Dictionary<string, string>(), null, () => { }).DecideAsync(source, CancellationToken.None);
+            path, "sk-test", new Dictionary<string, string>(), null, null, () => { }).DecideAsync(source, CancellationToken.None);
 
         Assert.Equal(new TextOffsetSpan(0, "Chapter I".Length), Assert.Single(decided.Decisions).HeadingSpan);
     }
@@ -243,7 +243,7 @@ public sealed class HeadingExtentTests : IDisposable
     {
         var path = Mixed();
         var source = DocxSourceAdapter.Build(new OpenXmlDocumentSource(new PipelineOptions().Extraction).Read(path)).Snapshot;
-        return await new SelectionAuthority(new Fixed(selection), path, "sk-test", new Dictionary<string, string>(), null, () => { })
+        return await new SelectionAuthority(new Fixed(selection), path, "sk-test", new Dictionary<string, string>(), null, null, () => { })
             .DecideAsync(source, CancellationToken.None);
     }
 

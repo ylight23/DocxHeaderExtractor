@@ -1,12 +1,10 @@
 using System.Text.Json;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Placement;
 using DocxHeaderExtractor.DocumentProcessing.Structure;
-using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Sources.Snapshot;
 
@@ -32,6 +30,7 @@ internal sealed class SelectionAuthority(
     string apiKey,
     IReadOnlyDictionary<string, string> layoutBlockByAtom,
     IInferenceTransport? placementTransport,
+    IHeadingPlacer? placer,
     Action ensureActive)
 {
     internal const string AuthorityId = "pdf-v6-selected-lines-heading-authority-v1";
@@ -68,7 +67,7 @@ internal sealed class SelectionAuthority(
             HeadingStageSeconds = new Dictionary<string, double>(selection.StageSeconds ?? new Dictionary<string, double>())
             { ["hierarchy"] = assembly.PlacementObservation?.Seconds ?? 0 },
             HeadingAliasStates = selection.AliasStates,
-            ModelInputContracts = [selector.SelectorId, EvidencePlacement.Version],
+            ModelInputContracts = placer is null ? [selector.SelectorId] : [selector.SelectorId, placer.Contract],
             ValidatedStructures = assembly.Hierarchies.Values.ToArray(),
             SemanticLane = new LaneExecutionAudit(
                 selection.UnitsComplete == selection.UnitsTotal ? "complete" : "partial",
@@ -82,7 +81,7 @@ internal sealed class SelectionAuthority(
         { Source = new(source.Atoms, selection.AliasStates ?? selection.SelectedAliases.ToDictionary(a => a,
             _ => new HeadingAliasState("SELECT", "SELECT", null, "READY_FOR_BINDING")), source.SourceSha256)
             { LocationByAlias = source.Evidence.ToDictionary(e => e.SourceAlias, e => e.LocationFacts) } };
-        return new SelectionResult(decisions, bound, placementTransport, Complete, evidence);
+        return new SelectionResult(decisions, bound, placementTransport, Complete, evidence, placer);
     }
 
     /// <summary>

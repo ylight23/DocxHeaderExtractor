@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Sources.Snapshot;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.Contracts.Inference;
@@ -20,44 +21,34 @@ public sealed class DocxPipeline : IDisposable
 {
     private readonly PipelineOptions _options;
     private readonly IInferenceTransportFactory? _transportFactory;
-    private readonly IHeadingSelector? _selector;
-    private readonly IScanHeadingSelector? _scanSelector;
+    private readonly HeadingAgents _agents;
     private readonly bool _transportSendsDataExternally;
     private IInferenceTransport? _transport;
     private readonly bool _ownsTransport;
 
     /// <summary>
-    /// The DOCX route's authority is the V6 heading selector: without one, a run that needs the model refuses (DOCX_HEADING_SELECTOR_REQUIRED);
-    /// with the model disabled the route returns the source only. The transport (or the factory that makes it) must be the authorized agent route:
-    /// it carries the provider key the selector uses and serves the shared placement stage.
+    /// The DOCX route runs with its agents (<see cref="HeadingAgents"/>): the DOCX selector says which paragraphs are headings, the scan
+    /// selector reads a scanned DOCX, and the placer proposes parents. A run that needs the model and lacks one refuses
+    /// (DOCX_HEADING_SELECTOR_REQUIRED, HEADING_PLACER_REQUIRED); with the model disabled the route returns the source only. The transport (or
+    /// the factory that makes it) must be the authorized agent route: it carries the provider key the selector uses and serves the placer.
     /// </summary>
-    public DocxPipeline(PipelineOptions options, IInferenceTransportFactory transportFactory, IHeadingSelector? selector = null, IScanHeadingSelector? scanSelector = null)
-        : this(options, null, transportFactory, selector, scanSelector: scanSelector) { }
+    public DocxPipeline(PipelineOptions options, IInferenceTransportFactory transportFactory, HeadingAgents agents)
+        : this(options, null, transportFactory ?? throw new ArgumentNullException(nameof(transportFactory)), agents, false) { }
 
-    public DocxPipeline(PipelineOptions options, IInferenceTransport transport, IHeadingSelector? selector = null, IScanHeadingSelector? scanSelector = null)
-        : this(options, transport, null, selector, false, scanSelector)
-    {
-    }
-
-    public DocxPipeline(
-        PipelineOptions options,
-        IInferenceTransport transport,
-        bool sendsDataExternally,
-        IHeadingSelector? selector = null)
-        : this(options, transport, null, selector, sendsDataExternally) { }
+    public DocxPipeline(PipelineOptions options, IInferenceTransport transport, HeadingAgents agents, bool sendsDataExternally = false)
+        : this(options, transport, null, agents, sendsDataExternally) { }
 
     private DocxPipeline(
         PipelineOptions options,
         IInferenceTransport? transport,
         IInferenceTransportFactory? transportFactory,
-        IHeadingSelector? selector,
-        bool transportSendsDataExternally = false, IScanHeadingSelector? scanSelector = null)
+        HeadingAgents agents,
+        bool transportSendsDataExternally)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
+        _agents = agents ?? throw new ArgumentNullException(nameof(agents));
         _transport = transport;
         _transportFactory = transportFactory;
-        _selector = selector;
-        _scanSelector = scanSelector ?? transportFactory?.CreateScanHeadingSelector();
         _transportSendsDataExternally = transportSendsDataExternally || transportFactory?.SendsDataExternally == true;
         _ownsTransport = transportFactory is not null || transport is null;
     }
@@ -85,12 +76,12 @@ public sealed class DocxPipeline : IDisposable
         ct.ThrowIfCancellationRequested();
         if (DocxHeaderExtractor.Sources.Docx.DocxSourceIntegrity.Read(inputPath).Kind == DocxHeaderExtractor.Sources.Docx.DocxSourceKind.ScannedImageOnly)
             return await ScanLane.RunAsync(inputPath, _options, _options.DisableLlm ? null : await GetTransportAsync(ct),
-                _scanSelector, _transportSendsDataExternally, ct).ConfigureAwait(false);
+                _agents, _transportSendsDataExternally, ct).ConfigureAwait(false);
         var sourceDocument = DocxHeaderExtractor.Sources.Docx.DocxSourceCache.ReadOrLoad(inputPath, _options.SourceCacheRoot, _options.Extraction);
-        if (_selector is DocxHeaderExtractor.Contracts.Routing.IPrimedDocumentSelector primed) primed.PrimeDocument(inputPath, _options.Extraction, sourceDocument);
+        if (_agents.Docx is IPrimedDocumentSelector primed) primed.PrimeDocument(inputPath, _options.Extraction, sourceDocument);
         var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
         var authority = await DocxLane.RunAsync(
-            sourceDocument, transport, _selector, LaneOptions.Default, ct);
+            sourceDocument, transport, _agents.Docx, _agents.Placer, LaneOptions.Default, ct);
         var audit = authority.Audit;
         const string route = DocxLane.RouteId;
 

@@ -3,6 +3,7 @@ using DocxHeaderExtractor.Sources.Pdf;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Inference;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
@@ -36,22 +37,22 @@ public static class PdfPipeline
         CancellationToken ct = default) =>
         RunExecutionCoreAsync(
             file, options, transport, sendsDataExternally, ct,
-            LaneOptions.Default, selector: null);
+            LaneOptions.Default, new HeadingAgents());
 
     /// <summary>
-    /// The lane's entry with the V6 heading selector, which is the PDF heading authority. The public signature above is unchanged; without a
-    /// selector a run that needs the model refuses (PDF_HEADING_SELECTOR_REQUIRED).
+    /// The lane's entry with its agents: the PDF selector, which is the PDF heading authority, and the placer. The public signature above is
+    /// unchanged; without them a run that needs the model refuses (PDF_HEADING_SELECTOR_REQUIRED, HEADING_PLACER_REQUIRED).
     /// </summary>
-    internal static Task<RunResult> RunWithSelectorAsync(
+    internal static Task<RunResult> RunAsync(
         UploadedFile file,
         PipelineOptions options,
         IInferenceTransport? transport,
-        IHeadingSelector? selector,
+        HeadingAgents agents,
         bool sendsDataExternally = false,
         CancellationToken ct = default) =>
         RunExecutionCoreAsync(
             file, options, transport, sendsDataExternally, ct,
-            LaneOptions.Default, selector);
+            LaneOptions.Default, agents);
 
     private static async Task<RunResult> RunExecutionCoreAsync(
         UploadedFile file,
@@ -60,7 +61,7 @@ public static class PdfPipeline
         bool transportSendsDataExternally,
         CancellationToken ct,
         LaneOptions semanticLaneOptions,
-        IHeadingSelector? selector)
+        HeadingAgents agents)
     {
         ArgumentNullException.ThrowIfNull(file);
         ArgumentNullException.ThrowIfNull(options);
@@ -84,7 +85,7 @@ public static class PdfPipeline
             ? PdfSourceCache.BuildOrLoad(file.LocalPath, cacheRoot)
             : PdfSourceAdapter.BuildWithDetails(file.LocalPath);
         authority = await PdfLane.RunAsync(
-            sourceBuild.Snapshot, sourceBuild.Details, file.LocalPath, used, semanticLaneOptions, selector, ct);
+            sourceBuild.Snapshot, sourceBuild.Details, file.LocalPath, used, semanticLaneOptions, agents.Pdf, agents.Placer, ct);
 
         // The catalog the lane parsed, not a second one derived from the audit. The audit's block
         // text is a readable rendering meant for a person to read; the model was shown, and the

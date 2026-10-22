@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
@@ -11,6 +11,7 @@ namespace DocxHeaderExtractor.DocumentProcessing.Selection;
 /// <param name="BoundHeadings">The same headings as bound semantic claims, input to placement and hierarchy.</param>
 /// <param name="PlacementTransport">Transport for the bounded placement follow-up; null when none ran.</param>
 /// <param name="PlacementEvidence">Source context, upstream states and optional style measurements for placement.</param>
+/// <param name="Placer">The agent that proposes parents; placement runs only with it and a transport.</param>
 /// <param name="CompleteAudit">
 /// Adds the authority's own audit facts (raw responses, contracts, lane telemetry) to the route audit
 /// once the shared stages have run.
@@ -20,4 +21,5 @@ internal sealed record SelectionResult(
     IReadOnlyList<CanonicalSemanticBoundHeading> BoundHeadings,
     IInferenceTransport? PlacementTransport,
     Func<RunAudit, StructureAssembly, RunAudit> CompleteAudit,
-    HeadingPlacementEvidence? PlacementEvidence = null);
+    HeadingPlacementEvidence? PlacementEvidence = null,
+    IHeadingPlacer? Placer = null);

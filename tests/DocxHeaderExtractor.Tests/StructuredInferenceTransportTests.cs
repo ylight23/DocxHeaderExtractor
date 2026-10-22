@@ -1,12 +1,13 @@
 using System.Net;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Placement;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Infrastructure.AI;
+using DocxHeaderExtractor.HeadingAgent.Placement;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -71,7 +72,7 @@ public sealed class StructuredInferenceTransportTests
         var bound = lines.Select(l => new CanonicalSemanticBoundHeading(l.Alias, l.SourceId, l.Ordinal, l.Text,
             "ESTABLISHES_STRUCTURE", "heading", "document_body", [], 0, l.Text.Length)).ToArray();
         var evidence = new HeadingPlacementEvidence("{}", new Dictionary<string, string>())
-        { Source = new(lines, new Dictionary<string, DocxHeaderExtractor.Contracts.Routing.HeadingAliasState>()) };
+        { Source = new(lines, new Dictionary<string, DocxHeaderExtractor.Contracts.Agents.HeadingAliasState>()) };
         using var handler = new FakeOpenRouter((body, _) =>
         {
             var packet = body["messages"]![1]!["content"]!.Text();
@@ -82,7 +83,7 @@ public sealed class StructuredInferenceTransportTests
         using var http = new HttpClient(handler);
         using var transport = new OpenRouterInferenceTransport(http, new RemoteInferenceOptions { ApiKey = "sk-test", MaxOutputTokens = configuredCap });
         using var leaseBound = LeaseTransport.Bind(transport, new LaneLease());
-        var result = await ParentResolver.PlaceWithObservationAsync(bound, leaseBound, CancellationToken.None, evidence);
+        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), leaseBound, evidence, CancellationToken.None);
         var completed = finish == "stop";
         Assert.Equal(0, result.Observation.VerifiedCount);
         Assert.Equal(completed ? 16 : 0, result.Observation.PlacedCount);

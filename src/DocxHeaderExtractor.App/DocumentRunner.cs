@@ -17,10 +17,9 @@ using DocxHeaderExtractor.HeadingAgent.Tools;
 namespace DocxHeaderExtractor.App;
 
 /// <summary>
-/// The composition root the Web and CLI hosts call directly: it builds the V6 agent selectors and hands them to the pipeline,
-/// which the agent never references. The file is routed to the lane that owns its format (the DOCX
-/// pipeline or the PDF handler), each lane takes its heading selector from the transport factory or the V6 default, and a
-/// .doc/.rtf/.odt is converted to OOXML first. Writeback of the outline goes through the same converter.
+/// The composition root the Web and CLI hosts call directly: it takes the heading agents from <see cref="HeadingAgentSetup"/> and hands
+/// them to the pipeline, which never references the agents' project. The file is routed to the lane that owns its format (the DOCX
+/// pipeline or the PDF handler), and a .doc/.rtf/.odt is converted to OOXML first. Writeback of the outline goes through the same converter.
 /// <para>
 /// There is no harness here: no consent gate for sending data to the provider, and no validators or writeback target
 /// guardrail. The owner accepted that on 2026-10-15.
@@ -37,13 +36,9 @@ public sealed class DocumentRunner : IDisposable
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(factory);
-        var scanSelector = factory.CreateScanHeadingSelector() ?? new DocxHeaderExtractor.HeadingAgent.Scan.ScanSelector(options.ScanEvidenceRoot,
-                parallelism: options.ScanJobs, onModelReply: onModelReply, vision: options.ScanVision, reuseSelection: options.ScanReuseSelection,
-                transcriptionOptions: options.ScanJobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null,
-                visionOptions: options.ScanJobs is { } seeJobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null);
-        _docxLane = new DocxPipeline(options, factory,
-            factory.CreateDocxHeadingSelector() ?? new DocxSelector(onModelReply: onModelReply, extraction: options.Extraction), scanSelector);
-        _pdfLane = new PdfHandler(options, factory, factory.CreatePdfHeadingSelector() ?? new PdfSelector(onModelReply: onModelReply), scanSelector);
+        var agents = HeadingAgentSetup.Create(options, factory, onModelReply);
+        _docxLane = new DocxPipeline(options, factory, agents);
+        _pdfLane = new PdfHandler(options, factory, agents);
         _dispatcher = new Router(new DocxHandler(_docxLane), _pdfLane);
     }
 

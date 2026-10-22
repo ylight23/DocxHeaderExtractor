@@ -32,16 +32,15 @@ internal static class StructureAssembler
         // would have no element to stand on: its child would show a depth with no parent, and the relation would be dropped without a trace.
         var validatedIds = validated.Select(item => item.SourceId).ToHashSet(StringComparer.Ordinal);
         var bound = authority.BoundHeadings.Where(item => validatedIds.Contains(item.SourceId)).ToArray();
-        // Selector routes carry source context and upstream gaps into a bounded parent-proposal
-        // pass, followed only by deterministic graph validation. Other authorities keep their
-        // existing narrow placement contract. Unresolved ancestry remains a legitimate outcome.
-        var placement = authority.PlacementTransport is null
+        // The placer proposes parents from the source context and the upstream gaps; ParentResolver keeps only what the graph allows.
+        // Without a transport (the model disabled) placement is not requested. Unresolved ancestry remains a legitimate outcome.
+        var placement = authority.PlacementTransport is null || authority.Placer is null
             ? ParentResolver.Observe(bound,
                 HierarchyResolver.DeriveHierarchyFromModelRelations(bound)
                     .Where(item => item.Resolution == HierarchyResolver.Unresolved)
                     .Select(item => item.SourceId).ToHashSet(StringComparer.Ordinal), "placement-not-requested")
-            : await ParentResolver.PlaceWithObservationAsync(
-                bound, authority.PlacementTransport, cancellationToken, authority.PlacementEvidence).ConfigureAwait(false);
+            : await ParentResolver.PlaceAsync(bound, authority.Placer, authority.PlacementTransport,
+                authority.PlacementEvidence ?? throw new InvalidOperationException("PLACEMENT_EVIDENCE_REQUIRED"), cancellationToken).ConfigureAwait(false);
         var placed = placement.Headings;
         // The alias catalog spans the whole document while contexts hold only the occurrences the
         // route carries, so a bound heading can name a source this route cannot materialize.

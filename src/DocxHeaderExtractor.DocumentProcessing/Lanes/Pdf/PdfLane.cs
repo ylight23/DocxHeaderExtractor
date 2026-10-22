@@ -2,7 +2,7 @@ using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Inference;
-using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Snapshot;
 using DocxHeaderExtractor.Sources.Pdf;
@@ -26,6 +26,7 @@ internal static class PdfLane
         IInferenceTransport? transport,
         LaneOptions? semanticLaneOptions,
         IHeadingSelector? selector,
+        IHeadingPlacer? placer,
         CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(authority);
@@ -42,7 +43,7 @@ internal static class PdfLane
         if (transport is null)
             return new LaneResult(StructureFactory.Create([]), LaneHarness.SourceOnlyAudit(lane), "pdf-function-conditioned-llm-disabled")
             { SourceCatalog = authority.Catalog };
-        var access = LaneHarness.Authorize(transport, selector, Refusals);
+        var access = LaneHarness.Authorize(transport, selector, placer, Refusals);
 
         await using var scope = CheckpointScope.Create();
         await using var checkpoint = new PdfCheckpoint(scope.CheckpointPath, Path.GetFileNameWithoutExtension(sourceName));
@@ -53,7 +54,7 @@ internal static class PdfLane
             async (lease, laneCt) =>
             {
                 var run = await LaneHarness.DecideAndAssembleAsync(
-                    lane, access.Selector, sourceName, access.ApiKey, access.Transport, lease, laneCt).ConfigureAwait(false);
+                    lane, access.Selector, access.Placer, sourceName, access.ApiKey, access.Transport, lease, laneCt).ConfigureAwait(false);
                 return LaneHarness.Result(AuthorityId, authority, run.Assembly,
                     run.Audit with { HierarchyFacts = PdfFacts.Inspect(run.Assembly.Validated, pdfDetails.Contexts) });
             },
@@ -67,7 +68,8 @@ internal static class PdfLane
     private static readonly LaneHarness.AccessMessages Refusals = new(
         "AGENT_ROUTE_AUTHORIZATION_REQUIRED",
         "PDF_HEADING_SELECTOR_REQUIRED: the PDF lane has no authority without the V6 heading selector.",
-        "PDF_HEADING_SELECTOR_KEY_MISSING: the authorized PDF route carries no provider key.");
+        "PDF_HEADING_SELECTOR_KEY_MISSING: the authorized PDF route carries no provider key.",
+        "HEADING_PLACER_REQUIRED: the PDF route places no heading without the heading placer.");
 
     private static readonly LaneHarness.Messages Messages = new(
         "PDF semantic execution exceeded its lane deadline.",

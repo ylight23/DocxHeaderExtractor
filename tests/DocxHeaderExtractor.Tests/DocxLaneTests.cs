@@ -2,11 +2,12 @@ using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
 using DocxHeaderExtractor.DocumentProcessing.Lanes.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
-using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Placement;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -40,7 +41,7 @@ public sealed class DocxLaneTests : IDisposable
         var aliases = Aliases(path, 0, 1, 2);
         var selector = new FixedSelector(aliases.ToHashSet());
         using var transport = new NoCallTransport("route-key");
-        using var pipeline = new DocxPipeline(new PipelineOptions(), transport, selector);
+        using var pipeline = new DocxPipeline(new PipelineOptions(), transport, new HeadingAgents(Docx: selector, Placer: new HeadingPlacer()));
 
         var run = await pipeline.RunDocumentExecutionAsync(path);
 
@@ -63,7 +64,7 @@ public sealed class DocxLaneTests : IDisposable
         var aliases = Aliases(path, 0, 1, 2).ToHashSet();
         var context = new HeadingPlacementContext("{\"documentLines\":8,\"styles\":[]}", new Dictionary<string, string>(), DocxAgentProtocol.PlacementNote);
         using var transport = new NoCallTransport("route-key");
-        using var pipeline = new DocxPipeline(new PipelineOptions(), transport, new FixedSelector(aliases, context));
+        using var pipeline = new DocxPipeline(new PipelineOptions(), transport, new HeadingAgents(Docx: new FixedSelector(aliases, context), Placer: new HeadingPlacer()));
 
         await pipeline.RunDocumentExecutionAsync(path);
 
@@ -77,18 +78,18 @@ public sealed class DocxLaneTests : IDisposable
     {
         var path = Sample();
         using var keyed = new NoCallTransport("route-key");
-        using var noSelector = new DocxPipeline(new PipelineOptions(), keyed);
+        using var noSelector = new DocxPipeline(new PipelineOptions(), keyed, new HeadingAgents(Placer: new HeadingPlacer()));
         var none = await Assert.ThrowsAsync<InvalidOperationException>(() => noSelector.RunDocumentExecutionAsync(path));
         Assert.StartsWith("DOCX_HEADING_SELECTOR_REQUIRED", none.Message);
 
         var selector = new FixedSelector(new HashSet<string>());
         using var keyless = new NoCallTransport(null);
-        using var noKey = new DocxPipeline(new PipelineOptions(), keyless, selector);
+        using var noKey = new DocxPipeline(new PipelineOptions(), keyless, new HeadingAgents(Docx: selector, Placer: new HeadingPlacer()));
         var missing = await Assert.ThrowsAsync<InvalidOperationException>(() => noKey.RunDocumentExecutionAsync(path));
         Assert.StartsWith("DOCX_HEADING_SELECTOR_KEY_MISSING", missing.Message);
 
         using var plain = new PlainTransport();
-        using var notAuthorized = new DocxPipeline(new PipelineOptions(), plain, selector);
+        using var notAuthorized = new DocxPipeline(new PipelineOptions(), plain, new HeadingAgents(Docx: selector, Placer: new HeadingPlacer()));
         var refused = await Assert.ThrowsAsync<InvalidOperationException>(() => notAuthorized.RunDocumentExecutionAsync(path));
         Assert.StartsWith("AGENT_ROUTE_AUTHORIZATION_REQUIRED", refused.Message);
 
@@ -100,7 +101,7 @@ public sealed class DocxLaneTests : IDisposable
     public async Task With_the_model_disabled_the_selector_is_not_called_and_the_route_says_so()
     {
         var selector = new FixedSelector(new HashSet<string>());
-        using var pipeline = new DocxPipeline(new PipelineOptions { DisableLlm = true }, new NoCallTransport("route-key"), selector);
+        using var pipeline = new DocxPipeline(new PipelineOptions { DisableLlm = true }, new NoCallTransport("route-key"), new HeadingAgents(Docx: selector, Placer: new HeadingPlacer()));
 
         var run = await pipeline.RunDocumentExecutionAsync(Sample());
 

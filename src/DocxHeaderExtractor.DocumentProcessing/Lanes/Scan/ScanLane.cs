@@ -2,7 +2,7 @@ using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Inference;
-using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Sources.Scan;
 using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
@@ -15,14 +15,15 @@ internal static class ScanLane
     internal const string RouteId = "scan-v6-selected-lines";
 
     internal static async Task<RunResult> RunAsync(string path, PipelineOptions options,
-        IInferenceTransport? transport, IScanHeadingSelector? selector, bool sendsDataExternally, CancellationToken ct)
+        IInferenceTransport? transport, HeadingAgents agents, bool sendsDataExternally, CancellationToken ct)
     {
         ct.ThrowIfCancellationRequested();
-        if (selector is null) throw new InvalidOperationException("SCAN_HEADING_SELECTOR_REQUIRED");
+        var selector = agents.Scan ?? throw new InvalidOperationException("SCAN_HEADING_SELECTOR_REQUIRED");
         if (!options.DisableLlm && transport is not IAgentRouteInferenceTransport)
             throw new InvalidOperationException("AGENT_ROUTE_AUTHORIZATION_REQUIRED");
         var key = options.DisableLlm ? null : ((IAgentRouteInferenceTransport)transport!).OpenRouterApiKey
             ?? throw new InvalidOperationException("SCAN_HEADING_SELECTOR_KEY_MISSING");
+        if (!options.DisableLlm && agents.Placer is null) throw new InvalidOperationException("HEADING_PLACER_REQUIRED");
         var started = Environment.TickCount64;
         var sourceSha = SourceHash.Compute(path);
         var result = await LaneHarness.CompleteAsync(async (lease, laneCt) =>
@@ -42,7 +43,7 @@ internal static class ScanLane
                 source.Atoms.Select(a => a.Page).Distinct().Count());
             options.Log?.Invoke("Scan: bind, place and materialize headings");
             var run = await LaneHarness.DecideAndAssembleAsync(
-                lane, new PreparedSelector(selector.SelectorId, prepared.Selection), path, key ?? "", transport, lease, laneCt).ConfigureAwait(false);
+                lane, new PreparedSelector(selector.SelectorId, prepared.Selection), agents.Placer, path, key ?? "", transport, lease, laneCt).ConfigureAwait(false);
             var (decided, assembly) = (run.Decided, run.Assembly);
             var stageSeconds = new Dictionary<string, double>(prepared.Diagnostics.StageSeconds)
             { ["structure"] = Math.Round(run.AssembleSeconds, 1) };

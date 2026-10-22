@@ -113,6 +113,6 @@ public sealed class DocxAgentFlavorTests : IDisposable
         Assert.Equal(source.Lines.Count, JsonNode.Parse(context.DocumentStylesJson)!["documentLines"]!.GetValue<int>());
 
         // A PDF's context keeps no note: the default sentence stays, and the placement prompt is byte for byte as before.
-        Assert.Null(new DocxHeaderExtractor.Contracts.Routing.HeadingPlacementContext("{}", new Dictionary<string, string>()).MeasurementsNote);
+        Assert.Null(new DocxHeaderExtractor.Contracts.Agents.HeadingPlacementContext("{}", new Dictionary<string, string>()).MeasurementsNote);
     }
 }

@@ -6,6 +6,7 @@ using MessagePack;
 using DocumentFormat.OpenXml.Packaging;
 using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.Sources.Pdf;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.Contracts.Scan;

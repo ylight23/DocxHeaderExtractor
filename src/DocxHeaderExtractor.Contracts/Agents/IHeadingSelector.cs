@@ -1,4 +1,5 @@
-namespace DocxHeaderExtractor.Contracts.Routing;
+
+namespace DocxHeaderExtractor.Contracts.Agents;
 
 /// <summary>
 /// The PDF heading authority's model side: reads one PDF and answers which source lines are headings, by the source alias the PDF parser

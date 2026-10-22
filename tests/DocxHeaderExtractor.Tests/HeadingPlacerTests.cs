@@ -2,18 +2,18 @@ using System.Collections.Concurrent;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Hierarchy;
 using DocxHeaderExtractor.DocumentProcessing.Placement;
-using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
+using DocxHeaderExtractor.HeadingAgent.Placement;
 
 namespace DocxHeaderExtractor.Tests;
 
-public sealed class EvidencePlacementTests
+public sealed class HeadingPlacerTests
 {
     internal const string C3 = "P015-L010", D34 = "P015-L012", D35 = "P015-L019", C4 = "P019-L001", C5 = "P021-L010", D46 = "P021-L012", D47 = "P021-L014";
     const string Appendix = "P023-L001", Part1 = "P023-L002", Intro = "P023-L003", Child = "P023-L004";
@@ -52,7 +52,7 @@ public sealed class EvidencePlacementTests
     {
         var (bound, evidence, parents) = Fixture();
         using var model = new Model(p => HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!);
-        var result = await ParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
         var hierarchy = HierarchyResolver.DeriveHierarchyFromModelRelations(result.Headings).ToDictionary(h => h.SourceId[3..]);
         Assert.Equal(1, hierarchy[C3].Level);
         Assert.Equal(2, hierarchy[D35].Level);
@@ -63,7 +63,7 @@ public sealed class EvidencePlacementTests
         Assert.All(result.Observation.Decisions, d => Assert.Equal("NOT_RUN", d.VerificationStatus));
         Assert.All(result.Observation.Calls, c => Assert.Equal("HIERARCHY_PLACE", c.Phase));
         Assert.Equal(result.Observation.Calls.Count, result.Observation.LogicalCalls);
-        Assert.Equal(EvidencePlacement.Version, result.Observation.Contract);
+        Assert.Equal(HeadingPlacer.Version, result.Observation.Contract);
         Assert.DoesNotContain("ModelEvidence", JsonSerializer.Serialize(result.Observation));
     }
 
@@ -73,7 +73,7 @@ public sealed class EvidencePlacementTests
         var (bound, evidence, parents) = Fixture();
         parents[D47] = D46; // A same-chapter but semantically false parent is still a legal earlier bound node.
         using var model = new Model(p => HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!);
-        var result = await ParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
         var hierarchy = HierarchyResolver.DeriveHierarchyFromModelRelations(result.Headings).Single(h => h.SourceId == "id:" + D47);
         Assert.Equal("id:" + D46, hierarchy.ParentSourceId);
         Assert.Equal(3, hierarchy.Level);
@@ -86,7 +86,7 @@ public sealed class EvidencePlacementTests
         var (bound, evidence, parents) = Fixture();
         parents[C3] = D35;
         using var model = new Model(p => HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!);
-        var result = await ParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
         var chapter = result.Headings.Single(h => h.Alias == C3);
         Assert.DoesNotContain(chapter.RelationHints, h => h.StartsWith("parent-node:", StringComparison.Ordinal));
         Assert.Equal(HierarchyResolver.Unresolved,
@@ -110,7 +110,7 @@ public sealed class EvidencePlacementTests
             return HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!;
         });
 
-        var result = await ParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
 
         // The two batches run side by side: take the packets that carry the refused row.
         var batch = packets.Where(p => p["toPlace"]!.AsArray().Any(a => a!.GetValue<string>() == C3)).ToArray();
@@ -135,7 +135,7 @@ public sealed class EvidencePlacementTests
             return HierarchyTestProtocol.Reply(p.ToJsonString(), parents)!;
         });
 
-        await ParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
 
         Assert.Equal(2, packets.Count);   // 25 targets in batches of 16 and 9
         Assert.Empty(packets[0]["decidedHeadings"]!.AsArray());
@@ -152,7 +152,7 @@ public sealed class EvidencePlacementTests
     {
         var (bound, evidence, _) = Fixture();
         using var model = new Model(_ => "not json");
-        var result = await ParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
         Assert.Equal(bound.Length, result.Headings.Count);
         Assert.All(result.Observation.Calls, c => Assert.Equal("HIERARCHY_PLACE", c.Phase));
         Assert.Equal(0, result.Observation.VerifiedCount);
@@ -173,11 +173,11 @@ public sealed class EvidencePlacementTests
                 ? (object)new { alias = a!.GetValue<string>(), parentAlias = "ROOT" }
                 : new { alias = a!.GetValue<string>(), parent = "ROOT" }).ToArray();
             return where == "row"
-                ? JsonSerializer.Serialize(new { protocolVersion = EvidencePlacement.Version, placements = rows })
-                : JsonSerializer.Serialize(new { protocolVersion = EvidencePlacement.Version, rows });
+                ? JsonSerializer.Serialize(new { protocolVersion = HeadingPlacer.Version, placements = rows })
+                : JsonSerializer.Serialize(new { protocolVersion = HeadingPlacer.Version, rows });
         });
 
-        var result = await ParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence);
+        var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(), model, evidence, CancellationToken.None);
 
         Assert.Equal(bound.Length, result.Headings.Count);
         Assert.Contains(result.Observation.Calls.SelectMany(c => c.ProtocolErrors), e => e == code);
@@ -190,7 +190,7 @@ public sealed class EvidencePlacementTests
     {
         var (_, evidence, _) = Fixture();
         using var model = new Model(_ => throw new InvalidOperationException("must not call"));
-        var result = await ParentResolver.PlaceWithObservationAsync([], model, CancellationToken.None, evidence);
+        var result = await ParentResolver.PlaceAsync([], new HeadingPlacer(), model, evidence, CancellationToken.None);
         Assert.Equal(0, result.Observation.LogicalCalls);
         Assert.Equal(0, result.Observation.VerifiedCount);
     }

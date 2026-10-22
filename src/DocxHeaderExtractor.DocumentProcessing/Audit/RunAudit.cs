@@ -23,7 +23,7 @@ public sealed record RunAudit(
 
     [JsonPropertyName("scan")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public DocxHeaderExtractor.Contracts.Routing.ScanRunDiagnostics? Scan { get; init; }
+    public DocxHeaderExtractor.Contracts.Agents.ScanRunDiagnostics? Scan { get; init; }
 
     /// <summary>Raw model completions, populated only by explicit diagnostic routes.</summary>
     [JsonPropertyName("rawModelResponses")]
@@ -66,11 +66,11 @@ public sealed record RunAudit(
     public int? HeadingProviderCalls => SelectionProviderCalls is { } count ? count + (PlacementExecution?.LogicalCalls ?? 0) : null;
 
     [JsonIgnore]
-    public DocxHeaderExtractor.Contracts.Routing.GroupingObservation? Grouping { get; init; }
+    public DocxHeaderExtractor.Contracts.Agents.GroupingObservation? Grouping { get; init; }
     [JsonIgnore]
     public IReadOnlyDictionary<string, double>? HeadingStageSeconds { get; init; }
     [JsonIgnore]
-    public IReadOnlyDictionary<string, DocxHeaderExtractor.Contracts.Routing.HeadingAliasState>? HeadingAliasStates { get; init; }
+    public IReadOnlyDictionary<string, DocxHeaderExtractor.Contracts.Agents.HeadingAliasState>? HeadingAliasStates { get; init; }
 }
 
 public sealed record PdfSelectedSourceIdentity(

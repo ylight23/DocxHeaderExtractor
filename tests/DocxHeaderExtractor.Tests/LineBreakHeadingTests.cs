@@ -4,7 +4,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
-using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.DocumentProcessing.Binding;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
@@ -48,7 +48,7 @@ public sealed class LineBreakHeadingTests : IDisposable
         var selector = new FixedSelector(new HashSet<string> { article.Alias });
 
         var authority = new SelectionAuthority(selector, path, "sk-test", new Dictionary<string, string>(StringComparer.Ordinal),
-            null, () => { });
+            null, null, () => { });
         var decided = await authority.DecideAsync(source, CancellationToken.None);
 
         Assert.Contains(decided.Decisions, d => d.Id == article.SourceId);

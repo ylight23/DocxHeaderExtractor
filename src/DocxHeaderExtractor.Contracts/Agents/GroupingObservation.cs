@@ -1,4 +1,5 @@
-namespace DocxHeaderExtractor.Contracts.Routing;
+
+namespace DocxHeaderExtractor.Contracts.Agents;
 
 /// <summary>Actual stage observations, not inferred from failure-code text. Counts accumulate across repair/review passes.</summary>
 public sealed record GroupingObservation(int ModelDividedRuns = 0, int FallbackRuns = 0, int DisputedRuns = 0,

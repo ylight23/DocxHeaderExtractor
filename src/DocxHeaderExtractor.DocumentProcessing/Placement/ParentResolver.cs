@@ -1,162 +1,116 @@
-using System.Text.Json;
-using System.Text.Json.Nodes;
-using DocxHeaderExtractor.Contracts.Models;
+using System.Diagnostics;
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Inference;
-using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
-using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Hierarchy;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Placement;
 
 /// <summary>
-/// The bounded placement/recovery pass shared by the PDF and DOCX canonical lanes. The semantic
-/// heading list is already settled when this stage runs; this coordinator may add a placement
-/// relation only for an unresolved heading and never adds, removes, or rewrites a heading.
+/// The C# half of parent placement. The placer (<see cref="IHeadingPlacer"/>) proposes a parent for each settled heading; this keeps a relation
+/// only when it names ROOT, NONE, UNRESOLVED or an earlier bound heading, and the hierarchy resolver derives depth from what is kept. It never
+/// adds, removes or rewrites a heading and never asks a model anything. Unresolved ancestry remains a legitimate outcome.
 /// </summary>
 internal static class ParentResolver
 {
-    private const string RawPlacementPrompt = """
-        You are the structural stage of the A99 canonical document pipeline. The heading list below
-        is already settled: do not add, remove, rename or re-judge any entry. Decide one thing only
-        — where each heading in "toPlace" sits relative to the others.
-
-        Answer with a JSON object {"placements":[{"alias":"<alias>","parent":"<alias>|ROOT|NONE"}]}.
-          "<alias>" - it belongs under that heading, which must appear earlier in the list.
-          "ROOT"    - it is a top-level section of this document.
-          "NONE"    - it is a heading but holds no position in the section tree: the document's own
-                      title or subtitle, a meeting date or venue line, a running header, a table or
-                      figure label, a form label, an annex label.
-        Omit an alias entirely if the evidence still does not let you decide. Never return a level:
-        the harness derives depth from the relations you give.
-        """;
-
-    // Added only when the caller hands over measurements: what they are, and that they decide nothing.
-    private const string RawEvidenceSentence = """
-        Each heading may also carry "style" (sizePt and bold of the line, rankInDocument: the place of that size and weight among the distinct
-        styles of the whole document, 1 being the largest, and linesWithThisStyleInDocument), and "documentStyles" lists those distinct styles
-        with the first lines set in each. They are measurements of the document, not labels and not decisions: you decide each relation.
-        """;
-
-    /// <summary>The placement prompt, line endings settled (a prompt is bytes on the wire).</summary>
-    internal static string PlacementPrompt { get; } = RawPlacementPrompt.ReplaceLineEndings("\n");
-
-    /// <summary>The placement prompt for a packet that carries measurements.</summary>
-    internal static string PlacementPromptWithEvidence { get; } = PlacementPrompt + "\n" + RawEvidenceSentence.ReplaceLineEndings("\n");
-
-    /// <summary>The placement prompt for a packet whose measurements the caller describes itself (a document that is not a PDF).</summary>
-    internal static string PlacementPromptWithNote(string note) => PlacementPrompt + "\n" + note.ReplaceLineEndings("\n");
-
-    /// <summary>The user message of the placement request. Without evidence it is exactly the packet the stage always sent.</summary>
-    internal static string PlacementPacket(
-        IReadOnlyList<CanonicalSemanticBoundHeading> ordered, IReadOnlySet<string> unplaced, HeadingPlacementEvidence? evidence)
-    {
-        if (evidence is null)
-            return JsonSerializer.Serialize(new
-            {
-                headings = ordered.Select(item => new { alias = item.Alias, text = item.Text }).ToArray(),
-                toPlace = ordered.Where(item => unplaced.Contains(item.SourceId)).Select(item => item.Alias).ToArray(),
-            });
-        var packet = new JsonObject
-        {
-            ["documentStyles"] = JsonNode.Parse(evidence.DocumentStylesJson),
-            ["headings"] = new JsonArray(ordered.Select(item =>
-            {
-                var heading = new JsonObject { ["alias"] = item.Alias, ["text"] = item.Text };
-                if (evidence.StyleJsonByAlias.TryGetValue(item.Alias, out var style)) heading["style"] = JsonNode.Parse(style);
-                return (JsonNode)heading;
-            }).ToArray()),
-            ["toPlace"] = new JsonArray(ordered.Where(item => unplaced.Contains(item.SourceId))
-                .Select(item => (JsonNode)JsonValue.Create(item.Alias)!).ToArray()),
-        };
-        return packet.ToJsonString();
-    }
-
     internal sealed record PlacementResult(
         IReadOnlyList<CanonicalSemanticBoundHeading> Headings,
         PlacementAudit Observation);
 
-    internal static async Task<PlacementResult> PlaceWithObservationAsync(
-        IReadOnlyList<CanonicalSemanticBoundHeading> bound,
-        IInferenceTransport transport,
-        CancellationToken cancellationToken,
-        HeadingPlacementEvidence? evidence = null)
+    internal static async Task<PlacementResult> PlaceAsync(
+        IReadOnlyList<CanonicalSemanticBoundHeading> bound, IHeadingPlacer placer, IInferenceTransport transport,
+        HeadingPlacementEvidence evidence, CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(bound);
+        ArgumentNullException.ThrowIfNull(placer);
         ArgumentNullException.ThrowIfNull(transport);
+        ArgumentNullException.ThrowIfNull(evidence);
+        var clock = Stopwatch.StartNew();
+        var ordered = bound.OrderBy(h => h.SourceOrdinal).ThenBy(h => h.Start).ToArray();
+        var source = evidence.Source ?? throw new ArgumentException("PLACEMENT_SOURCE_REQUIRED", nameof(evidence));
+        var lines = source.Lines.OrderBy(l => l.Ordinal).ToArray();
+        var byAlias = ordered.ToDictionary(h => h.Alias, StringComparer.Ordinal);
+        var parts = ordered.SelectMany(h => h.Parts.Count > 0 ? h.Parts.Select(p => p.Alias) : [h.Alias]).ToHashSet(StringComparer.Ordinal);
+        var ownerByAlias = ordered.SelectMany(h => (h.Parts.Count > 0 ? h.Parts.Select(p => p.Alias) : [h.Alias])
+            .Select(alias => (Alias: alias, h.SourceId))).ToDictionary(p => p.Alias, p => p.SourceId, StringComparer.Ordinal);
 
-        if (evidence?.Source is not null)
-            return await EvidencePlacement.PlaceAsync(bound, transport, cancellationToken, evidence).ConfigureAwait(false);
+        var proposal = await placer.ProposeAsync(new PlacementRequest(ordered, evidence), transport, ct).ConfigureAwait(false);
+        var proposed = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var (alias, parent) in proposal.Parents) proposed[alias] = parent;
+        var statusByAlias = new Dictionary<string, string>(proposal.Basis, StringComparer.Ordinal);
+        var failures = new List<string>(proposal.Failures);
 
-        var derived = HierarchyResolver.DeriveHierarchyFromModelRelations(bound);
-        var unplaced = derived
-            .Where(item => item.Resolution == HierarchyResolver.Unresolved)
-            .Select(item => item.SourceId)
-            .ToHashSet(StringComparer.Ordinal);
-        if (unplaced.Count == 0)
-            return Observe(bound, unplaced, "placement-not-required");
-
-        var ordered = bound.OrderBy(item => item.SourceOrdinal).ThenBy(item => item.Start).ToArray();
-        var packet = PlacementPacket(ordered, unplaced, evidence);
-
-        string raw;
-        try
+        // A relation is usable only when it names ROOT/NONE or an earlier bound heading.
+        // The hierarchy resolver independently derives depth and rejects unresolved, missing,
+        // forward, self, and out-of-tree parents. No semantic ACCEPT is required.
+        var placed = ordered.Select(heading =>
         {
-            raw = await transport.CompleteAsync(
-                evidence is null ? PlacementPrompt : evidence.MeasurementsNote is { } note ? PlacementPromptWithNote(note) : PlacementPromptWithEvidence,
-                packet,
-                cancellationToken,
-                expectedItemCount: unplaced.Count);
-        }
-        catch (Exception exception) when (exception is not OperationCanceledException)
-        {
-            // Placement is an improvement pass. If it cannot run, the headings stay unresolved,
-            // which is exactly what they already were.
-            return Observe(bound, unplaced, "placement-transport-failed", failureClass: exception.GetType().Name);
-        }
-
-        Dictionary<string, string> parentByAlias;
-        var responseEntryCount = 0;
-        var malformedEntries = false;
-        try
-        {
-            using var document = JsonDocument.Parse(raw);
-            if (document.RootElement.ValueKind != JsonValueKind.Object ||
-                !document.RootElement.TryGetProperty("placements", out var placements) ||
-                placements.ValueKind != JsonValueKind.Array)
-                throw new JsonException("placement-root-shape-invalid");
-            responseEntryCount = placements.GetArrayLength();
-            malformedEntries = placements.EnumerateArray().Any(item => item.ValueKind != JsonValueKind.Object ||
-                !item.TryGetProperty("alias", out var alias) || alias.ValueKind != JsonValueKind.String ||
-                !item.TryGetProperty("parent", out var parent) || parent.ValueKind != JsonValueKind.String);
-            parentByAlias = placements.EnumerateArray()
-                    .Where(item => item.TryGetProperty("alias", out _) && item.TryGetProperty("parent", out _))
-                    .GroupBy(item => item.GetProperty("alias").GetString() ?? string.Empty, StringComparer.Ordinal)
-                    .ToDictionary(
-                        group => group.Key,
-                        group => group.First().GetProperty("parent").GetString() ?? string.Empty,
-                        StringComparer.Ordinal);
-        }
-        catch (Exception exception) when (exception is JsonException or InvalidOperationException)
-        {
-            return Observe(bound, unplaced, "placement-invalid-response", responseEntryCount, exception.GetType().Name);
-        }
-
-        var aliasesToPlace = ordered.Where(item => unplaced.Contains(item.SourceId))
-            .Select(item => item.Alias).ToHashSet(StringComparer.Ordinal);
-        var placed = bound.Select(item =>
-        {
-            // Only a heading that was actually unresolved may gain a relation here, so a second
-            // pass can never overwrite what the semantic pass already decided.
-            if (!aliasesToPlace.Contains(item.Alias)) return item;
-            if (!parentByAlias.TryGetValue(item.Alias, out var parent) || string.IsNullOrWhiteSpace(parent))
-                return item;
-            return item with { RelationHints = [.. item.RelationHints, $"parent-node:{parent}"] };
+            if (!proposed.TryGetValue(heading.Alias, out var parent)) return heading;
+            var valid = parent is "ROOT" or "NONE" or "UNRESOLVED" ||
+                byAlias.TryGetValue(parent, out var parentHeading) && parentHeading.SourceOrdinal < heading.SourceOrdinal;
+            if (!valid)
+            {
+                statusByAlias[heading.Alias] = "CSharpGraphValidationRejected";
+                failures.Add("HIERARCHY_GRAPH:INVALID_PARENT:" + heading.Alias);
+                return heading with { RelationHints = heading.RelationHints.Where(hint => !hint.StartsWith("parent-node:", StringComparison.Ordinal)).ToArray() };
+            }
+            return heading with { RelationHints = heading.RelationHints.Where(hint => !hint.StartsWith("parent-node:", StringComparison.Ordinal))
+                .Append("parent-node:" + parent).ToArray() };
         }).ToArray();
-        // Preserve the existing per-row admission behavior while observing malformed omitted rows.
-        // A syntactically parseable response is not automatically a successful placement response.
-        return Observe(placed, unplaced, malformedEntries ? "placement-invalid-response" : "placement-accepted",
-            responseEntryCount, malformedEntries ? "placement-entry-schema-invalid" : null);
+
+        var requested = ordered.Select(h => h.SourceId).ToHashSet(StringComparer.Ordinal);
+        var result = Observe(placed, requested, ordered.Length == 0 ? "placement-not-required" : "placement-proposed",
+            proposed.Count, failures.Count == 0 ? null : "CSharpGraphValidation");
+        var hierarchy = HierarchyResolver.DeriveHierarchyFromModelRelations(placed).ToDictionary(h => h.SourceId, StringComparer.Ordinal);
+        var decisions = result.Observation.Decisions.Select(decision => decision with
+        {
+            ProposedParentAlias = proposed.GetValueOrDefault(decision.Alias),
+            VerificationStatus = "NOT_RUN",
+            ResolutionBasis = statusByAlias.GetValueOrDefault(decision.Alias) switch
+            {
+                "CSharpGraphValidationRejected" => "csharp-graph-validation-rejected",
+                "UPSTREAM_PROPOSAL" => "upstream-parent-proposal",
+                "MODEL_PROPOSAL" => hierarchy[decision.SourceId].Resolution == HierarchyResolver.Unresolved
+                    ? "model-proposal-unresolved-or-invalid" : "model-parent-proposal",
+                _ => "no-parent-proposal"
+            }
+        }).ToArray();
+        var unresolved = decisions.Where(d => d.Resolution == HierarchyResolver.Unresolved).ToArray();
+        var sourceTrace = lines.Select(line =>
+        {
+            source.AliasStates.TryGetValue(line.Alias, out var state);
+            ownerByAlias.TryGetValue(line.Alias, out var owner);
+            return new HeadingPlacementSourceObservation(line.Alias, line.SourceId, state?.InitialSelection, state?.FinalSelection,
+                state?.VerificationMembership, parts.Contains(line.Alias) ? "BOUND" : state?.BindingStatus ?? "NOT_BOUND",
+                owner is not null && hierarchy.TryGetValue(owner, out var resolved) ? resolved.Resolution : "not-bound");
+        }).ToArray();
+        var observation = result.Observation with
+        {
+            Contract = placer.Contract,
+            LogicalCalls = proposal.LogicalCalls,
+            Seconds = Math.Round(clock.Elapsed.TotalSeconds, 1),
+            VerifiedCount = 0,
+            RepairCount = 0,
+            EdgeRepairs = [],
+            GraphConflicts = [],
+            GraphRepairAliases = [],
+            GraphUnresolvedAliases = [],
+            Failures = failures.ToArray(),
+            Calls = proposal.Calls,
+            SourceTrace = sourceTrace,
+            ModelEvidence = proposal.ModelEvidence,
+            UnresolvedSummary = new(
+                unresolved.Count(d => d.ResolutionBasis != "ancestor-chain-unresolved"),
+                unresolved.Count(d => d.ResolutionBasis == "ancestor-chain-unresolved"),
+                0,
+                unresolved.Count(d => d.ResolutionBasis == "no-parent-proposal"),
+                unresolved.Count(d => d.ResolutionBasis == "model-proposal-unresolved-or-invalid"),
+                0,
+                unresolved.Count(d => d.ResolutionBasis == "csharp-graph-validation-rejected")),
+            Decisions = decisions
+        };
+        return result with { Observation = observation };
     }
 
     internal static PlacementResult Observe(
