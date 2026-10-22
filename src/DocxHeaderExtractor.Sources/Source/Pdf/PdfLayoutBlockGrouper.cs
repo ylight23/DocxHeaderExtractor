@@ -128,13 +128,16 @@ internal static class PdfLayoutBlockGrouper
             .ThenBy(a => a.Line.Left)
             .ToList();
 
+        var readableByLine = new Dictionary<PdfLine, string>(ReferenceEqualityComparer.Instance);
+        string ReadableOf(PdfLine line) => readableByLine.TryGetValue(line, out var text) ? text : readableByLine[line] = PdfTextUtilities.Readable(line.Text);
+
         var blocks = new List<List<PdfLineBlockAnnotation>>();
         foreach (var annotation in sourceRows)
         {
             var current = blocks.LastOrDefault();
             if (current is not null &&
                 CanMerge(current.Select(item => item.Line).ToArray(), annotation.Line,
-                    maxLinesPerBlock, allowSemicolonContinuation, ceiling))
+                    maxLinesPerBlock, allowSemicolonContinuation, ceiling, ReadableOf))
             {
                 current.Add(annotation);
             }
@@ -150,7 +153,7 @@ internal static class PdfLayoutBlockGrouper
             var lines = group.Select(item => item.Line).ToArray();
             var primaryStyle = lines
                 .GroupBy(l => PdfStyleKey.StyleOf(l))
-                .OrderByDescending(g => g.Sum(l => PdfTextUtilities.Readable(l.Text).Length))
+                .OrderByDescending(g => g.Sum(l => ReadableOf(l).Length))
                 .Select(g => g.Key)
                 .First();
             return new PdfLayoutBlock(
@@ -171,7 +174,8 @@ internal static class PdfLayoutBlockGrouper
         PdfLine next,
         int maxLinesPerBlock,
         bool allowSemicolonContinuation,
-        double continuationCeiling)
+        double continuationCeiling,
+        Func<PdfLine, string> readableOf)
     {
         if (current.Count >= maxLinesPerBlock) return false;
         var previous = current[^1];
@@ -188,7 +192,7 @@ internal static class PdfLayoutBlockGrouper
         if (Math.Abs(previous.FontSize - next.FontSize) > 1.1) return false;
         if (!SameVisualFamily(previous, next)) return false;
 
-        var previousText = PdfTextUtilities.Readable(previous.Text);
+        var previousText = readableOf(previous);
         if (previousText.EndsWith('.') || (!allowSemicolonContinuation && previousText.EndsWith(';'))) return false;
         if (previousText.Length > 130) return false;
         return true;

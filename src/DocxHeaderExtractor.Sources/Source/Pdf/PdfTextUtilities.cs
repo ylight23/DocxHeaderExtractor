@@ -7,13 +7,23 @@ internal static class PdfTextUtilities
         "a", "an", "and", "as", "at", "by", "for", "from", "in", "into", "is", "of", "on", "or",
         "must", "not", "should", "that", "the", "these", "this", "those", "to", "vs", "with"
     };
+    // Compiled once: the same patterns the static calls used, with the same replacements.
+    private static readonly System.Text.RegularExpressions.Regex CamelBoundary = new(@"(?<=[a-z])(?=[A-Z])", System.Text.RegularExpressions.RegexOptions.Compiled);
+    private static readonly System.Text.RegularExpressions.Regex LetterDigitBoundary = new(@"(?<=[A-Za-z])(?=\d)", System.Text.RegularExpressions.RegexOptions.Compiled);
+    private static readonly System.Text.RegularExpressions.Regex DigitLetterBoundary = new(@"(?<=\d)(?=[A-Za-z])", System.Text.RegularExpressions.RegexOptions.Compiled);
+    private static readonly System.Text.RegularExpressions.Regex Whitespace = new(@"\s+", System.Text.RegularExpressions.RegexOptions.Compiled);
+    private static readonly System.Text.RegularExpressions.Regex DisplayToken = new(@"\p{L}+|\d+|[^\p{L}\d\s]+", System.Text.RegularExpressions.RegexOptions.Compiled);
+    private static readonly System.Text.RegularExpressions.Regex NonWordRun = new(@"[^\p{L}\p{Nd}_]+", System.Text.RegularExpressions.RegexOptions.Compiled);
+    private static readonly System.Text.RegularExpressions.Regex SpacedApostrophe = new(@"\s+([’'])\s+", System.Text.RegularExpressions.RegexOptions.Compiled);
+    private static readonly System.Text.RegularExpressions.Regex HyphenWithSpaces = new(@"(?<=\p{L})\s*-\s*(?=\p{L})", System.Text.RegularExpressions.RegexOptions.Compiled);
+    private static readonly System.Text.RegularExpressions.Regex PossessiveS = new(@"\b([A-Z]{2,})[’']S\b", System.Text.RegularExpressions.RegexOptions.Compiled);
 
     public static string Readable(string text)
     {
-        var spaced = System.Text.RegularExpressions.Regex.Replace(text, @"(?<=[a-z])(?=[A-Z])", " ");
-        spaced = System.Text.RegularExpressions.Regex.Replace(spaced, @"(?<=[A-Za-z])(?=\d)", " ");
-        spaced = System.Text.RegularExpressions.Regex.Replace(spaced, @"(?<=\d)(?=[A-Za-z])", " ");
-        spaced = System.Text.RegularExpressions.Regex.Replace(spaced, @"\s+", " ");
+        var spaced = CamelBoundary.Replace(text, " ");
+        spaced = LetterDigitBoundary.Replace(spaced, " ");
+        spaced = DigitLetterBoundary.Replace(spaced, " ");
+        spaced = Whitespace.Replace(spaced, " ");
         return spaced.Trim();
     }
 
@@ -22,7 +32,7 @@ internal static class PdfTextUtilities
         var readable = Readable(text);
         if (readable.Length == 0) return readable;
 
-        var tokens = System.Text.RegularExpressions.Regex.Matches(readable, @"\p{L}+|\d+|[^\p{L}\d\s]+")
+        var tokens = DisplayToken.Matches(readable)
             .Select(m => m.Value)
             .ToList();
         if (tokens.Count == 0) return readable;
@@ -47,7 +57,7 @@ internal static class PdfTextUtilities
     public static string CanonicalForMatch(string text)
     {
         var readable = Readable(text);
-        readable = System.Text.RegularExpressions.Regex.Replace(readable, @"[^\p{L}\p{Nd}_]+", "");
+        readable = NonWordRun.Replace(readable, "");
         return readable.ToLowerInvariant();
     }
 
@@ -141,9 +151,9 @@ internal static class PdfTextUtilities
 
     private static string PolishPdfPunctuationSpacing(string text)
     {
-        text = System.Text.RegularExpressions.Regex.Replace(text, @"\s+([’'])\s+", "$1");
-        text = System.Text.RegularExpressions.Regex.Replace(text, @"(?<=\p{L})\s*-\s*(?=\p{L})", "-");
-        text = System.Text.RegularExpressions.Regex.Replace(text, @"\b([A-Z]{2,})[’']S\b", "$1’s");
+        text = SpacedApostrophe.Replace(text, "$1");
+        text = HyphenWithSpaces.Replace(text, "-");
+        text = PossessiveS.Replace(text, "$1’s");
         return text;
     }
 }

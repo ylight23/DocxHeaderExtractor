@@ -86,6 +86,7 @@ public sealed class DocxExtractionPipeline : IDisposable
             return await ScanExtractionPipeline.RunAsync(inputPath, _options, _options.DisableLlm ? null : await GetTransportAsync(ct),
                 _scanSelector, _transportSendsDataExternally, ct).ConfigureAwait(false);
         var sourceDocument = new OpenXmlDocumentSource(_options.Extraction).Read(inputPath);
+        if (_selector is DocxHeaderExtractor.DocumentProcessing.Routing.IPrimedDocumentSelector primed) primed.PrimeDocument(inputPath, _options.Extraction, sourceDocument);
             var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
             var authority = await DocxHeadingPipeline.RunAsync(
                 sourceDocument, transport, _selector, SemanticLaneOptions.Default, ct);

@@ -70,3 +70,6 @@ artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.gold-workspace.*/*.review.p
 
 # OCR preflight evidence store (page images, TSV): written by `dhx scan-ocr`, never committed
 .dhx-evidence/
+
+# dotnet test output (generated, per run)
+tests/DocxHeaderExtractor.Tests/TestResults/

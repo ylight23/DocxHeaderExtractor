@@ -150,3 +150,13 @@ public sealed record GroupingCoverageDiagnostic(string UnitId, int Attempt, int 
 /// <param name="MeasurementsNote">The sentence that tells the placement model what the style objects hold, when the document is not a PDF (the
 /// default sentence describes a PDF's size, weight and rank). Null keeps the default.</param>
 public sealed record HeadingPlacementContext(string DocumentStylesJson, IReadOnlyDictionary<string, string> StyleJsonByAlias, string? MeasurementsNote = null);
+
+/// <summary>
+/// A selector that can take a document its caller has just read from the same file under the same extraction options, so the file is
+/// not read and built a second time. The document is used once: the next load of that path takes it; a load of any other path reads the
+/// file as usual.
+/// </summary>
+public interface IPrimedDocumentSelector
+{
+    void PrimeDocument(string path, DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer.ExtractionOptions? extraction, DocxHeaderExtractor.Core.Models.SourceDocument document);
+}

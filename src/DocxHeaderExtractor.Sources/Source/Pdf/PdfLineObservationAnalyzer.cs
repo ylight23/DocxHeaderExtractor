@@ -31,14 +31,19 @@ internal sealed record PdfLineBlockAnnotation(PdfLine Line)
 /// </summary>
 internal static class PdfLineObservationAnalyzer
 {
+    // Compiled once: the same pattern the static call used.
+    private static readonly Regex DateLikeNumber = new(@"\b\d{1,4}\b", RegexOptions.Compiled);
+
     private static readonly Regex NonAlphaNumRx = new(@"[^a-z0-9]+", RegexOptions.Compiled);
 
     public static IReadOnlyList<PdfLineBlockAnnotation> Analyze(IReadOnlyList<PdfLine> lines)
     {
         if (lines.Count == 0) return [];
 
+        // One key per line, computed once: the grouping and the annotation below both read it.
+        var keys = lines.Select(l => RepeatKey(l.Text)).ToArray();
         var pagesByKey = lines
-            .Select(l => (l.Page, Key: RepeatKey(l.Text)))
+            .Select((l, i) => (l.Page, Key: keys[i]))
             .Where(x => x.Key.Length > 0)
             .GroupBy(x => x.Key)
             .ToDictionary(g => g.Key, g => g.Select(x => x.Page).Distinct().Order().ToArray());
@@ -47,9 +52,9 @@ internal static class PdfLineObservationAnalyzer
         var maxY = lines.Max(l => l.Y);
         var span = Math.Max(1, maxY - minY);
 
-        return lines.Select(line =>
+        return lines.Select((line, i) =>
         {
-            var samePages = pagesByKey.TryGetValue(RepeatKey(line.Text), out var found) ? found : [line.Page];
+            var samePages = pagesByKey.TryGetValue(keys[i], out var found) ? found : [line.Page];
             return new PdfLineBlockAnnotation(line)
             {
                 VerticalPosition = Math.Round((line.Y - minY) / span, 3),
@@ -63,7 +68,7 @@ internal static class PdfLineObservationAnalyzer
     private static string RepeatKey(string text)
     {
         var readable = PdfTextUtilities.Readable(text).ToLowerInvariant();
-        readable = Regex.Replace(readable, @"\b\d{1,4}\b", "#");
+        readable = DateLikeNumber.Replace(readable, "#");
         return NonAlphaNumRx.Replace(readable, "");
     }
 }

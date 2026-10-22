@@ -6,8 +6,24 @@ using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
 
 namespace DocxHeaderExtractor.Tests;
 
+using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
+using DocxHeaderExtractor.HeadingAgent.Scan;
+using DocxHeaderExtractor.V6Qualification;
+
 public sealed class ProductionGroundedRegroupTests
 {
+internal static ScanAgentSource Source()
+    {
+        var lines = Enumerable.Range(1, 16).Select(i => new OcrLine($"P001-ocr-original-L{i:000}", "original " + i,
+            new PixelBox(20, i * 30, 250, 20), 95, 95, false, [])).ToArray();
+        var view = new OcrView(new("ocr-original", "none", 1, "test", "1", "vie", 1), EvidenceOrigin.OcrDerived,
+            [new(1, new string('a', 64), 400, 600, new string('b', 64), lines)]);
+        var transcription = new TranscriptionSet(TranscriptionSet.CurrentVersion, "fixture", "fixture", 2,
+            [new(lines[0].Id, "prefix Heading tail", ScanTranscription.Accepted)], [], 0, 0);
+        return new(new(ScanOcrEvidence.CurrentVersion, new string('c', 64), "ScannedPdf", 1, new string('d', 64), [view], []),
+            transcriptions: transcription);
+    }
+
     static string A(int n) => $"P001-L{n:000}";
     static readonly string[][] Groups = [[A(1), A(2)], [A(3)]];
     static JsonObject Packet(PreparedRequest request) =>
@@ -70,7 +86,7 @@ public sealed class ProductionGroundedRegroupTests
             Assert.Contains("BOUNDARY_VERDICT_SELF_CONTRADICTORY", messages[3]!["content"]!.Text());
             return new(Reply(packet, "ACCEPT"), [], "stop");
         };
-        var result = AgentGroupVerification.Verify(BoundaryStaticCanaryTests.Source(), new(Groups, [], [], 0),
+        var result = AgentGroupVerification.Verify(Source(), new(Groups, [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new(30, 1), 1, default, 0, "Extract headings.");
         Assert.Equal(2, calls);
         Assert.Empty(result.Failures);
@@ -96,7 +112,7 @@ public sealed class ProductionGroundedRegroupTests
     {
         int calls = 0;
         AgentUnit.Model model = (_, _, request) => { calls++; return new(Reply(Packet(request), "REGROUP", fault), [], "stop"); };
-        var check = AgentGroupVerification.Ask(BoundaryStaticCanaryTests.Source(), [new("V1", Groups)],
+        var check = AgentGroupVerification.Ask(Source(), [new("V1", Groups)],
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new(20, 1), default, 0, "Extract headings.", "VERIFY", 2);
         Assert.Equal(3, calls);
         Assert.Empty(check.Verdicts);
@@ -109,7 +125,7 @@ public sealed class ProductionGroundedRegroupTests
     public void Valid_different_suggestion_is_audited_but_excluded_from_grouper_feedback()
     {
         AgentUnit.Model model = (_, _, request) => new(Reply(Packet(request), "REGROUP"), [], "stop");
-        var check = AgentGroupVerification.Ask(BoundaryStaticCanaryTests.Source(), [new("V1", Groups)],
+        var check = AgentGroupVerification.Ask(Source(), [new("V1", Groups)],
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new(20, 1), default, 0, "Extract headings.", "VERIFY", 0);
         var verdict = Assert.Single(check.Verdicts);
         Assert.NotNull(verdict.SuggestedGroups);
@@ -132,7 +148,7 @@ public sealed class ProductionGroundedRegroupTests
             return new(JsonSerializer.Serialize(new { protocolVersion = AgentGroupVerification.Version,
                 verdicts = candidates.Select(c => Verdict(c!, round == 1 && c!["run"]!.GetValue<string>() == "V2" ? "REGROUP" : "ACCEPT", "same")) }), [], "stop");
         };
-        var result = AgentGroupVerification.Verify(BoundaryStaticCanaryTests.Source(), initial, new Dictionary<string, TextOffsetSpan>(),
+        var result = AgentGroupVerification.Verify(Source(), initial, new Dictionary<string, TextOffsetSpan>(),
             new Dictionary<string, string>(), model, new(20, 1), 1, default, 0, "Extract headings.");
         Assert.Equal(2, result.Groups.Count);
         Assert.Empty(result.Failures);

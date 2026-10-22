@@ -15,6 +15,9 @@ namespace DocxHeaderExtractor.DocumentProcessing.Source.Common;
 /// </summary>
 internal static class LooseLabelledMarkerParser
 {
+    // Compiled once: the same pattern the static call used.
+    private static readonly Regex WhitespaceRun = new(@"\s+", RegexOptions.Compiled);
+
     private static readonly Regex LooseLabelledMarkerRx = new(
         @"^\s*(\p{L}{2,24})\s+((?:\d\s*){1,3}|[IVXLCDM]{1,7})\b",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
@@ -27,7 +30,7 @@ internal static class LooseLabelledMarkerParser
         if (!match.Success) return null;
 
         var label = PdfTextUtilities.CanonicalForMatch(match.Groups[1].Value);
-        var numeral = Regex.Replace(match.Groups[2].Value, @"\s+", string.Empty).ToLowerInvariant();
+        var numeral = WhitespaceRun.Replace(match.Groups[2].Value, string.Empty).ToLowerInvariant();
         return label.Length == 0 || numeral.Length == 0 ? null : $"{label}:{numeral}";
     }
 }

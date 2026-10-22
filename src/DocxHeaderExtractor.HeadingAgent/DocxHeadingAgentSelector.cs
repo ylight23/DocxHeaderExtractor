@@ -8,7 +8,7 @@ namespace DocxHeaderExtractor.HeadingAgent;
 /// of context on each side; the first request shows alias, text, the style table and targetFacts with the paragraphs' existing
 /// core facts. The facts tool remains available for other paragraphs. The conversation is <see cref="HeadingAgentSelector"/>'s.
 /// </summary>
-public sealed class DocxHeadingAgentSelector : HeadingAgentSelector
+public sealed class DocxHeadingAgentSelector : HeadingAgentSelector, DocxHeaderExtractor.DocumentProcessing.Routing.IPrimedDocumentSelector
 {
     readonly ExtractionOptions? extraction;
 
@@ -20,6 +20,28 @@ public sealed class DocxHeadingAgentSelector : HeadingAgentSelector
 
     public override string SelectorId => "docx-v6:" + DocxAgentSource.Version + ":facts-in-request:instruction-" + InstructionTag + ":" + BindingPolicyVersion;
 
-    private protected override IAgentSource Load(string path) =>
-        DocxAgentSource.Load(path, extraction, out var failure) ?? throw new InvalidOperationException("DOCX_AGENT_SOURCE_REFUSED:" + failure);
+        private (string Full, DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer.ExtractionOptions? Options, DocxHeaderExtractor.Core.Models.SourceDocument Document)? primed;
+    private readonly object primedLock = new();
+
+    /// <inheritdoc/>
+    public void PrimeDocument(string path, DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer.ExtractionOptions? extraction, DocxHeaderExtractor.Core.Models.SourceDocument document)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(path);
+        ArgumentNullException.ThrowIfNull(document);
+        lock (primedLock) primed = (System.IO.Path.GetFullPath(path), extraction, document);
+    }
+
+    private protected override IAgentSource Load(string path)
+    {
+        (string Full, DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer.ExtractionOptions? Options, DocxHeaderExtractor.Core.Models.SourceDocument Document)? take;
+        lock (primedLock) { take = primed; primed = null; }
+        if (take is { } given && given.Full == System.IO.Path.GetFullPath(path) && ReferenceEquals(given.Options, extraction))
+        {
+            var source = DocxAgentSource.From(given.Document, out var builtFailure)
+                ?? throw new InvalidOperationException("DOCX_AGENT_SOURCE_REFUSED:" + builtFailure);
+            source.Integrity = DocxHeaderExtractor.DocumentProcessing.Source.Docx.DocxSourceIntegrity.Read(path);
+            return source;
+        }
+        return DocxAgentSource.Load(path, extraction, out var failure) ?? throw new InvalidOperationException("DOCX_AGENT_SOURCE_REFUSED:" + failure);
+    }
 }

@@ -8,11 +8,19 @@ namespace DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 /// <summary>
 /// DOCX source adapter. It projects only facts OOXML actually owns into the common occurrence
 /// universe; it never fabricates PDF pages, lines, geometry, or layout blocks.
-/// </summary>
+    /// </summary>
 internal static class DocxSourceAdapter
 {
+    /// <summary>
+    /// The built source of one document, kept as long as that document object lives. The route builds the same document for its own
+    /// authority and again for the selector; both calls return the one result, so the work is done once.
+    /// </summary>
+    private static readonly System.Runtime.CompilerServices.ConditionalWeakTable<SourceDocument, DocxSourceBuildResult> ResultByDocument = new();
 
-    internal static DocxSourceBuildResult Build(SourceDocument sourceDocument)
+    internal static DocxSourceBuildResult Build(SourceDocument sourceDocument) =>
+        ResultByDocument.GetValue(sourceDocument, BuildCore);
+
+    private static DocxSourceBuildResult BuildCore(SourceDocument sourceDocument)
     {
         var paragraphs = sourceDocument.Paragraphs
             .Where(source => !string.IsNullOrWhiteSpace(source.Text))

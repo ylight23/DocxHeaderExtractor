@@ -127,11 +127,11 @@ internal static class AdjudicationBiasCanaries
             return 2;
         }
         var manifestText = File.ReadAllText(args[1]);
-        var manifest = JsonSerializer.Deserialize<BoundaryStaticCanaryCommand.Manifest>(manifestText, Json)!;
+        var manifest = JsonSerializer.Deserialize<CanaryEvidenceSource.Manifest>(manifestText, Json)!;
         using var cancellation = new CancellationTokenSource();
         Console.CancelKeyPress += (_, e) => { e.Cancel = true; cancellation.Cancel(); };
         var ct = cancellation.Token;
-        var source = BoundarySuggestedCanaryCommand.LoadSource(manifest, ct);
+        var source = CanaryEvidenceSource.LoadSource(manifest, ct);
         if (source.SourceSha256 != SourceComparativeCanaries.ExpectedSourceSha256 ||
             source.SourceAliasUniverseSha256 != SourceComparativeCanaries.ExpectedAliasUniverseSha256 ||
             source.EvidenceStoreSha256 != SourceComparativeCanaries.ExpectedEvidenceStoreSha256)

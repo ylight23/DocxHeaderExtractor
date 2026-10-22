@@ -5,6 +5,9 @@ namespace DocxHeaderExtractor.DocumentProcessing.Source.Common;
 
 internal static class SourceMarkerFactsParser
 {
+    // Compiled once: the same pattern the static call used.
+    private static readonly Regex DigitGroup = new(@"\d{1,3}", RegexOptions.Compiled);
+
     private static readonly Regex SpacedArabicPathRx = new(
         @"^\s*((?:\d{1,3}\s+){1,4}\d{1,3})(?:[.)\-:]?\s+)(?=\p{L})",
         RegexOptions.Compiled);
@@ -16,7 +19,7 @@ internal static class SourceMarkerFactsParser
         var spacedPath = SpacedArabicPathRx.Match(text);
         if (spacedPath.Success)
         {
-            var parts = Regex.Matches(spacedPath.Groups[1].Value, @"\d{1,3}")
+            var parts = DigitGroup.Matches(spacedPath.Groups[1].Value)
                 .Select(match => int.Parse(match.Value, System.Globalization.CultureInfo.InvariantCulture))
                 .ToArray();
             if (parts.Length > 0)

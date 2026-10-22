@@ -93,6 +93,7 @@ internal static class PdfSourceContextBuilder
             PdfTextUtilities.CanonicalForMatch(block.DisplayText).Length <
             PdfTextUtilities.CanonicalForMatch(looseMarker).Length + 6)
             evidence.Add("marker_only_source");
+        var least = LeastRecurring(sourceAnnotations);
         var facts = new PdfSourceFacts(
             // The canonical projection, the same string the alias catalog and the binder use. These
             // two paths build facts for one occurrence and must agree: if the model is shown the raw
@@ -109,9 +110,9 @@ internal static class PdfSourceContextBuilder
             LineIds = block.Lines.Select(LineKey).ToArray(),
             VerticalPosition = sourceAnnotations.Length == 0 ? null
                 : sourceAnnotations.Max(a => a.VerticalPosition),
-            SameNormalizedTextPageCount = LeastRecurring(sourceAnnotations)?.SameNormalizedTextPageCount,
-            SameNormalizedTextFirstPage = LeastRecurring(sourceAnnotations)?.SameNormalizedTextFirstPage,
-            SameNormalizedTextLastPage = LeastRecurring(sourceAnnotations)?.SameNormalizedTextLastPage,
+            SameNormalizedTextPageCount = least?.SameNormalizedTextPageCount,
+            SameNormalizedTextFirstPage = least?.SameNormalizedTextFirstPage,
+            SameNormalizedTextLastPage = least?.SameNormalizedTextLastPage,
             EvidenceDetails = evidence.Select(item => new PdfObservedEvidence(item, "true",
                 item is "standalone_line" or "multi_line_cluster"
                     ? "layout_parser"

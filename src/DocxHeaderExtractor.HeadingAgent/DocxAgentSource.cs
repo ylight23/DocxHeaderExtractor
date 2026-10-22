@@ -100,7 +100,7 @@ internal sealed class DocxAgentSource : IAgentSource
     }
 
     /// <summary>What the package carries its content as (native text, or native text with page images), when the source was loaded from a file.</summary>
-    public DocxSourceIntegrity? Integrity { get; private set; }
+    public DocxSourceIntegrity? Integrity { get; internal set; }
 
     /// <summary>Builds the source from an already read document, under the aliases of the route's source snapshot.</summary>
     public static DocxAgentSource? From(SourceDocument document, out string failure)
