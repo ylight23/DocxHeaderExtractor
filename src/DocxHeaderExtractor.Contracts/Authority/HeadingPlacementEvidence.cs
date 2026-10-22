@@ -1,4 +1,6 @@
-namespace DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.Contracts.Models;
+
+namespace DocxHeaderExtractor.Contracts.Authority;
 
 /// <summary>
 /// Source facts for shared placement. The selector routes provide source context and upstream states
@@ -14,8 +16,8 @@ internal sealed record HeadingPlacementEvidence(string DocumentStylesJson, IRead
 }
 
 /// <summary>Source facts, including lines withheld upstream. No line is classified as an ancestor by C#.</summary>
-internal sealed record HeadingPlacementSource(IReadOnlyList<DocxHeaderExtractor.Core.Models.SemanticSourceAtom> Lines,
-    IReadOnlyDictionary<string, DocxHeaderExtractor.DocumentProcessing.Routing.HeadingAliasState> AliasStates, string SourceSha256 = "")
+internal sealed record HeadingPlacementSource(IReadOnlyList<DocxHeaderExtractor.Contracts.Models.SemanticSourceAtom> Lines,
+    IReadOnlyDictionary<string, DocxHeaderExtractor.Contracts.Routing.HeadingAliasState> AliasStates, string SourceSha256 = "")
 {
     public IReadOnlyDictionary<string, object?> LocationByAlias { get; init; } = new Dictionary<string, object?>();
 }

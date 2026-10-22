@@ -1,6 +1,8 @@
 using System.Net;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
+using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Materialization;
@@ -70,7 +72,7 @@ public sealed class StructuredInferenceTransportTests
         var bound = lines.Select(l => new CanonicalSemanticBoundHeading(l.Alias, l.SourceId, l.Ordinal, l.Text,
             "ESTABLISHES_STRUCTURE", "heading", "document_body", [], 0, l.Text.Length)).ToArray();
         var evidence = new HeadingPlacementEvidence("{}", new Dictionary<string, string>())
-        { Source = new(lines, new Dictionary<string, DocxHeaderExtractor.DocumentProcessing.Routing.HeadingAliasState>()) };
+        { Source = new(lines, new Dictionary<string, DocxHeaderExtractor.Contracts.Routing.HeadingAliasState>()) };
         using var handler = new FakeOpenRouter((body, _) =>
         {
             var packet = body["messages"]![1]!["content"]!.Text();

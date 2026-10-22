@@ -1,7 +1,7 @@
 using MessagePack;
 using System.Text.Json.Serialization;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Source.Scan;
+namespace DocxHeaderExtractor.Contracts.Scan;
 
 /// <summary>Where a piece of evidence comes from. A provenance class, not a label of what the text is.</summary>
 [JsonConverter(typeof(JsonStringEnumConverter))]

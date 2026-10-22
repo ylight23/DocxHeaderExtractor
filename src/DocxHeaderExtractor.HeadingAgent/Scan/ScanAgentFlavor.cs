@@ -1,5 +1,6 @@
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Sources.Routing;
 using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
 
 namespace DocxHeaderExtractor.HeadingAgent.Scan;

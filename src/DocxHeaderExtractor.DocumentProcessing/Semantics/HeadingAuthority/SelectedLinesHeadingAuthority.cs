@@ -1,10 +1,14 @@
 using System.Text.Json;
-using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
+using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Materialization;
+using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Source.Common;
+using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.Sources.Common;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 

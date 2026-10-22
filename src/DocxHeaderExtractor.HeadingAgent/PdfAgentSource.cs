@@ -2,8 +2,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using DocxHeaderExtractor.DocumentProcessing.Source.Common;
-using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
+using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Sources.Pdf;
 
 namespace DocxHeaderExtractor.HeadingAgent;
 

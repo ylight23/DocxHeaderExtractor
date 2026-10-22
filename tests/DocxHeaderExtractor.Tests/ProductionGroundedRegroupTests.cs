@@ -1,12 +1,16 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.HeadingAgent;
 using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
 
 namespace DocxHeaderExtractor.Tests;
 
-using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
+using DocxHeaderExtractor.Contracts.Scan;
+
+using DocxHeaderExtractor.Sources.Scan;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 
 public sealed class ProductionGroundedRegroupTests

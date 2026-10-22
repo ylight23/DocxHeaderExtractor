@@ -155,7 +155,7 @@ public sealed class DocxAgentSourceTests : IDisposable
     public void Tables_can_be_left_out_like_the_route_does_when_asked()
     {
         var path = MakeDocx();
-        var source = DocxAgentSource.Load(path, new DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer.ExtractionOptions { IncludeTables = false }, out _)!;
+        var source = DocxAgentSource.Load(path, new DocxHeaderExtractor.Contracts.Docx.ExtractionOptions { IncludeTables = false }, out _)!;
         Assert.DoesNotContain(source.Lines, l => l.Text is "Header cell" or "Row cell");
         Assert.Equal(6, source.Lines.Count);
     }

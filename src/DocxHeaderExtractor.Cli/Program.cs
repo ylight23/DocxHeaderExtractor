@@ -3,10 +3,14 @@ using System.Text.Json;
 using System.Security.Cryptography;
 using DocxHeaderExtractor.Cli;
 using DocxHeaderExtractor.V6Runner;
-using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
+using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.Contracts.Docx;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.Sources.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 using DocxHeaderExtractor.Infrastructure.AI;
@@ -127,7 +131,7 @@ static int RunScanTextEval(CommandLineOptions o)
 static int RunScanEvidenceJson(CommandLineOptions o)
 {
     if (o.Inputs.Count != 1) { Console.Error.WriteLine("Cách dùng: dhx scan-evidence-json <evidence.msgpack>  (JSON in ra stdout; ghi file bằng > tên-file.json)"); return 2; }
-    Console.WriteLine(DocxHeaderExtractor.DocumentProcessing.Source.Scan.ScanEvidenceJson.Read(o.Inputs[0]));
+    Console.WriteLine(DocxHeaderExtractor.Sources.Scan.ScanEvidenceJson.Read(o.Inputs[0]));
     return 0;
 }
 

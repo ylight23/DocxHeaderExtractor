@@ -1,3 +1,6 @@
+using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Models;
+
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 
 /// <summary>Source-derived audit record, deliberately separate from <see cref="ResolvedHeadingHierarchy"/>.</summary>

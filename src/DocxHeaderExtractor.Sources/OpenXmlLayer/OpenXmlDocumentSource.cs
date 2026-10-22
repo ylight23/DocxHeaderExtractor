@@ -3,9 +3,11 @@ using System.Text;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
+using DocxHeaderExtractor.Contracts.Docx;
 
-namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+namespace DocxHeaderExtractor.Sources.OpenXmlLayer;
 
 /// <summary>
 /// Reads observed DOCX facts directly from OpenXML. This adapter deliberately does not construct

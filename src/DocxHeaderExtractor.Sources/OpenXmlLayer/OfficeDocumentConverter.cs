@@ -1,7 +1,8 @@
 using System.Diagnostics;
 using System.Runtime.Versioning;
+using DocxHeaderExtractor.Contracts.Docx;
 
-namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+namespace DocxHeaderExtractor.Sources.OpenXmlLayer;
 
 /// <summary>
 /// OpenXML SDK chỉ đọc được định dạng OOXML (.docx/.docm). Các định dạng nhập khác như .doc,

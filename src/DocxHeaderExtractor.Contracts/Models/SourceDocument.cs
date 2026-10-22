@@ -1,7 +1,8 @@
 using System.Collections.ObjectModel;
 using MessagePack;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 
-namespace DocxHeaderExtractor.Core.Models;
+namespace DocxHeaderExtractor.Contracts.Models;
 
 /// <summary>
 /// Immutable source-only view of a document. It deliberately contains no routing policy,

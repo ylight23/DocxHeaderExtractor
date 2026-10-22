@@ -1,10 +1,16 @@
-using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 using DocxHeaderExtractor.DocumentProcessing;
+using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.Contracts.Docx;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.Sources.OpenXmlLayer;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.Sources.Routing;
 using DocxHeaderExtractor.HeadingAgent;
 
 namespace DocxHeaderExtractor.V6Runner;

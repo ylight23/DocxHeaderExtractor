@@ -1,4 +1,5 @@
 using System.Reflection;
+using DocxHeaderExtractor.Sources.Provenance;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Provenance;
 

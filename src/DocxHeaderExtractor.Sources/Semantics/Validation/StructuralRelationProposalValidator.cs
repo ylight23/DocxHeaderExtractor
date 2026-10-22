@@ -1,6 +1,7 @@
-using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 
-namespace DocxHeaderExtractor.Core.Semantics.Validation;
+namespace DocxHeaderExtractor.Sources.Semantics.Validation;
 
 /// <summary>
 /// Validates parent relations before they enter the heading graph. ParentId remains a projection.

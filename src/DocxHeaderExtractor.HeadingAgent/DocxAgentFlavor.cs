@@ -3,7 +3,8 @@ using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Sources.Routing;
 
 namespace DocxHeaderExtractor.HeadingAgent;
 

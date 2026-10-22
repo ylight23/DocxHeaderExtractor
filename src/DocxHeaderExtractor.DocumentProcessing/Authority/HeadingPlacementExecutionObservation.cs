@@ -1,3 +1,6 @@
+using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Models;
+
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 
 /// <summary>
@@ -39,7 +42,7 @@ public sealed record HeadingPlacementGraphConflict(string Checkpoint, string Cod
 /// <summary>Unique model-reported blockers and their upstream producer provenance. Counts overlap for multi-line ancestors.</summary>
 public sealed record HeadingMissingAncestorBlocker(string Alias, string SourceId, IReadOnlyList<string> BlockedHeadingAliases,
     string? InitialSelection, string? FinalSelection, string? VerificationMembership, string BindingStatus,
-    string ProvenanceAvailability, IReadOnlyList<DocxHeaderExtractor.DocumentProcessing.Routing.HeadingAliasProvenance> Provenance)
+    string ProvenanceAvailability, IReadOnlyList<DocxHeaderExtractor.Contracts.Routing.HeadingAliasProvenance> Provenance)
 {
     public int BlockedHeadingCount => BlockedHeadingAliases.Count;
     [System.Text.Json.Serialization.JsonIgnore]

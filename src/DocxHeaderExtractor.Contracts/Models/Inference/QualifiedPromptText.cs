@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.V5;
+namespace DocxHeaderExtractor.Contracts.Models.Inference;
 
 /// <summary>
 /// Canonical newlines for code-authored protocol and system prompts. A raw-string prompt takes its

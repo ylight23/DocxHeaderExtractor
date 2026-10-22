@@ -1,6 +1,10 @@
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.Contracts.Docx;
+using DocxHeaderExtractor.Sources.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
 

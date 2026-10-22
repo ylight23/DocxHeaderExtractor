@@ -3,10 +3,13 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Sources.Routing;
 using DocxHeaderExtractor.HeadingAgent.Scan;
-using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
+using DocxHeaderExtractor.Contracts.Scan;
+using DocxHeaderExtractor.Sources.Scan;
 using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
 
 namespace DocxHeaderExtractor.HeadingAgent;

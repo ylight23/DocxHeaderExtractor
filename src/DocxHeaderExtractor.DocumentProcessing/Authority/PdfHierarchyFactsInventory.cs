@@ -1,6 +1,8 @@
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
-using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
-using DocxHeaderExtractor.DocumentProcessing.Source.Common;
+using DocxHeaderExtractor.Sources.Pdf;
+using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Models;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 

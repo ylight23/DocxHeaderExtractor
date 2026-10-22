@@ -1,4 +1,6 @@
-namespace DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
+
+namespace DocxHeaderExtractor.Contracts.Models;
 
 /// <summary>
 /// Immutable parser/render facts for one source occurrence. Model calls may read these facts but must not
@@ -38,7 +40,7 @@ public sealed record SourceAnchor
 
 public sealed record PdfBoundingBox(double Left, double Bottom, double Right, double Top);
 
-public sealed record ScanLineAnchor(DocxHeaderExtractor.DocumentProcessing.Source.Scan.PixelBox Box, int ImageWidth, int ImageHeight,
+public sealed record ScanLineAnchor(DocxHeaderExtractor.Contracts.Scan.PixelBox Box, int ImageWidth, int ImageHeight,
     string ReadingViewId, string PrimaryReading, IReadOnlyDictionary<string, string> Readings, string? TranscriptionStatus, string? TranscriptionText = null)
 {
     public string ReadingOrigin => ReadingViewId switch { "vlm-transcribed" => "VLM_TRANSCRIBED", "vlm-proposed" => "CORRECTION_CANDIDATE", _ => "OCR_DERIVED" };

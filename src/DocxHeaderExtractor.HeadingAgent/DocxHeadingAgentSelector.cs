@@ -1,4 +1,5 @@
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.Contracts.Docx;
+using DocxHeaderExtractor.Sources.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.HeadingAgent;
 
@@ -8,7 +9,7 @@ namespace DocxHeaderExtractor.HeadingAgent;
 /// of context on each side; the first request shows alias, text, the style table and targetFacts with the paragraphs' existing
 /// core facts. The facts tool remains available for other paragraphs. The conversation is <see cref="HeadingAgentSelector"/>'s.
 /// </summary>
-public sealed class DocxHeadingAgentSelector : HeadingAgentSelector, DocxHeaderExtractor.DocumentProcessing.Routing.IPrimedDocumentSelector
+public sealed class DocxHeadingAgentSelector : HeadingAgentSelector, DocxHeaderExtractor.Contracts.Routing.IPrimedDocumentSelector
 {
     readonly ExtractionOptions? extraction;
 
@@ -20,11 +21,11 @@ public sealed class DocxHeadingAgentSelector : HeadingAgentSelector, DocxHeaderE
 
     public override string SelectorId => "docx-v6:" + DocxAgentSource.Version + ":facts-in-request:instruction-" + InstructionTag + ":" + BindingPolicyVersion;
 
-        private (string Full, DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer.ExtractionOptions? Options, DocxHeaderExtractor.Core.Models.SourceDocument Document)? primed;
+        private (string Full, DocxHeaderExtractor.Contracts.Docx.ExtractionOptions? Options, DocxHeaderExtractor.Contracts.Models.SourceDocument Document)? primed;
     private readonly object primedLock = new();
 
     /// <inheritdoc/>
-    public void PrimeDocument(string path, DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer.ExtractionOptions? extraction, DocxHeaderExtractor.Core.Models.SourceDocument document)
+    public void PrimeDocument(string path, DocxHeaderExtractor.Contracts.Docx.ExtractionOptions? extraction, DocxHeaderExtractor.Contracts.Models.SourceDocument document)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(path);
         ArgumentNullException.ThrowIfNull(document);
@@ -33,13 +34,13 @@ public sealed class DocxHeadingAgentSelector : HeadingAgentSelector, DocxHeaderE
 
     private protected override IAgentSource Load(string path)
     {
-        (string Full, DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer.ExtractionOptions? Options, DocxHeaderExtractor.Core.Models.SourceDocument Document)? take;
+        (string Full, DocxHeaderExtractor.Contracts.Docx.ExtractionOptions? Options, DocxHeaderExtractor.Contracts.Models.SourceDocument Document)? take;
         lock (primedLock) { take = primed; primed = null; }
         if (take is { } given && given.Full == System.IO.Path.GetFullPath(path) && ReferenceEquals(given.Options, extraction))
         {
             var source = DocxAgentSource.From(given.Document, out var builtFailure)
                 ?? throw new InvalidOperationException("DOCX_AGENT_SOURCE_REFUSED:" + builtFailure);
-            source.Integrity = DocxHeaderExtractor.DocumentProcessing.Source.Docx.DocxSourceIntegrity.Read(path);
+            source.Integrity = DocxHeaderExtractor.Sources.Docx.DocxSourceIntegrity.Read(path);
             return source;
         }
         return DocxAgentSource.Load(path, extraction, out var failure) ?? throw new InvalidOperationException("DOCX_AGENT_SOURCE_REFUSED:" + failure);

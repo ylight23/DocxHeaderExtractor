@@ -1,6 +1,7 @@
-using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 
-namespace DocxHeaderExtractor.Core.Semantics.Identity;
+namespace DocxHeaderExtractor.Sources.Semantics.Identity;
 
 /// <summary>
 /// Global semantic resolution after binding. Repeated display headings remain occurrences even

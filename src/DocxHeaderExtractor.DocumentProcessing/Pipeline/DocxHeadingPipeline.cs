@@ -1,11 +1,15 @@
-using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Semantics.Validation;
-using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
-using DocxHeaderExtractor.DocumentProcessing.Source.Common;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
+using DocxHeaderExtractor.Sources.Semantics.Validation;
+using DocxHeaderExtractor.Sources.Docx;
+using DocxHeaderExtractor.Sources.Common;
+using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Materialization;
+using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.Sources.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;

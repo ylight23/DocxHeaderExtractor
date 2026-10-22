@@ -1,7 +1,11 @@
+using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
+using DocxHeaderExtractor.Sources.Pdf;
+using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Sources.Routing;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Routing;
 

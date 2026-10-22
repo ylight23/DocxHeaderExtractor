@@ -1,4 +1,5 @@
-using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.Canonical;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Projection;

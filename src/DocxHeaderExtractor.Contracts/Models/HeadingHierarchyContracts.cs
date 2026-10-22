@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 
-namespace DocxHeaderExtractor.Core.Models;
+namespace DocxHeaderExtractor.Contracts.Models;
 
 /// <summary>The heading hierarchy's only supported relation.</summary>
 public enum StructuralRelationType

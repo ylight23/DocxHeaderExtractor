@@ -1,5 +1,7 @@
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
+using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.Contracts.Scan;
+using DocxHeaderExtractor.Sources.Scan;
 
 namespace DocxHeaderExtractor.HeadingAgent.Scan;
 
@@ -99,7 +101,7 @@ public sealed class ScanHeadingAgentSelector(string storeRoot, Func<HttpMessageH
         var clock = System.Diagnostics.Stopwatch.StartNew();
         var ocr = new ScanOcrPreflight(Path.Combine(storeRoot, OcrFolder));
         // Segmented lines: the evidence is made with OpenCV and the stamp-ring removal, no OCR engine; the vision model reads each line.
-        var evidence = segmentedLines ? new DocxHeaderExtractor.DocumentProcessing.Source.Scan.ScanSegmentPreflight(Path.Combine(storeRoot, OcrFolder)).Run(docxPath, ct)
+        var evidence = segmentedLines ? new DocxHeaderExtractor.Sources.Scan.ScanSegmentPreflight(Path.Combine(storeRoot, OcrFolder)).Run(docxPath, ct)
             : ocr.Run(docxPath, ocrOptions, ct);
         seconds["ocr"] = clock.Elapsed.TotalSeconds;
         // The type of every line, measured on the page images in .NET: what the vision model was asked page by page (bold, size) before.

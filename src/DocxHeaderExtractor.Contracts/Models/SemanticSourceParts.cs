@@ -3,8 +3,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 
-namespace DocxHeaderExtractor.Core.Models;
+namespace DocxHeaderExtractor.Contracts.Models;
 
 /// <summary>
 /// One coordinate atom: a piece of source text the harness owns and the model may name.

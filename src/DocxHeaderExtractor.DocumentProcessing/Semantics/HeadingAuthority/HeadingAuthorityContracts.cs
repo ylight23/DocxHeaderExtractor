@@ -1,6 +1,8 @@
-using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
+using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Source.Common;
+using DocxHeaderExtractor.Sources.Common;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 
@@ -47,7 +49,7 @@ internal static class HeadingDecisionValidator
         if (decision.HeadingSpan is null) { reason = "missing-pointer-span"; return "invalid"; }
         var span = decision.HeadingSpan;
         if (span.Start < 0 || span.End <= span.Start || span.End > sourceText.Length) { reason = "invalid-pointer-span"; return "invalid"; }
-        var boundaries = DocxHeaderExtractor.Core.Semantics.Binding.SourceTextBoundaryMap.For(sourceText);
+        var boundaries = DocxHeaderExtractor.Sources.Semantics.Binding.SourceTextBoundaryMap.For(sourceText);
         if (!boundaries.Contains(span.Start) || !boundaries.Contains(span.End)) { reason = "invalid-pointer-boundary"; return "invalid"; }
         reason = null;
         return "valid";

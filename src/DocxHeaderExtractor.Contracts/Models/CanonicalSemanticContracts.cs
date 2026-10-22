@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 
-namespace DocxHeaderExtractor.Core.Models;
+namespace DocxHeaderExtractor.Contracts.Models;
 
 /// <summary>
 /// Parser-owned address used by the semantic contract. The model may name this address, but it

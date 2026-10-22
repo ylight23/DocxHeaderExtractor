@@ -1,12 +1,18 @@
-using DocxHeaderExtractor.DocumentProcessing.Source;
+using DocxHeaderExtractor.Sources.Common;
 using System.Security.Cryptography;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
+using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.Sources.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Semantics.Validation;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
+using DocxHeaderExtractor.Sources.Semantics.Validation;
+using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.Contracts.Docx;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.Sources.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -82,11 +88,11 @@ public sealed class DocxExtractionPipeline : IDisposable
 
         var started = Environment.TickCount64;
         ct.ThrowIfCancellationRequested();
-        if (DocxHeaderExtractor.DocumentProcessing.Source.Docx.DocxSourceIntegrity.Read(inputPath).Kind == DocxHeaderExtractor.DocumentProcessing.Source.Docx.DocxSourceKind.ScannedImageOnly)
+        if (DocxHeaderExtractor.Sources.Docx.DocxSourceIntegrity.Read(inputPath).Kind == DocxHeaderExtractor.Sources.Docx.DocxSourceKind.ScannedImageOnly)
             return await ScanExtractionPipeline.RunAsync(inputPath, _options, _options.DisableLlm ? null : await GetTransportAsync(ct),
                 _scanSelector, _transportSendsDataExternally, ct).ConfigureAwait(false);
-        var sourceDocument = DocxHeaderExtractor.DocumentProcessing.Source.Docx.DocxSourceCache.ReadOrLoad(inputPath, _options.SourceCacheRoot, _options.Extraction);
-        if (_selector is DocxHeaderExtractor.DocumentProcessing.Routing.IPrimedDocumentSelector primed) primed.PrimeDocument(inputPath, _options.Extraction, sourceDocument);
+        var sourceDocument = DocxHeaderExtractor.Sources.Docx.DocxSourceCache.ReadOrLoad(inputPath, _options.SourceCacheRoot, _options.Extraction);
+        if (_selector is DocxHeaderExtractor.Contracts.Routing.IPrimedDocumentSelector primed) primed.PrimeDocument(inputPath, _options.Extraction, sourceDocument);
             var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
             var authority = await DocxHeadingPipeline.RunAsync(
                 sourceDocument, transport, _selector, SemanticLaneOptions.Default, ct);

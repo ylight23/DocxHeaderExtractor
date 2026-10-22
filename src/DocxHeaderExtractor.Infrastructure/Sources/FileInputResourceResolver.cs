@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.Application.Tasks;
+using DocxHeaderExtractor.Contracts.Tasks;
 
 namespace DocxHeaderExtractor.Infrastructure.Sources;
 

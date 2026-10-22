@@ -1,4 +1,6 @@
-namespace DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.Contracts.Routing;
+
+namespace DocxHeaderExtractor.Sources.Routing;
 
 /// <summary>
 /// Identifies an uploaded file by its content.

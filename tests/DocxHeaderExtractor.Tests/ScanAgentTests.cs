@@ -1,10 +1,13 @@
 using System.Net;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
+using DocxHeaderExtractor.Contracts.Scan;
+using DocxHeaderExtractor.Sources.Scan;
 using DocxHeaderExtractor.HeadingAgent;
 using DocxHeaderExtractor.HeadingAgent.Scan;
+using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.Sources.Routing;
 
 namespace DocxHeaderExtractor.Tests;
 

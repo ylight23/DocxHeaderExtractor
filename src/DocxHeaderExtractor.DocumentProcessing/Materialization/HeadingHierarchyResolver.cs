@@ -1,5 +1,6 @@
-using DocxHeaderExtractor.Core.Semantics.Identity;
-using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Sources.Semantics.Identity;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Materialization;
 

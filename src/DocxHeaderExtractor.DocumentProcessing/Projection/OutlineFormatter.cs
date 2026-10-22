@@ -1,6 +1,8 @@
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Projection;

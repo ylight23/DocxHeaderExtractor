@@ -1,7 +1,9 @@
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
-using DocxHeaderExtractor.Core.Models;
-using DocxHeaderExtractor.Core.Semantics.Validation;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
+using DocxHeaderExtractor.Sources.Semantics.Validation;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
+using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Materialization;

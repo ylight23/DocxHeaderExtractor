@@ -1,7 +1,8 @@
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using DocxHeaderExtractor.Contracts.Docx;
 
-namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+namespace DocxHeaderExtractor.Sources.OpenXmlLayer;
 
 /// <summary>
 /// Thuộc tính đã "làm phẳng" của một style sau khi đi hết chuỗi w:basedOn.

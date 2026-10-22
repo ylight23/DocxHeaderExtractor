@@ -434,7 +434,7 @@ internal static class AgentProtocol
             return (null, "HEADING_EXTENT_TEXT_MISMATCH", "the text at [" + start + "," + end + ") is " + JsonSerializer.Serialize(found, Options) + "; " + Where());
         if (given.Trim().Length != given.Length)
             return (null, "HEADING_EXTENT_EDGE_WHITESPACE", "the extent must not start or end with a space or a line break");
-        var boundaries = DocxHeaderExtractor.Core.Semantics.Binding.SourceTextBoundaryMap.For(text);
+        var boundaries = DocxHeaderExtractor.Sources.Semantics.Binding.SourceTextBoundaryMap.For(text);
         if (!boundaries.Contains(start) || !boundaries.Contains(end))
             return (null, "HEADING_EXTENT_NOT_ON_BOUNDARY", "start and end must not cut a word or a number");
         return (new HeadingExtent(start, end, given), null, null);

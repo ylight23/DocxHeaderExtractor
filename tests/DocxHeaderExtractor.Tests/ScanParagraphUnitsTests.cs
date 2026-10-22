@@ -1,4 +1,5 @@
-using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
+using DocxHeaderExtractor.Contracts.Scan;
+using DocxHeaderExtractor.Sources.Scan;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 
 namespace DocxHeaderExtractor.Tests;

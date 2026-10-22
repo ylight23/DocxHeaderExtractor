@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 
-namespace DocxHeaderExtractor.Core.Models;
+namespace DocxHeaderExtractor.Contracts.Models;
 
 /// <summary>Production materialization admits headings only. The historical numeric identity is retained.</summary>
 public enum StructuralElementType

@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.Contracts.Runtime;
 
-namespace DocxHeaderExtractor.Application.Runtime;
+namespace DocxHeaderExtractor.Infrastructure.Runtime;
 
 /// <summary>Conservative redaction for logs/telemetry; it never attempts to recover secret values.</summary>
 public sealed class SecretRedactor : ISecretRedactor

@@ -1,7 +1,8 @@
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
-using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
+using DocxHeaderExtractor.Sources.Docx;
+using DocxHeaderExtractor.Contracts.Scan;
+using DocxHeaderExtractor.Sources.Scan;
 using DocxHeaderExtractor.HeadingAgent;
 using A = DocumentFormat.OpenXml.Drawing;
 using Dw = DocumentFormat.OpenXml.Drawing.Wordprocessing;

@@ -1,6 +1,8 @@
-using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Projection;
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Contracts.Authority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 

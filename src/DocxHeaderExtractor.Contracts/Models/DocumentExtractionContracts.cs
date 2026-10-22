@@ -1,7 +1,8 @@
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 
-namespace DocxHeaderExtractor.Core.Models;
+namespace DocxHeaderExtractor.Contracts.Models;
 
 /// <summary>Stable identity for one generic document extraction.</summary>
 public sealed record DocumentIdentity(

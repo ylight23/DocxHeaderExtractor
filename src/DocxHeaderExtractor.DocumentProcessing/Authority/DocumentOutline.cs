@@ -1,4 +1,6 @@
 using System.Text.Json.Serialization;
+using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Models;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 
@@ -118,7 +120,7 @@ public sealed class HeadingRecord
 /// <summary>Runtime grounding evidence for one exact source selection, keyed by identity, not ordinal.</summary>
 public sealed record HeadingSourcePart(string SourceId, int SourceOrdinal, TextOffsetSpan Span, string OriginalText);
 
-public sealed record ScanHeadingSourcePart(string SourceId, int Page, TextOffsetSpan Span, DocxHeaderExtractor.Core.Models.ScanLineAnchor Evidence);
+public sealed record ScanHeadingSourcePart(string SourceId, int Page, TextOffsetSpan Span, DocxHeaderExtractor.Contracts.Models.ScanLineAnchor Evidence);
 
 /// <summary>Một lượt hỏi mô hình đã thực sự chạy trong lượt trích xuất này.</summary>
 public sealed record OutlinePass(

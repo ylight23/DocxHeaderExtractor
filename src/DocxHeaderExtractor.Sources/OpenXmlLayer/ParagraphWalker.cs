@@ -1,7 +1,8 @@
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Wordprocessing;
+using DocxHeaderExtractor.Contracts.Docx;
 
-namespace DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+namespace DocxHeaderExtractor.Sources.OpenXmlLayer;
 
 /// <summary>Một đoạn trong document.xml kèm địa chỉ ổn định và ngữ cảnh duyệt.</summary>
 public sealed record WalkedParagraph(

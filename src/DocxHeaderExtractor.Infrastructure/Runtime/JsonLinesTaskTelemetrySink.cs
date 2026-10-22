@@ -1,6 +1,6 @@
 using System.Text;
 using System.Text.Json;
-using DocxHeaderExtractor.Application.Runtime;
+using DocxHeaderExtractor.Contracts.Runtime;
 
 namespace DocxHeaderExtractor.Infrastructure.Runtime;
 

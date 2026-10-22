@@ -1,5 +1,7 @@
 using DocxHeaderExtractor.DocumentProcessing.Chunking;
+using DocxHeaderExtractor.Contracts.Docx;
 using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.Sources.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 

@@ -1,7 +1,8 @@
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Diagnostics;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Sources.Routing;
 
 namespace DocxHeaderExtractor.HeadingAgent;
 
@@ -215,7 +216,7 @@ public abstract class HeadingAgentSelector : IHeadingSelector
             .ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.Ordinal);
         var extents = complete.Where(o => o.Extents is not null)
             .SelectMany(o => o.Extents!.Where(kv => o.Decisions.GetValueOrDefault(kv.Key) == "SELECT"))
-            .ToDictionary(kv => kv.Key, kv => new DocxHeaderExtractor.DocumentProcessing.Authority.TextOffsetSpan(kv.Value.Start, kv.Value.End), StringComparer.Ordinal);
+            .ToDictionary(kv => kv.Key, kv => new DocxHeaderExtractor.Contracts.Models.TextOffsetSpan(kv.Value.Start, kv.Value.End), StringComparer.Ordinal);
         var failures = outcomes.Where(o => o.Status != "COMPLETE").Select(o => o.UnitId + ":" + o.Status + ":" + (o.Failure ?? "UNKNOWN")
             + (o.Failure is "COVERAGE:CORE_FACTS_MISSING" or "BUDGET:CORE_FACTS_UNCOVERED" ? ":" + o.TargetsWithoutFacts!.Count + "_TARGETS_WITHOUT_CORE_FACTS" : "")).ToList();
         if (budget.HaltReason is { } halt) failures.Add("HALT:" + halt);

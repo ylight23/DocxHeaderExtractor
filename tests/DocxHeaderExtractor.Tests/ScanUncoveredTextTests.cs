@@ -1,4 +1,5 @@
-using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
+using DocxHeaderExtractor.Contracts.Scan;
+using DocxHeaderExtractor.Sources.Scan;
 using OpenCvSharp;
 
 namespace DocxHeaderExtractor.Tests;

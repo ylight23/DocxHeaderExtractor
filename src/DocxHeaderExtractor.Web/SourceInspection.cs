@@ -1,6 +1,8 @@
+using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
-using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
+using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.Sources.Docx;
+using DocxHeaderExtractor.Sources.Pdf;
 
 namespace DocxHeaderExtractor.Web;
 

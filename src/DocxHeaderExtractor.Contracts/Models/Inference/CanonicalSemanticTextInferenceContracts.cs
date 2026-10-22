@@ -1,4 +1,4 @@
-namespace DocxHeaderExtractor.Core.Models;
+namespace DocxHeaderExtractor.Contracts.Models.Inference;
 
 /// <summary>Compact parser-owned evidence attached to one canonical source occurrence.</summary>
 public sealed record CanonicalSemanticSourceEvidence(

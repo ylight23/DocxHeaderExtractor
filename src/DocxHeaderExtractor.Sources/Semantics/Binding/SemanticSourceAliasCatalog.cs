@@ -1,6 +1,7 @@
-using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 
-namespace DocxHeaderExtractor.Core.Semantics.Binding;
+namespace DocxHeaderExtractor.Sources.Semantics.Binding;
 
 public static class SemanticSourceAliasCatalog
 {

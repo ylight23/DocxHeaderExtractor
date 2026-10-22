@@ -1,7 +1,7 @@
 using System.Text;
 using System.Security.Cryptography;
 using System.Text.Json.Serialization;
-using DocxHeaderExtractor.Core.V5;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 using System.Text.Json;
 
 namespace DocxHeaderExtractor.Infrastructure.AI.QualifiedInference;

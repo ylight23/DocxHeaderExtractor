@@ -1,6 +1,7 @@
-using DocxHeaderExtractor.Core.Models;
+using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Models.Inference;
 
-namespace DocxHeaderExtractor.Core.Semantics.Binding;
+namespace DocxHeaderExtractor.Sources.Semantics.Binding;
 
 /// <summary>
 /// Deterministic UTF-16 boundaries derived from parser-owned source text. It is intentionally

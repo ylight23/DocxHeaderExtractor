@@ -1,3 +1,5 @@
+using DocxHeaderExtractor.Contracts.Routing;
+using DocxHeaderExtractor.Sources.Routing;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Routing;
 

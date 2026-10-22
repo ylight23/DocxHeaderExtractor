@@ -1,6 +1,8 @@
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 using System.Text.Json.Serialization;
 using DocxHeaderExtractor.DocumentProcessing.Materialization;
+using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Models;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 
@@ -22,7 +24,7 @@ public sealed record PipelineExecutionAudit(
 
     [JsonPropertyName("scan")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public DocxHeaderExtractor.DocumentProcessing.Routing.ScanRunDiagnostics? Scan { get; init; }
+    public DocxHeaderExtractor.Contracts.Routing.ScanRunDiagnostics? Scan { get; init; }
 
     /// <summary>Raw model completions, populated only by explicit diagnostic routes.</summary>
     [JsonPropertyName("rawModelResponses")]
@@ -65,11 +67,11 @@ public sealed record PipelineExecutionAudit(
     public int? HeadingProviderCalls => SelectionProviderCalls is { } count ? count + (PlacementExecution?.LogicalCalls ?? 0) : null;
 
     [JsonIgnore]
-    public DocxHeaderExtractor.DocumentProcessing.Routing.GroupingObservation? Grouping { get; init; }
+    public DocxHeaderExtractor.Contracts.Routing.GroupingObservation? Grouping { get; init; }
     [JsonIgnore]
     public IReadOnlyDictionary<string, double>? HeadingStageSeconds { get; init; }
     [JsonIgnore]
-    public IReadOnlyDictionary<string, DocxHeaderExtractor.DocumentProcessing.Routing.HeadingAliasState>? HeadingAliasStates { get; init; }
+    public IReadOnlyDictionary<string, DocxHeaderExtractor.Contracts.Routing.HeadingAliasState>? HeadingAliasStates { get; init; }
 }
 
 public sealed record PdfSelectedSourceIdentity(

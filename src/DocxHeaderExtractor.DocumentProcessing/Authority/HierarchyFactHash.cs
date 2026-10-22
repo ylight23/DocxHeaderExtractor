@@ -1,5 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
+using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Models;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Authority;
 

@@ -1,6 +1,7 @@
-using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.Contracts.Authority;
+using DocxHeaderExtractor.Contracts.Models;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Routing;
+namespace DocxHeaderExtractor.Contracts.Routing;
 
 /// <summary>
 /// The PDF heading authority's model side: reads one PDF and answers which source lines are headings, by the source alias the PDF parser
@@ -158,5 +159,5 @@ public sealed record HeadingPlacementContext(string DocumentStylesJson, IReadOnl
 /// </summary>
 public interface IPrimedDocumentSelector
 {
-    void PrimeDocument(string path, DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer.ExtractionOptions? extraction, DocxHeaderExtractor.Core.Models.SourceDocument document);
+    void PrimeDocument(string path, DocxHeaderExtractor.Contracts.Docx.ExtractionOptions? extraction, DocxHeaderExtractor.Contracts.Models.SourceDocument document);
 }

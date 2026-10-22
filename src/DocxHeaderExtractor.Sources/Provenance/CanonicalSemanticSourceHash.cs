@@ -1,6 +1,6 @@
 using System.Security.Cryptography;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Provenance;
+namespace DocxHeaderExtractor.Sources.Provenance;
 
 public static class CanonicalSemanticSourceHash
 {

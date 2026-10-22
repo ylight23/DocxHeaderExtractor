@@ -59,7 +59,7 @@ internal static class AgentSiblingReview
     /// <summary>Asks again every sequence whose earlier decisions disagree, and applies the answers to <paramref name="selected"/>. Returns one
     /// answer entry per sequence asked (its members, the decisions before and after, or why it was kept) and the failures.</summary>
     public static (List<string> Answers, List<string> Failures) Run(IAgentSource source, IReadOnlyList<AgentUnitOutcome> complete, HashSet<string> selected,
-        IDictionary<string, DocumentProcessing.Authority.TextOffsetSpan> extents, IDictionary<string, string> readings,
+        IDictionary<string, DocxHeaderExtractor.Contracts.Models.TextOffsetSpan> extents, IDictionary<string, string> readings,
         AgentUnit.Model model, int parallelism, string instruction, CancellationToken ct)
     {
         var decided = complete.SelectMany(o => o.Decisions).ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.Ordinal);

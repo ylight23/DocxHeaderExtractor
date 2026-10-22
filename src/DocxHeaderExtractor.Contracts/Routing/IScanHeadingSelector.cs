@@ -1,6 +1,6 @@
-using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
+using DocxHeaderExtractor.Contracts.Scan;
 
-namespace DocxHeaderExtractor.DocumentProcessing.Routing;
+namespace DocxHeaderExtractor.Contracts.Routing;
 
 /// <summary>Prepares one immutable OCR/VLM line universe and its heading decisions for the shared pipeline.
 /// A null key requests local OCR only: no transcription, selection or provider calls.</summary>
