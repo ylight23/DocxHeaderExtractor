@@ -36,8 +36,8 @@ outline when asked.
 Routes: `Lanes/Docx/DocxLane`, `Lanes/Pdf/PdfLane` and `Lanes/Scan/ScanLane` each build their source and hand
 it to `Harness/LaneHarness`, which authorizes the run, lets the selected-lines authority decide, runs the one
 shared assembler and records the route audit. Every lane runs under the shared lane lease (`LaneExecution`,
-`LaneLease`) and the fail-closed qualified transport (`IAgentRouteInferenceTransport`, `LeaseTransport`); the
-PDF route additionally owns its checkpoint. There is no canonical-text fallback and no local-model route:
+`LaneLease`) behind the fail-closed qualified transport (`IAgentRouteInferenceTransport`); the placer's
+`ModelAccess` checks that lease before and after every model turn. The PDF route additionally owns its checkpoint. There is no canonical-text fallback and no local-model route:
 the former DOCX text authority (`TextSemanticHeadingAuthority`, `CanonicalSemanticEngine`, the Core
 canonical pipeline and binder) was removed when DOCX moved to the V6 agent.
 
