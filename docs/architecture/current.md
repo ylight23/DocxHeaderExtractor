@@ -16,8 +16,8 @@ Cập nhật 2026-10-23. Đây là trạng thái đang chạy của code; lịch
 |---|---|---|
 | `Contracts` | Kiểu dùng chung: model nguồn và cấu trúc; `Agents/` (mọi thứ agent nhận và trả: `IHeadingSelector`, `IHeadingPlacer`, `HeadingAgents`); interface transport (`Inference/`); `ChunkingOptions` | — |
 | `Sources` | Đọc nguồn OOXML, PDF và scan; snapshot nguồn, alias, cache | `Contracts` |
-| `Agents` | Lớp wire dùng chung của agent: route OpenRouter đã qualify, gửi request, đọc phản hồi, ngân sách, SSE, audit usage. Không biết tài liệu, heading hay tool | — |
-| `HeadingAgent` | Agent V6: selector PDF, DOCX và scan, agent đặt cha (`HeadingPlacer`); prompt, tool, vòng lặp hội thoại (`AgentUnit`) | `Agents`, `Sources` |
+| `Agents` | Phần dùng chung của mọi agent, không biết tài liệu hay heading: route OpenRouter đã qualify, gửi request, đọc phản hồi, ngân sách, SSE, audit usage; vòng hội thoại có tool (`Conversation/ToolConversation`) | — |
+| `HeadingAgent` | Agent V6: selector PDF, DOCX và scan, agent đặt cha (`HeadingPlacer`); prompt, tool, bài toán chọn heading của một đoạn (`SelectionTask`, chạy trên `ToolConversation`) | `Agents`, `Sources` |
 | `DocumentProcessing` | Pipeline: nhận file, các lane, harness, các bước kiểm tra và dựng cấu trúc, đầu ra, writeback | `Contracts`, `Sources` |
 | `Infrastructure` | Transport provider (OpenRouter, LM Studio, SGLang, Llama local), factory chọn route, store run | `Contracts`, `Sources` |
 | `App` | `HeadingAgentSetup`: nơi duy nhất lắp agent mặc định; `DocumentRunner`: chạy pipeline, chuyển `.doc`, ghi outline | `HeadingAgent`, `DocumentProcessing` |

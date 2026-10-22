@@ -12,7 +12,7 @@ interface trong `Contracts/Agents/`.
 | Xem các agent mà tuyến heading đang dùng | `Contracts/Agents/HeadingAgents.cs` |
 | Xem agent mặc định được lắp thế nào | `src/DocxHeaderExtractor.App/HeadingAgentSetup.cs` |
 | Đọc prompt, gói dữ liệu, vòng hỏi của agent heading | `src/DocxHeaderExtractor.HeadingAgent/` (`Selectors/`, `Placement/`, `Protocol/`) |
-| Gọi model (OpenRouter, ngân sách, đọc phản hồi) | `src/DocxHeaderExtractor.Agents/` |
+| Gọi model (OpenRouter, ngân sách, đọc phản hồi) và vòng hội thoại có tool | `src/DocxHeaderExtractor.Agents/` (`Transport/`, `Budget/`, `Conversation/`) |
 | Xem C# kiểm tra kết quả của agent | `src/DocxHeaderExtractor.DocumentProcessing/` (`Binding/`, `Placement/ParentResolver.cs`) |
 
 Các agent hiện có của tuyến heading:
@@ -60,7 +60,7 @@ Ví dụ: một agent rà lại cấp bậc sau khi đặt cha.
 3. **Hook ghi đè** (`Contracts/Inference/IInferenceTransport.cs`): `IHeadingReviewer? CreateHeadingReviewer() => null;`.
 4. **Mặc định** (`App/HeadingAgentSetup.cs`): `Reviewer: factory.CreateHeadingReviewer() ?? new HeadingReviewer()`.
 5. **Cài đặt agent** (`HeadingAgent/Review/HeadingReviewer.cs`): prompt, gói dữ liệu, vòng hỏi. Gọi model qua
-   transport được truyền vào; nếu cần hội thoại có tool, dùng các khối trong project `Agents`.
+   transport được truyền vào; nếu cần hội thoại có tool, cài đặt `IConversationTask` và chạy `ToolConversation`.
 6. **Bước C# kiểm tra** (`DocumentProcessing/<Bước>/`): nhận đề xuất, chỉ giữ những gì hợp lệ, ghi audit.
    Agent không bao giờ tự quyết định kết quả cuối.
 7. **Thiếu agent thì từ chối**: thêm kiểm tra vào `Harness/LaneHarness.Authorize` (ví dụ
@@ -76,8 +76,20 @@ Ví dụ: trích bảng, phản biện văn bản.
   phản hồi đã có sẵn.
 - Pipeline của bài toán đi theo cùng thứ tự: nhận file → lane → harness → các bước C# kiểm tra → đầu ra.
 
-Lưu ý: vòng lặp hội thoại có tool (`HeadingAgent/Runtime/AgentRunner.cs`, lớp `AgentUnit`) hiện còn gắn với
-heading. Bài toán mới cần vòng hỏi có tool thì phải tách phần chung của nó sang `Agents` trước.
+Bài toán cần hội thoại có tool thì không viết lại vòng lặp: cài đặt `IConversationTask<TOutcome>`
+(`Agents/Conversation/`) và gọi `ToolConversation.Run`. Vòng lặp lo lượt, retry, ngân sách, chạy tool và lượt sửa
+lỗi; bài toán chỉ lo phần của nó:
+
+| Bài toán cung cấp | Ý nghĩa |
+|---|---|
+| `Build(history, toolChoice)` | request của mỗi lượt (prompt, payload của bài toán) |
+| `Tools` | các tool model được gọi |
+| `Judge(reply, state)` | đọc câu trả lời cuối: `Verdict.Finish(kết quả)` hoặc `Verdict.Repair(mã lỗi)` |
+| `RepairMessage`, `ChoicesAfterRepair` | thông điệp sửa lỗi và `tool_choice` của các lượt sau đó |
+| `Stop(state, status, failure)` | kết quả khi vòng lặp dừng (hết ngân sách, lỗi gọi, vi phạm giao thức) |
+| `Limits` | số lượt, số tool mỗi lượt, trần byte, các lỗi được gửi lại |
+
+Ví dụ có sẵn: `HeadingAgent/Runtime/SelectionTask.cs` (chọn heading của một đoạn).
 
 ## Giữ hành vi khi sửa
 
