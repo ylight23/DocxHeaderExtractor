@@ -1,26 +1,6 @@
-using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Sources.Snapshot;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Selection;
-
-/// <summary>One exact heading extent selected by an authority implementation.</summary>
-internal sealed record HeadingExtentDecision(
-    string Id,
-    string Reason,
-    TextOffsetSpan? HeadingSpan = null,
-    string? SemanticFunction = null,
-    IReadOnlyList<CanonicalSemanticBoundPart>? Parts = null);
-
-/// <summary>Source-grounded heading accepted by the common binder.</summary>
-internal sealed record ValidatedHeading(
-    string SourceId,
-    TextOffsetSpan HeadingSpan,
-    string? SemanticFunction,
-    string StructuralScope,
-    string ValidationBasis)
-{
-    public IReadOnlyList<CanonicalSemanticBoundPart>? Parts { get; init; }
-}
 
 internal static class HeadingDecisionValidator
 {

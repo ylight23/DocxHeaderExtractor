@@ -18,4 +18,3 @@ public sealed record CanonicalSemanticSourceEvidence(
     /// <summary>Observable physical placement facts; never a semantic interpretation.</summary>
     public object? LocationFacts { get; init; }
 }
-

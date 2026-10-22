@@ -1,29 +1,9 @@
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Agents;
-using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Formats;
-
-/// <summary>
-/// The document an agent run reads: its lines in reading order under the aliases of the route's source snapshot, the identity hashes, the
-/// segments (the targets decided per conversation and the context shown with them) and the flavor that says how this kind of document is
-/// presented to the model. A PDF source and a DOCX source implement it; the runner, the grouping step and the selector depend only on this.
-/// </summary>
-internal interface IAgentSource
-{
-    string SourceSha256 { get; }
-    string SourceAliasUniverseSha256 { get; }
-    string EvidenceStoreSha256 { get; }
-    /// <summary>The lines (PDF) or paragraphs (DOCX) in reading order. A DOCX paragraph has no page, bbox or typography.</summary>
-    IReadOnlyList<AgentSourceLine> Lines { get; }
-    /// <summary>The decided range of each segment, [Start, End) into <see cref="Lines"/>, covering every line once.</summary>
-    IReadOnlyList<(int Start, int End)> Cores { get; }
-    /// <summary>The targets of one segment and the lines shown with them, as line indices.</summary>
-    (string[] Decide, int[] Shown) Scope(int segment);
-    IAgentFormat Flavor { get; }
-}
 
 /// <summary>
 /// What differs between kinds of document in the method: the system prompt, the declared tools (and the object that runs them), and how a line
@@ -71,40 +51,4 @@ internal interface IAgentFormat
     HeadingPlacementContext PlacementContext(IAgentSource source);
     /// <summary>How a run divides into headings when the model's division was refused or could not be asked for: contiguous groups of line indices.</summary>
     List<int[]> FallbackDivision(IAgentSource source, int[] lines);
-}
-
-/// <summary>
-/// The read-only evidence tools of one unit's conversation. Every call is recorded; every result is an exact JSON body that says when it was
-/// cut; no result labels a line.
-/// </summary>
-internal interface IAgentTools
-{
-    int PositionOf(string alias);
-    /// <summary>The style table of the whole document, which goes into the request.</summary>
-    JsonObject DocumentStyles();
-    /// <summary>The names the loop reserves rejection room for in the tool rounds that are still to come.</summary>
-    IReadOnlyList<string> ReservedNames { get; }
-    int MaxResultBytes { get; }
-    int RejectionBytes(string evidenceId, string? name);
-    AgentToolHost.Result Reject(string evidenceId, string? name, string? rawArguments, string code);
-    AgentToolHost.Result Execute(string evidenceId, string? name, string? rawArguments);
-    /// <summary>Every alias a successful tool result showed.</summary>
-    IReadOnlySet<string> ObservedAliases { get; }
-    /// <summary>Whether facts were supplied in the request or a facts-tool call succeeded.</summary>
-    bool FactsWereRead { get; }
-    /// <summary>Whether a facts-tool call succeeded: reading facts from the request does not count (the scan route requires the call).</summary>
-    bool ToolFactsRead { get; }
-    /// <summary>The images the tool calls since the last take returned (a scan crop), in call order; they travel in a user message after the tool results.</summary>
-    IReadOnlyList<JsonObject> TakeImages();
-    /// <summary>The ledger of evidence coverage: every line whose own facts were supplied in the request or returned by a successful facts call (not the lines a result only
-    /// mentions). It says which targets the model has read the facts of; it decides nothing.</summary>
-    IReadOnlySet<string> FactsReturnedFor { get; }
-    /// <summary>Successful facts calls whose result was cut (hasMore true or truncated).</summary>
-    int FactsResultsCut { get; }
-    /// <summary>The detail evidence the model asked for: every alias that a successful call of a tool other than the facts tool showed. Not required
-    /// of any target; it records what the model chose to read.</summary>
-    IReadOnlySet<string> DetailEvidenceAliases { get; }
-    /// <summary>Enters facts the request carried into the coverage ledger, with the aliases they show (repetition/context references) as observed: the model
-    /// has them from the first turn, as if a facts call had returned them.</summary>
-    void NoteRequestFacts(IEnumerable<string> aliases, IEnumerable<string> shown);
 }

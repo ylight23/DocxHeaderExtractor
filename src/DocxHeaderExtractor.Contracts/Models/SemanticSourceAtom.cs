@@ -1,5 +1,4 @@
 using MessagePack;
-using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -23,4 +22,3 @@ public sealed record SemanticSourceAtom(
     [property: JsonPropertyName("row"), Key(4)] int Row,
     [property: JsonPropertyName("segment"), Key(5)] int Segment,
     [property: JsonPropertyName("text"), Key(6)] string Text);
-

@@ -1,25 +1,9 @@
 using System.Text.Json.Serialization;
-using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Scan;
-
-/// <summary>What a vision model saw of one line of a page image: closed answers, each with "uncertain" allowed. A model's judgement, not a
-/// measurement: origin VLM_OBSERVATION, and the agent is told so.</summary>
-public sealed record VlmLineObservation(
-    [property: JsonPropertyName("lineId")] string LineId,
-    [property: JsonPropertyName("appearsBold")] string AppearsBold,
-    [property: JsonPropertyName("relativeSize")] string RelativeSize,
-    [property: JsonPropertyName("alignment")] string Alignment);
-
-/// <summary>A vision model's choice between the OCR readings of one line, from a crop of the line at full resolution: one of the views, NONE
-/// (no reading matches the image) or UNREADABLE; with an optional reading it proposes, which is only a correction candidate.</summary>
-public sealed record VlmReadingChoice(
-    [property: JsonPropertyName("lineId")] string LineId,
-    [property: JsonPropertyName("choice")] string Choice,
-    [property: JsonPropertyName("proposedReading")] string? ProposedReading);
 
 /// <summary>
 /// The vision observation of one page: the image it saw (hash), the model and prompt version that produced it, the line observations and reading

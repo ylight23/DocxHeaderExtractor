@@ -6,8 +6,3 @@ public sealed record TaskTelemetryEvent(
     string Outcome,
     DateTimeOffset OccurredAt,
     IReadOnlyDictionary<string, string> Dimensions);
-
-public interface ITaskTelemetrySink
-{
-    ValueTask RecordAsync(TaskTelemetryEvent telemetry, CancellationToken ct = default);
-}
