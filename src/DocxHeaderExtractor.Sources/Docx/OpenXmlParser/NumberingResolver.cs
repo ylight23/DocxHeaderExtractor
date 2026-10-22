@@ -1,7 +1,7 @@
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 
-namespace DocxHeaderExtractor.Sources.Docx.Reader;
+namespace DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
 
 /// <summary>
 /// Dựng nhãn list Word hiển thị từ numbering.xml. Word thường không ghi "1.2" trong text của

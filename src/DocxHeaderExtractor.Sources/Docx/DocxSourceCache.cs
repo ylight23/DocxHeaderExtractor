@@ -1,6 +1,6 @@
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.Sources.Docx.Reader;
+using DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
 using DocxHeaderExtractor.Sources.Cache;
 
 namespace DocxHeaderExtractor.Sources.Docx;

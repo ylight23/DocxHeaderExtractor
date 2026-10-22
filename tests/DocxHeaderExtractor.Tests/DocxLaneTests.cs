@@ -1,5 +1,5 @@
 using DocxHeaderExtractor.Contracts.Inference;
-using DocxHeaderExtractor.Sources.Docx.Reader;
+using DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
 using DocxHeaderExtractor.DocumentProcessing.Lanes.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Contracts.Routing;

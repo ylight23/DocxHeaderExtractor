@@ -6,7 +6,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Docx;
 
-namespace DocxHeaderExtractor.Sources.Docx.Reader;
+namespace DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
 
 /// <summary>
 /// Reads observed DOCX facts directly from OpenXML. This adapter deliberately does not construct

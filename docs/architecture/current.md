@@ -77,7 +77,7 @@ gọi mô hình, theo đúng thứ tự đó (`AGENT_ROUTE_AUTHORIZATION_REQUIRE
 | `Writeback/` | Ghi outline vào bản sao `.docx` |
 
 `Sources`, theo các bước dựng nguồn: `Detect/` (nhận dạng file, hash) · `Docx/` (adapter, cache, chuyển `.doc`;
-`Docx/Reader/` đọc OOXML) · `Pdf/` · `Scan/` · `Snapshot/` (snapshot nguồn, catalog) · `Cache/` (kho cache MessagePack)
+`Docx/OpenXmlParser/` đọc OOXML) · `Pdf/` · `Scan/` · `Snapshot/` (snapshot nguồn, catalog) · `Cache/` (kho cache MessagePack)
 · `Markers/` (đánh số, nhãn) · `Aliases/` (alias, ranh giới text). Các bộ kiểm tra cấu trúc (`StructureFactory`,
 `ProposalValidator`, `RelationValidator`) nằm ở `DocumentProcessing/Structure/`, `IdentityResolver` ở
 `DocumentProcessing/Hierarchy/`: chỉ các bước đó dùng chúng.

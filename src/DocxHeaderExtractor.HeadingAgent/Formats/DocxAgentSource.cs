@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.Sources.Docx.Reader;
+using DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
 using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Tools;
