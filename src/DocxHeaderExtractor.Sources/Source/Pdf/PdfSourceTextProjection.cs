@@ -1,22 +1,9 @@
+using MessagePack;
+
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
 /// <summary>
-/// One run of glyphs, and where it sits in both the raw parser string and the canonical one.
-/// </summary>
-internal sealed record PdfVerbatimSpanMapEntry(
-    int VerbatimStart,
-    int VerbatimLength,
-    int RawStart,
-    int RawLength,
-    int GlyphOrdinal,
-    int Page,
-    double Left,
-    double Right,
-    double Bottom,
-    double Top);
-
-/// <summary>
-/// The canonical text of a PDF source occurrence, and the way back to the glyphs it came from.
+/// The canonical text of a PDF source occurrence.
 /// <para>
 /// A PDF has no text. It has ordered glyphs with positions, and any string is a reconstruction. So
 /// "verbatim" cannot mean the first string a parser happened to concatenate - on a real document
@@ -26,44 +13,31 @@ internal sealed record PdfVerbatimSpanMapEntry(
 /// <para>
 /// <see cref="VerbatimText"/> is therefore a declared projection: same ordered glyphs, with word
 /// gaps decided by geometry alone. It repairs spacing and nothing else. No dictionary, no spelling
-/// correction, no guessing at words - a wrong reconstruction stays a parser defect that
-/// <see cref="SpanMap"/> can be audited against, rather than becoming a semantic error attributed
-/// to the model.
-/// </para>
-/// <para>
-/// <see cref="SpanMap"/> is what makes the projection safe to bind against. A span the binder finds
-/// in <see cref="VerbatimText"/> maps back to the glyphs and their page positions, so the canonical
-/// text never becomes a thing the system can only talk about and never point at.
+/// correction, no guessing at words - a wrong reconstruction stays a parser defect, rather than
+/// becoming a semantic error attributed to the model.
 /// </para>
 /// </summary>
+[MessagePackObject(AllowPrivate = true)]
 internal sealed record PdfSourceTextProjection(
-    string RawParserText,
-    string VerbatimText,
-    IReadOnlyList<PdfVerbatimSpanMapEntry> SpanMap,
-    string ProjectionVersion)
+    [property: Key(0)] string RawParserText,
+    [property: Key(1)] string VerbatimText,
+    [property: Key(2)] string ProjectionVersion)
 {
-    /// <summary>Bump when the gap rule changes: a stored span is only meaningful under its own version.</summary>
+    /// <summary>Bump when the gap rule changes: a stored text is only meaningful under its own version.</summary>
     public const string CurrentVersion = "pdf-glyph-gap-v1";
 
     public static readonly PdfSourceTextProjection Empty =
-        new(string.Empty, string.Empty, [], CurrentVersion);
+        new(string.Empty, string.Empty, CurrentVersion);
 
     /// <summary>
-    /// A text that is its own projection, with no glyph provenance.
-    /// <para>
-    /// For a line that did not come from glyph extraction - a test fixture, or any caller that
-    /// constructs a line from a string - there is nothing to reconstruct and nothing to map back to.
-    /// Saying that explicitly is better than an empty projection, which would silently erase the
-    /// text of every such line. An empty span map is the honest signal that no glyph provenance
-    /// exists, and <see cref="Resolve"/> returns nothing rather than a wrong box.
-    /// </para>
+    /// A text that is its own projection. For a line that did not come from glyph extraction - a test fixture, or any caller that
+    /// constructs a line from a string - there is nothing to reconstruct, so the text is kept as it is rather than blanked.
     /// </summary>
     public static PdfSourceTextProjection Identity(string text) =>
-        new(text, text, [], CurrentVersion);
+        new(text, text, CurrentVersion);
 
     /// <summary>
-    /// Joins occurrence projections into one, as a block joins its lines. Offsets are rebased onto
-    /// the combined string; nothing is re-derived from text, so the mapping survives composition.
+    /// Joins occurrence projections into one, as a block joins its lines. The verbatim and raw texts are concatenated in order.
     /// </summary>
     public static PdfSourceTextProjection Join(IReadOnlyList<PdfSourceTextProjection> parts, string separator = " ")
     {
@@ -73,7 +47,6 @@ internal sealed record PdfSourceTextProjection(
 
         var verbatim = new System.Text.StringBuilder();
         var raw = new System.Text.StringBuilder();
-        var map = new List<PdfVerbatimSpanMapEntry>();
         foreach (var part in parts)
         {
             if (verbatim.Length > 0)
@@ -82,18 +55,10 @@ internal sealed record PdfSourceTextProjection(
                 raw.Append(separator);
             }
 
-            var verbatimOffset = verbatim.Length;
-            var rawOffset = raw.Length;
-            foreach (var entry in part.SpanMap)
-                map.Add(entry with
-                {
-                    VerbatimStart = entry.VerbatimStart + verbatimOffset,
-                    RawStart = entry.RawStart + rawOffset,
-                });
             verbatim.Append(part.VerbatimText);
             raw.Append(part.RawParserText);
         }
 
-        return new PdfSourceTextProjection(raw.ToString(), verbatim.ToString(), map, CurrentVersion);
+        return new PdfSourceTextProjection(raw.ToString(), verbatim.ToString(), CurrentVersion);
     }
 }

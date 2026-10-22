@@ -1,27 +1,34 @@
+using MessagePack;
+
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 
+[MessagePackObject(AllowPrivate = true)]
 internal sealed record PdfLayoutBlock(
-    string Id,
-    IReadOnlyList<PdfLine> Lines,
-    PdfStyleKey PrimaryStyle,
-    int Page,
-    double TopY,
-    double BottomY,
-    double Left,
-    double Right,
-    string Text)
+    [property: Key(0)] string Id,
+    [property: Key(1)] IReadOnlyList<PdfLine> Lines,
+    [property: Key(2)] PdfStyleKey PrimaryStyle,
+    [property: Key(3)] int Page,
+    [property: Key(4)] double TopY,
+    [property: Key(5)] double BottomY,
+    [property: Key(6)] double Left,
+    [property: Key(7)] double Right,
+    [property: Key(8)] string Text)
 {
+    [IgnoreMember]
     public int LineCount => Lines.Count;
 
     /// <summary>
     /// The canonical text of this occurrence, composed from its lines' projections, with the span
     /// map rebased onto it. <see cref="Text"/> remains the raw parser concatenation for audit.
     /// </summary>
+    [IgnoreMember]
     public PdfSourceTextProjection Projection =>
         PdfSourceTextProjection.Join(Lines.Select(line => line.Projection).ToArray());
 
     /// <summary>What the model is shown and what the binder binds against.</summary>
+    [IgnoreMember]
     public string VerbatimText => Projection.VerbatimText;
+    [IgnoreMember]
     public string DisplayText => PdfTextUtilities.DisplayReadable(Text);
 }
 

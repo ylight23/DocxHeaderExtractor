@@ -60,7 +60,7 @@ public sealed class PdfScanSourceTests : IDisposable
         Assert.All(evidence.Views, view => Assert.Equal(new[] { 1, 2 }, view.Pages.Select(p => p.Page)));
         Assert.Contains(evidence.Views[0].Pages[0].Lines, line => line.Text.Contains("OVERLAY", StringComparison.OrdinalIgnoreCase));
         Assert.Empty(evidence.Gaps);
-        var file = Path.Combine(ocr.EntryOf(evidence), "evidence.json");
+        var file = Path.Combine(ocr.EntryOf(evidence), "evidence.msgpack");
         var modified = File.GetLastWriteTimeUtc(file);
         Assert.Equal(evidence.ParametersSha256, ocr.Run(path, options).ParametersSha256);
         Assert.Equal(modified, File.GetLastWriteTimeUtc(file));

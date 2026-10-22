@@ -5,6 +5,7 @@ using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
+using MessagePack;
 using OpenCvSharp;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Scan;
@@ -62,7 +63,7 @@ public sealed class ScanSegmentPreflight(string storeRoot)
                 [new OcrView(spec, EvidenceOrigin.OcrDerived, viewPages)],
                 [new OcrViewGap(ScanOcrPreflight.UpscaledView, "NOT_MADE_BY_SEGMENTER")])
             { PageImageBasis = isPdf ? PdfScanPageRenderer.CacheBasis : null };
-            File.WriteAllText(Path.Combine(temp, "evidence.json"), JsonSerializer.Serialize(evidence, Json), new UTF8Encoding(false));
+            File.WriteAllBytes(Path.Combine(temp, ScanOcrPreflight.EvidenceFile), MessagePackSerializer.Serialize(evidence, ScanOcrPreflight.EvidenceBinary));
             Directory.CreateDirectory(Path.GetDirectoryName(final)!);
             try { Directory.Move(temp, final); }
             catch (IOException) when (Directory.Exists(final))

@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using MessagePack;
 using DocumentFormat.OpenXml.Packaging;
 using DocxHeaderExtractor.DocumentProcessing.Source.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
@@ -35,6 +36,11 @@ public sealed class ScanOcrPreflight(string storeRoot)
     static readonly UTF8Encoding Utf8 = new(encoderShouldEmitUTF8Identifier: false);
 
     static readonly JsonSerializerOptions Json = new() { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+
+    /// <summary>The evidence entry file: MessagePack, written and read with the standard resolver.</summary>
+    internal const string EvidenceFile = "evidence.msgpack";
+
+    internal static readonly MessagePackSerializerOptions EvidenceBinary = MessagePackSerializerOptions.Standard;
 
     /// <summary>Reads the evidence back when it exists for this source and these parameters; otherwise makes it and writes it.</summary>
     public ScanOcrEvidence Run(string docxPath, Options? options = null, CancellationToken ct = default)
@@ -92,7 +98,7 @@ public sealed class ScanOcrPreflight(string storeRoot)
             var evidence = new ScanOcrEvidence(ScanOcrEvidence.CurrentVersion, sourceSha, sourceKind, pages.Count, parametersSha, views, gaps)
             { PageImageBasis = isPdf ? PdfScanPageRenderer.CacheBasis : null };
             ct.ThrowIfCancellationRequested();
-            File.WriteAllText(Path.Combine(temp, "evidence.json"), JsonSerializer.Serialize(evidence, Json), Utf8);
+            File.WriteAllBytes(Path.Combine(temp, EvidenceFile), MessagePackSerializer.Serialize(evidence, EvidenceBinary));
             Directory.CreateDirectory(Path.GetDirectoryName(final)!);
             try { Directory.Move(temp, final); }
             catch (IOException) when (Directory.Exists(final))
@@ -118,9 +124,9 @@ public sealed class ScanOcrPreflight(string storeRoot)
     /// <summary>The evidence stored in an entry, when it is there and is for this source and these parameters.</summary>
     public static ScanOcrEvidence? TryLoad(string entry, string sourceSha256, string parametersSha256)
     {
-        var file = Path.Combine(entry, "evidence.json");
+        var file = Path.Combine(entry, EvidenceFile);
         if (!File.Exists(file)) return null;
-        var evidence = JsonSerializer.Deserialize<ScanOcrEvidence>(File.ReadAllText(file, Utf8), Json)
+        var evidence = MessagePackSerializer.Deserialize<ScanOcrEvidence>(File.ReadAllBytes(file), EvidenceBinary)
             ?? throw new InvalidOperationException("SCAN_EVIDENCE_UNREADABLE");
         if (evidence.SourceSha256 != sourceSha256 || evidence.ParametersSha256 != parametersSha256 || evidence.Version != ScanOcrEvidence.CurrentVersion)
             throw new InvalidOperationException("SCAN_EVIDENCE_ENTRY_MISMATCH");

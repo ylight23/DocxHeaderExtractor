@@ -1,3 +1,4 @@
+using MessagePack;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -13,12 +14,13 @@ namespace DocxHeaderExtractor.Core.Models;
 /// paragraph, so the binding contract does not have to know how the atoms were reconstructed.
 /// </para>
 /// </summary>
+[MessagePackObject]
 public sealed record SemanticSourceAtom(
-    [property: JsonPropertyName("alias")] string Alias,
-    [property: JsonPropertyName("sourceId")] string SourceId,
-    [property: JsonPropertyName("ordinal")] int Ordinal,
-    [property: JsonPropertyName("page")] int Page,
-    [property: JsonPropertyName("row")] int Row,
-    [property: JsonPropertyName("segment")] int Segment,
-    [property: JsonPropertyName("text")] string Text);
+    [property: JsonPropertyName("alias"), Key(0)] string Alias,
+    [property: JsonPropertyName("sourceId"), Key(1)] string SourceId,
+    [property: JsonPropertyName("ordinal"), Key(2)] int Ordinal,
+    [property: JsonPropertyName("page"), Key(3)] int Page,
+    [property: JsonPropertyName("row"), Key(4)] int Row,
+    [property: JsonPropertyName("segment"), Key(5)] int Segment,
+    [property: JsonPropertyName("text"), Key(6)] string Text);
 

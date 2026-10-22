@@ -1,3 +1,4 @@
+using MessagePack;
 using System.Text.Json.Serialization;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Scan;
@@ -31,14 +32,15 @@ public enum VerificationStatus
 }
 
 /// <summary>A box in the pixels of the page's original image, origin top left.</summary>
+[MessagePackObject]
 public sealed record PixelBox(
-    [property: JsonPropertyName("left")] int Left,
-    [property: JsonPropertyName("top")] int Top,
-    [property: JsonPropertyName("width")] int Width,
-    [property: JsonPropertyName("height")] int Height)
+    [property: JsonPropertyName("left"), Key(0)] int Left,
+    [property: JsonPropertyName("top"), Key(1)] int Top,
+    [property: JsonPropertyName("width"), Key(2)] int Width,
+    [property: JsonPropertyName("height"), Key(3)] int Height)
 {
-    [JsonIgnore] public int Right => Left + Width;
-    [JsonIgnore] public int Bottom => Top + Height;
+    [JsonIgnore, IgnoreMember] public int Right => Left + Width;
+    [JsonIgnore, IgnoreMember] public int Bottom => Top + Height;
 
     public static PixelBox Union(IEnumerable<PixelBox> boxes)
     {
@@ -58,76 +60,85 @@ public sealed record PixelBox(
 }
 
 /// <summary>One recognised word: its text as the engine wrote it, its box and the engine's confidence (0 to 100).</summary>
+[MessagePackObject]
 public sealed record OcrWord(
-    [property: JsonPropertyName("text")] string Text,
-    [property: JsonPropertyName("box")] PixelBox Box,
-    [property: JsonPropertyName("confidence")] double Confidence);
+    [property: JsonPropertyName("text"), Key(0)] string Text,
+    [property: JsonPropertyName("box"), Key(1)] PixelBox Box,
+    [property: JsonPropertyName("confidence"), Key(2)] double Confidence);
 
 /// <summary>
 /// One recognised line of a page in one view. Text is the words joined by single spaces, exactly as the engine wrote them; TextNfc is set only
 /// when Unicode NFC changes it. OverlapsOtherLine is a measurement: another line of the page shares part of its height and its horizontal range,
 /// which is what a stamp or a speck above a line looks like and what makes a reader mix two lines.
 /// </summary>
+[MessagePackObject]
 public sealed record OcrLine(
-    [property: JsonPropertyName("id")] string Id,
-    [property: JsonPropertyName("text")] string Text,
-    [property: JsonPropertyName("box")] PixelBox Box,
-    [property: JsonPropertyName("meanConfidence")] double MeanConfidence,
-    [property: JsonPropertyName("minConfidence")] double MinConfidence,
-    [property: JsonPropertyName("overlapsOtherLine")] bool OverlapsOtherLine,
-    [property: JsonPropertyName("words")] IReadOnlyList<OcrWord> Words)
+    [property: JsonPropertyName("id"), Key(0)] string Id,
+    [property: JsonPropertyName("text"), Key(1)] string Text,
+    [property: JsonPropertyName("box"), Key(2)] PixelBox Box,
+    [property: JsonPropertyName("meanConfidence"), Key(3)] double MeanConfidence,
+    [property: JsonPropertyName("minConfidence"), Key(4)] double MinConfidence,
+    [property: JsonPropertyName("overlapsOtherLine"), Key(5)] bool OverlapsOtherLine,
+    [property: JsonPropertyName("words"), Key(6)] IReadOnlyList<OcrWord> Words)
 {
+    [Key(7)]
     [JsonPropertyName("textNfc")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? TextNfc { get; init; }
 }
 
 /// <summary>One page of one view: its lines in the engine's reading order, and the hash of the engine's raw output for it.</summary>
+[MessagePackObject]
 public sealed record OcrPage(
-    [property: JsonPropertyName("page")] int Page,
-    [property: JsonPropertyName("imageSha256")] string ImageSha256,
-    [property: JsonPropertyName("imageWidth")] int ImageWidth,
-    [property: JsonPropertyName("imageHeight")] int ImageHeight,
-    [property: JsonPropertyName("rawOutputSha256")] string RawOutputSha256,
-    [property: JsonPropertyName("lines")] IReadOnlyList<OcrLine> Lines);
+    [property: JsonPropertyName("page"), Key(0)] int Page,
+    [property: JsonPropertyName("imageSha256"), Key(1)] string ImageSha256,
+    [property: JsonPropertyName("imageWidth"), Key(2)] int ImageWidth,
+    [property: JsonPropertyName("imageHeight"), Key(3)] int ImageHeight,
+    [property: JsonPropertyName("rawOutputSha256"), Key(4)] string RawOutputSha256,
+    [property: JsonPropertyName("lines"), Key(5)] IReadOnlyList<OcrLine> Lines);
 
 /// <summary>How one view was made: the preprocessing of the image, the engine and its parameters. Two views of one page differ only here.</summary>
+[MessagePackObject]
 public sealed record OcrViewSpec(
-    [property: JsonPropertyName("viewId")] string ViewId,
-    [property: JsonPropertyName("preprocessing")] string Preprocessing,
-    [property: JsonPropertyName("scale")] double Scale,
-    [property: JsonPropertyName("engine")] string Engine,
-    [property: JsonPropertyName("engineVersion")] string EngineVersion,
-    [property: JsonPropertyName("languages")] string Languages,
-    [property: JsonPropertyName("pageSegmentationMode")] int PageSegmentationMode);
+    [property: JsonPropertyName("viewId"), Key(0)] string ViewId,
+    [property: JsonPropertyName("preprocessing"), Key(1)] string Preprocessing,
+    [property: JsonPropertyName("scale"), Key(2)] double Scale,
+    [property: JsonPropertyName("engine"), Key(3)] string Engine,
+    [property: JsonPropertyName("engineVersion"), Key(4)] string EngineVersion,
+    [property: JsonPropertyName("languages"), Key(5)] string Languages,
+    [property: JsonPropertyName("pageSegmentationMode"), Key(6)] int PageSegmentationMode);
 
 /// <summary>One reading of the whole document: its spec and its pages. Coordinates are those of the original page images whatever the scale.</summary>
+[MessagePackObject]
 public sealed record OcrView(
-    [property: JsonPropertyName("spec")] OcrViewSpec Spec,
-    [property: JsonPropertyName("origin")] EvidenceOrigin Origin,
-    [property: JsonPropertyName("pages")] IReadOnlyList<OcrPage> Pages);
+    [property: JsonPropertyName("spec"), Key(0)] OcrViewSpec Spec,
+    [property: JsonPropertyName("origin"), Key(1)] EvidenceOrigin Origin,
+    [property: JsonPropertyName("pages"), Key(2)] IReadOnlyList<OcrPage> Pages);
 
 /// <summary>A view that could not be made, and why (a tool missing, a page that failed). Recorded, never silently left out.</summary>
+[MessagePackObject]
 public sealed record OcrViewGap(
-    [property: JsonPropertyName("viewId")] string ViewId,
-    [property: JsonPropertyName("reason")] string Reason);
+    [property: JsonPropertyName("viewId"), Key(0)] string ViewId,
+    [property: JsonPropertyName("reason"), Key(1)] string Reason);
 
 /// <summary>
 /// The OCR evidence of one scanned document: the source's identity and integrity, every view that was made and every view that could not be.
 /// Immutable once written: a later run with the same source and parameters reads it back.
 /// </summary>
+[MessagePackObject]
 public sealed record ScanOcrEvidence(
-    [property: JsonPropertyName("version")] string Version,
-    [property: JsonPropertyName("sourceSha256")] string SourceSha256,
-    [property: JsonPropertyName("sourceKind")] string SourceKind,
-    [property: JsonPropertyName("pageCount")] int PageCount,
-    [property: JsonPropertyName("parametersSha256")] string ParametersSha256,
-    [property: JsonPropertyName("views")] IReadOnlyList<OcrView> Views,
-    [property: JsonPropertyName("gaps")] IReadOnlyList<OcrViewGap> Gaps)
+    [property: JsonPropertyName("version"), Key(0)] string Version,
+    [property: JsonPropertyName("sourceSha256"), Key(1)] string SourceSha256,
+    [property: JsonPropertyName("sourceKind"), Key(2)] string SourceKind,
+    [property: JsonPropertyName("pageCount"), Key(3)] int PageCount,
+    [property: JsonPropertyName("parametersSha256"), Key(4)] string ParametersSha256,
+    [property: JsonPropertyName("views"), Key(5)] IReadOnlyList<OcrView> Views,
+    [property: JsonPropertyName("gaps"), Key(6)] IReadOnlyList<OcrViewGap> Gaps)
 {
     public const string CurrentVersion = "SCAN_OCR_EVIDENCE_V1";
 
     /// <summary>For PDF, the renderer/version/DPI of the immutable page rasters. Null on legacy DOCX evidence.</summary>
+    [Key(7)]
     [JsonPropertyName("pageImageBasis")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? PageImageBasis { get; init; }

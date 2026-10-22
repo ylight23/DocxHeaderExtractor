@@ -17,6 +17,8 @@ public sealed class PipelineOptions
 
     /// <summary>Shared OCR/VLM evidence store for scanned DOCX files.</summary>
     public string ScanEvidenceRoot { get; set; } = ".dhx-evidence";
+    /// <summary>The folder where a built PDF source is kept between runs; the file's bytes and this build of the code are its key. Null builds every time.</summary>
+    public string? SourceCacheRoot { get; set; } = ".dhx-evidence/source";
     public int? ScanJobs { get; set; }
     public bool ScanVision { get; set; }
     /// <summary>Reuse a scan unit's selection answer when its first request is unchanged (stored under the evidence root); false asks again.</summary>

@@ -50,6 +50,7 @@ try
         "scan-extract" => await RunScanExtractAsync(options, cts.Token),
         "scan-text-eval" => RunScanTextEval(options),
         "scan-heading-eval" => RunScanHeadingEval(options),
+        "scan-evidence-json" => RunScanEvidenceJson(options),
         _ => await RunExtractAsync(options, cts.Token),
     };
 }
@@ -120,6 +121,14 @@ static int RunScanTextEval(CommandLineOptions o)
     Console.WriteLine($"{report.ProviderCalls} POST, {report.ProviderCostUsd:0.0000} USD; lỗi: {(report.Failures.Count == 0 ? "không" : string.Join(", ", report.Failures))}");
     Console.WriteLine($"báo cáo: {Path.Combine(root, "eval", report.SourceSha256[..16] + "-scan-text-eval.json")}");
     return report.Scores.Any(s => s.Method.StartsWith("vlm", StringComparison.Ordinal) && s.Exact == 0 && report.Failures.Count > 0) ? 1 : 0;
+}
+
+// The evidence a scan stored (evidence.msgpack) as JSON on stdout, to read while debugging. Reads files only; sends nothing.
+static int RunScanEvidenceJson(CommandLineOptions o)
+{
+    if (o.Inputs.Count != 1) { Console.Error.WriteLine("Cách dùng: dhx scan-evidence-json <evidence.msgpack>  (JSON in ra stdout; ghi file bằng > tên-file.json)"); return 2; }
+    Console.WriteLine(DocxHeaderExtractor.DocumentProcessing.Source.Scan.ScanEvidenceJson.Read(o.Inputs[0]));
+    return 0;
 }
 
 // The headings of a scan result against a gold of which headings the document has. Reads files only; sends nothing.

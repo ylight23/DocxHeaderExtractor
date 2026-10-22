@@ -78,7 +78,9 @@ public static class PdfExtractionPipeline
         // PDF heading authority is the V6 selected-lines authority. It has no semantic fallback:
         // a unit whose answer fails the contract leaves its lines undecided rather than delegating
         // them to a second membership authority.
-        var sourceBuild = PdfSourceAdapter.BuildWithDetails(file.LocalPath);
+        var sourceBuild = options.SourceCacheRoot is { } cacheRoot
+            ? PdfSourceCache.BuildOrLoad(file.LocalPath, cacheRoot)
+            : PdfSourceAdapter.BuildWithDetails(file.LocalPath);
         authority = await PdfHeadingPipeline.RunAsync(
             sourceBuild.Snapshot, sourceBuild.Details, file.LocalPath, used, semanticLaneOptions, selector, ct);
 

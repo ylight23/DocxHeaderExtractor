@@ -1,3 +1,4 @@
+using MessagePack;
 using System.Collections.Immutable;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Source.Common;
@@ -6,7 +7,8 @@ namespace DocxHeaderExtractor.DocumentProcessing.Source.Common;
 /// Shared parser-side marker shape for DOCX and PDF source context and audit.
 /// A marker is source evidence, never a heading decision; sequence auditing remains independent.
 /// </summary>
-internal readonly record struct SourceMarkerFact(string Signature, int Depth, string Family, bool IsPath)
+[MessagePackObject(AllowPrivate = true)]
+internal readonly record struct SourceMarkerFact([property: Key(0)] string Signature, [property: Key(1)] int Depth, [property: Key(2)] string Family, [property: Key(3)] bool IsPath)
 {
     /// <summary>
     /// M8.1d-2 representation only. The parser already knows every component of a numeric path;
@@ -14,5 +16,6 @@ internal readonly record struct SourceMarkerFact(string Signature, int Depth, st
     /// a stricter grammar that cannot read a dot-stripped source. Carrying them here removes that
     /// second parse as a source of truth. It grants no hierarchy authority on its own.
     /// </summary>
+    [Key(4)]
     public ImmutableArray<int> Components { get; init; } = ImmutableArray<int>.Empty;
 }

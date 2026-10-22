@@ -73,3 +73,6 @@ artifacts/web-pdf-semantic-diagnostic/p7.f1q.heldout.gold-workspace.*/*.review.p
 
 # dotnet test output (generated, per run)
 tests/DocxHeaderExtractor.Tests/TestResults/
+
+# evidence and source caches written by the pipelines (per run, per source)
+.dhx-evidence/

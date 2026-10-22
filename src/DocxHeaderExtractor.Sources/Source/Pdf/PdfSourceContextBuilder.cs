@@ -13,14 +13,18 @@ internal static class PdfSourceContextBuilder
         var ordered = blocks.OrderBy(b => b.Page).ThenByDescending(b => b.TopY).ThenBy(b => b.Id, StringComparer.Ordinal).ToArray();
         const string regime = "document_body";
         var result = new Dictionary<string, PdfSourceContext>(StringComparer.Ordinal);
+        // Each block's display text and prompt excerpt is computed once: a block is a neighbour of up to 2 * window others.
+        var display = ordered.Select(b => b.DisplayText).ToArray();
+        var excerpts = display.Select(PromptExcerpt).ToArray();
+        var ids = ordered.Select(b => b.Id).ToArray();
+        var window = Math.Clamp(contextWindow, 0, 6);
         for (var index = 0; index < ordered.Length; index++)
         {
             var block = ordered[index];
-            var facts = BuildFacts(block, annotationByLine);
-            var window = Math.Clamp(contextWindow, 0, 6);
-            var previous = ordered.Take(index).TakeLast(window).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
-            var next = ordered.Skip(index + 1).Take(window).Select(b => PromptExcerpt(b.DisplayText)).ToArray();
-            var parents = ordered.Take(index).TakeLast(8).Select(b => b.Id).ToArray();
+            var facts = BuildFacts(block, annotationByLine, display[index]);
+            var previous = excerpts[Math.Max(0, index - window)..index];
+            var next = excerpts[(index + 1)..Math.Min(ordered.Length, index + 1 + window)];
+            var parents = ids[Math.Max(0, index - 8)..index];
             result[block.Id] = new PdfSourceContext(facts, previous, next, parents, regime);
         }
         return result;
@@ -75,22 +79,23 @@ internal static class PdfSourceContextBuilder
 
     private static PdfSourceFacts BuildFacts(
         PdfLayoutBlock block,
-        IReadOnlyDictionary<string, PdfLineBlockAnnotation> annotationByLine)
+        IReadOnlyDictionary<string, PdfLineBlockAnnotation> annotationByLine,
+        string displayText)
     {
         var sourceAnnotations = block.Lines
             .Select(line => annotationByLine.TryGetValue(LineKey(line), out var annotation) ? annotation : null)
             .Where(annotation => annotation is not null)
             .Cast<PdfLineBlockAnnotation>()
             .ToArray();
-        var marker = SourceMarkerFactsParser.Parse(block.DisplayText);
+        var marker = SourceMarkerFactsParser.Parse(displayText);
         var evidence = new List<string>
         {
             block.LineCount == 1 ? "standalone_line" : "multi_line_cluster",
             marker is null ? "no_marker" : $"marker:{marker.Value.Family}",
         };
-        var looseMarker = LooseLabelledMarkerParser.ParseCanonical(block.DisplayText);
+        var looseMarker = LooseLabelledMarkerParser.ParseCanonical(displayText);
         if (looseMarker is not null &&
-            PdfTextUtilities.CanonicalForMatch(block.DisplayText).Length <
+            PdfTextUtilities.CanonicalForMatch(displayText).Length <
             PdfTextUtilities.CanonicalForMatch(looseMarker).Length + 6)
             evidence.Add("marker_only_source");
         var least = LeastRecurring(sourceAnnotations);

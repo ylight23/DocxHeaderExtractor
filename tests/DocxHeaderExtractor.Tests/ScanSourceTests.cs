@@ -170,13 +170,13 @@ public sealed class ScanSourceTests : IDisposable
         // Either both views were made, or the one that could not be made is recorded with its reason.
         Assert.Equal(2, first.Views.Count + first.Gaps.Count);
         var entry = Directory.GetDirectories(Directory.GetDirectories(store).Single(d => !Path.GetFileName(d).StartsWith('.'))).Single();
-        var written = File.GetLastWriteTimeUtc(Path.Combine(entry, "evidence.json"));
+        var written = File.GetLastWriteTimeUtc(Path.Combine(entry, "evidence.msgpack"));
         Assert.Equal(2, Directory.GetFiles(Path.Combine(entry, "pages")).Length);
 
         var second = preflight.Run(path, options);
 
         Assert.Equal(first.ParametersSha256, second.ParametersSha256);
-        Assert.Equal(written, File.GetLastWriteTimeUtc(Path.Combine(entry, "evidence.json")));
+        Assert.Equal(written, File.GetLastWriteTimeUtc(Path.Combine(entry, "evidence.msgpack")));
         Assert.Equal(original.Pages[0].Lines.Select(l => l.Text), second.Views[0].Pages[0].Lines.Select(l => l.Text));
     }
 
