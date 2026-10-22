@@ -34,17 +34,19 @@ internal static class ScanLane
                 throw new InvalidOperationException("SCAN_SOURCE_HASH_MISMATCH");
             var source = ScanSourceAdapter.Build(prepared);
             if (source.Atoms.Count == 0) throw new InvalidOperationException("SCAN_EMPTY_UNIVERSE");
-            var fixedSelector = new PreparedSelector(selector.SelectorId, prepared.Selection);
-            var decided = await LaneHarness.DecideAsync(
-                source, fixedSelector, path, key ?? "", new Dictionary<string, string>(), transport, lease, laneCt).ConfigureAwait(false);
+            var lane = new LaneHarness.Input(
+                RouteId,
+                source,
+                new Dictionary<string, string>(),
+                source.Atoms.Select(a => new SourceBlockAudit(a.SourceId, a.Page, a.Text)).ToArray(),
+                source.Atoms.Select(a => a.Page).Distinct().Count());
             options.Log?.Invoke("Scan: bind, place and materialize headings");
-            var structureClock = System.Diagnostics.Stopwatch.StartNew();
-            var assembly = await LaneHarness.AssembleAsync(source, decided, laneCt).ConfigureAwait(false);
+            var run = await LaneHarness.DecideAndAssembleAsync(
+                lane, new PreparedSelector(selector.SelectorId, prepared.Selection), path, key ?? "", transport, lease, laneCt).ConfigureAwait(false);
+            var (decided, assembly) = (run.Decided, run.Assembly);
             var stageSeconds = new Dictionary<string, double>(prepared.Diagnostics.StageSeconds)
-            { ["structure"] = Math.Round(structureClock.Elapsed.TotalSeconds, 1) };
-            var blocks = source.Atoms.Select(a => new SourceBlockAudit(a.SourceId, a.Page, a.Text)).ToArray();
-            var pages = source.Atoms.Select(a => a.Page).Distinct().Count();
-            var audit = LaneHarness.Completed(decided, LaneHarness.Audit(RouteId, blocks, pages, decided, assembly), assembly) with
+            { ["structure"] = Math.Round(run.AssembleSeconds, 1) };
+            var audit = run.Audit with
             {
                 PipelineId = RouteId,
                 Scan = prepared.Diagnostics with

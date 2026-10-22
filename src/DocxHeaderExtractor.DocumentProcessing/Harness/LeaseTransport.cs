@@ -10,16 +10,16 @@ namespace DocxHeaderExtractor.DocumentProcessing.Harness;
 internal class LeaseTransport : IInferenceTransport
 {
     private readonly IInferenceTransport _inner;
-    private readonly LaneExecutionLease _lease;
+    private readonly LaneLease _lease;
 
-    private LeaseTransport(IInferenceTransport inner, LaneExecutionLease lease)
+    private LeaseTransport(IInferenceTransport inner, LaneLease lease)
     {
         _inner = inner;
         _lease = lease;
     }
 
     // Preserve optional capabilities through the lane boundary without advertising them for legacy providers.
-    public static IInferenceTransport Bind(IInferenceTransport inner, LaneExecutionLease lease) =>
+    public static IInferenceTransport Bind(IInferenceTransport inner, LaneLease lease) =>
         inner is IStructuredInferenceTransport structured
             ? new StructuredLeaseBoundInferenceTransport(structured, lease)
             : new LeaseTransport(inner, lease);
@@ -39,14 +39,14 @@ internal class LeaseTransport : IInferenceTransport
         return ObserveAsync(task!, _lease);
     }
 
-    private static async Task<T> ObserveAsync<T>(Task<T> task, LaneExecutionLease lease)
+    private static async Task<T> ObserveAsync<T>(Task<T> task, LaneLease lease)
     {
         var result = await task.ConfigureAwait(false);
         if (!lease.IsActive) throw new LaneLeaseLostException();
         return result;
     }
 
-    private sealed class StructuredLeaseBoundInferenceTransport(IStructuredInferenceTransport inner, LaneExecutionLease lease)
+    private sealed class StructuredLeaseBoundInferenceTransport(IStructuredInferenceTransport inner, LaneLease lease)
         : LeaseTransport(inner, lease), IStructuredInferenceTransport
     {
         public Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage,

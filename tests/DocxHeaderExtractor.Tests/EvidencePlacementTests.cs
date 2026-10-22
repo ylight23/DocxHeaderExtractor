@@ -13,7 +13,7 @@ using DocxHeaderExtractor.DocumentProcessing.Intake;
 
 namespace DocxHeaderExtractor.Tests;
 
-public sealed class EvidenceHeadingPlacementTests
+public sealed class EvidencePlacementTests
 {
     const string C3 = "P015-L010", D34 = "P015-L012", D35 = "P015-L019", C4 = "P019-L001", C5 = "P021-L010", D46 = "P021-L012", D47 = "P021-L014";
     const string Appendix = "P023-L001", Part1 = "P023-L002", Intro = "P023-L003", Child = "P023-L004";

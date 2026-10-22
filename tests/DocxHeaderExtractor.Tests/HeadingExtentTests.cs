@@ -239,7 +239,7 @@ public sealed class HeadingExtentTests : IDisposable
     static HeadingSelection Selected(IEnumerable<string> aliases, Dictionary<string, TextOffsetSpan>? extents = null, IReadOnlyList<IReadOnlyList<string>>? groups = null) =>
         new(new HashSet<string>(aliases), 1, 1, [], ["{}"], 1, 0.0, Groups: groups, HeadingExtents: extents);
 
-    async Task<HeadingAuthorityResult> Decide(HeadingSelection selection)
+    async Task<SelectionResult> Decide(HeadingSelection selection)
     {
         var path = Mixed();
         var source = DocxSourceAdapter.Build(new OpenXmlDocumentSource(new PipelineOptions().Extraction).Read(path)).Snapshot;

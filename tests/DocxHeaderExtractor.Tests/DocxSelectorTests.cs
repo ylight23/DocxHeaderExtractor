@@ -11,11 +11,11 @@ namespace DocxHeaderExtractor.Tests;
 /// The production DOCX selector end to end over a fake OpenRouter: the same conversation as the PDF selector, with the DOCX prompt, tools and
 /// facts. No network.
 /// </summary>
-public sealed class DocxHeadingAgentSelectorTests : IDisposable
+public sealed class DocxSelectorTests : IDisposable
 {
     private readonly string dir = Path.Combine(Path.GetTempPath(), "dhx-docx-selector-" + Guid.NewGuid().ToString("N"));
 
-    public DocxHeadingAgentSelectorTests() => Directory.CreateDirectory(dir);
+    public DocxSelectorTests() => Directory.CreateDirectory(dir);
 
     public void Dispose()
     {

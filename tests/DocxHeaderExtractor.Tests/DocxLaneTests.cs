@@ -15,11 +15,11 @@ namespace DocxHeaderExtractor.Tests;
 /// The DOCX lane: an <see cref="IHeadingSelector"/> is the only heading authority, as on the PDF lane. These tests use a selector that answers
 /// from a fixed alias set and a transport that makes no provider call.
 /// </summary>
-public sealed class DocxV6LaneTests : IDisposable
+public sealed class DocxLaneTests : IDisposable
 {
     private readonly string dir = Path.Combine(Path.GetTempPath(), "dhx-docx-lane-" + Guid.NewGuid().ToString("N"));
 
-    public DocxV6LaneTests() => Directory.CreateDirectory(dir);
+    public DocxLaneTests() => Directory.CreateDirectory(dir);
 
     public void Dispose()
     {

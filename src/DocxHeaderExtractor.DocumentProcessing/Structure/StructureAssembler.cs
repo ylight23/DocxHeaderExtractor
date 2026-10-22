@@ -11,26 +11,6 @@ using DocxHeaderExtractor.DocumentProcessing.Placement;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Structure;
 
-/// <summary>Which occurrences of a repeated heading reach the canonical structure.</summary>
-internal enum PrimaryOccurrenceSelection
-{
-    /// <summary>Every validated source occurrence; the authority defines no semantic node identity.</summary>
-    EverySourceOccurrence,
-
-    /// <summary>Only the first occurrence of each semantic node the authority declared.</summary>
-    FirstOfSemanticNode,
-}
-
-/// <summary>Validated headings, their resolved placement and the canonical structure built from them.</summary>
-internal sealed record HeadingStructureAssembly(
-    IReadOnlyList<ValidatedHeading> Validated,
-    IReadOnlyDictionary<string, ResolvedHierarchy> Hierarchies,
-    ValidatedStructure Structure,
-    ProjectionContext ProjectionContext)
-{
-    public PlacementAudit? PlacementObservation { get; init; }
-}
-
 /// <summary>
 /// The shared half of a heading route: bind and validate the authority's extents, place unresolved
 /// headings, derive hierarchy and materialize canonical structure. It reads only the common
@@ -38,10 +18,10 @@ internal sealed record HeadingStructureAssembly(
 /// </summary>
 internal static class StructureAssembler
 {
-    public static async Task<HeadingStructureAssembly> AssembleAsync(
+    public static async Task<StructureAssembly> AssembleAsync(
         DocumentSourceSnapshot source,
-        HeadingAuthorityResult authority,
-        PrimaryOccurrenceSelection primaryOccurrences,
+        SelectionResult authority,
+        PrimaryOccurrences primaryOccurrences,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(source);
@@ -77,7 +57,7 @@ internal static class StructureAssembler
                 StructuralScope = source.OccurrenceContexts[item.SourceId].StructuralScope,
             },
             StringComparer.Ordinal);
-        var primarySourceIds = primaryOccurrences == PrimaryOccurrenceSelection.FirstOfSemanticNode
+        var primarySourceIds = primaryOccurrences == PrimaryOccurrences.FirstOfSemanticNode
             ? derived.Where(item => item.IsPrimaryOccurrence).Select(item => item.SourceId).ToHashSet(StringComparer.Ordinal)
             : placements.Keys.ToHashSet(StringComparer.Ordinal);
 
@@ -95,7 +75,7 @@ internal static class StructureAssembler
         // Every validated heading that reaches here is a bound model claim.
         var structure = Materializer.Materialize(
             validated, placements, occurrences, source.SourceKind, StructuralDecisionOrigin.Model, primarySourceIds);
-        return new HeadingStructureAssembly(validated, placements, structure.Structure, structure.ProjectionContext)
+        return new StructureAssembly(validated, placements, structure.Structure, structure.ProjectionContext)
         { PlacementObservation = placement.Observation };
     }
 }

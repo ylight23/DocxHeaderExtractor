@@ -3,7 +3,7 @@ using DocxHeaderExtractor.DocumentProcessing.Harness;
 
 namespace DocxHeaderExtractor.Tests;
 
-public sealed class LeaseBoundInferenceTransportTests
+public sealed class LeaseTransportTests
 {
     [Theory]
     [InlineData(false, false)]
@@ -14,10 +14,10 @@ public sealed class LeaseBoundInferenceTransportTests
     {
         var completion = new TaskCompletionSource<StructuredInferenceReply>(TaskCreationOptions.RunContinuationsAsynchronously);
         using var inner = new StructuredTransport(completion.Task);
-        var lease = new LaneExecutionLease();
+        var lease = new LaneLease();
         using var bound = LeaseTransport.Bind(inner, lease);
         var structured = Assert.IsAssignableFrom<IStructuredInferenceTransport>(bound);
-        var terminal = timeout ? LaneExecutionState.TimedOut : LaneExecutionState.Cancelled;
+        var terminal = timeout ? LaneState.TimedOut : LaneState.Cancelled;
         if (!lateReply) Assert.True(lease.TryTransition(terminal));
         await Assert.ThrowsAsync<LaneLeaseLostException>(async () =>
         {
@@ -33,7 +33,7 @@ public sealed class LeaseBoundInferenceTransportTests
     public async Task Legacy_transport_keeps_its_capability_and_item_count()
     {
         using var inner = new LegacyTransport();
-        using var bound = LeaseTransport.Bind(inner, new LaneExecutionLease());
+        using var bound = LeaseTransport.Bind(inner, new LaneLease());
         Assert.False(bound is IStructuredInferenceTransport);
         Assert.Equal("{}", await bound.BoundaryCutAsync("JSON", "{}", expectedItemCount: 16));
         Assert.Equal(16, inner.ExpectedItems);

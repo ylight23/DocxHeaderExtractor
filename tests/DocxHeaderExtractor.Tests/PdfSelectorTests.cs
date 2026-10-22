@@ -13,7 +13,7 @@ namespace DocxHeaderExtractor.Tests;
 /// The production selector end to end over a fake OpenRouter: streamed replies, the audit, the budget and the parallel units. No network.
 /// </summary>
 [Trait("Category", "Slow")]
-public sealed class PdfHeadingAgentSelectorTests
+public sealed class PdfSelectorTests
 {
     private const string Pdf = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
 

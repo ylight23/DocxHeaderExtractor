@@ -1,106 +1,4 @@
-using DocxHeaderExtractor.DocumentProcessing.Output;
-
 namespace DocxHeaderExtractor.DocumentProcessing.Harness;
-
-/// <summary>The only non-terminal state of one PDF lane execution.</summary>
-internal enum LaneExecutionState
-{
-    Active = 0,
-    Succeeded = 1,
-    Failed = 2,
-    TimedOut = 3,
-    Cancelled = 4,
-}
-
-internal sealed class LaneLeaseLostException : InvalidOperationException
-{
-    public LaneLeaseLostException()
-        : base("The PDF execution lease is no longer active; late provider work was quarantined.")
-    {
-    }
-}
-
-/// <summary>
-/// Monotonic lease for one lane attempt. A terminal transition wins exactly once. Checkpoint,
-/// publication, and downstream work can admit an operation only while the lease is active.
-/// </summary>
-internal sealed class LaneExecutionLease
-{
-    private readonly object _sync = new();
-    private LaneExecutionState _state = LaneExecutionState.Active;
-    private Exception? _lateFault;
-    private int _lateCompletionObserved;
-    private int _terminalTransitions;
-
-    public LaneExecutionState State
-    {
-        get { lock (_sync) return _state; }
-    }
-
-    public bool IsActive
-    {
-        get { lock (_sync) return _state == LaneExecutionState.Active; }
-    }
-
-    public int TerminalTransitionCount => Volatile.Read(ref _terminalTransitions);
-    public bool CanPublishCompletedResult => State == LaneExecutionState.Succeeded &&
-        TerminalTransitionCount == 1;
-
-    public bool TryTransition(LaneExecutionState terminal)
-    {
-        if (terminal is LaneExecutionState.Active)
-            throw new ArgumentException("A lane transition must be terminal.", nameof(terminal));
-
-        lock (_sync)
-        {
-            if (_state != LaneExecutionState.Active) return false;
-            _state = terminal;
-            Interlocked.Increment(ref _terminalTransitions);
-            return true;
-        }
-    }
-
-    /// <summary>
-    /// Admits one operation that began while the lane was active. If the terminal transition wins
-    /// first, the caller must quarantine the operation instead of mutating canonical state.
-    /// </summary>
-    public IDisposable? TryAdmitOperation()
-    {
-        lock (_sync)
-            return _state == LaneExecutionState.Active ? NoopLease.Instance : null;
-    }
-
-    public bool TryPublish(Action publish)
-    {
-        ArgumentNullException.ThrowIfNull(publish);
-        lock (_sync)
-        {
-            if (_state != LaneExecutionState.Active) return false;
-            publish();
-            return true;
-        }
-    }
-
-    public bool TryStartDownstream(Action start) => TryPublish(start);
-
-    internal void RecordLateCompletion()
-    {
-        Interlocked.Exchange(ref _lateCompletionObserved, 1);
-    }
-
-    internal void RecordLateFault(Exception exception)
-    {
-        ArgumentNullException.ThrowIfNull(exception);
-        Interlocked.CompareExchange(ref _lateFault, exception, null);
-        RecordLateCompletion();
-    }
-
-    private sealed class NoopLease : IDisposable
-    {
-        public static readonly NoopLease Instance = new();
-        public void Dispose() { }
-    }
-}
 
 /// <summary>
 /// Runs one lane under a hard wall-clock budget. A timeout/cancellation returns without awaiting
@@ -111,28 +9,28 @@ internal static class LaneExecution
 {
     internal sealed record Result<T>(T? Value, bool TimedOut, bool Cancelled, Exception? Fault = null)
     {
-        public LaneExecutionState State { get; init; }
-        public LaneExecutionLease Lease { get; init; } = null!;
+        public LaneState State { get; init; }
+        public LaneLease Lease { get; init; } = null!;
 
         /// <summary>Observed wrapper for work that outlived the deadline.</summary>
         public Task? DetachedTask { get; init; }
     }
 
     public static async Task<Result<T>> RunAsync<T>(
-        Func<LaneExecutionLease, CancellationToken, Task<T>> action,
+        Func<LaneLease, CancellationToken, Task<T>> action,
         TimeSpan deadline,
         CancellationToken callerCancellation)
     {
         ArgumentNullException.ThrowIfNull(action);
         if (deadline <= TimeSpan.Zero) throw new ArgumentOutOfRangeException(nameof(deadline));
 
-        var lease = new LaneExecutionLease();
+        var lease = new LaneLease();
         if (callerCancellation.IsCancellationRequested)
         {
-            lease.TryTransition(LaneExecutionState.Cancelled);
+            lease.TryTransition(LaneState.Cancelled);
             return new Result<T>(default, false, true)
             {
-                State = LaneExecutionState.Cancelled,
+                State = LaneState.Cancelled,
                 Lease = lease,
             };
         }
@@ -146,19 +44,19 @@ internal static class LaneExecution
         }
         catch (OperationCanceledException) when (callerCancellation.IsCancellationRequested)
         {
-            lease.TryTransition(LaneExecutionState.Cancelled);
+            lease.TryTransition(LaneState.Cancelled);
             return new Result<T>(default, false, true)
             {
-                State = LaneExecutionState.Cancelled,
+                State = LaneState.Cancelled,
                 Lease = lease,
             };
         }
         catch (Exception ex)
         {
-            lease.TryTransition(LaneExecutionState.Failed);
+            lease.TryTransition(LaneState.Failed);
             return new Result<T>(default, false, false, ex)
             {
-                State = LaneExecutionState.Failed,
+                State = LaneState.Failed,
                 Lease = lease,
             };
         }
@@ -171,10 +69,10 @@ internal static class LaneExecution
             try
             {
                 var value = await work.ConfigureAwait(false);
-                if (lease.TryTransition(LaneExecutionState.Succeeded))
+                if (lease.TryTransition(LaneState.Succeeded))
                     return new Result<T>(value, false, false)
                     {
-                        State = LaneExecutionState.Succeeded,
+                        State = LaneState.Succeeded,
                         Lease = lease,
                     };
 
@@ -183,19 +81,19 @@ internal static class LaneExecution
             }
             catch (OperationCanceledException) when (callerCancellation.IsCancellationRequested)
             {
-                lease.TryTransition(LaneExecutionState.Cancelled);
+                lease.TryTransition(LaneState.Cancelled);
                 return new Result<T>(default, false, true)
                 {
-                    State = LaneExecutionState.Cancelled,
+                    State = LaneState.Cancelled,
                     Lease = lease,
                 };
             }
             catch (Exception ex)
             {
-                if (lease.TryTransition(LaneExecutionState.Failed))
+                if (lease.TryTransition(LaneState.Failed))
                     return new Result<T>(default, false, false, ex)
                     {
-                        State = LaneExecutionState.Failed,
+                        State = LaneState.Failed,
                         Lease = lease,
                     };
 
@@ -208,12 +106,12 @@ internal static class LaneExecution
         // the deadline task, even though the caller token was already cancelled. Caller
         // cancellation is authoritative once observed; do not misclassify it as a timeout.
         var terminal = completed == cancellationTask || callerCancellation.IsCancellationRequested
-            ? LaneExecutionState.Cancelled
-            : LaneExecutionState.TimedOut;
+            ? LaneState.Cancelled
+            : LaneState.TimedOut;
         lease.TryTransition(terminal);
         laneCancellation.Cancel(throwOnFirstException: false);
         var observedDetached = ObserveDetachedAsync(work, lease);
-        return new Result<T>(default, terminal == LaneExecutionState.TimedOut, terminal == LaneExecutionState.Cancelled)
+        return new Result<T>(default, terminal == LaneState.TimedOut, terminal == LaneState.Cancelled)
         {
             State = terminal,
             Lease = lease,
@@ -221,7 +119,7 @@ internal static class LaneExecution
         };
     }
 
-    private static async Task ObserveDetachedAsync<T>(Task<T> work, LaneExecutionLease lease)
+    private static async Task ObserveDetachedAsync<T>(Task<T> work, LaneLease lease)
     {
         try
         {
@@ -246,17 +144,17 @@ internal static class LaneExecution
         }
     }
 
-    private static Result<T> TerminalResultAfterLateCompletion<T>(LaneExecutionLease lease) =>
+    private static Result<T> TerminalResultAfterLateCompletion<T>(LaneLease lease) =>
         lease.State switch
         {
-            LaneExecutionState.TimedOut => new Result<T>(default, true, false)
+            LaneState.TimedOut => new Result<T>(default, true, false)
             {
-                State = LaneExecutionState.TimedOut,
+                State = LaneState.TimedOut,
                 Lease = lease,
             },
-            LaneExecutionState.Cancelled => new Result<T>(default, false, true)
+            LaneState.Cancelled => new Result<T>(default, false, true)
             {
-                State = LaneExecutionState.Cancelled,
+                State = LaneState.Cancelled,
                 Lease = lease,
             },
             _ => new Result<T>(default, false, false)

@@ -46,7 +46,7 @@ public sealed class ParentRelationTests : IDisposable
             placement, () => { });
 
         var decided = await authority.DecideAsync(source, CancellationToken.None);
-        var assembly = await StructureAssembler.AssembleAsync(source, decided, PrimaryOccurrenceSelection.EverySourceOccurrence,
+        var assembly = await StructureAssembler.AssembleAsync(source, decided, PrimaryOccurrences.EverySourceOccurrence,
             CancellationToken.None);
 
         var chapterId = assembly.Structure.Elements.Single(e => e.Sources.Any(s => s.SourceId == chapter.SourceId)).Id;
@@ -84,10 +84,10 @@ public sealed class ParentRelationTests : IDisposable
         {
             ["placements"] = new JsonArray(new JsonObject { ["alias"] = article.Alias, ["parent"] = general.Alias }),
         }.ToJsonString());
-        var authority = new HeadingAuthorityResult(decisions,
+        var authority = new SelectionResult(decisions,
             new[] { Bound(chapter), Bound(general), Bound(article) }, placement, (audit, _) => audit, null);
 
-        var assembly = await StructureAssembler.AssembleAsync(source, authority, PrimaryOccurrenceSelection.EverySourceOccurrence,
+        var assembly = await StructureAssembler.AssembleAsync(source, authority, PrimaryOccurrences.EverySourceOccurrence,
             CancellationToken.None);
 
         Assert.DoesNotContain(assembly.Validated, v => v.SourceId == general.SourceId);

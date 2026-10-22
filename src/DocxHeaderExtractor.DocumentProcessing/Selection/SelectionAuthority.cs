@@ -37,7 +37,7 @@ internal sealed class SelectionAuthority(
     internal const string AuthorityId = "pdf-v6-selected-lines-heading-authority-v1";
     internal const string Reason = "pdf-v6-selected-lines-v1";
 
-    public async Task<HeadingAuthorityResult> DecideAsync(DocumentSourceSnapshot source, CancellationToken ct)
+    public async Task<SelectionResult> DecideAsync(DocumentSourceSnapshot source, CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(source);
         ensureActive();
@@ -58,7 +58,7 @@ internal sealed class SelectionAuthority(
         var unknown = selection.SelectedAliases.Count(alias => !atoms.ContainsKey(alias));
         var atomCount = source.Atoms.Count;
 
-        RunAudit Complete(RunAudit audit, HeadingStructureAssembly assembly) => audit with
+        RunAudit Complete(RunAudit audit, StructureAssembly assembly) => audit with
         {
             RawModelResponses = selection.ModelAnswers.Concat(assembly.PlacementObservation?.ModelEvidence ?? []).ToArray(),
             SelectionProviderCalls = selection.ProviderCalls,
@@ -82,7 +82,7 @@ internal sealed class SelectionAuthority(
         { Source = new(source.Atoms, selection.AliasStates ?? selection.SelectedAliases.ToDictionary(a => a,
             _ => new HeadingAliasState("SELECT", "SELECT", null, "READY_FOR_BINDING")), source.SourceSha256)
             { LocationByAlias = source.Evidence.ToDictionary(e => e.SourceAlias, e => e.LocationFacts) } };
-        return new HeadingAuthorityResult(decisions, bound, placementTransport, Complete, evidence);
+        return new SelectionResult(decisions, bound, placementTransport, Complete, evidence);
     }
 
     /// <summary>
@@ -150,19 +150,3 @@ internal sealed class SelectionAuthority(
         return new CanonicalSemanticBoundHeading(primary.Alias, primary.SourceId, primary.Ordinal, string.Join(" ", parts.Select(value => value.Text)), "ESTABLISHES_STRUCTURE", "heading", "document_body", [], parts[0].Start, parts[0].End) { Parts = parts };
     }
 }
-
-/// <summary>What an authority decided, plus what the shared stages need to continue.</summary>
-/// <param name="Decisions">Exact heading extents the authority selected.</param>
-/// <param name="BoundHeadings">The same headings as bound semantic claims, input to placement and hierarchy.</param>
-/// <param name="PlacementTransport">Transport for the bounded placement follow-up; null when none ran.</param>
-/// <param name="PlacementEvidence">Source context, upstream states and optional style measurements for placement.</param>
-/// <param name="CompleteAudit">
-/// Adds the authority's own audit facts (raw responses, contracts, lane telemetry) to the route audit
-/// once the shared stages have run.
-/// </param>
-internal sealed record HeadingAuthorityResult(
-    IReadOnlyList<HeadingExtentDecision> Decisions,
-    IReadOnlyList<CanonicalSemanticBoundHeading> BoundHeadings,
-    IInferenceTransport? PlacementTransport,
-    Func<RunAudit, HeadingStructureAssembly, RunAudit> CompleteAudit,
-    HeadingPlacementEvidence? PlacementEvidence = null);

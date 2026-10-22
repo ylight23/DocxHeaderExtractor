@@ -81,7 +81,7 @@ public sealed class StructuredInferenceTransportTests
         }, autoVerify: false);
         using var http = new HttpClient(handler);
         using var transport = new OpenRouterInferenceTransport(http, new RemoteInferenceOptions { ApiKey = "sk-test", MaxOutputTokens = configuredCap });
-        using var leaseBound = LeaseTransport.Bind(transport, new LaneExecutionLease());
+        using var leaseBound = LeaseTransport.Bind(transport, new LaneLease());
         var result = await ParentResolver.PlaceWithObservationAsync(bound, leaseBound, CancellationToken.None, evidence);
         var completed = finish == "stop";
         Assert.Equal(0, result.Observation.VerifiedCount);

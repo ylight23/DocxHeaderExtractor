@@ -23,7 +23,7 @@ namespace DocxHeaderExtractor.Tests;
 /// selector that answers from a fixed alias set and a transport that makes no provider call.
 /// </summary>
 [Trait("Category", "Slow")]
-public sealed class PdfV6SelectedLinesLaneTests
+public sealed class PdfLaneTests
 {
     private const string Pdf = "todo10_8/heading_corpus_100/05_bien_ban_hop/072_ICP_TAG_Minutes_Mar_2025.pdf";
 
