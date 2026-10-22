@@ -202,5 +202,49 @@
         "sha256": "504"
       }
     ]
+  },
+  "conversations": {
+    "placement.evidence": {
+      "requests": [
+        "c8e68eeeffdd15115bbc2bda743b56160ffdb1791e1cde1247e3afdaed84a158 max=2144",
+        "d9429e2be06a220ac8fa40b573d0b1edb6e171404a452c7e32b8ac96edfa2d00 max=1504",
+        "d9429e2be06a220ac8fa40b573d0b1edb6e171404a452c7e32b8ac96edfa2d00 max=1504",
+        "8b4ed071f857c9c55ae2ba18fe456227382d142c1d73ddfa0b5c81d936f06aad max=992"
+      ],
+      "parents": "e324d3041ff17a2fe39a804dd04c000060ca3de6e537a9a64e90a5fc7692c95e",
+      "observation": "f0b4eb3e4f1a90d66b118d82b5ea11613b859eaa76a8460a1a86df18c9fb5f6c"
+    },
+    "placement.plain": {
+      "requests": [
+        "c630e5b7b7f18d156be0c3c027230004e61fc32d2af16e156f57cac3fce19070 expected=23"
+      ],
+      "parents": "c3c2b0c5a49a003d5dc4758da2a762a7a48f362a2cba80a8915590ee934bb065",
+      "observation": "3cc49a543457fea8bfa96e6eea479feef7b78d221dece7672ba96f15b502c1e8"
+    },
+    "placement.measurements": {
+      "requests": [
+        "02334d4bc0421e94d3529d383046cdc5e3a8ffbe126dc17b1664c9a33e52a713 expected=23"
+      ],
+      "parents": "c3c2b0c5a49a003d5dc4758da2a762a7a48f362a2cba80a8915590ee934bb065",
+      "observation": "3cc49a543457fea8bfa96e6eea479feef7b78d221dece7672ba96f15b502c1e8"
+    },
+    "unit.docx": {
+      "requests": [
+        "967a527838e6ad0bc9a482d515304dd54180f14ceec7f0336d02240dfa25c0b4",
+        "51c1c969b5a408dcf87492936cc236885d9351d4e502cfcd97801131959ac2a3",
+        "19dd842e6b4f108647fd928d703609fe95fa24cff037ab01f94b3c30ad64d9c4"
+      ],
+      "status": "FAILED",
+      "failure": "PROTOCOL:REPLY_NOT_JSON:UNCHANGED"
+    },
+    "unit.scan": {
+      "requests": [
+        "c76f6d70af60c5c493e8d848e6729a184e063e42d0ff08e8248822db11414bc4",
+        "3cf4e0dc99d7cde8f604a16687e1ad6d50b0f9a7618af974d6de24ffbf5a1bd0",
+        "4d66c2c3ad7d961a428b448de4ae80fbb858522404bfa0e576dd6e4689f332c4"
+      ],
+      "status": "FAILED",
+      "failure": "PROTOCOL:REPLY_NOT_JSON:UNCHANGED"
+    }
   }
 }

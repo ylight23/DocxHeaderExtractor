@@ -15,11 +15,11 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class EvidencePlacementTests
 {
-    const string C3 = "P015-L010", D34 = "P015-L012", D35 = "P015-L019", C4 = "P019-L001", C5 = "P021-L010", D46 = "P021-L012", D47 = "P021-L014";
+    internal const string C3 = "P015-L010", D34 = "P015-L012", D35 = "P015-L019", C4 = "P019-L001", C5 = "P021-L010", D46 = "P021-L012", D47 = "P021-L014";
     const string Appendix = "P023-L001", Part1 = "P023-L002", Intro = "P023-L003", Child = "P023-L004";
 
     // Synthetic source fixture for protocol and graph regressions, not Gold or actual provider output.
-    static (CanonicalSemanticBoundHeading[] Bound, HeadingPlacementEvidence Evidence, Dictionary<string, string> Parents) Fixture(string? missingStage = null)
+    internal static (CanonicalSemanticBoundHeading[] Bound, HeadingPlacementEvidence Evidence, Dictionary<string, string> Parents) Fixture(string? missingStage = null)
     {
         (string Alias, string Text, string Parent)[] rows = [
             ("P008-L013", "Chương II", "ROOT"), ("P011-L001", "Mục 3 CHỨNG THỰC CHỮ KÝ", "P008-L013"),

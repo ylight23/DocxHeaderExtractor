@@ -3,7 +3,9 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Placement;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
@@ -139,11 +141,98 @@ public sealed class AgentWireGoldenTests
         ]);
     }
 
+    /// <summary>A transport that records what each call sends (system prompt and user message, by SHA-256, with the output budget) and answers
+    /// from a script.</summary>
+    private sealed class Recorder(Func<JsonNode?, string> script) : IStructuredInferenceTransport
+    {
+        public JsonArray Requests { get; } = [];
+        public string ModelName => "recorded";
+        public int ContextSize => 100_000;
+        public string RuntimeDescription => "No API calls";
+        public int SharedPrefixTokens => 0;
+
+        public Task<StructuredInferenceReply> CompleteStructuredAsync(string systemPrompt, string userMessage, int maxOutputTokens, CancellationToken ct = default)
+        {
+            Requests.Add($"{Sha(systemPrompt + "\0" + userMessage)} max={maxOutputTokens}");
+            return Task.FromResult(new StructuredInferenceReply(script(JsonNode.Parse(userMessage)), "stop", maxOutputTokens));
+        }
+
+        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0)
+        {
+            Requests.Add($"{Sha(systemPrompt + "\0" + userMessage)} expected={expectedItemCount}");
+            return Task.FromResult(script(JsonNode.Parse(userMessage)));
+        }
+
+        public void Dispose() { }
+    }
+
+    /// <summary>The source-grounded placement conversation: two batches, one row refused and named in the next round, and what it decided.</summary>
+    private static JsonObject PlacementWithEvidence()
+    {
+        var (bound, evidence, parents) = EvidencePlacementTests.Fixture();
+        parents[EvidencePlacementTests.C3] = EvidencePlacementTests.D35;   // a later heading: refused, then named in the next round
+        using var model = new Recorder(p => HierarchyTestProtocol.Reply(p!.ToJsonString(), parents)!);
+        var result = ParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence).GetAwaiter().GetResult();
+        return Placement(model, result);
+    }
+
+    /// <summary>The single-call placement used without source evidence: the plain packet, and the packet with style measurements.</summary>
+    private static JsonObject PlacementWithoutSource(bool measurements)
+    {
+        var (bound, _, _) = EvidencePlacementTests.Fixture();
+        var evidence = measurements
+            ? new DocxHeaderExtractor.Contracts.Authority.HeadingPlacementEvidence("{\"styles\":[]}", new Dictionary<string, string> { [bound[0].Alias] = "{\"sizePt\":14}" })
+            : null;
+        using var model = new Recorder(_ => "not json");
+        var result = ParentResolver.PlaceWithObservationAsync(bound, model, CancellationToken.None, evidence).GetAwaiter().GetResult();
+        return Placement(model, result);
+    }
+
+    private static JsonObject Placement(Recorder model, ParentResolver.PlacementResult result)
+    {
+        var observation = result.Observation with { Seconds = 0, Calls = result.Observation.Calls.Select(c => c with { Seconds = 0 }).ToArray() };
+        return new JsonObject
+        {
+            ["requests"] = model.Requests.DeepClone(),
+            ["parents"] = Sha(string.Join("\n", result.Headings.Select(h => h.Alias + " " + string.Join(",", h.RelationHints)))),
+            ["observation"] = Sha(JsonSerializer.Serialize(observation)),
+        };
+    }
+
+    /// <summary>One unit conversation with a scripted model: a facts call, an answer that is not JSON (repaired), then the same answer (refused as
+    /// unchanged). Every request the unit sends is recorded by its SHA-256.</summary>
+    private static JsonObject Unit(IAgentSource source)
+    {
+        var (decide, _) = source.Scope(0);
+        var tools = source.Flavor.CreateTools(source);
+        var ordered = decide.OrderBy(tools.PositionOf).ToArray();
+        AgentProtocol.ModelTurn Reply(string unitId, int turn, PreparedRequest request) => turn == 1
+            ? new(null, [new AgentProtocol.ToolCall("call-1", "get_line_facts", $"{{\"first\":\"{ordered[0]}\",\"last\":\"{ordered[^1]}\",\"offset\":0}}")], "tool_calls")
+            : new("not json", [], "stop");
+        var outcome = AgentUnit.Run(source, 0, Reply, new AgentBudget(100, 100), retryDelayMs: 0);
+        return new JsonObject
+        {
+            ["requests"] = new JsonArray(outcome.RequestSha256s.Select(s => (JsonNode)s!).ToArray()),
+            ["status"] = outcome.Status,
+            ["failure"] = outcome.Failure,
+        };
+    }
+
+    private static JsonObject Conversations() => new()
+    {
+        ["placement.evidence"] = PlacementWithEvidence(),
+        ["placement.plain"] = PlacementWithoutSource(measurements: false),
+        ["placement.measurements"] = PlacementWithoutSource(measurements: true),
+        ["unit.docx"] = Unit(DocxAgentSource.Load(TestRepository.Path(Docx), null, out var failure) ?? throw new InvalidOperationException(failure)),
+        ["unit.scan"] = Unit(ProductionGroundedRegroupTests.Source()),
+    };
+
     private static JsonObject Current() => new()
     {
         ["prompts"] = Prompts(),
         ["toolDefinitions"] = ToolDefinitions(),
         ["toolCalls"] = new JsonObject { ["docx"] = DocxCalls(), ["scan"] = ScanCalls() },
+        ["conversations"] = Conversations(),
     };
 
     [Fact]
@@ -171,6 +260,9 @@ public sealed class AgentWireGoldenTests
                 if (want.ElementAtOrDefault(i)?.ToJsonString() != got.ElementAtOrDefault(i)?.ToJsonString())
                     differences.Add($"toolCalls.{flavor}[{i}] {want.ElementAtOrDefault(i)?["call"]}");
         }
+        foreach (var (id, value) in golden["conversations"]!.AsObject())
+            if (current["conversations"]![id]?.ToJsonString() != value!.ToJsonString())
+                differences.Add($"conversations.{id}");
         Assert.True(current["prompts"]!.AsObject().Count == golden["prompts"]!.AsObject().Count, "a prompt was added or removed: record the golden again");
         Assert.True(differences.Count == 0, "What a model reads changed: " + string.Join("; ", differences));
     }
