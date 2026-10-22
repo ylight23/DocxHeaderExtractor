@@ -44,20 +44,3 @@ public interface ITaskRunStore
     ValueTask SaveAsync(PersistedTaskRun run, CancellationToken ct = default);
     ValueTask<PersistedTaskRun?> LoadAsync(RunStorageKey key, CancellationToken ct = default);
 }
-
-public sealed record TaskTelemetryEvent(
-    string RunId,
-    string Stage,
-    string Outcome,
-    DateTimeOffset OccurredAt,
-    IReadOnlyDictionary<string, string> Dimensions);
-
-public interface ITaskTelemetrySink
-{
-    ValueTask RecordAsync(TaskTelemetryEvent telemetry, CancellationToken ct = default);
-}
-
-public interface ISecretRedactor
-{
-    string Redact(string value);
-}
