@@ -48,6 +48,23 @@ public sealed class AgentWireGoldenTests
         ["scan.vision"] = Sha(ScanVisionPreflight.SystemPrompt),
         ["placement.source"] = Sha(EvidenceHeadingPlacement.SourcePrompt),
         ["placement.raw"] = Sha(HeadingParentResolver.RawPlacementPrompt),
+        // The repair messages a refused answer receives: every code with its own wording, and the forms that name targets or a detail.
+        ["repair.TOOL_CROP_REQUIRED_NOT_REQUESTED"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:TOOL_CROP_REQUIRED_NOT_REQUESTED")),
+        ["repair.TOOL_FACTS_REQUIRED_NOT_REQUESTED"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED")),
+        ["repair.TOOL_CALL_AFTER_TOOL_CAP"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:TOOL_CALL_AFTER_TOOL_CAP")),
+        ["repair.EVIDENCE_NOT_SHOWN"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:EVIDENCE_NOT_SHOWN")),
+        ["repair.COVERAGE_INCOMPLETE"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:COVERAGE_INCOMPLETE")),
+        ["repair.ANALYSIS_INVALID"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:ANALYSIS_INVALID")),
+        ["repair.REPLY_OVER_CAP"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:REPLY_OVER_CAP")),
+        ["repair.REASON_INVALID"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:REASON_INVALID")),
+        ["repair.REPLY_NOT_JSON"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:REPLY_NOT_JSON")),
+        ["repair.other"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:SOMETHING_ELSE")),
+        ["repair.READING_VIEW_UNKNOWN"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:READING_VIEW_UNKNOWN", null)),
+        ["repair.HEADING_EXTENT"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:HEADING_EXTENT_OUTSIDE", null, "the extent ends after the text")),
+        ["repair.KEY_REPEATED"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:KEY_REPEATED", null)),
+        ["repair.TOOL_FACTS_INCOMPLETE.named"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:TOOL_FACTS_INCOMPLETE",
+            Enumerable.Range(1, 45).Select(i => $"L{i:0000}:S0").ToArray())),
+        ["repair.COVERAGE_INCOMPLETE.named"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:COVERAGE_INCOMPLETE", ["L0001:S0", "L0002:S0"])),
     };
 
     private static JsonObject ToolDefinitions() => new()
