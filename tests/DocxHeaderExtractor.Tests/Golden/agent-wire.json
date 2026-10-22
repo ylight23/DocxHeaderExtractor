@@ -1,0 +1,190 @@
+{
+  "prompts": {
+    "pdf.system": "7afd4abfdd10de122606477c6f816c57cf791a13500e2bba543aca634b1e6a1d",
+    "pdf.instruction": "c5c5b6939b99d4cb907a59b2da472d14e1ffc7e35067c1ae48ca0f0ccabdb793",
+    "pdf.instructionD412": "2d057c62aaf69297afa46f3dec8d8b88720893491c5620ecfcc51562e9e03884",
+    "pdf.instructionStructuralV1": "c5c5b6939b99d4cb907a59b2da472d14e1ffc7e35067c1ae48ca0f0ccabdb793",
+    "pdf.instructionFormattingEvidenceV2": "c2fa29c3a9dcdc8b315eb135edc69f98da4f9d4fbaf9a7c0f6f02b62fb7dbf57",
+    "docx.system": "ed2a40326858c63814cdfc1b825315c36bf96d55a46f67b0b6ad48ea456b2cd2",
+    "docx.instruction": "17d4b6a950b2d940cf2112170a5efb83df22aa508f8a6920e796d1326d85bdd2",
+    "scan.system": "5e166a6325dd6c90dc914ca266b04392b691d1157ab619aeb81735621a751383",
+    "scan.instruction": "fd013d024c87d41eec392ed4cd03d61bb29842dfc56d0000f0050154342d23b3",
+    "scan.placementNote": "ea19b88f85195bc90eb31d993f26590b168f896a0136d3b1d390f9e4c4e3676a",
+    "grouping.shared": "efa339f2628356523a374c143742cb0251a2c96b101375c48e7b4fb302aad92f",
+    "grouping.docx": "ac4d40a764693c5fc6d8415e13dfb09ea0d2bb66ac299a8ab2f5f6d8fbd34e4f",
+    "grouping.scan": "0ad6210148e6e236de252fd5824c502dff65c4b6c8bfe7de408d8a7a964e322d",
+    "verification": "fa6990051100cdccfff66a26cedcd832278f85ac3efe2f7e60e0a457a062be95",
+    "siblingReview": "f280b6bed37ce4ac707f1c71577be25a8eb8b247ac92751fd6983419a332b14d",
+    "selectionAudit": "ed4b1aa1a2507afbd93320d269791c45552d8c2253fa680f56a406c3ae34c855",
+    "scan.transcription": "4f8571d90a71ec48d7b85809c2b5c01051d1c0b1e62698d960219998d447efcb",
+    "scan.vision": "ce27d8b07b1d5b7e4412d5e234763f65364259132165db26a842b71af80d34b5",
+    "placement.source": "c612d55992ec5994f7ca255474af4c9967aaff9c44aec90b331203a532a1d7fc",
+    "placement.raw": "dd6de6a7088be176f89797842183d0be38774d838652606c3128019ac0d47e9f"
+  },
+  "toolDefinitions": {
+    "pdf": "a4a4e0db9447c3db0b3ed827537948b3beef0131c15f6336f26328b16d16bd95",
+    "docx": "ecf24545a3e656b1da6aa4af0cefbf44b72e709b10ddb234083ca3e0275467ac",
+    "scan": "df2cdb00aef176cd0652d77691fcabd361b5a519a852bc86477ef6e933129544"
+  },
+  "toolCalls": {
+    "docx": [
+      {
+        "call": "get_line_facts {\"first\":\"S0001\",\"last\":\"S0011\",\"offset\":0}",
+        "status": "OK",
+        "sha256": "74f8729b33974dcfc342c61633c5a4603a62ae2c5d8af9df36c151d79618c1e7"
+      },
+      {
+        "call": "get_line_facts {\"first\":\"S0001\",\"last\":\"S0011\",\"offset\":5}",
+        "status": "OK",
+        "sha256": "da2d6da3a1daf9ef80d8da3d805341c679a9a9784996803b7bff60df87e1640d"
+      },
+      {
+        "call": "get_line_facts {\"first\":\"S0001\",\"last\":\"S0011\",\"offset\":0}",
+        "status": "OK",
+        "sha256": "7722c24006409b812e0fae5786aff6f95eff226ca761cc4662ad41a39953ef1b"
+      },
+      {
+        "call": "get_line_facts {\"first\":\"S0011\",\"last\":\"S0001\",\"offset\":0}",
+        "status": "INVALID_ARGUMENT",
+        "sha256": "3e40a18f01a8da8170410dc685791238848b7c4d627997cd4b88f91a069733cf"
+      },
+      {
+        "call": "get_source_context {\"alias\":\"S0021\",\"before\":3,\"after\":3}",
+        "status": "OK",
+        "sha256": "ade0e53a12f0ff404ccfa23d2ac6e91010ee9d25bfb8149a4db7f47202510149"
+      },
+      {
+        "call": "get_source_span {\"aliases\":[\"S0001\",\"S0002\",\"S0001\"]}",
+        "status": "OK",
+        "sha256": "cb9b8896c1750cd3fd778d065e9e63ff73901e96f46fc6cbc859f0405aeb2ca1"
+      },
+      {
+        "call": "search_document_text {\"query\":\"Điều\",\"mode\":\"literal\",\"offset\":0,\"limit\":10}",
+        "status": "OK",
+        "sha256": "127535d187e6b1d63b0112b8662bfcaafaf87b9d6928a2f37cab5e8f52e288bc"
+      },
+      {
+        "call": "search_document_text {\"query\":\"dieu 1\",\"mode\":\"normalized\",\"offset\":0,\"limit\":5}",
+        "status": "OK",
+        "sha256": "d7a6220d0085098caf722f58eb81f4626cb05ba6ec434263d88be54d82938de2"
+      },
+      {
+        "call": "get_repeated_occurrences {\"alias\":\"S0006\",\"maxResults\":10}",
+        "status": "OK",
+        "sha256": "289cee387678b18a652bcdc2a5736e408d04383f1c0ce1e97da15bc7665125e0"
+      },
+      {
+        "call": "compare_source_locations {\"first\":\"S0011\",\"second\":\"S0051\",\"window\":2}",
+        "status": "OK",
+        "sha256": "528fb13511f76ada866635b0ede1a1d082ffe812663a45b9ed3e03cf501140f6"
+      },
+      {
+        "call": "get_shape_sequence {\"alias\":\"S0031\"}",
+        "status": "OK",
+        "sha256": "99489cb0e0ead5b47116289aa63c7e497cffd54047745ceca0004d80f8da04bc"
+      },
+      {
+        "call": "get_source_context {\"alias\":\"NOT-AN-ALIAS\",\"before\":1,\"after\":1}",
+        "status": "INVALID_ARGUMENT",
+        "sha256": "3a6805670cfaf1fd01503e8d00cdf35cf2a5003c163f9452c4efa3533fac96de"
+      },
+      {
+        "call": "made_up_tool {}",
+        "status": "UNKNOWN_TOOL",
+        "sha256": "1eafd7499ef296e8896d82e9ca95ffebccdfe01a9c8e50afe81e5f74b9df376b"
+      },
+      {
+        "call": " {}",
+        "status": "UNKNOWN_TOOL",
+        "sha256": "28a0e911895d346321963c06f9534e699f50934fbcc72aa25f6864dae77739ba"
+      },
+      {
+        "call": "get_source_span not json",
+        "status": "INVALID_ARGUMENT",
+        "sha256": "2d92b6547b092fe46ba6ee9cdd6555b6169b22f6cb99ae036ac75c0bf7b4f5e6"
+      },
+      {
+        "call": "reject PER_TURN_CALL_CAP_EXCEEDED",
+        "status": "REJECTED",
+        "sha256": "daa2064557650b3eb5e41fcbe37fe13f995b9318d3a7f52cf33fced513476a2e"
+      },
+      {
+        "call": "reject UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED",
+        "status": "REJECTED",
+        "sha256": "682cad069fa27b42f07faeedda978bb067970e27920d721f98c4597222c01b90"
+      },
+      {
+        "call": "rejectionBytes",
+        "status": "SIZE",
+        "sha256": "504"
+      }
+    ],
+    "scan": [
+      {
+        "call": "get_line_facts {\"first\":\"P001-L001\",\"last\":\"P001-L006\",\"offset\":0}",
+        "status": "OK",
+        "sha256": "1e9dba4bec0aa58cb6fdd3581638c1d678ef5d8ae8c0b90d90c570fee2906910"
+      },
+      {
+        "call": "get_line_facts {\"first\":\"P001-L001\",\"last\":\"P001-L006\",\"offset\":0}",
+        "status": "OK",
+        "sha256": "363f41f089e978de5a0bffebb4d7883d478fb50e6d38bdc5a179c45c4f0b81f9"
+      },
+      {
+        "call": "get_source_context {\"alias\":\"P001-L004\",\"before\":2,\"after\":2}",
+        "status": "OK",
+        "sha256": "3ba6444a0aa10e96023f2ff4e64c43997d5ce3d3dd374ae60448bc40c66ef3f8"
+      },
+      {
+        "call": "search_document_text {\"query\":\"original\",\"mode\":\"literal\",\"offset\":0,\"limit\":5}",
+        "status": "OK",
+        "sha256": "942ecae6918cedd46f39884c7f876ce7adbebe87b18df1ccce059202afeca31e"
+      },
+      {
+        "call": "search_document_text {\"query\":\"ORIGINAL 1\",\"mode\":\"normalized\",\"offset\":0,\"limit\":5}",
+        "status": "OK",
+        "sha256": "bc4b6cbe008975ba231ee83533788fc0fd6592a512187b668228465e1a5efb35"
+      },
+      {
+        "call": "get_text_views {\"aliases\":[\"P001-L001\",\"P001-L002\"]}",
+        "status": "OK",
+        "sha256": "0ce8a4c0a01ce5867d43a5e4fa599a19f8fa136e4547cf486d482d506958134a"
+      },
+      {
+        "call": "get_source_integrity {}",
+        "status": "OK",
+        "sha256": "cb49705a56484622b27d5b9f69e91ea489601a42773cff613dd8969ec3e6c13a"
+      },
+      {
+        "call": "get_scan_crop {\"aliases\":[\"P001-L001\"]}",
+        "status": "OK",
+        "sha256": "e8559566a619a54f40843c779e21a26845c8262fd5828ee60b865b46ff547eeb"
+      },
+      {
+        "call": "get_source_context {\"alias\":\"NOT-AN-ALIAS\",\"before\":1,\"after\":1}",
+        "status": "INVALID_ARGUMENT",
+        "sha256": "9f6f1071a35d86189652619d6d95d3933661c919dab9bf1211b5447fb785ead7"
+      },
+      {
+        "call": "made_up_tool {}",
+        "status": "UNKNOWN_TOOL",
+        "sha256": "6e1ed5d98d81aca66a812afe9298f4756bba185e71489337e0986e181bf2a9c2"
+      },
+      {
+        "call": "reject PER_TURN_CALL_CAP_EXCEEDED",
+        "status": "REJECTED",
+        "sha256": "d8cc229d081b70b9894a9dddf85ca4e9892c853a6ebff01776b2b58bb33867cb"
+      },
+      {
+        "call": "reject UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED",
+        "status": "REJECTED",
+        "sha256": "411fa176e144f418c2ea7e283d6c494486362e7621a0763d17125b6ec6534ec4"
+      },
+      {
+        "call": "rejectionBytes",
+        "status": "SIZE",
+        "sha256": "504"
+      }
+    ]
+  }
+}
