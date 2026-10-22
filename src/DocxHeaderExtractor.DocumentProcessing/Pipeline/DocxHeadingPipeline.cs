@@ -1,16 +1,10 @@
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
 using DocxHeaderExtractor.Sources.Semantics.Validation;
 using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.Sources.Common;
-using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Materialization;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -44,20 +38,17 @@ internal static class DocxHeadingPipeline
         var apiKey = authorized.OpenRouterApiKey
             ?? throw new InvalidOperationException("DOCX_HEADING_SELECTOR_KEY_MISSING: the authorized route carries no provider key.");
 
-        var execution = await LaneExecution.RunAsync(
+        return await SelectedLinesLane.CompleteAsync(
             (lease, laneCt) => RunCoreAsync(source, sourceDocument.SourcePath, authorized, selector, apiKey, lease, laneCt),
             (semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline,
+            Messages,
             ct).ConfigureAwait(false);
-        if (execution.State == LaneExecutionState.TimedOut)
-            throw new TimeoutException("DOCX semantic execution exceeded its lane deadline.");
-        if (execution.State == LaneExecutionState.Cancelled)
-            throw new OperationCanceledException(ct);
-        if (execution.State == LaneExecutionState.Failed)
-            throw execution.Fault ?? new InvalidOperationException("DOCX semantic execution failed.");
-        if (!execution.Lease.CanPublishCompletedResult || execution.Value is null)
-            throw new InvalidOperationException("DOCX semantic result lost its execution lease.");
-        return execution.Value;
     }
+
+    private static readonly SelectedLinesLane.Messages Messages = new(
+        "DOCX semantic execution exceeded its lane deadline.",
+        "DOCX semantic execution failed.",
+        "DOCX semantic result lost its execution lease.");
 
     private static PipelineExecutionAudit SourceOnlyAudit(DocumentSourceSnapshot source)
     {
@@ -74,36 +65,12 @@ internal static class DocxHeadingPipeline
         DocumentSourceSnapshot source, string docxPath, IAgentRouteInferenceTransport authorized, IHeadingSelector selector, string apiKey,
         LaneExecutionLease lease, CancellationToken ct)
     {
-        var leaseBound = LeaseBoundInferenceTransport.Bind(authorized, lease);
-        var authority = new SelectedLinesHeadingAuthority(
-            selector,
-            docxPath,
-            apiKey,
-            // A DOCX has no parser layout blocks; the selector gives the division into headings itself.
-            new Dictionary<string, string>(StringComparer.Ordinal),
-            leaseBound,
-            () => { if (!lease.IsActive) throw new LaneLeaseLostException(); });
-        var decided = await authority.DecideAsync(source, ct).ConfigureAwait(false);
-        // The selected-lines authority defines no semantic node identity, so every validated source occurrence reaches the canonical structure.
-        var assembly = await HeadingStructureAssembler.AssembleAsync(
-            source, decided, PrimaryOccurrenceSelection.EverySourceOccurrence, ct).ConfigureAwait(false);
-
+        // A DOCX has no parser layout blocks; the selector gives the division into headings itself.
+        var decided = await SelectedLinesLane.DecideAsync(
+            source, selector, docxPath, apiKey, new Dictionary<string, string>(StringComparer.Ordinal), authorized, lease, ct).ConfigureAwait(false);
+        var assembly = await SelectedLinesLane.AssembleAsync(source, decided, ct).ConfigureAwait(false);
         var blocks = source.Occurrences.Select(item => new SourceBlockAudit(item.Id, 0, item.Text)).ToArray();
-        var audit = ExecutionAuditBoundary.Create(
-            RouteId,
-            blocks.Length,
-            blocks.Length,
-            0,
-            0,
-            blocks,
-            blocks,
-            decided.Decisions.Select(decision => new SourceBlockDecisionAudit(decision.Id, decision.SemanticFunction)).ToArray(),
-            assembly.Validated.Select(item => item.SourceId).ToArray());
-        return new HeadingPipelineResult(
-            assembly.Structure,
-            decided.CompleteAudit(audit, assembly) with { PlacementExecution = assembly.PlacementObservation },
-            RouteId,
-            assembly.Structure.Elements.Select(value => value.Id).ToHashSet(StringComparer.Ordinal))
-        { SourceCatalog = source.Catalog, ProjectionContext = assembly.ProjectionContext };
+        var audit = SelectedLinesLane.Audit(RouteId, blocks, 0, decided, assembly);
+        return SelectedLinesLane.Result(RouteId, source, assembly, SelectedLinesLane.Completed(decided, audit, assembly));
     }
 }

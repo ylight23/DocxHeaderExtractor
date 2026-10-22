@@ -1,17 +1,8 @@
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Materialization;
-using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
-using DocxHeaderExtractor.Contracts.Scan;
 using DocxHeaderExtractor.Sources.Scan;
-using DocxHeaderExtractor.DocumentProcessing.Provenance;
 using DocxHeaderExtractor.Sources.Provenance;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
@@ -32,7 +23,7 @@ internal static class ScanExtractionPipeline
             ?? throw new InvalidOperationException("SCAN_HEADING_SELECTOR_KEY_MISSING");
         var started = Environment.TickCount64;
         var sourceSha = CanonicalSemanticSourceHash.Compute(path);
-        var execution = await LaneExecution.RunAsync(async (lease, laneCt) =>
+        var result = await SelectedLinesLane.CompleteAsync(async (lease, laneCt) =>
         {
             options.Log?.Invoke("Scan: OCR/VLM preflight and heading selection");
             var prepared = await selector.PrepareAsync(path, key, laneCt).ConfigureAwait(false);
@@ -42,25 +33,20 @@ internal static class ScanExtractionPipeline
             var source = ScanSourceAdapter.Build(prepared);
             if (source.Atoms.Count == 0) throw new InvalidOperationException("SCAN_EMPTY_UNIVERSE");
             var fixedSelector = new PreparedSelector(selector.SelectorId, prepared.Selection);
-            var authority = new SelectedLinesHeadingAuthority(fixedSelector, path, key ?? "", new Dictionary<string, string>(),
-                transport is null ? null : LeaseBoundInferenceTransport.Bind(transport, lease),
-                () => { if (!lease.IsActive) throw new LaneLeaseLostException(); });
-            var decided = await authority.DecideAsync(source, laneCt).ConfigureAwait(false);
+            var decided = await SelectedLinesLane.DecideAsync(
+                source, fixedSelector, path, key ?? "", new Dictionary<string, string>(), transport, lease, laneCt).ConfigureAwait(false);
             options.Log?.Invoke("Scan: bind, place and materialize headings");
             var structureClock = System.Diagnostics.Stopwatch.StartNew();
-            var assembly = await HeadingStructureAssembler.AssembleAsync(source, decided, PrimaryOccurrenceSelection.EverySourceOccurrence, laneCt).ConfigureAwait(false);
+            var assembly = await SelectedLinesLane.AssembleAsync(source, decided, laneCt).ConfigureAwait(false);
             var stageSeconds = new Dictionary<string, double>(prepared.Diagnostics.StageSeconds)
             { ["structure"] = Math.Round(structureClock.Elapsed.TotalSeconds, 1) };
             var blocks = source.Atoms.Select(a => new SourceBlockAudit(a.SourceId, a.Page, a.Text)).ToArray();
             var pages = source.Atoms.Select(a => a.Page).Distinct().Count();
-            var audit = decided.CompleteAudit(ExecutionAuditBoundary.Create(RouteId, blocks.Length, blocks.Length, pages, pages,
-                blocks, blocks, decided.Decisions.Select(d => new SourceBlockDecisionAudit(d.Id, d.SemanticFunction)).ToArray(),
-                assembly.Validated.Select(v => v.SourceId).ToArray()), assembly) with
+            var audit = SelectedLinesLane.Completed(decided, SelectedLinesLane.Audit(RouteId, blocks, pages, decided, assembly), assembly) with
             {
                 PipelineId = RouteId,
                 Scan = prepared.Diagnostics with
                 { PlacementCalls = assembly.PlacementObservation?.LogicalCalls ?? 0, StageSeconds = stageSeconds },
-                PlacementExecution = assembly.PlacementObservation,
             };
             if (options.DisableLlm)
                 audit = audit with { SemanticLane = new LaneExecutionAudit("not-run", 0, 0, 0, 0, "llm-disabled") };
@@ -69,35 +55,28 @@ internal static class ScanExtractionPipeline
             if (!options.DisableLlm && (audit.SemanticLane!.FailureClass is not null || assembly.Validated.Count != decided.Decisions.Count))
                 audit = audit with { SemanticLane = audit.SemanticLane! with { Status = "partial",
                     FailureClass = audit.SemanticLane!.FailureClass ?? "SCAN_BINDING_INCOMPLETE" } };
-            return new HeadingPipelineResult(assembly.Structure, audit, options.DisableLlm ? "scan-llm-disabled" : RouteId,
-                assembly.Structure.Elements.Select(e => e.Id).ToHashSet(StringComparer.Ordinal))
-            { SourceCatalog = source.Catalog, ProjectionContext = assembly.ProjectionContext };
-        }, SemanticLaneOptions.Default.LaneDeadline, ct).ConfigureAwait(false);
-        if (execution.State == LaneExecutionState.Cancelled) throw new OperationCanceledException(ct);
-        if (execution.State == LaneExecutionState.TimedOut) throw new TimeoutException("Scan execution exceeded its lane deadline.");
-        if (execution.State == LaneExecutionState.Failed) throw execution.Fault ?? new InvalidOperationException("SCAN_EXECUTION_FAILED");
-        if (!execution.Lease.CanPublishCompletedResult || execution.Value is null) throw new InvalidOperationException("SCAN_EXECUTION_LEASE_LOST");
+            return SelectedLinesLane.Result(options.DisableLlm ? "scan-llm-disabled" : RouteId, source, assembly, audit);
+        }, SemanticLaneOptions.Default.LaneDeadline, Messages, ct).ConfigureAwait(false);
         ct.ThrowIfCancellationRequested();
         if (sourceSha != CanonicalSemanticSourceHash.Compute(path)) throw new InvalidOperationException("SCAN_SOURCE_CHANGED_DURING_RUN");
-        var result = execution.Value;
         var catalog = result.SourceCatalog!;
-        var sections = StructuralSectionProjection.Project(result.Structure, catalog);
-        var chunks = SectionChunkProjection.Project(sections, catalog, result.Structure, new DocumentChunkingPolicy(Math.Max(1, options.Chunking.TokenBudget)));
         var diagnostics = result.Audit!.Scan!;
-        var document = new DocumentExtractionResult(new DocumentIdentity(Path.GetFileNameWithoutExtension(path), Path.GetFileName(path), "scan", path),
-            catalog, result.Structure, sections, chunks,
-            new DocumentExtractionProvenance(RouteId, "scan-source-document", diagnostics.PreflightCalls + diagnostics.ConversationCalls + diagnostics.PlacementCalls));
-        var final = DocxExtractionPipeline.BuildFinalStructure(path, result.Audit, result.Structure, result.ProjectionContext);
-        var outline = new DocumentOutline
-        {
-            File = Path.GetFileName(path), ParagraphCount = catalog.Units.Count, SourceCount = catalog.Units.Count,
-            Headings = HeadingOutlineProjection.Project(result.Structure, result.EmittedElementIds, result.ProjectionContext, catalog),
-            ProductOutput = DocumentProductOutputProjector.Serialize(final, OutputDecisionPolicy.Decide(final)),
-            ElapsedMs = Environment.TickCount64 - started, Model = transport?.ModelName, DeterministicRoute = RouteId, RouteAudit = result.Audit,
-            Provenance = DocxExtractionPipeline.BuildProvenance(result.Audit, !options.DisableLlm && sendsDataExternally),
-        };
-        return new DocumentExtractionExecutionResult(document, outline) { HeadingPipeline = result };
+        return ExtractionOutput.Build(
+            new ExtractionOutput.Lane(
+                path,
+                new DocumentIdentity(Path.GetFileNameWithoutExtension(path), Path.GetFileName(path), "scan", path),
+                new DocumentExtractionProvenance(RouteId, "scan-source-document", diagnostics.PreflightCalls + diagnostics.ConversationCalls + diagnostics.PlacementCalls),
+                ProductSha256: null,
+                ParagraphCount: catalog.Units.Count,
+                SourceCount: catalog.Units.Count,
+                Route: RouteId,
+                Model: transport?.ModelName,
+                SentDataExternally: !options.DisableLlm && sendsDataExternally),
+            result, result.Structure, result.EmittedElementIds!, catalog, options, started);
     }
+
+    private static readonly SelectedLinesLane.Messages Messages = new(
+        "Scan execution exceeded its lane deadline.", "SCAN_EXECUTION_FAILED", "SCAN_EXECUTION_LEASE_LOST");
 
     sealed class PreparedSelector(string id, HeadingSelection selection) : IHeadingSelector
     {

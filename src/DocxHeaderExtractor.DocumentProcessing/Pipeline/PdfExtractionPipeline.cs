@@ -1,13 +1,9 @@
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.Sources.Pdf;
-using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -94,79 +90,33 @@ public static class PdfExtractionPipeline
         // consumer could be handed different text for exactly the occurrences where those two
         // disagree - which is the divergence this lane exists to rule out.
         var catalog = authority.SourceCatalog ?? new DocumentSourceCatalog([]);
-        var sections = StructuralSectionProjection.Project(authority.Structure, catalog);
-        var chunks = SectionChunkProjection.Project(
-            sections, catalog, authority.Structure,
-            new DocumentChunkingPolicy(Math.Max(1, options.Chunking.TokenBudget)));
-
-        var result = new DocumentExtractionResult(
-            new DocumentIdentity(
-                Path.GetFileNameWithoutExtension(file.LocalPath),
-                file.OriginalFileName,
-                "pdf",
-                file.LocalPath),
-            catalog,
+        // The outline's File is the checked-out name, as the DOCX lane reports it. OriginalFileName is richer, but a field that means the
+        // upload's name on one lane and the temp file's on the other is exactly the kind of quiet divergence this work is removing.
+        // ParagraphCount is the source occurrence count, which is what the field means on the DOCX side too.
+        return ExtractionOutput.Build(
+            new ExtractionOutput.Lane(
+                file.LocalPath,
+                new DocumentIdentity(Path.GetFileNameWithoutExtension(file.LocalPath), file.OriginalFileName, "pdf", file.LocalPath),
+                new DocumentExtractionProvenance(
+                    Route,
+                    "pdf-source-document",
+                    authority.Audit?.HeadingProviderCalls ?? authority.Audit?.RawModelResponses.Count ?? 0)
+                {
+                    ExecutionContract = ExecutionContracts.ExplicitUploadedPdfCanonical,
+                },
+                ProductSha256: file.Sha256,
+                ParagraphCount: catalog.Units.Count,
+                SourceCount: authority.Audit?.SourceBlocksSelected ?? 0,
+                Route: Route,
+                Model: used?.ModelName,
+                SentDataExternally: !options.DisableLlm && transportSendsDataExternally),
+            authority,
             authority.Structure,
-            sections,
-            chunks,
-            new DocumentExtractionProvenance(
-                "pdf-v6-selected-lines",
-                "pdf-source-document",
-                authority.Audit?.HeadingProviderCalls ?? authority.Audit?.RawModelResponses.Count ?? 0)
-            {
-                ExecutionContract = ExecutionContracts.ExplicitUploadedPdfCanonical,
-            });
-
-        return new DocumentExtractionExecutionResult(
-            result,
-            Outline(file, options, authority, catalog, used, transportSendsDataExternally, started))
-        { HeadingPipeline = authority };
+            authority.EmittedElementIds ?? authority.Structure.Elements.Select(element => element.Id).ToHashSet(StringComparer.Ordinal),
+            catalog,
+            options,
+            started);
     }
 
-    /// <summary>
-    /// The outline output for a PDF run.
-    /// <para>
-    /// <c>ParagraphCount</c> is the source occurrence count, which is the same thing this field
-    /// means on the DOCX side - how many source units the document was found to have.
-    /// </para>
-    /// </summary>
-    private static DocumentOutline Outline(
-        UploadedFile file,
-        PipelineOptions options,
-        HeadingPipelineResult authority,
-        DocumentSourceCatalog catalog,
-        IInferenceTransport? transport,
-        bool transportSendsDataExternally,
-        long started)
-    {
-        var audit = authority.Audit;
-        var product = new DocumentProductOutput(file.Sha256, []);
-        if (audit is not null)
-        {
-            var final = DocxExtractionPipeline.BuildFinalStructure(
-                file.LocalPath, audit, authority.Structure, authority.ProjectionContext);
-            product = DocumentProductOutputProjector.Serialize(final, OutputDecisionPolicy.Decide(final));
-        }
-
-        return new DocumentOutline
-        {
-            // The checked-out name, as the DOCX lane reports it. OriginalFileName is richer, but a
-            // field that means the upload's name on one lane and the temp file's on the other is
-            // exactly the kind of quiet divergence this work is removing.
-            File = Path.GetFileName(file.LocalPath),
-            ParagraphCount = catalog.Units.Count,
-            SourceCount = audit?.SourceBlocksSelected ?? 0,
-            Headings = HeadingOutlineProjection.Project(
-                authority.Structure,
-                authority.EmittedElementIds ?? authority.Structure.Elements
-                    .Select(element => element.Id).ToHashSet(StringComparer.Ordinal), authority.ProjectionContext, catalog),
-            ProductOutput = product,
-            ElapsedMs = Environment.TickCount64 - started,
-            Model = transport?.ModelName,
-            DeterministicRoute = "pdf-v6-selected-lines",
-            RouteAudit = audit,
-            Provenance = DocxExtractionPipeline.BuildProvenance(
-                audit, !options.DisableLlm && transportSendsDataExternally),
-        };
-    }
+    private const string Route = "pdf-v6-selected-lines";
 }

@@ -1,18 +1,10 @@
 using DocxHeaderExtractor.Sources.Common;
-using System.Security.Cryptography;
-using DocxHeaderExtractor.DocumentProcessing.Projection;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
 using DocxHeaderExtractor.Sources.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
 using DocxHeaderExtractor.Sources.Semantics.Validation;
-using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
-using DocxHeaderExtractor.Sources.OpenXmlLayer;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
@@ -93,63 +85,39 @@ public sealed class DocxExtractionPipeline : IDisposable
                 _scanSelector, _transportSendsDataExternally, ct).ConfigureAwait(false);
         var sourceDocument = DocxHeaderExtractor.Sources.Docx.DocxSourceCache.ReadOrLoad(inputPath, _options.SourceCacheRoot, _options.Extraction);
         if (_selector is DocxHeaderExtractor.Contracts.Routing.IPrimedDocumentSelector primed) primed.PrimeDocument(inputPath, _options.Extraction, sourceDocument);
-            var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
-            var authority = await DocxHeadingPipeline.RunAsync(
-                sourceDocument, transport, _selector, SemanticLaneOptions.Default, ct);
-            var audit = authority.Audit;
-            const string route = DocxHeadingPipeline.RouteId;
-            var reason = authority.Reason;
+        var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
+        var authority = await DocxHeadingPipeline.RunAsync(
+            sourceDocument, transport, _selector, SemanticLaneOptions.Default, ct);
+        var audit = authority.Audit;
+        const string route = DocxHeadingPipeline.RouteId;
 
-            var product = new DocumentProductOutput(FileSha256(inputPath), []);
-            var structure = ValidatedStructureFactory.Create([]);
-            IReadOnlySet<string> emittedIds = new HashSet<string>(StringComparer.Ordinal);
-            if (audit is not null)
-            {
-                var finalStructure = BuildFinalStructure(inputPath, audit, authority.Structure, authority.ProjectionContext);
-                var decisions = OutputDecisionPolicy.Decide(finalStructure);
-                product = DocumentProductOutputProjector.Serialize(finalStructure, decisions);
-                structure = authority.Structure;
-                emittedIds = authority.EmittedElementIds ?? structure.Elements
-                    .Select(element => element.Id).ToHashSet(StringComparer.Ordinal);
-            }
-
-            var sourceCatalog = DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument);
-            var headings = HeadingOutlineProjection.Project(
-                structure, emittedIds, authority.ProjectionContext, sourceCatalog);
-            _options.Log?.Invoke($"Authority route {route}: validated={headings.Count}; {reason}");
-            var sections = StructuralSectionProjection.Project(structure, sourceCatalog);
-            var chunks = SectionChunkProjection.Project(
-                sections, sourceCatalog, structure,
-                new DocumentChunkingPolicy(Math.Max(1, _options.Chunking.TokenBudget)));
-            var extractionResult = new DocumentExtractionResult(
-                new DocumentIdentity(
-                    sourceDocument.DocumentId,
-                    Path.GetFileName(inputPath),
-                    sourceDocument.SourceKind,
-                    inputPath),
-                sourceCatalog,
-                structure,
-                sections,
-                chunks,
+        // Without an audit (an empty source, or the model disabled) the route returns the source only.
+        var structure = audit is null ? ValidatedStructureFactory.Create([]) : authority.Structure;
+        IReadOnlySet<string> emittedIds = audit is null
+            ? new HashSet<string>(StringComparer.Ordinal)
+            : authority.EmittedElementIds ?? structure.Elements.Select(element => element.Id).ToHashSet(StringComparer.Ordinal);
+        var execution = ExtractionOutput.Build(
+            new ExtractionOutput.Lane(
+                inputPath,
+                new DocumentIdentity(sourceDocument.DocumentId, Path.GetFileName(inputPath), sourceDocument.SourceKind, inputPath),
                 new DocumentExtractionProvenance(
                     route,
                     "docx-source-document",
-                    _options.DisableLlm ? 0 : audit?.HeadingProviderCalls ?? audit?.RawModelResponses.Count ?? 0));
-            var outline = new DocumentOutline
-            {
-                File = Path.GetFileName(inputPath),
-                ParagraphCount = sourceDocument.Paragraphs.Count,
-                SourceCount = audit?.SourceBlocksSelected ?? 0,
-                Headings = headings,
-                ProductOutput = product,
-                ElapsedMs = Environment.TickCount64 - started,
-                Model = transport?.ModelName,
-                DeterministicRoute = route,
-                RouteAudit = audit,
-                Provenance = BuildProvenance(audit,
-                    !_options.DisableLlm && (_transportFactory?.SendsDataExternally ?? _transportSendsDataExternally)),
-            };
-            return new DocumentExtractionExecutionResult(extractionResult, outline) { HeadingPipeline = authority };
+                    _options.DisableLlm ? 0 : audit?.HeadingProviderCalls ?? audit?.RawModelResponses.Count ?? 0),
+                ProductSha256: null,
+                ParagraphCount: sourceDocument.Paragraphs.Count,
+                SourceCount: audit?.SourceBlocksSelected ?? 0,
+                Route: route,
+                Model: transport?.ModelName,
+                SentDataExternally: !_options.DisableLlm && (_transportFactory?.SendsDataExternally ?? _transportSendsDataExternally)),
+            authority,
+            structure,
+            emittedIds,
+            DocumentSourceCatalogBuilder.FromSourceDocument(sourceDocument),
+            _options,
+            started);
+        _options.Log?.Invoke($"Authority route {route}: validated={execution.Outline.Headings.Count}; {authority.Reason}");
+        return execution;
     }
 
     private async Task<IInferenceTransport> GetTransportAsync(CancellationToken ct)
@@ -161,42 +129,6 @@ public sealed class DocxExtractionPipeline : IDisposable
         _transport = await _transportFactory.CreateAgentRouteAsync(ct);
         return _transport;
     }
-
-    internal static CanonicalFinalStructure BuildFinalStructure(string docxPath, PipelineExecutionAudit audit,
-        ValidatedStructure structure, HeadingProjectionContext? projectionContext = null)
-    {
-        // Materializes only facts already validated upstream; resolves no identity, hierarchy or
-        // provider work.
-        return CanonicalFinalStructureProjection.Project(
-            FileSha256(docxPath),
-            audit.ValidatedStructures,
-            audit.HierarchyFacts,
-            CanonicalGroundingProjection.Project(structure, projectionContext));
-    }
-
-    internal static OutlineRunProvenance BuildProvenance(PipelineExecutionAudit? audit,
-        bool sentDataExternally)
-    {
-        if (audit is null)
-            return new OutlineRunProvenance("deterministic-ooxml", false, []);
-
-        var passes = new List<OutlinePass>();
-        if (audit.SemanticLane is { Scheduled: > 0, Completed: > 0 })
-            passes.Add(new("semantic-role", audit.SemanticLane.Completed, audit.SemanticLane.Scheduled, sentDataExternally));
-        if (audit.SpanLane is { Scheduled: > 0, Completed: > 0 })
-            passes.Add(new("heading-span", audit.SpanLane.Completed, audit.SpanLane.Scheduled, sentDataExternally));
-        passes.Add(new("source-facts", 1, audit.SourceBlocksAvailable, false));
-        passes.Add(new("proposal-validation", 1, audit.BlockDecisions.Count, false));
-        passes.Add(new("deterministic-hierarchy", 1, audit.ValidatedStructures.Count, false));
-        passes.Add(new("output-policy", 1, audit.ValidatedStructures.Count, false));
-        return new OutlineRunProvenance(
-            audit.SemanticLane is not null || audit.SpanLane is not null ? "configured-route" : "deterministic-ooxml",
-            sentDataExternally,
-            passes);
-    }
-
-    private static string FileSha256(string path) =>
-        Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path))).ToLowerInvariant();
 
     public void Dispose()
     {

@@ -1,12 +1,7 @@
 using DocxHeaderExtractor.Sources.Semantics.Validation;
-using DocxHeaderExtractor.Contracts.Authority;
-using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Authority;
 using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Materialization;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 using DocxHeaderExtractor.Sources.Common;
 using DocxHeaderExtractor.Sources.Pdf;
@@ -52,21 +47,19 @@ internal static class PdfHeadingPipeline
         await checkpoint.RecordSelectionAsync(
             pdfDetails.Blocks.Select(block => new PdfSelectedSourceIdentity(
                 block.Id, block.Page, block.Lines.Select(PdfLineIdentity.Of).ToArray(), block.DisplayText)).ToArray(), ct).ConfigureAwait(false);
-        var execution = await LaneExecution.RunAsync(
+        var result = await SelectedLinesLane.CompleteAsync(
             (lease, laneCt) => RunCoreAsync(authority, pdfDetails, authorized, selector, sourceName, apiKey, lease, laneCt),
             (semanticLaneOptions ?? SemanticLaneOptions.Default).LaneDeadline,
-            ct).ConfigureAwait(false);
-        await checkpoint.StopAcceptingWritesAndDrainAsync().ConfigureAwait(false);
-        if (execution.State == LaneExecutionState.TimedOut)
-            throw new TimeoutException("PDF semantic execution exceeded its lane deadline.");
-        if (execution.State == LaneExecutionState.Cancelled)
-            throw new OperationCanceledException(ct);
-        if (execution.State == LaneExecutionState.Failed)
-            throw execution.Fault ?? new InvalidOperationException("PDF semantic execution failed.");
-        if (!execution.Lease.CanPublishCompletedResult || execution.Value is null)
-            throw new InvalidOperationException("PDF semantic result lost its execution lease.");
-        return execution.Value with { CheckpointObservations = ["source-selection:completed"] };
+            Messages,
+            ct,
+            afterRun: checkpoint.StopAcceptingWritesAndDrainAsync).ConfigureAwait(false);
+        return result with { CheckpointObservations = ["source-selection:completed"] };
     }
+
+    private static readonly SelectedLinesLane.Messages Messages = new(
+        "PDF semantic execution exceeded its lane deadline.",
+        "PDF semantic execution failed.",
+        "PDF semantic result lost its execution lease.");
 
     private static PipelineExecutionAudit SourceOnlyAudit(DocumentSourceSnapshot authority, PdfSourceDetails pdfDetails)
     {
@@ -95,40 +88,14 @@ internal static class PdfHeadingPipeline
     private static async Task<HeadingPipelineResult> RunCoreAsync(DocumentSourceSnapshot source, PdfSourceDetails pdfDetails, IAgentRouteInferenceTransport authorized,
         IHeadingSelector selector, string pdfPath, string apiKey, LaneExecutionLease lease, CancellationToken ct)
     {
-        var leaseBound = LeaseBoundInferenceTransport.Bind(authorized, lease);
-        var authority = new SelectedLinesHeadingAuthority(
-            selector,
-            pdfPath,
-            apiKey,
-            pdfDetails.LayoutBlockByAtom,
-            leaseBound,
-            () => { if (!lease.IsActive) throw new LaneLeaseLostException(); });
-        var decided = await authority.DecideAsync(source, ct).ConfigureAwait(false);
-        // The selected-lines authority defines no semantic node identity, so every validated
-        // source occurrence reaches the canonical structure.
-        var assembly = await HeadingStructureAssembler.AssembleAsync(
-            source, decided, PrimaryOccurrenceSelection.EverySourceOccurrence, ct).ConfigureAwait(false);
-
+        var decided = await SelectedLinesLane.DecideAsync(source, selector, pdfPath, apiKey, pdfDetails.LayoutBlockByAtom, authorized, lease, ct).ConfigureAwait(false);
+        var assembly = await SelectedLinesLane.AssembleAsync(source, decided, ct).ConfigureAwait(false);
         var sourceBlocks = pdfDetails.Blocks.Select(block => new SourceBlockAudit(block.Id, block.Page, block.DisplayText)).ToArray();
         var pages = pdfDetails.Blocks.Select(block => block.Page).Distinct().Count();
-        var audit = ExecutionAuditBoundary.Create(
-            AuthorityId,
-            pdfDetails.Blocks.Count,
-            pdfDetails.Blocks.Count,
-            pages,
-            pages,
-            sourceBlocks,
-            sourceBlocks,
-            decided.Decisions.Select(decision => new SourceBlockDecisionAudit(decision.Id, decision.SemanticFunction)).ToArray(),
-            assembly.Validated.Select(item => item.SourceId).ToArray()) with
+        var audit = SelectedLinesLane.Audit(AuthorityId, sourceBlocks, pages, decided, assembly) with
         {
             HierarchyFacts = PdfHierarchyFactsInventory.Inspect(assembly.Validated, pdfDetails.Contexts),
         };
-        return new HeadingPipelineResult(
-            assembly.Structure,
-            decided.CompleteAudit(audit, assembly) with { PlacementExecution = assembly.PlacementObservation },
-            AuthorityId,
-            assembly.Structure.Elements.Select(value => value.Id).ToHashSet(StringComparer.Ordinal))
-        { SourceCatalog = source.Catalog, ProjectionContext = assembly.ProjectionContext };
+        return SelectedLinesLane.Result(AuthorityId, source, assembly, SelectedLinesLane.Completed(decided, audit, assembly));
     }
 }
