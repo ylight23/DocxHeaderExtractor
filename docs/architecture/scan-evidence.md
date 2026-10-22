@@ -32,7 +32,10 @@ or editable OOXML paragraphs. Sections and chunks use the same catalog the binde
 
 `routeAudit.scan` separates preflight and conversation calls/costs and records shared placement
 attempts; placement billing is not exposed by the shared transport and is not included in those
-two costs. Unit failures, missing OCR views and failed preflight calls make the result partial;
+two costs. A line with no readable text in its reading (the original view carries no text once
+Tesseract is not run, so a line without an accepted transcription reads empty) is left out of the
+source and listed in `routeAudit.scan.unreadableLines`. Unit failures, missing OCR views, failed
+preflight calls and unreadable lines make the result partial;
 CLI returns exit code 1 while retaining the usable JSON. Web reports `Partial` and its diagnostics.
 `scan-extract` remains the standalone diagnostic format and also returns 1 for incomplete results.
 

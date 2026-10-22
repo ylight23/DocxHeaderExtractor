@@ -249,17 +249,23 @@ public sealed class ScanProductionPipelineTests
     }
 
     [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public async Task Incomplete_units_or_preflight_remain_partial_and_keep_the_failure(bool preflight)
+    [InlineData("units")]
+    [InlineData("transcription")]
+    [InlineData("unreadable")]
+    public async Task Incomplete_units_or_preflight_remain_partial_and_keep_the_failure(string gap)
     {
         var p = Prepared(ScanPath);
-        p = preflight ? p with { Diagnostics = p.Diagnostics with { TranscriptionFailures = ["TRANSCRIBE-B001:CALL:FAILED"] } }
-            : p with { Selection = p.Selection with { UnitsComplete = 1, UnitsTotal = 2, UnitFailures = ["SEG-002:FAILED"] } };
+        p = gap switch
+        {
+            "transcription" => p with { Diagnostics = p.Diagnostics with { TranscriptionFailures = ["TRANSCRIBE-B001:CALL:FAILED"] } },
+            "unreadable" => p with { Diagnostics = p.Diagnostics with { UnreadableLines = ["P001-L009"] } },
+            _ => p with { Selection = p.Selection with { UnitsComplete = 1, UnitsTotal = 2, UnitFailures = ["SEG-002:FAILED"] } },
+        };
         using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
         var run = await runner.ExtractAsync(ScanPath);
         Assert.Equal("partial", run.Outline.RouteAudit!.SemanticLane!.Status);
-        Assert.Contains(preflight ? "SCAN_PREFLIGHT_INCOMPLETE" : "SEG-002:FAILED", run.Outline.RouteAudit.SemanticLane.FailureClass!, StringComparison.Ordinal);
+        Assert.Contains(gap == "units" ? "SEG-002:FAILED" : "SCAN_PREFLIGHT_INCOMPLETE", run.Outline.RouteAudit.SemanticLane.FailureClass!, StringComparison.Ordinal);
+        Assert.Equal(p.Diagnostics.UnreadableLines, run.Outline.RouteAudit.Scan!.UnreadableLines);
     }
 
     [Fact]

@@ -837,6 +837,28 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal(line.PrimaryReading, line.Readings[ScanOcrPreflight.OriginalView]);
     }
 
+    // 023 (s065): the scan no longer runs Tesseract, so the original view has boxes but no text, and a line whose transcription was not accepted
+    // read "" and failed the source catalog's span check. Such a line cannot be a heading: it is left out of the source and counted.
+    [Fact]
+    public void A_line_with_no_readable_text_is_left_out_of_the_source_and_counted()
+    {
+        var evidence = Evidence();
+        var original = evidence.Views.Single(v => v.Spec.ViewId == ScanOcrPreflight.OriginalView);
+        evidence = evidence with
+        {
+            Views = [original with { Pages = original.Pages.Select(p => p with { Lines = p.Lines.Select(l => l with { Text = "", Words = [] }).ToArray() }).ToArray() }],
+        };
+        var source = new ScanAgentSource(evidence, [], Transcriptions());
+        var selection = new HeadingSelection(new HashSet<string> { "P001-L002", "P001-L004" }, 1, 1, [], [], 0, 0);
+
+        var prepared = ScanSelector.PrepareSelection(source, selection);
+        var bound = ScanSourceAdapter.Build(prepared);
+
+        Assert.Equal(["P001-L001", "P001-L004"], prepared.Lines.Select(l => l.Alias));
+        Assert.Equal(["P001-L002", "P001-L003", "P001-L005"], prepared.Diagnostics.UnreadableLines);
+        Assert.Equal(["Chương I", "Điều 2. Thẩm quyền chứng thực"], bound.Catalog.Units.Select(u => u.Text));
+    }
+
     [Fact]
     public void Surface_facts_reach_the_first_request_and_the_facts_tool_without_becoming_membership_rules()
     {

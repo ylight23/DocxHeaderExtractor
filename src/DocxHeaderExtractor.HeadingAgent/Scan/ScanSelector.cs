@@ -116,7 +116,7 @@ public sealed class ScanSelector(string storeRoot, Func<HttpMessageHandler>? han
         ct.ThrowIfCancellationRequested();
         return (result, prepared! with { Diagnostics = new ScanRunDiagnostics(result.PreflightCalls, result.PreflightCostUsd,
             result.ProviderCalls, result.ProviderCostUsd, result.TranscribedLines, result.TranscriptionsAccepted, result.TranscriptionStatuses,
-            result.TranscriptionFailures, result.VisionFailures, result.OcrGaps, result.StageSeconds) });
+            result.TranscriptionFailures, result.VisionFailures, result.OcrGaps, result.StageSeconds) { UnreadableLines = prepared.Diagnostics.UnreadableLines } });
     }, ct);
 
     /// <summary>The conversation over stored evidence, observations and transcriptions.</summary>
@@ -161,6 +161,8 @@ public sealed class ScanSelector(string storeRoot, Func<HttpMessageHandler>? han
         };
     }
 
+    /// <summary>The source the binder reads. A line with no readable text in its chosen reading (the original view carries no text since the
+    /// scan dropped Tesseract, so a line without an accepted transcription reads empty) cannot be a heading: it is left out and counted.</summary>
     internal static ScanDocumentSelection PrepareSelection(ScanAgentSource source, HeadingSelection selection)
     {
         var lines = source.ScanLines.Select(l =>
@@ -171,9 +173,10 @@ public sealed class ScanSelector(string storeRoot, Func<HttpMessageHandler>? han
             return new ScanSourceLine(l.Alias, l.Primary.Id, l.Page, l.Primary.Box, l.PageWidth, l.PageHeight, text,
                 l.Primary.Text, view, readings, source.Transcription(l.Alias)?.Status, source.Facts[l.Alias].ToJsonString(), source.Transcription(l.Alias)?.Text);
         }).ToArray();
-        return new ScanDocumentSelection(source.SourceSha256, lines, selection,
+        var unreadable = lines.Where(l => string.IsNullOrWhiteSpace(l.Text)).Select(l => l.Alias).ToArray();
+        return new ScanDocumentSelection(source.SourceSha256, lines.Where(l => !string.IsNullOrWhiteSpace(l.Text)).ToArray(), selection,
             new ScanRunDiagnostics(0, 0, selection.ProviderCalls, selection.ProviderCostUsd, 0, 0,
-                new Dictionary<string, int>(), [], [], source.Evidence.Gaps, new Dictionary<string, double>()));
+                new Dictionary<string, int>(), [], [], source.Evidence.Gaps, new Dictionary<string, double>()) { UnreadableLines = unreadable });
     }
 
     /// <summary>The selected lines as headings, in reading order: the agent's division when it gave one, else one heading per line. A part whose

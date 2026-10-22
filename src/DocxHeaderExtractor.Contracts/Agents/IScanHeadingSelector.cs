@@ -25,4 +25,7 @@ public sealed record ScanRunDiagnostics(int PreflightCalls, double PreflightCost
 {
     /// <summary>Bounded shared placement attempts. Its transport does not expose billing here; the other costs exclude placement.</summary>
     public int PlacementCalls { get; init; }
+
+    /// <summary>Lines with no readable text in the reading the selection chose. They cannot be headings and are left out of the source.</summary>
+    public IReadOnlyList<string> UnreadableLines { get; init; } = [];
 }
