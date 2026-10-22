@@ -15,8 +15,4 @@
     <ProjectReference Include="..\DocxHeaderExtractor.Sources\DocxHeaderExtractor.Sources.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="LLamaSharp" />
-  </ItemGroup>
-
 </Project>

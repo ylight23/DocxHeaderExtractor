@@ -1,7 +1,7 @@
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
-using DocxHeaderExtractor.Contracts.Inference;
+using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Snapshot;
@@ -19,11 +19,11 @@ internal static class LaneHarness
     /// <summary>What a lane says when its execution does not complete. Each lane keeps its own wording.</summary>
     internal sealed record Messages(string TimedOut, string Failed, string LeaseLost);
 
-    /// <summary>What a lane says when a run is not on the authorized agent route, has no selector, no provider key, or no placer.</summary>
-    internal sealed record AccessMessages(string Unauthorized, string NoSelector, string NoKey, string NoPlacer);
+    /// <summary>What a lane says when a run has no selector, no provider key, or no placer.</summary>
+    internal sealed record AccessMessages(string NoSelector, string NoKey, string NoPlacer);
 
-    /// <summary>The authorized transport, the agents and the provider key a lane runs with.</summary>
-    internal sealed record Access(IAgentRouteInferenceTransport Transport, IHeadingSelector Selector, IHeadingPlacer Placer, string ApiKey);
+    /// <summary>The model route, the agents and the provider key a lane runs with.</summary>
+    internal sealed record Access(ModelRoute Route, IHeadingSelector Selector, IHeadingPlacer Placer, string ApiKey);
 
     /// <summary>
     /// What a lane gives the shared run: its route id, its source, the layout blocks its selected lines group by, and the source blocks it
@@ -39,18 +39,16 @@ internal static class LaneHarness
     /// <summary>The selector's decision, the assembled structure, the completed route audit and how long assembly took.</summary>
     internal sealed record Outcome(SelectionResult Decided, StructureAssembly Assembly, RunAudit Audit, double AssembleSeconds);
 
-    /// <summary>Refuses a run that is not on the authorized agent route, then one without a selector, one without a provider key, and one
-    /// without a placer: a lane never runs with part of its agents and quietly leaves the hierarchy out.</summary>
-    internal static Access Authorize(IInferenceTransport transport, IHeadingSelector? selector, IHeadingPlacer? placer, AccessMessages messages)
+    /// <summary>Refuses a run without a selector, one without a provider key, and one without a placer: a lane never runs with part of its
+    /// agents and quietly leaves the hierarchy out.</summary>
+    internal static Access Authorize(ModelRoute route, IHeadingSelector? selector, IHeadingPlacer? placer, AccessMessages messages)
     {
-        if (transport is not IAgentRouteInferenceTransport authorized)
-            throw new InvalidOperationException(messages.Unauthorized);
         if (selector is null)
             throw new InvalidOperationException(messages.NoSelector);
-        var apiKey = authorized.OpenRouterApiKey ?? throw new InvalidOperationException(messages.NoKey);
+        var apiKey = string.IsNullOrWhiteSpace(route.ApiKey) ? throw new InvalidOperationException(messages.NoKey) : route.ApiKey;
         if (placer is null)
             throw new InvalidOperationException(messages.NoPlacer);
-        return new Access(authorized, selector, placer, apiKey);
+        return new Access(route, selector, placer, apiKey);
     }
 
     /// <summary>The route audit of a run that never called the model: every source block available and selected, no lane run.</summary>
@@ -91,10 +89,10 @@ internal static class LaneHarness
     /// headings, and the route audit is recorded and completed with the authority's own facts and the placement observation.
     /// </summary>
     internal static async Task<Outcome> DecideAndAssembleAsync(
-        Input lane, IHeadingSelector selector, IHeadingPlacer? placer, string path, string apiKey, IInferenceTransport? transport, LaneLease lease,
+        Input lane, IHeadingSelector selector, IHeadingPlacer? placer, string path, string apiKey, ModelRoute? route, LaneLease lease,
         CancellationToken ct)
     {
-        var decided = await DecideAsync(lane.Source, selector, placer, path, apiKey, lane.LayoutBlockByAtom, transport, lease, ct).ConfigureAwait(false);
+        var decided = await DecideAsync(lane.Source, selector, placer, path, apiKey, lane.LayoutBlockByAtom, route, lease, ct).ConfigureAwait(false);
         var clock = System.Diagnostics.Stopwatch.StartNew();
         // The selected-lines authority defines no semantic node identity, so every validated source occurrence reaches the canonical structure.
         var assembly = await StructureAssembler.AssembleAsync(lane.Source, decided, PrimaryOccurrences.EverySourceOccurrence, ct).ConfigureAwait(false);
@@ -130,7 +128,7 @@ internal static class LaneHarness
         string path,
         string apiKey,
         IReadOnlyDictionary<string, string> layoutBlockByAtom,
-        IInferenceTransport? transport,
+        ModelRoute? route,
         LaneLease lease,
         CancellationToken ct)
     {
@@ -140,7 +138,7 @@ internal static class LaneHarness
             path,
             apiKey,
             layoutBlockByAtom,
-            transport is null ? null : new ModelAccess(apiKey, EnsureActive),
+            route is null ? null : new ModelAccess(apiKey, EnsureActive),
             placer,
             EnsureActive)
         .DecideAsync(source, ct);

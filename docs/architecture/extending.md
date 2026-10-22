@@ -28,15 +28,16 @@ Các agent hiện có của tuyến heading:
 Ví dụ: chạy thử một agent đặt cha khác, hoặc dùng agent giả trong test.
 
 1. Viết lớp cài đặt interface, ví dụ `IHeadingPlacer`.
-2. Trả nó từ hook tương ứng của factory mà host truyền cho `DocumentRunner`:
+2. Trả nó từ hook tương ứng của model provider mà host truyền cho `DocumentRunner`:
 
 ```csharp
-sealed class MyFactory(IInferenceTransportFactory inner) : IInferenceTransportFactory
+sealed class MyProvider(IModelProvider inner) : IModelProvider
 {
-    public bool SendsDataExternally => inner.SendsDataExternally;
-    public Task<IInferenceTransport> CreateAgentRouteAsync(CancellationToken ct = default) => inner.CreateAgentRouteAsync(ct);
+    public ModelRoute CreateRoute() => inner.CreateRoute();
     public IHeadingPlacer? CreateHeadingPlacer() => new MyPlacer();   // null = dùng HeadingPlacer mặc định
 }
+
+var runner = new DocumentRunner(options, new MyProvider(OpenRouterProvider.FromEnvironment()));
 ```
 
 Hook nào trả `null` thì `HeadingAgentSetup` dùng agent mặc định. Nếu dựng pipeline trực tiếp (test), truyền
@@ -46,21 +47,22 @@ Hook nào trả `null` thì `HeadingAgentSetup` dùng agent mặc định. Nếu
 
 Ví dụ: một agent rà lại cấp bậc sau khi đặt cha.
 
-1. **Contract** (`Contracts/Agents/`): một interface và hai record, yêu cầu và đề xuất. Transport được truyền
-   theo từng lần gọi, agent không giữ nó, để pipeline gắn transport với lease của lần chạy:
+1. **Contract** (`Contracts/Agents/`): một interface và hai record, yêu cầu và đề xuất. Quyền gọi model
+   (`ModelAccess`: khóa và kiểm tra lease) được truyền theo từng lần gọi, agent không giữ nó, để pipeline gắn nó
+   với lease của lần chạy, như `IHeadingPlacer`:
    ```csharp
    public interface IHeadingReviewer
    {
        string Contract { get; }
-       Task<ReviewProposal> ProposeAsync(ReviewRequest request, IInferenceTransport transport, CancellationToken ct);
+       Task<ReviewProposal> ProposeAsync(ReviewRequest request, ModelAccess access, CancellationToken ct);
    }
    ```
 2. **Chỗ cắm** (`Contracts/Agents/HeadingAgents.cs`): thêm một property `IHeadingReviewer? Reviewer = null`.
    Chữ ký pipeline không đổi.
-3. **Hook ghi đè** (`Contracts/Inference/IInferenceTransport.cs`): `IHeadingReviewer? CreateHeadingReviewer() => null;`.
-4. **Mặc định** (`App/HeadingAgentSetup.cs`): `Reviewer: factory.CreateHeadingReviewer() ?? new HeadingReviewer()`.
+3. **Hook ghi đè** (`Contracts/Provider/IModelProvider.cs`): `IHeadingReviewer? CreateHeadingReviewer() => null;`.
+4. **Mặc định** (`App/HeadingAgentSetup.cs`): `Reviewer: provider.CreateHeadingReviewer() ?? new HeadingReviewer()`.
 5. **Cài đặt agent** (`HeadingAgent/Review/HeadingReviewer.cs`): prompt, gói dữ liệu, vòng hỏi. Gọi model qua
-   transport được truyền vào; nếu cần hội thoại có tool, cài đặt `IConversationTask` và chạy `ToolConversation`.
+   `Agents` với khóa trong `ModelAccess`; nếu cần hội thoại có tool, cài đặt `IConversationTask` và chạy `ToolConversation`.
 6. **Bước C# kiểm tra** (`DocumentProcessing/<Bước>/`): nhận đề xuất, chỉ giữ những gì hợp lệ, ghi audit.
    Agent không bao giờ tự quyết định kết quả cuối.
 7. **Thiếu agent thì từ chối**: thêm kiểm tra vào `Harness/LaneHarness.Authorize` (ví dụ

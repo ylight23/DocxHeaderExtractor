@@ -1,6 +1,5 @@
 using System.Text.Json;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.DocumentProcessing.Lanes.Pdf;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
@@ -8,7 +7,6 @@ using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Pdf;
-using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
@@ -20,7 +18,7 @@ namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
 /// The PDF lane after the V6 promotion (2026-10-14): an <see cref="IHeadingSelector"/> is the only heading authority. These tests use a
-/// selector that answers from a fixed alias set and a transport that makes no provider call.
+/// selector that answers from a fixed alias set and a provider whose placer is a script.
 /// </summary>
 [Trait("Category", "Slow")]
 public sealed class PdfLaneTests
@@ -64,10 +62,10 @@ public sealed class PdfLaneTests
     {
         var (_, a, b, other) = Atoms();
         var selector = new FixedSelector(new HashSet<string> { a.Alias, b.Alias, other.Alias });
-        using var transport = new NoCallTransport("route-key");
+        var provider = new ScriptedProvider("route-key");
         var file = UploadedFile.FromLocalPath(TestRepository.Path(Pdf));
 
-        var run = await PdfPipeline.RunAsync(file, new PipelineOptions(), transport, new HeadingAgents(Pdf: selector, Placer: transport.Placement.Placer));
+        var run = await PdfPipeline.RunAsync(file, new PipelineOptions(), provider.CreateRoute(), new HeadingAgents(Pdf: selector, Placer: provider.Placement.Placer));
 
         Assert.Equal(1, selector.Calls);
         Assert.Equal("route-key", selector.Key);
@@ -79,7 +77,7 @@ public sealed class PdfLaneTests
         Assert.Contains(HeadingPlacer.Version, heading.Audit.ModelInputContracts);
         Assert.Equal("complete", heading.Audit.SemanticLane!.Status);
         // One parent-proposal pass; no semantic verifier gate follows it.
-        Assert.Equal(1, transport.PlacementCalls);
+        Assert.Equal(1, provider.PlacementCalls);
         Assert.Equal(4, run.Result.Provenance.ProviderCalls); // 3 selector attempts + 1 hierarchy proposal call
         Assert.Equal(2, heading.Structure.Elements.Count);
     }
@@ -88,13 +86,13 @@ public sealed class PdfLaneTests
     public async Task Without_a_selector_or_a_route_key_the_lane_refuses_before_any_call()
     {
         var file = UploadedFile.FromLocalPath(TestRepository.Path(Pdf));
-        using var keyed = new NoCallTransport("route-key");
-        var none = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfPipeline.RunExecutionAsync(file, new PipelineOptions(), keyed));
+        var keyed = new ScriptedProvider("route-key");
+        var none = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfPipeline.RunAsync(file, new PipelineOptions(), keyed.CreateRoute(), new HeadingAgents(Placer: keyed.Placement.Placer)));
         Assert.StartsWith("PDF_HEADING_SELECTOR_REQUIRED", none.Message);
 
         var selector = new FixedSelector(new HashSet<string>());
-        using var keyless = new NoCallTransport(null);
-        var noKey = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfPipeline.RunAsync(file, new PipelineOptions(), keyless, new HeadingAgents(Pdf: selector, Placer: keyless.Placement.Placer)));
+        var keyless = new ScriptedProvider(null);
+        var noKey = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfPipeline.RunAsync(file, new PipelineOptions(), keyless.CreateRoute(), new HeadingAgents(Pdf: selector, Placer: keyless.Placement.Placer)));
         Assert.StartsWith("PDF_HEADING_SELECTOR_KEY_MISSING", noKey.Message);
         Assert.Equal(0, selector.Calls);
         Assert.Equal(0, keyed.PlacementCalls + keyless.PlacementCalls);
@@ -125,35 +123,22 @@ public sealed class PdfLaneTests
     }
 
     [Fact]
-    public async Task The_authorized_openrouter_route_carries_its_key_and_other_routes_issue_none()
-    {
-        var selection = new InferenceProviderSelection
-        {
-            Backend = InferenceBackend.OpenRouter,
-            Remote = new RemoteInferenceOptions { ApiKey = "sk-test", OpenRouterProviderRoute = RemoteInferenceOptions.DefaultProviderRoute },
-        };
-        using var transport = await new InferenceTransportFactory(selection).CreateAgentRouteAsync();
-        Assert.Equal("sk-test", ((IAgentRouteInferenceTransport)transport).OpenRouterApiKey);
-        Assert.Null(((IAgentRouteInferenceTransport)new DefaultKeyTransport()).OpenRouterApiKey);
-    }
-
-    [Fact]
     public async Task The_placement_request_asks_for_json_and_carries_the_style_table_only_when_the_selector_provides_it()
     {
         var (_, a, b, other) = Atoms();
         var aliases = new HashSet<string> { a.Alias, b.Alias, other.Alias };
         var file = UploadedFile.FromLocalPath(TestRepository.Path(Pdf));
 
-        using var plain = new NoCallTransport("route-key");
-        await PdfPipeline.RunAsync(file, new PipelineOptions(), plain, new HeadingAgents(Pdf: new FixedSelector(aliases), Placer: plain.Placement.Placer));
+        var plain = new ScriptedProvider("route-key");
+        await PdfPipeline.RunAsync(file, new PipelineOptions(), plain.CreateRoute(), new HeadingAgents(Pdf: new FixedSelector(aliases), Placer: plain.Placement.Placer));
         Assert.Equal(1, plain.PlacementCalls);
         Assert.Contains("propose its", plain.LastPrompt);   // the parent definition of the placement prompt
         Assert.Contains("sourceContext", plain.LastPacket!, StringComparison.Ordinal);
 
-        using var withStyles = new NoCallTransport("route-key");
+        var withStyles = new ScriptedProvider("route-key");
         var agentSource = AgentSource.Load(TestRepository.Path(Pdf), out _)!;
         var context = agentSource.Flavor.PlacementContext(agentSource);
-        await PdfPipeline.RunAsync(file, new PipelineOptions(), withStyles, new HeadingAgents(Pdf: new FixedSelector(aliases, context), Placer: withStyles.Placement.Placer));
+        await PdfPipeline.RunAsync(file, new PipelineOptions(), withStyles.CreateRoute(), new HeadingAgents(Pdf: new FixedSelector(aliases, context), Placer: withStyles.Placement.Placer));
         Assert.Contains("propose its", withStyles.LastPrompt);
         using var packet = JsonDocument.Parse(withStyles.LastPacket!);
         Assert.True(packet.RootElement.TryGetProperty("upstreamWithheld", out _));
@@ -206,39 +191,5 @@ public sealed class PdfLaneTests
             Calls++; Key = apiKey; Path = pdfPath;
             return Task.FromResult(new HeadingSelection(aliases, 3, 3, [], ["{}"], 3, 0.0, placement));
         }
-    }
-
-    private class NoCallTransport(string? key) : IAgentRouteInferenceTransport
-    {
-        /// <summary>The placer of the run: placement goes through it, not through this transport.</summary>
-        public PlacementScript Placement { get; } = new();
-        public int PlacementCalls => Placement.Calls;
-        public string? LastPrompt => Placement.LastPrompt;
-        public string? LastPacket => Placement.LastPacket;
-        public string? OpenRouterApiKey => key;
-        public string RouteProvider => "test";
-        public string RouteModel => "test";
-        public string ModelName => "test";
-        public int ContextSize => 1 << 20;
-        public string RuntimeDescription => "V6 lane test; no provider";
-        public int SharedPrefixTokens => 0;
-
-        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
-            throw new InvalidOperationException("NO_TRANSPORT_CALL: placement goes through the placer");
-
-        public void Dispose() { }
-    }
-
-    /// <summary>A transport that does not implement the key member: the interface default answers null.</summary>
-    private sealed class DefaultKeyTransport : IAgentRouteInferenceTransport
-    {
-        public string RouteProvider => "test";
-        public string RouteModel => "test";
-        public string ModelName => "test";
-        public int ContextSize => 1;
-        public string RuntimeDescription => "test";
-        public int SharedPrefixTokens => 0;
-        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) => throw new NotSupportedException();
-        public void Dispose() { }
     }
 }

@@ -4,7 +4,6 @@ using System.Threading.Channels;
 using DocxHeaderExtractor.App;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.HeadingAgent.Selectors;
-using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.Sources.Detect;
 
 namespace DocxHeaderExtractor.Web.Endpoints;
@@ -19,7 +18,7 @@ internal static class ExtractEndpoint
         HttpRequest req,
         HttpResponse res,
         WritebackStore writebackStore,
-        WebTransportFactoryResolver transportFactory,
+        ModelProviderFactory modelProvider,
         CancellationToken ct)
     {
         if (!req.HasFormContentType)
@@ -86,128 +85,105 @@ internal static class ExtractEndpoint
                 await EmitAsync(new { type = "error", message = inspection.Message });
                 return;
             }
-            var options = RequestOptions.Build(form, out var problem, out var provider, inspection);
+            var provider = modelProvider();
+            var options = RequestOptions.Build(form, provider, out var problem);
             if (problem is not null)
             {
                 await EmitAsync(new { type = "error", message = problem });
                 return;
             }
 
-            // Production Web does not publish free-form provider diagnostics (which may contain
-            // source text, completions or credentials). Structured harness events remain visible.
+            // Production Web does not publish free-form diagnostics (which may contain source text or completions). Structured harness
+            // events remain visible.
             options.Log = _ => { };
-            RequestOptions.ConfigureProviderDiagnostics(form, provider, _ => { });
 
             // Một quyết định duy nhất về định dạng, đọc từ byte, dùng chung cho mọi bước phía sau.
             var uploadedType = SourceDetector.Detect(inputPath);
 
-            // Hai backend dùng tài nguyên máy này cần khóa. OpenRouter có thể chạy đồng thời và không
-            // được giữ hàng chỉ vì GPU local/LM Studio đang bận.
-            var gateHeld = false;
-            var usesLocalCompute = provider.Backend is InferenceBackend.Local or InferenceBackend.LmStudio;
-            if (!options.DisableLlm && usesLocalCompute && !await Program.Gate.WaitAsync(0, ct))
+            // Chạy thẳng tuyến V6 (agent PDF/DOCX/scan), giống CLI: không qua harness. Tiến độ stream dưới dạng sự kiện
+            // "agent" để giữ nhật ký trên giao diện.
+            // Phản hồi của mô hình chỉ được giữ và trả về khi người dùng tự bật "Hiện phản hồi của mô hình".
+            var showRaw = form["showRaw"].ToString() is "1" or "true" or "on";
+            // Each reply is written to the stream as soon as the model returns it; units run in parallel, so replies interleave.
+            var runner = new DocumentRunner(options, provider,
+                showRaw ? r => events.Writer.TryWrite(ReplyEvent(r)) : null);
+
+            // Đích ghi do server đặt bên trong thư mục tạm của request, không bao giờ lấy từ form:
+            // một đường dẫn do client chỉ định là đường để ghi đè file bất kỳ trên máy chủ.
+            var wantsWriteback = form["writeback"].ToString() is "1" or "true" or "on";
+            var writebackTarget = wantsWriteback
+                ? Path.Combine(work, Path.GetFileNameWithoutExtension(Uploads.SafeName(upload.FileName)) + ".outline.docx")
+                : null;
+
+            var runId = Guid.NewGuid();
+            void Stage(string stage, string kind, string message) => events.Writer.TryWrite(new
             {
-                await EmitAsync(new { type = "log", message = "Đang có tài liệu khác chạy — xếp hàng chờ…" });
-                await Program.Gate.WaitAsync(ct);
-                gateHeld = true;
-            }
-            else if (!options.DisableLlm && usesLocalCompute)
-                gateHeld = true;
-
-            try
+                type = "agent",
+                runId,
+                timestamp = DateTimeOffset.UtcNow,
+                stage,
+                kind,
+                message,
+            });
+            var run = Task.Run(async () =>
             {
-                // The factory deliberately resolves DOCX and PDF separately. In particular, an
-                // OpenRouter instance constructed directly here would not carry the PDF production
-                // authorization marker, while local/LM Studio remain valid DOCX backends only.
-                // Chạy thẳng tuyến V6 (agent PDF/DOCX), giống CLI: không qua harness. Tiến độ stream dưới dạng sự kiện
-                // "agent" để giữ nhật ký trên giao diện.
-                // Phản hồi của mô hình chỉ được giữ và trả về khi người dùng tự bật "Hiện phản hồi của mô hình".
-                var showRaw = form["showRaw"].ToString() is "1" or "true" or "on";
-                // Each reply is written to the stream as soon as the model returns it; units run in parallel, so replies interleave.
-                using var runner = new DocumentRunner(options, transportFactory(provider),
-                    showRaw ? r => events.Writer.TryWrite(ReplyEvent(r)) : null);
-
-                // Đích ghi do server đặt bên trong thư mục tạm của request, không bao giờ lấy từ form:
-                // một đường dẫn do client chỉ định là đường để ghi đè file bất kỳ trên máy chủ.
-                var wantsWriteback = form["writeback"].ToString() is "1" or "true" or "on";
-                var writebackTarget = wantsWriteback
-                    ? Path.Combine(work, Path.GetFileNameWithoutExtension(Uploads.SafeName(upload.FileName)) + ".outline.docx")
-                    : null;
-
-                var runId = Guid.NewGuid();
-                void Stage(string stage, string kind, string message) => events.Writer.TryWrite(new
+                Stage("extract", "Started", "Bắt đầu trích xuất tài liệu.");
+                var execution = await runner.ExtractAsync(inputPath, ct: ct);
+                var outline = execution.Outline;
+                Stage("extract", outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed",
+                    $"Tuyến {outline.DeterministicRoute} trả {outline.Headings.Count} heading từ {outline.ParagraphCount} đơn vị nguồn.");
+                OutlineWritebackReport? written = null;
+                if (writebackTarget is not null && outline.DeterministicRoute == "scan-v6-selected-lines")
+                    Stage("writeback", "Skipped", "Bản scan có tọa độ ảnh; chưa hỗ trợ ghi heading vào đoạn Word.");
+                else if (writebackTarget is not null)
                 {
-                    type = "agent",
-                    runId,
-                    timestamp = DateTimeOffset.UtcNow,
-                    stage,
-                    kind,
-                    message,
-                });
-                var run = Task.Run(async () =>
-                {
-                    Stage("extract", "Started", "Bắt đầu trích xuất tài liệu.");
-                    var execution = await runner.ExtractAsync(inputPath, ct: ct);
-                    var outline = execution.Outline;
-                    Stage("extract", outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed",
-                        $"Tuyến {outline.DeterministicRoute} trả {outline.Headings.Count} heading từ {outline.ParagraphCount} đơn vị nguồn.");
-                    OutlineWritebackReport? written = null;
-                    if (writebackTarget is not null && outline.DeterministicRoute == "scan-v6-selected-lines")
-                        Stage("writeback", "Skipped", "Bản scan có tọa độ ảnh; chưa hỗ trợ ghi heading vào đoạn Word.");
-                    else if (writebackTarget is not null)
-                    {
-                        Stage("writeback", "Started", "Ghi outline vào bản sao.");
-                        written = DocumentRunner.WriteOutline(inputPath, outline, writebackTarget, options.Extraction);
-                        Stage("writeback", "Completed", $"Đã ghi {written.Applied} heading, bỏ qua {written.Skipped} mục.");
-                    }
-                    return (Outline: outline, Execution: execution, Writeback: written);
-                }, ct);
-                _ = run.ContinueWith(_ => events.Writer.TryComplete(), TaskScheduler.Default);
-
-                await foreach (var evt in events.Reader.ReadAllAsync(ct))
-                    await EmitAsync(evt);
-
-                var (outline, execution, writeback) = await run;
-
-                // Đọc vào bộ nhớ trước khi finally xoá thư mục tạm; link chỉ tải được đúng một lần.
-                string? download = null;
-                if (writeback is { } written && File.Exists(written.OutputPath))
-                {
-                    writebackStore.Put(
-                        runId,
-                        await File.ReadAllBytesAsync(written.OutputPath, ct),
-                        Path.GetFileName(written.OutputPath));
-                    download = $"/api/outline/{runId}.docx";
+                    Stage("writeback", "Started", "Ghi outline vào bản sao.");
+                    written = DocumentRunner.WriteOutline(inputPath, outline, writebackTarget, options.Extraction);
+                    Stage("writeback", "Completed", $"Đã ghi {written.Applied} heading, bỏ qua {written.Skipped} mục.");
                 }
+                return (Outline: outline, Execution: execution, Writeback: written);
+            }, ct);
+            _ = run.ContinueWith(_ => events.Writer.TryComplete(), TaskScheduler.Default);
 
-                var requiresReview = outline.Headings.Count(h =>
-                    h.DecisionStatus == HeadingDecisionStatus.RequiresReview || h.Disputed);
-                await EmitAsync(new
-                {
-                    type = "result",
-                    outline = WebPipelineProjection.SafeOutline(outline, WebJson.Options),
-                    pipeline = WebPipelineProjection.Project(runId, outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed", outline, execution, execution.Result.DocumentIdentity.SourceKind),
-                    stats = Stats.From(outline),
-                    sourceType = uploadedType.ToString().ToLowerInvariant(),
-                    sourceInspection = inspection,
-                    agent = new
-                    {
-                        runId,
-                        outcome = outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed",
-                        steps = writeback is null ? 1 : 2,
-                        repairAttempts = 0,
-                        requiresReview,
-                        message = $"Trích xuất {outline.Headings.Count} heading từ {outline.ParagraphCount} đoạn."
-                            + (requiresReview == 0 ? "" : $" Còn {requiresReview} mục cần xem lại."),
-                        writebackApplied = writeback?.Applied,
-                        download,
-                    },
-                });
-            }
-            finally
+            await foreach (var evt in events.Reader.ReadAllAsync(ct))
+                await EmitAsync(evt);
+
+            var (outline, execution, writeback) = await run;
+
+            // Đọc vào bộ nhớ trước khi finally xoá thư mục tạm; link chỉ tải được đúng một lần.
+            string? download = null;
+            if (writeback is { } written && File.Exists(written.OutputPath))
             {
-                if (gateHeld) Program.Gate.Release();
+                writebackStore.Put(
+                    runId,
+                    await File.ReadAllBytesAsync(written.OutputPath, ct),
+                    Path.GetFileName(written.OutputPath));
+                download = $"/api/outline/{runId}.docx";
             }
+
+            var requiresReview = outline.Headings.Count(h =>
+                h.DecisionStatus == HeadingDecisionStatus.RequiresReview || h.Disputed);
+            await EmitAsync(new
+            {
+                type = "result",
+                outline = WebPipelineProjection.SafeOutline(outline, WebJson.Options),
+                pipeline = WebPipelineProjection.Project(runId, outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed", outline, execution, execution.Result.DocumentIdentity.SourceKind),
+                stats = Stats.From(outline),
+                sourceType = uploadedType.ToString().ToLowerInvariant(),
+                sourceInspection = inspection,
+                agent = new
+                {
+                    runId,
+                    outcome = outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed",
+                    steps = writeback is null ? 1 : 2,
+                    repairAttempts = 0,
+                    requiresReview,
+                    message = $"Trích xuất {outline.Headings.Count} heading từ {outline.ParagraphCount} đoạn."
+                        + (requiresReview == 0 ? "" : $" Còn {requiresReview} mục cần xem lại."),
+                    writebackApplied = writeback?.Applied,
+                    download,
+                },
+            });
         }
         catch (OperationCanceledException)
         {

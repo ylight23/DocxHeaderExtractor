@@ -2,7 +2,7 @@ using DocxHeaderExtractor.Sources.Snapshot;
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.Sources.Detect;
-using DocxHeaderExtractor.Contracts.Inference;
+using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
@@ -17,40 +17,23 @@ namespace DocxHeaderExtractor.DocumentProcessing.Lanes.Docx;
 /// heading crosses the same proposal, source-grounding, validation, structure, and product stages.
 /// Earlier direct-extraction paths are intentionally not used here.
 /// </summary>
-public sealed class DocxPipeline : IDisposable
+public sealed class DocxPipeline
 {
     private readonly PipelineOptions _options;
-    private readonly IInferenceTransportFactory? _transportFactory;
+    private readonly IModelProvider _provider;
     private readonly HeadingAgents _agents;
-    private readonly bool _transportSendsDataExternally;
-    private IInferenceTransport? _transport;
-    private readonly bool _ownsTransport;
 
     /// <summary>
     /// The DOCX route runs with its agents (<see cref="HeadingAgents"/>): the DOCX selector says which paragraphs are headings, the scan
     /// selector reads a scanned DOCX, and the placer proposes parents. A run that needs the model and lacks one refuses
-    /// (DOCX_HEADING_SELECTOR_REQUIRED, HEADING_PLACER_REQUIRED); with the model disabled the route returns the source only. The transport (or
-    /// the factory that makes it) must be the authorized agent route: it carries the provider key the selector uses and serves the placer.
+    /// (DOCX_HEADING_SELECTOR_REQUIRED, HEADING_PLACER_REQUIRED); with the model disabled the route returns the source only. The provider gives
+    /// the model route of a run that calls the model: the provider key the agents use.
     /// </summary>
-    public DocxPipeline(PipelineOptions options, IInferenceTransportFactory transportFactory, HeadingAgents agents)
-        : this(options, null, transportFactory ?? throw new ArgumentNullException(nameof(transportFactory)), agents, false) { }
-
-    public DocxPipeline(PipelineOptions options, IInferenceTransport transport, HeadingAgents agents, bool sendsDataExternally = false)
-        : this(options, transport, null, agents, sendsDataExternally) { }
-
-    private DocxPipeline(
-        PipelineOptions options,
-        IInferenceTransport? transport,
-        IInferenceTransportFactory? transportFactory,
-        HeadingAgents agents,
-        bool transportSendsDataExternally)
+    public DocxPipeline(PipelineOptions options, IModelProvider provider, HeadingAgents agents)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
+        _provider = provider ?? throw new ArgumentNullException(nameof(provider));
         _agents = agents ?? throw new ArgumentNullException(nameof(agents));
-        _transport = transport;
-        _transportFactory = transportFactory;
-        _transportSendsDataExternally = transportSendsDataExternally || transportFactory?.SendsDataExternally == true;
-        _ownsTransport = transportFactory is not null || transport is null;
     }
 
     public Task<RunResult> RunDocumentExecutionAsync(
@@ -75,13 +58,12 @@ public sealed class DocxPipeline : IDisposable
         var started = Environment.TickCount64;
         ct.ThrowIfCancellationRequested();
         if (DocxHeaderExtractor.Sources.Docx.DocxSourceIntegrity.Read(inputPath).Kind == DocxHeaderExtractor.Sources.Docx.DocxSourceKind.ScannedImageOnly)
-            return await ScanLane.RunAsync(inputPath, _options, _options.DisableLlm ? null : await GetTransportAsync(ct),
-                _agents, _transportSendsDataExternally, ct).ConfigureAwait(false);
+            return await ScanLane.RunAsync(inputPath, _options, _options.DisableLlm ? null : _provider.CreateRoute(), _agents, ct).ConfigureAwait(false);
         var sourceDocument = DocxHeaderExtractor.Sources.Docx.DocxSourceCache.ReadOrLoad(inputPath, _options.SourceCacheRoot, _options.Extraction);
         if (_agents.Docx is IPrimedDocumentSelector primed) primed.PrimeDocument(inputPath, _options.Extraction, sourceDocument);
-        var transport = _options.DisableLlm ? null : await GetTransportAsync(ct);
+        var modelRoute = _options.DisableLlm ? null : _provider.CreateRoute();
         var authority = await DocxLane.RunAsync(
-            sourceDocument, transport, _agents.Docx, _agents.Placer, LaneOptions.Default, ct);
+            sourceDocument, modelRoute, _agents.Docx, _agents.Placer, LaneOptions.Default, ct);
         var audit = authority.Audit;
         const string route = DocxLane.RouteId;
 
@@ -102,8 +84,8 @@ public sealed class DocxPipeline : IDisposable
                 ParagraphCount: sourceDocument.Paragraphs.Count,
                 SourceCount: audit?.SourceBlocksSelected ?? 0,
                 Route: route,
-                Model: transport?.ModelName,
-                SentDataExternally: !_options.DisableLlm && (_transportFactory?.SendsDataExternally ?? _transportSendsDataExternally)),
+                Model: modelRoute?.Model,
+                SentDataExternally: modelRoute is not null),
             authority,
             structure,
             emittedIds,
@@ -112,21 +94,5 @@ public sealed class DocxPipeline : IDisposable
             started);
         _options.Log?.Invoke($"Authority route {route}: validated={execution.Outline.Headings.Count}; {authority.Reason}");
         return execution;
-    }
-
-    private async Task<IInferenceTransport> GetTransportAsync(CancellationToken ct)
-    {
-        if (_transport is not null) return _transport;
-        if (_transportFactory is null)
-            throw new InvalidOperationException(
-                "Inference provider factory chưa được đăng ký ở composition root.");
-        _transport = await _transportFactory.CreateAgentRouteAsync(ct);
-        return _transport;
-    }
-
-    public void Dispose()
-    {
-        if (_ownsTransport) _transport?.Dispose();
-        _transport = null;
     }
 }

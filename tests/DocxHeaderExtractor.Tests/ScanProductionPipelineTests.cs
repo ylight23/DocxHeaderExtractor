@@ -2,7 +2,7 @@ using System.Net;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Inference;
+using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.Contracts.Agents;
@@ -14,7 +14,6 @@ using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.HeadingAgent.Scan;
-using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.App;
 using DocxHeaderExtractor.Web;
 using DocxHeaderExtractor.Agents.Budget;
@@ -55,7 +54,7 @@ public sealed class ScanProductionPipelineTests
         var path = pdf ? ScanPath.Replace("generated-docx", "heading_corpus_100").Replace(".docx", ".pdf") : ScanPath;
         var scan = new FixedScan(Prepared(path));
         var factory = new Factory(scan);
-        using var runner = new DocumentRunner(new PipelineOptions(), factory);
+        var runner = new DocumentRunner(new PipelineOptions(), factory);
         var run = await runner.ExtractAsync(path);
 
         Assert.Equal(1, scan.Calls);
@@ -105,7 +104,7 @@ public sealed class ScanProductionPipelineTests
             var parents = new Dictionary<string, string> { ["P001-L001"] = "ROOT", ["P001-L003"] = "P001-L001" };
             return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = HierarchyTestProtocol.Reply(packet, parents) }, "stop"));
         }, autoVerify: false);
-        using var runner = new DocumentRunner(new PipelineOptions(),
+        var runner = new DocumentRunner(new PipelineOptions(),
             new Factory(new FixedScan(Prepared(ScanPath)), new HeadingPlacer(handler)));
         var run = await runner.ExtractAsync(ScanPath);
         Assert.Equal(1, handler.Posts);
@@ -144,7 +143,7 @@ public sealed class ScanProductionPipelineTests
                     false, "NO_PROGRESS", "BOUNDARY_REPAIR_NO_PROGRESS")]),
             StageSeconds = new Dictionary<string, double> { ["selection"] = 10, ["grouping"] = 20, ["verification"] = 30, ["review"] = 40 }
         } };
-        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
+        var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
         var run = await runner.ExtractAsync(ScanPath);
         var web = WebPipelineProjection.Project(Guid.NewGuid(), "Partial", run.Outline, run, "scan");
         var selection = web.Stages.Single(s => s.Id == "V6-line-selection");
@@ -182,7 +181,7 @@ public sealed class ScanProductionPipelineTests
     public async Task Missing_alias_states_do_not_masquerade_selected_count_as_answered_lines()
     {
         var prepared = Prepared(ScanPath) with { Selection = Prepared(ScanPath).Selection with { AliasStates = null } };
-        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
+        var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared)));
         var run = await runner.ExtractAsync(ScanPath);
         var stage = WebPipelineProjection.Project(Guid.NewGuid(), "Completed", run.Outline, run, "scan")
             .Stages.Single(s => s.Id == "V6-line-selection");
@@ -196,7 +195,7 @@ public sealed class ScanProductionPipelineTests
         var (source, selection, _) = AppendixMembershipTests.RunFixture("reject");
         var prepared = ScanSelector.PrepareSelection(source, selection) with
         { SourceSha256 = SourceHash.Compute(ScanPath) };
-        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared), AppendixPlacement.Placer));
+        var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared), AppendixPlacement.Placer));
         var run = await runner.ExtractAsync(ScanPath);
         var structured = run.Outline.Headings.Where(h => h.Level is not null).ToArray();
         Assert.Equal("Phụ lục", structured[0].Text);
@@ -225,7 +224,7 @@ public sealed class ScanProductionPipelineTests
         {
             var path = DocxTestDocument.Create(Path.Combine(dir, "native.docx"));
             var scan = new FixedScan(Prepared(ScanPath));
-            using var runner = new DocumentRunner(new PipelineOptions(), new Factory(scan));
+            var runner = new DocumentRunner(new PipelineOptions(), new Factory(scan));
             var run = await runner.ExtractAsync(path);
             Assert.Equal(0, scan.Calls);
             Assert.Equal("docx-v6-selected-lines", run.Outline.DeterministicRoute);
@@ -238,10 +237,10 @@ public sealed class ScanProductionPipelineTests
     {
         var scan = new FixedScan(Prepared(ScanPath));
         var factory = new Factory(scan);
-        using var runner = new DocumentRunner(new PipelineOptions { DisableLlm = true }, factory);
+        var runner = new DocumentRunner(new PipelineOptions { DisableLlm = true }, factory);
         var run = await runner.ExtractAsync(ScanPath);
         Assert.Null(scan.Key);
-        Assert.Equal(0, factory.TransportCalls);
+        Assert.Equal(0, factory.RouteCalls);
         Assert.Equal(4, run.Result.SourceCatalog.Units.Count);
         Assert.Empty(run.Outline.Headings);
         Assert.Equal("not-run", run.Outline.RouteAudit!.SemanticLane!.Status);
@@ -261,7 +260,7 @@ public sealed class ScanProductionPipelineTests
             "unreadable" => p with { Diagnostics = p.Diagnostics with { UnreadableLines = ["P001-L009"] } },
             _ => p with { Selection = p.Selection with { UnitsComplete = 1, UnitsTotal = 2, UnitFailures = ["SEG-002:FAILED"] } },
         };
-        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
+        var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
         var run = await runner.ExtractAsync(ScanPath);
         Assert.Equal("partial", run.Outline.RouteAudit!.SemanticLane!.Status);
         Assert.Contains(gap == "units" ? "SEG-002:FAILED" : "SCAN_PREFLIGHT_INCOMPLETE", run.Outline.RouteAudit.SemanticLane.FailureClass!, StringComparison.Ordinal);
@@ -272,7 +271,7 @@ public sealed class ScanProductionPipelineTests
     public async Task A_source_from_another_file_is_refused_before_binding_or_placement()
     {
         var p = Prepared(ScanPath) with { SourceSha256 = new string('0', 64) };
-        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
+        var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
         var failure = await Assert.ThrowsAsync<InvalidOperationException>(() => runner.ExtractAsync(ScanPath));
         Assert.Equal("SCAN_SOURCE_HASH_MISMATCH", failure.Message);
     }
@@ -282,7 +281,7 @@ public sealed class ScanProductionPipelineTests
     {
         var p = Prepared(ScanPath);
         p = p with { Lines = p.Lines.Select((l, i) => i == 0 ? l with { Text = "invented heading" } : l).ToArray() };
-        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
+        var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
         var failure = await Assert.ThrowsAsync<InvalidOperationException>(() => runner.ExtractAsync(ScanPath));
         Assert.StartsWith("SCAN_SOURCE_READING_MISMATCH", failure.Message);
     }
@@ -292,7 +291,7 @@ public sealed class ScanProductionPipelineTests
     {
         var p = Prepared(ScanPath);
         p = p with { Selection = p.Selection with { HeadingExtents = new Dictionary<string, TextOffsetSpan> { [p.Lines[2].Alias] = new(0, 9999) } } };
-        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
+        var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
         var run = await runner.ExtractAsync(ScanPath);
         Assert.Single(run.Outline.Headings);
         Assert.Equal("partial", run.Outline.RouteAudit!.SemanticLane!.Status);
@@ -304,7 +303,7 @@ public sealed class ScanProductionPipelineTests
     {
         var started = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
         var scan = new FixedScan(Prepared(ScanPath)) { BeforeReturn = async ct => { started.SetResult(); await Task.Delay(Timeout.Infinite, ct); } };
-        using var runner = new DocumentRunner(new PipelineOptions(), new Factory(scan));
+        var runner = new DocumentRunner(new PipelineOptions(), new Factory(scan));
         using var cts = new CancellationTokenSource();
         var task = runner.ExtractAsync(ScanPath, cts.Token);
         await started.Task.WaitAsync(TimeSpan.FromSeconds(60));
@@ -382,36 +381,21 @@ public sealed class ScanProductionPipelineTests
         }
     }
 
-    sealed class Factory(FixedScan scan, IHeadingPlacer? placer = null) : IInferenceTransportFactory
+    sealed class Factory(FixedScan scan, IHeadingPlacer? placer = null) : IModelProvider
     {
-        public int TransportCalls;
-        public bool SendsDataExternally => true;
+        public int RouteCalls;
         public IScanHeadingSelector CreateScanHeadingSelector() => scan;
         public IHeadingSelector CreateDocxHeadingSelector() => new EmptyNative();
         /// <summary>The scripted placer: P001-L001 is a top-level section and P001-L003 sits under it. No provider is called.</summary>
         public IHeadingPlacer CreateHeadingPlacer() => placer ?? new PlacementScript(packet => HierarchyTestProtocol.Reply(packet.ToJsonString(),
             new Dictionary<string, string> { ["P001-L001"] = "ROOT", ["P001-L003"] = "P001-L001" })).Placer;
-        public Task<IInferenceTransport> CreateAgentRouteAsync(CancellationToken ct = default)
-        { TransportCalls++; return Task.FromResult<IInferenceTransport>(new PlacementTransport()); }
+        public ModelRoute CreateRoute() { RouteCalls++; return new("test", "test-route-key"); }
     }
     sealed class EmptyNative : IHeadingSelector
     {
         public string SelectorId => "native-test";
         public Task<HeadingSelection> SelectAsync(string path, string apiKey, CancellationToken ct) =>
             Task.FromResult(new HeadingSelection(new HashSet<string>(), 1, 1, [], [], 0, 0));
-    }
-    class PlacementTransport : IAgentRouteInferenceTransport
-    {
-        public string? OpenRouterApiKey => "test-route-key";
-        public string RouteProvider => "test";
-        public string RouteModel => "test";
-        public string ModelName => "test";
-        public int ContextSize => 100_000;
-        public string RuntimeDescription => "test";
-        public int SharedPrefixTokens => 0;
-        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
-            throw new InvalidOperationException("NO_TRANSPORT_CALL: placement goes through the placer");
-        public void Dispose() { }
     }
     static class AppendixPlacement
     {

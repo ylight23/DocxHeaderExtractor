@@ -1,4 +1,5 @@
 using System.Text;
+using DocxHeaderExtractor.App;
 using DocxHeaderExtractor.Contracts.Runtime;
 using DocxHeaderExtractor.Contracts.Tasks;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
@@ -10,8 +11,7 @@ using DocxHeaderExtractor.Web.Endpoints;
 using Microsoft.AspNetCore.Http.Features;
 
 // Content root phải là thư mục chứa dll, không phải thư mục làm việc: dhx-ui.cmd chạy từ gốc
-// repo để ModelCatalog thấy models\, nên mặc định (Directory.GetCurrentDirectory) sẽ trỏ sai
-// và wwwroot không được phục vụ.
+// repo, nên mặc định (Directory.GetCurrentDirectory) sẽ trỏ sai và wwwroot không được phục vụ.
 var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 {
     Args = args,
@@ -20,24 +20,12 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 
 builder.Services.Configure<FormOptions>(o => o.MultipartBodyLengthLimit = Uploads.MaxBytes);
 builder.WebHost.ConfigureKestrel(o => o.Limits.MaxRequestBodySize = Uploads.MaxBytes);
-builder.Services.AddSingleton<LlamaModelCache>();
-builder.Services.AddSingleton<WebTransportFactoryResolver>(sp => selection =>
-    new WebInferenceTransportFactory(selection, sp.GetRequiredService<IHttpClientFactory>(),
-        sp.GetRequiredService<LlamaModelCache>()));
-builder.Services.AddSingleton<LmStudioModelDiscovery>();
+builder.Services.AddSingleton<ModelProviderFactory>(_ => OpenRouterProvider.FromEnvironment);
 builder.Services.AddSingleton<WritebackStore>();
 builder.Services.AddSingleton<ITaskRunStore>(_ => new JsonFileTaskRunStore(RuntimeStatePaths.RunDirectory));
 builder.Services.AddSingleton<ITaskTelemetrySink>(_ => new JsonLinesTaskTelemetrySink(RuntimeStatePaths.TelemetryPath));
 builder.Services.AddSingleton<IInputResourceResolver>(_ =>
     new FileInputResourceResolver([Path.GetTempPath(), AppContext.BaseDirectory]));
-builder.Services.AddHttpClient("OpenRouter", client =>
-{
-    client.Timeout = TimeSpan.FromMinutes(5);
-});
-builder.Services.AddHttpClient("LmStudio", client =>
-{
-    client.Timeout = TimeSpan.FromMinutes(10);
-});
 builder.Logging.SetMinimumLevel(LogLevel.Warning);
 var configuredUiUrl = Environment.GetEnvironmentVariable("DHX_UI_URL");
 if (!string.IsNullOrWhiteSpace(configuredUiUrl)) builder.WebHost.UseUrls(configuredUiUrl);
@@ -56,24 +44,6 @@ app.MapGet("/api/build", () => Results.Json(new
     headingAgentVersion = typeof(AgentSelector).Assembly.GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
         .Cast<System.Reflection.AssemblyInformationalVersionAttribute>().Single().InformationalVersion,
 }, WebJson.Options));
-
-// Danh sách mô hình .gguf tìm thấy, kèm cửa sổ ngữ cảnh nên dùng cho từng họ mô hình.
-app.MapGet("/api/models", () => Results.Json(ModelCatalog.List(), WebJson.Options));
-
-app.MapGet("/api/lmstudio/models", async (LmStudioModelDiscovery discovery, CancellationToken ct) =>
-{
-    try
-    {
-        return Results.Json(await discovery.ListAsync(ct), WebJson.Options);
-    }
-    catch (Exception ex) when (ex is HttpRequestException or FormatException or InvalidOperationException)
-    {
-        return Results.Problem(
-            statusCode: StatusCodes.Status503ServiceUnavailable,
-            title: "Không kết nối được LM Studio",
-            detail: ex.Message);
-    }
-});
 
 // Mặc định lấy thẳng từ Core, để giao diện luôn khớp với lệnh CLI tương ứng.
 app.MapGet("/api/defaults", () => Results.Json(Defaults.Current(), WebJson.Options));
@@ -97,11 +67,6 @@ app.MapGet("/api/outline/{runId:guid}.docx", (Guid runId, WritebackStore store) 
 
 app.MapPost("/api/extract", ExtractEndpoint.HandleAsync);
 
-// Cấu hình log của llama.cpp một lần cho cả tiến trình, trước khi có request nào chạm native lib.
-// Native backend selection is process-wide, while GPU layer count remains per model load. Prefer
-// the backend bundled with this web executable so a later request can legitimately offload layers.
-DocxHeaderExtractor.Infrastructure.AI.LlamaInferenceTransport.ConfigureNativeLogging(verbose: false, gpuLayerCount: int.MaxValue);
-
 Console.OutputEncoding = Encoding.UTF8;
 app.Lifetime.ApplicationStarted.Register(() =>
 {
@@ -113,8 +78,4 @@ app.Lifetime.ApplicationStarted.Register(() =>
 app.Run();
 
 // Public để integration test khởi động đúng host WebApplicationFactory, không cần facade riêng.
-public partial class Program
-{
-    /// <summary>Chỉ cho một tài liệu chạy qua mô hình tại một thời điểm.</summary>
-    internal static readonly SemaphoreSlim Gate = new(1, 1);
-}
+public partial class Program;

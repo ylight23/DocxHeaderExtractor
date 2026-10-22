@@ -1,6 +1,6 @@
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
-using DocxHeaderExtractor.Contracts.Inference;
+using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.Contracts.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Writeback;
 using DocxHeaderExtractor.Sources.Docx;
@@ -25,21 +25,18 @@ namespace DocxHeaderExtractor.App;
 /// guardrail. The owner accepted that on 2026-10-15.
 /// </para>
 /// </summary>
-public sealed class DocumentRunner : IDisposable
+public sealed class DocumentRunner
 {
-    private readonly DocxPipeline _docxLane;
-    private readonly PdfHandler _pdfLane;
     private readonly Router _dispatcher;
 
+    /// <param name="provider">The model route and any agents of the host's own; <see cref="OpenRouterProvider"/> in production.</param>
     /// <param name="onModelReply">Diagnostics only: called with every model reply. Null records nothing.</param>
-    public DocumentRunner(PipelineOptions options, IInferenceTransportFactory factory, Action<ModelReply>? onModelReply = null)
+    public DocumentRunner(PipelineOptions options, IModelProvider provider, Action<ModelReply>? onModelReply = null)
     {
         ArgumentNullException.ThrowIfNull(options);
-        ArgumentNullException.ThrowIfNull(factory);
-        var agents = HeadingAgentSetup.Create(options, factory, onModelReply);
-        _docxLane = new DocxPipeline(options, factory, agents);
-        _pdfLane = new PdfHandler(options, factory, agents);
-        _dispatcher = new Router(new DocxHandler(_docxLane), _pdfLane);
+        ArgumentNullException.ThrowIfNull(provider);
+        var agents = HeadingAgentSetup.Create(options, provider, onModelReply);
+        _dispatcher = new Router(new DocxHandler(new DocxPipeline(options, provider, agents)), new PdfHandler(options, provider, agents));
     }
 
     /// <summary>
@@ -106,12 +103,6 @@ public sealed class DocumentRunner : IDisposable
         {
             OfficeConverter.Cleanup(conversion);
         }
-    }
-
-    public void Dispose()
-    {
-        _docxLane.Dispose();
-        _pdfLane.Dispose();
     }
 }
 

@@ -58,7 +58,6 @@
   #drop strong { display: block; font-size: 15px; margin-bottom: 3px; }
   #drop span { color: var(--muted); font-size: 13px; }
 
-  .opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
   label.f { display: block; font-size: 12.5px; color: var(--muted); margin-bottom: 5px; }
   select, input[type=number] {
     width: 100%; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px;
@@ -190,37 +189,8 @@
       <section class="panel">
         <h2>Cài đặt hệ thống
           <span class="chip" id="privacyNote"></span>
-          <span class="chip" id="gpuNote"></span>
           <span class="chip" id="cfgNote"></span>
         </h2>
-        <div class="opts">
-          <div>
-            <label class="f" for="backend">Backend suy luận</label>
-            <select id="backend">
-              <option value="openrouter" disabled>OpenRouter · chưa có API key</option>
-              <option value="local">Qwen local</option>
-              <option value="lmstudio">LM Studio local</option>
-            </select>
-          </div>
-          <div>
-            <label class="f" for="model">Mô hình cục bộ (.gguf)</label>
-            <select id="model"></select>
-          </div>
-          <div id="lmStudioModelWrap" class="hidden">
-            <label class="f" for="lmStudioModel">Mô hình trong LM Studio</label>
-            <select id="lmStudioModel"><option value="">— đang kết nối —</option></select>
-          </div>
-          <div>
-            <label class="f" for="gpuLayers">Lớp đẩy lên GPU</label>
-            <input id="gpuLayers" type="number" min="0" step="1" value="0">
-          </div>
-          <div>
-            <label class="f" for="ctx">Cửa sổ ngữ cảnh (token)</label>
-            <input id="ctx" type="number" min="4096" step="1024" placeholder="tự đọc từ mô hình">
-            <p class="note">Bỏ trống: server đọc <code>{arch}.context_length</code> từ chính file GGUF.
-              Gõ số thì số của bạn thắng và tự đọc bị tắt.</p>
-          </div>
-        </div>
         <div class="checks">
           <label><input type="checkbox" id="noLlm"> Không gọi mô hình (chỉ đọc nguồn, không tự nhận tiêu đề)</label>
           <label><input type="checkbox" id="writeback"> Ghi outline vào bản sao .docx để tải về</label>
@@ -311,7 +281,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;',
 
 let picked = null, outline = null, serverError = false, runController = null;
 let sourceInspection = null, inspectController = null, inspecting = false;
-let defaults = null, gpuBaseNote = '', gpuBaseLabel = '';
+let defaults = null;
 let devStarted = 0, devLogLines = 0;
 let logEvents = [], activeLogTab = 'all';
 let prompts = null, promptRoute = 'docx', promptKind = 'instruction';
@@ -461,87 +431,34 @@ function applySourceInspection(source) {
   sourceInspection = source;
   promptRoute = source.route === 'scan' ? 'scan' : source.format === 'pdf' ? 'pdf' : 'docx';
   renderPrompt();
-  syncBackend();
+  syncSettings();
 }
 
 function syncRunButton() {
-  const needsKey = sourceInspection?.requiresOpenRouter && !$('noLlm').checked && !defaults?.openRouterAvailable;
+  const needsKey = !$('noLlm').checked && !defaults?.openRouterAvailable;
   $('run').disabled = !!runController || !picked || inspecting || !sourceInspection?.supported || !!needsKey;
 }
 
-// ---------- mặc định, backend, mô hình ----------
+// ---------- mặc định, mô hình ----------
 fetch('/api/defaults').then(r => r.json()).then(d => {
   defaults = d;
-  $('gpuLayers').value = d.gpuLayers;
-  $('gpuLayers').disabled = !d.gpuBackend;
-  gpuBaseLabel = d.gpuBackend ? 'bản dựng GPU' : 'bản dựng CPU';
-  gpuBaseNote = d.gpuBackend
-    ? 'Bản dựng có backend GPU. GPU 4 GB nên dùng khoảng 15–20 lớp.'
-    : 'Bản dựng CPU — ô này không có tác dụng. Dựng lại với -p:UseVulkan=true hoặc -p:UseCuda=true để bật.';
-  chip('gpuNote', gpuBaseLabel, gpuBaseNote, d.gpuBackend ? 'acc' : '');
-
-  const remote = $('backend').querySelector('option[value="openrouter"]');
-  remote.disabled = !d.openRouterAvailable;
-  remote.textContent = d.openRouterAvailable
-    ? 'OpenRouter · ' + d.openRouterModel
-    : 'OpenRouter · chưa có OPENROUTER_API_KEY';
-  if (d.openRouterAvailable) {
-    $('backend').value = 'openrouter';
-    $('noLlm').checked = false;
-  }
-  loadLmStudioModels(d);
-  syncBackend();
+  if (d.openRouterAvailable) $('noLlm').checked = false;
+  syncSettings();
 });
 
-async function loadLmStudioModels(d) {
-  const option = $('backend').querySelector('option[value="lmstudio"]');
-  const select = $('lmStudioModel');
-  try {
-    const response = await fetch('/api/lmstudio/models');
-    if (!response.ok) throw new Error('unavailable');
-    const models = await response.json();
-    if (!models.length) throw new Error('empty');
-    const ids = models.map(m => m.id);
-    if (d.lmStudioModel && !ids.includes(d.lmStudioModel)) ids.unshift(d.lmStudioModel);
-    select.innerHTML = ids.map(id => `<option value="${esc(id)}">${esc(id)}</option>`).join('');
-    if (d.lmStudioModel) select.value = d.lmStudioModel;
-    option.textContent = `LM Studio local · ${d.lmStudioEndpoint}`;
-    option.disabled = false;
-  } catch {
-    select.innerHTML = d.lmStudioModel
-      ? `<option value="${esc(d.lmStudioModel)}">${esc(d.lmStudioModel)}</option>`
-      : '<option value="">— không kết nối được —</option>';
-    option.textContent = `LM Studio · chưa kết nối ${d.lmStudioEndpoint}`;
-  }
-  syncBackend();
-}
+$('noLlm').onchange = syncSettings;
 
-$('backend').onchange = syncBackend;
-$('noLlm').onchange = syncBackend;
-
-// Khoá các ô không có tác dụng với backend đang chọn, và báo nơi dữ liệu đi.
-function syncBackend() {
+// Báo nơi dữ liệu đi, và khoá nút chạy khi server chưa có key.
+function syncSettings() {
   const noLlm = $('noLlm').checked;
-  const requiresRemote = !!sourceInspection?.requiresOpenRouter && !noLlm;
-  ['local', 'lmstudio'].forEach(value => $('backend').querySelector(`option[value="${value}"]`).disabled = requiresRemote);
-  if (requiresRemote) $('backend').value = 'openrouter';
-  const backend = $('backend').value;
-  const remote = backend === 'openrouter' && !noLlm;
-  const lmStudio = backend === 'lmstudio' && !noLlm;
-  ['model', 'ctx', 'gpuLayers'].forEach(id =>
-    $(id).disabled = remote || lmStudio || noLlm || (id === 'gpuLayers' && defaults && !defaults.gpuBackend));
-  $('lmStudioModelWrap').classList.toggle('hidden', !lmStudio);
-  $('lmStudioModel').disabled = !lmStudio;
-  if (remote)
-    chip('privacyNote', 'gửi ra OpenRouter', 'Tài liệu sẽ được gửi ra OpenRouter bằng HTTPS.', 'warn');
-  else if (lmStudio)
-    chip('privacyNote', 'loopback · không rời máy', 'LM Studio chạy qua loopback trên chính máy này.', 'ok');
+  if (noLlm)
+    chip('privacyNote', 'không rời máy', 'Không gọi mô hình: nội dung tài liệu không rời khỏi máy.', 'ok');
   else
-    chip('privacyNote', 'local · không rời máy', 'Backend local: nội dung tài liệu không rời khỏi máy.', 'ok');
+    chip('privacyNote', 'gửi ra OpenRouter', 'Tài liệu sẽ được gửi ra OpenRouter bằng HTTPS.', 'warn');
   if (sourceInspection) {
     $('sourceNote').textContent = (noLlm && sourceInspection.route === 'scan'
-      ? 'Bản scan: chỉ chạy OCR trên máy, không gọi VLM/Qwen và không tự chọn heading.' : sourceInspection.message) +
-      (requiresRemote && defaults && !defaults.openRouterAvailable ? ' Cần cấu hình OPENROUTER_API_KEY trên server, hoặc chọn Không gọi mô hình.' : '');
+      ? 'Bản scan: chỉ đọc nguồn, không gọi VLM/Qwen và không tự chọn heading.' : sourceInspection.message) +
+      (!noLlm && defaults && !defaults.openRouterAvailable ? ' Cần cấu hình OPENROUTER_API_KEY trên server, hoặc chọn Không gọi mô hình.' : '');
     $('writeback').disabled = !sourceInspection.canWriteback;
     if (!sourceInspection.canWriteback) $('writeback').checked = false;
   }
@@ -550,15 +467,10 @@ function syncBackend() {
 }
 
 function renderCfgNote() {
-  if ($('noLlm').checked) {
+  if ($('noLlm').checked)
     chip('cfgNote', 'không dùng mô hình', 'Chỉ đọc nguồn: không có heading nào được nhận từ mô hình.', 'warn');
-  } else if ($('backend').value === 'openrouter') {
-    chip('cfgNote', 'OpenRouter', 'Suy luận từ xa: chất lượng phụ thuộc model slug đang cấu hình trên server.', 'warn');
-  } else if ($('backend').value === 'lmstudio') {
-    chip('cfgNote', 'LM Studio', 'Mô hình chạy trong LM Studio; kết quả được kiểm tra theo nguồn trước khi dùng.');
-  } else {
-    chip('cfgNote', 'Qwen local', 'Mô hình .gguf trên máy này.');
-  }
+  else
+    chip('cfgNote', 'OpenRouter · ' + activeModelLabel(), 'Mô hình chạy trên OpenRouter; kết quả được kiểm tra theo nguồn trước khi dùng.');
 }
 
 function chip(id, label, detail, tone = '') {
@@ -567,20 +479,6 @@ function chip(id, label, detail, tone = '') {
   el.title = detail || '';
   el.className = 'chip' + (tone ? ' ' + tone : '');
 }
-
-fetch('/api/models').then(r => r.json()).then(list => {
-  const sel = $('model');
-  if (!list.length) {
-    sel.innerHTML = '<option value="">— không tìm thấy .gguf —</option>';
-    if ($('backend').value === 'local') $('noLlm').checked = true;
-    renderCfgNote();
-    syncBackend();
-    return;
-  }
-  sel.innerHTML = list.map(m =>
-    `<option value="${esc(m.path)}">${esc(m.name)} · ${m.sizeGb} GB${m.recommended ? ' · khuyên dùng' : ''}</option>`).join('');
-  syncBackend();
-});
 
 // ---------- chạy ----------
 $('run').onclick = async () => {
@@ -600,16 +498,11 @@ $('run').onclick = async () => {
   $('devDot').className = 'devdot live';
   $('devState').textContent = 'Đang khởi tạo…';
   $('devElapsed').textContent = '0 s';
-  $('devMeta').textContent = `${$('backend').selectedOptions[0]?.textContent || 'Backend'} · ${activeModelLabel()}`;
+  $('devMeta').textContent = `OpenRouter · ${activeModelLabel()}`;
   showMain('log');
 
   const fd = new FormData();
   fd.append('file', picked);
-  fd.append('backend', $('backend').value);
-  fd.append('model', $('model').value);
-  fd.append('lmStudioModel', $('lmStudioModel').value);
-  fd.append('ctx', $('ctx').value);
-  fd.append('gpuLayers', $('gpuLayers').value);
   fd.append('noLlm', $('noLlm').checked ? '1' : '0');
   fd.append('writeback', $('writeback').checked ? '1' : '0');
   fd.append('showRaw', $('showRaw').checked ? '1' : '0');
@@ -661,10 +554,7 @@ $('cancelRun').onclick = () => runController?.abort();
 
 function activeModelLabel() {
   if ($('noLlm').checked) return 'không gọi mô hình';
-  const backend = $('backend').value;
-  if (backend === 'lmstudio') return $('lmStudioModel').value || 'chưa chọn mô hình LM Studio';
-  if (backend === 'openrouter') return (defaults && defaults.openRouterModel) || 'model cấu hình trên server';
-  return $('model').selectedOptions[0]?.textContent || 'mô hình mặc định';
+  return (defaults && defaults.openRouterModel) || 'model cấu hình trên server';
 }
 
 // ---------- hiển thị kết quả ----------

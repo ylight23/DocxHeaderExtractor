@@ -1,7 +1,6 @@
 using System.Text;
 using DocxHeaderExtractor.App;
 using DocxHeaderExtractor.DocumentProcessing.Output.Outline;
-using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Cli.Commands;
 
@@ -10,21 +9,11 @@ internal static class ExtractCommand
 {
     public static async Task<int> RunAsync(CommandLineOptions o, CancellationToken ct)
     {
-        if (!o.Pipeline.DisableLlm && o.Provider.Backend == InferenceBackend.Local &&
-            string.IsNullOrWhiteSpace(o.Provider.LocalModel.ModelPath))
+        var provider = OpenRouterProvider.FromEnvironment();
+        if (!o.Pipeline.DisableLlm && !provider.HasKey)
         {
-            var found = ModelLocator.Locate();
-            if (found is null)
-            {
-                Console.Error.WriteLine(
-                    """
-                    Chưa có mô hình. Chỉ định bằng --model <đường-dẫn.gguf>, đặt biến môi trường DHX_MODEL,
-                    hoặc đặt file .gguf vào thư mục ./models. Xem models/README.md để tải
-                    Llama-3.2-3B-Instruct-Q4_K_M.gguf. Dùng --no-llm nếu chỉ muốn chạy bằng luật OpenXML.
-                    """);
-                return 2;
-            }
-            o.Provider.LocalModel.ModelPath = found;
+            Console.Error.WriteLine($"Chưa có {OpenRouterProvider.ApiKeyVariable}. Đặt biến môi trường này, hoặc dùng --no-llm để chỉ đọc nguồn.");
+            return 2;
         }
 
         var files = Inputs.Expand(o.Inputs);
@@ -44,7 +33,7 @@ internal static class ExtractCommand
         o.Pipeline.ScanJobs = o.Jobs;
         o.Pipeline.ScanVision = o.Vision;
         o.Pipeline.ScanReuseSelection = !o.FreshSelection;
-        using var runner = new DocumentRunner(o.Pipeline, new InferenceTransportFactory(o.Provider),
+        var runner = new DocumentRunner(o.Pipeline, provider,
             o.ShowRawOutput ? r => ModelReplyPrinter.Print(r) : null);
         var outputs = new List<string>();
         int failed = 0;

@@ -3,7 +3,7 @@ using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
-using DocxHeaderExtractor.Contracts.Inference;
+using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 
@@ -21,7 +21,7 @@ internal static class DocxLane
 
     public static async Task<LaneResult> RunAsync(
         SourceDocument sourceDocument,
-        IInferenceTransport? transport,
+        ModelRoute? route,
         IHeadingSelector? selector,
         IHeadingPlacer? placer,
         LaneOptions? semanticLaneOptions,
@@ -38,15 +38,15 @@ internal static class DocxLane
             new Dictionary<string, string>(StringComparer.Ordinal),
             source.Occurrences.Select(item => new SourceBlockAudit(item.Id, 0, item.Text)).ToArray(),
             0);
-        if (transport is null)
+        if (route is null)
             return new LaneResult(StructureFactory.Create([]), LaneHarness.SourceOnlyAudit(lane), "docx-llm-disabled") { SourceCatalog = source.Catalog };
-        var access = LaneHarness.Authorize(transport, selector, placer, Refusals);
+        var access = LaneHarness.Authorize(route, selector, placer, Refusals);
 
         return await LaneHarness.CompleteAsync(
             async (lease, laneCt) =>
             {
                 var run = await LaneHarness.DecideAndAssembleAsync(
-                    lane, access.Selector, access.Placer, sourceDocument.SourcePath, access.ApiKey, access.Transport, lease, laneCt).ConfigureAwait(false);
+                    lane, access.Selector, access.Placer, sourceDocument.SourcePath, access.ApiKey, access.Route, lease, laneCt).ConfigureAwait(false);
                 return LaneHarness.Result(RouteId, source, run.Assembly, run.Audit);
             },
             (semanticLaneOptions ?? LaneOptions.Default).LaneDeadline,
@@ -55,9 +55,8 @@ internal static class DocxLane
     }
 
     private static readonly LaneHarness.AccessMessages Refusals = new(
-        "AGENT_ROUTE_AUTHORIZATION_REQUIRED: the DOCX route runs only on the authorized OpenRouter route.",
         "DOCX_HEADING_SELECTOR_REQUIRED: the DOCX route has no authority without the V6 heading selector.",
-        "DOCX_HEADING_SELECTOR_KEY_MISSING: the authorized route carries no provider key.",
+        "DOCX_HEADING_SELECTOR_KEY_MISSING: the model route carries no provider key.",
         "HEADING_PLACER_REQUIRED: the DOCX route places no heading without the heading placer.");
 
     private static readonly LaneHarness.Messages Messages = new(

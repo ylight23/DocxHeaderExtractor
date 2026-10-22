@@ -36,8 +36,8 @@ outline when asked.
 Routes: `Lanes/Docx/DocxLane`, `Lanes/Pdf/PdfLane` and `Lanes/Scan/ScanLane` each build their source and hand
 it to `Harness/LaneHarness`, which authorizes the run, lets the selected-lines authority decide, runs the one
 shared assembler and records the route audit. Every lane runs under the shared lane lease (`LaneExecution`,
-`LaneLease`) behind the fail-closed qualified transport (`IAgentRouteInferenceTransport`); the placer's
-`ModelAccess` checks that lease before and after every model turn. The PDF route additionally owns its checkpoint. There is no canonical-text fallback and no local-model route:
+`LaneLease`); a run that calls the model takes its `ModelRoute` (model and key) from the host's `IModelProvider`
+and refuses without one, and the placer's `ModelAccess` checks the lease before and after every model turn. The PDF route additionally owns its checkpoint. There is no canonical-text fallback and no local-model route:
 the former DOCX text authority (`TextSemanticHeadingAuthority`, `CanonicalSemanticEngine`, the Core
 canonical pipeline and binder) was removed when DOCX moved to the V6 agent.
 
@@ -46,7 +46,7 @@ Ownership:
 - Format adapters own source facts and parser details (PdfPig layout, OOXML styles).
 - A heading authority owns semantic membership, start and extent, and nothing downstream of it.
 - Hierarchy owns parent and depth. The materializer owns canonical structure creation.
-- Projection owns product shape. Infrastructure owns provider transport and the model/route policy.
+- Projection owns product shape. `Agents` owns the provider wire and the model/route policy; `App/OpenRouterProvider` hands it the key.
 
 Heading extent (DOCX, 2026-10-15): a paragraph can hold a heading and the body text after it, on the same line
 or after a `w:br` (which the reader writes as one space). The DOCX answer format (`P7_F1_V6_SELECT_OBJECTS_EXTENT_V1`)

@@ -1,8 +1,8 @@
-using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
 using DocxHeaderExtractor.DocumentProcessing.Lanes.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Contracts.Agents;
+using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Sources.Docx;
 using DocxHeaderExtractor.HeadingAgent.Formats;
@@ -12,7 +12,7 @@ namespace DocxHeaderExtractor.Tests;
 
 /// <summary>
 /// The DOCX lane: an <see cref="IHeadingSelector"/> is the only heading authority, as on the PDF lane. These tests use a selector that answers
-/// from a fixed alias set and a transport that makes no provider call.
+/// from a fixed alias set and a provider whose placer is a script.
 /// </summary>
 public sealed class DocxLaneTests : IDisposable
 {
@@ -39,8 +39,8 @@ public sealed class DocxLaneTests : IDisposable
         var path = Sample();
         var aliases = Aliases(path, 0, 1, 2);
         var selector = new FixedSelector(aliases.ToHashSet());
-        using var transport = new NoCallTransport("route-key");
-        using var pipeline = new DocxPipeline(new PipelineOptions(), transport, new HeadingAgents(Docx: selector, Placer: transport.Placement.Placer));
+        var provider = new ScriptedProvider("route-key");
+        var pipeline = new DocxPipeline(new PipelineOptions(), provider, new HeadingAgents(Docx: selector, Placer: provider.Placement.Placer));
 
         var run = await pipeline.RunDocumentExecutionAsync(path);
 
@@ -62,35 +62,34 @@ public sealed class DocxLaneTests : IDisposable
         var path = Sample();
         var aliases = Aliases(path, 0, 1, 2).ToHashSet();
         var context = new HeadingPlacementContext("{\"documentLines\":8,\"styles\":[]}", new Dictionary<string, string>(), DocxAgentProtocol.PlacementNote);
-        using var transport = new NoCallTransport("route-key");
-        using var pipeline = new DocxPipeline(new PipelineOptions(), transport, new HeadingAgents(Docx: new FixedSelector(aliases, context), Placer: transport.Placement.Placer));
+        var provider = new ScriptedProvider("route-key");
+        var pipeline = new DocxPipeline(new PipelineOptions(), provider, new HeadingAgents(Docx: new FixedSelector(aliases, context), Placer: provider.Placement.Placer));
 
         await pipeline.RunDocumentExecutionAsync(path);
 
-        Assert.Equal(1, transport.PlacementCalls);
-        Assert.Equal(DocxAgentProtocol.PlacementNote, System.Text.Json.Nodes.JsonNode.Parse(transport.LastPacket!)!["measurementsNote"]!.GetValue<string>());
-        Assert.Contains("json", transport.LastPrompt!, StringComparison.OrdinalIgnoreCase);
+        Assert.Equal(1, provider.PlacementCalls);
+        Assert.Equal(DocxAgentProtocol.PlacementNote, System.Text.Json.Nodes.JsonNode.Parse(provider.LastPacket!)!["measurementsNote"]!.GetValue<string>());
+        Assert.Contains("json", provider.LastPrompt!, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]
-    public async Task Without_a_selector_an_authorized_route_or_a_key_the_lane_refuses_before_any_call()
+    public async Task Without_a_selector_a_model_route_or_a_key_the_lane_refuses_before_any_call()
     {
         var path = Sample();
-        using var keyed = new NoCallTransport("route-key");
-        using var noSelector = new DocxPipeline(new PipelineOptions(), keyed, new HeadingAgents(Placer: keyed.Placement.Placer));
+        var keyed = new ScriptedProvider("route-key");
+        var noSelector = new DocxPipeline(new PipelineOptions(), keyed, new HeadingAgents(Placer: keyed.Placement.Placer));
         var none = await Assert.ThrowsAsync<InvalidOperationException>(() => noSelector.RunDocumentExecutionAsync(path));
         Assert.StartsWith("DOCX_HEADING_SELECTOR_REQUIRED", none.Message);
 
         var selector = new FixedSelector(new HashSet<string>());
-        using var keyless = new NoCallTransport(null);
-        using var noKey = new DocxPipeline(new PipelineOptions(), keyless, new HeadingAgents(Docx: selector, Placer: keyless.Placement.Placer));
+        var keyless = new ScriptedProvider(null);
+        var noKey = new DocxPipeline(new PipelineOptions(), keyless, new HeadingAgents(Docx: selector, Placer: keyless.Placement.Placer));
         var missing = await Assert.ThrowsAsync<InvalidOperationException>(() => noKey.RunDocumentExecutionAsync(path));
         Assert.StartsWith("DOCX_HEADING_SELECTOR_KEY_MISSING", missing.Message);
 
-        using var plain = new PlainTransport();
-        using var notAuthorized = new DocxPipeline(new PipelineOptions(), plain, new HeadingAgents(Docx: selector, Placer: new PlacementScript().Placer));
-        var refused = await Assert.ThrowsAsync<InvalidOperationException>(() => notAuthorized.RunDocumentExecutionAsync(path));
-        Assert.StartsWith("AGENT_ROUTE_AUTHORIZATION_REQUIRED", refused.Message);
+        var noRoute = new DocxPipeline(new PipelineOptions(), new NoRouteProvider(), new HeadingAgents(Docx: selector, Placer: new PlacementScript().Placer));
+        var refused = await Assert.ThrowsAsync<InvalidOperationException>(() => noRoute.RunDocumentExecutionAsync(path));
+        Assert.Equal("MODEL_ROUTE_REQUIRED", refused.Message);
 
         Assert.Equal(0, selector.Calls);
         Assert.Equal(0, keyed.PlacementCalls + keyless.PlacementCalls);
@@ -100,7 +99,7 @@ public sealed class DocxLaneTests : IDisposable
     public async Task With_the_model_disabled_the_selector_is_not_called_and_the_route_says_so()
     {
         var selector = new FixedSelector(new HashSet<string>());
-        using var pipeline = new DocxPipeline(new PipelineOptions { DisableLlm = true }, new NoCallTransport("route-key"), new HeadingAgents(Docx: selector, Placer: new PlacementScript().Placer));
+        var pipeline = new DocxPipeline(new PipelineOptions { DisableLlm = true }, new NoRouteProvider(), new HeadingAgents(Docx: selector, Placer: new PlacementScript().Placer));
 
         var run = await pipeline.RunDocumentExecutionAsync(Sample());
 
@@ -124,35 +123,6 @@ public sealed class DocxLaneTests : IDisposable
         }
     }
 
-    private class NoCallTransport(string? key) : IAgentRouteInferenceTransport
-    {
-        /// <summary>The placer of the run: placement goes through it, not through this transport.</summary>
-        public PlacementScript Placement { get; } = new();
-        public int PlacementCalls => Placement.Calls;
-        public string? LastPrompt => Placement.LastPrompt;
-        public string? LastPacket => Placement.LastPacket;
-        public string? OpenRouterApiKey => key;
-        public string RouteProvider => "test";
-        public string RouteModel => "test";
-        public string ModelName => "test";
-        public int ContextSize => 1 << 20;
-        public string RuntimeDescription => "V6 DOCX lane test; no provider";
-        public int SharedPrefixTokens => 0;
-
-        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) =>
-            throw new InvalidOperationException("NO_TRANSPORT_CALL: placement goes through the placer");
-
-        public void Dispose() { }
-    }
-
-    /// <summary>A transport that is not the authorized OpenRouter route.</summary>
-    private sealed class PlainTransport : IInferenceTransport
-    {
-        public string ModelName => "test";
-        public int ContextSize => 1;
-        public string RuntimeDescription => "test";
-        public int SharedPrefixTokens => 0;
-        public Task<string> CompleteAsync(string systemPrompt, string userMessage, CancellationToken ct = default, int expectedItemCount = 0) => throw new NotSupportedException();
-        public void Dispose() { }
-    }
+    /// <summary>A provider that issues no model route: a run that needs the model refuses, one with the model disabled never asks.</summary>
+    private sealed class NoRouteProvider : IModelProvider;
 }

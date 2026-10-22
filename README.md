@@ -28,85 +28,62 @@ Cấu trúc project:
 
 | Project | Vai trò |
 |---|---|
-| `Contracts` | Kiểu dùng chung: model, `IHeadingSelector`, interface transport |
+| `Contracts` | Kiểu dùng chung: model, `IHeadingSelector`, `IModelProvider` |
 | `Sources` | Đọc nguồn OOXML, PDF và scan; snapshot nguồn, cache |
 | `HeadingAgent` | Agent V6 cho PDF, DOCX và scan |
 | `DocumentProcessing` | Pipeline theo bước: `Intake` → `Lanes` + `Harness` → `Selection` → `Binding` → `Placement` → `Hierarchy` → `Structure` → `Audit` → `Output` → `Writeback` |
-| `App` | Nối agent vào pipeline; điểm gọi của CLI và Web |
-| `Infrastructure` | Transport provider và factory route |
+| `App` | Nối agent vào pipeline; `OpenRouterProvider`; điểm gọi của CLI và Web |
+| `Infrastructure` | Lưu lượt chạy và telemetry, đọc file đầu vào |
 | `Cli` / `Web` | Hai host |
 
 ## Yêu cầu
 
 - .NET SDK 9.0
-- Mô hình: GGUF local (LLamaSharp), hoặc OpenRouter, LM Studio, SGLang/vLLM qua HTTP
+- Mô hình: `qwen/qwen3.7-flash` qua OpenRouter, key trong `OPENROUTER_API_KEY` (không cần khi chạy `--no-llm`)
 - Để đọc `.doc`: LibreOffice **hoặc** Microsoft Word (OpenXML SDK không đọc trực tiếp định dạng này)
 
 ## Cài đặt
 
 ```powershell
 dotnet build -c Release
-.\scripts\download-model.ps1          # tải mô hình GGUF vào .\models (chỉ cần cho backend local)
 ```
-
-Đường dẫn mô hình local được tìm theo thứ tự: `--model` → `DHX_MODEL` → `appsettings.json` →
-file `.gguf` trong `./models`.
 
 ## Dùng nhanh
 
 ```powershell
 dhx extract samples\mau.docx -f md    # chạy đầy đủ
-dhx extract samples\mau.docx --no-llm # chỉ dùng luật OpenXML, không cần mô hình
-dhx extract bao-cao.pdf --openrouter -f json
+dhx extract samples\mau.docx --no-llm # chỉ đọc nguồn, không gọi mô hình
+dhx extract bao-cao.pdf -f json
 dhx extract .\tai-lieu\ -f csv -o outline.csv
-dhx info models\model.gguf            # metadata mô hình
 dhx help                              # toàn bộ tuỳ chọn
 ```
 
 Ghi outline vào bản sao `.docx` (file nguồn không bao giờ bị sửa):
 
 ```powershell
-dhx extract bao-cao.docx --openrouter --write-docx bao-cao.outline.docx
+dhx extract bao-cao.docx --write-docx bao-cao.outline.docx
 ```
 
 ### OpenRouter
 
-Đặt API key trong biến môi trường của tiến trình/server, không ghi vào source, `appsettings.json`
-hoặc trình duyệt:
+Mọi lần gọi mô hình đều đi qua OpenRouter. Đặt API key trong biến môi trường của tiến trình/server,
+không ghi vào source hoặc trình duyệt:
 
 ```powershell
 $env:OPENROUTER_API_KEY = "sk-or-v1-..."
-dhx extract tai-lieu.docx --openrouter -f json
+dhx extract tai-lieu.docx -f json
 ```
 
-Mặc định là cấu hình đã re-baseline: `qwen/qwen3.7-flash` ghim route `Alibaba`
-(`allow_fallbacks=false`), `reasoning=none`, streaming (`stream=true`, `usage.include=true`).
-Đổi model bằng `--openrouter-model` hoặc `OPENROUTER_MODEL` (model khác không bị ghim route ngầm);
-ghim route bằng `OPENROUTER_PROVIDER_ROUTE`. Request luôn gửi `data_collection=deny`,
-`require_parameters=true` và ghi rõ `zdr` (mặc định `false`, vì endpoint Alibaba chưa có chứng nhận ZDR).
-Mỗi lần gọi có deadline transport 300 s (chỉ tính truyền tải; parse và kiểm contract nằm ngoài) và
-tối đa 2 lần retry cho 429/5xx/lỗi mạng/stream không hoàn tất, tôn trọng `Retry-After`; một stream đã
-hoàn tất không bao giờ được gửi lại, và lỗi nội dung (JSON/contract/`finish_reason=length`) không bị
-retry như lỗi mạng. Nội dung tài liệu vẫn được gửi ra dịch vụ bên ngoài;
-không dùng cho tài liệu mật khi chưa được phép.
-
-### LM Studio
-
-```powershell
-$env:LMSTUDIO_ENDPOINT = "http://127.0.0.1:1234/v1/chat/completions"
-$env:LMSTUDIO_MODEL = "model-identifier-from-lm-studio"
-$env:LMSTUDIO_API_KEY = "local-token-if-enabled"
-$env:LMSTUDIO_CONTEXT_SIZE = "16384"
-.\dhx-ui.cmd
-```
-
-Endpoint bắt buộc là loopback (`localhost`, `127.0.0.1`, `::1`). CLI tương đương:
-`dhx extract tai-lieu.docx --lmstudio --lmstudio-model "model-identifier" -f json`.
+Mô hình cố định là mô hình các agent đã được kiểm định: `qwen/qwen3.7-flash`, ghim route `Alibaba`
+(`allow_fallbacks=false`), `reasoning=none`, streaming kèm `usage`. Agent từ chối phản hồi đến từ model
+hoặc route khác. Request luôn gửi `data_collection=deny` và `require_parameters=true`. Gặp 429, cùng request
+được gửi lại sau thời gian chờ tăng dần. Nội dung tài liệu vẫn được gửi ra dịch vụ bên ngoài; không dùng
+cho tài liệu mật khi chưa được phép.
 
 ### Web UI
 
 Chạy `.\dhx-ui.cmd`, rồi mở URL được in sau dòng `dhx-ui đang chạy` (mặc định
-`http://localhost:5099`). Launcher build trực tiếp từ source với Vulkan và dùng
+`http://localhost:5099`). Launcher build trực tiếp từ source và dùng
 `dotnet watch --no-hot-reload`: lưu thay đổi C#, project tham chiếu hoặc `wwwroot` sẽ
 build và restart backend. Giữ cửa sổ lệnh này mở; `Ctrl+C` dừng watcher. Dừng backend
 publish cũ một lần trước khi chuyển sang launcher này để tránh trùng cổng. Chạy DLL
@@ -115,13 +92,13 @@ trong `out-vulkan-ui` trực tiếp sẽ không tự cập nhật theo source.
 Lệnh .NET tương đương, chạy tại gốc repo:
 
 ```powershell
-dotnet watch --project src/DocxHeaderExtractor.Web/DocxHeaderExtractor.Web.csproj --no-hot-reload run -c Release -p:UseVulkan=true --no-launch-profile
+dotnet watch --project src/DocxHeaderExtractor.Web/DocxHeaderExtractor.Web.csproj --no-hot-reload run -c Release --no-launch-profile
 ```
 
 Chỉ build, không khởi động server:
 
 ```powershell
-dotnet build src/DocxHeaderExtractor.Web/DocxHeaderExtractor.Web.csproj -c Release -p:UseVulkan=true
+dotnet build src/DocxHeaderExtractor.Web/DocxHeaderExtractor.Web.csproj -c Release
 ```
 
 Backend in URL và build SHA sau khi bind thành công; `/api/build` trả version của

@@ -2,7 +2,7 @@ using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Sources.Pdf;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Output;
-using DocxHeaderExtractor.Contracts.Inference;
+using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
@@ -29,39 +29,15 @@ public static class PdfPipeline
     /// re-derived one would be a second answer about the same document.
     /// </para>
     /// </summary>
-    public static Task<RunResult> RunExecutionAsync(
+    /// <param name="route">The model route; null when the model is disabled, and then the run reads the source only.</param>
+    /// <param name="agents">The PDF selector, which is the PDF heading authority, and the placer. Without them a run that needs the model
+    /// refuses (PDF_HEADING_SELECTOR_REQUIRED, HEADING_PLACER_REQUIRED).</param>
+    internal static async Task<RunResult> RunAsync(
         UploadedFile file,
         PipelineOptions options,
-        IInferenceTransport? transport = null,
-        bool sendsDataExternally = false,
-        CancellationToken ct = default) =>
-        RunExecutionCoreAsync(
-            file, options, transport, sendsDataExternally, ct,
-            LaneOptions.Default, new HeadingAgents());
-
-    /// <summary>
-    /// The lane's entry with its agents: the PDF selector, which is the PDF heading authority, and the placer. The public signature above is
-    /// unchanged; without them a run that needs the model refuses (PDF_HEADING_SELECTOR_REQUIRED, HEADING_PLACER_REQUIRED).
-    /// </summary>
-    internal static Task<RunResult> RunAsync(
-        UploadedFile file,
-        PipelineOptions options,
-        IInferenceTransport? transport,
+        ModelRoute? route,
         HeadingAgents agents,
-        bool sendsDataExternally = false,
-        CancellationToken ct = default) =>
-        RunExecutionCoreAsync(
-            file, options, transport, sendsDataExternally, ct,
-            LaneOptions.Default, agents);
-
-    private static async Task<RunResult> RunExecutionCoreAsync(
-        UploadedFile file,
-        PipelineOptions options,
-        IInferenceTransport? transport,
-        bool transportSendsDataExternally,
-        CancellationToken ct,
-        LaneOptions semanticLaneOptions,
-        HeadingAgents agents)
+        CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(file);
         ArgumentNullException.ThrowIfNull(options);
@@ -69,13 +45,7 @@ public static class PdfPipeline
             throw new UnsupportedSourceException(file);
 
         var started = Environment.TickCount64;
-        var used = options.DisableLlm ? null : transport;
-        var productionAuthorized = used is IAgentRouteInferenceTransport;
-        if (used is not null && !productionAuthorized)
-        {
-            throw new InvalidOperationException(
-                "AGENT_ROUTE_AUTHORIZATION_REQUIRED: requires the production-authorized PDF inference transport.");
-        }
+        var used = options.DisableLlm ? null : route;
 
         LaneResult authority;
         // PDF heading authority is the V6 selected-lines authority. It has no semantic fallback:
@@ -85,7 +55,7 @@ public static class PdfPipeline
             ? PdfSourceCache.BuildOrLoad(file.LocalPath, cacheRoot)
             : PdfSourceAdapter.BuildWithDetails(file.LocalPath);
         authority = await PdfLane.RunAsync(
-            sourceBuild.Snapshot, sourceBuild.Details, file.LocalPath, used, semanticLaneOptions, agents.Pdf, agents.Placer, ct);
+            sourceBuild.Snapshot, sourceBuild.Details, file.LocalPath, used, LaneOptions.Default, agents.Pdf, agents.Placer, ct);
 
         // The catalog the lane parsed, not a second one derived from the audit. The audit's block
         // text is a readable rendering meant for a person to read; the model was shown, and the
@@ -111,8 +81,8 @@ public static class PdfPipeline
                 ParagraphCount: catalog.Units.Count,
                 SourceCount: authority.Audit?.SourceBlocksSelected ?? 0,
                 Route: Route,
-                Model: used?.ModelName,
-                SentDataExternally: !options.DisableLlm && transportSendsDataExternally),
+                Model: used?.Model,
+                SentDataExternally: used is not null),
             authority,
             authority.Structure,
             authority.EmittedElementIds ?? authority.Structure.Elements.Select(element => element.Id).ToHashSet(StringComparer.Ordinal),

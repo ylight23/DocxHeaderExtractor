@@ -2,7 +2,8 @@ extern alias WebApp;
 
 using System.Net;
 using System.Text.Json;
-using DocxHeaderExtractor.Contracts.Inference;
+using DocxHeaderExtractor.App;
+using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.Sources.Detect;
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
@@ -46,7 +47,6 @@ public sealed class WebSourceInspectionTests : IDisposable
         Assert.Equal("docx", result.GetProperty("format").GetString());
         Assert.Equal("scan", result.GetProperty("route").GetString());
         Assert.True(result.GetProperty("requiresOcr").GetBoolean());
-        Assert.True(result.GetProperty("requiresOpenRouter").GetBoolean());
         Assert.True(result.GetProperty("supported").GetBoolean());
         Assert.False(result.GetProperty("canWriteback").GetBoolean());
         Assert.Equal(34, result.GetProperty("pageImages").GetInt32());
@@ -69,25 +69,25 @@ public sealed class WebSourceInspectionTests : IDisposable
     }
 
     [Fact]
-    public async Task Extraction_rechecks_the_source_and_refuses_a_scan_with_a_local_backend_before_loading_a_model()
+    public async Task Extraction_rechecks_the_source_and_refuses_a_model_run_without_a_key_before_any_call()
     {
-        using var app = new WebApplicationFactory<WebProgram>();
+        using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(builder => builder.ConfigureTestServices(services =>
+            services.AddSingleton<ModelProviderFactory>(_ => () => new OpenRouterProvider(null))));
         using var client = app.CreateClient();
         using var form = Upload(ScanPath);
-        form.Add(new StringContent("local"), "backend");
         form.Add(new StringContent("docx"), "route"); // client cannot hide that this is a scan
         using var response = await client.PostAsync("/api/extract", form);
         var events = (await response.Content.ReadAsStringAsync()).Split('\n', StringSplitOptions.RemoveEmptyEntries).Select(l => JsonDocument.Parse(l).RootElement.Clone()).ToArray();
         Assert.Equal("scan", events.Single(e => e.GetProperty("type").GetString() == "source").GetProperty("source").GetProperty("route").GetString());
-        Assert.Contains("Bản scan cần OpenRouter", events.Single(e => e.GetProperty("type").GetString() == "error").GetProperty("message").GetString());
+        Assert.Contains("OPENROUTER_API_KEY", events.Single(e => e.GetProperty("type").GetString() == "error").GetProperty("message").GetString());
     }
 
     [Fact]
-    public async Task Offline_web_upload_reaches_the_scan_pipeline_without_creating_a_provider_transport()
+    public async Task Offline_web_upload_reaches_the_scan_pipeline_without_asking_for_a_model_route()
     {
         var scan = new OfflineScan();
         using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(builder => builder.ConfigureTestServices(services =>
-            services.AddSingleton<WebTransportFactoryResolver>(_ => _ => new OfflineFactory(scan))));
+            services.AddSingleton<ModelProviderFactory>(_ => () => new OfflineFactory(scan))));
         using var client = app.CreateClient();
         using var form = Upload(ScanPath);
         form.Add(new StringContent("1"), "noLlm");
@@ -113,7 +113,7 @@ public sealed class WebSourceInspectionTests : IDisposable
         File.WriteAllBytes(path, builder.Build());
         var scan = new OfflineScan();
         using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(host => host.ConfigureTestServices(services =>
-            services.AddSingleton<WebTransportFactoryResolver>(_ => _ => new OfflineFactory(scan))));
+            services.AddSingleton<ModelProviderFactory>(_ => () => new OfflineFactory(scan))));
         using var client = app.CreateClient();
         using var form = Upload(path, "renamed.docx");
         using var response = await client.PostAsync("/api/inspect", form);
@@ -145,10 +145,10 @@ public sealed class WebSourceInspectionTests : IDisposable
         Assert.True(source.Supported);
     }
 
-    sealed class OfflineFactory(OfflineScan scan) : IInferenceTransportFactory
+    sealed class OfflineFactory(OfflineScan scan) : IModelProvider
     {
         public IScanHeadingSelector CreateScanHeadingSelector() => scan;
-        public Task<IInferenceTransport> CreateAgentRouteAsync(CancellationToken ct = default) => throw new Exception("Provider must not be created");
+        public ModelRoute CreateRoute() => throw new Exception("No model route may be asked for");
     }
 
     sealed class OfflineScan : IScanHeadingSelector
