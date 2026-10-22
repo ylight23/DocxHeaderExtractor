@@ -3,13 +3,11 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using DocxHeaderExtractor.Agents;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Protocol;
-
-/// <summary>One request body, built once: the bytes measured, sent and hashed are this value.</summary>
-internal sealed record PreparedRequest(string Body, int Bytes, string Sha256);
 
 /// <summary>
 /// The wire contract of the D4.12 method (ported from the qualified V6 agent, arm TOOLFACTS_ANALYSIS_V3): the system prompt, the user
@@ -18,10 +16,10 @@ internal sealed record PreparedRequest(string Body, int Bytes, string Sha256);
 /// </summary>
 internal static partial class AgentProtocol
 {
-    public const string ChatModel = "qwen/qwen3.7-flash";
-    public const string ProviderTag = "alibaba";
-    public static readonly string[] Ignore = ["alibaba/us-east-1"];
-    public const int MaxTokens = 32768;
+    public const string ChatModel = OpenRouterWire.ChatModel;
+    public const string ProviderTag = OpenRouterWire.ProviderTag;
+    public static readonly string[] Ignore = OpenRouterWire.Ignore;
+    public const int MaxTokens = OpenRouterWire.MaxTokens;
     public const int MaxToolTurns = 3, MaxCallsPerTurn = 8, MaxPostsPerUnit = MaxToolTurns + 1;
     /// <summary>Hard cap on the content bytes of every tool message of one unit (see the qualified agent for the reserve rule).</summary>
     public const int MaxToolMessageBytesPerUnit = 65536;
@@ -75,74 +73,13 @@ internal static partial class AgentProtocol
     public static PreparedRequest Build(string payload, JsonArray history, string toolChoice, IAgentFormat? flavor = null)
     {
         flavor ??= PdfFormat.Instance;
-        if (toolChoice is not ("auto" or "none")) throw new ArgumentException("TOOL_CHOICE_INVALID", nameof(toolChoice));
-        static JsonNode Content(string text) =>
-            new JsonArray(new JsonObject { ["type"] = "text", ["text"] = text, ["cache_control"] = new JsonObject { ["type"] = "ephemeral" } });
-        var messages = new JsonArray(
-            new JsonObject { ["role"] = "system", ["content"] = Content(flavor.SystemPrompt) },
-            new JsonObject { ["role"] = "user", ["content"] = Content(payload) });
-        foreach (var m in history) messages.Add(m!.DeepClone());
-        var body = new JsonObject
-        {
-            ["model"] = ChatModel,
-            ["messages"] = messages,
-            ["response_format"] = new JsonObject { ["type"] = "json_object" },
-            ["temperature"] = 0,
-            ["max_tokens"] = MaxTokens,
-            ["reasoning"] = new JsonObject { ["enabled"] = true },
-            ["tools"] = flavor.ToolDefinitions(),
-            ["tool_choice"] = toolChoice,
-            ["provider"] = JsonSerializer.SerializeToNode(new { only = new[] { ProviderTag }, ignore = Ignore, allow_fallbacks = false, require_parameters = true }, Options),
-            ["stream"] = true,
-            ["usage"] = new JsonObject { ["include"] = true },
-        };
-        var text = body.ToJsonString(Options);
-        var bytes = Encoding.UTF8.GetBytes(text);
-        return new PreparedRequest(text, bytes.Length, Convert.ToHexStringLower(SHA256.HashData(bytes)));
+        return OpenRouterWire.Build(flavor.SystemPrompt, payload, history, toolChoice, flavor.ToolDefinitions());
     }
 
     // ---------------- replies ----------------
 
-    public sealed record ToolCall(string? Id, string? Name, string Arguments);
-
-    /// <summary>One assistant turn as the response states it. Content is the visible text (null when absent). Reasoning is carried for the
-    /// diagnostics hook only: no decision reads it.</summary>
-    public sealed record ModelTurn(string? Content, IReadOnlyList<ToolCall> ToolCalls, string? FinishReason, string? Reasoning = null);
-
     /// <summary>Reads choices[0].message of a chat response: content and tool_calls, as given. Never repairs anything.</summary>
-    public static (ModelTurn? Turn, string? Failure) ReadResponse(string responseJson)
-    {
-        JsonDocument doc;
-        try { doc = JsonDocument.Parse(responseJson); }
-        catch (JsonException) { return (null, "RESPONSE_NOT_JSON"); }
-        using (doc)
-        {
-            var root = doc.RootElement;
-            if (!root.TryGetProperty("choices", out var choices) || choices.ValueKind != JsonValueKind.Array || choices.GetArrayLength() == 0) return (null, "NO_CHOICES");
-            var c0 = choices[0];
-            if (!c0.TryGetProperty("message", out var msg) || msg.ValueKind != JsonValueKind.Object) return (null, "NO_MESSAGE");
-            var finish = c0.TryGetProperty("finish_reason", out var fr) && fr.ValueKind == JsonValueKind.String ? fr.GetString() : null;
-            string? content = msg.TryGetProperty("content", out var ct) && ct.ValueKind == JsonValueKind.String ? ct.GetString() : null;
-            var calls = new List<ToolCall>();
-            if (msg.TryGetProperty("tool_calls", out var tc) && tc.ValueKind == JsonValueKind.Array)
-                foreach (var c in tc.EnumerateArray())
-                {
-                    if (c.ValueKind != JsonValueKind.Object) return (null, "TOOL_CALL_NOT_OBJECT");
-                    var id = c.TryGetProperty("id", out var i) && i.ValueKind == JsonValueKind.String ? i.GetString() : null;
-                    string? name = null; var args = "";
-                    if (c.TryGetProperty("function", out var f) && f.ValueKind == JsonValueKind.Object)
-                    {
-                        if (f.TryGetProperty("name", out var n) && n.ValueKind == JsonValueKind.String) name = n.GetString();
-                        if (f.TryGetProperty("arguments", out var a)) args = a.ValueKind == JsonValueKind.String ? a.GetString()! : a.GetRawText();
-                    }
-                    calls.Add(new ToolCall(id, name, args));
-                }
-            if (calls.Count == 0 && finish == "tool_calls") return (null, "FINISH_TOOL_CALLS_WITHOUT_CALLS");
-            if (calls.Count == 0 && content is null) return (null, "CONTENT_NOT_TEXT");
-            var reasoning = msg.TryGetProperty("reasoning", out var rz) && rz.ValueKind == JsonValueKind.String ? rz.GetString() : null;
-            return (new ModelTurn(content, calls, finish, reasoning), null);
-        }
-    }
+    public static (ModelTurn? Turn, string? Failure) ReadResponse(string responseJson) => OpenRouterWire.ReadResponse(responseJson);
 
     /// <summary>A final answer wrapped in exactly one markdown fence (optional json label) around exactly one JSON object is read from inside the
     /// fence (P7_F1_V6_SINGLE_FENCE_UNWRAP_V1); anything else is left as it is.</summary>

@@ -12,6 +12,9 @@ using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.DocumentProcessing.Intake;
+using DocxHeaderExtractor.Agents.Budget;
+using DocxHeaderExtractor.Agents.Transport;
+using DocxHeaderExtractor.Agents;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -79,7 +82,7 @@ public sealed class ScanAgentTests : IDisposable
                 ["run"] = r!["run"]!.GetValue<string>(),
                 ["headings"] = new JsonArray(new JsonArray(r["lines"]!.AsArray().Select(l => (JsonNode)JsonValue.Create(l!["alias"]!.GetValue<string>())!).ToArray())),
             }).ToArray();
-            return new AgentProtocol.ModelTurn(new JsonObject { ["protocolVersion"] = AgentGrouping.GroupVersion, ["runs"] = new JsonArray(runs) }.ToJsonString(), [], "stop");
+            return new ModelTurn(new JsonObject { ["protocolVersion"] = AgentGrouping.GroupVersion, ["runs"] = new JsonArray(runs) }.ToJsonString(), [], "stop");
         };
 
         var result = AgentGrouping.Group(source, selected, model, new AgentBudget(1000, 100), 1, CancellationToken.None, retryDelayMs: 0);
@@ -99,7 +102,7 @@ public sealed class ScanAgentTests : IDisposable
             calls.Add(unit);
             var body = JsonNode.Parse(request.Body)!;
             if (FakeOpenRouter.VerificationResponse(body.AsObject()) is { } verification)
-                return new AgentProtocol.ModelTurn(verification, [], "stop");
+                return new ModelTurn(verification, [], "stop");
             var content = body["messages"]![1]!["content"]!;
             var payload = JsonNode.Parse(content is JsonArray ? content[0]!["text"]!.GetValue<string>() : content.GetValue<string>())!;
             if (payload["stage"]!.GetValue<string>() == "GROUP")
@@ -116,11 +119,11 @@ public sealed class ScanAgentTests : IDisposable
                             ["headings"] = new JsonArray(aliases.Select(a => (JsonNode)new JsonArray(a)).ToArray())
                         });
                     }
-                    return new AgentProtocol.ModelTurn(new JsonObject
+                    return new ModelTurn(new JsonObject
                     { ["protocolVersion"] = AgentGrouping.GroupVersion, ["runs"] = validRuns }.ToJsonString(), [], "stop");
                 }
                 var runs = payload["runs"]!.AsArray();
-                return new AgentProtocol.ModelTurn(new JsonObject
+                return new ModelTurn(new JsonObject
                 {
                     ["protocolVersion"] = AgentGrouping.GroupVersion,
                     ["runs"] = new JsonArray(runs.Select(r => (JsonNode)new JsonObject
@@ -150,7 +153,7 @@ public sealed class ScanAgentTests : IDisposable
                 }
                 decisions.Add(decision);
             }
-            return new AgentProtocol.ModelTurn(new JsonObject
+            return new ModelTurn(new JsonObject
             { ["protocolVersion"] = AgentProtocol.SelectScanVersion, ["status"] = "COMPLETE", ["decisions"] = decisions }.ToJsonString(), [], "stop");
         };
         var result = AgentSelector.Select(source, model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);

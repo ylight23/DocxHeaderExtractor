@@ -6,6 +6,7 @@ using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Selectors;
+using DocxHeaderExtractor.Agents.Transport;
 
 namespace DocxHeaderExtractor.Tests;
 

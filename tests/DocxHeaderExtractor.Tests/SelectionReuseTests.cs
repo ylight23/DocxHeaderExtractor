@@ -7,6 +7,8 @@ using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Selectors;
 using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
+using DocxHeaderExtractor.Agents.Budget;
+using DocxHeaderExtractor.Agents;
 
 namespace DocxHeaderExtractor.Tests;
 

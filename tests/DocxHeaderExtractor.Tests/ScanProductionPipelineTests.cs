@@ -12,12 +12,12 @@ using DocxHeaderExtractor.Sources.Scan;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
-using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.App;
 using DocxHeaderExtractor.Web;
+using DocxHeaderExtractor.Agents.Budget;
 
 namespace DocxHeaderExtractor.Tests;
 

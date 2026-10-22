@@ -2,6 +2,7 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using DocxHeaderExtractor.Agents.Transport;
 
 namespace DocxHeaderExtractor.Tests;
 

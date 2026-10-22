@@ -5,6 +5,8 @@ using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Tools;
+using DocxHeaderExtractor.Agents.Budget;
+using DocxHeaderExtractor.Agents;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -31,14 +33,14 @@ public sealed class GroupingReuseTests : IDisposable
     private static AgentUnit.Model Answering(Action onCall, string? reply = null) => (unit, turn, request) =>
     {
         onCall();
-        if (reply is not null) return new AgentProtocol.ModelTurn(reply, [], "stop");
+        if (reply is not null) return new ModelTurn(reply, [], "stop");
         var payload = JsonNode.Parse(JsonNode.Parse(request.Body)!["messages"]![1]!["content"]!.Text())!;
         var runs = payload["runs"]!.AsArray().Select(r => (JsonNode)new JsonObject
         {
             ["run"] = r!["run"]!.GetValue<string>(),
             ["headings"] = new JsonArray(new JsonArray(r["lines"]!.AsArray().Select(l => (JsonNode)JsonValue.Create(l!["alias"]!.GetValue<string>())!).ToArray())),
         }).ToArray();
-        return new AgentProtocol.ModelTurn(new JsonObject { ["protocolVersion"] = AgentGrouping.GroupVersion, ["runs"] = new JsonArray(runs) }.ToJsonString(), [], "stop");
+        return new ModelTurn(new JsonObject { ["protocolVersion"] = AgentGrouping.GroupVersion, ["runs"] = new JsonArray(runs) }.ToJsonString(), [], "stop");
     };
 
     private static HashSet<string> Selected(params int[] lines) => lines.Select(A).ToHashSet(StringComparer.Ordinal);

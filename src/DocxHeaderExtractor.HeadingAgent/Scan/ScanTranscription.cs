@@ -11,6 +11,9 @@ using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Tools;
+using DocxHeaderExtractor.Agents.Budget;
+using DocxHeaderExtractor.Agents.Transport;
+using DocxHeaderExtractor.Agents;
 
 namespace DocxHeaderExtractor.HeadingAgent.Scan;
 

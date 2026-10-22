@@ -2,6 +2,7 @@ using System.Text.Json;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
+using DocxHeaderExtractor.Agents;
 
 namespace DocxHeaderExtractor.Tests;
 

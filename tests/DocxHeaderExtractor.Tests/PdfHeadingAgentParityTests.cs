@@ -8,6 +8,8 @@ using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Tools;
+using DocxHeaderExtractor.Agents.Budget;
+using DocxHeaderExtractor.Agents;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -257,7 +259,7 @@ public sealed class PdfHeadingAgentParityTests
         {
             var step = script(++myPosts, PayloadOf(req.Body), req.Body);
             if (step.Throw is not null) throw new ReplyFailure(step.Throw);
-            return new AgentProtocol.ModelTurn(step.Content, step.Calls.Select(c => new AgentProtocol.ToolCall(c.Id, c.Name, c.Args)).ToArray(), step.Finish);
+            return new ModelTurn(step.Content, step.Calls.Select(c => new ToolCall(c.Id, c.Name, c.Args)).ToArray(), step.Finish);
         }, new AgentBudget(1000, 100), retryDelayMs: 0, instruction: AgentProtocol.InstructionD412);
 
         if (scenario == "answer-first-then-repair")

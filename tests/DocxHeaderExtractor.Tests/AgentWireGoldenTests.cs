@@ -11,6 +11,8 @@ using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.HeadingAgent.Scan;
+using DocxHeaderExtractor.Agents.Budget;
+using DocxHeaderExtractor.Agents;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -206,8 +208,8 @@ public sealed class AgentWireGoldenTests
         var (decide, _) = source.Scope(0);
         var tools = source.Flavor.CreateTools(source);
         var ordered = decide.OrderBy(tools.PositionOf).ToArray();
-        AgentProtocol.ModelTurn Reply(string unitId, int turn, PreparedRequest request) => turn == 1
-            ? new(null, [new AgentProtocol.ToolCall("call-1", "get_line_facts", $"{{\"first\":\"{ordered[0]}\",\"last\":\"{ordered[^1]}\",\"offset\":0}}")], "tool_calls")
+        ModelTurn Reply(string unitId, int turn, PreparedRequest request) => turn == 1
+            ? new(null, [new ToolCall("call-1", "get_line_facts", $"{{\"first\":\"{ordered[0]}\",\"last\":\"{ordered[^1]}\",\"offset\":0}}")], "tool_calls")
             : new("not json", [], "stop");
         var outcome = AgentUnit.Run(source, 0, Reply, new AgentBudget(100, 100), retryDelayMs: 0);
         return new JsonObject

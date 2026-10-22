@@ -6,6 +6,7 @@ using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Selectors;
 using DocxHeaderExtractor.HeadingAgent.Tools;
+using DocxHeaderExtractor.Agents;
 
 namespace DocxHeaderExtractor.HeadingAgent.Scan;
 

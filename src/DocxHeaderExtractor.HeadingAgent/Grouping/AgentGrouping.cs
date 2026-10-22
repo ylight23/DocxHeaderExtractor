@@ -9,6 +9,8 @@ using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.HeadingAgent.Tools;
+using DocxHeaderExtractor.Agents.Budget;
+using DocxHeaderExtractor.Agents;
 
 namespace DocxHeaderExtractor.HeadingAgent.Grouping;
 
@@ -195,7 +197,7 @@ internal static class AgentGrouping
             var req = BuildRequest(payload, history, source.Flavor.GroupPrompt);
             if (budget.Admit(req) is { } refusal) return (accepted, answers, Fallback("BUDGET:" + refusal), posts, repairs, evidence);
             posts++;
-            AgentProtocol.ModelTurn reply;
+            ModelTurn reply;
             try { reply = model(unitId, 1 + repairs, req); }
             catch (ReplyFailure f) when (retries < AgentUnit.TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal))
             {

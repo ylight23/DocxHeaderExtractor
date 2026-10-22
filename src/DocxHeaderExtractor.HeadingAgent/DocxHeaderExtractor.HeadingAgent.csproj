@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DocxHeaderExtractor.Agents\DocxHeaderExtractor.Agents.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.Sources\DocxHeaderExtractor.Sources.csproj" />
   </ItemGroup>
 
