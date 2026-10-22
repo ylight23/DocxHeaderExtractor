@@ -1,37 +1,35 @@
 # Kiến trúc hiện tại
 
-Cập nhật 2026-10-15. Đây là trạng thái đang chạy của code; lịch sử các giai đoạn trước nằm trong git.
+Cập nhật 2026-10-22. Đây là trạng thái đang chạy của code; lịch sử các giai đoạn trước nằm trong git.
 
 ## Tóm tắt
 
-- Mỗi định dạng có đúng một tuyến, không có đường dự phòng: DOCX và PDF đều lấy heading qua
-  `IHeadingSelector`, và selector mặc định là agent V6 (Qwen qua OpenRouter, một hội thoại mỗi cửa sổ).
-- CLI và Web gọi thẳng tuyến V6 qua `V6DocumentRunner`. Không còn harness, không còn MCP.
+- Mỗi định dạng có đúng một tuyến, không có đường dự phòng: DOCX, PDF và bản scan đều lấy heading qua
+  selector, và selector mặc định là agent V6 (Qwen qua OpenRouter, một hội thoại mỗi cửa sổ).
+- CLI và Web gọi thẳng tuyến V6 qua `V6DocumentRunner`. Không còn project `AgentHarness`, không còn MCP.
 - `.doc`, `.rtf`, `.odt` được chuyển sang OOXML trước khi vào tuyến.
-- Consent gửi dữ liệu ra ngoài đã bị bỏ theo quyết định của chủ dự án (2026-10-15).
+- AI quyết định (dòng nào là heading, cách nhóm, đề xuất cha); C# kiểm tra và dựng cấu trúc.
 
 ## Các project
 
 | Project | Vai trò | Phụ thuộc |
 |---|---|---|
-| `Sources` | Hợp đồng dùng chung (kiểu `Core` cũ trong `Models/`, `Semantics/`), đọc nguồn OOXML và PDF (`Source/`, `OpenXmlLayer/`), snapshot nguồn, `IHeadingSelector`, `UploadedSource` | `Application` |
-| `DocumentProcessing` | Pipeline DOCX/PDF, router, bước ghép (binder, parent resolver, hierarchy, materializer), projection, writeback `.docx`, interface transport | `Sources`, `Application` |
-| `HeadingAgent` | Agent V6 cho PDF (`PdfHeadingAgentSelector`) và DOCX (`DocxHeadingAgentSelector`) | `Sources` |
-| `V6Runner` | `V6DocumentRunner`: nối agent vào pipeline, định tuyến file, chuyển `.doc`, ghi outline | `HeadingAgent`, `DocumentProcessing` |
-| `Application` | Hợp đồng không phụ thuộc provider: runtime, semantic registry, tác vụ/tài nguyên còn dùng | `Sources` |
-| `Infrastructure` | Transport provider (OpenRouter, LM Studio, SGLang, Llama local), factory chọn route, store run | `Application`, `DocumentProcessing`, `Sources` |
+| `Contracts` | Kiểu dùng chung: model nguồn và cấu trúc, `IHeadingSelector`, interface transport (`Inference/`), `ChunkingOptions` | — |
+| `Sources` | Đọc nguồn OOXML, PDF và scan; snapshot nguồn, alias, cache | `Contracts` |
+| `HeadingAgent` | Agent V6: selector PDF, DOCX và scan; prompt, tool, vòng gọi model | `Sources` |
+| `DocumentProcessing` | Pipeline: nhận file, các lane, harness, các bước kiểm tra và dựng cấu trúc, đầu ra, writeback | `Contracts`, `Sources` |
+| `Infrastructure` | Transport provider (OpenRouter, LM Studio, SGLang, Llama local), factory chọn route, store run | `Contracts`, `Sources` |
+| `V6Runner` | `V6DocumentRunner`: nối agent vào pipeline, chuyển `.doc`, ghi outline | `HeadingAgent`, `DocumentProcessing` |
 | `Cli` | Lệnh `dhx`; gọi `V6DocumentRunner` trực tiếp | `V6Runner`, `Infrastructure` |
 | `Web` | Giao diện `dhx-ui`; gọi `V6DocumentRunner` trực tiếp, stream sự kiện tiến độ | `V6Runner`, `Infrastructure` |
-| `V6Qualification` | Thí nghiệm V6 đã qualify (parity, canary). Không phải đường chạy production | `HeadingAgent`, `DocumentProcessing`, `Infrastructure` |
 
-Quy tắc phụ thuộc: `Sources` không biết pipeline; `HeadingAgent` chỉ thấy `Sources`; `DocumentProcessing`
-không biết agent (chỉ biết `IHeadingSelector`). `V6Runner` là chỗ duy nhất nối hai bên.
+Quy tắc phụ thuộc: `Contracts` không phụ thuộc gì; `Sources` không biết pipeline; `HeadingAgent` chỉ thấy
+`Sources`; `DocumentProcessing` không biết agent (chỉ biết `IHeadingSelector`); `Infrastructure` chỉ cài đặt
+interface của `Contracts`. `V6Runner` là chỗ duy nhất nối agent với pipeline.
 
-Đã xóa: `AgentHarness` (guardrail, validator, consent, tường thuật), skill `heading-extraction`,
-`Mcp`, `Core` (gộp vào `Sources`).
-
-Lưu ý: `Application` hiện phụ thuộc `Sources` (vì `Core` đã gộp vào đó). Đây là đảo ngược tầng; nếu cần
-tách lại, phải chuyển các kiểu `Application` dùng khỏi `Sources`.
+Quy ước: namespace = tên project + đường dẫn thư mục. Tên file = tên type. Tên type ngắn nhưng vẫn đủ nghĩa
+khi đứng một mình trong code; bỏ các tiền tố mà thư mục đã nói rõ (`Output/Outline/OutlineProjection.cs`,
+không phải `HeadingOutlineProjection`; `Audit/RunAudit.cs`, không phải `PipelineExecutionAudit`).
 
 ## Luồng chạy
 
@@ -40,28 +38,57 @@ CLI (dhx) / Web (dhx-ui)
   -> V6DocumentRunner.ExtractAsync(file)
        -> UploadedSourceDetector (đọc byte, không đọc đuôi)
        -> .doc/.rtf/.odt: OfficeDocumentConverter.EnsureDocx
-       -> DocumentExtractionRouter
-            DOCX -> DocxExtractionPipeline -> DocxHeadingPipeline
-            PDF  -> PdfExtractionHandler   -> PdfHeadingPipeline
-         mỗi tuyến: source adapter -> IHeadingSelector (agent V6) -> SelectedLinesHeadingAuthority
-                    -> HeadingStructureAssembler (binder, placement, hierarchy, materializer)
-                    -> CanonicalFinalStructure -> DocumentProductOutputProjector
-       -> DocumentExtractionExecutionResult (Outline + audit)
-  -> (tuỳ chọn) V6DocumentRunner.WriteOutline -> bản sao .docx với w:outlineLvl
+       -> Intake/Router
+            DOCX -> Intake/DocxHandler -> Lanes/Docx/DocxPipeline -> DocxLane
+            PDF  -> Intake/PdfHandler  -> Lanes/Pdf/PdfPipeline   -> PdfLane
+            scan (DOCX chỉ có ảnh, PDF cần OCR) -> Lanes/Scan/ScanLane
+         mỗi lane chạy trong Harness/LaneHarness (lease, deadline, checkpoint của PDF):
+            Selection/SelectionAuthority   (IHeadingSelector = agent V6 quyết định)
+            -> Binding/DecisionBinder       (gắn và kiểm tra quyết định vào nguồn)
+            -> Placement/ParentResolver     (agent đề xuất cha, C# kiểm tra đồ thị)
+            -> Hierarchy/HierarchyResolver  (dựng cấp bậc)
+            -> Structure/Materializer       (dựng cấu trúc; Structure/StructureAssembler nối các bước)
+            -> Audit/RunAudit
+       -> Output/ExtractionOutput: Final, Product, Outline, Sections -> Output/RunResult
+  -> (tuỳ chọn) V6DocumentRunner.WriteOutline -> Writeback: bản sao .docx với w:outlineLvl
 ```
 
-Nếu tuyến không có selector hoặc không có khóa provider, nó từ chối trước khi gọi mô hình
-(`DOCX_HEADING_SELECTOR_REQUIRED`, `DOCX_HEADING_SELECTOR_KEY_MISSING`, `PDF_HEADING_SELECTOR_REQUIRED`).
-Với `--no-llm` hoặc `DisableLlm`, tuyến DOCX trả nguồn không có heading (`docx-llm-disabled`).
+Nếu tuyến không ở route agent đã ủy quyền, không có selector hoặc không có khóa provider, nó từ chối trước khi
+gọi mô hình, theo đúng thứ tự đó (`AGENT_ROUTE_AUTHORIZATION_REQUIRED`, `*_HEADING_SELECTOR_REQUIRED`,
+`*_HEADING_SELECTOR_KEY_MISSING`). Với `--no-llm` hoặc `DisableLlm`, tuyến trả nguồn không có heading
+(`docx-llm-disabled`, `pdf-function-conditioned-llm-disabled`, `scan-llm-disabled`).
+
+## Thư mục theo bước
+
+`DocumentProcessing`, theo thứ tự chạy:
+
+| Thư mục | Bước |
+|---|---|
+| `Intake/` | Nhận file, định tuyến theo định dạng (`Router`, `DocxHandler`, `PdfHandler`, `UploadedFile`) |
+| `Lanes/Pdf`, `Lanes/Docx`, `Lanes/Scan` | Phần riêng của từng định dạng: dựng nguồn, khối layout, facts bổ sung cho audit |
+| `Harness/` | Phần chạy chung của mọi lane: `LaneHarness`, lease, deadline, checkpoint, transport gắn lease, options |
+| `Selection/` | Biến câu trả lời của selector thành heading (`SelectionAuthority`, `SelectionResult`) |
+| `Binding/` | Gắn và kiểm tra quyết định vào nguồn (`DecisionBinder`) |
+| `Placement/` | Agent đề xuất cha (`EvidencePlacement`), C# kiểm tra (`ParentResolver`) |
+| `Hierarchy/` | Dựng cấp bậc (`HierarchyResolver`) |
+| `Structure/` | Dựng cấu trúc (`Materializer`), nối các bước 4→7 (`StructureAssembler`) |
+| `Audit/` | Ghi lại lần chạy (`RunAudit`, `PlacementAudit`, `HierarchyAudit`) |
+| `Output/` | Đầu ra: `Final/`, `Product/`, `Outline/`, `Sections/`; `ExtractionOutput`, `RunResult` |
+| `Writeback/` | Ghi outline vào bản sao `.docx` |
+
+`HeadingAgent`, theo vòng của agent: `Selectors/` (điểm vào) · `Formats/` (nguồn và cách trình bày theo
+định dạng) · `Protocol/` (những gì model đọc) · `Runtime/` (gọi model, ngân sách, cache) · `Tools/` (tool và sổ
+ghi lần gọi) · `Grouping/` (chia nhóm, kiểm tra nhóm) · `Scan/` (OCR/VLM và selector scan).
 
 ## Ranh giới trách nhiệm
 
 - Nguồn (`Sources`) giữ sự kiện nguồn: text, alias, toạ độ, style, đánh số. Không quyết định heading.
-- Agent (`HeadingAgent`) quyết định dòng nào là heading và cách nhóm chúng. Agent chỉ gọi provider qua
-  khóa của tuyến đã ủy quyền.
-- Bước ghép trong `DocumentProcessing` chỉ kiểm tra và dựng cấu trúc từ kết quả agent: binder, đặt vị trí
-  (`HeadingParentResolver`), phân cấp, materializer. Không lấy heading từ chỗ khác.
-- Projection và writeback chỉ biến cấu trúc đã kiểm tra thành output và file.
+- Agent (`HeadingAgent`, và `Placement/EvidencePlacement`) quyết định dòng nào là heading, cách nhóm và đề
+  xuất cha. Agent chỉ gọi provider qua khóa của tuyến đã ủy quyền.
+- Harness (`Harness/`) chạy lane: ủy quyền, lease, deadline, checkpoint. Không quyết định heading, không biết
+  định dạng.
+- Các bước `Binding` → `Structure` chỉ kiểm tra và dựng cấu trúc từ kết quả agent. Không lấy heading từ chỗ khác.
+- `Output` và `Writeback` chỉ biến cấu trúc đã kiểm tra thành output và file.
 
 ## Backend model
 
@@ -73,11 +100,14 @@ chạy được trích xuất. Việc xóa hẳn mã local là một bước ri�
 ## Lưu trữ và đầu ra
 
 - Run của Web: `JsonFileTaskRunStore` trong `DHX_RUNTIME_STATE_DIR`.
-- Checkpoint của PDF: thư mục tạm, dọn khi kết thúc (`ProductionCheckpointScope`).
+- Cache nguồn: MessagePack (PDF, DOCX, evidence scan) kèm sidecar `.sha256`.
+- Checkpoint của PDF: thư mục tạm, dọn khi kết thúc (`Harness/CheckpointScope`).
 - Writeback: bản sao `.docx` mới; file nguồn không bao giờ bị sửa.
 - Gold và artifact thí nghiệm không phải nguồn sự thật của production.
 
 ## Kiểm thử
 
-`dotnet test tests/DocxHeaderExtractor.Tests` (747 test, không gọi provider, trừ các test đánh dấu
-rõ ràng). Thí nghiệm V6 nằm trong `V6Qualification` và các test `P7F1V6*`.
+`dotnet test tests/DocxHeaderExtractor.Tests` (445 test, khoảng 1–3 phút, không gọi provider). Lọc nhanh:
+`--filter "Category!=Slow"`. Hai golden giữ hành vi khi refactor: `Golden/v6-parity-src089.json.gz` (đầu ra
+tuyến V6) và `Golden/agent-wire.json` (prompt, khai báo tool, kết quả tool gửi cho model). Ghi lại golden wire có
+chủ ý bằng `DHX_RECORD_WIRE_GOLDEN=1`.

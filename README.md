@@ -21,19 +21,20 @@ bắt đầu ở atom không thuộc leaf bị từ chối. Quote chỉ khác at
 là cả atom; mọi khác biệt khác bị từ chối. Chi tiết: [docs/architecture/production-request-architecture-v2.md](docs/architecture/production-request-architecture-v2.md).
 
 Host: CLI (`dhx`) và Web UI (`dhx-ui`) đều chạy thẳng tuyến V6 qua `V6DocumentRunner`
-(không còn harness; xem [docs/architecture/current.md](docs/architecture/current.md)).
+(không còn project `AgentHarness` đứng giữa; phần chạy lane nằm trong `DocumentProcessing/Harness`, xem
+[docs/architecture/current.md](docs/architecture/current.md)).
 
 Cấu trúc project:
 
 | Project | Vai trò |
 |---|---|
-| `Sources` | Hợp đồng dùng chung (cũ là `Core`), đọc nguồn OOXML và PDF, `IHeadingSelector` |
-| `DocumentProcessing` | Pipeline DOCX/PDF, router, bước ghép, projection, writeback |
-| `HeadingAgent` | Agent V6 cho PDF và DOCX |
+| `Contracts` | Kiểu dùng chung: model, `IHeadingSelector`, interface transport |
+| `Sources` | Đọc nguồn OOXML, PDF và scan; snapshot nguồn, cache |
+| `HeadingAgent` | Agent V6 cho PDF, DOCX và scan |
+| `DocumentProcessing` | Pipeline theo bước: `Intake` → `Lanes` + `Harness` → `Selection` → `Binding` → `Placement` → `Hierarchy` → `Structure` → `Audit` → `Output` → `Writeback` |
 | `V6Runner` | Nối agent vào pipeline; điểm gọi của CLI và Web |
-| `Application` / `Infrastructure` | Hợp đồng runtime; transport provider và factory route |
+| `Infrastructure` | Transport provider và factory route |
 | `Cli` / `Web` | Hai host |
-| `V6Qualification` | Thí nghiệm V6 đã qualify |
 
 ## Yêu cầu
 
@@ -140,11 +141,12 @@ append-only tại `%LOCALAPPDATA%\DocxHeaderExtractor\verified-corrections.jsonl
 dotnet test tests/DocxHeaderExtractor.Tests         # bộ test V6, không gọi provider
 ```
 
-Từ 2026-10-14 bộ test chỉ còn thí nghiệm V6 của PDF heading agent: `PdfHeadingAgent*` (agent production, parity với code V6
-đã qualify), `PdfV6SelectedLinesLaneTests` và `P7F1V6*` (code V6 trong `DocxHeaderExtractor.V6Qualification`). Các test cũ
-(DOCX, web, MCP, Gold, các thí nghiệm V4-V5/P6-P7) đã xóa theo quyết định của chủ dự án; xem lịch sử git.
+Bộ test có 445 test (khoảng 1–3 phút), không gọi provider; lọc nhanh bằng `--filter "Category!=Slow"`. Hành vi
+được giữ bằng hai golden: `Golden/v6-parity-src089.json.gz` (đầu ra tuyến V6, `PdfHeadingAgentParityTests`) và
+`Golden/agent-wire.json` (prompt, khai báo tool và kết quả tool gửi cho model, `AgentWireGoldenTests`). Các test cũ
+(web, MCP, Gold, các thí nghiệm V4-V5/P6-P7, code V6 chỉ để qualify) đã xóa theo quyết định của chủ dự án; xem lịch sử git.
 Gold duy nhất nằm ở `eval/a99-closed-loop/gold/`; mỗi thay đổi Gold cần người duyệt từng mục.
-Provider run chỉ chạy dưới manifest thí nghiệm đã đóng băng (`PdfExperimentExecutionGate`).
+Cấu trúc code hiện tại: [docs/architecture/current.md](docs/architecture/current.md).
 
 ## Giới hạn đã biết
 

@@ -6,33 +6,37 @@
 
 ## Current architecture
 
+Names and folders as of 2026-10-22 (`DocumentProcessing/<Folder>/<Type>`); see
+[../architecture/current.md](../architecture/current.md) for the full layout.
+
 ```text
-DOCX -> DocxSourceOccurrenceAdapter -+
-                                     +-> SourceOccurrenceUniverse
-PDF  -> PdfSourceOccurrenceAdapter --+          |
-                                                v
-                                       IHeadingAuthority   (the replaceable seam)
-                         DOCX and PDF: SelectedLinesHeadingAuthority  (PDF since 2026-10-14, DOCX since 2026-10-14)
-                               IHeadingSelector -> DocxHeadingAgentSelector / PdfHeadingAgentSelector
-                               (V6 direct agent, D4.12 method: one conversation per layout segment,
-                               get_line_facts first, evidence tools, repair turns)
-                               F1 -> G2A -> H2-C V2 (FunctionAnchorExtentHeadingAuthority) retired
-                                                |
-                                                v
-                                     HeadingStructureAssembler (shared, format-blind)
-        HeadingDecisionBinder -> HeadingParentResolver -> HeadingHierarchyResolver
-                                -> HeadingStructureMaterializer
-                                                |
-                                                v
-        CanonicalFinalStructure -> DocumentProductOutputProjector
+DOCX -> DocxSourceAdapter -+
+                           +-> DocumentSourceSnapshot
+PDF  -> PdfSourceAdapter --+          |
+scan -> ScanSourceAdapter -+          v
+                    Selection/SelectionAuthority  (PDF since 2026-10-14, DOCX since 2026-10-14)
+                          IHeadingSelector -> Selectors/DocxSelector / PdfSelector, Scan/ScanSelector
+                          (V6 direct agent, D4.12 method: one conversation per layout segment,
+                          get_line_facts first, evidence tools, repair turns)
+                          F1 -> G2A -> H2-C V2 (FunctionAnchorExtentHeadingAuthority) retired
+                                      |
+                                      v
+                    Structure/StructureAssembler (shared, format-blind)
+      Binding/DecisionBinder -> Placement/ParentResolver -> Hierarchy/HierarchyResolver
+                              -> Structure/Materializer
+                                      |
+                                      v
+      Output/Final/FinalProjection -> Output/Product/ProductProjector
 ```
 
-Hosts (2026-10-15): the CLI and the Web call `V6DocumentRunner` directly; there is no harness between them and
-the pipelines. The runner routes the file, converts `.doc`/`.rtf`/`.odt` first, and writes the outline when asked.
+Hosts (2026-10-15): the CLI and the Web call `V6DocumentRunner` directly; there is no separate harness project
+between them and the pipelines. The runner routes the file, converts `.doc`/`.rtf`/`.odt` first, and writes the
+outline when asked.
 
-Routes: `DocxHeadingPipeline` and `PdfHeadingPipeline` each run their source adapter, the selected-lines
-authority and the one shared assembler. Both run under the shared lane lease (`LaneExecution`) and the
-fail-closed qualified transport (`IAgentRouteInferenceTransport`, `LeaseBoundInferenceTransport`); the
+Routes: `Lanes/Docx/DocxLane`, `Lanes/Pdf/PdfLane` and `Lanes/Scan/ScanLane` each build their source and hand
+it to `Harness/LaneHarness`, which authorizes the run, lets the selected-lines authority decide, runs the one
+shared assembler and records the route audit. Every lane runs under the shared lane lease (`LaneExecution`,
+`LaneLease`) and the fail-closed qualified transport (`IAgentRouteInferenceTransport`, `LeaseTransport`); the
 PDF route additionally owns its checkpoint. There is no canonical-text fallback and no local-model route:
 the former DOCX text authority (`TextSemanticHeadingAuthority`, `CanonicalSemanticEngine`, the Core
 canonical pipeline and binder) was removed when DOCX moved to the V6 agent.
@@ -49,7 +53,7 @@ or after a `w:br` (which the reader writes as one space). The DOCX answer format
 lets a SELECT carry `headingExtent` `{start, end, text}`: UTF-16 offsets into the paragraph's text and that exact
 text. The model decides the extent; the facts give it `lineBreakOffsets`, `pieces` and `formatRuns` with offsets
 (`DOCX_AGENT_LINE_FACTS_V3`). The parser checks the offsets, the verbatim text, edge whitespace and word boundaries
-and refuses a mismatch with what it measured; it never moves an extent. `SelectedLinesHeadingAuthority` binds the
+and refuses a mismatch with what it measured; it never moves an extent. `SelectionAuthority` binds the
 heading to that span. A SELECT without an extent is the whole paragraph; an extent that does not lie inside its
 paragraph is rejected there and the paragraph makes no heading, never the whole paragraph. Writing the outline back is
 still per paragraph (`w:outlineLvl`), so a heading that shares its paragraph with body text marks the whole
