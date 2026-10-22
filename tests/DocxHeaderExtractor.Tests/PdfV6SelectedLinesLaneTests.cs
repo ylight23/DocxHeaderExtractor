@@ -7,7 +7,6 @@ using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
 using DocxHeaderExtractor.DocumentProcessing.Source.Pdf;
 using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.HeadingAgent;
-using DocxHeaderExtractor.V6Qualification.P7;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -109,10 +108,9 @@ public sealed class PdfV6SelectedLinesLaneTests
         var selector = new PdfHeadingAgentSelector();
         // The frozen D4.12 instruction is kept for parity; production sends the owner's structural-heading instruction (2026-10-14),
         // which replaced the earlier "main headings by meaning" instruction after the three-document comparison.
-        Assert.Equal(P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, AgentProtocol.InstructionD412);
-        Assert.Equal("2d057c62aaf69297afa46f3dec8d8b88720893491c5620ecfcc51562e9e03884", P7F1V6Core.InstructionSha256(AgentProtocol.InstructionD412));
+        Assert.Equal("2d057c62aaf69297afa46f3dec8d8b88720893491c5620ecfcc51562e9e03884", Sha256Hex(AgentProtocol.InstructionD412));
         Assert.Equal(AgentProtocol.InstructionStructuralV1, AgentProtocol.Instruction);
-        Assert.Equal("c5c5b6939b99d4cb907a59b2da472d14e1ffc7e35067c1ae48ca0f0ccabdb793", P7F1V6Core.InstructionSha256(AgentProtocol.Instruction));
+        Assert.Equal("c5c5b6939b99d4cb907a59b2da472d14e1ffc7e35067c1ae48ca0f0ccabdb793", Sha256Hex(AgentProtocol.Instruction));
         Assert.Equal("p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:facts-in-request:instruction-c5c5b693:" + HeadingAgentSelector.BindingPolicyVersion, selector.SelectorId);
         Assert.Contains("at every level of its outline", AgentProtocol.Instruction, StringComparison.Ordinal);
         Assert.Contains("It does not need to summarize that content", AgentProtocol.Instruction, StringComparison.Ordinal);
@@ -196,6 +194,9 @@ public sealed class PdfV6SelectedLinesLaneTests
             headings, new HashSet<string> { "id-2" }, evidence: null);
         Assert.Equal("{\"headings\":[{\"alias\":\"L0001:S0\",\"text\":\"Chapter I\"},{\"alias\":\"L0002:S0\",\"text\":\"GENERAL\"}],\"toPlace\":[\"L0002:S0\"]}", packet);
     }
+
+    private static string Sha256Hex(string text) =>
+        Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(text)));
 
     private sealed class FixedSelector(IReadOnlySet<string> aliases, HeadingPlacementContext? placement = null) : IHeadingSelector
     {

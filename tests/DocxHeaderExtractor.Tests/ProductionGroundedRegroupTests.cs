@@ -8,7 +8,6 @@ namespace DocxHeaderExtractor.Tests;
 
 using DocxHeaderExtractor.DocumentProcessing.Source.Scan;
 using DocxHeaderExtractor.HeadingAgent.Scan;
-using DocxHeaderExtractor.V6Qualification;
 
 public sealed class ProductionGroundedRegroupTests
 {

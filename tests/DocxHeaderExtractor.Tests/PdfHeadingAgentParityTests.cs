@@ -1,11 +1,9 @@
+using System.IO.Compression;
 using System.Text;
 using System.Text.Json;
 using System.Text.Encodings.Web;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.HeadingAgent;
-using DocxHeaderExtractor.V6Qualification.P7;
-using A = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectAgent;
-using C = DocxHeaderExtractor.V6Qualification.P7.P7F1V6DirectRepeatCanary;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -14,6 +12,10 @@ namespace DocxHeaderExtractor.Tests;
 /// tests hold it to the qualified code byte for byte on SRC-089: the source and its hashes, the layout facts, the system prompt, the tool
 /// declarations, the first request of every segment (only the prompt and targetFacts differ from the pinned D4.12 reference), the result of every kind
 /// of tool call, and whole conversations driven by the same scripted model, with repairs, a fenced answer and a transport retry.
+/// <para>
+/// The qualified side is read from Golden/v6-parity-src089.json.gz: the V6 code's own output for each of these comparisons, recorded at commit
+/// bd117d5 before that code was removed. To see how it was produced, check out that commit.
+/// </para>
 /// </summary>
 [Trait("Category", "Slow")]
 public sealed class PdfHeadingAgentParityTests
@@ -26,61 +28,75 @@ public sealed class PdfHeadingAgentParityTests
     // Production's system prompt (2026-10-16 facts-in-request revision): pinned so a further change is seen; the request checks below swap it in for the qualified one.
     private const string ProductionPromptSha256 = "7afd4abfdd10de122606477c6f816c57cf791a13500e2bba543aca634b1e6a1d";
 
+    /// <summary>The qualified V6 direct agent's side of every comparison below.</summary>
+    private static readonly Lazy<JsonObject> Golden = new(() =>
+    {
+        using var file = File.OpenRead(TestRepository.Path("tests/DocxHeaderExtractor.Tests/Golden/v6-parity-src089.json.gz"));
+        using var gzip = new GZipStream(file, CompressionMode.Decompress);
+        return JsonNode.Parse(gzip)!.AsObject();
+    });
+
+    private static readonly Lazy<AgentSource> Production = new(() =>
+        AgentSource.Load(TestRepository.Path(Pdf), out var failure) ?? throw new InvalidOperationException(failure));
+
+    private static string QualifiedPrompt => Golden.Value["prompt"]!["qualifiedPrompt"]!.GetValue<string>();
+
+    private static string Text(JsonNode? node) => node!.GetValue<string>();
+
+    /// <summary>The same value as JSON, so a recorded value and a production value of the same shape compare as text.</summary>
+    private static void SameJson(JsonNode? recorded, object? actual) =>
+        Assert.Equal(recorded?.ToJsonString(), JsonSerializer.SerializeToNode(actual)?.ToJsonString());
+
     /// <summary>The production request differs only by its system prompt and the existing tool facts added as targetFacts.
     /// Model, tools, provider settings and conversation history must still match byte for byte.</summary>
     private static string WithProductionRequest(string qualifiedBody)
     {
         static string Escaped(string text) =>
             JsonSerializer.Serialize(text, new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping })[1..^1];
-        var from = Escaped(A.ToolFactsAnalysisV3PromptRange);
+        var from = Escaped(QualifiedPrompt);
         Assert.Contains(from, qualifiedBody, StringComparison.Ordinal);
         var withPrompt = qualifiedBody.Replace(from, Escaped(AgentProtocol.SystemPrompt), StringComparison.Ordinal);
         var body = JsonNode.Parse(withPrompt)!;
         var originalPayload = body["messages"]![1]!["content"]![0]!["text"]!.GetValue<string>();
         var payload = JsonNode.Parse(originalPayload)!;
         var targets = payload["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).ToArray();
-        payload["targetFacts"] = Sources.Value.Production.Flavor.PayloadFacts(Sources.Value.Production, targets);
+        payload["targetFacts"] = Production.Value.Flavor.PayloadFacts(Production.Value, targets);
         var newPayload = payload.ToJsonString(new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
         return withPrompt.Replace(Escaped(originalPayload), Escaped(newPayload), StringComparison.Ordinal);
     }
 
-    private static readonly Lazy<(AgentSource Production, P7F1V6Universe Qualified)> Sources = new(() =>
-    {
-        var path = TestRepository.Path(Pdf);
-        var production = AgentSource.Load(path, out var failure) ?? throw new InvalidOperationException(failure);
-        var qualified = P7F1V6DirectOwnerTrial.Load(path, P7F1V6DirectOwnerTrial.Sha256Of(path), P7F1V6Universe.LayoutSegmentation, 3);
-        return (production, qualified);
-    });
-
     [Fact]
     public void Source_lines_blocks_segments_and_hashes_are_the_qualified_ones()
     {
-        var (p, q) = Sources.Value;
-        Assert.Equal(q.SourceSha256, p.SourceSha256);
-        Assert.Equal(q.UniverseSha256, p.SourceAliasUniverseSha256);
-        Assert.Equal(q.EvidenceStoreSha256, p.EvidenceStoreSha256);
-        Assert.Equal(q.Tools.AllLines.Select(l => (l.Alias, l.Ordinal, l.Page, l.Text, l.Bbox?.GetRawText(), l.Typography?.GetRawText())),
-            p.Lines.Select(l => (l.Alias, l.Ordinal, l.Page, l.Text, l.Bbox?.GetRawText(), l.Typography?.GetRawText())));
-        Assert.Equal(q.LayoutBlocks, p.Blocks);
-        Assert.Equal(q.Cores, p.Cores);
+        var p = Production.Value;
+        var q = Golden.Value["source"]!;
+        Assert.Equal(Text(q["sourceSha256"]), p.SourceSha256);
+        Assert.Equal(Text(q["universeSha256"]), p.SourceAliasUniverseSha256);
+        Assert.Equal(Text(q["evidenceStoreSha256"]), p.EvidenceStoreSha256);
+        Assert.Equal(
+            q["lines"]!.AsArray().Select(l => (Text(l![0]), l[1]!.GetValue<int>(), (int?)l[2]?.GetValue<int>(), Text(l[3]), l[4]?.GetValue<string>(), l[5]?.GetValue<string>())),
+            p.Lines.Select(l => (l.Alias, l.Ordinal, (int?)l.Page, l.Text, l.Bbox?.GetRawText(), l.Typography?.GetRawText())));
+        Assert.Equal(q["layoutBlocks"]!.Deserialize<string[]>(), p.Blocks);
+        Assert.Equal(q["cores"]!.AsArray().Select(c => (c![0]!.GetValue<int>(), c[1]!.GetValue<int>())), p.Cores);
+        var scopes = q["scopes"]!.AsArray();
+        Assert.Equal(scopes.Count, p.Cores.Count);
         for (int n = 0; n < p.Cores.Count; n++)
         {
-            var (decide, context) = P7F1V6DirectCanary410.Scope(q, AgentSource.SegmentId(n));
             var (pd, ps) = p.Scope(n);
-            Assert.Equal(decide, pd);
-            Assert.Equal(context, ps);
+            Assert.Equal(scopes[n]!["decide"]!.Deserialize<string[]>(), pd);
+            Assert.Equal(scopes[n]!["context"]!.Deserialize<int[]>(), ps);
         }
     }
 
     [Fact]
     public void Layout_facts_and_document_styles_are_the_qualified_ones()
     {
-        var (p, q) = Sources.Value;
-        Assert.Equal(q.LayoutFacts.Count, p.LayoutFacts.Count);
-        foreach (var (alias, facts) in q.LayoutFacts)
-            Assert.Equal(facts.ToJsonString(), p.LayoutFacts[alias].ToJsonString());
-        Assert.Equal(new P7F1V6AgentTools(q.Tools, q.LayoutFacts, factsTool: true, factsVersion: 3).DocumentStyles().ToJsonString(),
-            new AgentTools(p).DocumentStyles().ToJsonString());
+        var p = Production.Value;
+        var facts = Golden.Value["layoutFacts"]!.AsObject();
+        Assert.Equal(facts.Count, p.LayoutFacts.Count);
+        foreach (var (alias, f) in facts)
+            Assert.Equal(Text(f), p.LayoutFacts[alias].ToJsonString());
+        Assert.Equal(Text(Golden.Value["documentStyles"]), new AgentTools(p).DocumentStyles().ToJsonString());
     }
 
     [Fact]
@@ -88,18 +104,21 @@ public sealed class PdfHeadingAgentParityTests
     {
         // The qualified prompt is still the reference of the D4.12 plan. Production's prompt is its 2026-10-15 revision (UseLine and
         // FactsToolLine, checked by PromptContractTests), pinned here so that any further change is seen.
-        Assert.Equal(PlanPromptSha256, AgentProtocol.Sha(A.ToolFactsAnalysisV3PromptRange));
-        Assert.NotEqual(A.ToolFactsAnalysisV3PromptRange, AgentProtocol.SystemPrompt);
+        var prompt = Golden.Value["prompt"]!;
+        Assert.Equal(PlanPromptSha256, AgentProtocol.Sha(QualifiedPrompt));
+        Assert.NotEqual(QualifiedPrompt, AgentProtocol.SystemPrompt);
         Assert.Equal(ProductionPromptSha256, AgentProtocol.Sha(AgentProtocol.SystemPrompt));
-        Assert.Equal(P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, AgentProtocol.InstructionD412);
-        Assert.Equal(P7F1V6AgentTools.Definitions(true).ToJsonString(), AgentTools.Definitions().ToJsonString());
+        Assert.Equal(Text(prompt["instructionD412"]), AgentProtocol.InstructionD412);
+        Assert.Equal(Text(prompt["toolDefinitions"]), AgentTools.Definitions().ToJsonString());
         Assert.Equal(PlanToolDefinitionsSha256, AgentTools.DefinitionsSha256());
     }
 
     [Fact]
     public void First_requests_differ_from_the_pinned_reference_only_in_the_prompt_and_the_supplied_tool_facts()
     {
-        var (p, q) = Sources.Value;
+        var p = Production.Value;
+        var recorded = Golden.Value["firstRequests"]!.AsArray();
+        Assert.Equal(recorded.Count, p.Cores.Count);
         var styles = new AgentTools(p).DocumentStyles();
         var shas = new List<string>();
         for (int n = 0; n < p.Cores.Count; n++)
@@ -107,10 +126,10 @@ public sealed class PdfHeadingAgentParityTests
             var (decide, shown) = p.Scope(n);
             var mine = AgentProtocol.Build(AgentProtocol.Payload(p.SourceSha256, AgentSource.SegmentId(n), decide, shown.Select(i => p.Lines[i]).ToArray(), styles, AgentProtocol.InstructionD412, targetFacts: p.Flavor.PayloadFacts(p, decide)),
                 new JsonArray(), "auto");
-            var theirs = C.FirstRequest(A.Arm.ToolFactsAnalysisV3, q, AgentSource.SegmentId(n), jsonObjectAllTurns: true,
-                instruction: P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, cacheMarkers: true);
-            Assert.Equal(WithProductionRequest(theirs.Body), mine.Body);
-            shas.Add(theirs.Sha256);
+            var theirs = Text(recorded[n]!["body"]);
+            Assert.Equal(Text(recorded[n]!["sha256"]), AgentProtocol.Sha(theirs));
+            Assert.Equal(WithProductionRequest(theirs), mine.Body);
+            shas.Add(Text(recorded[n]!["sha256"]));
         }
         Assert.Equal(PlanFirstRequestsSha256, AgentProtocol.Sha(string.Join("\n", shas)));
     }
@@ -118,13 +137,30 @@ public sealed class PdfHeadingAgentParityTests
     [Fact]
     public void Every_kind_of_tool_call_returns_the_qualified_bytes()
     {
-        var (p, q) = Sources.Value;
+        var p = Production.Value;
         var mine = new AgentTools(p);
-        var theirs = new P7F1V6AgentTools(q.Tools, q.LayoutFacts, factsTool: true, factsVersion: 3);
-        var a = p.Lines;
-        string Al(int i) => a[i].Alias;
-        var calls = new (string? Name, string Args)[]
+        var calls = ToolCalls(p.Lines);
+        var recorded = Golden.Value["toolCalls"]!.AsArray();
+        Assert.Equal(recorded.Count, calls.Length);
+        for (int i = 0; i < calls.Length; i++)
         {
+            var m = mine.Execute($"E1.{i + 1:00}", calls[i].Name, calls[i].Args);
+            var t = recorded[i]!;
+            Assert.True(Text(t["content"]) == Encoding.UTF8.GetString(m.Content), $"call {i}: {calls[i].Name} {calls[i].Args}");
+            Assert.Equal(Text(t["status"]), m.Status);
+            Assert.Equal(t["returnedAliases"]!.Deserialize<string[]>(), m.ReturnedAliases);
+        }
+        Assert.Equal(Golden.Value["observedAliases"]!.Deserialize<string[]>(), mine.ObservedAliases.Order(StringComparer.Ordinal));
+        foreach (var (code, content) in Golden.Value["rejects"]!.AsObject())
+            Assert.Equal(Text(content), Encoding.UTF8.GetString(mine.Reject("E2.01", "get_line_facts", "{}", code).Content));
+        Assert.Equal(Golden.Value["rejectionBytes"]!.GetValue<int>(), mine.RejectionBytes("E3.08", "search_document_text"));
+    }
+
+    private static (string? Name, string Args)[] ToolCalls(IReadOnlyList<AgentSourceLine> a)
+    {
+        string Al(int i) => a[i].Alias;
+        return
+        [
             ("get_document_overview", ""),
             ("get_document_overview", "{}"),
             ("get_source_context", $"{{\"alias\":\"{Al(40)}\",\"before\":3,\"after\":6}}"),
@@ -146,20 +182,7 @@ public sealed class PdfHeadingAgentParityTests
             ("made_up_tool", "{}"),
             (null, "{}"),
             ("get_page_layout", "not json"),
-        };
-        for (int i = 0; i < calls.Length; i++)
-        {
-            var id = $"E1.{i + 1:00}";
-            var m = mine.Execute(id, calls[i].Name, calls[i].Args);
-            var t = theirs.Execute(id, calls[i].Name, calls[i].Args);
-            Assert.True(Encoding.UTF8.GetString(t.Content) == Encoding.UTF8.GetString(m.Content), $"call {i}: {calls[i].Name} {calls[i].Args}");
-            Assert.Equal(t.Status, m.Status);
-            Assert.Equal(t.ReturnedAliases, m.ReturnedAliases);
-        }
-        Assert.Equal(theirs.ObservedAliases.Order(StringComparer.Ordinal), mine.ObservedAliases.Order(StringComparer.Ordinal));
-        foreach (var code in new[] { "PER_TURN_CALL_CAP_EXCEEDED", "UNIT_TOOL_MESSAGE_BYTES_EXHAUSTED" })
-            Assert.Equal(theirs.Reject("E2.01", "get_line_facts", "{}", code).Content, mine.Reject("E2.01", "get_line_facts", "{}", code).Content);
-        Assert.Equal(theirs.RejectionBytes("E3.08", "search_document_text"), mine.RejectionBytes("E3.08", "search_document_text"));
+        ];
     }
 
     // ---------------- whole conversations ----------------
@@ -169,11 +192,16 @@ public sealed class PdfHeadingAgentParityTests
 
     private delegate Step Script(int post, JsonElement payload, string body);
 
+    /// <summary>The text of a message's content: a string, or the text parts of a content array.</summary>
+    private static string MessageText(JsonElement content) => content.ValueKind == JsonValueKind.String
+        ? content.GetString()!
+        : string.Concat(content.EnumerateArray().Where(b => b.TryGetProperty("type", out var t) && t.GetString() == "text").Select(b => b.GetProperty("text").GetString()));
+
     private static JsonElement PayloadOf(string body)
     {
         using var doc = JsonDocument.Parse(body);
         var content = doc.RootElement.GetProperty("messages")[1].GetProperty("content");
-        return JsonDocument.Parse(P7F1V6Protocol.MessageText(content)).RootElement.Clone();
+        return JsonDocument.Parse(MessageText(content)).RootElement.Clone();
     }
 
     private static string Answer(JsonElement payload, bool skipLast = false, bool fenced = false)
@@ -212,21 +240,13 @@ public sealed class PdfHeadingAgentParityTests
     [MemberData(nameof(Scenarios))]
     public void A_scripted_conversation_sends_the_qualified_requests_and_ends_with_the_qualified_outcome(string scenario)
     {
-        var (p, q) = Sources.Value;
+        var p = Production.Value;
         const int segment = 1;
         var script = ScriptFor(scenario);
-
-        var theirPosts = 0;
-        var (decide, context) = P7F1V6DirectCanary410.Scope(q, AgentSource.SegmentId(segment));
-        var theirs = A.RunUnit(A.Arm.ToolFactsAnalysisV3, P7F1V6DirectD45.InstructionEnglishMainRepresentativeLines, q, AgentSource.SegmentId(segment), decide, context,
-            (unit, turn, req) =>
-            {
-                var step = script(++theirPosts, PayloadOf(req.Body), req.Body);
-                if (step.Throw is not null) throw new P7F1V6DirectV2.ReplyFailure(step.Throw);
-                return new A.ModelTurn(step.Content, step.Calls.Select(c => new A.ToolCall(c.Id, c.Name, c.Args)).ToArray(), step.Finish);
-            },
-            new P7F1V6DirectV2.Budget(1000, 100, 131072), rangeStated: true, jsonObjectAllTurns: true, unwrapSingleFence: true,
-            transportRetries: 3, repairTurn: true, retryDelayMs: 0, maxRepairs: -1, cacheMarkers: true);
+        var theirs = Golden.Value["conversations"]![scenario]!;
+        var theirRequests = theirs["requests"]!.Deserialize<string[]>()!;
+        var theirDecisions = theirs["decisions"]!.AsArray().Select(d => KeyValuePair.Create(Text(d![0]), Text(d[1])));
+        var (decide, _) = p.Scope(segment);
 
         var myPosts = 0;
         var mine = AgentUnit.Run(p, segment, (unit, turn, req) =>
@@ -239,26 +259,26 @@ public sealed class PdfHeadingAgentParityTests
         if (scenario == "answer-first-then-repair")
         {
             // The intentional change: facts are already present, so production accepts the first answer without the old facts repair.
-            Assert.Equal(3, theirs.Unit.Requests.Count);
-            Assert.Equal(new[] { AgentProtocol.Sha(WithProductionRequest(theirs.Unit.Requests[0].Body)) }, mine.RequestSha256s);
+            Assert.Equal(3, theirRequests.Length);
+            Assert.Equal(new[] { AgentProtocol.Sha(WithProductionRequest(theirRequests[0])) }, mine.RequestSha256s);
             Assert.Equal("COMPLETE", mine.Status);
             Assert.Null(mine.RepairedFrom);
             Assert.Equal(0, mine.RepairsUsed);
             Assert.Equal(0, mine.ToolCallsSucceeded);
             Assert.Empty(mine.TargetsWithoutFacts!);
-            Assert.Equal(theirs.Unit.Decisions.OrderBy(d => d.Key, StringComparer.Ordinal), mine.Decisions.OrderBy(d => d.Key, StringComparer.Ordinal));
+            Assert.Equal(theirDecisions, mine.Decisions.OrderBy(d => d.Key, StringComparer.Ordinal));
             return;
         }
-        Assert.Equal(theirs.Unit.Requests.Select(r => AgentProtocol.Sha(WithProductionRequest(r.Body))), mine.RequestSha256s);
-        Assert.Equal(theirs.Unit.Status, mine.Status);
-        Assert.Equal(theirs.Unit.Failure, mine.Failure);
-        Assert.Equal(theirs.Unit.Decisions.OrderBy(d => d.Key, StringComparer.Ordinal), mine.Decisions.OrderBy(d => d.Key, StringComparer.Ordinal));
-        Assert.Equal(theirs.RepairedFrom, mine.RepairedFrom);
-        Assert.Equal(theirs.RepairsUsed, mine.RepairsUsed);
-        Assert.Equal(theirs.TransportRetries, mine.TransportRetries);
-        Assert.Equal(theirs.FenceUnwrapped, mine.FenceUnwrapped);
-        Assert.Equal(theirs.Analysis, mine.Analysis);
-        Assert.Equal(theirs.SuccessfulToolCalls, mine.ToolCallsSucceeded);
+        Assert.Equal(theirRequests.Select(r => AgentProtocol.Sha(WithProductionRequest(r))), mine.RequestSha256s);
+        Assert.Equal(Text(theirs["status"]), mine.Status);
+        SameJson(theirs["failure"], mine.Failure);
+        Assert.Equal(theirDecisions, mine.Decisions.OrderBy(d => d.Key, StringComparer.Ordinal));
+        SameJson(theirs["repairedFrom"], mine.RepairedFrom);
+        SameJson(theirs["repairsUsed"], mine.RepairsUsed);
+        SameJson(theirs["transportRetries"], mine.TransportRetries);
+        SameJson(theirs["fenceUnwrapped"], mine.FenceUnwrapped);
+        SameJson(theirs["analysis"], mine.Analysis);
+        SameJson(theirs["successfulToolCalls"], mine.ToolCallsSucceeded);
         Assert.Equal("COMPLETE", mine.Status);
         Assert.Equal("SELECT", mine.Decisions[decide[0]]);
     }
