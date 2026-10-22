@@ -1,6 +1,5 @@
 using OpenCvSharp;
 using DocxHeaderExtractor.Contracts.Scan;
-using DocxHeaderExtractor.Sources.Common;
 
 namespace DocxHeaderExtractor.Sources.Scan;
 

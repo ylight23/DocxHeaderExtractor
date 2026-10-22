@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Web;

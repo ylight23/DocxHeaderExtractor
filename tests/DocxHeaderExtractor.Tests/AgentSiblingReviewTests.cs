@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
 
 namespace DocxHeaderExtractor.Tests;
 

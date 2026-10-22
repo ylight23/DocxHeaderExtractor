@@ -1,5 +1,4 @@
-using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Chunking;
+using DocxHeaderExtractor.Contracts.Inference;
 using System.Globalization;
 using System.Diagnostics;
 using System.Runtime.InteropServices;

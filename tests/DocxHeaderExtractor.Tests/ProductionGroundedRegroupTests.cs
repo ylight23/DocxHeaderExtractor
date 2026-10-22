@@ -1,16 +1,17 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.HeadingAgent;
-using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Tools;
+using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 
 namespace DocxHeaderExtractor.Tests;
 
 using DocxHeaderExtractor.Contracts.Scan;
 
-using DocxHeaderExtractor.Sources.Scan;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 
 public sealed class ProductionGroundedRegroupTests
@@ -58,7 +59,7 @@ internal static ScanAgentSource Source()
         return v;
     }
     static string Reply(JsonObject packet, string decision, string fault = "") => JsonSerializer.Serialize(new
-    { protocolVersion = AgentGroupVerification.Version, verdicts = packet["candidates"]!.AsArray().Select(c => Verdict(c!, decision, fault)) });
+    { protocolVersion = GroupVerifier.Version, verdicts = packet["candidates"]!.AsArray().Select(c => Verdict(c!, decision, fault)) });
 
     [Fact]
     public void Accept_may_echo_the_exact_current_partition_without_a_suggestion()
@@ -67,7 +68,7 @@ internal static ScanAgentSource Source()
         var verdict = Verdict(c, "ACCEPT");
         verdict["currentGroups"] = JsonSerializer.SerializeToNode(Groups);
         verdict["suggestedGroups"] = null;
-        var parsed = AgentGroupVerification.ParseVerdict(verdict, new("V1", Groups), Groups.SelectMany(g => g).ToHashSet(), [], _ => { });
+        var parsed = GroupVerifier.ParseVerdict(verdict, new("V1", Groups), Groups.SelectMany(g => g).ToHashSet(), [], _ => { });
         Assert.Equal("ACCEPT", parsed.Decision);
         Assert.Null(parsed.SuggestedGroups);
     }
@@ -89,7 +90,7 @@ internal static ScanAgentSource Source()
             Assert.Contains("BOUNDARY_VERDICT_SELF_CONTRADICTORY", messages[3]!["content"]!.Text());
             return new(Reply(packet, "ACCEPT"), [], "stop");
         };
-        var result = AgentGroupVerification.Verify(Source(), new(Groups, [], [], 0),
+        var result = GroupVerifier.Verify(Source(), new(Groups, [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new(30, 1), 1, default, 0, "Extract headings.");
         Assert.Equal(2, calls);
         Assert.Empty(result.Failures);
@@ -115,7 +116,7 @@ internal static ScanAgentSource Source()
     {
         int calls = 0;
         AgentUnit.Model model = (_, _, request) => { calls++; return new(Reply(Packet(request), "REGROUP", fault), [], "stop"); };
-        var check = AgentGroupVerification.Ask(Source(), [new("V1", Groups)],
+        var check = GroupVerifier.Ask(Source(), [new("V1", Groups)],
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new(20, 1), default, 0, "Extract headings.", "VERIFY", 2);
         Assert.Equal(3, calls);
         Assert.Empty(check.Verdicts);
@@ -128,13 +129,13 @@ internal static ScanAgentSource Source()
     public void Valid_different_suggestion_is_audited_but_excluded_from_grouper_feedback()
     {
         AgentUnit.Model model = (_, _, request) => new(Reply(Packet(request), "REGROUP"), [], "stop");
-        var check = AgentGroupVerification.Ask(Source(), [new("V1", Groups)],
+        var check = GroupVerifier.Ask(Source(), [new("V1", Groups)],
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new(20, 1), default, 0, "Extract headings.", "VERIFY", 0);
         var verdict = Assert.Single(check.Verdicts);
         Assert.NotNull(verdict.SuggestedGroups);
         Assert.NotNull(Assert.Single(check.BoundaryVerdicts).SuggestedGroups);
         Assert.False(check.BoundaryVerdicts[0].Applied);
-        var feedback = JsonSerializer.Serialize(AgentGroupVerification.BoundaryFeedback(new("V1", Groups), verdict, 1));
+        var feedback = JsonSerializer.Serialize(GroupVerifier.BoundaryFeedback(new("V1", Groups), verdict, 1));
         Assert.DoesNotContain("SuggestedGroups", feedback);
         Assert.DoesNotContain("CurrentGroups", feedback);
     }
@@ -148,10 +149,10 @@ internal static ScanAgentSource Source()
             var packet = Packet(request);
             var candidates = packet["candidates"]!.AsArray();
             if (round == 2) { Assert.Single(candidates); Assert.Equal("V2", candidates[0]!["run"]!.GetValue<string>()); }
-            return new(JsonSerializer.Serialize(new { protocolVersion = AgentGroupVerification.Version,
+            return new(JsonSerializer.Serialize(new { protocolVersion = GroupVerifier.Version,
                 verdicts = candidates.Select(c => Verdict(c!, round == 1 && c!["run"]!.GetValue<string>() == "V2" ? "REGROUP" : "ACCEPT", "same")) }), [], "stop");
         };
-        var result = AgentGroupVerification.Verify(Source(), initial, new Dictionary<string, TextOffsetSpan>(),
+        var result = GroupVerifier.Verify(Source(), initial, new Dictionary<string, TextOffsetSpan>(),
             new Dictionary<string, string>(), model, new(20, 1), 1, default, 0, "Extract headings.");
         Assert.Equal(2, result.Groups.Count);
         Assert.Empty(result.Failures);

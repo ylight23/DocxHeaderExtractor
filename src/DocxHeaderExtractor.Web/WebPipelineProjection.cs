@@ -1,10 +1,9 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.Contracts.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Projection;
+using DocxHeaderExtractor.DocumentProcessing.Audit;
+using DocxHeaderExtractor.DocumentProcessing.Output;
+using DocxHeaderExtractor.DocumentProcessing.Output.Outline;
 
 namespace DocxHeaderExtractor.Web;
 
@@ -28,7 +27,7 @@ public sealed record WebPipelineResponse(string SchemaVersion, Guid ExecutionId,
 public static class WebPipelineProjection
 {
     public static WebPipelineResponse Project(Guid runId, string outcome, DocumentOutline outline,
-        DocumentExtractionExecutionResult? execution, string sourceKind)
+        RunResult? execution, string sourceKind)
     {
         if (execution is null || !ReferenceEquals(execution.Outline, outline))
             return new("web-pipeline-v2", runId, "unavailable", outcome, sourceKind,
@@ -45,8 +44,8 @@ public static class WebPipelineProjection
         var relations = allRelations.Where(r => visible.Contains(r.FromId) && visible.Contains(r.ToId)).ToArray();
         var parent = allRelations.ToDictionary(r => r.ToId, r => r.FromId, StringComparer.Ordinal);
         var sources = execution.Result.SourceCatalog.Units.ToDictionary(u => u.SourceId, StringComparer.Ordinal);
-        var context = pipeline?.ProjectionContext ?? HeadingProjectionContext.Empty;
-        var records = HeadingOutlineProjection.Project(graph, ids, context);
+        var context = pipeline?.ProjectionContext ?? ProjectionContext.Empty;
+        var records = OutlineProjection.Project(graph, ids, context);
         var headings = elements.Select((element, index) =>
         {
             var record = records[index];
@@ -133,19 +132,19 @@ public static class WebPipelineProjection
             SafeAudit(audit));
     }
 
-    public static object? SafeAudit(PipelineExecutionAudit? audit) => audit is null ? null : new
+    public static object? SafeAudit(RunAudit? audit) => audit is null ? null : new
     { audit.PipelineId, audit.SourceBlocksAvailable, audit.SourceBlocksSelected, audit.SourcePagesAvailable,
         audit.SourcePagesSelected, audit.SemanticLane, audit.SpanLane, audit.ModelInputContracts, audit.SelectionProviderCalls,
         groundedSourceIds = audit.GroundedBlockIds, decisionCount = audit.BlockDecisions.Count,
         placementExecution = audit.PlacementExecution, audit.SelectionLinesAnswered, audit.SelectionLinesTotal,
         audit.Scan, audit.Grouping, audit.HeadingStageSeconds, audit.HeadingAliasStates };
 
-    private static string SelectionEvidence(PipelineExecutionAudit? audit, LaneExecutionAudit lane) =>
+    private static string SelectionEvidence(RunAudit? audit, LaneExecutionAudit lane) =>
         audit?.SelectionLinesAnswered is { } answered && audit.SelectionLinesTotal is { } total
             ? $"Answered source lines={answered}/{total}; downstream semantic units complete={lane.Completed}/{lane.Scheduled}"
             : $"Downstream semantic units complete={lane.Completed}/{lane.Scheduled}; source-line answer count not recorded";
 
-    private static string SelectionStageStatus(PipelineExecutionAudit? audit, LaneExecutionAudit lane) =>
+    private static string SelectionStageStatus(RunAudit? audit, LaneExecutionAudit lane) =>
         audit?.SelectionLinesAnswered is { } answered && audit.SelectionLinesTotal is { } total
             ? answered == total ? "completed" : "partial"
             : lane.Status == "complete" ? "completed" : "partial";

@@ -2,7 +2,10 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -18,7 +21,7 @@ public sealed class PdfHeadingAgentSelectorTests
     public async Task Every_segment_reads_its_facts_then_answers_and_the_selection_collects_the_selected_lines()
     {
         var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTarget);
-        var selector = new PdfHeadingAgentSelector(() => handler, parallelism: 4);
+        var selector = new PdfSelector(() => handler, parallelism: 4);
 
         var selection = await selector.SelectAsync(TestRepository.Path(Pdf), "sk-test", CancellationToken.None);
 
@@ -39,7 +42,7 @@ public sealed class PdfHeadingAgentSelectorTests
     public async Task Adjacent_selected_lines_are_divided_into_headings_by_a_group_request_and_the_division_reaches_the_selection()
     {
         var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTwoTargetsThenGroup);
-        var selector = new PdfHeadingAgentSelector(() => handler, parallelism: 4);
+        var selector = new PdfSelector(() => handler, parallelism: 4);
 
         var selection = await selector.SelectAsync(TestRepository.Path(Pdf), "sk-test", CancellationToken.None);
 
@@ -67,11 +70,11 @@ public sealed class PdfHeadingAgentSelectorTests
     public async Task A_provider_that_keeps_failing_is_retried_three_times_per_unit_and_the_units_fail()
     {
         var handler = new FakeOpenRouter((_, _) => (HttpStatusCode.TooManyRequests, ""));
-        var selector = new PdfHeadingAgentSelector(() => handler, parallelism: 1);
+        var selector = new PdfSelector(() => handler, parallelism: 1);
         var source = AgentSource.Load(TestRepository.Path(Pdf), out _)!;
 
         // retryDelayMs is fixed at 5 s in production; one unit shows the rule.
-        var budget = PdfHeadingAgentSelector.BudgetFor(source);
+        var budget = PdfSelector.BudgetFor(source);
         using var model = new AgentModel(handler, "sk-test", budget);
         var outcome = AgentUnit.Run(source, 0, model.Turn, budget, retryDelayMs: 0);
 
@@ -88,7 +91,7 @@ public sealed class PdfHeadingAgentSelectorTests
     {
         var handler = new FakeOpenRouter((_, _) => (HttpStatusCode.PaymentRequired, "{\"error\":{\"code\":402,\"message\":\"Insufficient credits\"}}"));
         var source = AgentSource.Load(TestRepository.Path(Pdf), out _)!;
-        var budget = PdfHeadingAgentSelector.BudgetFor(source);
+        var budget = PdfSelector.BudgetFor(source);
         using var model = new AgentModel(handler, "sk-test", budget);
 
         var outcome = AgentUnit.Run(source, 0, model.Turn, budget, retryDelayMs: 0);
@@ -104,7 +107,7 @@ public sealed class PdfHeadingAgentSelectorTests
     {
         var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTarget, provider: "SomeoneElse");
         var source = AgentSource.Load(TestRepository.Path(Pdf), out _)!;
-        var budget = PdfHeadingAgentSelector.BudgetFor(source);
+        var budget = PdfSelector.BudgetFor(source);
         using var model = new AgentModel(handler, "sk-test", budget);
         var outcome = AgentUnit.Run(source, 0, model.Turn, budget, retryDelayMs: 0);
         Assert.Equal("CALL:ENDPOINT_OR_MODEL_UNEXPECTED", outcome.Failure);

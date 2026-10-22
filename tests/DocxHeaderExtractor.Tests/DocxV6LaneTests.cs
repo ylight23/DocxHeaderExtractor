@@ -1,15 +1,13 @@
-using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Sources.OpenXmlLayer;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Lanes.Docx;
+using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Sources.Docx;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -43,7 +41,7 @@ public sealed class DocxV6LaneTests : IDisposable
         var aliases = Aliases(path, 0, 1, 2);
         var selector = new FixedSelector(aliases.ToHashSet());
         using var transport = new NoCallTransport("route-key");
-        using var pipeline = new DocxExtractionPipeline(new PipelineOptions(), transport, selector);
+        using var pipeline = new DocxPipeline(new PipelineOptions(), transport, selector);
 
         var run = await pipeline.RunDocumentExecutionAsync(path);
 
@@ -51,8 +49,8 @@ public sealed class DocxV6LaneTests : IDisposable
         Assert.Equal("route-key", selector.Key);
         Assert.Equal(path, selector.Path);
         var heading = run.HeadingPipeline!;
-        Assert.Equal(DocxHeadingPipeline.RouteId, run.Outline.DeterministicRoute);
-        Assert.Equal(DocxHeadingPipeline.RouteId, heading.Reason);
+        Assert.Equal(DocxLane.RouteId, run.Outline.DeterministicRoute);
+        Assert.Equal(DocxLane.RouteId, heading.Reason);
         Assert.Equal(3, heading.Structure.Elements.Count);
         Assert.Contains(FixedSelector.Id, heading.Audit!.ModelInputContracts);
         Assert.Equal("complete", heading.Audit.SemanticLane!.Status);
@@ -66,7 +64,7 @@ public sealed class DocxV6LaneTests : IDisposable
         var aliases = Aliases(path, 0, 1, 2).ToHashSet();
         var context = new HeadingPlacementContext("{\"documentLines\":8,\"styles\":[]}", new Dictionary<string, string>(), DocxAgentProtocol.PlacementNote);
         using var transport = new NoCallTransport("route-key");
-        using var pipeline = new DocxExtractionPipeline(new PipelineOptions(), transport, new FixedSelector(aliases, context));
+        using var pipeline = new DocxPipeline(new PipelineOptions(), transport, new FixedSelector(aliases, context));
 
         await pipeline.RunDocumentExecutionAsync(path);
 
@@ -80,18 +78,18 @@ public sealed class DocxV6LaneTests : IDisposable
     {
         var path = Sample();
         using var keyed = new NoCallTransport("route-key");
-        using var noSelector = new DocxExtractionPipeline(new PipelineOptions(), keyed);
+        using var noSelector = new DocxPipeline(new PipelineOptions(), keyed);
         var none = await Assert.ThrowsAsync<InvalidOperationException>(() => noSelector.RunDocumentExecutionAsync(path));
         Assert.StartsWith("DOCX_HEADING_SELECTOR_REQUIRED", none.Message);
 
         var selector = new FixedSelector(new HashSet<string>());
         using var keyless = new NoCallTransport(null);
-        using var noKey = new DocxExtractionPipeline(new PipelineOptions(), keyless, selector);
+        using var noKey = new DocxPipeline(new PipelineOptions(), keyless, selector);
         var missing = await Assert.ThrowsAsync<InvalidOperationException>(() => noKey.RunDocumentExecutionAsync(path));
         Assert.StartsWith("DOCX_HEADING_SELECTOR_KEY_MISSING", missing.Message);
 
         using var plain = new PlainTransport();
-        using var notAuthorized = new DocxExtractionPipeline(new PipelineOptions(), plain, selector);
+        using var notAuthorized = new DocxPipeline(new PipelineOptions(), plain, selector);
         var refused = await Assert.ThrowsAsync<InvalidOperationException>(() => notAuthorized.RunDocumentExecutionAsync(path));
         Assert.StartsWith("AGENT_ROUTE_AUTHORIZATION_REQUIRED", refused.Message);
 
@@ -103,7 +101,7 @@ public sealed class DocxV6LaneTests : IDisposable
     public async Task With_the_model_disabled_the_selector_is_not_called_and_the_route_says_so()
     {
         var selector = new FixedSelector(new HashSet<string>());
-        using var pipeline = new DocxExtractionPipeline(new PipelineOptions { DisableLlm = true }, new NoCallTransport("route-key"), selector);
+        using var pipeline = new DocxPipeline(new PipelineOptions { DisableLlm = true }, new NoCallTransport("route-key"), selector);
 
         var run = await pipeline.RunDocumentExecutionAsync(Sample());
 

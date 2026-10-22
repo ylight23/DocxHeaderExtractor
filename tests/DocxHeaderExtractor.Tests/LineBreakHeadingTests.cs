@@ -1,20 +1,13 @@
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.Contracts.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Materialization;
-using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Sources.OpenXmlLayer;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
+using DocxHeaderExtractor.DocumentProcessing.Binding;
+using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Docx;
 
 namespace DocxHeaderExtractor.Tests;
@@ -54,12 +47,12 @@ public sealed class LineBreakHeadingTests : IDisposable
         var article = source.Atoms.OrderBy(a => a.Ordinal).First(a => a.Text.StartsWith("Article 8", StringComparison.Ordinal));
         var selector = new FixedSelector(new HashSet<string> { article.Alias });
 
-        var authority = new SelectedLinesHeadingAuthority(selector, path, "sk-test", new Dictionary<string, string>(StringComparer.Ordinal),
+        var authority = new SelectionAuthority(selector, path, "sk-test", new Dictionary<string, string>(StringComparer.Ordinal),
             null, () => { });
         var decided = await authority.DecideAsync(source, CancellationToken.None);
 
         Assert.Contains(decided.Decisions, d => d.Id == article.SourceId);
-        var validated = HeadingDecisionBinder.BindAndValidate(source.OccurrenceContexts, decided.Decisions);
+        var validated = DecisionBinder.BindAndValidate(source.OccurrenceContexts, decided.Decisions);
         Assert.Contains(validated, v => v.SourceId == article.SourceId);
     }
 

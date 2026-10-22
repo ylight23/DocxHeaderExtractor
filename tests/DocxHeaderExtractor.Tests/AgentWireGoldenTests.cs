@@ -3,8 +3,11 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.DocumentProcessing.Materialization;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.DocumentProcessing.Placement;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 
 namespace DocxHeaderExtractor.Tests;
@@ -41,14 +44,14 @@ public sealed class AgentWireGoldenTests
         ["grouping.shared"] = Sha(GroupingPrompts.Shared),
         ["grouping.docx"] = Sha(GroupingPrompts.Docx),
         ["grouping.scan"] = Sha(GroupingPrompts.Scan),
-        ["verification"] = Sha(AgentGroupVerification.Prompt),
+        ["verification"] = Sha(GroupVerifier.Prompt),
         ["siblingReview"] = Sha(AgentSiblingReview.Prompt),
         ["selectionAudit"] = Sha(SelectionAudit.Prompt),
         ["scan.transcription"] = Sha(ScanTranscription.SystemPrompt),
         ["scan.vision"] = Sha(ScanVisionPreflight.SystemPrompt),
-        ["placement.source"] = Sha(EvidenceHeadingPlacement.SourcePrompt),
-        ["placement"] = Sha(HeadingParentResolver.PlacementPrompt),
-        ["placement.withEvidence"] = Sha(HeadingParentResolver.PlacementPromptWithEvidence),
+        ["placement.source"] = Sha(EvidencePlacement.SourcePrompt),
+        ["placement"] = Sha(ParentResolver.PlacementPrompt),
+        ["placement.withEvidence"] = Sha(ParentResolver.PlacementPromptWithEvidence),
         // The repair messages a refused answer receives: every code with its own wording, and the forms that name targets or a detail.
         ["repair.TOOL_CROP_REQUIRED_NOT_REQUESTED"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:TOOL_CROP_REQUIRED_NOT_REQUESTED")),
         ["repair.TOOL_FACTS_REQUIRED_NOT_REQUESTED"] = Sha(AgentProtocol.RepairMessage("PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED")),

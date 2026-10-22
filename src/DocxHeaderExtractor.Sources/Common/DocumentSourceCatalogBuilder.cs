@@ -1,5 +1,4 @@
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
 using DocxHeaderExtractor.Sources.Pdf;
 
 namespace DocxHeaderExtractor.Sources.Common;

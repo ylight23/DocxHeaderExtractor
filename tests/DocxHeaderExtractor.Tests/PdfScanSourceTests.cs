@@ -1,5 +1,4 @@
 using DocxHeaderExtractor.Sources.Pdf;
-using DocxHeaderExtractor.Contracts.Scan;
 using DocxHeaderExtractor.Sources.Scan;
 using UglyToad.PdfPig.Core;
 using UglyToad.PdfPig.Fonts.Standard14Fonts;

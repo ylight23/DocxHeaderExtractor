@@ -3,11 +3,15 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Scan;
 using DocxHeaderExtractor.Sources.Scan;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -149,12 +153,12 @@ public sealed class ScanAgentTests : IDisposable
             return new AgentProtocol.ModelTurn(new JsonObject
             { ["protocolVersion"] = AgentProtocol.SelectScanVersion, ["status"] = "COMPLETE", ["decisions"] = decisions }.ToJsonString(), [], "stop");
         };
-        var result = HeadingAgentSelector.Select(source, model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);
+        var result = AgentSelector.Select(source, model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);
         Assert.Empty(result.UnitFailures);
         Assert.Equal(new[] { "P001-L001", "P001-L003", "P001-L004" }, result.SelectedAliases.Order());
         Assert.Contains("P001-L004", result.HeadingReadings!.Keys);
         Assert.Contains("P001-L003", result.HeadingReadings.Keys);
-        Assert.Equal(3, ScanHeadingAgentSelector.Headings(source, result).Headings.Count);
+        Assert.Equal(3, ScanSelector.Headings(source, result).Headings.Count);
         Assert.Equal(2, calls.Count(c => c.StartsWith("GROUP-", StringComparison.Ordinal)));
         Assert.Equal(0, result.Grouping!.DisputedRuns);
         Assert.Equal(0, result.Grouping.BoundaryDisputes);
@@ -339,7 +343,7 @@ public sealed class ScanAgentTests : IDisposable
     public void The_agent_takes_the_reading_it_judges_right_and_the_heading_records_where_its_text_comes_from()
     {
         var handler = new FakeOpenRouter(SelectsArticles(firstInvented: false));
-        var selector = new ScanHeadingAgentSelector(dir, () => handler, parallelism: 1);
+        var selector = new ScanSelector(dir, () => handler, parallelism: 1);
 
         var result = selector.ExtractFrom(Evidence(), [Vision()], "sk-test", CancellationToken.None);
 
@@ -364,7 +368,7 @@ public sealed class ScanAgentTests : IDisposable
     {
         var handler = new FakeOpenRouter(SelectsArticles(firstInvented: true));
 
-        var result = new ScanHeadingAgentSelector(dir, () => handler, parallelism: 1).ExtractFrom(Evidence(), [Vision()], "sk-test", CancellationToken.None);
+        var result = new ScanSelector(dir, () => handler, parallelism: 1).ExtractFrom(Evidence(), [Vision()], "sk-test", CancellationToken.None);
 
         // The selection audit (SELECTION_AUDIT) is a call of its own and is not part of the selection being tested.
         Assert.Equal(3, handler.Bodies.Count(b => !b.ToJsonString().Contains("SELECTION_AUDIT", StringComparison.Ordinal)));
@@ -377,7 +381,7 @@ public sealed class ScanAgentTests : IDisposable
     {
         var handler = new FakeOpenRouter(SelectsArticles(firstInvented: false));
 
-        var result = new ScanHeadingAgentSelector(dir, () => handler, parallelism: 1).ExtractFrom(Evidence(), [Vision(ScanOcrPreflight.OriginalView)], "sk-test", CancellationToken.None);
+        var result = new ScanSelector(dir, () => handler, parallelism: 1).ExtractFrom(Evidence(), [Vision(ScanOcrPreflight.OriginalView)], "sk-test", CancellationToken.None);
 
         Assert.Equal("CONFLICT", result.Headings[1].Verification);
     }
@@ -550,7 +554,7 @@ public sealed class ScanAgentTests : IDisposable
     public void A_heading_takes_the_transcription_when_the_agent_names_no_reading_and_keeps_the_ocr_beside_it()
     {
         var handler = new FakeOpenRouter(SelectsArticles(firstInvented: false, namesNoReading: true));
-        var selector = new ScanHeadingAgentSelector(dir, () => handler, parallelism: 1);
+        var selector = new ScanSelector(dir, () => handler, parallelism: 1);
 
         var result = selector.ExtractFrom(Evidence(), [Vision()], "sk-test", CancellationToken.None, Transcriptions());
 
@@ -682,7 +686,7 @@ public sealed class ScanAgentTests : IDisposable
     public void A_reply_whose_reasoning_used_every_token_is_sent_once_more_on_the_scan_route_and_a_second_one_fails_the_unit()
     {
         var source = new ScanAgentSource(Evidence(), [Vision()], Transcriptions());
-        var budget = HeadingAgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction);
+        var budget = AgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction);
         var handler = new FakeOpenRouter(SelectsArticles(firstInvented: false, namesNoReading: true));
         using var model = new AgentModel(handler, "sk-test", budget);
         const string exhausted = "AUDIT:FINISH_LENGTH,REASONING_EXHAUSTED";
@@ -696,7 +700,7 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal(outcome.RequestSha256s[0], outcome.RequestSha256s[1]);   // the same bytes
 
         AgentUnit.Model always = (_, _, _) => throw new ReplyFailure(exhausted);
-        var failed = AgentUnit.Run(source, 0, always, HeadingAgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction), retryDelayMs: 0, ScanAgentProtocol.Instruction);
+        var failed = AgentUnit.Run(source, 0, always, AgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction), retryDelayMs: 0, ScanAgentProtocol.Instruction);
 
         Assert.Equal(("FAILED", "CALL:" + exhausted), (failed.Status, failed.Failure));
         Assert.Equal(2, failed.Posts);
@@ -706,7 +710,7 @@ public sealed class ScanAgentTests : IDisposable
         // A call that timed out is sent once more too.
         calls = 0;
         AgentUnit.Model late = (unit, turn, req) => ++calls == 1 ? throw new ReplyFailure("TRANSPORT:TIMEOUT_OR_CANCELLED") : model.Turn(unit, turn, req);
-        Assert.Equal("COMPLETE", AgentUnit.Run(source, 0, late, HeadingAgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction), retryDelayMs: 0, ScanAgentProtocol.Instruction).Status);
+        Assert.Equal("COMPLETE", AgentUnit.Run(source, 0, late, AgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction), retryDelayMs: 0, ScanAgentProtocol.Instruction).Status);
     }
 
     [Fact]
@@ -786,7 +790,7 @@ public sealed class ScanAgentTests : IDisposable
     public void A_scan_unit_carries_its_targets_facts_so_an_answer_on_the_first_turn_is_complete()
     {
         var source = new ScanAgentSource(Evidence(), [], Transcriptions());
-        var budget = HeadingAgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction);
+        var budget = AgentSelector.BudgetFor(source, ScanAgentProtocol.Instruction);
         // The model answers at once, with no tool call: the facts were in the request.
         var handler = new FakeOpenRouter((body, post) =>
         {
@@ -819,7 +823,7 @@ public sealed class ScanAgentTests : IDisposable
         const string alias = "P001-L004";
         var selection = new HeadingSelection(new HashSet<string> { alias }, 1, 1, [], [], 0, 0)
         { HeadingReadings = new Dictionary<string, string> { [alias] = ScanOcrPreflight.UpscaledView } };
-        var prepared = ScanHeadingAgentSelector.PrepareSelection(source, selection);
+        var prepared = ScanSelector.PrepareSelection(source, selection);
         var bound = ScanSourceAdapter.Build(prepared);
         var line = prepared.Lines.Single(l => l.Alias == alias);
         Assert.Equal("Điều 2. Thẩm quyền chứng thực", line.Text);
@@ -856,7 +860,7 @@ public sealed class ScanAgentTests : IDisposable
             }) }, "stop"));
         });
         // Even with numeric-prefix facts, C# must retain the line if the model selects it.
-        var result = new ScanHeadingAgentSelector(dir, () => handler).ExtractFrom(Evidence(), [], "test-key", CancellationToken.None);
+        var result = new ScanSelector(dir, () => handler).ExtractFrom(Evidence(), [], "test-key", CancellationToken.None);
         Assert.Equal("1. Nghị định này quy định về chứng thực", Assert.Single(result.Headings).Text);
         Assert.Empty(result.UnitFailures);
     }

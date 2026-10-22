@@ -2,14 +2,11 @@ extern alias WebApp;
 
 using System.Net;
 using System.Text.Json;
-using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Provenance;
+using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Sources.Provenance;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Contracts.Scan;
-using DocxHeaderExtractor.Sources.Scan;
 using DocxHeaderExtractor.Web;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -68,7 +65,7 @@ public sealed class WebSourceInspectionTests : IDisposable
         Assert.Equal("docx", result.GetProperty("route").GetString());
         Assert.False(result.GetProperty("requiresOcr").GetBoolean());
         var prompts = JsonDocument.Parse(await client.GetStringAsync("/api/prompts")).RootElement;
-        Assert.Equal(DocxHeaderExtractor.HeadingAgent.PromptCatalog.Scan.SystemPrompt, prompts.GetProperty("scan").GetProperty("systemPrompt").GetString());
+        Assert.Equal(DocxHeaderExtractor.HeadingAgent.Protocol.PromptCatalog.Scan.SystemPrompt, prompts.GetProperty("scan").GetProperty("systemPrompt").GetString());
     }
 
     [Fact]

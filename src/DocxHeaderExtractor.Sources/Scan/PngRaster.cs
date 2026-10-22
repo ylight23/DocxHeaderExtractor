@@ -2,7 +2,6 @@ using System.Buffers.Binary;
 using System.IO.Compression;
 using System.Text;
 using DocxHeaderExtractor.Contracts.Scan;
-using DocxHeaderExtractor.Sources.Common;
 
 namespace DocxHeaderExtractor.Sources.Scan;
 

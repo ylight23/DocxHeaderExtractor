@@ -2,9 +2,7 @@ using System.Text.Json;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Models.Inference;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.Sources.Routing;
 using DocxHeaderExtractor.Sources.Common;
-using DocxHeaderExtractor.Contracts.Scan;
 
 namespace DocxHeaderExtractor.Sources.Scan;
 

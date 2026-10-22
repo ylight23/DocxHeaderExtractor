@@ -9,7 +9,6 @@ using DocxHeaderExtractor.Sources.Pdf;
 using DocxHeaderExtractor.Contracts.Routing;
 using DocxHeaderExtractor.Sources.Routing;
 using DocxHeaderExtractor.Contracts.Scan;
-using DocxHeaderExtractor.Sources.Common;
 
 namespace DocxHeaderExtractor.Sources.Scan;
 

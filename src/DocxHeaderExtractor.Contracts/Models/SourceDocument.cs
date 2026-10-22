@@ -1,6 +1,5 @@
 using System.Collections.ObjectModel;
 using MessagePack;
-using DocxHeaderExtractor.Contracts.Models.Inference;
 
 namespace DocxHeaderExtractor.Contracts.Models;
 

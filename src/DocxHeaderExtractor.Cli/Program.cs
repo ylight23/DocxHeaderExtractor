@@ -3,16 +3,10 @@ using System.Text.Json;
 using System.Security.Cryptography;
 using DocxHeaderExtractor.Cli;
 using DocxHeaderExtractor.V6Runner;
-using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.Contracts.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
-using DocxHeaderExtractor.Sources.OpenXmlLayer;
-using DocxHeaderExtractor.DocumentProcessing.Projection;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Audit;
+using DocxHeaderExtractor.DocumentProcessing.Output;
+using DocxHeaderExtractor.DocumentProcessing.Output.Outline;
+using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Infrastructure.AI;
 
 Console.OutputEncoding = Encoding.UTF8;
@@ -76,7 +70,7 @@ static async Task<int> RunScanExtractAsync(CommandLineOptions o, CancellationTok
     var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
     if (string.IsNullOrWhiteSpace(key)) { Console.Error.WriteLine("Chưa có OPENROUTER_API_KEY."); return 2; }
     var root = o.OutputPath ?? ".dhx-evidence";
-    var selector = new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(root, parallelism: o.Jobs, vision: o.Vision, reuseSelection: !o.FreshSelection, paragraphUnits: o.ParagraphUnits, segmentedLines: o.SegmentedLines,
+    var selector = new DocxHeaderExtractor.HeadingAgent.Scan.ScanSelector(root, parallelism: o.Jobs, vision: o.Vision, reuseSelection: !o.FreshSelection, paragraphUnits: o.ParagraphUnits, segmentedLines: o.SegmentedLines,
         onModelReply: o.ShowRawOutput ? r => PrintModelReply(r) : null,
         transcriptionOptions: o.Jobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null,
         visionOptions: o.Jobs is { } seeJobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null);
@@ -272,7 +266,7 @@ static async Task<int> RunExtractAsync(CommandLineOptions o, CancellationToken c
 /// từ xa và người dùng không chạy <c>--no-llm</c>.
 /// </summary>
 // --show-raw: what the model streamed and wrote for one reply. Reasoning and content are the model's own text.
-static void PrintModelReply(DocxHeaderExtractor.HeadingAgent.ModelReply r)
+static void PrintModelReply(DocxHeaderExtractor.HeadingAgent.Selectors.ModelReply r)
 {
     var request = r.RequestSha256.Length >= 12 ? r.RequestSha256[..12] : "-";
     Console.Error.WriteLine($"--- [{r.Unit}] lượt {r.Turn} ({r.FinishReason ?? "—"}) req={request} preceding={r.PrecedingSelected ?? "-"} ---");

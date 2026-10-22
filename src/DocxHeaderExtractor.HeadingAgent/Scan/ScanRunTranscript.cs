@@ -1,7 +1,11 @@
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
+using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Scan;
 
@@ -56,7 +60,7 @@ internal sealed class ScanRunTranscript : IDisposable
         Write(new
         {
             run = RunId, unit, turn, at = DateTimeOffset.UtcNow.ToString("O"), requestSha256 = request.Sha256, requestBytes = request.Bytes,
-            precedingSelected = HeadingAgentSelector.PrecedingSelectedAliasOf(request.Body), request = request.Body,
+            precedingSelected = AgentSelector.PrecedingSelectedAliasOf(request.Body), request = request.Body,
             finishReason = reply.FinishReason, reasoning = reply.Reasoning, content = reply.Content,
             toolCalls = reply.ToolCalls.Select(c => new { name = c.Name, arguments = c.Arguments }).ToArray(),
         });

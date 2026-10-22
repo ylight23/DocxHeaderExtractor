@@ -46,7 +46,7 @@ internal sealed class FakeOpenRouter(Func<JsonObject, int, (HttpStatusCode Statu
         if (payload is null) return null;
         return JsonSerializer.Serialize(new
         {
-            protocolVersion = DocxHeaderExtractor.HeadingAgent.AgentGroupVerification.Version,
+            protocolVersion = DocxHeaderExtractor.HeadingAgent.Grouping.GroupVerifier.Version,
             verdicts = payload["candidates"]!.AsArray().Select(c => new
             {
                 run = c!["run"]!.GetValue<string>(), decision = "ACCEPT", reason = "Scripted independent verifier acceptance.",

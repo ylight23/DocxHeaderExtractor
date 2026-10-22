@@ -2,17 +2,21 @@ using System.Security.Cryptography;
 using System.Net;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.Contracts.Authority;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Audit;
+using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Contracts.Scan;
 using DocxHeaderExtractor.Sources.Scan;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.HeadingAgent.Scan;
-using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
+using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -37,7 +41,7 @@ public sealed class HeadingGroupVerificationTests
         }, autoVerify: false);
         var budget = new AgentBudget(10, 100);
         using var model = new AgentModel(handler, "sk-test", budget);
-        var result = AgentGroupVerification.Verify(source, new AgentGrouping.Result([new[] { A(1), A(2) }], [], [], 0),
+        var result = GroupVerifier.Verify(source, new AgentGrouping.Result([new[] { A(1), A(2) }], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model.Turn, budget, 1, CancellationToken.None, 0, "Extract structural headings.");
         Assert.Empty(result.Failures);
         Assert.Empty(result.UnresolvedAliases);
@@ -111,7 +115,7 @@ public sealed class HeadingGroupVerificationTests
             return new ModelTurn(response.ToJsonString(), [], "stop");
         };
         var input = EightCandidates();
-        var result = AgentGroupVerification.Verify(Source(lineCount: 16), input, new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
+        var result = GroupVerifier.Verify(Source(lineCount: 16), input, new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
             model, new AgentBudget(20, 100), 1, CancellationToken.None, 0, Instruction);
         Assert.Equal(2, calls);
         Assert.Empty(result.Failures);
@@ -134,8 +138,8 @@ public sealed class HeadingGroupVerificationTests
     {
         // Synthetic shape replay of the reported four-alias/two-group failure; not a model replay or Gold.
         string[][] groups = [[A(1), A(2)], [A(3), A(4)]];
-        var candidates = new[] { new AgentGroupVerification.Candidate("V41", groups),
-            new AgentGroupVerification.Candidate("V42", [[A(6)]]) };
+        var candidates = new[] { new GroupVerifier.Candidate("V41", groups),
+            new GroupVerifier.Candidate("V42", [[A(6)]]) };
         var calls = 0;
         AgentUnit.Model model = (unit, _, request) =>
         {
@@ -175,10 +179,10 @@ public sealed class HeadingGroupVerificationTests
             }
             return new ModelTurn(response.ToJsonString(), [], "stop");
         };
-        var result = AgentGroupVerification.Ask(Source(), candidates, new Dictionary<string, TextOffsetSpan>(),
+        var result = GroupVerifier.Ask(Source(), candidates, new Dictionary<string, TextOffsetSpan>(),
             new Dictionary<string, string>(), model, new AgentBudget(20, 100), CancellationToken.None,
             0, Instruction, "VERIFY-006", 0);
-        Assert.Equal(outcome == "persistent-omission" ? AgentGroupVerification.MaxPosts : 2, calls);
+        Assert.Equal(outcome == "persistent-omission" ? GroupVerifier.MaxPosts : 2, calls);
         Assert.Equal("ACCEPT", result.Verdicts.Single(v => v.Run == "V42").Decision);
         if (outcome == "persistent-omission")
         {
@@ -217,7 +221,7 @@ public sealed class HeadingGroupVerificationTests
             return new ModelTurn(response.ToJsonString(), [], "stop");
         };
         var input = EightCandidates();
-        var result = AgentGroupVerification.Verify(Source(lineCount: 16), input, new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
+        var result = GroupVerifier.Verify(Source(lineCount: 16), input, new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
             model, new AgentBudget(20, 100), 1, CancellationToken.None, 0, Instruction);
         Assert.Equal(1, calls);
         Assert.Empty(result.Failures);
@@ -251,7 +255,7 @@ public sealed class HeadingGroupVerificationTests
             verdict["membership"] = "not an array";
             return new ModelTurn(response.ToJsonString(), [], "stop");
         };
-        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
+        var result = GroupVerifier.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(20, 100),
             1, CancellationToken.None, 0, Instruction);
         Assert.Empty(result.Groups);
@@ -296,7 +300,7 @@ public sealed class HeadingGroupVerificationTests
                 })
             }), [], "stop");
         };
-        var result = AgentGroupVerification.Verify(source, new AgentGrouping.Result([new[] { A(2), A(3) }], [], [], 0),
+        var result = GroupVerifier.Verify(source, new AgentGrouping.Result([new[] { A(2), A(3) }], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(20, 100),
             1, CancellationToken.None, 0, Instruction);
         Assert.Empty(result.Failures);
@@ -333,7 +337,7 @@ public sealed class HeadingGroupVerificationTests
             first["verdicts"]!.AsArray().RemoveAt(3);
             return new ModelTurn(first.ToJsonString(), [], "stop");
         };
-        var result = AgentGroupVerification.Verify(Source(lineCount: 16), EightCandidates(), new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
+        var result = GroupVerifier.Verify(Source(lineCount: 16), EightCandidates(), new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
             model, budget, 1, CancellationToken.None, 0, Instruction);
         Assert.Equal(7, result.Groups.Count);
         Assert.Equal(new[] { A(7) }, result.UnresolvedAliases);
@@ -342,7 +346,7 @@ public sealed class HeadingGroupVerificationTests
         Assert.False(result.Memberships.ContainsKey(A(7)));
         Assert.Empty(result.Disputes);
         Assert.NotEmpty(result.Failures);
-        Assert.Equal(mode == "invalid" ? AgentGroupVerification.MaxPosts : mode == "transport" ? 2 + AgentGroupVerification.TransportRetries : 1, calls);
+        Assert.Equal(mode == "invalid" ? GroupVerifier.MaxPosts : mode == "transport" ? 2 + GroupVerifier.TransportRetries : 1, calls);
 
         static JsonObject PayloadOfFrozenCandidate() => new() { ["candidates"] = new JsonArray(new JsonObject
         { ["run"] = "V1", ["proposedGroups"] = new JsonArray(new JsonArray(A(1))) }) };
@@ -366,12 +370,12 @@ public sealed class HeadingGroupVerificationTests
         AgentUnit.Model model = (_, attempt, request) =>
         {
             requests.Add(request); attempts.Add(attempt);
-            if (requests.Count <= AgentGroupVerification.TransportRetries) throw new ReplyFailure(failure);
+            if (requests.Count <= GroupVerifier.TransportRetries) throw new ReplyFailure(failure);
             return new ModelTurn(Verdicts(Payload(request), _ => "ACCEPT"), [], "stop");
         };
-        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
+        var result = GroupVerifier.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, budget, 1, CancellationToken.None, 0, Instruction);
-        Assert.Equal(retry ? 1 + AgentGroupVerification.TransportRetries : 1, requests.Count);
+        Assert.Equal(retry ? 1 + GroupVerifier.TransportRetries : 1, requests.Count);
         Assert.Equal(requests.Count, budget.Calls);
         Assert.Equal(Enumerable.Range(1, requests.Count), attempts);
         Assert.All(requests, r => Assert.Equal(requests[0], r));
@@ -395,7 +399,7 @@ public sealed class HeadingGroupVerificationTests
             if (mode == "cancel") cts.Cancel();
             throw new ReplyFailure("TRANSPORT:STREAM_ERROR");
         };
-        AgentGrouping.Result Run() => AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
+        AgentGrouping.Result Run() => GroupVerifier.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, budget, 1, cts.Token, mode == "cancel" ? 10000 : 0, Instruction);
         if (mode == "cancel") Assert.ThrowsAny<OperationCanceledException>(() => Run());
         else
@@ -406,7 +410,7 @@ public sealed class HeadingGroupVerificationTests
             Assert.Equal(new[] { A(1) }, result.UnresolvedAliases);
             Assert.Contains(result.Failures, f => f.Contains(mode == "budget" ? "BUDGET:CALL_LIMIT" : "CALL:TRANSPORT:STREAM_ERROR", StringComparison.Ordinal));
         }
-        Assert.Equal(mode == "exhausted" ? 1 + AgentGroupVerification.TransportRetries : 1, calls);
+        Assert.Equal(mode == "exhausted" ? 1 + GroupVerifier.TransportRetries : 1, calls);
     }
 
     [Fact]
@@ -417,7 +421,7 @@ public sealed class HeadingGroupVerificationTests
                 : FakeOpenRouter.Stream(new { content = FakeOpenRouter.VerificationResponse(body) }, "stop")), autoVerify: false);
         var budget = new AgentBudget(10, 100);
         using var model = new AgentModel(handler, "sk-test", budget);
-        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
+        var result = GroupVerifier.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model.Turn, budget, 1, CancellationToken.None, 0, Instruction);
         Assert.Equal(2, handler.Posts);
         Assert.Equal(2, budget.Calls);
@@ -433,11 +437,11 @@ public sealed class HeadingGroupVerificationTests
         AgentUnit.Model model = (_, _, request) =>
         {
             if (++calls % 2 == 1) throw new ReplyFailure("TRANSPORT:STREAM_ERROR");
-            return new ModelTurn("{\"protocolVersion\":\"" + AgentGroupVerification.Version + "\",\"verdicts\":[]}", [], "stop");
+            return new ModelTurn("{\"protocolVersion\":\"" + GroupVerifier.Version + "\",\"verdicts\":[]}", [], "stop");
         };
-        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
+        var result = GroupVerifier.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(20, 100), 1, CancellationToken.None, 0, Instruction);
-        Assert.Equal(AgentGroupVerification.MaxCalls, calls);
+        Assert.Equal(GroupVerifier.MaxCalls, calls);
         Assert.Empty(result.Groups);
         Assert.Equal(new[] { A(1) }, result.UnresolvedAliases);
         Assert.Equal(3, result.Evidence.Count(e => e.Contains("\"transportRetry\":true", StringComparison.Ordinal)));
@@ -461,7 +465,7 @@ public sealed class HeadingGroupVerificationTests
             if (mode == "bytes") content += new string(' ', VisibleResponseCapBytes);
             return new ModelTurn(content, [], mode == "finish" ? "length" : "stop");
         };
-        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
+        var result = GroupVerifier.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(20, 100), 1, CancellationToken.None, 0, Instruction);
         Assert.Empty(result.Groups);
         Assert.Empty(result.Memberships);
@@ -501,16 +505,16 @@ public sealed class HeadingGroupVerificationTests
             }
             return new ModelTurn(root.ToJsonString(), [], "stop");
         };
-        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1), A(2), A(3) }], [], [], 0),
+        var result = GroupVerifier.Verify(Source(), new AgentGrouping.Result([new[] { A(1), A(2), A(3) }], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(20, 100), 1, CancellationToken.None, 0, Instruction);
         Assert.Empty(result.Groups);
         Assert.Empty(result.Disputes);
         Assert.Empty(result.Memberships);
-        Assert.Equal(AgentGroupVerification.MaxPosts, calls);
+        Assert.Equal(GroupVerifier.MaxPosts, calls);
         Assert.Contains(result.Failures, f => f.Contains("PROTOCOL:VERIFICATION_INVALID", StringComparison.Ordinal));
         if (mode is "missing" or "duplicate" or "out-of-order" or "unknown-alias")
         {
-            var coverage = Assert.Single(result.Observation.CoverageDiagnostics!, d => d.Round == AgentGroupVerification.MaxPosts);
+            var coverage = Assert.Single(result.Observation.CoverageDiagnostics!, d => d.Round == GroupVerifier.MaxPosts);
             Assert.Equal(new[] { A(1), A(2), A(3) }, coverage.ExpectedAliases);
             Assert.False(coverage.SequenceMatches);
             Assert.Equal(mode == "missing" ? new[] { A(2), A(3) }
@@ -564,7 +568,7 @@ public sealed class HeadingGroupVerificationTests
             }
             finally { Interlocked.Decrement(ref active); }
         };
-        var result = AgentGroupVerification.Verify(source, input, new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
+        var result = GroupVerifier.Verify(source, input, new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
             model, new AgentBudget(100, 100), 2, CancellationToken.None, 0, Instruction);
         Assert.Empty(result.Failures);
         Assert.Equal(secondCycle ? 8 : 4, groupCalls);
@@ -615,7 +619,7 @@ public sealed class HeadingGroupVerificationTests
                         : new[] { aliases[..2], new[] { aliases[2] } } })
             }), [], "stop");
         };
-        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([aliases], [], [], 0),
+        var result = GroupVerifier.Verify(Source(), new AgentGrouping.Result([aliases], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(100, 100),
             1, CancellationToken.None, 0, Instruction, allowMembershipReview: false);
         Assert.Equal(protocolRepair ? 4 : 2, groupCalls);
@@ -658,7 +662,7 @@ public sealed class HeadingGroupVerificationTests
             return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = AgentGrouping.GroupVersion,
                 runs = packet["runs"]!.AsArray().Select(r => new { run = r!["run"]!.GetValue<string>(), headings = rejected }) }), [], "stop");
         };
-        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([.. rejected, new[] { A(5) }], [], [], 0),
+        var result = GroupVerifier.Verify(Source(), new AgentGrouping.Result([.. rejected, new[] { A(5) }], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(50, 100),
             1, CancellationToken.None, 0, Instruction, boundaryRepairCycle: fromCycle);
         Assert.Equal(acceptAtCall, calls);
@@ -692,7 +696,7 @@ public sealed class HeadingGroupVerificationTests
     public void No_progress_observation_excludes_non_model_divisions_failures_disputes_and_scope_changes(string mode)
     {
         string[][] groups = [[A(1)], [A(2)]];
-        var input = new AgentGroupVerification.Candidate("V9", groups);
+        var input = new GroupVerifier.Candidate("V9", groups);
         var result = new AgentGrouping.Result(groups, [], [], 1)
         {
             Observation = new(ModelDividedRuns: 1),
@@ -706,7 +710,7 @@ public sealed class HeadingGroupVerificationTests
             "scope-changed" => result with { Groups = [new[] { A(1) }] },
             _ => result with { Provenance = [], Observation = new() }
         };
-        var observation = AgentGroupVerification.ObserveBoundaryRepair("VERIFY-REGROUP-V9", "VERIFY-002", input, 0, result);
+        var observation = GroupVerifier.ObserveBoundaryRepair("VERIFY-REGROUP-V9", "VERIFY-002", input, 0, result);
         Assert.Equal(mode == "disputed" ? "DISPUTED" : "FAILED", observation.Result);
         Assert.NotEqual("NO_PROGRESS", observation.Result);
         if (mode == "scope-changed") Assert.Null(observation.Changed);
@@ -731,7 +735,7 @@ public sealed class HeadingGroupVerificationTests
             return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = AgentGrouping.GroupVersion,
                 runs = packet["runs"]!.AsArray().Select(r => new { run = r!["run"]!.GetValue<string>(), headings = groups }) }), [], "stop");
         };
-        Assert.ThrowsAny<OperationCanceledException>(() => AgentGroupVerification.Verify(Source(), new AgentGrouping.Result(groups, [], [], 0),
+        Assert.ThrowsAny<OperationCanceledException>(() => GroupVerifier.Verify(Source(), new AgentGrouping.Result(groups, [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(50, 100),
             1, cancellation.Token, 0, Instruction));
         Assert.Equal(1, verificationCalls);
@@ -750,7 +754,7 @@ public sealed class HeadingGroupVerificationTests
             groupingCalls++;
             return new ModelTurn("{}", [], "stop");
         };
-        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }, new[] { A(2) }], [], [], 0),
+        var result = GroupVerifier.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }, new[] { A(2) }], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(50, 100),
             1, CancellationToken.None, 0, Instruction);
         Assert.Equal(2, verificationCalls);
@@ -781,7 +785,7 @@ public sealed class HeadingGroupVerificationTests
             return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = AgentGrouping.GroupVersion,
                 runs = packet["runs"]!.AsArray().Select(r => new { run = r!["run"]!.GetValue<string>(), headings = output }) }), [], "stop");
         };
-        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }, .. original], [], [], 0),
+        var result = GroupVerifier.Verify(Source(), new AgentGrouping.Result([new[] { A(1) }, .. original], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(100, 100),
             1, CancellationToken.None, 0, Instruction);
         var trajectory = result.Observation.Partitions!.Where(p => p.CandidateAliases.Contains(A(3))).ToArray();
@@ -809,7 +813,7 @@ public sealed class HeadingGroupVerificationTests
             Assert.Equal(e.InitialObservedAliases, e.ObservedAliases);
         });
         Assert.Equal(new[] { A(3), A(4), A(5) }, result.UnresolvedAliases);
-        var changedScope = AgentGroupVerification.ObservePartition("SURVIVORS", "u", new("new-id", [[A(3)], [A(5)]]), 2, original);
+        var changedScope = GroupVerifier.ObservePartition("SURVIVORS", "u", new("new-id", [[A(3)], [A(5)]]), 2, original);
         Assert.Null(changedScope.ChangedFromInput);
         Assert.NotEqual(trajectory[0].CandidateKey, changedScope.CandidateKey);
     }
@@ -819,13 +823,13 @@ public sealed class HeadingGroupVerificationTests
     {
         var calls = 0;
         AgentUnit.Model model = (_, _, request) => ++calls == 1
-            ? new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = AgentGroupVerification.Version,
+            ? new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = GroupVerifier.Version,
                 requests = new object[] {
                     new { name = "get_source_context", arguments = (object)new { alias = A(28), before = 1, after = 1 } },
                     new { name = "get_scan_crop", arguments = (object)new { aliases = new[] { A(1) } } },
                     new { name = "private-source-name", arguments = (object)new { } } } }), [], "stop")
             : new ModelTurn(Verdicts(Payload(request), _ => "ACCEPT"), [], "stop");
-        var result = AgentGroupVerification.Verify(Source(lineCount: 40, sourceTexts: Enumerable.Repeat("PRIVATE_SOURCE_TEXT_CANARY", 40).ToArray()),
+        var result = GroupVerifier.Verify(Source(lineCount: 40, sourceTexts: Enumerable.Repeat("PRIVATE_SOURCE_TEXT_CANARY", 40).ToArray()),
             new AgentGrouping.Result([new[] { A(1) }, new[] { A(3) }], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(20, 100),
             1, CancellationToken.None, 0, Instruction);
@@ -870,7 +874,7 @@ public sealed class HeadingGroupVerificationTests
                     headings = groupCalls == 1 ? new[] { new[] { aliases[0] }, aliases[1..] }
                         : new[] { aliases[..3], aliases[3..] } }) }), [], "stop");
         };
-        var result = AgentGroupVerification.Verify(Source(), new AgentGrouping.Result([aliases], [], [], 0),
+        var result = GroupVerifier.Verify(Source(), new AgentGrouping.Result([aliases], [], [], 0),
             new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model, new AgentBudget(100, 100),
             1, CancellationToken.None, 0, Instruction, allowMembershipReview: false);
         Assert.Equal(2, groupCalls);
@@ -904,7 +908,7 @@ public sealed class HeadingGroupVerificationTests
 
     static string Verdicts(JsonObject packet, Func<JsonNode, string> decide, bool invalidRefs = false, Func<string, string>? membershipStatus = null) => JsonSerializer.Serialize(new
     {
-        protocolVersion = AgentGroupVerification.Version,
+        protocolVersion = GroupVerifier.Version,
         verdicts = packet["candidates"]!.AsArray().Select(c =>
         {
             var decision = decide(c!);
@@ -969,7 +973,7 @@ public sealed class HeadingGroupVerificationTests
             });
             return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = SelectScanVersion, status = "COMPLETE", decisions }), [], "stop");
         };
-        var result = HeadingAgentSelector.Select(source, model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);
+        var result = AgentSelector.Select(source, model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);
         Assert.Equal(new[] { "selection", "grouping" }, result.StageSeconds!.Keys);
         Assert.All(result.StageSeconds.Values, seconds => Assert.True(seconds >= 0));
         Assert.Contains(result.Groups!, g => g.SequenceEqual(new[] { A(1), A(2) }));
@@ -999,17 +1003,17 @@ public sealed class HeadingGroupVerificationTests
         AgentUnit.Model model = (_, _, request) =>
         {
             calls++;
-            var response = mode == "missing-verdict" ? "{\"protocolVersion\":\"" + AgentGroupVerification.Version + "\",\"verdicts\":[]}"
+            var response = mode == "missing-verdict" ? "{\"protocolVersion\":\"" + GroupVerifier.Version + "\",\"verdicts\":[]}"
                 : Verdicts(Payload(request), _ => mode == "unresolved" ? "UNRESOLVED" : "ACCEPT", mode == "unknown-reference");
             return new ModelTurn(response, [], "stop");
         };
-        var result = AgentGroupVerification.Verify(source, input, new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
+        var result = GroupVerifier.Verify(source, input, new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(),
             model, budget, 1, CancellationToken.None, 0, Instruction);
         Assert.Empty(result.Groups);
         Assert.Equal(new[] { A(10), A(11), A(12) }, result.UnresolvedAliases);
         Assert.NotEmpty(result.Failures);
         Assert.Equal(0, result.Observation.FallbackRuns);
-        Assert.InRange(calls, 0, AgentGroupVerification.MaxPosts);
+        Assert.InRange(calls, 0, GroupVerifier.MaxPosts);
     }
 
     [Theory]
@@ -1028,7 +1032,7 @@ public sealed class HeadingGroupVerificationTests
             AgentUnit.Model model = (_, _, request) =>
             {
                 calls++;
-                if (calls == 1) return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = AgentGroupVerification.Version,
+                if (calls == 1) return new ModelTurn(JsonSerializer.Serialize(new { protocolVersion = GroupVerifier.Version,
                     requests = new object[] { new { name = "get_scan_crop", arguments = new { aliases = new[] { A(9), A(10), A(11), A(12), A(13) } } },
                         new { name = "get_source_context", arguments = new { alias = A(10), before = 2, after = 4 } } } }), [], "stop");
                 var messages = JsonNode.Parse(request.Body)!["messages"]!.AsArray();
@@ -1041,7 +1045,7 @@ public sealed class HeadingGroupVerificationTests
                 Assert.Contains("cropSha256", parts[0]!["text"]!.GetValue<string>());
                 return new ModelTurn(Verdicts(Payload(request), _ => "UNRESOLVED"), [], "stop");
             };
-            var result = AgentGroupVerification.Verify(source, new AgentGrouping.Result([new[] { A(10), A(11), A(12) }], [], [], 0),
+            var result = GroupVerifier.Verify(source, new AgentGrouping.Result([new[] { A(10), A(11), A(12) }], [], [], 0),
                 new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model,
                 new AgentBudget(exhaustBudgetAfterEvidence ? 1 : 10, 100), 1, CancellationToken.None, 0, Instruction);
             Assert.Equal(exhaustBudgetAfterEvidence ? 1 : 2, calls);

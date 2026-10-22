@@ -4,7 +4,6 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
 using DocxHeaderExtractor.Contracts.Docx;
 
 namespace DocxHeaderExtractor.Sources.OpenXmlLayer;

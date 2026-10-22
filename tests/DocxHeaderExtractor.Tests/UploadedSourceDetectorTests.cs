@@ -1,5 +1,5 @@
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Sources.Routing;
 
 namespace DocxHeaderExtractor.Tests;

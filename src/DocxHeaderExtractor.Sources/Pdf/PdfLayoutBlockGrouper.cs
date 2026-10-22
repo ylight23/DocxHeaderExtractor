@@ -1,5 +1,4 @@
 using MessagePack;
-using DocxHeaderExtractor.Sources.Common;
 
 namespace DocxHeaderExtractor.Sources.Pdf;
 

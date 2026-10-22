@@ -1,9 +1,4 @@
-using DocxHeaderExtractor.DocumentProcessing.Inference;
 using DocxHeaderExtractor.Infrastructure.AI;
-using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
-using DocxHeaderExtractor.Sources.OpenXmlLayer;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
 
 namespace DocxHeaderExtractor.Web;
 

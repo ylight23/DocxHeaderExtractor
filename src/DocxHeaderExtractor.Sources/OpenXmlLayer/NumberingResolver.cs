@@ -1,6 +1,5 @@
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
-using DocxHeaderExtractor.Contracts.Docx;
 
 namespace DocxHeaderExtractor.Sources.OpenXmlLayer;
 

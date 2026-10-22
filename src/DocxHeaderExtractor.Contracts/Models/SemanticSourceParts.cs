@@ -3,7 +3,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using DocxHeaderExtractor.Contracts.Models.Inference;
 
 namespace DocxHeaderExtractor.Contracts.Models;
 

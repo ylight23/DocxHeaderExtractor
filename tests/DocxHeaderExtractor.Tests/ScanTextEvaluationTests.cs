@@ -112,7 +112,7 @@ public sealed class ScanTextEvaluationTests : IDisposable
         Assert.Contains(handler.Bodies, b => b["reasoning"]!["max_tokens"]?.GetValue<int>() == 1024);
         Assert.Contains(handler.Bodies, b => b["reasoning"]!["enabled"]!.GetValue<bool>() == false);
         Assert.Equal(gold.Length, score[ScanTextEvaluation.VlmNoReasoning].Exact);
-        Assert.All(handler.Bodies, b => Assert.True(System.Text.Encoding.UTF8.GetByteCount(b.ToJsonString()) <= DocxHeaderExtractor.HeadingAgent.AgentBudget.MaxRequestBytes + 4096));
+        Assert.All(handler.Bodies, b => Assert.True(System.Text.Encoding.UTF8.GetByteCount(b.ToJsonString()) <= DocxHeaderExtractor.HeadingAgent.Runtime.AgentBudget.MaxRequestBytes + 4096));
 
         var again = evaluation.Run(path, gold, "sk-test", ocrOptions: options);
 

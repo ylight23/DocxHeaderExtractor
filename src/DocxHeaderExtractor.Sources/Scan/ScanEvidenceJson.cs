@@ -2,7 +2,6 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using MessagePack;
 using DocxHeaderExtractor.Contracts.Scan;
-using DocxHeaderExtractor.Sources.Common;
 
 namespace DocxHeaderExtractor.Sources.Scan;
 

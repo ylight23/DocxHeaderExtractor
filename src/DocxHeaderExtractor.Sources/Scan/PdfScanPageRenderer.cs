@@ -2,8 +2,6 @@ using System.Security.Cryptography;
 using System.Runtime.Versioning;
 using PDFtoImage;
 using SkiaSharp;
-using DocxHeaderExtractor.Contracts.Scan;
-using DocxHeaderExtractor.Sources.Common;
 
 namespace DocxHeaderExtractor.Sources.Scan;
 

@@ -2,6 +2,11 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Scan;
 using DocxHeaderExtractor.Sources.Scan;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Scan;
 
@@ -82,7 +87,7 @@ internal sealed class ScanAgentTools : AgentToolHost
     {
         Keys(args, "aliases");
         var arguments = JsonNode.Parse(args.GetRawText())!.AsObject();
-        var result = AgentGroupVerification.ReadCrop(scan, arguments, out var image);
+        var result = GroupVerifier.ReadCrop(scan, arguments, out var image);
         if (image is JsonObject picture && result["status"]?.GetValue<string>() == "OK")
         {
             PendingImages.Add(picture);

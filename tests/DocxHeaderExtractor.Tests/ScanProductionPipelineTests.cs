@@ -2,19 +2,18 @@ using System.Net;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.Contracts.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.DocumentProcessing.Provenance;
+using DocxHeaderExtractor.Contracts.Inference;
+using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Sources.Provenance;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Contracts.Scan;
 using DocxHeaderExtractor.Sources.Scan;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.V6Runner;
@@ -196,7 +195,7 @@ public sealed class ScanProductionPipelineTests
     public async Task Appendix_uses_the_validated_grouping_partition_without_semantic_verifier_repair()
     {
         var (source, selection, _) = AppendixMembershipTests.RunFixture("reject");
-        var prepared = ScanHeadingAgentSelector.PrepareSelection(source, selection) with
+        var prepared = ScanSelector.PrepareSelection(source, selection) with
         { SourceSha256 = CanonicalSemanticSourceHash.Compute(ScanPath) };
         using var runner = new V6DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(prepared), new AppendixPlacement()));
         var run = await runner.ExtractAsync(ScanPath);

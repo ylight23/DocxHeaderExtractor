@@ -3,6 +3,10 @@ using System.Text;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Scan;
 using DocxHeaderExtractor.Sources.Scan;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Scan;
 
@@ -325,5 +329,5 @@ internal sealed class ScanAgentSource : IAgentSource
         return o;
     }
 
-    static string Evidence_RepeatKey(string text) => HeadingAgent.Evidence.RepeatKey(text);
+    static string Evidence_RepeatKey(string text) => Formats.Evidence.RepeatKey(text);
 }

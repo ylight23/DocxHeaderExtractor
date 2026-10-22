@@ -1,5 +1,4 @@
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
 using DocxHeaderExtractor.Contracts.Docx;
 using DocxHeaderExtractor.Sources.OpenXmlLayer;
 using DocxHeaderExtractor.Sources.Common;

@@ -1,17 +1,18 @@
-using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.DocumentProcessing;
-using DocxHeaderExtractor.Contracts.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.DocumentProcessing.Audit;
+using DocxHeaderExtractor.DocumentProcessing.Output;
+using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Writeback;
 using DocxHeaderExtractor.Sources.OpenXmlLayer;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Lanes.Docx;
+using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Sources.Routing;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.V6Runner;
 
@@ -26,30 +27,30 @@ namespace DocxHeaderExtractor.V6Runner;
 /// </summary>
 public sealed class V6DocumentRunner : IDisposable
 {
-    private readonly DocxExtractionPipeline _docxLane;
-    private readonly PdfExtractionHandler _pdfLane;
-    private readonly DocumentExtractionRouter _dispatcher;
+    private readonly DocxPipeline _docxLane;
+    private readonly PdfHandler _pdfLane;
+    private readonly Router _dispatcher;
 
     /// <param name="onModelReply">Diagnostics only: called with every model reply. Null records nothing.</param>
     public V6DocumentRunner(PipelineOptions options, IInferenceTransportFactory factory, Action<ModelReply>? onModelReply = null)
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(factory);
-        var scanSelector = factory.CreateScanHeadingSelector() ?? new DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingAgentSelector(options.ScanEvidenceRoot,
+        var scanSelector = factory.CreateScanHeadingSelector() ?? new DocxHeaderExtractor.HeadingAgent.Scan.ScanSelector(options.ScanEvidenceRoot,
                 parallelism: options.ScanJobs, onModelReply: onModelReply, vision: options.ScanVision, reuseSelection: options.ScanReuseSelection,
                 transcriptionOptions: options.ScanJobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null,
                 visionOptions: options.ScanJobs is { } seeJobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null);
-        _docxLane = new DocxExtractionPipeline(options, factory,
-            factory.CreateDocxHeadingSelector() ?? new DocxHeadingAgentSelector(onModelReply: onModelReply, extraction: options.Extraction), scanSelector);
-        _pdfLane = new PdfExtractionHandler(options, factory, factory.CreatePdfHeadingSelector() ?? new PdfHeadingAgentSelector(onModelReply: onModelReply), scanSelector);
-        _dispatcher = new DocumentExtractionRouter(new DocxExtractionHandler(_docxLane), _pdfLane);
+        _docxLane = new DocxPipeline(options, factory,
+            factory.CreateDocxHeadingSelector() ?? new DocxSelector(onModelReply: onModelReply, extraction: options.Extraction), scanSelector);
+        _pdfLane = new PdfHandler(options, factory, factory.CreatePdfHeadingSelector() ?? new PdfSelector(onModelReply: onModelReply), scanSelector);
+        _dispatcher = new Router(new DocxHandler(_docxLane), _pdfLane);
     }
 
     /// <summary>
     /// Extracts the outline of one uploaded file. The format is read from the bytes, not the extension; a file no lane
     /// owns is converted to OOXML first and the converted copy is removed afterwards.
     /// </summary>
-    public async Task<DocumentExtractionExecutionResult> ExtractAsync(
+    public async Task<RunResult> ExtractAsync(
         string inputPath,
         CancellationToken ct = default)
     {
@@ -68,7 +69,7 @@ public sealed class V6DocumentRunner : IDisposable
         }
     }
 
-    private Task<DocumentExtractionExecutionResult> DispatchAsync(string path, CancellationToken ct) =>
+    private Task<RunResult> DispatchAsync(string path, CancellationToken ct) =>
         _dispatcher.ExtractAsync(new DocumentExtractionRequest(UploadedFile.FromLocalPath(path)), ct);
 
     /// <summary>
@@ -97,7 +98,7 @@ public sealed class V6DocumentRunner : IDisposable
         var conversion = OfficeDocumentConverter.EnsureDocx(inputPath);
         try
         {
-            var result = DocxProductWriteback.Apply(
+            var result = ProductWriteback.Apply(
                 conversion.Path,
                 targetPath,
                 productOutput,

@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.Contracts.Models.Inference;
 
 namespace DocxHeaderExtractor.Contracts.Models;
 

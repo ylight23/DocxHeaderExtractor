@@ -1,5 +1,3 @@
-using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
 
 namespace DocxHeaderExtractor.Sources.Semantics.Binding;
 

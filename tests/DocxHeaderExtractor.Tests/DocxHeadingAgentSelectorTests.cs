@@ -1,5 +1,9 @@
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -25,7 +29,7 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
     {
         var path = Long();
         var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTarget);
-        var selector = new DocxHeadingAgentSelector(() => handler, parallelism: 4);
+        var selector = new DocxSelector(() => handler, parallelism: 4);
 
         var selection = await selector.SelectAsync(path, "sk-test", CancellationToken.None);
 
@@ -52,7 +56,7 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
         Assert.NotEmpty(toolMessages);
         Assert.All(toolMessages, m => Assert.Contains(DocxAgentSource.FactsVersion, m!["content"]!.ToJsonString(), StringComparison.Ordinal));
         Assert.StartsWith("docx-v6:", selector.SelectorId, StringComparison.Ordinal);
-        Assert.Contains(HeadingAgentSelector.BindingPolicyVersion, selector.SelectorId, StringComparison.Ordinal);
+        Assert.Contains(AgentSelector.BindingPolicyVersion, selector.SelectorId, StringComparison.Ordinal);
         Assert.NotNull(selection.Placement);
         Assert.Equal(DocxAgentProtocol.PlacementNote, selection.Placement!.MeasurementsNote);
     }
@@ -62,7 +66,7 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
     {
         var path = Long();
         var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTwoTargetsThenGroup);
-        var selector = new DocxHeadingAgentSelector(() => handler, parallelism: 4);
+        var selector = new DocxSelector(() => handler, parallelism: 4);
 
         var selection = await selector.SelectAsync(path, "sk-test", CancellationToken.None);
 
@@ -85,7 +89,7 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
         var path = Path.Combine(dir, "not-a-docx.docx");
         File.WriteAllText(path, "plain text");
         var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTarget);
-        var selector = new DocxHeadingAgentSelector(() => handler);
+        var selector = new DocxSelector(() => handler);
 
         var error = await Assert.ThrowsAnyAsync<Exception>(() => selector.SelectAsync(path, "sk-test", CancellationToken.None));
 
@@ -99,7 +103,7 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
         var path = Long();
         var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTarget);
         var replies = new List<string>();
-        var selector = new DocxHeadingAgentSelector(() => handler, parallelism: 1,
+        var selector = new DocxSelector(() => handler, parallelism: 1,
             onModelReply: r => replies.Add(r.Content ?? ""));
 
         await selector.SelectAsync(path, "sk-test", CancellationToken.None);
@@ -131,7 +135,7 @@ public sealed class DocxHeadingAgentSelectorTests : IDisposable
         var path = Long();
         var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTarget);
         var replies = new List<ModelReply>();
-        var selector = new DocxHeadingAgentSelector(() => handler, parallelism: 1, onModelReply: r => replies.Add(r));
+        var selector = new DocxSelector(() => handler, parallelism: 1, onModelReply: r => replies.Add(r));
 
         await selector.SelectAsync(path, "sk-test", CancellationToken.None);
 

@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using DocxHeaderExtractor.Contracts.Models.Inference;
 
 namespace DocxHeaderExtractor.Contracts.Models;
 

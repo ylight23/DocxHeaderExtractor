@@ -3,7 +3,11 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -85,7 +89,7 @@ public sealed class TargetsFactsInRequestTests : IDisposable
                     : new { alias = a, decision = "NOT_SELECT" }),
             }) }, "stop"));
         });
-        var budget = HeadingAgentSelector.BudgetFor(source);
+        var budget = AgentSelector.BudgetFor(source);
         using var model = new AgentModel(handler, "sk-test", budget);
         var outcome = AgentUnit.Run(source, 0, model.Turn, budget, retryDelayMs: 0);
         Assert.Equal("COMPLETE", outcome.Status);

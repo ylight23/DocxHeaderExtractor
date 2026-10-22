@@ -1,10 +1,13 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Scan;
-using DocxHeaderExtractor.Sources.Scan;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
 using DocxHeaderExtractor.HeadingAgent.Scan;
-using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
+using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -66,7 +69,7 @@ public sealed class PrecedingSelectionTests
     {
         var (model, selections) = Scripted();
 
-        var result = HeadingAgentSelector.Select(Source(), model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);
+        var result = AgentSelector.Select(Source(), model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);
 
         Assert.Equal(2, selections.Count);
         Assert.All(selections, p => Assert.Null(p["precedingSelected"]));
@@ -78,7 +81,7 @@ public sealed class PrecedingSelectionTests
     {
         var (model, selections) = Scripted();
 
-        var result = HeadingAgentSelector.Select(Source(), model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0,
+        var result = AgentSelector.Select(Source(), model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0,
             precedingSelection: true);
 
         var second = selections.Where(AsksSecondUnit).ToArray();
@@ -96,7 +99,7 @@ public sealed class PrecedingSelectionTests
     {
         var (model, selections) = Scripted();
 
-        HeadingAgentSelector.Select(Source(), model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0, precedingSelection: true);
+        AgentSelector.Select(Source(), model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0, precedingSelection: true);
 
         Assert.Equal(3, selections.Count);
         Assert.Equal(1, selections.Count(p => p["targets"]!.AsArray().Any(t => t!["alias"]!.GetValue<string>() == A(0))));

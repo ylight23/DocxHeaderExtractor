@@ -9,7 +9,6 @@ using DocxHeaderExtractor.Sources.Pdf;
 using MessagePack;
 using OpenCvSharp;
 using DocxHeaderExtractor.Contracts.Scan;
-using DocxHeaderExtractor.Sources.Common;
 
 namespace DocxHeaderExtractor.Sources.Scan;
 

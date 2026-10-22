@@ -1,13 +1,14 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Contracts.Scan;
-using DocxHeaderExtractor.Sources.Scan;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
 using DocxHeaderExtractor.HeadingAgent.Scan;
-using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
+using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -63,7 +64,7 @@ public sealed class AppendixMembershipTests
                         }).ToArray())
                     });
                 }
-                return new ModelTurn(GroundedVerifierFixture.Reply(new JsonObject { ["protocolVersion"] = AgentGroupVerification.Version, ["verdicts"] = verdicts }.ToJsonString(), packet), [], "stop");
+                return new ModelTurn(GroundedVerifierFixture.Reply(new JsonObject { ["protocolVersion"] = GroupVerifier.Version, ["verdicts"] = verdicts }.ToJsonString(), packet), [], "stop");
             }
             if (stage == "GROUP")
             {
@@ -93,7 +94,7 @@ public sealed class AppendixMembershipTests
                 })
             }), [], "stop");
         };
-        var selection = HeadingAgentSelector.Select(source, model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);
+        var selection = AgentSelector.Select(source, model, new AgentBudget(100, 100), 1, CancellationToken.None, 0, () => 0);
         return (source, selection, reviewTargets);
     }
 

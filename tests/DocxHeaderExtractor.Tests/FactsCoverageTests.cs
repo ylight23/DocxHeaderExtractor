@@ -1,7 +1,10 @@
 using System.Net;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -57,7 +60,7 @@ public sealed class FactsCoverageTests : IDisposable
     {
         var path = Long();
         var handler = new FakeOpenRouter(FirstPageOnly(readsTheRest: false));
-        var selection = await new DocxHeadingAgentSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
+        var selection = await new DocxSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
         Assert.Equal(2, handler.Posts - handler.Bodies.Count(FakeOpenRouter.IsVerification));
         Assert.Equal(1, selection.UnitsComplete);
         Assert.Single(selection.SelectedAliases);
@@ -73,7 +76,7 @@ public sealed class FactsCoverageTests : IDisposable
         var path = Long();
         var handler = new FakeOpenRouter(FirstPageOnly(readsTheRest: true));
 
-        var selection = await new DocxHeadingAgentSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
+        var selection = await new DocxSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
 
         var decide = DocxAgentSource.Load(path, null, out _)!.Scope(0).Decide;
         Assert.Empty(selection.UnitFailures);
@@ -90,7 +93,7 @@ public sealed class FactsCoverageTests : IDisposable
         var path = Long(10);
         var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTarget);
 
-        var selection = await new DocxHeadingAgentSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
+        var selection = await new DocxSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
 
         Assert.Equal(2, handler.Posts - handler.Bodies.Count(FakeOpenRouter.IsVerification));
         Assert.Equal(1, selection.UnitsComplete);
@@ -117,7 +120,7 @@ public sealed class FactsCoverageTests : IDisposable
                 } } }, "tool_calls"));
             return Answer(body, targets);
         });
-        var selection = await new DocxHeadingAgentSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
+        var selection = await new DocxSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
         Assert.Equal(1, selection.UnitsComplete);
         Assert.Single(selection.SelectedAliases);
         Assert.Empty(selection.UnitFailures);

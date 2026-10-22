@@ -1,7 +1,4 @@
-using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.Contracts.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
+using DocxHeaderExtractor.DocumentProcessing.Output;
 
 namespace DocxHeaderExtractor.Web;
 

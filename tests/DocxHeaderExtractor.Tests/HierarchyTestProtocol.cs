@@ -1,6 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.DocumentProcessing.Materialization;
+using DocxHeaderExtractor.DocumentProcessing.Placement;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -10,17 +10,17 @@ internal static class HierarchyTestProtocol
     internal static string? Reply(string packetText, IReadOnlyDictionary<string, string>? parents = null)
     {
         var packet = JsonNode.Parse(packetText)!;
-        if (packet["protocolVersion"]?.GetValue<string>() != EvidenceHeadingPlacement.Version) return null;
+        if (packet["protocolVersion"]?.GetValue<string>() != EvidencePlacement.Version) return null;
         var aliases = packet["toPlace"]!.AsArray().Select(a => a!.GetValue<string>()).ToArray();
         if (packet["stage"]!.GetValue<string>() is "HIERARCHY_VERIFY" or "HIERARCHY_REVERIFY" or "HIERARCHY_GRAPH_REVERIFY")
             return Accept(packet, aliases);
-        return JsonSerializer.Serialize(new { protocolVersion = EvidenceHeadingPlacement.Version,
+        return JsonSerializer.Serialize(new { protocolVersion = EvidencePlacement.Version,
             placements = aliases.Select(a => new { alias = a, parent = parents?.GetValueOrDefault(a) ?? "ROOT" }) });
     }
 
     internal static string Accept(JsonNode packet, IEnumerable<string> aliases) => JsonSerializer.Serialize(new
     {
-        protocolVersion = EvidenceHeadingPlacement.Version,
+        protocolVersion = EvidencePlacement.Version,
         verdicts = aliases.Select(a =>
         {
             var parent = packet["proposedRelations"]!.AsArray().Single(p => p!["alias"]!.GetValue<string>() == a)!["parent"]!.GetValue<string>();

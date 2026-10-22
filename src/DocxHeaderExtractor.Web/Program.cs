@@ -4,17 +4,16 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Channels;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.Contracts.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
-using DocxHeaderExtractor.Sources.OpenXmlLayer;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
+using DocxHeaderExtractor.DocumentProcessing.Audit;
+using DocxHeaderExtractor.DocumentProcessing.Output;
+using DocxHeaderExtractor.DocumentProcessing.Harness;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
 using DocxHeaderExtractor.Sources.Routing;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.Infrastructure.AI;
 using DocxHeaderExtractor.Contracts.Runtime;
 using DocxHeaderExtractor.Contracts.Tasks;
@@ -82,7 +81,7 @@ app.MapGet("/api/build", () => Results.Json(new
 {
     webVersion = typeof(Program).Assembly.GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
         .Cast<System.Reflection.AssemblyInformationalVersionAttribute>().Single().InformationalVersion,
-    headingAgentVersion = typeof(HeadingAgentSelector).Assembly.GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
+    headingAgentVersion = typeof(AgentSelector).Assembly.GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
         .Cast<System.Reflection.AssemblyInformationalVersionAttribute>().Single().InformationalVersion,
 }, json));
 

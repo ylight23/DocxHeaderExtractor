@@ -1,4 +1,4 @@
-using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.Contracts.Inference;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;

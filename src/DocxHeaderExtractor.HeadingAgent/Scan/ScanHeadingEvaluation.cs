@@ -1,6 +1,9 @@
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Scan;
 

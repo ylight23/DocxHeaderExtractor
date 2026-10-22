@@ -1,15 +1,20 @@
 using System.Text.Json;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.Contracts.Inference;
+using DocxHeaderExtractor.DocumentProcessing.Lanes.Pdf;
+using DocxHeaderExtractor.DocumentProcessing.Output;
+using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
+using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Pdf;
 using DocxHeaderExtractor.Infrastructure.AI;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -41,16 +46,16 @@ public sealed class PdfV6SelectedLinesLaneTests
         var atoms = built.Snapshot.Atoms;
         var blocks = built.Details.LayoutBlockByAtom;
 
-        var one = SelectedLinesHeadingAuthority.Group(atoms, new HashSet<string> { a.Alias, b.Alias }, blocks);
+        var one = SelectionAuthority.Group(atoms, new HashSet<string> { a.Alias, b.Alias }, blocks);
         Assert.Single(one);
         Assert.Equal(new[] { a.Alias, b.Alias }, one[0].Parts!.Select(p => p.Alias));
         Assert.Equal(a.SourceId, one[0].Id);
-        Assert.Equal(SelectedLinesHeadingAuthority.Reason, one[0].Reason);
+        Assert.Equal(SelectionAuthority.Reason, one[0].Reason);
 
-        var two = SelectedLinesHeadingAuthority.Group(atoms, new HashSet<string> { a.Alias, other.Alias }, blocks);
+        var two = SelectionAuthority.Group(atoms, new HashSet<string> { a.Alias, other.Alias }, blocks);
         Assert.Equal(2, two.Count);
 
-        var unknown = SelectedLinesHeadingAuthority.Group(atoms, new HashSet<string> { "NOT-AN-ALIAS" }, blocks);
+        var unknown = SelectionAuthority.Group(atoms, new HashSet<string> { "NOT-AN-ALIAS" }, blocks);
         Assert.Empty(unknown);
     }
 
@@ -62,16 +67,16 @@ public sealed class PdfV6SelectedLinesLaneTests
         using var transport = new NoCallTransport("route-key");
         var file = UploadedFile.FromLocalPath(TestRepository.Path(Pdf));
 
-        var run = await PdfExtractionPipeline.RunWithSelectorAsync(file, new PipelineOptions(), transport, selector);
+        var run = await PdfPipeline.RunWithSelectorAsync(file, new PipelineOptions(), transport, selector);
 
         Assert.Equal(1, selector.Calls);
         Assert.Equal("route-key", selector.Key);
         Assert.Equal(file.LocalPath, selector.Path);
         var heading = run.HeadingPipeline!;
-        Assert.Equal(SelectedLinesHeadingAuthority.AuthorityId, heading.Reason);
+        Assert.Equal(SelectionAuthority.AuthorityId, heading.Reason);
         Assert.Equal(2, heading.Structure.Elements.Count);
         Assert.Contains(FixedSelector.Id, heading.Audit!.ModelInputContracts);
-        Assert.Contains(DocxHeaderExtractor.DocumentProcessing.Materialization.EvidenceHeadingPlacement.Version, heading.Audit.ModelInputContracts);
+        Assert.Contains(DocxHeaderExtractor.DocumentProcessing.Placement.EvidencePlacement.Version, heading.Audit.ModelInputContracts);
         Assert.Equal("complete", heading.Audit.SemanticLane!.Status);
         // One parent-proposal pass; no semantic verifier gate follows it.
         Assert.Equal(1, transport.PlacementCalls);
@@ -84,12 +89,12 @@ public sealed class PdfV6SelectedLinesLaneTests
     {
         var file = UploadedFile.FromLocalPath(TestRepository.Path(Pdf));
         using var keyed = new NoCallTransport("route-key");
-        var none = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfExtractionPipeline.RunExecutionAsync(file, new PipelineOptions(), keyed));
+        var none = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfPipeline.RunExecutionAsync(file, new PipelineOptions(), keyed));
         Assert.StartsWith("PDF_HEADING_SELECTOR_REQUIRED", none.Message);
 
         var selector = new FixedSelector(new HashSet<string>());
         using var keyless = new NoCallTransport(null);
-        var noKey = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfExtractionPipeline.RunWithSelectorAsync(file, new PipelineOptions(), keyless, selector));
+        var noKey = await Assert.ThrowsAsync<InvalidOperationException>(() => PdfPipeline.RunWithSelectorAsync(file, new PipelineOptions(), keyless, selector));
         Assert.StartsWith("PDF_HEADING_SELECTOR_KEY_MISSING", noKey.Message);
         Assert.Equal(0, selector.Calls);
         Assert.Equal(0, keyed.PlacementCalls + keyless.PlacementCalls);
@@ -100,7 +105,7 @@ public sealed class PdfV6SelectedLinesLaneTests
     {
         var selector = new FixedSelector(new HashSet<string>());
         var file = UploadedFile.FromLocalPath(TestRepository.Path(Pdf));
-        var run = await PdfExtractionPipeline.RunWithSelectorAsync(file, new PipelineOptions { DisableLlm = true }, null, selector);
+        var run = await PdfPipeline.RunWithSelectorAsync(file, new PipelineOptions { DisableLlm = true }, null, selector);
         Assert.Equal(0, selector.Calls);
         Assert.Empty(run.HeadingPipeline!.Structure.Elements);
     }
@@ -108,13 +113,13 @@ public sealed class PdfV6SelectedLinesLaneTests
     [Fact]
     public void The_production_selector_runs_the_d412_method_with_the_structural_instruction()
     {
-        var selector = new PdfHeadingAgentSelector();
+        var selector = new PdfSelector();
         // The frozen D4.12 instruction is kept for parity; production sends the owner's structural-heading instruction (2026-10-14),
         // which replaced the earlier "main headings by meaning" instruction after the three-document comparison.
         Assert.Equal("2d057c62aaf69297afa46f3dec8d8b88720893491c5620ecfcc51562e9e03884", Sha256Hex(AgentProtocol.InstructionD412));
         Assert.Equal(AgentProtocol.InstructionStructuralV1, AgentProtocol.Instruction);
         Assert.Equal("c5c5b6939b99d4cb907a59b2da472d14e1ffc7e35067c1ae48ca0f0ccabdb793", Sha256Hex(AgentProtocol.Instruction));
-        Assert.Equal("p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:facts-in-request:instruction-c5c5b693:" + HeadingAgentSelector.BindingPolicyVersion, selector.SelectorId);
+        Assert.Equal("p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:facts-in-request:instruction-c5c5b693:" + AgentSelector.BindingPolicyVersion, selector.SelectorId);
         Assert.Contains("at every level of its outline", AgentProtocol.Instruction, StringComparison.Ordinal);
         Assert.Contains("It does not need to summarize that content", AgentProtocol.Instruction, StringComparison.Ordinal);
     }
@@ -140,7 +145,7 @@ public sealed class PdfV6SelectedLinesLaneTests
         var file = UploadedFile.FromLocalPath(TestRepository.Path(Pdf));
 
         using var plain = new NoCallTransport("route-key");
-        await PdfExtractionPipeline.RunWithSelectorAsync(file, new PipelineOptions(), plain, new FixedSelector(aliases));
+        await PdfPipeline.RunWithSelectorAsync(file, new PipelineOptions(), plain, new FixedSelector(aliases));
         Assert.Equal(1, plain.PlacementCalls);
         Assert.Contains("propose its", plain.LastPrompt);   // the parent definition of the placement prompt
         Assert.Contains("sourceContext", plain.LastPacket!, StringComparison.Ordinal);
@@ -148,7 +153,7 @@ public sealed class PdfV6SelectedLinesLaneTests
         using var withStyles = new NoCallTransport("route-key");
         var agentSource = AgentSource.Load(TestRepository.Path(Pdf), out _)!;
         var context = agentSource.Flavor.PlacementContext(agentSource);
-        await PdfExtractionPipeline.RunWithSelectorAsync(file, new PipelineOptions(), withStyles, new FixedSelector(aliases, context));
+        await PdfPipeline.RunWithSelectorAsync(file, new PipelineOptions(), withStyles, new FixedSelector(aliases, context));
         Assert.Contains("propose its", withStyles.LastPrompt);
         using var packet = JsonDocument.Parse(withStyles.LastPacket!);
         Assert.True(packet.RootElement.TryGetProperty("upstreamWithheld", out _));
@@ -172,15 +177,15 @@ public sealed class PdfV6SelectedLinesLaneTests
 
         // Two lines the layout rule would keep apart (different blocks) are one heading when the selector says so.
         var far = atoms.OrderBy(x => x.Ordinal).First(x => x.Ordinal > a.Ordinal && x.Page != a.Page);
-        var together = SelectedLinesHeadingAuthority.FromGroups(atoms, new HashSet<string> { a.Alias, far.Alias }, [[a.Alias, far.Alias]], blocks);
+        var together = SelectionAuthority.FromGroups(atoms, new HashSet<string> { a.Alias, far.Alias }, [[a.Alias, far.Alias]], blocks);
         Assert.Equal(new[] { a.Alias, far.Alias }, together.Single().Parts!.Select(p => p.Alias));
 
         // A selected line no group names is a heading of its own; an alias the source lacks, or that was not selected, is ignored.
-        var decided = SelectedLinesHeadingAuthority.FromGroups(atoms, selected, [[a.Alias, "L9999:S0", "NOT-SELECTED"]], blocks);
+        var decided = SelectionAuthority.FromGroups(atoms, selected, [[a.Alias, "L9999:S0", "NOT-SELECTED"]], blocks);
         Assert.Equal(new[] { new[] { a.Alias }, new[] { b.Alias }, new[] { other.Alias } }.OrderBy(g => atoms.First(x => x.Alias == g[0]).Ordinal),
             decided.Select(d => d.Parts!.Select(p => p.Alias).ToArray()));
         // A line named by two groups belongs to the first.
-        var twice = SelectedLinesHeadingAuthority.FromGroups(atoms, selected, [[a.Alias, b.Alias], [b.Alias, other.Alias]], blocks);
+        var twice = SelectionAuthority.FromGroups(atoms, selected, [[a.Alias, b.Alias], [b.Alias, other.Alias]], blocks);
         Assert.Equal(new[] { a.Alias, b.Alias }, twice[0].Parts!.Select(p => p.Alias));
         Assert.Equal(selected.Order(), twice.SelectMany(d => d.Parts!.Select(p => p.Alias)).Order());
     }
@@ -193,7 +198,7 @@ public sealed class PdfV6SelectedLinesLaneTests
             new CanonicalSemanticBoundHeading("L0001:S0", "id-1", 0, "Chapter I", "ESTABLISHES_STRUCTURE", "heading", "document_body", [], 0, 9),
             new CanonicalSemanticBoundHeading("L0002:S0", "id-2", 1, "GENERAL", "ESTABLISHES_STRUCTURE", "heading", "document_body", [], 0, 7),
         };
-        var packet = DocxHeaderExtractor.DocumentProcessing.Materialization.HeadingParentResolver.PlacementPacket(
+        var packet = DocxHeaderExtractor.DocumentProcessing.Placement.ParentResolver.PlacementPacket(
             headings, new HashSet<string> { "id-2" }, evidence: null);
         Assert.Equal("{\"headings\":[{\"alias\":\"L0001:S0\",\"text\":\"Chapter I\"},{\"alias\":\"L0002:S0\",\"text\":\"GENERAL\"}],\"toPlace\":[\"L0002:S0\"]}", packet);
     }

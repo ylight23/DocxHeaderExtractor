@@ -1,5 +1,6 @@
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Scan;
 
 namespace DocxHeaderExtractor.Tests;

@@ -1,6 +1,5 @@
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Materialization;
+using DocxHeaderExtractor.DocumentProcessing.Hierarchy;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -16,16 +15,16 @@ public sealed class HierarchyGraphConsistencyTests
         var futureChild = Heading("D", 4, "E");
         var futureParent = Heading("E", 5, "ROOT");
 
-        var result = HeadingHierarchyResolver.DeriveHierarchyFromModelRelations(
+        var result = HierarchyResolver.DeriveHierarchyFromModelRelations(
             [root, child, outside, invalidChild, futureChild, futureParent]).ToDictionary(item => item.SourceId);
 
         Assert.Equal(1, result["id:A"].Level);
         Assert.Equal("id:A", result["id:B"].ParentSourceId);
         Assert.Equal(2, result["id:B"].Level);
-        Assert.Equal(HeadingHierarchyResolver.OutOfHierarchy, result["id:N"].Resolution);
-        Assert.Equal(HeadingHierarchyResolver.Unresolved, result["id:C"].Resolution);
-        Assert.Equal(HeadingHierarchyResolver.Unresolved, result["id:D"].Resolution);
-        Assert.Equal(HeadingHierarchyResolver.ResolvedRoot, result["id:E"].Resolution);
+        Assert.Equal(HierarchyResolver.OutOfHierarchy, result["id:N"].Resolution);
+        Assert.Equal(HierarchyResolver.Unresolved, result["id:C"].Resolution);
+        Assert.Equal(HierarchyResolver.Unresolved, result["id:D"].Resolution);
+        Assert.Equal(HierarchyResolver.ResolvedRoot, result["id:E"].Resolution);
     }
 
     static CanonicalSemanticBoundHeading Heading(string alias, int ordinal, string parent) =>

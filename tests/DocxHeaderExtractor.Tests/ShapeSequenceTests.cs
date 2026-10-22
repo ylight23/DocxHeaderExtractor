@@ -1,5 +1,7 @@
 using System.Text.Json;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 using Xunit.Abstractions;
 
 namespace DocxHeaderExtractor.Tests;

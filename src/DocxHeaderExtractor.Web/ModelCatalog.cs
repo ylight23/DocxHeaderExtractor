@@ -1,4 +1,3 @@
-using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Web;
 

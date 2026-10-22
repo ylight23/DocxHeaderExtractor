@@ -1,6 +1,5 @@
 using System.Diagnostics;
 using System.Runtime.Versioning;
-using DocxHeaderExtractor.Contracts.Docx;
 
 namespace DocxHeaderExtractor.Sources.OpenXmlLayer;
 

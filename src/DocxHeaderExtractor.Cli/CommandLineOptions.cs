@@ -1,6 +1,6 @@
-using DocxHeaderExtractor.DocumentProcessing.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Projection;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Output.Outline;
+using DocxHeaderExtractor.DocumentProcessing.Output;
+using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Cli;

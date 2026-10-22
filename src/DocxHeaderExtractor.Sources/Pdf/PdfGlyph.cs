@@ -1,7 +1,6 @@
 using UglyToad.PdfPig.Content;
 using UglyToad.PdfPig.PdfFonts;
 using UglyToad.PdfPig.Graphics.Colors;
-using DocxHeaderExtractor.Sources.Common;
 
 namespace DocxHeaderExtractor.Sources.Pdf;
 

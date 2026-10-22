@@ -1,5 +1,4 @@
 using DocxHeaderExtractor.Sources.Docx;
-using DocxHeaderExtractor.Sources.Common;
 
 namespace DocxHeaderExtractor.Sources.Pdf;
 

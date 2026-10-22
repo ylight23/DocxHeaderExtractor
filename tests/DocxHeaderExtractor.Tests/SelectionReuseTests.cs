@@ -1,9 +1,12 @@
 using System.Text.Json;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
-using DocxHeaderExtractor.HeadingAgent;
-using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
+using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -57,7 +60,7 @@ public sealed class SelectionReuseTests : IDisposable
     };
 
     private static HeadingSelection Run(AgentUnit.Model model, SelectionCache? cache, string instruction = Instruction) =>
-        HeadingAgentSelector.Select(Source.Value, model, new AgentBudget(1000, 100), 1, CancellationToken.None, retryDelayMs: 0, () => 0,
+        AgentSelector.Select(Source.Value, model, new AgentBudget(1000, 100), 1, CancellationToken.None, retryDelayMs: 0, () => 0,
             instruction, firstSegments: Units, cache: cache);
 
     [Fact]

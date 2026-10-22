@@ -5,19 +5,20 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.Contracts.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Audit;
+using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Sources.OpenXmlLayer;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
+using DocxHeaderExtractor.DocumentProcessing.Binding;
+using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Docx;
-using DocxHeaderExtractor.HeadingAgent;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -209,14 +210,14 @@ public sealed class HeadingExtentTests : IDisposable
         var selector = new Fixed(new HeadingSelection(new HashSet<string> { article.Alias }, 1, 1, [], ["{}"], 1, 0.0,
             HeadingExtents: new Dictionary<string, TextOffsetSpan> { [article.Alias] = new(0, Heading.Length) }));
 
-        var decided = await new SelectedLinesHeadingAuthority(selector, path, "sk-test", new Dictionary<string, string>(), null, () => { })
+        var decided = await new SelectionAuthority(selector, path, "sk-test", new Dictionary<string, string>(), null, () => { })
             .DecideAsync(source, CancellationToken.None);
 
         var decision = Assert.Single(decided.Decisions);
         Assert.Equal(new TextOffsetSpan(0, Heading.Length), decision.HeadingSpan);
         Assert.Equal(Heading, Assert.Single(decision.Parts!).Text);
         Assert.Equal(Heading, Assert.Single(decided.BoundHeadings).Text);
-        var validated = Assert.Single(HeadingDecisionBinder.BindAndValidate(source.OccurrenceContexts, decided.Decisions));
+        var validated = Assert.Single(DecisionBinder.BindAndValidate(source.OccurrenceContexts, decided.Decisions));
         Assert.Equal(Heading, source.OccurrenceContexts[validated.SourceId].RawText[validated.HeadingSpan.Start..validated.HeadingSpan.End]);
     }
 
@@ -227,7 +228,7 @@ public sealed class HeadingExtentTests : IDisposable
         var source = DocxSourceAdapter.Build(new OpenXmlDocumentSource(new PipelineOptions().Extraction).Read(path)).Snapshot;
         var chapter = source.Atoms.Single(a => a.Text == "Chapter I");
 
-        var decided = await new SelectedLinesHeadingAuthority(new Fixed(new HeadingSelection(new HashSet<string> { chapter.Alias }, 1, 1, [], ["{}"], 1, 0.0)),
+        var decided = await new SelectionAuthority(new Fixed(new HeadingSelection(new HashSet<string> { chapter.Alias }, 1, 1, [], ["{}"], 1, 0.0)),
             path, "sk-test", new Dictionary<string, string>(), null, () => { }).DecideAsync(source, CancellationToken.None);
 
         Assert.Equal(new TextOffsetSpan(0, "Chapter I".Length), Assert.Single(decided.Decisions).HeadingSpan);
@@ -242,7 +243,7 @@ public sealed class HeadingExtentTests : IDisposable
     {
         var path = Mixed();
         var source = DocxSourceAdapter.Build(new OpenXmlDocumentSource(new PipelineOptions().Extraction).Read(path)).Snapshot;
-        return await new SelectedLinesHeadingAuthority(new Fixed(selection), path, "sk-test", new Dictionary<string, string>(), null, () => { })
+        return await new SelectionAuthority(new Fixed(selection), path, "sk-test", new Dictionary<string, string>(), null, () => { })
             .DecideAsync(source, CancellationToken.None);
     }
 
@@ -334,7 +335,7 @@ public sealed class HeadingExtentTests : IDisposable
         var path = Mixed();
         var handler = new FakeOpenRouter(SelectsTheArticle(firstWrong: false));
 
-        var selection = await new DocxHeadingAgentSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
+        var selection = await new DocxSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
 
         var article = DocxAgentSource.Load(path, null, out _)!.Lines.Single(l => l.Text.StartsWith(Heading, StringComparison.Ordinal)).Alias;
         Assert.Empty(selection.UnitFailures);
@@ -349,7 +350,7 @@ public sealed class HeadingExtentTests : IDisposable
         var path = Mixed();
         var handler = new FakeOpenRouter(SelectsTheArticle(firstWrong: true));
 
-        var selection = await new DocxHeadingAgentSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
+        var selection = await new DocxSelector(() => handler, parallelism: 1).SelectAsync(path, "sk-test", CancellationToken.None);
 
         var article = DocxAgentSource.Load(path, null, out _)!.Lines.Single(l => l.Text.StartsWith(Heading, StringComparison.Ordinal)).Alias;
         Assert.Equal(3, handler.Posts - handler.Bodies.Count(FakeOpenRouter.IsVerification));

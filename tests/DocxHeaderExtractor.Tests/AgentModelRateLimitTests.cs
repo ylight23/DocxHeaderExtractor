@@ -1,6 +1,8 @@
 using System.Net;
-using DocxHeaderExtractor.HeadingAgent;
-using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 
 namespace DocxHeaderExtractor.Tests;
 

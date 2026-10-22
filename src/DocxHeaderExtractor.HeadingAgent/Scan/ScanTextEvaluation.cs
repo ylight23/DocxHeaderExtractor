@@ -3,6 +3,11 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using DocxHeaderExtractor.Contracts.Scan;
 using DocxHeaderExtractor.Sources.Scan;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Tools;
 
 namespace DocxHeaderExtractor.HeadingAgent.Scan;
 
@@ -60,7 +65,7 @@ public sealed class ScanTextEvaluation(string storeRoot, Func<HttpMessageHandler
 
     public Report Run(string docxPath, IReadOnlyList<GoldLine> gold, string apiKey, double? ceilingUsd = null, ScanOcrPreflight.Options? ocrOptions = null)
     {
-        var ocr = new ScanOcrPreflight(Path.Combine(storeRoot, ScanHeadingAgentSelector.OcrFolder));
+        var ocr = new ScanOcrPreflight(Path.Combine(storeRoot, ScanSelector.OcrFolder));
         var evidence = ocr.Run(docxPath, ocrOptions);
         var entry = ocr.EntryOf(evidence);
         var magick = TesseractOcr.FindImageMagick() ?? throw new InvalidOperationException("IMAGEMAGICK_NOT_FOUND");

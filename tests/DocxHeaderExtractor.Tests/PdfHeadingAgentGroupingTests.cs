@@ -1,6 +1,11 @@
 using System.Text.Json;
-using DocxHeaderExtractor.HeadingAgent;
-using static DocxHeaderExtractor.HeadingAgent.AgentProtocol;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
+using DocxHeaderExtractor.HeadingAgent.Tools;
+using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 
 namespace DocxHeaderExtractor.Tests;
 
@@ -93,7 +98,7 @@ public sealed class PdfHeadingAgentGroupingTests
         var chunks = (sourceLines + (2 * AgentGrouping.MaxRunsPerRequest) - 1) / (2 * AgentGrouping.MaxRunsPerRequest);
         var perPass = chunks * (1 + AgentGrouping.MaxRepairs) * (1 + AgentUnit.TransportRetries);
 
-        Assert.Equal(perPass, HeadingAgentSelector.GroupingPostsReserveForLines(sourceLines));
+        Assert.Equal(perPass, AgentSelector.GroupingPostsReserveForLines(sourceLines));
     }
 
     private static string Disagreement(JsonElement payload) => JsonSerializer.Serialize(new
@@ -160,7 +165,7 @@ public sealed class PdfHeadingAgentGroupingTests
                 })
             }), [], "stop");
         };
-        var result = HeadingAgentSelector.Select(source, model, budget, 1, CancellationToken.None, 0, () => 0);
+        var result = AgentSelector.Select(source, model, budget, 1, CancellationToken.None, 0, () => 0);
         Assert.Contains(first, result.SelectedAliases);
         Assert.Contains(second, result.SelectedAliases);
         Assert.Contains(kept, result.SelectedAliases);
@@ -203,7 +208,7 @@ public sealed class PdfHeadingAgentGroupingTests
                 decisions = targets.Select(t => new { alias = t.GetProperty("alias").GetString(), decision = selected.Contains(t.GetProperty("alias").GetString()!) ? "SELECT" : "NOT_SELECT", evidenceRefs = new[] { t.GetProperty("alias").GetString()! } })
             }), [], "stop");
         };
-        var result = HeadingAgentSelector.Select(source, model, Budget(), 1, CancellationToken.None, 0, () => 0);
+        var result = AgentSelector.Select(source, model, Budget(), 1, CancellationToken.None, 0, () => 0);
         Assert.True(groupingCalls > 0, string.Join("; ", result.UnitFailures) + " | " + string.Join(" | ", result.ModelAnswers));
         // A refused reply is repaired up to the limit; a repeated one is not a reason to stop.
         Assert.Equal(1 + AgentGrouping.MaxRepairs, groupingCalls);

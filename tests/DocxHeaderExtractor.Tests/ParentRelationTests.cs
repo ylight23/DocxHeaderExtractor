@@ -1,18 +1,14 @@
 using System.Text.Json.Nodes;
-using DocxHeaderExtractor.DocumentProcessing.Inference;
+using DocxHeaderExtractor.Contracts.Inference;
 using DocxHeaderExtractor.Contracts.Models;
-using DocxHeaderExtractor.Contracts.Models.Inference;
-using DocxHeaderExtractor.DocumentProcessing.Materialization;
-using DocxHeaderExtractor.Contracts.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Authority;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
-using DocxHeaderExtractor.Contracts.Docx;
-using DocxHeaderExtractor.DocumentProcessing.OpenXmlLayer;
+using DocxHeaderExtractor.DocumentProcessing.Structure;
+using DocxHeaderExtractor.DocumentProcessing.Audit;
+using DocxHeaderExtractor.DocumentProcessing.Output;
+using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Sources.OpenXmlLayer;
 using DocxHeaderExtractor.Contracts.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Routing;
-using DocxHeaderExtractor.Sources.Routing;
-using DocxHeaderExtractor.DocumentProcessing.Semantics.HeadingAuthority;
+using DocxHeaderExtractor.DocumentProcessing.Intake;
+using DocxHeaderExtractor.DocumentProcessing.Selection;
 using DocxHeaderExtractor.Sources.Docx;
 
 
@@ -46,11 +42,11 @@ public sealed class ParentRelationTests : IDisposable
             ["placements"] = new JsonArray(new JsonObject { ["alias"] = general.Alias, ["parent"] = chapter.Alias }),
         }.ToJsonString());
         var selector = new FixedSelector(new HashSet<string> { chapter.Alias, general.Alias });
-        var authority = new SelectedLinesHeadingAuthority(selector, path, "sk-test", new Dictionary<string, string>(StringComparer.Ordinal),
+        var authority = new SelectionAuthority(selector, path, "sk-test", new Dictionary<string, string>(StringComparer.Ordinal),
             placement, () => { });
 
         var decided = await authority.DecideAsync(source, CancellationToken.None);
-        var assembly = await HeadingStructureAssembler.AssembleAsync(source, decided, PrimaryOccurrenceSelection.EverySourceOccurrence,
+        var assembly = await StructureAssembler.AssembleAsync(source, decided, PrimaryOccurrenceSelection.EverySourceOccurrence,
             CancellationToken.None);
 
         var chapterId = assembly.Structure.Elements.Single(e => e.Sources.Any(s => s.SourceId == chapter.SourceId)).Id;
@@ -91,7 +87,7 @@ public sealed class ParentRelationTests : IDisposable
         var authority = new HeadingAuthorityResult(decisions,
             new[] { Bound(chapter), Bound(general), Bound(article) }, placement, (audit, _) => audit, null);
 
-        var assembly = await HeadingStructureAssembler.AssembleAsync(source, authority, PrimaryOccurrenceSelection.EverySourceOccurrence,
+        var assembly = await StructureAssembler.AssembleAsync(source, authority, PrimaryOccurrenceSelection.EverySourceOccurrence,
             CancellationToken.None);
 
         Assert.DoesNotContain(assembly.Validated, v => v.SourceId == general.SourceId);

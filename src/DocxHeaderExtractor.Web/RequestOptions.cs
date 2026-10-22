@@ -1,5 +1,6 @@
 using System.Globalization;
-using DocxHeaderExtractor.DocumentProcessing.Pipeline;
+using DocxHeaderExtractor.DocumentProcessing.Output;
+using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.Infrastructure.AI;
 
 namespace DocxHeaderExtractor.Web;
