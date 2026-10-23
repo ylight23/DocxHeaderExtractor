@@ -50,7 +50,7 @@ internal static class PdfLane
         await checkpoint.RecordSelectionAsync(
             pdfDetails.Blocks.Select(block => new PdfSelectedSourceIdentity(
                 block.Id, block.Page, block.Lines.Select(PdfLineIdentity.Of).ToArray(), block.DisplayText)).ToArray(), ct).ConfigureAwait(false);
-        var result = await LaneHarness.CompleteAsync(
+        var result = await LaneRun.CompleteAsync(
             async (lease, laneCt) =>
             {
                 var run = await LaneHarness.DecideAndAssembleAsync(
@@ -70,7 +70,7 @@ internal static class PdfLane
         "PDF_HEADING_SELECTOR_KEY_MISSING: the model route carries no provider key.",
         "HEADING_PLACER_REQUIRED: the PDF route places no heading without the heading placer.");
 
-    private static readonly LaneHarness.Messages Messages = new(
+    private static readonly LaneRun.Messages Messages = new(
         "PDF semantic execution exceeded its lane deadline.",
         "PDF semantic execution failed.",
         "PDF semantic result lost its execution lease.");

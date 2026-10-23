@@ -382,11 +382,15 @@ public sealed class ScanProductionPipelineTests
     sealed class Factory(FixedScan scan, IHeadingPlacer? placer = null) : IModelProvider
     {
         public int RouteCalls;
-        public IScanHeadingSelector CreateScanHeadingSelector() => scan;
-        public IHeadingSelector CreateDocxHeadingSelector() => new EmptyNative();
         /// <summary>The scripted placer: P001-L001 is a top-level section and P001-L003 sits under it. No provider is called.</summary>
-        public IHeadingPlacer CreateHeadingPlacer() => placer ?? new PlacementScript(packet => HierarchyTestProtocol.Reply(packet.ToJsonString(),
-            new Dictionary<string, string> { ["P001-L001"] = "ROOT", ["P001-L003"] = "P001-L001" })).Placer;
+        public T? Create<T>(string role) where T : class => role switch
+        {
+            AgentRoles.ScanSelector => scan as T,
+            AgentRoles.DocxSelector => new EmptyNative() as T,
+            AgentRoles.Placer => (placer ?? new PlacementScript(packet => HierarchyTestProtocol.Reply(packet.ToJsonString(),
+                new Dictionary<string, string> { ["P001-L001"] = "ROOT", ["P001-L003"] = "P001-L001" })).Placer) as T,
+            _ => null,
+        };
         public ModelRoute CreateRoute() { RouteCalls++; return new("test", "test-route-key"); }
     }
     sealed class EmptyNative : IHeadingSelector

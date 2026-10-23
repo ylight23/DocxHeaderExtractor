@@ -42,7 +42,7 @@ internal static class DocxLane
             return new LaneResult(StructureFactory.Create([]), LaneHarness.SourceOnlyAudit(lane), "docx-llm-disabled") { SourceCatalog = source.Catalog };
         var access = LaneHarness.Authorize(route, selector, placer, Refusals);
 
-        return await LaneHarness.CompleteAsync(
+        return await LaneRun.CompleteAsync(
             async (lease, laneCt) =>
             {
                 var run = await LaneHarness.DecideAndAssembleAsync(
@@ -59,7 +59,7 @@ internal static class DocxLane
         "DOCX_HEADING_SELECTOR_KEY_MISSING: the model route carries no provider key.",
         "HEADING_PLACER_REQUIRED: the DOCX route places no heading without the heading placer.");
 
-    private static readonly LaneHarness.Messages Messages = new(
+    private static readonly LaneRun.Messages Messages = new(
         "DOCX semantic execution exceeded its lane deadline.",
         "DOCX semantic execution failed.",
         "DOCX semantic result lost its execution lease.");

@@ -34,7 +34,9 @@ Ví dụ: chạy thử một agent đặt cha khác, hoặc dùng agent giả tr
 sealed class MyProvider(IModelProvider inner) : IModelProvider
 {
     public ModelRoute CreateRoute() => inner.CreateRoute();
-    public IHeadingPlacer? CreateHeadingPlacer() => new MyPlacer();   // null = dùng HeadingPlacer mặc định
+    // null = dùng HeadingPlacer mặc định
+    public T? Create<T>(string role) where T : class =>
+        role == AgentRoles.Placer ? new MyPlacer() as T : inner.Create<T>(role);
 }
 
 var runner = new DocumentRunner(options, new MyProvider(OpenRouterProvider.FromEnvironment()));
@@ -59,8 +61,8 @@ Ví dụ: một agent rà lại cấp bậc sau khi đặt cha.
    ```
 2. **Chỗ cắm** (`Contracts/Agents/HeadingAgents.cs`): thêm một property `IHeadingReviewer? Reviewer = null`.
    Chữ ký pipeline không đổi.
-3. **Hook ghi đè** (`Contracts/Provider/IModelProvider.cs`): `IHeadingReviewer? CreateHeadingReviewer() => null;`.
-4. **Mặc định** (`App/HeadingAgentSetup.cs`): `Reviewer: provider.CreateHeadingReviewer() ?? new HeadingReviewer()`.
+3. **Tên vai trò** (`Contracts/Agents/AgentRoles.cs`): `public const string Reviewer = "heading.reviewer";`. Host lấy agent qua `IModelProvider.Create<T>(role)`; không cần thêm thành viên nào vào `IModelProvider`.
+4. **Mặc định** (`App/HeadingAgentSetup.cs`): `Reviewer: provider.Create<IHeadingReviewer>(AgentRoles.Reviewer) ?? new HeadingReviewer()`.
 5. **Cài đặt agent** (`HeadingAgent/Review/HeadingReviewer.cs`): prompt, gói dữ liệu, vòng hỏi. Gọi model qua
    `Agents` với khóa trong `ModelAccess`; nếu cần hội thoại có tool, cài đặt `IConversationTask` và chạy `ToolConversation`.
 6. **Bước C# kiểm tra** (`DocumentProcessing/<Bước>/`): nhận đề xuất, chỉ giữ những gì hợp lệ, ghi audit.

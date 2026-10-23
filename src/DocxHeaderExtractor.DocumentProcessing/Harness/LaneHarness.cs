@@ -16,9 +16,6 @@ namespace DocxHeaderExtractor.DocumentProcessing.Harness;
 /// </summary>
 internal static class LaneHarness
 {
-    /// <summary>What a lane says when its execution does not complete. Each lane keeps its own wording.</summary>
-    internal sealed record Messages(string TimedOut, string Failed, string LeaseLost);
-
     /// <summary>What a lane says when a run has no selector, no provider key, or no placer.</summary>
     internal sealed record AccessMessages(string NoSelector, string NoKey, string NoPlacer);
 
@@ -59,30 +56,6 @@ internal static class LaneHarness
             SemanticLane = new LaneExecutionAudit("not-run", lane.Source.Atoms.Count, 0, 0, lane.Source.Atoms.Count, "llm-disabled"),
             SpanLane = new LaneExecutionAudit("not-run", 0, 0, 0, 0, "llm-disabled"),
         };
-
-    /// <summary>
-    /// Runs <paramref name="work"/> under the lane deadline and returns its value only when it completed and still holds its lease.
-    /// <paramref name="afterRun"/> runs once the work has stopped, before the outcome is judged (the PDF lane drains its checkpoint there).
-    /// </summary>
-    internal static async Task<T> CompleteAsync<T>(
-        Func<LaneLease, CancellationToken, Task<T>> work,
-        TimeSpan deadline,
-        Messages messages,
-        CancellationToken ct,
-        Func<Task>? afterRun = null) where T : class
-    {
-        var execution = await LaneExecution.RunAsync(work, deadline, ct).ConfigureAwait(false);
-        if (afterRun is not null) await afterRun().ConfigureAwait(false);
-        if (execution.State == LaneState.TimedOut)
-            throw new TimeoutException(messages.TimedOut);
-        if (execution.State == LaneState.Cancelled)
-            throw new OperationCanceledException(ct);
-        if (execution.State == LaneState.Failed)
-            throw execution.Fault ?? new InvalidOperationException(messages.Failed);
-        if (!execution.Lease.CanPublishCompletedResult || execution.Value is null)
-            throw new InvalidOperationException(messages.LeaseLost);
-        return execution.Value;
-    }
 
     /// <summary>
     /// Inside the lease: the selector decides, the shared stages bind, place (the placer proposes, C# checks) and assemble the decided

@@ -26,7 +26,7 @@ internal static class ScanLane
         if (!options.DisableLlm && agents.Placer is null) throw new InvalidOperationException("HEADING_PLACER_REQUIRED");
         var started = Environment.TickCount64;
         var sourceSha = SourceHash.Compute(path);
-        var result = await LaneHarness.CompleteAsync(async (lease, laneCt) =>
+        var result = await LaneRun.CompleteAsync(async (lease, laneCt) =>
         {
             options.Log?.Invoke("Scan: OCR/VLM preflight and heading selection");
             var prepared = await selector.PrepareAsync(path, key, laneCt).ConfigureAwait(false);
@@ -82,7 +82,7 @@ internal static class ScanLane
             result, result.Structure, result.EmittedElementIds!, catalog, options, started);
     }
 
-    private static readonly LaneHarness.Messages Messages = new(
+    private static readonly LaneRun.Messages Messages = new(
         "Scan execution exceeded its lane deadline.", "SCAN_EXECUTION_FAILED", "SCAN_EXECUTION_LEASE_LOST");
 
     sealed class PreparedSelector(string id, HeadingSelection selection) : IHeadingSelector

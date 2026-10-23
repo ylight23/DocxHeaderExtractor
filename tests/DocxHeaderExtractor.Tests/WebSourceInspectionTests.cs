@@ -144,7 +144,7 @@ public sealed class WebSourceInspectionTests : IDisposable
 
     sealed class OfflineFactory(OfflineScan scan) : IModelProvider
     {
-        public IScanHeadingSelector CreateScanHeadingSelector() => scan;
+        public T? Create<T>(string role) where T : class => role == AgentRoles.ScanSelector ? scan as T : null;
         public ModelRoute CreateRoute() => throw new Exception("No model route may be asked for");
     }
 
