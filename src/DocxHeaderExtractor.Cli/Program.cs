@@ -34,6 +34,7 @@ try
 {
     return options.Command switch
     {
+        "entities" => await EntityCommand.RunAsync(options, cts.Token),
         "scan-extract" => await ScanCommands.ExtractAsync(options, cts.Token),
         "scan-text-eval" => ScanCommands.TextEval(options),
         "scan-heading-eval" => ScanCommands.HeadingEval(options),

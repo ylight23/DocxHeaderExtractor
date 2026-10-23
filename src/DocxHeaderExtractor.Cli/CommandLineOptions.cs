@@ -48,7 +48,7 @@ public sealed class CommandLineOptions
         int i = 0;
         // Only verbs the CLI actually dispatches. Anything else is treated as an input path
         // by the default extract route.
-        if (!args[0].StartsWith('-') && args[0] is "extract" or "help" or "scan-extract" or "scan-text-eval" or "scan-heading-eval" or "scan-evidence-json")
+        if (!args[0].StartsWith('-') && args[0] is "extract" or "help" or "entities" or "scan-extract" or "scan-text-eval" or "scan-heading-eval" or "scan-evidence-json")
         {
             o.Command = args[0];
             i = 1;
@@ -131,6 +131,7 @@ public sealed class CommandLineOptions
           dhx scan-heading-eval <ket-qua.json> --gold <gold.json>
                                                          # chấm heading của một kết quả scan-extract theo
                                                          # bộ đáp án: đủ (recall), đúng (precision), tách đôi
+          dhx entities <file> [-o <out.json>]            # trích thực thể (bài toán thử nghiệm, các loại mặc định); JSON gồm envelope và output
           dhx scan-evidence-json <evidence.msgpack>      # in evidence OCR của một scan ra JSON (stdout) để đọc khi debug;
                                                          # ghi ra file: dhx scan-evidence-json <file> > evidence.json
           dhx help                                       # trợ giúp

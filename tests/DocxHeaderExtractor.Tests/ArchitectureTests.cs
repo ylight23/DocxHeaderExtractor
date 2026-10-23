@@ -18,7 +18,8 @@ public sealed class ArchitectureTests
         ["HeadingAgent"] = ["Agents", "Conversation", "Sources"],
         ["DocumentProcessing"] = ["Contracts", "Sources"],
         ["Infrastructure"] = ["Contracts", "Sources"],
-        ["App"] = ["Agents", "Contracts", "DocumentProcessing", "HeadingAgent", "Sources"],
+        ["Entities"] = ["Agents", "Contracts"],
+        ["App"] = ["Agents", "Contracts", "DocumentProcessing", "Entities", "HeadingAgent", "Sources"],
         ["Cli"] = ["App", "Contracts", "DocumentProcessing", "Sources"],
         ["Web"] = ["App", "Contracts", "DocumentProcessing", "Infrastructure", "Sources"],
     };

@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DocxHeaderExtractor.HeadingAgent\DocxHeaderExtractor.HeadingAgent.csproj" />
     <ProjectReference Include="..\DocxHeaderExtractor.DocumentProcessing\DocxHeaderExtractor.DocumentProcessing.csproj" />
+    <ProjectReference Include="..\DocxHeaderExtractor.Entities\DocxHeaderExtractor.Entities.csproj" />
   </ItemGroup>
 
 </Project>
