@@ -56,7 +56,8 @@ internal static class ScanLane
             if (options.DisableLlm)
                 audit = audit with { SemanticLane = new LaneExecutionAudit("not-run", 0, 0, 0, 0, "llm-disabled") };
             // A line left out for having no readable text could have been a heading the run never saw.
-            else if (prepared.Diagnostics.TranscriptionFailures.Count > 0 || prepared.Diagnostics.VisionFailures.Count > 0 || prepared.Diagnostics.OcrGaps.Count > 0
+            else if (prepared.Diagnostics.TranscriptionFailures.Count > 0 || prepared.Diagnostics.VisionFailures.Count > 0
+                || prepared.Diagnostics.OcrGaps.Any(g => g.Reason != ScanSegmentPreflight.NotMadeBySegmenter)
                 || prepared.Diagnostics.UnreadableLines.Count > 0)
                 audit = audit with { SemanticLane = audit.SemanticLane! with { Status = "partial",
                     FailureClass = audit.SemanticLane!.FailureClass is { } earlier ? "SCAN_PREFLIGHT_INCOMPLETE:" + earlier : "SCAN_PREFLIGHT_INCOMPLETE" } };

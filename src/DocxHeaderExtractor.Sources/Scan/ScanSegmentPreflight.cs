@@ -20,6 +20,10 @@ public sealed class ScanSegmentPreflight(string storeRoot)
 {
     public const string Engine = "opencv-segmenter";
 
+    /// <summary>The reason of the view this engine does not make by design (the upscaled reading of the OCR path). It is planned, not a failure:
+    /// the scan lane does not mark a run partial for it.</summary>
+    public const string NotMadeBySegmenter = "NOT_MADE_BY_SEGMENTER";
+
     static readonly JsonSerializerOptions Json = new() { WriteIndented = false, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
     /// <summary>Reads the evidence back when it exists for this source; otherwise makes it from the page images and writes it.</summary>
@@ -62,7 +66,7 @@ public sealed class ScanSegmentPreflight(string storeRoot)
                 ScanLineSegmenter.Version, "none", 0);
             var evidence = new ScanOcrEvidence(ScanOcrEvidence.CurrentVersion, sourceSha, sourceKind, pages.Length, parametersSha,
                 [new OcrView(spec, EvidenceOrigin.OcrDerived, viewPages)],
-                [new OcrViewGap(ScanOcrPreflight.UpscaledView, "NOT_MADE_BY_SEGMENTER")])
+                [new OcrViewGap(ScanOcrPreflight.UpscaledView, NotMadeBySegmenter)])
             { PageImageBasis = isPdf ? PdfScanPageRenderer.CacheBasis : null };
             File.WriteAllBytes(Path.Combine(temp, ScanOcrPreflight.EvidenceFile), MessagePackSerializer.Serialize(evidence, ScanOcrPreflight.EvidenceBinary));
             Directory.CreateDirectory(Path.GetDirectoryName(final)!);

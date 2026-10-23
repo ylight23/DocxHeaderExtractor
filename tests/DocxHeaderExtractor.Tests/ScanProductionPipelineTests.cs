@@ -267,6 +267,29 @@ public sealed class ScanProductionPipelineTests
         Assert.False(run.Outline.RouteAudit.SemanticLane.FailureClass!.EndsWith(':'));
     }
 
+    // 023 (s067): the segmenter never makes the upscaled view, so its gap is planned. A run with nothing else missing is complete.
+    [Fact]
+    public async Task A_view_the_segmenter_does_not_make_is_not_a_partial_run()
+    {
+        var p = Prepared(ScanPath);
+        p = p with { Diagnostics = p.Diagnostics with { OcrGaps = [new OcrViewGap(ScanOcrPreflight.UpscaledView, ScanSegmentPreflight.NotMadeBySegmenter)] } };
+        var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
+        var run = await runner.ExtractAsync(ScanPath);
+        Assert.Equal("complete", run.Outline.RouteAudit!.SemanticLane!.Status);
+        Assert.Null(run.Outline.RouteAudit.SemanticLane.FailureClass);
+    }
+
+    [Fact]
+    public async Task A_view_that_failed_to_be_made_is_still_a_partial_run()
+    {
+        var p = Prepared(ScanPath);
+        p = p with { Diagnostics = p.Diagnostics with { OcrGaps = [new OcrViewGap(ScanOcrPreflight.UpscaledView, "TESSERACT_MISSING")] } };
+        var runner = new DocumentRunner(new PipelineOptions(), new Factory(new FixedScan(p)));
+        var run = await runner.ExtractAsync(ScanPath);
+        Assert.Equal("partial", run.Outline.RouteAudit!.SemanticLane!.Status);
+        Assert.Contains("SCAN_PREFLIGHT_INCOMPLETE", run.Outline.RouteAudit.SemanticLane.FailureClass!, StringComparison.Ordinal);
+    }
+
     [Fact]
     public async Task A_source_from_another_file_is_refused_before_binding_or_placement()
     {
