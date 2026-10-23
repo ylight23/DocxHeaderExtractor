@@ -1,8 +1,10 @@
+using DocxHeaderExtractor.Agents;
+using DocxHeaderExtractor.Agents.Transport;
 using System.Text;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Agents.Budget;
 
-namespace DocxHeaderExtractor.Agents.Conversation;
+namespace DocxHeaderExtractor.Conversation;
 
 /// <summary>The running counts of one conversation, which the task reads when it builds its outcome.</summary>
 internal sealed class ConversationState(AgentBudget budget)

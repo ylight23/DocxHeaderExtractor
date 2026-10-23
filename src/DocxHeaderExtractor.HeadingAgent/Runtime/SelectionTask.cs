@@ -1,6 +1,6 @@
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Agents;
-using DocxHeaderExtractor.Agents.Conversation;
+using DocxHeaderExtractor.Conversation;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;

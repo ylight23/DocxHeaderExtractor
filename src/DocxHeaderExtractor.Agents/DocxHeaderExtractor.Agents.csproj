@@ -9,6 +9,7 @@
   <ItemGroup>
     <InternalsVisibleTo Include="DocxHeaderExtractor.HeadingAgent" />
     <InternalsVisibleTo Include="DocxHeaderExtractor.App" />
+    <InternalsVisibleTo Include="DocxHeaderExtractor.Conversation" />
     <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
   </ItemGroup>
 

@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.Contrac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.Agents", "src\DocxHeaderExtractor.Agents\DocxHeaderExtractor.Agents.csproj", "{D63265A4-50AD-4EA9-9019-5BA88C9EE51C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocxHeaderExtractor.Conversation", "src\DocxHeaderExtractor.Conversation\DocxHeaderExtractor.Conversation.csproj", "{B7970140-90AB-4EC9-BED8-C1496601DE52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -149,6 +151,18 @@ Global
 		{D63265A4-50AD-4EA9-9019-5BA88C9EE51C}.Release|x64.Build.0 = Release|Any CPU
 		{D63265A4-50AD-4EA9-9019-5BA88C9EE51C}.Release|x86.ActiveCfg = Release|Any CPU
 		{D63265A4-50AD-4EA9-9019-5BA88C9EE51C}.Release|x86.Build.0 = Release|Any CPU
+		{B7970140-90AB-4EC9-BED8-C1496601DE52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7970140-90AB-4EC9-BED8-C1496601DE52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7970140-90AB-4EC9-BED8-C1496601DE52}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B7970140-90AB-4EC9-BED8-C1496601DE52}.Debug|x64.Build.0 = Debug|Any CPU
+		{B7970140-90AB-4EC9-BED8-C1496601DE52}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B7970140-90AB-4EC9-BED8-C1496601DE52}.Debug|x86.Build.0 = Debug|Any CPU
+		{B7970140-90AB-4EC9-BED8-C1496601DE52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7970140-90AB-4EC9-BED8-C1496601DE52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7970140-90AB-4EC9-BED8-C1496601DE52}.Release|x64.ActiveCfg = Release|Any CPU
+		{B7970140-90AB-4EC9-BED8-C1496601DE52}.Release|x64.Build.0 = Release|Any CPU
+		{B7970140-90AB-4EC9-BED8-C1496601DE52}.Release|x86.ActiveCfg = Release|Any CPU
+		{B7970140-90AB-4EC9-BED8-C1496601DE52}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,5 +178,6 @@ Global
 		{9BF12F83-515B-491D-BF6F-F59D58636540} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{8976D7D2-D858-4667-8525-56887C3786B5} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{D63265A4-50AD-4EA9-9019-5BA88C9EE51C} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{B7970140-90AB-4EC9-BED8-C1496601DE52} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 	EndGlobalSection
 EndGlobal

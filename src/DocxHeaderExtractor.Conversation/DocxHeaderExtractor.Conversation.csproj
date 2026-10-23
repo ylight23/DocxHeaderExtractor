@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DocxHeaderExtractor.Agents\DocxHeaderExtractor.Agents.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="DocxHeaderExtractor.HeadingAgent" />
+    <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
+  </ItemGroup>
+
+</Project>

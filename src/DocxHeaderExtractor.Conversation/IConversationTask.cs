@@ -1,6 +1,9 @@
+using DocxHeaderExtractor.Agents;
+using DocxHeaderExtractor.Agents.Budget;
+using DocxHeaderExtractor.Agents.Transport;
 using System.Text.Json.Nodes;
 
-namespace DocxHeaderExtractor.Agents.Conversation;
+namespace DocxHeaderExtractor.Conversation;
 
 /// <summary>
 /// One problem a <see cref="ToolConversation"/> works on: the request it sends each turn, the tools the model may call, how a final answer is
