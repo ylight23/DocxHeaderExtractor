@@ -9,7 +9,7 @@ using DocxHeaderExtractor.Sources.Snapshot;
 namespace DocxHeaderExtractor.DocumentProcessing.Harness;
 
 /// <summary>
-/// The stages every heading lane shares, whatever the format: refuse a run that is not on the authorized agent route; run under a lane
+/// The stages every heading lane shares, whatever the format: refuse a run without its agents or a model route key; run under a lane
 /// lease and refuse anything but a completed result; let the selected-lines authority decide on the source; bind, place and assemble the
 /// structure; record the route audit. A lane supplies only what belongs to its format: how its source is built, its layout blocks, the
 /// source blocks it audits, and the facts it adds to the audit.

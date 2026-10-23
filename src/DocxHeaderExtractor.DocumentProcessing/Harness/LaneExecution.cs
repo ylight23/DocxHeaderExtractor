@@ -40,7 +40,7 @@ internal static class LaneExecution
         try
         {
             work = action(lease, laneCancellation.Token) ??
-                throw new InvalidOperationException("The PDF lane action returned a null task.");
+                throw new InvalidOperationException("The lane action returned a null task.");
         }
         catch (OperationCanceledException) when (callerCancellation.IsCancellationRequested)
         {
