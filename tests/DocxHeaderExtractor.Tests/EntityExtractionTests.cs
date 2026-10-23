@@ -64,6 +64,23 @@ public sealed class EntityExtractionTests : IDisposable
     }
 
     [Fact]
+    public async Task A_batch_that_fails_once_is_tried_again_and_its_second_answer_is_kept()
+    {
+        var path = Sample();
+        var u = Units(path)[0];
+        var good = $"{{\"entities\":[{{\"sourceId\":\"{u.SourceId}\",\"start\":0,\"end\":1,\"type\":\"PERSON\"}}]}}";
+        using var handler = new FakeOpenRouter((_, post) =>
+            (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = post == 1 ? "not json" : good }, "stop")));
+
+        var run = await ProblemRunner.RunAsync(path, new PipelineOptions(), new ScriptedProvider("sk-entities-test-key"), "entities",
+            new EntityProposer(() => handler), new EntityChecker());
+
+        Assert.Equal(2, handler.Posts);
+        Assert.Single(run.Output!.Entities);
+        Assert.Empty(run.Output.BatchFailures);
+    }
+
+    [Fact]
     public async Task The_request_carries_the_types_and_every_unit_of_the_document()
     {
         var path = Sample();

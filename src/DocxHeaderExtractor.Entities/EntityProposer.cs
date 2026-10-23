@@ -18,7 +18,7 @@ namespace DocxHeaderExtractor.Entities;
 public sealed class EntityProposer(Func<HttpMessageHandler>? handlerFactory = null) : IProposer<EntityProposal>
 {
     public const string Version = "entities-v1";
-    public const int MaxBatchChars = 6000, MaxBatchUnits = 40;
+    public const int MaxBatchChars = 6000, MaxBatchUnits = 40, MaxAttempts = 2;
     /// <summary>The most one run may spend on the model (the budget reserves each POST's worst case).</summary>
     public const double CeilingUsd = 1.0;
 
@@ -50,19 +50,28 @@ public sealed class EntityProposer(Func<HttpMessageHandler>? handlerFactory = nu
             ct.ThrowIfCancellationRequested();
             access.EnsureActive();
             var id = $"batch-{k + 1:000}";
-            try
+            // A batch gets MaxAttempts tries with the same bytes: a failed reply is often a single bad sample, not a bad batch.
+            string? failure = null;
+            for (var attempt = 1; attempt <= MaxAttempts; attempt++)
             {
-                var request = OpenRouterWire.Build(SystemPrompt, PayloadOf(batches[k]), new JsonArray(), null, null);
-                found.AddRange(ParseReply(model.Turn(id, 1, request).Content));
+                try
+                {
+                    var request = OpenRouterWire.Build(SystemPrompt, PayloadOf(batches[k]), new JsonArray(), null, null);
+                    found.AddRange(ParseReply(model.Turn(id, attempt, request).Content));
+                    failure = null;
+                    break;
+                }
+                catch (ReplyFailure ex)
+                {
+                    failure = ex.Code;
+                }
+                catch (Exception ex) when (ex is FormatException or JsonException)
+                {
+                    failure = "REPLY_NOT_JSON";
+                }
+                access.EnsureActive();
             }
-            catch (ReplyFailure ex)
-            {
-                failures.Add($"{id}:{ex.Code}");
-            }
-            catch (Exception ex) when (ex is FormatException or JsonException)
-            {
-                failures.Add($"{id}:REPLY_NOT_JSON");
-            }
+            if (failure is not null) failures.Add($"{id}:{failure}");
             access.EnsureActive();
         }
         return new EntityProposal(found, failures);

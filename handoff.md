@@ -1,3 +1,5 @@
+> **Ghi chép lịch sử.** Các backend cục bộ (Llama qua LLamaSharp, LM Studio, SGLang) và các cờ `--lmstudio`, `--model`, `--gpu-layers` đã bị xóa ngày 2026-10-23. Các mục bên dưới giữ nguyên như khi viết. Kiến trúc hiện tại: `docs/architecture/current.md`.
+
 ﻿> **ĐỌC FILE NÀY TRƯỚC: [`docs/handoff-2026-08-25.md`](docs/handoff-2026-08-25.md)**
 >
 > Tài liệu dưới đây là nhật ký của các phiên trước. Mục "0. Trạng thái hiện tại" của nó ghi số liệu

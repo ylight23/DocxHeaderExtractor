@@ -1,3 +1,5 @@
+> **Ghi chép lịch sử.** Các backend cục bộ (Llama qua LLamaSharp, LM Studio, SGLang) và các cờ `--lmstudio`, `--model`, `--gpu-layers` đã bị xóa ngày 2026-10-23. Các mục bên dưới giữ nguyên như khi viết. Kiến trúc hiện tại: `docs/architecture/current.md`.
+
 ﻿# Việc cần làm
 
 > **Lịch sử (2026-10-15).** Tài liệu này mô tả trạng thái trước đó. Các thành phần được nhắc tới đã bị xóa hoặc đổi tên: `AgentHarness`, MCP host, project `Core` (gộp vào `Sources`) và `PdfHeadingAgent` (đổi thành `HeadingAgent`). Kiến trúc hiện tại: [kiến trúc hiện tại](docs/architecture/current.md).

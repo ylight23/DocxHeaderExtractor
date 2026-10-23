@@ -50,6 +50,9 @@ app.MapGet("/api/prompts", () => Results.Json(AgentCatalog.Prompts, WebJson.Opti
 
 app.MapPost("/api/inspect", InspectEndpoint.HandleAsync);
 
+// Bài toán thực thể: một file, trả envelope và output (JSON). Khóa lấy từ server, không từ form.
+app.MapPost("/api/entities", EntitiesEndpoint.HandleAsync);
+
 // Bản .docx đã gắn outline chỉ sống trong bộ nhớ tới lần tải đầu tiên. Không có đường dẫn nào do
 // client chỉ định: đích ghi luôn nằm trong thư mục tạm của chính request đó.
 app.MapGet("/api/outline/{runId:guid}.docx", (Guid runId, WritebackStore store) =>
