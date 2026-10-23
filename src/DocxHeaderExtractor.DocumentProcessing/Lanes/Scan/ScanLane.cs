@@ -34,7 +34,8 @@ internal static class ScanLane
             if (prepared.SourceSha256 != sourceSha || sourceSha != SourceHash.Compute(path))
                 throw new InvalidOperationException("SCAN_SOURCE_HASH_MISMATCH");
             var source = ScanSourceAdapter.Build(prepared);
-            if (source.Atoms.Count == 0) throw new InvalidOperationException("SCAN_EMPTY_UNIVERSE");
+            // With the model disabled no line is transcribed, so an empty universe is the expected source-only result, not a failure.
+            if (source.Atoms.Count == 0 && !options.DisableLlm) throw new InvalidOperationException("SCAN_EMPTY_UNIVERSE");
             var lane = new LaneHarness.Input(
                 RouteId,
                 source,

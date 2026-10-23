@@ -290,6 +290,17 @@ public sealed class ScanProductionPipelineTests
         Assert.Contains("SCAN_PREFLIGHT_INCOMPLETE", run.Outline.RouteAudit.SemanticLane.FailureClass!, StringComparison.Ordinal);
     }
 
+    // 023 run without a model (--no-llm) on a scan whose lines carry no text: the source-only result, not a failure.
+    [Fact]
+    public async Task A_scan_with_no_readable_lines_and_the_model_disabled_is_a_source_only_result()
+    {
+        var p = Prepared(ScanPath) with { Lines = [] };
+        var runner = new DocumentRunner(new PipelineOptions { DisableLlm = true }, new Factory(new FixedScan(p)));
+        var run = await runner.ExtractAsync(ScanPath);
+        Assert.Equal("not-run", run.Outline.RouteAudit!.SemanticLane!.Status);
+        Assert.Empty(run.Outline.Headings);
+    }
+
     [Fact]
     public async Task A_source_from_another_file_is_refused_before_binding_or_placement()
     {
