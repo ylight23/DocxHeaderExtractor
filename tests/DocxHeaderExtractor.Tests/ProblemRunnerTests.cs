@@ -1,4 +1,6 @@
+using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Problems;
+using DocxHeaderExtractor.Contracts.Scan;
 using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.DocumentProcessing.Problems;
@@ -19,7 +21,7 @@ public sealed class ProblemRunnerTests : IDisposable
     public async Task A_new_problem_runs_with_only_a_proposer_and_a_checker_and_keeps_what_the_source_supports()
     {
         var path = DocxTestDocument.Create(Path.Combine(dir, "sample.docx"));
-        var first = ProblemRunner.Read(path, new PipelineOptions(), default).Catalog.Units[0];
+        var first = ProblemRunner.ReadText(path, ProblemRunner.SourceKind.Docx, new PipelineOptions(), default).Catalog.Units[0];
         var proposer = new ScriptedSpans(source =>
         [
             new Span(first.SourceId, 0, first.Text.Length, "title"),
@@ -70,6 +72,65 @@ public sealed class ProblemRunnerTests : IDisposable
         Assert.StartsWith("PROBLEM_FORMAT_UNSUPPORTED", refused.Message);
     }
 
+    static string ScanPath => TestRepository.Path("todo10_8/generated-docx/01_phap_quy/023_ND_23-2015_Chung_thuc.docx");
+
+    [Fact]
+    public async Task A_scan_is_read_through_the_scan_reader_inside_the_run_and_its_unread_lines_are_reported()
+    {
+        var reader = new FixedReader(ScanPath, unreadable: ["P001-L003"]);
+        var proposer = new ScriptedSpans(source => [new Span(source.Catalog.Units[1].SourceId, 0, 6, "title")]);
+
+        var run = await ProblemRunner.RunAsync(ScanPath, new PipelineOptions(), new Provider("k"), "spans", proposer, new SpanChecker(), reader);
+
+        Assert.Equal("k", reader.Key);
+        Assert.Equal(new[] { "Chương I", "Điều 2. Thẩm quyền" }, proposer.Seen!.Catalog.Units.Select(u => u.Text));
+        Assert.Equal("Điều 2", Assert.Single(run.Output!.Kept).Text);
+        Assert.Equal("scan", run.Envelope.Identity.SourceKind);
+        Assert.Equal(["unreadable-line:P001-L003"], run.Envelope.SourceGaps);
+    }
+
+    [Fact]
+    public async Task A_scan_without_a_reader_is_refused_and_with_the_model_disabled_it_is_not_read()
+    {
+        var refused = await Assert.ThrowsAsync<NotSupportedException>(() =>
+            ProblemRunner.RunAsync(ScanPath, new PipelineOptions(), new Provider("k"), "spans", new ScriptedSpans(_ => []), new SpanChecker()));
+        Assert.StartsWith("PROBLEM_SCAN_READER_REQUIRED", refused.Message);
+
+        var reader = new FixedReader(ScanPath);
+        var run = await ProblemRunner.RunAsync(ScanPath, new PipelineOptions { DisableLlm = true }, new NoRoute(), "spans",
+            new ScriptedSpans(_ => []), new SpanChecker(), reader);
+        Assert.Equal(0, reader.Calls);
+        Assert.Null(run.Output);
+        Assert.Equal("scan", run.Envelope.Identity.SourceKind);
+    }
+
+    [Fact]
+    public async Task A_scan_reading_of_another_file_is_refused_before_the_agent_runs()
+    {
+        var proposer = new ScriptedSpans(_ => []);
+        var refused = await Assert.ThrowsAsync<InvalidOperationException>(() => ProblemRunner.RunAsync(ScanPath, new PipelineOptions(),
+            new Provider("k"), "spans", proposer, new SpanChecker(), new FixedReader(ScanPath, sha: new string('0', 64))));
+        Assert.StartsWith("PROBLEM_SCAN_SOURCE_MISMATCH", refused.Message);
+        Assert.Equal(0, proposer.Calls);
+    }
+
+    /// <summary>A scan reader that returns two transcribed lines of the given file, with no image work and no provider call.</summary>
+    sealed class FixedReader(string path, IReadOnlyList<string>? unreadable = null, string? sha = null) : IScanReader
+    {
+        public int Calls { get; private set; }
+        public string? Key { get; private set; }
+
+        public Task<ScanReading> ReadAsync(string scanPath, string? apiKey, CancellationToken ct)
+        {
+            Calls++; Key = apiKey;
+            ScanSourceLine Line(int n, string text) => new($"P001-L{n:000}", $"P001-ocr-original-L{n:000}", 1, new PixelBox(10, 40 * n, 300, 30),
+                1700, 2200, text, "", "transcription", new Dictionary<string, string> { ["transcription"] = text }, "accepted", "{}", text);
+            return Task.FromResult(new ScanReading(sha ?? Sources.Detect.SourceHash.Compute(path), [Line(1, "Chương I"), Line(4, "Điều 2. Thẩm quyền")],
+                new ScanRunDiagnostics(1, 0, 0, 0, 2, 2, new Dictionary<string, int>(), [], [], [], new Dictionary<string, double>())
+                { UnreadableLines = unreadable ?? [] }));
+        }
+    }
+
     // ---- the sample problem: an agent proposes typed spans, C# keeps the ones the source supports ----
 
     sealed record Span(string SourceId, int Start, int End, string Type);
@@ -83,12 +144,13 @@ public sealed class ProblemRunnerTests : IDisposable
         public const string Version = "sample-spans-v1";
         public int Calls { get; private set; }
         public string? Key { get; private set; }
+        public ProblemSource? Seen { get; private set; }
         public string Contract => Version;
 
         public Task<Proposal> ProposeAsync(ProblemSource source, ModelAccess access, CancellationToken ct)
         {
             access.EnsureActive();   // a real agent checks the lease before and after each model turn
-            Calls++; Key = access.ApiKey;
+            Calls++; Key = access.ApiKey; Seen = source;
             return Task.FromResult(new Proposal(script(source)));
         }
     }

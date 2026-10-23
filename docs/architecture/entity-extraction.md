@@ -50,7 +50,8 @@ Khung chung đã có (`Problems/ProblemRunner`, xem mục 3 của `extending.md`
 ## Rủi ro và ghi chú
 
 - **Tài liệu dài:** nhiều khối, nhiều task. Chia khối theo đơn vị nguồn và giới hạn kích thước request (`AgentBudget.MaxRequestBytes`, 128 KB mặc định). Chi phí tăng theo số khối; cần đo trước khi chạy thật.
-- **Scan:** thực thể dựa trên chữ đã chép (transcription). Lỗi chép sẽ thành lỗi thực thể; cần ghi độ tin cậy của chữ vào audit.
+- **Scan:** khung đọc được scan qua `IScanReader`; thực thể dựa trên chữ đã chép. Lỗi chép sẽ thành lỗi thực thể. Dòng không đọc
+  được nằm trong `ProblemSource.Gaps`, nên đầu ra phải báo khi câu trả lời có thể thiếu.
 - **Đánh giá cần Gold:** chưa có bộ đáp án thực thể. Theo quy tắc của dự án, Gold chỉ thay đổi khi chủ dự án duyệt, và model không được là đầu vào của Gold.
 - **Không chạy thật** khi chưa có cho phép. Build và test offline vẫn làm được.
 

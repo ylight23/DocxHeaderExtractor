@@ -17,7 +17,7 @@ namespace DocxHeaderExtractor.HeadingAgent.Scan;
 public sealed class ScanSelector(string storeRoot, Func<HttpMessageHandler>? handlerFactory = null, int? parallelism = null,
     Action<ModelReply>? onModelReply = null, string? instruction = null, bool vision = false,
     ScanOcrPreflight.Options? ocrOptions = null, ScanVisionPreflight.Options? visionOptions = null, bool transcribe = true,
-    ScanTranscriptionPreflight.Options? transcriptionOptions = null, bool reuseSelection = true, bool paragraphUnits = true, bool segmentedLines = true) : IScanHeadingSelector
+    ScanTranscriptionPreflight.Options? transcriptionOptions = null, bool reuseSelection = true, bool paragraphUnits = true, bool segmentedLines = true) : IScanHeadingSelector, IScanReader
 {
     /// <summary>The folder of the store root that holds the evidence: the OpenCV segments, or the Tesseract OCR with <c>--tesseract-lines</c>.</summary>
     public const string OcrFolder = "ocr";
@@ -48,7 +48,40 @@ public sealed class ScanSelector(string storeRoot, Func<HttpMessageHandler>? han
     public async Task<ScanDocumentSelection> PrepareAsync(string path, string? apiKey, CancellationToken ct) =>
         (await RunAsync(path, apiKey, ct).ConfigureAwait(false)).Prepared;
 
-    Task<(ScanHeadingResult Result, ScanDocumentSelection Prepared)> RunAsync(string docxPath, string? apiKey, CancellationToken ct) => Task.Run(() =>
+    /// <summary>
+    /// The scan's text with no heading decision: the lines cut from the page images and the transcription of each (the agent's model reads
+    /// the line crops), in reading order. A line with no readable text is left out and listed. Without a key nothing is transcribed, so no
+    /// line has text. This is the scan source every problem reads; the heading selection runs on the same preflight.
+    /// </summary>
+    public Task<ScanReading> ReadAsync(string path, string? apiKey, CancellationToken ct) => Task.Run(() =>
+    {
+        var pre = Preflight(path, apiKey, withVision: false, ct);
+        ct.ThrowIfCancellationRequested();
+        return Reading(pre.Evidence, pre.Transcriptions, pre.Typography,
+            pre.Seconds.ToDictionary(kv => kv.Key, kv => Math.Round(kv.Value, 1)));
+    }, ct);
+
+    /// <summary>The reading of stored evidence and transcriptions: every line in its default reading (an accepted transcription), the
+    /// unreadable ones left out and listed, with the transcription's calls and cost.</summary>
+    internal static ScanReading Reading(ScanOcrEvidence evidence, TranscriptionSet? transcriptions,
+        IReadOnlyDictionary<string, LineTypography>? typography, IReadOnlyDictionary<string, double> stageSeconds)
+    {
+        var source = new ScanAgentSource(evidence, [], transcriptions, typography);
+        var prepared = PrepareSelection(source, new HeadingSelection(new HashSet<string>(), 0, 0, [], [], 0, 0));
+        return new ScanReading(evidence.SourceSha256, prepared.Lines,
+            new ScanRunDiagnostics(transcriptions?.ProviderCalls ?? 0, transcriptions?.ProviderCostUsd ?? 0, 0, 0,
+                transcriptions?.Lines.Count(l => l.Text is not null) ?? 0, transcriptions?.Accepted ?? 0,
+                (transcriptions?.Lines ?? []).GroupBy(l => l.Status).ToDictionary(g => g.Key, g => g.Count()),
+                transcriptions?.Failures ?? [], [], evidence.Gaps, stageSeconds)
+            { UnreadableLines = prepared.Diagnostics.UnreadableLines });
+    }
+
+    /// <summary>What the heading selection and the plain reading share: the line evidence, the typography measured on the images, and the
+    /// provider-side preflights (the vision observations only when asked, the transcription whenever there is a key).</summary>
+    sealed record PreflightResult(ScanOcrEvidence Evidence, ScanOcrPreflight Ocr, IReadOnlyDictionary<string, LineTypography> Typography,
+        IReadOnlyList<VlmPageObservation> Observations, TranscriptionSet? Transcriptions, ScanVisionPreflight Seer, Dictionary<string, double> Seconds);
+
+    PreflightResult Preflight(string docxPath, string? apiKey, bool withVision, CancellationToken ct)
     {
         ct.ThrowIfCancellationRequested();
         if (apiKey is not null) ArgumentException.ThrowIfNullOrWhiteSpace(apiKey);
@@ -74,7 +107,7 @@ public sealed class ScanSelector(string storeRoot, Func<HttpMessageHandler>? han
             () =>
             {
                 var t = System.Diagnostics.Stopwatch.StartNew();
-                if (vision && apiKey is not null) observations = seer.Run(evidence, ocr.EntryOf(evidence), apiKey, seeOptions, ct);
+                if (withVision && apiKey is not null) observations = seer.Run(evidence, ocr.EntryOf(evidence), apiKey, seeOptions, ct);
                 lock (seconds) seconds["vision"] = t.Elapsed.TotalSeconds;
             },
             () =>
@@ -84,6 +117,12 @@ public sealed class ScanSelector(string storeRoot, Func<HttpMessageHandler>? han
                 lock (seconds) seconds["transcription"] = t.Elapsed.TotalSeconds;
             });
         seconds["preflight"] = clock.Elapsed.TotalSeconds;
+        return new PreflightResult(evidence, ocr, typography, observations, transcriptions, seer, seconds);
+    }
+
+    Task<(ScanHeadingResult Result, ScanDocumentSelection Prepared)> RunAsync(string docxPath, string? apiKey, CancellationToken ct) => Task.Run(() =>
+    {
+        var (evidence, _, typography, observations, transcriptions, seer, seconds) = Preflight(docxPath, apiKey, vision, ct);
         ct.ThrowIfCancellationRequested();
         var talk = System.Diagnostics.Stopwatch.StartNew();
         ScanDocumentSelection? prepared = null;

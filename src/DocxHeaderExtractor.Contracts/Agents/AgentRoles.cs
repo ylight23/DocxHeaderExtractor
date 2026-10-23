@@ -10,4 +10,6 @@ public static class AgentRoles
     public const string DocxSelector = "heading.docx";
     public const string ScanSelector = "heading.scan";
     public const string Placer = "heading.placer";
+    /// <summary>Reads a scan into text lines for any problem (<see cref="IScanReader"/>).</summary>
+    public const string ScanReader = "source.scan";
 }

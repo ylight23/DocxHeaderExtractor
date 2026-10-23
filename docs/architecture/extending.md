@@ -84,15 +84,19 @@ Bài toán chỉ viết hai thứ, cả hai khai báo trong `Contracts/Problems/
 | Kiểm tra | `IChecker<TProposal, TOutput>` | Giữ phần đề xuất mà nguồn ủng hộ, ghi lý do cho phần bị loại. Không gọi model. |
 
 ```csharp
-var run = await ProblemRunner.RunAsync(path, options, OpenRouterProvider.FromEnvironment(), "entities",
+var run = await ProblemSetup.RunAsync(path, options, OpenRouterProvider.FromEnvironment(), "entities",
     new EntityProposer(), new EntityChecker());
 // run.Envelope: tài liệu, bài toán, contract của agent, model, có gửi dữ liệu ra ngoài không, thời gian
 // run.Output: đầu ra của bài toán; null khi tắt model
 ```
 
-Khung tự lo: đọc DOCX/PDF thành cùng một dạng nguồn, lấy model route và từ chối khi thiếu khóa, lease và deadline,
-không gọi agent khi tắt model. Bài toán không mở file và không biết định dạng. Bản scan chưa đọc được qua khung,
-vì chữ của scan hiện chỉ được chép trong lúc chọn heading.
+Khung tự lo: đọc DOCX, PDF và bản scan thành cùng một dạng nguồn, lấy model route và từ chối khi thiếu khóa, lease và
+deadline, không gọi agent khi tắt model. Bài toán không mở file và không biết định dạng.
+
+Bản scan (DOCX ảnh trang, PDF có trang scan) được đọc qua `IScanReader`: cắt dòng từ ảnh rồi model chép từng dòng, không
+chọn heading. `App/ProblemSetup` lắp reader thật (cùng kho evidence và bước chép chữ với tuyến heading). Vì việc chép chữ gọi
+model, bản scan được đọc bên trong lease, và chỉ khi bật model. Dòng không đọc được, chép lỗi, hay thiếu view ảnh được ghi vào
+`ProblemSource.Gaps` và `RunEnvelope.SourceGaps`, để bài toán biết câu trả lời có thể thiếu.
 
 Ví dụ chạy được: `tests/DocxHeaderExtractor.Tests/ProblemRunnerTests.cs` (một bài toán trích span nhỏ, agent là script).
 

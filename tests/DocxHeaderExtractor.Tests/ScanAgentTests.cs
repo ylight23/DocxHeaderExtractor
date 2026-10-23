@@ -857,6 +857,26 @@ public sealed class ScanAgentTests : IDisposable
         Assert.Equal(["Chương I", "Điều 2. Thẩm quyền chứng thực"], bound.Catalog.Units.Select(u => u.Text));
     }
 
+    // The plain reading every problem gets: the same lines the heading route binds to, with no selection and nothing decided.
+    [Fact]
+    public void The_reading_of_a_scan_keeps_the_transcribed_lines_and_counts_what_it_could_not_read()
+    {
+        var evidence = Evidence();
+        var original = evidence.Views.Single(v => v.Spec.ViewId == ScanOcrPreflight.OriginalView);
+        evidence = evidence with
+        {
+            Views = [original with { Pages = original.Pages.Select(p => p with { Lines = p.Lines.Select(l => l with { Text = "", Words = [] }).ToArray() }).ToArray() }],
+        };
+
+        var reading = ScanSelector.Reading(evidence, Transcriptions(), null, new Dictionary<string, double>());
+
+        Assert.Equal(evidence.SourceSha256, reading.SourceSha256);
+        Assert.Equal(["Chương I", "Điều 2. Thẩm quyền chứng thực"], reading.Lines.Select(l => l.Text));
+        Assert.Equal(["P001-L002", "P001-L003", "P001-L005"], reading.Diagnostics.UnreadableLines);
+        Assert.Equal((2, 3), (reading.Diagnostics.TranscriptionsAccepted, reading.Diagnostics.TranscribedLines));
+        Assert.Equal(0, reading.Diagnostics.ConversationCalls);
+    }
+
     [Fact]
     public void Surface_facts_reach_the_first_request_and_the_facts_tool_without_becoming_membership_rules()
     {

@@ -10,9 +10,11 @@ namespace DocxHeaderExtractor.Sources.Scan;
 /// OCR originals and other readings stay in its source anchor; image pixels are never PDF coordinates.</summary>
 internal static class ScanSourceAdapter
 {
-    internal static DocumentSourceSnapshot Build(ScanDocumentSelection prepared)
+    internal static DocumentSourceSnapshot Build(ScanDocumentSelection prepared) => Build(prepared.SourceSha256, prepared.Lines);
+
+    /// <summary>The source of a scan's lines, whatever read them: the heading selection or a plain reading for another problem.</summary>
+    internal static DocumentSourceSnapshot Build(string sourceSha256, IReadOnlyList<ScanSourceLine> lines)
     {
-        var lines = prepared.Lines;
         if (lines.Select(l => l.Alias).Distinct(StringComparer.Ordinal).Count() != lines.Count
             || lines.Select(l => l.LineId).Distinct(StringComparer.Ordinal).Count() != lines.Count)
             throw new InvalidOperationException("SCAN_SOURCE_ID_DUPLICATE");
@@ -36,9 +38,9 @@ internal static class ScanSourceAdapter
         return new DocumentSourceSnapshot(atoms,
             lines.Select((l, i) => new DocumentOccurrence(l.LineId, l.Alias, i, l.Text, "scan")).ToArray(), evidence,
             TesseractOcr.Sha256(JsonSerializer.Serialize(lines.Select(l => new { l.Alias, l.Text, l.ReadingViewId }))),
-            TesseractOcr.Sha256(JsonSerializer.Serialize(lines)), prepared.SourceSha256, contexts, catalog,
+            TesseractOcr.Sha256(JsonSerializer.Serialize(lines)), sourceSha256, contexts, catalog,
             atoms.Select(a => new SemanticSourceAlias(a.Alias, a.SourceId, a.Ordinal, a.Text, new StructuralSpan(0, a.Text.Length))).ToArray(),
             atoms.ToDictionary(a => a.SourceId, a => a.Ordinal, StringComparer.Ordinal))
-        { SourceKind = "scan", DocumentId = prepared.SourceSha256[..16] };
+        { SourceKind = "scan", DocumentId = sourceSha256[..16] };
     }
 }
