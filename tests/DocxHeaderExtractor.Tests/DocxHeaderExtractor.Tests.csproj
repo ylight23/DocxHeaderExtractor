@@ -14,7 +14,6 @@
     <PackageReference Include="xunit" />
     <PackageReference Include="xunit.runner.visualstudio" />
     <!-- Also used by production scan PDF rendering in Sources; retained here for renderer fixture generation. -->
-    <PackageReference Include="PDFtoImage" />
   </ItemGroup>
 
   <ItemGroup>
