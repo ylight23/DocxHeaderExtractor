@@ -263,6 +263,8 @@ public sealed class ScanProductionPipelineTests
         Assert.Equal("partial", run.Outline.RouteAudit!.SemanticLane!.Status);
         Assert.Contains(gap == "units" ? "SEG-002:FAILED" : "SCAN_PREFLIGHT_INCOMPLETE", run.Outline.RouteAudit.SemanticLane.FailureClass!, StringComparison.Ordinal);
         Assert.Equal(p.Diagnostics.UnreadableLines, run.Outline.RouteAudit.Scan!.UnreadableLines);
+        // 023 (s066): with no earlier failure the class read "SCAN_PREFLIGHT_INCOMPLETE:", a separator with nothing after it.
+        Assert.False(run.Outline.RouteAudit.SemanticLane.FailureClass!.EndsWith(':'));
     }
 
     [Fact]

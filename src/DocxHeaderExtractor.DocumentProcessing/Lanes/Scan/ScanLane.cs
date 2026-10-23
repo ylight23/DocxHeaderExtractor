@@ -58,7 +58,8 @@ internal static class ScanLane
             // A line left out for having no readable text could have been a heading the run never saw.
             else if (prepared.Diagnostics.TranscriptionFailures.Count > 0 || prepared.Diagnostics.VisionFailures.Count > 0 || prepared.Diagnostics.OcrGaps.Count > 0
                 || prepared.Diagnostics.UnreadableLines.Count > 0)
-                audit = audit with { SemanticLane = audit.SemanticLane! with { Status = "partial", FailureClass = "SCAN_PREFLIGHT_INCOMPLETE:" + audit.SemanticLane!.FailureClass } };
+                audit = audit with { SemanticLane = audit.SemanticLane! with { Status = "partial",
+                    FailureClass = audit.SemanticLane!.FailureClass is { } earlier ? "SCAN_PREFLIGHT_INCOMPLETE:" + earlier : "SCAN_PREFLIGHT_INCOMPLETE" } };
             if (!options.DisableLlm && (audit.SemanticLane!.FailureClass is not null || assembly.Validated.Count != decided.Decisions.Count))
                 audit = audit with { SemanticLane = audit.SemanticLane! with { Status = "partial",
                     FailureClass = audit.SemanticLane!.FailureClass ?? "SCAN_BINDING_INCOMPLETE" } };
