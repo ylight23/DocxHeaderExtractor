@@ -15,6 +15,17 @@ Production now follows:
    incomplete protocol/transport results remain unresolved after bounded repair and do not rewrite
    selection membership.
 
+DOCX grouping receives the selected heading span, rather than treating the entire paragraph as the
+boundary target: `text` and `selectedText` contain the selected substring; `headingExtent` gives its
+UTF-16 offsets in the original `sourceText`, which is context only. Without an extent the whole
+paragraph remains selected. The grouping request hash (and cache key) includes these fields.
+PDF and scan retain their existing grouping packets. DOCX selector IDs carry `group-selected-text-v1`.
+
+Binding preserves the model's partition across languages. It does not split groups by chapter/article
+keywords. The `f024246` structural-marker override has been removed. This selected-text change fixes
+an evidence handoff, not a guarantee that model-generated partitions are semantically correct;
+009 needs a fresh measured run to assess boundary quality. No additional semantic verifier is added.
+
 `AgentGroupVerification` and the historical canary artifacts remain available for qualification
 tests and analysis. Their verdicts, boundary suggestions, cycle observations, and ACCEPT states
 must not be used to authorize or veto production groups. Strict source identity and protocol

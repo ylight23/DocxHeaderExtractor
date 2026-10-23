@@ -20,7 +20,7 @@ public sealed class DocxSelector : AgentSelector, DocxHeaderExtractor.Contracts.
         string? instruction = null, int firstSegments = 0, ExtractionOptions? extraction = null)
         : base(handlerFactory, parallelism, onModelReply, instruction ?? DocxAgentProtocol.Instruction, firstSegments) => this.extraction = extraction;
 
-    public override string SelectorId => "docx-v6:" + DocxAgentSource.Version + ":facts-in-request:instruction-" + InstructionTag + ":" + BindingPolicyVersion;
+    public override string SelectorId => "docx-v6:" + DocxAgentSource.Version + ":facts-in-request:instruction-" + InstructionTag + ":" + BindingPolicyVersion + ":group-selected-text-v1";
 
         private (string Full, DocxHeaderExtractor.Contracts.Docx.ExtractionOptions? Options, DocxHeaderExtractor.Contracts.Models.SourceDocument Document)? primed;
     private readonly object primedLock = new();

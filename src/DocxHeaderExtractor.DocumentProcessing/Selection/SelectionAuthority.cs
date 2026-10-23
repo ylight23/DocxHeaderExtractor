@@ -98,30 +98,11 @@ internal sealed class SelectionAuthority(
         {
             var parts = group.Where(alias => selected.Contains(alias) && byAlias.ContainsKey(alias) && used.Add(alias))
                 .Select(alias => byAlias[alias]).OrderBy(atom => atom.Ordinal).ToList();
-            foreach (var piece in SplitAtStructuralMarkers(parts)) result.Add(piece);
+            if (parts.Count > 0) result.Add(parts);
         }
         foreach (var atom in atoms.OrderBy(atom => atom.Ordinal).Where(atom => selected.Contains(atom.Alias) && !used.Contains(atom.Alias)))
             result.Add([atom]);
         return result.OrderBy(parts => parts[0].Ordinal).Select(parts => Decision(parts, extents)).ToArray();
-    }
-
-    /// <summary>
-    /// A structural marker (Chương, Mục, Điều, Phụ lục) starts a heading of its own: a group that holds two of them is split before the second.
-    /// The model grouped "Chương VIII" with "Điều 51" on 009 (run C); C# keeps the model's grouping only where it cannot hide a heading.
-    /// </summary>
-    static IEnumerable<List<SemanticSourceAtom>> SplitAtStructuralMarkers(List<SemanticSourceAtom> parts)
-    {
-        var current = new List<SemanticSourceAtom>();
-        foreach (var atom in parts)
-        {
-            if (current.Count > 0 && StructuralMarker.Matches(atom.Text))
-            {
-                yield return current;
-                current = [];
-            }
-            current.Add(atom);
-        }
-        if (current.Count > 0) yield return current;
     }
 
     /// <summary>Consecutive selected atoms on the same page and in the same layout block form one heading, in source order. The parser keys

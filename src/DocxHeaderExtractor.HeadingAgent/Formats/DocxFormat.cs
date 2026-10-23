@@ -62,7 +62,9 @@ internal sealed class DocxFormat : IAgentFormat
 
     public string GroupPrompt => GroupingPrompts.Docx;
 
-    public object GroupLineItem(IAgentSource source, int index)
+    public object GroupLineItem(IAgentSource source, int index) => GroupLineItem(source, index, null);
+
+    public object GroupLineItem(IAgentSource source, int index, DocxHeaderExtractor.Contracts.Models.TextOffsetSpan? headingExtent)
     {
         var docx = (DocxAgentSource)source;
         var f = docx.Facts[docx.Lines[index].Alias];
@@ -74,8 +76,15 @@ internal sealed class DocxFormat : IAgentFormat
         if (style["alignment"] is { } alignment) brief["alignment"] = alignment.DeepClone();
         if (f["numbering"]?["label"] is { } label) brief["numberLabel"] = label.DeepClone();
         if (f["numbering"]?["level"] is { } level) brief["numberLevel"] = level.DeepClone();
-        var shape = Shape(docx.Lines[index].Text);
-        return new { alias = docx.Lines[index].Alias, text = docx.Lines[index].Text, style = brief, shape, shapeCount = ShapeCountsOf(docx)[shape] };
+        var sourceText = docx.Lines[index].Text;
+        var span = headingExtent ?? new(0, sourceText.Length);
+        if (span.Start < 0 || span.End <= span.Start || span.End > sourceText.Length)
+            throw new InvalidOperationException("HEADING_EXTENT_OUTSIDE_LINE:" + docx.Lines[index].Alias);
+        var selectedText = sourceText[span.Start..span.End];
+        // Shape counts describe the source paragraph, as before; selectedText is the boundary target.
+        var shape = Shape(sourceText);
+        return new { alias = docx.Lines[index].Alias, text = selectedText, selectedText,
+            headingExtent = new { start = span.Start, end = span.End }, sourceText, style = brief, shape, shapeCount = ShapeCountsOf(docx)[shape] };
     }
 
     public object GroupContextItem(IAgentSource source, int index) =>

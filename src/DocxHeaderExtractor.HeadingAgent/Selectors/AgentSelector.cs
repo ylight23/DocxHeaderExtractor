@@ -238,7 +238,8 @@ public abstract class AgentSelector : IHeadingSelector
         seconds["selection"] = phase.Elapsed.TotalSeconds;
         phase.Restart();
         // The selected lines divided into headings: the model decides which adjacent lines form one heading, C# checks the division.
-        var grouping = AgentGrouping.Group(source, selected, model, budget, parallelism, ct, retryDelayMs, instruction, cache: groupingCache);
+        var grouping = AgentGrouping.Group(source, selected, model, budget, parallelism, ct, retryDelayMs, instruction, cache: groupingCache,
+            headingExtents: extents);
         seconds["grouping"] = phase.Elapsed.TotalSeconds;
         // Grouping output is admitted by its strict parser and C# source-order/coverage checks.
         // Semantic verifier and selection-review agents are qualification-only; neither can alter

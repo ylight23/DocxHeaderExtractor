@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Diagnostics;
 using DocxHeaderExtractor.Contracts.Agents;
+using DocxHeaderExtractor.Contracts.Models;
 using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
@@ -51,7 +52,8 @@ internal static class AgentGrouping
 
     /// <summary>Model-divided runs in document order and layout fallback for protocol failures.</summary>
     public static Result Group(IAgentSource source, IReadOnlySet<string> selected, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct, int retryDelayMs = 5000,
-        string instruction = Instruction, string unitPrefix = "GROUP", object? verificationFeedback = null, GroupingCache? cache = null)
+        string instruction = Instruction, string unitPrefix = "GROUP", object? verificationFeedback = null, GroupingCache? cache = null,
+        IReadOnlyDictionary<string, TextOffsetSpan>? headingExtents = null)
     {
         var chosen = Enumerable.Range(0, source.Lines.Count).Where(i => selected.Contains(source.Lines[i].Alias)).ToArray();
         // Maximal runs of selected lines that are adjacent in reading order.
@@ -78,10 +80,10 @@ internal static class AgentGrouping
             {
                 var started = groupClock.Elapsed.TotalSeconds;
                 // A batch whose first request was answered before is read back, not asked again (the qualification feedback is never cached).
-                var key = cache is null || verificationFeedback is not null ? null : BatchKey(source, chunks[n], n + 1, instruction);
+                var key = cache is null || verificationFeedback is not null ? null : BatchKey(source, chunks[n], n + 1, instruction, headingExtents);
                 var result = key is not null && cache!.TryLoad(source.SourceSha256, key) is { } stored && FromStored(source, chunks[n], stored) is { } reused
                     ? reused
-                    : AskChunk(source, chunks[n], n + 1, model, budget, retryDelayMs, instruction, unitPrefix, verificationFeedback);
+                    : AskChunk(source, chunks[n], n + 1, model, budget, retryDelayMs, instruction, unitPrefix, verificationFeedback, headingExtents);
                 if (key is not null && result.Failure is null && result.Division.Count == chunks[n].Length)
                     cache!.Store(source.SourceSha256, key, ToStored(source, result.Division));
                 var completed = groupClock.Elapsed.TotalSeconds;
@@ -124,8 +126,9 @@ internal static class AgentGrouping
     }
 
     /// <summary>The SHA-256 of the first request a batch sends: the same runs and lines give the same key.</summary>
-    internal static string BatchKey(IAgentSource source, Run[] chunk, int number, string instruction) =>
-        BuildRequest(Payload(source, chunk, number, instruction), new JsonArray(), source.Flavor.GroupPrompt).Sha256;
+    internal static string BatchKey(IAgentSource source, Run[] chunk, int number, string instruction,
+        IReadOnlyDictionary<string, TextOffsetSpan>? headingExtents = null) =>
+        BuildRequest(Payload(source, chunk, number, instruction, headingExtents), new JsonArray(), source.Flavor.GroupPrompt).Sha256;
 
     /// <summary>The stored division as line indices, when it covers every run of the batch with lines that still exist; otherwise null (asked again).</summary>
     static (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts, int Repairs, List<string> Evidence)? FromStored(
@@ -171,7 +174,8 @@ internal static class AgentGrouping
 
     static (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts, int Repairs,
         List<string> Evidence) AskChunk(
-        IAgentSource source, Run[] chunk, int number, AgentUnit.Model model, AgentBudget budget, int retryDelayMs, string instruction, string unitPrefix, object? verificationFeedback)
+        IAgentSource source, Run[] chunk, int number, AgentUnit.Model model, AgentBudget budget, int retryDelayMs, string instruction, string unitPrefix, object? verificationFeedback,
+        IReadOnlyDictionary<string, TextOffsetSpan>? headingExtents)
     {
         // The runs divided so far, from any turn: a correct division of one run is kept when another run of the same answer is refused.
         var accepted = new Dictionary<string, List<int[]>>(StringComparer.Ordinal);
@@ -181,7 +185,7 @@ internal static class AgentGrouping
         string Fallback(string failure) =>
             unitId + ":" + failure + ":" + string.Join(",", chunk.Where(r => !accepted.ContainsKey(r.Id)).Select(r => r.Id));
         var history = new JsonArray();
-        var payload = Payload(source, chunk, number, instruction);
+        var payload = Payload(source, chunk, number, instruction, headingExtents);
         if (verificationFeedback is not null)
         {
             var node = JsonNode.Parse(payload)!;
@@ -244,9 +248,11 @@ internal static class AgentGrouping
             ? " The runs not named here were accepted and are kept. Answer for the runs named here, each exactly once, with groups of 1 to " + MaxHeadingLines + " lines and aliases copied exactly, as exactly one JSON object of the same form."
             : " Give every run exactly once, with groups of 1 to " + MaxHeadingLines + " lines and aliases copied exactly. Send the complete answer again as exactly one JSON object.");
 
-    static string Payload(IAgentSource source, Run[] chunk, int number, string instruction)
+    static string Payload(IAgentSource source, Run[] chunk, int number, string instruction,
+        IReadOnlyDictionary<string, TextOffsetSpan>? headingExtents)
     {
-        object Line(int i) => source.Flavor.GroupLineItem(source, i);
+        object Line(int i) => source.Flavor.GroupLineItem(source, i,
+            headingExtents is not null && headingExtents.TryGetValue(source.Lines[i].Alias, out var extent) ? extent : null);
         object? Near(int i) => i < 0 || i >= source.Lines.Count ? null : source.Flavor.GroupContextItem(source, i);
         var payload = new Dictionary<string, object?>
         {

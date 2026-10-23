@@ -1,4 +1,5 @@
 using System.Text.Json.Nodes;
+using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 
@@ -44,6 +45,8 @@ internal interface IAgentFormat
     string GroupPrompt { get; }
     /// <summary>A line of a run in the grouping request.</summary>
     object GroupLineItem(IAgentSource source, int index);
+    /// <summary>A selected line with its already validated heading extent. Formats without selected-text grouping retain their existing packet.</summary>
+    object GroupLineItem(IAgentSource source, int index, TextOffsetSpan? headingExtent) => GroupLineItem(source, index);
     /// <summary>The line next to a run, shown only as context (selected false).</summary>
     object GroupContextItem(IAgentSource source, int index);
     /// <summary>The measurements the placement pass gets: the document's style table and the style of every line that has one. Facts only.</summary>
