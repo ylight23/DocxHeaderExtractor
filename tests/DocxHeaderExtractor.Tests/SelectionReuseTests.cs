@@ -89,8 +89,8 @@ public sealed class SelectionReuseTests : IDisposable
         var cache = new SelectionCache(dir);
         Run(Scripted(() => calls++), cache);
 
-        Assert.NotEqual(Instruction, InstructionD412);
-        Run(Scripted(() => calls++), cache, InstructionD412);
+        Assert.NotEqual(Instruction, D412Prompt.Text);
+        Run(Scripted(() => calls++), cache, D412Prompt.Text);
 
         Assert.Equal(2 * Units, calls);
     }

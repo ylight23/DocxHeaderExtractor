@@ -37,7 +37,7 @@ public sealed class AgentWireGoldenTests
     {
         ["pdf.system"] = Sha(AgentProtocol.SystemPrompt),
         ["pdf.instruction"] = Sha(AgentProtocol.Instruction),
-        ["pdf.instructionD412"] = Sha(AgentProtocol.InstructionD412),
+        ["pdf.instructionD412"] = Sha(D412Prompt.Text),
         ["pdf.instructionStructuralV1"] = Sha(AgentProtocol.InstructionStructuralV1),
         ["pdf.instructionFormattingEvidenceV2"] = Sha(AgentProtocol.InstructionFormattingEvidenceV2),
         ["docx.system"] = Sha(DocxAgentProtocol.SystemPrompt),

@@ -111,7 +111,7 @@ public sealed class PdfLaneTests
         var selector = new PdfSelector();
         // The frozen D4.12 instruction is kept for parity; production sends the owner's structural-heading instruction (2026-10-14),
         // which replaced the earlier "main headings by meaning" instruction after the three-document comparison.
-        Assert.Equal("2d057c62aaf69297afa46f3dec8d8b88720893491c5620ecfcc51562e9e03884", Sha256Hex(AgentProtocol.InstructionD412));
+        Assert.Equal("2d057c62aaf69297afa46f3dec8d8b88720893491c5620ecfcc51562e9e03884", Sha256Hex(D412Prompt.Text));
         Assert.Equal(AgentProtocol.InstructionStructuralV1, AgentProtocol.Instruction);
         Assert.Equal("c5c5b6939b99d4cb907a59b2da472d14e1ffc7e35067c1ae48ca0f0ccabdb793", Sha256Hex(AgentProtocol.Instruction));
         Assert.Equal("p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:facts-in-request:instruction-c5c5b693:" + AgentSelector.BindingPolicyVersion, selector.SelectorId);

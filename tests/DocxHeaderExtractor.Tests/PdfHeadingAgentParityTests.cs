@@ -113,7 +113,7 @@ public sealed class PdfHeadingAgentParityTests
         Assert.Equal(PlanPromptSha256, AgentProtocol.Sha(QualifiedPrompt));
         Assert.NotEqual(QualifiedPrompt, AgentProtocol.SystemPrompt);
         Assert.Equal(ProductionPromptSha256, AgentProtocol.Sha(AgentProtocol.SystemPrompt));
-        Assert.Equal(Text(prompt["instructionD412"]), AgentProtocol.InstructionD412);
+        Assert.Equal(Text(prompt["instructionD412"]), D412Prompt.Text);
         Assert.Equal(Text(prompt["toolDefinitions"]), AgentTools.Definitions().ToJsonString());
         Assert.Equal(PlanToolDefinitionsSha256, AgentTools.DefinitionsSha256());
     }
@@ -129,7 +129,7 @@ public sealed class PdfHeadingAgentParityTests
         for (int n = 0; n < p.Cores.Count; n++)
         {
             var (decide, shown) = p.Scope(n);
-            var mine = AgentProtocol.Build(AgentProtocol.Payload(p.SourceSha256, AgentSource.SegmentId(n), decide, shown.Select(i => p.Lines[i]).ToArray(), styles, AgentProtocol.InstructionD412, targetFacts: p.Flavor.PayloadFacts(p, decide)),
+            var mine = AgentProtocol.Build(AgentProtocol.Payload(p.SourceSha256, AgentSource.SegmentId(n), decide, shown.Select(i => p.Lines[i]).ToArray(), styles, D412Prompt.Text, targetFacts: p.Flavor.PayloadFacts(p, decide)),
                 new JsonArray(), "auto");
             var theirs = Text(recorded[n]!["body"]);
             Assert.Equal(Text(recorded[n]!["sha256"]), AgentProtocol.Sha(theirs));
@@ -259,7 +259,7 @@ public sealed class PdfHeadingAgentParityTests
             var step = script(++myPosts, PayloadOf(req.Body), req.Body);
             if (step.Throw is not null) throw new ReplyFailure(step.Throw);
             return new ModelTurn(step.Content, step.Calls.Select(c => new ToolCall(c.Id, c.Name, c.Args)).ToArray(), step.Finish);
-        }, new AgentBudget(1000, 100), retryDelayMs: 0, instruction: AgentProtocol.InstructionD412);
+        }, new AgentBudget(1000, 100), retryDelayMs: 0, instruction: D412Prompt.Text);
 
         if (scenario == "answer-first-then-repair")
         {

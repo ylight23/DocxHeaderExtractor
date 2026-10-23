@@ -37,8 +37,7 @@ public sealed class AgentModelRateLimitTests
         var failure = Assert.Throws<ReplyFailure>(() => model.Turn("U", 1, Request()));
 
         Assert.Equal("TRANSPORT:RATE_LIMITED_NO_RETRY", failure.Code);
-        Assert.Equal(3, handler.Posts);
-        Assert.Equal(2, model.RateLimitWaits);
+        Assert.Equal(3, handler.Posts);   // the first send and two sends after a wait
     }
 
     [Fact]
@@ -50,6 +49,5 @@ public sealed class AgentModelRateLimitTests
         Assert.Throws<ReplyFailure>(() => model.Turn("U", 1, Request()));
 
         Assert.Equal(1, handler.Posts);
-        Assert.Equal(0, model.RateLimitWaits);
     }
 }

@@ -14,13 +14,6 @@ internal static partial class AgentProtocol
     /// (<see cref="InstructionFormattingEvidenceV2"/>) is a candidate to compare, not the default, until an A/B run shows its effect.</summary>
     public const string Instruction = InstructionStructuralV1;
 
-    /// <summary>The user instruction of the frozen D4.12 method (mainrep2), verbatim. Kept for the parity tests against the qualified code.</summary>
-    public const string InstructionD412 =
-        "Extract the main headings of the document: the headings that carry its structure (its outline).\n" +
-        "The result is a list of the document's main headings in which each heading appears once: for each heading, select the lines where the heading itself stands (all lines of a heading that runs over several lines), at the start of the part it names, as its representative. A line that only lists, repeats or points to a heading that stands elsewhere, for example in a table of contents, is not that heading's representative and is not selected.\n" +
-        "When you are unsure about how a line relates to other lines, use the tools to check that relationship.\n" +
-        "Do not guess: if the evidence does not settle a line, say that it is unresolved instead of choosing.";
-
     /// <summary>
     /// The owner's instruction for Task A (approved 2026-10-14; production sends it as <see cref="Instruction"/>): every structural heading at every level, decided
     /// by its function at its own location (it names, introduces or divides a unit of content), not by level, length, numbering or the ability to

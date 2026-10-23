@@ -79,7 +79,6 @@ internal abstract class AgentToolHost : IAgentTools
 
     /// <summary>Every alias a successful tool result showed, in any part of the result.</summary>
     public IReadOnlySet<string> ObservedAliases => observed;
-    public int CacheHits => ledger.Count(c => c.CacheOf is not null);
     public int PositionOf(string alias) => index[alias];
     public bool FactsWereRead => requestFacts || ToolFactsRead;
     public bool ToolFactsRead => ledger.Any(c => c.Tool == RequiredEvidenceTool && c.Status == "OK");

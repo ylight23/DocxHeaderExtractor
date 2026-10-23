@@ -41,8 +41,6 @@ internal sealed class AgentModel : IDisposable
     }
 
     /// <summary>How many 429 answers were waited out and sent again.</summary>
-    public int RateLimitWaits => rateLimitWaits;
-    int rateLimitWaits;
 
     public int PromptTokens { get; private set; }
     public int CompletionTokens { get; private set; }
@@ -72,7 +70,6 @@ internal sealed class AgentModel : IDisposable
             var wait = rateLimitBaseDelayMs * (1 << k);
             wait = wait / 2 + Random.Shared.Next(wait / 2 + 1);
             if (cancellationToken.WaitHandle.WaitOne(wait)) cancellationToken.ThrowIfCancellationRequested();
-            Interlocked.Increment(ref rateLimitWaits);
             (outcome, body) = Send(request);
         }
         if (outcome != "HTTP_OK")

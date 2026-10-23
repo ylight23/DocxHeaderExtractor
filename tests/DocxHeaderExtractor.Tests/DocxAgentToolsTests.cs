@@ -182,7 +182,6 @@ public sealed class DocxAgentToolsTests : IDisposable
         var repeat = tools.Execute("E3.01", DocxAgentTools.SourceContext, again);
         Assert.Equal("E2.01", Body(repeat).GetProperty("cache").GetProperty("sameResultAs").GetString());
         Assert.Equal(Body(first).GetProperty("result").ToString(), Body(repeat).GetProperty("result").ToString());
-        Assert.Equal(1, tools.CacheHits);
 
         var rejected = tools.Reject("E4.01", DocxAgentTools.Compare, "{}", "PER_TURN_CALL_CAP_EXCEEDED");
         Assert.Equal("REJECTED", rejected.Status);
