@@ -1,6 +1,7 @@
 # Đầu ra cho bài toán mới (đề xuất, chưa triển khai)
 
-Trạng thái: **đề xuất**, 2026-10-23. Không có thay đổi code nào theo tài liệu này. Mục đích: khi thêm một bài toán
+Trạng thái: 2026-10-23, **một phần đã làm**. Bài toán mới đã có khung chung (`Problems/ProblemRunner`): phong bì `RunEnvelope` và
+`ProblemRun<TOutput>`, đầu ra riêng cho từng bài toán (lựa chọn B dưới đây). Đầu ra của heading (`DocumentOutline`) chưa chuyển sang phong bì này. Mục đích: khi thêm một bài toán
 AI không phải trích heading (bảng, phản biện văn bản), biết phần nào của đầu ra dùng lại được và phần nào phải tách.
 
 ## Hiện trạng: phần nào là chung, phần nào gắn với heading

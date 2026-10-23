@@ -9,6 +9,7 @@ using DocxHeaderExtractor.Agents.Transport;
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.Contracts.Provider;
 
 namespace DocxHeaderExtractor.HeadingAgent.Placement;
 

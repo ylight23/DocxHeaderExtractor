@@ -2,6 +2,7 @@ using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Agents;
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.HeadingAgent.Placement;
+using DocxHeaderExtractor.Contracts.Provider;
 
 namespace DocxHeaderExtractor.Tests;
 

@@ -7,6 +7,7 @@ using DocxHeaderExtractor.DocumentProcessing.Hierarchy;
 using DocxHeaderExtractor.DocumentProcessing.Placement;
 using DocxHeaderExtractor.HeadingAgent.Placement;
 using System.Net;
+using DocxHeaderExtractor.Contracts.Provider;
 
 namespace DocxHeaderExtractor.Tests;
 

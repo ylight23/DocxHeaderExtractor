@@ -1,4 +1,5 @@
 using DocxHeaderExtractor.Contracts.Models;
+using DocxHeaderExtractor.Contracts.Provider;
 
 namespace DocxHeaderExtractor.Contracts.Agents;
 
@@ -17,10 +18,6 @@ public interface IHeadingPlacer
 
     Task<PlacementProposal> ProposeAsync(PlacementRequest request, ModelAccess access, CancellationToken ct);
 }
-
-/// <summary>What an agent needs to call the model in one run: the provider key of the authorized route, and a check that throws once the
-/// lane that started the run has ended (its result would no longer be used).</summary>
-public sealed record ModelAccess(string ApiKey, Action EnsureActive);
 
 /// <summary>What the placer reads.</summary>
 /// <param name="Ordered">The settled headings in document order. A heading that already carries a parent relation keeps it.</param>

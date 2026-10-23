@@ -33,19 +33,19 @@ Kết luận: phần quyết định (`SelectionAuthority`, `DecisionBinder`, pl
 
 ## Cần viết mới
 
-1. **Vai trò agent:** `AgentRoles.EntityExtractor = "entity.extractor"`, và interface `IEntityExtractor` trong `Contracts/Agents`.
-2. **Agent:** project riêng `EntityAgent` (theo mục 3 của `extending.md`). Nó chỉ phụ thuộc `Agents` và `Sources`, như `HeadingAgent`.
+Khung chung đã có (`Problems/ProblemRunner`, xem mục 3 của `extending.md`), nên bài toán này chỉ cần:
+
+1. **Agent = `IProposer<EntityProposal>`:** project riêng `EntityAgent`, chỉ phụ thuộc `Agents` và `Contracts`.
    Gồm: prompt, định nghĩa các loại thực thể, tool (lấy đơn vị theo id, lấy ngữ cảnh lân cận), và `IConversationTask` cho một khối.
-3. **Kiểm tra C# (`DocumentProcessing/Entities/`):**
+2. **Kiểm tra = `IChecker<EntityProposal, EntityOutput>`:**
    - span `[Start, End)` hợp lệ với `Text` của đơn vị được trỏ tới (`IsValidFor`);
    - loại thuộc danh sách đã định;
    - hai thực thể cùng loại không chồng lấn span, hoặc có quy tắc rõ về chồng lấn;
    - mọi thực thể bị loại được ghi vào audit, không lặng lẽ bỏ.
    Agent đề xuất, C# quyết định nhận hay loại. Đây là cùng nguyên tắc với heading.
-4. **Lane (`DocumentProcessing/Lanes/Entities/`):** nguồn → chia khối → `LaneRun.CompleteAsync` → chạy các task → kiểm tra → output.
-   Không gọi `LaneHarness.DecideAndAssembleAsync`, vì bước đó dành cho heading.
-5. **Output:** `EntityOutput` (danh sách thực thể + audit), bọc trong envelope chung. Không đụng `DocumentOutline`.
-6. **Nối vào host:** `HeadingAgentSetup` không đổi. Một `EntityAgentSetup` mới trong `App` lắp agent, và `DocumentRunner` cần một đường đi mới cho thực thể.
+3. **Output:** `EntityOutput` (thực thể giữ lại + thực thể bị loại kèm lý do). `ProblemRunner` bọc nó trong `RunEnvelope`.
+4. **Nối vào host:** một lệnh CLI hoặc endpoint Web gọi `ProblemRunner.RunAsync(..., "entities", proposer, checker)`.
+   Không có lane, harness hay đường đi riêng nào phải viết.
 
 ## Rủi ro và ghi chú
 

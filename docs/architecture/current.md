@@ -14,11 +14,11 @@ Cập nhật 2026-10-23. Đây là trạng thái đang chạy của code; lịch
 
 | Project | Vai trò | Phụ thuộc |
 |---|---|---|
-| `Contracts` | Kiểu dùng chung: model nguồn và cấu trúc; `Agents/` (mọi thứ agent nhận và trả: `IHeadingSelector`, `IHeadingPlacer`, `HeadingAgents`); `Provider/` (`IModelProvider`, `ModelRoute`: model và khóa của một lần chạy); `ChunkingOptions` | — |
+| `Contracts` | Kiểu dùng chung: model nguồn và cấu trúc; `Agents/` (mọi thứ agent nhận và trả: `IHeadingSelector`, `IHeadingPlacer`, `HeadingAgents`); `Provider/` (`IModelProvider`, `ModelRoute`, `ModelAccess`: model và khóa của một lần chạy); `Problems/` (`IProposer`, `IChecker`, `ProblemSource`: khung chung của mọi bài toán); `ChunkingOptions` | — |
 | `Sources` | Đọc nguồn OOXML, PDF và scan; snapshot nguồn, alias, cache | `Contracts` |
 | `Agents` | Phần dùng chung của mọi agent, không biết tài liệu hay heading: route OpenRouter đã qualify, gửi request, đọc phản hồi, ngân sách, SSE, audit usage; vòng hội thoại có tool (`Conversation/ToolConversation`) | — |
 | `HeadingAgent` | Agent V6: selector PDF, DOCX và scan, agent đặt cha (`HeadingPlacer`); prompt, tool, bài toán chọn heading của một đoạn (`SelectionTask`, chạy trên `ToolConversation`) | `Agents`, `Sources` |
-| `DocumentProcessing` | Pipeline: nhận file, các lane, harness, các bước kiểm tra và dựng cấu trúc, đầu ra, writeback | `Contracts`, `Sources` |
+| `DocumentProcessing` | Pipeline: nhận file, các lane, harness, các bước kiểm tra và dựng cấu trúc, đầu ra, writeback; `Problems/ProblemRunner` chạy mọi bài toán khác heading | `Contracts`, `Sources` |
 | `Infrastructure` | Lưu lượt chạy và telemetry của Web, đọc file đầu vào | `Contracts`, `Sources` |
 | `App` | `HeadingAgentSetup`: nơi duy nhất lắp agent mặc định; `OpenRouterProvider`: model route của production; `DocumentRunner`: chạy pipeline, chuyển `.doc`, ghi outline | `HeadingAgent`, `DocumentProcessing` |
 | `Cli` | Lệnh `dhx`; gọi `DocumentRunner` trực tiếp | `App` |

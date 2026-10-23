@@ -3,6 +3,7 @@ using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Hierarchy;
+using DocxHeaderExtractor.Contracts.Provider;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Placement;
 

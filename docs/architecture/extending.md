@@ -72,13 +72,33 @@ Ví dụ: một agent rà lại cấp bậc sau khi đặt cha.
 
 ## 3. Thêm một bài toán mới (ngoài heading)
 
-Ví dụ: trích bảng, phản biện văn bản.
+Ví dụ: trích thực thể, trích bảng, phản biện văn bản.
 
-- Tạo record agent riêng, cùng mẫu với `HeadingAgents` (ví dụ `TableAgents`), và hàm lắp riêng trong `App`
-  (ví dụ `TableAgentSetup`).
-- Đặt agent vào một project riêng (ví dụ `TableAgent`), dùng `Agents` để gọi model: route, ngân sách, đọc
+Mọi bài toán chạy qua cùng một khung, `DocumentProcessing/Problems/ProblemRunner`:
+đọc nguồn → agent đề xuất (dưới lease và deadline của `LaneRun`) → C# kiểm tra → đầu ra trong phong bì chung.
+Bài toán chỉ viết hai thứ, cả hai khai báo trong `Contracts/Problems/`:
+
+| Viết | Interface | Việc |
+|---|---|---|
+| Agent | `IProposer<TProposal>` | Đọc `ProblemSource` (identity + các đơn vị nguồn có text, neo và span) và đề xuất. Gọi model qua `ModelAccess`. |
+| Kiểm tra | `IChecker<TProposal, TOutput>` | Giữ phần đề xuất mà nguồn ủng hộ, ghi lý do cho phần bị loại. Không gọi model. |
+
+```csharp
+var run = await ProblemRunner.RunAsync(path, options, OpenRouterProvider.FromEnvironment(), "entities",
+    new EntityProposer(), new EntityChecker());
+// run.Envelope: tài liệu, bài toán, contract của agent, model, có gửi dữ liệu ra ngoài không, thời gian
+// run.Output: đầu ra của bài toán; null khi tắt model
+```
+
+Khung tự lo: đọc DOCX/PDF thành cùng một dạng nguồn, lấy model route và từ chối khi thiếu khóa, lease và deadline,
+không gọi agent khi tắt model. Bài toán không mở file và không biết định dạng. Bản scan chưa đọc được qua khung,
+vì chữ của scan hiện chỉ được chép trong lúc chọn heading.
+
+Ví dụ chạy được: `tests/DocxHeaderExtractor.Tests/ProblemRunnerTests.cs` (một bài toán trích span nhỏ, agent là script).
+
+- Đặt agent vào một project riêng (ví dụ `EntityAgent`), dùng `Agents` để gọi model: route, ngân sách, đọc
   phản hồi đã có sẵn.
-- Pipeline của bài toán đi theo cùng thứ tự: nhận file → lane → harness → các bước C# kiểm tra → đầu ra.
+- Checker đặt trong `DocumentProcessing/<Bài toán>/` hoặc cạnh agent; nó chỉ cần `Contracts`.
 
 Bài toán cần hội thoại có tool thì không viết lại vòng lặp: cài đặt `IConversationTask<TOutcome>`
 (`Agents/Conversation/`) và gọi `ToolConversation.Run`. Vòng lặp lo lượt, retry, ngân sách, chạy tool và lượt sửa

@@ -4,6 +4,7 @@ using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
 using DocxHeaderExtractor.DocumentProcessing.Structure;
 using DocxHeaderExtractor.Sources.Snapshot;
+using DocxHeaderExtractor.Contracts.Provider;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Selection;
 
