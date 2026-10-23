@@ -49,10 +49,10 @@ public sealed class ScanSegmentPreflight(string storeRoot)
             {
                 var page = pages[k];
                 using var grey = Cv2.ImDecode(page.Bytes, ImreadModes.Grayscale);
-                var (image, _) = ScanLineSegmenter.RemoveStamp(grey);
+                var (image, _, stamp) = ScanLineSegmenter.RemoveStamp(grey);
                 using (image)
                 {
-                    var boxes = ScanLineSegmenter.Segment(image);
+                    var boxes = ScanLineSegmenter.Segment(image, stamp);
                     var lines = boxes.Select((box, i) => new OcrLine($"P{page.Page:000}-{ScanOcrPreflight.OriginalView}-L{i + 1:000}", "", box, 0, 0, false, [])).ToArray();
                     var raw = JsonSerializer.Serialize(boxes, Json);
                     viewPages[k] = new OcrPage(page.Page, page.Sha256, page.Width, page.Height, TesseractOcr.Sha256(raw), lines);

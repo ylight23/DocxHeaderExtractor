@@ -10,7 +10,7 @@ namespace DocxHeaderExtractor.Sources.Scan;
 /// </summary>
 public static class ScanLineSegmenter
 {
-    public const string Version = "SCAN_LINE_SEGMENT_V1";
+    public const string Version = "SCAN_LINE_SEGMENT_V2";
 
     /// <summary>The smallest line a band may be (pixels), and the share of the typical line height a band may stand above before it is split.</summary>
     public const int MinLineHeight = 8;
@@ -63,7 +63,10 @@ public static class ScanLineSegmenter
 
     /// <summary>The coarse search runs at a quarter of the page and the fine one at half, inside a window around the coarse circle: the same line boxes as
     /// the half-size search on all 133 stored pages of four documents, at a lower cost.</summary>
-    public static (Mat Image, string Note) RemoveStamp(Mat grey, int searchDivisor = 2, int coarseDivisor = 4)
+    /// <summary>The circle of an accepted stamp, in the page's pixels.</summary>
+    public sealed record StampCircle(double Cx, double Cy, double R);
+
+    public static (Mat Image, string Note, StampCircle? Stamp) RemoveStamp(Mat grey, int searchDivisor = 2, int coarseDivisor = 4)
     {
         // The circle is searched on the page at half size (the Hough search on the full page took seconds a page); it only seeds the fit below,
         // which runs on the full page's dark pixels, and the acceptance test is unchanged.
@@ -75,7 +78,7 @@ public static class ScanLineSegmenter
             using var blurred = new Mat();
             Cv2.MedianBlur(small, blurred, 3);
             var circles = Cv2.HoughCircles(blurred, HoughModes.Gradient, 1, 500 / searchDivisor, 100, HalfHoughVotes, 90 / searchDivisor, 220 / searchDivisor);
-            if (circles.Length == 0) return (grey.Clone(), "no circle");
+            if (circles.Length == 0) return (grey.Clone(), "no circle", null);
             seed = (searchDivisor * (double)circles[0].Center.X, searchDivisor * (double)circles[0].Center.Y, searchDivisor * (double)circles[0].Radius);
         }
         var (cx, cy, r) = seed.Value;
@@ -95,14 +98,14 @@ public static class ScanLineSegmenter
             if (AnyDark(grey, x, y)) hits++;
         }
         var share = hits / 360.0;
-        if (share < 0.8) return (grey.Clone(), $"circle rejected (share {share:0.00})");
+        if (share < 0.8) return (grey.Clone(), $"circle rejected (share {share:0.00})", null);
         var image = grey.Clone();
         foreach (var p in dark)
         {
             var d = Math.Sqrt((p.X - cx) * (p.X - cx) + (p.Y - cy) * (p.Y - cy));
             if (Math.Abs(d - r) <= 9) image.Set(p.Y, p.X, (byte)255);
         }
-        return (image, $"ring removed at ({cx:0},{cy:0}) r={r:0.0} share {share:0.00}");
+        return (image, $"ring removed at ({cx:0},{cy:0}) r={r:0.0} share {share:0.00}", new StampCircle(cx, cy, r));
     }
 
     /// <summary>The pixels darker than 128, row by row (the order of a scan from the top left).</summary>
@@ -156,7 +159,10 @@ public static class ScanLineSegmenter
     }
 
     /// <summary>The lines of a page image (grey), top to bottom, reading order within a row.</summary>
-    public static IReadOnlyList<PixelBox> Segment(Mat grey)
+    /// <param name="stamp">The stamp's circle, when one was removed. The ink inside it is the emblem and the stamp's lettering, which lies in every
+    /// row of the block; it is left out of the row profile that finds the lines, so the text the stamp overlaps is still found. The columns
+    /// of a line still come from all its ink, so the crop keeps the text under the stamp.</param>
+    public static IReadOnlyList<PixelBox> Segment(Mat grey, StampCircle? stamp = null)
     {
         using var bw = new Mat();
         Cv2.Threshold(grey, bw, 0, 255, ThresholdTypes.BinaryInv | ThresholdTypes.Otsu);
@@ -174,8 +180,11 @@ public static class ScanLineSegmenter
             bw.SubMat(y, y + h, x, x + w).CopyTo(mask.SubMat(y, y + h, x, x + w));
         }
         var rows = bw.Height;
+        using var rowMask = mask.Clone();
+        // The stamp's disc, a little wider than its ring, leaves the row profile; the ring itself was already removed from the image.
+        if (stamp is { } disc) Cv2.Circle(rowMask, new Point((int)Math.Round(disc.Cx), (int)Math.Round(disc.Cy)), (int)Math.Round(disc.R + 8), Scalar.All(0), -1);
         var counts = new double[rows];
-        for (var y = 0; y < rows; y++) counts[y] = Cv2.CountNonZero(mask.Row(y));
+        for (var y = 0; y < rows; y++) counts[y] = Cv2.CountNonZero(rowMask.Row(y));
         var prof = Smooth(counts);
         var nonzero = prof.Where(v => v > 0).OrderBy(v => v).ToArray();
         var threshold = nonzero.Length > 0 ? InkRowShare * Median(nonzero) : 0;
