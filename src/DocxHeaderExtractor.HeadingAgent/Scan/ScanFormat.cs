@@ -1,5 +1,6 @@
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Agents;
+using DocxHeaderExtractor.Contracts.Models;
 using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Grouping;
@@ -30,17 +31,24 @@ internal sealed class ScanFormat : IAgentFormat
 
     public string GroupPrompt => GroupingPrompts.Scan;
 
-    public object GroupLineItem(IAgentSource source, int index)
+    public object GroupLineItem(IAgentSource source, int index) => GroupLineItem(source, index, null, null);
+    public object GroupLineItem(IAgentSource source, int index, TextOffsetSpan? headingExtent) => GroupLineItem(source, index, headingExtent, null);
+    public object GroupLineItem(IAgentSource source, int index, TextOffsetSpan? headingExtent, string? readingViewId)
     {
         var scan = (ScanAgentSource)source;
         var l = scan.ScanLines[index];
+        var view = readingViewId ?? scan.DefaultReading(l.Alias);
+        if (!scan.Readings(l.Alias).TryGetValue(view, out var sourceText))
+            throw new InvalidOperationException("SCAN_READING_UNKNOWN:" + l.Alias);
+        var (span, selectedText) = SelectedHeadingText.Resolve(l.Alias, sourceText, headingExtent);
         // The space above is taken from the line above on the same page; the first line of a page has none.
         int? gap = index > 0 && scan.ScanLines[index - 1].Page == l.Page ? l.Primary.Box.Top - scan.ScanLines[index - 1].Primary.Box.Bottom : null;
         // The same position measures the selection gets: its margins and offset from centre, from its own box and the page width.
         int? right = l.PageWidth > 0 ? l.PageWidth - l.Primary.Box.Right : null;
         return new
         {
-            alias = l.Alias, page = l.Page, text = source.Lines[index].Text,
+            alias = l.Alias, page = l.Page, text = selectedText, selectedText,
+            headingExtent = new { start = span.Start, end = span.End }, readingViewId = view, sourceText,
             layout = new
             {
                 left = l.Primary.Box.Left, top = l.Primary.Box.Top, width = l.Primary.Box.Width, height = l.Primary.Box.Height, unit = "page image pixels",

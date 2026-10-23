@@ -2,6 +2,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using DocxHeaderExtractor.Contracts.Agents;
+using DocxHeaderExtractor.Contracts.Models;
 using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Tools;
@@ -16,9 +17,9 @@ internal sealed class PdfFormat : IAgentFormat
     public static readonly PdfFormat Instance = new();
     static readonly JsonSerializerOptions Compact = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
-    public string SystemPrompt => AgentProtocol.SystemPrompt;
-    public string AnswerVersion => AgentProtocol.SelectObjectsVersion;
-    public bool HeadingExtents => false;
+    public string SystemPrompt => PdfAgentProtocol.SystemPrompt;
+    public string AnswerVersion => AgentProtocol.SelectExtentVersion;
+    public bool HeadingExtents => true;
     public bool RequiresCoreFacts => false;
     public JsonArray? PayloadFacts(IAgentSource source, IReadOnlyList<string> targets) => AgentRequestFacts.Read(source, targets);
     public IEnumerable<string> FactReferences(JsonNode facts) =>
@@ -37,9 +38,16 @@ internal sealed class PdfFormat : IAgentFormat
                 .ToDictionary(kv => kv.Key, kv => kv.Value["style"]!.ToJsonString(Compact), StringComparer.Ordinal));
     }
 
-    public string GroupPrompt => GroupingPrompts.Shared;
-    public object GroupLineItem(IAgentSource source, int index) =>
-        new { alias = source.Lines[index].Alias, page = source.Lines[index].Page ?? 0, text = source.Lines[index].Text, layout = Evidence.CompactLayout(source.Lines[index].Bbox, source.Lines[index].Typography) };
+    public string GroupPrompt => GroupingPrompts.Pdf;
+    public object GroupLineItem(IAgentSource source, int index) => GroupLineItem(source, index, null);
+    public object GroupLineItem(IAgentSource source, int index, TextOffsetSpan? headingExtent)
+    {
+        var line = source.Lines[index];
+        var (span, selectedText) = SelectedHeadingText.Resolve(line.Alias, line.Text, headingExtent);
+        return new { alias = line.Alias, page = line.Page ?? 0, text = selectedText, selectedText,
+            headingExtent = new { start = span.Start, end = span.End }, sourceText = line.Text,
+            layout = Evidence.CompactLayout(line.Bbox, line.Typography) };
+    }
     public object GroupContextItem(IAgentSource source, int index) =>
         new { alias = source.Lines[index].Alias, page = source.Lines[index].Page ?? 0, text = AgentGrouping.Clip(source.Lines[index].Text), selected = false };
     public List<int[]> FallbackDivision(IAgentSource source, int[] lines) => AgentGrouping.LayoutRule((AgentSource)source, lines);

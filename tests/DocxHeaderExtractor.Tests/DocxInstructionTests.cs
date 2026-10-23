@@ -41,11 +41,15 @@ public sealed class DocxInstructionTests
     }
 
     [Fact]
-    public void Only_the_docx_answer_format_carries_heading_extents()
+    public void Native_source_formats_carry_heading_extents_and_the_legacy_protocol_stays_available()
     {
         Assert.Contains(AgentProtocol.SelectExtentVersion, DocxAgentProtocol.SystemPrompt, StringComparison.Ordinal);
         Assert.Contains("\"headingExtent\":{\"start\":0", DocxAgentProtocol.SystemPrompt, StringComparison.Ordinal);
         Assert.Contains("A SELECT may also carry headingExtent", DocxAgentProtocol.SystemPrompt, StringComparison.Ordinal);
+        Assert.Contains(AgentProtocol.SelectExtentVersion, PdfAgentProtocol.SystemPrompt, StringComparison.Ordinal);
+        Assert.Contains("headingExtent", PdfAgentProtocol.SystemPrompt, StringComparison.Ordinal);
+        Assert.Equal(PdfAgentProtocol.Instruction, PromptCatalog.Pdf.Instruction);
+        Assert.Equal(PdfAgentProtocol.SystemPrompt, PromptCatalog.Pdf.SystemPrompt);
         Assert.DoesNotContain("headingExtent", AgentProtocol.SystemPrompt, StringComparison.Ordinal);
         Assert.Contains(AgentProtocol.SelectObjectsVersion + "\"", AgentProtocol.SystemPrompt, StringComparison.Ordinal);
     }
@@ -53,7 +57,7 @@ public sealed class DocxInstructionTests
     [Fact]
     public void The_prompt_view_shows_the_grouping_prompt_of_both_routes()
     {
-        Assert.Equal(GroupingPrompts.Shared, PromptCatalog.Pdf.GroupPrompt);
+        Assert.Equal(GroupingPrompts.Pdf, PromptCatalog.Pdf.GroupPrompt);
         Assert.Equal(GroupingPrompts.Docx, PromptCatalog.Docx.GroupPrompt);
     }
 }

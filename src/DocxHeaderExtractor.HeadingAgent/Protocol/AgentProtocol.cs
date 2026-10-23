@@ -25,7 +25,7 @@ internal static partial class AgentProtocol
     public const int VisibleResponseCapBytes = 16384;
     public const string SelectObjectsVersion = "P7_F1_V6_SELECT_OBJECTS_V1";
     /// <summary>The answer format of a flavor that lets a SELECT carry headingExtent: the exact part of the target's text that is the heading
-    /// (see <see cref="DocxAgentProtocol"/>). The PDF flavor keeps <see cref="SelectObjectsVersion"/>, so its prompt and parser are unchanged.</summary>
+    /// (see <see cref="DocxAgentProtocol"/> and <see cref="PdfAgentProtocol"/>). The legacy objects protocol remains available for historical comparisons.</summary>
     public const string SelectExtentVersion = "P7_F1_V6_SELECT_OBJECTS_EXTENT_V1";
     /// <summary>The answer format of a scanned source: a SELECT may also carry readingViewId, the reading of the line it takes (one of the readings
     /// the evidence holds for that line), and its headingExtent is measured on that reading.</summary>

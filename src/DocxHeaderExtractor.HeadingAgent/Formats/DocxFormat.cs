@@ -77,10 +77,7 @@ internal sealed class DocxFormat : IAgentFormat
         if (f["numbering"]?["label"] is { } label) brief["numberLabel"] = label.DeepClone();
         if (f["numbering"]?["level"] is { } level) brief["numberLevel"] = level.DeepClone();
         var sourceText = docx.Lines[index].Text;
-        var span = headingExtent ?? new(0, sourceText.Length);
-        if (span.Start < 0 || span.End <= span.Start || span.End > sourceText.Length)
-            throw new InvalidOperationException("HEADING_EXTENT_OUTSIDE_LINE:" + docx.Lines[index].Alias);
-        var selectedText = sourceText[span.Start..span.End];
+        var (span, selectedText) = SelectedHeadingText.Resolve(docx.Lines[index].Alias, sourceText, headingExtent);
         // Shape counts describe the source paragraph, as before; selectedText is the boundary target.
         var shape = Shape(sourceText);
         return new { alias = docx.Lines[index].Alias, text = selectedText, selectedText,

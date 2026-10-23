@@ -69,9 +69,9 @@ public sealed class DocxAgentFlavorTests : IDisposable
         Assert.Equal(DocxAgentProtocol.SystemPrompt, body["messages"]![0]!["content"]![0]!["text"]!.GetValue<string>());
         Assert.Equal(7, body["tools"]!.AsArray().Count);
         Assert.Equal(DocxAgentTools.Definitions().ToJsonString(), body["tools"]!.ToJsonString());
-        // The PDF request is what it was: its own prompt and its eight tools.
+        // PDF has its own extent-enabled prompt and retains its eight tools.
         var pdf = JsonNode.Parse(AgentProtocol.Build(payload, new JsonArray(), "auto").Body)!;
-        Assert.Equal(AgentProtocol.SystemPrompt, pdf["messages"]![0]!["content"]![0]!["text"]!.GetValue<string>());
+        Assert.Equal(PdfAgentProtocol.SystemPrompt, pdf["messages"]![0]!["content"]![0]!["text"]!.GetValue<string>());
         Assert.Equal(8, pdf["tools"]!.AsArray().Count);
     }
 

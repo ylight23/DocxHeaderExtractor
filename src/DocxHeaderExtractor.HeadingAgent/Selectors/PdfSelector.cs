@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Tools;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
 
 namespace DocxHeaderExtractor.HeadingAgent.Selectors;
 
@@ -14,9 +15,9 @@ public sealed class PdfSelector : AgentSelector
     /// <inheritdoc cref="AgentSelector"/>
     public PdfSelector(Func<HttpMessageHandler>? handlerFactory = null, int? parallelism = null, Action<ModelReply>? onModelReply = null,
         string? instruction = null, int firstSegments = 0)
-        : base(handlerFactory, parallelism, onModelReply, instruction, firstSegments) { }
+        : base(handlerFactory, parallelism, onModelReply, instruction ?? PdfAgentProtocol.Instruction, firstSegments) { }
 
-    public override string SelectorId => "p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:facts-in-request:instruction-" + InstructionTag + ":" + BindingPolicyVersion;
+    public override string SelectorId => "p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:facts-in-request:instruction-" + InstructionTag + ":" + BindingPolicyVersion + ":group-selected-text-v1";
 
     private protected override IAgentSource Load(string path) =>
         AgentSource.Load(path, out var failure) ?? throw new InvalidOperationException("PDF_AGENT_SOURCE_REFUSED:" + failure);

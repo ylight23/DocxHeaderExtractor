@@ -15,11 +15,18 @@ Production now follows:
    incomplete protocol/transport results remain unresolved after bounded repair and do not rewrite
    selection membership.
 
-DOCX grouping receives the selected heading span, rather than treating the entire paragraph as the
+DOCX and native PDF grouping receive the selected heading span, rather than treating the entire source line as the
 boundary target: `text` and `selectedText` contain the selected substring; `headingExtent` gives its
 UTF-16 offsets in the original `sourceText`, which is context only. Without an extent the whole
 paragraph remains selected. The grouping request hash (and cache key) includes these fields.
-PDF and scan retain their existing grouping packets. DOCX selector IDs carry `group-selected-text-v1`.
+Native PDF selection now uses the extent-enabled answer contract (the legacy objects-only contract
+remains for historical comparisons). Native PDF and DOCX selector IDs carry `group-selected-text-v1`.
+Scan grouping also receives `readingViewId`: `sourceText` is that selected reading, and the extent
+is measured in that reading, never in an alternative OCR text. Missing reading choices use the same
+default reading as selection and binding. The grouping cache key includes reading choices as well
+as extents. Scan selector IDs carry `group-selected-reading-text-v1`. Original geometry remains the
+source line's geometry; no substring box is invented. All routes reject invalid extents rather than
+widening them or switching readings. No extent means the whole chosen source representation.
 
 Binding preserves the model's partition across languages. It does not split groups by chapter/article
 keywords. The `f024246` structural-marker override has been removed. This selected-text change fixes

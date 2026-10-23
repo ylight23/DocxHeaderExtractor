@@ -37,7 +37,7 @@ public sealed class ScanSelector(string storeRoot, Func<HttpMessageHandler>? han
 
     readonly int parallelism = parallelism ?? DefaultParallelism;
 
-    public string SelectorId => "scan-v6:" + ScanAgentSource.Version + ":facts-in-request:instruction-" + AgentProtocol.Sha(instruction)[..8] + ":" + AgentSelector.BindingPolicyVersion;
+    public string SelectorId => "scan-v6:" + ScanAgentSource.Version + ":facts-in-request:instruction-" + AgentProtocol.Sha(instruction)[..8] + ":" + AgentSelector.BindingPolicyVersion + ":group-selected-reading-text-v1";
 
     public async Task<ScanHeadingResult> ExtractAsync(string docxPath, string apiKey, CancellationToken ct)
     {

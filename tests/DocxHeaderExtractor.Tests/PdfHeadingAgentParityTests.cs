@@ -52,7 +52,7 @@ public sealed class PdfHeadingAgentParityTests
     private static void SameJson(JsonNode? recorded, object? actual) =>
         Assert.Equal(recorded?.ToJsonString(), JsonSerializer.SerializeToNode(actual)?.ToJsonString());
 
-    /// <summary>The production request differs only by its system prompt and the existing tool facts added as targetFacts.
+    /// <summary>Production adds the extent-enabled prompt/protocol and the existing tool facts as targetFacts.
     /// Model, tools, provider settings and conversation history must still match byte for byte.</summary>
     private static string WithProductionRequest(string qualifiedBody)
     {
@@ -60,14 +60,15 @@ public sealed class PdfHeadingAgentParityTests
             JsonSerializer.Serialize(text, new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping })[1..^1];
         var from = Escaped(QualifiedPrompt);
         Assert.Contains(from, qualifiedBody, StringComparison.Ordinal);
-        var withPrompt = qualifiedBody.Replace(from, Escaped(AgentProtocol.SystemPrompt), StringComparison.Ordinal);
+        var withPrompt = qualifiedBody.Replace(from, Escaped(PdfAgentProtocol.SystemPrompt), StringComparison.Ordinal);
         var body = JsonNode.Parse(withPrompt)!;
         var originalPayload = body["messages"]![1]!["content"]![0]!["text"]!.GetValue<string>();
         var payload = JsonNode.Parse(originalPayload)!;
         var targets = payload["targets"]!.AsArray().Select(t => t!["alias"]!.GetValue<string>()).ToArray();
         payload["targetFacts"] = Production.Value.Flavor.PayloadFacts(Production.Value, targets);
         var newPayload = payload.ToJsonString(new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
-        return withPrompt.Replace(Escaped(originalPayload), Escaped(newPayload), StringComparison.Ordinal);
+        return withPrompt.Replace(Escaped(originalPayload), Escaped(newPayload), StringComparison.Ordinal)
+            .Replace(AgentProtocol.SelectObjectsVersion, AgentProtocol.SelectExtentVersion, StringComparison.Ordinal);
     }
 
     [Fact]
@@ -119,7 +120,7 @@ public sealed class PdfHeadingAgentParityTests
     }
 
     [Fact]
-    public void First_requests_differ_from_the_pinned_reference_only_in_the_prompt_and_the_supplied_tool_facts()
+    public void First_requests_preserve_the_pinned_envelope_with_the_extent_prompt_and_supplied_tool_facts()
     {
         var p = Production.Value;
         var recorded = Golden.Value["firstRequests"]!.AsArray();
@@ -216,7 +217,7 @@ public sealed class PdfHeadingAgentParityTests
         var decisions = targets.Select((alias, i) => i == 0
             ? (object)new { alias, decision = "SELECT", evidenceRefs = new[] { alias }, reason = "the first line" }
             : new { alias, decision = "NOT_SELECT" }).ToArray();
-        var json = JsonSerializer.Serialize(new { protocolVersion = "P7_F1_V6_SELECT_OBJECTS_V1", status = "COMPLETE", analysis = "scripted", decisions });
+        var json = JsonSerializer.Serialize(new { protocolVersion = PdfFormat.Instance.AnswerVersion, status = "COMPLETE", analysis = "scripted", decisions });
         return fenced ? "```json\n" + json + "\n```" : json;
     }
 

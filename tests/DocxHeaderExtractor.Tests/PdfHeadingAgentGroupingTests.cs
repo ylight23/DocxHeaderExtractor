@@ -509,7 +509,7 @@ public sealed class PdfHeadingAgentGroupingTests
         Assert.Equal(ChatModel, root.GetProperty("model").GetString());
         Assert.Equal("alibaba", root.GetProperty("provider").GetProperty("only")[0].GetString());
         Assert.Equal(Instruction, payloads.Single().GetProperty("instruction").GetString());
-        Assert.Equal(GroupingPrompts.Shared, root.GetProperty("messages")[0].GetProperty("content").Text());
-        Assert.Contains("JSON", GroupingPrompts.Shared, StringComparison.Ordinal);
+        Assert.Equal(GroupingPrompts.Pdf, root.GetProperty("messages")[0].GetProperty("content").Text());
+        Assert.Contains("JSON", GroupingPrompts.Pdf, StringComparison.Ordinal);
     }
 }

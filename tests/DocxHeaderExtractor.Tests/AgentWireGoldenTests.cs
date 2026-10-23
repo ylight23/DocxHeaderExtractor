@@ -35,8 +35,8 @@ public sealed class AgentWireGoldenTests
 
     private static JsonObject Prompts() => new()
     {
-        ["pdf.system"] = Sha(AgentProtocol.SystemPrompt),
-        ["pdf.instruction"] = Sha(AgentProtocol.Instruction),
+        ["pdf.system"] = Sha(PdfAgentProtocol.SystemPrompt),
+        ["pdf.instruction"] = Sha(PdfAgentProtocol.Instruction),
         ["pdf.instructionD412"] = Sha(D412Prompt.Text),
         ["pdf.instructionStructuralV1"] = Sha(AgentProtocol.InstructionStructuralV1),
         ["pdf.instructionFormattingEvidenceV2"] = Sha(AgentProtocol.InstructionFormattingEvidenceV2),
@@ -46,6 +46,7 @@ public sealed class AgentWireGoldenTests
         ["scan.instruction"] = Sha(ScanAgentProtocol.Instruction),
         ["scan.placementNote"] = Sha(ScanAgentProtocol.PlacementNote),
         ["grouping.shared"] = Sha(GroupingPrompts.Shared),
+        ["grouping.pdf"] = Sha(GroupingPrompts.Pdf),
         ["grouping.docx"] = Sha(GroupingPrompts.Docx),
         ["grouping.scan"] = Sha(GroupingPrompts.Scan),
         ["verification"] = Sha(GroupVerifier.Prompt),

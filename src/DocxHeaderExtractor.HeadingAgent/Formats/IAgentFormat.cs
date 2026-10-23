@@ -45,8 +45,10 @@ internal interface IAgentFormat
     string GroupPrompt { get; }
     /// <summary>A line of a run in the grouping request.</summary>
     object GroupLineItem(IAgentSource source, int index);
-    /// <summary>A selected line with its already validated heading extent. Formats without selected-text grouping retain their existing packet.</summary>
+    /// <summary>A selected line with its already validated heading extent, measured in its default source representation.</summary>
     object GroupLineItem(IAgentSource source, int index, TextOffsetSpan? headingExtent) => GroupLineItem(source, index);
+    /// <summary>Offsets belong to the selected reading, when a source has alternate readings.</summary>
+    object GroupLineItem(IAgentSource source, int index, TextOffsetSpan? headingExtent, string? readingViewId) => GroupLineItem(source, index, headingExtent);
     /// <summary>The line next to a run, shown only as context (selected false).</summary>
     object GroupContextItem(IAgentSource source, int index);
     /// <summary>The measurements the placement pass gets: the document's style table and the style of every line that has one. Facts only.</summary>
