@@ -2,8 +2,6 @@ using System.Text;
 using DocxHeaderExtractor.App;
 using DocxHeaderExtractor.Contracts.Runtime;
 using DocxHeaderExtractor.Contracts.Tasks;
-using DocxHeaderExtractor.HeadingAgent.Protocol;
-using DocxHeaderExtractor.HeadingAgent.Selectors;
 using DocxHeaderExtractor.Infrastructure.Runtime;
 using DocxHeaderExtractor.Infrastructure.Sources;
 using DocxHeaderExtractor.Web;
@@ -41,15 +39,14 @@ app.MapGet("/api/build", () => Results.Json(new
 {
     webVersion = typeof(Program).Assembly.GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
         .Cast<System.Reflection.AssemblyInformationalVersionAttribute>().Single().InformationalVersion,
-    headingAgentVersion = typeof(AgentSelector).Assembly.GetCustomAttributes(typeof(System.Reflection.AssemblyInformationalVersionAttribute), false)
-        .Cast<System.Reflection.AssemblyInformationalVersionAttribute>().Single().InformationalVersion,
+    headingAgentVersion = AgentCatalog.HeadingAgentVersion,
 }, WebJson.Options));
 
 // Mặc định lấy thẳng từ Core, để giao diện luôn khớp với lệnh CLI tương ứng.
 app.MapGet("/api/defaults", () => Results.Json(Defaults.Current(), WebJson.Options));
 
 // Prompt và instruction mà agent gửi đi, chỉ để hiển thị. Chúng là hằng số trong mã nguồn: giao diện không sửa được.
-app.MapGet("/api/prompts", () => Results.Json(new { pdf = PromptCatalog.Pdf, docx = PromptCatalog.Docx, scan = PromptCatalog.Scan }, WebJson.Options));
+app.MapGet("/api/prompts", () => Results.Json(AgentCatalog.Prompts, WebJson.Options));
 
 app.MapPost("/api/inspect", InspectEndpoint.HandleAsync);
 

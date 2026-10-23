@@ -1,4 +1,5 @@
 using System.Text.Json;
+using DocxHeaderExtractor.App;
 
 namespace DocxHeaderExtractor.Cli.Commands;
 
@@ -11,15 +12,15 @@ internal static class ScanCommands
         var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
         if (string.IsNullOrWhiteSpace(key)) { Console.Error.WriteLine("Chưa có OPENROUTER_API_KEY."); return 2; }
         var root = o.OutputPath ?? ".dhx-evidence";
-        var selector = new DocxHeaderExtractor.HeadingAgent.Scan.ScanSelector(root, parallelism: o.Jobs, vision: o.Vision, reuseSelection: !o.FreshSelection, paragraphUnits: o.ParagraphUnits, segmentedLines: o.SegmentedLines,
-            onModelReply: o.ShowRawOutput ? r => ModelReplyPrinter.Print(r) : null,
-            transcriptionOptions: o.Jobs is { } jobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanTranscriptionPreflight.Options(Parallelism: jobs) : null,
-            visionOptions: o.Jobs is { } seeJobs ? new DocxHeaderExtractor.HeadingAgent.Scan.ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null);
+        var extractor = new ScanExtractor(
+            new ScanRunOptions(EvidenceRoot: root, Jobs: o.Jobs, Vision: o.Vision, ReuseSelection: !o.FreshSelection,
+                ParagraphUnits: o.ParagraphUnits, SegmentedLines: o.SegmentedLines),
+            o.ShowRawOutput ? r => ModelReplyPrinter.Print(r) : null);
         var incomplete = false;
         foreach (var file in Inputs.Expand(o.Inputs))
         {
             if (!o.Quiet) Console.Error.WriteLine($"» {Path.GetFileName(file)}");
-            var result = await selector.ExtractAsync(file, key, ct);
+            var result = await extractor.ExtractAsync(file, key, ct);
             incomplete |= result.UnitsComplete != result.UnitsTotal || result.UnitFailures.Count > 0
                 || result.TranscriptionFailures.Count > 0 || result.VisionFailures.Count > 0 || result.OcrGaps.Count > 0 || result.PartsRejected > 0;
             if (!o.Quiet)
@@ -47,19 +48,9 @@ internal static class ScanCommands
         var key = Environment.GetEnvironmentVariable("OPENROUTER_API_KEY");
         if (string.IsNullOrWhiteSpace(key)) { Console.Error.WriteLine("Chưa có OPENROUTER_API_KEY."); return 2; }
         if (o.GoldPath is null || o.Inputs.Count != 1) { Console.Error.WriteLine("Cách dùng: dhx scan-text-eval <file.docx> --gold <gold.json>"); return 2; }
-        var root = o.OutputPath ?? ".dhx-evidence";
-        var gold = DocxHeaderExtractor.HeadingAgent.Scan.ScanTextEvaluation.ReadGold(o.GoldPath);
-        var report = new DocxHeaderExtractor.HeadingAgent.Scan.ScanTextEvaluation(root).Run(o.Inputs[0], gold, key);
-        Console.WriteLine($"{"Cách đọc",-28} {"Đúng hết dòng",14} {"CER",8}");
-        foreach (var s in report.Scores)
-            Console.WriteLine($"{s.Method,-28} {s.Exact,6}/{s.Lines,-3} ({100.0 * s.Exact / s.Lines,3:0}%) {100 * s.CharacterErrorRate,7:0.00}%");
-        foreach (var (method, c) in report.MethodCosts ?? new Dictionary<string, DocxHeaderExtractor.HeadingAgent.Scan.ScanTextEvaluation.MethodCost>())
-            Console.WriteLine($"  {method}: {c.Seconds:0.0}s, {c.Calls} POST, {c.CostUsd:0.0000} USD");
-        foreach (var (method, bytes) in report.CropBytes)
-            Console.WriteLine($"  ảnh cắt {method}: {bytes / 1024.0:0.0} KB cho {report.Lines.Count} dòng ({bytes / 1024.0 / report.Lines.Count:0.00} KB/dòng)");
-        Console.WriteLine($"{report.ProviderCalls} POST, {report.ProviderCostUsd:0.0000} USD; lỗi: {(report.Failures.Count == 0 ? "không" : string.Join(", ", report.Failures))}");
-        Console.WriteLine($"báo cáo: {Path.Combine(root, "eval", report.SourceSha256[..16] + "-scan-text-eval.json")}");
-        return report.Scores.Any(s => s.Method.StartsWith("vlm", StringComparison.Ordinal) && s.Exact == 0 && report.Failures.Count > 0) ? 1 : 0;
+        var outcome = ScanEvaluations.TextEval(o.OutputPath ?? ".dhx-evidence", o.GoldPath, o.Inputs[0], key);
+        foreach (var line in outcome.Lines) Console.WriteLine(line);
+        return outcome.Failed ? 1 : 0;
     }
 
     // The evidence a scan stored (evidence.msgpack) as JSON on stdout, to read while debugging. Reads files only; sends nothing.
@@ -74,16 +65,7 @@ internal static class ScanCommands
     public static int HeadingEval(CommandLineOptions o)
     {
         if (o.GoldPath is null || o.Inputs.Count != 1) { Console.Error.WriteLine("Cách dùng: dhx scan-heading-eval <ket-qua.json> --gold <gold.json>"); return 2; }
-        var gold = DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingEvaluation.ReadGold(o.GoldPath);
-        var r = DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingEvaluation.Score(gold, DocxHeaderExtractor.HeadingAgent.Scan.ScanHeadingEvaluation.ReadResult(o.Inputs[0]));
-        Console.WriteLine($"Đủ (recall):        {r.RequiredFound}/{r.Required} heading bắt buộc ({100 * r.Recall:0.0}%), thêm {r.AcceptableFound} heading chấp nhận được");
-        Console.WriteLine($"Đúng (precision):   {r.SelectedMatched}/{r.Selected} heading chọn ra là heading ({100 * r.Precision:0.0}%), {r.FalsePositives} chọn thừa, {r.SplitParts} phần bị tách");
-        Console.WriteLine($"Chữ đúng nguyên văn: {r.TextExact}/{r.RequiredFound + r.AcceptableFound}");
-        foreach (var m in r.Missed) Console.WriteLine($"  thiếu  tr.{m.Page}: {m.Text}");
-        foreach (var m in r.Extra) Console.WriteLine($"  thừa   tr.{m.Page} #{m.Index} ({m.Kind}): {m.Text}");
-        foreach (var m in r.NotExact) Console.WriteLine($"  chữ khác tr.{m.Page} #{m.Index}: {m.Text}");
-        if (o.OutputPath is { } output)
-            File.WriteAllText(output, JsonSerializer.Serialize(r, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }));
+        foreach (var line in ScanEvaluations.HeadingEval(o.GoldPath, o.Inputs[0], o.OutputPath)) Console.WriteLine(line);
         return 0;
     }
 }

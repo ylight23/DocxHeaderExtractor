@@ -19,9 +19,24 @@ public sealed class ArchitectureTests
         ["DocumentProcessing"] = ["Contracts", "Sources"],
         ["Infrastructure"] = ["Contracts", "Sources"],
         ["App"] = ["Agents", "Contracts", "DocumentProcessing", "HeadingAgent", "Sources"],
-        ["Cli"] = ["App", "Contracts", "DocumentProcessing", "HeadingAgent", "Sources"],
-        ["Web"] = ["App", "Contracts", "DocumentProcessing", "HeadingAgent", "Infrastructure", "Sources"],
+        ["Cli"] = ["App", "Contracts", "DocumentProcessing", "Sources"],
+        ["Web"] = ["App", "Contracts", "DocumentProcessing", "Infrastructure", "Sources"],
     };
+
+    /// <summary>The hosts reach the agents only through App: their source names no type of the heading agent.</summary>
+    static readonly string[] Hosts = ["Cli", "Web"];
+
+    [Fact]
+    public void Hosts_name_no_type_of_the_heading_agent()
+    {
+        var named = Hosts.SelectMany(host => Directory.EnumerateFiles(TestRepository.Path($"src/DocxHeaderExtractor.{host}"), "*.cs", SearchOption.AllDirectories)
+                .Where(f => !f.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}", StringComparison.Ordinal)
+                    && !f.Contains($"{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}", StringComparison.Ordinal))
+                .Where(f => File.ReadAllText(f).Contains("DocxHeaderExtractor.HeadingAgent", StringComparison.Ordinal)))
+            .Select(f => Path.GetRelativePath(TestRepository.Root(), f))
+            .ToArray();
+        Assert.True(named.Length == 0, "Hosts must go through App: " + string.Join(", ", named));
+    }
 
     static IEnumerable<(string Project, string[] References)> ProjectsUnderSrc()
     {

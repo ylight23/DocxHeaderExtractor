@@ -3,7 +3,6 @@ using System.Text.Json;
 using System.Threading.Channels;
 using DocxHeaderExtractor.App;
 using DocxHeaderExtractor.DocumentProcessing.Output;
-using DocxHeaderExtractor.HeadingAgent.Selectors;
 using DocxHeaderExtractor.Sources.Detect;
 
 namespace DocxHeaderExtractor.Web.Endpoints;
@@ -208,7 +207,7 @@ internal static class ExtractEndpoint
     }
 
     // One model reply as a stream event: what the model streamed, the tool calls it made, the tool results it was given, and its content.
-    static object ReplyEvent(ModelReply r) => new
+    static object ReplyEvent(ModelReplyView r) => new
     {
         type = "reply",
         unit = r.Unit,

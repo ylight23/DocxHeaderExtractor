@@ -28,11 +28,11 @@ public sealed class DocumentRunner
 
     /// <param name="provider">The model route and any agents of the host's own; <see cref="OpenRouterProvider"/> in production.</param>
     /// <param name="onModelReply">Diagnostics only: called with every model reply. Null records nothing.</param>
-    public DocumentRunner(PipelineOptions options, IModelProvider provider, Action<ModelReply>? onModelReply = null)
+    public DocumentRunner(PipelineOptions options, IModelProvider provider, Action<ModelReplyView>? onModelReply = null)
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(provider);
-        var agents = HeadingAgentSetup.Create(options, provider, onModelReply);
+        var agents = HeadingAgentSetup.Create(options, provider, ModelReplyViews.Adapt(onModelReply));
         _dispatcher = new Router(new DocxHandler(new DocxPipeline(options, provider, agents)), new PdfHandler(options, provider, agents));
     }
 

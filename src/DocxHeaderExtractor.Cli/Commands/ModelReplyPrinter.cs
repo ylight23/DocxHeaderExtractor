@@ -1,9 +1,10 @@
+using DocxHeaderExtractor.App;
+
 namespace DocxHeaderExtractor.Cli.Commands;
 
-/// <summary><c>--show-raw</c>: what the model streamed and wrote for one reply. Reasoning and content are the model's own text.</summary>
 internal static class ModelReplyPrinter
 {
-    public static void Print(DocxHeaderExtractor.HeadingAgent.Selectors.ModelReply r)
+    public static void Print(ModelReplyView r)
     {
         var request = r.RequestSha256.Length >= 12 ? r.RequestSha256[..12] : "-";
         Console.Error.WriteLine($"--- [{r.Unit}] lượt {r.Turn} ({r.FinishReason ?? "—"}) req={request} preceding={r.PrecedingSelected ?? "-"} ---");
