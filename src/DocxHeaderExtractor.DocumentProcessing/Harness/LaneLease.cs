@@ -61,8 +61,6 @@ internal sealed class LaneLease
         }
     }
 
-    public bool TryStartDownstream(Action start) => TryPublish(start);
-
     internal void RecordLateCompletion()
     {
         Interlocked.Exchange(ref _lateCompletionObserved, 1);

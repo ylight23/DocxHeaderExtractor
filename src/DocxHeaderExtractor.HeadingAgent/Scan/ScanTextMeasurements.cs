@@ -41,9 +41,6 @@ internal static partial class ScanTextMeasurements
     static JsonObject Shape((string Key, int Value, string Form) shape) =>
         new() { ["key"] = shape.Key, ["value"] = shape.Value, ["form"] = shape.Form };
 
-    static JsonObject Reference(AgentSourceLine line, Func<string, string> readingOf) =>
-        new() { ["alias"] = line.Alias, ["page"] = line.Page, ["readingViewId"] = readingOf(line.Alias) };
-
     static JsonObject? LeadingToken(string text)
     {
         var match = LeadingTokenPattern().Match(text);
@@ -64,16 +61,6 @@ internal static partial class ScanTextMeasurements
         var count = trimmed.Length - start;
         facts["endingPunctuation"] = trimmed[Math.Max(start, trimmed.Length - MaxPunctuationShown)..];
         if (count > MaxPunctuationShown) facts["endingPunctuationTotalChars"] = count;
-    }
-
-    static JsonObject? FirstLetter(string text)
-    {
-        foreach (var letter in text.EnumerateRunes())
-            if (Rune.IsLetter(letter)) return new JsonObject
-            {
-                ["text"] = letter.ToString(), ["case"] = Rune.IsLower(letter) ? "lower" : Rune.IsUpper(letter) ? "upper" : "uncased",
-            };
-        return null;
     }
 
 }

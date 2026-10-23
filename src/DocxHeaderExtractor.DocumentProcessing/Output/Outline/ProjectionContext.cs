@@ -29,8 +29,4 @@ public sealed class ProjectionContext
 
     public string? StableIdFor(string elementId, string sourceId) =>
         _sources.GetValueOrDefault(new HeadingProjectionSourceKey(elementId, sourceId));
-
-    public ProjectionContext Retain(IReadOnlySet<string> elementIds) => new(
-        _elements.Where(pair => elementIds.Contains(pair.Key)).ToDictionary(pair => pair.Key, pair => pair.Value),
-        _sources.Where(pair => elementIds.Contains(pair.Key.ElementId)).ToDictionary(pair => pair.Key, pair => pair.Value));
 }

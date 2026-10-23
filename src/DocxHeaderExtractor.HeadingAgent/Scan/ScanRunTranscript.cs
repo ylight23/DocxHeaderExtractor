@@ -43,7 +43,6 @@ internal sealed class ScanRunTranscript : IDisposable
     }
 
     public string RunId { get; }
-    public string FilePath => Path.Combine(folder, $"run-{RunId}.jsonl");
 
     /// <summary>Runs one model call and records its request and reply. A call that throws is recorded with its error, then rethrown.</summary>
     public ModelTurn Record(string unit, int turn, PreparedRequest request, Func<ModelTurn> call)

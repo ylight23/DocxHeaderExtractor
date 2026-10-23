@@ -235,7 +235,6 @@ internal sealed class ScanAgentSource : IAgentSource
     }
 
     public VlmReadingChoice? VisionChoice(string alias) => chosen.GetValueOrDefault(alias);
-    public VlmLineObservation? VisionLine(string alias) => seen.GetValueOrDefault(alias);
     public string? VisionModel => visionModel;
 
     readonly Dictionary<string, int> index;
