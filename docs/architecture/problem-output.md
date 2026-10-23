@@ -48,6 +48,13 @@ Một bài toán bảng sẽ không có heading, nên không có chỗ nào đ�
 - Quy tắc "AI đề xuất, C# kiểm tra" vẫn áp dụng: mỗi bài toán có bước kiểm tra riêng trước khi dựng đầu ra. Bước này không được lấy dữ liệu từ chỗ khác.
 - Writeback Word chỉ áp dụng cho heading. Bài toán khác không có writeback trừ khi nó có kiểu đầu ra riêng và một bước ghi riêng.
 
+## Bài toán thứ hai: trích xuất thực thể
+
+Chọn làm bài toán thứ hai. Thiết kế chi tiết nằm trong [entity-extraction.md](entity-extraction.md). Với khung này:
+- Phong bì chung và harness dùng lại được; `DocumentOutline` không cần đổi.
+- Đầu ra là `EntityOutput` riêng, không đi qua `OutlineProjection`.
+- Bước kiểm tra là span và loại, không phải cây heading.
+
 ## Câu hỏi cần chủ dự án quyết
 
 1. Có chấp nhận đổi tên `DocumentOutline` thành `HeadingOutput` ở bước 3 không? Đổi tên sẽ ảnh hưởng tới các kiểu được tham chiếu từ `Web` và `Cli`.
