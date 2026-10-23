@@ -21,7 +21,8 @@ Cập nhật 2026-10-23. Đây là trạng thái đang chạy của code; lịch
 | `HeadingAgent` | Agent V6: selector PDF, DOCX và scan, agent đặt cha (`HeadingPlacer`); prompt, tool, bài toán chọn heading của một đoạn (`SelectionTask`, chạy trên `ToolConversation`) | `Agents`, `Conversation`, `Sources` |
 | `DocumentProcessing` | Pipeline: nhận file, các lane, harness, các bước kiểm tra và dựng cấu trúc, đầu ra, writeback; `Problems/ProblemRunner` chạy mọi bài toán khác heading (DOCX, PDF, scan qua `IScanReader`) | `Contracts`, `Sources` |
 | `Infrastructure` | Lưu lượt chạy và telemetry của Web, đọc file đầu vào | `Contracts`, `Sources` |
-| `App` | `HeadingAgentSetup`: nơi duy nhất lắp agent mặc định; `OpenRouterProvider`: model route của production; `DocumentRunner`: chạy pipeline, chuyển `.doc`, ghi outline | `HeadingAgent`, `DocumentProcessing` |
+| `Entities` | Bài toán trích thực thể trên khung chung: `EntityProposer` (`IProposer`, một lượt model cho mỗi lô đơn vị), `EntityChecker` (`IChecker`, giữ span nằm trong text và loại hợp lệ). Các loại là mặc định thử nghiệm, chưa phải schema sản phẩm | `Agents`, `Contracts` |
+| `App` | `HeadingAgentSetup`: nơi duy nhất lắp agent mặc định; `OpenRouterProvider`: model route của production; `DocumentRunner`: chạy pipeline, chuyển `.doc`, ghi outline; `EntityExtraction`: bài toán thực thể | `HeadingAgent`, `DocumentProcessing`, `Entities` |
 | `Cli` | Lệnh `dhx`; gọi `DocumentRunner` trực tiếp | `App` |
 | `Web` | Giao diện `dhx-ui`; gọi `DocumentRunner` trực tiếp, stream sự kiện tiến độ | `App`, `Infrastructure` |
 
