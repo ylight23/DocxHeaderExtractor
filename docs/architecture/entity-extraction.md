@@ -1,3 +1,15 @@
+> **Trạng thái (2026-10-23): chỉ là ví dụ trên khung chung, không phát triển thêm.** Chủ dự án xác nhận dự án này cần
+> trích heading, không cần trích thực thể. Project `Entities`, lệnh `dhx entities` và endpoint `/api/entities` được giữ như
+> một bài toán mẫu chạy qua `ProblemRunner`; không có kế hoạch cải thiện chất lượng hay chạy thêm.
+>
+> **Điều đã học, để nhớ nếu có bài toán tương tự:**
+> - Để model trả vị trí `start`/`end` đếm ký tự là không đáng tin: trên tài liệu biên bản họp (run A, qwen), 20/29
+>   thực thể được giữ bắt đầu giữa từ.
+> - Cách thay thế đã thử: model trả chuỗi nguyên văn, C# tìm chuỗi trong text của đơn vị. Thử với một lô bằng một
+>   subagent Haiku đóng vai model: 39/39 thực thể khớp nguyên văn, không loại cái nào. Chưa đưa vào code; bản sửa nằm
+>   trong `scratchpad/entity-text-locate-wip.patch` (chưa commit, đã bỏ khỏi cây làm việc).
+> - Vì vậy ghi nhận: khi model phải báo vị trí trong văn bản, hãy để C# tự tìm vị trí từ chuỗi model đã trích.
+
 # Bài toán: trích xuất thực thể (thiết kế, chưa triển khai)
 
 Trạng thái: **thiết kế**, 2026-10-23. Chưa có code. Đây là bài toán thứ hai sau heading, dùng để kiểm tra khung
