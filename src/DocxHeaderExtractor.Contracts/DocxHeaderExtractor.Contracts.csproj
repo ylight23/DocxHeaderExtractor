@@ -9,13 +9,7 @@
   <ItemGroup>
     <!-- The shared contracts: source and structure models, the selector and scan contracts, the scan evidence records, and the
          task/runtime contracts (former Application). Records, enums and interfaces only; nothing here reads a file or calls a model. -->
-    <InternalsVisibleTo Include="DocxHeaderExtractor.Sources" />
     <InternalsVisibleTo Include="DocxHeaderExtractor.DocumentProcessing" />
-    <InternalsVisibleTo Include="DocxHeaderExtractor.HeadingAgent" />
-    <InternalsVisibleTo Include="DocxHeaderExtractor.Infrastructure" />
-    <InternalsVisibleTo Include="DocxHeaderExtractor.App" />
-    <InternalsVisibleTo Include="dhx" />
-    <InternalsVisibleTo Include="dhx-ui" />
     <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
   </ItemGroup>
 

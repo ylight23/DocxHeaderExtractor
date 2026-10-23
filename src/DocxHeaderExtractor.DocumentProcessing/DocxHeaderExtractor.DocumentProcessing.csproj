@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="DocxHeaderExtractor.Tests" />
-    <InternalsVisibleTo Include="DocxHeaderExtractor.HeadingAgent" />
   </ItemGroup>
 
   <ItemGroup>
