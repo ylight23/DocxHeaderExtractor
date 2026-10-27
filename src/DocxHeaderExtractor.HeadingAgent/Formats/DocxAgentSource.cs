@@ -52,13 +52,13 @@ internal sealed class DocxAgentSource : IAgentSource
     public const int CoreFactsBytes = 28000;
 
     DocxAgentSource(string sourceSha, string universeSha, string storeSha, IReadOnlyList<DocxAgentLine> paragraphs,
-        IReadOnlyDictionary<string, JsonObject> facts, JsonObject styleTable)
+        IReadOnlyDictionary<string, JsonObject> facts, JsonObject styleTable, int boundarySnapParagraphs)
     {
         ResourcePolicy = RunResourceBudget.Current?.Policy ?? new RequestPolicy { MaxRequestBytes = AgentBudget.MaxRequestBytes, ContinuationReserveBytes = 0 };
         SourceSha256 = sourceSha; SourceAliasUniverseSha256 = universeSha; EvidenceStoreSha256 = storeSha; Paragraphs = paragraphs;
         Lines = paragraphs.Select(p => new AgentSourceLine(p.Alias, p.Ordinal, null, p.Text, null, null)).ToArray();
-        Facts = facts; StyleTable = styleTable;
-        Cores = CoresOf(CompactSizes(paragraphs, facts));
+        Facts = facts; StyleTable = styleTable; BoundarySnapParagraphs = boundarySnapParagraphs;
+        Cores = CoresOf(CompactSizes(paragraphs, facts), PreferredCutBefore(paragraphs), boundarySnapParagraphs);
     }
 
     public string SourceSha256 { get; }
@@ -75,6 +75,8 @@ internal sealed class DocxAgentSource : IAgentSource
     public IReadOnlyDictionary<string, JsonObject> Facts { get; }
     /// <summary>The document style table: the distinct styles of the whole document, with how many paragraphs use each.</summary>
     public JsonObject StyleTable { get; }
+    /// <summary>Qualification-only bounded backward snap radius. Zero preserves fixed production windows.</summary>
+    public int BoundarySnapParagraphs { get; }
 
     /// <summary>The targets of one segment and the paragraphs shown with them (<see cref="Overlap"/> on each side), as line indices.</summary>
     public (string[] Decide, int[] Shown) Scope(int segment)
@@ -87,7 +89,7 @@ internal sealed class DocxAgentSource : IAgentSource
 
     /// <summary>Reads the DOCX with the production reader. Null with a failure code when it is not a DOCX package, when its pages are images
     /// with next to no OOXML text (SCANNED_IMAGE_ONLY: its content needs OCR, and reading it would decide on a signature block), or when it has no text.</summary>
-    public static DocxAgentSource? Load(string docxPath, ExtractionOptions? options, out string failure)
+    public static DocxAgentSource? Load(string docxPath, ExtractionOptions? options, out string failure, int boundarySnapParagraphs = 0)
     {
         SourceDocument document;
         DocxSourceIntegrity integrity;
@@ -99,7 +101,7 @@ internal sealed class DocxAgentSource : IAgentSource
         }
         catch (Exception e) when (e is InvalidDataException or InvalidOperationException or DocumentFormat.OpenXml.Packaging.OpenXmlPackageException or FileFormatException)
         { failure = "NOT_A_DOCX_PACKAGE"; return null; }
-        var source = From(document, out failure);
+        var source = From(document, out failure, boundarySnapParagraphs);
         if (source is not null) source.Integrity = integrity;
         return source;
     }
@@ -108,8 +110,9 @@ internal sealed class DocxAgentSource : IAgentSource
     public DocxSourceIntegrity? Integrity { get; internal set; }
 
     /// <summary>Builds the source from an already read document, under the aliases of the route's source snapshot.</summary>
-    public static DocxAgentSource? From(SourceDocument document, out string failure)
+    public static DocxAgentSource? From(SourceDocument document, out string failure, int boundarySnapParagraphs = 0)
     {
+        if (boundarySnapParagraphs is < 0 or >= Unit) throw new ArgumentOutOfRangeException(nameof(boundarySnapParagraphs));
         var built = DocxSourceAdapter.Build(document);
         var snapshot = built.Snapshot;
         var occurrences = snapshot.Occurrences.OrderBy(o => o.Ordinal).ThenBy(o => o.Alias, StringComparer.Ordinal).ToArray();
@@ -125,7 +128,7 @@ internal sealed class DocxAgentSource : IAgentSource
         var styles = DocxLineFacts.Styles(lines);
         var facts = DocxLineFacts.Compute(lines, styles);
         return new DocxAgentSource(snapshot.SourceSha256, snapshot.SourceAliasUniverseHash,
-            StoreSha(snapshot.SourceSha256, snapshot.SourceAliasUniverseHash, lines, facts), lines, facts, DocxLineFacts.DocumentStyles(lines, styles));
+            StoreSha(snapshot.SourceSha256, snapshot.SourceAliasUniverseHash, lines, facts), lines, facts, DocxLineFacts.DocumentStyles(lines, styles), boundarySnapParagraphs);
     }
 
     /// <summary>The evidence store hash: over the version, the identity hashes and, per paragraph, its alias, the hash of its OOXML address, its
@@ -167,18 +170,51 @@ internal sealed class DocxAgentSource : IAgentSource
     /// is cut into windows of <see cref="Unit"/>, as before; only a window of unusually large paragraphs is cut shorter. Every paragraph is in exactly
     /// one window, and the context shown with a window crosses its edges, so no heading is lost at a boundary.
     /// </summary>
-    internal static IReadOnlyList<(int Start, int End)> CoresOf(IReadOnlyList<int> compactBytes)
+    internal static IReadOnlyList<(int Start, int End)> CoresOf(IReadOnlyList<int> compactBytes,
+        IReadOnlyList<bool>? preferredCutBefore = null, int boundarySnapParagraphs = 0)
     {
+        if (boundarySnapParagraphs is < 0 or >= Unit) throw new ArgumentOutOfRangeException(nameof(boundarySnapParagraphs));
+        if (preferredCutBefore is not null && preferredCutBefore.Count != compactBytes.Count)
+            throw new ArgumentException("BOUNDARY_HINT_COUNT_MISMATCH", nameof(preferredCutBefore));
         var cores = new List<(int, int)>();
-        int start = 0, bytes = 0;
-        for (var i = 0; i < compactBytes.Count; i++)
+        for (var start = 0; start < compactBytes.Count;)
         {
-            var size = compactBytes[i];
-            if (i > start && (i - start >= Unit || bytes + size > CoreFactsBytes)) { cores.Add((start, i)); start = i; bytes = 0; }
-            bytes += size;
+            var end = start;
+            var bytes = 0;
+            while (end < compactBytes.Count)
+            {
+                var size = compactBytes[end];
+                if (end > start && (end - start >= Unit || bytes + size > CoreFactsBytes)) break;
+                bytes += size;
+                end++;
+            }
+
+            // A snap can only move the cut backward: moving it forward would violate the hard paragraph/byte cap.
+            var cut = end;
+            if (boundarySnapParagraphs > 0 && preferredCutBefore is not null)
+            {
+                var first = Math.Max(start + 1, end - boundarySnapParagraphs);
+                for (var candidate = Math.Min(end, compactBytes.Count - 1); candidate >= first; candidate--)
+                    if (preferredCutBefore[candidate]) { cut = candidate; break; }
+            }
+            cores.Add((start, cut));
+            start = cut;
         }
-        if (compactBytes.Count > start) cores.Add((start, compactBytes.Count));
         return cores;
+    }
+
+    /// <summary>A cut before i is preferred only when OOXML itself records a page/section boundary there.</summary>
+    internal static bool[] PreferredCutBefore(IReadOnlyList<DocxAgentLine> paragraphs)
+    {
+        var result = new bool[paragraphs.Count];
+        for (var i = 1; i < paragraphs.Count; i++)
+        {
+            var previous = paragraphs[i - 1].Paragraph.BoundaryHints;
+            var current = paragraphs[i].Paragraph.BoundaryHints;
+            result[i] = (previous & (SourceParagraphBoundaryHints.ManualPageBreakAfter | SourceParagraphBoundaryHints.SectionBreakAfter)) != 0
+                || (current & SourceParagraphBoundaryHints.PageBreakBefore) != 0;
+        }
+        return result;
     }
 }
 

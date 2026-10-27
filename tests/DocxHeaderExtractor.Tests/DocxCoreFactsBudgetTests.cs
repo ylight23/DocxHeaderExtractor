@@ -177,6 +177,21 @@ public sealed class DocxCoreFactsBudgetTests(ITestOutputHelper output) : IDispos
         Assert.Equal([], DocxAgentSource.CoresOf([]));
     }
 
+    [Fact]
+    public void Boundary_snap_moves_only_backward_within_its_radius_and_keeps_the_hard_partition()
+    {
+        var sizes = Enumerable.Repeat(300, 100).ToArray();
+        var preferredBefore = new bool[sizes.Length];
+        preferredBefore[45] = true;
+        preferredBefore[93] = true;
+
+        var cores = DocxAgentSource.CoresOf(sizes, preferredBefore, boundarySnapParagraphs: 4);
+
+        Assert.Equal([(0, 45), (45, 93), (93, 100)], cores);
+        Assert.All(cores, c => Assert.InRange(c.End - c.Start, 1, DocxAgentSource.Unit));
+        Assert.Equal(Enumerable.Range(0, sizes.Length), cores.SelectMany(c => Enumerable.Range(c.Start, c.End - c.Start)));
+    }
+
     // ---------------- what compact facts keep and what moves to detail ----------------
 
     [Fact]

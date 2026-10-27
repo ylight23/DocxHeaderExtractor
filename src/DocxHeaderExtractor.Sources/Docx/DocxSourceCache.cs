@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.Sources.Docx;
 /// </summary>
 internal static class DocxSourceCache
 {
-    public const string Schema = "docx-source-document-cache-v2";
+    public const string Schema = "docx-source-document-cache-v3";
 
     /// <summary>The source document of <paramref name="docxPath"/>: read from the package, or from <paramref name="cacheRoot"/> when a valid read is stored.
     /// A null <paramref name="cacheRoot"/> reads every time.</summary>

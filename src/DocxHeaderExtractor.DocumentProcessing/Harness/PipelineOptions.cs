@@ -24,6 +24,9 @@ public sealed class PipelineOptions
     /// <summary>Reuse a scan unit's selection answer when its first request is unchanged (stored under the evidence root); false asks again.</summary>
     public bool ScanReuseSelection { get; set; } = true;
 
+    /// <summary>Qualification-only DOCX packing experiment: snap a fixed-window cut backward to an observed OOXML page/section boundary within this radius. Zero preserves production packing.</summary>
+    public int DocxBoundarySnapParagraphs { get; set; }
+
     /// <summary>One extraction's provider ceiling across every stage, including transport retries and unknown billing.</summary>
     public double MaxProviderCostUsd { get; set; } = 5.0;
     public int MaxProviderAttempts { get; set; } = 2000;

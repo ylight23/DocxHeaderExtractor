@@ -84,6 +84,7 @@ public sealed class OpenXmlDocumentSource
             NumberingId = numbering?.NumberingId?.Val?.Value,
             NumberingLevel = numbering?.NumberingLevelReference?.Val?.Value,
             HyperlinkAnchors = HyperlinkAnchorsOf(paragraph),
+            BoundaryHints = BoundaryHintsOf(paragraph),
         };
     }
 
@@ -115,7 +116,19 @@ public sealed class OpenXmlDocumentSource
             NumberingFormat = paragraph.NumberingFormat,
         },
         HyperlinkAnchors = paragraph.HyperlinkAnchors,
+        BoundaryHints = paragraph.BoundaryHints,
     };
+
+    /// <summary>Retains pagination markers exactly as OOXML writes them; no marker is interpreted as document structure.</summary>
+    private static SourceParagraphBoundaryHints BoundaryHintsOf(Paragraph paragraph)
+    {
+        var properties = paragraph.ParagraphProperties;
+        var hints = SourceParagraphBoundaryHints.None;
+        if (StyleResolver.OnOff(properties?.PageBreakBefore) == true) hints |= SourceParagraphBoundaryHints.PageBreakBefore;
+        if (properties?.SectionProperties is not null) hints |= SourceParagraphBoundaryHints.SectionBreakAfter;
+        if (paragraph.Descendants<Break>().Any(b => b.Type?.Value == BreakValues.Page)) hints |= SourceParagraphBoundaryHints.ManualPageBreakAfter;
+        return hints;
+    }
 
     /// <summary>The bookmark each internal hyperlink in the paragraph points at, in source order, as written.</summary>
     private static IReadOnlyList<string> HyperlinkAnchorsOf(Paragraph paragraph) =>
@@ -257,4 +270,5 @@ internal sealed class OpenXmlSourceParagraph
     public string? NumberLabel { get; set; }
     public string? NumberingFormat { get; set; }
     public IReadOnlyList<string> HyperlinkAnchors { get; init; } = [];
+    public SourceParagraphBoundaryHints BoundaryHints { get; init; }
 }

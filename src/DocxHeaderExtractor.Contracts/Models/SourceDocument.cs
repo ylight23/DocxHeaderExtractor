@@ -34,6 +34,22 @@ public sealed record SourceParagraph
     /// The bookmark name of every internal hyperlink in the paragraph, as written in the OOXML.
     /// </summary>
     [Key(8)] public IReadOnlyList<string> HyperlinkAnchors { get; init; } = [];
+
+    /// <summary>
+    /// Observed OOXML pagination boundaries adjacent to this paragraph.  These are source facts only:
+    /// they are not a structural or heading classification.
+    /// </summary>
+    [Key(9)] public SourceParagraphBoundaryHints BoundaryHints { get; init; }
+}
+
+/// <summary>Pagination boundaries written in OOXML, retained only to permit bounded request packing experiments.</summary>
+[Flags]
+public enum SourceParagraphBoundaryHints
+{
+    None = 0,
+    PageBreakBefore = 1,
+    ManualPageBreakAfter = 2,
+    SectionBreakAfter = 4,
 }
 
 /// <summary>Formatting span over normalized source text, retaining run-level provenance.</summary>
