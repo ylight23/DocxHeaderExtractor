@@ -6,7 +6,8 @@ namespace DocxHeaderExtractor.Agents.Transport;
 /// <summary>The usage and finish audit of one response (ported from the qualified V6 usage audit, agent turns).</summary>
 internal static class Usage
 {
-    public sealed record Audit(IReadOnlyList<string> Codes, int? PromptTokens, int? CompletionTokens, int? ReasoningTokens, int? CachedTokens, double? ProviderCostUsd);
+    public sealed record Audit(IReadOnlyList<string> Codes, int? PromptTokens, int? CompletionTokens, int? ReasoningTokens, int? CachedTokens, double? ProviderCostUsd,
+        int? CacheCreationTokens = null);
 
     public static Audit Check(string responseJson, int requestBytes, int completionCap = MaxTokens)
     {
@@ -28,9 +29,13 @@ internal static class Usage
         }
         int? prompt = IntOrNull(usage, "prompt_tokens");
         int? completion = IntOrNull(usage, "completion_tokens");
-        int? reasoning = null, cached = null;
+        int? reasoning = null, cached = null, cacheCreated = null;
         if (usage.TryGetProperty("completion_tokens_details", out var det) && det.ValueKind == JsonValueKind.Object) reasoning = IntOrNull(det, "reasoning_tokens");
-        if (usage.TryGetProperty("prompt_tokens_details", out var pdet) && pdet.ValueKind == JsonValueKind.Object) cached = IntOrNull(pdet, "cached_tokens");
+        if (usage.TryGetProperty("prompt_tokens_details", out var pdet) && pdet.ValueKind == JsonValueKind.Object)
+        {
+            cached = IntOrNull(pdet, "cached_tokens");
+            cacheCreated = IntOrNull(pdet, "cache_creation_input_tokens");
+        }
         if (prompt is null || completion is null) codes.Add("USAGE_FIELDS_MISSING");
         if (completion is not null && reasoning is not null && completion - reasoning < 0) codes.Add("USAGE_INCONSISTENT");
         if (completion is not null && completion > completionCap) codes.Add("COMPLETION_OVER_CAP");
@@ -45,7 +50,7 @@ internal static class Usage
         else if (finish is not ("stop" or "tool_calls")) codes.Add("FINISH_REASON_UNEXPECTED");
         double? providerCost = usage.TryGetProperty("cost", out var pc) && pc.ValueKind == JsonValueKind.Number ? pc.GetDouble() : null;
         if (codes.Count == 0) codes.Add("OK");
-        return new Audit(codes, prompt, completion, reasoning, cached, providerCost);
+        return new Audit(codes, prompt, completion, reasoning, cached, providerCost, cacheCreated);
     }
 
     static int? IntOrNull(JsonElement e, string name) =>

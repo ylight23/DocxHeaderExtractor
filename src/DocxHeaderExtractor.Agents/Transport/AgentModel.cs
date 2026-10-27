@@ -53,12 +53,19 @@ internal sealed class AgentModel : IDisposable
     public int CompletionTokens { get; private set; }
     public int ReasoningTokens { get; private set; }
     public int CachedTokens { get; private set; }
+    public int CacheCreationTokens { get; private set; }
+
+    readonly List<long> postDurationsMs = new();
+    /// <summary>Wall time of each successful provider post in milliseconds, retries included. Read after the run for P50/P95.</summary>
+    public IReadOnlyList<long> PostDurationsMs { get { lock (usageGate) return postDurationsMs.ToArray(); } }
 
     public static HttpClientHandler CreateHandler() => new() { AllowAutoRedirect = false, UseCookies = false };
 
     public ModelTurn Turn(string unitId, int turn, PreparedRequest request)
     {
+        var started = Environment.TickCount64;
         var text = ReplyRaw(unitId, turn, request);
+        lock (usageGate) postDurationsMs.Add(Environment.TickCount64 - started);
         var (reply, failure) = ReadResponse(text);
         if (reply is null) throw new ReplyFailure("CONTENT:" + failure);
         return reply;
@@ -187,6 +194,7 @@ internal sealed class AgentModel : IDisposable
             {
                 PromptTokens += audit.PromptTokens ?? 0; CompletionTokens += audit.CompletionTokens ?? 0;
                 ReasoningTokens += audit.ReasoningTokens ?? 0; CachedTokens += audit.CachedTokens ?? 0;
+                CacheCreationTokens += audit.CacheCreationTokens ?? 0;
             }
             if (!string.Equals(asm.Provider, "Alibaba", StringComparison.Ordinal) || asm.Model != ChatModel)
             {
