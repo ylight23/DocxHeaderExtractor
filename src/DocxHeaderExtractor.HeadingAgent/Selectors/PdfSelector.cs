@@ -3,6 +3,7 @@ using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Tools;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.Sources.Pdf;
 
 namespace DocxHeaderExtractor.HeadingAgent.Selectors;
 
@@ -12,7 +13,7 @@ namespace DocxHeaderExtractor.HeadingAgent.Selectors;
 /// pages when the actual request fits the resource envelope, else parser blocks/visual rows/atoms, with 20 context lines each side); the first request
 /// supplies the targets' existing tool facts alongside their alias, page and text. The conversation is <see cref="AgentSelector"/>'s.
 /// </summary>
-public sealed class PdfSelector : AgentSelector
+public sealed class PdfSelector : AgentSelector, IPrimedPdfSourceSelector
 {
     readonly RequestPolicy policy;
     readonly bool inlineGrouping;
@@ -33,6 +34,7 @@ public sealed class PdfSelector : AgentSelector
     readonly string? visualCacheRoot;
     readonly bool visualBilevel;
     readonly bool shapeReview;
+    readonly System.Collections.Concurrent.ConcurrentDictionary<string, PdfPreparedSource> primedSources = new(StringComparer.Ordinal);
     internal bool RasterGeometryEnabled => rasterGeometry;
     private protected override bool PairwisePdfGrouping => pairwiseGrouping;
     private protected override bool BoundaryReviewEnabled => boundaryReview;
@@ -101,13 +103,42 @@ public sealed class PdfSelector : AgentSelector
     bool UsesLayoutBlockEvidence => InstructionText == PdfMembershipInstructionV13.Instruction;
     private protected override bool UnitSelectionEnabled => membershipInstructionVersion == 14;
 
+    /// <inheritdoc/>
+    public void PrimePdfSource(string path, PdfPreparedSource source)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(path);
+        ArgumentNullException.ThrowIfNull(source);
+        primedSources[Path.GetFullPath(path)] = source;
+    }
+
+    /// <inheritdoc/>
+    public void UnprimePdfSource(string path)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(path);
+        primedSources.TryRemove(Path.GetFullPath(path), out _);
+    }
+
     private protected override IAgentSource Load(string path) => Load(path, CancellationToken.None);
 
-    private protected override IAgentSource Load(string path, CancellationToken cancellationToken) =>
-        AgentSource.Load(path, out var failure, policy, InstructionText, inlineGrouping: inlineGrouping, sourceBound: sourceBound,
+    private protected override IAgentSource Load(string path, CancellationToken cancellationToken)
+    {
+        var fullPath = Path.GetFullPath(path);
+        AgentSource? source;
+        string failure;
+        if (primedSources.TryRemove(fullPath, out var primed))
+            source = AgentSource.FromPrepared(primed, path, out failure, policy, InstructionText, inlineGrouping: inlineGrouping, sourceBound: sourceBound,
+                requirePageLayoutEvidence: InstructionText == PdfMembershipInstructionV8.Instruction,
+                preloadPageLayoutEvidence: UsesPreloadedEvidence, includeLayoutBlockEvidence: UsesLayoutBlockEvidence, unitSelection: UnitSelectionEnabled,
+                rasterGeometry: rasterGeometry, adaptiveVisualSelection: adaptiveVisualSelection, cancellationToken: cancellationToken,
+                compactGeometry: compactGeometry, visualMaxWidth: visualMaxWidth, visualQuality: visualQuality,
+                dynamicCompletionBudget: dynamicCompletionBudget, visualGrayscale: visualGrayscale, visualCropMargins: visualCropMargins, visualCacheRoot: visualCacheRoot, visualBilevel: visualBilevel);
+        else
+            source = AgentSource.Load(path, out failure, policy, InstructionText, inlineGrouping: inlineGrouping, sourceBound: sourceBound,
             requirePageLayoutEvidence: InstructionText == PdfMembershipInstructionV8.Instruction,
             preloadPageLayoutEvidence: UsesPreloadedEvidence, includeLayoutBlockEvidence: UsesLayoutBlockEvidence, unitSelection: UnitSelectionEnabled,
             rasterGeometry: rasterGeometry, adaptiveVisualSelection: adaptiveVisualSelection, cancellationToken: cancellationToken,
             compactGeometry: compactGeometry, visualMaxWidth: visualMaxWidth, visualQuality: visualQuality,
-            dynamicCompletionBudget: dynamicCompletionBudget, visualGrayscale: visualGrayscale, visualCropMargins: visualCropMargins, visualCacheRoot: visualCacheRoot, visualBilevel: visualBilevel) ?? throw new InvalidOperationException("PDF_AGENT_SOURCE_REFUSED:" + failure);
+            dynamicCompletionBudget: dynamicCompletionBudget, visualGrayscale: visualGrayscale, visualCropMargins: visualCropMargins, visualCacheRoot: visualCacheRoot, visualBilevel: visualBilevel);
+        return source ?? throw new InvalidOperationException("PDF_AGENT_SOURCE_REFUSED:" + failure);
+    }
 }

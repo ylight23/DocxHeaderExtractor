@@ -53,8 +53,17 @@ public static class PdfPipeline
         var sourceBuild = options.SourceCacheRoot is { } cacheRoot
             ? PdfSourceCache.BuildOrLoad(file.LocalPath, cacheRoot)
             : PdfSourceAdapter.BuildWithDetails(file.LocalPath);
-        authority = await PdfLane.RunAsync(
-            sourceBuild.Snapshot, sourceBuild.Details, file.LocalPath, used, LaneOptions.Default, agents.Pdf, agents.Placer, ct);
+        var primed = agents.Pdf as IPrimedPdfSourceSelector;
+        primed?.PrimePdfSource(file.LocalPath, new PdfPreparedSource(sourceBuild));
+        try
+        {
+            authority = await PdfLane.RunAsync(
+                sourceBuild.Snapshot, sourceBuild.Details, file.LocalPath, used, LaneOptions.Default, agents.Pdf, agents.Placer, ct);
+        }
+        finally
+        {
+            primed?.UnprimePdfSource(file.LocalPath);
+        }
 
         // The catalog the lane parsed, not a second one derived from the audit. The audit's block
         // text is a readable rendering meant for a person to read; the model was shown, and the

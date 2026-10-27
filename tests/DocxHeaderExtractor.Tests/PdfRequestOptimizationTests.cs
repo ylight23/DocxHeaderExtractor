@@ -129,6 +129,38 @@ public sealed class PdfRequestOptimizationTests
         Assert.True(gray[14].Length <= color[14].Length);
     }
 
+    [Fact]
+    public void Prepared_pdf_build_preserves_the_agent_source_without_a_second_parse()
+    {
+        var path = TestRepository.Path(Pdf);
+        var build = PdfSourceAdapter.BuildWithDetails(path);
+        var ordinary = AgentSource.Load(path, out var ordinaryFailure, instruction: PdfMembershipInstructionV12.Instruction,
+            sourceBound: true, unitSelection: true, dynamicCompletionBudget: true)!;
+        var shared = AgentSource.FromPrepared(new PdfPreparedSource(build), path, out var sharedFailure,
+            instruction: PdfMembershipInstructionV12.Instruction, sourceBound: true, unitSelection: true,
+            dynamicCompletionBudget: true)!;
+
+        Assert.Equal("OK", ordinaryFailure); Assert.Equal("OK", sharedFailure);
+        Assert.Equal(ordinary.SourceSha256, shared.SourceSha256);
+        Assert.Equal(ordinary.SourceAliasUniverseSha256, shared.SourceAliasUniverseSha256);
+        Assert.Equal(ordinary.EvidenceStoreSha256, shared.EvidenceStoreSha256);
+        Assert.Equal(ordinary.Lines.Select(x => (x.Alias, x.Text, x.Page)), shared.Lines.Select(x => (x.Alias, x.Text, x.Page)));
+        Assert.Equal(ordinary.Blocks, shared.Blocks);
+        Assert.Equal(ordinary.Cores, shared.Cores);
+        Assert.Equal(ordinary.LayoutFacts.Keys.Order(), shared.LayoutFacts.Keys.Order());
+    }
+
+    [Fact]
+    public void Prepared_build_of_another_file_is_refused()
+    {
+        var other = PdfSourceAdapter.BuildWithDetails(TestRepository.Path("todo10_8/heading_corpus_100/06_dich_song_ngu/089_ND_195-2013_Luat_Xuat_ban_EN.pdf"));
+        var source = AgentSource.FromPrepared(new PdfPreparedSource(other), TestRepository.Path(Pdf), out var failure,
+            instruction: PdfMembershipInstructionV12.Instruction, sourceBound: true, unitSelection: true, dynamicCompletionBudget: true);
+
+        Assert.Null(source);
+        Assert.Equal("PDF_PREPARED_SOURCE_MISMATCH", failure);
+    }
+
     internal static ModelTurn RejectAll(JsonObject wire)
     {
         var packet = JsonNode.Parse(wire["messages"]![1]!["content"]![0]!["text"]!.GetValue<string>())!;

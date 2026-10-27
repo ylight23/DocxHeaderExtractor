@@ -190,6 +190,33 @@ internal sealed class AgentSource : IAgentSource
         bool visualGrayscale = false, bool visualCropMargins = false, string? visualCacheRoot = null, bool visualBilevel = false)
     {
         var parsed = PdfSourceAdapter.BuildWithDetails(pdfPath);
+        return FromBuild(pdfPath, parsed, out failure, policy, instruction, legacyPacking, inlineGrouping, sourceBound,
+            requirePageLayoutEvidence, preloadPageLayoutEvidence, includeLayoutBlockEvidence, unitSelection, rasterGeometry,
+            adaptiveVisualSelection, cancellationToken, compactGeometry, visualMaxWidth, visualQuality, dynamicCompletionBudget,
+            visualGrayscale, visualCropMargins, visualCacheRoot, visualBilevel);
+    }
+
+    /// <summary>Builds the agent representation from the lane's immutable parser output, without parsing the PDF a second time.</summary>
+    internal static AgentSource? FromPrepared(PdfPreparedSource prepared, string pdfPath, out string failure, RequestPolicy? policy = null, string? instruction = null, bool legacyPacking = false, bool inlineGrouping = false, bool sourceBound = false, bool requirePageLayoutEvidence = false, bool preloadPageLayoutEvidence = false, bool includeLayoutBlockEvidence = false, bool unitSelection = false,
+        bool rasterGeometry = false, bool adaptiveVisualSelection = false, CancellationToken cancellationToken = default,
+        bool compactGeometry = false, int visualMaxWidth = 1200, int visualQuality = 58, bool dynamicCompletionBudget = false,
+        bool visualGrayscale = false, bool visualCropMargins = false, string? visualCacheRoot = null, bool visualBilevel = false)
+    {
+        ArgumentNullException.ThrowIfNull(prepared);
+        if (!string.Equals(prepared.Build.Snapshot.SourceSha256, DocxHeaderExtractor.Sources.Detect.SourceHash.Compute(pdfPath), StringComparison.Ordinal))
+        { failure = "PDF_PREPARED_SOURCE_MISMATCH"; return null; }
+        return FromBuild(pdfPath, prepared.Build, out failure, policy, instruction, legacyPacking, inlineGrouping, sourceBound,
+            requirePageLayoutEvidence, preloadPageLayoutEvidence, includeLayoutBlockEvidence, unitSelection, rasterGeometry,
+            adaptiveVisualSelection, cancellationToken, compactGeometry, visualMaxWidth, visualQuality, dynamicCompletionBudget,
+            visualGrayscale, visualCropMargins, visualCacheRoot, visualBilevel);
+    }
+
+    static AgentSource? FromBuild(string pdfPath, PdfSourceBuildResult parsed, out string failure, RequestPolicy? policy, string? instruction,
+        bool legacyPacking, bool inlineGrouping, bool sourceBound, bool requirePageLayoutEvidence, bool preloadPageLayoutEvidence,
+        bool includeLayoutBlockEvidence, bool unitSelection, bool rasterGeometry, bool adaptiveVisualSelection,
+        CancellationToken cancellationToken, bool compactGeometry, int visualMaxWidth, int visualQuality, bool dynamicCompletionBudget,
+        bool visualGrayscale, bool visualCropMargins, string? visualCacheRoot, bool visualBilevel)
+    {
         var source = parsed.Snapshot;
         if (source.Atoms.Count == 0) { failure = "EMPTY_UNIVERSE"; return null; }
         var (storeSha, rows) = EvidenceStore.Build(source, parsed.Details);
