@@ -18,7 +18,8 @@
     "approvedAt": "2026-09-12",
     "truthDefinition": "ALL_TRUE_HEADING_OCCURRENCES",
     "semanticTruthReusedFrom": [
-      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0252.semantic-freeze.v1.json"
+      "eval/a99-closed-loop/canonical-semantic-gold-vnext/semantic/DOC-0252.semantic-freeze.v1.json",
+      "eval/a99-closed-loop/gold-current/corrections/DOC-0252-title-composite-20261025.json"
     ],
     "reReviewedDuringConsolidation": false
   },
@@ -32,6 +33,14 @@
         "sourceParts": [
           {
             "sourceAlias": "L0000:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
+          },
+          {
+            "sourceAlias": "L0001:S0",
             "selectionMode": "WHOLE_ALIAS",
             "verbatimText": null,
             "occurrence": null,
@@ -601,9 +610,9 @@
     "claims": [
       {
         "sourceAlias": "S0001",
-        "approvedWording": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+        "approvedWording": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM TECHNICAL ADVISORY GROUP",
         "recordedLegacyText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
-        "textMigrated": false,
+        "textMigrated": true,
         "sourceParts": [
           {
             "sourceAlias": "L0000:S0",
@@ -612,11 +621,19 @@
             "occurrence": null,
             "leftExactContext": null,
             "rightExactContext": null
+          },
+          {
+            "sourceAlias": "L0001:S0",
+            "selectionMode": "WHOLE_ALIAS",
+            "verbatimText": null,
+            "occurrence": null,
+            "leftExactContext": null,
+            "rightExactContext": null
           }
         ],
         "semanticRole": "DocumentTitle",
-        "identity": "L0000:S0:0-47",
-        "projectedText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"
+        "identity": "L0000:S0:0-47|L0001:S0:0-24",
+        "projectedText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM TECHNICAL ADVISORY GROUP"
       },
       {
         "sourceAlias": "S0006",
@@ -753,8 +770,8 @@
       },
       {
         "sourceAlias": "S0199",
-        "approvedWording": "Eurostat–OECD PPP Program",
-        "recordedLegacyText": "Eurostat–OECD PPP Program",
+        "approvedWording": "Eurostat\u2013OECD PPP Program",
+        "recordedLegacyText": "Eurostat\u2013OECD PPP Program",
         "textMigrated": false,
         "sourceParts": [
           {
@@ -768,7 +785,7 @@
         ],
         "semanticRole": "LocalSubheading",
         "identity": "L0123:S0:0-25",
-        "projectedText": "Eurostat–OECD PPP Program"
+        "projectedText": "Eurostat\u2013OECD PPP Program"
       },
       {
         "sourceAlias": "S0223",
@@ -1282,8 +1299,8 @@
       },
       {
         "sourceAlias": "S0935",
-        "approvedWording": "SESSION V: Current Research (Cont’d)",
-        "recordedLegacyText": "SESSION V: Current Research (Cont’d)",
+        "approvedWording": "SESSION V: Current Research (Cont\u2019d)",
+        "recordedLegacyText": "SESSION V: Current Research (Cont\u2019d)",
         "textMigrated": false,
         "sourceParts": [
           {
@@ -1297,7 +1314,7 @@
         ],
         "semanticRole": "MeetingSection",
         "identity": "L0540:S0:0-36",
-        "projectedText": "SESSION V: Current Research (Cont’d)"
+        "projectedText": "SESSION V: Current Research (Cont\u2019d)"
       },
       {
         "sourceAlias": "S0946",
@@ -1433,7 +1450,7 @@
     },
     {
       "path": "eval/a99-closed-loop/canonical-semantic-gold-vnext/occurrence/DOC-0252.structured-source-parts.occurrence-gold.v1.json",
-      "sha256": "8f0635c37e230c36356f10ce36110ad1e301e2afcef242a1099c9debf77e6887",
+      "sha256": "5d4be81f130956696c0e882f7b254388594d86497aef8ab88ad2c67b6dfa85d8",
       "role": "STRUCTURED_OCCURRENCE_AUTHORITY"
     },
     {
@@ -1455,6 +1472,16 @@
       "path": "predecessor-gold:SOURCE_SELECTION_BOUNDARY_CORRECTION",
       "sha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
       "role": "BOUNDARY_CORRECTION_PREDECESSOR"
+    },
+    {
+      "path": "eval/a99-closed-loop/gold-current/corrections/DOC-0252-title-composite-20261025.json",
+      "sha256": "675e581c17773a3bf5b1b7f2f8c515517b3893666c442ec46d4a47a447289a51",
+      "role": "USER_APPROVED_TITLE_BOUNDARY_CORRECTION"
+    },
+    {
+      "path": "artifacts/qualification/pdf072-title-gold-correction-20261025/canonical-before.json",
+      "sha256": "a26b83e14005a9a3e4957cd7a027155e97a534a73fd737551726d18a1c695654",
+      "role": "TITLE_BOUNDARY_CORRECTION_PREDECESSOR"
     }
   ],
   "providerCalls": 0,

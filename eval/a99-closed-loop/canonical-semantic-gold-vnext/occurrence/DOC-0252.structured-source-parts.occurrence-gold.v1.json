@@ -7,85 +7,99 @@
   "coordinateSystem": "STRUCTURED_SOURCE_PART_TUPLE",
   "semanticHeadingTotal": 42,
   "migration": {
-    "kind": "HUMAN_APPROVED_GOLD_CORRECTION",
-    "correctedAt": "2026-09-23",
-    "predecessorCoordinateProfile": "STRUCTURED_SOURCE_PARTS",
-    "predecessorGoldSha256": "b4beacc4e758f858e785d7e37700fd04862f41726326159ec30721ad47e47ec0",
+    "kind": "HUMAN_APPROVED_TITLE_BOUNDARY_CORRECTION",
+    "correctedAt": "2026-10-25T00:29:55.446573+07:00",
+    "predecessorGoldSha256": "8f0635c37e230c36356f10ce36110ad1e301e2afcef242a1099c9debf77e6887",
     "semanticMembershipChanged": false,
+    "sourcePartMembershipChanged": true,
     "add": 0,
     "remove": 0,
     "changed": 1,
     "needsReview": 0,
-    "itemId": "ITEM-CCE2C592",
-    "changedIdentity": "L0519:S0:0-6",
-    "oldSemanticRole": "SectionHeading",
-    "newSemanticRole": "DocumentTitle",
-    "oldExpectedLabel": "STRUCTURAL_UNIT",
-    "newExpectedLabel": "DOCUMENT_LABEL",
-    "abstractSemanticFunction": "IDENTITY",
-    "reason": "Human re-review, informed by textual, structural, and visual (VLM) evidence gathered across the context-ablation, text-adjudicator, and VLM-escalation lineages, determined this occurrence primarily identifies the embedded 'Agenda' artifact rather than serving as an internal structural parent of the content beneath it. The DAY/SESSION occurrences provide the structural hierarchy inside that artifact; only the label naming the artifact itself changes role. The decision is semantic-function based (IDENTITY vs. STRUCTURE), not a claim that any model or scorer proved the prior Gold classification wrong.",
-    "unaffectedControl": {
-      "itemId": "ITEM-505430BB",
-      "identity": "L0513:S0:0-38|L0514:S0:0-30",
-      "semanticRole": "DocumentTitle",
-      "note": "Established by the prior correction (R1 to R2); unaffected by this one."
-    },
+    "oldIdentity": "L0000:S0:0-47",
+    "newIdentity": "L0000:S0:0-47|L0001:S0:0-24",
+    "approvalRecord": "eval/a99-closed-loop/gold-current/corrections/DOC-0252-title-composite-20261025.json",
     "priorMigration": {
       "kind": "HUMAN_APPROVED_GOLD_CORRECTION",
       "correctedAt": "2026-09-23",
       "predecessorCoordinateProfile": "STRUCTURED_SOURCE_PARTS",
-      "predecessorGoldSha256": "322d431ff7be7af47034b8df711b9b23b247480900fdf5266ed0d0fb08b1b754",
-      "semanticMembershipChanged": true,
-      "add": 1,
+      "predecessorGoldSha256": "b4beacc4e758f858e785d7e37700fd04862f41726326159ec30721ad47e47ec0",
+      "semanticMembershipChanged": false,
+      "add": 0,
       "remove": 0,
+      "changed": 1,
       "needsReview": 0,
-      "itemId": "ITEM-505430BB",
-      "addedIdentity": "L0513:S0:0-38|L0514:S0:0-30",
-      "addedSemanticRole": "DocumentTitle",
-      "oldExpectedLabel": "NON_STRUCTURAL",
+      "itemId": "ITEM-CCE2C592",
+      "changedIdentity": "L0519:S0:0-6",
+      "oldSemanticRole": "SectionHeading",
+      "newSemanticRole": "DocumentTitle",
+      "oldExpectedLabel": "STRUCTURAL_UNIT",
       "newExpectedLabel": "DOCUMENT_LABEL",
-      "reason": "Human re-review determined this occurrence functions as a document-level identifying/title-block label for the embedded meeting/agenda artifact, not ordinary organization/date/venue metadata. The decision is semantic-function based, not typography-based.",
+      "abstractSemanticFunction": "IDENTITY",
+      "reason": "Human re-review, informed by textual, structural, and visual (VLM) evidence gathered across the context-ablation, text-adjudicator, and VLM-escalation lineages, determined this occurrence primarily identifies the embedded 'Agenda' artifact rather than serving as an internal structural parent of the content beneath it. The DAY/SESSION occurrences provide the structural hierarchy inside that artifact; only the label naming the artifact itself changes role. The decision is semantic-function based (IDENTITY vs. STRUCTURE), not a claim that any model or scorer proved the prior Gold classification wrong.",
       "unaffectedControl": {
-        "itemId": "ITEM-CCE2C592",
-        "identity": "L0519:S0:0-6",
-        "semanticRole": "SectionHeading",
-        "note": "Agenda is unchanged by this correction."
+        "itemId": "ITEM-505430BB",
+        "identity": "L0513:S0:0-38|L0514:S0:0-30",
+        "semanticRole": "DocumentTitle",
+        "note": "Established by the prior correction (R1 to R2); unaffected by this one."
       },
       "priorMigration": {
-        "kind": "SOURCE_COORDINATE_AND_VERBATIM_FIDELITY_MIGRATION",
-        "predecessorCoordinateProfile": "LEGACY_OCCURRENCE",
-        "predecessorGoldSha256": "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65",
-        "semanticMembershipChanged": false,
-        "add": 0,
+        "kind": "HUMAN_APPROVED_GOLD_CORRECTION",
+        "correctedAt": "2026-09-23",
+        "predecessorCoordinateProfile": "STRUCTURED_SOURCE_PARTS",
+        "predecessorGoldSha256": "322d431ff7be7af47034b8df711b9b23b247480900fdf5266ed0d0fb08b1b754",
+        "semanticMembershipChanged": true,
+        "add": 1,
         "remove": 0,
         "needsReview": 0,
-        "textMigratedClaims": 16,
-        "boundaryCorrection": {
-          "kind": "SOURCE_SELECTION_BOUNDARY_CORRECTION",
-          "predecessorGoldSha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
-          "correctedAliases": [
-            "L0107:S0",
-            "L0377:S0",
-            "L0540:S0",
-            "L0576:S0"
-          ],
-          "semanticMembershipChanged": false,
-          "approvedWordingChanged": false,
-          "authorization": "explicit user authorization, DOC-0252 only, selection-only, named per alias",
-          "note": "Each of these selections stopped one character short of the heading its own approvedWording records - a closing parenthesis dropped by the punctuation-insensitive locator this migration searches with. The selections now cover their whole atom. The locator itself is unchanged and is corrected separately."
+        "itemId": "ITEM-505430BB",
+        "addedIdentity": "L0513:S0:0-38|L0514:S0:0-30",
+        "addedSemanticRole": "DocumentTitle",
+        "oldExpectedLabel": "NON_STRUCTURAL",
+        "newExpectedLabel": "DOCUMENT_LABEL",
+        "reason": "Human re-review determined this occurrence functions as a document-level identifying/title-block label for the embedded meeting/agenda artifact, not ordinary organization/date/venue metadata. The decision is semantic-function based, not typography-based.",
+        "unaffectedControl": {
+          "itemId": "ITEM-CCE2C592",
+          "identity": "L0519:S0:0-6",
+          "semanticRole": "SectionHeading",
+          "note": "Agenda is unchanged by this correction."
         },
-        "note": "Coordinate representation and source-faithful wording changed. No heading was added, removed, or re-adjudicated; the 41-heading membership approved for DOC-0252 is reused, not re-approved."
+        "priorMigration": {
+          "kind": "SOURCE_COORDINATE_AND_VERBATIM_FIDELITY_MIGRATION",
+          "predecessorCoordinateProfile": "LEGACY_OCCURRENCE",
+          "predecessorGoldSha256": "51e2f708e7953dd6ffbe6c1b55ee2ddec430c26edd8dc51ddf71e7a13aa20b65",
+          "semanticMembershipChanged": false,
+          "add": 0,
+          "remove": 0,
+          "needsReview": 0,
+          "textMigratedClaims": 16,
+          "boundaryCorrection": {
+            "kind": "SOURCE_SELECTION_BOUNDARY_CORRECTION",
+            "predecessorGoldSha256": "870c06ac4585d89f50496b5ae004f8a06c8072584e163184f817634fe03b468e",
+            "correctedAliases": [
+              "L0107:S0",
+              "L0377:S0",
+              "L0540:S0",
+              "L0576:S0"
+            ],
+            "semanticMembershipChanged": false,
+            "approvedWordingChanged": false,
+            "authorization": "explicit user authorization, DOC-0252 only, selection-only, named per alias",
+            "note": "Each of these selections stopped one character short of the heading its own approvedWording records - a closing parenthesis dropped by the punctuation-insensitive locator this migration searches with. The selections now cover their whole atom. The locator itself is unchanged and is corrected separately."
+          },
+          "note": "Coordinate representation and source-faithful wording changed. No heading was added, removed, or re-adjudicated; the 41-heading membership approved for DOC-0252 is reused, not re-approved."
+        },
+        "note": "One claim added, none removed, none re-adjudicated. The 41 claims this migration carried forward are reused as-is; only the coordinate representation and source-faithful wording of those 41 were ever in scope for the migration that produced the predecessor this correction is layered on top of."
       },
-      "note": "One claim added, none removed, none re-adjudicated. The 41 claims this migration carried forward are reused as-is; only the coordinate representation and source-faithful wording of those 41 were ever in scope for the migration that produced the predecessor this correction is layered on top of."
-    },
-    "note": "One claim's semantic role changed, none added, none removed, none re-adjudicated beyond Agenda itself. The 42 claims this correction is layered on top of are reused as-is except for Agenda's own row."
+      "note": "One claim's semantic role changed, none added, none removed, none re-adjudicated beyond Agenda itself. The 42 claims this correction is layered on top of are reused as-is except for Agenda's own row."
+    }
   },
   "boundOccurrences": [
     {
       "sourceAlias": "S0001",
-      "approvedWording": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+      "approvedWording": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM TECHNICAL ADVISORY GROUP",
       "recordedLegacyText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
-      "textMigrated": false,
+      "textMigrated": true,
       "sourceParts": [
         {
           "sourceAlias": "L0000:S0",
@@ -94,11 +108,19 @@
           "occurrence": null,
           "leftExactContext": null,
           "rightExactContext": null
+        },
+        {
+          "sourceAlias": "L0001:S0",
+          "selectionMode": "WHOLE_ALIAS",
+          "verbatimText": null,
+          "occurrence": null,
+          "leftExactContext": null,
+          "rightExactContext": null
         }
       ],
       "semanticRole": "DocumentTitle",
-      "identity": "L0000:S0:0-47",
-      "projectedText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"
+      "identity": "L0000:S0:0-47|L0001:S0:0-24",
+      "projectedText": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM TECHNICAL ADVISORY GROUP"
     },
     {
       "sourceAlias": "S0006",
@@ -235,8 +257,8 @@
     },
     {
       "sourceAlias": "S0199",
-      "approvedWording": "Eurostat–OECD PPP Program",
-      "recordedLegacyText": "Eurostat–OECD PPP Program",
+      "approvedWording": "Eurostat\u2013OECD PPP Program",
+      "recordedLegacyText": "Eurostat\u2013OECD PPP Program",
       "textMigrated": false,
       "sourceParts": [
         {
@@ -250,7 +272,7 @@
       ],
       "semanticRole": "LocalSubheading",
       "identity": "L0123:S0:0-25",
-      "projectedText": "Eurostat–OECD PPP Program"
+      "projectedText": "Eurostat\u2013OECD PPP Program"
     },
     {
       "sourceAlias": "S0223",
@@ -764,8 +786,8 @@
     },
     {
       "sourceAlias": "S0935",
-      "approvedWording": "SESSION V: Current Research (Cont’d)",
-      "recordedLegacyText": "SESSION V: Current Research (Cont’d)",
+      "approvedWording": "SESSION V: Current Research (Cont\u2019d)",
+      "recordedLegacyText": "SESSION V: Current Research (Cont\u2019d)",
       "textMigrated": false,
       "sourceParts": [
         {
@@ -779,7 +801,7 @@
       ],
       "semanticRole": "MeetingSection",
       "identity": "L0540:S0:0-36",
-      "projectedText": "SESSION V: Current Research (Cont’d)"
+      "projectedText": "SESSION V: Current Research (Cont\u2019d)"
     },
     {
       "sourceAlias": "S0946",

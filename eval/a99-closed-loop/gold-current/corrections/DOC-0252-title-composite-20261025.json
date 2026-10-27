@@ -1,0 +1,52 @@
+{
+  "artifactKind": "user_approved_gold_boundary_correction",
+  "authorityId": "DOC-0252",
+  "approvedAtLocal": "2026-10-25T00:29:55.446573+07:00",
+  "finalAuthority": "USER",
+  "userFinalApproval": true,
+  "approvalEvidence": "User explicitly confirmed MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM TECHNICAL ADVISORY GROUP — L0000:S0 + L0001:S0 is correct and instructed sửa gold.",
+  "scope": "FIRST_DOCUMENT_TITLE_ONLY",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "oldGoldSha256": "a26b83e14005a9a3e4957cd7a027155e97a534a73fd737551726d18a1c695654",
+  "oldStructuredSha256": "8f0635c37e230c36356f10ce36110ad1e301e2afcef242a1099c9debf77e6887",
+  "beforeSourceParts": [
+    {
+      "sourceAlias": "L0000:S0",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    }
+  ],
+  "afterSourceParts": [
+    {
+      "sourceAlias": "L0000:S0",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    },
+    {
+      "sourceAlias": "L0001:S0",
+      "selectionMode": "WHOLE_ALIAS",
+      "verbatimText": null,
+      "occurrence": null,
+      "leftExactContext": null,
+      "rightExactContext": null
+    }
+  ],
+  "approvedWording": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM TECHNICAL ADVISORY GROUP",
+  "sourceTexts": {
+    "L0000:S0": "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM",
+    "L0001:S0": "TECHNICAL ADVISORY GROUP"
+  },
+  "headingCountBefore": 42,
+  "headingCountAfter": 42,
+  "selectedAliasCountBefore": 44,
+  "selectedAliasCountAfter": 45,
+  "providerCalls": 0,
+  "modelCalls": 0,
+  "note": "Only this heading was amended; the other 41 claims retain their existing human approval. Legacy frozen Gold is historical provenance. No full-document re-review or new character-span capability is claimed."
+}
