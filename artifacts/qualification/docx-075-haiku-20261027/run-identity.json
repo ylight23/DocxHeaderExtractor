@@ -1,0 +1,61 @@
+{
+  "mode": "docx-production-bridge",
+  "docxPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\generated-docx-v2\\05_bien_ban_hop\\075_FORTIS_GC_Minutes_Nov21_2024.docx",
+  "sourceSha256": "3dde848f456267ed7890390e2b0331b801ca25e60a6a8f3e33fe1c4c2d819cc5",
+  "selector": {
+    "SelectorId": "docx-v6:DOCX_AGENT_SOURCE_V1:facts-in-request:instruction-17d4b6a9:selection-boundary-grouping-csharp-validation-v2:no-semantic-membership-veto:group-selected-text-v1"
+  },
+  "placer": {
+    "Contract": "HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION:parent-chain-repair-v1"
+  },
+  "goldInRequests": false,
+  "durationSeconds": 218.3027176,
+  "bridgeCalls": [
+    {
+      "RequestSha256": "f1b6265172d9b8f5d65e94f0615d1f146ad5e3b7799f0b68203980a811abd03e",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-27T08:37:25.4031071+00:00",
+      "CompletedUtc": "2026-10-27T08:39:05.4886192+00:00",
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 0,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\docx-075-haiku-20261027\\luna-requests\\f1b6265172d9b8f5d65e94f0615d1f146ad5e3b7799f0b68203980a811abd03e.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\docx-075-haiku-20261027\\luna-responses\\f1b6265172d9b8f5d65e94f0615d1f146ad5e3b7799f0b68203980a811abd03e.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "50970981c71ad6b58f4ec99819b6a2eb9856454fbba2c2dfe2b0fb978c83446d",
+      "Phase": "GROUP",
+      "StartedUtc": "2026-10-27T08:39:05.5913944+00:00",
+      "CompletedUtc": "2026-10-27T08:39:41.9719825+00:00",
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 1,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\docx-075-haiku-20261027\\luna-requests\\50970981c71ad6b58f4ec99819b6a2eb9856454fbba2c2dfe2b0fb978c83446d.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\docx-075-haiku-20261027\\luna-responses\\50970981c71ad6b58f4ec99819b6a2eb9856454fbba2c2dfe2b0fb978c83446d.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "715ad6056e79a82969178fe1a9bb65fd8a57e6dd730b3a2da64f5f278b4f86a6",
+      "Phase": "HIERARCHY_PLACE",
+      "StartedUtc": "2026-10-27T08:39:42.0800525+00:00",
+      "CompletedUtc": "2026-10-27T08:40:35.8658842+00:00",
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 1,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\docx-075-haiku-20261027\\luna-requests\\715ad6056e79a82969178fe1a9bb65fd8a57e6dd730b3a2da64f5f278b4f86a6.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\docx-075-haiku-20261027\\luna-responses\\715ad6056e79a82969178fe1a9bb65fd8a57e6dd730b3a2da64f5f278b4f86a6.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "1c117eaabfa5d36c34ff7b2b658842fef23b810d3b03411d0452fcaf64783926",
+      "Phase": "HIERARCHY_PLACE",
+      "StartedUtc": "2026-10-27T08:40:35.8848957+00:00",
+      "CompletedUtc": "2026-10-27T08:41:02.1918067+00:00",
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 1,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\docx-075-haiku-20261027\\luna-requests\\1c117eaabfa5d36c34ff7b2b658842fef23b810d3b03411d0452fcaf64783926.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\docx-075-haiku-20261027\\luna-responses\\1c117eaabfa5d36c34ff7b2b658842fef23b810d3b03411d0452fcaf64783926.response.json",
+      "Replayed": false
+    }
+  ],
+  "headings": 17,
+  "note": "Every response body was authored by the bridge responder; the bridge only translated the transport envelope."
+}
