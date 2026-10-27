@@ -1,0 +1,50 @@
+{
+ "run": "cohort-089-v12-haiku-20261026",
+ "gold": "eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json",
+ "goldSha256": "3affb68ed5e6c9d16131f25babc44395bd568975a1488e7967033a516534417a",
+ "aliases": {
+  "tp": 50,
+  "fp": 0,
+  "fn": 7,
+  "precision": 1.0,
+  "recall": 0.8772
+ },
+ "groups": {
+  "gold": 36,
+  "predicted": 31,
+  "exact": 31,
+  "wrong": 0
+ },
+ "falsePositives": [],
+ "misses": [
+  [
+   "L0006:S0",
+   "DECREE"
+  ],
+  [
+   "L0007:S0",
+   "DETAILING A NUMBER OF ARTICLES OF, AND MEASURES FOR IMPLEMENTING,"
+  ],
+  [
+   "L0008:S0",
+   "THE PUBLICATION LAW (*)"
+  ],
+  [
+   "L0109:S0",
+   "1. Conditions for establishment:"
+  ],
+  [
+   "L0117:S0",
+   "2. Operation contents:"
+  ],
+  [
+   "L0245:S0",
+   "1. For publishing houses:"
+  ],
+  [
+   "L0248:S0",
+   "2. For partners:"
+  ]
+ ],
+ "wrongGroups": []
+}

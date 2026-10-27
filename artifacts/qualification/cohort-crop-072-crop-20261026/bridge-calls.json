@@ -1,0 +1,101 @@
+{
+  "maxConcurrentCalls": 6,
+  "calls": [
+    {
+      "RequestSha256": "1fcf28934f00af90e96a529c40ce8415526d82374800d564f0e6427bd7e24996",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T12:07:56.4504198+00:00",
+      "CompletedUtc": "2026-10-26T12:12:34.7903772+00:00",
+      "elapsedSeconds": 278.3399574,
+      "ActiveCallsAtStart": 5,
+      "PeakActiveCallsAtStart": 4,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-requests\\1fcf28934f00af90e96a529c40ce8415526d82374800d564f0e6427bd7e24996.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-responses\\1fcf28934f00af90e96a529c40ce8415526d82374800d564f0e6427bd7e24996.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "6df3200443db69661b2118ea73dd2782330bb1fb9e20bffac0f7a21ee78e6dff",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T12:07:56.3625043+00:00",
+      "CompletedUtc": "2026-10-26T12:12:37.4815878+00:00",
+      "elapsedSeconds": 281.1190835,
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 0,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-requests\\6df3200443db69661b2118ea73dd2782330bb1fb9e20bffac0f7a21ee78e6dff.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-responses\\6df3200443db69661b2118ea73dd2782330bb1fb9e20bffac0f7a21ee78e6dff.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "9d17051239f11f339726fd0c978fd074db33c5550c344a26b3c71bf167d3946b",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T12:07:56.4121951+00:00",
+      "CompletedUtc": "2026-10-26T12:13:03.7799725+00:00",
+      "elapsedSeconds": 307.3677774,
+      "ActiveCallsAtStart": 4,
+      "PeakActiveCallsAtStart": 3,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-requests\\9d17051239f11f339726fd0c978fd074db33c5550c344a26b3c71bf167d3946b.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-responses\\9d17051239f11f339726fd0c978fd074db33c5550c344a26b3c71bf167d3946b.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "d12354b98529b878f0b32a3534df88aaab17d0329fca5b60bf7f39da221ac0f6",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T12:07:56.364385+00:00",
+      "CompletedUtc": "2026-10-26T12:13:18.3942468+00:00",
+      "elapsedSeconds": 322.0298618,
+      "ActiveCallsAtStart": 2,
+      "PeakActiveCallsAtStart": 1,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-requests\\d12354b98529b878f0b32a3534df88aaab17d0329fca5b60bf7f39da221ac0f6.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-responses\\d12354b98529b878f0b32a3534df88aaab17d0329fca5b60bf7f39da221ac0f6.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "991b2edc1d48f7a0179d098a5ad97f8104fbb4a26cbbc4d70b3a1d885bfe7644",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T12:07:56.3673628+00:00",
+      "CompletedUtc": "2026-10-26T12:13:28.3920258+00:00",
+      "elapsedSeconds": 332.024663,
+      "ActiveCallsAtStart": 3,
+      "PeakActiveCallsAtStart": 2,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-requests\\991b2edc1d48f7a0179d098a5ad97f8104fbb4a26cbbc4d70b3a1d885bfe7644.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-responses\\991b2edc1d48f7a0179d098a5ad97f8104fbb4a26cbbc4d70b3a1d885bfe7644.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "f2d751bbabb3333c63b013a91a2622390d5c7ae4c167565cbb0416be452b7162",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T12:07:56.5216132+00:00",
+      "CompletedUtc": "2026-10-26T12:13:38.3567025+00:00",
+      "elapsedSeconds": 341.8350893,
+      "ActiveCallsAtStart": 6,
+      "PeakActiveCallsAtStart": 5,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-requests\\f2d751bbabb3333c63b013a91a2622390d5c7ae4c167565cbb0416be452b7162.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-responses\\f2d751bbabb3333c63b013a91a2622390d5c7ae4c167565cbb0416be452b7162.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "9303b46136d2aeb56d7bb6d1d515669c0ea27ed350bd7028e317b1590c59a2e5",
+      "Phase": "GROUP",
+      "StartedUtc": "2026-10-26T12:13:38.5763901+00:00",
+      "CompletedUtc": "2026-10-26T12:15:58.3212942+00:00",
+      "elapsedSeconds": 139.7449041,
+      "ActiveCallsAtStart": 2,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-requests\\9303b46136d2aeb56d7bb6d1d515669c0ea27ed350bd7028e317b1590c59a2e5.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-responses\\9303b46136d2aeb56d7bb6d1d515669c0ea27ed350bd7028e317b1590c59a2e5.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "aab10f5f6485ead9baabc70e77f4260db140888a07428bb41ff86f6b9ead93d5",
+      "Phase": "GROUP",
+      "StartedUtc": "2026-10-26T12:13:38.5754708+00:00",
+      "CompletedUtc": "2026-10-26T12:16:35.092185+00:00",
+      "elapsedSeconds": 176.5167142,
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-requests\\aab10f5f6485ead9baabc70e77f4260db140888a07428bb41ff86f6b9ead93d5.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-crop-072-crop-20261026\\luna-responses\\aab10f5f6485ead9baabc70e77f4260db140888a07428bb41ff86f6b9ead93d5.response.json",
+      "Replayed": false
+    }
+  ]
+}

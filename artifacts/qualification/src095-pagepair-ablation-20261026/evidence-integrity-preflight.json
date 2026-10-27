@@ -1,0 +1,41 @@
+{
+  "status": "PREPARATION_ONLY",
+  "goldRead": false,
+  "lunaFailure": "Excluded live OpenRouter preflight attempt returned HTTP 402 Payment Required; it is not a Luna response for this ablation.",
+  "frozenEvidence": [
+    {
+      "branch": "paired-request",
+      "originPath": "artifacts\\qualification\\pdf-v14-src095-tablefix-pagepair-place32-luna-run2-20261026\\luna-requests\\73a3fc2777ac3cdcd7b7ae887f0b49e2e3864fb566d684d1e874ac5e3acf6a00.request.json",
+      "copyPath": "artifacts\\qualification\\src095-pagepair-ablation-20261026\\paired-reference\\73a3fc2777ac3cdcd7b7ae887f0b49e2e3864fb566d684d1e874ac5e3acf6a00.request.json",
+      "bytes": 591696,
+      "sha256": "73a3fc2777ac3cdcd7b7ae887f0b49e2e3864fb566d684d1e874ac5e3acf6a00",
+      "byteIdenticalToOrigin": true
+    },
+    {
+      "branch": "paired-response",
+      "originPath": "artifacts\\qualification\\pdf-v14-src095-tablefix-pagepair-place32-luna-run2-20261026\\luna-responses\\73a3fc2777ac3cdcd7b7ae887f0b49e2e3864fb566d684d1e874ac5e3acf6a00.response.json",
+      "copyPath": "artifacts\\qualification\\src095-pagepair-ablation-20261026\\paired-reference\\73a3fc2777ac3cdcd7b7ae887f0b49e2e3864fb566d684d1e874ac5e3acf6a00.response.json",
+      "bytes": 3353,
+      "sha256": "107841e43b8bb2f16c1b5b4e0c3addec89558188ded5a59070a4eb22e5463357",
+      "byteIdenticalToOrigin": true
+    },
+    {
+      "branch": "split-request",
+      "path": "artifacts\\qualification\\src095-pagepair-ablation-20261026\\luna-requests\\ca3c67ab0b09f7121344251ab1773eb27682f121edebb2371f5dd6fc539dcef0.request.json",
+      "bytes": 271983,
+      "sha256": "ca3c67ab0b09f7121344251ab1773eb27682f121edebb2371f5dd6fc539dcef0",
+      "filenameHashMatches": true
+    },
+    {
+      "branch": "split-request",
+      "path": "artifacts\\qualification\\src095-pagepair-ablation-20261026\\luna-requests\\e5dfce1d061601b97ae8690f9e93c69d26f96e43151f9713709c21168cb18490.request.json",
+      "bytes": 295593,
+      "sha256": "e5dfce1d061601b97ae8690f9e93c69d26f96e43151f9713709c21168cb18490",
+      "filenameHashMatches": true
+    }
+  ],
+  "missing": [
+    "page-47 split response not authored",
+    "page-48 split response not authored; no split request/response evidence branch freeze or Gold scoring performed"
+  ]
+}

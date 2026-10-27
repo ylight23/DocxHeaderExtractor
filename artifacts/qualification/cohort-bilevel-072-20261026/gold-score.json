@@ -1,0 +1,21 @@
+{
+ "run": "cohort-bilevel-072-20261026",
+ "gold": "eval/a99-closed-loop/gold-current/documents/DOC-0252.gold.v1.json",
+ "goldSha256": "e966d4e57ba6b312a2cebe93446c4350d4ef7173458f7c528306775f9c743b03",
+ "aliases": {
+  "tp": 45,
+  "fp": 0,
+  "fn": 0,
+  "precision": 1.0,
+  "recall": 1.0
+ },
+ "groups": {
+  "gold": 42,
+  "predicted": 42,
+  "exact": 42,
+  "wrong": 0
+ },
+ "falsePositives": [],
+ "misses": [],
+ "wrongGroups": []
+}

@@ -1,0 +1,69 @@
+{
+  "trial": "pdf072-v14-structural-luna-20261026",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "gold": {
+    "authorityId": "DOC-0252",
+    "path": "eval/a99-closed-loop/gold-current/documents/DOC-0252.gold.v1.json",
+    "sha256": "e966d4e57ba6b312a2cebe93446c4350d4ef7173458f7c528306775f9c743b03",
+    "claimCount": 42,
+    "distinctSourceAliasCount": 45
+  },
+  "preGoldFreeze": {
+    "path": "artifacts/qualification/pdf072-v14-structural-luna-20261026/pre-gold-freeze.json",
+    "goldOpenedBeforeFreeze": false,
+    "requestCount": 23,
+    "boundResponseCount": 23,
+    "requestAndResponseBindingsVerified": true
+  },
+  "run": {
+    "handler": "PdfHandler.ExtractAsync",
+    "membershipVersion": 14,
+    "selectionInstructionVersion": 12,
+    "parallelism": 6,
+    "actualPageImagesInAllSelectionRequests": true,
+    "wallSeconds": 420.4323981,
+    "wallMinutes": 7.0072,
+    "stageRequestCounts": {
+      "SELECT_OR_CONVERSATION": 16,
+      "GROUP": 3,
+      "HIERARCHY_PLACE": 4
+    },
+    "finalSelectedHeadingCount": 38,
+    "finalSelectionSegmentCount": 15,
+    "durationIncludesLunaBridgeWaits": true
+  },
+  "membership": {
+    "unit": "distinct source aliases",
+    "goldCount": 45,
+    "predictedCount": 41,
+    "truePositive": 41,
+    "falsePositive": 0,
+    "falseNegative": 4,
+    "precision": 1.0,
+    "recall": 0.9111111111111111,
+    "falsePositiveAliases": [],
+    "falseNegativeAliases": ["L0123:S0", "L0137:S0", "L0150:S0", "L0288:S0"]
+  },
+  "exactGroups": {
+    "unit": "exact source-part partition sets",
+    "goldGroups": 42,
+    "predictedGroups": 38,
+    "exactMatches": 38,
+    "falsePredictedGroups": [],
+    "missedGoldGroups": [["L0123:S0"], ["L0137:S0"], ["L0150:S0"], ["L0288:S0"]]
+  },
+  "baselineComparison": {
+    "baselineTrial": "pdf072-integrated-adaptive-luna-strict-20261026",
+    "baselineMembership": {"tp": 39, "fp": 0, "fn": 6},
+    "baselineExactGroups": {"exactMatches": 38, "falsePredictedGroups": 1},
+    "baselineWallSeconds": 395.4291747,
+    "wallTimeComparisonBasis": "run-identity.durationSeconds for both runs; baseline bridge-call span alone was 385.7505639 seconds",
+    "v14Delta": {"tp": 2, "fp": 0, "fn": -2, "exactGroupMatches": 0, "falsePredictedGroups": -1, "wallSeconds": 25.0032234}
+  },
+  "limits": [
+    "Gold hierarchyEvaluable is false; no parent-placement accuracy is claimed.",
+    "Observed local Luna wall time includes waits for the Luna bridge and does not establish a remote provider production SLA.",
+    "The earlier V12 qualification prose reported about 303 seconds, which conflicts with its frozen run-identity durationSeconds of 395.4291747 seconds and bridge-call span of 385.7505639 seconds. Comparison here uses run-identity.durationSeconds consistently."
+  ],
+  "scoreCalculatedAfterFreeze": true
+}

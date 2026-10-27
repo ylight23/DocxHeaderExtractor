@@ -1,0 +1,58 @@
+{
+ "run": "cohort-076-v12-haiku-20261026",
+ "gold": "eval/a99-closed-loop/gold-current/documents/DOC-0256.gold.v1.json",
+ "goldSha256": "0c0c2804d9b33b6136bdfa30883c9744231148708dd0c81dd2c11ac7611a922f",
+ "aliases": {
+  "tp": 26,
+  "fp": 0,
+  "fn": 9,
+  "precision": 1.0,
+  "recall": 0.7429
+ },
+ "groups": {
+  "gold": 34,
+  "predicted": 25,
+  "exact": 25,
+  "wrong": 0
+ },
+ "falsePositives": [],
+ "misses": [
+  [
+   "L0422:S0",
+   "African Development Bank (AfDB)"
+  ],
+  [
+   "L0427:S0",
+   "Asian Development Bank (ADB)"
+  ],
+  [
+   "L0430:S0",
+   "Interstate Statistical Committee of the Commonwealth of Independent States (CIS-STAT)"
+  ],
+  [
+   "L0433:S0",
+   "Organisation for Economic Co-operation and Development (OECD)"
+  ],
+  [
+   "L0436:S0",
+   "Statistical Office of the European Communities (Eurostat)"
+  ],
+  [
+   "L0439:S0",
+   "United Nations Economic Commission for Latin America and the Caribbean (UN-ECLAC)"
+  ],
+  [
+   "L0443:S0",
+   "United Nations Economic and Social Commission for Western Asia (UN-ESCWA)"
+  ],
+  [
+   "L0446:S0",
+   "International Monetary Fund (IM F)"
+  ],
+  [
+   "L0448:S0",
+   "World Bank"
+  ]
+ ],
+ "wrongGroups": []
+}

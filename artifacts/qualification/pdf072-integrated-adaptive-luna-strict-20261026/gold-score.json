@@ -1,0 +1,196 @@
+{
+  "trial": "pdf072-integrated-adaptive-luna-strict-20261026",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "gold": {
+    "authorityId": "DOC-0252",
+    "path": "eval/a99-closed-loop/gold-current/documents/DOC-0252.gold.v1.json",
+    "sha256": "e966d4e57ba6b312a2cebe93446c4350d4ef7173458f7c528306775f9c743b03",
+    "claimCount": 42,
+    "distinctSourceAliasCount": 45
+  },
+  "preGoldFreeze": {
+    "path": "artifacts/qualification/pdf072-integrated-adaptive-luna-strict-20261026/pre-gold-freeze.json",
+    "sha256": "572872d731b33a34330ef957d6e9f02889a4f4904a26e9f1706bf00dbd18cd03",
+    "requestCount": 20,
+    "responseCount": 20
+  },
+  "run": {
+    "path": "artifacts/qualification/pdf072-integrated-adaptive-luna-strict-20261026/native-run-result.json",
+    "sha256": "bd25dd8d791aada330add17ca1eab86e03efb1866b806351957b0df642f9c523",
+    "headingCount": 39
+  },
+  "membership": {
+    "unit": "distinct gold source aliases",
+    "goldCount": 45,
+    "predictedCount": 39,
+    "truePositive": 39,
+    "falsePositive": 0,
+    "falseNegative": 6,
+    "precision": 1,
+    "recall": 0.8666666666666667,
+    "f1": 0.9285714285714286,
+    "falsePositiveAliases": [],
+    "falseNegativeAliases": [
+      "L0000:S0",
+      "L0001:S0",
+      "L0315:S0",
+      "L0360:S0",
+      "L0513:S0",
+      "L0514:S0"
+    ]
+  },
+  "exactGroups": {
+    "unit": "exact source-part partition sets",
+    "goldGroups": 42,
+    "predictedGroups": 39,
+    "exactMatches": 38,
+    "falsePredictedGroups": [
+      "L0359:S0"
+    ],
+    "missedGoldGroups": [
+      [
+        "L0000:S0",
+        "L0001:S0"
+      ],
+      [
+        "L0315:S0"
+      ],
+      [
+        "L0359:S0",
+        "L0360:S0"
+      ],
+      [
+        "L0513:S0",
+        "L0514:S0"
+      ]
+    ],
+    "precision": 0.9743589743589743,
+    "recall": 0.9047619047619048,
+    "f1": 0.9382716049382716,
+    "allPredictedGroups": [
+      [
+        "L0004:S0"
+      ],
+      [
+        "L0025:S0"
+      ],
+      [
+        "L0026:S0"
+      ],
+      [
+        "L0078:S0"
+      ],
+      [
+        "L0081:S0"
+      ],
+      [
+        "L0089:S0"
+      ],
+      [
+        "L0107:S0"
+      ],
+      [
+        "L0123:S0"
+      ],
+      [
+        "L0137:S0"
+      ],
+      [
+        "L0150:S0"
+      ],
+      [
+        "L0165:S0"
+      ],
+      [
+        "L0166:S0"
+      ],
+      [
+        "L0219:S0"
+      ],
+      [
+        "L0271:S0"
+      ],
+      [
+        "L0272:S0"
+      ],
+      [
+        "L0288:S0"
+      ],
+      [
+        "L0334:S0"
+      ],
+      [
+        "L0335:S0"
+      ],
+      [
+        "L0359:S0"
+      ],
+      [
+        "L0377:S0"
+      ],
+      [
+        "L0400:S0"
+      ],
+      [
+        "L0420:S0"
+      ],
+      [
+        "L0470:S0"
+      ],
+      [
+        "L0507:S0"
+      ],
+      [
+        "L0519:S0"
+      ],
+      [
+        "L0520:S0"
+      ],
+      [
+        "L0521:S0"
+      ],
+      [
+        "L0523:S0"
+      ],
+      [
+        "L0526:S0"
+      ],
+      [
+        "L0531:S0"
+      ],
+      [
+        "L0536:S0"
+      ],
+      [
+        "L0539:S0"
+      ],
+      [
+        "L0540:S0"
+      ],
+      [
+        "L0553:S0"
+      ],
+      [
+        "L0556:S0"
+      ],
+      [
+        "L0557:S0"
+      ],
+      [
+        "L0566:S0"
+      ],
+      [
+        "L0576:S0"
+      ],
+      [
+        "L0587:S0"
+      ]
+    ]
+  },
+  "notes": [
+    "All requested pairwise boundaries returned SPLIT; other selected aliases were singleton groups.",
+    "The predicted group L0359:S0 is a partial group for Gold group L0359:S0 plus L0360:S0.",
+    "Gold marks hierarchyEvaluable=false; no parent-placement accuracy is claimed.",
+    "Scoring occurred after the request/response freeze."
+  ]
+}

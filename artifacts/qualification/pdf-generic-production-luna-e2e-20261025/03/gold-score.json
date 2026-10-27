@@ -1,0 +1,153 @@
+{
+  "goldAuthority": "DOC-0252",
+  "goldSha256": "e966d4e57ba6b312a2cebe93446c4350d4ef7173458f7c528306775f9c743b03",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "scope": {
+    "page": 14,
+    "ownedAliases": 33,
+    "expectedGoldAliases": 4
+  },
+  "selectionMembership": {
+    "tp": 4,
+    "fp": 15,
+    "fn": 0,
+    "falsePositiveAliases": [
+      "L0534:S1",
+      "L0535:S1",
+      "L0537:S1",
+      "L0541:S1",
+      "L0542:S0",
+      "L0543:S1",
+      "L0544:S0",
+      "L0545:S1",
+      "L0546:S1",
+      "L0547:S1",
+      "L0548:S1",
+      "L0550:S0",
+      "L0551:S1",
+      "L0552:S1",
+      "L0554:S0"
+    ],
+    "missingAliases": []
+  },
+  "finalMembership": {
+    "tp": 4,
+    "fp": 15,
+    "fn": 0,
+    "falsePositiveAliases": [
+      "L0534:S1",
+      "L0535:S1",
+      "L0537:S1",
+      "L0541:S1",
+      "L0542:S0",
+      "L0543:S1",
+      "L0544:S0",
+      "L0545:S1",
+      "L0546:S1",
+      "L0547:S1",
+      "L0548:S1",
+      "L0550:S0",
+      "L0551:S1",
+      "L0552:S1",
+      "L0554:S0"
+    ],
+    "missingAliases": []
+  },
+  "exactBoundaries": {
+    "tp": 4,
+    "fp": 13,
+    "fn": 0,
+    "falsePositiveGroups": [
+      [
+        "L0534:S1"
+      ],
+      [
+        "L0535:S1"
+      ],
+      [
+        "L0537:S1"
+      ],
+      [
+        "L0541:S1",
+        "L0542:S0"
+      ],
+      [
+        "L0543:S1",
+        "L0544:S0"
+      ],
+      [
+        "L0545:S1"
+      ],
+      [
+        "L0546:S1"
+      ],
+      [
+        "L0547:S1"
+      ],
+      [
+        "L0548:S1"
+      ],
+      [
+        "L0550:S0"
+      ],
+      [
+        "L0551:S1"
+      ],
+      [
+        "L0552:S1"
+      ],
+      [
+        "L0554:S0"
+      ]
+    ],
+    "missingGroups": []
+  },
+  "grouping": {
+    "failures": [],
+    "posts": 1,
+    "groups": 17
+  },
+  "verification": {
+    "failures": [],
+    "unresolvedAliases": [],
+    "membershipJudgements": {
+      "L0534:S1": "HEADING",
+      "L0535:S1": "HEADING",
+      "L0536:S0": "HEADING",
+      "L0537:S1": "HEADING",
+      "L0539:S0": "HEADING",
+      "L0540:S0": "HEADING",
+      "L0541:S1": "HEADING",
+      "L0542:S0": "HEADING",
+      "L0543:S1": "HEADING",
+      "L0544:S0": "HEADING",
+      "L0545:S1": "HEADING",
+      "L0546:S1": "HEADING",
+      "L0547:S1": "HEADING",
+      "L0548:S1": "HEADING",
+      "L0550:S0": "HEADING",
+      "L0551:S1": "HEADING",
+      "L0552:S1": "HEADING",
+      "L0553:S0": "HEADING",
+      "L0554:S0": "HEADING"
+    }
+  },
+  "verifierRetainedInitialFalsePositives": [
+    "L0534:S1",
+    "L0535:S1",
+    "L0537:S1",
+    "L0541:S1",
+    "L0542:S0",
+    "L0543:S1",
+    "L0544:S0",
+    "L0545:S1",
+    "L0546:S1",
+    "L0547:S1",
+    "L0548:S1",
+    "L0550:S0",
+    "L0551:S1",
+    "L0552:S1",
+    "L0554:S0"
+  ],
+  "limitation": "Single Luna-authored session on page 14. This does not establish provider/model quality, whole-document hierarchy, or recall for headings outside the selected page scope."
+}

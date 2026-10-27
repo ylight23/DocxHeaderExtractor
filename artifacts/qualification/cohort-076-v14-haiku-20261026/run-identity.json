@@ -1,0 +1,183 @@
+{
+  "mode": "public-PdfHandler-ExtractAsync-integrated-adaptive-visual-v14-luna",
+  "pdfPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_100\\05_bien_ban_hop\\076_ICP_IACG08_Minutes_2023.pdf",
+  "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+  "handler": "PdfHandler.ExtractAsync",
+  "chain": "PdfHandler -\u003E PdfPipeline -\u003E PdfLane -\u003E LaneHarness -\u003E SelectionAuthority -\u003E StructureAssembler -\u003E ParentResolver",
+  "selector": {
+    "SelectorId": "pdf-raster-geometry-v1:p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:facts-in-request:instruction-a71ab606:selection-boundary-grouping-csharp-validation-v2:no-semantic-membership-veto:group-selected-text-v1:ordered-page-budget-v1:5d8d9b9b:adaptive-page-visual-v1:source-bound-v1:structural-geometry-selection-units-v2:unit-rejection-reason-v1:group-instruction-558514f7:pairwise-grouping-v1:6584090b:wait-for-complete-response",
+    "membershipInstructionVersion": 14,
+    "selectionInstructionVersion": 12,
+    "sourceBound": true,
+    "rasterGeometry": true,
+    "adaptiveVisualSelection": true,
+    "visualSelectionMaxRequestBytes": 786432,
+    "separateGroupingInstruction": true,
+    "pairwiseGrouping": true,
+    "generalBoundaryPrompt": true,
+    "parallelism": 6,
+    "providerConcurrencyEnvironment": null,
+    "compactGeometry": false,
+    "imageWidth": 1200,
+    "imageQuality": 58,
+    "dynamicCompletionBudget": false,
+    "retryPolicy": 3
+  },
+  "placer": {
+    "Contract": "HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION:parent-chain-repair-v1",
+    "batchSize": 16,
+    "repairParentChains": true
+  },
+  "goldInRequests": false,
+  "durationSeconds": 1037.220357,
+  "reusedResponseCalls": 0,
+  "bridgeCalls": [
+    {
+      "RequestSha256": "ba7ffaca0f55c298da1981e353a737f7e1f0483e3e662e1508fdb44493f14eb8",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T07:33:45.7304145+00:00",
+      "CompletedUtc": "2026-10-26T07:37:42.7529856+00:00",
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 0,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-requests\\ba7ffaca0f55c298da1981e353a737f7e1f0483e3e662e1508fdb44493f14eb8.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-responses\\ba7ffaca0f55c298da1981e353a737f7e1f0483e3e662e1508fdb44493f14eb8.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "0a3161b132186f119bcf98119f5445ff076a16e738a9bc78d05066daa50bb398",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T07:33:45.7365639+00:00",
+      "CompletedUtc": "2026-10-26T07:37:44.9280346+00:00",
+      "ActiveCallsAtStart": 2,
+      "PeakActiveCallsAtStart": 1,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-requests\\0a3161b132186f119bcf98119f5445ff076a16e738a9bc78d05066daa50bb398.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-responses\\0a3161b132186f119bcf98119f5445ff076a16e738a9bc78d05066daa50bb398.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "a1807f80b246fc19991050e2d2f05514c72234c3fbd2a8433c1aab3e0012babc",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T07:33:45.7946308+00:00",
+      "CompletedUtc": "2026-10-26T07:38:21.2076728+00:00",
+      "ActiveCallsAtStart": 5,
+      "PeakActiveCallsAtStart": 4,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-requests\\a1807f80b246fc19991050e2d2f05514c72234c3fbd2a8433c1aab3e0012babc.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-responses\\a1807f80b246fc19991050e2d2f05514c72234c3fbd2a8433c1aab3e0012babc.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "a5be853b9f0072d702cec9934f06e454f3f2adc9c98b4df05b6a5f2724fbca0c",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T07:33:45.7394908+00:00",
+      "CompletedUtc": "2026-10-26T07:38:22.7402227+00:00",
+      "ActiveCallsAtStart": 4,
+      "PeakActiveCallsAtStart": 3,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-requests\\a5be853b9f0072d702cec9934f06e454f3f2adc9c98b4df05b6a5f2724fbca0c.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-responses\\a5be853b9f0072d702cec9934f06e454f3f2adc9c98b4df05b6a5f2724fbca0c.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "e0fa38317fd314da90fe6542e0ccf8cffb9516a762aff92bfdc29d3a3a893b55",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T07:33:45.7394623+00:00",
+      "CompletedUtc": "2026-10-26T07:38:33.0111118+00:00",
+      "ActiveCallsAtStart": 3,
+      "PeakActiveCallsAtStart": 2,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-requests\\e0fa38317fd314da90fe6542e0ccf8cffb9516a762aff92bfdc29d3a3a893b55.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-responses\\e0fa38317fd314da90fe6542e0ccf8cffb9516a762aff92bfdc29d3a3a893b55.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "bcb6dd2d79edcb0d3842777c73e4bb62e92bf6212a032e8add3928f3e8349e09",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T07:33:45.993171+00:00",
+      "CompletedUtc": "2026-10-26T07:39:10.4735719+00:00",
+      "ActiveCallsAtStart": 6,
+      "PeakActiveCallsAtStart": 5,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-requests\\bcb6dd2d79edcb0d3842777c73e4bb62e92bf6212a032e8add3928f3e8349e09.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-responses\\bcb6dd2d79edcb0d3842777c73e4bb62e92bf6212a032e8add3928f3e8349e09.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "ba75c473a0e8f461edb62e1c401c48e8b2b239340378980bdb3883d0153cef42",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T07:37:45.0112958+00:00",
+      "CompletedUtc": "2026-10-26T07:39:13.378582+00:00",
+      "ActiveCallsAtStart": 6,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-requests\\ba75c473a0e8f461edb62e1c401c48e8b2b239340378980bdb3883d0153cef42.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-responses\\ba75c473a0e8f461edb62e1c401c48e8b2b239340378980bdb3883d0153cef42.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "bb52f9dc65be35e80bda767930054d8fb22e1526f932f4caca738b4f8f68a734",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T07:37:43.1208214+00:00",
+      "CompletedUtc": "2026-10-26T07:41:00.322896+00:00",
+      "ActiveCallsAtStart": 6,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-requests\\bb52f9dc65be35e80bda767930054d8fb22e1526f932f4caca738b4f8f68a734.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-responses\\bb52f9dc65be35e80bda767930054d8fb22e1526f932f4caca738b4f8f68a734.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "b950386d3855a0fe1c70b3ad310b1a9d97f658189810bb13c775ae4a0e89ca5c",
+      "Phase": "GROUP",
+      "StartedUtc": "2026-10-26T07:41:00.4555507+00:00",
+      "CompletedUtc": "2026-10-26T07:43:29.8397659+00:00",
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-requests\\b950386d3855a0fe1c70b3ad310b1a9d97f658189810bb13c775ae4a0e89ca5c.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-responses\\b950386d3855a0fe1c70b3ad310b1a9d97f658189810bb13c775ae4a0e89ca5c.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "b22960d37bb9fa3cf6a2ca56b5da2ddcc6f6291d6436478ba1baed9fc3595154",
+      "Phase": "HIERARCHY_PLACE",
+      "StartedUtc": "2026-10-26T07:43:30.077676+00:00",
+      "CompletedUtc": "2026-10-26T07:44:43.2363344+00:00",
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-requests\\b22960d37bb9fa3cf6a2ca56b5da2ddcc6f6291d6436478ba1baed9fc3595154.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-responses\\b22960d37bb9fa3cf6a2ca56b5da2ddcc6f6291d6436478ba1baed9fc3595154.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "16f5a0e93fc7cae7c52d500828c80171020ea91bd559a853b3a03711b2b41f62",
+      "Phase": "HIERARCHY_PLACE",
+      "StartedUtc": "2026-10-26T07:44:43.257562+00:00",
+      "CompletedUtc": "2026-10-26T07:47:20.2441921+00:00",
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-requests\\16f5a0e93fc7cae7c52d500828c80171020ea91bd559a853b3a03711b2b41f62.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-responses\\16f5a0e93fc7cae7c52d500828c80171020ea91bd559a853b3a03711b2b41f62.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "bab9539233a11efbbf338b8f79882c6adde28173c50995e9b9138815759253d7",
+      "Phase": "HIERARCHY_PLACE",
+      "StartedUtc": "2026-10-26T07:47:20.2656647+00:00",
+      "CompletedUtc": "2026-10-26T07:49:34.6586922+00:00",
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-requests\\bab9539233a11efbbf338b8f79882c6adde28173c50995e9b9138815759253d7.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-responses\\bab9539233a11efbbf338b8f79882c6adde28173c50995e9b9138815759253d7.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "2afde17536f603511cb2cc079cbef990f0bc720629824f267bc9677c8924f013",
+      "Phase": "HIERARCHY_PLACE",
+      "StartedUtc": "2026-10-26T07:49:34.665289+00:00",
+      "CompletedUtc": "2026-10-26T07:50:47.9911989+00:00",
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-requests\\2afde17536f603511cb2cc079cbef990f0bc720629824f267bc9677c8924f013.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\cohort-076-v14-haiku-20261026\\luna-responses\\2afde17536f603511cb2cc079cbef990f0bc720629824f267bc9677c8924f013.response.json",
+      "Replayed": false
+    }
+  ],
+  "headingProviderCalls": 13,
+  "headings": 57,
+  "sourceCount": 546,
+  "note": "Luna authored every response body. The bridge translated only the request/response transport envelope; it did not choose phase, alter scheduling, retry, or repair model content."
+}

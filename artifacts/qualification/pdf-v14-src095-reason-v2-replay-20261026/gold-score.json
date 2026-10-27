@@ -1,0 +1,117 @@
+{
+  "artifactKind": "src095_full_v14_v12_v2_replay_post_freeze_gold_score",
+  "authorityId": "SRC-095",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+  "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+  "registrySha256": "0fe1d9a8c8ceca99aced21865a4e09437da0dc0b8ceadc11d7811f1edfa79fd3",
+  "preGoldFreezeSha256": "264172254095ab6256f631dbd431275fa919532c367def3f638cc61c7a2ac2d6",
+  "goldOpenedBeforeFreeze": false,
+  "sourceAliasMapVerification": {
+    "requestAliasCount": 2302,
+    "handlerSourceUnitCount": 2302,
+    "uniqueMatches": 2302,
+    "verified": true
+  },
+  "headingsReturned": 95,
+  "predictedAliasCount": 102,
+  "goldHeadingAliasCount": 109,
+  "membership": {
+    "tp": 101,
+    "fp": 1,
+    "fn": 8,
+    "precision": 0.9901960784313726,
+    "recall": 0.926605504587156,
+    "f1": 0.957345971563981,
+    "falsePositiveAliases": [
+      "L0007:S0"
+    ],
+    "missingAliases": [
+      "L1914:S0",
+      "L1940:S0",
+      "L1947:S0",
+      "L1961:S0",
+      "L2012:S0",
+      "L2023:S0",
+      "L2056:S0",
+      "L2063:S0"
+    ],
+    "missingAliasText": [
+      {
+        "alias": "L1914:S0",
+        "text": "C"
+      },
+      {
+        "alias": "L1940:S0",
+        "text": "D"
+      },
+      {
+        "alias": "L1947:S0",
+        "text": "G"
+      },
+      {
+        "alias": "L1961:S0",
+        "text": "H"
+      },
+      {
+        "alias": "L2012:S0",
+        "text": "M"
+      },
+      {
+        "alias": "L2023:S0",
+        "text": "P"
+      },
+      {
+        "alias": "L2056:S0",
+        "text": "R"
+      },
+      {
+        "alias": "L2063:S0",
+        "text": "S"
+      }
+    ]
+  },
+  "groups": {
+    "predictedGroupCount": 95,
+    "goldGroupCount": 103,
+    "exactGoldGroups": 94,
+    "wrongOrPartialPredictedGroups": 1,
+    "missingOrWrongGoldGroups": 9,
+    "exactGroupPrecision": 0.9894736842105263,
+    "exactGroupRecall": 0.912621359223301,
+    "falsePositiveGroups": [
+      "L0007:S0|L0008:S0"
+    ],
+    "missingGoldGroups": [
+      "L0008:S0",
+      "L1914:S0",
+      "L1940:S0",
+      "L1947:S0",
+      "L1961:S0",
+      "L2012:S0",
+      "L2023:S0",
+      "L2056:S0",
+      "L2063:S0"
+    ]
+  },
+  "run": {
+    "wallTimeSeconds": 183.6759168,
+    "requestResponsePairs": 34,
+    "bridgeCalls": 34,
+    "headingProviderCalls": 34,
+    "phaseCounts": {
+      "HIERARCHY_PLACE": 3,
+      "GROUP": 2,
+      "UNIT_SEGMENT": 29
+    },
+    "freshAgentAuthoredPlacementCalls": 3,
+    "replayedSelectionAndGroupCalls": 31,
+    "sourceOccurrences": 2302
+  },
+  "limitations": [
+    "Selection and GROUP are exact SHA-bound replays from a Luna-agent-authored run; this is not a new independent model inference.",
+    "Three placement packets had new payload hashes and were authored by fresh Luna agents.",
+    "No live Qwen/OpenRouter call; 183.7 seconds includes local bridge work and does not establish provider SLA.",
+    "Gold does not evaluate hierarchy quality."
+  ]
+}

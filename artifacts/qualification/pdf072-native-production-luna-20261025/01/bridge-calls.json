@@ -1,0 +1,225 @@
+{
+  "maxConcurrentCalls": 6,
+  "calls": [
+    {
+      "RequestSha256": "d5efafb5474f726b81bf37ec766d681f86f0676cb93684c97b58c195dd84efc6",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:34:51.1177449+00:00",
+      "CompletedUtc": "2026-10-25T15:35:35.9051228+00:00",
+      "elapsedSeconds": 44.7873779,
+      "ActiveCallsAtStart": 4,
+      "PeakActiveCallsAtStart": 3,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\d5efafb5474f726b81bf37ec766d681f86f0676cb93684c97b58c195dd84efc6.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\d5efafb5474f726b81bf37ec766d681f86f0676cb93684c97b58c195dd84efc6.response.json"
+    },
+    {
+      "RequestSha256": "ffdcbaba9b3816d4bcc9bfbd52282aa45eb9baffd28c224e7e5d1b6c4a790f42",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:34:51.1134448+00:00",
+      "CompletedUtc": "2026-10-25T15:35:36.1077613+00:00",
+      "elapsedSeconds": 44.9943165,
+      "ActiveCallsAtStart": 2,
+      "PeakActiveCallsAtStart": 1,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\ffdcbaba9b3816d4bcc9bfbd52282aa45eb9baffd28c224e7e5d1b6c4a790f42.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\ffdcbaba9b3816d4bcc9bfbd52282aa45eb9baffd28c224e7e5d1b6c4a790f42.response.json"
+    },
+    {
+      "RequestSha256": "cf5bf7e56548c5747c54b35ec34200a6c03e73882d14b5c4b4cd5e8b54b6f322",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:34:51.1124338+00:00",
+      "CompletedUtc": "2026-10-25T15:35:36.1077634+00:00",
+      "elapsedSeconds": 44.9953296,
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 0,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\cf5bf7e56548c5747c54b35ec34200a6c03e73882d14b5c4b4cd5e8b54b6f322.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\cf5bf7e56548c5747c54b35ec34200a6c03e73882d14b5c4b4cd5e8b54b6f322.response.json"
+    },
+    {
+      "RequestSha256": "3f80611b426d3050b672dc08b4f1dbf98b64a6f347c7f8565d862875cefc831a",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:34:51.1179594+00:00",
+      "CompletedUtc": "2026-10-25T15:35:36.3135635+00:00",
+      "elapsedSeconds": 45.1956041,
+      "ActiveCallsAtStart": 5,
+      "PeakActiveCallsAtStart": 4,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\3f80611b426d3050b672dc08b4f1dbf98b64a6f347c7f8565d862875cefc831a.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\3f80611b426d3050b672dc08b4f1dbf98b64a6f347c7f8565d862875cefc831a.response.json"
+    },
+    {
+      "RequestSha256": "29fe2831e7ff10236a1f2dafd7a179a7b8ee6316977ae9d01bd97763c0ec1e99",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:34:51.1181666+00:00",
+      "CompletedUtc": "2026-10-25T15:35:36.3135724+00:00",
+      "elapsedSeconds": 45.1954058,
+      "ActiveCallsAtStart": 6,
+      "PeakActiveCallsAtStart": 5,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\29fe2831e7ff10236a1f2dafd7a179a7b8ee6316977ae9d01bd97763c0ec1e99.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\29fe2831e7ff10236a1f2dafd7a179a7b8ee6316977ae9d01bd97763c0ec1e99.response.json"
+    },
+    {
+      "RequestSha256": "9f1510edcd7179d2cab1581704b663746573c5776d4384bc77c146dacf02fa87",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:35:36.2235564+00:00",
+      "CompletedUtc": "2026-10-25T15:36:17.1608502+00:00",
+      "elapsedSeconds": 40.9372938,
+      "ActiveCallsAtStart": 5,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\9f1510edcd7179d2cab1581704b663746573c5776d4384bc77c146dacf02fa87.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\9f1510edcd7179d2cab1581704b663746573c5776d4384bc77c146dacf02fa87.response.json"
+    },
+    {
+      "RequestSha256": "b3918e335382ad90022a0efab06929dce26a3e7bce99ee760761ee03e05adb25",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:35:36.4433873+00:00",
+      "CompletedUtc": "2026-10-25T15:36:17.1770508+00:00",
+      "elapsedSeconds": 40.7336635,
+      "ActiveCallsAtStart": 5,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\b3918e335382ad90022a0efab06929dce26a3e7bce99ee760761ee03e05adb25.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\b3918e335382ad90022a0efab06929dce26a3e7bce99ee760761ee03e05adb25.response.json"
+    },
+    {
+      "RequestSha256": "85fc6a3fb5443410422d21f6c4f12836e45b1aec5e557817955e46d4b5da2153",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:35:36.2260471+00:00",
+      "CompletedUtc": "2026-10-25T15:36:17.1770795+00:00",
+      "elapsedSeconds": 40.9510324,
+      "ActiveCallsAtStart": 6,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\85fc6a3fb5443410422d21f6c4f12836e45b1aec5e557817955e46d4b5da2153.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\85fc6a3fb5443410422d21f6c4f12836e45b1aec5e557817955e46d4b5da2153.response.json"
+    },
+    {
+      "RequestSha256": "b3c49573d9c0db31d28f8072d812265f36ca8bfb9239780704792990c039866c",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:35:36.034984+00:00",
+      "CompletedUtc": "2026-10-25T15:36:17.2094772+00:00",
+      "elapsedSeconds": 41.1744932,
+      "ActiveCallsAtStart": 6,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\b3c49573d9c0db31d28f8072d812265f36ca8bfb9239780704792990c039866c.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\b3c49573d9c0db31d28f8072d812265f36ca8bfb9239780704792990c039866c.response.json"
+    },
+    {
+      "RequestSha256": "b2ef7c6ed69f7a9270fa745be71de4f10e88733e96f89d0a334a98c90c16b786",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:35:36.4743916+00:00",
+      "CompletedUtc": "2026-10-25T15:36:17.2286451+00:00",
+      "elapsedSeconds": 40.7542535,
+      "ActiveCallsAtStart": 6,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\b2ef7c6ed69f7a9270fa745be71de4f10e88733e96f89d0a334a98c90c16b786.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\b2ef7c6ed69f7a9270fa745be71de4f10e88733e96f89d0a334a98c90c16b786.response.json"
+    },
+    {
+      "RequestSha256": "50930949936244a8704078021bd66f391bc6776390d4d55f0cd20b0eadb03d0a",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:36:17.2672393+00:00",
+      "CompletedUtc": "2026-10-25T15:36:59.2849942+00:00",
+      "elapsedSeconds": 42.0177549,
+      "ActiveCallsAtStart": 2,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\50930949936244a8704078021bd66f391bc6776390d4d55f0cd20b0eadb03d0a.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\50930949936244a8704078021bd66f391bc6776390d4d55f0cd20b0eadb03d0a.response.json"
+    },
+    {
+      "RequestSha256": "01ba20b750bdca06663efe3a95c9120634cb17408e8b60e3096febdf92830ba0",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:36:17.3102399+00:00",
+      "CompletedUtc": "2026-10-25T15:36:59.3171899+00:00",
+      "elapsedSeconds": 42.00695,
+      "ActiveCallsAtStart": 3,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\01ba20b750bdca06663efe3a95c9120634cb17408e8b60e3096febdf92830ba0.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\01ba20b750bdca06663efe3a95c9120634cb17408e8b60e3096febdf92830ba0.response.json"
+    },
+    {
+      "RequestSha256": "274bdbf35a7642cc34fcf9224961984ce2de087bc2458876204b7e50d9872372",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:36:17.356279+00:00",
+      "CompletedUtc": "2026-10-25T15:36:59.3794237+00:00",
+      "elapsedSeconds": 42.0231447,
+      "ActiveCallsAtStart": 4,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\274bdbf35a7642cc34fcf9224961984ce2de087bc2458876204b7e50d9872372.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\274bdbf35a7642cc34fcf9224961984ce2de087bc2458876204b7e50d9872372.response.json"
+    },
+    {
+      "RequestSha256": "266f7cd124a068f022dec2f1d39737c30f39ec94b374044fcb67bf7a36b449d6",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:36:59.3478152+00:00",
+      "CompletedUtc": "2026-10-25T15:37:53.3381005+00:00",
+      "elapsedSeconds": 53.9902853,
+      "ActiveCallsAtStart": 3,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\266f7cd124a068f022dec2f1d39737c30f39ec94b374044fcb67bf7a36b449d6.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\266f7cd124a068f022dec2f1d39737c30f39ec94b374044fcb67bf7a36b449d6.response.json"
+    },
+    {
+      "RequestSha256": "8174e193afd6524066d13dffc3d6b6e92db464782e06e0141dbfc892f83c3825",
+      "Phase": "SELECT_OR_CONVERSATION",
+      "StartedUtc": "2026-10-25T15:34:51.1157812+00:00",
+      "CompletedUtc": "2026-10-25T15:38:02.6318745+00:00",
+      "elapsedSeconds": 191.5160933,
+      "ActiveCallsAtStart": 3,
+      "PeakActiveCallsAtStart": 2,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\8174e193afd6524066d13dffc3d6b6e92db464782e06e0141dbfc892f83c3825.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\8174e193afd6524066d13dffc3d6b6e92db464782e06e0141dbfc892f83c3825.response.json"
+    },
+    {
+      "RequestSha256": "cd8c054d90822d722ba45556d22c1b99c82d2c688d82ba3ab8dd30d8249c79d0",
+      "Phase": "GROUP",
+      "StartedUtc": "2026-10-25T15:38:02.6862944+00:00",
+      "CompletedUtc": "2026-10-25T15:38:54.7805086+00:00",
+      "elapsedSeconds": 52.0942142,
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\cd8c054d90822d722ba45556d22c1b99c82d2c688d82ba3ab8dd30d8249c79d0.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\cd8c054d90822d722ba45556d22c1b99c82d2c688d82ba3ab8dd30d8249c79d0.response.json"
+    },
+    {
+      "RequestSha256": "fff574d0d2fc31724dded8c69f4d044054693e97e565d4c762b6c1cb90c3e556",
+      "Phase": "GROUP",
+      "StartedUtc": "2026-10-25T15:38:02.6918329+00:00",
+      "CompletedUtc": "2026-10-25T15:38:54.9830046+00:00",
+      "elapsedSeconds": 52.2911717,
+      "ActiveCallsAtStart": 2,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\fff574d0d2fc31724dded8c69f4d044054693e97e565d4c762b6c1cb90c3e556.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\fff574d0d2fc31724dded8c69f4d044054693e97e565d4c762b6c1cb90c3e556.response.json"
+    },
+    {
+      "RequestSha256": "f9c43b0ba1bcf033a4841089191acb2cfd80f6e46dfbe701ef389d4151f61438",
+      "Phase": "HIERARCHY_PLACE",
+      "StartedUtc": "2026-10-25T15:38:55.0481161+00:00",
+      "CompletedUtc": "2026-10-25T15:39:37.5896958+00:00",
+      "elapsedSeconds": 42.5415797,
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\f9c43b0ba1bcf033a4841089191acb2cfd80f6e46dfbe701ef389d4151f61438.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\f9c43b0ba1bcf033a4841089191acb2cfd80f6e46dfbe701ef389d4151f61438.response.json"
+    },
+    {
+      "RequestSha256": "d8279d7d48727a016452e78761d7f7a27e96af5366327308f8775b18f694d370",
+      "Phase": "HIERARCHY_PLACE",
+      "StartedUtc": "2026-10-25T15:39:37.6022997+00:00",
+      "CompletedUtc": "2026-10-25T15:40:20.1145136+00:00",
+      "elapsedSeconds": 42.5122139,
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\d8279d7d48727a016452e78761d7f7a27e96af5366327308f8775b18f694d370.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\d8279d7d48727a016452e78761d7f7a27e96af5366327308f8775b18f694d370.response.json"
+    },
+    {
+      "RequestSha256": "a71aad8ba982c2a35a0ea6f47cc317bf13f617fe7998d135c7f7c00355be3f7b",
+      "Phase": "HIERARCHY_PLACE",
+      "StartedUtc": "2026-10-25T15:40:20.1186015+00:00",
+      "CompletedUtc": "2026-10-25T15:41:06.83947+00:00",
+      "elapsedSeconds": 46.7208685,
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-requests\\a71aad8ba982c2a35a0ea6f47cc317bf13f617fe7998d135c7f7c00355be3f7b.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\luna-responses\\a71aad8ba982c2a35a0ea6f47cc317bf13f617fe7998d135c7f7c00355be3f7b.response.json"
+    }
+  ]
+}

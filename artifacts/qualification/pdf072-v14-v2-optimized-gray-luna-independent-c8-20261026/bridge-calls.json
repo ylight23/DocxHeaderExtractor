@@ -1,0 +1,173 @@
+{
+  "maxConcurrentCalls": 8,
+  "calls": [
+    {
+      "RequestSha256": "123358cab1971e5363b82165c75113c8c02dc964bb672ae30120aa09efb6ee25",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T10:13:52.4483741+00:00",
+      "CompletedUtc": "2026-10-26T10:15:20.8714469+00:00",
+      "elapsedSeconds": 88.4230728,
+      "ActiveCallsAtStart": 4,
+      "PeakActiveCallsAtStart": 3,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\123358cab1971e5363b82165c75113c8c02dc964bb672ae30120aa09efb6ee25.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\123358cab1971e5363b82165c75113c8c02dc964bb672ae30120aa09efb6ee25.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "28426b2e75cbf2c02eed6b7c97b664b466447a485800a960975d284f4cf9a68a",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T10:13:52.4462516+00:00",
+      "CompletedUtc": "2026-10-26T10:16:00.2891054+00:00",
+      "elapsedSeconds": 127.8428538,
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 0,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\28426b2e75cbf2c02eed6b7c97b664b466447a485800a960975d284f4cf9a68a.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\28426b2e75cbf2c02eed6b7c97b664b466447a485800a960975d284f4cf9a68a.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "4e629a61b521d8a86aa64e3f489cc928b0b319c4097fc569a3095978f5f2b612",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T10:13:52.447572+00:00",
+      "CompletedUtc": "2026-10-26T10:16:53.8815996+00:00",
+      "elapsedSeconds": 181.4340276,
+      "ActiveCallsAtStart": 3,
+      "PeakActiveCallsAtStart": 2,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\4e629a61b521d8a86aa64e3f489cc928b0b319c4097fc569a3095978f5f2b612.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\4e629a61b521d8a86aa64e3f489cc928b0b319c4097fc569a3095978f5f2b612.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "66776844f763bce14b0f6128a4150401c4f87555d0ece011ccab2069ec837be6",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T10:13:52.4468376+00:00",
+      "CompletedUtc": "2026-10-26T10:17:30.6477159+00:00",
+      "elapsedSeconds": 218.2008783,
+      "ActiveCallsAtStart": 2,
+      "PeakActiveCallsAtStart": 1,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\66776844f763bce14b0f6128a4150401c4f87555d0ece011ccab2069ec837be6.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\66776844f763bce14b0f6128a4150401c4f87555d0ece011ccab2069ec837be6.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "a412f43542dc2a4bfb9ea89aade7e53ccc83fbbafd8594fea6612b76531dcb81",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T10:13:52.4518511+00:00",
+      "CompletedUtc": "2026-10-26T10:18:21.2193182+00:00",
+      "elapsedSeconds": 268.7674671,
+      "ActiveCallsAtStart": 6,
+      "PeakActiveCallsAtStart": 5,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\a412f43542dc2a4bfb9ea89aade7e53ccc83fbbafd8594fea6612b76531dcb81.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\a412f43542dc2a4bfb9ea89aade7e53ccc83fbbafd8594fea6612b76531dcb81.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "ad1e906c5f6ccf0ba5113156b83e0b3f036e3eb7fd9074eed353195469accd4e",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T10:13:52.4550205+00:00",
+      "CompletedUtc": "2026-10-26T10:18:22.0415508+00:00",
+      "elapsedSeconds": 269.5865303,
+      "ActiveCallsAtStart": 7,
+      "PeakActiveCallsAtStart": 6,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\ad1e906c5f6ccf0ba5113156b83e0b3f036e3eb7fd9074eed353195469accd4e.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\ad1e906c5f6ccf0ba5113156b83e0b3f036e3eb7fd9074eed353195469accd4e.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "b350668c5dc70038d2e91f276e12650d821094bfabc8eaf8712eb6ddf61c4b49",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T10:13:52.4880545+00:00",
+      "CompletedUtc": "2026-10-26T10:18:23.0810556+00:00",
+      "elapsedSeconds": 270.5930011,
+      "ActiveCallsAtStart": 8,
+      "PeakActiveCallsAtStart": 7,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\b350668c5dc70038d2e91f276e12650d821094bfabc8eaf8712eb6ddf61c4b49.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\b350668c5dc70038d2e91f276e12650d821094bfabc8eaf8712eb6ddf61c4b49.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "b82b6e6c8c6d09248c073b8f5f4a0c5a695ee7627b5f7e97a4ed26cb2b92220f",
+      "Phase": "SELECT",
+      "StartedUtc": "2026-10-26T10:13:52.4491713+00:00",
+      "CompletedUtc": "2026-10-26T10:18:23.886264+00:00",
+      "elapsedSeconds": 271.4370927,
+      "ActiveCallsAtStart": 5,
+      "PeakActiveCallsAtStart": 4,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\b82b6e6c8c6d09248c073b8f5f4a0c5a695ee7627b5f7e97a4ed26cb2b92220f.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\b82b6e6c8c6d09248c073b8f5f4a0c5a695ee7627b5f7e97a4ed26cb2b92220f.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "599acd92ad4923d68cf63c40d49384f5ba456ac02753fe0352fe7f82a8e7f26e",
+      "Phase": "GROUP",
+      "StartedUtc": "2026-10-26T10:18:23.9565163+00:00",
+      "CompletedUtc": "2026-10-26T10:19:31.7250825+00:00",
+      "elapsedSeconds": 67.7685662,
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 8,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\599acd92ad4923d68cf63c40d49384f5ba456ac02753fe0352fe7f82a8e7f26e.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\599acd92ad4923d68cf63c40d49384f5ba456ac02753fe0352fe7f82a8e7f26e.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "fea5666fb11db6ebf8ff938010cc443e6fe2db0c0f4e3eecbab98d39fee36922",
+      "Phase": "GROUP",
+      "StartedUtc": "2026-10-26T10:18:23.9578685+00:00",
+      "CompletedUtc": "2026-10-26T10:19:32.3368534+00:00",
+      "elapsedSeconds": 68.3789849,
+      "ActiveCallsAtStart": 2,
+      "PeakActiveCallsAtStart": 8,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\fea5666fb11db6ebf8ff938010cc443e6fe2db0c0f4e3eecbab98d39fee36922.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\fea5666fb11db6ebf8ff938010cc443e6fe2db0c0f4e3eecbab98d39fee36922.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "196d1088f49c69fca50be82e663a4abe8b91953de704ba4a9edad9475b09c893",
+      "Phase": "GROUP",
+      "StartedUtc": "2026-10-26T10:19:31.7376864+00:00",
+      "CompletedUtc": "2026-10-26T10:27:29.2980717+00:00",
+      "elapsedSeconds": 477.5603853,
+      "ActiveCallsAtStart": 2,
+      "PeakActiveCallsAtStart": 8,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\196d1088f49c69fca50be82e663a4abe8b91953de704ba4a9edad9475b09c893.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\196d1088f49c69fca50be82e663a4abe8b91953de704ba4a9edad9475b09c893.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "9dcbe161c3a7df5ad0327edcf10df9dc285b6412b5bd0d3ff8ff217722fee06c",
+      "Phase": "GROUP",
+      "StartedUtc": "2026-10-26T10:19:32.3434844+00:00",
+      "CompletedUtc": "2026-10-26T10:27:31.0073014+00:00",
+      "elapsedSeconds": 478.663817,
+      "ActiveCallsAtStart": 2,
+      "PeakActiveCallsAtStart": 8,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\9dcbe161c3a7df5ad0327edcf10df9dc285b6412b5bd0d3ff8ff217722fee06c.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\9dcbe161c3a7df5ad0327edcf10df9dc285b6412b5bd0d3ff8ff217722fee06c.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "46e8f2b0a004303298dfdda58796d3d724ea01e705b391d4503bf6fc806ad657",
+      "Phase": "HIERARCHY_PLACE",
+      "StartedUtc": "2026-10-26T10:27:31.2702145+00:00",
+      "CompletedUtc": "2026-10-26T10:28:11.54286+00:00",
+      "elapsedSeconds": 40.2726455,
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 8,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\46e8f2b0a004303298dfdda58796d3d724ea01e705b391d4503bf6fc806ad657.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\46e8f2b0a004303298dfdda58796d3d724ea01e705b391d4503bf6fc806ad657.response.json",
+      "Replayed": false
+    },
+    {
+      "RequestSha256": "feb978556cec31845e876e1d91d3dccee24a74b811a6c0fecdbfc1f5b74b4a08",
+      "Phase": "HIERARCHY_PLACE",
+      "StartedUtc": "2026-10-26T10:28:11.5644419+00:00",
+      "CompletedUtc": "2026-10-26T10:28:40.3485395+00:00",
+      "elapsedSeconds": 28.7840976,
+      "ActiveCallsAtStart": 1,
+      "PeakActiveCallsAtStart": 8,
+      "RequestPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-requests\\feb978556cec31845e876e1d91d3dccee24a74b811a6c0fecdbfc1f5b74b4a08.request.json",
+      "ResponsePath": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\pdf072-v14-v2-optimized-gray-luna-independent-c8-20261026\\luna-responses\\feb978556cec31845e876e1d91d3dccee24a74b811a6c0fecdbfc1f5b74b4a08.response.json",
+      "Replayed": false
+    }
+  ]
+}

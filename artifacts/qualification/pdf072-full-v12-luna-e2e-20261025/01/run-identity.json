@@ -1,0 +1,154 @@
+{
+  "mode": "production-full-e2e-luna",
+  "pdfPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_100\\05_bien_ban_hop\\072_ICP_TAG_Minutes_Mar_2025.pdf",
+  "SourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "SourceAliasUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+  "EvidenceStoreSha256": "9b0597a5899bbd187d5002b3aaac0430396fe1ce2f7fc4d564e68bed383f5dcb",
+  "Cores": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "scopes": [
+    {
+      "Segment": 0,
+      "Start": 0,
+      "End": 34,
+      "Kind": "page",
+      "FirstRequestBytes": 76833,
+      "RequestSha256": "ffdcbaba9b3816d4bcc9bfbd52282aa45eb9baffd28c224e7e5d1b6c4a790f42"
+    },
+    {
+      "Segment": 1,
+      "Start": 34,
+      "End": 80,
+      "Kind": "page",
+      "FirstRequestBytes": 100816,
+      "RequestSha256": "85fc6a3fb5443410422d21f6c4f12836e45b1aec5e557817955e46d4b5da2153"
+    },
+    {
+      "Segment": 2,
+      "Start": 80,
+      "End": 123,
+      "Kind": "page",
+      "FirstRequestBytes": 95775,
+      "RequestSha256": "29fe2831e7ff10236a1f2dafd7a179a7b8ee6316977ae9d01bd97763c0ec1e99"
+    },
+    {
+      "Segment": 3,
+      "Start": 123,
+      "End": 167,
+      "Kind": "page",
+      "FirstRequestBytes": 98626,
+      "RequestSha256": "b3918e335382ad90022a0efab06929dce26a3e7bce99ee760761ee03e05adb25"
+    },
+    {
+      "Segment": 4,
+      "Start": 167,
+      "End": 211,
+      "Kind": "page",
+      "FirstRequestBytes": 100533,
+      "RequestSha256": "3f80611b426d3050b672dc08b4f1dbf98b64a6f347c7f8565d862875cefc831a"
+    },
+    {
+      "Segment": 5,
+      "Start": 211,
+      "End": 257,
+      "Kind": "page",
+      "FirstRequestBytes": 103429,
+      "RequestSha256": "b2ef7c6ed69f7a9270fa745be71de4f10e88733e96f89d0a334a98c90c16b786"
+    },
+    {
+      "Segment": 6,
+      "Start": 257,
+      "End": 299,
+      "Kind": "page",
+      "FirstRequestBytes": 100963,
+      "RequestSha256": "d5efafb5474f726b81bf37ec766d681f86f0676cb93684c97b58c195dd84efc6"
+    },
+    {
+      "Segment": 7,
+      "Start": 299,
+      "End": 342,
+      "Kind": "page",
+      "FirstRequestBytes": 103974,
+      "RequestSha256": "b3c49573d9c0db31d28f8072d812265f36ca8bfb9239780704792990c039866c"
+    },
+    {
+      "Segment": 8,
+      "Start": 342,
+      "End": 385,
+      "Kind": "page",
+      "FirstRequestBytes": 101562,
+      "RequestSha256": "8174e193afd6524066d13dffc3d6b6e92db464782e06e0141dbfc892f83c3825"
+    },
+    {
+      "Segment": 9,
+      "Start": 385,
+      "End": 429,
+      "Kind": "page",
+      "FirstRequestBytes": 102811,
+      "RequestSha256": "01ba20b750bdca06663efe3a95c9120634cb17408e8b60e3096febdf92830ba0"
+    },
+    {
+      "Segment": 10,
+      "Start": 429,
+      "End": 472,
+      "Kind": "page",
+      "FirstRequestBytes": 99916,
+      "RequestSha256": "cf5bf7e56548c5747c54b35ec34200a6c03e73882d14b5c4b4cd5e8b54b6f322"
+    },
+    {
+      "Segment": 11,
+      "Start": 472,
+      "End": 515,
+      "Kind": "page",
+      "FirstRequestBytes": 98184,
+      "RequestSha256": "9f1510edcd7179d2cab1581704b663746573c5776d4384bc77c146dacf02fa87"
+    },
+    {
+      "Segment": 12,
+      "Start": 515,
+      "End": 541,
+      "Kind": "page",
+      "FirstRequestBytes": 88753,
+      "RequestSha256": "50930949936244a8704078021bd66f391bc6776390d4d55f0cd20b0eadb03d0a"
+    },
+    {
+      "Segment": 13,
+      "Start": 541,
+      "End": 574,
+      "Kind": "page",
+      "FirstRequestBytes": 103840,
+      "RequestSha256": "266f7cd124a068f022dec2f1d39737c30f39ec94b374044fcb67bf7a36b449d6"
+    },
+    {
+      "Segment": 14,
+      "Start": 574,
+      "End": 650,
+      "Kind": "page",
+      "FirstRequestBytes": 157356,
+      "RequestSha256": "274bdbf35a7642cc34fcf9224961984ce2de087bc2458876204b7e50d9872372"
+    }
+  ],
+  "aliases": 650,
+  "membershipInstructionVersion": 12,
+  "sourceBoundSelection": true,
+  "rasterGeometry": true,
+  "genericPairwiseGrouping": true,
+  "verifier": "qualification-only",
+  "placement": "production HeadingPlacer with whole-document batching and native parent-chain repair",
+  "goldInRequests": false
+}

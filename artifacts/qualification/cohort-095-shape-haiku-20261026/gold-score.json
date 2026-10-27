@@ -1,0 +1,67 @@
+{
+ "run": "cohort-095-shape-haiku-20261026",
+ "gold": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+ "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+ "aliases": {
+  "tp": 101,
+  "fp": 1,
+  "fn": 8,
+  "precision": 0.9902,
+  "recall": 0.9266
+ },
+ "groups": {
+  "gold": 103,
+  "predicted": 95,
+  "exact": 94,
+  "wrong": 1
+ },
+ "falsePositives": [
+  [
+   "L0007:S0",
+   "RFC 9114"
+  ]
+ ],
+ "misses": [
+  [
+   "L1914:S0",
+   "C"
+  ],
+  [
+   "L1940:S0",
+   "D"
+  ],
+  [
+   "L1947:S0",
+   "G"
+  ],
+  [
+   "L1961:S0",
+   "H"
+  ],
+  [
+   "L2012:S0",
+   "M"
+  ],
+  [
+   "L2023:S0",
+   "P"
+  ],
+  [
+   "L2056:S0",
+   "R"
+  ],
+  [
+   "L2063:S0",
+   "S"
+  ]
+ ],
+ "wrongGroups": [
+  [
+   [
+    "L0007:S0",
+    "L0008:S0"
+   ],
+   "RFC 9114 | HTTP/3"
+  ]
+ ]
+}

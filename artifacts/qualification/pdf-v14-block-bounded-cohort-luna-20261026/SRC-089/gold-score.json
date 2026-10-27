@@ -1,0 +1,186 @@
+{
+  "authorityId": "SRC-089",
+  "sourceSha256": "f4b72d1a206b89bda2b86e47c24109eba69605f906eb1fc276212480fd2410c5",
+  "goldSha256": "3affb68ed5e6c9d16131f25babc44395bd568975a1488e7967033a516534417a",
+  "frozenBeforeGold": true,
+  "freezeIntegrity": "23/23 request SHA, response SHA and request binding verified before Gold read",
+  "goldEvaluability": {
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "hierarchyEvaluable": false
+  },
+  "counts": {
+    "sourceAliases": 581,
+    "goldAliases": 57,
+    "predictedHeadingAliases": 53,
+    "goldGroups": 36,
+    "predictedGroups": 32
+  },
+  "aliasScore": {
+    "tp": 53,
+    "fp": 0,
+    "fn": 4,
+    "precision": 1.0,
+    "recall": 0.9298245614035088,
+    "falsePositiveAliases": [],
+    "missingAliases": [
+      "L0109:S0",
+      "L0117:S0",
+      "L0245:S0",
+      "L0248:S0"
+    ]
+  },
+  "exactGroupScore": {
+    "tp": 32,
+    "fp": 0,
+    "fn": 4,
+    "precision": 1.0,
+    "recall": 0.8888888888888888,
+    "falsePositiveGroups": [],
+    "missingGroups": [
+      [
+        "L0109:S0"
+      ],
+      [
+        "L0117:S0"
+      ],
+      [
+        "L0245:S0"
+      ],
+      [
+        "L0248:S0"
+      ]
+    ]
+  },
+  "predictedGroups": [
+    [
+      "L0006:S0",
+      "L0007:S0",
+      "L0008:S0"
+    ],
+    [
+      "L0014:S0",
+      "L0015:S0"
+    ],
+    [
+      "L0016:S0"
+    ],
+    [
+      "L0024:S0",
+      "L0025:S0"
+    ],
+    [
+      "L0051:S0",
+      "L0052:S0"
+    ],
+    [
+      "L0080:S0",
+      "L0081:S0"
+    ],
+    [
+      "L0094:S0"
+    ],
+    [
+      "L0106:S0",
+      "L0107:S0",
+      "L0108:S0"
+    ],
+    [
+      "L0126:S0",
+      "L0127:S0",
+      "L0128:S0"
+    ],
+    [
+      "L0160:S0",
+      "L0161:S0"
+    ],
+    [
+      "L0162:S0"
+    ],
+    [
+      "L0173:S0",
+      "L0174:S0"
+    ],
+    [
+      "L0194:S0"
+    ],
+    [
+      "L0242:S0"
+    ],
+    [
+      "L0259:S0"
+    ],
+    [
+      "L0283:S0",
+      "L0284:S0"
+    ],
+    [
+      "L0285:S0",
+      "L0286:S0"
+    ],
+    [
+      "L0316:S0"
+    ],
+    [
+      "L0349:S0"
+    ],
+    [
+      "L0358:S0"
+    ],
+    [
+      "L0381:S0",
+      "L0382:S0"
+    ],
+    [
+      "L0383:S0"
+    ],
+    [
+      "L0425:S0",
+      "L0426:S0"
+    ],
+    [
+      "L0454:S0",
+      "L0455:S0"
+    ],
+    [
+      "L0477:S0"
+    ],
+    [
+      "L0489:S0"
+    ],
+    [
+      "L0498:S0",
+      "L0499:S0"
+    ],
+    [
+      "L0521:S0",
+      "L0522:S0"
+    ],
+    [
+      "L0534:S0",
+      "L0535:S0"
+    ],
+    [
+      "L0536:S0"
+    ],
+    [
+      "L0554:S0",
+      "L0555:S0"
+    ],
+    [
+      "L0571:S0"
+    ]
+  ],
+  "timingSeconds": 134.4772098,
+  "stageRequestCounts": {
+    "UNIT_SEGMENT": 18,
+    "GROUP": 3,
+    "HIERARCHY_PLACE": 2
+  },
+  "imagesInSelectPackets": 18,
+  "correctionsOrRetries": [],
+  "limitations": [
+    "Hierarchy is not Gold-evaluable.",
+    "This is one local Luna bridge run; latency includes local response-file handling and does not establish external-provider SLA."
+  ]
+}

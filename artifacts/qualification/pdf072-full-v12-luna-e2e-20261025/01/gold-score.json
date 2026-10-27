@@ -1,0 +1,254 @@
+{
+  "authorityId": "DOC-0252",
+  "goldSha256": "e966d4e57ba6b312a2cebe93446c4350d4ef7173458f7c528306775f9c743b03",
+  "registrySha256": "0fe1d9a8c8ceca99aced21865a4e09437da0dc0b8ceadc11d7811f1edfa79fd3",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "scope": {
+    "ownedAliases": 650,
+    "goldAliasesInScope": 45,
+    "goldGroupsInScope": 42
+  },
+  "productionGroupMembership": {
+    "tp": 44,
+    "fp": 23,
+    "fn": 1,
+    "precision": 0.6567164179104478,
+    "recall": 0.9777777777777777,
+    "falsePositiveAliases": [
+      "L0522:S1",
+      "L0524:S1",
+      "L0525:S0",
+      "L0527:S1",
+      "L0528:S1",
+      "L0529:S1",
+      "L0530:S0",
+      "L0532:S0",
+      "L0534:S1",
+      "L0535:S1",
+      "L0537:S1",
+      "L0541:S1",
+      "L0542:S0",
+      "L0543:S1",
+      "L0544:S0",
+      "L0545:S1",
+      "L0546:S1",
+      "L0547:S1",
+      "L0548:S1",
+      "L0549:S0",
+      "L0551:S1",
+      "L0552:S1",
+      "L0554:S0"
+    ],
+    "missingAliases": [
+      "L0539:S0"
+    ]
+  },
+  "postVerifyMembership": {
+    "tp": 44,
+    "fp": 23,
+    "fn": 1,
+    "precision": 0.6567164179104478,
+    "recall": 0.9777777777777777,
+    "falsePositiveAliases": [
+      "L0522:S1",
+      "L0524:S1",
+      "L0525:S0",
+      "L0527:S1",
+      "L0528:S1",
+      "L0529:S1",
+      "L0530:S0",
+      "L0532:S0",
+      "L0534:S1",
+      "L0535:S1",
+      "L0537:S1",
+      "L0541:S1",
+      "L0542:S0",
+      "L0543:S1",
+      "L0544:S0",
+      "L0545:S1",
+      "L0546:S1",
+      "L0547:S1",
+      "L0548:S1",
+      "L0549:S0",
+      "L0551:S1",
+      "L0552:S1",
+      "L0554:S0"
+    ],
+    "missingAliases": [
+      "L0539:S0"
+    ]
+  },
+  "productionGroupBoundaries": {
+    "tp": 41,
+    "fp": 18,
+    "fn": 1,
+    "precision": 0.6949152542372882,
+    "recall": 0.9761904761904762,
+    "falsePositiveGroups": [
+      [
+        "L0522:S1"
+      ],
+      [
+        "L0524:S1",
+        "L0525:S0"
+      ],
+      [
+        "L0527:S1"
+      ],
+      [
+        "L0528:S1"
+      ],
+      [
+        "L0529:S1",
+        "L0530:S0"
+      ],
+      [
+        "L0532:S0"
+      ],
+      [
+        "L0534:S1"
+      ],
+      [
+        "L0535:S1"
+      ],
+      [
+        "L0537:S1"
+      ],
+      [
+        "L0541:S1",
+        "L0542:S0"
+      ],
+      [
+        "L0543:S1",
+        "L0544:S0"
+      ],
+      [
+        "L0545:S1"
+      ],
+      [
+        "L0546:S1"
+      ],
+      [
+        "L0547:S1"
+      ],
+      [
+        "L0548:S1",
+        "L0549:S0"
+      ],
+      [
+        "L0551:S1"
+      ],
+      [
+        "L0552:S1"
+      ],
+      [
+        "L0554:S0"
+      ]
+    ],
+    "missingGroups": [
+      [
+        "L0539:S0"
+      ]
+    ]
+  },
+  "postVerifyBoundaries": {
+    "tp": 41,
+    "fp": 18,
+    "fn": 1,
+    "precision": 0.6949152542372882,
+    "recall": 0.9761904761904762,
+    "falsePositiveGroups": [
+      [
+        "L0522:S1"
+      ],
+      [
+        "L0524:S1",
+        "L0525:S0"
+      ],
+      [
+        "L0527:S1"
+      ],
+      [
+        "L0528:S1"
+      ],
+      [
+        "L0529:S1",
+        "L0530:S0"
+      ],
+      [
+        "L0532:S0"
+      ],
+      [
+        "L0534:S1"
+      ],
+      [
+        "L0535:S1"
+      ],
+      [
+        "L0537:S1"
+      ],
+      [
+        "L0541:S1",
+        "L0542:S0"
+      ],
+      [
+        "L0543:S1",
+        "L0544:S0"
+      ],
+      [
+        "L0545:S1"
+      ],
+      [
+        "L0546:S1"
+      ],
+      [
+        "L0547:S1"
+      ],
+      [
+        "L0548:S1",
+        "L0549:S0"
+      ],
+      [
+        "L0551:S1"
+      ],
+      [
+        "L0552:S1"
+      ],
+      [
+        "L0554:S0"
+      ]
+    ],
+    "missingGroups": [
+      [
+        "L0539:S0"
+      ]
+    ]
+  },
+  "baselineEqualsPostVerify": true,
+  "groupingFailures": [],
+  "verificationFailures": [],
+  "verificationUnresolvedAliases": [],
+  "placement": {
+    "contract": "HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION:parent-chain-repair-v1",
+    "requested": 59,
+    "placed": 57,
+    "unresolved": 0,
+    "logicalCalls": 4,
+    "repairCalls": 0,
+    "graphConflicts": []
+  },
+  "goldCapabilities": {
+    "semanticCountAuthoritative": true,
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": false,
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false,
+    "structuredSourcePartsEvaluable": true,
+    "coordinateProfile": "STRUCTURED_SOURCE_PARTS"
+  },
+  "limitations": [
+    "Gold hierarchy capability is false; hierarchy quality is unscored.",
+    "This is one Luna-authored whole-document run; no provider-quality, latency-distribution, or Qwen claim is made."
+  ]
+}

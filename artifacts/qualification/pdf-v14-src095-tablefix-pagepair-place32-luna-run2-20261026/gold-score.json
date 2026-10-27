@@ -1,0 +1,266 @@
+{
+  "artifactKind": "post_freeze_gold_score",
+  "authorityId": "SRC-095",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+  "goldRegistryPath": "eval/a99-closed-loop/gold-current/registry.v1.json",
+  "goldRegistrySha256": "0fe1d9a8c8ceca99aced21865a4e09437da0dc0b8ceadc11d7811f1edfa79fd3",
+  "goldPath": "eval/a99-closed-loop/gold-current/documents/SRC-095.gold.v1.json",
+  "preGoldFreezeSha256": "60f198e6fca3561306ca4cb71bb05b9807f5e7c18e54846c363abbf26c0be024",
+  "goldOpenedBeforeFreeze": false,
+  "goldEvaluability": {
+    "semanticCountAuthoritative": true,
+    "semanticClaimsEvaluable": true,
+    "occurrenceEvaluable": true,
+    "characterSpanEvaluable": true,
+    "visualBindingEvaluable": false,
+    "hierarchyEvaluable": false,
+    "structuredSourcePartsEvaluable": true,
+    "coordinateProfile": "STRUCTURED_SOURCE_PARTS"
+  },
+  "headingsReturned": 91,
+  "predictedAliasCount": 97,
+  "goldHeadingAliasCount": 109,
+  "membership": {
+    "tp": 97,
+    "fp": 0,
+    "fn": 12,
+    "precision": 1.0,
+    "recall": 0.8899082568807339,
+    "f1": 0.941747572815534,
+    "falsePositiveAliases": [],
+    "missingAliases": [
+      "L1688:S0",
+      "L1710:S0",
+      "L1729:S0",
+      "L1914:S0",
+      "L1940:S0",
+      "L1947:S0",
+      "L1961:S0",
+      "L2012:S0",
+      "L2023:S0",
+      "L2056:S0",
+      "L2063:S0",
+      "L2076:S0"
+    ]
+  },
+  "groups": {
+    "predictedGroupCount": 91,
+    "goldGroupCount": 103,
+    "exactGoldGroups": 91,
+    "exactGoldGroupPrecision": 1.0,
+    "exactGoldGroupRecall": 0.883495145631068,
+    "wrongOrPartialPredictedGroups": 0,
+    "missingOrWrongGoldGroups": 12,
+    "falsePositiveGroups": [],
+    "missingGoldGroups": [
+      [
+        "L1688:S0"
+      ],
+      [
+        "L1710:S0"
+      ],
+      [
+        "L1729:S0"
+      ],
+      [
+        "L1914:S0"
+      ],
+      [
+        "L1940:S0"
+      ],
+      [
+        "L1947:S0"
+      ],
+      [
+        "L1961:S0"
+      ],
+      [
+        "L2012:S0"
+      ],
+      [
+        "L2023:S0"
+      ],
+      [
+        "L2056:S0"
+      ],
+      [
+        "L2063:S0"
+      ],
+      [
+        "L2076:S0"
+      ]
+    ]
+  },
+  "wallTimeSeconds": 253.7412112,
+  "sourceAliasMapVerification": {
+    "requestAliasCount": 2302,
+    "handlerSourceUnitCount": 2302,
+    "mapping": "sorted source aliases by numeric L/S order to handler sourceCatalog sourceOrdinal order",
+    "verified": true
+  },
+  "runExecution": {
+    "requestBytesTotal": 16115894,
+    "imageCountTotal": 57,
+    "unitSegmentPacketCount": 29,
+    "unitSegmentPacketsByDistinctPageCount": {
+      "1": 1,
+      "2": 28
+    },
+    "unitSegmentPacketsByImageCount": {
+      "1": 1,
+      "2": 28
+    },
+    "phaseCountsByRequestStage": {
+      "GROUP": 2,
+      "HIERARCHY_PLACE": 3,
+      "UNIT_SEGMENT": 29
+    },
+    "bridgeWaitSecondsSummedAcrossConcurrentCalls": {
+      "UNIT_SEGMENT": 507.892,
+      "GROUP": 40.327,
+      "HIERARCHY_PLACE": 66.752
+    },
+    "repairCounts": {
+      "selectionRepairs": 0,
+      "groupRepairs": 0,
+      "parentChainRepairs": 0
+    },
+    "bridgePhaseLabelNote": "One UNIT_SEGMENT request (SEG-006, SHA ade80609…) was classified as GROUP by the bridge log text heuristic; phase counts use the request payload stage. The two actual GROUP stage requests are counted as GROUP."
+  },
+  "comparisonToPriorFrozenRunReScoredOnSameCanonicalGold": {
+    "priorRunPath": "artifacts/qualification/pdf-v14-block-bounded-cohort-luna-20261026/SRC-095",
+    "priorFreezeStatus": "FROZEN_BEFORE_GOLD",
+    "priorGoldOpenedBeforeFreeze": false,
+    "canonicalGoldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+    "prior": {
+      "canonicalGoldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+      "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+      "freezeStatus": "FROZEN_BEFORE_GOLD",
+      "goldOpenedBeforeFreeze": false,
+      "wallTimeSeconds": 1052.4107758,
+      "requestResponsePairs": 67,
+      "bridgeCalls": 68,
+      "phases": {
+        "UNIT_SEGMENT": 57,
+        "GROUP": 2,
+        "HIERARCHY_CHAIN_REPAIR": 1,
+        "HIERARCHY_PLACE": 7
+      },
+      "membership": {
+        "tp": 97,
+        "fp": 1,
+        "fn": 12,
+        "precision": 0.9897959183673469,
+        "recall": 0.8899082568807339,
+        "falsePositiveAliases": [
+          "L0007:S0"
+        ],
+        "missingAliases": [
+          "L0015:S0",
+          "L0023:S0",
+          "L0034:S0",
+          "L1914:S0",
+          "L1940:S0",
+          "L1947:S0",
+          "L1961:S0",
+          "L2012:S0",
+          "L2023:S0",
+          "L2056:S0",
+          "L2063:S0",
+          "L2076:S0"
+        ]
+      },
+      "groups": {
+        "exact": 90,
+        "falsePositive": 1,
+        "missing": 13,
+        "goldGroups": 103,
+        "predictedGroups": 91,
+        "falsePositiveGroups": [
+          [
+            "L0007:S0",
+            "L0008:S0"
+          ]
+        ],
+        "missingGroups": [
+          [
+            "L0008:S0"
+          ],
+          [
+            "L0015:S0"
+          ],
+          [
+            "L0023:S0"
+          ],
+          [
+            "L0034:S0"
+          ],
+          [
+            "L1914:S0"
+          ],
+          [
+            "L1940:S0"
+          ],
+          [
+            "L1947:S0"
+          ],
+          [
+            "L1961:S0"
+          ],
+          [
+            "L2012:S0"
+          ],
+          [
+            "L2023:S0"
+          ],
+          [
+            "L2056:S0"
+          ],
+          [
+            "L2063:S0"
+          ],
+          [
+            "L2076:S0"
+          ]
+        ]
+      },
+      "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5"
+    },
+    "membershipDeltaCurrentMinusPrior": {
+      "tp": 0,
+      "fp": -1,
+      "fn": 0
+    },
+    "exactGroupDeltaCurrentMinusPrior": {
+      "exact": 1,
+      "falsePositive": -1,
+      "missing": -1
+    },
+    "oldMissingAliasesResolved": [
+      "L0015:S0",
+      "L0023:S0",
+      "L0034:S0"
+    ],
+    "newMissingAliasesIntroduced": [
+      "L1688:S0",
+      "L1710:S0",
+      "L1729:S0"
+    ],
+    "missingAliasesUnchanged": [
+      "L1914:S0",
+      "L1940:S0",
+      "L1947:S0",
+      "L1961:S0",
+      "L2012:S0",
+      "L2023:S0",
+      "L2056:S0",
+      "L2063:S0",
+      "L2076:S0"
+    ],
+    "oldFalsePositiveAliasRemoved": [
+      "L0007:S0"
+    ],
+    "comparisonMethod": "Prior actual structure was rescored from its frozen native-run-result and request aliases against the registry-authorized canonical Gold. Legacy gold-score.json was not used as score evidence."
+  }
+}

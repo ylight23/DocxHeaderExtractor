@@ -1,0 +1,66 @@
+using System.Reflection;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using DocxHeaderExtractor.HeadingAgent.Formats;
+using DocxHeaderExtractor.HeadingAgent.Protocol;
+using DocxHeaderExtractor.HeadingAgent.Runtime;
+using DocxHeaderExtractor.Agents;
+using DocxHeaderExtractor.Agents.Budget;
+using DocxHeaderExtractor.Agents.Transport;
+var dir=@"C:\DocxHeaderExtractor-a99-closed-loop\artifacts\qualification\pdf072-scope-20261023";
+Directory.CreateDirectory(dir);
+var json=new JsonSerializerOptions{WriteIndented=true,Encoder=System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping};
+void Save(string name,object value)=>File.WriteAllText(Path.Combine(dir,name),JsonSerializer.Serialize(value,json));
+var path=@"C:\DocxHeaderExtractor-a99-closed-loop\todo10_8\heading_corpus_100\05_bien_ban_hop\072_ICP_TAG_Minutes_Mar_2025.pdf";
+var a=AgentSource.Load(path,out var fail)!;
+if(fail!="OK")throw new Exception(fail);
+var b=AgentSource.Load(path,out _)!;
+var page=b.Lines.Select((l,i)=>(l,i)).Where(x=>x.l.Page==15).Select(x=>x.i).ToArray();
+var cores=b.Cores.ToArray(); cores[15]=(page.First(),page.Last()+1);
+typeof(AgentSource).GetField("<Cores>k__BackingField",BindingFlags.NonPublic|BindingFlags.Instance)!.SetValue(b,cores);
+var peers=new[]{"L0557:S0","L0566:S0","L0576:S0","L0587:S0"};
+PreparedRequest Packet(AgentSource s,int n)=>new SelectionTask(s,n,PdfAgentProtocol.Instruction,null,null).Build(new JsonArray(),"auto");
+var packets=new List<object>();
+foreach(var (arm,s,ns) in new[]{("A",a,new[]{14,15,16}),("B",b,new[]{15})})foreach(var n in ns){
+ var req=Packet(s,n);var repeat=Packet(s,n);var productionHash=AgentUnit.FirstRequestSha256(s,n,PdfAgentProtocol.Instruction);
+ if(req.Sha256!=repeat.Sha256||req.Sha256!=productionHash)throw new Exception("REBUILD_HASH_MISMATCH");
+ if(req.Bytes>AgentBudget.MaxRequestBytes)throw new Exception("REQUEST_OVER_CAP");
+ File.WriteAllText(Path.Combine(dir,$"{arm}-SEG-{n:000}.request.json"),req.Body);
+ var scope=s.Scope(n);
+ packets.Add(new{arm,segment=n,req.Sha256,req.Bytes,targets=scope.Decide,shown=scope.Shown.Select(i=>s.Lines[i].Alias).ToArray(),hashRepeatMatches=true,productionFirstRequestHashMatches=true});
+}
+var historical=new Dictionary<string,string>();
+var replay=new List<object>();
+foreach(var line in File.ReadLines(@"C:\Users\btdba\AppData\Local\Temp\dhx-8b1e09a-072-pdf-live.ndjson")){
+ using var doc=JsonDocument.Parse(line);var r=doc.RootElement;
+ if(r.GetProperty("type").GetString()!="reply"||!new[]{"SEG-014","SEG-015","SEG-016"}.Contains(r.GetProperty("unit").GetString()))continue;
+ var n=int.Parse(r.GetProperty("unit").GetString()![4..]);var scope=a.Scope(n);
+ var task=new SelectionTask(a,n,PdfAgentProtocol.Instruction,null,null);
+ // Reconstruct parser-visible alias universe including the style table as production does.
+ var tools=a.Flavor.CreateTools(a);var seen=scope.Shown.Select(i=>a.Lines[i].Alias).Concat(tools.DocumentStyles()["styles"]!.AsArray().SelectMany(st=>st!["firstLines"]!.AsArray().Select(l=>l!["alias"]!.GetValue<string>()))).Distinct().ToDictionary(x=>x,tools.PositionOf);
+ var parsed=AgentProtocol.ParseSelect(r.GetProperty("content").GetString()!,seen,scope.Decide,a.Flavor.AnswerVersion,scope.Decide.ToDictionary(x=>x,x=>a.Lines[tools.PositionOf(x)].Text));
+ if(!parsed.Ok)throw new Exception("OFFLINE_PARSE:"+parsed.Failure);
+ foreach(var kv in parsed.Values)historical[kv.Key]=kv.Value;
+ replay.Add(new{unit=$"SEG-{n:000}",parsed.Ok,parsed.Status,decisions=parsed.Values});
+}
+Save("manifest.json",new{productionAuthorization=false,sourceSha256=a.SourceSha256,aliasUniverseSha256=a.SourceAliasUniverseSha256,evidenceStoreSha256=a.EvidenceStoreSha256,instructionSha256=AgentProtocol.Sha(PdfAgentProtocol.Instruction),systemPromptSha256=AgentProtocol.Sha(a.Flavor.SystemPrompt),model=OpenRouterWire.ChatModel,provider=OpenRouterWire.ProviderTag,maxTokens=OpenRouterWire.MaxTokens,temperature=0,peers,packets,historicalTransportHashAvailable=false,historicalHashLimitation="Original NDJSON does not retain request bodies/hashes. Rebuilt hashes verified internally, not matched against historical transport bytes.",predeclaredOrder=new[]{"block1:A14,A15,A16,B15","block2:B15,A14,A15,A16"},scopeChange="B replaces SEG-015 core with entire page15 (76 atoms), uses production +/-20 context and full target facts, same instruction/system/tools/provider/token cap. No prior decisions or peer labels sent.",interpretation="Scope intervention also changes targets/facts/packet size and context composition; not an isolated context-length experiment. Two paired blocks are exploratory, not accuracy/Gold evaluation."});
+Save("offline-replay.json",new{replay,peers=peers.ToDictionary(x=>x,x=>historical.GetValueOrDefault(x))});
+Console.WriteLine("OFFLINE_OK "+dir);
+if(!args.Contains("--live"))return;
+var key=Environment.GetEnvironmentVariable("OPENROUTER_API_KEY")??throw new Exception("KEY_MISSING");
+var outputs=new List<object>();
+foreach(var block in new[]{1,2}){
+ var order=block==1?new[]{("A",14),("A",15),("A",16),("B",15)}:new[]{("B",15),("A",14),("A",15),("A",16)};
+ foreach(var (arm,n) in order){
+ var source=arm=="A"?a:b;var budget=new AgentBudget(10,0.5);using var handler=AgentModel.CreateHandler();using var model=new AgentModel(handler,key,budget,rateLimitRetries:0);
+ var trace=new List<object>();
+ Console.WriteLine($"START block{block} {arm}{n}");
+ var outcome=AgentUnit.Run(source,n,(unit,turn,request)=>{
+ File.WriteAllText(Path.Combine(dir,$"block{block}-{arm}{n}-turn{turn}.request.json"),request.Body);
+ var reply=model.Turn(unit,turn,request);
+ trace.Add(new{unit,turn,request.Sha256,request.Bytes,reply});Save($"block{block}-{arm}{n}.trace.json",trace);return reply;
+ },budget,retryDelayMs:1000,maxPosts:6,instruction:PdfAgentProtocol.Instruction);
+ Save($"block{block}-{arm}{n}.outcome.json",outcome);
+ var item=new{block,arm,segment=n,outcome.Status,outcome.Failure,peers=peers.Where(outcome.Decisions.ContainsKey).ToDictionary(x=>x,x=>outcome.Decisions[x]),budget.Calls,budget.ActualUsd};outputs.Add(item);Save("live-summary.json",outputs);Console.WriteLine(JsonSerializer.Serialize(item));
+ }
+}

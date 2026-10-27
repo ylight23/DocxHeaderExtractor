@@ -1,0 +1,43 @@
+{
+ "run": "cohort-072-v12-haiku-20261026",
+ "gold": "eval/a99-closed-loop/gold-current/documents/DOC-0252.gold.v1.json",
+ "goldSha256": "e966d4e57ba6b312a2cebe93446c4350d4ef7173458f7c528306775f9c743b03",
+ "aliases": {
+  "tp": 45,
+  "fp": 2,
+  "fn": 0,
+  "precision": 0.9574,
+  "recall": 1.0
+ },
+ "groups": {
+  "gold": 42,
+  "predicted": 44,
+  "exact": 42,
+  "wrong": 2
+ },
+ "falsePositives": [
+  [
+   "L0546:S1",
+   "Fine Tuning Global Linking Procedures"
+  ],
+  [
+   "L0550:S0",
+   "14:00 – 15:00 Improving Reliability of Price Comparisons"
+  ]
+ ],
+ "misses": [],
+ "wrongGroups": [
+  [
+   [
+    "L0546:S1"
+   ],
+   "Fine Tuning Global Linking Procedures"
+  ],
+  [
+   [
+    "L0550:S0"
+   ],
+   "14:00 – 15:00 Improving Reliability of Price Comparisons"
+  ]
+ ]
+}

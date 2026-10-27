@@ -1,0 +1,255 @@
+{
+ "run": "cohort-crop-072-crop2-20261026",
+ "gold": "eval/a99-closed-loop/gold-current/documents/DOC-0252.gold.v1.json",
+ "goldSha256": "e966d4e57ba6b312a2cebe93446c4350d4ef7173458f7c528306775f9c743b03",
+ "aliases": {
+  "tp": 45,
+  "fp": 23,
+  "fn": 0,
+  "precision": 0.6618,
+  "recall": 1.0
+ },
+ "groups": {
+  "gold": 42,
+  "predicted": 64,
+  "exact": 41,
+  "wrong": 23
+ },
+ "falsePositives": [
+  [
+   "L0002:S0",
+   "MARCH 7-8, 2025"
+  ],
+  [
+   "L0003:S0",
+   "New York - Hybrid"
+  ],
+  [
+   "L0522:S1",
+   "Welcome and Opening Remarks [TAG Co-Chairs, World Bank]"
+  ],
+  [
+   "L0524:S1",
+   "Update on the ICP 2021 and 2024 Cycles [World Bank and ICP Regional"
+  ],
+  [
+   "L0527:S1",
+   "Research Topics Emerging from the Previous ICP Cycles [World Bank]"
+  ],
+  [
+   "L0528:S1",
+   "Forthcoming Research Topics [Prasada Rao]"
+  ],
+  [
+   "L0529:S1",
+   "Setting Up a Short- and Long-Term Research and Development Agenda [Co-"
+  ],
+  [
+   "L0532:S0",
+   "14:00 – 14:15 TAG Composition and Terms of Reference [TAG Co-Chairs]"
+  ],
+  [
+   "L0534:S1",
+   "Terms of Reference for a Task Force on Annual PPP Production [World Bank]"
+  ],
+  [
+   "L0535:S1",
+   "Terms of Reference for a Task Force on ICP Classification Update [World Bank]"
+  ],
+  [
+   "L0537:S1",
+   "The Treatment of Import and Export Prices in International Comparisons"
+  ],
+  [
+   "L0541:S1",
+   "A Survey Based Approach to Adjustment for Quality Differences in Services in"
+  ],
+  [
+   "L0542:S0",
+   "International Price Comparisons [Naohito Abe and Prasada Rao]"
+  ],
+  [
+   "L0543:S1",
+   "Treatment of Scanner (Transaction) Data in the European Comparison"
+  ],
+  [
+   "L0544:S0",
+   "Program (ECP) [Eurostat]"
+  ],
+  [
+   "L0545:S1",
+   "Treatment of Negative Expenditures in ICP [Prasada Rao and Sergey Sergeev]"
+  ],
+  [
+   "L0546:S1",
+   "Fine Tuning Global Linking Procedures"
+  ],
+  [
+   "L0547:S1",
+   "Alternative Global Linking Methods [Robert Hill]"
+  ],
+  [
+   "L0548:S1",
+   "Similarity Linking Within and Between Regions [Erwin Diewert and Yuri"
+  ],
+  [
+   "L0550:S0",
+   "14:00 – 15:00 Improving Reliability of Price Comparisons"
+  ],
+  [
+   "L0551:S1",
+   "Basic Heading PPPs and Sparsity of Price Tableaus [Erwin Diewert]"
+  ],
+  [
+   "L0552:S1",
+   "Alternative Basic Heading PPP Aggregation Methods [Yuri Dikhanov]"
+  ],
+  [
+   "L0554:S0",
+   "15:00 – 15:15 Any Other Business and Closing [TAG Co-Chairs]"
+  ]
+ ],
+ "misses": [],
+ "wrongGroups": [
+  [
+   [
+    "L0000:S0"
+   ],
+   "MINUTES OF THE INTERNATIONAL COMPARISON PROGRAM"
+  ],
+  [
+   [
+    "L0001:S0"
+   ],
+   "TECHNICAL ADVISORY GROUP"
+  ],
+  [
+   [
+    "L0002:S0"
+   ],
+   "MARCH 7-8, 2025"
+  ],
+  [
+   [
+    "L0003:S0"
+   ],
+   "New York - Hybrid"
+  ],
+  [
+   [
+    "L0522:S1"
+   ],
+   "Welcome and Opening Remarks [TAG Co-Chairs, World Bank]"
+  ],
+  [
+   [
+    "L0524:S1"
+   ],
+   "Update on the ICP 2021 and 2024 Cycles [World Bank and ICP Regional"
+  ],
+  [
+   [
+    "L0527:S1"
+   ],
+   "Research Topics Emerging from the Previous ICP Cycles [World Bank]"
+  ],
+  [
+   [
+    "L0528:S1"
+   ],
+   "Forthcoming Research Topics [Prasada Rao]"
+  ],
+  [
+   [
+    "L0529:S1"
+   ],
+   "Setting Up a Short- and Long-Term Research and Development Agenda [Co-"
+  ],
+  [
+   [
+    "L0532:S0"
+   ],
+   "14:00 – 14:15 TAG Composition and Terms of Reference [TAG Co-Chairs]"
+  ],
+  [
+   [
+    "L0534:S1"
+   ],
+   "Terms of Reference for a Task Force on Annual PPP Production [World Bank]"
+  ],
+  [
+   [
+    "L0535:S1"
+   ],
+   "Terms of Reference for a Task Force on ICP Classification Update [World Bank]"
+  ],
+  [
+   [
+    "L0537:S1"
+   ],
+   "The Treatment of Import and Export Prices in International Comparisons"
+  ],
+  [
+   [
+    "L0541:S1",
+    "L0542:S0"
+   ],
+   "A Survey Based Approach to Adjustment for Quality Differences in Services in | International Price Comparisons [Naohito Abe and Prasada Rao]"
+  ],
+  [
+   [
+    "L0543:S1",
+    "L0544:S0"
+   ],
+   "Treatment of Scanner (Transaction) Data in the European Comparison | Program (ECP) [Eurostat]"
+  ],
+  [
+   [
+    "L0545:S1"
+   ],
+   "Treatment of Negative Expenditures in ICP [Prasada Rao and Sergey Sergeev]"
+  ],
+  [
+   [
+    "L0546:S1"
+   ],
+   "Fine Tuning Global Linking Procedures"
+  ],
+  [
+   [
+    "L0547:S1"
+   ],
+   "Alternative Global Linking Methods [Robert Hill]"
+  ],
+  [
+   [
+    "L0548:S1"
+   ],
+   "Similarity Linking Within and Between Regions [Erwin Diewert and Yuri"
+  ],
+  [
+   [
+    "L0550:S0"
+   ],
+   "14:00 – 15:00 Improving Reliability of Price Comparisons"
+  ],
+  [
+   [
+    "L0551:S1"
+   ],
+   "Basic Heading PPPs and Sparsity of Price Tableaus [Erwin Diewert]"
+  ],
+  [
+   [
+    "L0552:S1"
+   ],
+   "Alternative Basic Heading PPP Aggregation Methods [Yuri Dikhanov]"
+  ],
+  [
+   [
+    "L0554:S0"
+   ],
+   "15:00 – 15:15 Any Other Business and Closing [TAG Co-Chairs]"
+  ]
+ ]
+}

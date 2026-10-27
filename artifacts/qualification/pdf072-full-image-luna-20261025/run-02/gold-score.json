@@ -1,0 +1,443 @@
+{
+  "experiment": "PDF072 full-page-image Luna, native production pipeline, recovery run 02",
+  "validity": "complete; run-01 remains failed/partial; frozen image-conditioned SELECT decisions replayed; GROUP replies SHA-matched and reused; PLACE authored fresh",
+  "frozenOutputSha256": "af0474cfd17d6ffea0c0cebf8dbf2893497da9542145f2885f80555a74f8e70e",
+  "goldAuthority": "DOC-0252",
+  "goldSha256": "e966d4e57ba6b312a2cebe93446c4350d4ef7173458f7c528306775f9c743b03",
+  "goldRegistrySha256": "0fe1d9a8c8ceca99aced21865a4e09437da0dc0b8ceadc11d7811f1edfa79fd3",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceAliasScope": 650,
+  "selectionDecisionCount": 650,
+  "selectedAliasCount": 64,
+  "predictedHeadingCount": 60,
+  "goldAliasCount": 45,
+  "goldGroupCount": 42,
+  "selectionStageMembership": {
+    "tp": 43,
+    "fp": 21,
+    "fn": 2,
+    "precision": 0.671875,
+    "recall": 0.9555555555555556,
+    "falsePositiveAliases": [
+      "L0522:S1",
+      "L0524:S1",
+      "L0527:S1",
+      "L0528:S1",
+      "L0529:S1",
+      "L0532:S0",
+      "L0534:S1",
+      "L0535:S1",
+      "L0537:S1",
+      "L0541:S1",
+      "L0542:S0",
+      "L0543:S1",
+      "L0544:S0",
+      "L0545:S1",
+      "L0546:S1",
+      "L0547:S1",
+      "L0548:S1",
+      "L0550:S0",
+      "L0551:S1",
+      "L0552:S1",
+      "L0554:S0"
+    ],
+    "missingAliases": [
+      "L0513:S0",
+      "L0514:S0"
+    ]
+  },
+  "membership": {
+    "tp": 43,
+    "fp": 21,
+    "fn": 2,
+    "precision": 0.671875,
+    "recall": 0.9555555555555556,
+    "falsePositiveAliases": [
+      "L0522:S1",
+      "L0524:S1",
+      "L0527:S1",
+      "L0528:S1",
+      "L0529:S1",
+      "L0532:S0",
+      "L0534:S1",
+      "L0535:S1",
+      "L0537:S1",
+      "L0541:S1",
+      "L0542:S0",
+      "L0543:S1",
+      "L0544:S0",
+      "L0545:S1",
+      "L0546:S1",
+      "L0547:S1",
+      "L0548:S1",
+      "L0550:S0",
+      "L0551:S1",
+      "L0552:S1",
+      "L0554:S0"
+    ],
+    "missingAliases": [
+      "L0513:S0",
+      "L0514:S0"
+    ]
+  },
+  "exactGroups": {
+    "tp": 41,
+    "fp": 19,
+    "fn": 1,
+    "falsePositiveGroups": [
+      [
+        "L0522:S1"
+      ],
+      [
+        "L0524:S1"
+      ],
+      [
+        "L0527:S1"
+      ],
+      [
+        "L0528:S1"
+      ],
+      [
+        "L0529:S1"
+      ],
+      [
+        "L0532:S0"
+      ],
+      [
+        "L0534:S1"
+      ],
+      [
+        "L0535:S1"
+      ],
+      [
+        "L0537:S1"
+      ],
+      [
+        "L0541:S1",
+        "L0542:S0"
+      ],
+      [
+        "L0543:S1",
+        "L0544:S0"
+      ],
+      [
+        "L0545:S1"
+      ],
+      [
+        "L0546:S1"
+      ],
+      [
+        "L0547:S1"
+      ],
+      [
+        "L0548:S1"
+      ],
+      [
+        "L0550:S0"
+      ],
+      [
+        "L0551:S1"
+      ],
+      [
+        "L0552:S1"
+      ],
+      [
+        "L0554:S0"
+      ]
+    ],
+    "missingGroups": [
+      [
+        "L0513:S0",
+        "L0514:S0"
+      ]
+    ]
+  },
+  "predictedGroups": [
+    [
+      "L0000:S0",
+      "L0001:S0"
+    ],
+    [
+      "L0004:S0"
+    ],
+    [
+      "L0025:S0"
+    ],
+    [
+      "L0026:S0"
+    ],
+    [
+      "L0078:S0"
+    ],
+    [
+      "L0081:S0"
+    ],
+    [
+      "L0089:S0"
+    ],
+    [
+      "L0107:S0"
+    ],
+    [
+      "L0123:S0"
+    ],
+    [
+      "L0137:S0"
+    ],
+    [
+      "L0150:S0"
+    ],
+    [
+      "L0165:S0"
+    ],
+    [
+      "L0166:S0"
+    ],
+    [
+      "L0219:S0"
+    ],
+    [
+      "L0271:S0"
+    ],
+    [
+      "L0272:S0"
+    ],
+    [
+      "L0288:S0"
+    ],
+    [
+      "L0315:S0"
+    ],
+    [
+      "L0334:S0"
+    ],
+    [
+      "L0335:S0"
+    ],
+    [
+      "L0359:S0",
+      "L0360:S0"
+    ],
+    [
+      "L0377:S0"
+    ],
+    [
+      "L0400:S0"
+    ],
+    [
+      "L0420:S0"
+    ],
+    [
+      "L0470:S0"
+    ],
+    [
+      "L0507:S0"
+    ],
+    [
+      "L0519:S0"
+    ],
+    [
+      "L0520:S0"
+    ],
+    [
+      "L0521:S0"
+    ],
+    [
+      "L0522:S1"
+    ],
+    [
+      "L0523:S0"
+    ],
+    [
+      "L0524:S1"
+    ],
+    [
+      "L0526:S0"
+    ],
+    [
+      "L0527:S1"
+    ],
+    [
+      "L0528:S1"
+    ],
+    [
+      "L0529:S1"
+    ],
+    [
+      "L0531:S0"
+    ],
+    [
+      "L0532:S0"
+    ],
+    [
+      "L0534:S1"
+    ],
+    [
+      "L0535:S1"
+    ],
+    [
+      "L0536:S0"
+    ],
+    [
+      "L0537:S1"
+    ],
+    [
+      "L0539:S0"
+    ],
+    [
+      "L0540:S0"
+    ],
+    [
+      "L0541:S1",
+      "L0542:S0"
+    ],
+    [
+      "L0543:S1",
+      "L0544:S0"
+    ],
+    [
+      "L0545:S1"
+    ],
+    [
+      "L0546:S1"
+    ],
+    [
+      "L0547:S1"
+    ],
+    [
+      "L0548:S1"
+    ],
+    [
+      "L0550:S0"
+    ],
+    [
+      "L0551:S1"
+    ],
+    [
+      "L0552:S1"
+    ],
+    [
+      "L0553:S0"
+    ],
+    [
+      "L0554:S0"
+    ],
+    [
+      "L0556:S0"
+    ],
+    [
+      "L0557:S0"
+    ],
+    [
+      "L0566:S0"
+    ],
+    [
+      "L0576:S0"
+    ],
+    [
+      "L0587:S0"
+    ]
+  ],
+  "selectionCoverage": {
+    "decisionCount": 650,
+    "uniqueAliases": 650,
+    "duplicates": 0,
+    "eachTargetExactlyOnce": true,
+    "sourcePointerAliasBindingCount": 650
+  },
+  "laneStatus": {
+    "status": "complete",
+    "scheduled": 15,
+    "completed": 15,
+    "timedOut": 0,
+    "notStarted": 0,
+    "failureClass": null
+  },
+  "groupingCallIntegrity": {
+    "phaseCounts": {
+      "SELECT_OR_CONVERSATION": 15,
+      "GROUP": 2,
+      "HIERARCHY_PLACE": 4
+    },
+    "allResponsesSHARequestBound": true
+  },
+  "comparisonToNativeTextOnlyRun": {
+    "file": "artifacts/qualification/pdf072-native-production-luna-20261025/01/gold-score.json",
+    "textOnlyMembership": {
+      "tp": 37,
+      "fp": 7,
+      "fn": 8,
+      "precision": 0.8409090909090909,
+      "recall": 0.8222222222222222,
+      "falsePositiveAliases": [
+        "L0522:S1",
+        "L0524:S1",
+        "L0527:S1",
+        "L0528:S1",
+        "L0529:S1",
+        "L0532:S0",
+        "L0546:S1"
+      ],
+      "missingAliases": [
+        "L0123:S0",
+        "L0315:S0",
+        "L0470:S0",
+        "L0507:S0",
+        "L0513:S0",
+        "L0514:S0",
+        "L0520:S0",
+        "L0539:S0"
+      ]
+    },
+    "imageRunMembership": {
+      "tp": 43,
+      "fp": 21,
+      "fn": 2,
+      "precision": 0.671875,
+      "recall": 0.9555555555555556,
+      "falsePositiveAliases": [
+        "L0522:S1",
+        "L0524:S1",
+        "L0527:S1",
+        "L0528:S1",
+        "L0529:S1",
+        "L0532:S0",
+        "L0534:S1",
+        "L0535:S1",
+        "L0537:S1",
+        "L0541:S1",
+        "L0542:S0",
+        "L0543:S1",
+        "L0544:S0",
+        "L0545:S1",
+        "L0546:S1",
+        "L0547:S1",
+        "L0548:S1",
+        "L0550:S0",
+        "L0551:S1",
+        "L0552:S1",
+        "L0554:S0"
+      ],
+      "missingAliases": [
+        "L0513:S0",
+        "L0514:S0"
+      ]
+    },
+    "deltaTp": 6,
+    "deltaFp": 14,
+    "deltaFn": -6
+  },
+  "placementAudit": {
+    "goldHierarchyEvaluable": false,
+    "hierarchyResolutionCounts": {
+      "model-parent-relation": 51,
+      "model-root": 8,
+      "model-out-of-hierarchy": 1
+    }
+  },
+  "limitations": [
+    "Initial run-01 was failed/partial and is not the scored run.",
+    "DOC-0252 Gold hierarchy capability is false; parent accuracy is unscored.",
+    "This exploratory run does not support a production-promotion claim."
+  ]
+}

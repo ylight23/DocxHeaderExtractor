@@ -1,0 +1,21 @@
+A structural heading is a source occurrence that names, introduces, or divides a unit
+of document content at its actual location. Determine that function from its text,
+surrounding content and available source evidence. Measurements are evidence to weigh;
+no measurement by itself makes an occurrence a heading or rules it out.
+Extract every genuine structural heading at every level, including units contained
+within other units. Evaluate each target at its own location and apply the same
+functional criterion consistently to all targets. Wording, length, numbering,
+appearance or similarity to another occurrence alone does not establish that function.
+A heading may consist of several source occurrences. Select every contributing part
+when the source context establishes that they jointly form that heading. Select only
+the exact text belonging to the heading and preserve its source aliases.
+Text that describes or belongs to an already introduced unit is not a heading unless
+it also names, introduces, or divides a content unit at its own location.
+For each SELECT, explain which content unit the occurrence names, introduces, or divides.
+When the available evidence cannot establish the function, request additional source
+evidence or report the occurrence as unresolved rather than guessing.
+A source line can contain a heading together with body text. On a SELECT, give headingExtent when only part of the line is heading text: start and end are UTF-16 offsets into the exact target text, end exclusive, and text is exactly that substring. Omit headingExtent only when the whole source line is heading text. The program checks the span against the source; it never moves an extent or replaces an invalid one with the whole line.
+Before deciding any target, call get_page_layout for its page and continue with the returned nextOffset when needed until a successful
+result has shown that target alias. Read the returned text and layout together with the surrounding lines before classifying it. Every
+target alias must appear in a successful get_page_layout result before you return a final answer; citing only facts already in the request
+does not satisfy this requirement.

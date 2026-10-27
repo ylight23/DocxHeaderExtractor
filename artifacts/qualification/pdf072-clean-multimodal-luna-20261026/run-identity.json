@@ -1,0 +1,35 @@
+{
+  "mode": "public-PdfHandler-ExtractAsync-clean-multimodal-SELECT-adapter",
+  "pdfPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_100\\05_bien_ban_hop\\072_ICP_TAG_Minutes_Mar_2025.pdf",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "handler": "PdfHandler.ExtractAsync",
+  "productionContracts": {
+    "selectionInstruction": "PdfMembershipInstructionV12.Instruction (unchanged)",
+    "grouping": "existing production pairwise GROUP, text-only",
+    "placement": "existing production PLACE, text-only"
+  },
+  "testAdapter": "before HTTP transport, converts only SELECT user message string into text \u002B image_url blocks for each page represented by aliases in that request",
+  "chain": "PdfHandler -\u003E PdfPipeline -\u003E PdfLane -\u003E LaneHarness -\u003E SelectionAuthority -\u003E StructureAssembler -\u003E ParentResolver",
+  "selector": {
+    "SelectorId": "pdf-raster-geometry-v1:p7-f1-v6-d4.12:TOOLFACTS_ANALYSIS_V3:facts-in-request:instruction-a71ab606:selection-boundary-grouping-csharp-validation-v2:no-semantic-membership-veto:group-selected-text-v1:ordered-page-budget-v1:cf2f4d63:source-bound-v1:group-instruction-558514f7:pairwise-grouping-v1:6584090b",
+    "membershipInstructionVersion": 12,
+    "sourceBound": true,
+    "rasterGeometry": true,
+    "separateGroupingInstruction": true,
+    "pairwiseGrouping": true,
+    "parallelism": 6,
+    "retryPolicy": 3
+  },
+  "placer": {
+    "Contract": "HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION:parent-chain-repair-v1",
+    "batchSize": 16,
+    "repairParentChains": true
+  },
+  "goldInRequests": false,
+  "providerModel": "qwen/qwen3.7-flash (Luna-only fresh context; responses authored manually by isolated evaluator)",
+  "durationSeconds": 9.853797,
+  "calls": [],
+  "headingProviderCalls": 15,
+  "headings": 0,
+  "sourceCount": 650
+}

@@ -1,0 +1,20 @@
+{
+  "mode": "production-generic-e2e-luna",
+  "pdfPath": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\heading_corpus_100\\05_bien_ban_hop\\072_ICP_TAG_Minutes_Mar_2025.pdf",
+  "SourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "SourceAliasUniverseSha256": "2a953bf785ed1af00bc908ff9e5d6a1d988b04c0d980ecd95336bc5a9702f46f",
+  "EvidenceStoreSha256": "9b0597a5899bbd187d5002b3aaac0430396fe1ce2f7fc4d564e68bed383f5dcb",
+  "page": 14,
+  "segment": 13,
+  "core": {},
+  "membershipInstructionVersion": 7,
+  "sourceBoundSelection": true,
+  "rasterGeometry": true,
+  "separateGroupingInstruction": true,
+  "pairwiseGrouping": true,
+  "generalBoundaryPrompt": true,
+  "selectionRequestBuilder": "production SelectionTask",
+  "groupingRequestBuilder": "production AgentGrouping.Group",
+  "verifier": "qualification-only GroupVerifier; geometry evidence is explicitly added as a qualification extension",
+  "goldInRequests": false
+}

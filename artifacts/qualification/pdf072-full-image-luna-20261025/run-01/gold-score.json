@@ -1,0 +1,491 @@
+{
+  "experiment": "pdf072-full-image-luna-20261025/run-01",
+  "frozenOutputSha256": "3e3680eacd44619cd6e5cf03ee647641488de6faaf864ca184ba9d6c78ee0ac5",
+  "goldAuthority": "DOC-0252",
+  "goldSha256": "e966d4e57ba6b312a2cebe93446c4350d4ef7173458f7c528306775f9c743b03",
+  "goldRegistrySha256": "0fe1d9a8c8ceca99aced21865a4e09437da0dc0b8ceadc11d7811f1edfa79fd3",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "sourceAliasScope": 650,
+  "selectionDecisionCount": 650,
+  "selectedAliasCount": 64,
+  "selectedAliasOccurrencesInFinalOutline": 32,
+  "predictedHeadingCount": 32,
+  "goldAliasCount": 45,
+  "goldGroupCount": 42,
+  "membership": {
+    "tp": 20,
+    "fp": 12,
+    "fn": 25,
+    "precision": 0.625,
+    "recall": 0.4444444444444444,
+    "f1": 0.5194805194805194,
+    "falsePositiveAliases": [
+      "L0524:S1",
+      "L0527:S1",
+      "L0528:S1",
+      "L0529:S1",
+      "L0534:S1",
+      "L0537:S1",
+      "L0545:S1",
+      "L0546:S1",
+      "L0547:S1",
+      "L0548:S1",
+      "L0550:S0",
+      "L0551:S1"
+    ],
+    "falseNegativeAliases": [
+      "L0000:S0",
+      "L0001:S0",
+      "L0025:S0",
+      "L0026:S0",
+      "L0165:S0",
+      "L0166:S0",
+      "L0271:S0",
+      "L0272:S0",
+      "L0334:S0",
+      "L0335:S0",
+      "L0359:S0",
+      "L0360:S0",
+      "L0513:S0",
+      "L0514:S0",
+      "L0519:S0",
+      "L0520:S0",
+      "L0521:S0",
+      "L0523:S0",
+      "L0531:S0",
+      "L0536:S0",
+      "L0539:S0",
+      "L0540:S0",
+      "L0553:S0",
+      "L0556:S0",
+      "L0557:S0"
+    ]
+  },
+  "exactGroups": {
+    "tp": 20,
+    "fp": 12,
+    "fn": 22,
+    "precision": 0.625,
+    "recall": 0.47619047619047616,
+    "f1": 0.5405405405405406,
+    "falsePositiveGroups": [
+      [
+        "L0524:S1"
+      ],
+      [
+        "L0527:S1"
+      ],
+      [
+        "L0528:S1"
+      ],
+      [
+        "L0529:S1"
+      ],
+      [
+        "L0534:S1"
+      ],
+      [
+        "L0537:S1"
+      ],
+      [
+        "L0545:S1"
+      ],
+      [
+        "L0546:S1"
+      ],
+      [
+        "L0547:S1"
+      ],
+      [
+        "L0548:S1"
+      ],
+      [
+        "L0550:S0"
+      ],
+      [
+        "L0551:S1"
+      ]
+    ],
+    "falseNegativeGroups": [
+      [
+        "L0000:S0",
+        "L0001:S0"
+      ],
+      [
+        "L0025:S0"
+      ],
+      [
+        "L0026:S0"
+      ],
+      [
+        "L0165:S0"
+      ],
+      [
+        "L0166:S0"
+      ],
+      [
+        "L0271:S0"
+      ],
+      [
+        "L0272:S0"
+      ],
+      [
+        "L0334:S0"
+      ],
+      [
+        "L0335:S0"
+      ],
+      [
+        "L0359:S0",
+        "L0360:S0"
+      ],
+      [
+        "L0513:S0",
+        "L0514:S0"
+      ],
+      [
+        "L0519:S0"
+      ],
+      [
+        "L0520:S0"
+      ],
+      [
+        "L0521:S0"
+      ],
+      [
+        "L0523:S0"
+      ],
+      [
+        "L0531:S0"
+      ],
+      [
+        "L0536:S0"
+      ],
+      [
+        "L0539:S0"
+      ],
+      [
+        "L0540:S0"
+      ],
+      [
+        "L0553:S0"
+      ],
+      [
+        "L0556:S0"
+      ],
+      [
+        "L0557:S0"
+      ]
+    ]
+  },
+  "selectionOutcomeAudit": {
+    "allTargetAliasesAssignedExactlyOnce": true,
+    "selectedButAbsentFromFinalOutline": [
+      "L0000:S0",
+      "L0001:S0",
+      "L0025:S0",
+      "L0026:S0",
+      "L0165:S0",
+      "L0166:S0",
+      "L0271:S0",
+      "L0272:S0",
+      "L0334:S0",
+      "L0335:S0",
+      "L0359:S0",
+      "L0360:S0",
+      "L0519:S0",
+      "L0520:S0",
+      "L0521:S0",
+      "L0522:S1",
+      "L0523:S0",
+      "L0531:S0",
+      "L0532:S0",
+      "L0535:S1",
+      "L0536:S0",
+      "L0539:S0",
+      "L0540:S0",
+      "L0541:S1",
+      "L0542:S0",
+      "L0543:S1",
+      "L0544:S0",
+      "L0552:S1",
+      "L0553:S0",
+      "L0554:S0",
+      "L0556:S0",
+      "L0557:S0"
+    ],
+    "goldMissingNotSelected": [
+      "L0513:S0",
+      "L0514:S0"
+    ],
+    "goldMissingSelectedButDropped": [
+      "L0000:S0",
+      "L0001:S0",
+      "L0025:S0",
+      "L0026:S0",
+      "L0165:S0",
+      "L0166:S0",
+      "L0271:S0",
+      "L0272:S0",
+      "L0334:S0",
+      "L0335:S0",
+      "L0359:S0",
+      "L0360:S0",
+      "L0519:S0",
+      "L0520:S0",
+      "L0521:S0",
+      "L0523:S0",
+      "L0531:S0",
+      "L0536:S0",
+      "L0539:S0",
+      "L0540:S0",
+      "L0553:S0",
+      "L0556:S0",
+      "L0557:S0"
+    ],
+    "upstreamWithheldAliasCount": 32,
+    "upstreamWithheldMarker": "ParentResolver request field upstreamWithheld; it contains no reason for the omission.",
+    "upstreamWithheldAliases": [
+      "L0000:S0",
+      "L0001:S0",
+      "L0025:S0",
+      "L0026:S0",
+      "L0165:S0",
+      "L0166:S0",
+      "L0271:S0",
+      "L0272:S0",
+      "L0334:S0",
+      "L0335:S0",
+      "L0359:S0",
+      "L0360:S0",
+      "L0519:S0",
+      "L0520:S0",
+      "L0521:S0",
+      "L0522:S1",
+      "L0523:S0",
+      "L0531:S0",
+      "L0532:S0",
+      "L0535:S1",
+      "L0536:S0",
+      "L0539:S0",
+      "L0540:S0",
+      "L0541:S1",
+      "L0542:S0",
+      "L0543:S1",
+      "L0544:S0",
+      "L0552:S1",
+      "L0553:S0",
+      "L0554:S0",
+      "L0556:S0",
+      "L0557:S0"
+    ]
+  },
+  "comparisonToNativeTextOnlyRun": {
+    "artifact": "artifacts\\qualification\\pdf072-native-production-luna-20261025\\01\\gold-score.json",
+    "textOnlyMembership": {
+      "tp": 37,
+      "fp": 7,
+      "fn": 8,
+      "precision": 0.8409090909090909,
+      "recall": 0.8222222222222222,
+      "falsePositiveAliases": [
+        "L0522:S1",
+        "L0524:S1",
+        "L0527:S1",
+        "L0528:S1",
+        "L0529:S1",
+        "L0532:S0",
+        "L0546:S1"
+      ],
+      "missingAliases": [
+        "L0123:S0",
+        "L0315:S0",
+        "L0470:S0",
+        "L0507:S0",
+        "L0513:S0",
+        "L0514:S0",
+        "L0520:S0",
+        "L0539:S0"
+      ]
+    },
+    "fullImageMembership": {
+      "tp": 20,
+      "fp": 12,
+      "fn": 25,
+      "precision": 0.625,
+      "recall": 0.4444444444444444,
+      "f1": 0.5194805194805194
+    },
+    "membershipDelta": {
+      "tp": -17,
+      "fp": 5,
+      "fn": 17,
+      "precision": -0.21590909090909094,
+      "recall": -0.37777777777777777
+    },
+    "fullImageNewFalsePositives": [
+      "L0534:S1",
+      "L0537:S1",
+      "L0545:S1",
+      "L0547:S1",
+      "L0548:S1",
+      "L0550:S0",
+      "L0551:S1"
+    ],
+    "textOnlyFalsePositivesNoLongerPresent": [
+      "L0522:S1",
+      "L0532:S0"
+    ],
+    "fullImageNewFalseNegatives": [
+      "L0000:S0",
+      "L0001:S0",
+      "L0025:S0",
+      "L0026:S0",
+      "L0165:S0",
+      "L0166:S0",
+      "L0271:S0",
+      "L0272:S0",
+      "L0334:S0",
+      "L0335:S0",
+      "L0359:S0",
+      "L0360:S0",
+      "L0519:S0",
+      "L0521:S0",
+      "L0523:S0",
+      "L0531:S0",
+      "L0536:S0",
+      "L0540:S0",
+      "L0553:S0",
+      "L0556:S0",
+      "L0557:S0"
+    ],
+    "textOnlyFalseNegativesRecovered": [
+      "L0123:S0",
+      "L0315:S0",
+      "L0470:S0",
+      "L0507:S0"
+    ],
+    "textOnlyExactGroups": {
+      "tp": 35,
+      "fp": 7,
+      "fn": 7,
+      "precision": 0.8333333333333334,
+      "recall": 0.8333333333333334,
+      "falsePositiveGroups": [
+        [
+          "L0522:S1"
+        ],
+        [
+          "L0524:S1"
+        ],
+        [
+          "L0527:S1"
+        ],
+        [
+          "L0528:S1"
+        ],
+        [
+          "L0529:S1"
+        ],
+        [
+          "L0532:S0"
+        ],
+        [
+          "L0546:S1"
+        ]
+      ],
+      "missingGroups": [
+        [
+          "L0123:S0"
+        ],
+        [
+          "L0315:S0"
+        ],
+        [
+          "L0470:S0"
+        ],
+        [
+          "L0507:S0"
+        ],
+        [
+          "L0513:S0",
+          "L0514:S0"
+        ],
+        [
+          "L0520:S0"
+        ],
+        [
+          "L0539:S0"
+        ]
+      ]
+    },
+    "fullImageExactGroups": {
+      "tp": 20,
+      "fp": 12,
+      "fn": 22,
+      "precision": 0.625,
+      "recall": 0.47619047619047616,
+      "f1": 0.5405405405405406
+    }
+  },
+  "placementAudit": {
+    "headingCount": 32,
+    "goldHierarchyEvaluable": false,
+    "hierarchyResolutions": {
+      "model-root": 2,
+      "unresolved": 30
+    }
+  },
+  "callSchedule": {
+    "rawRequestCount": 20,
+    "rawReplyCount": 20,
+    "selectCalls": 15,
+    "groupCalls": 2,
+    "parentPlacementCalls": 2,
+    "bridgeObservedCalls": 18,
+    "bridgeMissingGroupObservations": 2,
+    "maxConcurrentBridgeCalls": 6
+  },
+  "limitations": [
+    "This is one Luna-authored local experiment, not a production-promotion claim.",
+    "Gold does not evaluate hierarchy; parent placement is reported as pipeline output.",
+    "The bridge timing audit contains 18 calls and omits the two GROUP requests present in the SHA-bound raw request/reply directories."
+  ],
+  "selectionStageMembership": {
+    "tp": 43,
+    "fp": 21,
+    "fn": 2,
+    "precision": 0.671875,
+    "recall": 0.9555555555555556,
+    "f1": 0.7889908256880734,
+    "goldAliasCount": 45,
+    "selectedAliasCount": 64,
+    "falsePositiveAliases": [
+      "L0522:S1",
+      "L0524:S1",
+      "L0527:S1",
+      "L0528:S1",
+      "L0529:S1",
+      "L0532:S0",
+      "L0534:S1",
+      "L0535:S1",
+      "L0537:S1",
+      "L0541:S1",
+      "L0542:S0",
+      "L0543:S1",
+      "L0544:S0",
+      "L0545:S1",
+      "L0546:S1",
+      "L0547:S1",
+      "L0548:S1",
+      "L0550:S0",
+      "L0551:S1",
+      "L0552:S1",
+      "L0554:S0"
+    ],
+    "falseNegativeAliases": [
+      "L0513:S0",
+      "L0514:S0"
+    ]
+  }
+}

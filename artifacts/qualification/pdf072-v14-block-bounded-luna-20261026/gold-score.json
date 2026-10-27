@@ -1,0 +1,78 @@
+{
+  "trial": "pdf072-v14-block-bounded-luna-20261026",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "gold": {
+    "authorityId": "DOC-0252",
+    "path": "eval/a99-closed-loop/gold-current/documents/DOC-0252.gold.v1.json",
+    "sha256": "e966d4e57ba6b312a2cebe93446c4350d4ef7173458f7c528306775f9c743b03",
+    "claimCount": 42,
+    "distinctSourceAliasCount": 45
+  },
+  "freeze": {
+    "path": "artifacts/qualification/pdf072-v14-block-bounded-luna-20261026/pre-gold-freeze.json",
+    "requestCount": 20,
+    "boundResponseCount": 20,
+    "allRequestResponseShaVerified": true,
+    "goldOpenedAfterFreeze": true
+  },
+  "run": {
+    "handler": "PdfHandler.ExtractAsync",
+    "membershipVersion": 14,
+    "selectionInstructionVersion": 12,
+    "selectionUnitizer": "PDF_STRUCTURAL_GEOMETRY_SELECTION_UNITS_V1 with paragraph regions constrained to parser layout-block boundaries",
+    "adaptiveVisualSelection": true,
+    "concurrency": 6,
+    "wallSeconds": 223.2205329,
+    "wallMinutes": 3.7203422,
+    "stageRequestCounts": {
+      "SELECT": 15,
+      "GROUP": 2,
+      "HIERARCHY_PLACE": 3
+    },
+    "selectionSegments": 15,
+    "finalHeadings": 42,
+    "actualImagesInEverySelectRequest": true,
+    "correctionsOrRetries": 0,
+    "durationIncludesLocalLunaBridgeWaits": true
+  },
+  "membership": {
+    "unit": "distinct source aliases",
+    "goldCount": 45,
+    "predictedCount": 45,
+    "truePositive": 45,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "falsePositiveAliases": [],
+    "falseNegativeAliases": []
+  },
+  "exactGroups": {
+    "unit": "exact source-part partition sets",
+    "goldGroups": 42,
+    "predictedGroups": 42,
+    "exactMatches": 42,
+    "falsePredictedGroups": [],
+    "missedGoldGroups": []
+  },
+  "priorV14Comparison": {
+    "trial": "pdf072-v14-structural-luna-20261026",
+    "priorV14WallSeconds": 420.4323981,
+    "currentWallSeconds": 223.2205329,
+    "wallSecondsDelta": -197.2118652,
+    "priorMembership": {"tp": 41, "fp": 0, "fn": 4},
+    "currentMembership": {"tp": 45, "fp": 0, "fn": 0},
+    "priorExactGroups": {"exactMatches": 38, "falsePredictedGroups": 0, "missedGoldGroups": 4},
+    "currentExactGroups": {"exactMatches": 42, "falsePredictedGroups": 0, "missedGoldGroups": 0},
+    "priorFalseNegatives": [
+      {"alias": "L0123:S0", "text": "Eurostat–OECD PPP Program", "currentDecision": "SELECT"},
+      {"alias": "L0137:S0", "text": "Latin America and the Caribbean", "currentDecision": "SELECT"},
+      {"alias": "L0150:S0", "text": "Western Asia", "currentDecision": "SELECT"},
+      {"alias": "L0288:S0", "text": "2. Terms of Reference for a Task Force on Annual PPP Production", "currentDecision": "SELECT"}
+    ]
+  },
+  "limitations": [
+    "Gold hierarchy is not marked evaluable; no parent-placement accuracy is claimed.",
+    "This is a local Luna bridge run; its measured wall time does not establish an external provider production SLA."
+  ]
+}

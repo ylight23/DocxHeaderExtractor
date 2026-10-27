@@ -1,0 +1,21 @@
+{
+ "run": "cohort-089-v14-haiku-20261026",
+ "gold": "eval/a99-closed-loop/gold-current/documents/SRC-089.gold.v1.json",
+ "goldSha256": "3affb68ed5e6c9d16131f25babc44395bd568975a1488e7967033a516534417a",
+ "aliases": {
+  "tp": 57,
+  "fp": 0,
+  "fn": 0,
+  "precision": 1.0,
+  "recall": 1.0
+ },
+ "groups": {
+  "gold": 36,
+  "predicted": 36,
+  "exact": 36,
+  "wrong": 0
+ },
+ "falsePositives": [],
+ "misses": [],
+ "wrongGroups": []
+}

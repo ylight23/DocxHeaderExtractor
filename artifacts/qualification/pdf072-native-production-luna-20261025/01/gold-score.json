@@ -1,0 +1,268 @@
+{
+  "authorityId": "DOC-0252",
+  "goldSha256": "e966d4e57ba6b312a2cebe93446c4350d4ef7173458f7c528306775f9c743b03",
+  "registrySha256": "0fe1d9a8c8ceca99aced21865a4e09437da0dc0b8ceadc11d7811f1edfa79fd3",
+  "sourceSha256": "a005f25e3bb9754cd6c8c7000682d00eb68238fb8937d3475fe807ffbbd94b61",
+  "frozenDecisionsSha256": "4ad587ab34c725c53e94730b2a861718c15fc29a4a82b359f50ee08a12867f93",
+  "scope": {
+    "sourceAliases": 650,
+    "goldAliases": 45,
+    "predictedHeadingAliases": 44,
+    "goldGroups": 42,
+    "predictedGroups": 42
+  },
+  "nativeProductionGroupMembership": {
+    "tp": 37,
+    "fp": 7,
+    "fn": 8,
+    "precision": 0.8409090909090909,
+    "recall": 0.8222222222222222,
+    "falsePositiveAliases": [
+      "L0522:S1",
+      "L0524:S1",
+      "L0527:S1",
+      "L0528:S1",
+      "L0529:S1",
+      "L0532:S0",
+      "L0546:S1"
+    ],
+    "missingAliases": [
+      "L0123:S0",
+      "L0315:S0",
+      "L0470:S0",
+      "L0507:S0",
+      "L0513:S0",
+      "L0514:S0",
+      "L0520:S0",
+      "L0539:S0"
+    ]
+  },
+  "nativeProductionExactGroups": {
+    "tp": 35,
+    "fp": 7,
+    "fn": 7,
+    "precision": 0.8333333333333334,
+    "recall": 0.8333333333333334,
+    "falsePositiveGroups": [
+      [
+        "L0522:S1"
+      ],
+      [
+        "L0524:S1"
+      ],
+      [
+        "L0527:S1"
+      ],
+      [
+        "L0528:S1"
+      ],
+      [
+        "L0529:S1"
+      ],
+      [
+        "L0532:S0"
+      ],
+      [
+        "L0546:S1"
+      ]
+    ],
+    "missingGroups": [
+      [
+        "L0123:S0"
+      ],
+      [
+        "L0315:S0"
+      ],
+      [
+        "L0470:S0"
+      ],
+      [
+        "L0507:S0"
+      ],
+      [
+        "L0513:S0",
+        "L0514:S0"
+      ],
+      [
+        "L0520:S0"
+      ],
+      [
+        "L0539:S0"
+      ]
+    ]
+  },
+  "predictedGroups": [
+    [
+      "L0000:S0",
+      "L0001:S0"
+    ],
+    [
+      "L0004:S0"
+    ],
+    [
+      "L0025:S0"
+    ],
+    [
+      "L0026:S0"
+    ],
+    [
+      "L0078:S0"
+    ],
+    [
+      "L0081:S0"
+    ],
+    [
+      "L0089:S0"
+    ],
+    [
+      "L0107:S0"
+    ],
+    [
+      "L0137:S0"
+    ],
+    [
+      "L0150:S0"
+    ],
+    [
+      "L0165:S0"
+    ],
+    [
+      "L0166:S0"
+    ],
+    [
+      "L0219:S0"
+    ],
+    [
+      "L0271:S0"
+    ],
+    [
+      "L0272:S0"
+    ],
+    [
+      "L0288:S0"
+    ],
+    [
+      "L0334:S0"
+    ],
+    [
+      "L0335:S0"
+    ],
+    [
+      "L0359:S0",
+      "L0360:S0"
+    ],
+    [
+      "L0377:S0"
+    ],
+    [
+      "L0400:S0"
+    ],
+    [
+      "L0420:S0"
+    ],
+    [
+      "L0519:S0"
+    ],
+    [
+      "L0521:S0"
+    ],
+    [
+      "L0522:S1"
+    ],
+    [
+      "L0523:S0"
+    ],
+    [
+      "L0524:S1"
+    ],
+    [
+      "L0526:S0"
+    ],
+    [
+      "L0527:S1"
+    ],
+    [
+      "L0528:S1"
+    ],
+    [
+      "L0529:S1"
+    ],
+    [
+      "L0531:S0"
+    ],
+    [
+      "L0532:S0"
+    ],
+    [
+      "L0536:S0"
+    ],
+    [
+      "L0540:S0"
+    ],
+    [
+      "L0546:S1"
+    ],
+    [
+      "L0553:S0"
+    ],
+    [
+      "L0556:S0"
+    ],
+    [
+      "L0557:S0"
+    ],
+    [
+      "L0566:S0"
+    ],
+    [
+      "L0576:S0"
+    ],
+    [
+      "L0587:S0"
+    ]
+  ],
+  "callAccounting": {
+    "total": 20,
+    "phaseCounts": [
+      {
+        "sumCallSeconds": 801.27,
+        "wallSeconds": 191.52,
+        "maxConcurrent": 6,
+        "phase": "SELECT_OR_CONVERSATION",
+        "logicalCalls": 15
+      },
+      {
+        "sumCallSeconds": 104.39,
+        "wallSeconds": 52.3,
+        "maxConcurrent": 2,
+        "phase": "GROUP",
+        "logicalCalls": 2
+      },
+      {
+        "sumCallSeconds": 131.77,
+        "wallSeconds": 131.79,
+        "maxConcurrent": 1,
+        "phase": "HIERARCHY_PLACE",
+        "logicalCalls": 3
+      }
+    ],
+    "maxConcurrentCallsObserved": 6,
+    "productionRetryLimit": 3,
+    "transportRetriesUsed": 0
+  },
+  "placementAudit": {
+    "headingCount": 42,
+    "hierarchyResolutions": {
+      "model-out-of-hierarchy": 1,
+      "model-parent-relation": 34,
+      "model-root": 7
+    },
+    "goldHierarchyEvaluable": false
+  },
+  "falsePositiveCount": 7,
+  "limitations": [
+    "Gold hierarchy capability is not evaluable; placement results are reported as pipeline output, not hierarchy accuracy.",
+    "One local Luna-authored run does not support a general model-quality claim.",
+    "Transport timing includes time waiting for Luna-authored response files; it is not model-generation latency."
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "artifactKind": "src095_fresh_luna_v14_v12_full_native_run_gold_score",
+  "authorityId": "SRC-095",
+  "sourceSha256": "ecc538dc3d8e9cb3f8d73c3c10189f91bdc7b81f80c570ce658760e5d6f5db84",
+  "goldSha256": "8c7cea0ada3d3af2a2fe9f7f48375575f40e987442a1d4586462ad7706f58ef5",
+  "registrySha256": "0fe1d9a8c8ceca99aced21865a4e09437da0dc0b8ceadc11d7811f1edfa79fd3",
+  "preGoldFreezeSha256": "ff461812f157e98b87ce2e790d979205f23aaa4a165fe4de631631be99ba2c39",
+  "goldOpenedAfterFreeze": true,
+  "provider": "local Luna-authored fresh responses; no OpenRouter/Qwen calls",
+  "membership": {
+    "goldAliases": 109,
+    "predictedAliases": 102,
+    "tp": 101,
+    "fp": 1,
+    "fn": 8,
+    "precision": 0.9901960784313726,
+    "recall": 0.926605504587156,
+    "f1": 0.957345971563981,
+    "falsePositiveAliases": [
+      "L0007:S0"
+    ],
+    "missingAliases": [
+      "L1914:S0",
+      "L1940:S0",
+      "L1947:S0",
+      "L1961:S0",
+      "L2012:S0",
+      "L2023:S0",
+      "L2056:S0",
+      "L2063:S0"
+    ]
+  },
+  "groups": {
+    "goldGroups": 103,
+    "predictedGroups": 95,
+    "exactTp": 94,
+    "exactFp": 1,
+    "exactFn": 9,
+    "exactPrecision": 0.9894736842105263,
+    "exactRecall": 0.912621359223301,
+    "falsePositiveGroups": [
+      [
+        "L0007:S0",
+        "L0008:S0"
+      ]
+    ],
+    "missingGroups": [
+      [
+        "L0008:S0"
+      ],
+      [
+        "L1914:S0"
+      ],
+      [
+        "L1940:S0"
+      ],
+      [
+        "L1947:S0"
+      ],
+      [
+        "L1961:S0"
+      ],
+      [
+        "L2012:S0"
+      ],
+      [
+        "L2023:S0"
+      ],
+      [
+        "L2056:S0"
+      ],
+      [
+        "L2063:S0"
+      ]
+    ]
+  },
+  "run": {
+    "durationSeconds": 457.6428329,
+    "providerCalls": 34,
+    "headings": 95,
+    "sourceOccurrences": 2302,
+    "maxConcurrency": 6,
+    "requestResponsePairs": 34
+  },
+  "limitations": [
+    "One Luna-authored local run; not an OpenRouter/Qwen provider call.",
+    "No hierarchy accuracy claim; Gold evaluates heading aliases and exact source groups."
+  ]
+}

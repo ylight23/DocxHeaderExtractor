@@ -1,0 +1,52 @@
+{
+  "authorityId": "DOC-0256",
+  "sourceSha256": "7111a6c40710d148c9a9f7caea6da8e5e5cf0b708d374c68f656a7e6f60a788b",
+  "gold": {
+    "path": "eval/a99-closed-loop/gold-current/documents/DOC-0256.gold.v1.json",
+    "sha256": "0c0c2804d9b33b6136bdfa30883c9744231148708dd0c81dd2c11ac7611a922f",
+    "claims": 34,
+    "distinctSourceAliases": 35,
+    "evaluable": true
+  },
+  "freeze": {
+    "path": "artifacts/qualification/pdf-v14-block-bounded-cohort-luna-20261026/DOC-0256/pre-gold-freeze.json",
+    "requestResponsePairs": 18,
+    "shaBindingsVerified": true,
+    "goldOpenedAfterFreeze": true
+  },
+  "run": {
+    "handler": "PdfHandler.ExtractAsync",
+    "membershipVersion": 14,
+    "selectionInstructionVersion": 12,
+    "adaptiveVisualEvidence": true,
+    "concurrency": 6,
+    "wallSeconds": 166.3298483,
+    "requestCounts": {"SELECT": 14, "GROUP": 1, "HIERARCHY_PLACE": 3},
+    "selectPacketsWithImages": 14,
+    "retriesOrCorrections": 0,
+    "predictedHeadings": 33
+  },
+  "membership": {
+    "goldAliases": 35,
+    "predictedAliases": 34,
+    "tp": 34,
+    "fp": 0,
+    "fn": 1,
+    "precision": 1.0,
+    "recall": 0.9714285714285714,
+    "falsePositiveAliases": [],
+    "falseNegativeAliases": ["L0312:S0"]
+  },
+  "exactGroups": {
+    "goldGroups": 34,
+    "predictedGroups": 33,
+    "exactMatches": 33,
+    "falsePredictedGroups": [],
+    "missedGoldGroups": [["L0312:S0"]]
+  },
+  "notes": [
+    "The alias L0312:S0 is the only missing Gold heading.",
+    "Local Luna bridge wall time includes response waits and is not an external-provider SLA.",
+    "Gold hierarchy is not marked evaluable; parent-placement accuracy is not claimed."
+  ]
+}

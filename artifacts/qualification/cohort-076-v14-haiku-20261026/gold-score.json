@@ -1,0 +1,258 @@
+{
+ "run": "cohort-076-v14-haiku-20261026",
+ "gold": "eval/a99-closed-loop/gold-current/documents/DOC-0256.gold.v1.json",
+ "goldSha256": "0c0c2804d9b33b6136bdfa30883c9744231148708dd0c81dd2c11ac7611a922f",
+ "aliases": {
+  "tp": 35,
+  "fp": 24,
+  "fn": 0,
+  "precision": 0.5932,
+  "recall": 1.0
+ },
+ "groups": {
+  "gold": 34,
+  "predicted": 57,
+  "exact": 34,
+  "wrong": 23
+ },
+ "falsePositives": [
+  [
+   "L0361:S1",
+   "Opening remarks"
+  ],
+  [
+   "L0362:S1",
+   "Regional updates on the ICP 2021 cycle implementation"
+  ],
+  [
+   "L0373:S1",
+   "Regional updates on the ICP 2021 cycle implementation (Cont'd)"
+  ],
+  [
+   "L0375:S1",
+   "Global updates on the ICP 2021 cycle implementation"
+  ],
+  [
+   "L0380:S1",
+   "Data review: Household consumption price and importance data"
+  ],
+  [
+   "L0382:S1",
+   "Data review: Household consumption price and importance data"
+  ],
+  [
+   "L0384:S1",
+   "Data review: Housing prices and volumes"
+  ],
+  [
+   "L0386:S1",
+   "Data review: Private education"
+  ],
+  [
+   "L0387:S1",
+   "Data review: Government compensation and productivity adjustment"
+  ],
+  [
+   "L0390:S1",
+   "Data review: Government compensation and productivity (cont’d)"
+  ],
+  [
+   "L0391:S1",
+   "Data review: Machinery and equipment"
+  ],
+  [
+   "L0393:S1",
+   "Data review: Construction and civil engineering"
+  ],
+  [
+   "L0395:S1",
+   "Data review: 2017-2021 National accounts expenditures"
+  ],
+  [
+   "L0397:S1",
+   "Data review: 2017-2021 National accounts expenditures (cont’d)"
+  ],
+  [
+   "L0398:S1",
+   "Data review: 2017-2021 Population and market exchange rates"
+  ],
+  [
+   "L0400:S1",
+   "Data review: 2017-2021 timeseries data (PPPs, CPIs, deflators)"
+  ],
+  [
+   "L0402:S1",
+   "Data reviews (cont’d)"
+  ],
+  [
+   "L0404:S1",
+   "Data review (cont’d)"
+  ],
+  [
+   "L0406:S1",
+   "Planning for the 2023/4 governance activities and ICP 2021 cycle release at"
+  ],
+  [
+   "L0407:S0",
+   "regional and global levels"
+  ],
+  [
+   "L0409:S1",
+   "Planning for the ICP 2024 cycle"
+  ],
+  [
+   "L0414:S0",
+   "13:00 – 14:00 Planning for the ICP 2024 cycle"
+  ],
+  [
+   "L0418:S1",
+   "Planning for an approach to produce annual ICP results and forecasts"
+  ],
+  [
+   "L0419:S1",
+   "Any other business and closing"
+  ]
+ ],
+ "misses": [],
+ "wrongGroups": [
+  [
+   [
+    "L0361:S1"
+   ],
+   "Opening remarks"
+  ],
+  [
+   [
+    "L0362:S1"
+   ],
+   "Regional updates on the ICP 2021 cycle implementation"
+  ],
+  [
+   [
+    "L0373:S1"
+   ],
+   "Regional updates on the ICP 2021 cycle implementation (Cont'd)"
+  ],
+  [
+   [
+    "L0375:S1"
+   ],
+   "Global updates on the ICP 2021 cycle implementation"
+  ],
+  [
+   [
+    "L0380:S1"
+   ],
+   "Data review: Household consumption price and importance data"
+  ],
+  [
+   [
+    "L0382:S1"
+   ],
+   "Data review: Household consumption price and importance data"
+  ],
+  [
+   [
+    "L0384:S1"
+   ],
+   "Data review: Housing prices and volumes"
+  ],
+  [
+   [
+    "L0386:S1"
+   ],
+   "Data review: Private education"
+  ],
+  [
+   [
+    "L0387:S1"
+   ],
+   "Data review: Government compensation and productivity adjustment"
+  ],
+  [
+   [
+    "L0390:S1"
+   ],
+   "Data review: Government compensation and productivity (cont’d)"
+  ],
+  [
+   [
+    "L0391:S1"
+   ],
+   "Data review: Machinery and equipment"
+  ],
+  [
+   [
+    "L0393:S1"
+   ],
+   "Data review: Construction and civil engineering"
+  ],
+  [
+   [
+    "L0395:S1"
+   ],
+   "Data review: 2017-2021 National accounts expenditures"
+  ],
+  [
+   [
+    "L0397:S1"
+   ],
+   "Data review: 2017-2021 National accounts expenditures (cont’d)"
+  ],
+  [
+   [
+    "L0398:S1"
+   ],
+   "Data review: 2017-2021 Population and market exchange rates"
+  ],
+  [
+   [
+    "L0400:S1"
+   ],
+   "Data review: 2017-2021 timeseries data (PPPs, CPIs, deflators)"
+  ],
+  [
+   [
+    "L0402:S1"
+   ],
+   "Data reviews (cont’d)"
+  ],
+  [
+   [
+    "L0404:S1"
+   ],
+   "Data review (cont’d)"
+  ],
+  [
+   [
+    "L0406:S1",
+    "L0407:S0"
+   ],
+   "Planning for the 2023/4 governance activities and ICP 2021 cycle release at | regional and global levels"
+  ],
+  [
+   [
+    "L0409:S1"
+   ],
+   "Planning for the ICP 2024 cycle"
+  ],
+  [
+   [
+    "L0414:S0"
+   ],
+   "13:00 – 14:00 Planning for the ICP 2024 cycle"
+  ],
+  [
+   [
+    "L0418:S1"
+   ],
+   "Planning for an approach to produce annual ICP results and forecasts"
+  ],
+  [
+   [
+    "L0419:S1"
+   ],
+   "Any other business and closing"
+  ]
+ ]
+}

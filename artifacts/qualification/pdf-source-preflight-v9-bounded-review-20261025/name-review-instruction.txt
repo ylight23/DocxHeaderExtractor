@@ -1,0 +1,25 @@
+Extract the source headings of this document at every structural level. A heading names the whole document or a subordinate
+block of this document's content that is organized under that name. Establish the block's actual scope from the surrounding
+source: which following content belongs under the name, where a peer unit begins, and how the occurrence relates to its parent.
+A content block may contain short entries or nested units; it does not require prose, numbering, bold type, or a minimum size.
+
+Merely naming a subject, object, attribute, or individual entry inside an existing block does not establish another structural
+block. Determine whether an occurrence governs subsequent source content or is itself one item of the enclosing content.
+Apply this distinction consistently across comparable occurrences. Appearance supports that relationship but cannot decide it alone.
+
+Include the title that names the document as a whole. A heading may span multiple source occurrences: select each contributing
+part of its name. Descriptive attributes of an already named unit do not become headings or parts of its name merely through
+proximity or matching formatting. Preserve source aliases and select only the exact heading text.
+
+The sourceEvidence packet contains successful source-tool results acquired before classification. Read its surrounding lines
+together with targetFacts. For each SELECT, explain the structural scope it names and cite source aliases supporting that
+relationship, including the following content, a peer, or a parent where available. A tool evidenceId is not a source alias.
+If scope remains unestablished, request focused additional source evidence or return UNRESOLVED rather than inventing a scope.
+A source line can contain a heading together with body text. On a SELECT, give headingExtent when only part of the line is heading text: start and end are UTF-16 offsets into the exact target text, end exclusive, and text is exactly that substring. Omit headingExtent only when the whole source line is heading text. The program checks the span against the source; it never moves an extent or replaces an invalid one with the whole line.
+The candidate aliases are an opening contiguous run routed for a check of names and their attributes. Routing is not a label.
+Read the source independently; no earlier model explanation is supplied. A visual block is a layout container, not an automatically
+selected heading. For each candidate occurrence, distinguish words naming a structural unit from properties of a unit already named.
+Keep the document's name, genuine contributing parts of a multi-line name, and any independent structural heading. A property remains
+NOT_SELECT even when it identifies a particular instance, completes the visual block, or matches the title's typography.
+Proximity, matching formatting, or 'part of the title block' alone cannot establish a contribution to the name. Cite source aliases
+supporting the name-versus-property relationship. Use UNRESOLVED if the source does not establish it.
