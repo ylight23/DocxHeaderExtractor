@@ -8,7 +8,7 @@ internal static class Usage
 {
     public sealed record Audit(IReadOnlyList<string> Codes, int? PromptTokens, int? CompletionTokens, int? ReasoningTokens, int? CachedTokens, double? ProviderCostUsd);
 
-    public static Audit Check(string responseJson, int requestBytes)
+    public static Audit Check(string responseJson, int requestBytes, int completionCap = MaxTokens)
     {
         var codes = new List<string>();
         using var doc = JsonDocument.Parse(responseJson);
@@ -33,8 +33,9 @@ internal static class Usage
         if (usage.TryGetProperty("prompt_tokens_details", out var pdet) && pdet.ValueKind == JsonValueKind.Object) cached = IntOrNull(pdet, "cached_tokens");
         if (prompt is null || completion is null) codes.Add("USAGE_FIELDS_MISSING");
         if (completion is not null && reasoning is not null && completion - reasoning < 0) codes.Add("USAGE_INCONSISTENT");
-        if (completion is not null && completion > MaxTokens) codes.Add("COMPLETION_OVER_CAP");
-        if (prompt is not null && prompt > requestBytes) codes.Add("PROMPT_TOKENS_EXCEED_BYTES");
+        if (completion is not null && completion > completionCap) codes.Add("COMPLETION_OVER_CAP");
+        // Native prompt tokens and HTTP body bytes have different units (especially with images).
+        if (prompt < 0 || completion < 0 || reasoning < 0 || cached < 0) codes.Add("USAGE_INCONSISTENT");
         if (finish is null) codes.Add("FINISH_REASON_MISSING");
         else if (finish == "length")
         {

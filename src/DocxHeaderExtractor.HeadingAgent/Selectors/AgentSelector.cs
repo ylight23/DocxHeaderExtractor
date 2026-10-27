@@ -69,6 +69,21 @@ public abstract class AgentSelector : IHeadingSelector
 
     /// <summary>Reads the document into its agent source; throws InvalidOperationException with a code when it cannot be read.</summary>
     private protected abstract IAgentSource Load(string path);
+    private protected virtual IAgentSource Load(string path, CancellationToken cancellationToken) => Load(path);
+    private protected virtual bool BoundaryReviewEnabled => false;
+    private protected virtual string GroupingInstruction => instruction;
+    private protected virtual bool PairwisePdfGrouping => false;
+    private protected virtual bool GeneralPdfBoundaryPrompt => false;
+    /// <summary>Qualification-only PDF unit-first selection. Default routes retain line targets.</summary>
+    private protected virtual bool UnitSelectionEnabled => false;
+    /// <summary>PDF: ask again, as a whole, look-alike lines that separate requests decided differently (<see cref="ShapeReview"/>).</summary>
+    private protected virtual bool ShapeReviewEnabled => false;
+    /// <summary>Optional per-route request timeout. Null keeps the transport default.</summary>
+    private protected virtual TimeSpan? RequestTimeout => null;
+    /// <summary>Whether this route must fail instead of returning a partial selection.</summary>
+    private protected virtual bool RequireCompleteRun => false;
+
+    private protected string InstructionText => instruction;
 
     public Task<HeadingSelection> SelectAsync(string path, string apiKey, CancellationToken ct)
     {
@@ -76,11 +91,16 @@ public abstract class AgentSelector : IHeadingSelector
         ArgumentException.ThrowIfNullOrWhiteSpace(apiKey);
         return Task.Run(() =>
         {
-            var source = Load(path);
-            var budget = BudgetFor(source, instruction);
+            var source = Load(path, ct);
+            var budget = BudgetFor(source, instruction, boundaryReview: BoundaryReviewEnabled, unitSelection: UnitSelectionEnabled, shapeReview: ShapeReviewEnabled);
             using var handler = handlerFactory();
-            using var model = new AgentModel(handler, apiKey, budget, rateLimitRetries: AgentModel.ProductionRateLimitRetries);
-            return Select(source, Traced(model), budget, parallelism, ct, retryDelayMs: 5000, costOf: () => budget.ActualUsd, instruction, firstSegments);
+            using var model = new AgentModel(handler, apiKey, budget, timeout: RequestTimeout, cancellationToken: ct, rateLimitRetries: AgentModel.ProductionRateLimitRetries);
+            var selection = Select(source, Traced(model), budget, parallelism, ct, retryDelayMs: 5000, costOf: () => budget.ActualUsd, instruction, firstSegments,
+                boundaryReview: BoundaryReviewEnabled, groupingInstruction: GroupingInstruction, pairwisePdfGrouping: PairwisePdfGrouping,
+                generalPdfBoundaryPrompt: GeneralPdfBoundaryPrompt, unitSelection: UnitSelectionEnabled, shapeReview: ShapeReviewEnabled);
+            if (RequireCompleteRun && (selection.UnitsComplete != selection.UnitsTotal || selection.UnitFailures.Count > 0))
+                throw new InvalidOperationException("PDF_EXTRACTION_INCOMPLETE:" + string.Join(";", selection.UnitFailures));
+            return selection;
         }, ct);
     }
 
@@ -134,28 +154,27 @@ public abstract class AgentSelector : IHeadingSelector
     /// <summary>The budget of one document: one first post per segment plus every segment's tool rounds, transport retries and four repairs, and
     /// the reserve of every first request plus those spare posts at the byte cap, plus 10%. With precedingSelection every unit may get a second
     /// answer, so the posts and the first requests are counted twice.</summary>
-    internal static AgentBudget BudgetFor(IAgentSource source, string instruction = AgentProtocol.Instruction, bool precedingSelection = false)
+    internal static AgentBudget BudgetFor(IAgentSource source, string instruction = AgentProtocol.Instruction, bool precedingSelection = false, bool boundaryReview = false,
+        bool unitSelection = false, bool shapeReview = false)
     {
         var units = source.Cores.Count;
         var passes = precedingSelection ? 2 : 1;
-        var posts = passes * (units + units * AgentProtocol.MaxToolTurns + units * ExtraPostsPerUnit);
-        var flavor = source.Flavor;
-        var styles = flavor.CreateTools(source).DocumentStyles();
-        var first = passes * Enumerable.Range(0, units).Sum(n =>
-        {
-            var (decide, shown) = source.Scope(n);
-            var payload = AgentProtocol.Payload(source.SourceSha256, AgentSource.SegmentId(n), decide, shown.Select(i => source.Lines[i]).ToArray(), styles, instruction, flavor,
-                flavor.PayloadFacts(source, decide));
-            payload = AgentUnit.WithContextFacts(payload, source, shown, decide);
-            return AgentBudget.AttemptUsd(AgentProtocol.Build(payload, new System.Text.Json.Nodes.JsonArray(), "auto", flavor).Bytes);
-        });
-        var spare = (posts - passes * units) * AgentBudget.AttemptUsd(AgentBudget.MaxRequestBytes);
-        // Grouping batches up to MaxRunsPerRequest adjacent selected-line runs. In the worst case, every other source line is selected,
-        // so reserve one chunk per 2 * MaxRunsPerRequest lines, including protocol/transport repairs.
+        var posts = passes * (units + units * AgentProtocol.MaxToolTurns + units * ExtraPostsPerUnit)
+            + (boundaryReview ? BoundarySelectionReview.MaxScopes * BoundarySelectionReview.MaxPosts : 0)
+            + (shapeReview ? ShapeReview.MaxGroups * (1 + AgentUnit.TransportRetries) : 0);
+        var first = passes * Enumerable.Range(0, units).Sum(n => AgentBudget.AttemptUsd(
+            RequestResources.Measure(unitSelection
+                ? PdfUnitSelectionTask.PrepareFirstRequest((AgentSource)source, n, instruction)
+                : AgentUnit.PrepareFirstRequest(source, n, instruction), source.ResourcePolicy), source.ResourcePolicy));
+        var largestOutput = source.Cores.Count == 0 ? source.ResourcePolicy.SelectionMinimumCompletion :
+            source.Cores.Max(c => source.ResourcePolicy.SelectionOutputDemand(c.End - c.Start));
+        var futureAllowance = new RequestResources(source.ResourcePolicy.MaxRequestBytes,
+            Math.Min(source.ResourcePolicy.MaxPromptTokens, source.ResourcePolicy.MaxRequestBytes + 4096), largestOutput, 0, "future-turn-allowance");
+        var spare = (posts - passes * units) * AgentBudget.AttemptUsd(futureAllowance, source.ResourcePolicy);
         var groupPosts = GroupingPostsReserveForLines(source.Lines.Count);
-        var groupReserve = groupPosts * AgentBudget.AttemptUsd(60000);
+        var groupReserve = groupPosts * AgentBudget.AttemptUsd(futureAllowance, source.ResourcePolicy);
         return new AgentBudget(posts + groupPosts,
-            Math.Ceiling((first + spare + groupReserve) * 1.1 * 100) / 100);
+            Math.Ceiling((first + spare + groupReserve) * 1.1 * 100) / 100, source.ResourcePolicy);
     }
 
     /// <summary>The nearest line in a unit's shown context, before its first target, that the first answers selected; null when there is none.</summary>
@@ -178,7 +197,8 @@ public abstract class AgentSelector : IHeadingSelector
     internal static HeadingSelection Select(IAgentSource source, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct,
         int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0, SelectionCache? cache = null,
         GroupingCache? groupingCache = null, Func<IReadOnlyList<string>, IReadOnlyList<IReadOnlyList<string>>, IReadOnlyList<string>>? audit = null,
-        bool precedingSelection = false, bool siblingReview = false)
+        bool precedingSelection = false, bool siblingReview = false, bool boundaryReview = false, string? groupingInstruction = null,
+        bool pairwisePdfGrouping = false, bool generalPdfBoundaryPrompt = false, bool unitSelection = false, bool shapeReview = false)
     {
         var phase = Stopwatch.StartNew();
         var seconds = new Dictionary<string, double>(StringComparer.Ordinal);
@@ -186,8 +206,12 @@ public abstract class AgentSelector : IHeadingSelector
         // With a cache, a unit whose first request is byte for byte one already answered COMPLETE takes that answer and makes no call.
         AgentUnitOutcome RunOrReuse(int n, string? precedingAlias = null)
         {
-            if (cache?.TryLoad(source.SourceSha256, AgentUnit.FirstRequestSha256(source, n, instruction, precedingAlias)) is { } reused) return reused;
-            var outcome = AgentUnit.Run(source, n, model, budget, retryDelayMs, instruction, precedingAlias: precedingAlias);
+            var firstRequestSha = unitSelection
+                ? PdfUnitSelectionTask.PrepareFirstRequest((AgentSource)source, n, instruction).Sha256
+                : AgentUnit.FirstRequestSha256(source, n, instruction, precedingAlias);
+            if (cache?.TryLoad(source.SourceSha256, firstRequestSha) is { } reused) return reused;
+            var outcome = unitSelection ? PdfUnitSelectionTask.Run((AgentSource)source, n, model, budget, retryDelayMs, instruction)
+                : AgentUnit.Run(source, n, model, budget, retryDelayMs, instruction, precedingAlias: precedingAlias);
             cache?.Store(source.SourceSha256, outcome);
             return outcome;
         }
@@ -205,6 +229,14 @@ public abstract class AgentSelector : IHeadingSelector
                 if (PrecedingSelectedAlias(source, n, firstSelected) is { } alias) outcomes[n] = RunOrReuse(n, alias);
             });
         }
+        var boundaryEvents = Array.Empty<string>();
+        var boundaryFailures = Array.Empty<string>();
+        if (boundaryReview)
+        {
+            var reviewClock = Stopwatch.StartNew();
+            (boundaryEvents, boundaryFailures) = BoundarySelectionReview.Apply(source, outcomes, model, budget, parallelism, instruction, ct, retryDelayMs);
+            seconds["boundaryReview"] = reviewClock.Elapsed.TotalSeconds;
+        }
         var complete = outcomes.Where(o => o.Status == "COMPLETE").ToArray();
         var selected = complete.SelectMany(o => o.Decisions.Where(d => d.Value == "SELECT").Select(d => d.Key)).ToHashSet(StringComparer.Ordinal);
         var answers = complete.Select(o => JsonSerializer.Serialize(new
@@ -212,6 +244,7 @@ public abstract class AgentSelector : IHeadingSelector
             unit = o.UnitId, decisions = o.Decisions, reasons = o.Reasons, analysis = o.Analysis,
             headingExtents = o.Extents is { Count: > 0 } e ? e.ToDictionary(kv => kv.Key, kv => new { start = kv.Value.Start, end = kv.Value.End, text = kv.Value.Text }) : null,
             readingViewIds = o.ReadingChoices is { Count: > 0 } rc ? rc : null,
+            selectionGroups = o.SelectionGroups, groupingFailure = o.GroupingFailure,
             coreFactsCoverage = new { targetsWithoutFacts = o.TargetsWithoutFacts ?? Array.Empty<string>(), factsResultsCut = o.FactsResultsCut },
             detailEvidenceCoverage = new { aliasesRead = o.DetailEvidenceAliases ?? Array.Empty<string>() },
         }, Compact)).ToArray();
@@ -225,6 +258,8 @@ public abstract class AgentSelector : IHeadingSelector
         var failures = outcomes.Where(o => o.Status != "COMPLETE").Select(o => o.UnitId + ":" + o.Status + ":" + (o.Failure ?? "UNKNOWN")
             + (o.Failure is "COVERAGE:CORE_FACTS_MISSING" or "BUDGET:CORE_FACTS_UNCOVERED" ? ":" + o.TargetsWithoutFacts!.Count + "_TARGETS_WITHOUT_CORE_FACTS" : "")).ToList();
         if (budget.HaltReason is { } halt) failures.Add("HALT:" + halt);
+        answers = answers.Concat(boundaryEvents).ToArray();
+        failures.AddRange(boundaryFailures);
         var reusedUnits = outcomes.Where(o => o.Reused).Select(o => o.UnitId).ToArray();
         if (reusedUnits.Length > 0)
             answers = answers.Append(JsonSerializer.Serialize(new { stage = "selection-reuse", cache = SelectionCache.Version, units = reusedUnits }, Compact)).ToArray();
@@ -235,11 +270,21 @@ public abstract class AgentSelector : IHeadingSelector
             answers = answers.Concat(siblingAnswers).ToArray();
             failures.AddRange(siblingFailures);
         }
-        seconds["selection"] = phase.Elapsed.TotalSeconds;
+        // Look-alike lines decided in separate requests may disagree; each such group is asked again once, as a whole.
+        if (shapeReview)
+        {
+            var (shapeAnswers, shapeFailures) = ShapeReview.Run(source, complete, selected, extents, readingChoices, model, parallelism, instruction, ct);
+            answers = answers.Concat(shapeAnswers).ToArray();
+            failures.AddRange(shapeFailures);
+        }
+        seconds["selection"] = phase.Elapsed.TotalSeconds - seconds.GetValueOrDefault("boundaryReview");
         phase.Restart();
         // The selected lines divided into headings: the model decides which adjacent lines form one heading, C# checks the division.
-        var grouping = AgentGrouping.Group(source, selected, model, budget, parallelism, ct, retryDelayMs, instruction, cache: groupingCache,
-            headingExtents: extents, headingReadings: readingChoices);
+        var grouping = AgentGrouping.Group(source, selected, model, budget, parallelism, ct, retryDelayMs, groupingInstruction ?? instruction, cache: groupingCache,
+            headingExtents: extents, headingReadings: readingChoices,
+            inlineGroups: complete.Any(o => o.SelectionGroups is not null) ? complete.SelectMany(o => o.SelectionGroups ?? []).ToArray() : null,
+                ownership: complete.SelectMany(o => o.Decisions.Keys.Select(a => (a, o.UnitId))).ToDictionary(x => x.a, x => x.UnitId, StringComparer.Ordinal),
+                pairwisePdf: pairwisePdfGrouping, generalPdfPrompt: generalPdfBoundaryPrompt);
         seconds["grouping"] = phase.Elapsed.TotalSeconds;
         // Grouping output is admitted by its strict parser and C# source-order/coverage checks.
         // Semantic verifier and selection-review agents are qualification-only; neither can alter
@@ -254,6 +299,7 @@ public abstract class AgentSelector : IHeadingSelector
             .ToHashSet(StringComparer.Ordinal);
         selected.ExceptWith(unresolved);
         var bindingGroups = grouping.Groups.Where(group => group.All(selected.Contains)).ToArray();
+        answers = answers.Append(JsonSerializer.Serialize(new { stage = "bound-heading-groups", groups = bindingGroups }, Compact)).ToArray();
         foreach (var alias in unresolved) { extents.Remove(alias); readingChoices.Remove(alias); }
         var unresolvedUnits = Enumerable.Range(0, outcomes.Length).Count(n => outcomes[n].Status == "COMPLETE" && source.Scope(n).Decide.Any(unresolved.Contains));
         var initial = outcomes.SelectMany(o => o.Decisions).ToDictionary(kv => kv.Key, kv => kv.Value, StringComparer.Ordinal);
@@ -276,6 +322,7 @@ public abstract class AgentSelector : IHeadingSelector
             extents.Count > 0 ? extents : null) { HeadingReadings = readingChoices.Count > 0 ? readingChoices : null,
                 Grouping = grouping.Observation with { UnresolvedAliases = unresolved.Count },
                 StageSeconds = seconds.ToDictionary(kv => kv.Key, kv => Math.Round(kv.Value, 3)), AliasStates = aliasStates,
+                ResourcePlan = ResourceAudit.Plan(source), Resources = ResourceAudit.Observe(budget),
                 ToolUse = new ToolUseStats(outcomes.Count(o => o.ToolRounds > 0), outcomes.Sum(o => o.ToolRounds), outcomes.Count(o => o.DecidedBeforeTools)) };
     }
 }

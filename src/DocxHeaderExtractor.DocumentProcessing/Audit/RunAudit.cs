@@ -19,6 +19,8 @@ public sealed record RunAudit(
     /// <summary>Stable pipeline identity for the promoted execution authority.</summary>
     [JsonPropertyName("route")]
     public string? PipelineId { get; init; }
+    public DocxHeaderExtractor.Contracts.Agents.SelectionPlanObservation? ResourcePlan { get; init; }
+    public DocxHeaderExtractor.Contracts.Agents.ResourceStageObservation? SelectionResources { get; init; }
 
     [JsonPropertyName("scan")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]

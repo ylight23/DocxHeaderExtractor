@@ -80,7 +80,10 @@ internal static partial class AgentProtocol
     /// <summary>The message sent with a repair turn: the refusal code and what a valid answer needs; for COVERAGE_INCOMPLETE the targets that got
     /// no decision. It names no decision.</summary>
     public static string RepairMessage(string failure, IReadOnlyList<string>? missing, string? detail = null) =>
-        failure == "PROTOCOL:READING_VIEW_UNKNOWN"
+        failure.StartsWith("PROTOCOL:SOURCE_TEXT_", StringComparison.Ordinal)
+            ? "Your answer was refused (" + failure + "): " + (detail ?? "every SELECT needs its own target's exact sourceText")
+              + ". Re-read each alias together with its own text and facts. Do not infer aliases by line counts. On every SELECT copy the whole target text as sourceText; omit sourceText on other decisions. Decide membership yourself and send the complete answer again. The program never moves a selection to a different alias."
+        : failure == "PROTOCOL:READING_VIEW_UNKNOWN"
             ? "Your answer was refused (" + failure + "): " + (detail ?? "a readingViewId names no reading of its line") + ". Take readingViewId only from the views get_text_views lists for that line, or leave it out to take the line as the request shows it. Send the complete answer again as exactly one JSON object."
         : failure.StartsWith("PROTOCOL:HEADING_EXTENT_", StringComparison.Ordinal)
             ? "Your answer was refused (" + failure + "): " + (detail ?? "a headingExtent does not match its target's text")
@@ -88,6 +91,10 @@ internal static partial class AgentProtocol
         : failure == "PROTOCOL:KEY_REPEATED"
             ? "Your answer was refused (" + failure + "): " + (detail ?? "a key appears more than once in one object")
               + ". Give every decision in one \"decisions\" array and send the complete answer again as exactly one JSON object."
+        : missing is { Count: > 0 } && failure == "PROTOCOL:PAGE_LAYOUT_EVIDENCE_REQUIRED"
+            ? "Your answer was not taken yet (" + failure + "): successful get_page_layout results have not shown these target aliases: " + string.Join(", ", missing.Take(MaxMissingNamed))
+              + (missing.Count > MaxMissingNamed ? " and " + (missing.Count - MaxMissingNamed) + " more" : "")
+              + ". Call get_page_layout for each target's page and use offset/nextOffset until every listed target alias appears in a successful result. Read the returned text and layout with its neighboring lines, then classify all targets and send the complete JSON answer. Other tools do not satisfy this requirement."
         : missing is { Count: > 0 } && failure == "PROTOCOL:TOOL_FACTS_INCOMPLETE"
             ? "Your answer was not taken yet (" + failure + "): get_line_facts has not returned facts for these targets: " + string.Join(", ", missing.Take(MaxMissingNamed))
               + (missing.Count > MaxMissingNamed ? " and " + (missing.Count - MaxMissingNamed) + " more" : "")

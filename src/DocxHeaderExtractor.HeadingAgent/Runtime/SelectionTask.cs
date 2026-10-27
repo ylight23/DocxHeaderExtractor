@@ -12,8 +12,9 @@ namespace DocxHeaderExtractor.HeadingAgent.Runtime;
 /// is particular to the problem: the payload (targets, context, facts, the style table), the facts gate (an answer needs facts supplied in the
 /// request or a successful get_line_facts call), the SELECT parser and the core-facts coverage. Where the flavor requires the core facts (DOCX),
 /// a COMPLETE answer that leaves some target without them is sent back once with their aliases while the unit still has room for another facts
-/// result; if they stay uncovered, or there is no room to read them, the unit ends INCOMPLETE and none of its decisions is used. C# never reads
-/// the reasoning, never changes a decision and never adds a call the model did not make; which detail a decision needs is the model's.
+/// result; if they stay uncovered, or there is no room to read them, the unit ends INCOMPLETE and none of its decisions is used. Opt-in PDF
+/// preflight may execute source tools first and explicitly marks those as program reads. The task never infers semantic labels from reasoning
+/// or fabricates model tool-call history.
 /// </summary>
 internal sealed class SelectionTask : IConversationTask<AgentUnitOutcome>
 {
@@ -25,19 +26,24 @@ internal sealed class SelectionTask : IConversationTask<AgentUnitOutcome>
     readonly string payload;
     readonly Dictionary<string, string>? targetTexts;
     readonly IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>>? readings;
+    readonly bool requiresPageLayoutEvidence;
+    readonly (int Start, int End) core;
     // Counters for the experiment: replies that called tools, and whether such a reply already carried decisions.
     int toolRounds;
     bool decidedBeforeTools;
     bool fenceUnwrapped;
     bool coverageAsked;
 
-    public SelectionTask(IAgentSource source, int segment, string instruction, JsonObject? selectionReview, string? precedingAlias)
+    public SelectionTask(IAgentSource source, int segment, string instruction, JsonObject? selectionReview, string? precedingAlias,
+        (int Start, int End)? scope = null)
     {
         this.source = source;
         UnitId = (selectionReview is null ? "" : "REVIEW-") + AgentSource.SegmentId(segment);
-        var (decide, shownIdx) = source.Scope(segment);
+        core = scope ?? source.Cores[segment];
+        var (decide, shownIdx) = AgentUnit.Scope(source, core);
         var lines = source.Lines;
         flavor = source.Flavor;
+        requiresPageLayoutEvidence = flavor.RequiresPageLayoutEvidence;
         tools = flavor.CreateTools(source);
         ordered = decide.OrderBy(tools.PositionOf).ToList();
         shownAliases = shownIdx.Select(i => lines[i].Alias).ToHashSet(StringComparer.Ordinal);
@@ -51,7 +57,7 @@ internal sealed class SelectionTask : IConversationTask<AgentUnitOutcome>
             built = reviewPayload.ToJsonString(AgentUnit.ReviewJson);
         }
         built = AgentUnit.WithContextFacts(built, source, shownIdx, ordered);
-        payload = AgentUnit.WithPrecedingSelected(built, source, precedingAlias);
+        payload = PdfRasterEvidence.Attach(PdfSelectionEvidence.Attach(AgentUnit.WithPrecedingSelected(built, source, precedingAlias), source, tools, ordered), source);
         if (requestFacts is not null)
             tools.NoteRequestFacts(ordered, requestFacts.SelectMany(f => flavor.FactReferences(f!)));
         // The style table shows the first lines of each style: they are in the request, so the model may cite them.
@@ -69,10 +75,12 @@ internal sealed class SelectionTask : IConversationTask<AgentUnitOutcome>
     public IConversationTools Tools { get; }
     public string ImagesNote => "The images get_scan_crop returned in this turn, in call order.";
 
-    public PreparedRequest Build(JsonArray history, string toolChoice) => AgentProtocol.Build(payload, history, toolChoice, flavor);
+    public PreparedRequest Build(JsonArray history, string toolChoice) => AgentProtocol.Build(payload, history, toolChoice, flavor,
+        new WireOptions(MaxTokens: source.ResourcePolicy.SelectionOutputDemand(ordered.Count)),
+        source is AgentSource pdf ? pdf.SelectionImages(core) : []);
 
     public IReadOnlyList<string> ChoicesAfterRepair(string failure) =>
-        failure is "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED" or "PROTOCOL:TOOL_CROP_REQUIRED_NOT_REQUESTED" or "PROTOCOL:TOOL_FACTS_INCOMPLETE"
+        failure is "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED" or "PROTOCOL:TOOL_CROP_REQUIRED_NOT_REQUESTED" or "PROTOCOL:TOOL_FACTS_INCOMPLETE" or "PROTOCOL:PAGE_LAYOUT_EVIDENCE_REQUIRED"
             ? ["auto", "none"] : ["none"];
 
     public string RepairMessage(string failure, IReadOnlyList<string>? missing, string? detail) => AgentProtocol.RepairMessage(failure, missing, detail);
@@ -91,6 +99,12 @@ internal sealed class SelectionTask : IConversationTask<AgentUnitOutcome>
         var factsRead = scanGate ? tools.ToolFactsRead : tools.FactsWereRead;
         var gateCode = scanGate ? "PROTOCOL:TOOL_CROP_REQUIRED_NOT_REQUESTED" : "PROTOCOL:TOOL_FACTS_REQUIRED_NOT_REQUESTED";
         if (!factsRead) return new Verdict<AgentUnitOutcome>.Repair(gateCode);
+        if (requiresPageLayoutEvidence)
+        {
+            var missingLayout = ordered.Where(a => !tools.PageLayoutAliasesReturned.Contains(a)).ToArray();
+            if (missingLayout.Length > 0)
+                return new Verdict<AgentUnitOutcome>.Repair("PROTOCOL:PAGE_LAYOUT_EVIDENCE_REQUIRED", missingLayout);
+        }
         var observed = shownAliases.Concat(tools.ObservedAliases).Distinct(StringComparer.Ordinal).ToDictionary(a => a, tools.PositionOf, StringComparer.Ordinal);
         var content = reply.Content ?? "";
         if (TryUnwrapFence(content, out var inner)) { content = inner; fenceUnwrapped = true; }
@@ -113,7 +127,8 @@ internal sealed class SelectionTask : IConversationTask<AgentUnitOutcome>
             }
             return new Verdict<AgentUnitOutcome>.Finish(Done(state, "INCOMPLETE", coverageAsked ? "COVERAGE:CORE_FACTS_MISSING" : "BUDGET:CORE_FACTS_UNCOVERED"));
         }
-        return new Verdict<AgentUnitOutcome>.Finish(Done(state, parsed.Status!, null, parsed.Values, parsed.Analysis, parsed.Reasons, parsed.Extents, parsed.ReadingChoices));
+        return new Verdict<AgentUnitOutcome>.Finish(Done(state, parsed.Status!, null, parsed.Values, parsed.Analysis, parsed.Reasons, parsed.Extents, parsed.ReadingChoices)
+            with { SelectionGroups = parsed.SelectionGroups, GroupingFailure = parsed.GroupingFailure });
     }
 
     public AgentUnitOutcome Stop(ConversationState state, string status, string failure) => Done(state, status, failure);

@@ -79,6 +79,9 @@ internal abstract class AgentToolHost : IAgentTools
 
     /// <summary>Every alias a successful tool result showed, in any part of the result.</summary>
     public IReadOnlySet<string> ObservedAliases => observed;
+    public IReadOnlySet<string> PageLayoutAliasesReturned => ledger
+        .Where(c => c.Tool == "get_page_layout" && c.Status == "OK")
+        .SelectMany(c => c.ReturnedAliases).ToHashSet(StringComparer.Ordinal);
     public int PositionOf(string alias) => index[alias];
     public bool FactsWereRead => requestFacts || ToolFactsRead;
     public bool ToolFactsRead => ledger.Any(c => c.Tool == RequiredEvidenceTool && c.Status == "OK");

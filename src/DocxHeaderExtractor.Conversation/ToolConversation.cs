@@ -75,10 +75,33 @@ internal static class ToolConversation
             state.Posts++;
             ModelTurn reply = null!;
             var sent = false;
+            string? IncreaseCompletion()
+            {
+                if (state.Posts >= maxPosts) return "REVIEW_POST_LIMIT";
+                req = task.Build(history, toolChoice);
+                if (budget.Admit(req) is { } refused) return "BUDGET:" + refused;
+                state.RetriesUsed++;
+                state.RequestSha256s.Add(req.Sha256);
+                state.Posts++;
+                return null;
+            }
             while (!sent)
             {
-                try { reply = model(task.UnitId, turn, req); sent = true; }
-                catch (ReplyFailure f) when (state.RetriesUsed < limits.TransportRetries && limits.RetriableTransport.Contains(f.Code, StringComparer.Ordinal))
+                try
+                {
+                    reply = model(task.UnitId, turn, req);
+                    if (reply.FinishReason == "length" && task.TryIncreaseCompletionBudget())
+                    {
+                        if (IncreaseCompletion() is { } failure) return Stop("INCOMPLETE", failure);
+                        continue;
+                    }
+                    sent = true;
+                }
+                catch (ReplyFailure f) when (IsCompletionExhaustion(f.Code) && task.TryIncreaseCompletionBudget())
+                {
+                    if (IncreaseCompletion() is { } failure) return Stop("INCOMPLETE", failure);
+                }
+                catch (ReplyFailure f) when (!f.TransportRetriesHandled && state.RetriesUsed < limits.TransportRetries && limits.RetriableTransport.Contains(f.Code, StringComparer.Ordinal))
                 {
                     // The provider failed this call: the same bytes are sent again after a pause, admitted by the budget like any POST.
                     state.RetriesUsed++;
@@ -89,7 +112,7 @@ internal static class ToolConversation
                     state.RequestSha256s.Add(req.Sha256);
                     state.Posts++;
                 }
-                catch (ReplyFailure f) when (reasoningRetries < 1 && limits.RetryOnceCodes.Any(c => f.Code.Contains(c, StringComparison.Ordinal)))
+                catch (ReplyFailure f) when (!f.TransportRetriesHandled && reasoningRetries < 1 && limits.RetryOnceCodes.Any(c => f.Code.Contains(c, StringComparison.Ordinal)))
                 {
                     // A failure the task retries once (scan: reasoning used every token, or the call timed out): the same bytes once more.
                     reasoningRetries++;
@@ -192,4 +215,7 @@ internal static class ToolConversation
         }
         throw new InvalidOperationException("AGENT_TURN_LOOP_EXHAUSTED");
     }
+
+    static bool IsCompletionExhaustion(string code) => code.StartsWith("AUDIT:", StringComparison.Ordinal)
+        && code[6..].Split(',', ';', '|').All(c => c is "FINISH_LENGTH" or "REASONING_EXHAUSTED");
 }

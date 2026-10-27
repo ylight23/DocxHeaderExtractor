@@ -42,7 +42,7 @@ public sealed class PdfHeadingAgentParityTests
     });
 
     private static readonly Lazy<AgentSource> Production = new(() =>
-        AgentSource.Load(TestRepository.Path(Pdf), out var failure) ?? throw new InvalidOperationException(failure));
+        AgentSource.Load(TestRepository.Path(Pdf), out var failure, legacyPacking: true) ?? throw new InvalidOperationException(failure));
 
     private static string QualifiedPrompt => Golden.Value["prompt"]!["qualifiedPrompt"]!.GetValue<string>();
 

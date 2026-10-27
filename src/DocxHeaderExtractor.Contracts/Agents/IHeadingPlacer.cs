@@ -38,7 +38,19 @@ public sealed record PlacementProposal(
     IReadOnlyList<PlacementCall> Calls,
     IReadOnlyList<string> Failures,
     IReadOnlyList<string> ModelEvidence,
-    int LogicalCalls);
+    int LogicalCalls)
+{
+    public ResourceStageObservation? Resources { get; init; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public PlacementChainRepairObservation? ChainRepair { get; init; }
+}
+
+/// <summary>Source identities only: no semantic judgement or replacement parent is inferred by this check.</summary>
+public sealed record ParentChainConflict(string Alias, string Code, string BlockerAlias, IReadOnlyList<string> Path);
+
+public sealed record PlacementChainRepairObservation(IReadOnlyList<ParentChainConflict> InitialConflicts,
+    IReadOnlyList<ParentChainConflict> FinalConflicts, IReadOnlyList<string> RequestedAliases,
+    IReadOnlyList<string> ChangedAliases, int Passes, int LogicalCalls);
 
 /// <summary>Safe response-envelope diagnostics of one placement call; no source, prompt or provider completion text.
 /// JSON error offsets are zero-based within the parsed content after removing an optional single JSON fence.</summary>

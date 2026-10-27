@@ -63,6 +63,21 @@ public sealed class HeadingGroupVerificationTests
 
     static string A(int n) => $"P032-L{n:000}";
 
+    [Fact]
+    public void Grouping_does_not_repeat_a_transport_managed_retry_sequence()
+    {
+        using var handler = new FakeOpenRouter((_, _) => (HttpStatusCode.TooManyRequests, ""));
+        var budget = new AgentBudget(100, 10);
+        using var model = new AgentModel(handler, "sk-test", budget, rateLimitRetries: 3, rateLimitBaseDelayMs: 0,
+            requestGate: new ProviderRequestGate(6));
+        var result = AgentGrouping.Group(Source(), new HashSet<string> { A(1), A(2) }, model.Turn, budget,
+            1, CancellationToken.None, retryDelayMs: 0);
+        Assert.Equal(4, handler.Posts);
+        Assert.NotEmpty(result.Failures);
+        Assert.Equal(1, result.Posts);
+        Assert.Equal(4, budget.Calls);
+    }
+
     static AgentGrouping.Result EightCandidates() => new(Enumerable.Range(0, 8).Select(i => new[] { A(1 + 2 * i) }).ToArray(), [], [], 0);
 
     [Theory]

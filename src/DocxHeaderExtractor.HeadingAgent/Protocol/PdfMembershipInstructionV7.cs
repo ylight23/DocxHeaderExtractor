@@ -1,0 +1,29 @@
+namespace DocxHeaderExtractor.HeadingAgent.Protocol;
+
+/// <summary>Structural function and exact source extent, without document-type examples.</summary>
+internal static class PdfMembershipInstructionV7
+{
+    internal const string Definition = """
+        A structural heading is a source occurrence that names, introduces, or divides a unit
+        of document content at its actual location. Determine that function from its text,
+        surrounding content and available source evidence. Measurements are evidence to weigh;
+        no measurement by itself makes an occurrence a heading or rules it out.
+        """;
+
+    public const string Instruction = Definition + "\n" + SelectionRule + "\n" + PdfAgentProtocol.ExtentLine;
+
+    const string SelectionRule = """
+        Extract every genuine structural heading at every level, including units contained
+        within other units. Evaluate each target at its own location and apply the same
+        functional criterion consistently to all targets. Wording, length, numbering,
+        appearance or similarity to another occurrence alone does not establish that function.
+        A heading may consist of several source occurrences. Select every contributing part
+        when the source context establishes that they jointly form that heading. Select only
+        the exact text belonging to the heading and preserve its source aliases.
+        Text that describes or belongs to an already introduced unit is not a heading unless
+        it also names, introduces, or divides a content unit at its own location.
+        For each SELECT, explain which content unit the occurrence names, introduces, or divides.
+        When the available evidence cannot establish the function, request additional source
+        evidence or report the occurrence as unresolved rather than guessing.
+        """;
+}

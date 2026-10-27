@@ -34,7 +34,13 @@ internal static class AgentUnit
     /// the system prompt, the tools, the instruction and the payload with its facts, so it names everything the unit's answer depends on.</summary>
     public static string FirstRequestSha256(IAgentSource source, int segment, string instruction = Instruction, string? precedingAlias = null)
     {
-        var (decide, shownIdx) = source.Scope(segment);
+        return PrepareFirstRequest(source, segment, instruction, precedingAlias: precedingAlias).Sha256;
+    }
+
+    internal static PreparedRequest PrepareFirstRequest(IAgentSource source, int segment, string instruction,
+        (int Start, int End)? scope = null, string? precedingAlias = null)
+    {
+        var (decide, shownIdx) = scope is { } range ? Scope(source, range) : source.Scope(segment);
         var flavor = source.Flavor;
         var tools = flavor.CreateTools(source);
         var ordered = decide.OrderBy(tools.PositionOf).ToList();
@@ -42,7 +48,18 @@ internal static class AgentUnit
             tools.DocumentStyles(), instruction, flavor, flavor.PayloadFacts(source, ordered));
         payload = WithContextFacts(payload, source, shownIdx, ordered);
         payload = WithPrecedingSelected(payload, source, precedingAlias);
-        return Build(payload, new JsonArray(), "auto", flavor).Sha256;
+        payload = PdfSelectionEvidence.Attach(payload, source, tools, ordered);
+        payload = PdfRasterEvidence.Attach(payload, source);
+        var images = source is AgentSource pdf ? pdf.SelectionImages(scope ?? source.Cores[segment]) : [];
+        return Build(payload, new JsonArray(), "auto", flavor,
+            new WireOptions(MaxTokens: source.ResourcePolicy.SelectionOutputDemand(ordered.Count)), images);
+    }
+
+    internal static (string[] Decide, int[] Shown) Scope(IAgentSource source, (int Start, int End) core)
+    {
+        var from = Math.Max(0, core.Start - AgentSource.Overlap);
+        return (source.Lines.Skip(core.Start).Take(core.End - core.Start).Select(l => l.Alias).ToArray(),
+            Enumerable.Range(from, Math.Min(source.Lines.Count, core.End + AgentSource.Overlap) - from).ToArray());
     }
 
     /// <summary>Scan only: the context lines' facts, as contextFacts, so a target is compared with the lines next to it from the request itself.</summary>
@@ -69,7 +86,7 @@ internal static class AgentUnit
     }
 
     public static AgentUnitOutcome Run(IAgentSource source, int segment, Model model, AgentBudget budget, int retryDelayMs = 5000, string instruction = Instruction,
-        JsonObject? selectionReview = null, int maxPosts = int.MaxValue, string? precedingAlias = null) =>
-        ToolConversation.Run(new SelectionTask(source, segment, instruction, selectionReview, precedingAlias),
+        JsonObject? selectionReview = null, int maxPosts = int.MaxValue, string? precedingAlias = null, (int Start, int End)? scope = null) =>
+        ToolConversation.Run(new SelectionTask(source, segment, instruction, selectionReview, precedingAlias, scope),
             (unitId, turn, request) => model(unitId, turn, request), budget, retryDelayMs, maxPosts);
 }

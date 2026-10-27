@@ -103,6 +103,22 @@ public sealed class PdfSelectorTests
     }
 
     [Fact]
+    public void Selection_does_not_repeat_a_transport_managed_retry_sequence()
+    {
+        using var handler = new FakeOpenRouter((_, _) => (HttpStatusCode.TooManyRequests, ""));
+        var source = AgentSource.Load(TestRepository.Path(Pdf), out _)!;
+        var budget = PdfSelector.BudgetFor(source);
+        using var model = new AgentModel(handler, "sk-test", budget, rateLimitRetries: 3, rateLimitBaseDelayMs: 0,
+            requestGate: new ProviderRequestGate(6));
+        var outcome = AgentUnit.Run(source, 0, model.Turn, budget, retryDelayMs: 0);
+        Assert.Equal("FAILED", outcome.Status);
+        Assert.Equal("CALL:TRANSPORT:RATE_LIMITED_NO_RETRY", outcome.Failure);
+        Assert.Equal(0, outcome.TransportRetries);
+        Assert.Equal(4, handler.Posts);
+        Assert.Equal(4, budget.Calls);
+    }
+
+    [Fact]
     public void A_reply_from_another_endpoint_halts_the_document()
     {
         var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTarget, provider: "SomeoneElse");

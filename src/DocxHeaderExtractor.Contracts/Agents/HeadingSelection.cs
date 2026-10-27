@@ -38,6 +38,8 @@ public sealed record HeadingSelection(
     public IReadOnlyDictionary<string, HeadingAliasState>? AliasStates { get; init; }
     /// <summary>Experiment counters: units that called tools, the tool-calling replies, and units whose tool-calling reply already carried decisions.</summary>
     public ToolUseStats? ToolUse { get; init; }
+    public SelectionPlanObservation? ResourcePlan { get; init; }
+    public ResourceStageObservation? Resources { get; init; }
 }
 
 public sealed record ToolUseStats(int UnitsWithToolRounds, int ToolRounds, int UnitsDecidedBeforeTools);

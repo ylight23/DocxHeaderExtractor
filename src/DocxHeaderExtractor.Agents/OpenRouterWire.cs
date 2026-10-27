@@ -43,15 +43,19 @@ internal static class OpenRouterWire
     /// 0, max_tokens, reasoning, the tools and this turn's tool_choice when the call declares tools, the locked provider block, streaming and
     /// usage. Without <paramref name="options"/> the body is the selectors' qualified request.</summary>
     public static PreparedRequest Build(string systemPrompt, string payload, JsonArray history, string? toolChoice, JsonArray? tools,
-        WireOptions? options = null)
+        WireOptions? options = null, IReadOnlyList<JsonObject>? userAttachments = null)
     {
         options ??= WireOptions.Default;
         if (tools is not null && toolChoice is not ("auto" or "none")) throw new ArgumentException("TOOL_CHOICE_INVALID", nameof(toolChoice));
-        static JsonNode Content(string text) =>
-            new JsonArray(new JsonObject { ["type"] = "text", ["text"] = text, ["cache_control"] = new JsonObject { ["type"] = "ephemeral" } });
+        static JsonNode Content(string text, IReadOnlyList<JsonObject>? attachments = null)
+        {
+            var content = new JsonArray(new JsonObject { ["type"] = "text", ["text"] = text, ["cache_control"] = new JsonObject { ["type"] = "ephemeral" } });
+            if (attachments is not null) foreach (var attachment in attachments) content.Add(attachment.DeepClone());
+            return content;
+        }
         var messages = new JsonArray(
             new JsonObject { ["role"] = "system", ["content"] = Content(systemPrompt) },
-            new JsonObject { ["role"] = "user", ["content"] = Content(payload) });
+            new JsonObject { ["role"] = "user", ["content"] = Content(payload, userAttachments) });
         foreach (var m in history) messages.Add(m!.DeepClone());
         var body = new JsonObject
         {

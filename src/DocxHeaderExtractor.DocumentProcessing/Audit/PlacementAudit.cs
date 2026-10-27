@@ -17,6 +17,8 @@ public sealed record PlacementAudit(
     IReadOnlyList<HeadingPlacementDecisionObservation> Decisions)
 {
     public string? Contract { get; init; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public ResourceStageObservation? Resources { get; init; }
     public int LogicalCalls { get; init; }
     public double Seconds { get; init; }
     public int VerifiedCount { get; init; }
@@ -28,6 +30,8 @@ public sealed record PlacementAudit(
     public IReadOnlyList<string> GraphUnresolvedAliases { get; init; } = [];
     public IReadOnlyList<string> Failures { get; init; } = [];
     public IReadOnlyList<PlacementCall> Calls { get; init; } = [];
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public PlacementChainRepairObservation? ChainRepair { get; init; }
     public IReadOnlyList<HeadingPlacementSourceObservation> SourceTrace { get; init; } = [];
     public IReadOnlyList<HeadingMissingAncestorBlocker> MissingAncestorBlockers { get; init; } = [];
     [System.Text.Json.Serialization.JsonIgnore]

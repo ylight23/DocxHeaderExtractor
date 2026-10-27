@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Agents.Budget;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -53,6 +54,7 @@ internal sealed class DocxAgentSource : IAgentSource
     DocxAgentSource(string sourceSha, string universeSha, string storeSha, IReadOnlyList<DocxAgentLine> paragraphs,
         IReadOnlyDictionary<string, JsonObject> facts, JsonObject styleTable)
     {
+        ResourcePolicy = RunResourceBudget.Current?.Policy ?? new RequestPolicy { MaxRequestBytes = AgentBudget.MaxRequestBytes, ContinuationReserveBytes = 0 };
         SourceSha256 = sourceSha; SourceAliasUniverseSha256 = universeSha; EvidenceStoreSha256 = storeSha; Paragraphs = paragraphs;
         Lines = paragraphs.Select(p => new AgentSourceLine(p.Alias, p.Ordinal, null, p.Text, null, null)).ToArray();
         Facts = facts; StyleTable = styleTable;
@@ -67,6 +69,7 @@ internal sealed class DocxAgentSource : IAgentSource
     /// <summary>The paragraphs as the agent's conversation reads them: alias, order and text; a paragraph has no page, box or typography.</summary>
     public IReadOnlyList<AgentSourceLine> Lines { get; }
     public IAgentFormat Flavor => DocxFormat.Instance;
+    public RequestPolicy ResourcePolicy { get; }
     /// <summary>The decided range of each segment, [Start, End) into <see cref="Lines"/>, covering every paragraph once.</summary>
     public IReadOnlyList<(int Start, int End)> Cores { get; }
     public IReadOnlyDictionary<string, JsonObject> Facts { get; }

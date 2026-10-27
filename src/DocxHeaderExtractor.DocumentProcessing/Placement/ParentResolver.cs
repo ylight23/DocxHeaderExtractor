@@ -91,13 +91,17 @@ internal static class ParentResolver
             LogicalCalls = proposal.LogicalCalls,
             Seconds = Math.Round(clock.Elapsed.TotalSeconds, 1),
             VerifiedCount = 0,
-            RepairCount = 0,
+            RepairCount = proposal.ChainRepair?.LogicalCalls ?? 0,
             EdgeRepairs = [],
-            GraphConflicts = [],
-            GraphRepairAliases = [],
-            GraphUnresolvedAliases = [],
+            ChainRepair = proposal.ChainRepair,
+            GraphConflicts = proposal.ChainRepair is { } repair ? repair.InitialConflicts.Select(c =>
+                new HeadingPlacementGraphConflict("before-chain-repair", c.Code, c.BlockerAlias, [c.Alias]))
+                .Concat(repair.FinalConflicts.Select(c => new HeadingPlacementGraphConflict("after-chain-repair", c.Code, c.BlockerAlias, [c.Alias]))).ToArray() : [],
+            GraphRepairAliases = proposal.ChainRepair?.RequestedAliases ?? [],
+            GraphUnresolvedAliases = proposal.ChainRepair?.FinalConflicts.Select(c => c.Alias).ToArray() ?? [],
             Failures = failures.ToArray(),
             Calls = proposal.Calls,
+            Resources = proposal.Resources,
             SourceTrace = sourceTrace,
             ModelEvidence = proposal.ModelEvidence,
             UnresolvedSummary = new(

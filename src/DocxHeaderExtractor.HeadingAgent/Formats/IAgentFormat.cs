@@ -21,6 +21,10 @@ internal interface IAgentFormat
     /// and none of its decisions is used. Off for the PDF: its conversation is the qualified one, held to the qualified request bytes, so there the
     /// coverage ledger is recorded only.</summary>
     bool RequiresCoreFacts { get; }
+    /// <summary>Whether a final PDF selection must be preceded by successful page-layout results showing every target alias.</summary>
+    bool RequiresPageLayoutEvidence => false;
+    /// <summary>Program source reads are completed and included before the first classification request.</summary>
+    bool PreloadPageLayoutEvidence => false;
     /// <summary>The readings the evidence holds for one line, by view id (a scanned source: its OCR views and a reading a VLM proposed); null when a
     /// line has only its own text (PDF, DOCX). A SELECT may then name one with readingViewId, and its extent is measured on it.</summary>
     IReadOnlyDictionary<string, string>? Readings(IAgentSource source, string alias) => null;

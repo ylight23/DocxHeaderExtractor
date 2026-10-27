@@ -13,10 +13,12 @@ internal static class AgentRequestFacts
     internal static JsonArray Read(IAgentTools tools, IReadOnlyList<string> targets)
     {
         var facts = new JsonArray();
-        for (var offset = 0; offset < targets.Count;)
+        // A page may exceed the facts tool's legal range. Read legal windows locally; never omit facts to make a packet fit.
+        foreach (var window in targets.Chunk(DocxHeaderExtractor.HeadingAgent.Tools.AgentTools.MaxFactRange))
+        for (var offset = 0; offset < window.Length;)
         {
-            var response = tools.Execute($"E0.{offset:00}", "get_line_facts",
-                JsonSerializer.Serialize(new { first = targets[0], last = targets[^1], offset }));
+            var response = tools.Execute($"E0.{facts.Count:00}", "get_line_facts",
+                JsonSerializer.Serialize(new { first = window[0], last = window[^1], offset }));
             if (response.Status != "OK") throw new InvalidOperationException("REQUEST_FACTS_READ_FAILED:" + response.Status);
             var result = JsonNode.Parse(response.Content)!["result"]!;
             var page = result["facts"]!.AsArray();

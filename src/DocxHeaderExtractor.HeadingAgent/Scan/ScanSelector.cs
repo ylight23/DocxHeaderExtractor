@@ -164,7 +164,6 @@ public sealed class ScanSelector(string storeRoot, Func<HttpMessageHandler>? han
         var entry = new ScanOcrPreflight(Path.Combine(storeRoot, OcrFolder)).EntryOf(evidence);
         var source = new ScanAgentSource(evidence, observations, transcriptions, typography, entry, ScanFrames.MeasureAll(evidence, entry, ct), paragraphUnits);
         var budget = AgentSelector.BudgetFor(source, instruction);
-        budget.ByteCap = ScanRequestByteCap;
         using var handler = (handlerFactory ?? (() => AgentModel.CreateHandler()))();
         using var model = new AgentModel(handler, apiKey, budget, cancellationToken: ct, rateLimitRetries: AgentModel.ProductionRateLimitRetries);
         var traced = AgentSelector.Traced(model, onModelReply);

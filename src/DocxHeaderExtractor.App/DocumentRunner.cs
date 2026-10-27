@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Agents.Budget;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.Contracts.Docx;
@@ -25,6 +26,10 @@ namespace DocxHeaderExtractor.App;
 public sealed class DocumentRunner
 {
     private readonly Router _dispatcher;
+    private readonly RequestPolicy requestPolicy;
+    private readonly double maxProviderCostUsd;
+    private readonly int maxProviderAttempts;
+    private readonly TimeSpan? providerBudgetDuration;
 
     /// <param name="provider">The model route and any agents of the host's own; <see cref="OpenRouterProvider"/> in production.</param>
     /// <param name="onModelReply">Diagnostics only: called with every model reply. Null records nothing.</param>
@@ -32,8 +37,12 @@ public sealed class DocumentRunner
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(provider);
-        var agents = HeadingAgentSetup.Create(options, provider, ModelReplyViews.Adapt(onModelReply));
-        _dispatcher = new Router(new DocxHandler(new DocxPipeline(options, provider, agents)), new PdfHandler(options, provider, agents));
+        requestPolicy = HeadingAgentSetup.ResourcePolicyFor(options);
+        maxProviderCostUsd = options.MaxProviderCostUsd;
+        maxProviderAttempts = options.MaxProviderAttempts;
+        providerBudgetDuration = options.ProviderBudgetDuration;
+        var agents = HeadingAgentSetup.CreateRoutes(options, provider, ModelReplyViews.Adapt(onModelReply));
+        _dispatcher = new Router(new DocxHandler(new DocxPipeline(options, provider, agents.Shared)), new PdfHandler(options, provider, agents.NativePdf));
     }
 
     /// <summary>
@@ -45,19 +54,27 @@ public sealed class DocumentRunner
         CancellationToken ct = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(inputPath);
+        var budget = new RunResourceBudget(maxProviderCostUsd, maxProviderAttempts, providerBudgetDuration, requestPolicy);
+        using var resourceScope = budget.Enter();
         if (SourceDetector.Detect(inputPath) != SourceType.Unknown)
-            return await DispatchAsync(inputPath, ct).ConfigureAwait(false);
+            return Account(await DispatchAsync(inputPath, ct).ConfigureAwait(false), budget.Observe());
 
         var conversion = OfficeConverter.EnsureDocx(inputPath);
         try
         {
-            return await DispatchAsync(conversion.Path, ct).ConfigureAwait(false);
+            return Account(await DispatchAsync(conversion.Path, ct).ConfigureAwait(false), budget.Observe());
         }
         finally
         {
             OfficeConverter.Cleanup(conversion);
         }
     }
+
+    static RunResult Account(RunResult result, RunResourceBudget.Snapshot snapshot) => result with
+    {
+        ResourceBudget = new(snapshot.CeilingUsd, snapshot.MaxAttempts, snapshot.Attempts,
+            snapshot.ConfirmedUsd, snapshot.ProvisionalUsd, snapshot.OutstandingUsd)
+    };
 
     private Task<RunResult> DispatchAsync(string path, CancellationToken ct) =>
         _dispatcher.ExtractAsync(new DocumentExtractionRequest(UploadedFile.FromLocalPath(path)), ct);

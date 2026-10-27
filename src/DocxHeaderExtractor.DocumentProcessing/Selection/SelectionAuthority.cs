@@ -59,6 +59,7 @@ internal sealed class SelectionAuthority(
         {
             RawModelResponses = selection.ModelAnswers.Concat(assembly.PlacementObservation?.ModelEvidence ?? []).ToArray(),
             SelectionProviderCalls = selection.ProviderCalls,
+            ResourcePlan = selection.ResourcePlan, SelectionResources = selection.Resources,
             SelectionLinesAnswered = selection.AliasStates?.Count,
             SelectionLinesTotal = atomCount,
             Grouping = selection.Grouping,

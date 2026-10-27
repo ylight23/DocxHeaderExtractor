@@ -129,11 +129,11 @@ public static class WebPipelineProjection
                 reportedProviderCalls = execution.Result.Provenance.ProviderCalls,
                 providerCallBasis = "producer-provenance; not an independent transport-attempt counter",
                 model = execution.Outline.Model, sentDataExternally = execution.Outline.Provenance?.SentDataExternally },
-            SafeAudit(audit));
+            SafeAudit(audit, execution.ResourceBudget));
     }
 
-    public static object? SafeAudit(RunAudit? audit) => audit is null ? null : new
-    { audit.PipelineId, audit.SourceBlocksAvailable, audit.SourceBlocksSelected, audit.SourcePagesAvailable,
+    public static object? SafeAudit(RunAudit? audit, DocxHeaderExtractor.Contracts.Agents.RunResourceObservation? resourceBudget = null) => audit is null ? null : new
+    { resourceBudget, audit.ResourcePlan, audit.SelectionResources, audit.PipelineId, audit.SourceBlocksAvailable, audit.SourceBlocksSelected, audit.SourcePagesAvailable,
         audit.SourcePagesSelected, audit.SemanticLane, audit.SpanLane, audit.ModelInputContracts, audit.SelectionProviderCalls,
         groundedSourceIds = audit.GroundedBlockIds, decisionCount = audit.BlockDecisions.Count,
         placementExecution = audit.PlacementExecution, audit.SelectionLinesAnswered, audit.SelectionLinesTotal,

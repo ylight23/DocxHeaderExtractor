@@ -171,7 +171,7 @@ public static class ScanTranscription
                         using var model = new AgentModel(handler, apiKey, budget, cancellationToken: ct, rateLimitRetries: AgentModel.ProductionRateLimitRetries);
                         reply = (timings is null ? model.Turn(name, ++attempt, request) : timings.Time(name, () => model.Turn(name, ++attempt, request))).Content ?? "";
                     }
-                    catch (ReplyFailure f) when (transportRetries < AgentUnit.TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal)) { transportRetries++; continue; }
+                    catch (ReplyFailure f) when (!f.TransportRetriesHandled && transportRetries < AgentUnit.TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal)) { transportRetries++; continue; }
                     catch (ReplyFailure f) when (replyRetries < 1 && f.Code.StartsWith("CONTENT:", StringComparison.Ordinal)) { replyRetries++; continue; }
                     catch (ReplyFailure f) { problem = "CALL:" + f.Code; splittable = f.Code.StartsWith("CONTENT:", StringComparison.Ordinal); break; }
                     if (AgentProtocol.TryUnwrapFence(reply, out var inner)) reply = inner;

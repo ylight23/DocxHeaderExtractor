@@ -16,4 +16,6 @@ internal sealed record AgentUnitOutcome(string UnitId, string Status, string? Fa
 {
     /// <summary>The outcome was read back from the selection cache: no call was made for it in this run.</summary>
     public bool Reused { get; init; }
+    public IReadOnlyList<IReadOnlyList<string>>? SelectionGroups { get; init; }
+    public string? GroupingFailure { get; init; }
 }

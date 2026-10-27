@@ -359,7 +359,8 @@ public sealed class ScanProductionPipelineTests
                 _ => new AgentBudget(10, 1), () => handler, [], "T", 10, 1, ct: cts.Token));
             await handler.Started.Task.WaitAsync(TimeSpan.FromSeconds(60));
             cts.Cancel();
-            await Assert.ThrowsAnyAsync<OperationCanceledException>(() => task);
+            var cancelled = await Assert.ThrowsAnyAsync<OperationCanceledException>(() => task);
+            Assert.Equal(cts.Token, cancelled.CancellationToken);
             Assert.Equal(1, handler.Calls);
             Assert.False(Directory.Exists(Path.Combine(dir, "cache")));
         }

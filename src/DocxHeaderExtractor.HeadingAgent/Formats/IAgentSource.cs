@@ -1,3 +1,4 @@
+using DocxHeaderExtractor.Agents.Budget;
 using DocxHeaderExtractor.HeadingAgent.Grouping;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Tools;
@@ -21,4 +22,5 @@ internal interface IAgentSource
     /// <summary>The targets of one segment and the lines shown with them, as line indices.</summary>
     (string[] Decide, int[] Shown) Scope(int segment);
     IAgentFormat Flavor { get; }
+    RequestPolicy ResourcePolicy => new() { MaxRequestBytes = AgentBudget.MaxRequestBytes, ContinuationReserveBytes = 0 };
 }

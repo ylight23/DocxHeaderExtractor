@@ -11,9 +11,15 @@ Mỗi định dạng có đúng một lane, không có đường dự phòng:
 | | DOCX | PDF |
 |---|---|---|
 | Nguồn | paragraph OpenXML (`OpenXmlDocumentSource`, `DocxAgentSource`): style, outline level, numbering, định dạng run, vị trí trong bảng/text box | segment atom theo dòng hình ảnh `L{row}:S{segment}`, typography `PDF_SOURCE_FACTS_V3` |
-| Request | V6 heading agent (Qwen, một hội thoại mỗi cửa sổ, đọc facts bằng tool trước khi trả lời), prompt và 6 tool riêng cho DOCX | V6 heading agent (cùng phương pháp; prompt và 8 tool riêng cho PDF; từ 2026-10-14) |
-| Contract | các paragraph được chọn theo alias nguồn, parser nghiêm ngặt, bước nhóm do mô hình chia thành heading | các dòng được chọn theo alias nguồn, parser nghiêm ngặt, các dòng liên tiếp cùng khối layout là một heading |
-| Chia request | cửa sổ cố định 48 paragraph quyết định, 20 ngữ cảnh mỗi phía | segment layout (nguyên trang, hoặc khối layout; tối đa 48 dòng quyết định, 20 dòng ngữ cảnh mỗi phía) |
+| Request | V6 heading agent (Qwen, một hội thoại mỗi cửa sổ, đọc facts bằng tool trước khi trả lời), prompt và 6 tool riêng cho DOCX | unit `PDF_STRUCTURAL_GEOMETRY_SELECTION_UNITS_V2` + instruction membership V12, kèm geometry OpenCV gọn và ảnh trang xám 960 px Q50; GROUP và placement riêng |
+| Contract | các paragraph được chọn theo alias nguồn, parser nghiêm ngặt, bước nhóm do mô hình chia thành heading | `PDF_UNIT_SELECT_SOURCE_BOUND_V2`: SELECT phải khớp sourceText; mỗi cặp grouping phải khớp alias/selectedText, đầy đủ và đúng thứ tự; C# không tự quyết định ngữ nghĩa |
+| Chia request | cửa sổ cố định 48 paragraph quyết định, 20 ngữ cảnh mỗi phía | theo trang sở hữu unit, trần 786.432 byte mỗi request SELECT cuối; 8 request SELECT song song |
+
+Profile PDF mặc định được chủ dự án freeze ngày 26/10: V14 unit + V12 instruction + ảnh trang thích ứng,
+ngân sách hoàn tất thích ứng, geometry và ảnh trang cache MessagePack dưới `.dhx-evidence/source`.
+Crop lề ảnh, ảnh 1-bit và ShapeReview có cờ nhưng mặc định tắt. Đây là freeze cấu hình, chưa có kết quả
+chất lượng hay SLA trên Qwen/OpenRouter. Xem [profile đã freeze](docs/qualification/pdf-v14-v12-frozen-profile-20261026.md)
+và [các thử nghiệm tối ưu request](docs/qualification/pdf-request-optimization-20261026.md).
 
 Evidence gửi mô hình là dữ kiện nguồn (text, số đo typography, vị trí trang, đánh số); harness
 không gắn nhãn "ứng viên" hay phán đoán cỡ chữ. Ownership không chồng lấn: halo chỉ để đọc, claim
@@ -75,9 +81,13 @@ dhx extract tai-lieu.docx -f json
 ```
 
 Mô hình cố định là mô hình các agent đã được kiểm định: `qwen/qwen3.7-flash`, ghim route `Alibaba`
-(`allow_fallbacks=false`), `reasoning=none`, streaming kèm `usage`. Agent từ chối phản hồi đến từ model
-hoặc route khác. Request luôn gửi `data_collection=deny` và `require_parameters=true`. Gặp 429, cùng request
-được gửi lại sau thời gian chờ tăng dần. Nội dung tài liệu vẫn được gửi ra dịch vụ bên ngoài; không dùng
+(`allow_fallbacks=false`), streaming kèm `usage`. Selection/grouping bật reasoning; placement tắt reasoning
+và gửi `data_collection=deny`. Agent từ chối phản hồi đến từ model hoặc route khác; request gửi
+`require_parameters=true`. Transport sở hữu retry lỗi tạm thời: tối đa 3 retry mỗi lượt, tổng thời gian chờ
+tối đa 30 giây, tôn trọng `Retry-After`; tầng trên không khởi động lại chuỗi retry đã hết.
+Giới hạn mặc định 8 HTTP request đang chạy cho cùng API account trong một tiến trình; chỉnh bằng
+`DHX_OPENROUTER_MAX_CONCURRENCY`. Xem [chính sách retry](docs/architecture/provider-retry.md).
+Nội dung tài liệu vẫn được gửi ra dịch vụ bên ngoài; không dùng
 cho tài liệu mật khi chưa được phép.
 
 ### Web UI
@@ -130,5 +140,5 @@ Thay hoặc thêm agent: [docs/architecture/extending.md](docs/architecture/exte
 
 - `.doc` cần LibreOffice hoặc Word để chuyển đổi; thiếu cả hai thì chương trình báo lỗi rõ ràng.
 - PDF scan (không có text layer) không có nguồn để bind; kết quả rỗng kèm lý do `pdf-no-text-layer`.
-- Chất lượng lane PDF hiện hành cần được đo lại: style facts đã đổi sau lần đo T3B
-  (xem mục "Open" trong tài liệu kiến trúc).
+- Profile PDF V6 trước đây đã được đo trên PDF072 và PDF076; hai output PDF072 khớp Gold đã sửa ngày 25/10.
+  Prompt tổng quát V7 cần qualification LLM riêng; số đo V6 không chứng minh chất lượng hoặc thời gian V7.

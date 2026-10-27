@@ -116,14 +116,14 @@ internal static class AgentSiblingReview
     }
 
     /// <summary>The decisions of an answer when it names every member exactly once with SELECT or NOT_SELECT; null with the failure otherwise.</summary>
-    internal static Dictionary<string, string>? Parse(string reply, IReadOnlyList<string> members, out string? failure)
+    internal static Dictionary<string, string>? Parse(string reply, IReadOnlyList<string> members, out string? failure, string version = Version)
     {
         failure = null;
         try
         {
             using var doc = JsonDocument.Parse(reply);
             var root = doc.RootElement;
-            if (root.ValueKind != JsonValueKind.Object || !root.TryGetProperty("protocolVersion", out var v) || v.GetString() != Version) { failure = "PROTOCOL_VERSION_INVALID"; return null; }
+            if (root.ValueKind != JsonValueKind.Object || !root.TryGetProperty("protocolVersion", out var v) || v.GetString() != version) { failure = "PROTOCOL_VERSION_INVALID"; return null; }
             if (!root.TryGetProperty("decisions", out var ds) || ds.ValueKind != JsonValueKind.Array) { failure = "DECISIONS_MISSING"; return null; }
             var result = new Dictionary<string, string>(StringComparer.Ordinal);
             foreach (var d in ds.EnumerateArray())

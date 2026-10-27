@@ -21,6 +21,8 @@ internal interface IAgentTools
     AgentToolHost.Result Execute(string evidenceId, string? name, string? rawArguments);
     /// <summary>Every alias a successful tool result showed.</summary>
     IReadOnlySet<string> ObservedAliases { get; }
+    /// <summary>Aliases actually returned by successful get_page_layout calls in this unit.</summary>
+    IReadOnlySet<string> PageLayoutAliasesReturned { get; }
     /// <summary>Whether facts were supplied in the request or a facts-tool call succeeded.</summary>
     bool FactsWereRead { get; }
     /// <summary>Whether a facts-tool call succeeded: reading facts from the request does not count (the scan route requires the call).</summary>

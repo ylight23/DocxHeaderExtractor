@@ -53,8 +53,11 @@ internal static class AgentGrouping
     /// <summary>Model-divided runs in document order and layout fallback for protocol failures.</summary>
     public static Result Group(IAgentSource source, IReadOnlySet<string> selected, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct, int retryDelayMs = 5000,
         string instruction = Instruction, string unitPrefix = "GROUP", object? verificationFeedback = null, GroupingCache? cache = null,
-        IReadOnlyDictionary<string, TextOffsetSpan>? headingExtents = null, IReadOnlyDictionary<string, string>? headingReadings = null)
+        IReadOnlyDictionary<string, TextOffsetSpan>? headingExtents = null, IReadOnlyDictionary<string, string>? headingReadings = null,
+        IReadOnlyList<IReadOnlyList<string>>? inlineGroups = null, IReadOnlyDictionary<string, string>? ownership = null, bool pairwisePdf = false,
+        bool generalPdfPrompt = false)
     {
+        if (pairwisePdf && (source is not AgentSource || inlineGroups is not null)) throw new ArgumentException("PAIRWISE_NATIVE_PDF_GROUPING_REQUIRED");
         var chosen = Enumerable.Range(0, source.Lines.Count).Where(i => selected.Contains(source.Lines[i].Alias)).ToArray();
         // Maximal runs of selected lines that are adjacent in reading order.
         var runs = new List<Run>();
@@ -66,11 +69,33 @@ internal static class AgentGrouping
             k = e;
         }
         var division = new Dictionary<string, List<int[]>>(StringComparer.Ordinal);   // run id -> contiguous groups of line indices
+        var inlineRuns = new HashSet<string>(StringComparer.Ordinal);
+        if (inlineGroups is not null && ownership is not null)
+        {
+            var positions = source.Lines.Select((l, i) => (l.Alias, i)).ToDictionary(x => x.Alias, x => x.i, StringComparer.Ordinal);
+            foreach (var run in runs)
+            {
+                var aliases = run.Lines.Select(i => source.Lines[i].Alias).ToArray();
+                if (!ownership.TryGetValue(aliases[0], out var owner) || aliases.Any(a => ownership.GetValueOrDefault(a) != owner)) continue;
+                // An uncompleted adjacent scope cannot establish a closed boundary.
+                if (run.Lines[0] > 0 && !ownership.ContainsKey(source.Lines[run.Lines[0] - 1].Alias) ||
+                    run.Lines[^1] + 1 < source.Lines.Count && !ownership.ContainsKey(source.Lines[run.Lines[^1] + 1].Alias)) continue;
+                var aliasSet = aliases.ToHashSet(StringComparer.Ordinal);
+                var proposed = inlineGroups.Where(g => g.Any(aliasSet.Contains)).ToArray();
+                if (proposed.Any(g => g.Count is < 1 or > MaxHeadingLines || g.Any(a => !aliasSet.Contains(a)))) continue;
+                if (!proposed.SelectMany(g => g).SequenceEqual(aliases, StringComparer.Ordinal)) continue;
+                var parts = proposed.Select(g => g.Select(a => positions[a]).ToArray()).ToList();
+                if (parts.Any(g => g.Skip(1).Where((at, i) => at != g[i] + 1).Any())) continue;
+                division[run.Id] = parts;
+                inlineRuns.Add(run.Id);
+            }
+        }
         var answers = new List<string>();
         var failures = new List<string>();
         var posts = 0;
         var evidence = new List<string>();
-        var chunks = runs.Chunk(MaxRunsPerRequest).ToArray();
+        var chunks = runs.Where(r => !inlineRuns.Contains(r.Id)).Chunk(MaxRunsPerRequest).ToArray();
+        var batchByRun = chunks.SelectMany((chunk, n) => chunk.Select(r => (r.Id, Batch: n))).ToDictionary(x => x.Id, x => x.Batch);
         var results = new (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts, int Repairs,
             List<string> Evidence)[chunks.Length];
         var batchTimings = new GroupingBatchTiming[chunks.Length];
@@ -80,10 +105,10 @@ internal static class AgentGrouping
             {
                 var started = groupClock.Elapsed.TotalSeconds;
                 // A batch whose first request was answered before is read back, not asked again (the qualification feedback is never cached).
-                var key = cache is null || verificationFeedback is not null ? null : BatchKey(source, chunks[n], n + 1, instruction, headingExtents, headingReadings);
+                var key = cache is null || verificationFeedback is not null ? null : BatchKey(source, chunks[n], n + 1, instruction, headingExtents, headingReadings, pairwisePdf, generalPdfPrompt);
                 var result = key is not null && cache!.TryLoad(source.SourceSha256, key) is { } stored && FromStored(source, chunks[n], stored) is { } reused
                     ? reused
-                    : AskChunk(source, chunks[n], n + 1, model, budget, retryDelayMs, instruction, unitPrefix, verificationFeedback, headingExtents, headingReadings);
+                    : AskChunk(source, chunks[n], n + 1, model, budget, retryDelayMs, instruction, unitPrefix, verificationFeedback, headingExtents, headingReadings, pairwisePdf, generalPdfPrompt);
                 if (key is not null && result.Failure is null && result.Division.Count == chunks[n].Length)
                     cache!.Store(source.SourceSha256, key, ToStored(source, result.Division));
                 var completed = groupClock.Elapsed.TotalSeconds;
@@ -114,8 +139,10 @@ internal static class AgentGrouping
         }
         var provenance = runs.SelectMany((run, index) => run.Lines.Select(i =>
         {
-            var failure = results[index / MaxRunsPerRequest].Failure;
-            return new HeadingAliasProvenance(source.Lines[i].Alias, "grouping", unitPrefix + "-" + (index / MaxRunsPerRequest + 1).ToString("000"), run.Id,
+            var inline = inlineRuns.Contains(run.Id);
+            var batch = inline ? -1 : batchByRun[run.Id];
+            var failure = inline ? null : results[batch].Failure;
+            return new HeadingAliasProvenance(source.Lines[i].Alias, "grouping", inline ? "INLINE_SELECTION" : unitPrefix + "-" + (batch + 1).ToString("000"), run.Id,
                 division.ContainsKey(run.Id) ? "DIVIDED" : "FALLBACK", null,
                 !division.ContainsKey(run.Id) ? ["GROUP_DIVISION_UNRESOLVED"] : [], [])
                 { UnitFailureContext = failure };
@@ -127,8 +154,10 @@ internal static class AgentGrouping
 
     /// <summary>The SHA-256 of the first request a batch sends: the same runs and lines give the same key.</summary>
     internal static string BatchKey(IAgentSource source, Run[] chunk, int number, string instruction,
-        IReadOnlyDictionary<string, TextOffsetSpan>? headingExtents = null, IReadOnlyDictionary<string, string>? headingReadings = null) =>
-        BuildRequest(Payload(source, chunk, number, instruction, headingExtents, headingReadings), new JsonArray(), source.Flavor.GroupPrompt).Sha256;
+        IReadOnlyDictionary<string, TextOffsetSpan>? headingExtents = null, IReadOnlyDictionary<string, string>? headingReadings = null, bool pairwisePdf = false,
+        bool generalPdfPrompt = false) =>
+        BuildRequest(Payload(source, chunk, number, instruction, headingExtents, headingReadings, pairwisePdf), new JsonArray(),
+            pairwisePdf ? PdfBoundaryDecisions.PromptFor(generalPdfPrompt) : source.Flavor.GroupPrompt).Sha256;
 
     /// <summary>The stored division as line indices, when it covers every run of the batch with lines that still exist; otherwise null (asked again).</summary>
     static (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts, int Repairs, List<string> Evidence)? FromStored(
@@ -175,7 +204,8 @@ internal static class AgentGrouping
     static (Dictionary<string, List<int[]>> Division, List<string> Answers, string? Failure, int Posts, int Repairs,
         List<string> Evidence) AskChunk(
         IAgentSource source, Run[] chunk, int number, AgentUnit.Model model, AgentBudget budget, int retryDelayMs, string instruction, string unitPrefix, object? verificationFeedback,
-        IReadOnlyDictionary<string, TextOffsetSpan>? headingExtents, IReadOnlyDictionary<string, string>? headingReadings)
+        IReadOnlyDictionary<string, TextOffsetSpan>? headingExtents, IReadOnlyDictionary<string, string>? headingReadings, bool pairwisePdf,
+        bool generalPdfPrompt)
     {
         // The runs divided so far, from any turn: a correct division of one run is kept when another run of the same answer is refused.
         var accepted = new Dictionary<string, List<int[]>>(StringComparer.Ordinal);
@@ -185,7 +215,7 @@ internal static class AgentGrouping
         string Fallback(string failure) =>
             unitId + ":" + failure + ":" + string.Join(",", chunk.Where(r => !accepted.ContainsKey(r.Id)).Select(r => r.Id));
         var history = new JsonArray();
-        var payload = Payload(source, chunk, number, instruction, headingExtents, headingReadings);
+        var payload = Payload(source, chunk, number, instruction, headingExtents, headingReadings, pairwisePdf);
         if (verificationFeedback is not null)
         {
             var node = JsonNode.Parse(payload)!;
@@ -196,12 +226,12 @@ internal static class AgentGrouping
         var retriedOnce = false;
         while (true)
         {
-            var req = BuildRequest(payload, history, source.Flavor.GroupPrompt);
+            var req = BuildRequest(payload, history, pairwisePdf ? PdfBoundaryDecisions.PromptFor(generalPdfPrompt) : source.Flavor.GroupPrompt);
             if (budget.Admit(req) is { } refusal) return (accepted, answers, Fallback("BUDGET:" + refusal), posts, repairs, evidence);
             posts++;
             ModelTurn reply;
             try { reply = model(unitId, 1 + repairs, req); }
-            catch (ReplyFailure f) when (retries < AgentUnit.TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal))
+            catch (ReplyFailure f) when (!f.TransportRetriesHandled && retries < AgentUnit.TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal))
             {
                 retries++;
                 if (retryDelayMs > 0) Thread.Sleep(retryDelayMs);
@@ -209,7 +239,7 @@ internal static class AgentGrouping
             }
             // The flavor's retry-once failures (scan: a timeout, or reasoning that used every token) get one more try, as a selection unit
             // does: without it one slow call withheld every run of the batch (023: three batches timed out at 300 s, 19 runs lost).
-            catch (ReplyFailure f) when (!retriedOnce && source.Flavor.RetryOnceCodes.Any(c => f.Code.Contains(c, StringComparison.Ordinal)))
+            catch (ReplyFailure f) when (!f.TransportRetriesHandled && !retriedOnce && source.Flavor.RetryOnceCodes.Any(c => f.Code.Contains(c, StringComparison.Ordinal)))
             {
                 retriedOnce = true;
                 continue;
@@ -223,7 +253,9 @@ internal static class AgentGrouping
             {
                 var content = reply.Content ?? "";
                 if (TryUnwrapFence(content, out var inner)) content = inner;
-                var parsed = Parse(content, chunk, source, out failure, out detail, accepted.Keys.ToHashSet(StringComparer.Ordinal));
+                var parsed = pairwisePdf
+                    ? PdfBoundaryDecisions.Parse(content, payload, chunk, source, out failure, out detail, accepted.Keys.ToHashSet(StringComparer.Ordinal))
+                    : Parse(content, chunk, source, out failure, out detail, accepted.Keys.ToHashSet(StringComparer.Ordinal));
                 if (parsed is { Count: > 0 })
                 {
                     foreach (var kv in parsed) accepted[kv.Key] = kv.Value;
@@ -235,7 +267,7 @@ internal static class AgentGrouping
             if (repairs >= MaxRepairs) return (accepted, answers, Fallback(failure), posts, repairs, evidence);
             repairs++;
             history.Add(new JsonObject { ["role"] = "assistant", ["content"] = reply.Content ?? "" });
-            history.Add(new JsonObject { ["role"] = "user", ["content"] = RepairMessage(failure, detail, accepted.Count > 0) });
+            history.Add(new JsonObject { ["role"] = "user", ["content"] = pairwisePdf ? PdfBoundaryDecisions.Repair(failure, detail) : RepairMessage(failure, detail, accepted.Count > 0) });
         }
     }
 
@@ -249,7 +281,7 @@ internal static class AgentGrouping
             : " Give every run exactly once, with groups of 1 to " + MaxHeadingLines + " lines and aliases copied exactly. Send the complete answer again as exactly one JSON object.");
 
     static string Payload(IAgentSource source, Run[] chunk, int number, string instruction,
-        IReadOnlyDictionary<string, TextOffsetSpan>? headingExtents, IReadOnlyDictionary<string, string>? headingReadings)
+        IReadOnlyDictionary<string, TextOffsetSpan>? headingExtents, IReadOnlyDictionary<string, string>? headingReadings, bool pairwisePdf = false)
     {
         object Line(int i) => source.Flavor.GroupLineItem(source, i,
             headingExtents is not null && headingExtents.TryGetValue(source.Lines[i].Alias, out var extent) ? extent : null,
@@ -269,7 +301,11 @@ internal static class AgentGrouping
                 after = Near(r.Lines[^1] + 1),
             }).ToList(),
         };
-        return JsonSerializer.Serialize(payload, Options);
+        var serialized = JsonSerializer.Serialize(payload, Options);
+        if (!pairwisePdf) return PdfRasterEvidence.Attach(serialized, source);
+        var enriched = JsonNode.Parse(serialized)!.AsObject();
+        PdfBoundaryDecisions.Enrich((AgentSource)source, enriched);
+        return PdfRasterEvidence.Attach(enriched.ToJsonString(Options), source);
     }
 
     internal static string Clip(string t) => t.Length <= ContextChars ? t : t[..ContextChars];

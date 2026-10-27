@@ -25,6 +25,10 @@ internal interface IConversationTask<TOutcome>
     /// <summary>The request of one turn: the task's payload, the conversation so far and this turn's tool_choice.</summary>
     PreparedRequest Build(JsonArray history, string toolChoice);
 
+    /// <summary>Opt-in recovery from an exhausted completion budget. Never accepts a partial answer.
+    /// Returns false when the task's bounded recovery allowance has been exhausted.</summary>
+    bool TryIncreaseCompletionBudget() => false;
+
     /// <summary>The tool_choice of the turns after a repair of <paramref name="failure"/>, in order.</summary>
     IReadOnlyList<string> ChoicesAfterRepair(string failure);
 

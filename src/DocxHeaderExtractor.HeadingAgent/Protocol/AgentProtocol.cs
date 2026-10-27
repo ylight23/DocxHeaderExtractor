@@ -69,10 +69,11 @@ internal static partial class AgentProtocol
 
     /// <summary>One POST body: model, messages (system prompt and payload as cache-marked text blocks, then the history), json_object, temperature
     /// 0, max_tokens, reasoning enabled, the eight tools, this turn's tool_choice, the locked provider block, streaming and usage.</summary>
-    public static PreparedRequest Build(string payload, JsonArray history, string toolChoice, IAgentFormat? flavor = null)
+    public static PreparedRequest Build(string payload, JsonArray history, string toolChoice, IAgentFormat? flavor = null, WireOptions? options = null,
+        IReadOnlyList<JsonObject>? userAttachments = null)
     {
         flavor ??= PdfFormat.Instance;
-        return OpenRouterWire.Build(flavor.SystemPrompt, payload, history, toolChoice, flavor.ToolDefinitions());
+        return OpenRouterWire.Build(flavor.SystemPrompt, payload, history, toolChoice, flavor.ToolDefinitions(), options, userAttachments);
     }
 
     // ---------------- replies ----------------
@@ -112,6 +113,8 @@ internal static partial class AgentProtocol
     {
         /// <summary>The readingViewId of each SELECT that gave one (scanned sources only).</summary>
         public IReadOnlyDictionary<string, string> ReadingChoices { get; init; } = new Dictionary<string, string>();
+        public IReadOnlyList<IReadOnlyList<string>>? SelectionGroups { get; init; }
+        public string? GroupingFailure { get; init; }
     }
 
     /// <summary>A heading's extent inside its line: [Start, End) in UTF-16 code units of the line's text, and that exact text.</summary>
@@ -179,6 +182,7 @@ internal static partial class AgentProtocol
                 return Fail("KEY_REPEATED", detail: "the key \"" + repeated.Name + "\" appears " + repeated.Count + " times in one object; give it once");
             var decisionKeys = new[] { "decisions" };
             var allowed = decisionKeys.Concat(new[] { "protocolVersion", "status", "retrieve", "clarification", "incompleteReason", "analysis" }).ToHashSet();
+            if (version == InlineGrouping.Version) allowed.Add("selectionGroups");
             if (root.EnumerateObject().Any(p => !allowed.Contains(p.Name))) return Fail("ROOT_KEYS_INVALID");
             string? analysis = null;
             if (root.TryGetProperty("analysis", out var an))
@@ -223,12 +227,14 @@ internal static partial class AgentProtocol
             var reasons = new Dictionary<string, string>(StringComparer.Ordinal);
             var extents = new Dictionary<string, HeadingExtent>(StringComparer.Ordinal);
             var readingChoices = new Dictionary<string, string>(StringComparer.Ordinal);
+            var sourceBound = version == SourceBoundSelection.Version;
             if (!root.TryGetProperty("decisions", out var ds) || ds.ValueKind != JsonValueKind.Array) return Fail("DECISIONS_MISSING");
             var decideSet = decide.ToHashSet(StringComparer.Ordinal);
             foreach (var d in ds.EnumerateArray())
             {
                 if (d.ValueKind != JsonValueKind.Object || d.EnumerateObject().Any(p => p.Name is not ("alias" or "decision" or "evidenceRefs" or "reason")
-                        && !(p.Name == "headingExtent" && targetTexts is not null) && !(p.Name == "readingViewId" && readings is not null)))
+                        && !(p.Name == "headingExtent" && targetTexts is not null) && !(p.Name == "readingViewId" && readings is not null)
+                        && !(p.Name == "sourceText" && sourceBound)))
                     return Fail("DECISION_KEYS_INVALID");
                 var alias = Str(d, "alias");
                 if (alias is null) return Fail("ALIAS_MISSING");
@@ -240,6 +246,17 @@ internal static partial class AgentProtocol
                 List<string>? refs = null;
                 if (hasRefs && (refs = ReadRefs(er, shownOrder, value == "SELECT" ? 1 : 0, out var rf)) is null) return Fail(rf!);
                 if (!decideSet.Contains(alias)) return Fail("UNEXPECTED_ALIAS");
+                if (sourceBound)
+                {
+                    if (value == "SELECT")
+                    {
+                        if (Str(d, "sourceText") is not { } quoted) return Fail("SOURCE_TEXT_REQUIRED", detail: alias);
+                        if (targetTexts is null || !targetTexts.TryGetValue(alias, out var sourceText)) return Fail("SOURCE_TEXT_UNAVAILABLE", detail: alias);
+                        if (!string.Equals(quoted, sourceText, StringComparison.Ordinal))
+                            return Fail("SOURCE_TEXT_MISMATCH", detail: alias + ": the exact text of this alias is " + JsonSerializer.Serialize(sourceText, Options));
+                    }
+                    else if (d.TryGetProperty("sourceText", out _)) return Fail("SOURCE_TEXT_NOT_ON_SELECT", detail: alias);
+                }
                 if (d.TryGetProperty("reason", out var rs))
                 {
                     if (rs.ValueKind != JsonValueKind.String || rs.GetString()!.Length > MaxReasonChars) return Fail("REASON_INVALID");
@@ -271,7 +288,9 @@ internal static partial class AgentProtocol
             var missing = decide.Where(a => !values.ContainsKey(a)).ToArray();
             if (missing.Length > 0) return Fail("COVERAGE_INCOMPLETE", missing);
             if (status == "INCOMPLETE" && values.Values.All(v => v != "UNRESOLVED")) return Fail("INCOMPLETE_WITHOUT_UNRESOLVED");
-            return new SelectReply(true, null, status, values, null, reason, Array.Empty<string>(), refsByAlias, analysis, reasons, extents) { ReadingChoices = readingChoices };
+            var grouping = version == InlineGrouping.Version && status == "COMPLETE" ? InlineGrouping.Parse(root, values, shownOrder) : default;
+            return new SelectReply(true, null, status, values, null, reason, Array.Empty<string>(), refsByAlias, analysis, reasons, extents)
+                { ReadingChoices = readingChoices, SelectionGroups = grouping.Groups, GroupingFailure = grouping.Failure };
         }
     }
 

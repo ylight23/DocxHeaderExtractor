@@ -1,0 +1,15 @@
+# PDF production prompt: generic structural criteria — 2026-10-25
+
+Subsequently superseded by the user's explicit V12 choice; see `pdf-v12-production-20261025.md`. The V7 run and measurements below remain historical evidence.
+
+The user requested removing the remaining content-type rules from default PDF production. The previous OpenCV promotion preserved membership V6; that default retained meeting/participant/agenda-oriented examples and rules. This update changes the **application default** to the existing document-independent membership V7 and generic grouping instruction/system prompt.
+
+No new prompt version or document-specific rule was introduced. The V7 criteria evaluate names/introduces/divides at the actual occurrence, select all contributing source parts at every level, treat measurements as evidence, distinguish descriptive content by local function, and allow unresolved decisions. V7 contains no participant, meeting, agenda or legal-document examples. General grouping preserves membership and judges only whether adjacent selected source texts form the same heading.
+
+The route factory already resolves membership version >=7 to PdfGeneralBoundaryInstruction and PdfBoundaryDecisions.GeneralPrompt. Tests now verify that the resolved default selection instruction, selection system prompt, grouping instruction and pairwise grouping prompt contain no listed document-type examples, known PDF identifiers or source-specific aliases. They also verify that custom instructions, sourceText binding, headingExtent and unresolved handling remain available.
+
+OpenCV geometry remains enabled and is included before packet budget planning. DOCX/scan prompts and routes, source aliases, ownership, output contract and semantic-verifier production status are unchanged. Historical V6 remains available only when explicitly configured; its source files are not deleted or rewritten. Existing qualification artifacts retain their original identities and results.
+
+Resolved prompt exports and all 15 actual PDF072 request packets are under `artifacts/qualification/pdf-opencv-generic-production-20261025/01/`, including `production-prompts.json` and `production-geometry-plan.json`. This is a code/default-profile change, not a service deployment or a new live semantic-quality measurement. Earlier V7 or other prompt trials do not establish stable accuracy for this newly combined evidence profile. No OpenRouter call is made for this verification.
+
+Validation: application/test builds succeed. The focused set contains 39 tests: 38 passed initially; a V13 legacy assertion incorrectly rejected the word `role` in source prose. It was corrected to inspect protocol field names, and that test passed on rerun. No application behavior was changed to satisfy that assertion. Resolved prompt checks pass for selection instruction/system and grouping instruction/system. PDF072 has 15 AVAILABLE geometry pages, 15 full-page scopes and 650 owned aliases; all packets fit including continuation reserve. Page 15 remains one 76-alias packet at 156,903 bytes. DOCX/scan prompt files were not modified.

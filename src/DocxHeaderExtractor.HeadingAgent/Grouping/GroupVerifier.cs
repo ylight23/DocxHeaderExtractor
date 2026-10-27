@@ -329,7 +329,7 @@ internal static partial class GroupVerifier
                 catch (OperationCanceledException) { throw; }
                 catch (ReplyFailure f)
                 {
-                    var retry = retries < TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal);
+                    var retry = !f.TransportRetriesHandled && retries < TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal);
                     evidence.Add(JsonSerializer.Serialize(new { unit, attempt, round, requestSha256 = request.Sha256,
                         failure = f.Code, transportRetry = retry, transportRetriesUsed = retries + (retry ? 1 : 0) }, Json));
                     if (!retry) return Finish("CALL:" + f.Code);

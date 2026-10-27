@@ -64,6 +64,7 @@ public sealed class EntityProposer(Func<HttpMessageHandler>? handlerFactory = nu
                 catch (ReplyFailure ex)
                 {
                     failure = ex.Code;
+                    if (ex.TransportRetriesHandled) break;
                 }
                 catch (Exception ex) when (ex is FormatException or JsonException)
                 {

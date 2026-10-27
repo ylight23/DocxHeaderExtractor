@@ -38,3 +38,30 @@ tests and analysis. Their verdicts, boundary suggestions, cycle observations, an
 must not be used to authorize or veto production groups. Strict source identity and protocol
 checks remain in force; this rollback removes semantic verifier authority, not deterministic
 validation.
+
+## Native PDF default after the 2026-10-24 qualification
+
+The application profile now uses `PDF_HEADING_BOUNDARIES_V1`: the grouping model returns one
+source-bound JOIN/SPLIT verdict for every adjacent selected pair, rather than only complete groups.
+Each pair echoes its own aliases and selectedText; C# checks exact source/coverage/order, then folds
+the model decisions and runs the established group-size/contiguity checks. The request adds the
+existing measured block/style facts, document style table and three source context lines per side.
+Facts never label a boundary, and no C# keyword split or semantic verifier authority is introduced.
+Malformed pairs receive bounded protocol repair; exhaustion remains fail-closed as before.
+
+`DocumentRunner` uses V14 selection units with the V12 membership instruction, measured page images
+(`PdfAdaptiveVisualSelection`, request ceiling 786,432 bytes), source binding and pairwise grouping for
+native PDF by default (owner, 2026-10-26; see the [V12/V14 cohort](../qualification/pdf-request-optimization-20261026.md)).
+For the previous profile set `PdfMembershipInstructionVersion = 12`, `PdfAdaptiveVisualSelection = false`
+and `PdfVisualSelectionMaxRequestBytes = null`.
+Parent-chain repair is scoped with `PdfRepairParentChains`; the shared DOCX/scan placement policy
+continues to use the explicit `RepairParentChains` option. Host-provided selectors/placers keep
+precedence. Low-level `PdfSelector` constructor defaults retain the legacy wire contract for
+explicit callers and historical comparisons. Qualification modes set their own flags, including
+the repair scope, so a frozen baseline does not silently inherit new application defaults.
+
+For a legacy application profile, explicitly set `PdfSourceBoundSelection`, `PdfClarifyMembership`,
+`PdfSeparateGroupingInstruction`, `PdfPairwiseGrouping` and `PdfRepairParentChains` false, with
+`PdfMembershipInstructionVersion = 2`. Optional inline grouping, whole-document placement and
+membership review remain off by default. See the [qualification record](../qualification/pdf072-membership-v6-pairwise-20261024.md)
+for all failed revisions, actual measured quality/latency and the remaining PDF072 metadata extra.

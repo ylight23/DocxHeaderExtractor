@@ -131,6 +131,8 @@ internal sealed class ScanAgentSource : IAgentSource
     public string SourceSha256 { get; }
     public string SourceAliasUniverseSha256 { get; }
     public string EvidenceStoreSha256 { get; }
+    public DocxHeaderExtractor.Agents.Budget.RequestPolicy ResourcePolicy { get; } = DocxHeaderExtractor.Agents.Budget.RunResourceBudget.Current?.Policy ?? new()
+    { MaxRequestBytes = ScanSelector.ScanRequestByteCap, ContinuationReserveBytes = 65536 };
     public IAgentFormat Flavor => ScanFormat.Instance;
 
     readonly Dictionary<string, VlmLineObservation> seen = new(StringComparer.Ordinal);
