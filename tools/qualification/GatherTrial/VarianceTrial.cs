@@ -122,6 +122,17 @@ static class VarianceTrial
             var plan = GatherByHeading.Build(targetPath, targetOutline, [new GatherSourceFile("M", files[variant], headings), .. others], addMissingHeadings: true,
                 matching: matching);
             var decided = GatherByHeading.DecidedByChain(plan.Sections);
+            if (Environment.GetEnvironmentVariable("DHX_DUMP") is { } dump)
+            {
+                var lines = new List<string> { $"== round {run.GetProperty("round").GetInt32()} {variant}: {decided.Count(s => s.NewHeadingDepth is not null)} new headings" };
+                foreach (var n in decided.Where(s => s.NewHeadingDepth is not null))
+                {
+                    var under = n.NewHeadingParent ?? "(none)";
+                    lines.Add("\n# " + n.Heading + "   [written before: " + n.NextHeadingLocation + ", under: " + under + ", from source " + n.NewHeadingSource + "]");
+                    foreach (var f in n.Run.Facts) lines.Add("   - " + f.Render());
+                }
+                File.AppendAllText(dump, string.Join("\n", lines) + "\n\n", Encoding.UTF8);
+            }
             var texts = decided.SelectMany(s => s.Run.Facts.Select(f => f.Render())).ToList();
             var duplicated = texts.GroupBy(t => t).Count(g => g.Count() > 1);
             Console.WriteLine($"   duplicated texts written: {duplicated}");
