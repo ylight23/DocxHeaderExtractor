@@ -133,12 +133,12 @@ static class VarianceTrial
                 }
                 File.AppendAllText(dump, string.Join("\n", lines) + "\n\n", Encoding.UTF8);
             }
-            var texts = decided.SelectMany(s => s.Run.Facts.Select(f => f.Render())).ToList();
+            // A text is a duplicate only when the same section (target heading) receives it twice; the same sentence under two different
+            // sections, as in a line listed under two "Tổng đài" sections, is not.
+            var texts = decided.SelectMany(s => s.Run.Facts.Select(f => s.Heading + "|" + s.TargetLocation + "|" + f.Render())).ToList();
             var duplicated = texts.GroupBy(t => t).Count(g => g.Count() > 1);
             Console.WriteLine($"   duplicated texts written: {duplicated}");
-            foreach (var g in texts.GroupBy(t => t).Where(g => g.Count() > 1)) Console.WriteLine($"      DUP x{g.Count()}: {g.Key[..Math.Min(90, g.Key.Length)]}");
-            foreach (var s2 in decided.Where(s => s.Run.Facts.Any(f => texts.Count(t => t == f.Render()) > 1)))
-                Console.WriteLine($"      in section \"{s2.Heading}\" (new={s2.NewHeadingDepth is not null}) at {s2.TargetLocation}");
+            foreach (var g in texts.GroupBy(t => t).Where(g => g.Count() > 1)) Console.WriteLine($"      DUP x{g.Count()}: {g.Key[..Math.Min(140, g.Key.Length)]}");
             if (Environment.GetEnvironmentVariable("DHX_SHOW_NEW") == "1")
                 foreach (var n in decided.Where(s => s.NewHeadingDepth is not null)) Console.WriteLine($"   NEW  {n.Heading}  <- after \"{n.NewHeadingParent}\"  facts={n.Run.Facts.Count}");
             Console.WriteLine($"r{run.GetProperty("round").GetInt32()} {variant,-8} before: facts={run.GetProperty("facts").GetInt32(),3} uncertain={run.GetProperty("uncertain").GetInt32(),2}" +
