@@ -139,4 +139,49 @@ public sealed class AdminGatherWebTests
         }
         finally { File.Delete(target); }
     }
+
+    [Fact]
+    public async Task The_review_endpoint_records_verdicts_only_for_the_exact_stored_outline()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-review-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            static DocxHeaderExtractor.DocumentProcessing.Output.HeadingRecord Bound(int index, string text, int level) => new()
+            {
+                Index = index, Level = level, Text = text, StableId = $"body[1]/p[{index + 1}]", HeadingSpan = new(0, text.Length),
+                SourceParts = [new($"body[1]/p[{index + 1}]", index, new(0, text.Length), text)], ValidatedSourcePartCount = 1,
+            };
+            var store = new DocxHeaderExtractor.DocumentProcessing.Gather.OutlineStore(root);
+            var paragraphs = new[] { "A", "nội dung", "B" }.Select((s, i) => new DocxHeaderExtractor.DocumentProcessing.Gather.StoredParagraph($"body[1]/p[{i + 1}]", i, s)).ToArray();
+            store.Store(new(DocxHeaderExtractor.DocumentProcessing.Gather.OutlineStore.Version, "sha-file", "k", "f.docx", DateTimeOffset.UtcNow, paragraphs, [],
+                [Bound(0, "A", 1), Bound(2, "B", 2)]));
+            var outline = store.Find("sha-file", "k")!;
+            var hash = DocxHeaderExtractor.DocumentProcessing.Gather.OutlineApprovals.OutlineHash(outline);
+
+            using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(b => b.ConfigureTestServices(s =>
+                s.AddSingleton(new WebApp::DocxHeaderExtractor.Web.Endpoints.OutlineRoot(root))));
+            using var client = app.CreateClient();
+            Assert.Contains("Duyệt outline", await client.GetStringAsync("/admin.html"));
+            StringContent Body(object o) => new(JsonSerializer.Serialize(o), System.Text.Encoding.UTF8, "application/json");
+
+            using var stale = await client.PostAsync("/api/admin/outline/review", Body(new { sourceSha256 = "sha-file", configKey = "k",
+                outlineSha256 = "other", reviewer = "r", items = Array.Empty<object>(), complete = true }));
+            Assert.Equal(System.Net.HttpStatusCode.Conflict, stale.StatusCode);
+            using var missing = await client.PostAsync("/api/admin/outline/review", Body(new { sourceSha256 = "none", configKey = "k",
+                outlineSha256 = hash, reviewer = "r", items = Array.Empty<object>(), complete = false }));
+            Assert.Equal(System.Net.HttpStatusCode.NotFound, missing.StatusCode);
+
+            using var partial = await client.PostAsync("/api/admin/outline/review", Body(new { sourceSha256 = "sha-file", configKey = "k",
+                outlineSha256 = hash, reviewer = "r", items = new object[] { new { location = "body[1]/p[1]", kind = "HEADING" },
+                    new { location = "body[1]/p[2]", kind = "HEADING" } }, complete = false }));
+            var first = JsonDocument.Parse(await partial.Content.ReadAsStringAsync()).RootElement;
+            Assert.Equal("PARTIAL", first.GetProperty("state").GetString());
+            Assert.Equal("NOT_A_HEADING_IN_THIS_OUTLINE", Assert.Single(first.GetProperty("refusals").EnumerateArray()).GetProperty("reason").GetString());
+
+            using var done = await client.PostAsync("/api/admin/outline/review", Body(new { sourceSha256 = "sha-file", configKey = "k",
+                outlineSha256 = hash, reviewer = "r", items = new object[] { new { location = "body[1]/p[3]", kind = "HEADING" } }, complete = true }));
+            Assert.Equal("REVIEWED", JsonDocument.Parse(await done.Content.ReadAsStringAsync()).RootElement.GetProperty("state").GetString());
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, recursive: true); }
+    }
 }

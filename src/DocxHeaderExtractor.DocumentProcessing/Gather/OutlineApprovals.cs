@@ -89,6 +89,27 @@ public sealed class OutlineApprovals(string root)
     /// UNREVIEWED (no decision), REVIEWED (every heading of the outline has a HEADING decision with its text, level and parent, no NOT_HEADING
     /// decision contradicts one, and OUTLINE_COMPLETE was recorded) or PARTIAL (anything in between).
     /// </summary>
+    /// <summary>
+    /// The decision a reviewer's verdict on one paragraph makes about this exact outline, built from the outline itself (text, level, parent and
+    /// spans are never taken from the client). HEADING only for a paragraph the outline has as a bound heading with a known parent; NOT_HEADING
+    /// for any paragraph of the file; OUTLINE_COMPLETE with no location. Null with the reason when the verdict cannot be recorded.
+    /// </summary>
+    public static (OutlineDecision? Decision, string? Refusal) Decide(StoredOutline outline, string kind, string? location, string reviewer, DateTimeOffset at)
+    {
+        if (string.IsNullOrWhiteSpace(reviewer)) return (null, "REVIEWER_REQUIRED");
+        var hash = OutlineHash(outline);
+        if (kind == OutlineComplete) return (new(outline.SourceSha256, outline.ConfigKey, "", OutlineComplete, null, null, null, reviewer, at, hash), null);
+        if (location is null || !outline.Paragraphs.Any(p => p.Location == location)) return (null, "LOCATION_NOT_IN_FILE");
+        if (kind == NotHeading) return (new(outline.SourceSha256, outline.ConfigKey, location, NotHeading, null, null, null, reviewer, at, hash), null);
+        if (kind != Heading) return (null, "UNKNOWN_KIND");
+        var matches = outline.Headings.Where(h => h.StableId == location).ToArray();
+        if (matches.Length != 1) return (null, matches.Length == 0 ? "NOT_A_HEADING_IN_THIS_OUTLINE" : "LOCATION_REPEATED");
+        var h = matches[0];
+        if (!Bound(h)) return (null, "HEADING_NOT_BOUND_TO_SOURCE");
+        if (!OutlineDiff.Parents(outline.Headings).TryGetValue(location, out var parent)) return (null, "PARENT_UNRESOLVED");
+        return (new(outline.SourceSha256, outline.ConfigKey, location, Heading, h.Text, h.Level, parent, reviewer, at, hash, h.HeadingSpan, h.InlineBodySpan), null);
+    }
+
     public static string State(StoredOutline outline, IReadOnlyList<OutlineDecision> decisions)
     {
         decisions = Applicable(outline, decisions);

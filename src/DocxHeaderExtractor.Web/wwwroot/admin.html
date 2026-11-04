@@ -142,6 +142,7 @@
           <button class="secondary active" data-tab="uncertain">Không chắc <span id="uncertainCount"></span></button>
           <button class="secondary" data-tab="summary">Tổng hợp</button>
           <button class="secondary" data-tab="extract">Trích xuất heading</button>
+          <button class="secondary" data-tab="review">Duyệt outline</button>
           <button class="secondary" data-tab="log">Log</button>
         </div>
       </section>
@@ -178,6 +179,16 @@
 
       <div class="pane hidden" id="paneExtract"><section class="panel"><h2>Heading đã trích</h2><div id="documents"></div></section></div>
 
+      <div class="pane hidden" id="paneReview">
+        <section class="panel">
+          <h2>Duyệt outline đã lưu</h2>
+          <p class="note">Chỉ có khi bật "Dùng outline đã lưu". So outline hiện tại với phiên bản lưu trước của cùng tên file. Không bên nào được tự chọn: quyết định duyệt gắn với đúng outline đang xem.</p>
+          <label class="f" for="reviewer">Người duyệt</label>
+          <input id="reviewer" type="text" placeholder="Tên người duyệt">
+          <div id="reviewList"><p class="note">Chưa có lượt tổng hợp.</p></div>
+        </section>
+      </div>
+
       <div class="pane hidden" id="paneLog"><section class="panel"><h2>Log</h2><div id="log"></div></section></div>
     </main>
   </div>
@@ -209,7 +220,7 @@ $('noLlm').addEventListener('change', () => { $('classify').disabled = $('noLlm'
 document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
 function showTab(name) {
   document.querySelectorAll('[data-tab]').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
-  for (const [tab, pane] of [['uncertain', 'paneUncertain'], ['summary', 'paneSummary'], ['extract', 'paneExtract'], ['log', 'paneLog']])
+  for (const [tab, pane] of [['uncertain', 'paneUncertain'], ['summary', 'paneSummary'], ['extract', 'paneExtract'], ['review', 'paneReview'], ['log', 'paneLog']])
     $(pane).classList.toggle('hidden', tab !== name);
 }
 
@@ -423,6 +434,65 @@ function render(r) {
 
   $('documents').innerHTML = r.documents.map(d => `<details${d.role === 'target' ? ' open' : ''}><summary><b>${d.role === 'target' ? 'Đích' : 'Nguồn ' + esc(d.id)}</b> · ${esc(d.file)} · ${d.headings.length} heading · ${esc(d.from)}</summary>
     <table>${d.headings.map(h => `<tr><td><span class="lvl">${h.level ?? '?'}</span>${'&nbsp;&nbsp;'.repeat(Math.max(0, (h.level || 1) - 1))}${esc(h.text)}</td><td class="src">${esc(h.stableId)}</td></tr>`).join('')}</table></details>`).join('');
+  renderReview(r.documents);
+}
+
+// ---- Outline review: differences from the previous stored revision; verdicts are sent as location + kind only ----
+const KIND_LABEL = {
+  ADDED: 'Heading mới (văn bản không đổi)', REMOVED: 'Bị bỏ khỏi outline (văn bản không đổi)', TEXT: 'Đổi chữ heading', SPLIT: 'Tách heading (chưa chắc)',
+  MERGED: 'Gộp heading (chưa chắc)', LEVEL: 'Đổi cấp', LEVEL_SHIFT: 'Cả cây lệch cấp', PARENT: 'Đổi mục cha', PARENT_UNRESOLVED: 'Mục cha chưa xác định',
+  BOUNDARY: 'Đổi ranh giới heading–nội dung', BOUNDARY_UNRESOLVED: 'Ranh giới chưa xác minh', BINDING: 'Đổi nguồn của heading',
+  BINDING_UNRESOLVED: 'Nguồn chưa xác minh', ALIGNMENT_UNRESOLVED: 'Không ghép chắc đoạn (đoạn lặp)', UNBOUND_OLD: 'Heading cũ không gắn được vị trí',
+  UNBOUND_NEW: 'Heading mới không gắn được vị trí', ON_CHANGED_TEXT: 'Heading trên đoạn đã sửa', SOURCE_CHANGED: 'Đoạn của heading cũ đã sửa/xóa',
+  EVIDENCE_MISSING: 'Thiếu bằng chứng nguồn (cần trích lại để duyệt)',
+};
+let reviewDocs = [];
+function renderReview(documents) {
+  reviewDocs = documents.filter(d => d.outlineReview);
+  if (!reviewDocs.length) { $('reviewList').innerHTML = '<p class="note">Không có outline đã lưu trong lượt này.</p>'; return; }
+  $('reviewList').innerHTML = reviewDocs.map((d, di) => {
+    const r = d.outlineReview;
+    const diffs = r.differences ?? [];
+    const rows = diffs.map((x, i) => {
+      const loc = x.newLocation;
+      const name = `rv${di}_${i}`;
+      const choices = !loc ? '<span class="note">chỉ để xem</span>'
+        : x.newIsHeading ? `<label><input type="radio" name="${name}" value="HEADING"> Đúng là heading</label> <label><input type="radio" name="${name}" value="NOT_HEADING"> Không phải heading</label>`
+        : `<label><input type="radio" name="${name}" value="NOT_HEADING"> Đúng: không phải heading</label>`;
+      const flags = [x.uncertain ? 'chưa chắc' : '', x.contextChanged ? 'văn bản quanh đó đổi' : '', x.oldApproved ? 'bản cũ đã duyệt' : ''].filter(Boolean);
+      const ctx = x.context ? `<div class="note">${x.context.before ? '… ' + esc(x.context.before) + '<br>' : ''}<b>${esc(x.context.text)}</b>${x.context.after ? '<br>' + esc(x.context.after) + ' …' : ''}</div>` : '';
+      return `<tr><td>${esc(KIND_LABEL[x.kind] ?? x.kind)}${flags.length ? '<br><span class="chip warn">' + esc(flags.join(' · ')) + '</span>' : ''}</td>
+        <td>${esc(x.oldText ?? '—')}${x.oldLevel != null && x.kind !== 'LEVEL_SHIFT' ? ' <span class="lvl">' + x.oldLevel + '</span>' : ''}</td>
+        <td>${esc(x.newText ?? '—')}${x.newLevel != null ? ' <span class="lvl">' + (x.kind === 'LEVEL_SHIFT' ? (x.newLevel > 0 ? '+' : '') : '') + x.newLevel + '</span>' : ''}${ctx}</td>
+        <td data-loc="${esc(loc ?? '')}">${choices}</td></tr>`;
+    }).join('');
+    return `<details open><summary><b>${esc(d.file)}</b> · bản ${r.revision}${r.previousRevision ? ' so với bản ' + r.previousRevision : ' (chưa có bản trước)'} · trạng thái <b id="rvState${di}">${esc(r.state)}</b>
+        · ${diffs.length} khác biệt${r.sameHeadings != null ? ', ' + r.sameHeadings + ' heading giống' : ''}</summary>
+      ${diffs.length ? `<table id="rvTable${di}"><tr><th>Loại</th><th>Bản trước</th><th>Bản hiện tại</th><th>Kết luận</th></tr>${rows}</table>` : '<p class="note">Không có khác biệt với bản trước.</p>'}
+      <p><label><input type="checkbox" id="rvAll${di}"> Đánh dấu mọi heading của outline hiện tại là đúng (${r.headings.length} heading)</label><br>
+      <label><input type="checkbox" id="rvComplete${di}"> Xác nhận outline hiện tại đủ heading</label></p>
+      <button data-review="${di}">Ghi kết quả duyệt</button> <span class="note" id="rvResult${di}"></span></details>`;
+  }).join('');
+  document.querySelectorAll('[data-review]').forEach(b => b.addEventListener('click', () => sendReview(Number(b.dataset.review))));
+}
+
+async function sendReview(di) {
+  const r = reviewDocs[di].outlineReview;
+  const reviewer = $('reviewer').value.trim();
+  if (!reviewer) { $('rvResult' + di).textContent = 'Cần nhập tên người duyệt.'; return; }
+  const items = [];
+  const table = $('rvTable' + di);
+  if (table) table.querySelectorAll('input[type=radio]:checked').forEach(x => items.push({ location: x.closest('td').dataset.loc, kind: x.value }));
+  if ($('rvAll' + di).checked)
+    for (const h of r.headings) if (!items.some(i => i.location === h.stableId)) items.push({ location: h.stableId, kind: 'HEADING' });
+  const body = { sourceSha256: r.sourceSha256, configKey: r.configKey, outlineSha256: r.outlineSha256, reviewer, items, complete: $('rvComplete' + di).checked };
+  const res = await fetch('/api/admin/outline/review', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const out = await res.json().catch(() => ({}));
+  if (!res.ok) { $('rvResult' + di).textContent = out.message ?? ('Lỗi ' + res.status); return; }
+  r.state = out.state;
+  $('rvState' + di).textContent = out.state;
+  $('rvResult' + di).textContent = `Đã ghi ${out.recorded} quyết định` +
+    (out.refusals.length ? ` · ${out.refusals.length} không ghi được: ` + out.refusals.map(f => f.reason).join(', ') : '');
 }
 </script>
 </body>

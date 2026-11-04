@@ -249,4 +249,25 @@ public sealed class OutlineDiffTests
         Assert.Equal(1, shift.NewLevel);
         Assert.DoesNotContain(result.Differences, d => d.Kind == "LEVEL");
     }
+
+    [Fact]
+    public void A_verdict_becomes_a_decision_built_from_the_stored_outline_or_is_refused_with_a_reason()
+    {
+        var outline = Outline(Paragraphs, "sha", Base);
+        var now = DateTimeOffset.UtcNow;
+        var (heading, _) = OutlineApprovals.Decide(outline, OutlineApprovals.Heading, Base[1].StableId, "reviewer", now);
+        Assert.NotNull(heading);
+        Assert.Equal(Base[1].Text, heading!.Text);
+        Assert.Equal(Base[0].StableId, heading.ParentLocation);
+        Assert.Equal(OutlineApprovals.OutlineHash(outline), heading.OutlineSha256);
+
+        Assert.Equal("NOT_A_HEADING_IN_THIS_OUTLINE", OutlineApprovals.Decide(outline, OutlineApprovals.Heading, "body[1]/p[4]", "reviewer", now).Refusal);
+        Assert.Equal("LOCATION_NOT_IN_FILE", OutlineApprovals.Decide(outline, OutlineApprovals.NotHeading, "body[1]/p[99]", "reviewer", now).Refusal);
+        Assert.Equal("REVIEWER_REQUIRED", OutlineApprovals.Decide(outline, OutlineApprovals.Heading, Base[1].StableId, " ", now).Refusal);
+        Assert.NotNull(OutlineApprovals.Decide(outline, OutlineApprovals.NotHeading, "body[1]/p[4]", "reviewer", now).Decision);
+
+        var all = Base.Select(h => OutlineApprovals.Decide(outline, OutlineApprovals.Heading, h.StableId, "reviewer", now).Decision!)
+            .Append(OutlineApprovals.Decide(outline, OutlineApprovals.OutlineComplete, null, "reviewer", now).Decision!).ToList();
+        Assert.Equal("REVIEWED", OutlineApprovals.State(outline, all));
+    }
 }

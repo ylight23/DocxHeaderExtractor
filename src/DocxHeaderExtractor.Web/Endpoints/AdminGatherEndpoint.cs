@@ -16,7 +16,7 @@ namespace DocxHeaderExtractor.Web.Endpoints;
 internal static class AdminGatherEndpoint
 {
     public static async Task HandleAsync(HttpRequest req, HttpResponse res, WritebackStore writebackStore, AdminRunStore runs,
-        ModelProviderFactory modelProvider, CancellationToken ct)
+        ModelProviderFactory modelProvider, OutlineRoot outlineRoot, CancellationToken ct)
     {
         if (!req.HasFormContentType)
         {
@@ -111,7 +111,7 @@ internal static class AdminGatherEndpoint
                 var options = RequestOptions.Build(form, provider, out _);
                 options.Log = _ => { };
                 // Opt-in: an outline stored for the same file (or mapped from a stored version of the same file name) is used instead of a run.
-                var store = outlineCache ? new OutlineStore(OutlineStore.DefaultRoot) : null;
+                var store = outlineCache ? new OutlineStore(outlineRoot.Path) : null;
                 var configKey = OutlineReuse.ConfigKey(options);
                 var extracted = await Task.WhenAll(documents.Select(async d =>
                 {
@@ -181,6 +181,7 @@ internal static class AdminGatherEndpoint
             writebackStore.Put(runId, await File.ReadAllBytesAsync(result.Written.OutputPath, ct), Path.GetFileName(result.Written.OutputPath));
             runs.Put(runId, new AdminRunStore.Entry(await File.ReadAllBytesAsync(targetPath, ct), Path.GetFileName(targetPath), result.Decided,
                 result.Plan.Uncertain, DateTimeOffset.UtcNow));
+            var approvals = new OutlineApprovals(outlineRoot.Path);
             await EmitAsync(new
             {
                 type = "result",
@@ -191,6 +192,7 @@ internal static class AdminGatherEndpoint
                 {
                     e.Role, e.Id, file = Path.GetFileName(e.Path), from = e.From, reuse = e.Reuse?.Status, addedParagraphs = e.Reuse?.AddedParagraphs,
                     headings = e.Headings.OrderBy(h => h.Index).Select(h => new { h.Level, h.Text, h.StableId }),
+                    outlineReview = e.Reuse is { } reuse ? AdminOutlineReview.Project(reuse, e.Path, approvals) : null,
                 }),
                 merged = result.Decided.Where(s => s.NewHeadingDepth is null && s.Run.Facts.Count > 0).Select(s => new
                 {
