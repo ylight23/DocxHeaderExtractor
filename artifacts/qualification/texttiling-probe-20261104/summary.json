@@ -1,0 +1,209 @@
+{
+  "k3": [
+    {
+      "report": "08",
+      "paragraphs": 89,
+      "runs": 4,
+      "stableHeadings": 16,
+      "varyingHeadings": 5,
+      "medianRankPercentStable": 26.1,
+      "medianRankPercentVarying": 23.9,
+      "topBoundaryHitRate": 0.75,
+      "chanceHitRate": 0.55,
+      "depthStableMedian": 0.266,
+      "depthVaryingMedian": 0.273
+    },
+    {
+      "report": "09",
+      "paragraphs": 103,
+      "runs": 5,
+      "stableHeadings": 14,
+      "varyingHeadings": 8,
+      "medianRankPercentStable": 24.5,
+      "medianRankPercentVarying": 45.6,
+      "topBoundaryHitRate": 0.57,
+      "chanceHitRate": 0.41,
+      "depthStableMedian": 0.242,
+      "depthVaryingMedian": 0.116
+    },
+    {
+      "report": "10",
+      "paragraphs": 93,
+      "runs": 4,
+      "stableHeadings": 17,
+      "varyingHeadings": 3,
+      "medianRankPercentStable": 23.9,
+      "medianRankPercentVarying": 6.5,
+      "topBoundaryHitRate": 0.59,
+      "chanceHitRate": 0.55,
+      "depthStableMedian": 0.298,
+      "depthVaryingMedian": 0.577
+    }
+  ],
+  "sensitivity": {
+    "2": [
+      {
+        "report": "08",
+        "paragraphs": 89,
+        "runs": 4,
+        "stableHeadings": 16,
+        "varyingHeadings": 5,
+        "medianRankPercentStable": 19.9,
+        "medianRankPercentVarying": 33.0,
+        "topBoundaryHitRate": 0.69,
+        "chanceHitRate": 0.55,
+        "depthStableMedian": 0.44,
+        "depthVaryingMedian": 0.27
+      },
+      {
+        "report": "09",
+        "paragraphs": 103,
+        "runs": 5,
+        "stableHeadings": 14,
+        "varyingHeadings": 8,
+        "medianRankPercentStable": 34.3,
+        "medianRankPercentVarying": 43.6,
+        "topBoundaryHitRate": 0.5,
+        "chanceHitRate": 0.41,
+        "depthStableMedian": 0.259,
+        "depthVaryingMedian": 0.18
+      },
+      {
+        "report": "10",
+        "paragraphs": 93,
+        "runs": 4,
+        "stableHeadings": 17,
+        "varyingHeadings": 3,
+        "medianRankPercentStable": 31.5,
+        "medianRankPercentVarying": 12.0,
+        "topBoundaryHitRate": 0.65,
+        "chanceHitRate": 0.55,
+        "depthStableMedian": 0.321,
+        "depthVaryingMedian": 0.56
+      }
+    ],
+    "3": [
+      {
+        "report": "08",
+        "paragraphs": 89,
+        "runs": 4,
+        "stableHeadings": 16,
+        "varyingHeadings": 5,
+        "medianRankPercentStable": 26.1,
+        "medianRankPercentVarying": 23.9,
+        "topBoundaryHitRate": 0.75,
+        "chanceHitRate": 0.55,
+        "depthStableMedian": 0.266,
+        "depthVaryingMedian": 0.273
+      },
+      {
+        "report": "09",
+        "paragraphs": 103,
+        "runs": 5,
+        "stableHeadings": 14,
+        "varyingHeadings": 8,
+        "medianRankPercentStable": 24.5,
+        "medianRankPercentVarying": 45.6,
+        "topBoundaryHitRate": 0.57,
+        "chanceHitRate": 0.41,
+        "depthStableMedian": 0.242,
+        "depthVaryingMedian": 0.116
+      },
+      {
+        "report": "10",
+        "paragraphs": 93,
+        "runs": 4,
+        "stableHeadings": 17,
+        "varyingHeadings": 3,
+        "medianRankPercentStable": 23.9,
+        "medianRankPercentVarying": 6.5,
+        "topBoundaryHitRate": 0.59,
+        "chanceHitRate": 0.55,
+        "depthStableMedian": 0.298,
+        "depthVaryingMedian": 0.577
+      }
+    ],
+    "4": [
+      {
+        "report": "08",
+        "paragraphs": 89,
+        "runs": 4,
+        "stableHeadings": 16,
+        "varyingHeadings": 5,
+        "medianRankPercentStable": 27.8,
+        "medianRankPercentVarying": 15.9,
+        "topBoundaryHitRate": 0.75,
+        "chanceHitRate": 0.55,
+        "depthStableMedian": 0.228,
+        "depthVaryingMedian": 0.317
+      },
+      {
+        "report": "09",
+        "paragraphs": 103,
+        "runs": 5,
+        "stableHeadings": 14,
+        "varyingHeadings": 8,
+        "medianRankPercentStable": 16.2,
+        "medianRankPercentVarying": 44.1,
+        "topBoundaryHitRate": 0.57,
+        "chanceHitRate": 0.41,
+        "depthStableMedian": 0.311,
+        "depthVaryingMedian": 0.123
+      },
+      {
+        "report": "10",
+        "paragraphs": 93,
+        "runs": 4,
+        "stableHeadings": 17,
+        "varyingHeadings": 3,
+        "medianRankPercentStable": 35.9,
+        "medianRankPercentVarying": 27.2,
+        "topBoundaryHitRate": 0.71,
+        "chanceHitRate": 0.55,
+        "depthStableMedian": 0.163,
+        "depthVaryingMedian": 0.208
+      }
+    ],
+    "6": [
+      {
+        "report": "08",
+        "paragraphs": 89,
+        "runs": 4,
+        "stableHeadings": 16,
+        "varyingHeadings": 5,
+        "medianRankPercentStable": 40.3,
+        "medianRankPercentVarying": 12.5,
+        "topBoundaryHitRate": 0.56,
+        "chanceHitRate": 0.55,
+        "depthStableMedian": 0.1,
+        "depthVaryingMedian": 0.277
+      },
+      {
+        "report": "09",
+        "paragraphs": 103,
+        "runs": 5,
+        "stableHeadings": 14,
+        "varyingHeadings": 8,
+        "medianRankPercentStable": 18.1,
+        "medianRankPercentVarying": 53.9,
+        "topBoundaryHitRate": 0.64,
+        "chanceHitRate": 0.41,
+        "depthStableMedian": 0.197,
+        "depthVaryingMedian": 0.071
+      },
+      {
+        "report": "10",
+        "paragraphs": 93,
+        "runs": 4,
+        "stableHeadings": 17,
+        "varyingHeadings": 3,
+        "medianRankPercentStable": 23.9,
+        "medianRankPercentVarying": 30.4,
+        "topBoundaryHitRate": 0.76,
+        "chanceHitRate": 0.55,
+        "depthStableMedian": 0.182,
+        "depthVaryingMedian": 0.156
+      }
+    ]
+  }
+}
