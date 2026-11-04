@@ -20,6 +20,7 @@ builder.Services.Configure<FormOptions>(o => o.MultipartBodyLengthLimit = Upload
 builder.WebHost.ConfigureKestrel(o => o.Limits.MaxRequestBodySize = Uploads.MaxBytes);
 builder.Services.AddSingleton<ModelProviderFactory>(_ => OpenRouterProvider.FromEnvironment);
 builder.Services.AddSingleton<WritebackStore>();
+builder.Services.AddSingleton<AdminRunStore>();
 builder.Services.AddSingleton<ITaskRunStore>(_ => new JsonFileTaskRunStore(RuntimeStatePaths.RunDirectory));
 builder.Services.AddSingleton<ITaskTelemetrySink>(_ => new JsonLinesTaskTelemetrySink(RuntimeStatePaths.TelemetryPath));
 builder.Services.AddSingleton<IInputResourceResolver>(_ =>
@@ -66,6 +67,10 @@ app.MapGet("/api/outline/{runId:guid}.docx", (Guid runId, WritebackStore store) 
 });
 
 app.MapPost("/api/extract", ExtractEndpoint.HandleAsync);
+
+// Trang admin (admin.html): tổng hợp nhiều văn bản theo chuỗi heading, hiển thị phần không chắc kèm phân loại của model.
+app.MapPost("/api/admin/gather", AdminGatherEndpoint.HandleAsync);
+app.MapPost("/api/admin/gather/{runId:guid}/apply", AdminGatherEndpoint.ApplyAsync);
 
 Console.OutputEncoding = Encoding.UTF8;
 app.Lifetime.ApplicationStarted.Register(() =>

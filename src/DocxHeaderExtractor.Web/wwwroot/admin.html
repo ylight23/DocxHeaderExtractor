@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dhx admin — Tổng hợp văn bản</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --panel: #fff; --ink: #16181d; --muted: #6b7280; --line: #e3e6ea;
+    --accent: #2f6feb; --ok: #1a7f4b; --warn: #a4620a; --bad: #b3261e;
+    --okbg: #e6f4ec; --accbg: #e8effd; --warnbg: #fbf1e0; --badbg: #fceceb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a; --panel: #1c1f25; --ink: #e6e8ec; --muted: #9aa1ad; --line: #2c313a;
+      --accent: #6b9bff; --ok: #4cc38a; --warn: #d99a3e; --bad: #f2726a;
+      --okbg: #17301f; --accbg: #17233c; --warnbg: #302615; --badbg: #33191a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 "Segoe UI", system-ui, -apple-system, sans-serif; }
+  .wrap { padding: 12px 14px 32px; }
+  .appbar { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin: 0 0 12px; }
+  .appbrand { font-size: 12px; font-weight: 750; letter-spacing: .11em; }
+  .appcontext { color: var(--muted); font-size: 12px; }
+  .appcontext a { color: var(--accent); }
+  .app { display: grid; grid-template-columns: minmax(320px, 400px) minmax(0, 1fr); gap: 12px; align-items: start; }
+  .stack { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .stack-left { position: sticky; top: 12px; max-height: calc(100vh - 24px); overflow-y: auto; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .panel h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 10px; font-weight: 600;
+              display: flex; align-items: center; flex-wrap: wrap; gap: 7px; }
+  .panel h3 { font-size: 14px; margin: 14px 0 6px; }
+  label.f { display: block; font-size: 12.5px; color: var(--muted); margin: 10px 0 4px; }
+  input[type=file] { width: 100%; font: inherit; font-size: 13px; }
+  .checks { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; font-size: 13.5px; }
+  .checks label { display: flex; align-items: center; gap: 7px; cursor: pointer; }
+  button { margin-top: 12px; padding: 9px 20px; border: 0; border-radius: 7px; background: var(--accent); color: #fff;
+           font: inherit; font-weight: 600; font-size: 14px; cursor: pointer; }
+  button:disabled { opacity: .5; cursor: default; }
+  button.secondary { background: var(--bg); color: var(--ink); border: 1px solid var(--line); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .cancel-button { background: var(--badbg); color: var(--bad); }
+  .seg { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; }
+  .seg button { margin: 0; padding: 5px 10px; font-size: 12px; border-radius: 5px; }
+  .seg button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .devbar { display: flex; align-items: center; gap: 9px; }
+  .devdot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); }
+  .devdot.live { background: var(--accent); box-shadow: 0 0 0 4px var(--accbg); }
+  .devdot.done { background: var(--ok); }
+  .devdot.error { background: var(--bad); }
+  #devState { font-weight: 650; font-size: 13px; }
+  #devElapsed { margin-left: auto; color: var(--muted); font: 12px ui-monospace, Consolas, monospace; }
+  .runbar { position: sticky; top: 12px; z-index: 2; }
+  .pane { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .hidden { display: none !important; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+  .tile { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 11px 13px; }
+  .tile .v { font-size: 21px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .tile .k { font-size: 11.5px; color: var(--muted); }
+  .tile.warn .v { color: var(--warn); }
+  .chip { display: inline-flex; align-items: center; padding: 2px 9px; border-radius: 999px; font-size: 11.5px; font-weight: 600;
+          background: var(--bg); border: 1px solid var(--line); color: var(--muted); }
+  .chip.ok { background: var(--okbg); color: var(--ok); border-color: transparent; }
+  .chip.acc { background: var(--accbg); color: var(--accent); border-color: transparent; }
+  .chip.warn { background: var(--warnbg); color: var(--warn); border-color: transparent; }
+  .chip.bad { background: var(--badbg); color: var(--bad); border-color: transparent; }
+  .card { border: 1px solid var(--line); border-left: 3px solid var(--warn); border-radius: 8px; padding: 10px 12px; background: var(--panel); }
+  .card + .card { margin-top: 10px; }
+  .card .head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .card .title { font-weight: 650; }
+  .card .meta { color: var(--muted); font-size: 12.5px; margin-top: 3px; }
+  .verdict { margin-top: 8px; padding: 8px 10px; border-radius: 6px; background: var(--bg); font-size: 13.5px; }
+  .verdict b { margin-right: 6px; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+  .box { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; font-size: 13px; min-width: 0; }
+  .box h4 { margin: 0 0 4px; font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+  .box ul { margin: 0; padding-left: 18px; }
+  .box li { overflow-wrap: anywhere; }
+  .src { color: var(--muted); font: 11px ui-monospace, Consolas, monospace; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600;
+       padding: 0 8px 6px; border-bottom: 1px solid var(--line); }
+  td { padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+  .note { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; }
+  .err { background: var(--badbg); color: var(--bad); padding: 11px 13px; border-radius: 7px; font-size: 13.5px; }
+  .lvl { color: var(--muted); font-size: 12px; margin-right: 6px; font-variant-numeric: tabular-nums; }
+  details summary { cursor: pointer; }
+  .decide { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-top: 8px; padding: 8px 10px; border-radius: 6px;
+            border: 1px dashed var(--line); font-size: 13.5px; }
+  .decide label { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
+  .decide select { padding: 3px 6px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); color: var(--ink); font: inherit; font-size: 13px; max-width: 100%; }
+  .card.decided { border-left-color: var(--ok); }
+  .card.skipped { border-left-color: var(--muted); opacity: .8; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 0 0 10px; }
+  .toolbar button { margin: 0; }
+  #applyResult ul { margin: 6px 0 0; padding-left: 18px; font-size: 13.5px; }
+  #log { font: 12.5px/1.6 ui-monospace, Consolas, monospace; color: var(--muted); background: var(--bg); border: 1px solid var(--line);
+         border-radius: 7px; padding: 11px 13px; min-height: 200px; max-height: 60vh; overflow-y: auto; white-space: pre-wrap; }
+  @media (max-width: 900px) {
+    .app { grid-template-columns: minmax(0, 1fr); }
+    .stack-left, .runbar { position: static; max-height: none; }
+    .cols { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="appbar">
+    <div class="appbrand">DOCUMENT AI · ADMIN TỔNG HỢP</div>
+    <div class="appcontext">Ghép nội dung theo chuỗi heading · <a href="/">trang trích xuất tiêu đề</a></div>
+  </header>
+
+  <div class="app">
+    <aside class="stack stack-left" aria-label="Đầu vào">
+      <section class="panel">
+        <h2>Văn bản</h2>
+        <label class="f" for="target">Văn bản đích (mẫu) — chỉ được sao chép, không bị sửa</label>
+        <input id="target" type="file" accept=".docx,.docm">
+        <label class="f" for="sources">Văn bản nguồn (một hoặc nhiều)</label>
+        <input id="sources" type="file" accept=".docx,.docm" multiple>
+        <label class="f" for="outlines">Outline JSON có sẵn (không bắt buộc; thiếu thì trích bằng pipeline V6)</label>
+        <input id="outlines" type="file" accept=".json" multiple>
+        <div class="checks">
+          <label><input type="checkbox" id="classify" checked> Model phân loại các mục không chắc</label>
+          <label><input type="checkbox" id="noLlm"> Không gọi mô hình (cần đủ outline JSON)</label>
+          <label><input type="checkbox" id="docxReuseSelection"> Dùng lại SELECT/GROUP của file Word không đổi (PLACE vẫn chạy lại)</label>
+        </div>
+        <div class="actions">
+          <button id="run" disabled>Tổng hợp</button>
+          <button id="cancelRun" class="cancel-button hidden">Hủy</button>
+        </div>
+        <p class="note">Mục không chắc không bao giờ được ghi vào file. Phân loại của model chỉ là đề xuất để người duyệt quyết định.</p>
+      </section>
+    </aside>
+
+    <main class="stack" aria-label="Kết quả">
+      <section class="panel runbar">
+        <div class="devbar"><span id="devDot" class="devdot"></span><span id="devState">Đang chờ</span><span id="devElapsed">0 s</span></div>
+        <div class="seg" role="tablist">
+          <button class="secondary active" data-tab="uncertain">Không chắc <span id="uncertainCount"></span></button>
+          <button class="secondary" data-tab="summary">Tổng hợp</button>
+          <button class="secondary" data-tab="extract">Trích xuất heading</button>
+          <button class="secondary" data-tab="log">Log</button>
+        </div>
+      </section>
+
+      <div id="errBox" class="panel hidden"><div class="err" id="errText"></div></div>
+
+      <section class="panel hidden" id="overview">
+        <h2>Tổng quan</h2>
+        <div class="tiles" id="tiles"></div>
+        <div class="actions"><button id="download" class="hidden">Tải bản tổng hợp .docx</button></div>
+        <p class="note">Bản tổng hợp là bản sao của văn bản đích; mọi phần thêm là Track Changes. Link tải dùng được một lần. Outline của pipeline chưa được người duyệt.</p>
+      </section>
+
+      <div class="pane" id="paneUncertain">
+        <section class="panel">
+          <h2>Phần không chắc — model phân loại <span class="chip" id="modelChip"></span></h2>
+          <div class="toolbar hidden" id="decideBar">
+            <button class="secondary" id="useModel">Dùng đề xuất của model</button>
+            <button class="secondary" id="clearDecisions">Xóa các lựa chọn</button>
+            <button id="applyDecisions">Ghi bản tổng hợp theo quyết định</button>
+            <span class="note" id="decideCount"></span>
+          </div>
+          <div id="applyResult" class="hidden"></div>
+          <div id="uncertainList"><p class="note">Chưa có lượt tổng hợp.</p></div>
+        </section>
+      </div>
+
+      <div class="pane hidden" id="paneSummary">
+        <section class="panel"><h2>Gộp vào heading có sẵn</h2><div id="merged"></div></section>
+        <section class="panel"><h2>Heading mới</h2><div id="added"></div></section>
+        <section class="panel"><h2>Không thêm vào file — liệt kê đủ</h2><div id="excluded"></div></section>
+        <section class="panel"><h2>Heading đích không nhận thêm gì</h2><div id="unchanged"></div></section>
+      </div>
+
+      <div class="pane hidden" id="paneExtract"><section class="panel"><h2>Heading đã trích</h2><div id="documents"></div></section></div>
+
+      <div class="pane hidden" id="paneLog"><section class="panel"><h2>Log</h2><div id="log"></div></section></div>
+    </main>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const KIND = {
+  NEAR_NAME: ['Tên gần giống', 'Văn bản đích không có heading này nhưng có heading tên gần giống.'],
+  PATH_DIFFERS: ['Khác mục cha', 'Tên heading giống nhưng đường dẫn mục cha khác; cần xác nhận trước khi ghi.'],
+  AMBIGUOUS: ['Nhiều chỗ khớp', 'Nhiều heading trong đích cùng chuỗi hoặc cùng tên.'],
+  PARENT_UNCERTAIN: ['Mục cha không chắc', 'Heading cha của mục này đang nằm trong nhóm không chắc.'],
+};
+const DECISION = { MERGE: ['Gộp vào', 'ok'], NEW: ['Tạo heading mới', 'acc'], UNSURE: ['Không chắc', 'warn'] };
+const REASON = {
+  ALREADY_IN_TARGET_EXACT: 'Đích đã có y hệt', ALREADY_FROM_OTHER_SOURCE: 'Đã lấy từ nguồn khác', BEFORE_FIRST_HEADING: 'Trước heading đầu tiên',
+  DOCUMENT_END_TABLE: 'Bảng kết thúc văn bản (ký tên)', UNPLACED: 'Không xếp được',
+};
+
+let controller = null, timer = null, started = 0, downloadUrl = null;
+let run = null;            // the last result: its runId and uncertain sections
+let choices = {};          // index -> { decision: 'MERGE'|'NEW'|'SKIP', candidate }
+
+function sync() { $('run').disabled = !$('target').files.length || !$('sources').files.length || controller !== null; }
+['target', 'sources'].forEach(id => $(id).addEventListener('change', sync));
+$('noLlm').addEventListener('change', () => { $('classify').disabled = $('noLlm').checked; });
+
+document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+function showTab(name) {
+  document.querySelectorAll('[data-tab]').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+  for (const [tab, pane] of [['uncertain', 'paneUncertain'], ['summary', 'paneSummary'], ['extract', 'paneExtract'], ['log', 'paneLog']])
+    $(pane).classList.toggle('hidden', tab !== name);
+}
+
+function status(text, dot) {
+  $('devState').textContent = text;
+  $('devDot').className = 'devdot ' + (dot || '');
+}
+function log(line) { $('log').textContent += line + '\n'; $('log').scrollTop = $('log').scrollHeight; }
+function showError(message) { $('errText').textContent = message; $('errBox').classList.remove('hidden'); status('Lỗi', 'error'); }
+
+$('cancelRun').addEventListener('click', () => controller?.abort());
+$('download').addEventListener('click', () => { if (downloadUrl) { location.href = downloadUrl; $('download').disabled = true; } });
+
+$('run').addEventListener('click', async () => {
+  const fd = new FormData();
+  fd.append('target', $('target').files[0]);
+  for (const f of $('sources').files) fd.append('sources', f);
+  for (const f of $('outlines').files) fd.append('outlines', f);
+  if ($('classify').checked && !$('noLlm').checked) fd.append('classify', '1');
+  if ($('noLlm').checked) fd.append('noLlm', '1');
+  if ($('docxReuseSelection').checked) fd.append('docxReuseSelection', '1');
+  controller = new AbortController();
+  sync();
+  $('cancelRun').classList.remove('hidden');
+  $('errBox').classList.add('hidden');
+  $('overview').classList.add('hidden');
+  $('log').textContent = '';
+  status('Đang tổng hợp…', 'live');
+  started = Date.now();
+  timer = setInterval(() => { $('devElapsed').textContent = Math.round((Date.now() - started) / 1000) + ' s'; }, 500);
+  try {
+    const res = await fetch('/api/admin/gather', { method: 'POST', body: fd, signal: controller.signal });
+    if (!res.ok || !res.body) { showError(await res.text()); return; }
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    for (;;) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      let at;
+      while ((at = buffer.indexOf('\n')) >= 0) {
+        const line = buffer.slice(0, at).trim();
+        buffer = buffer.slice(at + 1);
+        if (line) handle(JSON.parse(line));
+      }
+    }
+  } catch (e) {
+    if (e.name === 'AbortError') status('Đã hủy'); else showError(String(e));
+  } finally {
+    clearInterval(timer);
+    controller = null;
+    $('cancelRun').classList.add('hidden');
+    sync();
+  }
+});
+
+function handle(evt) {
+  if (evt.type === 'agent') { log(`${new Date(evt.timestamp).toLocaleTimeString([], { hour12: false })}  [${evt.stage}] ${evt.message}`); status(evt.message, 'live'); }
+  else if (evt.type === 'error') showError(evt.message);
+  else if (evt.type === 'result') { render(evt); status('Xong', 'done'); }
+}
+
+function wireDecisions() {
+  document.querySelectorAll('.decide input[type=radio]').forEach(input => input.addEventListener('change', () => readChoice(+input.name.slice(1))));
+  document.querySelectorAll('select[data-candidate]').forEach(sel => sel.addEventListener('change', () => {
+    const idx = +sel.dataset.candidate;
+    document.querySelector(`input[name=d${idx}][value=MERGE]`).checked = true;
+    readChoice(idx);
+  }));
+  countChoices();
+}
+
+function readChoice(idx) {
+  const value = document.querySelector(`input[name=d${idx}]:checked`)?.value || '';
+  if (!value) delete choices[idx];
+  else choices[idx] = { decision: value, candidate: value === 'MERGE' ? +document.querySelector(`select[data-candidate="${idx}"]`).value : null };
+  const card = document.querySelector(`[data-card="${idx}"]`);
+  card.classList.toggle('decided', value === 'MERGE' || value === 'NEW');
+  card.classList.toggle('skipped', value === 'SKIP');
+  countChoices();
+}
+
+function setChoice(idx, decision, candidate) {
+  const input = document.querySelector(`input[name=d${idx}][value="${decision}"]`);
+  if (!input || input.disabled) return;
+  input.checked = true;
+  if (decision === 'MERGE' && candidate != null) document.querySelector(`select[data-candidate="${idx}"]`).value = String(candidate);
+  readChoice(idx);
+}
+
+function countChoices() {
+  if (!run) return;
+  const n = Object.keys(choices).length;
+  $('decideCount').textContent = `Đã quyết ${n}/${run.uncertain.length} mục. Mục chưa quyết không được ghi vào file.`;
+}
+
+$('useModel').addEventListener('click', () => {
+  // Only fills the choices in from the model's advice; nothing is written until the reviewer presses "Ghi".
+  run?.uncertain.forEach((u, idx) => {
+    const v = u.verdict;
+    if (v && (v.decision === 'MERGE' || v.decision === 'NEW')) setChoice(idx, v.decision, v.candidate);
+  });
+});
+$('clearDecisions').addEventListener('click', () => run?.uncertain.forEach((_, idx) => setChoice(idx, '')));
+
+$('applyDecisions').addEventListener('click', async () => {
+  if (!run) return;
+  const decisions = Object.entries(choices).map(([index, c]) => ({ index: +index, decision: c.decision, candidate: c.candidate }));
+  $('applyDecisions').disabled = true;
+  status('Đang ghi theo quyết định…', 'live');
+  try {
+    const res = await fetch(`/api/admin/gather/${run.runId}/apply`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ decisions }),
+    });
+    const body = await res.json();
+    if (!res.ok) { showError(body.message || 'Không ghi được.'); return; }
+    const label = { MERGE: 'Gộp vào', NEW: 'Heading mới', SKIP: 'Không thêm' };
+    const lines = body.outcomes.map(o => {
+      const u = run.uncertain[o.index];
+      const head = u ? esc(u.sourceHeading) : '#' + o.index;
+      if (o.error) return `<li>${head}: <span class="chip bad">lỗi ${esc(o.error)}</span></li>`;
+      const extra = o.alreadyThere.length ? ` · bỏ ${o.alreadyThere.length} đoạn heading đã có y hệt` : '';
+      return `<li>${head} → <b>${label[o.decision] || esc(o.decision)}</b>${o.heading && o.decision === 'MERGE' ? ' “' + esc(o.heading) + '”' : ''}: ghi ${o.written} đoạn${extra}</li>`;
+    });
+    if (body.undecided.length) lines.push(`<li>Chưa quyết (không ghi): ${body.undecided.map(i => esc(run.uncertain[i]?.sourceHeading)).join('; ')}</li>`);
+    if (body.skipped.length) lines.push(...body.skipped.map(x => `<li><span class="chip bad">không ghi được</span> ${esc(x)}</li>`));
+    $('applyResult').innerHTML = `<div class="verdict"><b>Đã ghi bản tổng hợp theo quyết định.</b>
+      <button id="downloadApplied">Tải bản đã duyệt .docx</button><ul>${lines.join('')}</ul>
+      <p class="note">Mỗi đoạn ghi theo quyết định mang cờ USER_DECISION trong file. Link tải dùng được một lần; có thể đổi lựa chọn và ghi lại.</p></div>`;
+    $('applyResult').classList.remove('hidden');
+    $('downloadApplied').addEventListener('click', e => { location.href = body.download; e.target.disabled = true; });
+    status('Đã ghi theo quyết định', 'done');
+  } catch (e) {
+    showError(String(e));
+  } finally {
+    $('applyDecisions').disabled = false;
+  }
+});
+
+function facts(list) {
+  return list.length ? '<ul>' + list.map(f => `<li>${esc(f.text)} <span class="src">${esc((f.sources || []).join('; '))}</span>` +
+    ((f.flags || []).length ? ` <span class="chip warn" title="${esc(f.flags.join('\n'))}">cần xem</span>` : '') + '</li>').join('') + '</ul>'
+    : '<p class="note">(không có nội dung trực tiếp)</p>';
+}
+
+function render(r) {
+  downloadUrl = r.download;
+  $('download').classList.toggle('hidden', !r.download);
+  $('download').disabled = false;
+  const count = list => list.reduce((n, s) => n + s.facts.length, 0);
+  $('tiles').innerHTML = [
+    ['Đoạn gộp vào heading có sẵn', count(r.merged)],
+    ['Heading mới', r.added.length],
+    ['Đoạn trong heading mới', count(r.added)],
+    ['Mục không chắc', r.uncertain.length, 'warn'],
+    ['Đoạn đang giữ lại', count(r.uncertain), 'warn'],
+    ['Không thêm (liệt kê)', r.excluded.length],
+  ].map(([k, v, tone]) => `<div class="tile ${tone || ''}"><div class="v">${v}</div><div class="k">${esc(k)}</div></div>`).join('');
+  $('overview').classList.remove('hidden');
+  $('uncertainCount').textContent = r.uncertain.length ? `(${r.uncertain.length})` : '';
+  $('modelChip').textContent = r.modelClassified ? 'đã phân loại' : 'model chưa chạy';
+  $('modelChip').className = 'chip ' + (r.modelClassified ? 'acc' : '');
+
+  run = r;
+  choices = {};
+  $('applyResult').classList.add('hidden');
+  $('decideBar').classList.toggle('hidden', !r.uncertain.length);
+  $('useModel').disabled = !r.modelClassified;
+  $('uncertainList').innerHTML = r.uncertain.length ? r.uncertain.map((u, idx) => {
+    const [kindLabel, kindHelp] = KIND[u.kind] || [u.kind, ''];
+    const v = u.verdict;
+    let verdict = '<div class="verdict"><b>Model:</b> chưa phân loại</div>';
+    if (v) {
+      const [label, tone] = DECISION[v.decision] || [v.decision, ''];
+      const target = v.decision === 'MERGE' && u.candidates[v.candidate] ? ` “${esc(u.candidates[v.candidate].heading)}”` : '';
+      verdict = `<div class="verdict"><b>Model đề xuất:</b><span class="chip ${tone}">${esc(label)}</span>${target}<div class="meta">${esc(v.reason)}</div></div>`;
+    }
+    const candidates = u.candidates.map((c, i) => `<details${i === 0 ? ' open' : ''}><summary>${i}. ${esc(c.heading)} <span class="src">${esc(c.location)}</span></summary>` +
+      (c.content.length ? '<ul>' + c.content.map(x => `<li>${esc(x)}</li>`).join('') + '</ul>' : '<p class="note">(heading chưa có nội dung trực tiếp)</p>') + '</details>').join('');
+    return `<div class="card" data-card="${idx}">
+      <div class="head"><span class="chip warn" title="${esc(kindHelp)}">${esc(kindLabel)}</span><span class="title">${esc(u.sourceHeading)}</span><span class="src">${esc(u.source)}</span></div>
+      <div class="meta">${u.sourceParent ? 'Trong mục nguồn: ' + esc(u.sourceParent) + ' · ' : ''}${esc(u.reason)}</div>
+      ${verdict}
+      <div class="decide" role="radiogroup" aria-label="Quyết định của người duyệt">
+        <b>Quyết định:</b>
+        <label><input type="radio" name="d${idx}" value="" checked> Chưa quyết</label>
+        <label><input type="radio" name="d${idx}" value="MERGE"${u.candidates.length ? '' : ' disabled'}> Gộp vào</label>
+        <select data-candidate="${idx}"${u.candidates.length ? '' : ' disabled'}>${u.candidates.map((c, i) => `<option value="${i}">${i}. ${esc(c.heading)}</option>`).join('')}</select>
+        <label><input type="radio" name="d${idx}" value="NEW"> Tạo heading mới${u.newHeadingParent ? ' dưới “' + esc(u.newHeadingParent) + '”' : ''}</label>
+        <label><input type="radio" name="d${idx}" value="SKIP"> Không thêm</label>
+      </div>
+      <div class="cols">
+        <div class="box"><h4>Nội dung nguồn đang giữ lại (${u.facts.length})</h4>${facts(u.facts)}</div>
+        <div class="box"><h4>Heading đích có thể thuộc về</h4>${candidates || '<p class="note">(không có)</p>'}</div>
+      </div>
+    </div>`;
+  }).join('') : '<p class="note">Không có mục nào không chắc: mọi heading nguồn đều được xếp theo chuỗi heading.</p>';
+
+  wireDecisions();
+
+  $('merged').innerHTML = r.merged.length ? r.merged.map(s => `<h3>${esc(s.heading)} <span class="src">${esc(s.location)}</span></h3>${facts(s.facts)}`).join('') : '<p class="note">Không có.</p>';
+  $('added').innerHTML = r.added.length ? r.added.map(s => `<h3>${esc(s.heading)} <span class="src">dưới “${esc(s.parent || 'đầu văn bản')}” · lấy từ ${esc(s.source)}</span></h3>${facts(s.facts)}`).join('') : '<p class="note">Không có.</p>';
+  $('excluded').innerHTML = r.excluded.length ? '<table><tr><th>Lý do</th><th>Heading</th><th>Đoạn</th><th>Nguồn</th></tr>' + r.excluded.map(e => {
+    const code = e.reason.split(':')[0];
+    return `<tr><td title="${esc(e.reason)}">${esc(REASON[code] || e.reason)}</td><td>${esc(e.heading)}</td><td>${esc(e.text)}</td><td class="src">${esc(e.sources.join('; '))}</td></tr>`;
+  }).join('') + '</table>' : '<p class="note">Không có.</p>';
+  $('unchanged').innerHTML = r.unchanged.length ? '<ul>' + r.unchanged.map(s => `<li>${esc(s.heading)}${s.note ? ' — <span class="note">' + esc(s.note) + '</span>' : ''}</li>`).join('') + '</ul>' : '<p class="note">Không có.</p>';
+  if (r.skipped.length) $('unchanged').innerHTML += '<h3>Không ghi được vào file</h3><ul>' + r.skipped.map(s => `<li>${esc(s)}</li>`).join('') + '</ul>';
+
+  $('documents').innerHTML = r.documents.map(d => `<details${d.role === 'target' ? ' open' : ''}><summary><b>${d.role === 'target' ? 'Đích' : 'Nguồn ' + esc(d.id)}</b> · ${esc(d.file)} · ${d.headings.length} heading · ${esc(d.from)}</summary>
+    <table>${d.headings.map(h => `<tr><td><span class="lvl">${h.level ?? '?'}</span>${'&nbsp;&nbsp;'.repeat(Math.max(0, (h.level || 1) - 1))}${esc(h.text)}</td><td class="src">${esc(h.stableId)}</td></tr>`).join('')}</table></details>`).join('');
+}
+</script>
+</body>
+</html>
