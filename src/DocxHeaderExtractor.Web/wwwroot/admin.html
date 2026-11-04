@@ -11,7 +11,7 @@
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.45 Arial, sans-serif; }
-.app { margin: 18px auto; max-width: 1480px; background: var(--card); border: 1px solid var(--line); border-radius: 13px; overflow: hidden; box-shadow: 0 8px 35px #24304712; }
+.app { margin: 0; width: 100%; min-height: 100vh; background: var(--card); display: flex; flex-direction: column; }
 .top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 26px; border-bottom: 1px solid var(--line); }
 .brand { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 700; }
 .logo { display: grid; place-items: center; background: var(--accent); color: #fff; width: 42px; height: 42px; border-radius: 9px; font-size: 24px; }
@@ -30,8 +30,8 @@ details.options summary { cursor: pointer; color: var(--muted); }
 .checks label { display: flex; gap: 6px; align-items: flex-start; }
 .err { margin: 0 26px 0; padding: 10px 14px; border: 1px solid #fecaca; background: #fef2f2; color: var(--bad); border-radius: 8px; margin-top: 12px; }
 .hidden { display: none !important; }
-.workspace { display: grid; grid-template-columns: 1fr 1fr; }
-.side { min-width: 0; padding: 18px 22px 22px; background: var(--soft); }
+.workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); flex: 1 1 auto; width: 100%; }
+.side { min-width: 0; width: 100%; padding: 18px 22px 22px; background: var(--soft); display: flex; flex-direction: column; }
 .side:first-child { border-right: 1px solid var(--line); }
 .side-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px; }
 .side-head strong { font-size: 14px; letter-spacing: .3px; }
@@ -41,7 +41,7 @@ details.options summary { cursor: pointer; color: var(--muted); }
 .tab.active { background: #e0efff; border-color: #93c5fd; color: #1e40af; font-weight: 700; }
 .tab.pick { border-style: dashed; color: var(--accent-dark); }
 .tab.pick input { display: none; }
-.viewer { background: var(--viewer); border-radius: 8px; padding: 14px; height: 74vh; min-height: 520px; overflow: auto; position: relative; }
+.viewer { background: var(--viewer); border-radius: 8px; padding: 14px; width: 100%; flex: 1 1 auto; height: calc(100vh - 290px); min-height: 520px; overflow: auto; position: relative; }
 .viewer .empty { color: var(--muted); text-align: center; margin-top: 120px; font-size: 13px; }
 .viewer iframe { width: 100%; height: 100%; border: 0; background: #fff; border-radius: 4px; }
 /* docx-preview pages */
@@ -618,7 +618,7 @@ function render(r) {
 // ---------------- outline review: each choice is saved at once, for the exact outline shown ----------------
 const KIND_LABEL = {
   ADDED: 'Heading mới (văn bản không đổi)', REMOVED: 'Bị bỏ khỏi outline (văn bản không đổi)', TEXT: 'Đổi chữ heading', SPLIT: 'Tách heading (chưa chắc)',
-  MERGED: 'Gộp heading (chưa chắc)', LEVEL: 'Đổi cấp', LEVEL_SHIFT: 'Cả cây lệch cấp', PARENT: 'Đổi mục cha', PARENT_UNRESOLVED: 'Mục cha chưa xác định',
+  MERGED: 'Gộp heading (chưa chắc)', TEXT_FORMAT: 'Khác chữ hoa hoặc khoảng trắng', LEVEL: 'Đổi cấp', LEVEL_SHIFT: 'Nhóm heading lệch cấp', PARENT: 'Đổi mục cha', PARENT_UNRESOLVED: 'Mục cha chưa xác định',
   BOUNDARY: 'Đổi ranh giới heading–nội dung', BOUNDARY_UNRESOLVED: 'Ranh giới chưa xác minh', BINDING: 'Đổi nguồn của heading',
   BINDING_UNRESOLVED: 'Nguồn chưa xác minh', ALIGNMENT_UNRESOLVED: 'Không ghép chắc đoạn (đoạn lặp)', UNBOUND_OLD: 'Heading cũ không gắn được vị trí',
   UNBOUND_NEW: 'Heading mới không gắn được vị trí', ON_CHANGED_TEXT: 'Heading trên đoạn đã sửa', SOURCE_CHANGED: 'Đoạn của heading cũ đã sửa/xóa',
@@ -637,11 +637,23 @@ function renderReview(documents) {
       const choicesHtml = !loc ? '<span class="note">chỉ để xem</span>'
         : x.newIsHeading ? `<label><input type="radio" name="${name}" value="HEADING"> Đúng là heading</label> <label><input type="radio" name="${name}" value="NOT_HEADING"> Không phải heading</label>`
         : `<label><input type="radio" name="${name}" value="NOT_HEADING"> Đúng: không phải heading</label>`;
-      const flags = [x.uncertain ? 'chưa chắc' : '', x.contextChanged ? 'văn bản quanh đó đổi' : '', x.oldApproved ? 'bản cũ đã duyệt' : ''].filter(Boolean);
+      const flags = [x.uncertain ? 'chưa chắc' : '', x.contextChanged ? 'văn bản quanh đó đổi' : '',
+        !x.contextEvidenceVerified ? 'chưa xác minh đủ ngữ cảnh' : '', x.oldApproved ? 'bản cũ đã duyệt' : ''].filter(Boolean);
       const ctx = x.context ? `<div class="note">${x.context.before ? '… ' + esc(x.context.before) + '<br>' : ''}<b>${esc(x.context.text)}</b>${x.context.after ? '<br>' + esc(x.context.after) + ' …' : ''}</div>` : '';
+      const showSpan = s => s ? `[${esc(s.start)}, ${esc(s.end)})` : 'chưa rõ';
+      const boundaries = x.kind.startsWith('BOUNDARY') ? `<div class="note">Heading: ${showSpan(x.oldHeadingSpan)} → ${showSpan(x.newHeadingSpan)}; nội dung cùng đoạn: ${showSpan(x.oldInlineBodySpan)} → ${showSpan(x.newInlineBodySpan)} (UTF-16)</div>` : '';
+      const children = (x.details ?? []).map((c, ci) => {
+        const childName = `${name}_${ci}`;
+        const childLoc = c.newLocation;
+        const childChoices = !childLoc ? '<span class="note">chỉ để xem</span>' : c.newIsHeading
+          ? `<label><input type="radio" name="${childName}" value="HEADING"> Đúng là heading</label> <label><input type="radio" name="${childName}" value="NOT_HEADING"> Không phải heading</label>`
+          : `<label><input type="radio" name="${childName}" value="NOT_HEADING"> Đúng: không phải heading</label>`;
+        return `<tr><td>${esc(c.oldText ?? '—')} <span class="lvl">${esc(c.oldLevel ?? '?')}</span></td><td>${esc(c.newText ?? '—')} <span class="lvl">${esc(c.newLevel ?? '?')}</span></td><td data-loc="${esc(childLoc ?? '')}" data-doc="${di}">${childChoices}</td></tr>`;
+      }).join('');
+      const details = children ? `<details><summary>Xem ${x.details.length} heading trong nhóm</summary><table><tr><th>Bản trước</th><th>Bản hiện tại</th><th>Kết luận từng heading</th></tr>${children}</table></details>` : '';
       return `<tr><td>${esc(KIND_LABEL[x.kind] ?? x.kind)}${flags.length ? '<br><span class="chip warn">' + esc(flags.join(' · ')) + '</span>' : ''}</td>
         <td>${esc(x.oldText ?? '—')}${x.oldLevel != null && x.kind !== 'LEVEL_SHIFT' ? ' <span class="lvl">' + x.oldLevel + '</span>' : ''}</td>
-        <td>${esc(x.newText ?? '—')}${x.newLevel != null ? ' <span class="lvl">' + (x.kind === 'LEVEL_SHIFT' && x.newLevel > 0 ? '+' : '') + x.newLevel + '</span>' : ''}${ctx}</td>
+        <td>${esc(x.newText ?? '—')}${x.newLevel != null ? ' <span class="lvl">' + (x.kind === 'LEVEL_SHIFT' && x.newLevel > 0 ? '+' : '') + x.newLevel + '</span>' : ''}${ctx}${boundaries}${details}</td>
         <td data-loc="${esc(loc ?? '')}" data-doc="${di}">${choicesHtml}</td></tr>`;
     }).join('');
     return `<details open><summary><b>${esc(d.file)}</b> · bản ${r.revision}${r.previousRevision ? ' so với bản ' + r.previousRevision : ' (chưa có bản trước)'} · trạng thái <b id="rvState${di}">${esc(r.state)}</b>
