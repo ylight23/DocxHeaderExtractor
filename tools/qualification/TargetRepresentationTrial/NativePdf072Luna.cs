@@ -107,6 +107,44 @@ internal static class NativePdf072Luna
         Console.WriteLine($"NATIVE_PDF072_COMPLETE duration={timer.Elapsed.TotalSeconds:0.0}s calls={bridge.Observations.Count} headings={run.Outline.Headings.Count}");
     }
 
+    /// <summary>The production DOCX text route behind the response bridge: the DOCX selector and placer are built from the options as
+    /// HeadingAgentSetup builds them; only the HTTP handler is the bridge. Every response is authored by the bridge responder.</summary>
+    internal static async Task RunDocx(string docxPath, string output)
+    {
+        if (Directory.Exists(output) && Directory.EnumerateFileSystemEntries(output).Any()) throw new InvalidOperationException("REFUSE_OVERWRITING_TRIAL");
+        Directory.CreateDirectory(output);
+        var options = new PipelineOptions { SourceCacheRoot = Path.Combine(output, "source-cache") };
+        var bridge = new LunaSseBridge(output, null);
+        var selector = new DocxSelector(handlerFactory: () => new LunaHttpHandler(bridge), extraction: options.Extraction);
+        var placer = new HeadingPlacer(request => bridge.Turn(request, "HIERARCHY_PLACE"), wholeDocument: options.WholeDocumentPlacement,
+            repairParentChains: options.PdfRepairParentChains || options.RepairParentChains);
+        var file = UploadedFile.FromLocalPath(docxPath);
+        var timer = System.Diagnostics.Stopwatch.StartNew();
+        RunResult run;
+        try
+        {
+            run = await new DocxHeaderExtractor.DocumentProcessing.Intake.DocxHandler(
+                new DocxHeaderExtractor.DocumentProcessing.Lanes.Docx.DocxPipeline(options, new LunaRouteProvider(), new HeadingAgents(Docx: selector, Placer: placer)))
+                .ExtractAsync(file);
+        }
+        catch (Exception ex)
+        {
+            bridge.SaveLog();
+            Save(Path.Combine(output, "bridge-error.json"), new { type = ex.GetType().FullName, ex.Message, stack = ex.StackTrace });
+            throw;
+        }
+        timer.Stop();
+        bridge.SaveLog();
+        Save(Path.Combine(output, "native-run-result.json"), run);
+        Save(Path.Combine(output, "run-identity.json"), new
+        {
+            mode = "docx-production-bridge", docxPath, sourceSha256 = file.Sha256, selector = new { selector.SelectorId },
+            placer = new { placer.Contract }, goldInRequests = false, durationSeconds = timer.Elapsed.TotalSeconds,
+            bridgeCalls = bridge.Observations, headings = run.Outline.Headings.Count,
+            note = "Every response body was authored by the bridge responder; the bridge only translated the transport envelope.",
+        });
+    }
+
     /// <summary>The production PDF profile (PipelineOptions defaults; optionally cropped page images) behind the response bridge. The selector
     /// and placer are built from the options exactly as HeadingAgentSetup builds them; only the HTTP handler is the bridge.</summary>
     internal static async Task RunProduction(string pdfPath, string output, bool crop, string? replayDir = null, bool bilevel = false)

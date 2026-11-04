@@ -42,6 +42,7 @@ public sealed class AgentWireGoldenTests
         ["pdf.instructionFormattingEvidenceV2"] = Sha(AgentProtocol.InstructionFormattingEvidenceV2),
         ["docx.system"] = Sha(DocxAgentProtocol.SystemPrompt),
         ["docx.instruction"] = Sha(DocxAgentProtocol.Instruction),
+        ["docx.groupingInstruction"] = Sha(DocxHeaderExtractor.HeadingAgent.Selectors.DocxSelector.DefaultGroupingInstruction(DocxAgentProtocol.Instruction)),
         ["scan.system"] = Sha(ScanAgentProtocol.SystemPrompt),
         ["scan.instruction"] = Sha(ScanAgentProtocol.Instruction),
         ["scan.placementNote"] = Sha(ScanAgentProtocol.PlacementNote),

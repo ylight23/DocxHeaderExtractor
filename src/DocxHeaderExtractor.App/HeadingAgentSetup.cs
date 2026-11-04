@@ -48,7 +48,8 @@ public static class HeadingAgentSetup
             transcriptionOptions: options.ScanJobs is { } jobs ? new ScanTranscriptionPreflight.Options(Parallelism: jobs) : null,
             visionOptions: options.ScanJobs is { } seeJobs ? new ScanVisionPreflight.Options(MaxReadingsPerPage: 0, Parallelism: seeJobs) : null);
         var docx = provider.Create<IHeadingSelector>(AgentRoles.DocxSelector) ?? new DocxSelector(onModelReply: onModelReply, extraction: options.Extraction,
-            boundarySnapParagraphs: options.DocxBoundarySnapParagraphs);
+            boundarySnapParagraphs: options.DocxBoundarySnapParagraphs,
+            selectionCacheRoot: options.DocxReuseSelection ? options.DocxSelectionCacheRoot : null);
         var sharedPolicy = ResourcePolicyFor(options);
         var pdfPolicy = options.PdfAdaptiveVisualSelection && options.PdfVisualSelectionMaxRequestBytes is { } visualCap
             ? sharedPolicy with { MaxRequestBytes = visualCap }

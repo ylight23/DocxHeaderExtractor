@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.HeadingAgent.Scan;
 using DocxHeaderExtractor.HeadingAgent.Grouping;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
 
 namespace DocxHeaderExtractor.HeadingAgent.Protocol;
 
@@ -7,14 +8,18 @@ namespace DocxHeaderExtractor.HeadingAgent.Protocol;
 /// <param name="Instruction">The user instruction the run sends.</param>
 /// <param name="SystemPrompt">The system prompt of the route's agent.</param>
 /// <param name="GroupPrompt">The grouping prompt the route sends after selection (both routes divide their selected lines into headings).</param>
-public sealed record RoutePrompts(string Instruction, string SystemPrompt, string? GroupPrompt);
+public sealed record RoutePrompts(string Instruction, string SystemPrompt, string? GroupPrompt)
+{
+    public string? GroupInstruction { get; init; }
+}
 
 /// <summary>Public view of the prompts the PDF and DOCX routes send. The protocol classes stay internal.</summary>
 public static class PromptCatalog
 {
     public static RoutePrompts Pdf { get; } = new(PdfAgentProtocol.Instruction, PdfAgentProtocol.SystemPrompt, GroupingPrompts.Pdf);
 
-    public static RoutePrompts Docx { get; } = new(DocxAgentProtocol.Instruction, DocxAgentProtocol.SystemPrompt, GroupingPrompts.Docx);
+    public static RoutePrompts Docx { get; } = new(DocxAgentProtocol.Instruction, DocxAgentProtocol.SystemPrompt, GroupingPrompts.Docx)
+        { GroupInstruction = DocxSelector.DefaultGroupingInstruction(DocxAgentProtocol.Instruction) };
 
     public static RoutePrompts Scan { get; } = new(ScanAgentProtocol.Instruction, ScanAgentProtocol.SystemPrompt, ScanFormat.Instance.GroupPrompt);
 }

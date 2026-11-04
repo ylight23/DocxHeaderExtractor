@@ -167,6 +167,16 @@ internal static partial class AgentProtocol
     public static SelectReply ParseSelect(string reply, IReadOnlyDictionary<string, int> shownOrder, IReadOnlyList<string> decide,
         string version = SelectObjectsVersion, IReadOnlyDictionary<string, string>? targetTexts = null,
         IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>>? readings = null)
+        => ParseSelectCore(reply, shownOrder, decide, version, targetTexts, readings, false);
+
+    internal static SelectReply ParseSelectWithExtentDiagnostics(string reply, IReadOnlyDictionary<string, int> shownOrder,
+        IReadOnlyList<string> decide, string version, IReadOnlyDictionary<string, string>? targetTexts,
+        IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>>? readings)
+        => ParseSelectCore(reply, shownOrder, decide, version, targetTexts, readings, true);
+
+    static SelectReply ParseSelectCore(string reply, IReadOnlyDictionary<string, int> shownOrder, IReadOnlyList<string> decide,
+        string version, IReadOnlyDictionary<string, string>? targetTexts,
+        IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>>? readings, bool collectExtentErrors)
     {
         SelectReply Fail(string code, IReadOnlyList<string>? missing = null, string? detail = null) =>
             new(false, code, null, new Dictionary<string, string>(), null, null, missing ?? Array.Empty<string>(), Detail: detail);
@@ -226,6 +236,7 @@ internal static partial class AgentProtocol
             var refsByAlias = new Dictionary<string, IReadOnlyList<string>>(StringComparer.Ordinal);
             var reasons = new Dictionary<string, string>(StringComparer.Ordinal);
             var extents = new Dictionary<string, HeadingExtent>(StringComparer.Ordinal);
+            var extentErrors = new List<(string Code, string Detail)>();
             var readingChoices = new Dictionary<string, string>(StringComparer.Ordinal);
             var sourceBound = version == SourceBoundSelection.Version;
             if (!root.TryGetProperty("decisions", out var ds) || ds.ValueKind != JsonValueKind.Array) return Fail("DECISIONS_MISSING");
@@ -279,11 +290,23 @@ internal static partial class AgentProtocol
                     if (readingView is not null) targetText = readings![alias][readingView];
                     else if (!targetTexts!.TryGetValue(alias, out targetText)) return Fail("UNEXPECTED_ALIAS");
                     var (extent, code, detail) = ReadExtent(he, targetText);
-                    if (extent is null) return Fail(code!, detail: alias + ": " + detail);
-                    extents[alias] = extent;
+                    if (extent is null)
+                    {
+                        if (!collectExtentErrors) return Fail(code!, detail: alias + ": " + detail);
+                        extentErrors.Add((code!, alias + ": " + detail));
+                    }
+                    else extents[alias] = extent;
                 }
                 if (!values.TryAdd(alias, value!)) return Fail("ALIAS_LISTED_TWICE");
                 refsByAlias[alias] = (IReadOnlyList<string>?)refs ?? Array.Empty<string>();
+            }
+            if (extentErrors.Count > 0)
+            {
+                const int maxReported = 24;
+                var messages = extentErrors.Take(maxReported).Select(e => e.Code + ": "
+                    + (e.Detail.Length > 600 ? e.Detail[..600] + "…" : e.Detail));
+                var suffix = extentErrors.Count > maxReported ? "\nAdditional extent errors: " + (extentErrors.Count - maxReported) : "";
+                return Fail(extentErrors[0].Code, detail: "Invalid heading extents (" + extentErrors.Count + "):\n" + string.Join("\n", messages) + suffix);
             }
             var missing = decide.Where(a => !values.ContainsKey(a)).ToArray();
             if (missing.Length > 0) return Fail("COVERAGE_INCOMPLETE", missing);

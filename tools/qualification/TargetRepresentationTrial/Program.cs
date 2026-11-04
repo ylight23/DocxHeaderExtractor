@@ -90,6 +90,11 @@ if (args.Length == 5 && args[2] == "production-bridge-replay")
     await NativePdf072Luna.RunProduction(Path.GetFullPath(args[0]), Path.GetFullPath(args[1]), crop: args[3] == "crop", replayDir: Path.GetFullPath(args[4]));
     return;
 }
+if (args.Length == 3 && args[2] == "docx-bridge")
+{
+    await NativePdf072Luna.RunDocx(Path.GetFullPath(args[0]), Path.GetFullPath(args[1]));
+    return;
+}
 if (args.Length == 4 && args[2] == "production-bridge")
 {
     await NativePdf072Luna.RunProduction(Path.GetFullPath(args[0]), Path.GetFullPath(args[1]), crop: args[3] == "crop", bilevel: args[3] == "bilevel");

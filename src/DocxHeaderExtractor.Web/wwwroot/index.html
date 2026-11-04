@@ -193,6 +193,7 @@
         </h2>
         <div class="checks">
           <label><input type="checkbox" id="noLlm"> Không gọi mô hình (chỉ đọc nguồn, không tự nhận tiêu đề)</label>
+          <label><input type="checkbox" id="docxReuseSelection"> Dùng lại SELECT/GROUP của file Word không đổi (PLACE vẫn chạy lại)</label>
           <label><input type="checkbox" id="writeback"> Ghi outline vào bản sao .docx để tải về</label>
           <label><input type="checkbox" id="showRaw"> Hiện phản hồi của mô hình (debug)</label>
         </div>
@@ -245,6 +246,7 @@
         <section class="panel hidden" id="pipelineV2" aria-label="Kết quả pipeline đã kiểm tra">
           <h2>Cấu trúc tiêu đề — đã kiểm tra nguồn</h2>
           <p id="v2Summary" aria-live="polite"></p>
+          <p id="v2Evaluation" aria-live="polite"></p>
           <div class="v2-grid"><div id="v2Tree"></div><aside id="v2Inspector"></aside></div>
           <h3>Các bước thực thi</h3><ol id="v2Stages"></ol>
           <details><summary>Nhật ký kiểm tra và nguồn gốc (an toàn để chia sẻ)</summary><div id="v2PlacementDiagnostics"></div><pre id="v2Diagnostics"></pre></details>
@@ -309,7 +311,9 @@ function renderPrompt() {
   });
   if (promptKind === 'groupPrompt' && prompts && !prompts[promptRoute]?.groupPrompt) promptKind = 'instruction';
   if (!prompts) return;
-  const text = prompts[promptRoute]?.[promptKind];
+  let text = prompts[promptRoute]?.[promptKind];
+  if (promptKind === 'groupPrompt' && prompts[promptRoute]?.groupInstruction)
+    text += '\n\n--- Instruction gửi trong GROUP ---\n' + prompts[promptRoute].groupInstruction;
   $('promptText').textContent = text || '(không có nội dung)';
 }
 document.querySelectorAll('[data-route]').forEach(b => b.onclick = () => { promptRoute = b.dataset.route; renderPrompt(); });
@@ -373,8 +377,18 @@ function handleStreamEvent(evt) {
     outline = evt.outline;
     render(evt.outline, evt.stats, evt.agent);
     window.WebPipelineV2.render(evt.pipeline);
+    renderEvaluation(evt.evaluation);
     showMain('results');
   }
+}
+
+// Đối chiếu nội bộ với Gold: chỉ có khi máy chủ đặt DHX_GOLD_ROOT và có Gold khớp file đã tải lên.
+function renderEvaluation(ev) {
+  const el = $('v2Evaluation');
+  if (!ev) { el.textContent = ''; return; }
+  const pct = v => (v === null || v === undefined) ? '—' : (100 * v).toFixed(1) + '%';
+  el.textContent = `Đối chiếu Gold ${ev.goldDocument} (nội bộ): TP ${ev.truePositive} · FP ${ev.falsePositive} · FN ${ev.falseNegative} · ` +
+    `Precision ${pct(ev.precision)} · Recall ${pct(ev.recall)} · F1 ${pct(ev.f1)}`;
 }
 
 function showError(msg) {
@@ -504,6 +518,7 @@ $('run').onclick = async () => {
   const fd = new FormData();
   fd.append('file', picked);
   fd.append('noLlm', $('noLlm').checked ? '1' : '0');
+  fd.append('docxReuseSelection', $('docxReuseSelection').checked ? '1' : '0');
   fd.append('writeback', $('writeback').checked ? '1' : '0');
   fd.append('showRaw', $('showRaw').checked ? '1' : '0');
 

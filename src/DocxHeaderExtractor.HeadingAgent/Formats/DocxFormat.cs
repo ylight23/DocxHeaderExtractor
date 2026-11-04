@@ -24,7 +24,35 @@ internal sealed class DocxFormat : IAgentFormat
     public string AnswerVersion => AgentProtocol.SelectExtentVersion;
     public bool HeadingExtents => true;
     public bool RequiresCoreFacts => true;
-    public JsonArray? PayloadFacts(IAgentSource source, IReadOnlyList<string> targets) => AgentRequestFacts.Read(source, targets);
+    public JsonArray? PayloadFacts(IAgentSource source, IReadOnlyList<string> targets)
+    {
+        var facts = AgentRequestFacts.Read(source, targets);
+        if (source is not DocxAgentSource docx || !(docx.QualificationFormatBoundaryEvidence || docx.QualificationFormatRunEvidence)) return facts;
+        var textByAlias = docx.Lines.ToDictionary(l => l.Alias, l => l.Text, StringComparer.Ordinal);
+        foreach (var item in facts.OfType<JsonObject>())
+        {
+            var alias = item["alias"]?.GetValue<string>();
+            if (alias is null || !docx.Facts.TryGetValue(alias, out var full) || full["text"]?["formatRuns"] is not JsonArray runs || runs.Count < 2) continue;
+            if (docx.QualificationFormatRunEvidence && item["text"] is JsonObject runFacts)
+            {
+                runFacts["formatRuns"] = runs.DeepClone();
+                if (full["text"]?["formatRunsNotShown"] is { } omitted) runFacts["formatRunsNotShown"] = omitted.DeepClone();
+            }
+            if (!docx.QualificationFormatBoundaryEvidence) continue;
+            var boundaries = new JsonArray();
+            for (var i = 1; i < runs.Count; i++)
+            {
+                var left = runs[i - 1]!["end"]!.GetValue<int>();
+                var right = runs[i]!["start"]!.GetValue<int>();
+                var text = textByAlias[alias];
+                if (left < 0 || right < left || right > text.Length) continue;
+                boundaries.Add(new JsonObject { ["precedingNonWhitespaceEnd"] = left, ["followingNonWhitespaceStart"] = right,
+                    ["gapIsWhitespace"] = text[left..right].All(char.IsWhiteSpace) });
+            }
+            if (boundaries.Count > 0 && item["text"] is JsonObject textFacts) textFacts["formatBoundaries"] = boundaries;
+        }
+        return facts;
+    }
     public JsonArray ToolDefinitions() => DocxAgentTools.Definitions();
     public IAgentTools CreateTools(IAgentSource source) => new DocxAgentTools((DocxAgentSource)source);
     public object PayloadItem(AgentSourceLine line) => new { alias = line.Alias, text = line.Text };

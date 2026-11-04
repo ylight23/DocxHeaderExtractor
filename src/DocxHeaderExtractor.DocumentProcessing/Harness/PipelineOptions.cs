@@ -26,6 +26,9 @@ public sealed class PipelineOptions
 
     /// <summary>Qualification-only DOCX packing experiment: snap a fixed-window cut backward to an observed OOXML page/section boundary within this radius. Zero preserves production packing.</summary>
     public int DocxBoundarySnapParagraphs { get; set; }
+    /// <summary>Opt in to reuse of complete DOCX selection/grouping responses for the exact same source and request; placement remains live.</summary>
+    public bool DocxReuseSelection { get; set; }
+    public string DocxSelectionCacheRoot { get; set; } = ".dhx-evidence/docx";
 
     /// <summary>One extraction's provider ceiling across every stage, including transport retries and unknown billing.</summary>
     public double MaxProviderCostUsd { get; set; } = 5.0;

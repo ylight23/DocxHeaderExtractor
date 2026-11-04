@@ -59,5 +59,6 @@ public sealed class DocxInstructionTests
     {
         Assert.Equal(GroupingPrompts.Pdf, PromptCatalog.Pdf.GroupPrompt);
         Assert.Equal(GroupingPrompts.Docx, PromptCatalog.Docx.GroupPrompt);
+        Assert.Equal(DocxHeaderExtractor.HeadingAgent.Selectors.DocxSelector.DefaultGroupingInstruction(DocxAgentProtocol.Instruction), PromptCatalog.Docx.GroupInstruction);
     }
 }

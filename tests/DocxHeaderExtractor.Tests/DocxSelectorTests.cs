@@ -24,6 +24,45 @@ public sealed class DocxSelectorTests : IDisposable
     private string Long() => DocxTestDocument.CreateLong(Path.Combine(dir, "long.docx"), 100);
 
     [Fact]
+    public async Task Opt_in_cache_reuses_selection_and_grouping_only_for_the_same_file_and_request()
+    {
+        var path = Long();
+        var cacheRoot = Path.Combine(dir, "cache");
+        var handlers = new List<FakeOpenRouter>();
+        FakeOpenRouter NewHandler()
+        {
+            var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTwoTargetsThenGroup);
+            handlers.Add(handler);
+            return handler;
+        }
+        var selector = new DocxSelector(NewHandler, parallelism: 1, selectionCacheRoot: cacheRoot);
+        var first = await selector.SelectAsync(path, "sk-test", CancellationToken.None);
+        Assert.True(handlers[^1].Posts > 0);
+        var second = await selector.SelectAsync(path, "sk-test", CancellationToken.None);
+        Assert.Equal(0, handlers[^1].Posts);
+        Assert.Equal(first.SelectedAliases.Order(), second.SelectedAliases.Order());
+        Assert.Equal(first.Groups!.Select(g => string.Join(",", g)), second.Groups!.Select(g => string.Join(",", g)));
+
+        foreach (var file in Directory.GetFiles(cacheRoot, "*.json", SearchOption.AllDirectories)) File.WriteAllText(file, "invalid");
+        await selector.SelectAsync(path, "sk-test", CancellationToken.None);
+        Assert.True(handlers[^1].Posts > 0);
+
+        using (var doc = DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(path, true))
+        {
+            doc.MainDocumentPart!.Document!.Body!.AppendChild(new DocumentFormat.OpenXml.Wordprocessing.Paragraph(
+                new DocumentFormat.OpenXml.Wordprocessing.Run(new DocumentFormat.OpenXml.Wordprocessing.Text("New content"))));
+            doc.MainDocumentPart.Document.Save();
+        }
+        await selector.SelectAsync(path, "sk-test", CancellationToken.None);
+        Assert.True(handlers[^1].Posts > 0);
+
+        var changedInstruction = new DocxSelector(NewHandler, parallelism: 1,
+            instruction: DocxAgentProtocol.Instruction + " ", selectionCacheRoot: cacheRoot);
+        await changedInstruction.SelectAsync(path, "sk-test", CancellationToken.None);
+        Assert.True(handlers[^1].Posts > 0);
+    }
+
+    [Fact]
     public async Task Every_window_reads_its_facts_then_answers_and_the_request_is_the_docx_one()
     {
         var path = Long();
@@ -78,6 +117,12 @@ public sealed class DocxSelectorTests : IDisposable
         // The group request carries the DOCX grouping prompt, and its lines carry a style and no page.
         var group = handler.Bodies.Single(b => b["messages"]![1]!["content"]!.Text().Contains("\"stage\":\"GROUP\"", StringComparison.Ordinal) && !FakeOpenRouter.IsVerification(b));
         Assert.Equal(DocxFormat.Instance.GroupPrompt, group["messages"]![0]!["content"]!.Text());
+        var groupPayload = System.Text.Json.Nodes.JsonNode.Parse(group["messages"]![1]!["content"]!.Text())!;
+        Assert.Equal(DocxSelector.DefaultGroupingInstruction(DocxAgentProtocol.Instruction), groupPayload["instruction"]!.GetValue<string>());
+        Assert.Contains(DocxAgentProtocol.GroupingBoundaryGuidance, groupPayload["instruction"]!.GetValue<string>(), StringComparison.Ordinal);
+        var firstSelection = handler.Bodies.First(b => b["messages"]![1]!["content"]!.Text().Contains("\"stage\":\"SEGMENT\"", StringComparison.Ordinal));
+        var selectionPayload = System.Text.Json.Nodes.JsonNode.Parse(firstSelection["messages"]![1]!["content"]!.Text())!;
+        Assert.Equal(DocxAgentProtocol.Instruction, selectionPayload["instruction"]!.GetValue<string>());
         Assert.Contains("\"style\"", group["messages"]![1]!["content"]!.Text(), StringComparison.Ordinal);
         Assert.DoesNotContain("\"page\"", group["messages"]![1]!["content"]!.Text(), StringComparison.Ordinal);
     }

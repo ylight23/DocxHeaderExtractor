@@ -66,6 +66,30 @@ public sealed class HeadingExtentTests : IDisposable
     // ---------------- the answer contract ----------------
 
     [Fact]
+    public void Qualification_repair_reports_all_invalid_extents_without_accepting_or_moving_them()
+    {
+        var shown = new Dictionary<string, int> { ["L1"] = 0, ["L2"] = 1 };
+        var texts = new Dictionary<string, string> { ["L1"] = Text, ["L2"] = Text };
+        string Reply(int end) => JsonSerializer.Serialize(new
+        {
+            protocolVersion = AgentProtocol.SelectExtentVersion, status = "COMPLETE",
+            decisions = new[] { "L1", "L2" }.Select(alias => new { alias, decision = "SELECT",
+                evidenceRefs = new[] { alias }, headingExtent = new { start = 0, end, text = Heading } })
+        });
+        var normal = AgentProtocol.ParseSelect(Reply(Heading.Length + 1), shown, ["L1", "L2"], AgentProtocol.SelectExtentVersion, texts);
+        var diagnostic = AgentProtocol.ParseSelectWithExtentDiagnostics(Reply(Heading.Length + 1), shown, ["L1", "L2"], AgentProtocol.SelectExtentVersion, texts, null);
+        Assert.False(normal.Ok);
+        Assert.False(diagnostic.Ok);
+        Assert.Equal(normal.Failure, diagnostic.Failure);
+        Assert.Contains("L1:", diagnostic.Detail);
+        Assert.Contains("L2:", diagnostic.Detail);
+        Assert.DoesNotContain("L2:", normal.Detail);
+        var fixedReply = AgentProtocol.ParseSelectWithExtentDiagnostics(Reply(Heading.Length), shown, ["L1", "L2"], AgentProtocol.SelectExtentVersion, texts, null);
+        Assert.True(fixedReply.Ok);
+        Assert.Equal(2, fixedReply.Extents!.Count);
+    }
+
+    [Fact]
     public void An_extent_whose_text_is_the_target_text_at_its_offsets_is_taken_as_given()
     {
         var reply = AgentProtocol.ParseSelect(Answer("L1", new { start = 0, end = Heading.Length, text = Heading }), Shown, ["L1"], AgentProtocol.SelectExtentVersion, Texts);

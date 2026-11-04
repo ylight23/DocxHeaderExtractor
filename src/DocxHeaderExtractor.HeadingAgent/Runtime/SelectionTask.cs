@@ -108,7 +108,9 @@ internal sealed class SelectionTask : IConversationTask<AgentUnitOutcome>
         var observed = shownAliases.Concat(tools.ObservedAliases).Distinct(StringComparer.Ordinal).ToDictionary(a => a, tools.PositionOf, StringComparer.Ordinal);
         var content = reply.Content ?? "";
         if (TryUnwrapFence(content, out var inner)) { content = inner; fenceUnwrapped = true; }
-        var parsed = ParseSelect(content, observed, ordered, flavor.AnswerVersion, targetTexts, readings);
+        var parsed = source is DocxAgentSource { QualificationBatchExtentErrors: true }
+            ? ParseSelectWithExtentDiagnostics(content, observed, ordered, flavor.AnswerVersion, targetTexts, readings)
+            : ParseSelect(content, observed, ordered, flavor.AnswerVersion, targetTexts, readings);
         if (!parsed.Ok) return new Verdict<AgentUnitOutcome>.Repair("PROTOCOL:" + parsed.Failure, parsed.Missing, parsed.Detail);
         state.Budget.NoteContract(true);
         if (parsed.Status == "CLARIFICATION_REQUIRED")

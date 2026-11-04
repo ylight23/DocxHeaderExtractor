@@ -15,6 +15,18 @@ Production now follows:
    incomplete protocol/transport results remain unresolved after bounded repair and do not rewrite
    selection membership.
 
+## DOCX GROUP boundary guidance — 2026-11-04
+
+The default DOCX selector sends the existing selection instruction plus generic boundary guidance
+in the GROUP payload's `instruction`. The GROUP system prompt, SELECT request/instruction and
+response schema remain unchanged. The guidance asks the model to join selected parts that name the
+same unit, separate headings that introduce their own content, and still allow a label and title to
+form one heading. No heading-name split rule or semantic verification is added. `SelectorId`
+includes `group-boundary-guidance-v1`; the grouping cache key includes the updated request.
+The read-only web prompt panel displays both the GROUP system prompt and its payload instruction.
+See [the production change record](../qualification/docx-production-update-20261104.md) for the
+fixed-selection Qwen results, cache implications, and remaining PLACE/selection limitations.
+
 DOCX and native PDF grouping receive the selected heading span, rather than treating the entire source line as the
 boundary target: `text` and `selectedText` contain the selected substring; `headingExtent` gives its
 UTF-16 offsets in the original `sourceText`, which is context only. Without an extent the whole

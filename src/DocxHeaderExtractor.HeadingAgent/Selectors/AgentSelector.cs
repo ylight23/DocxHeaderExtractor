@@ -82,6 +82,8 @@ public abstract class AgentSelector : IHeadingSelector
     private protected virtual TimeSpan? RequestTimeout => null;
     /// <summary>Whether this route must fail instead of returning a partial selection.</summary>
     private protected virtual bool RequireCompleteRun => false;
+    /// <summary>Optional route-specific store for exact-source selection and grouping reuse.</summary>
+    private protected virtual string? SelectionCacheRoot => null;
 
     private protected string InstructionText => instruction;
 
@@ -96,6 +98,8 @@ public abstract class AgentSelector : IHeadingSelector
             using var handler = handlerFactory();
             using var model = new AgentModel(handler, apiKey, budget, timeout: RequestTimeout, cancellationToken: ct, rateLimitRetries: AgentModel.ProductionRateLimitRetries);
             var selection = Select(source, Traced(model), budget, parallelism, ct, retryDelayMs: 5000, costOf: () => budget.ActualUsd, instruction, firstSegments,
+                cache: SelectionCacheRoot is { } root ? new SelectionCache(Path.Combine(root, "selection")) : null,
+                groupingCache: SelectionCacheRoot is { } groupingRoot ? new GroupingCache(Path.Combine(groupingRoot, "grouping")) : null,
                 boundaryReview: BoundaryReviewEnabled, groupingInstruction: GroupingInstruction, pairwisePdfGrouping: PairwisePdfGrouping,
                 generalPdfBoundaryPrompt: GeneralPdfBoundaryPrompt, unitSelection: UnitSelectionEnabled, shapeReview: ShapeReviewEnabled);
             if (RequireCompleteRun && (selection.UnitsComplete != selection.UnitsTotal || selection.UnitFailures.Count > 0))

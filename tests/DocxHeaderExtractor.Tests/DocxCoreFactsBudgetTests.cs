@@ -195,6 +195,47 @@ public sealed class DocxCoreFactsBudgetTests(ITestOutputHelper output) : IDispos
     // ---------------- what compact facts keep and what moves to detail ----------------
 
     [Fact]
+    public void Qualification_format_runs_preserve_measured_properties_and_leave_default_unchanged()
+    {
+        var path = Build("format-runs", [() => new Paragraph(R("Title", bold: true), R(" body"))]);
+        var source = DocxAgentSource.Load(path, null, out _)!;
+        var aliases = source.Lines.Select(l => l.Alias).ToArray();
+        var standard = DocxFormat.Instance.PayloadFacts(source, aliases)!.ToJsonString();
+        source.QualificationFormatRunEvidence = true;
+        var actual = DocxFormat.Instance.PayloadFacts(source, aliases)![0]!["text"]!["formatRuns"]!.AsArray();
+        Assert.Equal(2, actual.Count);
+        Assert.True(actual[0]!["bold"]!.GetValue<bool>());
+        Assert.False(actual[1]!["bold"]!.GetValue<bool>());
+        Assert.Equal(5, actual[0]!["end"]!.GetValue<int>());
+        Assert.Equal(6, actual[1]!["start"]!.GetValue<int>());
+        source.QualificationFormatRunEvidence = false;
+        Assert.Equal(standard, DocxFormat.Instance.PayloadFacts(source, aliases)!.ToJsonString());
+    }
+
+    [Fact]
+    public void Qualification_boundaries_show_both_ends_of_whitespace_gaps_without_changing_default_facts()
+    {
+        var path = Build("format-gaps", [() => new Paragraph(R("Title", bold: true), R("  body")),
+            () => new Paragraph(R("Next", bold: true), R("body"))]);
+        var source = DocxAgentSource.Load(path, null, out _)!;
+        var aliases = source.Lines.Select(l => l.Alias).ToArray();
+        var standard = DocxFormat.Instance.PayloadFacts(source, aliases)!;
+        Assert.Null(standard[0]!["text"]!["formatBoundaries"]);
+        source.QualificationFormatBoundaryEvidence = true;
+        var candidate = DocxFormat.Instance.PayloadFacts(source, aliases)!;
+        var spaced = candidate[0]!["text"]!["formatBoundaries"]![0]!;
+        Assert.Equal(5, spaced["precedingNonWhitespaceEnd"]!.GetValue<int>());
+        Assert.Equal("Title body", source.Lines[0].Text);
+        Assert.Equal(6, spaced["followingNonWhitespaceStart"]!.GetValue<int>());
+        Assert.True(spaced["gapIsWhitespace"]!.GetValue<bool>());
+        var joined = candidate[1]!["text"]!["formatBoundaries"]![0]!;
+        Assert.Equal(4, joined["precedingNonWhitespaceEnd"]!.GetValue<int>());
+        Assert.Equal(4, joined["followingNonWhitespaceStart"]!.GetValue<int>());
+        source.QualificationFormatBoundaryEvidence = false;
+        Assert.Equal(standard.ToJsonString(), DocxFormat.Instance.PayloadFacts(source, aliases)!.ToJsonString());
+    }
+
+    [Fact]
     public void A_paragraph_with_breaks_and_formats_is_summarised_in_line_facts_and_complete_in_the_span_record()
     {
         var path = Build("detail", [() => Plain("Intro"), () => Heavy(1, 600, breaks: 12, runs: 16), () => Plain("Intro")]);

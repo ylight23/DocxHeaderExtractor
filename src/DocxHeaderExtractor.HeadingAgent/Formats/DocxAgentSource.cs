@@ -69,6 +69,10 @@ internal sealed class DocxAgentSource : IAgentSource
     /// <summary>The paragraphs as the agent's conversation reads them: alias, order and text; a paragraph has no page, box or typography.</summary>
     public IReadOnlyList<AgentSourceLine> Lines { get; }
     public IAgentFormat Flavor => DocxFormat.Instance;
+    /// <summary>Qualification-only: expose the whitespace gap between measured formatting stretches.</summary>
+    public bool QualificationFormatBoundaryEvidence { get; set; }
+    public bool QualificationFormatRunEvidence { get; set; }
+    public bool QualificationBatchExtentErrors { get; set; }
     public RequestPolicy ResourcePolicy { get; }
     /// <summary>The decided range of each segment, [Start, End) into <see cref="Lines"/>, covering every paragraph once.</summary>
     public IReadOnlyList<(int Start, int End)> Cores { get; }

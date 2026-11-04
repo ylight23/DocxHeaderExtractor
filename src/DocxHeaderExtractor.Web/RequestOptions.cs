@@ -10,7 +10,7 @@ public static class RequestOptions
     public static PipelineOptions Build(IFormCollection form, IModelProvider provider, out string? problem)
     {
         problem = null;
-        var o = new PipelineOptions { DisableLlm = Flag(form, "noLlm") };
+        var o = new PipelineOptions { DisableLlm = Flag(form, "noLlm"), DocxReuseSelection = Flag(form, "docxReuseSelection") };
         if (!o.DisableLlm && string.IsNullOrWhiteSpace(provider.CreateRoute().ApiKey))
             problem = "OpenRouter chưa được cấu hình OPENROUTER_API_KEY trên server. Bật Không gọi mô hình để chỉ đọc nguồn.";
         return o;
