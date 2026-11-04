@@ -1,0 +1,9 @@
+{
+  "baselineInstructionSha256": "17d4b6a950b2d940cf2112170a5efb83df22aa508f8a6920e796d1326d85bdd2",
+  "candidateInstructionSha256": "580aa894b0212182c4dcda247fabf54b0f93fe88fdfa1b0abff06176aae0f62a",
+  "trimOnlyInstructionSha256": "da1a876dd94a9c85e426904982417c5635e56aa9b6244c1a5ec2172ed69b3a35",
+  "addition": "Formatting evidence formatBoundaries gives the end of the preceding non-whitespace formatting stretch and the start of the following non-whitespace stretch; the gap between them may contain whitespace. These are measurements, not required heading boundaries. Decide the extent from the source and its context. A headingExtent must not begin or end with whitespace. Its text must be the exact source substring at its UTF-16 start and exclusive end; do not include a whitespace gap at the boundary.",
+  "trimOnly": "For each headingExtent, the text must be the exact source substring at its UTF-16 start and exclusive end, and must not begin or end with whitespace. Decide the extent yourself from the source and context.",
+  "mode": "docx-format-runs-ab",
+  "note": "GROUP and PLACE remain baseline; instruction-only references a field intentionally absent, trim-only does not."
+}

@@ -1,0 +1,732 @@
+[
+  {
+    "document": "074",
+    "sourceSha256": "79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+    "controlSeconds": 60.3855326,
+    "candidateSeconds": 49.2929757,
+    "controlHeadings": 3,
+    "candidateHeadings": 2,
+    "changedDecisions": [
+      {
+        "alias": "S0010",
+        "sourceId": "body[1]/p[12]",
+        "text": "Governance/Voting Rights. The Governing Committee discussed and agreed in principle to language intended to seek resolution of the governance issues in a manner consistent with the fundamental principles of creating a FIF which is open to all World Bank members, treats them equitably, and is consistent with the multilateral approach to FIFs and development finance, while still meeting the needs of the original contributors to the F.O.R.T.I.S Ukraine FIF. The Meeting agreed that the Interim Secretariat would modify the relevant language in the Operations Manual and reflect the changes in the Governance Framework. With this agreement, the GC provisionally approved the full set of documents to establish the F.O.R.T.I.S. Ukraine FIF.",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 25,
+          "text": "Governance/Voting Rights."
+        },
+        "candidateExtent": null
+      }
+    ],
+    "decisions": [
+      {
+        "alias": "S0001",
+        "sourceId": "body[1]/p[1]",
+        "text": "Minutes from November 27, 2024 Meeting Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+        "control": "SELECT",
+        "candidate": "SELECT",
+        "controlExtent": null,
+        "candidateExtent": {
+          "start": 0,
+          "end": 186,
+          "text": "Minutes from November 27, 2024 Meeting Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)"
+        }
+      },
+      {
+        "alias": "S0002",
+        "sourceId": "body[1]/p[3]",
+        "text": "Opening:",
+        "control": "SELECT",
+        "candidate": "SELECT",
+        "controlExtent": null,
+        "candidateExtent": {
+          "start": 0,
+          "end": 8,
+          "text": "Opening:"
+        }
+      },
+      {
+        "alias": "S0003",
+        "sourceId": "body[1]/p[4]",
+        "text": "The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, with participants joining remotely.",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0004",
+        "sourceId": "body[1]/p[5]",
+        "text": "Present:",
+        "control": "SELECT",
+        "candidate": "SELECT",
+        "controlExtent": null,
+        "candidateExtent": {
+          "start": 0,
+          "end": 8,
+          "text": "Present:"
+        }
+      },
+      {
+        "alias": "S0005",
+        "sourceId": "body[1]/p[6]",
+        "text": "Governing Committee: Philippe Hall (Canada); Masaya Hatoma, Shinichiro Kurasawa (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, (United States).",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0006",
+        "sourceId": "body[1]/p[7]",
+        "text": "Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0007",
+        "sourceId": "body[1]/p[8]",
+        "text": "Trustee: Traci Phillips, Ashish Makkar",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0008",
+        "sourceId": "body[1]/p[9]",
+        "text": "World Bank Legal: Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0009",
+        "sourceId": "body[1]/p[11]",
+        "text": "On November 27, 2024, the F.O.R.T.I.S. Ukraine FIF Governing Committee met to seek resolution on the areas identified as not provisionally approved during the First Governing Committee Meeting on November 21, 2024, related to Governance/Voting Rights.",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0010",
+        "sourceId": "body[1]/p[12]",
+        "text": "Governance/Voting Rights. The Governing Committee discussed and agreed in principle to language intended to seek resolution of the governance issues in a manner consistent with the fundamental principles of creating a FIF which is open to all World Bank members, treats them equitably, and is consistent with the multilateral approach to FIFs and development finance, while still meeting the needs of the original contributors to the F.O.R.T.I.S Ukraine FIF. The Meeting agreed that the Interim Secretariat would modify the relevant language in the Operations Manual and reflect the changes in the Governance Framework. With this agreement, the GC provisionally approved the full set of documents to establish the F.O.R.T.I.S. Ukraine FIF.",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 25,
+          "text": "Governance/Voting Rights."
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0011",
+        "sourceId": "body[1]/p[13]",
+        "text": "It was agreed that all Voting Members would have until opening of business Monday December 2 (EST) to confirm their agreement, including the approach taken to finalizing editorial suggestions, after which the documents would be final.",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0012",
+        "sourceId": "body[1]/p[14]",
+        "text": "Subsequent Note: On or before December 2, 2024, representatives of all three Voting Members provided their agreement to the pre-final versions of the documents circulated by the Secretariat on November 21, 2024. Hence, the Standard Provisions to the Contribution Agreement/Arrangement, Financial Procedures Agreement Template, Governance Framework, Operations Manual, and Funding Request Template are finalized and adopted by the Governing Committee as of December 2, 2024.",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0013",
+        "sourceId": "body[1]/p[15]",
+        "text": "For the Funding Request Template, language will be proposed by Ukraine on the process for endorsing proposals and will be inserted accordingly after the Voting Members are informed.",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      }
+    ],
+    "commonHeadingParentDifferences": [
+      {
+        "sourceId": "body[1]/p[5]",
+        "controlParent": "body[1]/p[1]",
+        "controlLevel": 2,
+        "candidateParent": null,
+        "candidateLevel": 1
+      }
+    ]
+  },
+  {
+    "document": "075",
+    "sourceSha256": "1e03bd6986c228f2d097877c070b648fee695db70c37f38b01ee3c7948673d46",
+    "controlSeconds": 116.0352274,
+    "candidateSeconds": 105.8803455,
+    "controlHeadings": 17,
+    "candidateHeadings": 9,
+    "changedDecisions": [
+      {
+        "alias": "S0003",
+        "sourceId": "body[1]/p[4]",
+        "text": "Opening:",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 8,
+          "text": "Opening:"
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0005",
+        "sourceId": "body[1]/p[6]",
+        "text": "Present:",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 8,
+          "text": "Present:"
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0032",
+        "sourceId": "body[1]/p[33]",
+        "text": "1. Document Approval. Does the GC approve the (i) Governance Framework; (ii) Operations Manual; (iii) Standard Provisions of the Contribution Arrangement; (iv) Financial Procedures Agreement; and (iv) Funding Request Template.",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 21,
+          "text": "1. Document Approval."
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0033",
+        "sourceId": "body[1]/p[34]",
+        "text": "2. Operating Context. The Government of Ukraine will take the floor to provide a general overview of the current operating context in Ukraine and Ukraine’s most pressing needs.",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 21,
+          "text": "2. Operating Context."
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0034",
+        "sourceId": "body[1]/p[35]",
+        "text": "3. Strategic Directions. Does the GC agree that in setting strategic directions, this should include a discussion of Ukraine’s anticipated financing and recovery needs over the next three years, with a primary focus on the next 12 months, and how the FIF can best address those needs. The Government of Ukraine will submit a short Strategic Directions Note to the GC for comment and the Strategic Directions will be agreed by the GC prior to first disbursement.",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 24,
+          "text": "3. Strategic Directions."
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0035",
+        "sourceId": "body[1]/p[36]",
+        "text": "4. Work Plan, Budget, and Fees. Does the GC agree that the work plan and budget for the Secretariat and Trustee should be submitted by December 6, and that its approval can be made through Decision without a Meeting by December 13? Does the GC agree that the Secretariat should provide a short note on the agreements reached around fees by December 6, and that its approval can be made through Decision without a Meeting by December 13",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 31,
+          "text": "4. Work Plan, Budget, and Fees."
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0036",
+        "sourceId": "body[1]/p[37]",
+        "text": "5. Communications Strategy. Does the GC agree that the Secretariat should provide a plan and timeline for developing a web page by December 6 and proceed with implementing the plan through Decision without a Meeting? Are there any other elements of an approach to communications that the GC wants to discuss/consider?",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 27,
+          "text": "5. Communications Strategy."
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0037",
+        "sourceId": "body[1]/p[38]",
+        "text": "6. Appointment of the Chair. Does the GC approve the appointment of [Nominee] as the Chair for a period of one year?",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 28,
+          "text": "6. Appointment of the Chair."
+        },
+        "candidateExtent": null
+      }
+    ],
+    "decisions": [
+      {
+        "alias": "S0001",
+        "sourceId": "body[1]/p[1]",
+        "text": "MEETING MINUTES Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+        "control": "SELECT",
+        "candidate": "SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 163,
+          "text": "MEETING MINUTES Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)"
+        },
+        "candidateExtent": {
+          "start": 0,
+          "end": 163,
+          "text": "MEETING MINUTES Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)"
+        }
+      },
+      {
+        "alias": "S0002",
+        "sourceId": "body[1]/p[2]",
+        "text": "Date: November 21, 2024",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0003",
+        "sourceId": "body[1]/p[4]",
+        "text": "Opening:",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 8,
+          "text": "Opening:"
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0004",
+        "sourceId": "body[1]/p[5]",
+        "text": "The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, in Washington DC with participants joining remotely",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0005",
+        "sourceId": "body[1]/p[6]",
+        "text": "Present:",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 8,
+          "text": "Present:"
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0006",
+        "sourceId": "body[1]/p[7]",
+        "text": "Governing Committee: Philippe Hall; Savithri Wesche (Canada); Masaya Hatoma (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, Maria Longi (United States).",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0007",
+        "sourceId": "body[1]/p[8]",
+        "text": "Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0008",
+        "sourceId": "body[1]/p[9]",
+        "text": "Trustee: Traci Phillips, Ashish Makkar",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0009",
+        "sourceId": "body[1]/p[10]",
+        "text": "World Bank Legal: Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0010",
+        "sourceId": "body[1]/p[11]",
+        "text": "These minutes summarize the discussion and decisions of the first meeting of the F.O.R.T.I.S. Ukraine FIF following its endorsement of the proposed agenda (attached).",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0011",
+        "sourceId": "body[1]/p[12]",
+        "text": "Item 1: Document Approval. The Governing Committee provisionally approved the (i) Standard Provisions of the template Contribution Agreement/Arrangement; (ii) Financial Procedures Agreement (FPA) template; and (iii) the Funding Request Template. Further, there was provisional approval on all aspects of the (iv) Governance Framework; and (v) Operations Manual, except for paragraphs related to contribution thresholds and the mechanism for the potential determination of voting rights for new contributors.",
+        "control": "SELECT",
+        "candidate": "SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 26,
+          "text": "Item 1: Document Approval."
+        },
+        "candidateExtent": {
+          "start": 0,
+          "end": 26,
+          "text": "Item 1: Document Approval."
+        }
+      },
+      {
+        "alias": "S0012",
+        "sourceId": "body[1]/p[13]",
+        "text": "For the areas with provisional approval, the following was noted:",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0013",
+        "sourceId": "body[1]/p[14]",
+        "text": "- For the Funding Request Template, language will be proposed by Ukraine on the process for endorsing proposals and will be inserted accordingly.",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0014",
+        "sourceId": "body[1]/p[15]",
+        "text": "- For the Financial Procedures Agreement template, language in sections 4.1 (a) and 4.7 is accepted. It was agreed that in deciding on specific Funding Request Proposals, the Governing Committee can request clarifications from the Implementing Entities in advance of approving funding requests that would permit Governing Committee members to confirm that the use of the FIF funds would be aligned with contributors’ funding mandates. World Bank counsel noted that the use of bilateral side letters is exceptional and inconsistent with the nature of a pooled fund vehicle but acknowledged the World Bank had accepted side emails in respect of regular trust fund financing for the PEACE facility,",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0015",
+        "sourceId": "body[1]/p[16]",
+        "text": "1",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0016",
+        "sourceId": "body[1]/p[17]",
+        "text": "and further acknowledged that for the F.O.R.T.I.S. Ukraine FIF the Governing Committee can specify, in the context of its guidance to Implementing Entities regarding its consideration of funding requests, the nature of eligible expenditures under projects to be financed by the FIF. For the Standard Provisions of the Contribution Agreement/Arrangements, there are no changes.",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0017",
+        "sourceId": "body[1]/p[18]",
+        "text": "- For the Operations Manual, the last sentence of the paragraph “Consultation Prior to Contributor Cancellation” will be replaced with the following: “For the avoidance of doubt, the provisions of Section 6 of the Standard Provisions to the Contribution Agreement/Arrangement will apply.” During the discussion, the GC agreed that this language does not suggest that a Contributor will require the approval of the GC to withdraw funds.",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0018",
+        "sourceId": "body[1]/p[19]",
+        "text": "The Secretariat will make the above changes and update the documents for any consistency issues or minor factual or typographical corrections. A clean version will be circulated by cob Friday November 22. The GC agreed to respond to the revised documents by cob Monday November 25, including the possibility of an affirmative approval with a request to fix a specific typo or to correct a specific error. If the Voting Members do not approve, the Chair and the Secretariat will agree on a way forward.",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0019",
+        "sourceId": "body[1]/p[20]",
+        "text": "However, approval of the full suite of documents requires resolution of the outstanding issue related to membership in and governance of the GC as related to new contributors. During the meeting, the GC clarified: (i) that contributions of all amounts from World Bank member countries are welcomed, and (ii) that it would be acceptable for new contributors contributing at least $50 million equivalent to have Observer status to the Governing Committee. The World Bank team noted the GC’s concern with specifying a threshold for voting membership without the GC also having the authority to decide on new Voting Members. The World Bank agreed to consult internally on what (if any) alternative language can be accepted and will communicate this to the GC as soon as feasible. Depending on the outcome, and the GC’s view of the outcome, either: (i) agreed text will be inserted and/or confirmed or (ii) the GC and World Bank will continue deliberations to seek resolution. The resolution of this issue will need to be reflected in both the Governance Framework and Operations Manual in several places.",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0020",
+        "sourceId": "body[1]/p[21]",
+        "text": "Item 2: Operating Context. The GC welcomed the overview provided by the GC Members representing the Government of Ukraine indicating Ukraine’s budget and financing gap needs during 2025 and 2026 and the importance of the F.O.R.T.I.S. Ukraine FIF in ensuring adherence to the IMF Extended Fund Facility Arrangement on which the Ukrainian authorities and IMF staff have reached Staff Level Agreement on the Sixth Review; and for helping sustain the provision of humanitarian and social services.",
+        "control": "SELECT",
+        "candidate": "SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 26,
+          "text": "Item 2: Operating Context."
+        },
+        "candidateExtent": {
+          "start": 0,
+          "end": 26,
+          "text": "Item 2: Operating Context."
+        }
+      },
+      {
+        "alias": "S0021",
+        "sourceId": "body[1]/p[22]",
+        "text": "Item 3: Strategic Directions. GC Members representing the Government of Ukraine indicated initial financing through the F.O.R.T.I.S Ukraine FIF is envisioned to be directed to direct budget support (DBS), but noted flexibility should be maintained to be able to shift financing as appropriate to recovery and reconstruction needs. Ukraine highlighted that funds from the F.O.R.T.I.S. Ukraine FIF are key in supporting Ukraine’s IMF program and cautioned that the downside financing needs scenario would require substantial DBS from the F.O.R.T.I.S. Ukraine",
+        "control": "SELECT",
+        "candidate": "SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 29,
+          "text": "Item 3: Strategic Directions."
+        },
+        "candidateExtent": {
+          "start": 0,
+          "end": 29,
+          "text": "Item 3: Strategic Directions."
+        }
+      },
+      {
+        "alias": "S0022",
+        "sourceId": "body[1]/p[23]",
+        "text": "2",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0023",
+        "sourceId": "body[1]/p[24]",
+        "text": "FIF to flexibly meet Ukraine’s needs in 2025. Ukraine noted that DBS is key to keeping Ukraine afloat in the near term, particularly given the recent escalation of attacks by Russia. Ukraine noted that first and foremost, they need donor funds to ensure financial sustainability, including covering social expenditures. Ukraine indicated that it is very familiar with existing Bank tools that could be used for budget support and providing accountability and transparency on the use of funds.",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0024",
+        "sourceId": "body[1]/p[25]",
+        "text": "The Government of Ukraine GC members also committed to provide a short note (2-3 pages) describing the Government’s proposed Strategic Directions for the F.O.R.T.I.S. Ukraine FIF.",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0025",
+        "sourceId": "body[1]/p[26]",
+        "text": "Item 4: Work Plan, Budget, and Fees. The GC agreed that the work plan and budget for the Secretariat and Trustee should be submitted by December 6, and that its approval can be made through Decision without a Meeting by December 13. The Secretariat committed to provide a note to the GC by December 6 describing the agreed approach to fees for the Secretariat, Trustee and the World Bank as Implementing Entity, and that its approval can be made through Decision without a Meeting by December 13.",
+        "control": "SELECT",
+        "candidate": "SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 36,
+          "text": "Item 4: Work Plan, Budget, and Fees."
+        },
+        "candidateExtent": {
+          "start": 0,
+          "end": 36,
+          "text": "Item 4: Work Plan, Budget, and Fees."
+        }
+      },
+      {
+        "alias": "S0026",
+        "sourceId": "body[1]/p[27]",
+        "text": "Item 5: Communications Strategy. The GC agreed that the Secretariat will provide a plan and timeline for developing and making operational a web page by December 6, and that it can proceed with implementation of the plan through Decision without a Meeting. GC members noted that they may wish to exchange views on any early public communications.",
+        "control": "SELECT",
+        "candidate": "SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 32,
+          "text": "Item 5: Communications Strategy."
+        },
+        "candidateExtent": {
+          "start": 0,
+          "end": 32,
+          "text": "Item 5: Communications Strategy."
+        }
+      },
+      {
+        "alias": "S0027",
+        "sourceId": "body[1]/p[28]",
+        "text": "Item 6: Appointment of the Chair. The GC selected the United States representative Brian McCauley as Chair of the F.O.R.T.I.S. FIF Ukraine for a period of one year.",
+        "control": "SELECT",
+        "candidate": "SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 33,
+          "text": "Item 6: Appointment of the Chair."
+        },
+        "candidateExtent": {
+          "start": 0,
+          "end": 33,
+          "text": "Item 6: Appointment of the Chair."
+        }
+      },
+      {
+        "alias": "S0028",
+        "sourceId": "body[1]/p[29]",
+        "text": "3",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0029",
+        "sourceId": "body[1]/p[30]",
+        "text": "Attachment:Agreed Agenda",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0030",
+        "sourceId": "body[1]/p[31]",
+        "text": "AGENDA for FIRST MEETING Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+        "control": "SELECT",
+        "candidate": "SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 172,
+          "text": "AGENDA for FIRST MEETING Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)"
+        },
+        "candidateExtent": {
+          "start": 0,
+          "end": 172,
+          "text": "AGENDA for FIRST MEETING Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)"
+        }
+      },
+      {
+        "alias": "S0031",
+        "sourceId": "body[1]/p[32]",
+        "text": "Agenda Items",
+        "control": "SELECT",
+        "candidate": "SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 12,
+          "text": "Agenda Items"
+        },
+        "candidateExtent": {
+          "start": 0,
+          "end": 12,
+          "text": "Agenda Items"
+        }
+      },
+      {
+        "alias": "S0032",
+        "sourceId": "body[1]/p[33]",
+        "text": "1. Document Approval. Does the GC approve the (i) Governance Framework; (ii) Operations Manual; (iii) Standard Provisions of the Contribution Arrangement; (iv) Financial Procedures Agreement; and (iv) Funding Request Template.",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 21,
+          "text": "1. Document Approval."
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0033",
+        "sourceId": "body[1]/p[34]",
+        "text": "2. Operating Context. The Government of Ukraine will take the floor to provide a general overview of the current operating context in Ukraine and Ukraine’s most pressing needs.",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 21,
+          "text": "2. Operating Context."
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0034",
+        "sourceId": "body[1]/p[35]",
+        "text": "3. Strategic Directions. Does the GC agree that in setting strategic directions, this should include a discussion of Ukraine’s anticipated financing and recovery needs over the next three years, with a primary focus on the next 12 months, and how the FIF can best address those needs. The Government of Ukraine will submit a short Strategic Directions Note to the GC for comment and the Strategic Directions will be agreed by the GC prior to first disbursement.",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 24,
+          "text": "3. Strategic Directions."
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0035",
+        "sourceId": "body[1]/p[36]",
+        "text": "4. Work Plan, Budget, and Fees. Does the GC agree that the work plan and budget for the Secretariat and Trustee should be submitted by December 6, and that its approval can be made through Decision without a Meeting by December 13? Does the GC agree that the Secretariat should provide a short note on the agreements reached around fees by December 6, and that its approval can be made through Decision without a Meeting by December 13",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 31,
+          "text": "4. Work Plan, Budget, and Fees."
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0036",
+        "sourceId": "body[1]/p[37]",
+        "text": "5. Communications Strategy. Does the GC agree that the Secretariat should provide a plan and timeline for developing a web page by December 6 and proceed with implementing the plan through Decision without a Meeting? Are there any other elements of an approach to communications that the GC wants to discuss/consider?",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 27,
+          "text": "5. Communications Strategy."
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0037",
+        "sourceId": "body[1]/p[38]",
+        "text": "6. Appointment of the Chair. Does the GC approve the appointment of [Nominee] as the Chair for a period of one year?",
+        "control": "SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": {
+          "start": 0,
+          "end": 28,
+          "text": "6. Appointment of the Chair."
+        },
+        "candidateExtent": null
+      },
+      {
+        "alias": "S0038",
+        "sourceId": "body[1]/p[39]",
+        "text": "4",
+        "control": "NOT_SELECT",
+        "candidate": "NOT_SELECT",
+        "controlExtent": null,
+        "candidateExtent": null
+      }
+    ],
+    "commonHeadingParentDifferences": []
+  }
+]

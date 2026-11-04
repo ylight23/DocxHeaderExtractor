@@ -1,0 +1,241 @@
+{
+  "elapsedSeconds": 0.0299586,
+  "result": {
+    "Facts": [
+      {
+        "Parts": [
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[2]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[2]",
+            "Role": "label",
+            "Text": "Governing Committee (GC) of theFacilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+            "Start": 17,
+            "End": 163
+          },
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[10]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[10]",
+            "Role": "value",
+            "Text": "first meeting",
+            "Start": 60,
+            "End": 73
+          }
+        ],
+        "Flags": [
+          "MULTIPLE_UNITS",
+          "PATH_UNCERTAIN"
+        ]
+      },
+      {
+        "Parts": [
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[3]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[3]",
+            "Role": "text",
+            "Text": "Date: November 21, 2024",
+            "Start": 0,
+            "End": 23
+          }
+        ],
+        "Flags": [
+          "PATH_UNCERTAIN"
+        ]
+      },
+      {
+        "Parts": [
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[4]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[4]",
+            "Role": "value",
+            "Text": "7:00 am EST",
+            "Start": 45,
+            "End": 56
+          },
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[4]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[4]",
+            "Role": "value",
+            "Text": "Washington DC with participants joining remotely",
+            "Start": 98,
+            "End": 146
+          }
+        ],
+        "Flags": [
+          "MULTIPLE_VALUES",
+          "PATH_UNCERTAIN"
+        ]
+      },
+      {
+        "Parts": [
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[4]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[4]",
+            "Role": "value",
+            "Text": "Linda Van Gelder, acting as Chair",
+            "Start": 60,
+            "End": 93
+          }
+        ],
+        "Flags": [
+          "PATH_UNCERTAIN"
+        ]
+      },
+      {
+        "Parts": [
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[6]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[6]",
+            "Role": "value",
+            "Text": "Governing Committee: Philippe Hall; Savithri Wesche (Canada); Masaya Hatoma (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, Maria Longi (United States).",
+            "Start": 0,
+            "End": 164
+          },
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[7]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[7]",
+            "Role": "value",
+            "Text": "Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta",
+            "Start": 0,
+            "End": 77
+          },
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[8]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[8]",
+            "Role": "value",
+            "Text": "Trustee: Traci Phillips, Ashish Makkar",
+            "Start": 0,
+            "End": 38
+          },
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[9]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[9]",
+            "Role": "value",
+            "Text": "World Bank Legal: Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings",
+            "Start": 0,
+            "End": 68
+          }
+        ],
+        "Flags": [
+          "MULTIPLE_UNITS",
+          "MULTIPLE_VALUES",
+          "PATH_UNCERTAIN"
+        ]
+      },
+      {
+        "Parts": [
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[10]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[10]",
+            "Role": "value",
+            "Text": "following its endorsement of the proposed agenda (attached)",
+            "Start": 106,
+            "End": 165
+          }
+        ],
+        "Flags": [
+          "PATH_UNCERTAIN"
+        ]
+      },
+      {
+        "Parts": [
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[38]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[38]",
+            "Role": "label",
+            "Text": "AGENDA for FIRST MEETING",
+            "Start": 1,
+            "End": 25
+          },
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[38]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[38]",
+            "Role": "value",
+            "Text": "Governing Committee (GC) of theFacilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+            "Start": 27,
+            "End": 173
+          }
+        ],
+        "Flags": [
+          "PATH_UNCERTAIN"
+        ]
+      },
+      {
+        "Parts": [
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[37]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[37]",
+            "Role": "text",
+            "Text": "Attachment:Agreed Agenda",
+            "Start": 0,
+            "End": 24
+          }
+        ],
+        "Flags": [
+          "PATH_UNCERTAIN"
+        ]
+      },
+      {
+        "Parts": [
+          {
+            "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[33]",
+            "SourceId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+            "Location": "body[1]/p[33]",
+            "Role": "text",
+            "Text": "The GC selected the United States representative Brian McCauley as Chair of the F.O.R.T.I.S. FIF Ukraine for a period of one year.",
+            "Start": 34,
+            "End": 164
+          }
+        ],
+        "Flags": [
+          "PATH_UNCERTAIN"
+        ]
+      }
+    ],
+    "Refused": [
+      {
+        "Index": 7,
+        "Reason": "QUOTE_NOT_FOUND",
+        "Proposal": {
+          "Parts": [
+            {
+              "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[38]",
+              "Start": -1,
+              "End": -1,
+              "Role": "label",
+              "Quote": "FIRST MEETING"
+            },
+            {
+              "UnitId": "sha256:f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7|body[1]/p[38]",
+              "Start": -1,
+              "End": -1,
+              "Role": "value",
+              "Quote": "1"
+            }
+          ]
+        }
+      }
+    ],
+    "Duplicates": [],
+    "BatchFailures": [],
+    "UnreviewedUnitIds": [],
+    "Gaps": [],
+    "Batches": 4,
+    "UnreadGaps": [],
+    "Complete": false
+  },
+  "attempts": null
+}

@@ -1,0 +1,12 @@
+batches=44
+09:21:49 call 1 request_chars=5169
+09:23:14 call 1 reply_chars=6021
+09:23:14 call 2 request_chars=5870
+09:23:32 call 2 reply_chars=12
+09:23:32 call 3 request_chars=5629
+09:26:56 call 3 EXCEPTION ReplyFailure: AUDIT:FINISH_LENGTH
+09:26:56 call 4 request_chars=5629
+09:30:19 call 4 EXCEPTION ReplyFailure: AUDIT:FINISH_LENGTH
+09:30:19 call 5 request_chars=5189
+09:31:13 call 5 reply_chars=1214
+09:31:13 call 6 request_chars=4697

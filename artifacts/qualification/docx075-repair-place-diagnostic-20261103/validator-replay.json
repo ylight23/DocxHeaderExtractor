@@ -1,0 +1,14 @@
+[
+  {
+    "turn": 1,
+    "ok": false,
+    "failure": "HEADING_EXTENT_EDGE_WHITESPACE",
+    "detail": "S0011: the extent must not start or end with a space or a line break"
+  },
+  {
+    "turn": 2,
+    "ok": true,
+    "failure": null,
+    "detail": null
+  }
+]

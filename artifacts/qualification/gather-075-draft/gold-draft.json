@@ -1,0 +1,466 @@
+{
+  "status": "DU_THAO_CHUA_DUYET_TOAN_BO",
+  "language": "en",
+  "goal": "Thông tin chung của cuộc họp (mục đích cần người duyệt xác nhận; xem scope_decisions)",
+  "source": "075_FORTIS_GC_Minutes_Nov21_2024.docx",
+  "scope_decisions": [
+    "Đã chốt cho thử nghiệm \"thông tin chung của cuộc họp\" (theo đề xuất của người duyệt): không đưa thảo luận, quyết định, công việc, bối cảnh chi tiết (p11–p15, p19–p25, p29–p33 và 11 ô bảng) và chi tiết chương trình (p40–p45).",
+    "p33 đọc nguyên văn: đây là bổ nhiệm chủ tịch FIF, không phải chủ tọa cuộc họp. Không được dùng p33 làm chủ tọa.",
+    "p38 đọc nguyên văn: không thêm ý; tên và \"lần thứ nhất\" đã có ở p2 và p10.",
+    "Còn chờ thống nhất: ý \"Tài liệu đính kèm: Agreed Agenda\" (p37). Hiện giữ trong đáp án nhưng đánh dấu chưa chốt; nếu mục không liệt kê tài liệu liên quan thì bỏ."
+  ],
+  "notes": [
+    "Tài liệu tiếng Anh: không chứng minh chất lượng trên tài liệu tiếng Việt.",
+    "Mọi đơn vị có chữ đều có quyết định trong \"review\" (kiểm tra độ phủ)."
+  ],
+  "facts": [
+    {
+      "note": "Tên ban/cuộc họp (dòng tiêu đề). Đơn vị có dấu cách bị dính \"theFacilitation\" trong nguồn: span giữ nguyên văn.",
+      "parts": [
+        {
+          "unitId": "075|body[1]/p[2]",
+          "start": 17,
+          "end": 163,
+          "role": "text",
+          "text": "Governing Committee (GC) of theFacilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)"
+        }
+      ],
+      "key": "tieu_de"
+    },
+    {
+      "note": "Ngày họp",
+      "parts": [
+        {
+          "unitId": "075|body[1]/p[3]",
+          "start": 0,
+          "end": 4,
+          "role": "label",
+          "text": "Date"
+        },
+        {
+          "unitId": "075|body[1]/p[3]",
+          "start": 6,
+          "end": 23,
+          "role": "value",
+          "text": "November 21, 2024"
+        }
+      ],
+      "key": "ngay_hop"
+    },
+    {
+      "note": "Giờ khai mạc",
+      "parts": [
+        {
+          "unitId": "075|body[1]/p[4]",
+          "start": 45,
+          "end": 56,
+          "role": "text",
+          "text": "7:00 am EST"
+        }
+      ],
+      "key": "gio_khai_mac"
+    },
+    {
+      "note": "Chủ tọa",
+      "parts": [
+        {
+          "unitId": "075|body[1]/p[4]",
+          "start": 60,
+          "end": 93,
+          "role": "text",
+          "text": "Linda Van Gelder, acting as Chair"
+        }
+      ],
+      "key": "chu_toa"
+    },
+    {
+      "note": "Địa điểm",
+      "parts": [
+        {
+          "unitId": "075|body[1]/p[4]",
+          "start": 95,
+          "end": 146,
+          "role": "text",
+          "text": "in Washington DC with participants joining remotely"
+        }
+      ],
+      "key": "dia_diem"
+    },
+    {
+      "note": "Thành viên Ủy ban Điều hành",
+      "parts": [
+        {
+          "unitId": "075|body[1]/p[6]",
+          "start": 0,
+          "end": 19,
+          "role": "label",
+          "text": "Governing Committee"
+        },
+        {
+          "unitId": "075|body[1]/p[6]",
+          "start": 21,
+          "end": 163,
+          "role": "value",
+          "text": "Philippe Hall; Savithri Wesche (Canada); Masaya Hatoma (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, Maria Longi (United States)"
+        }
+      ],
+      "key": "thanh_vien_uy_ban"
+    },
+    {
+      "note": "Ban thư ký liên kết",
+      "parts": [
+        {
+          "unitId": "075|body[1]/p[7]",
+          "start": 0,
+          "end": 19,
+          "role": "label",
+          "text": "Interim-Secretariat"
+        },
+        {
+          "unitId": "075|body[1]/p[7]",
+          "start": 21,
+          "end": 77,
+          "role": "value",
+          "text": "Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta"
+        }
+      ],
+      "key": "ban_thu_ky"
+    },
+    {
+      "note": "Trustee",
+      "parts": [
+        {
+          "unitId": "075|body[1]/p[8]",
+          "start": 0,
+          "end": 7,
+          "role": "label",
+          "text": "Trustee"
+        },
+        {
+          "unitId": "075|body[1]/p[8]",
+          "start": 9,
+          "end": 38,
+          "role": "value",
+          "text": "Traci Phillips, Ashish Makkar"
+        }
+      ],
+      "key": "trustee"
+    },
+    {
+      "note": "World Bank Legal",
+      "parts": [
+        {
+          "unitId": "075|body[1]/p[9]",
+          "start": 0,
+          "end": 16,
+          "role": "label",
+          "text": "World Bank Legal"
+        },
+        {
+          "unitId": "075|body[1]/p[9]",
+          "start": 18,
+          "end": 68,
+          "role": "value",
+          "text": "Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings"
+        }
+      ],
+      "key": "world_bank_legal"
+    },
+    {
+      "note": "Mục đích biên bản",
+      "parts": [
+        {
+          "unitId": "075|body[1]/p[10]",
+          "start": 0,
+          "end": 105,
+          "role": "text",
+          "text": "These minutes summarize the discussion and decisions of the first meeting of the F.O.R.T.I.S. Ukraine FIF"
+        }
+      ],
+      "key": "muc_dich"
+    },
+    {
+      "note": "Tài liệu đính kèm: chương trình đã thống nhất (chưa rõ có thuộc phạm vi không; xem scope)",
+      "parts": [
+        {
+          "unitId": "075|body[1]/p[37]",
+          "start": 0,
+          "end": 10,
+          "role": "label",
+          "text": "Attachment"
+        },
+        {
+          "unitId": "075|body[1]/p[37]",
+          "start": 11,
+          "end": 24,
+          "role": "value",
+          "text": "Agreed Agenda"
+        }
+      ],
+      "key": "tai_lieu_dinh_kem"
+    }
+  ],
+  "review": [
+    {
+      "unitId": "075|body[1]/p[2]",
+      "decision": "fact:tieu_de",
+      "text_preview": "MEETING MINUTES Governing Committee (GC) of theFacilitation of Resources to Invest in Stre"
+    },
+    {
+      "unitId": "075|body[1]/p[3]",
+      "decision": "fact:ngay_hop",
+      "text_preview": "Date: November 21, 2024"
+    },
+    {
+      "unitId": "075|body[1]/p[4]",
+      "decision": "fact:gio_khai_mac,chu_toa,dia_diem",
+      "text_preview": "Opening: The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Cha"
+    },
+    {
+      "unitId": "075|body[1]/p[5]",
+      "decision": "structural:tiêu đề mục \"Present:\"",
+      "text_preview": "Present:"
+    },
+    {
+      "unitId": "075|body[1]/p[6]",
+      "decision": "fact:thanh_vien_uy_ban",
+      "text_preview": "Governing Committee: Philippe Hall; Savithri Wesche (Canada); Masaya Hatoma (Japan); Olga "
+    },
+    {
+      "unitId": "075|body[1]/p[7]",
+      "decision": "fact:ban_thu_ky",
+      "text_preview": "Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta"
+    },
+    {
+      "unitId": "075|body[1]/p[8]",
+      "decision": "fact:trustee",
+      "text_preview": "Trustee: Traci Phillips, Ashish Makkar"
+    },
+    {
+      "unitId": "075|body[1]/p[9]",
+      "decision": "fact:world_bank_legal",
+      "text_preview": "World Bank Legal: Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings"
+    },
+    {
+      "unitId": "075|body[1]/p[10]",
+      "decision": "fact:muc_dich",
+      "text_preview": "These minutes summarize the discussion and decisions of the first meeting of the F.O.R.T.I"
+    },
+    {
+      "unitId": "075|body[1]/p[11]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "Item 1: Document Approval. The Governing Committee provisionally approved the (i) Standard"
+    },
+    {
+      "unitId": "075|body[1]/p[12]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "For the areas with provisional approval, the following was noted:"
+    },
+    {
+      "unitId": "075|body[1]/p[13]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "- For the Funding Request Template, language will be proposed by Ukraine on the process fo"
+    },
+    {
+      "unitId": "075|body[1]/p[14]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "- For the Financial Procedures Agreement template, language in sections 4.1 (a) and 4.7 is"
+    },
+    {
+      "unitId": "075|body[1]/p[15]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "World Bank counsel noted that the use of bilateral side letters is exceptional and inconsi"
+    },
+    {
+      "unitId": "075|body[1]/p[16]",
+      "decision": "page_number",
+      "text_preview": "1"
+    },
+    {
+      "unitId": "075|body[1]/p[19]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "and further acknowledged that for the F.O.R.T.I.S. Ukraine FIF the Governing Committee can"
+    },
+    {
+      "unitId": "075|body[1]/tbl[1]/tr[1]/tc[1]/p[1]",
+      "decision": "excluded:câu của Item 1 trong ô bảng (thảo luận/quyết định); không đưa vào",
+      "text_preview": "financed"
+    },
+    {
+      "unitId": "075|body[1]/tbl[1]/tr[1]/tc[2]/p[1]",
+      "decision": "excluded:câu của Item 1 trong ô bảng (thảo luận/quyết định); không đưa vào",
+      "text_preview": "by"
+    },
+    {
+      "unitId": "075|body[1]/tbl[1]/tr[1]/tc[3]/p[1]",
+      "decision": "excluded:câu của Item 1 trong ô bảng (thảo luận/quyết định); không đưa vào",
+      "text_preview": "the"
+    },
+    {
+      "unitId": "075|body[1]/tbl[1]/tr[1]/tc[4]/p[1]",
+      "decision": "excluded:câu của Item 1 trong ô bảng (thảo luận/quyết định); không đưa vào",
+      "text_preview": "FIF."
+    },
+    {
+      "unitId": "075|body[1]/tbl[1]/tr[1]/tc[5]/p[1]",
+      "decision": "excluded:câu của Item 1 trong ô bảng (thảo luận/quyết định); không đưa vào",
+      "text_preview": "For"
+    },
+    {
+      "unitId": "075|body[1]/tbl[1]/tr[1]/tc[6]/p[1]",
+      "decision": "excluded:câu của Item 1 trong ô bảng (thảo luận/quyết định); không đưa vào",
+      "text_preview": "the"
+    },
+    {
+      "unitId": "075|body[1]/tbl[1]/tr[1]/tc[7]/p[1]",
+      "decision": "excluded:câu của Item 1 trong ô bảng (thảo luận/quyết định); không đưa vào",
+      "text_preview": "Standard"
+    },
+    {
+      "unitId": "075|body[1]/tbl[1]/tr[1]/tc[8]/p[1]",
+      "decision": "excluded:câu của Item 1 trong ô bảng (thảo luận/quyết định); không đưa vào",
+      "text_preview": "Provisions"
+    },
+    {
+      "unitId": "075|body[1]/tbl[1]/tr[1]/tc[9]/p[1]",
+      "decision": "excluded:câu của Item 1 trong ô bảng (thảo luận/quyết định); không đưa vào",
+      "text_preview": "of"
+    },
+    {
+      "unitId": "075|body[1]/tbl[1]/tr[1]/tc[10]/p[1]",
+      "decision": "excluded:câu của Item 1 trong ô bảng (thảo luận/quyết định); không đưa vào",
+      "text_preview": "the"
+    },
+    {
+      "unitId": "075|body[1]/tbl[1]/tr[1]/tc[11]/p[1]",
+      "decision": "excluded:câu của Item 1 trong ô bảng (thảo luận/quyết định); không đưa vào",
+      "text_preview": "Contribution"
+    },
+    {
+      "unitId": "075|body[1]/p[20]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "Agreement/Arrangements, there are no changes."
+    },
+    {
+      "unitId": "075|body[1]/p[21]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "- For the Operations Manual, the last sentence of the paragraph “Consultation Prior to Con"
+    },
+    {
+      "unitId": "075|body[1]/p[22]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "The Secretariat will make the above changes and update the documents for any consistency i"
+    },
+    {
+      "unitId": "075|body[1]/p[23]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "However, approval of the full suite of documents requires resolution of the outstanding is"
+    },
+    {
+      "unitId": "075|body[1]/p[24]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "Item 2: Operating Context. The GC welcomed the overview provided by the GC Members represe"
+    },
+    {
+      "unitId": "075|body[1]/p[25]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "Item 3: Strategic Directions. GC Members representing the Government of Ukraine indicated "
+    },
+    {
+      "unitId": "075|body[1]/p[26]",
+      "decision": "page_number",
+      "text_preview": "2"
+    },
+    {
+      "unitId": "075|body[1]/p[29]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "FIF to flexibly meet Ukraine’s needs in 2025. Ukraine noted that DBS is key to keeping Ukr"
+    },
+    {
+      "unitId": "075|body[1]/p[30]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "The Government of Ukraine GC members also committed to provide a short note (2-3 pages) de"
+    },
+    {
+      "unitId": "075|body[1]/p[31]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "Item 4: Work Plan, Budget, and Fees. The GC agreed that the work plan and budget for the S"
+    },
+    {
+      "unitId": "075|body[1]/p[32]",
+      "decision": "excluded:thảo luận, quyết định, công việc hoặc bối cảnh chi tiết (phạm vi thử nghiệm)",
+      "text_preview": "Item 5: Communications Strategy. The GC agreed that the Secretariat will provide a plan an"
+    },
+    {
+      "unitId": "075|body[1]/p[33]",
+      "decision": "excluded:quyết định bổ nhiệm chủ tịch FIF (Brian McCauley, một năm) — KHÔNG phải chủ tọa cuộc họp; chủ tọa cuộc họp là Linda Van Gelder (p4)",
+      "text_preview": "Item 6: Appointment of the Chair. The GC selected the United States representative Brian M"
+    },
+    {
+      "unitId": "075|body[1]/p[34]",
+      "decision": "page_number",
+      "text_preview": "3"
+    },
+    {
+      "unitId": "075|body[1]/p[37]",
+      "decision": "fact:tai_lieu_dinh_kem (chờ thống nhất: có liệt kê tài liệu đính kèm hay không)",
+      "text_preview": "Attachment:Agreed Agenda"
+    },
+    {
+      "unitId": "075|body[1]/p[38]",
+      "decision": "checked:đọc nguyên văn; không thêm ý — tên cuộc họp đã có ở p2, \"lần thứ nhất\" đã có ở p10",
+      "text_preview": "AGENDA for FIRST MEETING Governing Committee (GC) of theFacilitation of Resources to Inves"
+    },
+    {
+      "unitId": "075|body[1]/p[39]",
+      "decision": "structural:tiêu đề mục \"Agenda Items\"",
+      "text_preview": "Agenda Items"
+    },
+    {
+      "unitId": "075|body[1]/p[40]",
+      "decision": "excluded:nội dung chi tiết của mục chương trình họp (phạm vi khác; chọn lại nếu cần trường \"chương trình họp\")",
+      "text_preview": "1. Document Approval. Does the GC approve the (i) Governance Framework; (ii) Operations Ma"
+    },
+    {
+      "unitId": "075|body[1]/p[41]",
+      "decision": "excluded:nội dung chi tiết của mục chương trình họp (phạm vi khác; chọn lại nếu cần trường \"chương trình họp\")",
+      "text_preview": "2. Operating Context. The Government of Ukraine will take the floor to provide a general o"
+    },
+    {
+      "unitId": "075|body[1]/p[42]",
+      "decision": "excluded:nội dung chi tiết của mục chương trình họp (phạm vi khác; chọn lại nếu cần trường \"chương trình họp\")",
+      "text_preview": "3. Strategic Directions. Does the GC agree that in setting strategic directions, this shou"
+    },
+    {
+      "unitId": "075|body[1]/p[43]",
+      "decision": "excluded:nội dung chi tiết của mục chương trình họp (phạm vi khác; chọn lại nếu cần trường \"chương trình họp\")",
+      "text_preview": "4. Work Plan, Budget, and Fees. Does the GC agree that the work plan and budget for the Se"
+    },
+    {
+      "unitId": "075|body[1]/p[44]",
+      "decision": "excluded:nội dung chi tiết của mục chương trình họp (phạm vi khác; chọn lại nếu cần trường \"chương trình họp\")",
+      "text_preview": "5. Communications Strategy. Does the GC agree that the Secretariat should provide a plan a"
+    },
+    {
+      "unitId": "075|body[1]/p[45]",
+      "decision": "excluded:nội dung chi tiết của mục chương trình họp (phạm vi khác; chọn lại nếu cần trường \"chương trình họp\")",
+      "text_preview": "6. Appointment of the Chair. Does the GC approve the appointment of [Nominee] as the Chair"
+    },
+    {
+      "unitId": "075|body[1]/p[46]",
+      "decision": "page_number",
+      "text_preview": "4"
+    }
+  ],
+  "counts": {
+    "units_with_text": 50,
+    "by_decision": {
+      "fact": 9,
+      "structural": 2,
+      "excluded": 34,
+      "page_number": 4,
+      "checked": 1
+    },
+    "facts": 11
+  }
+}

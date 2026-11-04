@@ -1,0 +1,231 @@
+{
+  "skipped": [
+    "Opening: (độ phủ heading của văn bản đích chưa xác minh)",
+    "Present: (độ phủ heading của văn bản đích chưa xác minh)"
+  ],
+  "sections": [
+    {
+      "Heading": "MEETING MINUTES Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+      "name": "meeting minutes governing committee (gc) of the facilitation of resources to invest in strengthening ukraine financial intermediary fund (f.o.r.t.i.s. ukraine fif)",
+      "Note": "không có heading cùng tên trong văn bản nguồn",
+      "TargetLocation": "body[1]/p[1]",
+      "NextHeadingLocation": "body[1]/p[4]",
+      "complete": false,
+      "gaps": [
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[32]",
+          "Reason": "heading_located_by_text:body[1]/p[33]"
+        },
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[1]",
+          "Reason": "heading_boundary_unverified"
+        },
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[31]",
+          "Reason": "heading_boundary_unverified"
+        },
+        {
+          "SourceId": "074",
+          "Location": "body[1]/p[1]",
+          "Reason": "heading_boundary_unverified"
+        }
+      ],
+      "facts": []
+    },
+    {
+      "Heading": "Opening:",
+      "name": "opening",
+      "Note": null,
+      "TargetLocation": "body[1]/p[4]",
+      "NextHeadingLocation": "body[1]/p[6]",
+      "complete": false,
+      "gaps": [
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[32]",
+          "Reason": "heading_located_by_text:body[1]/p[33]"
+        },
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[1]",
+          "Reason": "heading_boundary_unverified"
+        },
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[31]",
+          "Reason": "heading_boundary_unverified"
+        },
+        {
+          "SourceId": "074",
+          "Location": "body[1]/p[1]",
+          "Reason": "heading_boundary_unverified"
+        }
+      ],
+      "facts": [
+        {
+          "text": "The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, with participants joining remotely.",
+          "Flags": [],
+          "sources": [
+            "074 body[1]/p[4]"
+          ]
+        }
+      ]
+    },
+    {
+      "Heading": "Present:",
+      "name": "present",
+      "Note": null,
+      "TargetLocation": "body[1]/p[6]",
+      "NextHeadingLocation": "body[1]/p[31]",
+      "complete": false,
+      "gaps": [
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[32]",
+          "Reason": "heading_located_by_text:body[1]/p[33]"
+        },
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[1]",
+          "Reason": "heading_boundary_unverified"
+        },
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[31]",
+          "Reason": "heading_boundary_unverified"
+        },
+        {
+          "SourceId": "074",
+          "Location": "body[1]/p[1]",
+          "Reason": "heading_boundary_unverified"
+        }
+      ],
+      "facts": [
+        {
+          "text": "Governing Committee: Philippe Hall (Canada); Masaya Hatoma, Shinichiro Kurasawa (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, (United States).",
+          "Flags": [],
+          "sources": [
+            "074 body[1]/p[6]"
+          ]
+        },
+        {
+          "text": "On November 27, 2024, the F.O.R.T.I.S. Ukraine FIF Governing Committee met to seek resolution on the areas identified as not provisionally approved during the First Governing Committee Meeting on November 21, 2024, related to Governance/Voting Rights.",
+          "Flags": [],
+          "sources": [
+            "074 body[1]/p[11]"
+          ]
+        },
+        {
+          "text": "Governance/Voting Rights. The Governing Committee discussed and agreed in principle to language intended to seek resolution of the governance issues in a manner consistent with the fundamental principles of creating a FIF which is open to all World Bank members, treats them equitably, and is consistent with the multilateral approach to FIFs and development finance, while still meeting the needs of the original contributors to the F.O.R.T.I.S Ukraine FIF. The Meeting agreed that the Interim Secretariat would modify the relevant language in the Operations Manual and reflect the changes in the Governance Framework. With this agreement, the GC provisionally approved the full set of documents to establish the F.O.R.T.I.S. Ukraine FIF.",
+          "Flags": [],
+          "sources": [
+            "074 body[1]/p[12]"
+          ]
+        },
+        {
+          "text": "It was agreed that all Voting Members would have until opening of business Monday December 2 (EST) to confirm their agreement, including the approach taken to finalizing editorial suggestions, after which the documents would be final.",
+          "Flags": [],
+          "sources": [
+            "074 body[1]/p[13]"
+          ]
+        },
+        {
+          "text": "Subsequent Note: On or before December 2, 2024, representatives of all three Voting Members provided their agreement to the pre-final versions of the documents circulated by the Secretariat on November 21, 2024. Hence, the Standard Provisions to the Contribution Agreement/Arrangement, Financial Procedures Agreement Template, Governance Framework, Operations Manual, and Funding Request Template are finalized and adopted by the Governing Committee as of December 2, 2024.",
+          "Flags": [],
+          "sources": [
+            "074 body[1]/p[14]"
+          ]
+        },
+        {
+          "text": "For the Funding Request Template, language will be proposed by Ukraine on the process for endorsing proposals and will be inserted accordingly after the Voting Members are informed.",
+          "Flags": [],
+          "sources": [
+            "074 body[1]/p[15]"
+          ]
+        }
+      ]
+    },
+    {
+      "Heading": "AGENDA for FIRST MEETING Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+      "name": "agenda for first meeting governing committee (gc) of the facilitation of resources to invest in strengthening ukraine financial intermediary fund (f.o.r.t.i.s. ukraine fif)",
+      "Note": "không có heading cùng tên trong văn bản nguồn",
+      "TargetLocation": "body[1]/p[31]",
+      "NextHeadingLocation": "body[1]/p[32]",
+      "complete": false,
+      "gaps": [
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[32]",
+          "Reason": "heading_located_by_text:body[1]/p[33]"
+        },
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[1]",
+          "Reason": "heading_boundary_unverified"
+        },
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[31]",
+          "Reason": "heading_boundary_unverified"
+        },
+        {
+          "SourceId": "074",
+          "Location": "body[1]/p[1]",
+          "Reason": "heading_boundary_unverified"
+        }
+      ],
+      "facts": []
+    },
+    {
+      "Heading": "Agenda Items",
+      "name": "agenda items",
+      "Note": "không có heading cùng tên trong văn bản nguồn",
+      "TargetLocation": "body[1]/p[32]",
+      "NextHeadingLocation": null,
+      "complete": false,
+      "gaps": [
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[32]",
+          "Reason": "heading_located_by_text:body[1]/p[33]"
+        },
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[1]",
+          "Reason": "heading_boundary_unverified"
+        },
+        {
+          "SourceId": "target",
+          "Location": "body[1]/p[31]",
+          "Reason": "heading_boundary_unverified"
+        },
+        {
+          "SourceId": "074",
+          "Location": "body[1]/p[1]",
+          "Reason": "heading_boundary_unverified"
+        }
+      ],
+      "facts": []
+    }
+  ],
+  "excluded": [
+    {
+      "Heading": "Present:",
+      "text": "Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta",
+      "Reason": "ALREADY_IN_TARGET_EXACT"
+    },
+    {
+      "Heading": "Present:",
+      "text": "Trustee: Traci Phillips, Ashish Makkar",
+      "Reason": "ALREADY_IN_TARGET_EXACT"
+    },
+    {
+      "Heading": "Present:",
+      "text": "World Bank Legal: Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings",
+      "Reason": "ALREADY_IN_TARGET_EXACT"
+    }
+  ]
+}

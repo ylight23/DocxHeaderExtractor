@@ -1,0 +1,11 @@
+{
+  "sourceHash": "f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+  "goalSha256": "480f698b03c0272b54a42db1a1b87682eb88104b112a6b0dfadbaaeeca15a691",
+  "outlineMode": "style-fallback",
+  "model": "openrouter:qwen/qwen3.7-flash:alibaba:wire-v1:max=32768:reasoning=enabled",
+  "ceilingUsd": 1,
+  "maxCalls": 8,
+  "budgetScope": "this invocation only",
+  "sourceUnits": 50,
+  "initialBatches": 4
+}

@@ -1,0 +1,73 @@
+{
+  "priorResultSha256": "91de9d3389bd5f636cc5ff4baed86ed3793e9dc7a22176b98e65b5d2bb7f657d",
+  "sourceHash": "f576fa51b6bfdfbe63b9a27f7e1ef18cf5660d1a354d76575bc23b63e5a042b7",
+  "goalHash": "480f698b03c0272b54a42db1a1b87682eb88104b112a6b0dfadbaaeeca15a691",
+  "reviewVersion": "gather-review-v1",
+  "elapsedSeconds": 26.5894715,
+  "review": {
+    "Verdicts": [
+      {
+        "Index": 0,
+        "Decision": "KEEP",
+        "Reason": "The source text explicitly identifies the meeting as the \u0027first meeting\u0027 of the Governing Committee (GC) of the F.O.R.T.I.S. Ukraine FIF. This provides the meeting name and number, which is within the scope of general information."
+      },
+      {
+        "Index": 1,
+        "Decision": "KEEP",
+        "Reason": "The date of the meeting is clearly stated as November 21, 2024. This is essential general information about the meeting."
+      },
+      {
+        "Index": 2,
+        "Decision": "KEEP",
+        "Reason": "The time (7:00 am EST) and location/format (Washington DC with participants joining remotely) are explicitly provided in the opening section. This fits the goal\u0027s requirement for time, location, or format."
+      },
+      {
+        "Index": 3,
+        "Decision": "KEEP",
+        "Reason": "Linda Van Gelder is identified as acting as Chair who called the meeting to order. While a future chair was appointed, her role as the current chair for this specific meeting instance is relevant general information."
+      },
+      {
+        "Index": 4,
+        "Decision": "KEEP",
+        "Reason": "This item lists the attendees categorized by their roles (Governing Committee, Interim-Secretariat, Trustee, World Bank Legal). The goal explicitly requests \u0027attendees\u0027, so this detailed list is appropriate and supported by the source."
+      },
+      {
+        "Index": 5,
+        "Decision": "EXCLUDE",
+        "Reason": "This fragment refers to the endorsement of an attached agenda. It does not provide specific general meeting metadata (like name, date, etc.) but rather describes a procedural step or reference to another document. It is redundant or out of scope compared to the explicit agenda attachment mentioned elsewhere."
+      },
+      {
+        "Index": 6,
+        "Decision": "KEEP",
+        "Reason": "This confirms the full name of the committee/meeting body (\u0027Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)\u0027). This supports the \u0027meeting name\u0027 aspect of the goal."
+      },
+      {
+        "Index": 7,
+        "Decision": "KEEP",
+        "Reason": "The source mentions an \u0027Agreed Agenda\u0027 as an attachment. The goal asks for \u0027associated meeting documents\u0027. Identifying that an agenda was attached/endorsed is relevant general information about the meeting\u0027s documentation."
+      },
+      {
+        "Index": 8,
+        "Decision": "EXCLUDE",
+        "Reason": "The goal explicitly states to \u0027Exclude... appointments for later roles.\u0027 This item details the appointment of Brian McCauley as Chair for a period of one year, which is an appointment for a future role, not just the general info about who chaired *this* specific meeting instance."
+      }
+    ],
+    "Error": null,
+    "PreviouslyRefused": 1
+  },
+  "attempts": [
+    {
+      "RequestSha256": "95d5c939282984d39876521dab2c846f927152d2b0ecbf0daca7d7b48aaa6ab0",
+      "RequestBytes": 7396,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 26.488,
+      "PromptTokens": 2348,
+      "CompletionTokens": 2569,
+      "ReasoningTokens": 1927,
+      "ProviderCostUsd": 0.00042313,
+      "ReservedUsd": 0.00446882
+    }
+  ]
+}

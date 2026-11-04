@@ -1,0 +1,7 @@
+{
+  "sourceHash": "ea3091d558f454644b7d3fed7f44b2a866cb4021e50fb819e900989c403f2aa4",
+  "selectionHash": "8ce2a040c48cfe3f4077e97e10b6b1267cba2535e05847caa9c737accc2c9428",
+  "selectionSource": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\docx-group-synthetic-input-20261104\\selection.jsonl",
+  "baselineInstructionSha256": "17d4b6a950b2d940cf2112170a5efb83df22aa508f8a6920e796d1326d85bdd2",
+  "groupingAddition": "When deciding whether adjacent selected parts form one heading, evaluate their source text and the content immediately after the run. Join parts only when they jointly name the same unit. If a selected part introduces its own unit of content, keep it separate from another heading even when adjacent, similarly styled, or under a broader heading. A short label and a following title may still form one heading when the source shows that they name one unit together. Use the evidence in this document; do not change selection membership."
+}

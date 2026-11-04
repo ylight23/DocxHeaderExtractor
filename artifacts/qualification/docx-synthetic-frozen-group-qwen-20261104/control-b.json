@@ -1,0 +1,455 @@
+{
+  "sourceHash": "ea3091d558f454644b7d3fed7f44b2a866cb4021e50fb819e900989c403f2aa4",
+  "selectionHash": "8ce2a040c48cfe3f4077e97e10b6b1267cba2535e05847caa9c737accc2c9428",
+  "phase": "control-b",
+  "seconds": 13.3530155,
+  "outline": {
+    "file": "synthetic.docx",
+    "paragraphCount": 4,
+    "sourceCount": 4,
+    "headings": [
+      {
+        "index": 0,
+        "stableId": "body[1]/p[1]",
+        "sourceId": "body[1]/p[1]",
+        "level": 1,
+        "text": "Chapter I GENERAL PROVISIONS",
+        "originalText": "Chapter I",
+        "headingSpan": {
+          "start": 0,
+          "end": 9
+        },
+        "boundarySource": "docx-source-pointer-span",
+        "hierarchyResolution": "model-root",
+        "styleId": null,
+        "source": "Model",
+        "decisionStatus": "RequiresReview",
+        "confidenceBasis": "source-grounded-pointer-span",
+        "disputed": false
+      },
+      {
+        "index": 2,
+        "stableId": "body[1]/p[3]",
+        "sourceId": "body[1]/p[3]",
+        "level": 2,
+        "text": "Article 1. Scope",
+        "originalText": "Article 1. Scope",
+        "headingSpan": {
+          "start": 0,
+          "end": 16
+        },
+        "boundarySource": "docx-source-pointer-span",
+        "hierarchyResolution": "model-parent-relation",
+        "styleId": null,
+        "source": "Model",
+        "decisionStatus": "RequiresReview",
+        "confidenceBasis": "source-grounded-pointer-span",
+        "disputed": false
+      }
+    ],
+    "elapsedMs": 13344,
+    "model": "qwen/qwen3.7-flash",
+    "deterministicRoute": "docx-v6-selected-lines",
+    "routeAudit": {
+      "summary": "docx-v6-selected-lines",
+      "sourceBlocksAvailable": 4,
+      "sourceBlocksSelected": 4,
+      "sourcePagesAvailable": 0,
+      "sourcePagesSelected": 0,
+      "sourceBlocks": [
+        {
+          "id": "body[1]/p[1]",
+          "page": 0,
+          "text": "Chapter I"
+        },
+        {
+          "id": "body[1]/p[2]",
+          "page": 0,
+          "text": "GENERAL PROVISIONS"
+        },
+        {
+          "id": "body[1]/p[3]",
+          "page": 0,
+          "text": "Article 1. Scope"
+        },
+        {
+          "id": "body[1]/p[4]",
+          "page": 0,
+          "text": "This section sets the scope of the document."
+        }
+      ],
+      "selectedSourceBlocks": [
+        {
+          "id": "body[1]/p[1]",
+          "page": 0,
+          "text": "Chapter I"
+        },
+        {
+          "id": "body[1]/p[2]",
+          "page": 0,
+          "text": "GENERAL PROVISIONS"
+        },
+        {
+          "id": "body[1]/p[3]",
+          "page": 0,
+          "text": "Article 1. Scope"
+        },
+        {
+          "id": "body[1]/p[4]",
+          "page": 0,
+          "text": "This section sets the scope of the document."
+        }
+      ],
+      "blockDecisions": [
+        {
+          "id": "body[1]/p[1]",
+          "semanticFunction": "ESTABLISHES_STRUCTURE",
+          "reason": null
+        },
+        {
+          "id": "body[1]/p[3]",
+          "semanticFunction": "ESTABLISHES_STRUCTURE",
+          "reason": null
+        }
+      ],
+      "groundedBlockIds": [
+        "body[1]/p[1]",
+        "body[1]/p[3]"
+      ],
+      "route": "docx-v6-selected-lines",
+      "ResourcePlan": null,
+      "SelectionResources": {
+        "ProfileId": "openrouter-alibaba-qwen37-20261024-v1",
+        "ByteCap": 262144,
+        "ConfirmedUsd": 0.000155034,
+        "UnconfirmedUsd": 0,
+        "Attempts": [
+          {
+            "AttemptId": "4b33e0a183df45469965229c8db22c38",
+            "RequestSha256": "6672697574774976791d7d53e75c39c00cc0996698a8d93aeb8c3f42c6b43228",
+            "WireBytes": 20905,
+            "InputTokenEstimate": 20508,
+            "Estimator": "utf8-text-and-configured-image-allowance-v1",
+            "CompletionCap": 32768,
+            "PromptTokens": 0,
+            "CompletionTokens": 0,
+            "ReasoningTokens": null,
+            "ReservedUsd": 0.00487508,
+            "CostUsd": 0,
+            "Status": "CONFIRMED",
+            "Transport": {
+              "UnitId": "SEG-000",
+              "Turn": 1,
+              "RetryIndex": 0,
+              "HttpStatus": 200,
+              "Outcome": "HTTP_OK",
+              "RequestSeconds": 0,
+              "WaitSeconds": 0,
+              "RetryAfterSeconds": null,
+              "RetryDelaySeconds": 0,
+              "ProviderErrorCode": null
+            }
+          },
+          {
+            "AttemptId": "2665a0bba9744ea98da57672c8ac5d2d",
+            "RequestSha256": "841e77247f802c125e4afefead4693246491ab24e5e307678a6881b22fcad9a8",
+            "WireBytes": 6158,
+            "InputTokenEstimate": 5942,
+            "Estimator": "utf8-text-and-configured-image-allowance-v1",
+            "CompletionCap": 32768,
+            "PromptTokens": 1296,
+            "CompletionTokens": 1161,
+            "ReasoningTokens": 1116,
+            "ReservedUsd": 0.0044381,
+            "CostUsd": 0.000155034,
+            "Status": "CONFIRMED",
+            "Transport": {
+              "UnitId": "GROUP-001",
+              "Turn": 1,
+              "RetryIndex": 0,
+              "HttpStatus": 200,
+              "Outcome": "HTTP_OK",
+              "RequestSeconds": 11.916,
+              "WaitSeconds": 0,
+              "RetryAfterSeconds": null,
+              "RetryDelaySeconds": 0,
+              "ProviderErrorCode": null
+            }
+          }
+        ]
+      },
+      "rawModelResponses": [
+        "{\"unit\":\"SEG-000\",\"decisions\":{\"S0001\":\"SELECT\",\"S0002\":\"SELECT\",\"S0003\":\"SELECT\",\"S0004\":\"NOT_SELECT\"},\"reasons\":{},\"analysis\":null,\"headingExtents\":null,\"readingViewIds\":null,\"selectionGroups\":null,\"groupingFailure\":null,\"coreFactsCoverage\":{\"targetsWithoutFacts\":[],\"factsResultsCut\":0},\"detailEvidenceCoverage\":{\"aliasesRead\":[]}}",
+        "{\"grouping\":\"{\\\"protocolVersion\\\":\\\"PDF_HEADING_GROUPS_V1\\\",\\\"runs\\\":[{\\\"run\\\":\\\"R1\\\",\\\"headings\\\":[[\\\"S0001\\\",\\\"S0002\\\"],[\\\"S0003\\\"]]}]}\"}",
+        "{\"groupingEvidence\":\"{\\\"unit\\\":\\\"GROUP-001\\\",\\\"turn\\\":1,\\\"requestSha256\\\":\\\"841e77247f802c125e4afefead4693246491ab24e5e307678a6881b22fcad9a8\\\",\\\"response\\\":\\\"{\\\\\\\"protocolVersion\\\\\\\":\\\\\\\"PDF_HEADING_GROUPS_V1\\\\\\\",\\\\\\\"runs\\\\\\\":[{\\\\\\\"run\\\\\\\":\\\\\\\"R1\\\\\\\",\\\\\\\"headings\\\\\\\":[[\\\\\\\"S0001\\\\\\\",\\\\\\\"S0002\\\\\\\"],[\\\\\\\"S0003\\\\\\\"]]}]}\\\",\\\"failure\\\":null}\"}",
+        "{\"stage\":\"bound-heading-groups\",\"groups\":[[\"S0001\",\"S0002\"],[\"S0003\"]]}",
+        "{\"stage\":\"pre-binding-alias-state\",\"aliases\":{\"S0001\":{\"InitialSelection\":\"SELECT\",\"FinalSelection\":\"SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"READY_FOR_BINDING\",\"Provenance\":[{\"Alias\":\"S0001\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0},{\"Alias\":\"S0001\",\"Stage\":\"grouping\",\"UnitId\":\"GROUP-001\",\"CandidateId\":\"R1\",\"Decision\":\"DIVIDED\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0002\":{\"InitialSelection\":\"SELECT\",\"FinalSelection\":\"SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"READY_FOR_BINDING\",\"Provenance\":[{\"Alias\":\"S0002\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0},{\"Alias\":\"S0002\",\"Stage\":\"grouping\",\"UnitId\":\"GROUP-001\",\"CandidateId\":\"R1\",\"Decision\":\"DIVIDED\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0003\":{\"InitialSelection\":\"SELECT\",\"FinalSelection\":\"SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"READY_FOR_BINDING\",\"Provenance\":[{\"Alias\":\"S0003\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0},{\"Alias\":\"S0003\",\"Stage\":\"grouping\",\"UnitId\":\"GROUP-001\",\"CandidateId\":\"R1\",\"Decision\":\"DIVIDED\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0004\":{\"InitialSelection\":\"NOT_SELECT\",\"FinalSelection\":\"NOT_SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"NOT_SELECTED\",\"Provenance\":[{\"Alias\":\"S0004\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"NOT_SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"}}}",
+        "{\"stage\":\"HIERARCHY_PLACE\",\"unitId\":\"HIERARCHY_PLACE-001\",\"round\":1,\"request\":\"{\\\"protocolVersion\\\":\\\"HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION\\\",\\\"stage\\\":\\\"HIERARCHY_PLACE\\\",\\\"documentSha256\\\":\\\"ea3091d558f454644b7d3fed7f44b2a866cb4021e50fb819e900989c403f2aa4\\\",\\\"headings\\\":[{\\\"alias\\\":\\\"S0001\\\",\\\"text\\\":\\\"Chapter I GENERAL PROVISIONS\\\",\\\"ordinal\\\":0,\\\"parts\\\":[\\\"S0001\\\",\\\"S0002\\\"],\\\"style\\\":{\\\"bold\\\":false,\\\"italic\\\":false,\\\"allCaps\\\":false,\\\"rankInDocument\\\":1,\\\"linesWithThisStyleInDocument\\\":4}},{\\\"alias\\\":\\\"S0003\\\",\\\"text\\\":\\\"Article 1. Scope\\\",\\\"ordinal\\\":2,\\\"parts\\\":[\\\"S0003\\\"],\\\"style\\\":{\\\"bold\\\":false,\\\"italic\\\":false,\\\"allCaps\\\":false,\\\"rankInDocument\\\":1,\\\"linesWithThisStyleInDocument\\\":4}}],\\\"documentStyles\\\":{\\\"readBy\\\":\\\"the program, from the OOXML of every paragraph of the whole document: each distinct style (style name, font size rounded to half a point, bold), largest size first, bold before regular at the same size, with how many paragraphs use it and the first paragraphs in reading order set in it\\\",\\\"version\\\":\\\"DOCX_AGENT_DOCUMENT_STYLES_V1\\\",\\\"documentLines\\\":4,\\\"stylesTotal\\\":1,\\\"styles\\\":[{\\\"rank\\\":1,\\\"styleName\\\":\\\"(none)\\\",\\\"bold\\\":false,\\\"lines\\\":4,\\\"firstLines\\\":[{\\\"alias\\\":\\\"S0001\\\",\\\"text\\\":\\\"Chapter I\\\"},{\\\"alias\\\":\\\"S0002\\\",\\\"text\\\":\\\"GENERAL PROVISIONS\\\"},{\\\"alias\\\":\\\"S0003\\\",\\\"text\\\":\\\"Article 1. Scope\\\"}]}],\\\"stylesNotShown\\\":0},\\\"measurementsNote\\\":\\\"Each heading may also carry \\\\\\\"style\\\\\\\" (the style name, the outline level it declares, sizePt, bold, italic, allCaps, alignment, the numbering label and level, rankInDocument: the place of its style among the distinct styles of the whole document, 1 being the largest, and linesWithThisStyleInDocument), and \\\\\\\"documentStyles\\\\\\\" lists those distinct styles with the first lines set in each. They are measurements of the document, not labels and not decisions: you decide each relation.\\\",\\\"proposedRelations\\\":[],\\\"decidedHeadings\\\":[],\\\"upstreamWithheld\\\":[],\\\"sourceContext\\\":[{\\\"alias\\\":\\\"S0001\\\",\\\"ordinal\\\":0,\\\"page\\\":0,\\\"text\\\":\\\"Chapter I\\\"},{\\\"alias\\\":\\\"S0002\\\",\\\"ordinal\\\":1,\\\"page\\\":0,\\\"text\\\":\\\"GENERAL PROVISIONS\\\"},{\\\"alias\\\":\\\"S0003\\\",\\\"ordinal\\\":2,\\\"page\\\":0,\\\"text\\\":\\\"Article 1. Scope\\\"},{\\\"alias\\\":\\\"S0004\\\",\\\"ordinal\\\":3,\\\"page\\\":0,\\\"text\\\":\\\"This section sets the scope of the document.\\\"}],\\\"toPlace\\\":[\\\"S0001\\\",\\\"S0003\\\"],\\\"protocolErrors\\\":[]}\",\"response\":\"{\\n  \\\"protocolVersion\\\": \\\"HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION\\\",\\n  \\\"placements\\\": [\\n    {\\n      \\\"alias\\\": \\\"S0001\\\",\\n      \\\"parent\\\": \\\"ROOT\\\"\\n    },\\n    {\\n      \\\"alias\\\": \\\"S0003\\\",\\n      \\\"parent\\\": \\\"S0001\\\"\\n    }\\n  ]\\n}\",\"responseBytes\":220,\"requestedMaxOutputTokens\":352,\"MaxOutputTokens\":352,\"FinishReason\":\"stop\",\"protocolErrors\":[]}"
+      ],
+      "modelInputContracts": [
+        "docx-v6:DOCX_AGENT_SOURCE_V1:facts-in-request:instruction-17d4b6a9:selection-boundary-grouping-csharp-validation-v2:no-semantic-membership-veto:group-selected-text-v1",
+        "HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION"
+      ],
+      "validatedStructures": [
+        {
+          "SourceId": "body[1]/p[1]",
+          "Level": 1,
+          "ParentId": null,
+          "ParentResolution": "model-root",
+          "Decision": "requires_review",
+          "StructuralScope": "document_body"
+        },
+        {
+          "SourceId": "body[1]/p[3]",
+          "Level": 2,
+          "ParentId": "body[1]/p[1]",
+          "ParentResolution": "model-parent-relation",
+          "Decision": "requires_review",
+          "StructuralScope": "document_body"
+        }
+      ],
+      "hierarchyFacts": [],
+      "semanticLane": {
+        "status": "complete",
+        "scheduled": 1,
+        "completed": 1,
+        "timedOut": 0,
+        "notStarted": 0,
+        "failureClass": null
+      },
+      "spanLane": {
+        "status": "selected-lines",
+        "scheduled": 2,
+        "completed": 2,
+        "timedOut": 0,
+        "notStarted": 0,
+        "failureClass": null
+      }
+    },
+    "provenance": {
+      "backend": "configured-route",
+      "sentDataExternally": true,
+      "passes": [
+        {
+          "name": "semantic-role",
+          "chunks": 1,
+          "requestedParagraphs": 1,
+          "sentDataExternally": true
+        },
+        {
+          "name": "heading-span",
+          "chunks": 2,
+          "requestedParagraphs": 2,
+          "sentDataExternally": true
+        },
+        {
+          "name": "source-facts",
+          "chunks": 1,
+          "requestedParagraphs": 4,
+          "sentDataExternally": false
+        },
+        {
+          "name": "proposal-validation",
+          "chunks": 1,
+          "requestedParagraphs": 2,
+          "sentDataExternally": false
+        },
+        {
+          "name": "deterministic-hierarchy",
+          "chunks": 1,
+          "requestedParagraphs": 2,
+          "sentDataExternally": false
+        },
+        {
+          "name": "output-policy",
+          "chunks": 1,
+          "requestedParagraphs": 2,
+          "sentDataExternally": false
+        }
+      ]
+    },
+    "disputedCount": 0
+  },
+  "grouping": {
+    "ModelDividedRuns": 1,
+    "FallbackRuns": 0,
+    "DisputedRuns": 0,
+    "VerificationChecks": 0,
+    "VerifiedRuns": 0,
+    "MembershipDisputes": 0,
+    "BoundaryDisputes": 0,
+    "UnresolvedAliases": 0,
+    "IgnoredReviewChanges": 0,
+    "Batches": [
+      {
+        "Phase": "GROUP",
+        "UnitId": "GROUP-001",
+        "Runs": 1,
+        "Posts": 1,
+        "Repairs": 0,
+        "StartedAtSeconds": 0,
+        "CompletedAtSeconds": 11.945,
+        "ElapsedSeconds": 11.945
+      }
+    ],
+    "FieldDiagnostics": null,
+    "CoverageDiagnostics": null,
+    "Partitions": null,
+    "VerifierEvidence": null,
+    "BoundaryRepairs": null,
+    "BoundaryVerdicts": null
+  },
+  "placement": {
+    "Status": "placement-proposed",
+    "RequestedCount": 2,
+    "ResponseEntryCount": 2,
+    "PlacedCount": 2,
+    "OutOfHierarchyCount": 0,
+    "UnresolvedCount": 0,
+    "FailureClass": null,
+    "Decisions": [
+      {
+        "SourceId": "body[1]/p[1]",
+        "Alias": "S0001",
+        "Resolution": "model-root",
+        "ProposedParentAlias": "ROOT",
+        "VerificationStatus": "NOT_RUN",
+        "ResolutionBasis": "model-parent-proposal",
+        "BlockingAliases": [],
+        "EvidenceRefs": []
+      },
+      {
+        "SourceId": "body[1]/p[3]",
+        "Alias": "S0003",
+        "Resolution": "model-parent-relation",
+        "ProposedParentAlias": "S0001",
+        "VerificationStatus": "NOT_RUN",
+        "ResolutionBasis": "model-parent-proposal",
+        "BlockingAliases": [],
+        "EvidenceRefs": []
+      }
+    ],
+    "Contract": "HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION",
+    "Resources": {
+      "ProfileId": "openrouter-alibaba-qwen37-20261024-v1",
+      "ByteCap": 262144,
+      "ConfirmedUsd": 4.197E-05,
+      "UnconfirmedUsd": 0,
+      "Attempts": [
+        {
+          "AttemptId": "54d00e70128748c3acf5b66d2bcdd090",
+          "RequestSha256": "e26f60b7b087909427a79ce462305fa2692d2dce35fba8118fa5b072bf29b5c0",
+          "WireBytes": 4529,
+          "InputTokenEstimate": 4237,
+          "Estimator": "utf8-text-and-configured-image-allowance-v1",
+          "CompletionCap": 352,
+          "PromptTokens": 1009,
+          "CompletionTokens": 90,
+          "ReasoningTokens": 0,
+          "ReservedUsd": 0.00017287,
+          "CostUsd": 4.197E-05,
+          "Status": "CONFIRMED",
+          "Transport": {
+            "UnitId": "HIERARCHY_PLACE-001",
+            "Turn": 1,
+            "RetryIndex": 0,
+            "HttpStatus": 200,
+            "Outcome": "HTTP_OK",
+            "RequestSeconds": 1.367,
+            "WaitSeconds": 0,
+            "RetryAfterSeconds": null,
+            "RetryDelaySeconds": 0,
+            "ProviderErrorCode": null
+          }
+        }
+      ]
+    },
+    "LogicalCalls": 1,
+    "Seconds": 1.4,
+    "VerifiedCount": 0,
+    "RepairCount": 0,
+    "EdgeRepairs": [],
+    "UnresolvedSummary": {
+      "DirectUnverified": 0,
+      "AncestorChainBlocked": 0,
+      "MissingAncestor": 0,
+      "ProtocolNoVerdict": 0,
+      "ModelUnresolved": 0,
+      "ModelRejected": 0,
+      "GraphConflictBlocked": 0
+    },
+    "GraphConflicts": [],
+    "GraphRepairAliases": [],
+    "GraphUnresolvedAliases": [],
+    "Failures": [],
+    "Calls": [
+      {
+        "UnitId": "HIERARCHY_PLACE-001",
+        "Phase": "HIERARCHY_PLACE",
+        "Round": 1,
+        "TargetCount": 2,
+        "RequestedMaxOutputTokens": 352,
+        "MaxOutputTokens": 352,
+        "FinishReason": "stop",
+        "ResponseBytes": 220,
+        "JsonFence": false,
+        "Seconds": 1.368,
+        "ProtocolErrors": [],
+        "AcceptedAliases": [
+          "S0001",
+          "S0003"
+        ],
+        "JsonErrorLine": null,
+        "JsonErrorBytePosition": null
+      }
+    ],
+    "SourceTrace": [
+      {
+        "Alias": "S0001",
+        "SourceId": "body[1]/p[1]",
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "BOUND",
+        "PlacementResolution": "model-root"
+      },
+      {
+        "Alias": "S0002",
+        "SourceId": "body[1]/p[2]",
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "BOUND",
+        "PlacementResolution": "model-root"
+      },
+      {
+        "Alias": "S0003",
+        "SourceId": "body[1]/p[3]",
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "BOUND",
+        "PlacementResolution": "model-parent-relation"
+      },
+      {
+        "Alias": "S0004",
+        "SourceId": "body[1]/p[4]",
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "PlacementResolution": "not-bound"
+      }
+    ],
+    "MissingAncestorBlockers": []
+  },
+  "budget": {
+    "CeilingUsd": 1,
+    "MaxAttempts": 30,
+    "Attempts": 3,
+    "ConfirmedUsd": 0.000197004,
+    "ProvisionalUsd": 0,
+    "OutstandingUsd": 0,
+    "AccountingScope": "default-agent-transport-admissions"
+  }
+}

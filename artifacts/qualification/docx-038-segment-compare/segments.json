@@ -1,0 +1,23 @@
+{
+  "docx": "todo10_8/heading_corpus_100/02_hop_dong_mua_sam/038_WB_Works_DB_SingleStage_NoSEASH_2025.docx",
+  "paragraphs": 4451,
+  "goldHeadings": 359,
+  "schemes": {
+    "fixed": {
+      "segments": 93,
+      "maxSegment": 48,
+      "minSegment": 35,
+      "meanSegment": 47.9,
+      "segmentsOverWindow": 0,
+      "headingEndsSegment": 5
+    },
+    "pagebreak": {
+      "segments": 92,
+      "maxSegment": 600,
+      "minSegment": 1,
+      "meanSegment": 48.4,
+      "segmentsOverWindow": 24,
+      "headingEndsSegment": 9
+    }
+  }
+}

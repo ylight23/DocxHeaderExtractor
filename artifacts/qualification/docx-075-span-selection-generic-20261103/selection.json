@@ -1,0 +1,1416 @@
+{
+  "elapsedSeconds": 301.6780185,
+  "selectorId": "docx-v6:DOCX_AGENT_SOURCE_V1:facts-in-request:instruction-ad777b2b:selection-boundary-grouping-csharp-validation-v2:no-semantic-membership-veto:group-selected-text-v1",
+  "selection": {
+    "SelectedAliases": [
+      "S0001",
+      "S0003",
+      "S0005",
+      "S0011",
+      "S0020",
+      "S0021",
+      "S0025",
+      "S0026",
+      "S0027",
+      "S0029",
+      "S0030",
+      "S0031"
+    ],
+    "UnitsComplete": 1,
+    "UnitsTotal": 1,
+    "UnitFailures": [],
+    "ModelAnswers": [
+      "{\u0022unit\u0022:\u0022SEG-000\u0022,\u0022decisions\u0022:{\u0022S0001\u0022:\u0022SELECT\u0022,\u0022S0002\u0022:\u0022NOT_SELECT\u0022,\u0022S0003\u0022:\u0022SELECT\u0022,\u0022S0004\u0022:\u0022NOT_SELECT\u0022,\u0022S0005\u0022:\u0022SELECT\u0022,\u0022S0006\u0022:\u0022NOT_SELECT\u0022,\u0022S0007\u0022:\u0022NOT_SELECT\u0022,\u0022S0008\u0022:\u0022NOT_SELECT\u0022,\u0022S0009\u0022:\u0022NOT_SELECT\u0022,\u0022S0010\u0022:\u0022NOT_SELECT\u0022,\u0022S0011\u0022:\u0022SELECT\u0022,\u0022S0012\u0022:\u0022NOT_SELECT\u0022,\u0022S0013\u0022:\u0022NOT_SELECT\u0022,\u0022S0014\u0022:\u0022NOT_SELECT\u0022,\u0022S0015\u0022:\u0022NOT_SELECT\u0022,\u0022S0016\u0022:\u0022NOT_SELECT\u0022,\u0022S0017\u0022:\u0022NOT_SELECT\u0022,\u0022S0018\u0022:\u0022NOT_SELECT\u0022,\u0022S0019\u0022:\u0022NOT_SELECT\u0022,\u0022S0020\u0022:\u0022SELECT\u0022,\u0022S0021\u0022:\u0022SELECT\u0022,\u0022S0022\u0022:\u0022NOT_SELECT\u0022,\u0022S0023\u0022:\u0022NOT_SELECT\u0022,\u0022S0024\u0022:\u0022NOT_SELECT\u0022,\u0022S0025\u0022:\u0022SELECT\u0022,\u0022S0026\u0022:\u0022SELECT\u0022,\u0022S0027\u0022:\u0022SELECT\u0022,\u0022S0028\u0022:\u0022NOT_SELECT\u0022,\u0022S0029\u0022:\u0022SELECT\u0022,\u0022S0030\u0022:\u0022SELECT\u0022,\u0022S0031\u0022:\u0022SELECT\u0022,\u0022S0032\u0022:\u0022NOT_SELECT\u0022,\u0022S0033\u0022:\u0022NOT_SELECT\u0022,\u0022S0034\u0022:\u0022NOT_SELECT\u0022,\u0022S0035\u0022:\u0022NOT_SELECT\u0022,\u0022S0036\u0022:\u0022NOT_SELECT\u0022,\u0022S0037\u0022:\u0022NOT_SELECT\u0022,\u0022S0038\u0022:\u0022NOT_SELECT\u0022},\u0022reasons\u0022:{\u0022S0001\u0022:\u0022Centered, bold title introducing the entire document.\u0022,\u0022S0003\u0022:\u0022Bold left-aligned label structurally dividing the opening of the minutes.\u0022,\u0022S0005\u0022:\u0022Bold left-aligned label structurally dividing the attendees section.\u0022,\u0022S0011\u0022:\u0022Bold prefix \u0027Item 1: Document Approval.\u0027 functions as a structural heading dividing the discussion unit.\u0022,\u0022S0020\u0022:\u0022Bold prefix \u0027Item 2: Operating Context.\u0027 functions as a structural heading dividing the discussion unit.\u0022,\u0022S0021\u0022:\u0022Bold prefix \u0027Item 3: Strategic Directions.\u0027 functions as a structural heading dividing the discussion unit.\u0022,\u0022S0025\u0022:\u0022Bold prefix \u0027Item 4: Work Plan, Budget, and Fees.\u0027 functions as a structural heading dividing the discussion unit.\u0022,\u0022S0026\u0022:\u0022Bold prefix \u0027Item 5: Communications Strategy.\u0027 functions as a structural heading dividing the discussion unit.\u0022,\u0022S0027\u0022:\u0022Bold prefix \u0027Item 6: Appointment of the Chair.\u0027 functions as a structural heading dividing the discussion unit.\u0022,\u0022S0029\u0022:\u0022Underlined label introducing the attached agenda document.\u0022,\u0022S0030\u0022:\u0022Centered, bold title introducing the agenda section.\u0022,\u0022S0031\u0022:\u0022Bold left-aligned label structurally dividing the agenda list.\u0022},\u0022analysis\u0022:\u0022Identified structural headings by evaluating text, formatting (bold/center alignment, underline), and structural function (dividing or introducing content units). Selected the main title (S0001), section labels in the minutes (S0003, S0005), and the six \u0027Item\u0027 headings (S0011, S0020, S0021, S0025, S0026, S0027), applying precise heading extents where body text follows in the same paragraph. Selected the attachment label (S0029) and the agenda title/header (S0030, S0031). Excluded metadata (S0002), page numbers (S0015, S0022, S0028, S0038), body paragraphs, and numbered agenda list items (S0032-S0037) per the instruction to avoid selecting numbered text that merely resembles headings.\u0022,\u0022headingExtents\u0022:{\u0022S0001\u0022:{\u0022start\u0022:0,\u0022end\u0022:163,\u0022text\u0022:\u0022MEETING MINUTES Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)\u0022},\u0022S0003\u0022:{\u0022start\u0022:0,\u0022end\u0022:8,\u0022text\u0022:\u0022Opening:\u0022},\u0022S0005\u0022:{\u0022start\u0022:0,\u0022end\u0022:8,\u0022text\u0022:\u0022Present:\u0022},\u0022S0011\u0022:{\u0022start\u0022:0,\u0022end\u0022:26,\u0022text\u0022:\u0022Item 1: Document Approval.\u0022},\u0022S0020\u0022:{\u0022start\u0022:0,\u0022end\u0022:26,\u0022text\u0022:\u0022Item 2: Operating Context.\u0022},\u0022S0021\u0022:{\u0022start\u0022:0,\u0022end\u0022:29,\u0022text\u0022:\u0022Item 3: Strategic Directions.\u0022},\u0022S0025\u0022:{\u0022start\u0022:0,\u0022end\u0022:36,\u0022text\u0022:\u0022Item 4: Work Plan, Budget, and Fees.\u0022},\u0022S0026\u0022:{\u0022start\u0022:0,\u0022end\u0022:32,\u0022text\u0022:\u0022Item 5: Communications Strategy.\u0022},\u0022S0027\u0022:{\u0022start\u0022:0,\u0022end\u0022:33,\u0022text\u0022:\u0022Item 6: Appointment of the Chair.\u0022},\u0022S0029\u0022:{\u0022start\u0022:0,\u0022end\u0022:24,\u0022text\u0022:\u0022Attachment:Agreed Agenda\u0022},\u0022S0030\u0022:{\u0022start\u0022:0,\u0022end\u0022:172,\u0022text\u0022:\u0022AGENDA for FIRST MEETING Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)\u0022},\u0022S0031\u0022:{\u0022start\u0022:0,\u0022end\u0022:12,\u0022text\u0022:\u0022Agenda Items\u0022}},\u0022readingViewIds\u0022:null,\u0022selectionGroups\u0022:null,\u0022groupingFailure\u0022:null,\u0022coreFactsCoverage\u0022:{\u0022targetsWithoutFacts\u0022:[],\u0022factsResultsCut\u0022:0},\u0022detailEvidenceCoverage\u0022:{\u0022aliasesRead\u0022:[]}}",
+      "{\u0022grouping\u0022:\u0022{\\\u0022protocolVersion\\\u0022:\\\u0022PDF_HEADING_GROUPS_V1\\\u0022,\\\u0022runs\\\u0022:[{\\\u0022run\\\u0022:\\\u0022R1\\\u0022,\\\u0022headings\\\u0022:[[\\\u0022S0020\\\u0022],[\\\u0022S0021\\\u0022]]}],\\\u0022runs\\\u0022:[{\\\u0022run\\\u0022:\\\u0022R2\\\u0022,\\\u0022headings\\\u0022:[[\\\u0022S0025\\\u0022],[\\\u0022S0026\\\u0022],[\\\u0022S0027\\\u0022]]}],\\\u0022runs\\\u0022:[{\\\u0022run\\\u0022:\\\u0022R3\\\u0022,\\\u0022headings\\\u0022:[[\\\u0022S0029\\\u0022],[\\\u0022S0030\\\u0022],[\\\u0022S0031\\\u0022]]}]}\u0022}",
+      "{\u0022groupingEvidence\u0022:\u0022{\\\u0022unit\\\u0022:\\\u0022GROUP-001\\\u0022,\\\u0022turn\\\u0022:1,\\\u0022requestSha256\\\u0022:\\\u00222f8c9d3036fedc66926fb59fc37fcf8744a4c720d62044d15396e8f5530f708c\\\u0022,\\\u0022response\\\u0022:\\\u0022{\\\\\\\u0022protocolVersion\\\\\\\u0022:\\\\\\\u0022PDF_HEADING_GROUPS_V1\\\\\\\u0022,\\\\\\\u0022runs\\\\\\\u0022:[{\\\\\\\u0022run\\\\\\\u0022:\\\\\\\u0022R1\\\\\\\u0022,\\\\\\\u0022headings\\\\\\\u0022:[[\\\\\\\u0022S0020\\\\\\\u0022],[\\\\\\\u0022S0021\\\\\\\u0022]]}],\\\\\\\u0022runs\\\\\\\u0022:[{\\\\\\\u0022run\\\\\\\u0022:\\\\\\\u0022R2\\\\\\\u0022,\\\\\\\u0022headings\\\\\\\u0022:[[\\\\\\\u0022S0025\\\\\\\u0022],[\\\\\\\u0022S0026\\\\\\\u0022],[\\\\\\\u0022S0027\\\\\\\u0022]]}],\\\\\\\u0022runs\\\\\\\u0022:[{\\\\\\\u0022run\\\\\\\u0022:\\\\\\\u0022R3\\\\\\\u0022,\\\\\\\u0022headings\\\\\\\u0022:[[\\\\\\\u0022S0029\\\\\\\u0022],[\\\\\\\u0022S0030\\\\\\\u0022],[\\\\\\\u0022S0031\\\\\\\u0022]]}]}\\\u0022,\\\u0022failure\\\u0022:null}\u0022}",
+      "{\u0022stage\u0022:\u0022bound-heading-groups\u0022,\u0022groups\u0022:[[\u0022S0001\u0022],[\u0022S0003\u0022],[\u0022S0005\u0022],[\u0022S0011\u0022],[\u0022S0020\u0022],[\u0022S0021\u0022],[\u0022S0025\u0022],[\u0022S0026\u0022],[\u0022S0027\u0022],[\u0022S0029\u0022],[\u0022S0030\u0022],[\u0022S0031\u0022]]}",
+      "{\u0022stage\u0022:\u0022pre-binding-alias-state\u0022,\u0022aliases\u0022:{\u0022S0001\u0022:{\u0022InitialSelection\u0022:\u0022SELECT\u0022,\u0022FinalSelection\u0022:\u0022SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022READY_FOR_BINDING\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0001\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:53,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0002\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0002\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0003\u0022:{\u0022InitialSelection\u0022:\u0022SELECT\u0022,\u0022FinalSelection\u0022:\u0022SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022READY_FOR_BINDING\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0003\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:73,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0004\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0004\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0005\u0022:{\u0022InitialSelection\u0022:\u0022SELECT\u0022,\u0022FinalSelection\u0022:\u0022SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022READY_FOR_BINDING\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0005\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:68,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0006\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0006\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0007\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0007\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0008\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0008\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0009\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0009\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0010\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0010\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0011\u0022:{\u0022InitialSelection\u0022:\u0022SELECT\u0022,\u0022FinalSelection\u0022:\u0022SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022READY_FOR_BINDING\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0011\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:104,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0012\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0012\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0013\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0013\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0014\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0014\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0015\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0015\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0016\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0016\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0017\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0017\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0018\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0018\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0019\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0019\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0020\u0022:{\u0022InitialSelection\u0022:\u0022SELECT\u0022,\u0022FinalSelection\u0022:\u0022SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022READY_FOR_BINDING\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0020\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:104,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0},{\u0022Alias\u0022:\u0022S0020\u0022,\u0022Stage\u0022:\u0022grouping\u0022,\u0022UnitId\u0022:\u0022GROUP-001\u0022,\u0022CandidateId\u0022:\u0022R1\u0022,\u0022Decision\u0022:\u0022DIVIDED\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0021\u0022:{\u0022InitialSelection\u0022:\u0022SELECT\u0022,\u0022FinalSelection\u0022:\u0022SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022READY_FOR_BINDING\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0021\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:107,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0},{\u0022Alias\u0022:\u0022S0021\u0022,\u0022Stage\u0022:\u0022grouping\u0022,\u0022UnitId\u0022:\u0022GROUP-001\u0022,\u0022CandidateId\u0022:\u0022R1\u0022,\u0022Decision\u0022:\u0022DIVIDED\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0022\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0022\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0023\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0023\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0024\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0024\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0025\u0022:{\u0022InitialSelection\u0022:\u0022SELECT\u0022,\u0022FinalSelection\u0022:\u0022SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022READY_FOR_BINDING\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0025\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:114,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0},{\u0022Alias\u0022:\u0022S0025\u0022,\u0022Stage\u0022:\u0022grouping\u0022,\u0022UnitId\u0022:\u0022GROUP-001\u0022,\u0022CandidateId\u0022:\u0022R2\u0022,\u0022Decision\u0022:\u0022DIVIDED\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0026\u0022:{\u0022InitialSelection\u0022:\u0022SELECT\u0022,\u0022FinalSelection\u0022:\u0022SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022READY_FOR_BINDING\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0026\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:110,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0},{\u0022Alias\u0022:\u0022S0026\u0022,\u0022Stage\u0022:\u0022grouping\u0022,\u0022UnitId\u0022:\u0022GROUP-001\u0022,\u0022CandidateId\u0022:\u0022R2\u0022,\u0022Decision\u0022:\u0022DIVIDED\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0027\u0022:{\u0022InitialSelection\u0022:\u0022SELECT\u0022,\u0022FinalSelection\u0022:\u0022SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022READY_FOR_BINDING\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0027\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:111,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0},{\u0022Alias\u0022:\u0022S0027\u0022,\u0022Stage\u0022:\u0022grouping\u0022,\u0022UnitId\u0022:\u0022GROUP-001\u0022,\u0022CandidateId\u0022:\u0022R2\u0022,\u0022Decision\u0022:\u0022DIVIDED\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0028\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0028\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0029\u0022:{\u0022InitialSelection\u0022:\u0022SELECT\u0022,\u0022FinalSelection\u0022:\u0022SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022READY_FOR_BINDING\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0029\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:58,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0},{\u0022Alias\u0022:\u0022S0029\u0022,\u0022Stage\u0022:\u0022grouping\u0022,\u0022UnitId\u0022:\u0022GROUP-001\u0022,\u0022CandidateId\u0022:\u0022R3\u0022,\u0022Decision\u0022:\u0022DIVIDED\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0030\u0022:{\u0022InitialSelection\u0022:\u0022SELECT\u0022,\u0022FinalSelection\u0022:\u0022SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022READY_FOR_BINDING\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0030\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:52,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0},{\u0022Alias\u0022:\u0022S0030\u0022,\u0022Stage\u0022:\u0022grouping\u0022,\u0022UnitId\u0022:\u0022GROUP-001\u0022,\u0022CandidateId\u0022:\u0022R3\u0022,\u0022Decision\u0022:\u0022DIVIDED\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0031\u0022:{\u0022InitialSelection\u0022:\u0022SELECT\u0022,\u0022FinalSelection\u0022:\u0022SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022READY_FOR_BINDING\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0031\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:62,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0},{\u0022Alias\u0022:\u0022S0031\u0022,\u0022Stage\u0022:\u0022grouping\u0022,\u0022UnitId\u0022:\u0022GROUP-001\u0022,\u0022CandidateId\u0022:\u0022R3\u0022,\u0022Decision\u0022:\u0022DIVIDED\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0032\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0032\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0033\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0033\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0034\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0034\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0035\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0035\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0036\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0036\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0037\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0037\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022},\u0022S0038\u0022:{\u0022InitialSelection\u0022:\u0022NOT_SELECT\u0022,\u0022FinalSelection\u0022:\u0022NOT_SELECT\u0022,\u0022VerificationMembership\u0022:null,\u0022BindingStatus\u0022:\u0022NOT_SELECTED\u0022,\u0022Provenance\u0022:[{\u0022Alias\u0022:\u0022S0038\u0022,\u0022Stage\u0022:\u0022selection\u0022,\u0022UnitId\u0022:\u0022SEG-000\u0022,\u0022CandidateId\u0022:null,\u0022Decision\u0022:\u0022NOT_SELECT\u0022,\u0022Membership\u0022:null,\u0022FailureCodes\u0022:[],\u0022EvidenceRefs\u0022:[],\u0022Round\u0022:null,\u0022ReasonLength\u0022:null,\u0022UnitFailureContext\u0022:null,\u0022BoundaryRepairCycle\u0022:0}],\u0022ProvenanceAvailability\u0022:\u0022recorded\u0022}}}"
+    ],
+    "ProviderCalls": 8,
+    "ProviderCostUsd": 0.006942658000000001,
+    "Placement": {
+      "DocumentStylesJson": "{\u0022readBy\u0022:\u0022the program, from the OOXML of every paragraph of the whole document: each distinct style (style name, font size rounded to half a point, bold), largest size first, bold before regular at the same size, with how many paragraphs use it and the first paragraphs in reading order set in it\u0022,\u0022version\u0022:\u0022DOCX_AGENT_DOCUMENT_STYLES_V1\u0022,\u0022documentLines\u0022:38,\u0022stylesTotal\u0022:3,\u0022styles\u0022:[{\u0022rank\u0022:1,\u0022styleName\u0022:\u0022(none)\u0022,\u0022sizePt\u0022:12,\u0022bold\u0022:true,\u0022lines\u0022:6,\u0022firstLines\u0022:[{\u0022alias\u0022:\u0022S0001\u0022,\u0022text\u0022:\u0022MEETING MINUTES Governing Committee (GC) of the Facilitation of Resources to Inv\u2026\u0022},{\u0022alias\u0022:\u0022S0002\u0022,\u0022text\u0022:\u0022Date: November 21, 2024\u0022},{\u0022alias\u0022:\u0022S0003\u0022,\u0022text\u0022:\u0022Opening:\u0022}]},{\u0022rank\u0022:2,\u0022styleName\u0022:\u0022(none)\u0022,\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022lines\u0022:28,\u0022firstLines\u0022:[{\u0022alias\u0022:\u0022S0004\u0022,\u0022text\u0022:\u0022The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Ch\u2026\u0022},{\u0022alias\u0022:\u0022S0006\u0022,\u0022text\u0022:\u0022Governing Committee: Philippe Hall; Savithri Wesche (Canada); Masaya Hatoma (Jap\u2026\u0022},{\u0022alias\u0022:\u0022S0007\u0022,\u0022text\u0022:\u0022Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta\u0022}]},{\u0022rank\u0022:3,\u0022styleName\u0022:\u0022(none)\u0022,\u0022sizePt\u0022:11,\u0022bold\u0022:false,\u0022lines\u0022:4,\u0022firstLines\u0022:[{\u0022alias\u0022:\u0022S0015\u0022,\u0022text\u0022:\u00221\u0022},{\u0022alias\u0022:\u0022S0022\u0022,\u0022text\u0022:\u00222\u0022},{\u0022alias\u0022:\u0022S0028\u0022,\u0022text\u0022:\u00223\u0022}]}],\u0022stylesNotShown\u0022:0}",
+      "StyleJsonByAlias": {
+        "S0001": "{\u0022sizePt\u0022:12,\u0022bold\u0022:true,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022center\u0022,\u0022rankInDocument\u0022:1,\u0022linesWithThisStyleInDocument\u0022:6}",
+        "S0002": "{\u0022sizePt\u0022:12,\u0022bold\u0022:true,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022left\u0022,\u0022rankInDocument\u0022:1,\u0022linesWithThisStyleInDocument\u0022:6}",
+        "S0003": "{\u0022sizePt\u0022:12,\u0022bold\u0022:true,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022left\u0022,\u0022rankInDocument\u0022:1,\u0022linesWithThisStyleInDocument\u0022:6}",
+        "S0004": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0005": "{\u0022sizePt\u0022:12,\u0022bold\u0022:true,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022left\u0022,\u0022rankInDocument\u0022:1,\u0022linesWithThisStyleInDocument\u0022:6}",
+        "S0006": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0007": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022left\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0008": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022left\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0009": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022left\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0010": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0011": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0012": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022left\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0013": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022left\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0014": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022left\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0015": "{\u0022sizePt\u0022:11,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022center\u0022,\u0022rankInDocument\u0022:3,\u0022linesWithThisStyleInDocument\u0022:4}",
+        "S0016": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022left\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0017": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022left\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0018": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0019": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0020": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0021": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0022": "{\u0022sizePt\u0022:11,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022center\u0022,\u0022rankInDocument\u0022:3,\u0022linesWithThisStyleInDocument\u0022:4}",
+        "S0023": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0024": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0025": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0026": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0027": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0028": "{\u0022sizePt\u0022:11,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022center\u0022,\u0022rankInDocument\u0022:3,\u0022linesWithThisStyleInDocument\u0022:4}",
+        "S0029": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022left\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0030": "{\u0022sizePt\u0022:12,\u0022bold\u0022:true,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022center\u0022,\u0022rankInDocument\u0022:1,\u0022linesWithThisStyleInDocument\u0022:6}",
+        "S0031": "{\u0022sizePt\u0022:12,\u0022bold\u0022:true,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022left\u0022,\u0022rankInDocument\u0022:1,\u0022linesWithThisStyleInDocument\u0022:6}",
+        "S0032": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0033": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0034": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0035": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0036": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0037": "{\u0022sizePt\u0022:12,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022both\u0022,\u0022rankInDocument\u0022:2,\u0022linesWithThisStyleInDocument\u0022:28}",
+        "S0038": "{\u0022sizePt\u0022:11,\u0022bold\u0022:false,\u0022italic\u0022:false,\u0022allCaps\u0022:false,\u0022alignment\u0022:\u0022center\u0022,\u0022rankInDocument\u0022:3,\u0022linesWithThisStyleInDocument\u0022:4}"
+      },
+      "MeasurementsNote": "Each heading may also carry \u0022style\u0022 (the style name, the outline level it declares, sizePt, bold, italic, allCaps, alignment, the numbering label and level, rankInDocument: the place of its style among the distinct styles of the whole document, 1 being the largest, and linesWithThisStyleInDocument), and \u0022documentStyles\u0022 lists those distinct styles with the first lines set in each. They are measurements of the document, not labels and not decisions: you decide each relation."
+    },
+    "Groups": [
+      [
+        "S0001"
+      ],
+      [
+        "S0003"
+      ],
+      [
+        "S0005"
+      ],
+      [
+        "S0011"
+      ],
+      [
+        "S0020"
+      ],
+      [
+        "S0021"
+      ],
+      [
+        "S0025"
+      ],
+      [
+        "S0026"
+      ],
+      [
+        "S0027"
+      ],
+      [
+        "S0029"
+      ],
+      [
+        "S0030"
+      ],
+      [
+        "S0031"
+      ]
+    ],
+    "HeadingExtents": {
+      "S0001": {
+        "start": 0,
+        "end": 163
+      },
+      "S0003": {
+        "start": 0,
+        "end": 8
+      },
+      "S0005": {
+        "start": 0,
+        "end": 8
+      },
+      "S0011": {
+        "start": 0,
+        "end": 26
+      },
+      "S0020": {
+        "start": 0,
+        "end": 26
+      },
+      "S0021": {
+        "start": 0,
+        "end": 29
+      },
+      "S0025": {
+        "start": 0,
+        "end": 36
+      },
+      "S0026": {
+        "start": 0,
+        "end": 32
+      },
+      "S0027": {
+        "start": 0,
+        "end": 33
+      },
+      "S0029": {
+        "start": 0,
+        "end": 24
+      },
+      "S0030": {
+        "start": 0,
+        "end": 172
+      },
+      "S0031": {
+        "start": 0,
+        "end": 12
+      }
+    },
+    "HeadingReadings": null,
+    "Grouping": {
+      "ModelDividedRuns": 3,
+      "FallbackRuns": 0,
+      "DisputedRuns": 0,
+      "VerificationChecks": 0,
+      "VerifiedRuns": 0,
+      "MembershipDisputes": 0,
+      "BoundaryDisputes": 0,
+      "UnresolvedAliases": 0,
+      "IgnoredReviewChanges": 0,
+      "Batches": [
+        {
+          "Phase": "GROUP",
+          "UnitId": "GROUP-001",
+          "Runs": 3,
+          "Posts": 1,
+          "Repairs": 0,
+          "StartedAtSeconds": 0.001,
+          "CompletedAtSeconds": 19.107,
+          "ElapsedSeconds": 19.106
+        }
+      ],
+      "FieldDiagnostics": null,
+      "CoverageDiagnostics": null,
+      "Partitions": null,
+      "VerifierEvidence": null,
+      "BoundaryRepairs": null,
+      "BoundaryVerdicts": null
+    },
+    "StageSeconds": {
+      "selection": 280.644,
+      "grouping": 19.121
+    },
+    "AliasStates": {
+      "S0001": {
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "READY_FOR_BINDING",
+        "Provenance": [
+          {
+            "Alias": "S0001",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": 53,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0002": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0002",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0003": {
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "READY_FOR_BINDING",
+        "Provenance": [
+          {
+            "Alias": "S0003",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": 73,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0004": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0004",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0005": {
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "READY_FOR_BINDING",
+        "Provenance": [
+          {
+            "Alias": "S0005",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": 68,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0006": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0006",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0007": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0007",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0008": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0008",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0009": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0009",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0010": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0010",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0011": {
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "READY_FOR_BINDING",
+        "Provenance": [
+          {
+            "Alias": "S0011",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": 104,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0012": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0012",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0013": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0013",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0014": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0014",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0015": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0015",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0016": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0016",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0017": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0017",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0018": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0018",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0019": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0019",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0020": {
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "READY_FOR_BINDING",
+        "Provenance": [
+          {
+            "Alias": "S0020",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": 104,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          },
+          {
+            "Alias": "S0020",
+            "Stage": "grouping",
+            "UnitId": "GROUP-001",
+            "CandidateId": "R1",
+            "Decision": "DIVIDED",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0021": {
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "READY_FOR_BINDING",
+        "Provenance": [
+          {
+            "Alias": "S0021",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": 107,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          },
+          {
+            "Alias": "S0021",
+            "Stage": "grouping",
+            "UnitId": "GROUP-001",
+            "CandidateId": "R1",
+            "Decision": "DIVIDED",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0022": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0022",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0023": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0023",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0024": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0024",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0025": {
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "READY_FOR_BINDING",
+        "Provenance": [
+          {
+            "Alias": "S0025",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": 114,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          },
+          {
+            "Alias": "S0025",
+            "Stage": "grouping",
+            "UnitId": "GROUP-001",
+            "CandidateId": "R2",
+            "Decision": "DIVIDED",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0026": {
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "READY_FOR_BINDING",
+        "Provenance": [
+          {
+            "Alias": "S0026",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": 110,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          },
+          {
+            "Alias": "S0026",
+            "Stage": "grouping",
+            "UnitId": "GROUP-001",
+            "CandidateId": "R2",
+            "Decision": "DIVIDED",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0027": {
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "READY_FOR_BINDING",
+        "Provenance": [
+          {
+            "Alias": "S0027",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": 111,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          },
+          {
+            "Alias": "S0027",
+            "Stage": "grouping",
+            "UnitId": "GROUP-001",
+            "CandidateId": "R2",
+            "Decision": "DIVIDED",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0028": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0028",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0029": {
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "READY_FOR_BINDING",
+        "Provenance": [
+          {
+            "Alias": "S0029",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": 58,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          },
+          {
+            "Alias": "S0029",
+            "Stage": "grouping",
+            "UnitId": "GROUP-001",
+            "CandidateId": "R3",
+            "Decision": "DIVIDED",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0030": {
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "READY_FOR_BINDING",
+        "Provenance": [
+          {
+            "Alias": "S0030",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": 52,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          },
+          {
+            "Alias": "S0030",
+            "Stage": "grouping",
+            "UnitId": "GROUP-001",
+            "CandidateId": "R3",
+            "Decision": "DIVIDED",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0031": {
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "READY_FOR_BINDING",
+        "Provenance": [
+          {
+            "Alias": "S0031",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": 62,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          },
+          {
+            "Alias": "S0031",
+            "Stage": "grouping",
+            "UnitId": "GROUP-001",
+            "CandidateId": "R3",
+            "Decision": "DIVIDED",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0032": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0032",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0033": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0033",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0034": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0034",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0035": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0035",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0036": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0036",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0037": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0037",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      },
+      "S0038": {
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "Provenance": [
+          {
+            "Alias": "S0038",
+            "Stage": "selection",
+            "UnitId": "SEG-000",
+            "CandidateId": null,
+            "Decision": "NOT_SELECT",
+            "Membership": null,
+            "FailureCodes": [],
+            "EvidenceRefs": [],
+            "Round": null,
+            "ReasonLength": null,
+            "UnitFailureContext": null,
+            "BoundaryRepairCycle": 0
+          }
+        ],
+        "ProvenanceAvailability": "recorded"
+      }
+    },
+    "ToolUse": {
+      "UnitsWithToolRounds": 0,
+      "ToolRounds": 0,
+      "UnitsDecidedBeforeTools": 0
+    },
+    "ResourcePlan": null,
+    "Resources": {
+      "ProfileId": "openrouter-alibaba-qwen37-20261024-v1",
+      "ByteCap": 262144,
+      "ConfirmedUsd": 0.006942658000000001,
+      "UnconfirmedUsd": 0,
+      "Attempts": [
+        {
+          "AttemptId": "22f46d0f81354db4b9b01aa24cbca4dc",
+          "RequestSha256": "41894fa0f340a415240ec8cad449124b92c84b3eebf04b33eb2c122bbe582215",
+          "WireBytes": 48289,
+          "InputTokenEstimate": 45785,
+          "Estimator": "utf8-text-and-configured-image-allowance-v1",
+          "CompletionCap": 32768,
+          "PromptTokens": 11759,
+          "CompletionTokens": 6549,
+          "ReasoningTokens": 5151,
+          "ReservedUsd": 0.0176857,
+          "CostUsd": 0.001298148,
+          "Status": "CONFIRMED",
+          "Transport": {
+            "UnitId": "SEG-000",
+            "Turn": 1,
+            "RetryIndex": 0,
+            "HttpStatus": 200,
+            "Outcome": "HTTP_OK",
+            "RequestSeconds": 51.809,
+            "WaitSeconds": 0,
+            "RetryAfterSeconds": null,
+            "RetryDelaySeconds": 0,
+            "ProviderErrorCode": null
+          }
+        },
+        {
+          "AttemptId": "33484c6eea8b4288b26149e661f4913a",
+          "RequestSha256": "8f1b4858d89d1c4084607712f5e43467c9b259f66bfac7f2ff18f1d5d791ad99",
+          "WireBytes": 54274,
+          "InputTokenEstimate": 51237,
+          "Estimator": "utf8-text-and-configured-image-allowance-v1",
+          "CompletionCap": 32768,
+          "PromptTokens": 11441,
+          "CompletionTokens": 3879,
+          "ReasoningTokens": 2481,
+          "ReservedUsd": 0.0182309,
+          "CostUsd": 0.00092678,
+          "Status": "CONFIRMED",
+          "Transport": {
+            "UnitId": "SEG-000",
+            "Turn": 2,
+            "RetryIndex": 0,
+            "HttpStatus": 200,
+            "Outcome": "HTTP_OK",
+            "RequestSeconds": 27.809,
+            "WaitSeconds": 0,
+            "RetryAfterSeconds": null,
+            "RetryDelaySeconds": 0,
+            "ProviderErrorCode": null
+          }
+        },
+        {
+          "AttemptId": "dae17e88a1f6491eaf545c76b028d708",
+          "RequestSha256": "23c47b9d6c084c650d12ee6af820a2ddc3d931d126641e39d5859be175204d99",
+          "WireBytes": 60259,
+          "InputTokenEstimate": 56689,
+          "Estimator": "utf8-text-and-configured-image-allowance-v1",
+          "CompletionCap": 32768,
+          "PromptTokens": 12964,
+          "CompletionTokens": 5105,
+          "ReasoningTokens": 3707,
+          "ReservedUsd": 0.0187761,
+          "CostUsd": 0.000785,
+          "Status": "CONFIRMED",
+          "Transport": {
+            "UnitId": "SEG-000",
+            "Turn": 3,
+            "RetryIndex": 0,
+            "HttpStatus": 200,
+            "Outcome": "HTTP_OK",
+            "RequestSeconds": 39.61,
+            "WaitSeconds": 0,
+            "RetryAfterSeconds": null,
+            "RetryDelaySeconds": 0,
+            "ProviderErrorCode": null
+          }
+        },
+        {
+          "AttemptId": "7baa7df3890041bcb13c0e8d39eda30a",
+          "RequestSha256": "5de0dc87cdabd8ef3417925c31fdef9cc8817bcaafee5cad0acd845121387ede",
+          "WireBytes": 66247,
+          "InputTokenEstimate": 62144,
+          "Estimator": "utf8-text-and-configured-image-allowance-v1",
+          "CompletionCap": 32768,
+          "PromptTokens": 14487,
+          "CompletionTokens": 7076,
+          "ReasoningTokens": 5678,
+          "ReservedUsd": 0.0193216,
+          "CostUsd": 0.00108692,
+          "Status": "CONFIRMED",
+          "Transport": {
+            "UnitId": "SEG-000",
+            "Turn": 4,
+            "RetryIndex": 0,
+            "HttpStatus": 200,
+            "Outcome": "HTTP_OK",
+            "RequestSeconds": 53.541,
+            "WaitSeconds": 0,
+            "RetryAfterSeconds": null,
+            "RetryDelaySeconds": 0,
+            "ProviderErrorCode": null
+          }
+        },
+        {
+          "AttemptId": "05bec389d8764f8ba437509f66225e10",
+          "RequestSha256": "53dc5154e8fe17594d48f783652efcfc764aa6c08120c48257b651ddcc7449c4",
+          "WireBytes": 72242,
+          "InputTokenEstimate": 67606,
+          "Estimator": "utf8-text-and-configured-image-allowance-v1",
+          "CompletionCap": 32768,
+          "PromptTokens": 16015,
+          "CompletionTokens": 4957,
+          "ReasoningTokens": 3559,
+          "ReservedUsd": 0.019867799999999998,
+          "CostUsd": 0.00085729,
+          "Status": "CONFIRMED",
+          "Transport": {
+            "UnitId": "SEG-000",
+            "Turn": 5,
+            "RetryIndex": 0,
+            "HttpStatus": 200,
+            "Outcome": "HTTP_OK",
+            "RequestSeconds": 40.171,
+            "WaitSeconds": 0,
+            "RetryAfterSeconds": null,
+            "RetryDelaySeconds": 0,
+            "ProviderErrorCode": null
+          }
+        },
+        {
+          "AttemptId": "acbf1c7038e841d1aca5b028d34e28db",
+          "RequestSha256": "75367ae4c5b74b3ac118b1621ac6826161ead42a7a778e98d0110e735941b5cd",
+          "WireBytes": 78233,
+          "InputTokenEstimate": 73064,
+          "Estimator": "utf8-text-and-configured-image-allowance-v1",
+          "CompletionCap": 32768,
+          "PromptTokens": 17538,
+          "CompletionTokens": 4553,
+          "ReasoningTokens": 3155,
+          "ReservedUsd": 0.020413599999999997,
+          "CostUsd": 0.00085046,
+          "Status": "CONFIRMED",
+          "Transport": {
+            "UnitId": "SEG-000",
+            "Turn": 6,
+            "RetryIndex": 0,
+            "HttpStatus": 200,
+            "Outcome": "HTTP_OK",
+            "RequestSeconds": 38.074,
+            "WaitSeconds": 0,
+            "RetryAfterSeconds": null,
+            "RetryDelaySeconds": 0,
+            "ProviderErrorCode": null
+          }
+        },
+        {
+          "AttemptId": "b478bccbad73486e84eaf8dd388c015f",
+          "RequestSha256": "262c14474cfb1fa7f26266fa76ae43d37fdf05eb3aae72cf30b4116fdc743a7d",
+          "WireBytes": 84225,
+          "InputTokenEstimate": 78523,
+          "Estimator": "utf8-text-and-configured-image-allowance-v1",
+          "CompletionCap": 32768,
+          "PromptTokens": 19063,
+          "CompletionTokens": 3676,
+          "ReasoningTokens": 2278,
+          "ReservedUsd": 0.0209595,
+          "CostUsd": 0.0007822,
+          "Status": "CONFIRMED",
+          "Transport": {
+            "UnitId": "SEG-000",
+            "Turn": 7,
+            "RetryIndex": 0,
+            "HttpStatus": 200,
+            "Outcome": "HTTP_OK",
+            "RequestSeconds": 29.406,
+            "WaitSeconds": 0,
+            "RetryAfterSeconds": null,
+            "RetryDelaySeconds": 0,
+            "ProviderErrorCode": null
+          }
+        },
+        {
+          "AttemptId": "33b22e335efd4636ae4dc742bbc87a8b",
+          "RequestSha256": "2f8c9d3036fedc66926fb59fc37fcf8744a4c720d62044d15396e8f5530f708c",
+          "WireBytes": 11450,
+          "InputTokenEstimate": 10955,
+          "Estimator": "utf8-text-and-configured-image-allowance-v1",
+          "CompletionCap": 32768,
+          "PromptTokens": 2473,
+          "CompletionTokens": 2015,
+          "ReasoningTokens": 1914,
+          "ReservedUsd": 0.00458849,
+          "CostUsd": 0.00035586,
+          "Status": "CONFIRMED",
+          "Transport": {
+            "UnitId": "GROUP-001",
+            "Turn": 1,
+            "RetryIndex": 0,
+            "HttpStatus": 200,
+            "Outcome": "HTTP_OK",
+            "RequestSeconds": 19.073,
+            "WaitSeconds": 0,
+            "RetryAfterSeconds": null,
+            "RetryDelaySeconds": 0,
+            "ProviderErrorCode": null
+          }
+        }
+      ]
+    }
+  },
+  "budget": {
+    "CeilingUsd": 1,
+    "MaxAttempts": 12,
+    "Attempts": 8,
+    "ConfirmedUsd": 0.006942658000000001,
+    "ProvisionalUsd": 0,
+    "OutstandingUsd": 0
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "document": "074",
+  "sourceSha256": "79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+  "selectionDecisionsMatch": true,
+  "groupingsMatch": true,
+  "parentsMatch": true,
+  "coldSeconds": 73.2410648,
+  "warmSeconds": 1.7769483,
+  "coldSelectionAndGroupCalls": 3,
+  "warmSelectionAndGroupCalls": 0,
+  "coldPlacementCalls": 1,
+  "warmPlacementCalls": 1,
+  "coldBudget": {
+    "CeilingUsd": 1,
+    "MaxAttempts": 80,
+    "Attempts": 4,
+    "ConfirmedUsd": 0.001628742,
+    "ProvisionalUsd": 0,
+    "OutstandingUsd": 0,
+    "AccountingScope": "default-agent-transport-admissions"
+  },
+  "warmBudget": {
+    "CeilingUsd": 1,
+    "MaxAttempts": 80,
+    "Attempts": 1,
+    "ConfirmedUsd": 2.5992E-05,
+    "ProvisionalUsd": 0,
+    "OutstandingUsd": 0,
+    "AccountingScope": "default-agent-transport-admissions"
+  }
+}

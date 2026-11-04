@@ -1,0 +1,9 @@
+{"kind":"call_start","utc":"2026-11-03T02:59:47.1590212+00:00","call":1,"Sha256":"a2aea5428178182be240e309246ac85a06efe7055391bbe9f7f9ee99a1651ef3","Bytes":8217,"maxTokens":32768}
+{"kind":"call_end","utc":"2026-11-03T03:00:31.430936+00:00","call":1,"outcome":"OK"}
+{"kind":"attempt","utc":"2026-11-03T03:00:31.4372513+00:00","Id":"b2fdfb00-55f1-4af4-8f97-2ccc22d2b4f7","RequestSha256":"a2aea5428178182be240e309246ac85a06efe7055391bbe9f7f9ee99a1651ef3","Status":"CONFIRMED","ReserveUsd":0.00449369,"CostUsd":0.000886678,"Usage":{"Codes":["OK"],"PromptTokens":2549,"CompletionTokens":6076,"ReasoningTokens":4715,"CachedTokens":0,"ProviderCostUsd":0.000886678,"CacheCreationTokens":null},"Transport":{"UnitId":"gather-001","Turn":1,"RetryIndex":0,"HttpStatus":200,"Outcome":"HTTP_OK","RequestSeconds":44.196,"WaitSeconds":0.001,"RetryAfterSeconds":null,"RetryDelaySeconds":0,"ProviderErrorCode":null}}
+{"kind":"call_start","utc":"2026-11-03T03:00:31.4644377+00:00","call":2,"Sha256":"a7cf6dc053d2e3507de87af41ab0197a6c2d77ad8d9b0a2790e445547f047971","Bytes":9647,"maxTokens":32768}
+{"kind":"call_end","utc":"2026-11-03T03:00:31.4661139+00:00","call":2,"outcome":"BUDGET:CALL_LIMIT"}
+{"kind":"call_start","utc":"2026-11-03T03:00:31.4686373+00:00","call":3,"Sha256":"b996789aabc92085f07f1c67a1ded00f4f71803a96a3df5d81c673a7b61a4954","Bytes":8500,"maxTokens":32768}
+{"kind":"call_end","utc":"2026-11-03T03:00:31.4694102+00:00","call":3,"outcome":"BUDGET:CALL_LIMIT"}
+{"kind":"call_start","utc":"2026-11-03T03:00:31.4703839+00:00","call":4,"Sha256":"78058a00ac20d8b710c947ddeeda926c9db4f855a4f45e414eac585abdd90827","Bytes":3529,"maxTokens":32768}
+{"kind":"call_end","utc":"2026-11-03T03:00:31.4712256+00:00","call":4,"outcome":"BUDGET:CALL_LIMIT"}

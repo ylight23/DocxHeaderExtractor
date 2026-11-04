@@ -1,0 +1,50 @@
+{
+  "skipped": [
+    "Opening: (độ phủ heading của văn bản đích chưa xác minh)"
+  ],
+  "sections": [
+    {
+      "Heading": "MEETING MINUTES Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+      "name": "meeting minutes governing committee (gc) of the facilitation of resources to invest in strengthening ukraine financial intermediary fund (f.o.r.t.i.s. ukraine fif)",
+      "Note": "không có heading cùng tên trong văn bản nguồn",
+      "TargetLocation": "body[1]/p[1]",
+      "NextHeadingLocation": "body[1]/p[4]",
+      "facts": []
+    },
+    {
+      "Heading": "Opening:",
+      "name": "opening",
+      "Note": null,
+      "TargetLocation": "body[1]/p[4]",
+      "NextHeadingLocation": "body[1]/p[31]",
+      "facts": [
+        {
+          "text": "The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, with participants joining remotely.",
+          "Flags": [
+            "POSSIBLE_CONFLICT: The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Ch…"
+          ],
+          "sources": [
+            "074 body[1]/p[4]"
+          ]
+        }
+      ]
+    },
+    {
+      "Heading": "AGENDA for FIRST MEETING Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+      "name": "agenda for first meeting governing committee (gc) of the facilitation of resources to invest in strengthening ukraine financial intermediary fund (f.o.r.t.i.s. ukraine fif)",
+      "Note": "không có heading cùng tên trong văn bản nguồn",
+      "TargetLocation": "body[1]/p[31]",
+      "NextHeadingLocation": "body[1]/p[32]",
+      "facts": []
+    },
+    {
+      "Heading": "Agenda Items",
+      "name": "agenda items",
+      "Note": "không có heading cùng tên trong văn bản nguồn",
+      "TargetLocation": "body[1]/p[32]",
+      "NextHeadingLocation": null,
+      "facts": []
+    }
+  ],
+  "excluded": []
+}

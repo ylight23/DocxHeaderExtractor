@@ -1,0 +1,10 @@
+{
+  "sourceSha256": "1e03bd6986c228f2d097877c070b648fee695db70c37f38b01ee3c7948673d46",
+  "baselineInstructionSha256": "17d4b6a950b2d940cf2112170a5efb83df22aa508f8a6920e796d1326d85bdd2",
+  "candidateInstructionSha256": "ad777b2bd9afe7925561734ac0d51cd78418d2443d53bf6942d7cb659662a864",
+  "addition": "Assess a candidate span separately from the remainder of its paragraph. Prose following a candidate, numbering or ordinary formatting alone does not establish that the candidate is body text. Conversely, emphasis, shortness or numbering alone does not establish a heading. Decide the candidate\u0027s structural function from its own occurrence and surrounding content; use an exact heading extent when needed. If the evidence does not establish its function, report unresolved rather than guessing.",
+  "route": "DocxSelector",
+  "budgetUsd": 1,
+  "maxAttempts": 12,
+  "deadlineMinutes": 8
+}

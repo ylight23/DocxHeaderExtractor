@@ -1,0 +1,240 @@
+{
+  "targetHash": "1e03bd6986c228f2d097877c070b648fee695db70c37f38b01ee3c7948673d46",
+  "sourceHash": "79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+  "boundaryMethod": "manually reviewed for this qualification, not production extraction",
+  "SkippedHeadings": [],
+  "reviewed": [
+    {
+      "TargetLocation": "body[1]/p[4]",
+      "Heading": "Opening:",
+      "Goal": "Opening:\nThe meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, in Washington DC with participants joining remotely",
+      "Run": {
+        "Facts": [
+          {
+            "Parts": [
+              {
+                "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[4]",
+                "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+                "Location": "body[1]/p[4]",
+                "Role": "text",
+                "Text": "The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, with participants joining remotely.",
+                "Start": 0,
+                "End": 120
+              }
+            ],
+            "Flags": []
+          }
+        ],
+        "Refused": [],
+        "Duplicates": [],
+        "BatchFailures": [],
+        "UnreviewedUnitIds": [],
+        "Gaps": [],
+        "Batches": 1,
+        "UnreadGaps": [],
+        "Complete": true
+      },
+      "Conflicts": [],
+      "NextHeadingLocation": "body[1]/p[6]",
+      "Note": null
+    },
+    {
+      "TargetLocation": "body[1]/p[6]",
+      "Heading": "Present:",
+      "Goal": "Present:\nGoverning Committee: Philippe Hall; Savithri Wesche (Canada); Masaya Hatoma (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, Maria Longi (United States).\nInterim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta\nTrustee: Traci Phillips, Ashish Makkar\nWorld Bank Legal: Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings\nThese minutes summarize the discussion and decisions of the first meeting of the F.O.R.T.I.S. Ukraine FIF following its endorsement of the proposed agenda (attached).",
+      "Run": {
+        "Facts": [
+          {
+            "Parts": [
+              {
+                "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[6]",
+                "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+                "Location": "body[1]/p[6]",
+                "Role": "text",
+                "Text": "Governing Committee: Philippe Hall (Canada); Masaya Hatoma, Shinichiro Kurasawa (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, (United States).",
+                "Start": 0,
+                "End": 156
+              }
+            ],
+            "Flags": []
+          }
+        ],
+        "Refused": [],
+        "Duplicates": [],
+        "BatchFailures": [],
+        "UnreviewedUnitIds": [],
+        "Gaps": [],
+        "Batches": 1,
+        "UnreadGaps": [],
+        "Complete": true
+      },
+      "Conflicts": [],
+      "NextHeadingLocation": "body[1]/p[12]",
+      "Note": null
+    }
+  ],
+  "rejected": [
+    {
+      "Heading": "Present:",
+      "Fact": {
+        "Parts": [
+          {
+            "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[11]",
+            "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+            "Location": "body[1]/p[11]",
+            "Role": "text",
+            "Text": "On November 27, 2024, the F.O.R.T.I.S. Ukraine FIF Governing Committee met to seek resolution on the areas identified as not provisionally approved during the First Governing Committee Meeting on November 21, 2024, related to Governance/Voting Rights.",
+            "Start": 0,
+            "End": 251
+          }
+        ],
+        "Flags": [
+          "SCOPE_UNREVIEWED"
+        ]
+      },
+      "Reason": "This text describes the purpose and agenda of the meeting (resolving governance issues), not the list of people present."
+    },
+    {
+      "Heading": "Present:",
+      "Fact": {
+        "Parts": [
+          {
+            "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[12]",
+            "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+            "Location": "body[1]/p[12]",
+            "Role": "text",
+            "Text": "Governance/Voting Rights. The Governing Committee discussed and agreed in principle to language intended to seek resolution of the governance issues in a manner consistent with the fundamental principles of creating a FIF which is open to all World Bank members, treats them equitably, and is consistent with the multilateral approach to FIFs and development finance, while still meeting the needs of the original contributors to the F.O.R.T.I.S Ukraine FIF. The Meeting agreed that the Interim Secretariat would modify the relevant language in the Operations Manual and reflect the changes in the Governance Framework. With this agreement, the GC provisionally approved the full set of documents to establish the F.O.R.T.I.S. Ukraine FIF.",
+            "Start": 0,
+            "End": 739
+          }
+        ],
+        "Flags": [
+          "SCOPE_UNREVIEWED"
+        ]
+      },
+      "Reason": "This text details the discussion and agreement on Governance/Voting Rights, which is substantive content rather than a list of present attendees."
+    },
+    {
+      "Heading": "Present:",
+      "Fact": {
+        "Parts": [
+          {
+            "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[13]",
+            "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+            "Location": "body[1]/p[13]",
+            "Role": "text",
+            "Text": "It was agreed that all Voting Members would have until opening of business Monday December 2 (EST) to confirm their agreement, including the approach taken to finalizing editorial suggestions, after which the documents would be final.",
+            "Start": 0,
+            "End": 234
+          }
+        ],
+        "Flags": [
+          "SCOPE_UNREVIEWED"
+        ]
+      },
+      "Reason": "This text outlines the deadline for voting members to confirm agreement, not the list of individuals present at the meeting."
+    },
+    {
+      "Heading": "Present:",
+      "Fact": {
+        "Parts": [
+          {
+            "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[14]",
+            "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+            "Location": "body[1]/p[14]",
+            "Role": "text",
+            "Text": "Subsequent Note: On or before December 2, 2024, representatives of all three Voting Members provided their agreement to the pre-final versions of the documents circulated by the Secretariat on November 21, 2024. Hence, the Standard Provisions to the Contribution Agreement/Arrangement, Financial Procedures Agreement Template, Governance Framework, Operations Manual, and Funding Request Template are finalized and adopted by the Governing Committee as of December 2, 2024.",
+            "Start": 0,
+            "End": 473
+          }
+        ],
+        "Flags": [
+          "SCOPE_UNREVIEWED"
+        ]
+      },
+      "Reason": "This is a subsequent note confirming final adoption of documents after the meeting, not a record of who was present."
+    },
+    {
+      "Heading": "Present:",
+      "Fact": {
+        "Parts": [
+          {
+            "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[15]",
+            "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+            "Location": "body[1]/p[15]",
+            "Role": "text",
+            "Text": "For the Funding Request Template, language will be proposed by Ukraine on the process for endorsing proposals and will be inserted accordingly after the Voting Members are informed.",
+            "Start": 0,
+            "End": 181
+          }
+        ],
+        "Flags": [
+          "SCOPE_UNREVIEWED"
+        ]
+      },
+      "Reason": "This text describes future actions regarding the Funding Request Template, unrelated to the list of present attendees."
+    }
+  ],
+  "repeated": [
+    {
+      "Heading": "Present:",
+      "Fact": {
+        "Parts": [
+          {
+            "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[7]",
+            "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+            "Location": "body[1]/p[7]",
+            "Role": "text",
+            "Text": "Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta",
+            "Start": 0,
+            "End": 77
+          }
+        ],
+        "Flags": [
+          "SCOPE_UNREVIEWED"
+        ]
+      },
+      "Reason": "ALREADY_IN_TARGET_EXACT"
+    },
+    {
+      "Heading": "Present:",
+      "Fact": {
+        "Parts": [
+          {
+            "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[8]",
+            "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+            "Location": "body[1]/p[8]",
+            "Role": "text",
+            "Text": "Trustee: Traci Phillips, Ashish Makkar",
+            "Start": 0,
+            "End": 38
+          }
+        ],
+        "Flags": [
+          "SCOPE_UNREVIEWED"
+        ]
+      },
+      "Reason": "ALREADY_IN_TARGET_EXACT"
+    },
+    {
+      "Heading": "Present:",
+      "Fact": {
+        "Parts": [
+          {
+            "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[9]",
+            "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+            "Location": "body[1]/p[9]",
+            "Role": "text",
+            "Text": "World Bank Legal: Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings",
+            "Start": 0,
+            "End": 68
+          }
+        ],
+        "Flags": [
+          "SCOPE_UNREVIEWED"
+        ]
+      },
+      "Reason": "ALREADY_IN_TARGET_EXACT"
+    }
+  ]
+}

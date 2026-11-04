@@ -1,0 +1,77 @@
+{
+  "machine": "DESKTOP-64F1PKS",
+  "processors": 12,
+  "runtime": "9.0.22",
+  "runs": 25,
+  "target": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\monthly-qwen-snapshots-20261103\\10.docx",
+  "sources": [
+    "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\monthly-qwen-snapshots-20261103\\08.docx",
+    "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\monthly-qwen-snapshots-20261103\\09.docx"
+  ],
+  "diffChanges": 5,
+  "results": [
+    {
+      "step": "hash_sha256_target",
+      "note": "47 KB",
+      "medianMs": 0.68,
+      "minMs": 0.44,
+      "maxMs": 6.79
+    },
+    {
+      "step": "load_stored_outline_json",
+      "note": "20 headings",
+      "medianMs": 0.98,
+      "minMs": 0.67,
+      "maxMs": 4.69
+    },
+    {
+      "step": "read_units_target",
+      "note": "GatherUnits.Read with outline",
+      "medianMs": 159.43,
+      "minMs": 64.58,
+      "maxMs": 231.18
+    },
+    {
+      "step": "read_version_target",
+      "note": "DocxVersionReader.Read",
+      "medianMs": 14.57,
+      "minMs": 12.94,
+      "maxMs": 18.65
+    },
+    {
+      "step": "compare_versions_read_and_diff",
+      "note": "5 changes found",
+      "medianMs": 31.31,
+      "minMs": 23.22,
+      "maxMs": 51.35
+    },
+    {
+      "step": "compare_versions_diff_only",
+      "note": "both versions already read",
+      "medianMs": 0.18,
+      "minMs": 0.18,
+      "maxMs": 0.25
+    },
+    {
+      "step": "gather_build_chain",
+      "note": "target + 2 sources",
+      "medianMs": 161.16,
+      "minMs": 139.31,
+      "maxMs": 209.76
+    },
+    {
+      "step": "writeback_tracked_copy",
+      "note": "124 facts",
+      "medianMs": 24.04,
+      "minMs": 18.21,
+      "maxMs": 31.3
+    },
+    {
+      "step": "file_change_seen_by_watcher",
+      "note": "write a .docx copy, wait for the event",
+      "medianMs": 1.13,
+      "minMs": 0.86,
+      "maxMs": 1.54
+    }
+  ]
+}

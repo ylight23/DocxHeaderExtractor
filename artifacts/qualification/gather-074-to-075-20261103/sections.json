@@ -1,0 +1,426 @@
+{
+  "elapsedSeconds": 281.1501752,
+  "model": "openrouter:qwen/qwen3.7-flash:alibaba:wire-v1:max=32768:reasoning=enabled",
+  "ceilingUsd": 1,
+  "maxCalls": 40,
+  "skipped": [],
+  "sections": [
+    {
+      "Heading": "Opening:",
+      "TargetLocation": "body[1]/p[4]",
+      "NextHeadingLocation": "body[1]/p[5]",
+      "complete": true,
+      "facts": [
+        {
+          "text": "The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, with participants joining remotely.",
+          "Flags": [
+            "PATH_UNCERTAIN"
+          ],
+          "sources": [
+            "074 body[1]/p[3]"
+          ]
+        },
+        {
+          "text": "Agreement/Arrangement, Financial Procedures Agreement Template, Governance Framework, Operations Manual, and Funding Request Template are finalized and adopted by the Governing Committee as of December 2, 2024.",
+          "Flags": [
+            "PATH_UNCERTAIN"
+          ],
+          "sources": [
+            "074 body[1]/p[13]"
+          ]
+        },
+        {
+          "text": "For the Funding Request Template, language will be proposed by Ukraine on the process for endorsing proposals and will be inserted accordingly after the Voting Members are informed.",
+          "Flags": [
+            "PATH_UNCERTAIN"
+          ],
+          "sources": [
+            "074 body[1]/p[14]"
+          ]
+        }
+      ],
+      "refused": [],
+      "failures": [],
+      "conflicts": []
+    },
+    {
+      "Heading": "Present:",
+      "TargetLocation": "body[1]/p[5]",
+      "NextHeadingLocation": "body[1]/p[11]",
+      "complete": true,
+      "facts": [
+        {
+          "text": "Governing Committee: Philippe Hall (Canada); Masaya Hatoma, Shinichiro Kurasawa (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, (United States).",
+          "Flags": [
+            "PATH_UNCERTAIN"
+          ],
+          "sources": [
+            "074 body[1]/p[5]"
+          ]
+        },
+        {
+          "text": "Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta",
+          "Flags": [
+            "PATH_UNCERTAIN"
+          ],
+          "sources": [
+            "074 body[1]/p[6]"
+          ]
+        },
+        {
+          "text": "Trustee: Traci Phillips, Ashish Makkar",
+          "Flags": [
+            "PATH_UNCERTAIN"
+          ],
+          "sources": [
+            "074 body[1]/p[7]"
+          ]
+        },
+        {
+          "text": "World Bank Legal: Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings",
+          "Flags": [
+            "PATH_UNCERTAIN"
+          ],
+          "sources": [
+            "074 body[1]/p[8]"
+          ]
+        }
+      ],
+      "refused": [],
+      "failures": [],
+      "conflicts": []
+    },
+    {
+      "Heading": "Item 1: Document Approval.",
+      "TargetLocation": "body[1]/p[11]",
+      "NextHeadingLocation": "body[1]/p[24]",
+      "complete": true,
+      "facts": [
+        {
+          "text": "With this agreement, the GC provisionally approved the full set of documents to establish the F.O.R.T.I.S. Ukraine FIF.",
+          "Flags": [
+            "PATH_UNCERTAIN"
+          ],
+          "sources": [
+            "074 body[1]/p[10]"
+          ]
+        },
+        {
+          "text": "It was agreed that all Voting Members would have until opening of business Monday December 2 (EST) to confirm their agreement",
+          "Flags": [
+            "PATH_UNCERTAIN"
+          ],
+          "sources": [
+            "074 body[1]/p[11]"
+          ]
+        },
+        {
+          "text": "On or before December 2, 2024, representatives of all three Voting Members provided their agreement to the pre-final versions of the documents circulated by the Secretariat",
+          "Flags": [
+            "PATH_UNCERTAIN"
+          ],
+          "sources": [
+            "074 body[1]/p[12]"
+          ]
+        },
+        {
+          "text": "Agreement/Arrangement, Financial Procedures Agreement Template, Governance Framework, Operations Manual, and Funding Request Template are finalized and adopted by the Governing Committee as of December 2, 2024.",
+          "Flags": [
+            "PATH_UNCERTAIN"
+          ],
+          "sources": [
+            "074 body[1]/p[13]"
+          ]
+        },
+        {
+          "text": "For the Funding Request Template, language will be proposed by Ukraine on the process for endorsing proposals and will be inserted accordingly after the Voting Members are informed.",
+          "Flags": [
+            "PATH_UNCERTAIN"
+          ],
+          "sources": [
+            "074 body[1]/p[14]"
+          ]
+        }
+      ],
+      "refused": [],
+      "failures": [],
+      "conflicts": []
+    },
+    {
+      "Heading": "Item 2: Operating Context.",
+      "TargetLocation": "body[1]/p[24]",
+      "NextHeadingLocation": "body[1]/p[25]",
+      "complete": true,
+      "facts": [],
+      "refused": [],
+      "failures": [],
+      "conflicts": []
+    },
+    {
+      "Heading": "Item 3: Strategic Directions.",
+      "TargetLocation": "body[1]/p[25]",
+      "NextHeadingLocation": "body[1]/p[31]",
+      "complete": false,
+      "facts": [],
+      "refused": [
+        {
+          "Index": 0,
+          "Reason": "QUOTE_NOT_FOUND",
+          "Proposal": {
+            "Parts": [
+              {
+                "UnitId": "074|body[1]/p[2]",
+                "Start": -1,
+                "End": -1,
+                "Role": "text",
+                "Quote": "The Government of Ukraine GC members also committed to provide a short note (2-3 pages) describing the Government’s proposed Strategic Directions for the F.O.R.T.I.S. Ukraine FIF."
+              }
+            ]
+          }
+        }
+      ],
+      "failures": [],
+      "conflicts": []
+    },
+    {
+      "Heading": "Item 4: Work Plan, Budget, and Fees.",
+      "TargetLocation": "body[1]/p[31]",
+      "NextHeadingLocation": "body[1]/p[32]",
+      "complete": true,
+      "facts": [],
+      "refused": [],
+      "failures": [],
+      "conflicts": []
+    },
+    {
+      "Heading": "Item 5: Communications Strategy.",
+      "TargetLocation": "body[1]/p[32]",
+      "NextHeadingLocation": "body[1]/p[33]",
+      "complete": true,
+      "facts": [],
+      "refused": [],
+      "failures": [],
+      "conflicts": []
+    },
+    {
+      "Heading": "Item 6: Appointment of the Chair.",
+      "TargetLocation": "body[1]/p[33]",
+      "NextHeadingLocation": "body[1]/p[37]",
+      "complete": true,
+      "facts": [],
+      "refused": [],
+      "failures": [],
+      "conflicts": []
+    }
+  ],
+  "attempts": [
+    {
+      "RequestSha256": "588e435c608fa68025d9d3a938798dd7679e3068634fe540b104e0b6053fdc0f",
+      "RequestBytes": 8151,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 14.382,
+      "PromptTokens": 2191,
+      "CompletionTokens": 1344,
+      "ReasoningTokens": 1246,
+      "ProviderCostUsd": 0.000257914,
+      "ReservedUsd": 0.00448676
+    },
+    {
+      "RequestSha256": "de8d6b44e8f3d02d312774368dc9966785c3d0fe47269c041c6018c36b4ab479",
+      "RequestBytes": 2159,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 23.264,
+      "PromptTokens": 387,
+      "CompletionTokens": 2333,
+      "ReasoningTokens": 2136,
+      "ProviderCostUsd": 0.0003149,
+      "ReservedUsd": 0.00432146
+    },
+    {
+      "RequestSha256": "d131714113cce75080c455e143204297ed4ee5a0573e024ec4454bd666ff978e",
+      "RequestBytes": 8674,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 28.217,
+      "PromptTokens": 2325,
+      "CompletionTokens": 3695,
+      "ReasoningTokens": 3404,
+      "ProviderCostUsd": 0.000561986,
+      "ReservedUsd": 0.0045023
+    },
+    {
+      "RequestSha256": "d1138b684e50e4e52684adf502fa0bc54c8134e146f43366b156481ac854ed70",
+      "RequestBytes": 2682,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 12.152,
+      "PromptTokens": 521,
+      "CompletionTokens": 1147,
+      "ReasoningTokens": 1140,
+      "ProviderCostUsd": 0.00016474,
+      "ReservedUsd": 0.004337
+    },
+    {
+      "RequestSha256": "e0f2a0a46d9975e426678b4208a9f11d86b93e0584d3d536f041835f6fc9a9e2",
+      "RequestBytes": 11553,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 20.811,
+      "PromptTokens": 2876,
+      "CompletionTokens": 2587,
+      "ReasoningTokens": 2318,
+      "ProviderCostUsd": 0.000438884,
+      "ReservedUsd": 0.0045877999999999995
+    },
+    {
+      "RequestSha256": "a04772b9394c5ebbb5ac19885294e030083733cd84c5b20b37b4e1834165223d",
+      "RequestBytes": 5561,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 20.41,
+      "PromptTokens": 1072,
+      "CompletionTokens": 2249,
+      "ReasoningTokens": 2052,
+      "ProviderCostUsd": 0.000326392,
+      "ReservedUsd": 0.0044225
+    },
+    {
+      "RequestSha256": "1cdfdf5925ec7fc5a79f49109e1d9f22062190b394938bf23618a5fed341a058",
+      "RequestBytes": 8169,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 32.963,
+      "PromptTokens": 2196,
+      "CompletionTokens": 3920,
+      "ReasoningTokens": 3913,
+      "ProviderCostUsd": 0.000586334,
+      "ReservedUsd": 0.0044873
+    },
+    {
+      "RequestSha256": "84a8d4197c697957930d57aa14ee2a5505098c6c688d9da7c289ca4923d11646",
+      "RequestBytes": 2177,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 19.109,
+      "PromptTokens": 392,
+      "CompletionTokens": 1953,
+      "ReasoningTokens": 1941,
+      "ProviderCostUsd": 0.00026565,
+      "ReservedUsd": 0.004322
+    },
+    {
+      "RequestSha256": "92bac2679215542ae55c65fca558c2fced5e106132bc4afd420caf8b33465f15",
+      "RequestBytes": 8857,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 20.472,
+      "PromptTokens": 2335,
+      "CompletionTokens": 2005,
+      "ReasoningTokens": 1897,
+      "ProviderCostUsd": 0.000342666,
+      "ReservedUsd": 0.00450785
+    },
+    {
+      "RequestSha256": "614f1719c0f18c939c8edbe9864dfdbf45c35a3edc4af97fedde0c371b7e0fe4",
+      "RequestBytes": 2865,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 35.695,
+      "PromptTokens": 531,
+      "CompletionTokens": 3854,
+      "ReasoningTokens": 3847,
+      "ProviderCostUsd": 0.00051695,
+      "ReservedUsd": 0.00434255
+    },
+    {
+      "RequestSha256": "a3f4db5db3770298dd4d94f8f8547ad92203212327e7f33aec9f781cb977846f",
+      "RequestBytes": 8179,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 5.229,
+      "PromptTokens": 2201,
+      "CompletionTokens": 283,
+      "ReasoningTokens": 276,
+      "ProviderCostUsd": 0.000113714,
+      "ReservedUsd": 0.0044876
+    },
+    {
+      "RequestSha256": "179898027de7bcb5bb17612049b12982d05aed87b3d31f9b36f200931c9b4871",
+      "RequestBytes": 2187,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 16.808,
+      "PromptTokens": 397,
+      "CompletionTokens": 1738,
+      "ReasoningTokens": 1731,
+      "ProviderCostUsd": 0.00023785,
+      "ReservedUsd": 0.0043223
+    },
+    {
+      "RequestSha256": "96196fa6abd554f5c804283447521fcc7ffbd75493c8e69947cc665fc06c468f",
+      "RequestBytes": 8175,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 4.143,
+      "PromptTokens": 2196,
+      "CompletionTokens": 313,
+      "ReasoningTokens": 306,
+      "ProviderCostUsd": 0.000117424,
+      "ReservedUsd": 0.00448748
+    },
+    {
+      "RequestSha256": "d002b5a0fb0aa1ff8927153caefafa9d24cba5b4269907219a4ef7f105303ccb",
+      "RequestBytes": 2183,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 15.376,
+      "PromptTokens": 392,
+      "CompletionTokens": 1376,
+      "ReasoningTokens": 1369,
+      "ProviderCostUsd": 0.00019064,
+      "ReservedUsd": 0.00432218
+    },
+    {
+      "RequestSha256": "eff576ec25ae5824feaadc21c576a427a53257533d33a7c8e8c05040da785d9d",
+      "RequestBytes": 8179,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 8.559,
+      "PromptTokens": 2200,
+      "CompletionTokens": 727,
+      "ReasoningTokens": 720,
+      "ProviderCostUsd": 0.000171396,
+      "ReservedUsd": 0.00448757
+    },
+    {
+      "RequestSha256": "fed6b98b9173c6d02779c9610405606f74d9f2aac90e57c6607234a550ce38f8",
+      "RequestBytes": 2187,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 2.756,
+      "PromptTokens": 396,
+      "CompletionTokens": 182,
+      "ReasoningTokens": 175,
+      "ProviderCostUsd": 3.554E-05,
+      "ReservedUsd": 0.00432227
+    }
+  ]
+}

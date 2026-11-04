@@ -1,0 +1,423 @@
+{
+  "targetHash": "1e03bd6986c228f2d097877c070b648fee695db70c37f38b01ee3c7948673d46",
+  "sourceHash": "79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+  "model": "openrouter:qwen/qwen3.7-flash:alibaba:wire-v1:max=32768:reasoning=enabled",
+  "reviews": [
+    {
+      "Heading": "Opening:",
+      "TargetLocation": "body[1]/p[4]",
+      "NextHeadingLocation": "body[1]/p[6]",
+      "Complete": true,
+      "Gaps": [],
+      "candidates": [
+        {
+          "id": 0,
+          "text": "The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, with participants joining remotely.",
+          "Parts": [
+            {
+              "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[4]",
+              "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+              "Location": "body[1]/p[4]",
+              "Role": "text",
+              "Text": "The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, with participants joining remotely.",
+              "Start": 0,
+              "End": 120
+            }
+          ],
+          "Flags": [
+            "SCOPE_UNREVIEWED"
+          ]
+        }
+      ],
+      "review": {
+        "Verdicts": [
+          {
+            "Index": 0,
+            "Decision": "KEEP",
+            "Reason": "The proposed fact accurately reflects the source text regarding the start of the meeting, the time, the chairperson, and the remote nature of the participants. It aligns perfectly with the 'Opening' section of the provided minutes."
+          }
+        ],
+        "Error": null,
+        "PreviouslyRefused": 0
+      },
+      "accepted": [
+        {
+          "Parts": [
+            {
+              "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[4]",
+              "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+              "Location": "body[1]/p[4]",
+              "Role": "text",
+              "Text": "The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, with participants joining remotely.",
+              "Start": 0,
+              "End": 120
+            }
+          ],
+          "Flags": []
+        }
+      ],
+      "rejected": []
+    },
+    {
+      "Heading": "Present:",
+      "TargetLocation": "body[1]/p[6]",
+      "NextHeadingLocation": "body[1]/p[12]",
+      "Complete": true,
+      "Gaps": [],
+      "candidates": [
+        {
+          "id": 0,
+          "text": "Governing Committee: Philippe Hall (Canada); Masaya Hatoma, Shinichiro Kurasawa (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, (United States).",
+          "Parts": [
+            {
+              "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[6]",
+              "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+              "Location": "body[1]/p[6]",
+              "Role": "text",
+              "Text": "Governing Committee: Philippe Hall (Canada); Masaya Hatoma, Shinichiro Kurasawa (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, (United States).",
+              "Start": 0,
+              "End": 156
+            }
+          ],
+          "Flags": [
+            "SCOPE_UNREVIEWED"
+          ]
+        },
+        {
+          "id": 1,
+          "text": "On November 27, 2024, the F.O.R.T.I.S. Ukraine FIF Governing Committee met to seek resolution on the areas identified as not provisionally approved during the First Governing Committee Meeting on November 21, 2024, related to Governance/Voting Rights.",
+          "Parts": [
+            {
+              "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[11]",
+              "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+              "Location": "body[1]/p[11]",
+              "Role": "text",
+              "Text": "On November 27, 2024, the F.O.R.T.I.S. Ukraine FIF Governing Committee met to seek resolution on the areas identified as not provisionally approved during the First Governing Committee Meeting on November 21, 2024, related to Governance/Voting Rights.",
+              "Start": 0,
+              "End": 251
+            }
+          ],
+          "Flags": [
+            "SCOPE_UNREVIEWED"
+          ]
+        },
+        {
+          "id": 2,
+          "text": "Governance/Voting Rights. The Governing Committee discussed and agreed in principle to language intended to seek resolution of the governance issues in a manner consistent with the fundamental principles of creating a FIF which is open to all World Bank members, treats them equitably, and is consistent with the multilateral approach to FIFs and development finance, while still meeting the needs of the original contributors to the F.O.R.T.I.S Ukraine FIF. The Meeting agreed that the Interim Secretariat would modify the relevant language in the Operations Manual and reflect the changes in the Governance Framework. With this agreement, the GC provisionally approved the full set of documents to establish the F.O.R.T.I.S. Ukraine FIF.",
+          "Parts": [
+            {
+              "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[12]",
+              "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+              "Location": "body[1]/p[12]",
+              "Role": "text",
+              "Text": "Governance/Voting Rights. The Governing Committee discussed and agreed in principle to language intended to seek resolution of the governance issues in a manner consistent with the fundamental principles of creating a FIF which is open to all World Bank members, treats them equitably, and is consistent with the multilateral approach to FIFs and development finance, while still meeting the needs of the original contributors to the F.O.R.T.I.S Ukraine FIF. The Meeting agreed that the Interim Secretariat would modify the relevant language in the Operations Manual and reflect the changes in the Governance Framework. With this agreement, the GC provisionally approved the full set of documents to establish the F.O.R.T.I.S. Ukraine FIF.",
+              "Start": 0,
+              "End": 739
+            }
+          ],
+          "Flags": [
+            "SCOPE_UNREVIEWED"
+          ]
+        },
+        {
+          "id": 3,
+          "text": "It was agreed that all Voting Members would have until opening of business Monday December 2 (EST) to confirm their agreement, including the approach taken to finalizing editorial suggestions, after which the documents would be final.",
+          "Parts": [
+            {
+              "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[13]",
+              "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+              "Location": "body[1]/p[13]",
+              "Role": "text",
+              "Text": "It was agreed that all Voting Members would have until opening of business Monday December 2 (EST) to confirm their agreement, including the approach taken to finalizing editorial suggestions, after which the documents would be final.",
+              "Start": 0,
+              "End": 234
+            }
+          ],
+          "Flags": [
+            "SCOPE_UNREVIEWED"
+          ]
+        },
+        {
+          "id": 4,
+          "text": "Subsequent Note: On or before December 2, 2024, representatives of all three Voting Members provided their agreement to the pre-final versions of the documents circulated by the Secretariat on November 21, 2024. Hence, the Standard Provisions to the Contribution Agreement/Arrangement, Financial Procedures Agreement Template, Governance Framework, Operations Manual, and Funding Request Template are finalized and adopted by the Governing Committee as of December 2, 2024.",
+          "Parts": [
+            {
+              "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[14]",
+              "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+              "Location": "body[1]/p[14]",
+              "Role": "text",
+              "Text": "Subsequent Note: On or before December 2, 2024, representatives of all three Voting Members provided their agreement to the pre-final versions of the documents circulated by the Secretariat on November 21, 2024. Hence, the Standard Provisions to the Contribution Agreement/Arrangement, Financial Procedures Agreement Template, Governance Framework, Operations Manual, and Funding Request Template are finalized and adopted by the Governing Committee as of December 2, 2024.",
+              "Start": 0,
+              "End": 473
+            }
+          ],
+          "Flags": [
+            "SCOPE_UNREVIEWED"
+          ]
+        },
+        {
+          "id": 5,
+          "text": "For the Funding Request Template, language will be proposed by Ukraine on the process for endorsing proposals and will be inserted accordingly after the Voting Members are informed.",
+          "Parts": [
+            {
+              "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[15]",
+              "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+              "Location": "body[1]/p[15]",
+              "Role": "text",
+              "Text": "For the Funding Request Template, language will be proposed by Ukraine on the process for endorsing proposals and will be inserted accordingly after the Voting Members are informed.",
+              "Start": 0,
+              "End": 181
+            }
+          ],
+          "Flags": [
+            "SCOPE_UNREVIEWED"
+          ]
+        }
+      ],
+      "review": {
+        "Verdicts": [
+          {
+            "Index": 0,
+            "Decision": "KEEP",
+            "Reason": "The text explicitly lists the attendees under the 'Present' section of the meeting minutes, directly fulfilling the goal."
+          },
+          {
+            "Index": 1,
+            "Decision": "EXCLUDE",
+            "Reason": "This text describes the purpose and agenda of the meeting (resolving governance issues), not the list of people present."
+          },
+          {
+            "Index": 2,
+            "Decision": "EXCLUDE",
+            "Reason": "This text details the discussion and agreement on Governance/Voting Rights, which is substantive content rather than a list of present attendees."
+          },
+          {
+            "Index": 3,
+            "Decision": "EXCLUDE",
+            "Reason": "This text outlines the deadline for voting members to confirm agreement, not the list of individuals present at the meeting."
+          },
+          {
+            "Index": 4,
+            "Decision": "EXCLUDE",
+            "Reason": "This is a subsequent note confirming final adoption of documents after the meeting, not a record of who was present."
+          },
+          {
+            "Index": 5,
+            "Decision": "EXCLUDE",
+            "Reason": "This text describes future actions regarding the Funding Request Template, unrelated to the list of present attendees."
+          }
+        ],
+        "Error": null,
+        "PreviouslyRefused": 0
+      },
+      "accepted": [
+        {
+          "Parts": [
+            {
+              "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[6]",
+              "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+              "Location": "body[1]/p[6]",
+              "Role": "text",
+              "Text": "Governing Committee: Philippe Hall (Canada); Masaya Hatoma, Shinichiro Kurasawa (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, (United States).",
+              "Start": 0,
+              "End": 156
+            }
+          ],
+          "Flags": []
+        }
+      ],
+      "rejected": [
+        {
+          "Heading": "Present:",
+          "Fact": {
+            "Parts": [
+              {
+                "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[11]",
+                "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+                "Location": "body[1]/p[11]",
+                "Role": "text",
+                "Text": "On November 27, 2024, the F.O.R.T.I.S. Ukraine FIF Governing Committee met to seek resolution on the areas identified as not provisionally approved during the First Governing Committee Meeting on November 21, 2024, related to Governance/Voting Rights.",
+                "Start": 0,
+                "End": 251
+              }
+            ],
+            "Flags": [
+              "SCOPE_UNREVIEWED"
+            ]
+          },
+          "Reason": "This text describes the purpose and agenda of the meeting (resolving governance issues), not the list of people present."
+        },
+        {
+          "Heading": "Present:",
+          "Fact": {
+            "Parts": [
+              {
+                "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[12]",
+                "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+                "Location": "body[1]/p[12]",
+                "Role": "text",
+                "Text": "Governance/Voting Rights. The Governing Committee discussed and agreed in principle to language intended to seek resolution of the governance issues in a manner consistent with the fundamental principles of creating a FIF which is open to all World Bank members, treats them equitably, and is consistent with the multilateral approach to FIFs and development finance, while still meeting the needs of the original contributors to the F.O.R.T.I.S Ukraine FIF. The Meeting agreed that the Interim Secretariat would modify the relevant language in the Operations Manual and reflect the changes in the Governance Framework. With this agreement, the GC provisionally approved the full set of documents to establish the F.O.R.T.I.S. Ukraine FIF.",
+                "Start": 0,
+                "End": 739
+              }
+            ],
+            "Flags": [
+              "SCOPE_UNREVIEWED"
+            ]
+          },
+          "Reason": "This text details the discussion and agreement on Governance/Voting Rights, which is substantive content rather than a list of present attendees."
+        },
+        {
+          "Heading": "Present:",
+          "Fact": {
+            "Parts": [
+              {
+                "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[13]",
+                "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+                "Location": "body[1]/p[13]",
+                "Role": "text",
+                "Text": "It was agreed that all Voting Members would have until opening of business Monday December 2 (EST) to confirm their agreement, including the approach taken to finalizing editorial suggestions, after which the documents would be final.",
+                "Start": 0,
+                "End": 234
+              }
+            ],
+            "Flags": [
+              "SCOPE_UNREVIEWED"
+            ]
+          },
+          "Reason": "This text outlines the deadline for voting members to confirm agreement, not the list of individuals present at the meeting."
+        },
+        {
+          "Heading": "Present:",
+          "Fact": {
+            "Parts": [
+              {
+                "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[14]",
+                "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+                "Location": "body[1]/p[14]",
+                "Role": "text",
+                "Text": "Subsequent Note: On or before December 2, 2024, representatives of all three Voting Members provided their agreement to the pre-final versions of the documents circulated by the Secretariat on November 21, 2024. Hence, the Standard Provisions to the Contribution Agreement/Arrangement, Financial Procedures Agreement Template, Governance Framework, Operations Manual, and Funding Request Template are finalized and adopted by the Governing Committee as of December 2, 2024.",
+                "Start": 0,
+                "End": 473
+              }
+            ],
+            "Flags": [
+              "SCOPE_UNREVIEWED"
+            ]
+          },
+          "Reason": "This is a subsequent note confirming final adoption of documents after the meeting, not a record of who was present."
+        },
+        {
+          "Heading": "Present:",
+          "Fact": {
+            "Parts": [
+              {
+                "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[15]",
+                "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+                "Location": "body[1]/p[15]",
+                "Role": "text",
+                "Text": "For the Funding Request Template, language will be proposed by Ukraine on the process for endorsing proposals and will be inserted accordingly after the Voting Members are informed.",
+                "Start": 0,
+                "End": 181
+              }
+            ],
+            "Flags": [
+              "SCOPE_UNREVIEWED"
+            ]
+          },
+          "Reason": "This text describes future actions regarding the Funding Request Template, unrelated to the list of present attendees."
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "Heading": "Present:",
+      "Fact": {
+        "Parts": [
+          {
+            "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[7]",
+            "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+            "Location": "body[1]/p[7]",
+            "Role": "text",
+            "Text": "Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta",
+            "Start": 0,
+            "End": 77
+          }
+        ],
+        "Flags": [
+          "SCOPE_UNREVIEWED"
+        ]
+      },
+      "Reason": "ALREADY_IN_TARGET_EXACT"
+    },
+    {
+      "Heading": "Present:",
+      "Fact": {
+        "Parts": [
+          {
+            "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[8]",
+            "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+            "Location": "body[1]/p[8]",
+            "Role": "text",
+            "Text": "Trustee: Traci Phillips, Ashish Makkar",
+            "Start": 0,
+            "End": 38
+          }
+        ],
+        "Flags": [
+          "SCOPE_UNREVIEWED"
+        ]
+      },
+      "Reason": "ALREADY_IN_TARGET_EXACT"
+    },
+    {
+      "Heading": "Present:",
+      "Fact": {
+        "Parts": [
+          {
+            "UnitId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08|body[1]/p[9]",
+            "SourceId": "sha256:79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08",
+            "Location": "body[1]/p[9]",
+            "Role": "text",
+            "Text": "World Bank Legal: Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings",
+            "Start": 0,
+            "End": 68
+          }
+        ],
+        "Flags": [
+          "SCOPE_UNREVIEWED"
+        ]
+      },
+      "Reason": "ALREADY_IN_TARGET_EXACT"
+    }
+  ],
+  "attempts": [
+    {
+      "RequestSha256": "096dc21cc07174b3bf6f066cf273178a68c78005e779ce73a037149e3427406c",
+      "RequestBytes": 1768,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 7.211,
+      "PromptTokens": 357,
+      "CompletionTokens": 450,
+      "ReasoningTokens": 368,
+      "ProviderCostUsd": 6.921E-05,
+      "ReservedUsd": 0.00431033
+    },
+    {
+      "RequestSha256": "c1832bd83dffd62cce428696eb79faa7a5167997efe3f2b2753365b1da660f6f",
+      "RequestBytes": 7711,
+      "CompletionCap": 32768,
+      "Status": "CONFIRMED",
+      "Outcome": "HTTP_OK",
+      "RequestSeconds": 13.046,
+      "PromptTokens": 1929,
+      "CompletionTokens": 1365,
+      "ReasoningTokens": 1080,
+      "ProviderCostUsd": 0.000250688,
+      "ReservedUsd": 0.00448457
+    }
+  ]
+}

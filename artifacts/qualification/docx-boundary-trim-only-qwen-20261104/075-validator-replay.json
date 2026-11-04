@@ -1,0 +1,26 @@
+[
+  {
+    "turn": 1,
+    "ok": false,
+    "failure": "HEADING_EXTENT_TEXT_MISMATCH",
+    "detail": "S0011: the text at [0,27) is \"Item 1: Document Approval. \"; the text you gave occurs in the target's text at [0,26)"
+  },
+  {
+    "turn": 2,
+    "ok": false,
+    "failure": "HEADING_EXTENT_TEXT_MISMATCH",
+    "detail": "S0020: the text at [0,27) is \"Item 2: Operating Context. \"; the text you gave occurs in the target's text at [0,26)"
+  },
+  {
+    "turn": 3,
+    "ok": false,
+    "failure": "HEADING_EXTENT_TEXT_MISMATCH",
+    "detail": "S0032: the text at [0,22) is \"1. Document Approval. \"; the text you gave occurs in the target's text at [0,21)"
+  },
+  {
+    "turn": 4,
+    "ok": true,
+    "failure": null,
+    "detail": null
+  }
+]

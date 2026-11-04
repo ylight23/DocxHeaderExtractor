@@ -1,0 +1,7 @@
+{
+  "sourceHash": "1e03bd6986c228f2d097877c070b648fee695db70c37f38b01ee3c7948673d46",
+  "selectionHash": "64e080443a85a6f39dfd430bff46292dd74aeaa451a8a381f7e65a7848e23e4e",
+  "selectionSource": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\docx-format-runs-ab-qwen-20261104\\075_FORTIS_GC_Minutes_Nov21_2024-format-runs-a-responses.jsonl",
+  "baselineInstructionSha256": "17d4b6a950b2d940cf2112170a5efb83df22aa508f8a6920e796d1326d85bdd2",
+  "groupingAddition": "When deciding whether adjacent selected parts form one heading, evaluate their source text and the content immediately after the run. Join parts only when they jointly name the same unit. If a selected part introduces its own unit of content, keep it separate from another heading even when adjacent, similarly styled, or under a broader heading. A short label and a following title may still form one heading when the source shows that they name one unit together. Use the evidence in this document; do not change selection membership."
+}

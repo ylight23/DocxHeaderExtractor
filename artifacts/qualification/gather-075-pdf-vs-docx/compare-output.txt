@@ -1,0 +1,15 @@
+[letters and digits only, case-insensitive] lengths 7640 / 7640  ratio 1.00000  differing chunks 0
+[punctuation kept, spaces removed] lengths 7920 / 7920  ratio 1.00000  differing chunks 0
+[punctuation and spaces kept] lengths 9426 / 10102  ratio 0.95361  differing chunks 153
+    insert: DOCX 'MEETING MINUTES' | PDF '                                            MEETING MINUTES'
+    insert: DOCX 'MEETING MINUTES Governing Comm' | PDF 'MEETING MINUTES\r\n   Governing Comm'
+    insert: DOCX 'tee (GC) of theFacilitation of' | PDF 'tee (GC) of the Facilitation of'
+    insert: DOCX 'n Strengthening Ukraine Financ' | PDF 'n Strengthening\r\n\r\n                Ukraine Financ'
+    replace: DOCX 'S. Ukraine FIF) \nDate: November' | PDF 'S. Ukraine FIF)\r\n\r\nDate: November'
+    insert: DOCX 'vember 21, 2024\nOpening: The m' | PDF 'vember 21, 2024\r\n\r\nOpening:\r\nThe '
+    replace: DOCX ', 2024\nOpening: The meeting was' | PDF '024\r\n\r\nOpening:\r\nThe meeting was'
+    replace: DOCX 'ng as Chair, in Washington DC w' | PDF 'ng as Chair, in\r\nWashington DC w'
+    replace: DOCX 'oining remotely \nPresent: \nGove' | PDF 'oining remotely\r\n\r\nPresent:\r\n\r\nGo'
+    replace: DOCX 'otely \nPresent: \nGoverning Comm' | PDF 'ely\r\n\r\nPresent:\r\n\r\nGoverning Comm'
+    replace: DOCX 'a (Japan); Olga Zykova, Yuri Bu' | PDF 'a (Japan); Olga\r\nZykova, Yuri Bu'
+    replace: DOCX 'United States). \nInterim-Secret' | PDF 'United States).\r\n\r\nInterim-Secret'

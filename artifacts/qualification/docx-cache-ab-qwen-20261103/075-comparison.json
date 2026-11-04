@@ -1,0 +1,81 @@
+{
+  "document": "075",
+  "sourceSha256": "1e03bd6986c228f2d097877c070b648fee695db70c37f38b01ee3c7948673d46",
+  "selectionDecisionsMatch": true,
+  "groupingsMatch": true,
+  "parentDiffCount": 6,
+  "parentDiffs": [
+    {
+      "sourceId": "body[1]/p[33]",
+      "heading": "1. Document Approval.",
+      "coldParent": "body[1]/p[32]",
+      "coldLevel": 3,
+      "warmParent": "body[1]/p[31]",
+      "warmLevel": 2
+    },
+    {
+      "sourceId": "body[1]/p[34]",
+      "heading": "2. Operating Context.",
+      "coldParent": "body[1]/p[32]",
+      "coldLevel": 3,
+      "warmParent": "body[1]/p[31]",
+      "warmLevel": 2
+    },
+    {
+      "sourceId": "body[1]/p[35]",
+      "heading": "3. Strategic Directions.",
+      "coldParent": "body[1]/p[32]",
+      "coldLevel": 3,
+      "warmParent": "body[1]/p[31]",
+      "warmLevel": 2
+    },
+    {
+      "sourceId": "body[1]/p[36]",
+      "heading": "4. Work Plan, Budget, and Fees.",
+      "coldParent": "body[1]/p[32]",
+      "coldLevel": 3,
+      "warmParent": "body[1]/p[31]",
+      "warmLevel": 2
+    },
+    {
+      "sourceId": "body[1]/p[37]",
+      "heading": "5. Communications Strategy.",
+      "coldParent": "body[1]/p[32]",
+      "coldLevel": 3,
+      "warmParent": "body[1]/p[31]",
+      "warmLevel": 2
+    },
+    {
+      "sourceId": "body[1]/p[38]",
+      "heading": "6. Appointment of the Chair.",
+      "coldParent": "body[1]/p[32]",
+      "coldLevel": 3,
+      "warmParent": "body[1]/p[31]",
+      "warmLevel": 2
+    }
+  ],
+  "coldSeconds": 518.9167648,
+  "warmSeconds": 5.3935112,
+  "coldSelectionAndGroupCalls": 11,
+  "warmSelectionAndGroupCalls": 0,
+  "coldPlacementCalls": 2,
+  "warmPlacementCalls": 2,
+  "coldBudget": {
+    "CeilingUsd": 1,
+    "MaxAttempts": 80,
+    "Attempts": 13,
+    "ConfirmedUsd": 0.012495287,
+    "ProvisionalUsd": 0,
+    "OutstandingUsd": 0,
+    "AccountingScope": "default-agent-transport-admissions"
+  },
+  "warmBudget": {
+    "CeilingUsd": 1,
+    "MaxAttempts": 80,
+    "Attempts": 2,
+    "ConfirmedUsd": 0.000201778,
+    "ProvisionalUsd": 0,
+    "OutstandingUsd": 0,
+    "AccountingScope": "default-agent-transport-admissions"
+  }
+}
