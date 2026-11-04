@@ -10,17 +10,15 @@ using DocxHeaderExtractor.Sources.Docx.Changes;
 namespace DocxHeaderExtractor.App;
 
 /// <summary>
-/// Where a document's headings came from. <see cref="Status"/>: STORED (the outline of this exact file was stored), EXACT (a stored version of
-/// this file name has the same paragraphs), MAPPED (the stored headings moved onto a version with added or removed paragraphs; the added ones in
-/// <see cref="AddedParagraphs"/> were not checked for headings), EXTRACTED (the pipeline ran; <see cref="Reason"/> says why a stored outline could
-/// not be used, null when there was none).
+/// Where a document's headings came from. <see cref="Status"/>: STORED (the outline of this exact file was stored), or EXTRACTED (the pipeline
+/// ran; <see cref="Reason"/> says why a stored outline could not be used, null when there was none).
 /// </summary>
 public sealed record OutlineReuseResult(IReadOnlyList<HeadingRecord> Headings, string Status, string? Reason, IReadOnlyList<string> AddedParagraphs);
 
 /// <summary>
 /// The DOCX outline of a file, reused when it can be and extracted when it cannot. The key holds the prompts, the model, the build of every
-/// assembly that decides headings and the options that change the source, so any change to them is a miss. A MAPPED outline is not stored:
-/// its added paragraphs stay unchecked until the file is extracted again.
+/// assembly that decides headings and the options that change the source, so any change to them is a miss. Changed source bytes always require
+/// extraction: paragraph mapping cannot establish that added text is not a heading or that styles and multi-paragraph headings are unchanged.
 /// </summary>
 public static class OutlineReuse
 {
@@ -32,7 +30,7 @@ public static class OutlineReuse
         typeof(OutlineReuse).Module.ModuleVersionId.ToString(),
         JsonSerializer.Serialize(options.Extraction), options.DocxBoundarySnapParagraphs.ToString());
 
-    /// <param name="name">The file name the document is known by; a new version under the same name is mapped onto the stored one.</param>
+    /// <param name="name">The file name the document is known by, used to retain its version history.</param>
     /// <param name="extract">Runs the pipeline on <paramref name="path"/> when no stored outline can be used.</param>
     public static async Task<OutlineReuseResult> GetAsync(string path, string name, OutlineStore store, string configKey,
         Func<Task<IReadOnlyList<HeadingRecord>>> extract)
@@ -43,17 +41,10 @@ public static class OutlineReuse
         var version = DocxVersionReader.Read(path);
         var paragraphs = OutlineStore.Paragraphs(version);
         string? reason = null;
-        if (store.Latest(name, configKey) is { } previous)
-        {
-            var mapped = OutlineMap.Map(previous, paragraphs, version.UnsupportedRegions);
-            if (mapped.Status == "EXACT")
-            {
-                store.Store(new(OutlineStore.Version, sha, configKey, name, DateTimeOffset.UtcNow, paragraphs, version.UnsupportedRegions, mapped.Headings));
-                return new(mapped.Headings, "EXACT", null, []);
-            }
-            if (mapped.Status == "MAPPED") return new(mapped.Headings, "MAPPED", null, mapped.AddedParagraphs);
-            reason = mapped.Reason;
-        }
+        if (store.Latest(name, configKey) is not null)
+            // An unchanged paragraph signature cannot establish unchanged heading boundaries, inherited styles or document structure.
+            // Do not run an expensive diff that cannot authorize reuse: changed bytes always need extraction.
+            reason = "SOURCE_CHANGED:OUTLINE_REQUIRES_REEXTRACTION";
         var headings = await extract().ConfigureAwait(false);
         if (version.FileSha256 == sha)
             store.Store(new(OutlineStore.Version, sha, configKey, name, DateTimeOffset.UtcNow, paragraphs, version.UnsupportedRegions, headings));

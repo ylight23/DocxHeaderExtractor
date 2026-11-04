@@ -98,7 +98,7 @@ public sealed class OutlineReuseTests
     }
 
     [Fact]
-    public async Task The_same_file_is_stored_once_and_reused_without_running_the_pipeline_and_a_changed_heading_runs_it_again()
+    public async Task Only_the_identical_file_reuses_an_outline_and_every_changed_version_runs_the_pipeline()
     {
         var first = RawDocxFixtureTests.Build(Original);
         var edited = RawDocxFixtureTests.Build(P("A. Mục một", true) + P("Nội dung một.") + P("Thêm.") + P("B. Mục hai", true) + P("Nội dung hai."));
@@ -114,18 +114,18 @@ public sealed class OutlineReuseTests
             Assert.Equal(1, runs);
 
             var mapped = await OutlineReuse.GetAsync(edited, "bao-cao.docx", store, "k", Extract);
-            Assert.Equal("MAPPED", mapped.Status);
-            Assert.Equal(["body[1]/p[3]"], mapped.AddedParagraphs);
-            Assert.Equal(1, runs);
+            Assert.Equal("EXTRACTED", mapped.Status);
+            Assert.Equal("SOURCE_CHANGED:OUTLINE_REQUIRES_REEXTRACTION", mapped.Reason);
+            Assert.Equal(2, runs);
 
             // Another configuration never reads this one's entries.
             Assert.Equal("EXTRACTED", (await OutlineReuse.GetAsync(first, "bao-cao.docx", store, "other", Extract)).Status);
-            Assert.Equal(2, runs);
+            Assert.Equal(3, runs);
 
             var again = await OutlineReuse.GetAsync(renamed, "bao-cao.docx", store, "k", Extract);
             Assert.Equal("EXTRACTED", again.Status);
-            Assert.StartsWith("HEADING_CHANGED_OR_MOVED", again.Reason);
-            Assert.Equal(3, runs);
+            Assert.Equal("SOURCE_CHANGED:OUTLINE_REQUIRES_REEXTRACTION", again.Reason);
+            Assert.Equal(4, runs);
         }
         finally
         {
@@ -144,6 +144,57 @@ public sealed class OutlineReuseTests
         var facts = Assert.Single(plan.Sections).Run.Facts;
         Assert.Contains(facts[0].Flags, f => f.StartsWith("UNVERIFIED_STRUCTURE", StringComparison.Ordinal));
         Assert.Empty(facts[1].Flags);
+    }
+
+    [Fact]
+    public async Task An_added_heading_cannot_be_mapped_as_unverified_body_or_leave_following_content_under_its_old_parent()
+    {
+        var original = RawDocxFixtureTests.Build(Original);
+        var changed = RawDocxFixtureTests.Build(P("A. Mục một", true) + P("C. Mục mới", true) + P("Nội dung một.") + P("B. Mục hai", true) + P("Nội dung hai."));
+        var root = Path.Combine(Path.GetTempPath(), "dhx-outline-" + Guid.NewGuid().ToString("N"));
+        var calls = 0;
+        try
+        {
+            var store = new OutlineStore(root);
+            await OutlineReuse.GetAsync(original, "report.docx", store, "k", () => { calls++; return Task.FromResult<IReadOnlyList<HeadingRecord>>(Headings); });
+            var stored = store.Latest("report.docx", "k")!;
+            var changedVersion = DocxVersionReader.Read(changed);
+            var proposed = OutlineMap.Map(stored, OutlineStore.Paragraphs(changedVersion), changedVersion.UnsupportedRegions);
+            Assert.Equal("MAPPED", proposed.Status);
+            Assert.DoesNotContain(proposed.Headings, h => h.Text == "C. Mục mới");
+            Assert.Contains("body[1]/p[2]", proposed.AddedParagraphs);
+            var result = await OutlineReuse.GetAsync(changed, "report.docx", store, "k", () =>
+            {
+                calls++;
+                return Task.FromResult<IReadOnlyList<HeadingRecord>>([H(1, 1, "A. Mục một"), H(2, 1, "C. Mục mới"), H(4, 1, "B. Mục hai")]);
+            });
+            Assert.Equal("EXTRACTED", result.Status);
+            Assert.Equal(2, calls);
+            Assert.Contains(result.Headings, h => h.Text == "C. Mục mới" && h.StableId == "body[1]/p[2]");
+        }
+        finally { File.Delete(original); File.Delete(changed); if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+
+    [Fact]
+    public async Task Changed_package_with_identical_body_paragraphs_is_not_accepted_as_exact_cache()
+    {
+        var original = RawDocxFixtureTests.Build(Original);
+        var changed = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".docx");
+        var root = Path.Combine(Path.GetTempPath(), "dhx-outline-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            File.Copy(original, changed);
+            using (var doc = DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(changed, true)) doc.PackageProperties.Creator = "Different creator";
+            var calls = 0;
+            Task<IReadOnlyList<HeadingRecord>> Extract() { calls++; return Task.FromResult<IReadOnlyList<HeadingRecord>>(Headings); }
+            var store = new OutlineStore(root);
+            await OutlineReuse.GetAsync(original, "report.docx", store, "k", Extract);
+            var result = await OutlineReuse.GetAsync(changed, "report.docx", store, "k", Extract);
+            Assert.Equal("EXTRACTED", result.Status);
+            Assert.Equal("SOURCE_CHANGED:OUTLINE_REQUIRES_REEXTRACTION", result.Reason);
+            Assert.Equal(2, calls);
+        }
+        finally { File.Delete(original); File.Delete(changed); if (Directory.Exists(root)) Directory.Delete(root, true); }
     }
 
     [Fact]

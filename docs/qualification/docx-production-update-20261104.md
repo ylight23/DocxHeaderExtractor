@@ -37,3 +37,17 @@ Các kết quả 4/4 và 2/2 là mẫu nhỏ, không phải cam kết ổn đị
 1. Chạy đối chiếu trên corpus DOCX đại diện và báo cáo tháng 8–10, kiểm tra SELECT, GROUP, parent, phạm vi content và vị trí chèn; không khẳng định không còn FP/FN.
 2. Kiểm tra PLACE độc lập, nhất là trường hợp các đề xuất parent khác nhau với cùng request và trường hợp toàn bộ heading bị đề xuất ROOT.
 3. Theo dõi số lượt repair offset và thời gian: validator hiện fail-fast ở mặc định, model có thể sửa nhiều lần. Không khẳng định hướng dẫn GROUP làm SELECT nhanh hơn.
+
+## Bổ sung giao diện cache DOCX — 04/11/2026
+
+Trang trích xuất và trang admin tổng hợp có checkbox `docxReuseSelection` gửi cùng tên form field đã được backend hỗ trợ. Mặc định không chọn; khi chọn, SELECT/GROUP có thể dùng lại cache nếu file và request khớp, còn PLACE vẫn gọi model. Đưa outline lên trực tiếp thì tài liệu đó không chạy extraction. Kết quả cold/warm và các bản sửa được ghi tại `artifacts/qualification/docx-cache-production-qwen-20261104/REPORT.md`; chưa kết luận chất lượng chung từ một file. Không thay đổi mặc định cache production bằng checkbox này.
+
+## Bổ sung an toàn cache outline — 04/11/2026
+
+Admin có thêm cache outline hoàn chỉnh, tách biệt với cache SELECT/GROUP; hit có thể bỏ qua cả PLACE. Chỉ dùng khi người dùng bật và SHA-256 toàn file cùng cấu hình khớp. Đã chặn ánh xạ outline cũ qua file thay đổi: test tái hiện đoạn heading mới bị `OutlineMap` coi là body, khiến nội dung sau nó có thể gắn sai mục. Mọi thay đổi byte hiện buộc chạy lại extraction; chưa có tối ưu incremental an toàn. Cache có thể lưu và tái dùng kết quả model còn thiếu hoặc sai, do đó cache hit không chứng minh chất lượng outline.
+
+Thử nghiệm Qwen thực trên bản sao ba báo cáo tháng 8–10: cold 113,4 giây, warm 7,0 giây, cùng 19 ý tự động và 34 trường hợp chưa rõ; file sửa nội dung 112,5 giây, file sửa tên heading 106,1 giây, mỗi lượt có 0 ý tự động và 41 trường hợp chưa rõ. Các lượt sửa chỉ chạy model trên file thay đổi. Đây là thử nghiệm harness, không phải kiểm định end-to-end giao diện hay Gold. Sau thử nghiệm, phát lại outline đã lưu không gọi model và lưu plan vào `artifacts/qualification/gather-e2e-exact-cache-safe-20261104/`; các bản Word vẫn không phải bản tổng hợp đầy đủ. Lượt sửa nội dung có 142 ý nằm trong 41 mục chưa rõ: 11 tên gần giống, 10 khác đường dẫn, 8 trùng ứng viên, 12 do mục cha chưa rõ. Mục đích của phân loại là giữ lại để xem, không tự ý ghi. Ví dụ GROUP của văn bản đích gộp tên mục tổng quát với `Truyền thông:`, nên hai đoạn bổ sung nằm trong mục gần tên chưa được tự động ghép. Số đo chạy trong môi trường phát triển có tải, không phải benchmark SLA.
+
+Sau thay đổi an toàn: 20/20 test outline và giao diện liên quan qua; một lượt full suite đạt 839/841, hai biến thể của `Transport_gate_admits` lỗi dưới tải, chạy riêng 2/2 qua. Chưa xác định được nguyên nhân lỗi và không coi lượt full suite đó đã qua.
+
+Lượt kiểm tra lại trước khi commit rào chắn: full suite 848/849 (4 phút 46 giây). `SelectionConcurrencyTests.Out_of_order_scope_completions_preserve_all_aliases_requests_and_decisions` lỗi khi chạy full (13 thay vì 15) và qua khi chạy riêng. Lượt full chạy đồng thời các build/test đối chứng nên có tải; chưa chứng minh đó là nguyên nhân và không coi full suite đã qua.

@@ -34,6 +34,8 @@ public sealed class AdminGatherWebTests
             Assert.DoesNotContain("id=\"docxReuseSelection\" checked", html, StringComparison.Ordinal);
             Assert.Contains("fd.append('docxReuseSelection'", html, StringComparison.Ordinal);
         }
+        var admin = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.Web/wwwroot/admin.html"));
+        Assert.Contains("file sửa sẽ trích lại", admin, StringComparison.Ordinal);
     }
 
     static string P(string text) => $"<w:p><w:r><w:t xml:space=\"preserve\">{text}</w:t></w:r></w:p>";
