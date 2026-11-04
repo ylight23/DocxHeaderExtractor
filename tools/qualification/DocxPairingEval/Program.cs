@@ -136,6 +136,7 @@ List<Case> Generate(string set, string[] sources, int seed, int perType, string[
 
 Case? Make(string set, string type, List<DocxVersion> pool, string[] sources, Random rng, bool legacy)
 {
+    if (StructuralTableTypes.Contains(type)) return MakeStructural(set, type, pool, sources, rng);
     var inTable = type.StartsWith("table_", StringComparison.Ordinal);
     var shortMin = type is "merge" or "merge_multi_edit" or "table_cell_merge" ? 4 : type == "table_cell_edit" ? 3 : 12;
     var picked = Pick(pool, rng, shortMin, inTable ? p => p.Container == "table" : null, inTable ? 2000 : int.MaxValue);
@@ -203,13 +204,13 @@ Case? Make(string set, string type, List<DocxVersion> pool, string[] sources, Ra
             var candidates = other.Paragraphs.Where(x => Words(x.NormalizedKey).Length >= 4).ToArray();
             if (candidates.Length == 0) return null;
             var foreign = candidates[rng.Next(Math.Min(10, candidates.Length))];
-            ps.Insert(i + 1, Re(foreign, foreign.RawText, "inserted"));
-            return new Case(set, type, file, p.Location, "paragraph_only_in_document:inserted", "foreign paragraph inserted after", v, With(v, ps));
+            ps.Insert(i + 1, Re(foreign, foreign.RawText, p.Location + "#ins"));
+            return new Case(set, type, file, p.Location, $"paragraph_only_in_document:{p.Location}#ins", "foreign paragraph inserted after", v, With(v, ps), New(p.Location + "#ins"));
         }
         case "insert_duplicate":
         {
-            ps.Insert(i + 1, Re(p, p.RawText, "duplicate"));
-            return new Case(set, type, file, p.Location, "paragraph_only_in_document:duplicate", "same paragraph inserted after", v, With(v, ps));
+            ps.Insert(i + 1, Re(p, p.RawText, p.Location + "#dup"));
+            return new Case(set, type, file, p.Location, $"paragraph_only_in_document:{p.Location}#dup", "same paragraph inserted after", v, With(v, ps), New(p.Location + "#dup"));
         }
         case "short_repeated_phrase":
         {
@@ -217,8 +218,8 @@ Case? Make(string set, string type, List<DocxVersion> pool, string[] sources, Ra
             var shorts = v.Paragraphs.Where(x => Words(x.NormalizedKey).Length is >= 1 and <= 3 && counts[x.KeyHash] >= 2).ToArray();
             if (shorts.Length == 0) return null;
             var phrase = shorts[rng.Next(shorts.Length)];
-            ps.Insert(i + 1, Re(phrase, phrase.RawText, "inserted"));
-            return new Case(set, type, file, p.Location, "paragraph_only_in_document:inserted", $"repeated short paragraph '{phrase.NormalizedKey}' inserted after", v, With(v, ps));
+            ps.Insert(i + 1, Re(phrase, phrase.RawText, p.Location + "#ins"));
+            return new Case(set, type, file, p.Location, $"paragraph_only_in_document:{p.Location}#ins", $"repeated short paragraph '{phrase.NormalizedKey}' inserted after", v, With(v, ps), New(p.Location + "#ins"));
         }
         case "new_contains_old_words":
         {
@@ -228,22 +229,121 @@ Case? Make(string set, string type, List<DocxVersion> pool, string[] sources, Ra
             var foreign = Words(candidates[rng.Next(Math.Min(10, candidates.Length))].NormalizedKey);
             var start = rng.Next(w.Length - 3);
             var text = string.Join(' ', w[start..(start + 3)].Concat(foreign.Take(5)));
-            ps.Insert(i + 1, Re(p, text, "inserted"));
-            return new Case(set, type, file, p.Location, "paragraph_only_in_document:inserted", "new paragraph: 3 words of the previous one + 5 foreign words", v, With(v, ps));
+            ps.Insert(i + 1, Re(p, text, p.Location + "#ins"));
+            return new Case(set, type, file, p.Location, $"paragraph_only_in_document:{p.Location}#ins", "new paragraph: 3 words of the previous one + 5 foreign words", v, With(v, ps), New(p.Location + "#ins"));
         }
     }
     throw new InvalidOperationException(type);
 }
 
+// Structural table edits on a simple table (every paragraph at tbl/tr/tc/p, no merged cells, no nested table, 3+ rows of 2+ cells):
+// insert a row of foreign text, delete a row, swap two rows, or add a column of foreign text. Rows and cells after the edit are renumbered,
+// so the case carries an origin map from each document location back to its template location ("inserted" for new text).
+Case? MakeStructural(string set, string type, List<DocxVersion> pool, string[] sources, Random rng)
+{
+    for (var tries = 0; tries < 400; tries++)
+    {
+        var v = pool[rng.Next(pool.Count)];
+        var tables = v.Paragraphs.Select((p, i) => (p, i, m: CellPath.Match(p.Location))).Where(x => x.m.Success)
+            .GroupBy(x => x.m.Groups["table"].Value).ToArray();
+        if (tables.Length == 0) continue;
+        var table = tables[rng.Next(tables.Length)];
+        var items = table.ToArray();
+        var indices = items.Select(x => x.i).ToArray();
+        var allInTable = v.Paragraphs.Where(p => p.Location.StartsWith(table.Key + "/", StringComparison.Ordinal)).Count();
+        if (allInTable != items.Length || indices[^1] - indices[0] + 1 != items.Length) continue;   // something not at tbl/tr/tc/p (sdt, nested)
+        if (items.Any(x => x.p.Cell?.Merged == true || x.p.Cell?.TableDepth > 1)) continue;
+        var rows = items.GroupBy(x => int.Parse(x.m.Groups["row"].Value)).OrderBy(g => g.Key)
+            .Select(g => g.GroupBy(x => int.Parse(x.m.Groups["cell"].Value)).OrderBy(c => c.Key).Select(c => c.Select(x => x.p).ToList()).ToList()).ToList();
+        if (rows.Count < 3 || rows.Any(r => r.Count < 2)) continue;
+
+        var other = pool[(pool.IndexOf(v) + 1 + rng.Next(pool.Count - 1)) % pool.Count];
+        var foreignTexts = other.Paragraphs.Where(x => Words(x.NormalizedKey).Length >= 2).Select(x => x.RawText).ToArray();
+        if (foreignTexts.Length < 5) continue;
+        string Foreign() => foreignTexts[rng.Next(foreignTexts.Length)];
+
+        var r = rng.Next(rows.Count - 1);
+        var template = v.Paragraphs[indices[0]];
+        // Each new row is a list of cells, each cell a list of (paragraph, origin) where origin null means new text.
+        var newRows = rows.Select(row => row.Select(cell => cell.Select(p => (P: p, Origin: (string?)p.Location)).ToList()).ToList()).ToList();
+        string expected, edit;
+        switch (type)
+        {
+            case "table_row_insert":
+                newRows.Insert(r + 1, rows[r].Select(_ => new List<(ParagraphFingerprint P, string? Origin)> { (template, null) }).ToList());
+                expected = $"row_only_in_document:{table.Key}/tr[{r + 2}]";
+                edit = $"row of foreign text inserted after row {r + 1}";
+                break;
+            case "table_row_delete":
+                newRows.RemoveAt(r);
+                expected = $"row_only_in_template:{table.Key}/tr[{r + 1}]";
+                edit = $"row {r + 1} deleted";
+                break;
+            case "table_row_swap":
+                (newRows[r], newRows[r + 1]) = (newRows[r + 1], newRows[r]);
+                expected = $"row_moved:{table.Key}/tr[{r + 1}]|{table.Key}/tr[{r + 2}]";
+                edit = $"rows {r + 1} and {r + 2} swapped";
+                break;
+            default:
+                foreach (var row in newRows) row.Add([(template, null)]);
+                expected = $"column_only_in_document:{table.Key}#col[";
+                edit = "column of foreign text added to every row";
+                break;
+        }
+        if (type == "table_row_swap" && rows[r].SelectMany(c => c).Select(p => p.KeyHash).SequenceEqual(rows[r + 1].SelectMany(c => c).Select(p => p.KeyHash))) continue;
+
+        var origin = new Dictionary<string, string>(StringComparer.Ordinal);
+        var rebuilt = new List<ParagraphFingerprint>();
+        for (var ri = 0; ri < newRows.Count; ri++)
+            for (var ci = 0; ci < newRows[ri].Count; ci++)
+                for (var pi = 0; pi < newRows[ri][ci].Count; pi++)
+                {
+                    var (p, from) = newRows[ri][ci][pi];
+                    var location = $"{table.Key}/tr[{ri + 1}]/tc[{ci + 1}]/p[{pi + 1}]";
+                    rebuilt.Add(from is null ? Re(p, Foreign(), location) : p with { Location = location });
+                    origin[location] = from ?? "inserted";
+                }
+        var ps = v.Paragraphs.ToList();
+        ps.RemoveRange(indices[0], indices.Length);
+        ps.InsertRange(indices[0], rebuilt);
+        foreach (var p in v.Paragraphs.Where(p => !p.Location.StartsWith(table.Key + "/", StringComparison.Ordinal))) origin.TryAdd(p.Location, p.Location);
+        return new Case(set, type, sources[pool.IndexOf(v)], table.Key, expected, edit, v, With(v, ps), origin);
+    }
+    return null;
+}
+
 static string Base(string location) => location.Split('#')[0];
+// An inserted paragraph sits at the location of the one before it (so inside the same table cell); its origin is new text, not that paragraph.
+static Dictionary<string, string> New(string location) => new(StringComparer.Ordinal) { [location] = "inserted" };
 static string Parent(string location) => location[..location.LastIndexOf('/')];
 
 Verdict Judge(Case c, ComparisonResult r)
 {
     var groups = r.Changes.Where(x => x.Kind is "paragraph_split" or "paragraph_merged").ToArray();
-    // Every one-to-one pair must join a template paragraph with its own (possibly edited) counterpart.
-    var mispaired = r.Changes.Any(x => x.Template is not null && x.Document is not null && x.TemplateGroup is null
-        && Base(x.Document.Location) != x.Template.Location);
+    // Every one-to-one pair must join a template paragraph with its own (possibly edited or renumbered) counterpart.
+    string OriginOf(string location) => c.Origin?.GetValueOrDefault(location) ?? Base(location);
+    var mispaired = r.Changes.Any(x => x.Template is not null && x.Document is not null && x.TemplateGroup is null && x.DocumentGroup is null
+        && OriginOf(x.Document.Location) != x.Template.Location);
+    var structural = r.Changes.Where(x => x.Kind.StartsWith("row_", StringComparison.Ordinal) || x.Kind.StartsWith("column_", StringComparison.Ordinal)
+        || x.Kind.StartsWith("table_only", StringComparison.Ordinal)).ToArray();
+    if (StructuralTableTypes.Contains(c.Type))
+    {
+        var parts = c.Expected.Split(':', 2);
+        bool Right(Change x) => x.Kind == parts[0] && parts[0] switch
+        {
+            "row_only_in_document" => x.Document!.Location == parts[1],
+            "row_only_in_template" => x.Template!.Location == parts[1],
+            "row_moved" => parts[1].Split('|').Contains(x.Template!.Location),
+            _ => x.Document!.Location.StartsWith(parts[1], StringComparison.Ordinal),
+        };
+        return new Verdict(structural.Any(Right), false, false, groups.Length > 0 || structural.Any(x => !Right(x)), mispaired);
+    }
+    // Paragraph-level cases: any table, row or column change is unexpected.
+    var verdict = ParagraphVerdict();
+    return structural.Length > 0 ? verdict with { WrongGroup = true } : verdict;
+
+    Verdict ParagraphVerdict()
+    {
     switch (c.Type)
     {
         case "split_short_head": case "split_balanced": case "split_with_edit": case "split_multi_edit": case "table_cell_split":
@@ -265,13 +365,14 @@ Verdict Judge(Case c, ComparisonResult r)
         default:
         {
             // An inserted copy: the right answer names the inserted occurrence. Naming another occurrence is acceptable only when flagged uncertain.
-            var expected = c.Expected.Split(':')[1];
+            var expected = c.Expected.Split(':', 2)[1];
             var oneSided = r.Changes.Where(x => x.Kind == "paragraph_only_in_document").ToArray();
             var found = oneSided.Any(x => x.Document!.Location == expected);
             var others = oneSided.Where(x => x.Document!.Location != expected).ToArray();
             return new Verdict(found, !found && others.Length > 0 && others.All(x => x.Uncertain),
                 !found && others.Any(x => !x.Uncertain), groups.Length > 0, mispaired);
         }
+    }
     }
 }
 
@@ -300,10 +401,14 @@ partial class Program
 {
     static readonly string[] BaseTypes = ["split_short_head", "split_balanced", "split_with_edit", "merge", "edit_only", "insert_unrelated", "insert_duplicate"];
     static readonly string[] HardTypes = ["short_repeated_phrase", "new_contains_old_words", "split_multi_edit", "merge_multi_edit"];
-    static readonly string[] TableTypes = ["table_cell_edit", "table_cell_split", "table_cell_merge"];
+    static readonly string[] TableTypes = ["table_cell_edit", "table_cell_split", "table_cell_merge",
+        "table_row_insert", "table_row_delete", "table_row_swap", "table_column_add"];
+    static readonly HashSet<string> StructuralTableTypes = ["table_row_insert", "table_row_delete", "table_row_swap", "table_column_add"];
+    static readonly Regex CellPath = new(@"^(?<table>body\[1\]/tbl\[\d+\])/tr\[(?<row>\d+)\]/tc\[(?<cell>\d+)\]/p\[(?<p>\d+)\]$", RegexOptions.Compiled);
 }
 
-record Case(string Set, string Type, string File, string Location, string Expected, string Edit, DocxVersion Template, DocxVersion Document);
+record Case(string Set, string Type, string File, string Location, string Expected, string Edit, DocxVersion Template, DocxVersion Document,
+    IReadOnlyDictionary<string, string>? Origin = null);
 record Verdict(bool Found, bool AlternativeFlagged, bool AlternativeUnflagged, bool WrongGroup, bool Mispaired);
 record Outcome(string Set, string Type, string File, string Location, string Expected, string Rule, Verdict Verdict, bool Flagged,
     bool DifferencesChanged, GroupDecision[]? RelevantDecisions, string[]? Changes);

@@ -6,8 +6,8 @@ internal enum EditKind { Equal, Delete, Insert }
 internal readonly record struct Edit(EditKind Kind, int OldIndex, int NewIndex);
 
 /// <summary>
-/// Myers' O((N+M)D) shortest edit script, with the common prefix and suffix trimmed first. Memory grows with D², so very different inputs are
-/// costly; that is acceptable for the experimental P1 and is a known limit.
+/// Myers' O((N+M)D) shortest edit script, with the common prefix and suffix trimmed first. The trace keeps, for each step d, only the diagonals
+/// that step can read (-d-1..d+1), so memory grows with D²; very different inputs are still costly, a known limit of the experimental P1.
 /// </summary>
 internal static class Myers
 {
@@ -36,7 +36,7 @@ internal static class Myers
         var found = -1;
         for (var d = 0; d <= max && found < 0; d++)
         {
-            trace.Add((int[])v.Clone());
+            trace.Add(v[(shift - d - 1)..(shift + d + 2)]);
             for (var k = -d; k <= d; k += 2)
             {
                 var x = k == -d || (k != d && v[k - 1 + shift] < v[k + 1 + shift]) ? v[k + 1 + shift] : v[k - 1 + shift] + 1;
@@ -50,10 +50,10 @@ internal static class Myers
         int cx = n, cy = m;
         for (var d = found; d >= 0; d--)
         {
-            var prev = trace[d];
+            var prev = trace[d];   // diagonal k is at prev[k + d + 1]
             var k = cx - cy;
-            var prevK = k == -d || (k != d && prev[k - 1 + shift] < prev[k + 1 + shift]) ? k + 1 : k - 1;
-            var prevX = prev[prevK + shift];
+            var prevK = k == -d || (k != d && prev[k - 1 + d + 1] < prev[k + 1 + d + 1]) ? k + 1 : k - 1;
+            var prevX = prev[prevK + d + 1];
             var prevY = prevX - prevK;
             while (cx > prevX && cy > prevY) { result.Add(new Edit(EditKind.Equal, offset + cx - 1, offset + cy - 1)); cx--; cy--; }
             if (d > 0)

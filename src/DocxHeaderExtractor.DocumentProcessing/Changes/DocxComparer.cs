@@ -70,43 +70,78 @@ public static class DocxComparer
     public static ComparisonResult Compare(DocxVersion template, DocxVersion document, ComparerOptions? options = null, List<GroupDecision>? decisions = null)
     {
         options ??= new ComparerOptions();
-        var a = template.Paragraphs;
-        var b = document.Paragraphs;
         var changes = new List<Change>();
-        var templateKeys = a.Select(p => p.KeyHash).ToHashSet(StringComparer.Ordinal);
-        var documentKeys = b.Select(p => p.KeyHash).ToHashSet(StringComparer.Ordinal);
-        var edits = Myers.Diff(a, b, (x, y) => x.KeyHash == y.KeyHash);
+        var context = new Context(
+            template.Paragraphs.Select(p => p.KeyHash).ToHashSet(StringComparer.Ordinal),
+            document.Paragraphs.Select(p => p.KeyHash).ToHashSet(StringComparer.Ordinal),
+            changes, options, decisions);
 
-        var deleted = new List<int>();
-        var inserted = new List<int>();
-        foreach (var edit in edits)
+        // Units: each body paragraph, and each top-level table as a whole (P1b). Without tables this is the paragraph alignment of P1.
+        var a = TableDiff.Units(template.Paragraphs);
+        var b = TableDiff.Units(document.Paragraphs);
+        var deleted = new List<object>();
+        var inserted = new List<object>();
+        foreach (var edit in Myers.Diff(a, b, TableDiff.SameUnit))
         {
             switch (edit.Kind)
             {
                 case EditKind.Equal:
-                    Block(a, b, deleted, inserted, templateKeys, documentKeys, changes, options, decisions);
-                    Matched(a[edit.OldIndex], b[edit.NewIndex], "matched", false, changes);
+                    Flush(deleted, inserted, context);
+                    if (a[edit.OldIndex] is ParagraphFingerprint p) Matched(p, (ParagraphFingerprint)b[edit.NewIndex], "matched", false, changes);
+                    else TableDiff.CompareTables((TableShape)a[edit.OldIndex], (TableShape)b[edit.NewIndex], "matched", false, context);
                     break;
-                case EditKind.Delete: deleted.Add(edit.OldIndex); break;
-                case EditKind.Insert: inserted.Add(edit.NewIndex); break;
+                case EditKind.Delete: deleted.Add(a[edit.OldIndex]); break;
+                case EditKind.Insert: inserted.Add(b[edit.NewIndex]); break;
             }
         }
-        Block(a, b, deleted, inserted, templateKeys, documentKeys, changes, options, decisions);
+        Flush(deleted, inserted, context);
         return new ComparisonResult(template.FileSha256, document.FileSha256, changes, template.UnsupportedRegions, document.UnsupportedRegions, Scope,
             options.GroupRule.ToString(), options.FlagRejectedGroups);
     }
 
-    enum Step { SkipTemplate, SkipDocument, Pair, Split, Merge }
+    /// <summary>What one comparison carries through its steps: both documents' matching keys, the change list, the options and the decision log.</summary>
+    internal sealed record Context(HashSet<string> TemplateKeys, HashSet<string> DocumentKeys, List<Change> Changes, ComparerOptions Options,
+        List<GroupDecision>? Decisions);
 
-    /// <summary>Aligns one unaligned block as a whole and emits its changes in order.</summary>
-    static void Block(IReadOnlyList<ParagraphFingerprint> a, IReadOnlyList<ParagraphFingerprint> b, List<int> deleted, List<int> inserted,
-        HashSet<string> templateKeys, HashSet<string> documentKeys, List<Change> changes, ComparerOptions options, List<GroupDecision>? decisions)
+    /// <summary>One unaligned block of units: its paragraphs are aligned by <see cref="Block"/>, its tables by <see cref="TableDiff.Block"/>.</summary>
+    static void Flush(List<object> deleted, List<object> inserted, Context context)
     {
         if (deleted.Count == 0 && inserted.Count == 0) return;
-        var t = deleted.Select(i => a[i]).ToArray();
-        var d = inserted.Select(i => b[i]).ToArray();
+        Block(deleted.OfType<ParagraphFingerprint>().ToArray(), inserted.OfType<ParagraphFingerprint>().ToArray(), context);
+        TableDiff.Block(deleted.OfType<TableShape>().ToList(), inserted.OfType<TableShape>().ToList(), context);
         deleted.Clear();
         inserted.Clear();
+    }
+
+    /// <summary>The P1 paragraph alignment of two paragraph sequences (used for the paragraphs inside a pair of table cells).</summary>
+    internal static void CompareSequence(IReadOnlyList<ParagraphFingerprint> a, IReadOnlyList<ParagraphFingerprint> b, Context context)
+    {
+        var deleted = new List<ParagraphFingerprint>();
+        var inserted = new List<ParagraphFingerprint>();
+        foreach (var edit in Myers.Diff(a, b, (x, y) => x.KeyHash == y.KeyHash))
+        {
+            switch (edit.Kind)
+            {
+                case EditKind.Equal:
+                    Block(deleted.ToArray(), inserted.ToArray(), context);
+                    deleted.Clear();
+                    inserted.Clear();
+                    Matched(a[edit.OldIndex], b[edit.NewIndex], "matched", false, context.Changes);
+                    break;
+                case EditKind.Delete: deleted.Add(a[edit.OldIndex]); break;
+                case EditKind.Insert: inserted.Add(b[edit.NewIndex]); break;
+            }
+        }
+        Block(deleted.ToArray(), inserted.ToArray(), context);
+    }
+
+    enum Step { SkipTemplate, SkipDocument, Pair, Split, Merge }
+
+    /// <summary>Aligns one unaligned block of paragraphs as a whole and emits its changes in order.</summary>
+    static void Block(ParagraphFingerprint[] t, ParagraphFingerprint[] d, Context context)
+    {
+        if (t.Length == 0 && d.Length == 0) return;
+        var (templateKeys, documentKeys, changes, options, decisions) = (context.TemplateKeys, context.DocumentKeys, context.Changes, context.Options, context.Decisions);
         int n = t.Length, m = d.Length;
         if ((long)n * m > MaxBlockCells)
         {
@@ -262,7 +297,7 @@ public static class DocxComparer
     /// A paragraph present on one side only. Uncertain when the other side has the same text elsewhere (another copy may be the counterpart)
     /// or when a rejected split or merge could explain it (<paramref name="flagNote"/>).
     /// </summary>
-    static void OnlyIn(ParagraphFingerprint? template, ParagraphFingerprint? document, HashSet<string> otherKeys, List<Change> changes,
+    internal static void OnlyIn(ParagraphFingerprint? template, ParagraphFingerprint? document, HashSet<string> otherKeys, List<Change> changes,
         bool forceUncertain = false, string? flagNote = null)
     {
         var paragraph = template ?? document!;
@@ -273,7 +308,7 @@ public static class DocxComparer
             : new Change("paragraph_only_in_document", "unmatched", uncertain, flagNote, null, side));
     }
 
-    static void Matched(ParagraphFingerprint template, ParagraphFingerprint document, string status, bool uncertain, List<Change> changes,
+    internal static void Matched(ParagraphFingerprint template, ParagraphFingerprint document, string status, bool uncertain, List<Change> changes,
         string? flagNote = null)
     {
         uncertain |= flagNote is not null;
@@ -342,14 +377,14 @@ public static class DocxComparer
         }
     }
 
-    static ChangeSide Whole(ParagraphFingerprint p) => new(p.Location, p.Ordinal, p.RawText, null);
+    internal static ChangeSide Whole(ParagraphFingerprint p) => new(p.Location, p.Ordinal, p.RawText, null);
 
-    static string? Join(string? first, string? second) => first is null ? second : second is null ? first : first + ";" + second;
+    internal static string? Join(string? first, string? second) => first is null ? second : second is null ? first : first + ";" + second;
 
     /// <summary>Dice similarity of two token sequences, 0 to 1, with the common tokens counted in order.</summary>
-    static double Dice(string[] x, string[] y) => x.Length + y.Length == 0 ? 1 : 2.0 * Common(x, y) / (x.Length + y.Length);
+    internal static double Dice(string[] x, string[] y) => x.Length + y.Length == 0 ? 1 : 2.0 * Common(x, y) / (x.Length + y.Length);
 
-    static int Common(string[] x, string[] y) =>
+    internal static int Common(string[] x, string[] y) =>
         Myers.Diff(x, y, (p, q) => string.Equals(p, q, StringComparison.Ordinal)).Count(e => e.Kind == EditKind.Equal);
 
     /// <summary>Dice similarity of the non-whitespace tokens (as <see cref="TextDiff"/> cuts them) of two matching keys, 0 to 1.</summary>

@@ -24,7 +24,18 @@ public sealed record RunFormat(int Start, int End, bool? Bold, bool? Italic, str
 /// <see cref="ParaId"/> is a signal, not an identity.
 /// </summary>
 public sealed record ParagraphFingerprint(int Ordinal, string Location, string Container, string? ParaId, string RawText, IReadOnlyList<int> LineBreakOffsets,
-    string NormalizedKey, string KeyHash, string? NumId, int? Ilvl, string? StyleId, string? Alignment, IReadOnlyList<RunFormat> Runs);
+    string NormalizedKey, string KeyHash, string? NumId, int? Ilvl, string? StyleId, string? Alignment, IReadOnlyList<RunFormat> Runs,
+    TableCellFacts? Cell = null);
+
+/// <summary>
+/// The table cell a paragraph sits in, as declared: horizontal span (gridSpan), vertical merge (restart/continue), legacy horizontal merge,
+/// and how many tables enclose it (2 or more is a nested table). Merged cells are not resolved into a grid; they are reported so the
+/// comparison can mark its cell pairing uncertain.
+/// </summary>
+public sealed record TableCellFacts(int? GridSpan, string? VerticalMerge, bool HorizontalMerge, int TableDepth)
+{
+    public bool Merged => GridSpan > 1 || VerticalMerge is not null || HorizontalMerge;
+}
 
 /// <summary>
 /// A DOCX file read for comparison: its SHA-256, its paragraphs in the heading parser's order, and the regions that are present but not read
@@ -90,7 +101,17 @@ public static class DocxVersionReader
             numbering?.NumberingLevelReference?.Val?.Value,
             properties?.ParagraphStyleId?.Val?.Value,
             properties?.Justification?.Val?.InnerText is { Length: > 0 } alignment ? alignment : null,
-            runs);
+            runs,
+            CellFacts(paragraph));
+    }
+
+    static TableCellFacts? CellFacts(Paragraph paragraph)
+    {
+        if (paragraph.Ancestors<TableCell>().FirstOrDefault() is not { } cell) return null;
+        var properties = cell.TableCellProperties;
+        var verticalMerge = properties?.VerticalMerge is { } merge ? merge.Val?.InnerText is { Length: > 0 } value ? value : "continue" : null;
+        return new TableCellFacts(properties?.GridSpan?.Val?.Value, verticalMerge, properties?.HorizontalMerge is not null,
+            paragraph.Ancestors<Table>().Count());
     }
 
     /// <summary>
@@ -160,11 +181,25 @@ public static class DocxVersionReader
         if (body.Descendants<InsertedRun>().Any() || body.Descendants<DeletedRun>().Any()
             || body.Descendants().Any(e => e.LocalName is "moveFrom" or "moveTo")) regions.Add("tracked_changes");
         if (body.Descendants<RunPropertiesChange>().Any() || body.Descendants<ParagraphPropertiesChange>().Any()) regions.Add("tracked_formatting");
-        if (main.FootnotesPart is not null) regions.Add("footnotes");
-        if (main.EndnotesPart is not null) regions.Add("endnotes");
+        if (body.Descendants<GridSpan>().Any(g => g.Val?.Value > 1) || body.Descendants<VerticalMerge>().Any() || body.Descendants<HorizontalMerge>().Any())
+            regions.Add("merged_table_cells");
+        if (body.Descendants<Table>().Any(t => t.Ancestors<Table>().Any())) regions.Add("nested_tables");
+        // Word commonly creates note parts containing only the required separator entries.
+        // Those are not user notes, but a real note or dangling reference must remain a gap.
+        if (body.Descendants<FootnoteReference>().Any() || (main.FootnotesPart is { } footnotes &&
+            (footnotes.Footnotes is null || footnotes.Footnotes.Elements<Footnote>().Any(n => !IsNoteSeparator(n))))) regions.Add("footnotes");
+        if (body.Descendants<EndnoteReference>().Any() || (main.EndnotesPart is { } endnotes &&
+            (endnotes.Endnotes is null || endnotes.Endnotes.Elements<Endnote>().Any(n => !IsNoteSeparator(n))))) regions.Add("endnotes");
         if (main.WordprocessingCommentsPart is not null) regions.Add("comments");
         if (main.HeaderParts.Any()) regions.Add("headers");
         if (main.FooterParts.Any()) regions.Add("footers");
         return regions;
+    }
+
+    static bool IsNoteSeparator(OpenXmlElement note)
+    {
+        const string wordprocessing = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
+        var type = note.GetAttributes().FirstOrDefault(a => a.LocalName == "type" && a.NamespaceUri == wordprocessing).Value;
+        return type is "separator" or "continuationSeparator";
     }
 }

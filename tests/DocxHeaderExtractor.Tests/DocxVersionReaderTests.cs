@@ -48,6 +48,55 @@ public sealed class DocxVersionReaderTests
         foreach (var path in paths) if (File.Exists(path)) File.Delete(path);
     }
 
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void Only_real_notes_or_note_references_are_reported_as_unsupported(bool realNotes)
+    {
+        var path = TempPath();
+        try
+        {
+            using (var document = WordprocessingDocument.Create(path, WordprocessingDocumentType.Document))
+            {
+                var main = document.AddMainDocumentPart();
+                main.Document = new Document(new Body(new Paragraph(new Run(new DocumentFormat.OpenXml.Wordprocessing.Text("Body")))));
+                static T Separator<T>(T item, string type) where T : OpenXmlElement
+                {
+                    item.SetAttribute(new OpenXmlAttribute("w", "type", "http://schemas.openxmlformats.org/wordprocessingml/2006/main", type));
+                    return item;
+                }
+                var foot = new Footnotes(Separator(new Footnote { Id = -1 }, "separator"), Separator(new Footnote { Id = 0 }, "continuationSeparator"));
+                var end = new Endnotes(Separator(new Endnote { Id = -1 }, "separator"), Separator(new Endnote { Id = 0 }, "continuationSeparator"));
+                if (realNotes)
+                {
+                    foot.Append(new Footnote(new Paragraph(new Run(new DocumentFormat.OpenXml.Wordprocessing.Text("footnote")))) { Id = 1 });
+                    end.Append(new Endnote(new Paragraph(new Run(new DocumentFormat.OpenXml.Wordprocessing.Text("endnote")))) { Id = 1 });
+                }
+                main.AddNewPart<FootnotesPart>().Footnotes = foot;
+                main.AddNewPart<EndnotesPart>().Endnotes = end;
+                main.Document.Save();
+            }
+            var result = DocxVersionReader.Read(path);
+            Assert.Equal(realNotes, result.UnsupportedRegions.Contains("footnotes"));
+            Assert.Equal(realNotes, result.UnsupportedRegions.Contains("endnotes"));
+        }
+        finally { Cleanup(path); }
+    }
+
+    [Fact]
+    public void A_dangling_note_reference_is_not_silently_treated_as_complete()
+    {
+        var path = TempPath();
+        try
+        {
+            Make(path, body => body.Append(new Paragraph(new Run(new FootnoteReference { Id = 2 }, new EndnoteReference { Id = 3 }))));
+            var result = DocxVersionReader.Read(path);
+            Assert.Contains("footnotes", result.UnsupportedRegions);
+            Assert.Contains("endnotes", result.UnsupportedRegions);
+        }
+        finally { Cleanup(path); }
+    }
+
     [Fact]
     public void Keeps_raw_text_location_declared_numbering_style_paragraph_id_and_container()
     {
@@ -109,8 +158,7 @@ public sealed class DocxVersionReaderTests
     /// <summary>Fixed fixture: 026 has two text boxes whose text is exactly "JANUARY, 2017" (checked in the file's XML).</summary>
     static string CorpusFixture()
     {
-        var root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", ".."));
-        var path = Path.Combine(root, "todo10_8", "heading_corpus_100", "02_hop_dong_mua_sam", "026_WB_RFB_Goods_One_Envelope_2017.docx");
+        var path = TestRepository.Path("todo10_8/heading_corpus_100/02_hop_dong_mua_sam/026_WB_RFB_Goods_One_Envelope_2017.docx");
         Assert.True(File.Exists(path), "Fixture missing: " + path);
         return path;
     }
