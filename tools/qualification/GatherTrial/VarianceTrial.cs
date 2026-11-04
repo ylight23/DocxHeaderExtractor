@@ -116,7 +116,10 @@ static class VarianceTrial
                     Level = h.GetProperty("Level").ValueKind == JsonValueKind.Number ? h.GetProperty("Level").GetInt32() : null };
             }).ToList();
             var variant = run.GetProperty("variant").GetString()!;
-            var plan = GatherByHeading.Build(targetPath, targetOutline, [new GatherSourceFile("M", files[variant], headings), .. others], addMissingHeadings: true);
+            // DHX_MATCH=order replays the same outlines with matching by heading order (no model).
+            var matching = Environment.GetEnvironmentVariable("DHX_MATCH") == "order" ? GatherMatching.Order : GatherMatching.Chain;
+            var plan = GatherByHeading.Build(targetPath, targetOutline, [new GatherSourceFile("M", files[variant], headings), .. others], addMissingHeadings: true,
+                matching: matching);
             var decided = GatherByHeading.DecidedByChain(plan.Sections);
             Console.WriteLine($"r{run.GetProperty("round").GetInt32()} {variant,-8} before: facts={run.GetProperty("facts").GetInt32(),3} uncertain={run.GetProperty("uncertain").GetInt32(),2}" +
                 $"   after: facts={decided.Sum(s => s.Run.Facts.Count),3} new={decided.Count(s => s.NewHeadingDepth is not null)} uncertain={plan.Uncertain.Count,2} " +
