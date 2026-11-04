@@ -162,9 +162,15 @@ internal static class ExtractEndpoint
 
             var requiresReview = outline.Headings.Count(h =>
                 h.DecisionStatus == HeadingDecisionStatus.RequiresReview || h.Disputed);
+            // Evaluation only: scored against Gold when DHX_GOLD_ROOT names a Gold folder; never an input to the run.
+            var evaluation = DocxHeaderExtractor.DocumentProcessing.Evaluation.GoldHeadingScorer.Evaluate(
+                Environment.GetEnvironmentVariable("DHX_GOLD_ROOT"),
+                Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(inputPath))),
+                outline.Headings.Select(h => h.StableId).Where(id => id is not null)!);
             await EmitAsync(new
             {
                 type = "result",
+                evaluation,
                 outline = WebPipelineProjection.SafeOutline(outline, WebJson.Options),
                 pipeline = WebPipelineProjection.Project(runId, outline.RouteAudit?.SemanticLane?.Status == "partial" ? "Partial" : "Completed", outline, execution, execution.Result.DocumentIdentity.SourceKind),
                 stats = Stats.From(outline),
