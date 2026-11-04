@@ -181,6 +181,8 @@ public static partial class GatherByHeading
         public string Source { get; } = source;
         public List<NewHeading> Children { get; } = [];
         public List<GatheredFact> Facts { get; } = [];
+        /// <summary>When set, the target section the new heading is written before (order matching); otherwise it goes at the end of the anchor's subtree.</summary>
+        public int? Before { get; init; }
         public int Depth => Parent is null ? 1 : Parent.Depth + 1;
     }
 
@@ -322,7 +324,7 @@ public static partial class GatherByHeading
             {
                 // A new heading is written at the end of its anchor's subtree: before the next target heading of the same or a higher level.
                 var anchor = node.Anchor;
-                var boundary = SubtreeEnd(targetSections, anchor);
+                var boundary = node.Before ?? SubtreeEnd(targetSections, anchor);
                 var facts = node.Facts.Select(f => f with { Flags = [.. f.Flags, "SCOPE_UNREVIEWED"] }).ToList();
                 var built = new GatherSection("", node.Text, node.Text, new GatherRun(facts, [], [], [], [], gaps, 1), GatherDocument.Conflicts(facts),
                     boundary < 0 ? null : targetSections[boundary].Location)

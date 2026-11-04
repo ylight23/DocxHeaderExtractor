@@ -66,11 +66,13 @@ public static partial class GatherByHeading
                 continue;
             }
             if (!addMissing) { placed[i] = new(-1, null, "văn bản đích không có heading \"" + s.Name + "\" theo thứ tự", false); continue; }
-            // Two sources adding the same missing heading after the same target section share one new heading.
-            var node = roots.FirstOrDefault(n => n.Key == key && n.Anchor == lastTarget);
+            // A new heading goes right before the next aligned target section (or after the last aligned one when none follows): a heading with no
+            // aligned predecessor is never written at the end of the document. Two sources adding the same missing heading at the same place share it.
+            int? before = nextTarget < targets.Count ? nextTarget : null;
+            var node = roots.FirstOrDefault(n => n.Key == key && n.Anchor == lastTarget && n.Before == before);
             if (node is null)
             {
-                node = new NewHeading(s.Heading, key, lastTarget, null, location);
+                node = new NewHeading(s.Heading, key, lastTarget, null, location) { Before = before };
                 roots.Add(node);
             }
             placed[i] = new(-1, node, null, false);

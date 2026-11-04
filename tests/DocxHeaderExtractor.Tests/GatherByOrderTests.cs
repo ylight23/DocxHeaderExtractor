@@ -125,8 +125,9 @@ public sealed class GatherByOrderTests
         [(P("Hoạt động tháng 10/2026") + P("Truyền thông:") + P("Đã đăng 5 bài.") + P("Quỹ Pastb:") + P("Quyên góp 1 triệu.")
             + P("Kế hoạch tháng 11/2026") + P("Truyền thông:") + P("Tiếp tục đăng bài."),
           new[] { H(0, "Hoạt động tháng 10/2026", 1), H(1, "Truyền thông:", 2), H(3, "Quỹ Pastb:", 2), H(5, "Kế hoạch tháng 11/2026", 1), H(6, "Truyền thông:", 2) }),
-         (P("Hoạt động tháng 9/2026") + P("Truyền thông:") + P("Đăng 2 bài.") + P("Quỹ Pastb:") + P("Quyên góp 3 triệu."),
-          new[] { H(0, "Hoạt động tháng 9/2026", 1), H(1, "Truyền thông:", 2), H(3, "Quỹ Pastb:", 2) })],
+         (P("Hoạt động tháng 9/2026") + P("Truyền thông:") + P("Đăng 2 bài.") + P("Quỹ Pastb:") + P("Quyên góp 3 triệu.")
+            + P("Kế hoạch tháng 11/2026") + P("Truyền thông:") + P("Đăng 1 bài."),
+          new[] { H(0, "Hoạt động tháng 9/2026", 1), H(1, "Truyền thông:", 2), H(3, "Quỹ Pastb:", 2), H(5, "Kế hoạch tháng 11/2026", 1), H(6, "Truyền thông:", 2) })],
         plan =>
         {
             var added = plan.Sections.Where(s => s.NewHeadingDepth is not null && s.Heading == "Quỹ Pastb:").ToList();
@@ -144,5 +145,18 @@ public sealed class GatherByOrderTests
         {
             var facts = Written(plan).ToList();
             Assert.Equal(facts.Distinct().Count(), facts.Count);
+        });
+
+    [Fact]
+    public void A_new_heading_with_no_aligned_predecessor_goes_before_the_next_target_heading_not_at_the_end() => Run(TargetBody, TargetOutline,
+        [(P("Quỹ Pastb:") + P("Quyên góp 4 triệu.") + TargetBody,
+          new[] { H(0, "Quỹ Pastb:", 2), H(2, "Hoạt động tháng 10/2026", 1), H(3, "Truyền thông:", 2), H(5, "Công tác xã hội:", 2),
+            H(7, "Kế hoạch tháng 11/2026", 1), H(8, "Truyền thông:", 2) })],
+        plan =>
+        {
+            var added = Assert.Single(plan.Sections, s => s.NewHeadingDepth is not null);
+            Assert.Equal("Quỹ Pastb:", added.Heading);
+            Assert.Equal("body[1]/p[1]", added.NextHeadingLocation);
+            Assert.Equal(["Quyên góp 4 triệu."], added.Run.Facts.Select(f => f.Render()));
         });
 }

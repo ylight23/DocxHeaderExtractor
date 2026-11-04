@@ -100,6 +100,7 @@ static class VarianceTrial
     /// </summary>
     public static int Replay(string[] args)
     {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
         static IReadOnlyList<HeadingRecord> Stored(string path) => JsonSerializer.Deserialize<StoredOutline>(File.ReadAllText(path))!.Headings;
         using var doc = JsonDocument.Parse(File.ReadAllText(args[1]));
         var files = new Dictionary<string, string> { ["original"] = Path.GetFullPath(args[2]), ["edited"] = Path.GetFullPath(args[3]) };
@@ -124,6 +125,9 @@ static class VarianceTrial
             var texts = decided.SelectMany(s => s.Run.Facts.Select(f => f.Render())).ToList();
             var duplicated = texts.GroupBy(t => t).Count(g => g.Count() > 1);
             Console.WriteLine($"   duplicated texts written: {duplicated}");
+            foreach (var g in texts.GroupBy(t => t).Where(g => g.Count() > 1)) Console.WriteLine($"      DUP x{g.Count()}: {g.Key[..Math.Min(90, g.Key.Length)]}");
+            foreach (var s2 in decided.Where(s => s.Run.Facts.Any(f => texts.Count(t => t == f.Render()) > 1)))
+                Console.WriteLine($"      in section \"{s2.Heading}\" (new={s2.NewHeadingDepth is not null}) at {s2.TargetLocation}");
             if (Environment.GetEnvironmentVariable("DHX_SHOW_NEW") == "1")
                 foreach (var n in decided.Where(s => s.NewHeadingDepth is not null)) Console.WriteLine($"   NEW  {n.Heading}  <- after \"{n.NewHeadingParent}\"  facts={n.Run.Facts.Count}");
             Console.WriteLine($"r{run.GetProperty("round").GetInt32()} {variant,-8} before: facts={run.GetProperty("facts").GetInt32(),3} uncertain={run.GetProperty("uncertain").GetInt32(),2}" +
