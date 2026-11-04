@@ -82,6 +82,35 @@ public static class GatherByHeading
         public int Parent { get; init; } = -1;
         public string Chain { get; init; } = "";
         public string Location { get; init; } = "";
+        /// <summary>Part of the document's title (see <see cref="WithoutTitle"/>): left out of every chain, never placed.</summary>
+        public bool Title { get; init; }
+    }
+
+    /// <summary>
+    /// The sections with the document's title left out of their chains. The title is the run of sections at the start whose last one contains
+    /// every later section and whose earlier ones have no child ("BÁO CÁO" then "Các hoạt động tháng 9/2026" over the whole report), when the
+    /// other side has no heading with any of their keys. One outline may give the title as a heading and another not, or split it over two
+    /// headings; left in, it would change the chain of every heading below it. A title the other side also has stays in the chain.
+    /// </summary>
+    internal static List<Section> WithoutTitle(List<Section> sections, IReadOnlySet<string> otherKeys)
+    {
+        bool Contains(int ancestor, int i)
+        {
+            for (var p = sections[i].Parent; p >= 0; p = sections[p].Parent) if (p == ancestor) return true;
+            return false;
+        }
+        for (var k = 0; k < sections.Count - 1; k++)
+        {
+            if (otherKeys.Contains(Key(sections[k].Heading))) return sections;
+            if (Enumerable.Range(k + 1, sections.Count - k - 1).All(i => Contains(k, i)))
+            {
+                var prefix = sections[k].Chain + ChainSeparator;
+                return sections.Select((x, i) => i <= k ? x with { Title = true, Chain = "", Parent = -1 }
+                    : x with { Chain = x.Chain[prefix.Length..], Parent = x.Parent == k ? -1 : x.Parent }).ToList();
+            }
+            if (Enumerable.Range(k + 1, sections.Count - k - 1).Any(i => sections[i].Parent == k)) return sections;
+        }
+        return sections;
     }
 
     /// <summary>
@@ -178,6 +207,8 @@ public static class GatherByHeading
     /// may give a heading another level). When there is none: with <paramref name="addMissingHeadings"/> the heading is added as a new section at the
     /// end of that parent's subtree, otherwise its content is listed as not placed. Two target sections with the same chain, or the same name in that
     /// subtree, receive nothing: the content is listed as not placed. Nothing a source holds under a heading is dropped without being listed.
+    /// A document title that only one side gives as a heading is left out of that side's chains first (<see cref="WithoutTitle"/>); what the
+    /// source holds inside its title is listed as DOCUMENT_TITLE.
     /// <para>
     /// A source heading the target does not have but whose name is close to a target heading under the same parent, a chain or name that
     /// matches several target sections, and the children of such a heading are held as uncertain (<see cref="GatherHeadingPlan.Uncertain"/>):
@@ -204,9 +235,14 @@ public static class GatherByHeading
             var source = GatherUnits.Read(s.Path, s.Name, s.Outline);
             return (Source: source, Sections: Sections(source.Units, s.Outline ?? OutlineFromUnits(source.Units)));
         }).ToList();
+        // A title only one side has is left out of the chains on that side.
+        var targetKeys = targetSections.Select(t => Key(t.Heading)).ToHashSet(StringComparer.Ordinal);
+        var sourceKeys = read.SelectMany(r => r.Sections).Select(t => Key(t.Heading)).ToHashSet(StringComparer.Ordinal);
+        targetSections = WithoutTitle(targetSections, sourceKeys);
+        read = read.Select(r => (r.Source, WithoutTitle(r.Sections, targetKeys))).ToList();
         var gaps = target.Gaps.Concat(read.SelectMany(r => r.Source.Gaps)).ToList();
 
-        var chainCount = targetSections.GroupBy(t => t.Chain).ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal);
+        var chainCount = targetSections.Where(t => !t.Title).GroupBy(t => t.Chain).ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal);
         var received = targetSections.Select(_ => new List<GatheredFact>()).ToList();
         var roots = new List<NewHeading>();
         var excluded = new List<GatherExcluded>();
@@ -249,7 +285,9 @@ public static class GatherByHeading
                         received[p.Target].Add(perTarget[p.Target] > 1 ? fact with { Flags = [.. fact.Flags, "MULTIPLE_MATCHING_SOURCE_SECTIONS"] } : fact);
                     else if (p.New is not null) p.New.Facts.Add(fact);
                     else if (p.Uncertain is not null) p.Uncertain.Facts.Add(fact);
-                    else excluded.Add(new GatherExcluded(s.Heading, fact, "UNPLACED: " + p.Unplaced));
+                    else excluded.Add(new GatherExcluded(s.Heading, fact, s.Title
+                        ? "DOCUMENT_TITLE: nội dung trong phần tiêu đề của văn bản nguồn, không thuộc mục nào"
+                        : "UNPLACED: " + p.Unplaced));
                 }
             }
         }
@@ -258,7 +296,7 @@ public static class GatherByHeading
         for (var t = 0; t < targetSections.Count; t++)
         {
             var section = targetSections[t];
-            var ambiguous = chainCount[section.Chain] > 1;
+            var ambiguous = !section.Title && chainCount[section.Chain] > 1;
             var facts = received[t].Select(f => f with { Flags = [.. f.Flags, "SCOPE_UNREVIEWED"] }).ToList();
             var targetContent = Content(target.Units, section).ToList();
             var goal = string.Join("\n", new[] { section.Heading }.Concat(targetContent.Select(f => f.Render())));
@@ -325,6 +363,7 @@ public static class GatherByHeading
         Dictionary<string, int> chainCount, List<NewHeading> roots, bool addMissing, string location)
     {
         if (s.Name.Length == 0) return new(-1, null, "heading không có tên", false);
+        if (s.Title) return new(-1, null, "tiêu đề văn bản", false);
         string? ParentText(int p) => p < 0 ? null : sourceSections[p].Heading;
         if (chainCount.TryGetValue(s.Chain, out var same))
             return same == 1 ? new(targets.ToList().FindIndex(t => t.Chain == s.Chain), null, null, false)
@@ -345,14 +384,14 @@ public static class GatherByHeading
         }
         var anchor = parent < 0 ? -1 : placed[parent].Target;
         var key = Key(s.Heading);
-        var named = Subtree(targets, anchor).Where(t => Key(targets[t].Heading) == key).ToList();
+        var named = Subtree(targets, anchor).Where(t => !targets[t].Title && Key(targets[t].Heading) == key).ToList();
         if (named.Count == 1)
             return new(-1, null, null, false, new UncertainItem("PATH_DIFFERS", s.Heading, location, ParentText(s.Parent), named,
                 "heading cùng tên nhưng chuỗi mục cha khác; cần xác nhận trước khi chèn") { Anchor = anchor });
         if (named.Count > 1)
             return new(-1, null, null, false, new UncertainItem("AMBIGUOUS", s.Heading, location, ParentText(s.Parent), named,
                 "văn bản đích có " + named.Count + " heading tên \"" + s.Name + "\" dưới cùng mục cha") { Anchor = anchor });
-        var near = Subtree(targets, anchor).Select(t => (t, Score: Changes.DocxComparer.Similarity(s.Name, targets[t].Name)))
+        var near = Subtree(targets, anchor).Where(t => !targets[t].Title).Select(t => (t, Score: Changes.DocxComparer.Similarity(s.Name, targets[t].Name)))
             .Where(x => x.Score >= NearNameThreshold).OrderByDescending(x => x.Score).Select(x => x.t).Take(1).ToList();
         if (near.Count == 1)
             return new(-1, null, null, false, new UncertainItem("NEAR_NAME", s.Heading, location, ParentText(s.Parent), near,

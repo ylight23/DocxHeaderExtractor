@@ -208,4 +208,76 @@ public sealed class GatherByChainTests
         }
         finally { File.Delete(output); }
     });
+
+    // A September report whose outline gives the title as two headings over the whole report ("BÁO CÁO", then its subject line), as one run of
+    // the model does; the October target has no title heading.
+    static readonly string TitledBody = P("BÁO CÁO") + P("Hoạt động chính tháng 9/2026 và kế hoạch tháng 10/2026") + P("Phòng A")
+        + P("Hoạt động tháng 9/2026") + P("Truyền thông:") + P("Đăng 7 bài.") + P("Kế hoạch tháng 10/2026") + P("Truyền thông:") + P("Viết thêm bài.");
+
+    static readonly HeadingRecord[] TitledOutline = [H(0, "BÁO CÁO", 1), H(1, "Hoạt động chính tháng 9/2026 và kế hoạch tháng 10/2026", 1),
+        H(3, "Hoạt động tháng 9/2026", 2), H(4, "Truyền thông:", 3), H(6, "Kế hoạch tháng 10/2026", 2), H(7, "Truyền thông:", 3)];
+
+    static void WithTitled(Action<string, string> test)
+    {
+        var target = RawDocxFixtureTests.Build(TargetBody);
+        var titled = RawDocxFixtureTests.Build(TitledBody);
+        try { test(target, titled); }
+        finally { File.Delete(target); File.Delete(titled); }
+    }
+
+    [Fact]
+    public void A_title_only_the_source_has_is_left_out_of_its_chains() => WithTitled((target, titled) =>
+    {
+        var plan = GatherByHeading.Build(target, TargetOutline, [new GatherSourceFile("T9", titled, TitledOutline)], addMissingHeadings: true);
+
+        Assert.Equal(["Đăng 7 bài."], Named(plan.Sections, "Truyền thông:", 0).Run.Facts.Select(f => f.Render()));
+        Assert.Equal(["Viết thêm bài."], Named(plan.Sections, "Truyền thông:", 1).Run.Facts.Select(f => f.Render()));
+        Assert.Empty(plan.Uncertain);
+        Assert.DoesNotContain(plan.Sections, s => s.NewHeadingDepth is not null);
+        // The line inside the title block is listed, not dropped.
+        Assert.Contains(plan.Excluded, e => e.Fact.Render() == "Phòng A" && e.Reason.StartsWith("DOCUMENT_TITLE", StringComparison.Ordinal));
+    });
+
+    [Fact]
+    public void A_title_only_the_target_has_is_left_out_of_its_chains() => WithTitled((_, titled) =>
+    {
+        // The roles reversed: the titled report is the target, the August report (no title heading) the source.
+        var t8File = RawDocxFixtureTests.Build(T8Body);
+        try
+        {
+            var plan = GatherByHeading.Build(titled, TitledOutline, [new GatherSourceFile("T8", t8File, T8Outline)], addMissingHeadings: true);
+            Assert.Equal(["Đăng 3 bài về lao."], Named(plan.Sections, "Truyền thông:", 0).Run.Facts.Select(f => f.Render()));
+            Assert.Empty(Named(plan.Sections, "BÁO CÁO").Run.Facts);
+        }
+        finally { File.Delete(t8File); }
+    });
+
+    [Fact]
+    public void A_title_both_sides_have_stays_in_the_chain() => WithTitled((_, titled) =>
+    {
+        var copy = RawDocxFixtureTests.Build(TitledBody.Replace("Đăng 7 bài.", "Đăng 8 bài."));
+        try
+        {
+            var plan = GatherByHeading.Build(copy, TitledOutline, [new GatherSourceFile("T9", titled, TitledOutline)], addMissingHeadings: true);
+            Assert.Equal(["Đăng 7 bài."], Named(plan.Sections, "Truyền thông:", 0).Run.Facts.Select(f => f.Render()));
+            Assert.DoesNotContain(plan.Excluded, e => e.Reason.StartsWith("DOCUMENT_TITLE", StringComparison.Ordinal));
+        }
+        finally { File.Delete(copy); }
+    });
+
+    [Fact]
+    public void A_chapter_the_target_also_has_is_not_taken_for_a_title()
+    {
+        // The source has only the first chapter, so that chapter holds every heading of the source; the target has it too, so it is a real parent.
+        var target = RawDocxFixtureTests.Build(P("Chương I") + P("Điều 1") + P("Nội dung một.") + P("Chương II") + P("Điều 1") + P("Nội dung hai."));
+        var source = RawDocxFixtureTests.Build(P("Chương I") + P("Điều 1") + P("Nội dung mới."));
+        try
+        {
+            var plan = GatherByHeading.Build(target, [H(0, "Chương I", 1), H(1, "Điều 1", 2), H(3, "Chương II", 1), H(4, "Điều 1", 2)],
+                [new GatherSourceFile("S", source, [H(0, "Chương I", 1), H(1, "Điều 1", 2)])], addMissingHeadings: true);
+            Assert.Equal(["Nội dung mới."], Named(plan.Sections, "Điều 1", 0).Run.Facts.Select(f => f.Render()));
+            Assert.Empty(Named(plan.Sections, "Điều 1", 1).Run.Facts);
+        }
+        finally { File.Delete(target); File.Delete(source); }
+    }
 }

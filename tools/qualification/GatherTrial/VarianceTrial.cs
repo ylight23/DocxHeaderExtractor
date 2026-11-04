@@ -92,4 +92,36 @@ static class VarianceTrial
             if (Hash(path) != hash) throw new InvalidDataException("INPUT_CHANGED:" + path);
         return 0;
     }
+
+    /// <summary>
+    /// The gather of every measured outline in a variance.json again, offline (no model): the target and the other sources keep their stored
+    /// outlines. Shows how a change to the gather alone moves the results.
+    /// Usage: GatherTrial variance-replay &lt;variance.json&gt; &lt;original.docx&gt; &lt;edited.docx&gt; &lt;target.docx=outline.json&gt; &lt;other.docx=outline.json&gt;...
+    /// </summary>
+    public static int Replay(string[] args)
+    {
+        static IReadOnlyList<HeadingRecord> Stored(string path) => JsonSerializer.Deserialize<StoredOutline>(File.ReadAllText(path))!.Headings;
+        using var doc = JsonDocument.Parse(File.ReadAllText(args[1]));
+        var files = new Dictionary<string, string> { ["original"] = Path.GetFullPath(args[2]), ["edited"] = Path.GetFullPath(args[3]) };
+        var (targetPath, targetOutline) = (Path.GetFullPath(args[4].Split('=')[0]), Stored(args[4].Split('=')[1]));
+        var others = args[5..].Select((a, i) => new GatherSourceFile("O" + (i + 1), Path.GetFullPath(a.Split('=')[0]), Stored(a.Split('=')[1]))).ToList();
+        foreach (var run in doc.RootElement.GetProperty("runs").EnumerateArray())
+        {
+            if (!run.TryGetProperty("headings", out var hs)) continue;
+            var headings = hs.EnumerateArray().Select(h =>
+            {
+                var id = h.GetProperty("StableId").GetString()!;
+                var n = int.Parse(System.Text.RegularExpressions.Regex.Match(id, @"p\[(\d+)\]$").Groups[1].Value);
+                return new HeadingRecord { Index = n - 1, StableId = id, Text = h.GetProperty("Text").GetString()!,
+                    Level = h.GetProperty("Level").ValueKind == JsonValueKind.Number ? h.GetProperty("Level").GetInt32() : null };
+            }).ToList();
+            var variant = run.GetProperty("variant").GetString()!;
+            var plan = GatherByHeading.Build(targetPath, targetOutline, [new GatherSourceFile("M", files[variant], headings), .. others], addMissingHeadings: true);
+            var decided = GatherByHeading.DecidedByChain(plan.Sections);
+            Console.WriteLine($"r{run.GetProperty("round").GetInt32()} {variant,-8} before: facts={run.GetProperty("facts").GetInt32(),3} uncertain={run.GetProperty("uncertain").GetInt32(),2}" +
+                $"   after: facts={decided.Sum(s => s.Run.Facts.Count),3} new={decided.Count(s => s.NewHeadingDepth is not null)} uncertain={plan.Uncertain.Count,2} " +
+                $"title-excluded={plan.Excluded.Count(e => e.Reason.StartsWith("DOCUMENT_TITLE", StringComparison.Ordinal))}");
+        }
+        return 0;
+    }
 }
