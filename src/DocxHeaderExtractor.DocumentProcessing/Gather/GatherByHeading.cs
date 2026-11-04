@@ -183,7 +183,11 @@ public static partial class GatherByHeading
         public List<GatheredFact> Facts { get; } = [];
         /// <summary>When set, the target section the new heading is written before (order matching); otherwise it goes at the end of the anchor's subtree.</summary>
         public int? Before { get; init; }
-        public int Depth => Parent is null ? 1 : Parent.Depth + 1;
+        /// <summary>The level of the new heading, when set (order matching: the target outline gives it); otherwise it follows its parent.</summary>
+        public int? Level { get; init; }
+        /// <summary>The target section that contains the new heading (-1: none), when set (order matching).</summary>
+        public int? ParentTarget { get; init; }
+        public int Depth => Level ?? (Parent is null ? 1 : Parent.Depth + 1);
     }
 
     /// <summary>The first target section after the subtree of <paramref name="anchor"/>, or -1 when the subtree runs to the end of the document.</summary>
@@ -330,7 +334,8 @@ public static partial class GatherByHeading
                     boundary < 0 ? null : targetSections[boundary].Location)
                 {
                     NewHeadingDepth = node.Depth,
-                    NewHeadingParent = node.Parent?.Text ?? (anchor < 0 ? null : targetSections[anchor].Heading),
+                    NewHeadingParent = node.Parent?.Text ?? (node.ParentTarget is { } pt ? (pt < 0 ? null : targetSections[pt].Heading)
+                        : anchor < 0 ? null : targetSections[anchor].Heading),
                     NewHeadingSource = node.Source,
                 };
                 var (kept, repeated) = RemoveDuplicates(built, []);

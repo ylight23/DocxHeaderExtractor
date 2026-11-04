@@ -10,6 +10,14 @@ public enum GatherMatching { Chain, Order }
 
 public static partial class GatherByHeading
 {
+    /// <summary>The nearest target section before <paramref name="i"/> with a higher level (a smaller number): the section that contains it, or -1.</summary>
+    static int EnclosingSection(IReadOnlyList<Section> targets, int i)
+    {
+        for (var j = i - 1; j >= 0; j--)
+            if (targets[j].Level < targets[i].Level) return j;
+        return -1;
+    }
+
     /// <summary>
     /// Matches the source sections to the target sections by order. The names (dates ignored, see <see cref="Key"/>) of the target's headings and of
     /// the source's, in document order, are aligned by Myers' diff; an aligned source section takes its target section. The source's own levels and
@@ -66,13 +74,31 @@ public static partial class GatherByHeading
                 continue;
             }
             if (!addMissing) { placed[i] = new(-1, null, "văn bản đích không có heading \"" + s.Name + "\" theo thứ tự", false); continue; }
-            // A new heading goes right before the next aligned target section (or after the last aligned one when none follows): a heading with no
-            // aligned predecessor is never written at the end of the document. Two sources adding the same missing heading at the same place share it.
-            int? before = nextTarget < targets.Count ? nextTarget : null;
-            var node = roots.FirstOrDefault(n => n.Key == key && n.Anchor == lastTarget && n.Before == before);
+            // The place, level and parent come from the target outline. Before a deeper target heading: inside the last aligned section, at that
+            // heading's level. Otherwise after the last aligned section's subtree, at its level, inside the section that contains it. With no aligned
+            // predecessor: before the next aligned target heading, at its level. Two sources adding the same heading at the same place share it.
+            int? boundary;
+            int level, parentTarget;
+            if (lastTarget < 0)
+            {
+                // Before the next aligned heading, at its level, inside the section that contains it.
+                boundary = nextTarget < targets.Count ? nextTarget : null;
+                level = boundary is { } next ? targets[next].Level : 1;
+                parentTarget = boundary is { } p ? EnclosingSection(targets, p) : -1;
+            }
+            else if (nextTarget < targets.Count && targets[nextTarget].Level > targets[lastTarget].Level)
+            { boundary = nextTarget; level = targets[nextTarget].Level; parentTarget = lastTarget; }
+            else
+            {
+                var end = SubtreeEnd(targets, lastTarget);
+                boundary = end < 0 ? null : end;
+                level = targets[lastTarget].Level;
+                parentTarget = EnclosingSection(targets, lastTarget);
+            }
+            var node = roots.FirstOrDefault(n => n.Key == key && n.Before == boundary && n.Level == level && n.ParentTarget == parentTarget);
             if (node is null)
             {
-                node = new NewHeading(s.Heading, key, lastTarget, null, location) { Before = before };
+                node = new NewHeading(s.Heading, key, lastTarget, null, location) { Before = boundary, Level = level, ParentTarget = parentTarget };
                 roots.Add(node);
             }
             placed[i] = new(-1, node, null, false);

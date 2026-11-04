@@ -85,7 +85,9 @@ public sealed class GatherByOrderTests
         {
             var added = Assert.Single(plan.Sections, s => s.NewHeadingDepth is not null);
             Assert.Equal("Quỹ Pastb:", added.Heading);
-            Assert.Equal("Công tác xã hội:", added.NewHeadingParent);
+            // Added after "Công tác xã hội:" (level 2): a sibling of it, inside "Hoạt động tháng 10/2026", not a child of it.
+            Assert.Equal("Hoạt động tháng 10/2026", added.NewHeadingParent);
+            Assert.Equal(2, added.NewHeadingDepth);
             Assert.Equal(["Quyên góp 2 triệu."], added.Run.Facts.Select(f => f.Render()));
             Assert.Empty(plan.Uncertain);
         });
@@ -158,5 +160,24 @@ public sealed class GatherByOrderTests
             Assert.Equal("Quỹ Pastb:", added.Heading);
             Assert.Equal("body[1]/p[1]", added.NextHeadingLocation);
             Assert.Equal(["Quyên góp 4 triệu."], added.Run.Facts.Select(f => f.Render()));
+        });
+
+    [Fact]
+    public void A_new_heading_before_a_deeper_target_heading_takes_its_level_and_parent() => Run(
+        P("Hoạt động tháng 10/2026") + P("Truyền thông:") + P("Đã đăng 5 bài.") + P("Kết quả truyền thông") + P("Đạt 3 triệu.")
+        + P("Công tác xã hội:") + P("Hỗ trợ 10 người."),
+        [H(0, "Hoạt động tháng 10/2026", 1), H(1, "Truyền thông:", 2), H(3, "Kết quả truyền thông", 3), H(5, "Công tác xã hội:", 2)],
+        [(P("Hoạt động tháng 10/2026") + P("Truyền thông:") + P("Đã đăng 5 bài.") + P("Tiếp nhận thông tin.") + P("Ghi nhận 2 lượt.")
+            + P("Kết quả truyền thông") + P("Đạt 3 triệu.") + P("Công tác xã hội:") + P("Hỗ trợ 10 người."),
+          new[] { H(0, "Hoạt động tháng 10/2026", 1), H(1, "Truyền thông:", 2), H(3, "Tiếp nhận thông tin.", 2), H(5, "Kết quả truyền thông", 3),
+            H(7, "Công tác xã hội:", 2) })],
+        plan =>
+        {
+            var added = Assert.Single(plan.Sections, s => s.NewHeadingDepth is not null);
+            Assert.Equal("Tiếp nhận thông tin.", added.Heading);
+            Assert.Equal(3, added.NewHeadingDepth);
+            Assert.Equal("Truyền thông:", added.NewHeadingParent);
+            Assert.Equal("body[1]/p[4]", added.NextHeadingLocation);
+            Assert.Equal(["Ghi nhận 2 lượt."], added.Run.Facts.Select(f => f.Render()));
         });
 }
