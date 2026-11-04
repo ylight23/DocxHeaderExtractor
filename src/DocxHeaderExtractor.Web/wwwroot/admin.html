@@ -41,8 +41,6 @@ details.options summary { cursor: pointer; color: var(--muted); }
 .tab.active { background: #e0efff; border-color: #93c5fd; color: #1e40af; font-weight: 700; }
 .tab.pick { border-style: dashed; color: var(--accent-dark); }
 .tab.pick input { display: none; }
-.views { margin-left: auto; display: flex; gap: 4px; }
-.views .tab { padding: 6px 10px; font-size: 11px; }
 .viewer { background: var(--viewer); border-radius: 8px; padding: 14px; height: 74vh; min-height: 520px; overflow: auto; position: relative; }
 .viewer .empty { color: var(--muted); text-align: center; margin-top: 120px; font-size: 13px; }
 .viewer iframe { width: 100%; height: 100%; border: 0; background: #fff; border-radius: 4px; }
@@ -141,14 +139,14 @@ pre#log { white-space: pre-wrap; font-size: 11px; background: var(--soft); borde
         <label class="tab pick">＋ Thêm nguồn<input id="sources" type="file" accept=".docx,.docm" multiple></label>
       </div>
       <div class="tabs"><span class="small" id="leftName"></span>
-        <span class="views"><button class="tab active" data-view="left:word">Word</button><button class="tab" data-view="left:pdf">LibreOffice (PDF)</button></span></div>
+
       <div class="viewer" id="leftViewer"><p class="empty">Chọn văn bản gốc (văn bản sẽ nhận nội dung) và các văn bản nguồn.</p></div>
     </section>
     <section class="side">
       <div class="side-head"><strong>02 · VĂN BẢN TỔNG HỢP</strong><span class="small" id="current">Chưa có bản nào</span></div>
       <div class="tabs" id="rightTabs"></div>
       <div class="tabs"><span class="small" id="rightName"></span>
-        <span class="views"><button class="tab active" data-view="right:word">Word</button><button class="tab" data-view="right:pdf">LibreOffice (PDF)</button></span></div>
+
       <div class="viewer" id="rightViewer"><p class="empty">Bấm TỔNG HỢP để tạo bản tổng hợp. Phần thêm vào được ghi dạng Track Changes.</p></div>
     </section>
   </div>
@@ -231,9 +229,7 @@ let choices = {};            // uncertain index -> { decision, candidate }
 let versions = [];           // [{ label, blob, url, note }]
 let current = -1;            // shown summary version
 let leftTab = 'target';      // 'target' or a source index
-let views = { left: 'word', right: 'word' };
 let factIndex = [];          // [{ text, sources: ['08 body[1]/p[3]'], flags }]
-const pdfCache = new WeakMap();
 
 const targetFile = () => $('target').files[0] || null;
 const sourceFiles = () => Array.from($('sources').files);
@@ -371,20 +367,6 @@ async function renderDocx(blob, viewer) {
   await docx.renderAsync(blob, host, null, { className: 'docx', inWrapper: true, breakPages: true, ignoreLastRenderedPageBreak: true, renderChanges: true });
   return host;
 }
-async function renderPdf(blob, viewer) {
-  viewer.innerHTML = '<p class="empty">LibreOffice đang chuyển sang PDF…</p>';
-  let url = pdfCache.get(blob);
-  if (!url) {
-    const fd = new FormData();
-    fd.append('file', new File([blob], 'document.docx'));
-    const res = await fetch('/api/admin/render-pdf', { method: 'POST', body: fd });
-    if (!res.ok) { const p = await res.json().catch(() => ({})); viewer.innerHTML = `<p class="empty">${esc(p.detail || p.title || 'Không chuyển được sang PDF.')}</p>`; return; }
-    url = URL.createObjectURL(await res.blob());
-    pdfCache.set(blob, url);
-  }
-  viewer.innerHTML = `<iframe title="Bản in LibreOffice" src="${url}"></iframe>`;
-}
-
 function leftDocs() {
   const docs = [];
   if (targetFile()) docs.push({ key: 'target', label: '📄 ' + targetFile().name + ' (gốc)', file: targetFile(), id: 'target' });
@@ -417,7 +399,6 @@ async function showLeft() {
   if (!doc) return;
   leftTab = doc.key;
   $('leftName').textContent = doc.id === 'target' ? 'Văn bản gốc — nhận nội dung tổng hợp' : 'Nguồn ' + doc.id;
-  if (views.left === 'pdf') return renderPdf(doc.file, $('leftViewer'));
   await renderDocx(doc.file, $('leftViewer'));
   wireLeft(doc);
 }
@@ -432,17 +413,9 @@ async function showRight() {
   if (!v) return;
   const name = stem(targetFile()?.name || 'tong_hop') + '_' + v.label.replace(/\s+/g, '_').toLowerCase() + '.docx';
   $('rightName').innerHTML = `${esc(v.note)} <a class="download" href="${v.url}" download="${esc(name)}">⬇ Tải .docx</a>`;
-  if (views.right === 'pdf') return renderPdf(v.blob, $('rightViewer'));
   await renderDocx(v.blob, $('rightViewer'));
   wireRight();
 }
-document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => {
-  const [side, view] = b.dataset.view.split(':');
-  views[side] = view;
-  document.querySelectorAll(`[data-view^="${side}:"]`).forEach(x => x.classList.toggle('active', x === b));
-  side === 'left' ? showLeft() : showRight();
-}));
-
 ['target', 'sources'].forEach(id => $(id).addEventListener('change', () => { leftTab = id === 'target' ? 'target' : leftTab; renderLeftTabs(); showLeft(); updateMain(); }));
 $('outlines').addEventListener('change', updateMain);
 $('noLlm').addEventListener('change', () => { $('classify').disabled = $('noLlm').checked; });
@@ -505,7 +478,7 @@ function wireRight() {
       if (!first) return;
       const [id, location] = [first.slice(0, first.indexOf(' ')), first.slice(first.indexOf(' ') + 1)];
       const doc = leftDocs().find(d => d.id === id);
-      if (!doc || views.left !== 'word') return;
+      if (!doc) return;
       if (leftTab !== doc.key) { leftTab = doc.key; renderLeftTabs(); await showLeft(); }
       const target = paragraphAt(location, $('leftViewer'));
       if (target) { target.classList.add('match'); target.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
@@ -523,7 +496,6 @@ function wireLeft(doc) {
     const facts = written.length ? written : factIndex.filter(f => f.sources.includes(key));
     if (!facts.length) { $('matchInfo').textContent = `${doc.id} ${location ?? ''}: đoạn này không được ghi vào bản tổng hợp đang xem.`; return; }
     $('matchInfo').textContent = `${doc.id} ${location}: được ghi vào bản tổng hợp (${facts.length} chỗ).`;
-    if (views.right !== 'word') return;
     let firstHit = null;
     $('rightViewer').querySelectorAll('section.docx p.added').forEach(q => {
       if (factFor(q.textContent)?.sources.includes(key)) { q.classList.add('match'); firstHit ??= q; }

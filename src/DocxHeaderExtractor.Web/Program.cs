@@ -73,7 +73,6 @@ app.MapPost("/api/extract", ExtractEndpoint.HandleAsync);
 app.MapPost("/api/admin/gather", AdminGatherEndpoint.HandleAsync);
 app.MapPost("/api/admin/gather/{runId:guid}/apply", AdminGatherEndpoint.ApplyAsync);
 app.MapPost("/api/admin/outline/review", AdminOutlineReview.Record);
-app.MapPost("/api/admin/render-pdf", LibreOfficeRender.HandleAsync);
 
 Console.OutputEncoding = Encoding.UTF8;
 app.Lifetime.ApplicationStarted.Register(() =>
