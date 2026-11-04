@@ -17,7 +17,10 @@ public sealed record StoredParagraph(string Location, int Ordinal, string Signat
 /// </summary>
 public sealed record StoredOutline(string Version, string SourceSha256, string ConfigKey, string Name, DateTimeOffset Created,
     IReadOnlyList<StoredParagraph> Paragraphs, IReadOnlyList<string> UnsupportedRegions, IReadOnlyList<HeadingRecord> Headings,
-    int Revision = 1, string? PreviousSha256 = null);
+    int Revision = 1, string? PreviousSha256 = null, IReadOnlyList<StoredHeadingBinding>? HeadingBindings = null);
+
+/// <summary>Private store evidence for an outline heading. Public HeadingRecord JSON deliberately omits these fields.</summary>
+public sealed record StoredHeadingBinding(int HeadingIndex, string? StableId, int PartCount, IReadOnlyList<HeadingSourcePart> Parts);
 
 /// <summary>One line of a file name's history: the revision number, the file it was made from, and when it was stored.</summary>
 public sealed record OutlineRevision(int Number, string SourceSha256, DateTimeOffset Created);
@@ -66,7 +69,7 @@ public sealed class OutlineStore(string root)
         try
         {
             var entry = JsonSerializer.Deserialize<StoredOutline>(File.ReadAllText(path));
-            return entry is { Version: Version } && entry.SourceSha256 == sourceSha256 && entry.ConfigKey == configKey ? entry : null;
+            return entry is { Version: Version } && entry.SourceSha256 == sourceSha256 && entry.ConfigKey == configKey ? RestoreBindings(entry) : null;
         }
         catch (Exception e) when (e is IOException or JsonException or UnauthorizedAccessException or NotSupportedException) { return null; }
     }
@@ -97,7 +100,10 @@ public sealed class OutlineStore(string root)
             var history = History(outline.Name, outline.ConfigKey).OrderBy(r => r.Number).ToList();
             if (history.Any(r => r.SourceSha256 == outline.SourceSha256)) return null;
             var previous = history.LastOrDefault();
-            var stored = outline with { Revision = (previous?.Number ?? 0) + 1, PreviousSha256 = previous?.SourceSha256 };
+            var bindings = outline.Headings.Select((h, i) => (h, i)).Where(x => x.h.SourceParts is { Count: > 0 } &&
+                x.h.ValidatedSourcePartCount == x.h.SourceParts.Count).Select(x => new StoredHeadingBinding(x.i, x.h.StableId,
+                    x.h.ValidatedSourcePartCount, x.h.SourceParts!.ToArray())).ToArray();
+            var stored = outline with { Revision = (previous?.Number ?? 0) + 1, PreviousSha256 = previous?.SourceSha256, HeadingBindings = bindings };
             var path = EntryPath(outline.SourceSha256, outline.ConfigKey);
             if (!File.Exists(path)) WriteNew(path, JsonSerializer.Serialize(stored, Json));
             history.Add(new OutlineRevision(stored.Revision, outline.SourceSha256, outline.Created));
@@ -107,6 +113,24 @@ public sealed class OutlineStore(string root)
             return stored;
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException or NotSupportedException) { return null; }
+    }
+
+    static StoredOutline RestoreBindings(StoredOutline entry)
+    {
+        if (entry.HeadingBindings is null) return entry; // Legacy entries have no evidence; never invent it.
+        var bindings = entry.HeadingBindings.GroupBy(b => b.HeadingIndex).Where(g => g.Count() == 1).ToDictionary(g => g.Key, g => g.Single());
+        var headings = entry.Headings.Select((h, i) =>
+        {
+            if (!bindings.TryGetValue(i, out var b) || b.StableId != h.StableId || b.PartCount <= 0 || b.Parts is null || b.Parts.Count != b.PartCount ||
+                b.Parts.Any(p => p is null || string.IsNullOrWhiteSpace(p.SourceId) || p.Span is null || p.OriginalText is null ||
+                    p.Span.Start < 0 || p.Span.End <= p.Span.Start || p.Span.End > p.OriginalText.Length)) return h;
+            return new HeadingRecord { StructuralElementId = h.StructuralElementId, SourceParts = b.Parts.ToArray(), ValidatedSourcePartCount = b.PartCount,
+                ScanSources = h.ScanSources, Index = h.Index, StableId = h.StableId, SourceId = h.SourceId, Level = h.Level, Text = h.Text,
+                OriginalText = h.OriginalText, HeadingSpan = h.HeadingSpan, InlineBody = h.InlineBody, InlineBodySpan = h.InlineBodySpan,
+                BoundarySource = h.BoundarySource, HierarchyResolution = h.HierarchyResolution, StyleId = h.StyleId, Source = h.Source,
+                DecisionStatus = h.DecisionStatus, ConfidenceBasis = h.ConfidenceBasis, Disputed = h.Disputed };
+        }).ToArray();
+        return entry with { Headings = headings };
     }
 
     static void WriteNew(string path, string text)

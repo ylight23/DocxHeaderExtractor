@@ -1,5 +1,6 @@
 using DocxHeaderExtractor.DocumentProcessing.Changes;
 using DocxHeaderExtractor.DocumentProcessing.Output;
+using DocxHeaderExtractor.Contracts.Models;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Gather;
 
@@ -13,7 +14,17 @@ namespace DocxHeaderExtractor.DocumentProcessing.Gather;
 /// Nothing here decides which side is right.
 /// </summary>
 public sealed record OutlineDifference(string Kind, string? OldLocation, string? NewLocation, string? OldText, string? NewText,
-    int? OldLevel, int? NewLevel, string? OldParent, string? NewParent, bool OldApproved, bool ContextChanged, bool Uncertain);
+    int? OldLevel, int? NewLevel, string? OldParent, string? NewParent, bool OldApproved, bool ContextChanged, bool Uncertain)
+{
+    public TextOffsetSpan? OldHeadingSpan { get; init; }
+    public TextOffsetSpan? NewHeadingSpan { get; init; }
+    public TextOffsetSpan? OldInlineBodySpan { get; init; }
+    public TextOffsetSpan? NewInlineBodySpan { get; init; }
+    public IReadOnlyList<HeadingSourcePart>? OldSourceParts { get; init; }
+    public IReadOnlyList<HeadingSourcePart>? NewSourceParts { get; init; }
+    /// <summary>ContextChanged only measures nearby paragraph signatures; style, numbering and tool evidence are not verified here.</summary>
+    public bool ContextEvidenceVerified => false;
+}
 
 /// <summary>The differences, how many headings are the same on both sides, and how many paragraphs changed between the two files.</summary>
 public sealed record OutlineComparison(IReadOnlyList<OutlineDifference> Differences, int SameHeadings, int ChangedParagraphs);
@@ -28,17 +39,20 @@ public static class OutlineDiff
     /// <summary>Paragraphs on each side of a difference within which a changed paragraph marks its context as changed.</summary>
     public const int Context = 20;
 
-    /// <summary>The parent of each heading (by start location): the nearest earlier heading of a higher level; a heading without a level keeps the level before it.</summary>
+    /// <summary>Known parents only. A null/invalid level or unbound heading makes following ancestry unknown until a known level-one heading.</summary>
     public static IReadOnlyDictionary<string, string?> Parents(IReadOnlyList<HeadingRecord> headings)
     {
         var parents = new Dictionary<string, string?>(StringComparer.Ordinal);
         var open = new List<(string Location, int Level)>();
-        var last = 1;
-        foreach (var h in headings.Where(h => h.StableId is not null).OrderBy(h => h.Index))
+        var uncertain = false;
+        foreach (var h in headings.OrderBy(h => h.Index))
         {
-            var level = h.Level ?? last;
-            last = level;
+            if (h.StableId is null || h.Level is not (>= 1 and <= 9)) { uncertain = true; open.Clear(); continue; }
+            var level = h.Level.Value;
+            if (level == 1) { uncertain = false; open.Clear(); }
+            if (uncertain) continue;
             while (open.Count > 0 && open[^1].Level >= level) open.RemoveAt(open.Count - 1);
+            if (level > 1 && open.Count == 0) { uncertain = true; continue; }
             parents[h.StableId!] = open.Count > 0 ? open[^1].Location : null;
             open.Add((h.StableId!, level));
         }
@@ -46,6 +60,17 @@ public static class OutlineDiff
     }
 
     static string Compact(string text) => string.Join(" ", text.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries)).ToLowerInvariant();
+
+    static bool ValidBoundary(HeadingRecord h)
+    {
+        if (h.HeadingSpan is null || h.SourceParts is not { Count: > 0 } parts || h.ValidatedSourcePartCount != parts.Count) return false;
+        if (parts[0] is not { OriginalText: { } text }) return false;
+        static bool Valid(string s, TextOffsetSpan span) => span.Start >= 0 && span.End > span.Start && span.End <= s.Length &&
+            !(span.Start > 0 && span.Start < s.Length && char.IsHighSurrogate(s[span.Start - 1]) && char.IsLowSurrogate(s[span.Start])) &&
+            !(span.End > 0 && span.End < s.Length && char.IsHighSurrogate(s[span.End - 1]) && char.IsLowSurrogate(s[span.End]));
+        return Valid(text, h.HeadingSpan) && (h.InlineBody is null || h.InlineBodySpan is not null) &&
+            (h.InlineBodySpan is null || Valid(text, h.InlineBodySpan));
+    }
 
     public static OutlineComparison Compare(StoredOutline old, StoredOutline next, IReadOnlySet<string>? approvedOld = null)
     {
@@ -70,8 +95,10 @@ public static class OutlineDiff
         bool Repeated(int? o, int? n) => (o is { } a && oldRepeated.Contains(old.Paragraphs[a].Signature))
             || (n is { } b && newRepeated.Contains(next.Paragraphs[b].Signature));
 
-        var oldHeadings = old.Headings.Where(h => h.StableId is not null && oldIndex.ContainsKey(h.StableId)).ToDictionary(h => h.StableId!, StringComparer.Ordinal);
-        var newHeadings = next.Headings.Where(h => h.StableId is not null && newIndex.ContainsKey(h.StableId)).ToDictionary(h => h.StableId!, StringComparer.Ordinal);
+        var oldGroups = old.Headings.Where(h => h.StableId is not null && oldIndex.ContainsKey(h.StableId)).GroupBy(h => h.StableId!, StringComparer.Ordinal).ToArray();
+        var newGroups = next.Headings.Where(h => h.StableId is not null && newIndex.ContainsKey(h.StableId)).GroupBy(h => h.StableId!, StringComparer.Ordinal).ToArray();
+        var oldHeadings = oldGroups.Where(g => g.Count() == 1).ToDictionary(g => g.Key, g => g.Single(), StringComparer.Ordinal);
+        var newHeadings = newGroups.Where(g => g.Count() == 1).ToDictionary(g => g.Key, g => g.Single(), StringComparer.Ordinal);
         var oldParents = Parents(old.Headings);
         var newParents = Parents(next.Headings);
         string? NewLocationOf(string? oldLocation) =>
@@ -85,8 +112,23 @@ public static class OutlineDiff
             o?.StableId is { } ol ? oldParents.GetValueOrDefault(ol) : null, n?.StableId is { } nl ? newParents.GetValueOrDefault(nl) : null,
             o?.StableId is { } al && approvedOld.Contains(al),
             ni is { } c ? ChangedNear(c) : oi is { } d && oldToNew.TryGetValue(d, out var m) ? ChangedNear(m) : true,
-            Repeated(oi, ni));
+            Repeated(oi, ni) || kind is "PARENT_UNRESOLVED" or "BOUNDARY_UNRESOLVED" or "BINDING_UNRESOLVED" or "SPLIT" or "MERGED")
+        { OldHeadingSpan = o?.HeadingSpan, NewHeadingSpan = n?.HeadingSpan, OldInlineBodySpan = o?.InlineBodySpan, NewInlineBodySpan = n?.InlineBodySpan,
+            OldSourceParts = o?.SourceParts, NewSourceParts = n?.SourceParts };
 
+        foreach (var h in old.Headings.Where(h => h.StableId is null || !oldIndex.ContainsKey(h.StableId) || !oldHeadings.ContainsKey(h.StableId)))
+            differences.Add(new("UNBOUND_OLD", h.StableId, null, h.Text, null, h.Level, null, null, null, false, true, true)
+                { OldHeadingSpan = h.HeadingSpan, OldInlineBodySpan = h.InlineBodySpan, OldSourceParts = h.SourceParts });
+        foreach (var h in next.Headings.Where(h => h.StableId is null || !newIndex.ContainsKey(h.StableId) || !newHeadings.ContainsKey(h.StableId)))
+            differences.Add(new("UNBOUND_NEW", null, h.StableId, null, h.Text, null, h.Level, null, null, false, true, true)
+                { NewHeadingSpan = h.HeadingSpan, NewInlineBodySpan = h.InlineBodySpan, NewSourceParts = h.SourceParts });
+
+        // Source bindings are checked per heading only when both outlines carry them; an outline stored without them (every outline stored
+        // before bindings were kept) gives one EVIDENCE_MISSING item, not one item per heading.
+        var oldEvidence = old.Headings.Any(h => h.SourceParts is { Count: > 0 });
+        var newEvidence = next.Headings.Any(h => h.SourceParts is { Count: > 0 });
+        var evidence = oldEvidence && newEvidence;
+        var pairs = new List<(HeadingRecord O, HeadingRecord N, int Oi, int Ni, List<string> Kinds)>();
         foreach (var (location, o) in oldHeadings)
         {
             var oi = oldIndex[location];
@@ -98,10 +140,22 @@ public static class OutlineDiff
                 var a = Compact(o.Text); var b = Compact(n.Text);
                 var kinds = new List<string>();
                 if (a != b) kinds.Add(a.StartsWith(b, StringComparison.Ordinal) ? "SPLIT" : b.StartsWith(a, StringComparison.Ordinal) ? "MERGED" : "TEXT");
+                if (!evidence) { }
+                else if (!ValidBoundary(o) || !ValidBoundary(n)) kinds.Add("BOUNDARY_UNRESOLVED");
+                else if (o.HeadingSpan != n.HeadingSpan || o.InlineBodySpan != n.InlineBodySpan) kinds.Add("BOUNDARY");
+                if (!evidence) { }
+                else if (o.SourceParts is not { Count: > 0 } op || n.SourceParts is not { Count: > 0 } np ||
+                    o.ValidatedSourcePartCount != op.Count || n.ValidatedSourcePartCount != np.Count ||
+                    op.Any(p => p is null || p.Span is null || p.OriginalText is null || NewLocationOf(p.SourceId) is null) ||
+                    np.Any(p => p is null || p.Span is null || p.OriginalText is null)) kinds.Add("BINDING_UNRESOLVED");
+                else if (op.Count != np.Count || op.Where((p, i) => NewLocationOf(p.SourceId) != np[i].SourceId ||
+                    p.Span != np[i].Span || p.OriginalText != np[i].OriginalText).Any()) kinds.Add("BINDING");
                 if (o.Level != n.Level) kinds.Add("LEVEL");
-                if (NewLocationOf(oldParents.GetValueOrDefault(location)) != newParents.GetValueOrDefault(newLocation)) kinds.Add("PARENT");
-                if (kinds.Count == 0) same++;
-                foreach (var k in kinds) differences.Add(Item(k, o, n, oi, ni));
+                if (!oldParents.TryGetValue(location, out var oldParent) || !newParents.TryGetValue(newLocation, out var newParent) ||
+                    (oldParent is not null && NewLocationOf(oldParent) is null)) kinds.Add("PARENT_UNRESOLVED");
+                else if (NewLocationOf(oldParent) != newParent) kinds.Add("PARENT");
+                if (Repeated(oi, ni)) kinds.Add("ALIGNMENT_UNRESOLVED");
+                pairs.Add((o, n, oi, ni, kinds));
                 continue;
             }
             // Not a heading start in the new outline: part of a heading that starts earlier (merged into it), or no longer a heading.
@@ -120,6 +174,21 @@ public static class OutlineDiff
                 && Compact(h.Text).Contains(Compact(n.Text), StringComparison.Ordinal));
             differences.Add(from is not null ? Item("SPLIT", from, n, oldIndex[from.StableId!], ni) : Item("ADDED", null, n, oi, ni));
         }
+        // A level change shared by most paired headings (a title heading added above everything) is one LEVEL_SHIFT item, not one per heading.
+        var leveled = pairs.Where(p => p.O.Level is not null && p.N.Level is not null).ToList();
+        var common = leveled.GroupBy(p => p.N.Level!.Value - p.O.Level!.Value).Where(g => g.Key != 0).OrderByDescending(g => g.Count()).FirstOrDefault();
+        int? shift = common is not null && common.Count() >= 3 && 3 * common.Count() >= 2 * leveled.Count ? common.Key : null;
+        foreach (var p in pairs)
+        {
+            var kinds = shift is { } d && p.N.Level - p.O.Level == d ? p.Kinds.Where(k => k != "LEVEL").ToList() : p.Kinds;
+            if (kinds.Count == 0) same++;
+            foreach (var k in kinds) differences.Add(Item(k, p.O, p.N, p.Oi, p.Ni));
+        }
+        if (shift is { } delta)
+            differences.Add(new("LEVEL_SHIFT", null, null, $"{common!.Count()} heading", null, 0, delta, null, null, false, false, false));
+        if (!evidence && (old.Headings.Count > 0 || next.Headings.Count > 0))
+            differences.Add(new("EVIDENCE_MISSING", null, null, oldEvidence ? null : "outline cũ không có source parts",
+                newEvidence ? null : "outline mới không có source parts", null, null, null, null, false, false, true));
         var changed = Math.Max(next.Paragraphs.Count - newToOld.Count, old.Paragraphs.Count - oldToNew.Count);
         return new OutlineComparison(differences.OrderBy(d => d.NewLocation is { } l && newIndex.TryGetValue(l, out var i) ? i : int.MaxValue).ToList(), same, changed);
     }
