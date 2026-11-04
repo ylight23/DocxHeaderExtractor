@@ -36,6 +36,10 @@ var app = builder.Build();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
+// Two pages, one server: "/" and "/index" open the extraction page, "/admin" opens the gather page. Both files are served as they are.
+app.MapGet("/index", () => Results.File(Path.Combine(app.Environment.WebRootPath, "index.html"), "text/html; charset=utf-8"));
+app.MapGet("/admin", () => Results.File(Path.Combine(app.Environment.WebRootPath, "admin.html"), "text/html; charset=utf-8"));
+
 // Read metadata from the loaded assemblies, so a stale backend can be identified without inference.
 app.MapGet("/api/build", () => Results.Json(new
 {
