@@ -46,6 +46,9 @@ public sealed class DocxSelector : AgentSelector, DocxHeaderExtractor.Contracts.
     }
 
     private protected override string? SelectionCacheRoot => selectionCacheRoot;
+    // The answer to a DOCX request depends on the request alone (it carries every line the model reads), so an unchanged request is reused
+    // even when the rest of the file has changed; a changed request is asked again.
+    private protected override bool CacheByRequestOnly => true;
     internal static string DefaultGroupingInstruction(string instruction) => instruction + "\n" + DocxAgentProtocol.GroupingBoundaryGuidance;
     private protected override string GroupingInstruction => qualificationGroupingInstruction ?? DefaultGroupingInstruction(InstructionText);
 

@@ -12,14 +12,15 @@ namespace DocxHeaderExtractor.HeadingAgent.Runtime;
 /// existing entry is never rewritten. Re-running a document after a change to grouping or placement then costs no selection call; a run that
 /// must sample the model again (to measure its variance) passes no cache.
 /// </summary>
-internal sealed class SelectionCache(string root)
+internal sealed class SelectionCache(string root, bool byRequest = false)
 {
     public const string Version = "SELECTION_CACHE_V1";
 
     sealed record Entry(string Version, string SourceSha256, string FirstRequestSha256, AgentUnitOutcome Outcome);
 
-    string PathOf(string sourceSha256, string firstRequestSha256) =>
-        Path.Combine(root, sourceSha256[..Math.Min(16, sourceSha256.Length)], firstRequestSha256 + ".json");
+    string PathOf(string sourceSha256, string firstRequestSha256) => byRequest
+        ? Path.Combine(root, firstRequestSha256 + ".json")
+        : Path.Combine(root, sourceSha256[..Math.Min(16, sourceSha256.Length)], firstRequestSha256 + ".json");
 
     /// <summary>The stored COMPLETE outcome of the unit whose first request has this hash, or null (none, unreadable, or not this request).</summary>
     public AgentUnitOutcome? TryLoad(string sourceSha256, string firstRequestSha256)
@@ -29,7 +30,7 @@ internal sealed class SelectionCache(string root)
         try
         {
             var entry = JsonSerializer.Deserialize<Entry>(File.ReadAllText(path));
-            if (entry is null || entry.Version != Version || entry.SourceSha256 != sourceSha256 || entry.FirstRequestSha256 != firstRequestSha256
+            if (entry is null || entry.Version != Version || (!byRequest && entry.SourceSha256 != sourceSha256) || entry.FirstRequestSha256 != firstRequestSha256
                 || entry.Outcome is not { Status: "COMPLETE" } outcome || outcome.RequestSha256s.Count == 0 || outcome.RequestSha256s[0] != firstRequestSha256)
                 return null;
             return outcome with { Reused = true };
@@ -60,14 +61,15 @@ internal sealed class SelectionCache(string root)
 /// request (its runs, their lines, the context and the group prompt), and read back only when that request is byte for byte the same. Only a
 /// batch in which every run was divided is stored. The division is stored as aliases, so a reading back maps them to the same source lines.
 /// </summary>
-internal sealed class GroupingCache(string root)
+internal sealed class GroupingCache(string root, bool byRequest = false)
 {
     public const string Version = "GROUPING_CACHE_V1";
 
     sealed record Entry(string Version, string SourceSha256, string FirstRequestSha256, Dictionary<string, List<List<string>>> Division);
 
-    string PathOf(string sourceSha256, string firstRequestSha256) =>
-        Path.Combine(root, sourceSha256[..Math.Min(16, sourceSha256.Length)], firstRequestSha256 + ".json");
+    string PathOf(string sourceSha256, string firstRequestSha256) => byRequest
+        ? Path.Combine(root, firstRequestSha256 + ".json")
+        : Path.Combine(root, sourceSha256[..Math.Min(16, sourceSha256.Length)], firstRequestSha256 + ".json");
 
     /// <summary>The stored division of the batch (run id to its groups of aliases), or null when none is stored or it cannot be read.</summary>
     public Dictionary<string, List<List<string>>>? TryLoad(string sourceSha256, string firstRequestSha256)
@@ -77,7 +79,7 @@ internal sealed class GroupingCache(string root)
         try
         {
             var entry = JsonSerializer.Deserialize<Entry>(File.ReadAllText(path));
-            return entry is null || entry.Version != Version || entry.SourceSha256 != sourceSha256 || entry.FirstRequestSha256 != firstRequestSha256
+            return entry is null || entry.Version != Version || (!byRequest && entry.SourceSha256 != sourceSha256) || entry.FirstRequestSha256 != firstRequestSha256
                 ? null : entry.Division;
         }
         catch (Exception e) when (e is IOException or JsonException or UnauthorizedAccessException or NotSupportedException) { return null; }

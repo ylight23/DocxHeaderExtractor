@@ -84,6 +84,8 @@ public abstract class AgentSelector : IHeadingSelector
     private protected virtual bool RequireCompleteRun => false;
     /// <summary>Optional route-specific store for exact-source selection and grouping reuse.</summary>
     private protected virtual string? SelectionCacheRoot => null;
+    /// <summary>Whether the reuse caches are keyed by the request alone (the answer depends only on the request) instead of the source file as well.</summary>
+    private protected virtual bool CacheByRequestOnly => false;
 
     private protected string InstructionText => instruction;
 
@@ -98,8 +100,8 @@ public abstract class AgentSelector : IHeadingSelector
             using var handler = handlerFactory();
             using var model = new AgentModel(handler, apiKey, budget, timeout: RequestTimeout, cancellationToken: ct, rateLimitRetries: AgentModel.ProductionRateLimitRetries);
             var selection = Select(source, Traced(model), budget, parallelism, ct, retryDelayMs: 5000, costOf: () => budget.ActualUsd, instruction, firstSegments,
-                cache: SelectionCacheRoot is { } root ? new SelectionCache(Path.Combine(root, "selection")) : null,
-                groupingCache: SelectionCacheRoot is { } groupingRoot ? new GroupingCache(Path.Combine(groupingRoot, "grouping")) : null,
+                cache: SelectionCacheRoot is { } root ? new SelectionCache(Path.Combine(root, "selection"), CacheByRequestOnly) : null,
+                groupingCache: SelectionCacheRoot is { } groupingRoot ? new GroupingCache(Path.Combine(groupingRoot, "grouping"), CacheByRequestOnly) : null,
                 boundaryReview: BoundaryReviewEnabled, groupingInstruction: GroupingInstruction, pairwisePdfGrouping: PairwisePdfGrouping,
                 generalPdfBoundaryPrompt: GeneralPdfBoundaryPrompt, unitSelection: UnitSelectionEnabled, shapeReview: ShapeReviewEnabled);
             if (RequireCompleteRun && (selection.UnitsComplete != selection.UnitsTotal || selection.UnitFailures.Count > 0))
