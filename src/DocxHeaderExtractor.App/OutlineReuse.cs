@@ -6,6 +6,7 @@ using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.Sources.Docx.Changes;
+using DocxHeaderExtractor.DocumentProcessing.Audit;
 
 namespace DocxHeaderExtractor.App;
 
@@ -39,7 +40,7 @@ public static class OutlineReuse
     /// <param name="name">The file name the document is known by, used to retain its version history.</param>
     /// <param name="extract">Runs the pipeline on <paramref name="path"/> when no stored outline can be used.</param>
     public static async Task<OutlineReuseResult> GetAsync(string path, string name, OutlineStore store, string configKey,
-        Func<Task<IReadOnlyList<HeadingRecord>>> extract)
+        Func<Task<IReadOnlyList<HeadingRecord>>> extract, Func<PlacementAudit?>? placement = null)
     {
         var sha = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(path)));
         if (store.Find(sha, configKey) is { } stored)
@@ -59,7 +60,8 @@ public static class OutlineReuse
         if (version.FileSha256 == sha)
         {
             // Read back what the store holds, so the outline hash a reviewer sees is the one the store will check.
-            store.Store(new(OutlineStore.Version, sha, configKey, name, DateTimeOffset.UtcNow, paragraphs, version.UnsupportedRegions, headings));
+            store.Store(new(OutlineStore.Version, sha, configKey, name, DateTimeOffset.UtcNow, paragraphs, version.UnsupportedRegions, headings,
+                Placement: placement?.Invoke()));
             current = store.Find(sha, configKey);
         }
         return new(headings, "EXTRACTED", reason, []) { Current = current, Previous = previous };

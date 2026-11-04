@@ -37,6 +37,7 @@ internal static class AdminOutlineReview
         {
             name = current.Name, current.SourceSha256, current.ConfigKey, outlineSha256 = OutlineApprovals.OutlineHash(current),
             revision = current.Revision, previousRevision = reuse.Previous?.Revision, state,
+            placementEvidence = current.Placement,
             sameHeadings = diff?.SameHeadings, changedParagraphs = diff?.ChangedParagraphs,
             differences = diff?.Differences.Select(d => new
             {

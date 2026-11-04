@@ -36,6 +36,11 @@ public static class GatherDecisions
         foreach (var (index, d) in byIndex.OrderBy(x => x.Key))
         {
             var u = uncertain[index];
+            if (u.Kind == "UNCONFIRMED_HIERARCHY" && d.Decision != "SKIP")
+            {
+                outcomes.Add(new(index, d.Decision, null, 0, [], "OUTLINE_REVIEW_REQUIRED"));
+                continue;
+            }
             switch (d.Decision)
             {
                 case "SKIP":
@@ -79,7 +84,7 @@ public static class GatherDecisions
                     break;
             }
         }
-        var undecided = Enumerable.Range(0, uncertain.Count).Where(i => !byIndex.ContainsKey(i)).ToList();
+        var undecided = Enumerable.Range(0, uncertain.Count).Where(i => !byIndex.ContainsKey(i) || outcomes.Any(o => o.Index == i && o.Error == "OUTLINE_REVIEW_REQUIRED")).ToList();
         return new GatherDecisionResult(sections, outcomes, undecided);
     }
 

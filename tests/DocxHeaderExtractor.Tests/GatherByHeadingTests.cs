@@ -18,6 +18,88 @@ public sealed class GatherByHeadingTests
     static HeadingRecord H(int index, string text, string stableId, int level = 1) => new() { Index = index, Level = level, Text = text, StableId = stableId };
 
     [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Leading_outside_tree_title_does_not_block_section_matching(bool onTarget)
+    {
+        var target = RawDocxFixtureTests.Build(P("BÁO CÁO") + P("Thông tin chung") + P("Nội dung đích"));
+        var source = RawDocxFixtureTests.Build(P("BÁO CÁO") + P("Thông tin chung") + P("Nội dung nguồn"));
+        try
+        {
+            var title = new HeadingRecord { Index = 0, Text = "BÁO CÁO", StableId = "body[1]/p[1]", Level = null, HierarchyResolution = "model-out-of-hierarchy" };
+            var section = H(1, "Thông tin chung", "body[1]/p[2]");
+            var withoutTitle = new[] { section };
+            var withTitle = new[] { title, section };
+            var plan = GatherByHeading.Build(target, onTarget ? withTitle : withoutTitle,
+                [new GatherSourceFile("S", source, onTarget ? withoutTitle : withTitle)], true, GatherMatching.Order);
+            Assert.DoesNotContain(plan.Uncertain, u => u.Kind == "UNCONFIRMED_HIERARCHY");
+            Assert.Equal("Nội dung nguồn", Assert.Single(Assert.Single(plan.Sections).Run.Facts).Render());
+            if (!onTarget) Assert.Contains(plan.Excluded, e => e.Fact.Render() == "BÁO CÁO");
+        }
+        finally { File.Delete(target); File.Delete(source); }
+    }
+
+    [Fact]
+    public void Leading_outside_tree_titles_on_both_documents_do_not_absorb_content()
+    {
+        var target = RawDocxFixtureTests.Build(P("BÁO CÁO") + P("Thông tin chung") + P("Nội dung đích"));
+        var source = RawDocxFixtureTests.Build(P("BÁO CÁO") + P("Phần mở đầu cần xem") + P("Thông tin chung") + P("Nội dung nguồn"));
+        try
+        {
+            static HeadingRecord Title() => new() { Index = 0, Text = "BÁO CÁO", StableId = "body[1]/p[1]", Level = null, HierarchyResolution = "model-out-of-hierarchy" };
+            var targetOutline = new[] { Title(), H(1, "Thông tin chung", "body[1]/p[2]") };
+            var sourceOutline = new[] { Title(), H(2, "Thông tin chung", "body[1]/p[3]") };
+            var plan = GatherByHeading.Build(target, targetOutline, [new GatherSourceFile("S", source, sourceOutline)], true, GatherMatching.Order);
+            Assert.DoesNotContain(plan.Uncertain, u => u.Kind == "UNCONFIRMED_HIERARCHY");
+            Assert.Equal("Nội dung nguồn", Assert.Single(Assert.Single(plan.Sections).Run.Facts).Render());
+            Assert.Contains(plan.Excluded, e => e.Fact.Render() == "Phần mở đầu cần xem" && e.Reason.StartsWith("BEFORE_FIRST_HEADING"));
+        }
+        finally { File.Delete(target); File.Delete(source); }
+    }
+
+    [Fact]
+    public void Outside_tree_heading_in_the_middle_is_held_until_its_boundary_is_safe()
+    {
+        var target = RawDocxFixtureTests.Build(P("Mục 1") + P("Nội dung"));
+        var source = RawDocxFixtureTests.Build(P("Mục 1") + P("Nội dung") + P("Nhãn ngoài cây") + P("Đoạn sau nhãn"));
+        try
+        {
+            var section = H(0, "Mục 1", "body[1]/p[1]");
+            var outside = new HeadingRecord { Index = 2, Text = "Nhãn ngoài cây", StableId = "body[1]/p[3]", Level = null, HierarchyResolution = "model-out-of-hierarchy" };
+            var plan = GatherByHeading.Build(target, [section], [new GatherSourceFile("S", source, [section, outside])]);
+            Assert.Equal("UNCONFIRMED_HIERARCHY", Assert.Single(plan.Uncertain).Kind);
+            Assert.Contains(Assert.Single(plan.Uncertain).Facts, f => f.Render() == "Đoạn sau nhãn");
+        }
+        finally { File.Delete(target); File.Delete(source); }
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Unknown_level_holds_source_text_and_refuses_a_guessed_insertion(bool targetUnknown)
+    {
+        var target = RawDocxFixtureTests.Build(P("Thông tin chung") + P("Nội dung đích"));
+        var source = RawDocxFixtureTests.Build(P("Thông tin chung") + P("Nội dung nguồn"));
+        try
+        {
+            var t = H(0, "Thông tin chung", "body[1]/p[1]");
+            var s = H(0, "Thông tin chung", "body[1]/p[1]");
+            if (targetUnknown) t.Level = null; else s.Level = null;
+            var plan = GatherByHeading.Build(target, [t], [new GatherSourceFile("S", source, [s])], true, GatherMatching.Order);
+            Assert.All(plan.Sections, section => Assert.Empty(section.Run.Facts));
+            var held = Assert.Single(plan.Uncertain);
+            Assert.Equal("UNCONFIRMED_HIERARCHY", held.Kind);
+            Assert.Contains(held.Facts, f => f.Render() == "Thông tin chung");
+            Assert.Contains(held.Facts, f => f.Render() == "Nội dung nguồn");
+            var applied = GatherDecisions.Apply(plan.Sections, plan.Uncertain, [new(0, "NEW")]);
+            Assert.Equal("OUTLINE_REVIEW_REQUIRED", Assert.Single(applied.Outcomes).Error);
+            Assert.Contains(0, applied.Undecided);
+            Assert.DoesNotContain(applied.Sections, section => section.NewHeadingDepth is not null);
+        }
+        finally { File.Delete(target); File.Delete(source); }
+    }
+
+    [Theory]
     [InlineData("1. Thông tin chung", "3. THÔNG TIN CHUNG")]
     [InlineData("Thông tin chung:", "2.1 Thông tin chung")]
     [InlineData("Item 1: Document Approval.", "Document Approval")]

@@ -213,6 +213,7 @@ const KIND = {
   PATH_DIFFERS: ['Khác mục cha', 'Tên heading giống nhưng đường dẫn mục cha khác; cần xác nhận trước khi ghi.'],
   AMBIGUOUS: ['Nhiều chỗ khớp', 'Nhiều heading trong đích cùng chuỗi hoặc cùng tên.'],
   PARENT_UNCERTAIN: ['Mục cha không chắc', 'Heading cha của mục này đang nằm trong nhóm không chắc.'],
+  UNCONFIRMED_HIERARCHY: ['Chưa xác nhận cấp', 'Cần duyệt outline và chạy lại trước khi chọn vị trí ghi.'],
   MOVED: ['Có thể đã chuyển chỗ', 'Heading cùng tên nằm ở vị trí khác trong văn bản đích.'],
 };
 const DECISION = { MERGE: ['Gộp vào', 'ok'], NEW: ['Tạo heading mới', 'acc'], UNSURE: ['Không chắc', 'warn'] };
@@ -586,7 +587,8 @@ function render(r) {
     const candidates = u.candidates.map((c, i) => `<details${i === 0 ? ' open' : ''}><summary>${i}. ${esc(c.heading)} <span class="src">${esc(c.location)}</span></summary>` +
       (c.content.length ? '<ul>' + c.content.map(x => `<li>${esc(x)}</li>`).join('') + '</ul>' : '<p class="note">(heading chưa có nội dung trực tiếp)</p>') + '</details>').join('');
     const locked = r.targetReviewRequired ? ' disabled' : '';
-    const noCandidate = r.targetReviewRequired || !u.candidates.length ? ' disabled' : '';
+    const cannotPlace = r.targetReviewRequired || u.kind === 'UNCONFIRMED_HIERARCHY';
+    const noCandidate = cannotPlace || !u.candidates.length ? ' disabled' : '';
     return `<div class="card" data-card="${idx}">
       <div class="head"><span class="chip warn" title="${esc(kindHelp)}">${esc(kindLabel)}</span><span class="title">${esc(u.sourceHeading)}</span><span class="src">${esc(u.source)}</span></div>
       <div class="meta">${u.sourceParent ? 'Trong mục nguồn: ' + esc(u.sourceParent) + ' · ' : ''}${esc(u.reason)}</div>
@@ -596,7 +598,7 @@ function render(r) {
         <label><input type="radio" name="d${idx}" value="" checked${locked}> Chưa quyết</label>
         <label><input type="radio" name="d${idx}" value="MERGE"${noCandidate}> Gộp vào</label>
         <select data-candidate="${idx}"${noCandidate}>${u.candidates.map((c, i) => `<option value="${i}">${i}. ${esc(c.heading)}</option>`).join('')}</select>
-        <label><input type="radio" name="d${idx}" value="NEW"${locked}> Tạo heading mới${u.newHeadingParent ? ' dưới “' + esc(u.newHeadingParent) + '”' : ''}</label>
+        <label><input type="radio" name="d${idx}" value="NEW"${cannotPlace ? ' disabled' : ''}> Tạo heading mới${u.newHeadingParent ? ' dưới “' + esc(u.newHeadingParent) + '”' : ''}</label>
         <label><input type="radio" name="d${idx}" value="SKIP"${locked}> Không thêm</label>
       </div>
       <div class="cols">
@@ -637,6 +639,9 @@ function renderReview(documents) {
   $('reviewList').innerHTML = reviewDocs.map((d, di) => {
     const r = d.outlineReview;
     const diffs = r.differences ?? [];
+    const pe = r.placementEvidence;
+    const placementRows = pe?.decisions?.map(p => `<tr><td>${esc(p.sourceId)} (${esc(p.alias)})</td><td>${esc(p.proposedParentAlias ?? 'không có đề xuất')}</td><td>${esc(p.resolution ?? 'chưa rõ')}</td><td>${esc(p.resolutionBasis ?? 'không có bằng chứng')}</td></tr>`).join('') ?? '';
+    const placement = pe ? `<details><summary>Bằng chứng PLACE · ${esc(pe.status)} · ${esc(pe.repairCount ?? 0)} lượt repair</summary><table><tr><th>Nguồn</th><th>Parent được đề xuất</th><th>Kết quả</th><th>Cơ sở</th></tr>${placementRows}</table><p class="note">Lưu audit sau xử lý; không suy ra đề xuất trước repair nếu không còn bằng chứng.</p></details>` : '<p class="note">Không có bằng chứng PLACE được lưu cho phiên bản này.</p>';
     const rows = diffs.map((x, i) => {
       const loc = x.newLocation;
       const name = `rv${di}_${i}`;
@@ -665,6 +670,7 @@ function renderReview(documents) {
     }).join('');
     return `<details open><summary><b>${esc(d.file)}</b> · bản ${r.revision}${r.previousRevision ? ' so với bản ' + r.previousRevision : ' (chưa có bản trước)'} · trạng thái <b id="rvState${di}">${esc(r.state)}</b>
         · ${diffs.length} khác biệt${r.sameHeadings != null ? ', ' + r.sameHeadings + ' heading giống' : ''} <span class="note" id="rvResult${di}"></span></summary>
+      ${placement}
       ${diffs.length ? `<table><tr><th>Loại</th><th>Bản trước</th><th>Bản hiện tại</th><th>Kết luận (lưu ngay)</th></tr>${rows}</table>` : '<p class="note">Không có khác biệt với bản trước.</p>'}
       <p><label><input type="checkbox" data-all="${di}"> Mọi heading của outline hiện tại là đúng (${r.headings.length} heading)</label><br>
       <label><input type="checkbox" data-complete="${di}"> Outline hiện tại đủ heading</label></p></details>`;

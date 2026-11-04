@@ -11,6 +11,21 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class OutlineDiffTests
 {
     [Fact]
+    public void Reviewed_outside_tree_title_is_not_a_root_and_does_not_block_following_root()
+    {
+        var title = H(0, "BÁO CÁO", 1); title.Level = null; title.HierarchyResolution = "model-out-of-hierarchy";
+        var section = H(2, "Truyền thông:", 1);
+        var outline = Outline(Paragraphs, "sha-none", title, section);
+        var parents = OutlineDiff.Parents(outline.Headings);
+        Assert.False(parents.ContainsKey(title.StableId!));
+        Assert.True(parents.TryGetValue(section.StableId!, out var root)); Assert.Null(root);
+        var decisions = outline.Headings.Select(h => OutlineApprovals.Decide(outline, OutlineApprovals.Heading, h.StableId, "reviewer", DateTimeOffset.UtcNow).Decision!).ToList();
+        Assert.DoesNotContain(decisions, d => d is null);
+        decisions.Add(OutlineApprovals.Decide(outline, OutlineApprovals.OutlineComplete, null, "reviewer", DateTimeOffset.UtcNow).Decision!);
+        Assert.Equal("REVIEWED", OutlineApprovals.State(outline, decisions));
+        Assert.Contains(title.StableId!, OutlineApprovals.ApprovedLocations(outline, decisions));
+    }
+    [Fact]
     public void Section_signal_detects_a_distant_edit_without_changing_the_window_flag()
     {
         var old = Enumerable.Range(0, 60).Select(i => $"paragraph {i}").ToArray();

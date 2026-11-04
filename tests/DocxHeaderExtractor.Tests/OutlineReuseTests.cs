@@ -220,4 +220,42 @@ public sealed class OutlineReuseTests
         }
         finally { if (Directory.Exists(root)) Directory.Delete(root, recursive: true); }
     }
+
+    [Fact]
+    public void Stored_outline_keeps_placement_evidence_and_legacy_data_remains_unknown()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-placement-" + Guid.NewGuid().ToString("N"));
+        var store = new OutlineStore(root);
+        var decision = new DocxHeaderExtractor.DocumentProcessing.Audit.HeadingPlacementDecisionObservation("body[1]/p[1]", "S0001", "unresolved")
+            { ProposedParentAlias = "NONE", ResolutionBasis = "model-parent-proposal" };
+        var evidence = new DocxHeaderExtractor.DocumentProcessing.Audit.PlacementAudit("placement-proposed", 1, 1, 0, 1, 0, null, [decision]);
+        try
+        {
+            var paragraphs = new[] { new StoredParagraph("body[1]/p[1]", 0, "a") };
+            store.Store(new(OutlineStore.Version, "old", "k", "file", DateTimeOffset.UtcNow, paragraphs, [], [H(1, 1, "A")]));
+            store.Store(new(OutlineStore.Version, "new", "k", "file", DateTimeOffset.UtcNow, paragraphs, [], [H(1, 1, "A")], Placement: evidence));
+            Assert.Null(store.Find("old", "k")!.Placement);
+            var saved = store.Find("new", "k")!.Placement;
+            Assert.NotNull(saved);
+            Assert.Equal("NONE", Assert.Single(saved!.Decisions).ProposedParentAlias);
+            Assert.Equal("model-parent-proposal", Assert.Single(saved.Decisions).ResolutionBasis);
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+
+    [Fact]
+    public async Task Extracted_outline_stores_its_own_placement_observation()
+    {
+        var path = RawDocxFixtureTests.Build("<w:p><w:r><w:t>A</w:t></w:r></w:p>");
+        var root = Path.Combine(Path.GetTempPath(), "dhx-placement-reuse-" + Guid.NewGuid().ToString("N"));
+        var evidence = new DocxHeaderExtractor.DocumentProcessing.Audit.PlacementAudit("placement-proposed", 1, 1, 1, 0, 0, null,
+            [new("body[1]/p[1]", "S0001", "model-root") { ProposedParentAlias = "ROOT", ResolutionBasis = "model-parent-proposal" }]);
+        try
+        {
+            var result = await OutlineReuse.GetAsync(path, "file.docx", new OutlineStore(root), "k",
+                () => Task.FromResult<IReadOnlyList<HeadingRecord>>([H(1, 1, "A")]), () => evidence);
+            Assert.Equal("ROOT", Assert.Single(result.Current!.Placement!.Decisions).ProposedParentAlias);
+        }
+        finally { File.Delete(path); if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
 }

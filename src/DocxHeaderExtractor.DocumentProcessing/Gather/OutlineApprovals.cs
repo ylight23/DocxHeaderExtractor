@@ -48,6 +48,13 @@ public sealed class OutlineApprovals(string root)
         (h.InlineBodySpan is null ? h.InlineBody is null : ValidSpan(parts[0].OriginalText, h.InlineBodySpan) &&
             h.HeadingSpan!.End <= h.InlineBodySpan.Start && h.InlineBody == parts[0].OriginalText[h.InlineBodySpan.Start..h.InlineBodySpan.End]);
 
+    static bool ReviewParent(DocxHeaderExtractor.DocumentProcessing.Output.HeadingRecord h, IReadOnlyDictionary<string, string?> parents, out string? parent)
+    {
+        parent = null;
+        if (h.Level is null && h.HierarchyResolution == "model-out-of-hierarchy") return true;
+        return h.StableId is not null && parents.TryGetValue(h.StableId, out parent);
+    }
+
     static IReadOnlyList<OutlineDecision> Applicable(StoredOutline outline, IReadOnlyList<OutlineDecision> decisions)
     {
         var hash = OutlineHash(outline);
@@ -107,7 +114,7 @@ public sealed class OutlineApprovals(string root)
         if (matches.Length != 1) return (null, matches.Length == 0 ? "NOT_A_HEADING_IN_THIS_OUTLINE" : "LOCATION_REPEATED");
         var h = matches[0];
         if (!Bound(h)) return (null, "HEADING_NOT_BOUND_TO_SOURCE");
-        if (!OutlineDiff.Parents(outline.Headings).TryGetValue(location, out var parent)) return (null, "PARENT_UNRESOLVED");
+        if (!ReviewParent(h, OutlineDiff.Parents(outline.Headings), out var parent)) return (null, "PARENT_UNRESOLVED");
         return (new(outline.SourceSha256, outline.ConfigKey, location, Heading, h.Text, h.Level, parent, reviewer, at, hash, h.HeadingSpan, h.InlineBodySpan), null);
     }
 
@@ -120,7 +127,7 @@ public sealed class OutlineApprovals(string root)
         var unique = outline.Headings.All(h => h.StableId is not null && locations.Contains(h.StableId)) &&
             outline.Headings.Select(h => h.StableId).Distinct(StringComparer.Ordinal).Count() == outline.Headings.Count;
         var everyHeading = unique && outline.Headings.All(h => h.StableId is not null && Bound(h) && h.HeadingSpan is { Start: >= 0 } span && span.End > span.Start &&
-            parents.TryGetValue(h.StableId, out var parent) && decisions.Any(d =>
+            ReviewParent(h, parents, out var parent) && decisions.Any(d =>
             d.Kind == Heading && d.Location == h.StableId && d.Text == h.Text && d.Level == h.Level && d.ParentLocation == parent &&
             d.HeadingSpan == h.HeadingSpan && d.InlineBodySpan == h.InlineBodySpan));
         var contradicted = outline.Headings.Any(h => decisions.Any(d => d.Kind == NotHeading && d.Location == h.StableId));
@@ -141,7 +148,7 @@ public sealed class OutlineApprovals(string root)
         {
             if (!locations.Contains(d.Location)) continue;
             if (d.Kind == Heading && headings.TryGetValue(d.Location, out var h) && Bound(h) && h.HeadingSpan is { Start: >= 0 } span && span.End > span.Start && h.Text == d.Text && h.Level == d.Level
-                && parents.TryGetValue(d.Location, out var parent) && parent == d.ParentLocation && d.HeadingSpan == h.HeadingSpan &&
+                && ReviewParent(h, parents, out var parent) && parent == d.ParentLocation && d.HeadingSpan == h.HeadingSpan &&
                 d.InlineBodySpan == h.InlineBodySpan && !decisions.Any(x => x.Kind == NotHeading && x.Location == d.Location)) approved.Add(d.Location);
             if (d.Kind == NotHeading && !outline.Headings.Any(h => h.StableId == d.Location)) approved.Add(d.Location);
         }

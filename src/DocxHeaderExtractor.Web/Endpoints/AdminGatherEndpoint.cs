@@ -119,10 +119,12 @@ internal static class AdminGatherEndpoint
                         Stage("extract", "Completed", $"{name}: dùng outline tải lên ({given.Headings.Length} heading).");
                         return (d.Role, d.Id, d.Path, Headings: (IReadOnlyList<HeadingRecord>)given.Headings, From: "outline tải lên", Reuse: (OutlineReuseResult?)null);
                     }
+                    DocxHeaderExtractor.DocumentProcessing.Audit.PlacementAudit? placement = null;
                     async Task<IReadOnlyList<HeadingRecord>> Extract()
                     {
                         Stage("extract", "Started", $"{name}: trích heading bằng pipeline V6.");
                         var execution = await new DocumentRunner(options, provider).ExtractAsync(d.Path, ct: ct);
+                        placement = execution.HeadingPipeline?.Audit?.PlacementExecution;
                         return execution.Outline.Headings;
                     }
                     if (store is null)
@@ -131,7 +133,7 @@ internal static class AdminGatherEndpoint
                         Stage("extract", "Completed", $"{name}: {headings.Count} heading.");
                         return (d.Role, d.Id, d.Path, Headings: headings, From: "pipeline V6", Reuse: null);
                     }
-                    var reuse = await OutlineReuse.GetAsync(d.Path, name, store, configKey, Extract);
+                    var reuse = await OutlineReuse.GetAsync(d.Path, name, store, configKey, Extract, () => placement);
                     var from = reuse.Status switch
                     {
                         "STORED" => "outline đã lưu (file không đổi)",
@@ -153,7 +155,7 @@ internal static class AdminGatherEndpoint
 
                 // 3. The model classifies the uncertain sections; its verdict is advice shown next to them, never applied.
                 GatherUncertainReviewResult? review = null;
-                if (classify && plan.Uncertain.Count > 0 && !string.IsNullOrWhiteSpace(apiKey))
+                if (classify && plan.Uncertain.Count > 0 && plan.Uncertain.All(u => u.Kind != "UNCONFIRMED_HIERARCHY") && !string.IsNullOrWhiteSpace(apiKey))
                 {
                     Stage("classify", "Started", $"Model phân loại {plan.Uncertain.Count} mục không chắc.");
                     using var model = new GatherOpenRouterModel(apiKey!, maxCalls: 2, ceilingUsd: 0.5);

@@ -53,6 +53,7 @@ public static class OutlineDiff
         var uncertain = false;
         foreach (var h in headings.OrderBy(h => h.Index))
         {
+            if (h.Level is null && h.HierarchyResolution == "model-out-of-hierarchy" && h.StableId is not null) continue;
             if (h.StableId is null || h.Level is not (>= 1 and <= 9)) { uncertain = true; open.Clear(); continue; }
             var level = h.Level.Value;
             if (level == 1) { uncertain = false; open.Clear(); }

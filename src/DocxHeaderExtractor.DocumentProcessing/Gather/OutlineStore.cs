@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.Json;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Sources.Docx.Changes;
+using DocxHeaderExtractor.DocumentProcessing.Audit;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Gather;
 
@@ -17,7 +18,8 @@ public sealed record StoredParagraph(string Location, int Ordinal, string Signat
 /// </summary>
 public sealed record StoredOutline(string Version, string SourceSha256, string ConfigKey, string Name, DateTimeOffset Created,
     IReadOnlyList<StoredParagraph> Paragraphs, IReadOnlyList<string> UnsupportedRegions, IReadOnlyList<HeadingRecord> Headings,
-    int Revision = 1, string? PreviousSha256 = null, IReadOnlyList<StoredHeadingBinding>? HeadingBindings = null);
+    int Revision = 1, string? PreviousSha256 = null, IReadOnlyList<StoredHeadingBinding>? HeadingBindings = null,
+    PlacementAudit? Placement = null);
 
 /// <summary>Private store evidence for an outline heading. Public HeadingRecord JSON deliberately omits these fields.</summary>
 public sealed record StoredHeadingBinding(int HeadingIndex, string? StableId, int PartCount, IReadOnlyList<HeadingSourcePart> Parts);

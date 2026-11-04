@@ -115,7 +115,7 @@ public static partial class GatherByHeading
 
     /// <summary>
     /// The sections of a document, in order, from its outline. A heading of the outline that is not found in the units is left out. A heading
-    /// without a level takes the level of the heading before it.
+    /// Call only after confirming that every heading has a level.
     /// </summary>
     internal static List<Section> Sections(IReadOnlyList<GatherUnit> units, IReadOnlyList<HeadingRecord> outline)
     {
@@ -127,7 +127,7 @@ public static partial class GatherByHeading
             var at = GatherDocument.FindHeading(units, cursor, text);
             if (at < 0) continue;
             var last = GatherDocument.HeadingEnd(units, at, text);
-            found.Add((text, at, last, heading.Level ?? (found.Count > 0 ? found[^1].Level : 1)));
+            found.Add((text, at, last, heading.Level ?? throw new InvalidOperationException("UNCONFIRMED_HEADING_LEVEL")));
             cursor = last + 1;
         }
         var sections = new List<Section>();
@@ -152,6 +152,22 @@ public static partial class GatherByHeading
     /// the similar target heading ("Tiếp nhận và hỗ trợ từ thiện" and "Công tác tiếp nhận và hỗ trợ từ thiện"): the code never merges by similarity.
     /// </summary>
     public const double NearNameThreshold = 0.5;
+
+    static bool OutsideTree(HeadingRecord h) => h.Level is null && h.HierarchyResolution == "model-out-of-hierarchy";
+
+    // An out-of-tree occurrence inside the outline could otherwise have its surrounding body absorbed by the preceding section.
+    // Until it has its own safe boundary handling, keep that case for review. A leading document title is safe to omit from the tree.
+    static bool NeedsHierarchyReview(IReadOnlyList<HeadingRecord> outline)
+    {
+        var seenSection = false;
+        foreach (var h in outline.OrderBy(h => h.Index))
+        {
+            if (OutsideTree(h)) { if (seenSection) return true; continue; }
+            if (h.Level is not (>= 1 and <= 9)) return true;
+            seenSection = true;
+        }
+        return outline.Count > 0 && !seenSection;
+    }
 
     /// <summary>Where the content of a source section goes: an existing target section, a new heading, nowhere (with the reason), or held as uncertain.</summary>
     sealed record Placement(int Target, NewHeading? New, string? Unplaced, bool PathDiffers, UncertainItem? Uncertain = null);
@@ -204,7 +220,7 @@ public static partial class GatherByHeading
     /// <summary>The headings of a document read without an outline: its heading units (style headings), each up to its verified end.</summary>
     static IReadOnlyList<HeadingRecord> OutlineFromUnits(IReadOnlyList<GatherUnit> units) =>
         units.Select((u, i) => (u, i)).Where(x => x.u.IsHeading && x.u.HeadingEnd is not null)
-            .Select(x => new HeadingRecord { Index = x.i, Level = 1, Text = x.u.Text[..x.u.HeadingEnd!.Value] }).ToList();
+            .Select(x => new HeadingRecord { Index = x.i, Level = null, Text = x.u.Text[..x.u.HeadingEnd!.Value] }).ToList();
 
     /// <summary>
     /// For every heading of the original, the content of the matching sections of the sources. A source section matches by its chain (the keys of
@@ -236,12 +252,15 @@ public static partial class GatherByHeading
             sources.Select(s => s.Name).Distinct(StringComparer.Ordinal).Count() != sources.Count)
             throw new ArgumentException("Each source must have a distinct, non-empty ID.", nameof(sources));
         var target = GatherUnits.Read(targetPath, "target", targetOutline);
-        var targetSections = Sections(target.Units, targetOutline);
-        var read = sources.Select(s =>
+        var rawSources = sources.Select(s =>
         {
             var source = GatherUnits.Read(s.Path, s.Name, s.Outline);
-            return (Source: source, Sections: Sections(source.Units, s.Outline ?? OutlineFromUnits(source.Units)));
+            return (Name: s.Name, Source: source, Outline: s.Outline ?? OutlineFromUnits(source.Units));
         }).ToList();
+        if (NeedsHierarchyReview(targetOutline) || rawSources.Any(r => NeedsHierarchyReview(r.Outline)))
+            return UnconfirmedHierarchy(target, targetOutline, rawSources);
+        var targetSections = Sections(target.Units, targetOutline.Where(h => !OutsideTree(h)).ToArray());
+        var read = rawSources.Select(r => (r.Source, Sections: Sections(r.Source.Units, r.Outline.Where(h => !OutsideTree(h)).ToArray()))).ToList();
         // A title only one side has is left out of the chains on that side.
         var targetKeys = targetSections.Select(t => Key(t.Heading)).ToHashSet(StringComparer.Ordinal);
         var sourceKeys = read.SelectMany(r => r.Sections).Select(t => Key(t.Heading)).ToHashSet(StringComparer.Ordinal);
@@ -350,6 +369,29 @@ public static partial class GatherByHeading
             NewHeadingNextLocation = SubtreeEnd(targetSections, u.Anchor) is var end and >= 0 ? targetSections[end].Location : null,
         }).ToList();
         return new GatherHeadingPlan(sections, excluded, held);
+    }
+
+    // No hierarchy is inferred in this preview. Keep the source text visible, and force a fresh plan after outline review.
+    static GatherHeadingPlan UnconfirmedHierarchy(GatherSource target, IReadOnlyList<HeadingRecord> targetOutline,
+        IReadOnlyList<(string Name, GatherSource Source, IReadOnlyList<HeadingRecord> Outline)> sources)
+    {
+        var gaps = target.Gaps.Concat(sources.SelectMany(s => s.Source.Gaps)).ToArray();
+        var targets = new List<GatherSection>();
+        var cursor = 0;
+        foreach (var h in targetOutline.OrderBy(h => h.Index))
+        {
+            var at = GatherDocument.FindHeading(target.Units, cursor, h.Text.Trim());
+            if (at < 0) continue;
+            var last = GatherDocument.HeadingEnd(target.Units, at, h.Text.Trim());
+            targets.Add(new GatherSection(target.Units[at].Location, h.Text, h.Text,
+                new GatherRun([], [], [], ["UNCONFIRMED_HIERARCHY"], [], gaps, 1), [], null)
+                { Note = "cấp hoặc quan hệ của outline chưa xác nhận; cần duyệt trước khi ghép" });
+            cursor = last + 1;
+        }
+        var held = sources.Select(s => new GatherUncertain("UNCONFIRMED_HIERARCHY", "Toàn bộ nguồn chờ xác minh cấu trúc", s.Name, null, [],
+            Content(s.Source.Units, new Section("", "", -1, -1, s.Source.Units.Count)).ToList(),
+            "Có heading chưa có cấp; chưa xác định parent hay vị trí chèn. Duyệt outline rồi chạy lại tổng hợp.")).ToArray();
+        return new GatherHeadingPlan(targets, [], held);
     }
 
     /// <summary>
