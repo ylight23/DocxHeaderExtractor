@@ -147,4 +147,20 @@ static class VarianceTrial
         }
         return 0;
     }
+
+    /// <summary>
+    /// The region a stored outline must re-decide for another version, offline: region-replay &lt;stored-old.json&gt; &lt;stored-new.json&gt;.
+    /// </summary>
+    public static int RegionReplay(string[] args)
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        var old = JsonSerializer.Deserialize<StoredOutline>(File.ReadAllText(args[1]))!;
+        var next = JsonSerializer.Deserialize<StoredOutline>(File.ReadAllText(args[2]))!;
+        var plan = DocxHeaderExtractor.DocumentProcessing.Gather.OutlineRegion.Plan(old, next.Paragraphs, next.UnsupportedRegions);
+        Console.WriteLine($"status={plan.Status} reason={plan.Reason ?? "-"} changed={plan.ChangedParagraphs} of {plan.TotalParagraphs}");
+        foreach (var span in plan.Spans) Console.WriteLine($"  span [{span.Start},{span.End}) {span.End - span.Start} paragraphs");
+        Console.WriteLine($"  carried headings={plan.CarriedHeadings.Count}; to decide again={plan.HeadingsToDecide.Count}");
+        foreach (var h in plan.HeadingsToDecide) Console.WriteLine($"    decide: {h.StableId} {h.Text}");
+        return 0;
+    }
 }

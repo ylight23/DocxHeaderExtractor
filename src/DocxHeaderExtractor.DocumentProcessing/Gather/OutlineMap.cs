@@ -56,7 +56,7 @@ public static class OutlineMap
             : new("MAPPED", null, headings, added, removed);
     }
 
-    static HeadingRecord Moved(HeadingRecord h, int index, string location) => new()
+    internal static HeadingRecord Moved(HeadingRecord h, int index, string location) => new()
     {
         Index = index, StableId = location, Level = h.Level, Text = h.Text, OriginalText = h.OriginalText, HeadingSpan = h.HeadingSpan,
         InlineBody = h.InlineBody, InlineBodySpan = h.InlineBodySpan, BoundarySource = h.BoundarySource, HierarchyResolution = h.HierarchyResolution,
