@@ -16,6 +16,8 @@ if (args.Length >= 1 && args[0] == "variance")
     return await VarianceTrial.RunAsync(args);
 if (args.Length >= 1 && args[0] == "docx-region")
     return await DocxRegionTrial.RunAsync(args);
+if (args.Length >= 1 && args[0] == "docx-packet-diff")
+    return DocxPacketDiff.Run(args);
 if (args.Length >= 1 && args[0] == "region-replay")
     return VarianceTrial.RegionReplay(args);
 if (args.Length >= 1 && args[0] == "variance-replay")

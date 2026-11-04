@@ -24,6 +24,30 @@ public sealed class DocxSelectorTests : IDisposable
     private string Long() => DocxTestDocument.CreateLong(Path.Combine(dir, "long.docx"), 100);
 
     [Fact]
+    public async Task Changed_file_never_reuses_a_prior_files_selection_even_if_paragraphs_are_unchanged()
+    {
+        var firstPath = Long();
+        var secondPath = Path.Combine(dir, "metadata-changed.docx");
+        File.Copy(firstPath, secondPath);
+        using (var doc = DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(secondPath, true))
+            doc.PackageProperties.Creator = "Changed document metadata";
+        var first = DocxAgentSource.Load(firstPath, null, out _)!;
+        var second = DocxAgentSource.Load(secondPath, null, out _)!;
+        Assert.NotEqual(first.SourceSha256, second.SourceSha256);
+        Assert.Equal(first.Cores, second.Cores);
+        Assert.Equal(first.Lines.Select(x => (x.Alias, x.Text)), second.Lines.Select(x => (x.Alias, x.Text)));
+        for (var i = 0; i < first.Cores.Count; i++)
+            Assert.NotEqual(DocxHeaderExtractor.HeadingAgent.Runtime.AgentUnit.FirstRequestSha256(first, i, DocxAgentProtocol.Instruction),
+                DocxHeaderExtractor.HeadingAgent.Runtime.AgentUnit.FirstRequestSha256(second, i, DocxAgentProtocol.Instruction));
+        var handlers = new List<FakeOpenRouter>();
+        FakeOpenRouter NewHandler() { var handler = new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTwoTargetsThenGroup); handlers.Add(handler); return handler; }
+        var selector = new DocxSelector(NewHandler, parallelism: 1, selectionCacheRoot: Path.Combine(dir, "cache"));
+        await selector.SelectAsync(firstPath, "sk-test", CancellationToken.None);
+        await selector.SelectAsync(secondPath, "sk-test", CancellationToken.None);
+        Assert.True(handlers[^1].Posts > 0);
+    }
+
+    [Fact]
     public async Task Opt_in_cache_reuses_selection_and_grouping_only_for_the_same_file_and_request()
     {
         var path = Long();
