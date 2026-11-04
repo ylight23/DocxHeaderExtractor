@@ -46,7 +46,7 @@ public sealed record GatherHeadingPlan(IReadOnlyList<GatherSection> Sections, IR
 /// verbatim with its source; only an entire identical normalized content item in the original section is excluded.
 /// </para>
 /// </summary>
-public static class GatherByHeading
+public static partial class GatherByHeading
 {
     static readonly Regex Numbering = new(
         @"^\s*(?:(?:item|mục|muc|chương|chuong|phần|phan|điều|dieu|section|part)\s+(?:\d+(?:\.\d+)*|[IVXLC]+)\s*[.:)\-–]?\s+|\d+(?:\.\d+)*(?:[.:)\-–]\s+|\s+)|(?:[a-zA-Z]|[IVXLC]+)[.)]\s+)",
@@ -220,7 +220,8 @@ public static class GatherByHeading
     /// </para>
     /// </summary>
     public static GatherHeadingPlan Build(string targetPath,
-        IReadOnlyList<HeadingRecord> targetOutline, IReadOnlyList<GatherSourceFile> sources, bool addMissingHeadings = false)
+        IReadOnlyList<HeadingRecord> targetOutline, IReadOnlyList<GatherSourceFile> sources, bool addMissingHeadings = false,
+        GatherMatching matching = GatherMatching.Chain)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(targetPath);
         ArgumentNullException.ThrowIfNull(targetOutline);
@@ -254,12 +255,14 @@ public static class GatherByHeading
                 foreach (var fact in Content(source.Units, new Section("", "", -1, -1, sourceSections[0].First)))
                     excluded.Add(new GatherExcluded("", fact, "BEFORE_FIRST_HEADING: nội dung trước heading đầu tiên của nguồn"));
             var placed = new Placement[sourceSections.Count];
+            if (matching == GatherMatching.Order) PlaceByOrder(sourceSections, source.Units, targetSections, roots, addMissingHeadings, placed);
+            else
+                for (var i = 0; i < sourceSections.Count; i++)
+                    placed[i] = Place(sourceSections[i], i, placed, sourceSections, targetSections, chainCount, roots, addMissingHeadings,
+                        source.Units[sourceSections[i].First].SourceId + " " + sourceSections[i].Location);
             var perTarget = new Dictionary<int, int>();
             for (var i = 0; i < sourceSections.Count; i++)
             {
-                var s = sourceSections[i];
-                placed[i] = Place(s, i, placed, sourceSections, targetSections, chainCount, roots, addMissingHeadings,
-                    source.Units[s.First].SourceId + " " + s.Location);
                 if (placed[i].Uncertain is { } item && !uncertain.Contains(item)) uncertain.Add(item);
                 if (placed[i].Target >= 0)
                 {

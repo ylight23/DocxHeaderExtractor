@@ -10,24 +10,30 @@ namespace DocxHeaderExtractor.DocumentProcessing.Gather;
 public sealed record StoredParagraph(string Location, int Ordinal, string Signature);
 
 /// <summary>
-/// A stored outline: the headings the pipeline gave for one exact file under one pipeline configuration, and the paragraph signatures of that
-/// file so a later version can be mapped onto it. <see cref="UnsupportedRegions"/> names the kinds of region the reader could not read in full.
+/// A stored outline version: the headings the pipeline gave for one exact file under one pipeline configuration, and the paragraph signatures of
+/// that file so a later version can be mapped onto it. <see cref="UnsupportedRegions"/> names the kinds of region the reader could not read in full.
+/// <see cref="Revision"/> numbers the versions of one file name under one configuration (1 = V1, 2 = V2, …); <see cref="PreviousSha256"/> is the
+/// file the version before it was made from. Older versions are never overwritten.
 /// </summary>
 public sealed record StoredOutline(string Version, string SourceSha256, string ConfigKey, string Name, DateTimeOffset Created,
-    IReadOnlyList<StoredParagraph> Paragraphs, IReadOnlyList<string> UnsupportedRegions, IReadOnlyList<HeadingRecord> Headings);
+    IReadOnlyList<StoredParagraph> Paragraphs, IReadOnlyList<string> UnsupportedRegions, IReadOnlyList<HeadingRecord> Headings,
+    int Revision = 1, string? PreviousSha256 = null);
+
+/// <summary>One line of a file name's history: the revision number, the file it was made from, and when it was stored.</summary>
+public sealed record OutlineRevision(int Number, string SourceSha256, DateTimeOffset Created);
 
 /// <summary>
 /// Outlines already extracted, on disk. An entry is found only by the file's SHA-256 and the configuration key, so a changed prompt, model or
-/// build (whatever the caller puts in the key) is a miss, never a stale answer. The latest entry of a file name is also remembered, so a new
-/// version of that file can be mapped onto it (<see cref="OutlineMap"/>). Entries are written to a temporary file and moved into place;
-/// an existing entry is never rewritten. A store that cannot be read or written only costs a model run.
+/// build (whatever the caller puts in the key) is a miss, never a stale answer. Each file name keeps its history in order (V1, V2, …): a new
+/// file under the same name is a new revision, and no earlier revision is overwritten. Entries are written to a temporary file and moved into
+/// place. A store that cannot be read or written only costs a model run.
 /// </summary>
 public sealed class OutlineStore(string root)
 {
     public const string Version = "OUTLINE_STORE_V1";
     public const string DefaultRoot = ".dhx-evidence/outline";
 
-    static readonly JsonSerializerOptions Json = new() { WriteIndented = false };
+    static readonly JsonSerializerOptions Json = new() { WriteIndented = true };
 
     /// <summary>The configuration key: a hash of the store version and every part the caller names (prompt hashes, model, build identity).</summary>
     public static string ConfigKey(params string[] parts) =>
@@ -49,8 +55,8 @@ public sealed class OutlineStore(string root)
         version.Paragraphs.Select(p => new StoredParagraph(p.Location, p.Ordinal, Signature(p))).ToArray();
 
     string EntryPath(string sha, string key) => Path.Combine(root, sha[..Math.Min(16, sha.Length)], key + ".json");
-    string NamePath(string name, string key) => Path.Combine(root, "names",
-        Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(name.ToLowerInvariant())))[..16] + "-" + key + ".txt");
+    string HistoryPath(string name, string key) => Path.Combine(root, "names",
+        Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(name.ToLowerInvariant())))[..16] + "-" + key + ".json");
 
     /// <summary>The outline stored for this exact file and configuration, or null.</summary>
     public StoredOutline? Find(string sourceSha256, string configKey)
@@ -59,34 +65,48 @@ public sealed class OutlineStore(string root)
         if (!File.Exists(path)) return null;
         try
         {
-            var entry = JsonSerializer.Deserialize<StoredOutline>(File.ReadAllText(path), Json);
+            var entry = JsonSerializer.Deserialize<StoredOutline>(File.ReadAllText(path));
             return entry is { Version: Version } && entry.SourceSha256 == sourceSha256 && entry.ConfigKey == configKey ? entry : null;
         }
         catch (Exception e) when (e is IOException or JsonException or UnauthorizedAccessException or NotSupportedException) { return null; }
     }
 
-    /// <summary>The latest outline stored under this file name and configuration (any content), or null.</summary>
-    public StoredOutline? Latest(string name, string configKey)
+    /// <summary>Every revision stored under this file name and configuration, V1 first. Empty when there is none or it cannot be read.</summary>
+    public IReadOnlyList<OutlineRevision> History(string name, string configKey)
     {
         try
         {
-            var path = NamePath(name, configKey);
-            return File.Exists(path) ? Find(File.ReadAllText(path).Trim(), configKey) : null;
+            var path = HistoryPath(name, configKey);
+            return File.Exists(path) ? JsonSerializer.Deserialize<List<OutlineRevision>>(File.ReadAllText(path)) ?? [] : [];
         }
-        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { return null; }
+        catch (Exception e) when (e is IOException or JsonException or UnauthorizedAccessException or NotSupportedException) { return []; }
     }
 
-    public void Store(StoredOutline outline)
+    /// <summary>The newest revision (the highest number) stored under this file name, or null.</summary>
+    public StoredOutline? Latest(string name, string configKey) =>
+        History(name, configKey).OrderBy(r => r.Number).LastOrDefault() is { } last ? Find(last.SourceSha256, configKey) : null;
+
+    /// <summary>
+    /// Stores the outline as the next revision of its file name, unless this exact file already has one. Returns the stored revision, or null when
+    /// nothing was stored (the file already has a revision, or the store cannot be written).
+    /// </summary>
+    public StoredOutline? Store(StoredOutline outline)
     {
         try
         {
+            var history = History(outline.Name, outline.ConfigKey).OrderBy(r => r.Number).ToList();
+            if (history.Any(r => r.SourceSha256 == outline.SourceSha256)) return null;
+            var previous = history.LastOrDefault();
+            var stored = outline with { Revision = (previous?.Number ?? 0) + 1, PreviousSha256 = previous?.SourceSha256 };
             var path = EntryPath(outline.SourceSha256, outline.ConfigKey);
-            if (!File.Exists(path)) WriteNew(path, JsonSerializer.Serialize(outline, Json));
-            var name = NamePath(outline.Name, outline.ConfigKey);
-            Directory.CreateDirectory(Path.GetDirectoryName(name)!);
-            File.WriteAllText(name, outline.SourceSha256);
+            if (!File.Exists(path)) WriteNew(path, JsonSerializer.Serialize(stored, Json));
+            history.Add(new OutlineRevision(stored.Revision, outline.SourceSha256, outline.Created));
+            var historyPath = HistoryPath(outline.Name, outline.ConfigKey);
+            Directory.CreateDirectory(Path.GetDirectoryName(historyPath)!);
+            File.WriteAllText(historyPath, JsonSerializer.Serialize(history, Json));
+            return stored;
         }
-        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException or NotSupportedException) { return null; }
     }
 
     static void WriteNew(string path, string text)

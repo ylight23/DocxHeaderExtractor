@@ -145,4 +145,28 @@ public sealed class OutlineReuseTests
         Assert.Contains(facts[0].Flags, f => f.StartsWith("UNVERIFIED_STRUCTURE", StringComparison.Ordinal));
         Assert.Empty(facts[1].Flags);
     }
+
+    [Fact]
+    public void Each_changed_outline_is_a_new_revision_and_the_earlier_ones_stay_readable()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-outline-" + Guid.NewGuid().ToString("N"));
+        var store = new OutlineStore(root);
+        var paragraphs = new[] { new StoredParagraph("body[1]/p[1]", 0, "a") };
+        try
+        {
+            var v1 = store.Store(new(OutlineStore.Version, "sha-one", "k", "bao-cao.docx", DateTimeOffset.UtcNow, paragraphs, [], [H(1, 1, "A")]));
+            Assert.Equal(1, v1!.Revision);
+            Assert.Null(store.Store(new(OutlineStore.Version, "sha-one", "k", "bao-cao.docx", DateTimeOffset.UtcNow, paragraphs, [], [H(1, 1, "A")])));
+
+            var v2 = store.Store(new(OutlineStore.Version, "sha-two", "k", "bao-cao.docx", DateTimeOffset.UtcNow, paragraphs, [], [H(1, 1, "A"), H(2, 1, "B")]));
+            Assert.Equal(2, v2!.Revision);
+            Assert.Equal("sha-one", v2.PreviousSha256);
+
+            Assert.Equal([1, 2], store.History("bao-cao.docx", "k").Select(r => r.Number));
+            Assert.Equal("sha-two", store.Latest("bao-cao.docx", "k")!.SourceSha256);
+            Assert.Equal(["A"], store.Find("sha-one", "k")!.Headings.Select(h => h.Text));
+            Assert.Null(store.Latest("bao-cao.docx", "other"));
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, recursive: true); }
+    }
 }
