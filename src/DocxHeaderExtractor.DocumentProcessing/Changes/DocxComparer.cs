@@ -21,7 +21,12 @@ public sealed record Change(string Kind, string MatchStatus, bool Uncertain, str
 /// </summary>
 public sealed record ComparisonResult(string TemplateSha256, string DocumentSha256, IReadOnlyList<Change> Changes,
     IReadOnlyList<string> TemplateUnsupported, IReadOnlyList<string> DocumentUnsupported, string Scope,
-    string GroupRule, bool FlagRejectedGroups);
+    string GroupRule, bool FlagRejectedGroups)
+{
+    /// <summary>Optional offline candidates; original changes are preserved and movement direction is not inferred.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public ReorderAnalysis? Reorders { get; init; }
+}
 
 /// <summary>
 /// How a split or merge candidate is accepted. <see cref="ExplainsLeftover"/> (default in experimental P1): the weaker part must add, in order,
@@ -33,7 +38,7 @@ public enum GroupRule { Advantage, ExplainsLeftover }
 
 /// <param name="FlagRejectedGroups">When a split or merge candidate was rejected but the chosen result looks like that split or merge (the whole
 /// is one-sided or paired with one part, and the other part is one-sided), mark those paragraphs uncertain with the rejection reason.</param>
-public sealed record ComparerOptions(GroupRule GroupRule = GroupRule.ExplainsLeftover, bool FlagRejectedGroups = true);
+public sealed record ComparerOptions(GroupRule GroupRule = GroupRule.ExplainsLeftover, bool FlagRejectedGroups = true, bool DetectReorders = false);
 
 /// <summary>
 /// Diagnostic record of one split or merge candidate whose joined similarity reached the pair threshold: its scores, the token gain of the
@@ -96,7 +101,8 @@ public static class DocxComparer
         }
         Flush(deleted, inserted, context);
         return new ComparisonResult(template.FileSha256, document.FileSha256, changes, template.UnsupportedRegions, document.UnsupportedRegions, Scope,
-            options.GroupRule.ToString(), options.FlagRejectedGroups);
+            options.GroupRule.ToString(), options.FlagRejectedGroups)
+        { Reorders = options.DetectReorders ? ReorderDetector.Analyze(template, document) : null };
     }
 
     /// <summary>What one comparison carries through its steps: both documents' matching keys, the change list, the options and the decision log.</summary>
