@@ -10,6 +10,8 @@ if (args.Length >= 1 && args[0] == "bench")
     return BenchTrial.Run(args);
 if (args.Length >= 1 && args[0] == "e2e")
     return await E2eTrial.RunAsync(args);
+if (args.Length >= 1 && args[0] == "outline-diff")
+    return OutlineDiffTrial.Run(args);
 if (args.Length >= 1 && args[0] == "e2e-replay")
     return E2eReplay.Run(args);
 if (args.Length >= 1 && args[0] == "variance")
