@@ -125,6 +125,7 @@
           <label><input type="checkbox" id="classify" checked> Model phân loại các mục không chắc</label>
           <label><input type="checkbox" id="noLlm"> Không gọi mô hình (cần đủ outline JSON)</label>
           <label><input type="checkbox" id="docxReuseSelection"> Dùng lại SELECT/GROUP của file Word không đổi (PLACE vẫn chạy lại)</label>
+          <label><input type="checkbox" id="outlineCache"> Dùng outline đã lưu (file không đổi: không gọi model; file sửa mà heading còn nguyên: ánh xạ qua diff, đoạn mới được đánh dấu chưa kiểm tra)</label>
         </div>
         <div class="actions">
           <button id="run" disabled>Tổng hợp</button>
@@ -230,6 +231,7 @@ $('run').addEventListener('click', async () => {
   if ($('classify').checked && !$('noLlm').checked) fd.append('classify', '1');
   if ($('noLlm').checked) fd.append('noLlm', '1');
   if ($('docxReuseSelection').checked) fd.append('docxReuseSelection', '1');
+  if ($('outlineCache').checked) fd.append('outlineCache', '1');
   controller = new AbortController();
   sync();
   $('cancelRun').classList.remove('hidden');

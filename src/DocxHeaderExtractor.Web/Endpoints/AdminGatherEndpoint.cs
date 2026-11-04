@@ -91,6 +91,7 @@ internal static class AdminGatherEndpoint
             var provider = modelProvider();
             var noLlm = Flag(form, "noLlm");
             var classify = Flag(form, "classify") && !noLlm;
+            var outlineCache = Flag(form, "outlineCache");
             var apiKey = provider.CreateRoute().ApiKey;
             var ids = SourceIds(sourcePaths);
             var documents = new[] { (Role: "target", Id: "target", Path: targetPath) }
@@ -109,24 +110,47 @@ internal static class AdminGatherEndpoint
                 // 1. Headings of every document: an uploaded outline when one names the file, otherwise the V6 heading pipeline (in parallel).
                 var options = RequestOptions.Build(form, provider, out _);
                 options.Log = _ => { };
+                // Opt-in: an outline stored for the same file (or mapped from a stored version of the same file name) is used instead of a run.
+                var store = outlineCache ? new OutlineStore(OutlineStore.DefaultRoot) : null;
+                var configKey = OutlineReuse.ConfigKey(options);
                 var extracted = await Task.WhenAll(documents.Select(async d =>
                 {
+                    var name = Path.GetFileName(d.Path);
                     if (FindOutline(outlines, d.Path) is { } given)
                     {
-                        Stage("extract", "Completed", $"{Path.GetFileName(d.Path)}: dùng outline tải lên ({given.Headings.Length} heading).");
-                        return (d.Role, d.Id, d.Path, Headings: (IReadOnlyList<HeadingRecord>)given.Headings, From: "outline tải lên");
+                        Stage("extract", "Completed", $"{name}: dùng outline tải lên ({given.Headings.Length} heading).");
+                        return (d.Role, d.Id, d.Path, Headings: (IReadOnlyList<HeadingRecord>)given.Headings, From: "outline tải lên", Reuse: (OutlineReuseResult?)null);
                     }
-                    Stage("extract", "Started", $"{Path.GetFileName(d.Path)}: trích heading bằng pipeline V6.");
-                    var execution = await new DocumentRunner(options, provider).ExtractAsync(d.Path, ct: ct);
-                    Stage("extract", "Completed", $"{Path.GetFileName(d.Path)}: {execution.Outline.Headings.Count} heading.");
-                    return (d.Role, d.Id, d.Path, Headings: execution.Outline.Headings, From: "pipeline V6");
+                    async Task<IReadOnlyList<HeadingRecord>> Extract()
+                    {
+                        Stage("extract", "Started", $"{name}: trích heading bằng pipeline V6.");
+                        var execution = await new DocumentRunner(options, provider).ExtractAsync(d.Path, ct: ct);
+                        return execution.Outline.Headings;
+                    }
+                    if (store is null)
+                    {
+                        var headings = await Extract();
+                        Stage("extract", "Completed", $"{name}: {headings.Count} heading.");
+                        return (d.Role, d.Id, d.Path, Headings: headings, From: "pipeline V6", Reuse: null);
+                    }
+                    var reuse = await OutlineReuse.GetAsync(d.Path, name, store, configKey, Extract);
+                    var from = reuse.Status switch
+                    {
+                        "STORED" => "outline đã lưu (file không đổi)",
+                        "EXACT" => "outline đã lưu (nội dung không đổi)",
+                        "MAPPED" => $"outline đã lưu, ánh xạ qua diff ({reuse.AddedParagraphs.Count} đoạn mới chưa kiểm tra heading)",
+                        _ => reuse.Reason is null ? "pipeline V6" : $"pipeline V6 (không dùng được outline đã lưu: {reuse.Reason})",
+                    };
+                    Stage("extract", "Completed", $"{name}: {reuse.Headings.Count} heading, {from}.");
+                    return (d.Role, d.Id, d.Path, Headings: reuse.Headings, From: from, Reuse: (OutlineReuseResult?)reuse);
                 }));
                 var target = extracted.Single(e => e.Role == "target");
                 var sources = extracted.Where(e => e.Role == "source").Select(e => new GatherSourceFile(e.Id, e.Path, e.Headings)).ToList();
 
                 // 2. Placement by heading chain; what it cannot decide is held as uncertain.
                 Stage("gather", "Started", "Ghép nội dung theo chuỗi heading.");
-                var plan = GatherByHeading.Build(target.Path, target.Headings, sources, addMissingHeadings: true);
+                var plan = OutlineReuse.FlagAdded(GatherByHeading.Build(target.Path, target.Headings, sources, addMissingHeadings: true),
+                    extracted.Where(e => e.Reuse is { Status: "MAPPED" }).ToDictionary(e => e.Id, e => e.Reuse!.AddedParagraphs));
                 Stage("gather", "Completed", $"{plan.Uncertain.Count} mục không chắc, {plan.Excluded.Count} đoạn không thêm.");
 
                 // 3. The model classifies the uncertain sections; its verdict is advice shown next to them, never applied.
@@ -165,7 +189,7 @@ internal static class AdminGatherEndpoint
                 modelClassified = result.Review is not null,
                 documents = result.Extracted.Select(e => new
                 {
-                    e.Role, e.Id, file = Path.GetFileName(e.Path), from = e.From,
+                    e.Role, e.Id, file = Path.GetFileName(e.Path), from = e.From, reuse = e.Reuse?.Status, addedParagraphs = e.Reuse?.AddedParagraphs,
                     headings = e.Headings.OrderBy(h => h.Index).Select(h => new { h.Level, h.Text, h.StableId }),
                 }),
                 merged = result.Decided.Where(s => s.NewHeadingDepth is null && s.Run.Facts.Count > 0).Select(s => new

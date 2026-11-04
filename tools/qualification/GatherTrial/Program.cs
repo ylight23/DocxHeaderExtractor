@@ -8,6 +8,10 @@ if (args.Length >= 1 && args[0] == "headings")
     return HeadingTrial.Run(args);
 if (args.Length >= 1 && args[0] == "bench")
     return BenchTrial.Run(args);
+if (args.Length >= 1 && args[0] == "e2e")
+    return await E2eTrial.RunAsync(args);
+if (args.Length >= 1 && args[0] == "variance")
+    return await VarianceTrial.RunAsync(args);
 if (args.Length >= 1 && args[0] == "docx-cache-ab")
     return await DocxCacheTrial.RunAsync(args);
 if (args.Length >= 1 && args[0] == "docx-cache-changes")
