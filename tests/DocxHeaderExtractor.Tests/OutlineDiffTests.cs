@@ -15,6 +15,10 @@ public sealed class OutlineDiffTests
     static HeadingRecord H(int index, string text, int level) => new() { Index = index, Level = level, Text = text, StableId = $"body[1]/p[{index + 1}]", HeadingSpan = new TextOffsetSpan(0, text.Length),
         SourceParts = [new HeadingSourcePart($"body[1]/p[{index + 1}]", index, new TextOffsetSpan(0, text.Length), text)], ValidatedSourcePartCount = 1 };
 
+    static HeadingRecord B(int index, string text, int level, string raw, int start, int end) => new() { Index = index, Level = level,
+        Text = text, StableId = $"body[1]/p[{index + 1}]", HeadingSpan = new TextOffsetSpan(start, end),
+        SourceParts = [new HeadingSourcePart($"body[1]/p[{index + 1}]", index, new TextOffsetSpan(start, end), raw)], ValidatedSourcePartCount = 1 };
+
     static StoredOutline Outline(IEnumerable<string> paragraphs, string sha, params HeadingRecord[] headings) =>
         new(OutlineStore.Version, sha, "k", "f.docx", DateTimeOffset.UtcNow,
             paragraphs.Select((s, i) => new StoredParagraph($"body[1]/p[{i + 1}]", i, s)).ToArray(), [], headings);
@@ -110,7 +114,7 @@ public sealed class OutlineDiffTests
     [Fact]
     public void Review_is_bound_to_exact_outline_source_config_and_spans()
     {
-        var h = H(2, "Truyền thông:", 1); h.HeadingSpan = new TextOffsetSpan(0, 5);
+        var h = B(2, "Truyền thông:", 1, "Truyền thông:", 0, 5);
         var outline = Outline(Paragraphs, "sha", h);
         var hash = OutlineApprovals.OutlineHash(outline);
         var decisions = new[] { new OutlineDecision("sha", "k", h.StableId!, OutlineApprovals.Heading, h.Text, 1, null, "reviewer", DateTimeOffset.UtcNow, hash, h.HeadingSpan),
@@ -121,6 +125,10 @@ public sealed class OutlineDiffTests
         h.HeadingSpan = new TextOffsetSpan(1, 6);
         Assert.Equal("UNREVIEWED", OutlineApprovals.State(outline, decisions));
         Assert.Empty(OutlineApprovals.ApprovedLocations(outline, decisions));
+        var mismatchedHash = OutlineApprovals.OutlineHash(outline);
+        var mismatched = new[] { new OutlineDecision("sha", "k", h.StableId!, OutlineApprovals.Heading, h.Text, 1, null, "reviewer", DateTimeOffset.UtcNow, mismatchedHash, h.HeadingSpan),
+            new OutlineDecision("sha", "k", "", OutlineApprovals.OutlineComplete, null, null, null, "reviewer", DateTimeOffset.UtcNow, mismatchedHash) };
+        Assert.Equal("PARTIAL", OutlineApprovals.State(outline, mismatched));
         h.HeadingSpan = new TextOffsetSpan(0, 999);
         var badHash = OutlineApprovals.OutlineHash(outline);
         var bad = new[] { new OutlineDecision("sha", "k", h.StableId!, OutlineApprovals.Heading, h.Text, 1, null, "reviewer", DateTimeOffset.UtcNow, badHash, h.HeadingSpan),
@@ -131,8 +139,8 @@ public sealed class OutlineDiffTests
     [Fact]
     public void Boundary_changes_and_unbound_headings_are_reported()
     {
-        var a = H(2, "Truyền thông:", 1); a.HeadingSpan = new(0, 5);
-        var b = H(2, "Truyền thông:", 1); b.HeadingSpan = new(1, 6);
+        var a = B(2, "Truyền thông:", 1, "Truyền thông:", 0, 5);
+        var b = B(2, "Truyền thông:", 1, "Truyền thông:", 1, 6);
         var boundary = OutlineDiff.Compare(Outline(Paragraphs, "a", a), Outline(Paragraphs, "a", b));
         var d = Assert.Single(boundary.Differences, x => x.Kind == "BOUNDARY");
         Assert.Equal(a.HeadingSpan, d.OldHeadingSpan); Assert.Equal(b.HeadingSpan, d.NewHeadingSpan);
@@ -178,6 +186,39 @@ public sealed class OutlineDiffTests
     }
 
     [Fact]
+    public void Overlapping_heading_and_inline_body_are_not_accepted()
+    {
+        var h = H(2, "abcdef", 1); h.HeadingSpan = new(0, 4); h.InlineBodySpan = new(3, 6); h.InlineBody = "def";
+        var outline = Outline(Paragraphs, "a", h);
+        var hash = OutlineApprovals.OutlineHash(outline);
+        var decisions = new[] { new OutlineDecision("a", "k", h.StableId!, OutlineApprovals.Heading, h.Text, 1, null, "reviewer", DateTimeOffset.UtcNow, hash, h.HeadingSpan, h.InlineBodySpan),
+            new OutlineDecision("a", "k", "", OutlineApprovals.OutlineComplete, null, null, null, "reviewer", DateTimeOffset.UtcNow, hash) };
+        Assert.Equal("PARTIAL", OutlineApprovals.State(outline, decisions));
+        Assert.Contains(OutlineDiff.Compare(outline, outline).Differences, d => d.Kind == "BOUNDARY_UNRESOLVED");
+    }
+
+    [Fact]
+    public void Matching_source_bound_heading_and_inline_body_can_be_reviewed()
+    {
+        var h = B(2, "Heading", 1, "Heading body", 0, 7); h.InlineBodySpan = new(8, 12); h.InlineBody = "body";
+        var outline = Outline(Paragraphs, "a", h);
+        var hash = OutlineApprovals.OutlineHash(outline);
+        var decisions = new[] { new OutlineDecision("a", "k", h.StableId!, OutlineApprovals.Heading, h.Text, 1, null, "reviewer", DateTimeOffset.UtcNow, hash, h.HeadingSpan, h.InlineBodySpan),
+            new OutlineDecision("a", "k", "", OutlineApprovals.OutlineComplete, null, null, null, "reviewer", DateTimeOffset.UtcNow, hash) };
+        Assert.Equal("REVIEWED", OutlineApprovals.State(outline, decisions));
+        Assert.DoesNotContain(OutlineDiff.Compare(outline, outline).Differences, d => d.Kind == "BOUNDARY_UNRESOLVED");
+    }
+
+    [Fact]
+    public void Changes_only_in_case_or_whitespace_are_not_reported_as_identical()
+    {
+        var old = H(2, "Heading", 1); var current = H(2, "HEADING", 1);
+        var comparison = OutlineDiff.Compare(Outline(Paragraphs, "a", old), Outline(Paragraphs, "a", current));
+        Assert.Contains(comparison.Differences, d => d.Kind == "TEXT_FORMAT");
+        Assert.Equal(0, comparison.SameHeadings);
+    }
+
+    [Fact]
     public void Multi_paragraph_bindings_are_compared_and_missing_bindings_remain_unresolved()
     {
         var a = new HeadingRecord { Index = 2, StableId = "body[1]/p[3]", Text = "Same", Level = 1, HeadingSpan = new(0, 4),
@@ -189,7 +230,10 @@ public sealed class OutlineDiffTests
         var restored = System.Text.Json.JsonSerializer.Deserialize<StoredOutline>(System.Text.Json.JsonSerializer.Serialize(Outline(Paragraphs, "a", a)))!;
         var unresolved = OutlineDiff.Compare(restored, restored);
         // Neither side kept its bindings: one outline-level item, not one per heading.
-        Assert.Single(unresolved.Differences, d => d.Kind == "EVIDENCE_MISSING" && d.Uncertain);
+        var missing = Assert.Single(unresolved.Differences, d => d.Kind == "EVIDENCE_MISSING" && d.Uncertain);
+        Assert.Single(missing.Details);
+        Assert.Equal("Same", missing.Details[0].NewText);
+        Assert.Equal("BINDING_UNRESOLVED", missing.Details[0].Kind);
         Assert.DoesNotContain(unresolved.Differences, d => d.Kind is "BINDING_UNRESOLVED" or "BOUNDARY_UNRESOLVED");
     }
 
@@ -247,6 +291,10 @@ public sealed class OutlineDiffTests
         var result = OutlineDiff.Compare(Outline(Paragraphs, "a", flat), Outline(Paragraphs, "a", shifted));
         var shift = Assert.Single(result.Differences, d => d.Kind == "LEVEL_SHIFT");
         Assert.Equal(1, shift.NewLevel);
+        Assert.True(shift.Uncertain);
+        Assert.Equal(3, shift.Details.Count);
+        Assert.All(shift.Details, d => { Assert.Equal("LEVEL", d.Kind); Assert.NotNull(d.NewLocation); });
+        Assert.Equal(1, result.SameHeadings);
         Assert.DoesNotContain(result.Differences, d => d.Kind == "LEVEL");
     }
 

@@ -44,8 +44,9 @@ public sealed class OutlineApprovals(string root)
             p is not null && !string.IsNullOrWhiteSpace(p.SourceId) && p.Span is not null && p.OriginalText is not null &&
             p.Span.Start >= 0 && p.Span.End > p.Span.Start && p.Span.End <= p.OriginalText.Length &&
             !SplitsSurrogate(p.OriginalText, p.Span.Start) && !SplitsSurrogate(p.OriginalText, p.Span.End)) &&
-        ValidSpan(parts[0].OriginalText, h.HeadingSpan) && (h.InlineBody is null || h.InlineBodySpan is not null) &&
-        (h.InlineBodySpan is null || ValidSpan(parts[0].OriginalText, h.InlineBodySpan));
+        ValidSpan(parts[0].OriginalText, h.HeadingSpan) && parts[0].Span == h.HeadingSpan &&
+        (h.InlineBodySpan is null ? h.InlineBody is null : ValidSpan(parts[0].OriginalText, h.InlineBodySpan) &&
+            h.HeadingSpan!.End <= h.InlineBodySpan.Start && h.InlineBody == parts[0].OriginalText[h.InlineBodySpan.Start..h.InlineBodySpan.End]);
 
     static IReadOnlyList<OutlineDecision> Applicable(StoredOutline outline, IReadOnlyList<OutlineDecision> decisions)
     {

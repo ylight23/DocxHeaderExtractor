@@ -22,6 +22,8 @@ public sealed record OutlineDifference(string Kind, string? OldLocation, string?
     public TextOffsetSpan? NewInlineBodySpan { get; init; }
     public IReadOnlyList<HeadingSourcePart>? OldSourceParts { get; init; }
     public IReadOnlyList<HeadingSourcePart>? NewSourceParts { get; init; }
+    /// <summary>Individual differences retained inside a display group; no decision is applied to them.</summary>
+    public IReadOnlyList<OutlineDifference> Details { get; init; } = [];
     /// <summary>ContextChanged only measures nearby paragraph signatures; style, numbering and tool evidence are not verified here.</summary>
     public bool ContextEvidenceVerified => false;
 }
@@ -68,8 +70,8 @@ public static class OutlineDiff
         static bool Valid(string s, TextOffsetSpan span) => span.Start >= 0 && span.End > span.Start && span.End <= s.Length &&
             !(span.Start > 0 && span.Start < s.Length && char.IsHighSurrogate(s[span.Start - 1]) && char.IsLowSurrogate(s[span.Start])) &&
             !(span.End > 0 && span.End < s.Length && char.IsHighSurrogate(s[span.End - 1]) && char.IsLowSurrogate(s[span.End]));
-        return Valid(text, h.HeadingSpan) && (h.InlineBody is null || h.InlineBodySpan is not null) &&
-            (h.InlineBodySpan is null || Valid(text, h.InlineBodySpan));
+        return Valid(text, h.HeadingSpan) && parts[0].Span == h.HeadingSpan && (h.InlineBodySpan is null ? h.InlineBody is null : Valid(text, h.InlineBodySpan) &&
+            h.HeadingSpan.End <= h.InlineBodySpan.Start && h.InlineBody == text[h.InlineBodySpan.Start..h.InlineBodySpan.End]);
     }
 
     public static OutlineComparison Compare(StoredOutline old, StoredOutline next, IReadOnlySet<string>? approvedOld = null)
@@ -140,6 +142,7 @@ public static class OutlineDiff
                 var a = Compact(o.Text); var b = Compact(n.Text);
                 var kinds = new List<string>();
                 if (a != b) kinds.Add(a.StartsWith(b, StringComparison.Ordinal) ? "SPLIT" : b.StartsWith(a, StringComparison.Ordinal) ? "MERGED" : "TEXT");
+                else if (!StringComparer.Ordinal.Equals(o.Text, n.Text)) kinds.Add("TEXT_FORMAT");
                 if (!evidence) { }
                 else if (!ValidBoundary(o) || !ValidBoundary(n)) kinds.Add("BOUNDARY_UNRESOLVED");
                 else if (o.HeadingSpan != n.HeadingSpan || o.InlineBodySpan != n.InlineBodySpan) kinds.Add("BOUNDARY");
@@ -180,15 +183,19 @@ public static class OutlineDiff
         int? shift = common is not null && common.Count() >= 3 && 3 * common.Count() >= 2 * leveled.Count ? common.Key : null;
         foreach (var p in pairs)
         {
-            var kinds = shift is { } d && p.N.Level - p.O.Level == d ? p.Kinds.Where(k => k != "LEVEL").ToList() : p.Kinds;
-            if (kinds.Count == 0) same++;
+            var groupedLevel = shift is { } d && p.N.Level - p.O.Level == d && p.Kinds.Contains("LEVEL");
+            var kinds = groupedLevel ? p.Kinds.Where(k => k != "LEVEL").ToList() : p.Kinds;
+            if (kinds.Count == 0 && !groupedLevel && evidence) same++;
             foreach (var k in kinds) differences.Add(Item(k, p.O, p.N, p.Oi, p.Ni));
         }
         if (shift is { } delta)
-            differences.Add(new("LEVEL_SHIFT", null, null, $"{common!.Count()} heading", null, 0, delta, null, null, false, false, false));
+            differences.Add(new("LEVEL_SHIFT", null, null, $"{common!.Count()} heading", null, 0, delta, null, null, false, false, true)
+            { Details = pairs.Where(p => p.N.Level - p.O.Level == delta && p.Kinds.Contains("LEVEL"))
+                .Select(p => Item("LEVEL", p.O, p.N, p.Oi, p.Ni)).ToArray() });
         if (!evidence && (old.Headings.Count > 0 || next.Headings.Count > 0))
             differences.Add(new("EVIDENCE_MISSING", null, null, oldEvidence ? null : "outline cũ không có source parts",
-                newEvidence ? null : "outline mới không có source parts", null, null, null, null, false, false, true));
+                newEvidence ? null : "outline mới không có source parts", null, null, null, null, false, false, true)
+            { Details = pairs.Select(p => Item("BINDING_UNRESOLVED", p.O, p.N, p.Oi, p.Ni)).ToArray() });
         var changed = Math.Max(next.Paragraphs.Count - newToOld.Count, old.Paragraphs.Count - oldToNew.Count);
         return new OutlineComparison(differences.OrderBy(d => d.NewLocation is { } l && newIndex.TryGetValue(l, out var i) ? i : int.MaxValue).ToList(), same, changed);
     }

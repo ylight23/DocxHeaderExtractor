@@ -41,8 +41,13 @@ internal static class AdminOutlineReview
             differences = diff?.Differences.Select(d => new
             {
                 d.Kind, d.OldLocation, d.NewLocation, d.OldText, d.NewText, d.OldLevel, d.NewLevel, d.OldParent, d.NewParent,
-                d.OldApproved, d.ContextChanged, d.Uncertain, newIsHeading = d.NewLocation is { } l && headingAt.Contains(l),
+                d.OldApproved, d.ContextChanged, d.ContextEvidenceVerified, d.Uncertain, d.OldHeadingSpan, d.NewHeadingSpan,
+                d.OldInlineBodySpan, d.NewInlineBodySpan, newIsHeading = d.NewLocation is { } l && headingAt.Contains(l),
                 context = Context(d.NewLocation),
+                details = d.Details.Select(c => new { c.Kind, c.OldLocation, c.NewLocation, c.OldText, c.NewText, c.OldLevel, c.NewLevel,
+                    c.OldParent, c.NewParent, c.OldApproved, c.ContextChanged, c.ContextEvidenceVerified, c.Uncertain,
+                    c.OldHeadingSpan, c.NewHeadingSpan, c.OldInlineBodySpan, c.NewInlineBodySpan,
+                    newIsHeading = c.NewLocation is { } cl && headingAt.Contains(cl), context = Context(c.NewLocation) }),
             }),
             headings = current.Headings.OrderBy(h => h.Index).Select(h => new { h.StableId, h.Level, h.Text, bound = h.ValidatedSourcePartCount > 0 }),
         };
