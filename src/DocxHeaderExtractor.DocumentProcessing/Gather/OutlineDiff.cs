@@ -1,6 +1,8 @@
 using DocxHeaderExtractor.DocumentProcessing.Changes;
 using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Contracts.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Gather;
 
@@ -26,6 +28,8 @@ public sealed record OutlineDifference(string Kind, string? OldLocation, string?
     public IReadOnlyList<OutlineDifference> Details { get; init; } = [];
     /// <summary>ContextChanged only measures nearby paragraph signatures; style, numbering and tool evidence are not verified here.</summary>
     public bool ContextEvidenceVerified => false;
+    /// <summary>Ordered paragraph-signature hash for the direct section: CHANGED, UNCHANGED, or UNAVAILABLE. This is not proof of complete context.</summary>
+    public string SectionSignal { get; init; } = "UNAVAILABLE";
 }
 
 /// <summary>The differences, how many headings are the same on both sides, and how many paragraphs changed between the two files.</summary>
@@ -106,6 +110,65 @@ public static class OutlineDiff
         string? NewLocationOf(string? oldLocation) =>
             oldLocation is not null && oldIndex.TryGetValue(oldLocation, out var o) && oldToNew.TryGetValue(o, out var n) ? next.Paragraphs[n].Location : null;
 
+        // This is a direct-section fingerprint, not an approved outline or a model-evidence cache. Refuse to infer section boundaries
+        // when any heading is unbound, duplicated, or lacks its source-bound span. The next heading must map to the same boundary.
+        var oldBoundaries = old.Headings.Where(h => h.StableId is not null && oldHeadings.ContainsKey(h.StableId))
+            .OrderBy(h => oldIndex[h.StableId!]).ToArray();
+        var newBoundaries = next.Headings.Where(h => h.StableId is not null && newHeadings.ContainsKey(h.StableId))
+            .OrderBy(h => newIndex[h.StableId!]).ToArray();
+        bool validOutlines = oldBoundaries.Length == old.Headings.Count && newBoundaries.Length == next.Headings.Count
+            && oldBoundaries.All(ValidBoundary) && newBoundaries.All(ValidBoundary);
+        var oldBoundaryIndex = oldBoundaries.Select((h, i) => (h.StableId!, i)).ToDictionary(x => x.Item1, x => x.i, StringComparer.Ordinal);
+        var newBoundaryIndex = newBoundaries.Select((h, i) => (h.StableId!, i)).ToDictionary(x => x.Item1, x => x.i, StringComparer.Ordinal);
+        bool SameBinding(HeadingRecord a, HeadingRecord b) => ValidBoundary(a) && ValidBoundary(b)
+            && a.SourceParts!.Count == b.SourceParts!.Count && a.HeadingSpan == b.HeadingSpan && a.InlineBodySpan == b.InlineBodySpan
+            && a.SourceParts.Select((p, i) => NewLocationOf(p.SourceId) == b.SourceParts[i].SourceId && p.Span == b.SourceParts[i].Span
+                && p.OriginalText == b.SourceParts[i].OriginalText).All(x => x);
+        static string SectionHash(IReadOnlyList<StoredParagraph> paragraphs, int start, int end)
+        {
+            using var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
+            for (var i = start; i < end; i++)
+            {
+                var bytes = Encoding.UTF8.GetBytes(paragraphs[i].Signature);
+                hash.AppendData(BitConverter.GetBytes(bytes.Length));
+                hash.AppendData(bytes);
+            }
+            return Convert.ToHexString(hash.GetHashAndReset());
+        }
+        static bool PartsWithin(HeadingRecord heading, IReadOnlyDictionary<string, int> indexes, int start, int end)
+        {
+            var previous = start - 1;
+            foreach (var part in heading.SourceParts!)
+            {
+                if (part.SourceId is null || !indexes.TryGetValue(part.SourceId, out var at) || at < start || at >= end || at <= previous
+                    || part.OriginalText is null || part.Span is null || part.Span.Start < 0 || part.Span.End <= part.Span.Start
+                    || part.Span.End > part.OriginalText.Length) return false;
+                previous = at;
+            }
+            return true;
+        }
+        string SectionSignal(HeadingRecord? a, HeadingRecord? b, int? oi, int? ni)
+        {
+            if (!validOutlines || a?.StableId is not { } al || b?.StableId is not { } bl || oi is null || ni is null
+                || Repeated(oi, ni) || !oldToNew.TryGetValue(oi.Value, out var mapped) || mapped != ni || !SameBinding(a, b)
+                || !oldBoundaryIndex.TryGetValue(al, out var ap) || !newBoundaryIndex.TryGetValue(bl, out var bp)) return "UNAVAILABLE";
+            var hasOldNext = ap + 1 < oldBoundaries.Length;
+            var hasNewNext = bp + 1 < newBoundaries.Length;
+            if (hasOldNext != hasNewNext) return "UNAVAILABLE";
+            var oldEnd = old.Paragraphs.Count;
+            var newEnd = next.Paragraphs.Count;
+            if (hasOldNext)
+            {
+                var oldNext = oldBoundaries[ap + 1]; var newNext = newBoundaries[bp + 1];
+                oldEnd = oldIndex[oldNext.StableId!]; newEnd = newIndex[newNext.StableId!];
+                if (Repeated(oldEnd, newEnd) || !oldToNew.TryGetValue(oldEnd, out var endMapped) || endMapped != newEnd
+                    || !SameBinding(oldNext, newNext)) return "UNAVAILABLE";
+            }
+            if (oldEnd <= oi || newEnd <= ni || !PartsWithin(a, oldIndex, oi.Value, oldEnd)
+                || !PartsWithin(b, newIndex, ni.Value, newEnd)) return "UNAVAILABLE";
+            return SectionHash(old.Paragraphs, oi.Value, oldEnd) == SectionHash(next.Paragraphs, ni.Value, newEnd) ? "UNCHANGED" : "CHANGED";
+        }
+
         var differences = new List<OutlineDifference>();
         var same = 0;
         var handledNew = new HashSet<string>(StringComparer.Ordinal);
@@ -116,7 +179,7 @@ public static class OutlineDiff
             ni is { } c ? ChangedNear(c) : oi is { } d && oldToNew.TryGetValue(d, out var m) ? ChangedNear(m) : true,
             Repeated(oi, ni) || kind is "PARENT_UNRESOLVED" or "BOUNDARY_UNRESOLVED" or "BINDING_UNRESOLVED" or "SPLIT" or "MERGED")
         { OldHeadingSpan = o?.HeadingSpan, NewHeadingSpan = n?.HeadingSpan, OldInlineBodySpan = o?.InlineBodySpan, NewInlineBodySpan = n?.InlineBodySpan,
-            OldSourceParts = o?.SourceParts, NewSourceParts = n?.SourceParts };
+            OldSourceParts = o?.SourceParts, NewSourceParts = n?.SourceParts, SectionSignal = SectionSignal(o, n, oi, ni) };
 
         foreach (var h in old.Headings.Where(h => h.StableId is null || !oldIndex.ContainsKey(h.StableId) || !oldHeadings.ContainsKey(h.StableId)))
             differences.Add(new("UNBOUND_OLD", h.StableId, null, h.Text, null, h.Level, null, null, null, false, true, true)

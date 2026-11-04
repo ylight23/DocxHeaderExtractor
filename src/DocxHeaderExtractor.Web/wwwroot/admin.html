@@ -245,11 +245,15 @@ function updateMain() {
   btn.textContent = '✦ TỔNG HỢP';
   btn.disabled = !ready;
   const n = Object.keys(choices).length;
-  $('stHint').textContent = run && runKey === filesKey() && n ? `Bấm TỔNG HỢP để ghi bản mới theo ${n} quyết định` : '';
+  $('stHint').textContent = run && runKey === filesKey() && run.targetReviewRequired
+    ? (run.documents?.find(d => d.role === 'target')?.outlineReview
+      ? 'Cần duyệt đủ outline đích, rồi bấm TỔNG HỢP để ghép lại trước khi xuất.'
+      : 'Chưa có outline đích có thể duyệt: bật lưu outline và trích lại; outline JSON tải lên chưa được xác minh.')
+    : run && runKey === filesKey() && n ? `Bấm TỔNG HỢP để ghi bản mới theo ${n} quyết định` : '';
 }
 $('run').addEventListener('click', async () => {
   if (controller) { controller.abort(); return; }
-  if (run && runKey === filesKey() && Object.keys(choices).length) await applyDecisions();
+  if (run && !run.targetReviewRequired && runKey === filesKey() && Object.keys(choices).length) await applyDecisions();
   else await gather();
 });
 
@@ -308,7 +312,7 @@ async function handle(evt, key) {
     versions = [];
     render(evt);
     await addVersion(evt.download, 'Tổng hợp theo chuỗi heading');
-    setState('Đã tổng hợp');
+    setState(evt.targetReviewRequired ? 'Xem trước — cần duyệt đủ outline đích rồi tổng hợp lại' : 'Đã tổng hợp');
   }
 }
 
@@ -569,7 +573,7 @@ function render(r) {
   $('modelChip').className = 'chip ' + (r.modelClassified ? 'acc' : '');
   $('applyResult').classList.add('hidden');
   $('decideBar').classList.toggle('hidden', !r.uncertain.length);
-  $('useModel').disabled = !r.modelClassified;
+  $('useModel').disabled = !r.modelClassified || r.targetReviewRequired;
   $('uncertainList').innerHTML = r.uncertain.length ? r.uncertain.map((u, idx) => {
     const [kindLabel, kindHelp] = KIND[u.kind] || [u.kind, ''];
     const v = u.verdict;
@@ -581,17 +585,19 @@ function render(r) {
     }
     const candidates = u.candidates.map((c, i) => `<details${i === 0 ? ' open' : ''}><summary>${i}. ${esc(c.heading)} <span class="src">${esc(c.location)}</span></summary>` +
       (c.content.length ? '<ul>' + c.content.map(x => `<li>${esc(x)}</li>`).join('') + '</ul>' : '<p class="note">(heading chưa có nội dung trực tiếp)</p>') + '</details>').join('');
+    const locked = r.targetReviewRequired ? ' disabled' : '';
+    const noCandidate = r.targetReviewRequired || !u.candidates.length ? ' disabled' : '';
     return `<div class="card" data-card="${idx}">
       <div class="head"><span class="chip warn" title="${esc(kindHelp)}">${esc(kindLabel)}</span><span class="title">${esc(u.sourceHeading)}</span><span class="src">${esc(u.source)}</span></div>
       <div class="meta">${u.sourceParent ? 'Trong mục nguồn: ' + esc(u.sourceParent) + ' · ' : ''}${esc(u.reason)}</div>
       ${verdict}
       <div class="decide" role="radiogroup" aria-label="Quyết định của người duyệt">
         <b>Quyết định:</b>
-        <label><input type="radio" name="d${idx}" value="" checked> Chưa quyết</label>
-        <label><input type="radio" name="d${idx}" value="MERGE"${u.candidates.length ? '' : ' disabled'}> Gộp vào</label>
-        <select data-candidate="${idx}"${u.candidates.length ? '' : ' disabled'}>${u.candidates.map((c, i) => `<option value="${i}">${i}. ${esc(c.heading)}</option>`).join('')}</select>
-        <label><input type="radio" name="d${idx}" value="NEW"> Tạo heading mới${u.newHeadingParent ? ' dưới “' + esc(u.newHeadingParent) + '”' : ''}</label>
-        <label><input type="radio" name="d${idx}" value="SKIP"> Không thêm</label>
+        <label><input type="radio" name="d${idx}" value="" checked${locked}> Chưa quyết</label>
+        <label><input type="radio" name="d${idx}" value="MERGE"${noCandidate}> Gộp vào</label>
+        <select data-candidate="${idx}"${noCandidate}>${u.candidates.map((c, i) => `<option value="${i}">${i}. ${esc(c.heading)}</option>`).join('')}</select>
+        <label><input type="radio" name="d${idx}" value="NEW"${locked}> Tạo heading mới${u.newHeadingParent ? ' dưới “' + esc(u.newHeadingParent) + '”' : ''}</label>
+        <label><input type="radio" name="d${idx}" value="SKIP"${locked}> Không thêm</label>
       </div>
       <div class="cols">
         <div class="box"><h4>Nội dung nguồn đang giữ lại (${u.facts.length})</h4>${facts(u.facts)}</div>
@@ -637,7 +643,8 @@ function renderReview(documents) {
       const choicesHtml = !loc ? '<span class="note">chỉ để xem</span>'
         : x.newIsHeading ? `<label><input type="radio" name="${name}" value="HEADING"> Đúng là heading</label> <label><input type="radio" name="${name}" value="NOT_HEADING"> Không phải heading</label>`
         : `<label><input type="radio" name="${name}" value="NOT_HEADING"> Đúng: không phải heading</label>`;
-      const flags = [x.uncertain ? 'chưa chắc' : '', x.contextChanged ? 'văn bản quanh đó đổi' : '',
+      const section = x.sectionSignal === 'CHANGED' ? 'nội dung trực tiếp của mục đổi' : x.sectionSignal === 'UNCHANGED' ? 'dấu vân tay mục chưa đổi (chưa xác minh toàn bộ)' : 'chưa xác định được dấu vân tay mục';
+      const flags = [x.uncertain ? 'chưa chắc' : '', x.contextChanged ? 'văn bản quanh đó đổi' : '', section,
         !x.contextEvidenceVerified ? 'chưa xác minh đủ ngữ cảnh' : '', x.oldApproved ? 'bản cũ đã duyệt' : ''].filter(Boolean);
       const ctx = x.context ? `<div class="note">${x.context.before ? '… ' + esc(x.context.before) + '<br>' : ''}<b>${esc(x.context.text)}</b>${x.context.after ? '<br>' + esc(x.context.after) + ' …' : ''}</div>` : '';
       const showSpan = s => s ? `[${esc(s.start)}, ${esc(s.end)})` : 'chưa rõ';

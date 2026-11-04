@@ -14,8 +14,9 @@ public sealed class AdminRunStore
 
     readonly ConcurrentDictionary<Guid, Entry> entries = new();
 
+    public sealed record TargetApproval(string SourceSha256, string ConfigKey, string OutlineSha256);
     public sealed record Entry(byte[] Target, string TargetName, IReadOnlyList<GatherSection> Decided, IReadOnlyList<GatherUncertain> Uncertain,
-        DateTimeOffset Created);
+        DateTimeOffset Created, TargetApproval? ReviewedTargetAtRun = null);
 
     public void Put(Guid runId, Entry entry)
     {

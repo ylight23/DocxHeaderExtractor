@@ -10,6 +10,47 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class OutlineDiffTests
 {
+    [Fact]
+    public void Section_signal_detects_a_distant_edit_without_changing_the_window_flag()
+    {
+        var old = Enumerable.Range(0, 60).Select(i => $"paragraph {i}").ToArray();
+        var changed = old.ToArray(); changed[30] = "changed body";
+        var before = Outline(old, "a", H(0, old[0], 1), H(50, old[50], 1));
+        var after = Outline(changed, "b", H(0, old[0], 2), H(50, old[50], 1));
+        var difference = Assert.Single(OutlineDiff.Compare(before, after).Differences, d => d.Kind == "LEVEL");
+        Assert.False(difference.ContextChanged);
+        Assert.Equal("CHANGED", difference.SectionSignal);
+        Assert.False(difference.ContextEvidenceVerified);
+    }
+
+    [Fact]
+    public void Adjacent_section_change_does_not_claim_direct_section_changed()
+    {
+        var old = Enumerable.Range(0, 20).Select(i => $"paragraph {i}").ToArray();
+        var changed = old.ToArray(); changed[6] = "changed adjacent body";
+        var before = Outline(old, "a", H(0, old[0], 1), H(5, old[5], 1));
+        var after = Outline(changed, "b", H(0, old[0], 2), H(5, old[5], 1));
+        var difference = Assert.Single(OutlineDiff.Compare(before, after).Differences, d => d.Kind == "LEVEL");
+        Assert.True(difference.ContextChanged);
+        Assert.Equal("UNCHANGED", difference.SectionSignal);
+        Assert.False(difference.ContextEvidenceVerified);
+    }
+
+    [Fact]
+    public void Section_signal_is_unavailable_if_the_next_boundary_changes_or_binding_is_missing()
+    {
+        var old = Enumerable.Range(0, 20).Select(i => $"paragraph {i}").ToArray();
+        var changed = old.ToArray(); changed[5] = "changed heading";
+        var before = Outline(old, "a", H(0, old[0], 1), H(5, old[5], 1));
+        var after = Outline(changed, "b", H(0, old[0], 2), H(5, changed[5], 1));
+        var difference = Assert.Single(OutlineDiff.Compare(before, after).Differences, d => d.Kind == "LEVEL");
+        Assert.Equal("UNAVAILABLE", difference.SectionSignal);
+        var missing = H(5, old[5], 1); missing.HeadingSpan = null;
+        after = Outline(old, "b", H(0, old[0], 2), missing);
+        difference = Assert.Single(OutlineDiff.Compare(before, after).Differences, d => d.Kind == "LEVEL");
+        Assert.Equal("UNAVAILABLE", difference.SectionSignal);
+    }
+
     static readonly string[] Paragraphs = ["BÁO CÁO", "Hoạt động tháng 9", "Truyền thông:", "Đăng 5 bài.", "Công tác xã hội:", "Hỗ trợ 10 người.", "Quỹ:", "Thu 2 triệu."];
 
     static HeadingRecord H(int index, string text, int level) => new() { Index = index, Level = level, Text = text, StableId = $"body[1]/p[{index + 1}]", HeadingSpan = new TextOffsetSpan(0, text.Length),
