@@ -2,256 +2,282 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>dhx admin — Tổng hợp văn bản</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tổng hợp văn bản — admin</title>
 <style>
-  :root {
-    --bg: #f6f7f9; --panel: #fff; --ink: #16181d; --muted: #6b7280; --line: #e3e6ea;
-    --accent: #2f6feb; --ok: #1a7f4b; --warn: #a4620a; --bad: #b3261e;
-    --okbg: #e6f4ec; --accbg: #e8effd; --warnbg: #fbf1e0; --badbg: #fceceb;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #14161a; --panel: #1c1f25; --ink: #e6e8ec; --muted: #9aa1ad; --line: #2c313a;
-      --accent: #6b9bff; --ok: #4cc38a; --warn: #d99a3e; --bad: #f2726a;
-      --okbg: #17301f; --accbg: #17233c; --warnbg: #302615; --badbg: #33191a;
-    }
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 "Segoe UI", system-ui, -apple-system, sans-serif; }
-  .wrap { padding: 12px 14px 32px; }
-  .appbar { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin: 0 0 12px; }
-  .appbrand { font-size: 12px; font-weight: 750; letter-spacing: .11em; }
-  .appcontext { color: var(--muted); font-size: 12px; }
-  .appcontext a { color: var(--accent); }
-  .app { display: grid; grid-template-columns: minmax(320px, 400px) minmax(0, 1fr); gap: 12px; align-items: start; }
-  .stack { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-  .stack-left { position: sticky; top: 12px; max-height: calc(100vh - 24px); overflow-y: auto; }
-  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
-  .panel h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 10px; font-weight: 600;
-              display: flex; align-items: center; flex-wrap: wrap; gap: 7px; }
-  .panel h3 { font-size: 14px; margin: 14px 0 6px; }
-  label.f { display: block; font-size: 12.5px; color: var(--muted); margin: 10px 0 4px; }
-  input[type=file] { width: 100%; font: inherit; font-size: 13px; }
-  .checks { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; font-size: 13.5px; }
-  .checks label { display: flex; align-items: center; gap: 7px; cursor: pointer; }
-  button { margin-top: 12px; padding: 9px 20px; border: 0; border-radius: 7px; background: var(--accent); color: #fff;
-           font: inherit; font-weight: 600; font-size: 14px; cursor: pointer; }
-  button:disabled { opacity: .5; cursor: default; }
-  button.secondary { background: var(--bg); color: var(--ink); border: 1px solid var(--line); }
-  .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-  .cancel-button { background: var(--badbg); color: var(--bad); }
-  .seg { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; }
-  .seg button { margin: 0; padding: 5px 10px; font-size: 12px; border-radius: 5px; }
-  .seg button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .devbar { display: flex; align-items: center; gap: 9px; }
-  .devdot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); }
-  .devdot.live { background: var(--accent); box-shadow: 0 0 0 4px var(--accbg); }
-  .devdot.done { background: var(--ok); }
-  .devdot.error { background: var(--bad); }
-  #devState { font-weight: 650; font-size: 13px; }
-  #devElapsed { margin-left: auto; color: var(--muted); font: 12px ui-monospace, Consolas, monospace; }
-  .runbar { position: sticky; top: 12px; z-index: 2; }
-  .pane { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-  .hidden { display: none !important; }
-  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
-  .tile { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 11px 13px; }
-  .tile .v { font-size: 21px; font-weight: 650; font-variant-numeric: tabular-nums; }
-  .tile .k { font-size: 11.5px; color: var(--muted); }
-  .tile.warn .v { color: var(--warn); }
-  .chip { display: inline-flex; align-items: center; padding: 2px 9px; border-radius: 999px; font-size: 11.5px; font-weight: 600;
-          background: var(--bg); border: 1px solid var(--line); color: var(--muted); }
-  .chip.ok { background: var(--okbg); color: var(--ok); border-color: transparent; }
-  .chip.acc { background: var(--accbg); color: var(--accent); border-color: transparent; }
-  .chip.warn { background: var(--warnbg); color: var(--warn); border-color: transparent; }
-  .chip.bad { background: var(--badbg); color: var(--bad); border-color: transparent; }
-  .card { border: 1px solid var(--line); border-left: 3px solid var(--warn); border-radius: 8px; padding: 10px 12px; background: var(--panel); }
-  .card + .card { margin-top: 10px; }
-  .card .head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-  .card .title { font-weight: 650; }
-  .card .meta { color: var(--muted); font-size: 12.5px; margin-top: 3px; }
-  .verdict { margin-top: 8px; padding: 8px 10px; border-radius: 6px; background: var(--bg); font-size: 13.5px; }
-  .verdict b { margin-right: 6px; }
-  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
-  .box { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; font-size: 13px; min-width: 0; }
-  .box h4 { margin: 0 0 4px; font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
-  .box ul { margin: 0; padding-left: 18px; }
-  .box li { overflow-wrap: anywhere; }
-  .src { color: var(--muted); font: 11px ui-monospace, Consolas, monospace; }
-  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-  th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600;
-       padding: 0 8px 6px; border-bottom: 1px solid var(--line); }
-  td { padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
-  .note { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; }
-  .err { background: var(--badbg); color: var(--bad); padding: 11px 13px; border-radius: 7px; font-size: 13.5px; }
-  .lvl { color: var(--muted); font-size: 12px; margin-right: 6px; font-variant-numeric: tabular-nums; }
-  details summary { cursor: pointer; }
-  .decide { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; margin-top: 8px; padding: 8px 10px; border-radius: 6px;
-            border: 1px dashed var(--line); font-size: 13.5px; }
-  .decide label { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
-  .decide select { padding: 3px 6px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); color: var(--ink); font: inherit; font-size: 13px; max-width: 100%; }
-  .card.decided { border-left-color: var(--ok); }
-  .card.skipped { border-left-color: var(--muted); opacity: .8; }
-  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 0 0 10px; }
-  .toolbar button { margin: 0; }
-  #applyResult ul { margin: 6px 0 0; padding-left: 18px; font-size: 13.5px; }
-  #log { font: 12.5px/1.6 ui-monospace, Consolas, monospace; color: var(--muted); background: var(--bg); border: 1px solid var(--line);
-         border-radius: 7px; padding: 11px 13px; min-height: 200px; max-height: 60vh; overflow-y: auto; white-space: pre-wrap; }
-  @media (max-width: 900px) {
-    .app { grid-template-columns: minmax(0, 1fr); }
-    .stack-left, .runbar { position: static; max-height: none; }
-    .cols { grid-template-columns: minmax(0, 1fr); }
-  }
+:root {
+  --bg: #e9edf3; --card: #ffffff; --soft: #f7f9fc; --line: #d5dce5; --ink: #26344a; --muted: #6b7a90; --accent: #2563eb; --accent-dark: #1d4ed8;
+  --accent-soft: #dbeafe; --ins: #dcfce7; --ins-line: #16a34a; --new: #fef3c7; --new-line: #d97706; --warn: #b45309; --bad: #b91c1c; --viewer: #e6eaf0;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.45 Arial, sans-serif; }
+.app { margin: 18px auto; max-width: 1480px; background: var(--card); border: 1px solid var(--line); border-radius: 13px; overflow: hidden; box-shadow: 0 8px 35px #24304712; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 26px; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 700; }
+.logo { display: grid; place-items: center; background: var(--accent); color: #fff; width: 42px; height: 42px; border-radius: 9px; font-size: 24px; }
+.sub { font-size: 12px; font-weight: 400; color: var(--muted); margin-top: 4px; }
+.action { background: var(--accent); color: #fff; border: 0; padding: 14px 30px; border-radius: 9px; font-weight: 700; font-size: 14px; cursor: pointer; letter-spacing: .3px; }
+.action:hover:not(:disabled) { background: var(--accent-dark); }
+.action:disabled { background: #94a3b8; cursor: not-allowed; }
+.action.cancel { background: var(--bad); }
+.status { display: flex; gap: 30px; flex-wrap: wrap; align-items: center; padding: 12px 26px; color: var(--muted); border-bottom: 1px solid var(--line); font-size: 12px; }
+.status b { color: #334155; }
+.status .grow { flex: 1; }
+.hintline { color: var(--accent-dark); font-weight: 700; }
+details.options { padding: 10px 26px; border-bottom: 1px solid var(--line); background: var(--soft); font-size: 12px; }
+details.options summary { cursor: pointer; color: var(--muted); }
+.checks { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 10px 0 4px; }
+.checks label { display: flex; gap: 6px; align-items: flex-start; }
+.err { margin: 0 26px 0; padding: 10px 14px; border: 1px solid #fecaca; background: #fef2f2; color: var(--bad); border-radius: 8px; margin-top: 12px; }
+.hidden { display: none !important; }
+.workspace { display: grid; grid-template-columns: 1fr 1fr; }
+.side { min-width: 0; padding: 18px 22px 22px; background: var(--soft); }
+.side:first-child { border-right: 1px solid var(--line); }
+.side-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px; }
+.side-head strong { font-size: 14px; letter-spacing: .3px; }
+.small { color: var(--muted); font-size: 11px; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; min-height: 36px; align-items: center; }
+.tab { border: 1px solid #d3dce7; background: #fff; border-radius: 7px; padding: 9px 13px; color: #475569; font-size: 12px; cursor: pointer; }
+.tab.active { background: #e0efff; border-color: #93c5fd; color: #1e40af; font-weight: 700; }
+.tab.pick { border-style: dashed; color: var(--accent-dark); }
+.tab.pick input { display: none; }
+.views { margin-left: auto; display: flex; gap: 4px; }
+.views .tab { padding: 6px 10px; font-size: 11px; }
+.viewer { background: var(--viewer); border-radius: 8px; padding: 14px; height: 74vh; min-height: 520px; overflow: auto; position: relative; }
+.viewer .empty { color: var(--muted); text-align: center; margin-top: 120px; font-size: 13px; }
+.viewer iframe { width: 100%; height: 100%; border: 0; background: #fff; border-radius: 4px; }
+/* docx-preview pages */
+.viewer .docx-wrapper { background: transparent; padding: 0; }
+.viewer .docx-wrapper > section.docx { box-shadow: 0 2px 13px #21304719; margin-bottom: 16px; }
+.viewer section.docx p { cursor: pointer; border-radius: 2px; }
+.viewer section.docx p:hover { background: #eff6ff; }
+/* diff: what the gather inserted into the summary (Track Changes) */
+.viewer ins { background: var(--ins); text-decoration: none; box-shadow: inset 0 -2px 0 var(--ins-line); }
+.viewer del { background: #fee2e2; color: var(--bad); }
+.viewer p.added { box-shadow: -4px 0 0 var(--ins-line); background: #f0fdf4; }
+.viewer p.added.newheading { box-shadow: -4px 0 0 var(--new-line); background: var(--new); }
+.viewer p.added.flagged { box-shadow: -4px 0 0 var(--warn); }
+.viewer p.match, .viewer td.match { outline: 2px solid var(--accent); background: var(--accent-soft) !important; }
+.download { font-size: 11px; color: var(--accent-dark); text-decoration: none; margin-left: 8px; }
+.footer { padding: 14px 25px; border-top: 1px solid var(--line); background: #fff; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; font-size: 12px; }
+.tag { display: inline-flex; align-items: center; gap: 6px; color: #617084; }
+.dot { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+.hint { color: #6b7a90; font-size: 11px; }
+#matchInfo { color: var(--ink); font-size: 12px; }
+.lower { border-top: 1px solid var(--line); }
+.lower-tabs { display: flex; gap: 6px; padding: 12px 22px 0; flex-wrap: wrap; }
+.lower-tabs .tab { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.pane { padding: 16px 22px 24px; }
+.panel h2 { font-size: 15px; margin: 4px 0 10px; }
+.panel h3 { font-size: 13px; margin: 14px 0 6px; }
+.note { color: var(--muted); font-size: 12px; }
+.chip { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; background: #eef2f7; color: #475569; margin-right: 4px; }
+.chip.warn { background: #fef3c7; color: var(--warn); }
+.chip.ok { background: #dcfce7; color: #166534; }
+.chip.acc { background: var(--accent-soft); color: #1e40af; }
+.chip.bad { background: #fee2e2; color: var(--bad); }
+.src { color: var(--muted); font-size: 11px; font-family: Consolas, monospace; }
+.lvl { display: inline-block; min-width: 18px; text-align: center; background: #eef2f7; border-radius: 4px; font-size: 11px; margin-right: 6px; }
+table { border-collapse: collapse; width: 100%; font-size: 12px; }
+th, td { border-bottom: 1px solid #e5e9f0; padding: 6px 8px; text-align: left; vertical-align: top; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.tile { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; background: #fff; }
+.tile .v { font-size: 20px; font-weight: 700; }
+.tile.warn .v { color: var(--warn); }
+.tile .k { font-size: 11px; color: var(--muted); }
+.card { border: 1px solid var(--line); border-radius: 9px; padding: 12px 14px; margin-bottom: 12px; background: #fff; }
+.card.decided { border-color: #86efac; }
+.card.skipped { opacity: .65; }
+.card .head { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.card .title { font-weight: 700; }
+.meta { color: var(--muted); font-size: 12px; margin: 4px 0; }
+.verdict { background: var(--soft); border: 1px solid var(--line); border-radius: 7px; padding: 8px 10px; margin: 8px 0; font-size: 12px; }
+.decide { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; margin: 8px 0; font-size: 12px; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.box { background: var(--soft); border-radius: 7px; padding: 8px 10px; font-size: 12px; }
+.box h4 { margin: 0 0 6px; font-size: 12px; }
+.toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+.linkbtn { background: none; border: 1px solid var(--line); border-radius: 6px; padding: 5px 10px; font-size: 12px; cursor: pointer; color: #334155; }
+input[type=text] { padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px; font-size: 13px; }
+pre#log { white-space: pre-wrap; font-size: 11px; background: var(--soft); border-radius: 7px; padding: 10px; max-height: 360px; overflow: auto; }
+@media (max-width: 900px) { .workspace { grid-template-columns: 1fr; } .side:first-child { border-right: 0; border-bottom: 1px solid var(--line); } .viewer { height: 60vh; } .cols { grid-template-columns: 1fr; } .top { padding: 14px 16px; } .status, details.options { padding-left: 16px; padding-right: 16px; } }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="appbar">
-    <div class="appbrand">DOCUMENT AI · ADMIN TỔNG HỢP</div>
-    <div class="appcontext">Ghép nội dung theo chuỗi heading · <a href="/">trang trích xuất tiêu đề</a></div>
+<div class="app">
+  <header class="top">
+    <div class="brand"><div class="logo">▤</div><div>Tổng hợp văn bản<div class="sub">Đối chiếu văn bản gốc, các nguồn và bản tổng hợp (Track Changes)</div></div></div>
+    <button id="run" class="action" disabled>✦ TỔNG HỢP</button>
   </header>
 
-  <div class="app">
-    <aside class="stack stack-left" aria-label="Đầu vào">
+  <div class="status">
+    <span>Văn bản gốc: <b id="stTarget">chưa chọn</b></span>
+    <span>Nguồn: <b id="stSources">0</b></span>
+    <span>Bản tổng hợp: <b id="stVersions">0</b></span>
+    <span id="stState">Trạng thái: Chưa tổng hợp</span>
+    <span id="stElapsed"></span>
+    <span class="grow"></span>
+    <span class="hintline" id="stHint"></span>
+  </div>
+
+  <details class="options">
+    <summary>Tùy chọn</summary>
+    <div class="checks">
+      <label><input type="checkbox" id="classify" checked> Model phân loại các mục không chắc</label>
+      <label><input type="checkbox" id="noLlm"> Không gọi mô hình (cần đủ outline JSON)</label>
+      <label><input type="checkbox" id="docxReuseSelection"> Dùng lại SELECT/GROUP của file Word không đổi (PLACE vẫn chạy lại)</label>
+      <label><input type="checkbox" id="outlineCache"> Dùng outline đã lưu khi file không đổi; file sửa sẽ trích lại</label>
+      <label>Outline JSON có sẵn (không bắt buộc): <input id="outlines" type="file" accept=".json" multiple></label>
+    </div>
+  </details>
+  <div class="err hidden" id="errBox"></div>
+
+  <div class="workspace">
+    <section class="side">
+      <div class="side-head"><strong>01 · VĂN BẢN GỐC VÀ NGUỒN</strong><span class="small">DOCX · hiển thị như trang Word</span></div>
+      <div class="tabs" id="leftTabs">
+        <span id="leftDocTabs" style="display:contents"></span>
+        <label class="tab pick">📄 Chọn văn bản gốc<input id="target" type="file" accept=".docx,.docm"></label>
+        <label class="tab pick">＋ Thêm nguồn<input id="sources" type="file" accept=".docx,.docm" multiple></label>
+      </div>
+      <div class="tabs"><span class="small" id="leftName"></span>
+        <span class="views"><button class="tab active" data-view="left:word">Word</button><button class="tab" data-view="left:pdf">LibreOffice (PDF)</button></span></div>
+      <div class="viewer" id="leftViewer"><p class="empty">Chọn văn bản gốc (văn bản sẽ nhận nội dung) và các văn bản nguồn.</p></div>
+    </section>
+    <section class="side">
+      <div class="side-head"><strong>02 · VĂN BẢN TỔNG HỢP</strong><span class="small" id="current">Chưa có bản nào</span></div>
+      <div class="tabs" id="rightTabs"></div>
+      <div class="tabs"><span class="small" id="rightName"></span>
+        <span class="views"><button class="tab active" data-view="right:word">Word</button><button class="tab" data-view="right:pdf">LibreOffice (PDF)</button></span></div>
+      <div class="viewer" id="rightViewer"><p class="empty">Bấm TỔNG HỢP để tạo bản tổng hợp. Phần thêm vào được ghi dạng Track Changes.</p></div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <strong>Đối chiếu nội dung</strong>
+    <span class="tag"><span class="dot" style="background:var(--ins)"></span>Đoạn thêm vào</span>
+    <span class="tag"><span class="dot" style="background:var(--new)"></span>Heading mới</span>
+    <span class="tag"><span class="dot" style="background:#fde68a;border:1px solid var(--warn)"></span>Cần xem</span>
+    <span class="tag"><span class="dot" style="background:var(--accent-soft);border:1px solid var(--accent)"></span>Đoạn đang đối chiếu</span>
+    <span class="hint" id="matchInfo">Bấm một đoạn được thêm ở bên phải để thấy đoạn nguồn, hoặc một đoạn nguồn để thấy chỗ nó được ghi.</span>
+  </footer>
+
+  <div class="lower">
+    <div class="lower-tabs">
+      <button class="tab active" data-tab="uncertain">Phần không chắc <span id="uncertainCount"></span></button>
+      <button class="tab" data-tab="review">Duyệt outline</button>
+      <button class="tab" data-tab="summary">Tổng quan</button>
+      <button class="tab" data-tab="extract">Heading đã trích</button>
+      <button class="tab" data-tab="log">Log</button>
+    </div>
+    <div class="pane" id="paneUncertain">
       <section class="panel">
-        <h2>Văn bản</h2>
-        <label class="f" for="target">Văn bản đích (mẫu) — chỉ được sao chép, không bị sửa</label>
-        <input id="target" type="file" accept=".docx,.docm">
-        <label class="f" for="sources">Văn bản nguồn (một hoặc nhiều)</label>
-        <input id="sources" type="file" accept=".docx,.docm" multiple>
-        <label class="f" for="outlines">Outline JSON có sẵn (không bắt buộc; thiếu thì trích bằng pipeline V6)</label>
-        <input id="outlines" type="file" accept=".json" multiple>
-        <div class="checks">
-          <label><input type="checkbox" id="classify" checked> Model phân loại các mục không chắc</label>
-          <label><input type="checkbox" id="noLlm"> Không gọi mô hình (cần đủ outline JSON)</label>
-          <label><input type="checkbox" id="docxReuseSelection"> Dùng lại SELECT/GROUP của file Word không đổi (PLACE vẫn chạy lại)</label>
-          <label><input type="checkbox" id="outlineCache"> Dùng outline đã lưu khi file không đổi; file sửa sẽ trích lại</label>
+        <h2>Phần không chắc — model phân loại <span class="chip" id="modelChip"></span></h2>
+        <p class="note">Mục không chắc không bao giờ được tự ghi. Chọn quyết định cho từng mục rồi bấm TỔNG HỢP để tạo bản tổng hợp tiếp theo.</p>
+        <div class="toolbar hidden" id="decideBar">
+          <button class="linkbtn" id="useModel">Điền theo đề xuất của model</button>
+          <button class="linkbtn" id="clearDecisions">Xóa các lựa chọn</button>
+          <span class="note" id="decideCount"></span>
         </div>
-        <div class="actions">
-          <button id="run" disabled>Tổng hợp</button>
-          <button id="cancelRun" class="cancel-button hidden">Hủy</button>
-        </div>
-        <p class="note">Mục không chắc không bao giờ được ghi vào file. Phân loại của model chỉ là đề xuất để người duyệt quyết định.</p>
+        <div id="applyResult" class="hidden"></div>
+        <div id="uncertainList"><p class="note">Chưa có lượt tổng hợp.</p></div>
       </section>
-    </aside>
-
-    <main class="stack" aria-label="Kết quả">
-      <section class="panel runbar">
-        <div class="devbar"><span id="devDot" class="devdot"></span><span id="devState">Đang chờ</span><span id="devElapsed">0 s</span></div>
-        <div class="seg" role="tablist">
-          <button class="secondary active" data-tab="uncertain">Không chắc <span id="uncertainCount"></span></button>
-          <button class="secondary" data-tab="summary">Tổng hợp</button>
-          <button class="secondary" data-tab="extract">Trích xuất heading</button>
-          <button class="secondary" data-tab="review">Duyệt outline</button>
-          <button class="secondary" data-tab="log">Log</button>
-        </div>
+    </div>
+    <div class="pane hidden" id="paneReview">
+      <section class="panel">
+        <h2>Duyệt outline đã lưu</h2>
+        <p class="note">Chỉ có khi bật "Dùng outline đã lưu". So outline hiện tại với phiên bản lưu trước của cùng tên file. Không bên nào được tự chọn: mỗi lựa chọn được lưu ngay và gắn với đúng outline đang xem.</p>
+        <label class="note" for="reviewer">Người duyệt</label>
+        <input id="reviewer" type="text" placeholder="Tên người duyệt">
+        <div id="reviewList"><p class="note">Chưa có lượt tổng hợp.</p></div>
       </section>
-
-      <div id="errBox" class="panel hidden"><div class="err" id="errText"></div></div>
-
-      <section class="panel hidden" id="overview">
-        <h2>Tổng quan</h2>
-        <div class="tiles" id="tiles"></div>
-        <div class="actions"><button id="download" class="hidden">Tải bản tổng hợp .docx</button></div>
-        <p class="note">Bản tổng hợp là bản sao của văn bản đích; mọi phần thêm là Track Changes. Link tải dùng được một lần. Outline của pipeline chưa được người duyệt.</p>
-      </section>
-
-      <div class="pane" id="paneUncertain">
-        <section class="panel">
-          <h2>Phần không chắc — model phân loại <span class="chip" id="modelChip"></span></h2>
-          <div class="toolbar hidden" id="decideBar">
-            <button class="secondary" id="useModel">Dùng đề xuất của model</button>
-            <button class="secondary" id="clearDecisions">Xóa các lựa chọn</button>
-            <button id="applyDecisions">Ghi bản tổng hợp theo quyết định</button>
-            <span class="note" id="decideCount"></span>
-          </div>
-          <div id="applyResult" class="hidden"></div>
-          <div id="uncertainList"><p class="note">Chưa có lượt tổng hợp.</p></div>
-        </section>
-      </div>
-
-      <div class="pane hidden" id="paneSummary">
-        <section class="panel"><h2>Gộp vào heading có sẵn</h2><div id="merged"></div></section>
-        <section class="panel"><h2>Heading mới</h2><div id="added"></div></section>
-        <section class="panel"><h2>Không thêm vào file — liệt kê đủ</h2><div id="excluded"></div></section>
-        <section class="panel"><h2>Heading đích không nhận thêm gì</h2><div id="unchanged"></div></section>
-      </div>
-
-      <div class="pane hidden" id="paneExtract"><section class="panel"><h2>Heading đã trích</h2><div id="documents"></div></section></div>
-
-      <div class="pane hidden" id="paneReview">
-        <section class="panel">
-          <h2>Duyệt outline đã lưu</h2>
-          <p class="note">Chỉ có khi bật "Dùng outline đã lưu". So outline hiện tại với phiên bản lưu trước của cùng tên file. Không bên nào được tự chọn: quyết định duyệt gắn với đúng outline đang xem.</p>
-          <label class="f" for="reviewer">Người duyệt</label>
-          <input id="reviewer" type="text" placeholder="Tên người duyệt">
-          <div id="reviewList"><p class="note">Chưa có lượt tổng hợp.</p></div>
-        </section>
-      </div>
-
-      <div class="pane hidden" id="paneLog"><section class="panel"><h2>Log</h2><div id="log"></div></section></div>
-    </main>
+    </div>
+    <div class="pane hidden" id="paneSummary">
+      <div class="tiles" id="tiles"></div>
+      <section class="panel"><h2>Gộp vào heading có sẵn</h2><div id="merged"></div></section>
+      <section class="panel"><h2>Heading mới</h2><div id="added"></div></section>
+      <section class="panel"><h2>Không thêm vào file — liệt kê đủ</h2><div id="excluded"></div></section>
+      <section class="panel"><h2>Heading đích không nhận thêm gì</h2><div id="unchanged"></div></section>
+    </div>
+    <div class="pane hidden" id="paneExtract"><section class="panel"><h2>Heading đã trích</h2><div id="documents"></div></section></div>
+    <div class="pane hidden" id="paneLog"><section class="panel"><h2>Log</h2><pre id="log"></pre></section></div>
   </div>
 </div>
 
+<script src="vendor/jszip.min.js"></script>
+<script src="vendor/docx-preview.min.js"></script>
 <script>
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const norm = s => String(s ?? '').replace(/\s+/g, ' ').trim().toLowerCase();
 const KIND = {
   NEAR_NAME: ['Tên gần giống', 'Văn bản đích không có heading này nhưng có heading tên gần giống.'],
   PATH_DIFFERS: ['Khác mục cha', 'Tên heading giống nhưng đường dẫn mục cha khác; cần xác nhận trước khi ghi.'],
   AMBIGUOUS: ['Nhiều chỗ khớp', 'Nhiều heading trong đích cùng chuỗi hoặc cùng tên.'],
   PARENT_UNCERTAIN: ['Mục cha không chắc', 'Heading cha của mục này đang nằm trong nhóm không chắc.'],
+  MOVED: ['Có thể đã chuyển chỗ', 'Heading cùng tên nằm ở vị trí khác trong văn bản đích.'],
 };
 const DECISION = { MERGE: ['Gộp vào', 'ok'], NEW: ['Tạo heading mới', 'acc'], UNSURE: ['Không chắc', 'warn'] };
 const REASON = {
   ALREADY_IN_TARGET_EXACT: 'Đích đã có y hệt', ALREADY_FROM_OTHER_SOURCE: 'Đã lấy từ nguồn khác', BEFORE_FIRST_HEADING: 'Trước heading đầu tiên',
-  DOCUMENT_END_TABLE: 'Bảng kết thúc văn bản (ký tên)', UNPLACED: 'Không xếp được',
+  DOCUMENT_END_TABLE: 'Bảng kết thúc văn bản (ký tên)', DOCUMENT_TITLE: 'Trong phần tiêu đề văn bản', UNPLACED: 'Không xếp được',
 };
 
-let controller = null, timer = null, started = 0, downloadUrl = null;
-let run = null;            // the last result: its runId and uncertain sections
-let choices = {};          // index -> { decision: 'MERGE'|'NEW'|'SKIP', candidate }
+// ---------------- state ----------------
+let controller = null, timer = null, started = 0;
+let run = null;              // last gather result
+let runKey = '';             // the files the result was made from
+let choices = {};            // uncertain index -> { decision, candidate }
+let versions = [];           // [{ label, blob, url, note }]
+let current = -1;            // shown summary version
+let leftTab = 'target';      // 'target' or a source index
+let views = { left: 'word', right: 'word' };
+let factIndex = [];          // [{ text, sources: ['08 body[1]/p[3]'], flags }]
+const pdfCache = new WeakMap();
 
-function sync() { $('run').disabled = !$('target').files.length || !$('sources').files.length || controller !== null; }
-['target', 'sources'].forEach(id => $(id).addEventListener('change', sync));
-$('noLlm').addEventListener('change', () => { $('classify').disabled = $('noLlm').checked; });
+const targetFile = () => $('target').files[0] || null;
+const sourceFiles = () => Array.from($('sources').files);
+const filesKey = () => [targetFile(), ...sourceFiles(), ...$('outlines').files].filter(Boolean).map(f => f.name + ':' + f.size + ':' + f.lastModified).join('|');
+const stem = name => name.replace(/\.[^.]+$/, '');
 
-document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
-function showTab(name) {
-  document.querySelectorAll('[data-tab]').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
-  for (const [tab, pane] of [['uncertain', 'paneUncertain'], ['summary', 'paneSummary'], ['extract', 'paneExtract'], ['review', 'paneReview'], ['log', 'paneLog']])
-    $(pane).classList.toggle('hidden', tab !== name);
+// ---------------- the one action ----------------
+function updateMain() {
+  const btn = $('run');
+  const ready = targetFile() && sourceFiles().length;
+  if (controller) { btn.textContent = '■ HỦY'; btn.classList.add('cancel'); btn.disabled = false; $('stHint').textContent = ''; return; }
+  btn.classList.remove('cancel');
+  btn.textContent = '✦ TỔNG HỢP';
+  btn.disabled = !ready;
+  const n = Object.keys(choices).length;
+  $('stHint').textContent = run && runKey === filesKey() && n ? `Bấm TỔNG HỢP để ghi bản mới theo ${n} quyết định` : '';
 }
-
-function status(text, dot) {
-  $('devState').textContent = text;
-  $('devDot').className = 'devdot ' + (dot || '');
-}
-function log(line) { $('log').textContent += line + '\n'; $('log').scrollTop = $('log').scrollHeight; }
-function showError(message) { $('errText').textContent = message; $('errBox').classList.remove('hidden'); status('Lỗi', 'error'); }
-
-$('cancelRun').addEventListener('click', () => controller?.abort());
-$('download').addEventListener('click', () => { if (downloadUrl) { location.href = downloadUrl; $('download').disabled = true; } });
-
 $('run').addEventListener('click', async () => {
+  if (controller) { controller.abort(); return; }
+  if (run && runKey === filesKey() && Object.keys(choices).length) await applyDecisions();
+  else await gather();
+});
+
+function setState(text) { $('stState').textContent = 'Trạng thái: ' + text; }
+function log(line) { $('log').textContent += line + '\n'; $('log').scrollTop = $('log').scrollHeight; }
+function showError(message) { $('errBox').textContent = message; $('errBox').classList.remove('hidden'); setState('Lỗi'); }
+function startClock() { started = Date.now(); timer = setInterval(() => { $('stElapsed').textContent = Math.round((Date.now() - started) / 1000) + ' s'; }, 500); }
+
+async function gather() {
   const fd = new FormData();
-  fd.append('target', $('target').files[0]);
-  for (const f of $('sources').files) fd.append('sources', f);
+  fd.append('target', targetFile());
+  for (const f of sourceFiles()) fd.append('sources', f);
   for (const f of $('outlines').files) fd.append('outlines', f);
   if ($('classify').checked && !$('noLlm').checked) fd.append('classify', '1');
   if ($('noLlm').checked) fd.append('noLlm', '1');
   if ($('docxReuseSelection').checked) fd.append('docxReuseSelection', '1');
   if ($('outlineCache').checked) fd.append('outlineCache', '1');
   controller = new AbortController();
-  sync();
-  $('cancelRun').classList.remove('hidden');
+  updateMain();
   $('errBox').classList.add('hidden');
-  $('overview').classList.add('hidden');
   $('log').textContent = '';
-  status('Đang tổng hợp…', 'live');
-  started = Date.now();
-  timer = setInterval(() => { $('devElapsed').textContent = Math.round((Date.now() - started) / 1000) + ' s'; }, 500);
+  setState('Đang tổng hợp…');
+  startClock();
+  const key = filesKey();
   try {
     const res = await fetch('/api/admin/gather', { method: 'POST', body: fd, signal: controller.signal });
     if (!res.ok || !res.body) { showError(await res.text()); return; }
@@ -266,76 +292,51 @@ $('run').addEventListener('click', async () => {
       while ((at = buffer.indexOf('\n')) >= 0) {
         const line = buffer.slice(0, at).trim();
         buffer = buffer.slice(at + 1);
-        if (line) handle(JSON.parse(line));
+        if (line) await handle(JSON.parse(line), key);
       }
     }
   } catch (e) {
-    if (e.name === 'AbortError') status('Đã hủy'); else showError(String(e));
+    if (e.name === 'AbortError') setState('Đã hủy'); else showError(String(e));
   } finally {
     clearInterval(timer);
     controller = null;
-    $('cancelRun').classList.add('hidden');
-    sync();
+    updateMain();
   }
-});
+}
 
-function handle(evt) {
-  if (evt.type === 'agent') { log(`${new Date(evt.timestamp).toLocaleTimeString([], { hour12: false })}  [${evt.stage}] ${evt.message}`); status(evt.message, 'live'); }
+async function handle(evt, key) {
+  if (evt.type === 'agent') { log(`${new Date(evt.timestamp).toLocaleTimeString([], { hour12: false })}  [${evt.stage}] ${evt.message}`); setState(evt.message); }
   else if (evt.type === 'error') showError(evt.message);
-  else if (evt.type === 'result') { render(evt); status('Xong', 'done'); }
+  else if (evt.type === 'result') {
+    runKey = key;
+    versions = [];
+    render(evt);
+    await addVersion(evt.download, 'Tổng hợp theo chuỗi heading');
+    setState('Đã tổng hợp');
+  }
 }
 
-function wireDecisions() {
-  document.querySelectorAll('.decide input[type=radio]').forEach(input => input.addEventListener('change', () => readChoice(+input.name.slice(1))));
-  document.querySelectorAll('select[data-candidate]').forEach(sel => sel.addEventListener('change', () => {
-    const idx = +sel.dataset.candidate;
-    document.querySelector(`input[name=d${idx}][value=MERGE]`).checked = true;
-    readChoice(idx);
-  }));
-  countChoices();
+/** The summary download link works once: fetch it once and keep the file in the page for viewing and saving. */
+async function addVersion(url, note) {
+  if (!url) return;
+  const res = await fetch(url);
+  if (!res.ok) { showError('Không tải được bản tổng hợp.'); return; }
+  const blob = await res.blob();
+  const label = 'Tổng hợp ' + String(versions.length + 1).padStart(2, '0');
+  versions.push({ label, blob, url: URL.createObjectURL(blob), note });
+  current = versions.length - 1;
+  renderRightTabs();
+  await showRight();
 }
 
-function readChoice(idx) {
-  const value = document.querySelector(`input[name=d${idx}]:checked`)?.value || '';
-  if (!value) delete choices[idx];
-  else choices[idx] = { decision: value, candidate: value === 'MERGE' ? +document.querySelector(`select[data-candidate="${idx}"]`).value : null };
-  const card = document.querySelector(`[data-card="${idx}"]`);
-  card.classList.toggle('decided', value === 'MERGE' || value === 'NEW');
-  card.classList.toggle('skipped', value === 'SKIP');
-  countChoices();
-}
-
-function setChoice(idx, decision, candidate) {
-  const input = document.querySelector(`input[name=d${idx}][value="${decision}"]`);
-  if (!input || input.disabled) return;
-  input.checked = true;
-  if (decision === 'MERGE' && candidate != null) document.querySelector(`select[data-candidate="${idx}"]`).value = String(candidate);
-  readChoice(idx);
-}
-
-function countChoices() {
-  if (!run) return;
-  const n = Object.keys(choices).length;
-  $('decideCount').textContent = `Đã quyết ${n}/${run.uncertain.length} mục. Mục chưa quyết không được ghi vào file.`;
-}
-
-$('useModel').addEventListener('click', () => {
-  // Only fills the choices in from the model's advice; nothing is written until the reviewer presses "Ghi".
-  run?.uncertain.forEach((u, idx) => {
-    const v = u.verdict;
-    if (v && (v.decision === 'MERGE' || v.decision === 'NEW')) setChoice(idx, v.decision, v.candidate);
-  });
-});
-$('clearDecisions').addEventListener('click', () => run?.uncertain.forEach((_, idx) => setChoice(idx, '')));
-
-$('applyDecisions').addEventListener('click', async () => {
-  if (!run) return;
+async function applyDecisions() {
   const decisions = Object.entries(choices).map(([index, c]) => ({ index: +index, decision: c.decision, candidate: c.candidate }));
-  $('applyDecisions').disabled = true;
-  status('Đang ghi theo quyết định…', 'live');
+  controller = new AbortController();
+  updateMain();
+  setState('Đang ghi theo quyết định…');
   try {
     const res = await fetch(`/api/admin/gather/${run.runId}/apply`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ decisions }),
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ decisions }), signal: controller.signal,
     });
     const body = await res.json();
     if (!res.ok) { showError(body.message || 'Không ghi được.'); return; }
@@ -349,18 +350,231 @@ $('applyDecisions').addEventListener('click', async () => {
     });
     if (body.undecided.length) lines.push(`<li>Chưa quyết (không ghi): ${body.undecided.map(i => esc(run.uncertain[i]?.sourceHeading)).join('; ')}</li>`);
     if (body.skipped.length) lines.push(...body.skipped.map(x => `<li><span class="chip bad">không ghi được</span> ${esc(x)}</li>`));
-    $('applyResult').innerHTML = `<div class="verdict"><b>Đã ghi bản tổng hợp theo quyết định.</b>
-      <button id="downloadApplied">Tải bản đã duyệt .docx</button><ul>${lines.join('')}</ul>
-      <p class="note">Mỗi đoạn ghi theo quyết định mang cờ USER_DECISION trong file. Link tải dùng được một lần; có thể đổi lựa chọn và ghi lại.</p></div>`;
+    $('applyResult').innerHTML = `<div class="verdict"><b>Bản tổng hợp mới theo quyết định.</b><ul>${lines.join('')}</ul>
+      <p class="note">Mỗi đoạn ghi theo quyết định mang cờ USER_DECISION. Có thể đổi lựa chọn và bấm TỔNG HỢP lại để tạo bản tiếp theo.</p></div>`;
     $('applyResult').classList.remove('hidden');
-    $('downloadApplied').addEventListener('click', e => { location.href = body.download; e.target.disabled = true; });
-    status('Đã ghi theo quyết định', 'done');
+    await addVersion(body.download, `Theo ${decisions.length} quyết định`);
+    setState('Đã ghi theo quyết định');
   } catch (e) {
-    showError(String(e));
+    if (e.name === 'AbortError') setState('Đã hủy'); else showError(String(e));
   } finally {
-    $('applyDecisions').disabled = false;
+    controller = null;
+    updateMain();
   }
-});
+}
+
+// ---------------- viewers ----------------
+async function renderDocx(blob, viewer) {
+  viewer.innerHTML = '';
+  const host = document.createElement('div');
+  viewer.appendChild(host);
+  await docx.renderAsync(blob, host, null, { className: 'docx', inWrapper: true, breakPages: true, ignoreLastRenderedPageBreak: true, renderChanges: true });
+  return host;
+}
+async function renderPdf(blob, viewer) {
+  viewer.innerHTML = '<p class="empty">LibreOffice đang chuyển sang PDF…</p>';
+  let url = pdfCache.get(blob);
+  if (!url) {
+    const fd = new FormData();
+    fd.append('file', new File([blob], 'document.docx'));
+    const res = await fetch('/api/admin/render-pdf', { method: 'POST', body: fd });
+    if (!res.ok) { const p = await res.json().catch(() => ({})); viewer.innerHTML = `<p class="empty">${esc(p.detail || p.title || 'Không chuyển được sang PDF.')}</p>`; return; }
+    url = URL.createObjectURL(await res.blob());
+    pdfCache.set(blob, url);
+  }
+  viewer.innerHTML = `<iframe title="Bản in LibreOffice" src="${url}"></iframe>`;
+}
+
+function leftDocs() {
+  const docs = [];
+  if (targetFile()) docs.push({ key: 'target', label: '📄 ' + targetFile().name + ' (gốc)', file: targetFile(), id: 'target' });
+  sourceFiles().forEach((f, i) => docs.push({ key: String(i), label: '📄 ' + f.name, file: f, id: sourceIdOf(f.name, i) }));
+  return docs;
+}
+/** The server names sources by file stem (24 characters), adding the position when two names repeat. */
+function sourceIdOf(name, i) {
+  const stems = sourceFiles().map(f => stem(f.name).slice(0, 24));
+  const s = stem(name).slice(0, 24);
+  return stems.filter(x => x === s).length > 1 ? `${s}#${i + 1}` : s;
+}
+
+function renderLeftTabs() {
+  // Only the document tabs are rebuilt: the file pickers stay in place (their inputs hold the chosen files).
+  const host = $('leftDocTabs');
+  host.innerHTML = '';
+  for (const d of leftDocs()) {
+    const b = document.createElement('button');
+    b.className = 'tab' + (d.key === leftTab ? ' active' : '');
+    b.textContent = d.label;
+    b.onclick = () => { leftTab = d.key; renderLeftTabs(); showLeft(); };
+    host.appendChild(b);
+  }
+  $('stTarget').textContent = targetFile()?.name ?? 'chưa chọn';
+  $('stSources').textContent = sourceFiles().length;
+}
+async function showLeft() {
+  const doc = leftDocs().find(d => d.key === leftTab) ?? leftDocs()[0];
+  if (!doc) return;
+  leftTab = doc.key;
+  $('leftName').textContent = doc.id === 'target' ? 'Văn bản gốc — nhận nội dung tổng hợp' : 'Nguồn ' + doc.id;
+  if (views.left === 'pdf') return renderPdf(doc.file, $('leftViewer'));
+  await renderDocx(doc.file, $('leftViewer'));
+  wireLeft(doc);
+}
+function renderRightTabs() {
+  $('rightTabs').innerHTML = versions.map((v, i) => `<button class="tab${i === current ? ' active' : ''}" data-version="${i}">📄 ${esc(v.label)}</button>`).join('');
+  $('rightTabs').querySelectorAll('[data-version]').forEach(b => b.onclick = () => { current = +b.dataset.version; renderRightTabs(); showRight(); });
+  $('stVersions').textContent = versions.length;
+  $('current').textContent = versions.length ? `Bản ${current + 1} / ${versions.length}` : 'Chưa có bản nào';
+}
+async function showRight() {
+  const v = versions[current];
+  if (!v) return;
+  const name = stem(targetFile()?.name || 'tong_hop') + '_' + v.label.replace(/\s+/g, '_').toLowerCase() + '.docx';
+  $('rightName').innerHTML = `${esc(v.note)} <a class="download" href="${v.url}" download="${esc(name)}">⬇ Tải .docx</a>`;
+  if (views.right === 'pdf') return renderPdf(v.blob, $('rightViewer'));
+  await renderDocx(v.blob, $('rightViewer'));
+  wireRight();
+}
+document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => {
+  const [side, view] = b.dataset.view.split(':');
+  views[side] = view;
+  document.querySelectorAll(`[data-view^="${side}:"]`).forEach(x => x.classList.toggle('active', x === b));
+  side === 'left' ? showLeft() : showRight();
+}));
+
+['target', 'sources'].forEach(id => $(id).addEventListener('change', () => { leftTab = id === 'target' ? 'target' : leftTab; renderLeftTabs(); showLeft(); updateMain(); }));
+$('outlines').addEventListener('change', updateMain);
+$('noLlm').addEventListener('change', () => { $('classify').disabled = $('noLlm').checked; });
+
+// ---------------- matching: inserted paragraph <-> source paragraph ----------------
+/** The walker's location of a rendered paragraph: body[1]/p[N] for a body paragraph, body[1]/tbl[T]/tr[R]/tc[C]/p[P] in a table. */
+function locationOf(p, root) {
+  const articles = Array.from(root.querySelectorAll('section.docx > article'));
+  const children = articles.flatMap(a => Array.from(a.children));
+  if (p.parentElement?.tagName === 'ARTICLE') return `body[1]/p[${children.filter(c => c.tagName === 'P').indexOf(p) + 1}]`;
+  const cell = p.closest('td'), table = cell?.closest('table');
+  if (!cell || !table || table.parentElement?.tagName !== 'ARTICLE') return null;
+  const t = children.filter(c => c.tagName === 'TABLE').indexOf(table) + 1;
+  const row = cell.parentElement, rows = Array.from(table.querySelectorAll(':scope > tr, :scope > tbody > tr, :scope > thead > tr'));
+  const r = rows.indexOf(row) + 1, c = Array.from(row.children).indexOf(cell) + 1;
+  const ps = Array.from(cell.children).filter(x => x.tagName === 'P');
+  return `body[1]/tbl[${t}]/tr[${r}]/tc[${c}]/p[${ps.indexOf(p) + 1}]`;
+}
+function paragraphAt(location, root) {
+  return Array.from(root.querySelectorAll('section.docx p')).find(p => locationOf(p, root) === location) || null;
+}
+function clearMatches() { document.querySelectorAll('.match').forEach(e => e.classList.remove('match')); }
+/** A line the gather wrote: "- {text} (nguồn: {id location}; …) [cần xem: {flags}]" (GatherWriteback.Lines). Null for any other paragraph. */
+function parseLine(raw) {
+  const t = String(raw ?? '').replace(/\s+/g, ' ').trim();
+  if (!t.startsWith('- ')) return null;
+  const at = t.lastIndexOf(' (nguồn: ');
+  if (at < 0) return null;
+  const rest = t.slice(at + ' (nguồn: '.length);
+  const close = rest.indexOf(')');
+  if (close < 0) return null;
+  const flagsAt = rest.indexOf('[cần xem: ');
+  return {
+    text: t.slice(2, at),
+    sources: rest.slice(0, close).split(';').map(x => x.trim()).filter(Boolean),
+    flags: flagsAt >= 0 ? rest.slice(flagsAt + '[cần xem: '.length, rest.lastIndexOf(']')).split(', ') : [],
+  };
+}
+function factFor(text) {
+  const line = parseLine(text);
+  if (line) return line;
+  const t = norm(text);
+  return t ? factIndex.find(f => norm(f.text) === t) || null : null;
+}
+function wireRight() {
+  const root = $('rightViewer');
+  const newHeadings = new Set([...(run?.added || []).map(a => norm(a.heading))]);
+  root.querySelectorAll('section.docx p').forEach(p => {
+    if (!p.querySelector('ins')) return;
+    p.classList.add('added');
+    const fact = factFor(p.textContent);
+    if (newHeadings.has(norm(p.textContent))) p.classList.add('newheading');
+    if (fact?.flags?.length) p.classList.add('flagged');
+    p.addEventListener('click', async () => {
+      clearMatches();
+      p.classList.add('match');
+      if (!fact) { $('matchInfo').textContent = newHeadings.has(norm(p.textContent)) ? 'Heading mới do tổng hợp thêm vào.' : 'Không tìm thấy đoạn nguồn của đoạn này.'; return; }
+      const [first] = fact.sources;
+      $('matchInfo').innerHTML = `Lấy từ <b>${esc(fact.sources.join('; '))}</b>${fact.flags?.length ? ' · <span class="chip warn">' + esc(fact.flags.join(' · ')) + '</span>' : ''}`;
+      if (!first) return;
+      const [id, location] = [first.slice(0, first.indexOf(' ')), first.slice(first.indexOf(' ') + 1)];
+      const doc = leftDocs().find(d => d.id === id);
+      if (!doc || views.left !== 'word') return;
+      if (leftTab !== doc.key) { leftTab = doc.key; renderLeftTabs(); await showLeft(); }
+      const target = paragraphAt(location, $('leftViewer'));
+      if (target) { target.classList.add('match'); target.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+    });
+  });
+}
+function wireLeft(doc) {
+  const root = $('leftViewer');
+  root.querySelectorAll('section.docx p').forEach(p => p.addEventListener('click', () => {
+    clearMatches();
+    p.classList.add('match');
+    const location = locationOf(p, root);
+    const key = doc.id + ' ' + location;
+    const written = Array.from($('rightViewer').querySelectorAll('section.docx p.added')).filter(q => factFor(q.textContent)?.sources.includes(key));
+    const facts = written.length ? written : factIndex.filter(f => f.sources.includes(key));
+    if (!facts.length) { $('matchInfo').textContent = `${doc.id} ${location ?? ''}: đoạn này không được ghi vào bản tổng hợp đang xem.`; return; }
+    $('matchInfo').textContent = `${doc.id} ${location}: được ghi vào bản tổng hợp (${facts.length} chỗ).`;
+    if (views.right !== 'word') return;
+    let firstHit = null;
+    $('rightViewer').querySelectorAll('section.docx p.added').forEach(q => {
+      if (factFor(q.textContent)?.sources.includes(key)) { q.classList.add('match'); firstHit ??= q; }
+    });
+    firstHit?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }));
+}
+
+// ---------------- lower panes ----------------
+document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+function showTab(name) {
+  document.querySelectorAll('[data-tab]').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+  for (const [tab, pane] of [['uncertain', 'paneUncertain'], ['review', 'paneReview'], ['summary', 'paneSummary'], ['extract', 'paneExtract'], ['log', 'paneLog']])
+    $(pane).classList.toggle('hidden', tab !== name);
+}
+
+function wireDecisions() {
+  document.querySelectorAll('.decide input[type=radio]').forEach(input => input.addEventListener('change', () => readChoice(+input.name.slice(1))));
+  document.querySelectorAll('select[data-candidate]').forEach(sel => sel.addEventListener('change', () => {
+    const idx = +sel.dataset.candidate;
+    document.querySelector(`input[name=d${idx}][value=MERGE]`).checked = true;
+    readChoice(idx);
+  }));
+  countChoices();
+}
+function readChoice(idx) {
+  const value = document.querySelector(`input[name=d${idx}]:checked`)?.value || '';
+  if (!value) delete choices[idx];
+  else choices[idx] = { decision: value, candidate: value === 'MERGE' ? +document.querySelector(`select[data-candidate="${idx}"]`).value : null };
+  const card = document.querySelector(`[data-card="${idx}"]`);
+  card.classList.toggle('decided', value === 'MERGE' || value === 'NEW');
+  card.classList.toggle('skipped', value === 'SKIP');
+  countChoices();
+}
+function setChoice(idx, decision, candidate) {
+  const input = document.querySelector(`input[name=d${idx}][value="${decision}"]`);
+  if (!input || input.disabled) return;
+  input.checked = true;
+  if (decision === 'MERGE' && candidate != null) document.querySelector(`select[data-candidate="${idx}"]`).value = String(candidate);
+  readChoice(idx);
+}
+function countChoices() {
+  if (!run) return;
+  $('decideCount').textContent = `Đã quyết ${Object.keys(choices).length}/${run.uncertain.length} mục. Mục chưa quyết không được ghi vào file.`;
+  updateMain();
+}
+$('useModel').addEventListener('click', () => run?.uncertain.forEach((u, idx) => {
+  const v = u.verdict;
+  if (v && (v.decision === 'MERGE' || v.decision === 'NEW')) setChoice(idx, v.decision, v.candidate);
+}));
+$('clearDecisions').addEventListener('click', () => run?.uncertain.forEach((_, idx) => setChoice(idx, '')));
 
 function facts(list) {
   return list.length ? '<ul>' + list.map(f => `<li>${esc(f.text)} <span class="src">${esc((f.sources || []).join('; '))}</span>` +
@@ -369,25 +583,18 @@ function facts(list) {
 }
 
 function render(r) {
-  downloadUrl = r.download;
-  $('download').classList.toggle('hidden', !r.download);
-  $('download').disabled = false;
+  run = r;
+  choices = {};
+  factIndex = [...r.merged.flatMap(s => s.facts), ...r.added.flatMap(s => s.facts), ...r.uncertain.flatMap(u => u.facts)]
+    .map(f => ({ text: f.text, sources: f.sources || [], flags: f.flags || [] }));
   const count = list => list.reduce((n, s) => n + s.facts.length, 0);
   $('tiles').innerHTML = [
-    ['Đoạn gộp vào heading có sẵn', count(r.merged)],
-    ['Heading mới', r.added.length],
-    ['Đoạn trong heading mới', count(r.added)],
-    ['Mục không chắc', r.uncertain.length, 'warn'],
-    ['Đoạn đang giữ lại', count(r.uncertain), 'warn'],
-    ['Không thêm (liệt kê)', r.excluded.length],
+    ['Đoạn gộp vào heading có sẵn', count(r.merged)], ['Heading mới', r.added.length], ['Đoạn trong heading mới', count(r.added)],
+    ['Mục không chắc', r.uncertain.length, 'warn'], ['Đoạn đang giữ lại', count(r.uncertain), 'warn'], ['Không thêm (liệt kê)', r.excluded.length],
   ].map(([k, v, tone]) => `<div class="tile ${tone || ''}"><div class="v">${v}</div><div class="k">${esc(k)}</div></div>`).join('');
-  $('overview').classList.remove('hidden');
   $('uncertainCount').textContent = r.uncertain.length ? `(${r.uncertain.length})` : '';
   $('modelChip').textContent = r.modelClassified ? 'đã phân loại' : 'model chưa chạy';
   $('modelChip').className = 'chip ' + (r.modelClassified ? 'acc' : '');
-
-  run = r;
-  choices = {};
   $('applyResult').classList.add('hidden');
   $('decideBar').classList.toggle('hidden', !r.uncertain.length);
   $('useModel').disabled = !r.modelClassified;
@@ -398,7 +605,7 @@ function render(r) {
     if (v) {
       const [label, tone] = DECISION[v.decision] || [v.decision, ''];
       const target = v.decision === 'MERGE' && u.candidates[v.candidate] ? ` “${esc(u.candidates[v.candidate].heading)}”` : '';
-      verdict = `<div class="verdict"><b>Model đề xuất:</b><span class="chip ${tone}">${esc(label)}</span>${target}<div class="meta">${esc(v.reason)}</div></div>`;
+      verdict = `<div class="verdict"><b>Model đề xuất:</b> <span class="chip ${tone}">${esc(label)}</span>${target}<div class="meta">${esc(v.reason)}</div></div>`;
     }
     const candidates = u.candidates.map((c, i) => `<details${i === 0 ? ' open' : ''}><summary>${i}. ${esc(c.heading)} <span class="src">${esc(c.location)}</span></summary>` +
       (c.content.length ? '<ul>' + c.content.map(x => `<li>${esc(x)}</li>`).join('') + '</ul>' : '<p class="note">(heading chưa có nội dung trực tiếp)</p>') + '</details>').join('');
@@ -419,8 +626,7 @@ function render(r) {
         <div class="box"><h4>Heading đích có thể thuộc về</h4>${candidates || '<p class="note">(không có)</p>'}</div>
       </div>
     </div>`;
-  }).join('') : '<p class="note">Không có mục nào không chắc: mọi heading nguồn đều được xếp theo chuỗi heading.</p>';
-
+  }).join('') : '<p class="note">Không có mục nào không chắc.</p>';
   wireDecisions();
 
   $('merged').innerHTML = r.merged.length ? r.merged.map(s => `<h3>${esc(s.heading)} <span class="src">${esc(s.location)}</span></h3>${facts(s.facts)}`).join('') : '<p class="note">Không có.</p>';
@@ -431,13 +637,13 @@ function render(r) {
   }).join('') + '</table>' : '<p class="note">Không có.</p>';
   $('unchanged').innerHTML = r.unchanged.length ? '<ul>' + r.unchanged.map(s => `<li>${esc(s.heading)}${s.note ? ' — <span class="note">' + esc(s.note) + '</span>' : ''}</li>`).join('') + '</ul>' : '<p class="note">Không có.</p>';
   if (r.skipped.length) $('unchanged').innerHTML += '<h3>Không ghi được vào file</h3><ul>' + r.skipped.map(s => `<li>${esc(s)}</li>`).join('') + '</ul>';
-
-  $('documents').innerHTML = r.documents.map(d => `<details${d.role === 'target' ? ' open' : ''}><summary><b>${d.role === 'target' ? 'Đích' : 'Nguồn ' + esc(d.id)}</b> · ${esc(d.file)} · ${d.headings.length} heading · ${esc(d.from)}</summary>
+  $('documents').innerHTML = r.documents.map(d => `<details${d.role === 'target' ? ' open' : ''}><summary><b>${d.role === 'target' ? 'Gốc' : 'Nguồn ' + esc(d.id)}</b> · ${esc(d.file)} · ${d.headings.length} heading · ${esc(d.from)}</summary>
     <table>${d.headings.map(h => `<tr><td><span class="lvl">${h.level ?? '?'}</span>${'&nbsp;&nbsp;'.repeat(Math.max(0, (h.level || 1) - 1))}${esc(h.text)}</td><td class="src">${esc(h.stableId)}</td></tr>`).join('')}</table></details>`).join('');
   renderReview(r.documents);
+  updateMain();
 }
 
-// ---- Outline review: differences from the previous stored revision; verdicts are sent as location + kind only ----
+// ---------------- outline review: each choice is saved at once, for the exact outline shown ----------------
 const KIND_LABEL = {
   ADDED: 'Heading mới (văn bản không đổi)', REMOVED: 'Bị bỏ khỏi outline (văn bản không đổi)', TEXT: 'Đổi chữ heading', SPLIT: 'Tách heading (chưa chắc)',
   MERGED: 'Gộp heading (chưa chắc)', LEVEL: 'Đổi cấp', LEVEL_SHIFT: 'Cả cây lệch cấp', PARENT: 'Đổi mục cha', PARENT_UNRESOLVED: 'Mục cha chưa xác định',
@@ -456,44 +662,48 @@ function renderReview(documents) {
     const rows = diffs.map((x, i) => {
       const loc = x.newLocation;
       const name = `rv${di}_${i}`;
-      const choices = !loc ? '<span class="note">chỉ để xem</span>'
+      const choicesHtml = !loc ? '<span class="note">chỉ để xem</span>'
         : x.newIsHeading ? `<label><input type="radio" name="${name}" value="HEADING"> Đúng là heading</label> <label><input type="radio" name="${name}" value="NOT_HEADING"> Không phải heading</label>`
         : `<label><input type="radio" name="${name}" value="NOT_HEADING"> Đúng: không phải heading</label>`;
       const flags = [x.uncertain ? 'chưa chắc' : '', x.contextChanged ? 'văn bản quanh đó đổi' : '', x.oldApproved ? 'bản cũ đã duyệt' : ''].filter(Boolean);
       const ctx = x.context ? `<div class="note">${x.context.before ? '… ' + esc(x.context.before) + '<br>' : ''}<b>${esc(x.context.text)}</b>${x.context.after ? '<br>' + esc(x.context.after) + ' …' : ''}</div>` : '';
       return `<tr><td>${esc(KIND_LABEL[x.kind] ?? x.kind)}${flags.length ? '<br><span class="chip warn">' + esc(flags.join(' · ')) + '</span>' : ''}</td>
         <td>${esc(x.oldText ?? '—')}${x.oldLevel != null && x.kind !== 'LEVEL_SHIFT' ? ' <span class="lvl">' + x.oldLevel + '</span>' : ''}</td>
-        <td>${esc(x.newText ?? '—')}${x.newLevel != null ? ' <span class="lvl">' + (x.kind === 'LEVEL_SHIFT' ? (x.newLevel > 0 ? '+' : '') : '') + x.newLevel + '</span>' : ''}${ctx}</td>
-        <td data-loc="${esc(loc ?? '')}">${choices}</td></tr>`;
+        <td>${esc(x.newText ?? '—')}${x.newLevel != null ? ' <span class="lvl">' + (x.kind === 'LEVEL_SHIFT' && x.newLevel > 0 ? '+' : '') + x.newLevel + '</span>' : ''}${ctx}</td>
+        <td data-loc="${esc(loc ?? '')}" data-doc="${di}">${choicesHtml}</td></tr>`;
     }).join('');
     return `<details open><summary><b>${esc(d.file)}</b> · bản ${r.revision}${r.previousRevision ? ' so với bản ' + r.previousRevision : ' (chưa có bản trước)'} · trạng thái <b id="rvState${di}">${esc(r.state)}</b>
-        · ${diffs.length} khác biệt${r.sameHeadings != null ? ', ' + r.sameHeadings + ' heading giống' : ''}</summary>
-      ${diffs.length ? `<table id="rvTable${di}"><tr><th>Loại</th><th>Bản trước</th><th>Bản hiện tại</th><th>Kết luận</th></tr>${rows}</table>` : '<p class="note">Không có khác biệt với bản trước.</p>'}
-      <p><label><input type="checkbox" id="rvAll${di}"> Đánh dấu mọi heading của outline hiện tại là đúng (${r.headings.length} heading)</label><br>
-      <label><input type="checkbox" id="rvComplete${di}"> Xác nhận outline hiện tại đủ heading</label></p>
-      <button data-review="${di}">Ghi kết quả duyệt</button> <span class="note" id="rvResult${di}"></span></details>`;
+        · ${diffs.length} khác biệt${r.sameHeadings != null ? ', ' + r.sameHeadings + ' heading giống' : ''} <span class="note" id="rvResult${di}"></span></summary>
+      ${diffs.length ? `<table><tr><th>Loại</th><th>Bản trước</th><th>Bản hiện tại</th><th>Kết luận (lưu ngay)</th></tr>${rows}</table>` : '<p class="note">Không có khác biệt với bản trước.</p>'}
+      <p><label><input type="checkbox" data-all="${di}"> Mọi heading của outline hiện tại là đúng (${r.headings.length} heading)</label><br>
+      <label><input type="checkbox" data-complete="${di}"> Outline hiện tại đủ heading</label></p></details>`;
   }).join('');
-  document.querySelectorAll('[data-review]').forEach(b => b.addEventListener('click', () => sendReview(Number(b.dataset.review))));
+  $('reviewList').querySelectorAll('input[type=radio]').forEach(x => x.addEventListener('change', () => {
+    const td = x.closest('td');
+    saveReview(+td.dataset.doc, [{ location: td.dataset.loc, kind: x.value }], false, x);
+  }));
+  $('reviewList').querySelectorAll('[data-all]').forEach(x => x.addEventListener('change', () => {
+    if (!x.checked) return;
+    const r = reviewDocs[+x.dataset.all].outlineReview;
+    saveReview(+x.dataset.all, r.headings.map(h => ({ location: h.stableId, kind: 'HEADING' })), false, x);
+  }));
+  $('reviewList').querySelectorAll('[data-complete]').forEach(x => x.addEventListener('change', () => { if (x.checked) saveReview(+x.dataset.complete, [], true, x); }));
 }
-
-async function sendReview(di) {
+async function saveReview(di, items, complete, input) {
   const r = reviewDocs[di].outlineReview;
   const reviewer = $('reviewer').value.trim();
-  if (!reviewer) { $('rvResult' + di).textContent = 'Cần nhập tên người duyệt.'; return; }
-  const items = [];
-  const table = $('rvTable' + di);
-  if (table) table.querySelectorAll('input[type=radio]:checked').forEach(x => items.push({ location: x.closest('td').dataset.loc, kind: x.value }));
-  if ($('rvAll' + di).checked)
-    for (const h of r.headings) if (!items.some(i => i.location === h.stableId)) items.push({ location: h.stableId, kind: 'HEADING' });
-  const body = { sourceSha256: r.sourceSha256, configKey: r.configKey, outlineSha256: r.outlineSha256, reviewer, items, complete: $('rvComplete' + di).checked };
+  if (!reviewer) { $('rvResult' + di).textContent = 'Cần nhập tên người duyệt trước.'; input.checked = false; return; }
+  const body = { sourceSha256: r.sourceSha256, configKey: r.configKey, outlineSha256: r.outlineSha256, reviewer, items, complete };
   const res = await fetch('/api/admin/outline/review', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
   const out = await res.json().catch(() => ({}));
-  if (!res.ok) { $('rvResult' + di).textContent = out.message ?? ('Lỗi ' + res.status); return; }
+  if (!res.ok) { $('rvResult' + di).textContent = out.message ?? ('Lỗi ' + res.status); input.checked = false; return; }
   r.state = out.state;
   $('rvState' + di).textContent = out.state;
-  $('rvResult' + di).textContent = `Đã ghi ${out.recorded} quyết định` +
-    (out.refusals.length ? ` · ${out.refusals.length} không ghi được: ` + out.refusals.map(f => f.reason).join(', ') : '');
+  $('rvResult' + di).textContent = `· đã lưu ${out.recorded}` + (out.refusals.length ? `, ${out.refusals.length} không lưu được: ` + out.refusals.map(f => f.reason).join(', ') : '');
 }
+
+renderLeftTabs();
+updateMain();
 </script>
 </body>
 </html>
