@@ -11,6 +11,34 @@ namespace DocxHeaderExtractor.Tests;
 /// </summary>
 public sealed class GatherByChainTests
 {
+    [Fact]
+    public void Proposed_new_heading_and_nested_child_remain_for_review_with_source_and_require_parent_decision()
+    {
+        const string heading = "Tăng cường phối hợp và giám sát công tác Dinh dưỡng - Tiết chế:";
+        var target = RawDocxFixtureTests.Build(P("Kế hoạch") + P("Công tác xã hội") + P(heading));
+        var source = RawDocxFixtureTests.Build(P("Kế hoạch") + P("Công tác xã hội") + P(heading) + P("Nội dung nguồn") + P("Mục con mới") + P("Nội dung con"));
+        try
+        {
+            var t = new[] { H(0, "Kế hoạch", 1), H(1, "Công tác xã hội", 2) };
+            var s = new[] { H(0, "Kế hoạch", 1), H(1, "Công tác xã hội", 2), H(2, heading, 3), H(4, "Mục con mới", 4) };
+            var original = GatherByHeading.Build(target, t, [new GatherSourceFile("T9", source, s)], addMissingHeadings: true);
+            var plan = GatherByHeading.RequireNewHeadingReview(original);
+            Assert.DoesNotContain(plan.Sections, x => x.NewHeadingDepth is not null);
+            var parentIndex = plan.Uncertain.ToList().FindIndex(x => x.SourceHeading == heading);
+            var childIndex = plan.Uncertain.ToList().FindIndex(x => x.SourceHeading == "Mục con mới");
+            Assert.True(parentIndex >= 0 && childIndex > parentIndex);
+            Assert.Equal(parentIndex, plan.Uncertain[childIndex].ProposedParentIndex);
+            Assert.Equal("Nội dung nguồn", Assert.Single(plan.Uncertain[parentIndex].Facts).Render());
+            Assert.Equal("T9", Assert.Single(plan.Uncertain[parentIndex].Facts[0].Parts).SourceId);
+            Assert.Equal("Nội dung con", Assert.Single(plan.Uncertain[childIndex].Facts).Render());
+            var blocked = GatherDecisions.Apply(plan.Sections, plan.Uncertain, [new GatherDecision(childIndex, "NEW")]);
+            Assert.Contains(blocked.Outcomes, x => x.Index == childIndex && x.Error == "PARENT_DECISION_REQUIRED");
+            var accepted = GatherDecisions.Apply(plan.Sections, plan.Uncertain, [new GatherDecision(parentIndex, "NEW"), new GatherDecision(childIndex, "NEW")]);
+            Assert.Equal(2, accepted.Sections.Count(x => x.NewHeadingDepth is not null));
+            Assert.DoesNotContain(accepted.Sections.SelectMany(x => x.Run.Facts).SelectMany(x => x.Flags), x => x == "SCOPE_UNREVIEWED");
+        }
+        finally { File.Delete(target); File.Delete(source); }
+    }
     static string P(string text) => $"<w:p><w:r><w:t xml:space=\"preserve\">{text}</w:t></w:r></w:p>";
 
     static HeadingRecord H(int index, string text, int level) => new() { Index = index, Level = level, Text = text, StableId = $"body[1]/p[{index + 1}]" };

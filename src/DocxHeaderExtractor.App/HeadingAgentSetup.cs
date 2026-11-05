@@ -39,7 +39,7 @@ public static class HeadingAgentSetup
         => CreateRoutes(options, provider, onModelReply).Shared;
 
     /// <summary>The PDF production repair default is scoped to its lane; host-supplied agents keep precedence.</summary>
-    internal static (HeadingAgents Shared, HeadingAgents NativePdf) CreateRoutes(PipelineOptions options, IModelProvider provider, Action<ModelReply>? onModelReply = null)
+    internal static (HeadingAgents Shared, HeadingAgents NativePdf, HeadingAgents Docx) CreateRoutes(PipelineOptions options, IModelProvider provider, Action<ModelReply>? onModelReply = null)
     {
         ArgumentNullException.ThrowIfNull(options);
         ArgumentNullException.ThrowIfNull(provider);
@@ -71,6 +71,9 @@ public static class HeadingAgentSetup
         var nativePdf = suppliedPlacer is null && options.PdfRepairParentChains && !options.RepairParentChains
             ? shared with { Placer = new HeadingPlacer(wholeDocument: options.WholeDocumentPlacement, repairParentChains: true) }
             : shared;
-        return (shared, nativePdf);
+        var docxAgents = suppliedPlacer is null && options.DocxWholeDocumentPlacement && !options.WholeDocumentPlacement
+            ? shared with { Placer = new HeadingPlacer(wholeDocument: true, repairParentChains: options.RepairParentChains) }
+            : shared;
+        return (shared, nativePdf, docxAgents);
     }
 }

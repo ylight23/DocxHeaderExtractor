@@ -46,6 +46,8 @@ public sealed class PipelineOptions
     public bool PdfInlineGrouping { get; set; }
     /// <summary>Qualification candidate: try all settled headings in one measured placement request.</summary>
     public bool WholeDocumentPlacement { get; set; }
+    /// <summary>Opt-in whole-document placement for DOCX only; other formats retain their own settings.</summary>
+    public bool DocxWholeDocumentPlacement { get; set; }
     /// <summary>Native PDF default: every SELECT must echo the exact source text of its alias.</summary>
     public bool PdfSourceBoundSelection { get; set; } = true;
     /// <summary>Native PDF: attach measured OpenCV page geometry to parser text before request budgeting. Disable for legacy packet parity.</summary>

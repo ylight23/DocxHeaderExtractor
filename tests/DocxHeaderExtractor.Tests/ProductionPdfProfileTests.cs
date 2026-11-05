@@ -13,6 +13,17 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class ProductionPdfProfileTests
 {
     [Fact]
+    public void Docx_whole_document_placement_is_opt_in_and_does_not_change_other_routes()
+    {
+        var baseline = HeadingAgentSetup.CreateRoutes(new PipelineOptions(), new Provider());
+        Assert.Same(baseline.Shared, baseline.Docx);
+        var routes = HeadingAgentSetup.CreateRoutes(new PipelineOptions { DocxWholeDocumentPlacement = true }, new Provider());
+        Assert.Equal(new HeadingPlacer(wholeDocument: true).Contract, routes.Docx.Placer!.Contract);
+        Assert.Equal(new HeadingPlacer().Contract, routes.Shared.Placer!.Contract);
+        Assert.Equal(new HeadingPlacer(repairParentChains: true).Contract, routes.NativePdf.Placer!.Contract);
+        Assert.NotEqual(OutlineReuse.ConfigKey(new PipelineOptions()), OutlineReuse.ConfigKey(new PipelineOptions { DocxWholeDocumentPlacement = true }));
+    }
+    [Fact]
     public void V12_default_reuses_shared_policy_without_pdf_specific_rules_and_keeps_the_contract()
     {
         var options = new PipelineOptions();

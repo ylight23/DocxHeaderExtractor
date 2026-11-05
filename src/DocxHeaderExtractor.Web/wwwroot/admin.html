@@ -56,6 +56,16 @@ details.options summary { cursor: pointer; color: var(--muted); }
 .viewer p.added.newheading { box-shadow: -4px 0 0 var(--new-line); background: var(--new); }
 .viewer p.added.flagged { box-shadow: -4px 0 0 var(--warn); }
 .viewer p.match, .viewer td.match { outline: 2px solid var(--accent); background: var(--accent-soft) !important; }
+/* Preview proposals are separate from the original: colours do not imply that Word was changed. */
+.draft-preview { background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+.draft-preview .draft-warning { background: #eff6ff; border-left: 4px solid #2563eb; padding: 10px 12px; }
+.draft-preview .draft-section { border: 1px solid #d5dce5; border-radius: 7px; padding: 10px 12px; margin: 12px 0; }
+.draft-preview .draft-section h4 { margin: 0 0 8px; }
+.draft-preview .draft-section ul { margin: 0; padding-left: 22px; }
+.draft-preview .draft-fact { background: #f0fdf4; border-left: 4px solid var(--ins-line); padding: 7px 10px; margin: 7px 0; }
+.draft-preview .draft-section.new { border-left: 4px solid var(--new-line); background: #fffbeb; }
+.draft-preview .draft-section.uncertain, .draft-preview .draft-fact.flagged { border-left: 4px solid var(--warn); background: #fffbeb; }
+.draft-preview .draft-source { display: block; color: #475569; font-size: 13px; overflow-wrap: anywhere; margin-top: 4px; }
 .download { font-size: 14px; color: var(--accent-dark); text-decoration: none; margin-left: 8px; }
 .footer { padding: 14px 25px; border-top: 1px solid var(--line); background: #fff; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; font-size: 15px; }
 .tag { display: inline-flex; align-items: center; gap: 6px; color: #617084; font-size: 15px; }
@@ -125,8 +135,10 @@ pre#log { white-space: pre-wrap; font-size: 14px; background: var(--soft); borde
       <label><input type="checkbox" id="noLlm"> Không gọi mô hình (cần đủ outline JSON)</label>
       <label><input type="checkbox" id="docxReuseSelection"> Dùng lại SELECT/GROUP của file Word không đổi (PLACE vẫn chạy lại)</label>
       <label><input type="checkbox" id="outlineCache"> Dùng outline đã lưu khi file không đổi; file sửa sẽ trích lại</label>
+      <label>Mã lịch sử tổng hợp (không bắt buộc): <input id="historyKey" type="text" maxlength="100" placeholder="Ví dụ: báo cáo phòng CTXH"></label>
       <label>Outline JSON có sẵn (không bắt buộc): <input id="outlines" type="file" accept=".json" multiple></label>
     </div>
+    <p class="note">Nhập cùng mã để so lượt xem trước; nội dung nguồn và kế hoạch gần nhất được lưu cục bộ. Quyết định duyệt không được tự chuyển sang lượt sau.</p>
   </details>
   <div class="err hidden" id="errBox"></div>
 
@@ -165,6 +177,7 @@ pre#log { white-space: pre-wrap; font-size: 14px; background: var(--soft); borde
       <button class="tab active" data-tab="uncertain">Phần không chắc <span id="uncertainCount"></span></button>
       <button class="tab" data-tab="review">Duyệt outline</button>
       <button class="tab" data-tab="summary">Tổng quan</button>
+      <button class="tab" data-tab="impact">Thay đổi giữa các lượt</button>
       <button class="tab" data-tab="extract">Heading đã trích</button>
       <button class="tab" data-tab="log">Log</button>
     </div>
@@ -197,6 +210,7 @@ pre#log { white-space: pre-wrap; font-size: 14px; background: var(--soft); borde
       <section class="panel"><h2>Không thêm vào file — liệt kê đủ</h2><div id="excluded"></div></section>
       <section class="panel"><h2>Heading đích không nhận thêm gì</h2><div id="unchanged"></div></section>
     </div>
+    <div class="pane hidden" id="paneImpact"><section class="panel"><h2>Thay đổi giữa các lượt xem trước</h2><div id="impactList"><p class="note">Nhập mã lịch sử để lưu và so sánh.</p></div></section></div>
     <div class="pane hidden" id="paneExtract"><section class="panel"><h2>Heading đã trích</h2><div id="documents"></div></section></div>
     <div class="pane hidden" id="paneLog"><section class="panel"><h2>Log</h2><pre id="log"></pre></section></div>
   </div>
@@ -209,6 +223,7 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const norm = s => String(s ?? '').replace(/\s+/g, ' ').trim().toLowerCase();
 const KIND = {
+  NEW_HEADING_REVIEW: ['Heading mới cần xác minh', 'Heading do nguồn đề xuất; chỉ ghi sau khi người duyệt lựa chọn.'],
   NEAR_NAME: ['Tên gần giống', 'Văn bản đích không có heading này nhưng có heading tên gần giống.'],
   PATH_DIFFERS: ['Khác mục cha', 'Tên heading giống nhưng đường dẫn mục cha khác; cần xác nhận trước khi ghi.'],
   AMBIGUOUS: ['Nhiều chỗ khớp', 'Nhiều heading trong đích cùng chuỗi hoặc cùng tên.'],
@@ -265,13 +280,15 @@ function startClock() { started = Date.now(); timer = setInterval(() => { $('stE
 
 async function gather() {
   const fd = new FormData();
-  fd.append('target', targetFile());
+  const targetAtStart = targetFile();
+  fd.append('target', targetAtStart);
   for (const f of sourceFiles()) fd.append('sources', f);
   for (const f of $('outlines').files) fd.append('outlines', f);
   if ($('classify').checked && !$('noLlm').checked) fd.append('classify', '1');
   if ($('noLlm').checked) fd.append('noLlm', '1');
   if ($('docxReuseSelection').checked) fd.append('docxReuseSelection', '1');
   if ($('outlineCache').checked) fd.append('outlineCache', '1');
+  if ($('historyKey').value.trim()) fd.append('historyKey', $('historyKey').value.trim());
   controller = new AbortController();
   updateMain();
   $('errBox').classList.add('hidden');
@@ -293,7 +310,7 @@ async function gather() {
       while ((at = buffer.indexOf('\n')) >= 0) {
         const line = buffer.slice(0, at).trim();
         buffer = buffer.slice(at + 1);
-        if (line) await handle(JSON.parse(line), key);
+        if (line) await handle(JSON.parse(line), key, targetAtStart);
       }
     }
   } catch (e) {
@@ -305,26 +322,85 @@ async function gather() {
   }
 }
 
-async function handle(evt, key) {
+async function handle(evt, key, targetAtStart) {
   if (evt.type === 'agent') { log(`${new Date(evt.timestamp).toLocaleTimeString([], { hour12: false })}  [${evt.stage}] ${evt.message}`); setState(evt.message); }
   else if (evt.type === 'error') showError(evt.message);
   else if (evt.type === 'result') {
     runKey = key;
     versions = [];
     render(evt);
-    await addVersion(evt.download, 'Tổng hợp theo chuỗi heading');
+    if (evt.download) await addVersion(evt.download, 'Tổng hợp theo chuỗi heading');
+    else if (evt.demoDownload) await addVersion(evt.demoDownload, 'DEMO CHƯA DUYỆT — vị trí và nội dung cần xác minh', true);
+    else await showDraftPreview(evt, targetAtStart);
     setState(evt.targetReviewRequired ? 'Xem trước — cần duyệt đủ outline đích rồi tổng hợp lại' : 'Đã tổng hợp');
   }
 }
 
+// A visual plan, not a DOCX: an unreviewed outline cannot establish safe insertion points.
+// Keep the original document intact and show the proposed sections separately from it.
+async function showDraftPreview(result, targetAtStart) {
+  current = -1;
+  $('rightTabs').innerHTML = '';
+  $('stVersions').textContent = '0';
+  $('current').textContent = 'Xem trước — chưa tạo file';
+  $('rightName').textContent = 'BẢN XEM TRƯỚC — chưa duyệt outline, chưa ghi vào Word';
+  const viewer = $('rightViewer');
+  await renderDocx(targetAtStart, viewer);
+  const panel = document.createElement('section');
+  panel.className = 'draft-preview';
+  const heading = document.createElement('h3');
+  heading.textContent = 'Nội dung đề xuất tổng hợp — cần xác minh vị trí';
+  panel.appendChild(heading);
+  const warning = document.createElement('p');
+  warning.className = 'note draft-warning';
+  warning.textContent = `Các đoạn dưới đây chỉ là đề xuất, chưa được chèn vào văn bản bên dưới. Vị trí và outline đích chưa được duyệt; ${result.uncertain.length} mục không chắc cần xác minh. Chưa có file tải xuống.`;
+  panel.appendChild(warning);
+  const sections = [
+    ...result.merged.map(s => ({ ...s, label: 'Dự kiến gộp vào mục', style: 'merged' })),
+    ...result.added.map(s => ({ ...s, label: 'Dự kiến tạo mục mới', style: 'new' })),
+    ...result.uncertain.map(s => ({ heading: s.sourceHeading, facts: s.facts, reason: s.reason, label: 'Chưa chắc — cần xác minh', style: 'uncertain' })),
+  ];
+  if (!sections.length) {
+    const empty = document.createElement('p');
+    empty.textContent = 'Chưa có nội dung được đề xuất hoặc giữ lại để xác minh.';
+    panel.appendChild(empty);
+  }
+  for (const section of sections) {
+    const card = document.createElement('div');
+    card.className = 'draft-section ' + section.style;
+    const title = document.createElement('h4');
+    title.textContent = `${section.label}: ${section.heading}${section.parent ? ' · dưới ' + section.parent : ''}`;
+    card.appendChild(title);
+    if (section.reason) {
+      const reason = document.createElement('p');
+      reason.textContent = section.reason;
+      card.appendChild(reason);
+    }
+    const list = document.createElement('ul');
+    for (const fact of section.facts) {
+      const item = document.createElement('li');
+      item.className = 'draft-fact' + (fact.flags?.length || section.style === 'uncertain' ? ' flagged' : '');
+      item.textContent = fact.text;
+      const source = document.createElement('span');
+      source.className = 'draft-source';
+      source.textContent = `${fact.sources?.length ? 'Nguồn: ' + fact.sources.join('; ') : 'Chưa có nguồn trích'}${fact.flags?.length ? ' · Cần xem: ' + fact.flags.join(', ') : ''}`;
+      item.appendChild(source);
+      list.appendChild(item);
+    }
+    card.appendChild(list);
+    panel.appendChild(card);
+  }
+  viewer.prepend(panel);
+}
+
 /** The summary download link works once: fetch it once and keep the file in the page for viewing and saving. */
-async function addVersion(url, note) {
+async function addVersion(url, note, demo = false) {
   if (!url) return;
   const res = await fetch(url);
   if (!res.ok) { showError('Không tải được bản tổng hợp.'); return; }
   const blob = await res.blob();
-  const label = 'Tổng hợp ' + String(versions.length + 1).padStart(2, '0');
-  versions.push({ label, blob, url: URL.createObjectURL(blob), note });
+  const label = demo ? 'DEMO CHƯA DUYỆT' : 'Tổng hợp ' + String(versions.length + 1).padStart(2, '0');
+  versions.push({ label, blob, url: URL.createObjectURL(blob), note, demo });
   current = versions.length - 1;
   renderRightTabs();
   await showRight();
@@ -345,7 +421,7 @@ async function applyDecisions() {
     const lines = body.outcomes.map(o => {
       const u = run.uncertain[o.index];
       const head = u ? esc(u.sourceHeading) : '#' + o.index;
-      if (o.error) return `<li>${head}: <span class="chip bad">lỗi ${esc(o.error)}</span></li>`;
+      if (o.error) return `<li>${head}: <span class="chip bad">${esc(o.error === 'PARENT_DECISION_REQUIRED' ? 'Cần chọn tạo heading cha trước' : 'lỗi ' + o.error)}</span></li>`;
       const extra = o.alreadyThere.length ? ` · bỏ ${o.alreadyThere.length} đoạn heading đã có y hệt` : '';
       return `<li>${head} → <b>${label[o.decision] || esc(o.decision)}</b>${o.heading && o.decision === 'MERGE' ? ' “' + esc(o.heading) + '”' : ''}: ghi ${o.written} đoạn${extra}</li>`;
     });
@@ -445,7 +521,7 @@ function paragraphAt(location, root) {
 function clearMatches() { document.querySelectorAll('.match').forEach(e => e.classList.remove('match')); }
 /** A line the gather wrote: "- {text} (nguồn: {id location}; …) [cần xem: {flags}]" (GatherWriteback.Lines). Null for any other paragraph. */
 function parseLine(raw) {
-  const t = String(raw ?? '').replace(/\s+/g, ' ').trim();
+  const t = String(raw ?? '').replace(/\s+/g, ' ').trim().replace(/^\[DEMO — cần xác minh\]\s*/, '');
   if (!t.startsWith('- ')) return null;
   const at = t.lastIndexOf(' (nguồn: ');
   if (at < 0) return null;
@@ -473,7 +549,7 @@ function wireRight() {
     p.classList.add('added');
     const fact = factFor(p.textContent);
     if (newHeadings.has(norm(p.textContent))) p.classList.add('newheading');
-    if (fact?.flags?.length) p.classList.add('flagged');
+    if (fact?.flags?.length || versions[current]?.demo) p.classList.add('flagged');
     p.addEventListener('click', async () => {
       clearMatches();
       p.classList.add('match');
@@ -513,7 +589,7 @@ function wireLeft(doc) {
 document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
 function showTab(name) {
   document.querySelectorAll('[data-tab]').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
-  for (const [tab, pane] of [['uncertain', 'paneUncertain'], ['review', 'paneReview'], ['summary', 'paneSummary'], ['extract', 'paneExtract'], ['log', 'paneLog']])
+  for (const [tab, pane] of [['uncertain', 'paneUncertain'], ['review', 'paneReview'], ['summary', 'paneSummary'], ['impact', 'paneImpact'], ['extract', 'paneExtract'], ['log', 'paneLog']])
     $(pane).classList.toggle('hidden', tab !== name);
 }
 
@@ -559,7 +635,34 @@ function facts(list) {
     : '<p class="note">(không có nội dung trực tiếp)</p>';
 }
 
+function renderImpact(history) {
+  if (!history) { $('impactList').innerHTML = '<p class="note">Chưa bật lịch sử. Nhập mã lịch sử rồi chạy tổng hợp.</p>'; return; }
+  if (history.status === 'BASELINE_SAVED') { $('impactList').innerHTML = '<p>Đã lưu lượt xem trước đầu tiên; lượt tiếp theo cùng mã sẽ được đối chiếu.</p>'; return; }
+  if (history.status !== 'COMPARED' || !history.impact) { $('impactList').innerHTML = '<p class="chip warn">Không đọc hoặc lưu được lịch sử; không suy đoán thay đổi.</p>'; return; }
+  const impact = history.impact;
+  const labels = { OLD_EVIDENCE_UNMAPPED: 'Nguồn cũ chưa ghép được', NEW_EVIDENCE_UNMAPPED: 'Nguồn mới chưa ghép được',
+    NEW_OR_UNMATCHED_EVIDENCE: 'Bằng chứng mới hoặc chưa ghép', OLD_EVIDENCE_NOT_IN_NEW_PLAN: 'Bằng chứng cũ không thấy trong plan mới',
+    PLACEMENT_OR_STATUS_CHANGED: 'Mục hoặc trạng thái thay đổi', AMBIGUOUS_OLD: 'Nguồn cũ trùng/chưa rõ', AMBIGUOUS_NEW: 'Nguồn mới trùng/chưa rõ',
+    ADDITIONAL_PROVENANCE_UNVERIFIED: 'Nguồn phụ chưa đối chiếu được', ADDITIONAL_PROVENANCE_CHANGED: 'Nguồn phụ thay đổi' };
+  const entry = e => !e ? '—' : `${esc(e.heading)} <span class="chip">${esc(e.status)}</span><br>${(e.fact?.parts ?? []).map(p => `${esc(p.text)} <span class="src">${esc(p.sourceId)} ${esc(p.location)}</span>`).join('<br>')}${(e.fact?.alsoFrom ?? []).map(p => `<br><span class="note">Nguồn phụ: ${esc(p.text)} <span class="src">${esc(p.sourceId)} ${esc(p.location)}</span></span>`).join('')}`;
+  const rows = impact.items.map(i => `<tr><td><span class="chip warn">${esc(labels[i.kind] ?? i.kind)}</span></td><td>${entry(i.before)}</td><td>${entry(i.after)}</td></tr>`).join('');
+  const modifications = impact.possibleModifications.map(m => `<tr><td>${esc(m.sourceName)}<br><span class="src">${esc(m.oldLocation)} → ${esc(m.newLocation)}</span></td><td>${esc(m.oldText)}</td><td>${esc(m.newText)}</td></tr>`).join('');
+  const reorders = impact.reorders.map(r => `<li>${esc(r.sourceName)}: ${r.analysis.blocks.length} khối đổi thứ tự tương đối — cần xem; không xác định khối nào đã được kéo.<ul>${r.analysis.blocks.map(b => `<li>${esc(b.before?.[0]?.text ?? '')} <span class="src">${esc(b.before?.[0]?.location ?? '?')} → ${esc(b.after?.[0]?.location ?? '?')} (${b.before.length} đoạn)</span></li>`).join('')}</ul></li>`).join('');
+  const docDiffs = impact.documentDiffs.map(d => {
+    const side = (single, group) => (group?.length ? group : single ? [single] : []).map(p => `${esc(p.text)} <span class="src">${esc(p.location)}</span>`).join('<br>') || '—';
+    const changes = d.changes.map(c => `<tr><td>${esc(c.kind)}${c.uncertain ? ' <span class="chip warn">chưa chắc</span>' : ''}</td><td>${side(c.template, c.templateGroup)}</td><td>${side(c.document, c.documentGroup)}</td></tr>`).join('');
+    return `<details><summary>${esc(d.sourceName)} · ${d.changes.length} khác biệt chữ</summary><p class="note">${esc(d.scope)}. Vùng chưa hỗ trợ trước: ${esc(d.beforeUnsupported.join(', ') || 'không báo')}; sau: ${esc(d.afterUnsupported.join(', ') || 'không báo')}.</p>${changes ? `<table><tr><th>Loại</th><th>Trước</th><th>Sau</th></tr>${changes}</table>` : '<p class="note">Không thấy khác biệt chữ trong vùng đã đọc; file vẫn đã đổi.</p>'}</details>`;
+  }).join('');
+  $('impactList').innerHTML = `<p>Lượt trước: ${esc(impact.previousAt)}. ${impact.targetChanged ? '<b class="chip warn">Văn bản gốc thay đổi: cần so lại mọi nguồn.</b>' : 'Văn bản gốc không đổi.'}</p>
+    <p class="note">${esc(impact.limitations)}</p>${impact.unmatchedDocuments.length ? '<p class="chip warn">Không ghép được file: ' + esc(impact.unmatchedDocuments.join('; ')) + '</p>' : ''}
+    ${docDiffs ? '<h3>Đoạn thay đổi trong tài liệu</h3>' + docDiffs : ''}
+    ${reorders ? '<h3>Đổi thứ tự có thể xảy ra</h3><ul>' + reorders + '</ul>' : ''}
+    ${modifications ? `<h3>Đoạn có thể đã sửa — cần xác minh</h3><table><tr><th>Nguồn</th><th>Trước</th><th>Sau</th></tr>${modifications}</table>` : ''}
+    ${rows ? `<h3>Bằng chứng cần xem (${impact.items.length})</h3><table><tr><th>Tín hiệu</th><th>Trước</th><th>Hiện tại</th></tr>${rows}</table>` : '<p>Không phát hiện khác biệt giữa các bằng chứng đã được hai plan ghi nhận.</p>'}`;
+}
+
 function render(r) {
+  renderImpact(r.history);
   run = r;
   choices = {};
   factIndex = [...r.merged.flatMap(s => s.facts), ...r.added.flatMap(s => s.facts), ...r.uncertain.flatMap(u => u.facts)]
@@ -641,7 +744,8 @@ function renderReview(documents) {
     const diffs = r.differences ?? [];
     const pe = r.placementEvidence;
     const placementRows = pe?.decisions?.map(p => `<tr><td>${esc(p.sourceId)} (${esc(p.alias)})</td><td>${esc(p.proposedParentAlias ?? 'không có đề xuất')}</td><td>${esc(p.resolution ?? 'chưa rõ')}</td><td>${esc(p.resolutionBasis ?? 'không có bằng chứng')}</td></tr>`).join('') ?? '';
-    const placement = pe ? `<details><summary>Bằng chứng PLACE · ${esc(pe.status)} · ${esc(pe.repairCount ?? 0)} lượt repair</summary><table><tr><th>Nguồn</th><th>Parent được đề xuất</th><th>Kết quả</th><th>Cơ sở</th></tr>${placementRows}</table><p class="note">Lưu audit sau xử lý; không suy ra đề xuất trước repair nếu không còn bằng chứng.</p></details>` : '<p class="note">Không có bằng chứng PLACE được lưu cho phiên bản này.</p>';
+    const repairStatus = !pe ? '' : pe.chainRepair == null ? 'Repair chuỗi cha chưa bật hoặc không có dữ liệu' : `Repair chuỗi cha đã bật · ${pe.repairCount ?? 0} lượt gọi`;
+    const placement = pe ? `<details><summary>Bằng chứng PLACE · ${esc(pe.status)} · ${esc(repairStatus)}</summary><table><tr><th>Nguồn</th><th>Parent được đề xuất</th><th>Kết quả</th><th>Cơ sở</th></tr>${placementRows}</table><p class="note">Audit sau xử lý không lưu nguyên packet hoặc response. Repair chuỗi cha chỉ kiểm tra quan hệ bị đứt hoặc không hợp lệ; không xác nhận đúng ngữ nghĩa.</p></details>` : '<p class="note">Không có bằng chứng PLACE được lưu cho phiên bản này.</p>';
     const rows = diffs.map((x, i) => {
       const loc = x.newLocation;
       const name = `rv${di}_${i}`;

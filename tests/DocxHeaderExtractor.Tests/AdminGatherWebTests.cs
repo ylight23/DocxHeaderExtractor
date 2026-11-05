@@ -52,6 +52,80 @@ public sealed class AdminGatherWebTests
         body.Split('\n', StringSplitOptions.RemoveEmptyEntries).Select(l => JsonDocument.Parse(l).RootElement.Clone()).ToArray();
 
     [Fact]
+    public async Task New_source_heading_is_held_with_its_text_instead_of_automatic_output()
+    {
+        var target = RawDocxFixtureTests.Build(P("Kế hoạch") + P("Nội dung đích"));
+        var source = RawDocxFixtureTests.Build(P("Kế hoạch") + P("Dinh dưỡng") + P("Nội dung nguồn"));
+        try
+        {
+            using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(b => b.ConfigureTestServices(s =>
+                s.AddSingleton<ModelProviderFactory>(_ => () => new OpenRouterProvider(null))));
+            using var client = app.CreateClient(); using var form = new MultipartFormDataContent();
+            Add(form, "target", File.ReadAllBytes(target), "target.docx"); Add(form, "sources", File.ReadAllBytes(source), "source.docx");
+            Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("target.docx", (0, 1, "Kế hoạch"))), "target.json");
+            Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("source.docx", (0, 1, "Kế hoạch"), (1, 2, "Dinh dưỡng"))), "source.json");
+            form.Add(new StringContent("1"), "noLlm");
+            using var response = await client.PostAsync("/api/admin/gather", form);
+            var events = Events(await response.Content.ReadAsStringAsync());
+            Assert.DoesNotContain(events, x => x.GetProperty("type").GetString() == "error");
+            var result = events.Single(x => x.GetProperty("type").GetString() == "result");
+            Assert.Empty(result.GetProperty("added").EnumerateArray());
+            var held = Assert.Single(result.GetProperty("uncertain").EnumerateArray());
+            Assert.Equal("NEW_HEADING_REVIEW", held.GetProperty("kind").GetString());
+            Assert.Equal("Nội dung nguồn", Assert.Single(held.GetProperty("facts").EnumerateArray()).GetProperty("text").GetString());
+        }
+        finally { File.Delete(target); File.Delete(source); }
+    }
+
+    [Fact]
+    public async Task Named_history_reports_new_evidence_and_changed_target_without_carrying_decisions()
+    {
+        var target = RawDocxFixtureTests.Build(P("Mục A") + P("Cũ"));
+        var changedTarget = RawDocxFixtureTests.Build(P("Mục A") + P("Đích đổi"));
+        var source = RawDocxFixtureTests.Build(P("Mục A") + P("Nguồn cũ"));
+        var changedSource = RawDocxFixtureTests.Build(P("Mục A") + P("Nguồn cũ") + P("Nguồn mới"));
+        var root = Path.Combine(Path.GetTempPath(), "dhx-impact-web-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(b => b.ConfigureTestServices(s =>
+            {
+                s.AddSingleton(new WebApp::DocxHeaderExtractor.Web.Endpoints.OutlineRoot(root));
+                s.AddSingleton<ModelProviderFactory>(_ => () => new OpenRouterProvider(null));
+            }));
+            using var client = app.CreateClient();
+            async Task<JsonElement> Run(string t, string s)
+            {
+                using var form = new MultipartFormDataContent();
+                Add(form, "target", File.ReadAllBytes(t), "target.docx");
+                Add(form, "sources", File.ReadAllBytes(s), "source.docx");
+                Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("target.docx", (0, 1, "Mục A"))), "target.json");
+                Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("source.docx", (0, 1, "Mục A"))), "source.json");
+                form.Add(new StringContent("1"), "noLlm"); form.Add(new StringContent("test-history"), "historyKey");
+                using var response = await client.PostAsync("/api/admin/gather", form);
+                var events = Events(await response.Content.ReadAsStringAsync());
+                Assert.DoesNotContain(events, e => e.GetProperty("type").GetString() == "error");
+                return events.Single(e => e.GetProperty("type").GetString() == "result");
+            }
+            var first = await Run(target, source);
+            Assert.Equal("BASELINE_SAVED", first.GetProperty("history").GetProperty("status").GetString());
+            var second = await Run(changedTarget, changedSource);
+            var history = second.GetProperty("history");
+            Assert.Equal("COMPARED", history.GetProperty("status").GetString());
+            var impact = history.GetProperty("impact");
+            Assert.True(impact.GetProperty("targetChanged").GetBoolean());
+            Assert.Contains(impact.GetProperty("items").EnumerateArray(), i => i.GetProperty("kind").GetString() == "NEW_OR_UNMATCHED_EVIDENCE"
+                && i.GetProperty("after").GetProperty("fact").GetProperty("parts")[0].GetProperty("text").GetString() == "Nguồn mới");
+            Assert.True(second.GetProperty("targetReviewRequired").GetBoolean());
+            Assert.False(second.TryGetProperty("download", out _));
+        }
+        finally
+        {
+            foreach (var p in new[] { target, changedTarget, source, changedSource }) File.Delete(p);
+            if (Directory.Exists(root)) Directory.Delete(root, true);
+        }
+    }
+
+    [Fact]
     public async Task The_admin_page_gathers_by_heading_chain_and_lists_the_uncertain_sections_without_a_model()
     {
         var target = RawDocxFixtureTests.Build(P("Công tác xã hội:") + P("Đã làm A.") + P("Công tác tiếp nhận và hỗ trợ từ thiện") + P("Tiếp đón 66 lượt."));
@@ -85,6 +159,22 @@ public sealed class AdminGatherWebTests
 
             Assert.True(result.GetProperty("targetReviewRequired").GetBoolean());
             Assert.False(result.TryGetProperty("download", out _));
+
+            // The separate demo is labelled, source-bound, and includes held content without approving or modifying the target.
+            var demoUrl = result.GetProperty("demoDownload").GetString();
+            Assert.NotNull(demoUrl);
+            var demoBytes = await client.GetByteArrayAsync(demoUrl);
+            using (var stream = new MemoryStream(demoBytes))
+            using (var doc = DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(stream, false))
+            {
+                var body = doc.MainDocumentPart!.Document!.Body!;
+                Assert.Contains("BẢN DEMO CHƯA DUYỆT", body.InnerText);
+                Assert.Contains("Đã làm B.", body.InnerText);
+                Assert.Contains("Tiếp đón 50 lượt.", body.InnerText);
+                Assert.Contains("CHƯA XÁC ĐỊNH VỊ TRÍ", body.InnerText);
+                Assert.Contains("nguồn:", body.InnerText);
+                Assert.NotEmpty(body.Descendants<DocumentFormat.OpenXml.Wordprocessing.InsertedRun>());
+            }
 
             // An unreviewed target remains a preview, even if the caller tries to apply an uncertain-section decision.
             var runId = result.GetProperty("runId").GetString();

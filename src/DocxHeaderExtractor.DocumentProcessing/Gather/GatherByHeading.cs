@@ -23,6 +23,8 @@ public sealed record GatherUncertain(string Kind, string SourceHeading, string S
     /// </summary>
     public string? NewHeadingParent { get; init; }
     public string? NewHeadingNextLocation { get; init; }
+    public int? ProposedParentIndex { get; init; }
+    public int? ProposedNewDepth { get; init; }
 }
 
 /// <summary>The result of matching sources to a target by heading: the sections to write, what is not written, and what is held as uncertain.</summary>
@@ -402,6 +404,30 @@ public static partial class GatherByHeading
     {
         Run = s.Run with { Facts = s.Run.Facts.Select(f => f with { Flags = f.Flags.Where(x => x != "SCOPE_UNREVIEWED").ToArray() }).ToList() },
     }).ToList();
+
+    /// <summary>Move proposed new headings and their source facts into the explicit review queue.</summary>
+    public static GatherHeadingPlan RequireNewHeadingReview(GatherHeadingPlan plan)
+    {
+        var held = plan.Uncertain.ToList();
+        var ancestors = new Stack<(int Depth, int Index, string Heading)>();
+        foreach (var section in plan.Sections.Where(s => s.NewHeadingDepth is not null))
+        {
+            var depth = section.NewHeadingDepth!.Value;
+            while (ancestors.Count > 0 && ancestors.Peek().Depth >= depth) ancestors.Pop();
+            var parent = ancestors.Count > 0 && ancestors.Peek().Heading == section.NewHeadingParent ? ancestors.Peek().Index : (int?)null;
+            var index = held.Count;
+            held.Add(new GatherUncertain("NEW_HEADING_REVIEW", section.Heading, section.NewHeadingSource ?? "", parent is null ? null : section.NewHeadingParent,
+                [], section.Run.Facts, "Heading mới do nguồn đề xuất; cần xác minh trước khi ghi.")
+            {
+                NewHeadingParent = section.NewHeadingParent,
+                NewHeadingNextLocation = section.NextHeadingLocation,
+                ProposedParentIndex = parent,
+                ProposedNewDepth = depth,
+            });
+            ancestors.Push((depth, index, section.Heading));
+        }
+        return plan with { Sections = plan.Sections.Where(s => s.NewHeadingDepth is null).ToArray(), Uncertain = held };
+    }
 
     static IEnumerable<NewHeading> DepthFirst(NewHeading node)
     {

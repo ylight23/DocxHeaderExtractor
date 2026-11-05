@@ -65,9 +65,14 @@ public static class GatherDecisions
                     break;
                 case "NEW":
                 {
-                    var facts = u.Facts.Select(f => f with { Flags = [.. f.Flags, "USER_DECISION: heading mới"] }).ToList();
+                    if (u.ProposedParentIndex is { } parentIndex && !outcomes.Any(o => o.Index == parentIndex && o.Decision == "NEW" && o.Error is null))
+                    {
+                        outcomes.Add(new(index, "NEW", null, 0, [], "PARENT_DECISION_REQUIRED"));
+                        break;
+                    }
+                    var facts = u.Facts.Select(f => f with { Flags = [.. f.Flags.Where(x => x != "SCOPE_UNREVIEWED"), "USER_DECISION: heading mới"] }).ToList();
                     // A child whose parent the reader also made a new heading is written right after it, one level deeper.
-                    var depth = u.SourceParent is not null && newHeadings.Contains(u.SourceParent) ? 2 : 1;
+                    var depth = u.ProposedNewDepth ?? (u.SourceParent is not null && newHeadings.Contains(u.SourceParent) ? 2 : 1);
                     newHeadings.Add(u.SourceHeading);
                     sections.Add(new GatherSection("", u.SourceHeading, u.SourceHeading, new GatherRun(facts, [], [], [], [], gaps, 1),
                         GatherDocument.Conflicts(facts), u.NewHeadingNextLocation)
@@ -84,7 +89,8 @@ public static class GatherDecisions
                     break;
             }
         }
-        var undecided = Enumerable.Range(0, uncertain.Count).Where(i => !byIndex.ContainsKey(i) || outcomes.Any(o => o.Index == i && o.Error == "OUTLINE_REVIEW_REQUIRED")).ToList();
+        var undecided = Enumerable.Range(0, uncertain.Count)
+            .Where(i => !outcomes.Any(o => o.Index == i && o.Error is null)).ToList();
         return new GatherDecisionResult(sections, outcomes, undecided);
     }
 

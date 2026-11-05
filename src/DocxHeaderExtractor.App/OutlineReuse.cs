@@ -29,13 +29,16 @@ public sealed record OutlineReuseResult(IReadOnlyList<HeadingRecord> Headings, s
 /// </summary>
 public static class OutlineReuse
 {
-    public static string ConfigKey(PipelineOptions options) => OutlineStore.ConfigKey(
+    public static string ConfigKey(PipelineOptions options) => OutlineStore.ConfigKey([
         PromptCatalog.Docx.Instruction, PromptCatalog.Docx.SystemPrompt, PromptCatalog.Docx.GroupPrompt ?? "", PromptCatalog.Docx.GroupInstruction ?? "",
         OpenRouterWire.ChatModel,
         typeof(PromptCatalog).Module.ModuleVersionId.ToString(), typeof(OpenRouterWire).Module.ModuleVersionId.ToString(),
         typeof(OutlineStore).Module.ModuleVersionId.ToString(), typeof(DocxVersionReader).Module.ModuleVersionId.ToString(),
         typeof(OutlineReuse).Module.ModuleVersionId.ToString(),
-        JsonSerializer.Serialize(options.Extraction), options.DocxBoundarySnapParagraphs.ToString());
+        JsonSerializer.Serialize(options.Extraction), options.DocxBoundarySnapParagraphs.ToString(),
+        .. (options.DocxWholeDocumentPlacement || options.WholeDocumentPlacement || options.RepairParentChains
+            ? new[] { $"placement:{options.DocxWholeDocumentPlacement}:{options.WholeDocumentPlacement}:{options.RepairParentChains}" }
+            : Array.Empty<string>())]);
 
     /// <param name="name">The file name the document is known by, used to retain its version history.</param>
     /// <param name="extract">Runs the pipeline on <paramref name="path"/> when no stored outline can be used.</param>

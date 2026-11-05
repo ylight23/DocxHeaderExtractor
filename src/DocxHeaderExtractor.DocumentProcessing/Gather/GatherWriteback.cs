@@ -23,7 +23,17 @@ public static class GatherWriteback
     /// <param name="verifiedTargetSha256">SHA-256 of the exact target snapshot for which coverage was verified. This binds the assertion to the copied file.</param>
     public static GatherWriteResult Apply(string targetPath, string outputPath, IReadOnlyList<GatherSection> sections, DateTime when,
         bool targetOutlineCoverageVerified = false, string? verifiedTargetSha256 = null)
+        => ApplyCore(targetPath, outputPath, sections, when, targetOutlineCoverageVerified, verifiedTargetSha256, null);
+
+    /// <summary>Creates a clearly marked, provisional copy for display only. This never grants outline approval.</summary>
+    public static GatherWriteResult CreateDemo(string targetPath, string outputPath, IReadOnlyList<GatherSection> sections,
+        IReadOnlyList<GatherUncertain> uncertain, DateTime when) =>
+        ApplyCore(targetPath, outputPath, sections, when, false, null, uncertain);
+
+    static GatherWriteResult ApplyCore(string targetPath, string outputPath, IReadOnlyList<GatherSection> sections, DateTime when,
+        bool targetOutlineCoverageVerified, string? verifiedTargetSha256, IReadOnlyList<GatherUncertain>? demoUncertain)
     {
+        var demo = demoUncertain is not null;
         ArgumentException.ThrowIfNullOrWhiteSpace(targetPath);
         ArgumentException.ThrowIfNullOrWhiteSpace(outputPath);
         if (Path.GetFullPath(outputPath).Equals(Path.GetFullPath(targetPath), StringComparison.OrdinalIgnoreCase))
@@ -43,6 +53,8 @@ public static class GatherWriteback
             var byLocation = ordered.ToDictionary(p => p.StableId, p => p.Element, StringComparer.Ordinal);
             var indexOf = ordered.Select((p, i) => (p.StableId, i)).ToDictionary(x => x.StableId, x => x.i, StringComparer.Ordinal);
             var nextId = 1000;
+            if (demo)
+                body.PrependChild(Tracked("BẢN DEMO CHƯA DUYỆT — vị trí và nội dung cần xác minh; không phải bản tổng hợp chính thức.", when, ref nextId, true));
             var inserted = new Dictionary<OpenXmlElement, OpenXmlElement>(ReferenceEqualityComparer.Instance);
             // A table that ends the document closes it (signature, recipients): what goes "at the end" is written before it, never after it.
             var endTable = GatherDocument.EndTable(body);
@@ -50,7 +62,7 @@ public static class GatherWriteback
                 : ordered.FindIndex(p => p.Element.Ancestors<Table>().Any(t => ReferenceEquals(t, endTable))) is var first and > 0 ? first : ordered.Count;
             foreach (var section in sections)
             {
-                if (!coverageBoundToFile)
+                if (!coverageBoundToFile && !demo)
                 {
                     skipped.Add(section.Heading + " (độ phủ heading của văn bản đích chưa xác minh)");
                     continue;
@@ -103,11 +115,37 @@ public static class GatherWriteback
                     : Lines(section).Select(l => (Text: l, Bold: false));
                 foreach (var (line, bold) in lines)
                 {
-                    var paragraph = Tracked(line, when, ref nextId, bold);
+                    var paragraph = Tracked(demo ? "[DEMO — cần xác minh] " + line : line, when, ref nextId, bold);
                     anchor.InsertAfterSelf(paragraph);
                     anchor = paragraph;
                 }
                 inserted[anchorBody] = anchor;
+            }
+            if (demo)
+            {
+                var appendix = new List<string>();
+                foreach (var item in demoUncertain!)
+                {
+                    appendix.Add("[CHƯA RÕ — " + item.SourceHeading + "] " + item.Reason);
+                    foreach (var fact in item.Facts)
+                        appendix.Add("- " + fact.Render() + " (nguồn: " + string.Join("; ", fact.Parts.Concat(fact.AlsoFrom).Select(p => p.SourceId + " " + p.Location).Distinct()) + ")");
+                }
+                foreach (var section in sections.Where(s => skipped.Any(x => x.StartsWith(s.Heading + " (", StringComparison.Ordinal))))
+                {
+                    appendix.Add("[CHƯA XÁC ĐỊNH VỊ TRÍ — " + section.Heading + "]");
+                    appendix.AddRange(Lines(section, emptyNote: false));
+                }
+                if (appendix.Count > 0)
+                {
+                    var properties = body.GetFirstChild<SectionProperties>();
+                    var title = Tracked("DEMO — NỘI DUNG CHƯA XÁC ĐỊNH VỊ TRÍ, CẦN XÁC MINH", when, ref nextId, true);
+                    if (properties is null) body.AppendChild(title); else body.InsertBefore(title, properties);
+                    foreach (var line in appendix)
+                    {
+                        var paragraph = Tracked(line, when, ref nextId);
+                        if (properties is null) body.AppendChild(paragraph); else body.InsertBefore(paragraph, properties);
+                    }
+                }
             }
             document.MainDocumentPart!.Document!.Save();
         }

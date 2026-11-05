@@ -42,7 +42,7 @@ public sealed class DocumentRunner
         maxProviderAttempts = options.MaxProviderAttempts;
         providerBudgetDuration = options.ProviderBudgetDuration;
         var agents = HeadingAgentSetup.CreateRoutes(options, provider, ModelReplyViews.Adapt(onModelReply));
-        _dispatcher = new Router(new DocxHandler(new DocxPipeline(options, provider, agents.Shared)), new PdfHandler(options, provider, agents.NativePdf));
+        _dispatcher = new Router(new DocxHandler(new DocxPipeline(options, provider, agents.Docx)), new PdfHandler(options, provider, agents.NativePdf));
     }
 
     /// <summary>

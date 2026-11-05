@@ -5,6 +5,7 @@ using System.Threading.Channels;
 using DocxHeaderExtractor.App;
 using DocxHeaderExtractor.DocumentProcessing.Gather;
 using DocxHeaderExtractor.DocumentProcessing.Output;
+using DocxHeaderExtractor.Sources.Docx.Changes;
 
 namespace DocxHeaderExtractor.Web.Endpoints;
 
@@ -149,8 +150,8 @@ internal static class AdminGatherEndpoint
 
                 // 2. Placement by heading chain; what it cannot decide is held as uncertain.
                 Stage("gather", "Started", "Ghép nội dung theo chuỗi heading.");
-                var plan = OutlineReuse.FlagAdded(GatherByHeading.Build(target.Path, target.Headings, sources, addMissingHeadings: true),
-                    extracted.Where(e => e.Reuse is { Status: "MAPPED" }).ToDictionary(e => e.Id, e => e.Reuse!.AddedParagraphs));
+                var plan = GatherByHeading.RequireNewHeadingReview(OutlineReuse.FlagAdded(GatherByHeading.Build(target.Path, target.Headings, sources, addMissingHeadings: true),
+                    extracted.Where(e => e.Reuse is { Status: "MAPPED" }).ToDictionary(e => e.Id, e => e.Reuse!.AddedParagraphs)));
                 Stage("gather", "Completed", $"{plan.Uncertain.Count} mục không chắc, {plan.Excluded.Count} đoạn không thêm.");
 
                 // 3. The model classifies the uncertain sections; its verdict is advice shown next to them, never applied.
@@ -176,19 +177,41 @@ internal static class AdminGatherEndpoint
                     OutlineApprovals.OutlineHash(targetOutline)) : null;
                 var written = targetReviewed ? GatherWriteback.Apply(target.Path, output, decided.Where(s => s.Run.Facts.Count > 0 || s.NewHeadingDepth is not null).ToList(),
                     DateTime.UtcNow, targetOutlineCoverageVerified: true, verifiedTargetSha256: hashes[target.Path]) : null;
+                var demo = targetReviewed ? null : GatherWriteback.CreateDemo(target.Path,
+                    Path.Combine(work, Path.GetFileNameWithoutExtension(target.Path) + "_DEMO_CHUA_DUYET.docx"),
+                    decided.Where(s => s.Run.Facts.Count > 0 || s.NewHeadingDepth is not null).ToList(), plan.Uncertain, DateTime.UtcNow);
                 Stage("writeback", targetReviewed ? "Completed" : "Blocked", targetReviewed
                     ? $"Đã ghi bản tổng hợp; {written!.SkippedHeadings.Count} mục không ghi được."
                     : "Chỉ xem trước: cần duyệt đủ outline đích, rồi chạy lại tổng hợp trước khi xuất.");
                 foreach (var (path, hash) in hashes)
                     if (Hash(path) != hash) throw new InvalidDataException("INPUT_CHANGED");
-                return (Extracted: extracted, Plan: plan, Decided: decided, Review: review, Written: written, ReviewRef: reviewRef);
+                return (Extracted: extracted, Plan: plan, Decided: decided, Review: review, Written: written, Demo: demo, ReviewRef: reviewRef);
             }, ct);
             _ = run.ContinueWith(_ => events.Writer.TryComplete(), TaskScheduler.Default);
             await foreach (var evt in events.Reader.ReadAllAsync(ct)) await EmitAsync(evt);
             var result = await run;
 
+            // Explicit opt-in: the named local history stores source text and an unreviewed plan, never approvals.
+            GatherHistoryStore.Outcome? history = null;
+            var historyKey = form["historyKey"].ToString().Trim();
+            if (historyKey.Length > 0)
+            {
+                var docs = result.Extracted.Select(e => new GatherSnapshotDocument(e.Id, Path.GetFileName(e.Path), e.Role,
+                    DocxVersionReader.Read(e.Path))).ToArray();
+                if (docs.Any(d => d.Version.FileSha256 != hashes[result.Extracted.Single(e => e.Id == d.Id && e.Role == d.Role).Path]))
+                    throw new InvalidDataException("INPUT_CHANGED");
+                history = new GatherHistoryStore(Path.Combine(outlineRoot.Path, "gather-history"))
+                    .CompareAndSave(historyKey, new GatherSnapshot(DateTimeOffset.UtcNow, docs, result.Plan));
+            }
+
             if (result.Written is { } completed)
                 writebackStore.Put(runId, await File.ReadAllBytesAsync(completed.OutputPath, ct), Path.GetFileName(completed.OutputPath));
+            Guid? demoId = null;
+            if (result.Demo is { } demoResult)
+            {
+                demoId = Guid.NewGuid();
+                writebackStore.Put(demoId.Value, await File.ReadAllBytesAsync(demoResult.OutputPath, ct), Path.GetFileName(demoResult.OutputPath));
+            }
             runs.Put(runId, new AdminRunStore.Entry(await File.ReadAllBytesAsync(targetPath, ct), Path.GetFileName(targetPath), result.Decided,
                 result.Plan.Uncertain, DateTimeOffset.UtcNow, result.ReviewRef));
             var approvals = new OutlineApprovals(outlineRoot.Path);
@@ -197,8 +220,11 @@ internal static class AdminGatherEndpoint
                 type = "result",
                 runId,
                 download = result.Written is null ? null : $"/api/outline/{runId}.docx",
+                demoDownload = demoId is null ? null : $"/api/outline/{demoId}.docx",
+                demoSkipped = result.Demo?.SkippedHeadings ?? [],
                 targetReviewRequired = result.ReviewRef is null,
                 modelClassified = result.Review is not null,
+                history,
                 documents = result.Extracted.Select(e => new
                 {
                     e.Role, e.Id, file = Path.GetFileName(e.Path), from = e.From, reuse = e.Reuse?.Status, addedParagraphs = e.Reuse?.AddedParagraphs,
@@ -231,6 +257,8 @@ internal static class AdminGatherEndpoint
             var message = ex is NotSupportedException or FileNotFoundException or InvalidDataException
                 ? ex.Message
                 : $"Tổng hợp thất bại ({ex.GetType().Name}). Nội dung nguồn và phản hồi nhà cung cấp không được hiển thị.";
+            // Local console only, for diagnosis: the page still gets the redacted message above.
+            Console.Error.WriteLine($"[admin-gather {runId}] {ex}");
             try { await EmitAsync(new { type = "error", message }); } catch (Exception) { }
         }
         finally
