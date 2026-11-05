@@ -50,12 +50,37 @@ internal static class AgentGrouping
 
     static readonly JsonSerializerOptions Options = new() { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
+    /// <summary>Provenance code on aliases in a proposed group split at numbered lines.</summary>
+    public const string SplitNumberedCode = "GROUP_SPLIT_SEPARATELY_NUMBERED";
+
+    /// <summary>
+    /// The groups of a run, where a group holding two or more lines with their own list number is cut before each such line: a numbered line
+    /// starts a new item and the unnumbered lines after it continue that item ([A1, B, C2] becomes [A1, B] and [C2]). Groups with fewer than two
+    /// numbered lines are returned as they are. Order and coverage are unchanged.
+    /// </summary>
+    internal static List<int[]> SplitSeparatelyNumbered(IReadOnlyList<int[]> parts, Func<int, bool> ownListNumber)
+    {
+        var result = new List<int[]>();
+        foreach (var g in parts)
+        {
+            if (g.Count(ownListNumber) < 2) { result.Add(g); continue; }
+            var current = new List<int>();
+            foreach (var i in g)
+            {
+                if (ownListNumber(i) && current.Count > 0) { result.Add([.. current]); current.Clear(); }
+                current.Add(i);
+            }
+            result.Add([.. current]);
+        }
+        return result;
+    }
+
     /// <summary>Model-divided runs in document order and layout fallback for protocol failures.</summary>
     public static Result Group(IAgentSource source, IReadOnlySet<string> selected, AgentUnit.Model model, AgentBudget budget, int parallelism, CancellationToken ct, int retryDelayMs = 5000,
         string instruction = Instruction, string unitPrefix = "GROUP", object? verificationFeedback = null, GroupingCache? cache = null,
         IReadOnlyDictionary<string, TextOffsetSpan>? headingExtents = null, IReadOnlyDictionary<string, string>? headingReadings = null,
         IReadOnlyList<IReadOnlyList<string>>? inlineGroups = null, IReadOnlyDictionary<string, string>? ownership = null, bool pairwisePdf = false,
-        bool generalPdfPrompt = false)
+        bool generalPdfPrompt = false, Func<string, bool>? ownListNumber = null)
     {
         if (pairwisePdf && (source is not AgentSource || inlineGroups is not null)) throw new ArgumentException("PAIRWISE_NATIVE_PDF_GROUPING_REQUIRED");
         var chosen = Enumerable.Range(0, source.Lines.Count).Where(i => selected.Contains(source.Lines[i].Alias)).ToArray();
@@ -124,6 +149,19 @@ internal static class AgentGrouping
             if (r.Failure is not null) failures.Add(r.Failure);
             foreach (var kv in r.Division) division[kv.Key] = kv.Value;
         }
+        // Experimental boundary heuristic: number labels are evidence, not proof of semantic heading identity.
+        // Record only aliases belonging to a group whose partition actually changed.
+        var splitAliases = new HashSet<string>(StringComparer.Ordinal);
+        if (ownListNumber is not null)
+            foreach (var id in division.Keys.ToArray())
+            {
+                foreach (var group in division[id])
+                    if (group.Count(i => ownListNumber(source.Lines[i].Alias)) >= 2)
+                        foreach (var i in group) splitAliases.Add(source.Lines[i].Alias);
+                var parts = SplitSeparatelyNumbered(division[id], i => ownListNumber(source.Lines[i].Alias));
+                if (parts.Count == division[id].Count) continue;
+                division[id] = parts;
+            }
 
         var groups = new List<IReadOnlyList<string>>();
         var runOf = runs.ToDictionary(r => r.Lines[0]);
@@ -144,7 +182,7 @@ internal static class AgentGrouping
             var failure = inline ? null : results[batch].Failure;
             return new HeadingAliasProvenance(source.Lines[i].Alias, "grouping", inline ? "INLINE_SELECTION" : unitPrefix + "-" + (batch + 1).ToString("000"), run.Id,
                 division.ContainsKey(run.Id) ? "DIVIDED" : "FALLBACK", null,
-                !division.ContainsKey(run.Id) ? ["GROUP_DIVISION_UNRESOLVED"] : [], [])
+                !division.ContainsKey(run.Id) ? ["GROUP_DIVISION_UNRESOLVED"] : splitAliases.Contains(source.Lines[i].Alias) ? [SplitNumberedCode] : [], [])
                 { UnitFailureContext = failure };
         })).ToArray();
         return new Result(groups, answers, failures, posts) { Evidence = evidence, Provenance = provenance,

@@ -48,6 +48,8 @@ public sealed class PipelineOptions
     public bool WholeDocumentPlacement { get; set; }
     /// <summary>Opt-in whole-document placement for DOCX only; other formats retain their own settings.</summary>
     public bool DocxWholeDocumentPlacement { get; set; }
+    /// <summary>Opt-in for DOCX: a proposed heading group of two or more lines that each show their own list number is split into single lines.</summary>
+    public bool DocxSplitNumberedGroups { get; set; }
     /// <summary>Native PDF default: every SELECT must echo the exact source text of its alias.</summary>
     public bool PdfSourceBoundSelection { get; set; } = true;
     /// <summary>Native PDF: attach measured OpenCV page geometry to parser text before request budgeting. Disable for legacy packet parity.</summary>

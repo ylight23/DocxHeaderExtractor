@@ -77,6 +77,14 @@ internal sealed class DocxAgentSource : IAgentSource
     /// <summary>The decided range of each segment, [Start, End) into <see cref="Lines"/>, covering every paragraph once.</summary>
     public IReadOnlyList<(int Start, int End)> Cores { get; }
     public IReadOnlyDictionary<string, JsonObject> Facts { get; }
+    /// <summary>Whether the paragraph of this alias shows its own list number: a numbering label in its facts whose format is not a bullet.</summary>
+    public bool HasOwnListNumber(string alias) =>
+        Facts.TryGetValue(alias, out var f) && f["numbering"] is JsonObject n && IsNumberedList(n);
+    internal static bool IsNumberedList(JsonObject n) =>
+        n["label"] is JsonValue v && v.TryGetValue<string>(out var label) && !string.IsNullOrWhiteSpace(label)
+        && n["format"] is JsonValue fv && fv.TryGetValue<string>(out var format) && !string.IsNullOrWhiteSpace(format)
+        && !string.Equals(format, "bullet", StringComparison.OrdinalIgnoreCase)
+        && !string.Equals(format, "none", StringComparison.OrdinalIgnoreCase);
     /// <summary>The document style table: the distinct styles of the whole document, with how many paragraphs use each.</summary>
     public JsonObject StyleTable { get; }
     /// <summary>Qualification-only bounded backward snap radius. Zero preserves fixed production windows.</summary>

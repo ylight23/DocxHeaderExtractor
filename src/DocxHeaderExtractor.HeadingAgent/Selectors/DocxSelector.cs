@@ -19,13 +19,15 @@ public sealed class DocxSelector : AgentSelector, DocxHeaderExtractor.Contracts.
     readonly bool qualificationFormatRunEvidence;
     readonly bool qualificationBatchExtentErrors;
     readonly string? qualificationGroupingInstruction;
+    readonly bool splitNumberedGroups;
 
     /// <param name="extraction">The route's extraction options (for example tables left out); null reads everything.</param>
     /// <inheritdoc cref="AgentSelector"/>
     public DocxSelector(Func<HttpMessageHandler>? handlerFactory = null, int? parallelism = null, Action<ModelReply>? onModelReply = null,
         string? instruction = null, int firstSegments = 0, ExtractionOptions? extraction = null, int boundarySnapParagraphs = 0,
         string? selectionCacheRoot = null, bool qualificationFormatBoundaryEvidence = false,
-        string? qualificationGroupingInstruction = null, bool qualificationBatchExtentErrors = false, bool qualificationFormatRunEvidence = false)
+        string? qualificationGroupingInstruction = null, bool qualificationBatchExtentErrors = false, bool qualificationFormatRunEvidence = false,
+        bool splitNumberedGroups = false)
         : base(handlerFactory, parallelism, onModelReply, instruction ?? DocxAgentProtocol.Instruction, firstSegments)
     {
         if (boundarySnapParagraphs is < 0 or >= DocxAgentSource.Unit) throw new ArgumentOutOfRangeException(nameof(boundarySnapParagraphs));
@@ -35,6 +37,7 @@ public sealed class DocxSelector : AgentSelector, DocxHeaderExtractor.Contracts.
         this.qualificationFormatRunEvidence = qualificationFormatRunEvidence;
         this.qualificationBatchExtentErrors = qualificationBatchExtentErrors;
         this.qualificationGroupingInstruction = qualificationGroupingInstruction;
+        this.splitNumberedGroups = splitNumberedGroups;
         // Include implementation identities because later tool responses are not in the first request hash.
         this.selectionCacheRoot = selectionCacheRoot is null ? null : Path.Combine(selectionCacheRoot,
             "docx-reuse-v1-" + AgentProtocol.Sha(DocxAgentSource.Version + ":" + DocxAgentSource.FactsVersion + ":" + DocxAgentSource.StylesVersion + ":" + BindingPolicyVersion
@@ -49,6 +52,7 @@ public sealed class DocxSelector : AgentSelector, DocxHeaderExtractor.Contracts.
     // The complete first request includes the whole-file SHA. A different file therefore misses this cache, including when its visible segment
     // is unchanged. Tool calls can read outside the segment, so removing that SHA from the key alone would not make cross-version reuse safe.
     private protected override bool CacheByRequestOnly => true;
+    private protected override bool SplitSeparatelyNumberedGroups => splitNumberedGroups;
     internal static string DefaultGroupingInstruction(string instruction) => instruction + "\n" + DocxAgentProtocol.GroupingBoundaryGuidance;
     private protected override string GroupingInstruction => qualificationGroupingInstruction ?? DefaultGroupingInstruction(InstructionText);
 
@@ -57,7 +61,8 @@ public sealed class DocxSelector : AgentSelector, DocxHeaderExtractor.Contracts.
         + (qualificationFormatBoundaryEvidence ? ":qualification-format-boundaries-v1" : "")
         + (qualificationFormatRunEvidence ? ":qualification-format-runs-v1" : "")
         + (qualificationBatchExtentErrors ? ":qualification-batch-extent-errors-v1" : "")
-        + ":group-boundary-guidance-v1";
+        + ":group-boundary-guidance-v1"
+        + (splitNumberedGroups ? ":group-split-numbered-v1" : "");
 
         private (string Full, DocxHeaderExtractor.Contracts.Docx.ExtractionOptions? Options, DocxHeaderExtractor.Contracts.Models.SourceDocument Document)? primed;
     private readonly object primedLock = new();

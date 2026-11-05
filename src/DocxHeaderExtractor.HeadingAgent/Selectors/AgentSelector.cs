@@ -78,6 +78,8 @@ public abstract class AgentSelector : IHeadingSelector
     private protected virtual bool UnitSelectionEnabled => false;
     /// <summary>PDF: ask again, as a whole, look-alike lines that separate requests decided differently (<see cref="ShapeReview"/>).</summary>
     private protected virtual bool ShapeReviewEnabled => false;
+    /// <summary>DOCX: split a proposed group of two or more separately list-numbered lines into single lines (<see cref="AgentGrouping.SplitSeparatelyNumbered"/>).</summary>
+    private protected virtual bool SplitSeparatelyNumberedGroups => false;
     /// <summary>Optional per-route request timeout. Null keeps the transport default.</summary>
     private protected virtual TimeSpan? RequestTimeout => null;
     /// <summary>Whether this route must fail instead of returning a partial selection.</summary>
@@ -103,7 +105,8 @@ public abstract class AgentSelector : IHeadingSelector
                 cache: SelectionCacheRoot is { } root ? new SelectionCache(Path.Combine(root, "selection"), CacheByRequestOnly) : null,
                 groupingCache: SelectionCacheRoot is { } groupingRoot ? new GroupingCache(Path.Combine(groupingRoot, "grouping"), CacheByRequestOnly) : null,
                 boundaryReview: BoundaryReviewEnabled, groupingInstruction: GroupingInstruction, pairwisePdfGrouping: PairwisePdfGrouping,
-                generalPdfBoundaryPrompt: GeneralPdfBoundaryPrompt, unitSelection: UnitSelectionEnabled, shapeReview: ShapeReviewEnabled);
+                generalPdfBoundaryPrompt: GeneralPdfBoundaryPrompt, unitSelection: UnitSelectionEnabled, shapeReview: ShapeReviewEnabled,
+                splitSeparatelyNumbered: SplitSeparatelyNumberedGroups);
             if (RequireCompleteRun && (selection.UnitsComplete != selection.UnitsTotal || selection.UnitFailures.Count > 0))
                 throw new InvalidOperationException("PDF_EXTRACTION_INCOMPLETE:" + string.Join(";", selection.UnitFailures));
             return selection;
@@ -204,7 +207,8 @@ public abstract class AgentSelector : IHeadingSelector
         int retryDelayMs, Func<double> costOf, string instruction = AgentProtocol.Instruction, int firstSegments = 0, SelectionCache? cache = null,
         GroupingCache? groupingCache = null, Func<IReadOnlyList<string>, IReadOnlyList<IReadOnlyList<string>>, IReadOnlyList<string>>? audit = null,
         bool precedingSelection = false, bool siblingReview = false, bool boundaryReview = false, string? groupingInstruction = null,
-        bool pairwisePdfGrouping = false, bool generalPdfBoundaryPrompt = false, bool unitSelection = false, bool shapeReview = false)
+        bool pairwisePdfGrouping = false, bool generalPdfBoundaryPrompt = false, bool unitSelection = false, bool shapeReview = false,
+        bool splitSeparatelyNumbered = false)
     {
         var phase = Stopwatch.StartNew();
         var seconds = new Dictionary<string, double>(StringComparer.Ordinal);
@@ -290,7 +294,8 @@ public abstract class AgentSelector : IHeadingSelector
             headingExtents: extents, headingReadings: readingChoices,
             inlineGroups: complete.Any(o => o.SelectionGroups is not null) ? complete.SelectMany(o => o.SelectionGroups ?? []).ToArray() : null,
                 ownership: complete.SelectMany(o => o.Decisions.Keys.Select(a => (a, o.UnitId))).ToDictionary(x => x.a, x => x.UnitId, StringComparer.Ordinal),
-                pairwisePdf: pairwisePdfGrouping, generalPdfPrompt: generalPdfBoundaryPrompt);
+                pairwisePdf: pairwisePdfGrouping, generalPdfPrompt: generalPdfBoundaryPrompt,
+                ownListNumber: splitSeparatelyNumbered && source is DocxAgentSource docxSource ? docxSource.HasOwnListNumber : null);
         seconds["grouping"] = phase.Elapsed.TotalSeconds;
         // Grouping output is admitted by its strict parser and C# source-order/coverage checks.
         // Semantic verifier and selection-review agents are qualification-only; neither can alter
