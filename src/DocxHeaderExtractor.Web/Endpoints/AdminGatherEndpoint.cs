@@ -235,6 +235,11 @@ internal static class AdminGatherEndpoint
                     e.Role, e.Id, file = Path.GetFileName(e.Path), from = e.From, reuse = e.Reuse?.Status, addedParagraphs = e.Reuse?.AddedParagraphs,
                     headings = e.Headings.OrderBy(h => h.Index).Select(h => new { h.Level, h.Text, h.StableId }),
                     outlineReview = e.Reuse is { } reuse ? AdminOutlineReview.Project(reuse, e.Path, approvals) : null,
+                    // Changes Word recorded with Track Changes and not yet accepted: the file was read as if they were all accepted.
+                    revisions = DocxVersionReader.Read(e.Path).Revisions.Select(r => new
+                    {
+                        r.Kind, r.Author, r.Date, r.Location, text = r.Text.Length > 160 ? r.Text[..160] + "…" : r.Text,
+                    }),
                 }),
                 merged = result.Decided.Where(s => s.NewHeadingDepth is null && s.Run.Facts.Count > 0).Select(s => new
                 {

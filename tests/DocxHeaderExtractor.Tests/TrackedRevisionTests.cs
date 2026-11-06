@@ -1,5 +1,7 @@
 using DocxHeaderExtractor.Contracts.Docx;
 using DocxHeaderExtractor.DocumentProcessing.Changes;
+using DocxHeaderExtractor.DocumentProcessing.Gather;
+using DocxHeaderExtractor.DocumentProcessing.Output;
 using DocxHeaderExtractor.Sources.Docx.Changes;
 using DocxHeaderExtractor.Sources.Docx.OpenXmlParser;
 
@@ -80,5 +82,33 @@ public sealed class TrackedRevisionTests
             Assert.Null(DocxComparer.Compare(DocxVersionReader.Read(path), DocxVersionReader.Read(path)).DocumentRevisions);
         }
         finally { File.Delete(path); }
+    }
+
+    [Fact]
+    public void A_target_heading_edited_with_track_changes_still_receives_its_content()
+    {
+        // The target heading reads "Mục A" once the change is accepted: "cũ" deleted, "A" inserted, and a word moved away.
+        var target = RawDocxFixtureTests.Build(
+            $"<w:p><w:r><w:t xml:space=\"preserve\">Mục </w:t></w:r><w:del w:id=\"1\" {Author}><w:r><w:delText>cũ</w:delText></w:r></w:del>" +
+            $"<w:ins w:id=\"2\" {Author}><w:r><w:t>A</w:t></w:r></w:ins><w:moveFrom w:id=\"3\" {Author}><w:r><w:t> rời</w:t></w:r></w:moveFrom></w:p>" +
+            "<w:p><w:r><w:t>Nội dung đích</w:t></w:r></w:p>");
+        var source = RawDocxFixtureTests.Build("<w:p><w:r><w:t>Mục A</w:t></w:r></w:p><w:p><w:r><w:t>Nội dung nguồn</w:t></w:r></w:p>");
+        var output = Path.Combine(Path.GetTempPath(), "dhx-tracked-" + Guid.NewGuid().ToString("N") + ".docx");
+        HeadingRecord H() => new() { Index = 0, StableId = "body[1]/p[1]", Text = "Mục A", Level = 1 };
+        try
+        {
+            var plan = GatherByHeading.Build(target, [H()], [new GatherSourceFile("S", source, [H()])]);
+            Assert.Equal(["Nội dung nguồn"], plan.Sections.Single().Run.Facts.Select(f => f.Render()));
+            var written = GatherWriteback.Export(target, output, GatherByHeading.DecidedByChain(plan.Sections).Where(s => s.Run.Facts.Count > 0).ToList(),
+                plan.Uncertain, DateTime.UtcNow, gaps: plan.Gaps, excluded: plan.Excluded);
+            Assert.Empty(written.SkippedHeadings);
+            using var doc = DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(output, false);
+            var texts = doc.MainDocumentPart!.Document!.Body!.Elements<DocumentFormat.OpenXml.Wordprocessing.Paragraph>().Select(p => p.InnerText).ToList();
+            var at = texts.FindIndex(t => t.Contains("Nội dung nguồn", StringComparison.Ordinal));
+            // Written in the body after the heading and its content, not in the appendix.
+            var appendix = texts.FindIndex(t => t.Contains(GatherWriteback.AppendixTitle, StringComparison.Ordinal));
+            Assert.True(at >= 2 && (appendix < 0 || at < appendix), $"at={at}, appendix={appendix}");
+        }
+        finally { File.Delete(target); File.Delete(source); File.Delete(output); }
     }
 }

@@ -266,12 +266,12 @@ public static class GatherWriteback
     static Paragraph LastParagraphOf(Paragraph first, string text, IReadOnlyDictionary<string, Paragraph> paragraphs)
     {
         var target = string.Concat(text.Where(c => !char.IsWhiteSpace(c)));
-        var joined = string.Concat(first.InnerText.Where(c => !char.IsWhiteSpace(c)));
+        var joined = string.Concat(AcceptedText(first).Where(c => !char.IsWhiteSpace(c)));
         var last = first;
         var next = NextParagraph(first);
         while (joined.Length < target.Length && next is not null && target.StartsWith(joined, StringComparison.Ordinal))
         {
-            var candidate = joined + string.Concat(next.InnerText.Where(c => !char.IsWhiteSpace(c)));
+            var candidate = joined + string.Concat(AcceptedText(next).Where(c => !char.IsWhiteSpace(c)));
             // The heading ends inside this paragraph (it may carry text after the heading): the insertion goes after it, and the search stops.
             if (candidate.StartsWith(target, StringComparison.Ordinal)) return next;
             if (!target.StartsWith(candidate, StringComparison.Ordinal)) break;
@@ -282,6 +282,15 @@ public static class GatherWriteback
         return last;
     }
 
+    /// <summary>
+    /// The paragraph's own text as the heading reader sees it, with every tracked change accepted: deleted text and text moved away are left out,
+    /// inserted and moved-in text kept, and a text box inside the paragraph is its own paragraph. InnerText would keep deleted text, so a target
+    /// heading edited with Track Changes would not be found.
+    /// </summary>
+    internal static string AcceptedText(Paragraph paragraph) =>
+        string.Concat(paragraph.Descendants<Text>().Where(t => ReferenceEquals(t.Ancestors<Paragraph>().FirstOrDefault(), paragraph)
+            && !t.Ancestors<DeletedRun>().Any() && !t.Ancestors<MoveFromRun>().Any()).Select(t => t.Text));
+
     static Paragraph? NextParagraph(Paragraph paragraph) =>
         paragraph.NextSibling() as Paragraph;
 
@@ -291,7 +300,7 @@ public static class GatherWriteback
     /// </summary>
     static bool HeadingMatches(Paragraph heading, string text)
     {
-        var paragraph = string.Concat(heading.InnerText.Where(c => !char.IsWhiteSpace(c)));
+        var paragraph = string.Concat(AcceptedText(heading).Where(c => !char.IsWhiteSpace(c)));
         var target = string.Concat(text.Where(c => !char.IsWhiteSpace(c)));
         return paragraph.Length > 0 && (target.StartsWith(paragraph, StringComparison.Ordinal) || paragraph.StartsWith(target, StringComparison.Ordinal));
     }

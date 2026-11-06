@@ -13,7 +13,14 @@ public sealed record GatherImpactModification(string SourceName, string OldLocat
     string Evidence = "unique_para_id_changed_text", bool NeedsReview = true);
 public sealed record GatherImpactReorder(string SourceName, ReorderAnalysis Analysis);
 public sealed record GatherImpactDocumentDiff(string SourceName, string Scope, IReadOnlyList<Change> Changes,
-    IReadOnlyList<string> BeforeUnsupported, IReadOnlyList<string> AfterUnsupported);
+    IReadOnlyList<string> BeforeUnsupported, IReadOnlyList<string> AfterUnsupported)
+{
+    /// <summary>Styles whose read definitions changed between the two versions (see ComparisonResult.StyleChanges).</summary>
+    public IReadOnlyList<string> StyleChanges { get; init; } = [];
+
+    /// <summary>The changes Word recorded with Track Changes in the newer version, beside the computed ones.</summary>
+    public IReadOnlyList<TrackedRevision> Revisions { get; init; } = [];
+}
 public sealed record GatherImpactResult(DateTimeOffset PreviousAt, bool TargetChanged, IReadOnlyList<string> UnmatchedDocuments,
     IReadOnlyList<GatherImpactItem> Items, IReadOnlyList<GatherImpactModification> PossibleModifications,
     IReadOnlyList<GatherImpactReorder> Reorders, IReadOnlyList<GatherImpactDocumentDiff> DocumentDiffs, string Limitations);
@@ -37,8 +44,13 @@ public static class GatherImpact
         var documentDiffs = new List<GatherImpactDocumentDiff>();
         void AddDocumentDiff(string name, DocxVersion a, DocxVersion b)
         {
-            var diff = DocxComparer.Compare(a, b);
-            documentDiffs.Add(new(name, diff.Scope, diff.Changes, diff.TemplateUnsupported, diff.DocumentUnsupported));
+            // The review view also compares the formatting this reader takes (direct, from styles, effective) and lists recorded revisions.
+            var diff = DocxComparer.Compare(a, b, new ComparerOptions(CompareDirectFormatting: true));
+            documentDiffs.Add(new(name, diff.Scope, diff.Changes, diff.TemplateUnsupported, diff.DocumentUnsupported)
+            {
+                StyleChanges = diff.StyleChanges ?? [],
+                Revisions = diff.DocumentRevisions ?? [],
+            });
         }
         foreach (var old in oldSources)
         {

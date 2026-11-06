@@ -142,6 +142,7 @@ pre#log { white-space: pre-wrap; font-size: 14px; background: var(--soft); borde
     <p class="note">Nhập cùng mã để so lượt xem trước; nội dung nguồn và kế hoạch gần nhất được lưu cục bộ. Quyết định duyệt không được tự chuyển sang lượt sau.</p>
   </details>
   <div class="err hidden" id="errBox"></div>
+  <div class="note hidden" id="trackedNote" style="padding:8px 16px"></div>
 
   <div class="workspace">
     <section class="side">
@@ -596,8 +597,11 @@ function renderImpact(history) {
   const reorders = impact.reorders.map(r => `<li>${esc(r.sourceName)}: ${r.analysis.blocks.length} khối đổi thứ tự tương đối — cần xem; không xác định khối nào đã được kéo.<ul>${r.analysis.blocks.map(b => `<li>${esc(b.before?.[0]?.text ?? '')} <span class="src">${esc(b.before?.[0]?.location ?? '?')} → ${esc(b.after?.[0]?.location ?? '?')} (${b.before.length} đoạn)</span></li>`).join('')}</ul></li>`).join('');
   const docDiffs = impact.documentDiffs.map(d => {
     const side = (single, group) => (group?.length ? group : single ? [single] : []).map(p => `${esc(p.text)} <span class="src">${esc(p.location)}</span>`).join('<br>') || '—';
-    const changes = d.changes.map(c => `<tr><td>${esc(c.kind)}${c.uncertain ? ' <span class="chip warn">chưa chắc</span>' : ''}</td><td>${side(c.template, c.templateGroup)}</td><td>${side(c.document, c.documentGroup)}</td></tr>`).join('');
-    return `<details><summary>${esc(d.sourceName)} · ${d.changes.length} khác biệt chữ</summary><p class="note">${esc(d.scope)}. Vùng chưa hỗ trợ trước: ${esc(d.beforeUnsupported.join(', ') || 'không báo')}; sau: ${esc(d.afterUnsupported.join(', ') || 'không báo')}.</p>${changes ? `<table><tr><th>Loại</th><th>Trước</th><th>Sau</th></tr>${changes}</table>` : '<p class="note">Không thấy khác biệt chữ trong vùng đã đọc; file vẫn đã đổi.</p>'}</details>`;
+    const format = c => (c.formatChanges ?? []).map(f => `<br><span class="note">${esc(FORMAT_LABEL[f.property.split('.')[0]] ?? f.property)} · ${esc(f.property)}: ${esc(f.before ?? '—')} → ${esc(f.after ?? '—')}</span>`).join('');
+    const changes = d.changes.map(c => `<tr><td>${esc(c.kind === 'direct_format_modified' ? 'Đổi định dạng' : c.kind)}${c.uncertain ? ' <span class="chip warn">chưa chắc</span>' : ''}${(c.note ?? '').includes('tracked_revision_recorded') ? ' <span class="chip">có vết sửa</span>' : ''}</td><td>${side(c.template, c.templateGroup)}</td><td>${side(c.document, c.documentGroup)}${format(c)}</td></tr>`).join('');
+    const styles = d.styleChanges?.length ? `<p class="note">Định nghĩa style đã đổi: ${esc(d.styleChanges.join(', '))} — mọi đoạn dùng các style này có thể đổi hiển thị.</p>` : '';
+    const revisions = d.revisions?.length ? `<details><summary>${d.revisions.length} vết Track Changes Word ghi lại trong bản mới</summary>${revisionList(d.revisions)}</details>` : '';
+    return `<details><summary>${esc(d.sourceName)} · ${d.changes.length} khác biệt${d.revisions?.length ? ' · ' + d.revisions.length + ' vết sửa' : ''}</summary><p class="note">${esc(d.scope)}. Vùng chưa hỗ trợ trước: ${esc(d.beforeUnsupported.join(', ') || 'không báo')}; sau: ${esc(d.afterUnsupported.join(', ') || 'không báo')}.</p>${styles}${revisions}${changes ? `<table><tr><th>Loại</th><th>Trước</th><th>Sau</th></tr>${changes}</table>` : '<p class="note">Không thấy khác biệt trong vùng đã đọc; file vẫn đã đổi.</p>'}</details>`;
   }).join('');
   $('impactList').innerHTML = `<p>Lượt trước: ${esc(impact.previousAt)}. ${impact.targetChanged ? '<b class="chip warn">Văn bản gốc thay đổi: cần so lại mọi nguồn.</b>' : 'Văn bản gốc không đổi.'}</p>
     <p class="note">${esc(impact.limitations)}</p>${impact.unmatchedDocuments.length ? '<p class="chip warn">Không ghép được file: ' + esc(impact.unmatchedDocuments.join('; ')) + '</p>' : ''}
@@ -607,8 +611,23 @@ function renderImpact(history) {
     ${rows ? `<h3>Bằng chứng cần xem (${impact.items.length})</h3><table><tr><th>Tín hiệu</th><th>Trước</th><th>Hiện tại</th></tr>${rows}</table>` : '<p>Không phát hiện khác biệt giữa các bằng chứng đã được hai plan ghi nhận.</p>'}`;
 }
 
+// Track Changes Word recorded, in plain words. A file with them is read as if every change were accepted.
+const REVISION_LABEL = { insert: 'Chèn', delete: 'Xóa', move_from: 'Chuyển đi', move_to: 'Chuyển đến', format_run: 'Đổi định dạng chữ',
+  format_paragraph: 'Đổi định dạng đoạn', paragraph_inserted: 'Thêm đoạn', paragraph_deleted: 'Gộp với đoạn sau' };
+const FORMAT_LABEL = { paragraph: 'Đoạn', numbering: 'Đánh số', style: 'Từ style', run: 'Chữ (trực tiếp)', effective: 'Chữ (từ style)', cell: 'Ô bảng' };
+function revisionList(revisions) {
+  return '<table><tr><th>Loại</th><th>Người sửa · thời điểm</th><th>Nội dung</th></tr>' + revisions.map(v =>
+    `<tr><td>${esc(REVISION_LABEL[v.kind] ?? v.kind)}</td><td>${esc(v.author ?? '?')}<br><span class="src">${esc(v.date ?? '')}</span></td><td>${esc(v.text)} <span class="src">${esc(v.location)}</span></td></tr>`).join('') + '</table>';
+}
+function renderTracked(documents) {
+  const withRevisions = (documents ?? []).filter(d => d.revisions?.length);
+  $('trackedNote').classList.toggle('hidden', !withRevisions.length);
+  $('trackedNote').innerHTML = withRevisions.map(d => `<details><summary>⚠ ${esc(d.file)} còn ${d.revisions.length} vết Track Changes chưa chấp nhận — nội dung được đọc như khi đã chấp nhận mọi thay đổi (chữ bị xóa hoặc đã chuyển đi không được tính).</summary>${revisionList(d.revisions)}</details>`).join('');
+}
+
 function render(r) {
   renderImpact(r.history);
+  renderTracked(r.documents);
   run = r;
   choices = {};
   factIndex = [...r.merged.flatMap(s => s.facts), ...r.added.flatMap(s => s.facts), ...r.uncertain.flatMap(u => u.facts)]

@@ -544,4 +544,34 @@ public sealed class AdminGatherWebTests
         }
         finally { File.Delete(path); if (Directory.Exists(root)) Directory.Delete(root, true); }
     }
+
+    [Fact]
+    public async Task A_file_with_unaccepted_tracked_changes_is_named_with_its_recorded_revisions()
+    {
+        var target = RawDocxFixtureTests.Build(P("Mục A") + P("Nội dung đích"));
+        var source = RawDocxFixtureTests.Build(P("Mục A") +
+            "<w:p><w:r><w:t xml:space=\"preserve\">Tiếp đón </w:t></w:r><w:ins w:id=\"1\" w:author=\"An\" w:date=\"2026-11-06T09:00:00Z\"><w:r><w:t>66</w:t></w:r></w:ins>" +
+            "<w:del w:id=\"2\" w:author=\"An\" w:date=\"2026-11-06T09:00:00Z\"><w:r><w:delText>50</w:delText></w:r></w:del></w:p>");
+        try
+        {
+            using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(b => b.ConfigureTestServices(s =>
+                s.AddSingleton<ModelProviderFactory>(_ => () => new OpenRouterProvider(null))));
+            using var client = app.CreateClient();
+            Assert.Contains("trackedNote", await client.GetStringAsync("/admin.html"));
+            using var form = new MultipartFormDataContent();
+            Add(form, "target", File.ReadAllBytes(target), "10.docx"); Add(form, "sources", File.ReadAllBytes(source), "09.docx");
+            Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("10.docx", (0, 1, "Mục A"))), "10.json");
+            Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("09.docx", (0, 1, "Mục A"))), "09.json");
+            form.Add(new StringContent("1"), "noLlm");
+            using var response = await client.PostAsync("/api/admin/gather", form);
+            var result = Events(await response.Content.ReadAsStringAsync()).Single(e => e.GetProperty("type").GetString() == "result");
+            var documents = result.GetProperty("documents").EnumerateArray().ToArray();
+            Assert.Empty(documents.Single(d => d.GetProperty("role").GetString() == "target").GetProperty("revisions").EnumerateArray());
+            var revisions = documents.Single(d => d.GetProperty("role").GetString() == "source").GetProperty("revisions").EnumerateArray().ToArray();
+            Assert.Equal(["insert", "delete"], revisions.Select(r => r.GetProperty("kind").GetString()));
+            Assert.Equal(["66", "50"], revisions.Select(r => r.GetProperty("text").GetString()));
+            Assert.All(revisions, r => Assert.Equal("An", r.GetProperty("author").GetString()));
+        }
+        finally { File.Delete(target); File.Delete(source); }
+    }
 }
