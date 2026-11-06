@@ -110,3 +110,20 @@ artifacts/qualification/parent-counterfactual-*/
 # Word lock files and generated monthly inputs
 .~lock.*#
 todo10_8/generated-docx-v2/
+
+# Test-host manifests copied into qualification runs
+artifacts/qualification/**/MvcTestingAppManifest.json
+artifacts/qualification/**/*.staticwebassets.*.json
+# Runs on the owner's monthly reports 08/09/10 (source text, model replies, plans)
+artifacts/qualification/docx-vn-*/
+artifacts/qualification/docx-trace-09-*/
+artifacts/qualification/docx-region-09-*/
+artifacts/qualification/docx-region-real-probe-*/
+artifacts/qualification/gather-replay-*/
+artifacts/qualification/admin-web-run-*/
+artifacts/qualification/whole-placement-*/
+artifacts/qualification/sibling-check-*/
+artifacts/qualification/**/*-source-text.txt
+todo10_8/standard-docx-v3/
+# Private git worktree used for a revert control
+artifacts/qualification/docx-cache-revert-control-20261104/
