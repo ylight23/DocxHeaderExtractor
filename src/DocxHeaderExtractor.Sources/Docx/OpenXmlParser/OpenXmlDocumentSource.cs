@@ -53,7 +53,7 @@ public sealed class OpenXmlDocumentSource
         var styleId = properties?.ParagraphStyleId?.Val?.Value ?? resolver.DefaultParagraphStyleId;
         var style = resolver.Resolve(styleId);
         var nestedTextBoxes = paragraph.Descendants<TextBoxContent>().ToHashSet();
-        var runFormat = AggregateRunFormat(paragraph, nestedTextBoxes);
+        var runFormat = AggregateRunFormat(paragraph, nestedTextBoxes, style);
         var bold = runFormat.Bold ?? StyleResolver.OnOff(properties?.ParagraphMarkRunProperties?.GetFirstChild<Bold>()) ?? style?.Bold ?? false;
         var italic = runFormat.Italic ?? StyleResolver.OnOff(properties?.ParagraphMarkRunProperties?.GetFirstChild<Italic>()) ?? style?.Italic ?? false;
         var caps = runFormat.Caps ?? StyleResolver.OnOff(properties?.ParagraphMarkRunProperties?.GetFirstChild<Caps>()) ?? style?.AllCaps ?? false;
@@ -140,7 +140,10 @@ public sealed class OpenXmlDocumentSource
 
     private readonly record struct RunFormat(bool? Bold, bool? Italic, bool? Underline, bool? Caps, double? FontSizePt);
 
-    private static RunFormat AggregateRunFormat(Paragraph paragraph, IReadOnlySet<TextBoxContent> nestedTextBoxes)
+    // Bold, italic and caps of a paragraph that has text are read from its text runs: a run without its own value takes the paragraph
+    // style's. The paragraph mark's run properties (w:pPr/w:rPr) format only the pilcrow, so they are used only when no run has text:
+    // a plain line whose mark is bold is not a bold line (08-2026: "Truyền thông việc Bệnh viện Phổi Nghệ An…").
+    private static RunFormat AggregateRunFormat(Paragraph paragraph, IReadOnlySet<TextBoxContent> nestedTextBoxes, ResolvedStyle? style)
     {
         var any = false;
         var allBold = true; var allItalic = true; var allUnderline = true; var allCaps = true;
@@ -151,9 +154,9 @@ public sealed class OpenXmlDocumentSource
                 !run.Descendants<Text>().Any(t => !string.IsNullOrWhiteSpace(t.Text))) continue;
             any = true;
             var properties = run.RunProperties;
-            allBold &= StyleResolver.OnOff(properties?.Bold) ?? false;
-            allItalic &= StyleResolver.OnOff(properties?.Italic) ?? false;
-            allCaps &= StyleResolver.OnOff(properties?.Caps) ?? false;
+            allBold &= StyleResolver.OnOff(properties?.Bold) ?? style?.Bold ?? false;
+            allItalic &= StyleResolver.OnOff(properties?.Italic) ?? style?.Italic ?? false;
+            allCaps &= StyleResolver.OnOff(properties?.Caps) ?? style?.AllCaps ?? false;
             allUnderline &= properties?.Underline?.Val is { } underline &&
                             !string.Equals(underline.InnerText, "none", StringComparison.OrdinalIgnoreCase);
             if (StyleResolver.HalfPointToPt(properties?.FontSize?.Val?.Value) is { } size)
@@ -161,8 +164,7 @@ public sealed class OpenXmlDocumentSource
         }
         return !any
             ? new RunFormat(null, null, null, null, null)
-            : new RunFormat(allBold ? true : null, allItalic ? true : null, allUnderline ? true : null,
-                allCaps ? true : null, maxSize);
+            : new RunFormat(allBold, allItalic, allUnderline ? true : null, allCaps, maxSize);
     }
 
     private readonly record struct ParagraphText(string Text, IReadOnlyList<SourceTextRunSpan> Spans,
