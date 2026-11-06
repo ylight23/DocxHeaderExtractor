@@ -26,6 +26,8 @@ public sealed record PlacementAudit(
     public IReadOnlyList<HeadingPlacementEdgeRepairObservation> EdgeRepairs { get; init; } = [];
     public HeadingPlacementUnresolvedSummary? UnresolvedSummary { get; init; }
     public IReadOnlyList<HeadingPlacementGraphConflict> GraphConflicts { get; init; } = [];
+    /// <summary>Consecutive same-kind headings proposed under different parents; their headings are held without a parent for review.</summary>
+    public IReadOnlyList<HeadingPlacementConsistencyConflict> ParentConsistencyConflicts { get; init; } = [];
     public IReadOnlyList<string> GraphRepairAliases { get; init; } = [];
     public IReadOnlyList<string> GraphUnresolvedAliases { get; init; } = [];
     public IReadOnlyList<string> Failures { get; init; } = [];
@@ -41,6 +43,10 @@ public sealed record PlacementAudit(
 /// <summary>Structural contradictions in model claims; never a semantic choice of a replacement parent.</summary>
 public sealed record HeadingPlacementGraphConflict(string Checkpoint, string Code, string ParentAlias,
     IReadOnlyList<string> Children);
+
+/// <summary>A measured heading-style/marker pair whose model-proposed parents disagree; neither parent is selected automatically.</summary>
+public sealed record HeadingPlacementConsistencyConflict(string Code, IReadOnlyList<string> Aliases,
+    IReadOnlyList<string> ProposedParents, string StyleName, string NumberLabel, int NumberLevel);
 
 /// <summary>Unique model-reported blockers and their upstream producer provenance. Counts overlap for multi-line ancestors.</summary>
 public sealed record HeadingMissingAncestorBlocker(string Alias, string SourceId, IReadOnlyList<string> BlockedHeadingAliases,

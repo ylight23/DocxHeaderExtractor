@@ -10,6 +10,9 @@ namespace DocxHeaderExtractor.Contracts.Agents;
 public sealed record HeadingPlacementEvidence(string DocumentStylesJson, IReadOnlyDictionary<string, string> StyleJsonByAlias, string? MeasurementsNote = null)
 {
     public HeadingPlacementSource? Source { get; init; }
+    /// <summary>Word's numbering format of a line (decimal, upperRoman, upperLetter, bullet...), by alias. Read by the C# consistency check
+    /// only; it is not sent to the model.</summary>
+    public IReadOnlyDictionary<string, string> NumberFormatByAlias { get; init; } = new Dictionary<string, string>();
 }
 
 /// <summary>Source facts, including lines withheld upstream. No line is classified as an ancestor by C#.</summary>

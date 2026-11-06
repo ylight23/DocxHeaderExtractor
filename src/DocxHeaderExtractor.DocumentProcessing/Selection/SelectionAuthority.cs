@@ -79,7 +79,8 @@ internal sealed class SelectionAuthority(
         var evidence = new HeadingPlacementEvidence(p?.DocumentStylesJson ?? "{}", p?.StyleJsonByAlias ?? new Dictionary<string, string>(), p?.MeasurementsNote)
         { Source = new(source.Atoms, selection.AliasStates ?? selection.SelectedAliases.ToDictionary(a => a,
             _ => new HeadingAliasState("SELECT", "SELECT", null, "READY_FOR_BINDING")), source.SourceSha256)
-            { LocationByAlias = source.Evidence.ToDictionary(e => e.SourceAlias, e => e.LocationFacts) } };
+            { LocationByAlias = source.Evidence.ToDictionary(e => e.SourceAlias, e => e.LocationFacts) },
+            NumberFormatByAlias = p?.NumberFormatByAlias ?? new Dictionary<string, string>() };
         return new SelectionResult(decisions, bound, placementAccess, Complete, evidence, placer);
     }
 

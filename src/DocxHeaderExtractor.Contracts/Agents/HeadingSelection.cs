@@ -68,4 +68,8 @@ public sealed record HeadingAliasProvenance(string Alias, string Stage, string U
 /// </summary>
 /// <param name="MeasurementsNote">The sentence that tells the placement model what the style objects hold, when the document is not a PDF (the
 /// default sentence describes a PDF's size, weight and rank). Null keeps the default.</param>
-public sealed record HeadingPlacementContext(string DocumentStylesJson, IReadOnlyDictionary<string, string> StyleJsonByAlias, string? MeasurementsNote = null);
+public sealed record HeadingPlacementContext(string DocumentStylesJson, IReadOnlyDictionary<string, string> StyleJsonByAlias, string? MeasurementsNote = null)
+{
+    /// <summary>Word's numbering format of a line, by alias, for the C# consistency check; not sent to the model.</summary>
+    public IReadOnlyDictionary<string, string> NumberFormatByAlias { get; init; } = new Dictionary<string, string>();
+}

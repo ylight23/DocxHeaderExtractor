@@ -14,6 +14,8 @@ if (args.Length >= 1 && args[0] == "capture-docx")
     return await CaptureDocxTrial.RunAsync(args);
 if (args.Length >= 1 && args[0] == "place-ab-captured")
     return await CapturedPlaceAbTrial.RunAsync(args);
+if (args.Length >= 1 && args[0] == "place-variants-captured")
+    return await CapturedPlaceVariantsTrial.RunAsync(args);
 // These older live probes do not reliably capture every SELECT/GROUP/PLACE/repair attempt.
 // Keep their implementation for offline review, but do not call a provider until capture is complete and verified.
 if (args.Length >= 1 && args[0] is "split-run" or "whole-run" or "split-capture" or "whole-capture"

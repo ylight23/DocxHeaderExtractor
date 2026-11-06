@@ -16,7 +16,7 @@ static class CapturedPlaceAbTrial
             !double.IsFinite(maximum) || maximum <= 0 || maximum > 1)
             throw new ArgumentException("place-ab-captured <private-capture-directory> <placement-request.json> <runs-per-mode:1..5> <max-usd:0..1>");
         var working = new DirectoryInfo(Directory.GetCurrentDirectory());
-        while (working is not null && !Directory.Exists(Path.Combine(working.FullName, ".git"))) working = working.Parent;
+        while (working is not null && !Directory.Exists(Path.Combine(working.FullName, ".git")) && !File.Exists(Path.Combine(working.FullName, ".git"))) working = working.Parent;
         if (working is null) throw new InvalidOperationException("CAPTURE_REPOSITORY_ROOT_REQUIRED");
         var settings = new DiagnosticCaptureSettings(args[1], working.FullName);
         var bytes = await File.ReadAllBytesAsync(Path.GetFullPath(args[2]));

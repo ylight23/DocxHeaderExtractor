@@ -85,7 +85,11 @@ internal sealed class DocxFormat : IAgentFormat
         }
         return new(docx.StyleTable.ToJsonString(Compact),
             docx.Facts.ToDictionary(kv => kv.Key, kv => Style(kv.Value).ToJsonString(Compact), StringComparer.Ordinal),
-            DocxAgentProtocol.PlacementNote);
+            DocxAgentProtocol.PlacementNote)
+        {
+            NumberFormatByAlias = docx.Facts.Where(kv => kv.Value["numbering"]?["format"] is JsonValue)
+                .ToDictionary(kv => kv.Key, kv => kv.Value["numbering"]!["format"]!.GetValue<string>(), StringComparer.Ordinal)
+        };
     }
 
     public string GroupPrompt => GroupingPrompts.Docx;

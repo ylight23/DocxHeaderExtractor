@@ -12,7 +12,7 @@ static class CaptureDocxTrial
         if (!File.Exists(input)) throw new FileNotFoundException("DOCX_NOT_FOUND", input);
         // The same boundary as the web capture: outside the repository, or its ignored scratchpad/evidence directory.
         var working = new DirectoryInfo(Directory.GetCurrentDirectory());
-        while (working is not null && !Directory.Exists(Path.Combine(working.FullName, ".git"))) working = working.Parent;
+        while (working is not null && !Directory.Exists(Path.Combine(working.FullName, ".git")) && !File.Exists(Path.Combine(working.FullName, ".git"))) working = working.Parent;
         if (working is null) throw new InvalidOperationException("CAPTURE_REPOSITORY_ROOT_REQUIRED: run from the main repository checkout.");
         var settings = new DiagnosticCaptureSettings(args[1], working.FullName);
         var provider = OpenRouterProvider.FromEnvironment();

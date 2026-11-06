@@ -39,29 +39,47 @@ public sealed class HeadingPlacer : IHeadingPlacer
     readonly bool wholeDocument;
     readonly bool repairParentChains;
     readonly int batchSize;
+    /// <summary>Qualification candidate: each heading to place also carries the nearest earlier heading with a counted list marker (a fact of
+    /// position, not a parent decision). Off by default; the production contract is unchanged while it is off.</summary>
+    readonly bool countedContext;
+    readonly PlacementVariant variant = PlacementVariant.Production;
 
     /// <summary>The production placer: each round goes to the provider with the run's key.</summary>
-    public HeadingPlacer(bool wholeDocument = false, bool repairParentChains = false)
-    { this.wholeDocument = wholeDocument; this.repairParentChains = repairParentChains; batchSize = DefaultBatchSize; }
+    public HeadingPlacer(bool wholeDocument = false, bool repairParentChains = false, bool countedContext = false)
+    { this.wholeDocument = wholeDocument; this.repairParentChains = repairParentChains; batchSize = DefaultBatchSize; this.countedContext = countedContext; }
 
     /// <summary>A placer whose rounds go to <paramref name="model"/> instead of the provider (tests, offline replay).</summary>
     internal HeadingPlacer(Func<PreparedRequest, ModelTurn> model, bool wholeDocument = false, bool repairParentChains = false,
-        int batchSize = DefaultBatchSize)
-    { this.model = model; this.wholeDocument = wholeDocument; this.repairParentChains = repairParentChains; this.batchSize = ValidateBatchSize(batchSize); }
+        int batchSize = DefaultBatchSize, bool countedContext = false, PlacementVariant? variant = null)
+    {
+        this.model = model; this.wholeDocument = wholeDocument; this.repairParentChains = repairParentChains; this.batchSize = ValidateBatchSize(batchSize);
+        this.countedContext = countedContext; this.variant = variant ?? PlacementVariant.Production;
+    }
 
     /// <summary>A placer whose rounds take the production path over <paramref name="handler"/> (tests of the wire, without a network).</summary>
     public HeadingPlacer(HttpMessageHandler handler, bool wholeDocument = false, bool repairParentChains = false,
-        int batchSize = DefaultBatchSize)
-    { this.handler = handler; this.wholeDocument = wholeDocument; this.repairParentChains = repairParentChains; this.batchSize = ValidateBatchSize(batchSize); }
+        int batchSize = DefaultBatchSize, bool countedContext = false, PlacementVariant? variant = null)
+    {
+        this.handler = handler; this.wholeDocument = wholeDocument; this.repairParentChains = repairParentChains; this.batchSize = ValidateBatchSize(batchSize);
+        this.countedContext = countedContext; this.variant = variant ?? PlacementVariant.Production;
+    }
 
     static int ValidateBatchSize(int value) => value > 0 ? value : throw new ArgumentOutOfRangeException(nameof(value));
 
     /// <summary>The call settings of a placement round: no reasoning, an output cap for the rows asked for, data_collection=deny.</summary>
-    internal static WireOptions Wire(int outputBudget) => new(outputBudget, ReasoningEffort: "none", DenyDataCollection: true);
+    internal static WireOptions Wire(int outputBudget, string reasoningEffort = "none") => new(outputBudget, ReasoningEffort: reasoningEffort, DenyDataCollection: true);
 
     /// <summary>The request of one round, as it goes to the provider.</summary>
-    internal static PreparedRequest Request(string packet, int outputBudget, bool chainRepair = false) =>
-        OpenRouterWire.Build(SourcePrompt + (chainRepair ? "\n" + ParentChainRepair.Prompt : ""), packet, new JsonArray(), null, null, Wire(outputBudget));
+    internal static PreparedRequest Request(string packet, int outputBudget, Repair? repair = null, PlacementVariant? variant = null)
+    {
+        var v = variant ?? PlacementVariant.Production;
+        return OpenRouterWire.Build(v.Prompt(SourcePrompt) + (repair is null ? "" : "\n" + repair.Prompt), packet, new JsonArray(), null, null,
+            Wire(outputBudget + v.ExtraOutputTokens, v.ReasoningEffort));
+    }
+
+    /// <summary>A focused repair round: its stage name, the prompt added to the source prompt, and the protocol error the first round reports.</summary>
+    internal sealed record Repair(string Phase, string Prompt, string Error);
+    internal static readonly Repair ChainRepair = new(ParentChainRepair.Phase, ParentChainRepair.Prompt, "PARENT_CHAIN_INCONSISTENT");
     static readonly JsonSerializerOptions Json = new() { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
     private const string RawSourcePrompt = """
@@ -91,7 +109,8 @@ public sealed class HeadingPlacer : IHeadingPlacer
 
     public string Contract => Version + (wholeDocument ? ":whole-document-budget-v1" : "")
         + (repairParentChains ? ":parent-chain-repair-v1" : "")
-        + (batchSize == DefaultBatchSize ? "" : ":batch-" + batchSize);
+        + (batchSize == DefaultBatchSize ? "" : ":batch-" + batchSize)
+        + (countedContext ? ":counted-context-v1" : "") + variant.ContractSuffix;
 
     public async Task<PlacementProposal> ProposeAsync(PlacementRequest request, ModelAccess access, CancellationToken ct)
     {
@@ -163,7 +182,7 @@ public sealed class HeadingPlacer : IHeadingPlacer
                 var details = conflicts.Select(c => string.Join(" -> ", c.Path) + ": " + c.Code + " at " + c.BlockerAlias).ToArray();
                 var snapshot = new Dictionary<string, string>(proposed, StringComparer.Ordinal);
                 var output = await Propose(scope, "HIERARCHY_CHAIN_REPAIR-" + passes.ToString("000"), ct,
-                    chainRepair: true, initialDetails: details).ConfigureAwait(false);
+                    ChainRepair, details).ConfigureAwait(false);
                 foreach (var pair in output)
                 {
                     proposed[pair.Key] = pair.Value;
@@ -191,8 +210,9 @@ public sealed class HeadingPlacer : IHeadingPlacer
         }
 
         string Packet(string[] aliases, string[] pending, IReadOnlyList<string> errors, IReadOnlyList<string> details,
-            IReadOnlyDictionary<string, string>? accepted = null, bool chainRepair = false)
+            IReadOnlyDictionary<string, string>? accepted = null, Repair? repair = null)
         {
+            var chainRepair = repair is not null;
             var context = aliases.SelectMany(alias =>
             {
                 var at = positions.GetValueOrDefault(alias, -1);
@@ -200,7 +220,7 @@ public sealed class HeadingPlacer : IHeadingPlacer
             }).DistinctBy(l => l.Alias).OrderBy(l => l.Ordinal).ToArray();
             var packet = JsonSerializer.Serialize(new
             {
-                protocolVersion = Version, stage = chainRepair ? ParentChainRepair.Phase : "HIERARCHY_PLACE", documentSha256 = source.SourceSha256,
+                protocolVersion = Version, stage = repair?.Phase ?? "HIERARCHY_PLACE", documentSha256 = source.SourceSha256,
                 headings = ordered.Select(h => new { alias = h.Alias, text = h.Text, ordinal = h.SourceOrdinal,
                     parts = h.Parts.Select(p => p.Alias), style = evidence.StyleJsonByAlias.TryGetValue(h.Alias, out var style) ? JsonNode.Parse(style) : null }),
                 documentStyles = JsonNode.Parse(evidence.DocumentStylesJson), measurementsNote = evidence.MeasurementsNote,
@@ -225,14 +245,49 @@ public sealed class HeadingPlacer : IHeadingPlacer
                 }
                 packet = value.ToJsonString(Json);
             }
+            if (countedContext)
+            {
+                var value = JsonNode.Parse(packet)!.AsObject();
+                value["nearestCountedHeading"] = CountedContext(pending);
+                packet = value.ToJsonString(Json);
+            }
             return packet;
         }
 
-        bool Fits(string packet, int count, bool chainRepair = false)
+        // For each heading to place: the nearest earlier heading whose list marker is counted (a letter, a roman or a decimal number followed by
+        // "." or ")"), with its text and how many source lines back it is. Bullets and unnumbered headings are never returned. The model decides
+        // whether that heading is the parent; this only reports where it is.
+        JsonObject CountedContext(string[] aliases)
         {
-            if (Encoding.UTF8.GetByteCount(SourcePrompt) + (chainRepair ? Encoding.UTF8.GetByteCount("\n" + ParentChainRepair.Prompt) : 0)
+            var index = ordered.Select((h, i) => (h.Alias, i)).ToDictionary(x => x.Alias, x => x.i, StringComparer.Ordinal);
+            var result = new JsonObject();
+            foreach (var alias in aliases)
+            {
+                if (!index.TryGetValue(alias, out var at)) continue;
+                for (var j = at - 1; j >= 0; j--)
+                {
+                    var label = NumberLabel(ordered[j].Alias);
+                    if (label is null || !CountedMarker.IsMatch(label)) continue;
+                    result[alias] = new JsonObject { ["alias"] = ordered[j].Alias, ["text"] = ordered[j].Text, ["marker"] = label,
+                        ["linesBack"] = positions.GetValueOrDefault(alias, 0) - positions.GetValueOrDefault(ordered[j].Alias, 0) };
+                    break;
+                }
+            }
+            return result;
+        }
+
+        string? NumberLabel(string alias)
+        {
+            if (!evidence.StyleJsonByAlias.TryGetValue(alias, out var json)) return null;
+            try { return JsonNode.Parse(json)?["numberLabel"]?.GetValue<string>(); }
+            catch (Exception exception) when (exception is JsonException or InvalidOperationException) { return null; }
+        }
+
+        bool Fits(string packet, int count, Repair? repair = null)
+        {
+            if (Encoding.UTF8.GetByteCount(variant.Prompt(SourcePrompt)) + (repair is null ? 0 : Encoding.UTF8.GetByteCount("\n" + repair.Prompt))
                 + Encoding.UTF8.GetByteCount(packet) > RequestCap) return false;
-            var prepared = Request(packet, OutputBudget(count), chainRepair);
+            var prepared = Request(packet, OutputBudget(count), repair, variant);
             return prepared.Bytes <= Math.Min(RequestCap, budget.ByteCap) &&
                 budget.Policy.Refusal(RequestResources.Measure(prepared, budget.Policy)) is null;
         }
@@ -258,11 +313,12 @@ public sealed class HeadingPlacer : IHeadingPlacer
         }
 
         async Task<Dictionary<string, string>> Propose(string[] aliases, string unitId, CancellationToken token,
-            bool chainRepair = false, IReadOnlyList<string>? initialDetails = null)
+            Repair? repair = null, IReadOnlyList<string>? initialDetails = null)
         {
-            var phase = chainRepair ? ParentChainRepair.Phase : "HIERARCHY_PLACE";
+            var chainRepair = repair is not null;
+            var phase = repair?.Phase ?? "HIERARCHY_PLACE";
             var accepted = new Dictionary<string, string>(StringComparer.Ordinal);
-            var errors = chainRepair ? new List<string> { "PARENT_CHAIN_INCONSISTENT" } : new List<string>();
+            var errors = repair is not null ? new List<string> { repair.Error } : new List<string>();
             // What the last refused reply got wrong, named by alias: the next round's packet carries it (protocolDetails), so the model
             // learns which row to change instead of repeating the same refused answer (023: one row named a later heading three times).
             var details = initialDetails?.ToList() ?? new List<string>();
@@ -271,9 +327,9 @@ public sealed class HeadingPlacer : IHeadingPlacer
             {
                 token.ThrowIfCancellationRequested();
                 var pending = aliases.Where(alias => !accepted.ContainsKey(alias)).ToArray();
-                var packet = Packet(aliases, pending, errors, details, accepted, chainRepair);
-                var requestBytes = Encoding.UTF8.GetByteCount(SourcePrompt) + Encoding.UTF8.GetByteCount(packet);
-                if (requestBytes > RequestCap || (wholeDocument || chainRepair) && !Fits(packet, pending.Length, chainRepair))
+                var packet = Packet(aliases, pending, errors, details, accepted, repair);
+                var requestBytes = Encoding.UTF8.GetByteCount(variant.Prompt(SourcePrompt)) + Encoding.UTF8.GetByteCount(packet);
+                if (requestBytes > RequestCap || (wholeDocument || chainRepair) && !Fits(packet, pending.Length, repair))
                 {
                     errors.Add("REQUEST_OVER_CAP");
                     break;
@@ -285,7 +341,7 @@ public sealed class HeadingPlacer : IHeadingPlacer
                 {
                     Interlocked.Increment(ref logicalCalls);
                     access.EnsureActive();
-                    var prepared = Request(packet, outputBudget, chainRepair);
+                    var prepared = Request(packet, outputBudget, repair, variant);
                     var turn = await Task.Run(() => Send(unitId, round, prepared), token).ConfigureAwait(false);
                     access.EnsureActive();   // a reply that comes back after the lane ended is not used
                     reply = (turn.Content ?? "", turn.FinishReason, outputBudget);
@@ -324,8 +380,9 @@ public sealed class HeadingPlacer : IHeadingPlacer
                     {
                         try
                         {
-                        if (row.EnumerateObject().Count() != 2 || !row.TryGetProperty("parent", out var parentElement)
-                            || parentElement.ValueKind is not (JsonValueKind.String or JsonValueKind.Null))
+                        if (row.EnumerateObject().Count() != (variant.AskReason ? 3 : 2) || !row.TryGetProperty("parent", out var parentElement)
+                            || parentElement.ValueKind is not (JsonValueKind.String or JsonValueKind.Null)
+                            || variant.AskReason && !(row.TryGetProperty("reason", out var reason) && reason.ValueKind == JsonValueKind.String))
                             throw new ProtocolException("ROW_FIELDS_INVALID");
                         var alias = row.GetProperty("alias").GetString()!;   // present and a string: the coverage check above read it
                         var parent = parentElement.GetString();
@@ -381,7 +438,7 @@ public sealed class HeadingPlacer : IHeadingPlacer
 
     /// <summary>One round through the shared wire: the budget admits it first; a transport failure is sent again, the same bytes, up to
     /// <see cref="TransportRetries"/> times.</summary>
-    static ModelTurn SendThroughWire(AgentModel client, AgentBudget budget, string unitId, int round, PreparedRequest request)
+    internal static ModelTurn SendThroughWire(AgentModel client, AgentBudget budget, string unitId, int round, PreparedRequest request)
     {
         for (var attempt = 0; ; attempt++)
         {
@@ -406,6 +463,8 @@ public sealed class HeadingPlacer : IHeadingPlacer
         unwrapped = true;
         return body;
     }
+
+    static readonly System.Text.RegularExpressions.Regex CountedMarker = new(@"^\(?(\d+|[A-Za-z]{1,4})[.)]$", System.Text.RegularExpressions.RegexOptions.CultureInvariant);
 
     sealed class ProtocolException(string code) : InvalidOperationException("PROTOCOL:" + code);
     static void Require(bool valid, string code) { if (!valid) throw new ProtocolException(code); }

@@ -38,8 +38,21 @@ internal static class ParentResolver
         var proposal = await placer.ProposeAsync(new PlacementRequest(ordered, evidence), access, ct).ConfigureAwait(false);
         var proposed = new Dictionary<string, string>(StringComparer.Ordinal);
         foreach (var (alias, parent) in proposal.Parents) proposed[alias] = parent;
+        var modelProposed = new Dictionary<string, string>(proposed, StringComparer.Ordinal);
         var statusByAlias = new Dictionary<string, string>(proposal.Basis, StringComparer.Ordinal);
         var failures = new List<string>(proposal.Failures);
+
+        // Matching rendered list/style facts are evidence of a possible sibling relationship,
+        // not authority to rewrite either parent, and the model is not asked again: a repair round
+        // tried on 2026-11-06 more often moved the correct heading under the wrong parent than the
+        // reverse. A disagreeing pair is kept in the review path instead of allowing either placement
+        // to silently drive synthesis.
+        var parentConsistencyConflicts = AdjacentHeadingParentConsistency.Find(ordered, proposed, evidence);
+        foreach (var alias in parentConsistencyConflicts.SelectMany(conflict => conflict.Aliases).Distinct(StringComparer.Ordinal))
+        {
+            proposed[alias] = "UNRESOLVED";
+            statusByAlias[alias] = "PARENT_CONSISTENCY_UNRESOLVED";
+        }
 
         // A relation is usable only when it names ROOT/NONE or an earlier bound heading.
         // The hierarchy resolver independently derives depth and rejects unresolved, missing,
@@ -65,11 +78,12 @@ internal static class ParentResolver
         var hierarchy = HierarchyResolver.DeriveHierarchyFromModelRelations(placed).ToDictionary(h => h.SourceId, StringComparer.Ordinal);
         var decisions = result.Observation.Decisions.Select(decision => decision with
         {
-            ProposedParentAlias = proposed.GetValueOrDefault(decision.Alias),
+            ProposedParentAlias = modelProposed.GetValueOrDefault(decision.Alias),
             VerificationStatus = "NOT_RUN",
             ResolutionBasis = statusByAlias.GetValueOrDefault(decision.Alias) switch
             {
                 "CSharpGraphValidationRejected" => "csharp-graph-validation-rejected",
+                "PARENT_CONSISTENCY_UNRESOLVED" => AdjacentHeadingParentConsistency.ResolutionBasis,
                 "UPSTREAM_PROPOSAL" => "upstream-parent-proposal",
                 "MODEL_PROPOSAL" => hierarchy[decision.SourceId].Resolution == HierarchyResolver.Unresolved
                     ? "model-proposal-unresolved-or-invalid" : "model-parent-proposal",
@@ -97,6 +111,10 @@ internal static class ParentResolver
             GraphConflicts = proposal.ChainRepair is { } repair ? repair.InitialConflicts.Select(c =>
                 new HeadingPlacementGraphConflict("before-chain-repair", c.Code, c.BlockerAlias, [c.Alias]))
                 .Concat(repair.FinalConflicts.Select(c => new HeadingPlacementGraphConflict("after-chain-repair", c.Code, c.BlockerAlias, [c.Alias]))).ToArray() : [],
+            ParentConsistencyConflicts = parentConsistencyConflicts.Select(conflict => new HeadingPlacementConsistencyConflict(
+                AdjacentHeadingParentConsistency.Code, conflict.Aliases,
+                conflict.Aliases.Select(alias => modelProposed.GetValueOrDefault(alias) ?? "<no proposal>").ToArray(),
+                conflict.StyleName, conflict.NumberLabel, conflict.NumberLevel)).ToArray(),
             GraphRepairAliases = proposal.ChainRepair?.RequestedAliases ?? [],
             GraphUnresolvedAliases = proposal.ChainRepair?.FinalConflicts.Select(c => c.Alias).ToArray() ?? [],
             Failures = failures.ToArray(),

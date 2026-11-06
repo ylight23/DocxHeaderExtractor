@@ -20,6 +20,19 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class DiagnosticCaptureTests
 {
     [Fact]
+    public void Capture_directory_checks_apply_in_a_git_worktree()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-worktree-capture-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(root);
+        try
+        {
+            File.WriteAllText(Path.Combine(root, ".git"), "gitdir: elsewhere");
+            Assert.Throws<InvalidOperationException>(() => new DiagnosticCaptureSettings(Path.Combine(root, "artifacts", "private"), root));
+            Assert.NotNull(new DiagnosticCaptureSettings(Path.Combine(root, "scratchpad", "private"), root).Start(null));
+        }
+        finally { Directory.Delete(root, true); }
+    }
+    [Fact]
     public async Task Independent_split_and_whole_placements_capture_the_same_input_without_network()
     {
         var root = Path.Combine(Path.GetTempPath(), "dhx-place-ab-capture-" + Guid.NewGuid().ToString("N"));

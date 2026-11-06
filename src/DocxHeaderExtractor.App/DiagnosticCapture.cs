@@ -35,7 +35,7 @@ public sealed class DiagnosticCaptureSettings
         }
         root = Path.GetFullPath(configured);
         var ancestor = new DirectoryInfo(Path.GetFullPath(workingDirectory));
-        while (ancestor is not null && !Directory.Exists(Path.Combine(ancestor.FullName, ".git"))) ancestor = ancestor.Parent;
+        while (ancestor is not null && !Directory.Exists(Path.Combine(ancestor.FullName, ".git")) && !File.Exists(Path.Combine(ancestor.FullName, ".git"))) ancestor = ancestor.Parent;
         if (ancestor is not null)
         {
             static bool Within(string path, string parent) => path.Equals(parent, StringComparison.OrdinalIgnoreCase) ||
@@ -82,6 +82,11 @@ public sealed class CaptureRun
     /// <summary>Capture an independently invoked placement and its wire attempts.</summary>
     public IHeadingPlacer Placement(string document, bool wholeDocument, bool repairParentChains = false, HttpMessageHandler? inner = null) =>
         new CapturePlacer(this, document, new HeadingPlacer(Handler(document, "PLACE", inner), wholeDocument, repairParentChains), true);
+    /// <summary>Capture a placement run with one qualification variant (reasoning, prompt sentence, reason field, counted context).</summary>
+    /// <summary>Capture a qualification run of the outline-depth placer.</summary>
+    public IHeadingPlacer OutlinePlacement(string document) => new CapturePlacer(this, document, new OutlinePlacer(Handler(document, "PLACE")), true);
+    public IHeadingPlacer Placement(string document, bool wholeDocument, PlacementVariant variant, bool countedContext = false) =>
+        new CapturePlacer(this, document, new HeadingPlacer(Handler(document, "PLACE"), wholeDocument, countedContext: countedContext, variant: variant), true);
     public IModelProvider Provider(IModelProvider original, PipelineOptions options, string document, Func<HttpMessageHandler>? handlerFactory = null)
     {
         var selector = new DocxSelector(handlerFactory: () => Handler(document, "SELECT_GROUP", handlerFactory?.Invoke()),
@@ -120,7 +125,7 @@ public sealed class CaptureRun
         }
         var missingMetadata = calls.Count(c => c.Document is null || c.Unit is null || c.Turn is null || c.Retry is null);
         var unattributed = calls.Count(c => c.Complete && c.Status is >= 200 and < 300 &&
-            !c.Stage.Contains("PLACE", StringComparison.OrdinalIgnoreCase) && !c.Stage.Contains("CHAIN_REPAIR", StringComparison.OrdinalIgnoreCase) &&
+            !IsPlacement(c.Stage) &&
             !verdicts.Contains((c.Document, c.Unit, c.Turn, c.Hash)));
         var stages = string.Join(", ", calls.GroupBy(c => c.Stage).Select(g => $"{g.Key}={g.Count()}(missing={g.Count(c => !c.Complete)})"));
         var placeResults = files.Where(f => f.EndsWith(".place-result.json", StringComparison.Ordinal)).ToArray();
@@ -140,9 +145,13 @@ public sealed class CaptureRun
         if (verifiedAtEnd != verifiedFiles) throw new InvalidDataException("CAPTURE_HASH_MISMATCH");
         if (leaked) throw new InvalidDataException("CAPTURE_CONTAINS_CREDENTIAL");
         return new(calls.Count(c => !c.Complete), missingPlace, placeCalls,
-            calls.Count(c => c.Stage.Contains("PLACE", StringComparison.OrdinalIgnoreCase) ||
-                c.Stage.Contains("CHAIN_REPAIR", StringComparison.OrdinalIgnoreCase)), unattributed, missingMetadata);
+            calls.Count(c => IsPlacement(c.Stage)), unattributed, missingMetadata);
     }
+
+    // Every placement round (HIERARCHY_PLACE, HIERARCHY_CHAIN_REPAIR and any later HIERARCHY_ stage) is recorded by the placement capture,
+    // not by a selector protocol verdict.
+    static bool IsPlacement(string stage) => stage.Contains("PLACE", StringComparison.OrdinalIgnoreCase) ||
+        stage.StartsWith("HIERARCHY_", StringComparison.OrdinalIgnoreCase);
     sealed class CaptureProvider(IModelProvider inner, IHeadingSelector selector, IHeadingPlacer placer) : IModelProvider
     {
         public ModelRoute CreateRoute() => inner.CreateRoute();

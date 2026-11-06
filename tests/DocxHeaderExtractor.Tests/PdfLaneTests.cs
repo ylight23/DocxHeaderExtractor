@@ -71,7 +71,7 @@ public sealed class PdfLaneTests
         Assert.Equal(SelectionAuthority.AuthorityId, heading.Reason);
         Assert.Equal(2, heading.Structure.Elements.Count);
         Assert.Contains(FixedSelector.Id, heading.Audit!.ModelInputContracts);
-        Assert.Contains(HeadingPlacer.Version, heading.Audit.ModelInputContracts);
+        Assert.Contains(new HeadingPlacer().Contract, heading.Audit.ModelInputContracts);
         Assert.Equal("complete", heading.Audit.SemanticLane!.Status);
         // One parent-proposal pass; no semantic verifier gate follows it.
         Assert.Equal(1, provider.PlacementCalls);
