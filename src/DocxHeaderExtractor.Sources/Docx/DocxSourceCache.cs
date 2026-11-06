@@ -11,7 +11,7 @@ namespace DocxHeaderExtractor.Sources.Docx;
 /// </summary>
 internal static class DocxSourceCache
 {
-    public const string Schema = "docx-source-document-cache-v3";
+    public const string Schema = "docx-source-document-cache-v4"; // v4: text moved away (w:moveFrom) is no longer read twice
 
     /// <summary>The source document of <paramref name="docxPath"/>: read from the package, or from <paramref name="cacheRoot"/> when a valid read is stored.
     /// A null <paramref name="cacheRoot"/> reads every time.</summary>

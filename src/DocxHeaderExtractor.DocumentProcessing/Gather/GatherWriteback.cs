@@ -235,7 +235,7 @@ public static class GatherWriteback
     static string PlainGapReason(string reason) => reason switch
     {
         "drawing_or_image" => "Hình ảnh hoặc đối tượng đồ họa chưa được đọc đầy đủ",
-        "tracked_changes" => "Tài liệu có thay đổi theo dõi chưa được đọc đầy đủ",
+        "tracked_changes" => "Tài liệu còn vết Track Changes chưa chấp nhận: nội dung được đọc như khi đã chấp nhận mọi thay đổi (chữ bị xóa hoặc đã chuyển đi không được tính)",
         "tracked_formatting" => "Định dạng có theo dõi thay đổi chưa được đọc đầy đủ",
         "footnotes" => "Chú thích cuối trang chưa được đọc đầy đủ",
         "endnotes" => "Chú thích cuối văn bản chưa được đọc đầy đủ",

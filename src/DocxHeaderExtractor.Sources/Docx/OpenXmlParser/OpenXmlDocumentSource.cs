@@ -147,7 +147,7 @@ public sealed class OpenXmlDocumentSource
         double? maxSize = null;
         foreach (var run in paragraph.Descendants<Run>())
         {
-            if (run.Ancestors<TextBoxContent>().Any(nestedTextBoxes.Contains) || run.Ancestors<DeletedRun>().Any() ||
+            if (run.Ancestors<TextBoxContent>().Any(nestedTextBoxes.Contains) || run.Ancestors<DeletedRun>().Any() || run.Ancestors<MoveFromRun>().Any() ||
                 !run.Descendants<Text>().Any(t => !string.IsNullOrWhiteSpace(t.Text))) continue;
             any = true;
             var properties = run.RunProperties;
@@ -178,7 +178,8 @@ public sealed class OpenXmlDocumentSource
         var runIndex = -1;
         foreach (var run in paragraph.Descendants<Run>())
         {
-            if (run.Ancestors<TextBoxContent>().Any(excluded.Contains) || run.Ancestors<DeletedRun>().Any()) continue;
+            // Accepted view: deleted text and text moved away (w:moveFrom, read again where it was moved to) are left out.
+            if (run.Ancestors<TextBoxContent>().Any(excluded.Contains) || run.Ancestors<DeletedRun>().Any() || run.Ancestors<MoveFromRun>().Any()) continue;
             runIndex++;
             var (raw, breaks) = GetRunText(run, excluded);
             if (raw.Length == 0) continue;
@@ -235,7 +236,7 @@ public sealed class OpenXmlDocumentSource
             if (element.Ancestors<TextBoxContent>().Any(excluded.Contains)) continue;
             switch (element)
             {
-                case Text t when !t.Ancestors<DeletedRun>().Any(): text.Append(t.Text); break;
+                case Text t when !t.Ancestors<DeletedRun>().Any() && !t.Ancestors<MoveFromRun>().Any(): text.Append(t.Text); break;
                 case TabChar: text.Append('\t'); break;
                 case Break: breaks.Add(text.Length); text.Append(' '); break;
                 case NoBreakHyphen: text.Append('-'); break;

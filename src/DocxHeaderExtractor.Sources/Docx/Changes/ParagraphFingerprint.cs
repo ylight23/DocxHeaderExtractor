@@ -50,6 +50,9 @@ public sealed record DocxVersion(string FileSha256, IReadOnlyList<ParagraphFinge
 {
     /// <summary>What this reader takes from each style (see <see cref="StyleContext.Definitions"/>), to name the styles that changed.</summary>
     public IReadOnlyDictionary<string, string> StyleDefinitions { get; init; } = new Dictionary<string, string>();
+
+    /// <summary>The changes Word recorded with Track Changes (see <see cref="TrackedRevision"/>); empty when there are none.</summary>
+    public IReadOnlyList<TrackedRevision> Revisions { get; init; } = [];
 }
 
 /// <summary>
@@ -77,7 +80,11 @@ public static class DocxVersionReader
         var numbering = new NumberingKeys(main);
         var paragraphs = NumberingKeys.Relate(walked.Select((item, ordinal) => Fingerprint(ordinal, item.StableId, item.Element, styles, numbering)).ToArray(),
             numbering);
-        return new DocxVersion(sha, paragraphs, UnsupportedRegions(main, body)) { StyleDefinitions = styles.Definitions() };
+        return new DocxVersion(sha, paragraphs, UnsupportedRegions(main, body))
+        {
+            StyleDefinitions = styles.Definitions(),
+            Revisions = TrackedRevisions.Read(walked.Select(item => (item.StableId, item.Element))),
+        };
     }
 
     internal static ParagraphFingerprint Fingerprint(int ordinal, string location, Paragraph paragraph, StyleContext styles, NumberingKeys numberingKeys)
