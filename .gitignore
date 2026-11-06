@@ -79,3 +79,10 @@ tests/DocxHeaderExtractor.Tests/TestResults/
 
 # evidence and source caches written by the pipelines (per run, per source)
 .dhx-evidence/
+
+# Build outputs of qualification test runs (binaries only; run results stay visible)
+artifacts/qualification/**/*.dll
+artifacts/qualification/**/*.pdb
+artifacts/qualification/**/*.exe
+artifacts/qualification/**/*.deps.json
+artifacts/qualification/**/*.runtimeconfig.json
