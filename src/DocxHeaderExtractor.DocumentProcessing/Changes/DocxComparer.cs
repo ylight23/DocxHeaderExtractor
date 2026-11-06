@@ -13,7 +13,11 @@ public sealed record ChangeSide(string Location, int Ordinal, string Text, TextS
 /// A split or merge lists every paragraph of the grouped side in <see cref="TemplateGroup"/> or <see cref="DocumentGroup"/>.
 /// </summary>
 public sealed record Change(string Kind, string MatchStatus, bool Uncertain, string? Note, ChangeSide? Template, ChangeSide? Document,
-    string Heading = "unknown", IReadOnlyList<ChangeSide>? TemplateGroup = null, IReadOnlyList<ChangeSide>? DocumentGroup = null);
+    string Heading = "unknown", IReadOnlyList<ChangeSide>? TemplateGroup = null, IReadOnlyList<ChangeSide>? DocumentGroup = null)
+{
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public IReadOnlyList<FormatChange>? FormatChanges { get; init; }
+}
 
 /// <summary>
 /// Result of comparing a document with a template. Unsupported regions of each side are listed so that nothing unread is presented as unchanged.
@@ -38,7 +42,7 @@ public enum GroupRule { Advantage, ExplainsLeftover }
 
 /// <param name="FlagRejectedGroups">When a split or merge candidate was rejected but the chosen result looks like that split or merge (the whole
 /// is one-sided or paired with one part, and the other part is one-sided), mark those paragraphs uncertain with the rejection reason.</param>
-public sealed record ComparerOptions(GroupRule GroupRule = GroupRule.ExplainsLeftover, bool FlagRejectedGroups = true, bool DetectReorders = false);
+public sealed record ComparerOptions(GroupRule GroupRule = GroupRule.ExplainsLeftover, bool FlagRejectedGroups = true, bool DetectReorders = false, bool CompareDirectFormatting = false);
 
 /// <summary>
 /// Diagnostic record of one split or merge candidate whose joined similarity reached the pair threshold: its scores, the token gain of the
@@ -106,7 +110,7 @@ public static class DocxComparer
             {
                 case EditKind.Equal:
                     Flush(deleted, inserted, context);
-                    if (a[edit.OldIndex] is ParagraphFingerprint p) Matched(p, (ParagraphFingerprint)b[edit.NewIndex], "matched", false, changes);
+                    if (a[edit.OldIndex] is ParagraphFingerprint p) Matched(p, (ParagraphFingerprint)b[edit.NewIndex], "matched", false, changes, compareFormatting: options.CompareDirectFormatting);
                     else TableDiff.CompareTables((TableShape)a[edit.OldIndex], (TableShape)b[edit.NewIndex], "matched", false, context);
                     break;
                 case EditKind.Delete: deleted.Add(a[edit.OldIndex]); break;
@@ -119,7 +123,8 @@ public static class DocxComparer
         var incomplete = context.Alignment.Incomplete;
         var reported = incomplete ? changes.Select(c => c with { Uncertain = true, Note = Join(c.Note, "alignment_incomplete") }).ToList() : changes;
         return new ComparisonResult(template.FileSha256, document.FileSha256, reported, template.UnsupportedRegions, document.UnsupportedRegions,
-            incomplete ? Scope + "; alignment_incomplete_diff_limit_exceeded" : Scope,
+            (options.CompareDirectFormatting ? "text_and_selected_direct_formatting; effective_formatting_and_unread_xml_not_compared; run_formatting_only_for_identical_text" : Scope)
+                + (incomplete ? "; alignment_incomplete_diff_limit_exceeded" : ""),
             options.GroupRule.ToString(), options.FlagRejectedGroups)
         { Reorders = options.DetectReorders ? ReorderDetector.Analyze(template, document) : null };
     }
@@ -159,7 +164,7 @@ public static class DocxComparer
                     Block(deleted.ToArray(), inserted.ToArray(), context);
                     deleted.Clear();
                     inserted.Clear();
-                    Matched(a[edit.OldIndex], b[edit.NewIndex], "matched", false, context.Changes);
+                    Matched(a[edit.OldIndex], b[edit.NewIndex], "matched", false, context.Changes, compareFormatting: context.Options.CompareDirectFormatting);
                     break;
                 case EditKind.Delete: deleted.Add(a[edit.OldIndex]); break;
                 case EditKind.Insert: inserted.Add(b[edit.NewIndex]); break;
@@ -248,7 +253,7 @@ public static class DocxComparer
                     var chosen = sim[i - 1, j - 1];
                     var rival = Enumerable.Range(0, m).Any(x => x != j - 1 && chosen - sim[i - 1, x] < RivalMargin)
                         || Enumerable.Range(0, n).Any(y => y != i - 1 && chosen - sim[y, j - 1] < RivalMargin);
-                    Matched(t[i - 1], d[j - 1], "paired_by_similarity", rival, changes, flagT.GetValueOrDefault(i - 1) ?? flagD.GetValueOrDefault(j - 1));
+                    Matched(t[i - 1], d[j - 1], "paired_by_similarity", rival, changes, flagT.GetValueOrDefault(i - 1) ?? flagD.GetValueOrDefault(j - 1), options.CompareDirectFormatting);
                     break;
                 }
                 case Step.Split: Grouped("paragraph_split", "possible_split", [t[i - 1]], [d[j - 2], d[j - 1]], changes); break;
@@ -342,9 +347,16 @@ public static class DocxComparer
     }
 
     internal static void Matched(ParagraphFingerprint template, ParagraphFingerprint document, string status, bool uncertain, List<Change> changes,
-        string? flagNote = null)
+        string? flagNote = null, bool compareFormatting = false)
     {
         uncertain |= flagNote is not null;
+        if (compareFormatting)
+        {
+            var differences = DirectFormatDiff.Compare(template, document);
+            if (differences.Count > 0)
+                changes.Add(new Change("direct_format_modified", status, uncertain || differences.Any(d => d.Property == "numbering.unverified"),
+                    flagNote, Whole(template), Whole(document)) { FormatChanges = differences });
+        }
         if (string.Equals(template.RawText, document.RawText, StringComparison.Ordinal))
         {
             if (uncertain) changes.Add(new Change("paired_uncertain", status, true, flagNote, Whole(template), Whole(document)));
