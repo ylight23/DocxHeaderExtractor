@@ -79,8 +79,12 @@ public sealed class DiagnosticCaptureTests
                 {
                     var text = body["messages"]![1]!["content"]!.Text();
                     var payload = JsonNode.Parse(text);
-                    var result = payload?["stage"]?.GetValue<string>() == "HIERARCHY_PLACE"
+                    var stage = payload?["stage"]?.GetValue<string>();
+                    var result = stage == "HIERARCHY_PLACE"
                         ? (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = HierarchyTestProtocol.Reply(text) }, "stop"))
+                        : stage == "HIERARCHY_OUTLINE"
+                        ? (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = JsonSerializer.Serialize(new { protocolVersion = OutlinePlacer.Version,
+                            depths = Enumerable.Repeat(1, payload!["rowCount"]!.GetValue<int>()) }) }, "stop"))
                         : FakeOpenRouter.FactsThenFirstTwoTargetsThenGroup(body, n);
                     return (result.Item1, result.Item2.Replace("\"cost\":0.001", "\"cost\":0.0000001"));
                 }));

@@ -48,6 +48,9 @@ public sealed class PipelineOptions
     public bool WholeDocumentPlacement { get; set; }
     /// <summary>Opt-in whole-document placement for DOCX only; other formats retain their own settings.</summary>
     public bool DocxWholeDocumentPlacement { get; set; }
+    /// <summary>DOCX default: parent placement asks the model for the depth of every heading of the outline (OutlinePlacer) instead of a
+    /// parent per heading. Takes precedence over <see cref="DocxWholeDocumentPlacement"/>. See docs/qualification/place-outline-depth-20261106.md.</summary>
+    public bool DocxOutlinePlacement { get; set; } = true;
     /// <summary>Opt-in for DOCX: a proposed heading group of two or more lines that each show their own list number is split into single lines.</summary>
     public bool DocxSplitNumberedGroups { get; set; }
     /// <summary>Native PDF default: every SELECT must echo the exact source text of its alias.</summary>

@@ -4,6 +4,7 @@ using DocxHeaderExtractor.Agents;
 using DocxHeaderExtractor.DocumentProcessing.Gather;
 using DocxHeaderExtractor.DocumentProcessing.Harness;
 using DocxHeaderExtractor.DocumentProcessing.Output;
+using DocxHeaderExtractor.HeadingAgent.Placement;
 using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.Sources.Docx.Changes;
 using DocxHeaderExtractor.DocumentProcessing.Audit;
@@ -39,7 +40,8 @@ public static class OutlineReuse
         .. (options.DocxWholeDocumentPlacement || options.WholeDocumentPlacement || options.RepairParentChains
             ? new[] { $"placement:{options.DocxWholeDocumentPlacement}:{options.WholeDocumentPlacement}:{options.RepairParentChains}" }
             : Array.Empty<string>()),
-        .. (options.DocxSplitNumberedGroups ? new[] { "group:split-numbered-v1" } : Array.Empty<string>())]);
+        .. (options.DocxSplitNumberedGroups ? new[] { "group:split-numbered-v1" } : Array.Empty<string>()),
+        .. (options.DocxOutlinePlacement ? new[] { "placement:" + OutlinePlacer.Version } : Array.Empty<string>())]);
 
     /// <param name="name">The file name the document is known by, used to retain its version history.</param>
     /// <param name="extract">Runs the pipeline on <paramref name="path"/> when no stored outline can be used.</param>

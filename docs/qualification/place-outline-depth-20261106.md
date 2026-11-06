@@ -53,8 +53,24 @@ In đậm/nghiêng/chữ hoa của đoạn được lấy từ định dạng d�
 
 Trích xuất có capture 6 lượt ~0,023; A/B 24 lượt PLACE ~0,005; biến thể 3 lượt ~0,003; cách hỏi mới 6 lượt ~0,0003. Tổng ~0,032.
 
+## Promote (cùng ngày)
+
+Chủ dự án duyệt cổng promote: trích xuất trọn bộ (SELECT, GROUP, PLACE theo độ sâu) mỗi báo cáo đúng **1 lần**, đạt thì promote. Tuỳ chọn `PipelineOptions.DocxOutlinePlacement` (mặc định `true`) cho tuyến DOCX dùng `OutlinePlacer`; PDF và scan giữ `HeadingPlacer`. Khoá outline lưu (`OutlineReuse.ConfigKey`) có thêm `placement:HEADING_OUTLINE_DEPTH_V1`, nên outline cũ không được dùng lại.
+
+| Báo cáo (SHA-256 bản sao, 16 ký tự đầu) | Heading | Cạnh lệch theo bố cục | Cặp bị giữ | Không có cấp | Lỗi giao thức | USD |
+|---|---:|---:|---:|---:|---:|---:|
+| Tháng 8 (`9a24e9b790a324ae`) | 21 | 0 | 0 | 0 | 0 | 0,0033 |
+| Tháng 9 (`348dd8ec25fd8afa`) | 22 | 0 | 0 | 0 | 0 | 0,0035 |
+| Tháng 10 (`587141dff42b9f98`) | 16 | 0 | 0 | 0 | 0 | 0,0033 |
+
+Tháng 9: `S0089` và `S0094` nằm dưới `S0088`; dòng tiêu đề tài liệu là `NONE` ở tháng 8 và 9. Cặp bị giữ và cấp được kiểm tra bằng cách phát lại offline phản hồi thật qua `ParentResolver`/`HierarchyResolver` (audit pipeline không ghi phần quan sát PLACE). Mỗi trích xuất có 1 lượt PLACE. Capture đủ: không thiếu phản hồi, không phản hồi chưa gắn.
+
+Ghi nhận ngoài PLACE: SELECT tháng 9 chọn một dòng gạch ngang không in đậm (`S0091`, được đặt đúng dưới `S0089`); SELECT tháng 10 lượt này không chọn một mục chấm tròn mà lượt trước có chọn. Đây là dao động của SELECT, không phải PLACE.
+
+**Rủi ro còn lại khi promote:** độ ổn định giữa các lượt mới thấy qua 1–2 lượt mỗi báo cáo; một mẫu tài liệu; tài liệu quá giới hạn một request sẽ không có cấp (`REQUEST_OVER_CAP`, cả file bị giữ ở gather) vì chưa chia mục. Tắt bằng `DocxOutlinePlacement = false` để về cách cũ.
+
 ## Bước tiếp theo đề xuất
 
-1. Đo độ ổn định cách hỏi mới: 5 lượt mỗi bộ.
-2. Nếu ổn định: tùy chọn production cho DOCX, chia mục cho tài liệu dài, thử thêm tài liệu khác mẫu.
-3. Gather: giữ lại cục bộ phần nội dung bị ảnh hưởng thay vì cả file.
+1. Chia mục theo cấp 1 cho tài liệu dài.
+2. Gather: giữ lại cục bộ phần nội dung bị ảnh hưởng thay vì cả file.
+3. Theo dõi độ ổn định trên các lượt thật tiếp theo và thử thêm tài liệu khác mẫu.

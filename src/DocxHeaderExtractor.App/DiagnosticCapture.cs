@@ -95,8 +95,10 @@ public sealed class CaptureRun
             boundarySnapParagraphs: options.DocxBoundarySnapParagraphs,
             selectionCacheRoot: options.DocxReuseSelection ? options.DocxSelectionCacheRoot : null, splitNumberedGroups: options.DocxSplitNumberedGroups);
         var supplied = original.Create<IHeadingPlacer>(AgentRoles.Placer);
-        var placer = supplied ?? new HeadingPlacer(Handler(document, "PLACE", handlerFactory?.Invoke()), wholeDocument: options.DocxWholeDocumentPlacement || options.WholeDocumentPlacement,
-            repairParentChains: options.RepairParentChains);
+        IHeadingPlacer placer = supplied ?? (options.DocxOutlinePlacement
+            ? new OutlinePlacer(Handler(document, "PLACE", handlerFactory?.Invoke()))
+            : new HeadingPlacer(Handler(document, "PLACE", handlerFactory?.Invoke()), wholeDocument: options.DocxWholeDocumentPlacement || options.WholeDocumentPlacement,
+                repairParentChains: options.RepairParentChains));
         return new CaptureProvider(original, new CaptureSelector(this, document, selector), new CapturePlacer(this, document, placer, supplied is null));
     }
     public CaptureSummary Summary()

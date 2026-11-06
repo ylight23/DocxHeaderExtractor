@@ -15,13 +15,27 @@ public sealed class ProductionPdfProfileTests
     [Fact]
     public void Docx_whole_document_placement_is_opt_in_and_does_not_change_other_routes()
     {
-        var baseline = HeadingAgentSetup.CreateRoutes(new PipelineOptions(), new Provider());
+        var baseline = HeadingAgentSetup.CreateRoutes(new PipelineOptions { DocxOutlinePlacement = false }, new Provider());
         Assert.Same(baseline.Shared, baseline.Docx);
-        var routes = HeadingAgentSetup.CreateRoutes(new PipelineOptions { DocxWholeDocumentPlacement = true }, new Provider());
+        var routes = HeadingAgentSetup.CreateRoutes(new PipelineOptions { DocxOutlinePlacement = false, DocxWholeDocumentPlacement = true }, new Provider());
         Assert.Equal(new HeadingPlacer(wholeDocument: true).Contract, routes.Docx.Placer!.Contract);
         Assert.Equal(new HeadingPlacer().Contract, routes.Shared.Placer!.Contract);
         Assert.Equal(new HeadingPlacer(repairParentChains: true).Contract, routes.NativePdf.Placer!.Contract);
-        Assert.NotEqual(OutlineReuse.ConfigKey(new PipelineOptions()), OutlineReuse.ConfigKey(new PipelineOptions { DocxWholeDocumentPlacement = true }));
+        Assert.NotEqual(OutlineReuse.ConfigKey(new PipelineOptions { DocxOutlinePlacement = false }),
+            OutlineReuse.ConfigKey(new PipelineOptions { DocxOutlinePlacement = false, DocxWholeDocumentPlacement = true }));
+    }
+
+    // Promoted 2026-11-06 (docs/qualification/place-outline-depth-20261106.md): DOCX asks for outline depths; PDF and scan keep the parent placer.
+    [Fact]
+    public void Docx_places_parents_by_outline_depth_by_default_and_other_routes_are_unchanged()
+    {
+        var routes = HeadingAgentSetup.CreateRoutes(new PipelineOptions(), new Provider());
+        Assert.Equal(OutlinePlacer.Version, routes.Docx.Placer!.Contract);
+        Assert.Equal(new HeadingPlacer().Contract, routes.Shared.Placer!.Contract);
+        Assert.Equal(new HeadingPlacer(repairParentChains: true).Contract, routes.NativePdf.Placer!.Contract);
+        // The outline-depth placer takes precedence over the older whole-document option, and stored outlines are keyed apart.
+        Assert.Equal(OutlinePlacer.Version, HeadingAgentSetup.CreateRoutes(new PipelineOptions { DocxWholeDocumentPlacement = true }, new Provider()).Docx.Placer!.Contract);
+        Assert.NotEqual(OutlineReuse.ConfigKey(new PipelineOptions()), OutlineReuse.ConfigKey(new PipelineOptions { DocxOutlinePlacement = false }));
     }
     [Fact]
     public void V12_default_reuses_shared_policy_without_pdf_specific_rules_and_keeps_the_contract()

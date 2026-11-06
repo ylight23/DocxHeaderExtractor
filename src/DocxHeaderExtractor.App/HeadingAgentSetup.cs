@@ -72,7 +72,9 @@ public static class HeadingAgentSetup
         var nativePdf = suppliedPlacer is null && options.PdfRepairParentChains && !options.RepairParentChains
             ? shared with { Placer = new HeadingPlacer(wholeDocument: options.WholeDocumentPlacement, repairParentChains: true) }
             : shared;
-        var docxAgents = suppliedPlacer is null && options.DocxWholeDocumentPlacement && !options.WholeDocumentPlacement
+        var docxAgents = suppliedPlacer is null && options.DocxOutlinePlacement
+            ? shared with { Placer = new OutlinePlacer() }
+            : suppliedPlacer is null && options.DocxWholeDocumentPlacement && !options.WholeDocumentPlacement
             ? shared with { Placer = new HeadingPlacer(wholeDocument: true, repairParentChains: options.RepairParentChains) }
             : shared;
         return (shared, nativePdf, docxAgents);
