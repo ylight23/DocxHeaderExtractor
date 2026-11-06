@@ -86,3 +86,27 @@ artifacts/qualification/**/*.pdb
 artifacts/qualification/**/*.exe
 artifacts/qualification/**/*.deps.json
 artifacts/qualification/**/*.runtimeconfig.json
+
+# Published web app copied into qualification runs: native libraries and static pages
+artifacts/qualification/**/runtimes/
+artifacts/qualification/**/wwwroot/
+artifacts/qualification/**/*.so
+artifacts/qualification/**/*.dylib
+# Office and PDF files used or written by qualification runs (may hold the owner's report text)
+artifacts/qualification/**/*.docx
+artifacts/qualification/**/*.pdf
+artifacts/qualification/**/*.pptx
+artifacts/qualification/**/*.odt
+# Runs on the owner's monthly reports (their text must never reach the public repo)
+artifacts/qualification/monthly-*/
+artifacts/qualification/word-incremental-*/
+artifacts/qualification/gather-e2e-*/
+artifacts/qualification/gather-variance-*/
+artifacts/qualification/gather-demo-*/
+artifacts/qualification/paired-*/
+artifacts/qualification/place-ab-*/
+artifacts/qualification/split-numbered-*/
+artifacts/qualification/parent-counterfactual-*/
+# Word lock files and generated monthly inputs
+.~lock.*#
+todo10_8/generated-docx-v2/
