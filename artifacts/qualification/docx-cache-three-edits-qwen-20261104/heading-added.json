@@ -1,0 +1,1044 @@
+{
+  "variant": "heading-added",
+  "sourceSha256": "fd7ac98f28dd4e0ca1d58615eeaabf3456161acf64e9a78e5c5565f26232755e",
+  "seconds": 153.7469733,
+  "outline": {
+    "file": "heading-added.docx",
+    "paragraphCount": 16,
+    "sourceCount": 14,
+    "headings": [
+      {
+        "index": 0,
+        "stableId": "body[1]/p[1]",
+        "sourceId": "body[1]/p[1]",
+        "level": 1,
+        "text": "Minutes from November 27, 2024 Meeting Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+        "originalText": "Minutes from November 27, 2024 Meeting Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)",
+        "headingSpan": {
+          "start": 0,
+          "end": 186
+        },
+        "boundarySource": "docx-source-pointer-span",
+        "hierarchyResolution": "model-root",
+        "styleId": null,
+        "source": "Model",
+        "decisionStatus": "RequiresReview",
+        "confidenceBasis": "source-grounded-pointer-span",
+        "disputed": false
+      },
+      {
+        "index": 2,
+        "stableId": "body[1]/p[3]",
+        "sourceId": "body[1]/p[3]",
+        "level": 2,
+        "text": "Opening:",
+        "originalText": "Opening:",
+        "headingSpan": {
+          "start": 0,
+          "end": 8
+        },
+        "boundarySource": "docx-source-pointer-span",
+        "hierarchyResolution": "model-parent-relation",
+        "styleId": null,
+        "source": "Model",
+        "decisionStatus": "RequiresReview",
+        "confidenceBasis": "source-grounded-pointer-span",
+        "disputed": false
+      },
+      {
+        "index": 4,
+        "stableId": "body[1]/p[5]",
+        "sourceId": "body[1]/p[5]",
+        "level": 1,
+        "text": "Additional Test Section",
+        "originalText": "Additional Test Section",
+        "headingSpan": {
+          "start": 0,
+          "end": 23
+        },
+        "boundarySource": "docx-source-pointer-span",
+        "hierarchyResolution": "model-root",
+        "styleId": "Heading1",
+        "source": "Model",
+        "decisionStatus": "RequiresReview",
+        "confidenceBasis": "source-grounded-pointer-span",
+        "disputed": false
+      },
+      {
+        "index": 5,
+        "stableId": "body[1]/p[6]",
+        "sourceId": "body[1]/p[6]",
+        "level": 2,
+        "text": "Present:",
+        "originalText": "Present:",
+        "headingSpan": {
+          "start": 0,
+          "end": 8
+        },
+        "boundarySource": "docx-source-pointer-span",
+        "hierarchyResolution": "model-parent-relation",
+        "styleId": null,
+        "source": "Model",
+        "decisionStatus": "RequiresReview",
+        "confidenceBasis": "source-grounded-pointer-span",
+        "disputed": false
+      },
+      {
+        "index": 12,
+        "stableId": "body[1]/p[13]",
+        "sourceId": "body[1]/p[13]",
+        "level": 2,
+        "text": "Governance/Voting Rights.",
+        "originalText": "Governance/Voting Rights. The Governing Committee discussed and agreed in principle to language intended to seek resolution of the governance issues in a manner consistent with the fundamental principles of creating a FIF which is open to all World Bank members, treats them equitably, and is consistent with the multilateral approach to FIFs and development finance, while still meeting the needs of the original contributors to the F.O.R.T.I.S Ukraine FIF. The Meeting agreed that the Interim Secretariat would modify the relevant language in the Operations Manual and reflect the changes in the Governance Framework. With this agreement, the GC provisionally approved the full set of documents to establish the F.O.R.T.I.S. Ukraine FIF.",
+        "headingSpan": {
+          "start": 0,
+          "end": 25
+        },
+        "boundarySource": "docx-source-pointer-span",
+        "hierarchyResolution": "model-parent-relation",
+        "styleId": null,
+        "source": "Model",
+        "decisionStatus": "RequiresReview",
+        "confidenceBasis": "source-grounded-pointer-span",
+        "disputed": false
+      },
+      {
+        "index": 14,
+        "stableId": "body[1]/p[15]",
+        "sourceId": "body[1]/p[15]",
+        "level": 2,
+        "text": "Subsequent Note:",
+        "originalText": "Subsequent Note: On or before December 2, 2024, representatives of all three Voting Members provided their agreement to the pre-final versions of the documents circulated by the Secretariat on November 21, 2024. Hence, the Standard Provisions to the Contribution Agreement/Arrangement, Financial Procedures Agreement Template, Governance Framework, Operations Manual, and Funding Request Template are finalized and adopted by the Governing Committee as of December 2, 2024.",
+        "headingSpan": {
+          "start": 0,
+          "end": 16
+        },
+        "boundarySource": "docx-source-pointer-span",
+        "hierarchyResolution": "model-parent-relation",
+        "styleId": null,
+        "source": "Model",
+        "decisionStatus": "RequiresReview",
+        "confidenceBasis": "source-grounded-pointer-span",
+        "disputed": false
+      }
+    ],
+    "elapsedMs": 153734,
+    "model": "qwen/qwen3.7-flash",
+    "deterministicRoute": "docx-v6-selected-lines",
+    "routeAudit": {
+      "summary": "docx-v6-selected-lines",
+      "sourceBlocksAvailable": 14,
+      "sourceBlocksSelected": 14,
+      "sourcePagesAvailable": 0,
+      "sourcePagesSelected": 0,
+      "sourceBlocks": [
+        {
+          "id": "body[1]/p[1]",
+          "page": 0,
+          "text": "Minutes from November 27, 2024 Meeting Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)"
+        },
+        {
+          "id": "body[1]/p[3]",
+          "page": 0,
+          "text": "Opening:"
+        },
+        {
+          "id": "body[1]/p[4]",
+          "page": 0,
+          "text": "The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, with participants joining remotely."
+        },
+        {
+          "id": "body[1]/p[5]",
+          "page": 0,
+          "text": "Additional Test Section"
+        },
+        {
+          "id": "body[1]/p[6]",
+          "page": 0,
+          "text": "Present:"
+        },
+        {
+          "id": "body[1]/p[7]",
+          "page": 0,
+          "text": "Governing Committee: Philippe Hall (Canada); Masaya Hatoma, Shinichiro Kurasawa (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, (United States)."
+        },
+        {
+          "id": "body[1]/p[8]",
+          "page": 0,
+          "text": "Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta"
+        },
+        {
+          "id": "body[1]/p[9]",
+          "page": 0,
+          "text": "Trustee: Traci Phillips, Ashish Makkar"
+        },
+        {
+          "id": "body[1]/p[10]",
+          "page": 0,
+          "text": "World Bank Legal: Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings"
+        },
+        {
+          "id": "body[1]/p[12]",
+          "page": 0,
+          "text": "On November 27, 2024, the F.O.R.T.I.S. Ukraine FIF Governing Committee met to seek resolution on the areas identified as not provisionally approved during the First Governing Committee Meeting on November 21, 2024, related to Governance/Voting Rights."
+        },
+        {
+          "id": "body[1]/p[13]",
+          "page": 0,
+          "text": "Governance/Voting Rights. The Governing Committee discussed and agreed in principle to language intended to seek resolution of the governance issues in a manner consistent with the fundamental principles of creating a FIF which is open to all World Bank members, treats them equitably, and is consistent with the multilateral approach to FIFs and development finance, while still meeting the needs of the original contributors to the F.O.R.T.I.S Ukraine FIF. The Meeting agreed that the Interim Secretariat would modify the relevant language in the Operations Manual and reflect the changes in the Governance Framework. With this agreement, the GC provisionally approved the full set of documents to establish the F.O.R.T.I.S. Ukraine FIF."
+        },
+        {
+          "id": "body[1]/p[14]",
+          "page": 0,
+          "text": "It was agreed that all Voting Members would have until opening of business Monday December 2 (EST) to confirm their agreement, including the approach taken to finalizing editorial suggestions, after which the documents would be final."
+        },
+        {
+          "id": "body[1]/p[15]",
+          "page": 0,
+          "text": "Subsequent Note: On or before December 2, 2024, representatives of all three Voting Members provided their agreement to the pre-final versions of the documents circulated by the Secretariat on November 21, 2024. Hence, the Standard Provisions to the Contribution Agreement/Arrangement, Financial Procedures Agreement Template, Governance Framework, Operations Manual, and Funding Request Template are finalized and adopted by the Governing Committee as of December 2, 2024."
+        },
+        {
+          "id": "body[1]/p[16]",
+          "page": 0,
+          "text": "For the Funding Request Template, language will be proposed by Ukraine on the process for endorsing proposals and will be inserted accordingly after the Voting Members are informed."
+        }
+      ],
+      "selectedSourceBlocks": [
+        {
+          "id": "body[1]/p[1]",
+          "page": 0,
+          "text": "Minutes from November 27, 2024 Meeting Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)"
+        },
+        {
+          "id": "body[1]/p[3]",
+          "page": 0,
+          "text": "Opening:"
+        },
+        {
+          "id": "body[1]/p[4]",
+          "page": 0,
+          "text": "The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, with participants joining remotely."
+        },
+        {
+          "id": "body[1]/p[5]",
+          "page": 0,
+          "text": "Additional Test Section"
+        },
+        {
+          "id": "body[1]/p[6]",
+          "page": 0,
+          "text": "Present:"
+        },
+        {
+          "id": "body[1]/p[7]",
+          "page": 0,
+          "text": "Governing Committee: Philippe Hall (Canada); Masaya Hatoma, Shinichiro Kurasawa (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, (United States)."
+        },
+        {
+          "id": "body[1]/p[8]",
+          "page": 0,
+          "text": "Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta"
+        },
+        {
+          "id": "body[1]/p[9]",
+          "page": 0,
+          "text": "Trustee: Traci Phillips, Ashish Makkar"
+        },
+        {
+          "id": "body[1]/p[10]",
+          "page": 0,
+          "text": "World Bank Legal: Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings"
+        },
+        {
+          "id": "body[1]/p[12]",
+          "page": 0,
+          "text": "On November 27, 2024, the F.O.R.T.I.S. Ukraine FIF Governing Committee met to seek resolution on the areas identified as not provisionally approved during the First Governing Committee Meeting on November 21, 2024, related to Governance/Voting Rights."
+        },
+        {
+          "id": "body[1]/p[13]",
+          "page": 0,
+          "text": "Governance/Voting Rights. The Governing Committee discussed and agreed in principle to language intended to seek resolution of the governance issues in a manner consistent with the fundamental principles of creating a FIF which is open to all World Bank members, treats them equitably, and is consistent with the multilateral approach to FIFs and development finance, while still meeting the needs of the original contributors to the F.O.R.T.I.S Ukraine FIF. The Meeting agreed that the Interim Secretariat would modify the relevant language in the Operations Manual and reflect the changes in the Governance Framework. With this agreement, the GC provisionally approved the full set of documents to establish the F.O.R.T.I.S. Ukraine FIF."
+        },
+        {
+          "id": "body[1]/p[14]",
+          "page": 0,
+          "text": "It was agreed that all Voting Members would have until opening of business Monday December 2 (EST) to confirm their agreement, including the approach taken to finalizing editorial suggestions, after which the documents would be final."
+        },
+        {
+          "id": "body[1]/p[15]",
+          "page": 0,
+          "text": "Subsequent Note: On or before December 2, 2024, representatives of all three Voting Members provided their agreement to the pre-final versions of the documents circulated by the Secretariat on November 21, 2024. Hence, the Standard Provisions to the Contribution Agreement/Arrangement, Financial Procedures Agreement Template, Governance Framework, Operations Manual, and Funding Request Template are finalized and adopted by the Governing Committee as of December 2, 2024."
+        },
+        {
+          "id": "body[1]/p[16]",
+          "page": 0,
+          "text": "For the Funding Request Template, language will be proposed by Ukraine on the process for endorsing proposals and will be inserted accordingly after the Voting Members are informed."
+        }
+      ],
+      "blockDecisions": [
+        {
+          "id": "body[1]/p[1]",
+          "semanticFunction": "ESTABLISHES_STRUCTURE",
+          "reason": null
+        },
+        {
+          "id": "body[1]/p[3]",
+          "semanticFunction": "ESTABLISHES_STRUCTURE",
+          "reason": null
+        },
+        {
+          "id": "body[1]/p[5]",
+          "semanticFunction": "ESTABLISHES_STRUCTURE",
+          "reason": null
+        },
+        {
+          "id": "body[1]/p[6]",
+          "semanticFunction": "ESTABLISHES_STRUCTURE",
+          "reason": null
+        },
+        {
+          "id": "body[1]/p[13]",
+          "semanticFunction": "ESTABLISHES_STRUCTURE",
+          "reason": null
+        },
+        {
+          "id": "body[1]/p[15]",
+          "semanticFunction": "ESTABLISHES_STRUCTURE",
+          "reason": null
+        }
+      ],
+      "groundedBlockIds": [
+        "body[1]/p[1]",
+        "body[1]/p[3]",
+        "body[1]/p[5]",
+        "body[1]/p[6]",
+        "body[1]/p[13]",
+        "body[1]/p[15]"
+      ],
+      "route": "docx-v6-selected-lines",
+      "ResourcePlan": null,
+      "SelectionResources": {
+        "ProfileId": "openrouter-alibaba-qwen37-20261024-v1",
+        "ByteCap": 262144,
+        "ConfirmedUsd": 0.0028754709999999997,
+        "UnconfirmedUsd": 0,
+        "Attempts": [
+          {
+            "AttemptId": "f1f4c0a223a14dd9b7a0b957ebc6839a",
+            "RequestSha256": "aa9efb55b8e87916ef907270602ea6c1fd2c1c7bba9cbab19924945fc766aea3",
+            "WireBytes": 28949,
+            "InputTokenEstimate": 27896,
+            "Estimator": "utf8-text-and-configured-image-allowance-v1",
+            "CompletionCap": 32768,
+            "PromptTokens": 7062,
+            "CompletionTokens": 5068,
+            "ReasoningTokens": 4193,
+            "ReservedUsd": 0.00509672,
+            "CostUsd": 0.000793887,
+            "Status": "CONFIRMED",
+            "Transport": {
+              "UnitId": "SEG-000",
+              "Turn": 1,
+              "RetryIndex": 0,
+              "HttpStatus": 200,
+              "Outcome": "HTTP_OK",
+              "RequestSeconds": 40.889,
+              "WaitSeconds": 0,
+              "RetryAfterSeconds": null,
+              "RetryDelaySeconds": 0,
+              "ProviderErrorCode": null
+            }
+          },
+          {
+            "AttemptId": "bd7345119b0a412eb7fac714ffd2f3dc",
+            "RequestSha256": "b155c17e0c2596ea5bbeb14c597b2bc49796f932a467ba7023d106d367764b0e",
+            "WireBytes": 32549,
+            "InputTokenEstimate": 31222,
+            "Estimator": "utf8-text-and-configured-image-allowance-v1",
+            "CompletionCap": 32768,
+            "PromptTokens": 6201,
+            "CompletionTokens": 3290,
+            "ReasoningTokens": 2374,
+            "ReservedUsd": 0.0051965,
+            "CostUsd": 0.000586624,
+            "Status": "CONFIRMED",
+            "Transport": {
+              "UnitId": "SEG-000",
+              "Turn": 2,
+              "RetryIndex": 0,
+              "HttpStatus": 200,
+              "Outcome": "HTTP_OK",
+              "RequestSeconds": 27.14,
+              "WaitSeconds": 0,
+              "RetryAfterSeconds": null,
+              "RetryDelaySeconds": 0,
+              "ProviderErrorCode": null
+            }
+          },
+          {
+            "AttemptId": "cc5377f4fd5346909aca475087609eb7",
+            "RequestSha256": "6e43b4176a6fabf82a29c9ae85f8b73653aa6447ceeb9652f119b3b9987b685f",
+            "WireBytes": 36341,
+            "InputTokenEstimate": 34738,
+            "Estimator": "utf8-text-and-configured-image-allowance-v1",
+            "CompletionCap": 32768,
+            "PromptTokens": 7241,
+            "CompletionTokens": 3876,
+            "ReasoningTokens": 2946,
+            "ReservedUsd": 0.016581,
+            "CostUsd": 0.000580359,
+            "Status": "CONFIRMED",
+            "Transport": {
+              "UnitId": "SEG-000",
+              "Turn": 3,
+              "RetryIndex": 0,
+              "HttpStatus": 200,
+              "Outcome": "HTTP_OK",
+              "RequestSeconds": 35.066,
+              "WaitSeconds": 0,
+              "RetryAfterSeconds": null,
+              "RetryDelaySeconds": 0,
+              "ProviderErrorCode": null
+            }
+          },
+          {
+            "AttemptId": "23c951daaa6e4e11a10bd5f7929d91ad",
+            "RequestSha256": "4215f669398b4c5f2dca65d47b1b78cc28f006e35d630988a463e5da898e9025",
+            "WireBytes": 40157,
+            "InputTokenEstimate": 38280,
+            "Estimator": "utf8-text-and-configured-image-allowance-v1",
+            "CompletionCap": 32768,
+            "PromptTokens": 8276,
+            "CompletionTokens": 4486,
+            "ReasoningTokens": 3570,
+            "ReservedUsd": 0.016935199999999997,
+            "CostUsd": 0.000690709,
+            "Status": "CONFIRMED",
+            "Transport": {
+              "UnitId": "SEG-000",
+              "Turn": 4,
+              "RetryIndex": 0,
+              "HttpStatus": 200,
+              "Outcome": "HTTP_OK",
+              "RequestSeconds": 36.141,
+              "WaitSeconds": 0,
+              "RetryAfterSeconds": null,
+              "RetryDelaySeconds": 0,
+              "ProviderErrorCode": null
+            }
+          },
+          {
+            "AttemptId": "c178586e242a471fa01f928d370e9035",
+            "RequestSha256": "0fa56237376840a8ab418a6b3b00026c069ac8009e1cf09e65d06276a58a2445",
+            "WireBytes": 8015,
+            "InputTokenEstimate": 7718,
+            "Estimator": "utf8-text-and-configured-image-allowance-v1",
+            "CompletionCap": 32768,
+            "PromptTokens": 1727,
+            "CompletionTokens": 1352,
+            "ReasoningTokens": 1248,
+            "ReservedUsd": 0.00449138,
+            "CostUsd": 0.000223892,
+            "Status": "CONFIRMED",
+            "Transport": {
+              "UnitId": "GROUP-001",
+              "Turn": 1,
+              "RetryIndex": 0,
+              "HttpStatus": 200,
+              "Outcome": "HTTP_OK",
+              "RequestSeconds": 12.113,
+              "WaitSeconds": 0,
+              "RetryAfterSeconds": null,
+              "RetryDelaySeconds": 0,
+              "ProviderErrorCode": null
+            }
+          }
+        ]
+      },
+      "rawModelResponses": [
+        "{\"unit\":\"SEG-000\",\"decisions\":{\"S0001\":\"SELECT\",\"S0002\":\"SELECT\",\"S0003\":\"NOT_SELECT\",\"S0004\":\"SELECT\",\"S0005\":\"SELECT\",\"S0006\":\"NOT_SELECT\",\"S0007\":\"NOT_SELECT\",\"S0008\":\"NOT_SELECT\",\"S0009\":\"NOT_SELECT\",\"S0010\":\"NOT_SELECT\",\"S0011\":\"SELECT\",\"S0012\":\"NOT_SELECT\",\"S0013\":\"SELECT\",\"S0014\":\"NOT_SELECT\"},\"reasons\":{\"S0001\":\"Document title, bold and centered, serves as the primary structural heading introducing the record.\",\"S0002\":\"Bold standalone label functioning as a section header introducing the opening remarks.\",\"S0004\":\"Explicitly styled as Heading1, functions as a clear structural divider in the outline.\",\"S0005\":\"Bold standalone label functioning as a section header introducing the attendance list.\",\"S0011\":\"Embedded heading 'Governance/Voting Rights.' introduced by a formatting change at offset 26, structurally dividing the discussion topic.\",\"S0013\":\"Embedded heading 'Subsequent Note:' introduced by a formatting change at offset 17, structurally dividing the follow-up note.\"},\"analysis\":\"Evaluated each target against the instruction to identify structural headings. S0001 is the document title, bold and centered, serving as the primary structural heading. S0002 and S0005 are bold standalone labels functioning as section headers for 'Opening' and 'Present'. S0004 carries the explicit Heading1 style, marking a clear structural divider. S0011 contains an embedded heading 'Governance/Voting Rights.' confirmed by formatting change offset at 26; the text from 0 to 25 is 'Governance/Voting Rights.' (no trailing space). S0013 contains an embedded heading 'Subsequent Note:' confirmed by formatting change offset at 17; the text from 0 to 16 is 'Subsequent Note:' (no trailing space). The remaining targets are body paragraphs or list items without structural heading function.\",\"headingExtents\":{\"S0011\":{\"start\":0,\"end\":25,\"text\":\"Governance/Voting Rights.\"},\"S0013\":{\"start\":0,\"end\":16,\"text\":\"Subsequent Note:\"}},\"readingViewIds\":null,\"selectionGroups\":null,\"groupingFailure\":null,\"coreFactsCoverage\":{\"targetsWithoutFacts\":[],\"factsResultsCut\":0},\"detailEvidenceCoverage\":{\"aliasesRead\":[]}}",
+        "{\"grouping\":\"{\\n\\\"protocolVersion\\\":\\\"PDF_HEADING_GROUPS_V1\\\",\\n\\\"runs\\\":[\\n{\\n\\\"run\\\":\\\"R1\\\",\\n\\\"headings\\\":[\\n[\\n\\\"S0001\\\"\\n],\\n[\\n\\\"S0002\\\"\\n]\\n]\\n},\\n{\\n\\\"run\\\":\\\"R2\\\",\\n\\\"headings\\\":[\\n[\\n\\\"S0004\\\"\\n],\\n[\\n\\\"S0005\\\"\\n]\\n]\\n}\\n]\\n}\"}",
+        "{\"groupingEvidence\":\"{\\\"unit\\\":\\\"GROUP-001\\\",\\\"turn\\\":1,\\\"requestSha256\\\":\\\"0fa56237376840a8ab418a6b3b00026c069ac8009e1cf09e65d06276a58a2445\\\",\\\"response\\\":\\\"{\\\\n\\\\\\\"protocolVersion\\\\\\\":\\\\\\\"PDF_HEADING_GROUPS_V1\\\\\\\",\\\\n\\\\\\\"runs\\\\\\\":[\\\\n{\\\\n\\\\\\\"run\\\\\\\":\\\\\\\"R1\\\\\\\",\\\\n\\\\\\\"headings\\\\\\\":[\\\\n[\\\\n\\\\\\\"S0001\\\\\\\"\\\\n],\\\\n[\\\\n\\\\\\\"S0002\\\\\\\"\\\\n]\\\\n]\\\\n},\\\\n{\\\\n\\\\\\\"run\\\\\\\":\\\\\\\"R2\\\\\\\",\\\\n\\\\\\\"headings\\\\\\\":[\\\\n[\\\\n\\\\\\\"S0004\\\\\\\"\\\\n],\\\\n[\\\\n\\\\\\\"S0005\\\\\\\"\\\\n]\\\\n]\\\\n}\\\\n]\\\\n}\\\",\\\"failure\\\":null}\"}",
+        "{\"stage\":\"bound-heading-groups\",\"groups\":[[\"S0001\"],[\"S0002\"],[\"S0004\"],[\"S0005\"],[\"S0011\"],[\"S0013\"]]}",
+        "{\"stage\":\"pre-binding-alias-state\",\"aliases\":{\"S0001\":{\"InitialSelection\":\"SELECT\",\"FinalSelection\":\"SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"READY_FOR_BINDING\",\"Provenance\":[{\"Alias\":\"S0001\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":99,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0},{\"Alias\":\"S0001\",\"Stage\":\"grouping\",\"UnitId\":\"GROUP-001\",\"CandidateId\":\"R1\",\"Decision\":\"DIVIDED\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0002\":{\"InitialSelection\":\"SELECT\",\"FinalSelection\":\"SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"READY_FOR_BINDING\",\"Provenance\":[{\"Alias\":\"S0002\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":86,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0},{\"Alias\":\"S0002\",\"Stage\":\"grouping\",\"UnitId\":\"GROUP-001\",\"CandidateId\":\"R1\",\"Decision\":\"DIVIDED\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0003\":{\"InitialSelection\":\"NOT_SELECT\",\"FinalSelection\":\"NOT_SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"NOT_SELECTED\",\"Provenance\":[{\"Alias\":\"S0003\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"NOT_SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0004\":{\"InitialSelection\":\"SELECT\",\"FinalSelection\":\"SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"READY_FOR_BINDING\",\"Provenance\":[{\"Alias\":\"S0004\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":86,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0},{\"Alias\":\"S0004\",\"Stage\":\"grouping\",\"UnitId\":\"GROUP-001\",\"CandidateId\":\"R2\",\"Decision\":\"DIVIDED\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0005\":{\"InitialSelection\":\"SELECT\",\"FinalSelection\":\"SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"READY_FOR_BINDING\",\"Provenance\":[{\"Alias\":\"S0005\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":86,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0},{\"Alias\":\"S0005\",\"Stage\":\"grouping\",\"UnitId\":\"GROUP-001\",\"CandidateId\":\"R2\",\"Decision\":\"DIVIDED\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0006\":{\"InitialSelection\":\"NOT_SELECT\",\"FinalSelection\":\"NOT_SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"NOT_SELECTED\",\"Provenance\":[{\"Alias\":\"S0006\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"NOT_SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0007\":{\"InitialSelection\":\"NOT_SELECT\",\"FinalSelection\":\"NOT_SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"NOT_SELECTED\",\"Provenance\":[{\"Alias\":\"S0007\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"NOT_SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0008\":{\"InitialSelection\":\"NOT_SELECT\",\"FinalSelection\":\"NOT_SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"NOT_SELECTED\",\"Provenance\":[{\"Alias\":\"S0008\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"NOT_SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0009\":{\"InitialSelection\":\"NOT_SELECT\",\"FinalSelection\":\"NOT_SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"NOT_SELECTED\",\"Provenance\":[{\"Alias\":\"S0009\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"NOT_SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0010\":{\"InitialSelection\":\"NOT_SELECT\",\"FinalSelection\":\"NOT_SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"NOT_SELECTED\",\"Provenance\":[{\"Alias\":\"S0010\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"NOT_SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0011\":{\"InitialSelection\":\"SELECT\",\"FinalSelection\":\"SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"READY_FOR_BINDING\",\"Provenance\":[{\"Alias\":\"S0011\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":136,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0012\":{\"InitialSelection\":\"NOT_SELECT\",\"FinalSelection\":\"NOT_SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"NOT_SELECTED\",\"Provenance\":[{\"Alias\":\"S0012\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"NOT_SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0013\":{\"InitialSelection\":\"SELECT\",\"FinalSelection\":\"SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"READY_FOR_BINDING\",\"Provenance\":[{\"Alias\":\"S0013\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":125,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"},\"S0014\":{\"InitialSelection\":\"NOT_SELECT\",\"FinalSelection\":\"NOT_SELECT\",\"VerificationMembership\":null,\"BindingStatus\":\"NOT_SELECTED\",\"Provenance\":[{\"Alias\":\"S0014\",\"Stage\":\"selection\",\"UnitId\":\"SEG-000\",\"CandidateId\":null,\"Decision\":\"NOT_SELECT\",\"Membership\":null,\"FailureCodes\":[],\"EvidenceRefs\":[],\"Round\":null,\"ReasonLength\":null,\"UnitFailureContext\":null,\"BoundaryRepairCycle\":0}],\"ProvenanceAvailability\":\"recorded\"}}}",
+        "{\"stage\":\"HIERARCHY_PLACE\",\"unitId\":\"HIERARCHY_PLACE-001\",\"round\":1,\"request\":\"{\\\"protocolVersion\\\":\\\"HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION\\\",\\\"stage\\\":\\\"HIERARCHY_PLACE\\\",\\\"documentSha256\\\":\\\"fd7ac98f28dd4e0ca1d58615eeaabf3456161acf64e9a78e5c5565f26232755e\\\",\\\"headings\\\":[{\\\"alias\\\":\\\"S0001\\\",\\\"text\\\":\\\"Minutes from November 27, 2024 Meeting Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)\\\",\\\"ordinal\\\":0,\\\"parts\\\":[\\\"S0001\\\"],\\\"style\\\":{\\\"sizePt\\\":12,\\\"bold\\\":true,\\\"italic\\\":false,\\\"allCaps\\\":false,\\\"alignment\\\":\\\"center\\\",\\\"rankInDocument\\\":1,\\\"linesWithThisStyleInDocument\\\":3}},{\\\"alias\\\":\\\"S0002\\\",\\\"text\\\":\\\"Opening:\\\",\\\"ordinal\\\":2,\\\"parts\\\":[\\\"S0002\\\"],\\\"style\\\":{\\\"sizePt\\\":12,\\\"bold\\\":true,\\\"italic\\\":false,\\\"allCaps\\\":false,\\\"alignment\\\":\\\"left\\\",\\\"rankInDocument\\\":1,\\\"linesWithThisStyleInDocument\\\":3}},{\\\"alias\\\":\\\"S0004\\\",\\\"text\\\":\\\"Additional Test Section\\\",\\\"ordinal\\\":4,\\\"parts\\\":[\\\"S0004\\\"],\\\"style\\\":{\\\"bold\\\":true,\\\"italic\\\":false,\\\"allCaps\\\":false,\\\"rankInDocument\\\":3,\\\"linesWithThisStyleInDocument\\\":1}},{\\\"alias\\\":\\\"S0005\\\",\\\"text\\\":\\\"Present:\\\",\\\"ordinal\\\":5,\\\"parts\\\":[\\\"S0005\\\"],\\\"style\\\":{\\\"sizePt\\\":12,\\\"bold\\\":true,\\\"italic\\\":false,\\\"allCaps\\\":false,\\\"alignment\\\":\\\"left\\\",\\\"rankInDocument\\\":1,\\\"linesWithThisStyleInDocument\\\":3}},{\\\"alias\\\":\\\"S0011\\\",\\\"text\\\":\\\"Governance/Voting Rights.\\\",\\\"ordinal\\\":12,\\\"parts\\\":[\\\"S0011\\\"],\\\"style\\\":{\\\"sizePt\\\":12,\\\"bold\\\":false,\\\"italic\\\":false,\\\"allCaps\\\":false,\\\"alignment\\\":\\\"both\\\",\\\"rankInDocument\\\":2,\\\"linesWithThisStyleInDocument\\\":10}},{\\\"alias\\\":\\\"S0013\\\",\\\"text\\\":\\\"Subsequent Note:\\\",\\\"ordinal\\\":14,\\\"parts\\\":[\\\"S0013\\\"],\\\"style\\\":{\\\"sizePt\\\":12,\\\"bold\\\":false,\\\"italic\\\":false,\\\"allCaps\\\":false,\\\"alignment\\\":\\\"both\\\",\\\"rankInDocument\\\":2,\\\"linesWithThisStyleInDocument\\\":10}}],\\\"documentStyles\\\":{\\\"readBy\\\":\\\"the program, from the OOXML of every paragraph of the whole document: each distinct style (style name, font size rounded to half a point, bold), largest size first, bold before regular at the same size, with how many paragraphs use it and the first paragraphs in reading order set in it\\\",\\\"version\\\":\\\"DOCX_AGENT_DOCUMENT_STYLES_V1\\\",\\\"documentLines\\\":14,\\\"stylesTotal\\\":3,\\\"styles\\\":[{\\\"rank\\\":1,\\\"styleName\\\":\\\"(none)\\\",\\\"sizePt\\\":12,\\\"bold\\\":true,\\\"lines\\\":3,\\\"firstLines\\\":[{\\\"alias\\\":\\\"S0001\\\",\\\"text\\\":\\\"Minutes from November 27, 2024 Meeting Governing Committee (GC) of the Facilitat…\\\"},{\\\"alias\\\":\\\"S0002\\\",\\\"text\\\":\\\"Opening:\\\"},{\\\"alias\\\":\\\"S0005\\\",\\\"text\\\":\\\"Present:\\\"}]},{\\\"rank\\\":2,\\\"styleName\\\":\\\"(none)\\\",\\\"sizePt\\\":12,\\\"bold\\\":false,\\\"lines\\\":10,\\\"firstLines\\\":[{\\\"alias\\\":\\\"S0003\\\",\\\"text\\\":\\\"The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Ch…\\\"},{\\\"alias\\\":\\\"S0006\\\",\\\"text\\\":\\\"Governing Committee: Philippe Hall (Canada); Masaya Hatoma, Shinichiro Kurasawa …\\\"},{\\\"alias\\\":\\\"S0007\\\",\\\"text\\\":\\\"Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta\\\"}]},{\\\"rank\\\":3,\\\"styleName\\\":\\\"Heading1\\\",\\\"bold\\\":true,\\\"lines\\\":1,\\\"firstLines\\\":[{\\\"alias\\\":\\\"S0004\\\",\\\"text\\\":\\\"Additional Test Section\\\"}]}],\\\"stylesNotShown\\\":0},\\\"measurementsNote\\\":\\\"Each heading may also carry \\\\\\\"style\\\\\\\" (the style name, the outline level it declares, sizePt, bold, italic, allCaps, alignment, the numbering label and level, rankInDocument: the place of its style among the distinct styles of the whole document, 1 being the largest, and linesWithThisStyleInDocument), and \\\\\\\"documentStyles\\\\\\\" lists those distinct styles with the first lines set in each. They are measurements of the document, not labels and not decisions: you decide each relation.\\\",\\\"proposedRelations\\\":[],\\\"decidedHeadings\\\":[],\\\"upstreamWithheld\\\":[],\\\"sourceContext\\\":[{\\\"alias\\\":\\\"S0001\\\",\\\"ordinal\\\":0,\\\"page\\\":0,\\\"text\\\":\\\"Minutes from November 27, 2024 Meeting Governing Committee (GC) of the Facilitation of Resources to Invest in Strengthening Ukraine Financial Intermediary Fund (F.O.R.T.I.S. Ukraine FIF)\\\"},{\\\"alias\\\":\\\"S0002\\\",\\\"ordinal\\\":2,\\\"page\\\":0,\\\"text\\\":\\\"Opening:\\\"},{\\\"alias\\\":\\\"S0003\\\",\\\"ordinal\\\":3,\\\"page\\\":0,\\\"text\\\":\\\"The meeting was called to order at 7:00 am EST by Linda Van Gelder, acting as Chair, with participants joining remotely.\\\"},{\\\"alias\\\":\\\"S0004\\\",\\\"ordinal\\\":4,\\\"page\\\":0,\\\"text\\\":\\\"Additional Test Section\\\"},{\\\"alias\\\":\\\"S0005\\\",\\\"ordinal\\\":5,\\\"page\\\":0,\\\"text\\\":\\\"Present:\\\"},{\\\"alias\\\":\\\"S0006\\\",\\\"ordinal\\\":6,\\\"page\\\":0,\\\"text\\\":\\\"Governing Committee: Philippe Hall (Canada); Masaya Hatoma, Shinichiro Kurasawa (Japan); Olga Zykova, Yuri Butsa (Ukraine); Brian McCauley, (United States).\\\"},{\\\"alias\\\":\\\"S0007\\\",\\\"ordinal\\\":7,\\\"page\\\":0,\\\"text\\\":\\\"Interim-Secretariat: Linda Van Gelder, Carolina Sanchez Paramo, Anthony Gaeta\\\"},{\\\"alias\\\":\\\"S0008\\\",\\\"ordinal\\\":8,\\\"page\\\":0,\\\"text\\\":\\\"Trustee: Traci Phillips, Ashish Makkar\\\"},{\\\"alias\\\":\\\"S0009\\\",\\\"ordinal\\\":9,\\\"page\\\":0,\\\"text\\\":\\\"World Bank Legal: Duncan Kiara, Maria Lourdes Pardo, Andrew Giddings\\\"},{\\\"alias\\\":\\\"S0010\\\",\\\"ordinal\\\":11,\\\"page\\\":0,\\\"text\\\":\\\"On November 27, 2024, the F.O.R.T.I.S. Ukraine FIF Governing Committee met to seek resolution on the areas identified as not provisionally approved during the First Governing Committee Meeting on November 21, 2024, related to Governance/Voting Rights.\\\"},{\\\"alias\\\":\\\"S0011\\\",\\\"ordinal\\\":12,\\\"page\\\":0,\\\"text\\\":\\\"Governance/Voting Rights. The Governing Committee discussed and agreed in principle to language intended to seek resolution of the governance issues in a manner consistent with the fundamental principles of creating a FIF which is open to all World Bank members, treats them equitably, and is consistent with the multilateral approach to FIFs and development finance, while still meeting the needs of the original contributors to the F.O.R.T.I.S Ukraine FIF. The Meeting agreed that the Interim Secretariat would modify the relevant language in the Operations Manual and reflect the changes in the Governance Framework. With this agreement, the GC provisionally approved the full set of documents to establish the F.O.R.T.I.S. Ukraine FIF.\\\"},{\\\"alias\\\":\\\"S0012\\\",\\\"ordinal\\\":13,\\\"page\\\":0,\\\"text\\\":\\\"It was agreed that all Voting Members would have until opening of business Monday December 2 (EST) to confirm their agreement, including the approach taken to finalizing editorial suggestions, after which the documents would be final.\\\"},{\\\"alias\\\":\\\"S0013\\\",\\\"ordinal\\\":14,\\\"page\\\":0,\\\"text\\\":\\\"Subsequent Note: On or before December 2, 2024, representatives of all three Voting Members provided their agreement to the pre-final versions of the documents circulated by the Secretariat on November 21, 2024. Hence, the Standard Provisions to the Contribution Agreement/Arrangement, Financial Procedures Agreement Template, Governance Framework, Operations Manual, and Funding Request Template are finalized and adopted by the Governing Committee as of December 2, 2024.\\\"},{\\\"alias\\\":\\\"S0014\\\",\\\"ordinal\\\":15,\\\"page\\\":0,\\\"text\\\":\\\"For the Funding Request Template, language will be proposed by Ukraine on the process for endorsing proposals and will be inserted accordingly after the Voting Members are informed.\\\"}],\\\"toPlace\\\":[\\\"S0001\\\",\\\"S0002\\\",\\\"S0004\\\",\\\"S0005\\\",\\\"S0011\\\",\\\"S0013\\\"],\\\"protocolErrors\\\":[]}\",\"response\":\"{\\n  \\\"protocolVersion\\\": \\\"HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION\\\",\\n  \\\"placements\\\": [\\n    {\\n      \\\"alias\\\": \\\"S0001\\\",\\n      \\\"parent\\\": \\\"ROOT\\\"\\n    },\\n    {\\n      \\\"alias\\\": \\\"S0002\\\",\\n      \\\"parent\\\": \\\"S0001\\\"\\n    },\\n    {\\n      \\\"alias\\\": \\\"S0004\\\",\\n      \\\"parent\\\": \\\"ROOT\\\"\\n    },\\n    {\\n      \\\"alias\\\": \\\"S0005\\\",\\n      \\\"parent\\\": \\\"S0001\\\"\\n    },\\n    {\\n      \\\"alias\\\": \\\"S0011\\\",\\n      \\\"parent\\\": \\\"S0001\\\"\\n    },\\n    {\\n      \\\"alias\\\": \\\"S0013\\\",\\n      \\\"parent\\\": \\\"S0001\\\"\\n    }\\n  ]\\n}\",\"responseBytes\":463,\"requestedMaxOutputTokens\":864,\"MaxOutputTokens\":864,\"FinishReason\":\"stop\",\"protocolErrors\":[]}"
+      ],
+      "modelInputContracts": [
+        "docx-v6:DOCX_AGENT_SOURCE_V1:facts-in-request:instruction-17d4b6a9:selection-boundary-grouping-csharp-validation-v2:no-semantic-membership-veto:group-selected-text-v1:group-boundary-guidance-v1",
+        "HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION"
+      ],
+      "validatedStructures": [
+        {
+          "SourceId": "body[1]/p[1]",
+          "Level": 1,
+          "ParentId": null,
+          "ParentResolution": "model-root",
+          "Decision": "requires_review",
+          "StructuralScope": "document_body"
+        },
+        {
+          "SourceId": "body[1]/p[3]",
+          "Level": 2,
+          "ParentId": "body[1]/p[1]",
+          "ParentResolution": "model-parent-relation",
+          "Decision": "requires_review",
+          "StructuralScope": "document_body"
+        },
+        {
+          "SourceId": "body[1]/p[5]",
+          "Level": 1,
+          "ParentId": null,
+          "ParentResolution": "model-root",
+          "Decision": "requires_review",
+          "StructuralScope": "document_body"
+        },
+        {
+          "SourceId": "body[1]/p[6]",
+          "Level": 2,
+          "ParentId": "body[1]/p[1]",
+          "ParentResolution": "model-parent-relation",
+          "Decision": "requires_review",
+          "StructuralScope": "document_body"
+        },
+        {
+          "SourceId": "body[1]/p[13]",
+          "Level": 2,
+          "ParentId": "body[1]/p[1]",
+          "ParentResolution": "model-parent-relation",
+          "Decision": "requires_review",
+          "StructuralScope": "document_body"
+        },
+        {
+          "SourceId": "body[1]/p[15]",
+          "Level": 2,
+          "ParentId": "body[1]/p[1]",
+          "ParentResolution": "model-parent-relation",
+          "Decision": "requires_review",
+          "StructuralScope": "document_body"
+        }
+      ],
+      "hierarchyFacts": [],
+      "semanticLane": {
+        "status": "complete",
+        "scheduled": 1,
+        "completed": 1,
+        "timedOut": 0,
+        "notStarted": 0,
+        "failureClass": null
+      },
+      "spanLane": {
+        "status": "selected-lines",
+        "scheduled": 6,
+        "completed": 6,
+        "timedOut": 0,
+        "notStarted": 0,
+        "failureClass": null
+      }
+    },
+    "provenance": {
+      "backend": "configured-route",
+      "sentDataExternally": true,
+      "passes": [
+        {
+          "name": "semantic-role",
+          "chunks": 1,
+          "requestedParagraphs": 1,
+          "sentDataExternally": true
+        },
+        {
+          "name": "heading-span",
+          "chunks": 6,
+          "requestedParagraphs": 6,
+          "sentDataExternally": true
+        },
+        {
+          "name": "source-facts",
+          "chunks": 1,
+          "requestedParagraphs": 14,
+          "sentDataExternally": false
+        },
+        {
+          "name": "proposal-validation",
+          "chunks": 1,
+          "requestedParagraphs": 6,
+          "sentDataExternally": false
+        },
+        {
+          "name": "deterministic-hierarchy",
+          "chunks": 1,
+          "requestedParagraphs": 6,
+          "sentDataExternally": false
+        },
+        {
+          "name": "output-policy",
+          "chunks": 1,
+          "requestedParagraphs": 6,
+          "sentDataExternally": false
+        }
+      ]
+    },
+    "disputedCount": 0
+  },
+  "budget": {
+    "CeilingUsd": 1,
+    "MaxAttempts": 80,
+    "Attempts": 6,
+    "ConfirmedUsd": 0.0029756999999999995,
+    "ProvisionalUsd": 0,
+    "OutstandingUsd": 0,
+    "AccountingScope": "default-agent-transport-admissions"
+  },
+  "selectionCalls": 5,
+  "selectionResources": {
+    "ProfileId": "openrouter-alibaba-qwen37-20261024-v1",
+    "ByteCap": 262144,
+    "ConfirmedUsd": 0.0028754709999999997,
+    "UnconfirmedUsd": 0,
+    "Attempts": [
+      {
+        "AttemptId": "f1f4c0a223a14dd9b7a0b957ebc6839a",
+        "RequestSha256": "aa9efb55b8e87916ef907270602ea6c1fd2c1c7bba9cbab19924945fc766aea3",
+        "WireBytes": 28949,
+        "InputTokenEstimate": 27896,
+        "Estimator": "utf8-text-and-configured-image-allowance-v1",
+        "CompletionCap": 32768,
+        "PromptTokens": 7062,
+        "CompletionTokens": 5068,
+        "ReasoningTokens": 4193,
+        "ReservedUsd": 0.00509672,
+        "CostUsd": 0.000793887,
+        "Status": "CONFIRMED",
+        "Transport": {
+          "UnitId": "SEG-000",
+          "Turn": 1,
+          "RetryIndex": 0,
+          "HttpStatus": 200,
+          "Outcome": "HTTP_OK",
+          "RequestSeconds": 40.889,
+          "WaitSeconds": 0,
+          "RetryAfterSeconds": null,
+          "RetryDelaySeconds": 0,
+          "ProviderErrorCode": null
+        }
+      },
+      {
+        "AttemptId": "bd7345119b0a412eb7fac714ffd2f3dc",
+        "RequestSha256": "b155c17e0c2596ea5bbeb14c597b2bc49796f932a467ba7023d106d367764b0e",
+        "WireBytes": 32549,
+        "InputTokenEstimate": 31222,
+        "Estimator": "utf8-text-and-configured-image-allowance-v1",
+        "CompletionCap": 32768,
+        "PromptTokens": 6201,
+        "CompletionTokens": 3290,
+        "ReasoningTokens": 2374,
+        "ReservedUsd": 0.0051965,
+        "CostUsd": 0.000586624,
+        "Status": "CONFIRMED",
+        "Transport": {
+          "UnitId": "SEG-000",
+          "Turn": 2,
+          "RetryIndex": 0,
+          "HttpStatus": 200,
+          "Outcome": "HTTP_OK",
+          "RequestSeconds": 27.14,
+          "WaitSeconds": 0,
+          "RetryAfterSeconds": null,
+          "RetryDelaySeconds": 0,
+          "ProviderErrorCode": null
+        }
+      },
+      {
+        "AttemptId": "cc5377f4fd5346909aca475087609eb7",
+        "RequestSha256": "6e43b4176a6fabf82a29c9ae85f8b73653aa6447ceeb9652f119b3b9987b685f",
+        "WireBytes": 36341,
+        "InputTokenEstimate": 34738,
+        "Estimator": "utf8-text-and-configured-image-allowance-v1",
+        "CompletionCap": 32768,
+        "PromptTokens": 7241,
+        "CompletionTokens": 3876,
+        "ReasoningTokens": 2946,
+        "ReservedUsd": 0.016581,
+        "CostUsd": 0.000580359,
+        "Status": "CONFIRMED",
+        "Transport": {
+          "UnitId": "SEG-000",
+          "Turn": 3,
+          "RetryIndex": 0,
+          "HttpStatus": 200,
+          "Outcome": "HTTP_OK",
+          "RequestSeconds": 35.066,
+          "WaitSeconds": 0,
+          "RetryAfterSeconds": null,
+          "RetryDelaySeconds": 0,
+          "ProviderErrorCode": null
+        }
+      },
+      {
+        "AttemptId": "23c951daaa6e4e11a10bd5f7929d91ad",
+        "RequestSha256": "4215f669398b4c5f2dca65d47b1b78cc28f006e35d630988a463e5da898e9025",
+        "WireBytes": 40157,
+        "InputTokenEstimate": 38280,
+        "Estimator": "utf8-text-and-configured-image-allowance-v1",
+        "CompletionCap": 32768,
+        "PromptTokens": 8276,
+        "CompletionTokens": 4486,
+        "ReasoningTokens": 3570,
+        "ReservedUsd": 0.016935199999999997,
+        "CostUsd": 0.000690709,
+        "Status": "CONFIRMED",
+        "Transport": {
+          "UnitId": "SEG-000",
+          "Turn": 4,
+          "RetryIndex": 0,
+          "HttpStatus": 200,
+          "Outcome": "HTTP_OK",
+          "RequestSeconds": 36.141,
+          "WaitSeconds": 0,
+          "RetryAfterSeconds": null,
+          "RetryDelaySeconds": 0,
+          "ProviderErrorCode": null
+        }
+      },
+      {
+        "AttemptId": "c178586e242a471fa01f928d370e9035",
+        "RequestSha256": "0fa56237376840a8ab418a6b3b00026c069ac8009e1cf09e65d06276a58a2445",
+        "WireBytes": 8015,
+        "InputTokenEstimate": 7718,
+        "Estimator": "utf8-text-and-configured-image-allowance-v1",
+        "CompletionCap": 32768,
+        "PromptTokens": 1727,
+        "CompletionTokens": 1352,
+        "ReasoningTokens": 1248,
+        "ReservedUsd": 0.00449138,
+        "CostUsd": 0.000223892,
+        "Status": "CONFIRMED",
+        "Transport": {
+          "UnitId": "GROUP-001",
+          "Turn": 1,
+          "RetryIndex": 0,
+          "HttpStatus": 200,
+          "Outcome": "HTTP_OK",
+          "RequestSeconds": 12.113,
+          "WaitSeconds": 0,
+          "RetryAfterSeconds": null,
+          "RetryDelaySeconds": 0,
+          "ProviderErrorCode": null
+        }
+      }
+    ]
+  },
+  "selectionLinesAnswered": 14,
+  "selectionLinesTotal": 14,
+  "grouping": {
+    "ModelDividedRuns": 2,
+    "FallbackRuns": 0,
+    "DisputedRuns": 0,
+    "VerificationChecks": 0,
+    "VerifiedRuns": 0,
+    "MembershipDisputes": 0,
+    "BoundaryDisputes": 0,
+    "UnresolvedAliases": 0,
+    "IgnoredReviewChanges": 0,
+    "Batches": [
+      {
+        "Phase": "GROUP",
+        "UnitId": "GROUP-001",
+        "Runs": 2,
+        "Posts": 1,
+        "Repairs": 0,
+        "StartedAtSeconds": 0,
+        "CompletedAtSeconds": 12.13,
+        "ElapsedSeconds": 12.13
+      }
+    ],
+    "FieldDiagnostics": null,
+    "CoverageDiagnostics": null,
+    "Partitions": null,
+    "VerifierEvidence": null,
+    "BoundaryRepairs": null,
+    "BoundaryVerdicts": null
+  },
+  "placement": {
+    "Status": "placement-proposed",
+    "RequestedCount": 6,
+    "ResponseEntryCount": 6,
+    "PlacedCount": 6,
+    "OutOfHierarchyCount": 0,
+    "UnresolvedCount": 0,
+    "FailureClass": null,
+    "Decisions": [
+      {
+        "SourceId": "body[1]/p[1]",
+        "Alias": "S0001",
+        "Resolution": "model-root",
+        "ProposedParentAlias": "ROOT",
+        "VerificationStatus": "NOT_RUN",
+        "ResolutionBasis": "model-parent-proposal",
+        "BlockingAliases": [],
+        "EvidenceRefs": []
+      },
+      {
+        "SourceId": "body[1]/p[3]",
+        "Alias": "S0002",
+        "Resolution": "model-parent-relation",
+        "ProposedParentAlias": "S0001",
+        "VerificationStatus": "NOT_RUN",
+        "ResolutionBasis": "model-parent-proposal",
+        "BlockingAliases": [],
+        "EvidenceRefs": []
+      },
+      {
+        "SourceId": "body[1]/p[5]",
+        "Alias": "S0004",
+        "Resolution": "model-root",
+        "ProposedParentAlias": "ROOT",
+        "VerificationStatus": "NOT_RUN",
+        "ResolutionBasis": "model-parent-proposal",
+        "BlockingAliases": [],
+        "EvidenceRefs": []
+      },
+      {
+        "SourceId": "body[1]/p[6]",
+        "Alias": "S0005",
+        "Resolution": "model-parent-relation",
+        "ProposedParentAlias": "S0001",
+        "VerificationStatus": "NOT_RUN",
+        "ResolutionBasis": "model-parent-proposal",
+        "BlockingAliases": [],
+        "EvidenceRefs": []
+      },
+      {
+        "SourceId": "body[1]/p[13]",
+        "Alias": "S0011",
+        "Resolution": "model-parent-relation",
+        "ProposedParentAlias": "S0001",
+        "VerificationStatus": "NOT_RUN",
+        "ResolutionBasis": "model-parent-proposal",
+        "BlockingAliases": [],
+        "EvidenceRefs": []
+      },
+      {
+        "SourceId": "body[1]/p[15]",
+        "Alias": "S0013",
+        "Resolution": "model-parent-relation",
+        "ProposedParentAlias": "S0001",
+        "VerificationStatus": "NOT_RUN",
+        "ResolutionBasis": "model-parent-proposal",
+        "BlockingAliases": [],
+        "EvidenceRefs": []
+      }
+    ],
+    "Contract": "HEADING_PARENT_PROPOSAL_V2_CSHARP_GRAPH_VALIDATION",
+    "Resources": {
+      "ProfileId": "openrouter-alibaba-qwen37-20261024-v1",
+      "ByteCap": 262144,
+      "ConfirmedUsd": 0.000100229,
+      "UnconfirmedUsd": 0,
+      "Attempts": [
+        {
+          "AttemptId": "6370218455bd4da18aff7b496c874d0a",
+          "RequestSha256": "f3ad1ef2b38dfb33ac8967b1ddcc2d2133cc09104bf7673e740a5b19eababbf5",
+          "WireBytes": 9478,
+          "InputTokenEstimate": 8866,
+          "Estimator": "utf8-text-and-configured-image-allowance-v1",
+          "CompletionCap": 864,
+          "PromptTokens": 2273,
+          "CompletionTokens": 206,
+          "ReasoningTokens": 0,
+          "ReservedUsd": 0.0003783,
+          "CostUsd": 0.000100229,
+          "Status": "CONFIRMED",
+          "Transport": {
+            "UnitId": "HIERARCHY_PLACE-001",
+            "Turn": 1,
+            "RetryIndex": 0,
+            "HttpStatus": 200,
+            "Outcome": "HTTP_OK",
+            "RequestSeconds": 2.055,
+            "WaitSeconds": 0,
+            "RetryAfterSeconds": null,
+            "RetryDelaySeconds": 0,
+            "ProviderErrorCode": null
+          }
+        }
+      ]
+    },
+    "LogicalCalls": 1,
+    "Seconds": 2.1,
+    "VerifiedCount": 0,
+    "RepairCount": 0,
+    "EdgeRepairs": [],
+    "UnresolvedSummary": {
+      "DirectUnverified": 0,
+      "AncestorChainBlocked": 0,
+      "MissingAncestor": 0,
+      "ProtocolNoVerdict": 0,
+      "ModelUnresolved": 0,
+      "ModelRejected": 0,
+      "GraphConflictBlocked": 0
+    },
+    "GraphConflicts": [],
+    "GraphRepairAliases": [],
+    "GraphUnresolvedAliases": [],
+    "Failures": [],
+    "Calls": [
+      {
+        "UnitId": "HIERARCHY_PLACE-001",
+        "Phase": "HIERARCHY_PLACE",
+        "Round": 1,
+        "TargetCount": 6,
+        "RequestedMaxOutputTokens": 864,
+        "MaxOutputTokens": 864,
+        "FinishReason": "stop",
+        "ResponseBytes": 463,
+        "JsonFence": false,
+        "Seconds": 2.057,
+        "ProtocolErrors": [],
+        "AcceptedAliases": [
+          "S0001",
+          "S0002",
+          "S0004",
+          "S0005",
+          "S0011",
+          "S0013"
+        ],
+        "JsonErrorLine": null,
+        "JsonErrorBytePosition": null
+      }
+    ],
+    "SourceTrace": [
+      {
+        "Alias": "S0001",
+        "SourceId": "body[1]/p[1]",
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "BOUND",
+        "PlacementResolution": "model-root"
+      },
+      {
+        "Alias": "S0002",
+        "SourceId": "body[1]/p[3]",
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "BOUND",
+        "PlacementResolution": "model-parent-relation"
+      },
+      {
+        "Alias": "S0003",
+        "SourceId": "body[1]/p[4]",
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "PlacementResolution": "not-bound"
+      },
+      {
+        "Alias": "S0004",
+        "SourceId": "body[1]/p[5]",
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "BOUND",
+        "PlacementResolution": "model-root"
+      },
+      {
+        "Alias": "S0005",
+        "SourceId": "body[1]/p[6]",
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "BOUND",
+        "PlacementResolution": "model-parent-relation"
+      },
+      {
+        "Alias": "S0006",
+        "SourceId": "body[1]/p[7]",
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "PlacementResolution": "not-bound"
+      },
+      {
+        "Alias": "S0007",
+        "SourceId": "body[1]/p[8]",
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "PlacementResolution": "not-bound"
+      },
+      {
+        "Alias": "S0008",
+        "SourceId": "body[1]/p[9]",
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "PlacementResolution": "not-bound"
+      },
+      {
+        "Alias": "S0009",
+        "SourceId": "body[1]/p[10]",
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "PlacementResolution": "not-bound"
+      },
+      {
+        "Alias": "S0010",
+        "SourceId": "body[1]/p[12]",
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "PlacementResolution": "not-bound"
+      },
+      {
+        "Alias": "S0011",
+        "SourceId": "body[1]/p[13]",
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "BOUND",
+        "PlacementResolution": "model-parent-relation"
+      },
+      {
+        "Alias": "S0012",
+        "SourceId": "body[1]/p[14]",
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "PlacementResolution": "not-bound"
+      },
+      {
+        "Alias": "S0013",
+        "SourceId": "body[1]/p[15]",
+        "InitialSelection": "SELECT",
+        "FinalSelection": "SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "BOUND",
+        "PlacementResolution": "model-parent-relation"
+      },
+      {
+        "Alias": "S0014",
+        "SourceId": "body[1]/p[16]",
+        "InitialSelection": "NOT_SELECT",
+        "FinalSelection": "NOT_SELECT",
+        "VerificationMembership": null,
+        "BindingStatus": "NOT_SELECTED",
+        "PlacementResolution": "not-bound"
+      }
+    ],
+    "MissingAncestorBlockers": []
+  },
+  "stageSeconds": {
+    "selection": 139.399,
+    "grouping": 12.131,
+    "hierarchy": 2.1
+  }
+}

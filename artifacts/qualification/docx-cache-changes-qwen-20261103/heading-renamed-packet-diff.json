@@ -1,0 +1,42 @@
+{
+  "before": {
+    "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\standard-docx-v3\\05_bien_ban_hop\\074_FORTIS_GC_Minutes_Nov27_2024.docx",
+    "sha256": "79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08"
+  },
+  "after": {
+    "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\docx-cache-changes-qwen-20261103\\heading-renamed.docx",
+    "sha256": "98dca9292490cf4ad5c395f6398c5b6a7b76f50f0ab1860bba521fd7de161ab7"
+  },
+  "note": "Diagnostic payload comparison only; no cache hit or semantic equivalence is inferred.",
+  "segments": [
+    {
+      "segment": 0,
+      "exactRequestMatch": false,
+      "oldRequest": "6da9cd069d906db8ca8e42fdc79796c3306c58bef3afaadd81a3455afed7fd63",
+      "newRequest": "8b2063fe52e2ffbbfb2b7e6bdf7445a4fa4a89a45be0adac1f1eff3a95462e57",
+      "changedFields": [
+        "documentSha256",
+        "documentStyles",
+        "targetFacts",
+        "targets"
+      ],
+      "changedPaths": [
+        "$.documentSha256",
+        "$.documentStyles.styles[0].firstLines[2].text",
+        "$.targetFacts[3].text.chars",
+        "$.targets[3].text"
+      ],
+      "payloadMatchesWithoutDocumentHash": false,
+      "before": {
+        "first": "S0001",
+        "last": "S0013",
+        "count": 13
+      },
+      "after": {
+        "first": "S0001",
+        "last": "S0013",
+        "count": 13
+      }
+    }
+  ]
+}

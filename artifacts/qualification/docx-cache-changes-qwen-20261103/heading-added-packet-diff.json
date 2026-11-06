@@ -1,0 +1,99 @@
+{
+  "before": {
+    "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\todo10_8\\standard-docx-v3\\05_bien_ban_hop\\074_FORTIS_GC_Minutes_Nov27_2024.docx",
+    "sha256": "79a41bf07713edcc2bff32b8fa7518c19c457cfe3af2f13bb6b6812722e5da08"
+  },
+  "after": {
+    "path": "C:\\DocxHeaderExtractor-a99-closed-loop\\artifacts\\qualification\\docx-cache-changes-qwen-20261103\\heading-added.docx",
+    "sha256": "fd7ac98f28dd4e0ca1d58615eeaabf3456161acf64e9a78e5c5565f26232755e"
+  },
+  "note": "Diagnostic payload comparison only; no cache hit or semantic equivalence is inferred.",
+  "segments": [
+    {
+      "segment": 0,
+      "exactRequestMatch": false,
+      "oldRequest": "6da9cd069d906db8ca8e42fdc79796c3306c58bef3afaadd81a3455afed7fd63",
+      "newRequest": "aa9efb55b8e87916ef907270602ea6c1fd2c1c7bba9cbab19924945fc766aea3",
+      "changedFields": [
+        "documentSha256",
+        "documentStyles",
+        "targetCount",
+        "targetFacts",
+        "targetLastAlias",
+        "targets"
+      ],
+      "changedPaths": [
+        "$.documentSha256",
+        "$.documentStyles.documentLines",
+        "$.documentStyles.styles[0].firstLines[2].alias",
+        "$.documentStyles.styles[1].firstLines[1].alias",
+        "$.documentStyles.styles[1].firstLines[2].alias",
+        "$.documentStyles.styles[2]",
+        "$.documentStyles.stylesTotal",
+        "$.targetCount",
+        "$.targetFacts[3].sizeVsDocumentMedianPt",
+        "$.targetFacts[3].style.alignment",
+        "$.targetFacts[3].style.id",
+        "$.targetFacts[3].style.sizePt",
+        "$.targetFacts[3].styleInDocument.linesWithThisStyleInDocument",
+        "$.targetFacts[3].styleInDocument.rank",
+        "$.targetFacts[3].text.chars",
+        "$.targetFacts[4].neighbours.sameStyleAsNext",
+        "$.targetFacts[4].style.alignment",
+        "$.targetFacts[4].style.bold",
+        "$.targetFacts[4].styleInDocument.linesWithThisStyleInDocument",
+        "$.targetFacts[4].styleInDocument.rank",
+        "$.targetFacts[4].text.boldCharRatio",
+        "$.targetFacts[4].text.chars",
+        "$.targetFacts[5].neighbours.sameStyleAsPrevious",
+        "$.targetFacts[5].style.alignment",
+        "$.targetFacts[5].text.chars",
+        "$.targetFacts[6].text.chars",
+        "$.targetFacts[7].text.chars",
+        "$.targetFacts[8].style.alignment",
+        "$.targetFacts[8].text.chars",
+        "$.targetFacts[9].text.boldCharRatio",
+        "$.targetFacts[9].text.chars",
+        "$.targetFacts[9].text.formatChangeOffsets",
+        "$.targetFacts[9].text.formatRunCount",
+        "$.targetFacts[10].text.boldCharRatio",
+        "$.targetFacts[10].text.chars",
+        "$.targetFacts[10].text.formatChangeOffsets",
+        "$.targetFacts[10].text.formatRunCount",
+        "$.targetFacts[11].text.boldCharRatio",
+        "$.targetFacts[11].text.chars",
+        "$.targetFacts[11].text.formatChangeOffsets",
+        "$.targetFacts[11].text.formatRunCount",
+        "$.targetFacts[12].neighbours.sameStyleAsNext",
+        "$.targetFacts[12].text.boldCharRatio",
+        "$.targetFacts[12].text.chars",
+        "$.targetFacts[12].text.formatChangeOffsets",
+        "$.targetFacts[12].text.formatRunCount",
+        "$.targetFacts[13]",
+        "$.targetLastAlias",
+        "$.targets[3].text",
+        "$.targets[4].text",
+        "$.targets[5].text",
+        "$.targets[6].text",
+        "$.targets[7].text",
+        "$.targets[8].text",
+        "$.targets[9].text",
+        "$.targets[10].text",
+        "$.targets[11].text",
+        "$.targets[12].text",
+        "$.targets[13]"
+      ],
+      "payloadMatchesWithoutDocumentHash": false,
+      "before": {
+        "first": "S0001",
+        "last": "S0013",
+        "count": 13
+      },
+      "after": {
+        "first": "S0001",
+        "last": "S0014",
+        "count": 14
+      }
+    }
+  ]
+}
