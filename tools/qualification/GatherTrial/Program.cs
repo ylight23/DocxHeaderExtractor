@@ -10,6 +10,13 @@ if (args.Length >= 1 && args[0] == "bench")
     return BenchTrial.Run(args);
 if (args.Length >= 1 && args[0] == "e2e")
     return await E2eTrial.RunAsync(args);
+// These older live probes do not reliably capture every SELECT/GROUP/PLACE/repair attempt.
+// Keep their implementation for offline review, but do not call a provider until capture is complete and verified.
+if (args.Length >= 1 && args[0] is "split-run" or "whole-run" or "split-capture" or "whole-capture"
+    or "place-ab" or "paired-placement" or "paired-frozen21")
+    throw new InvalidOperationException("DIAGNOSTIC_CAPTURE_INCOMPLETE: live probe disabled; use a capture-complete diagnostic runner.");
+if (args.Length >= 1 && args[0] == "split-replay")
+    return PlaceAbTrial.SplitReplay(args);
 if (args.Length >= 1 && args[0] == "outline-diff")
     return OutlineDiffTrial.Run(args);
 if (args.Length >= 1 && args[0] == "e2e-replay")
@@ -20,6 +27,8 @@ if (args.Length >= 1 && args[0] == "docx-region")
     return await DocxRegionTrial.RunAsync(args);
 if (args.Length >= 1 && args[0] == "docx-packet-diff")
     return DocxPacketDiff.Run(args);
+if (args.Length >= 1 && args[0] == "docx-region-probe")
+    return DocxRegionProbe.Run(args);
 if (args.Length >= 1 && args[0] == "region-replay")
     return VarianceTrial.RegionReplay(args);
 if (args.Length >= 1 && args[0] == "variance-replay")
