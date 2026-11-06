@@ -11,7 +11,7 @@ if (args.Length >= 1 && args[0] == "bench")
 if (args.Length >= 1 && args[0] == "e2e")
     return await E2eTrial.RunAsync(args);
 if (args.Length >= 1 && args[0] == "capture-docx")
-    return await CaptureDocxTrial.RunAsync(args);
+    throw new InvalidOperationException("DIAGNOSTIC_CAPTURE_VALIDATION_PENDING: verify per-attempt protocol errors and PLACE evidence before enabling this runner.");
 // These older live probes do not reliably capture every SELECT/GROUP/PLACE/repair attempt.
 // Keep their implementation for offline review, but do not call a provider until capture is complete and verified.
 if (args.Length >= 1 && args[0] is "split-run" or "whole-run" or "split-capture" or "whole-capture"
