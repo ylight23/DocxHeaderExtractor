@@ -148,7 +148,7 @@ public static class DocxComparer
             reported = reported.Select(c => (c.Template is { } t && templateRevised.Contains(t.Location)) || (c.Document is { } d && documentRevised.Contains(d.Location))
                 ? c with { Note = Join(c.Note, "tracked_revision_recorded") } : c).ToList();
         return new ComparisonResult(template.FileSha256, document.FileSha256, reported, template.UnsupportedRegions, document.UnsupportedRegions,
-            (options.CompareDirectFormatting ? "text_direct_style_and_effective_formatting_read_by_docx_version_reader; theme_fonts_table_styles_and_unread_xml_not_compared; run_formatting_only_for_identical_text" : Scope)
+            (options.CompareDirectFormatting ? "text_direct_style_and_effective_formatting_read_by_docx_version_reader; table_styles_and_unread_xml_not_compared; run_formatting_only_for_identical_text" : Scope)
                 + (incomplete ? "; alignment_incomplete_diff_limit_exceeded" : ""),
             options.GroupRule.ToString(), options.FlagRejectedGroups)
         {

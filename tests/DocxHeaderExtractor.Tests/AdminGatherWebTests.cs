@@ -72,6 +72,19 @@ public sealed class AdminGatherWebTests
         Assert.Contains("file sửa sẽ trích lại", admin, StringComparison.Ordinal);
     }
 
+    [Fact]
+    public void The_comparison_scope_is_shown_in_plain_words_not_as_the_technical_string()
+    {
+        var admin = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.Web/wwwroot/admin.html"));
+        // The technical scope is only the tooltip; the visible note is the plain-word rendering.
+        Assert.Contains("title=\"${esc(d.scope)}\">${esc(scopeText(d.scope))}", admin, StringComparison.Ordinal);
+        Assert.DoesNotContain("<p class=\"note\">${esc(d.scope)}", admin, StringComparison.Ordinal);
+        // Theme fonts are resolved now, so the formatting scope no longer claims they are not compared.
+        var source = File.ReadAllText(TestRepository.Path("src/DocxHeaderExtractor.DocumentProcessing/Changes/DocxComparer.cs"));
+        Assert.DoesNotContain("theme_fonts", source, StringComparison.Ordinal);
+        Assert.Contains("table_styles_and_unread_xml_not_compared", source, StringComparison.Ordinal);
+    }
+
     static string P(string text) => $"<w:p><w:r><w:t xml:space=\"preserve\">{text}</w:t></w:r></w:p>";
 
     static string Outline(string file, params (int Index, int Level, string Text)[] headings) => JsonSerializer.Serialize(new

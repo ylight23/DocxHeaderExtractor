@@ -601,7 +601,7 @@ function renderImpact(history) {
     const changes = d.changes.map(c => `<tr><td>${esc(c.kind === 'direct_format_modified' ? 'Đổi định dạng' : c.kind)}${c.uncertain ? ' <span class="chip warn">chưa chắc</span>' : ''}${(c.note ?? '').includes('tracked_revision_recorded') ? ' <span class="chip">có vết sửa</span>' : ''}</td><td>${side(c.template, c.templateGroup)}</td><td>${side(c.document, c.documentGroup)}${format(c)}</td></tr>`).join('');
     const styles = d.styleChanges?.length ? `<p class="note">Định nghĩa style đã đổi: ${esc(d.styleChanges.join(', '))} — mọi đoạn dùng các style này có thể đổi hiển thị.</p>` : '';
     const revisions = d.revisions?.length ? `<details><summary>${d.revisions.length} vết Track Changes Word ghi lại trong bản mới</summary>${revisionList(d.revisions)}</details>` : '';
-    return `<details><summary>${esc(d.sourceName)} · ${d.changes.length} khác biệt${d.revisions?.length ? ' · ' + d.revisions.length + ' vết sửa' : ''}</summary><p class="note">${esc(d.scope)}. Vùng chưa hỗ trợ trước: ${esc(d.beforeUnsupported.join(', ') || 'không báo')}; sau: ${esc(d.afterUnsupported.join(', ') || 'không báo')}.</p>${styles}${revisions}${changes ? `<table><tr><th>Loại</th><th>Trước</th><th>Sau</th></tr>${changes}</table>` : '<p class="note">Không thấy khác biệt trong vùng đã đọc; file vẫn đã đổi.</p>'}</details>`;
+    return `<details><summary>${esc(d.sourceName)} · ${d.changes.length} khác biệt${d.revisions?.length ? ' · ' + d.revisions.length + ' vết sửa' : ''}</summary><p class="note" title="${esc(d.scope)}">${esc(scopeText(d.scope))} Phần chưa đọc được ở bản trước: ${esc(regionText(d.beforeUnsupported))}; bản sau: ${esc(regionText(d.afterUnsupported))}.</p>${styles}${revisions}${changes ? `<table><tr><th>Loại</th><th>Trước</th><th>Sau</th></tr>${changes}</table>` : '<p class="note">Không thấy khác biệt trong vùng đã đọc; file vẫn đã đổi.</p>'}</details>`;
   }).join('');
   $('impactList').innerHTML = `<p>Lượt trước: ${esc(impact.previousAt)}. ${impact.targetChanged ? '<b class="chip warn">Văn bản gốc thay đổi: cần so lại mọi nguồn.</b>' : 'Văn bản gốc không đổi.'}</p>
     <p class="note">${esc(impact.limitations)}</p>${impact.unmatchedDocuments.length ? '<p class="chip warn">Không ghép được file: ' + esc(impact.unmatchedDocuments.join('; ')) + '</p>' : ''}
@@ -615,6 +615,19 @@ function renderImpact(history) {
 const REVISION_LABEL = { insert: 'Chèn', delete: 'Xóa', move_from: 'Chuyển đi', move_to: 'Chuyển đến', format_run: 'Đổi định dạng chữ',
   format_paragraph: 'Đổi định dạng đoạn', paragraph_inserted: 'Thêm đoạn', paragraph_deleted: 'Gộp với đoạn sau' };
 const FORMAT_LABEL = { paragraph: 'Đoạn', numbering: 'Đánh số', style: 'Từ style', run: 'Chữ (trực tiếp)', effective: 'Chữ (từ style)', cell: 'Ô bảng' };
+// The comparison's scope and unread regions in plain words; the technical scope stays in the tooltip.
+function scopeText(scope) {
+  const s = String(scope ?? '');
+  const parts = [s.includes('effective_formatting') || s.includes('formatting_read')
+    ? 'So chữ và định dạng mà chương trình đọc được (gõ trực tiếp, lấy từ style, định dạng hiển thị); style bảng và phần XML chưa đọc không được so; định dạng chữ chỉ so khi chữ của đoạn giống hệt.'
+    : 'Chỉ so chữ của các đoạn; định dạng không được so.'];
+  if (s.includes('alignment_incomplete')) parts.push('Hai bản khác nhau quá nhiều: chưa so được đầy đủ, cần xem toàn bộ.');
+  return parts.join(' ');
+}
+const REGION_LABEL = { text_box: 'hộp văn bản', drawing_or_image: 'hình ảnh', tracked_changes: 'vết Track Changes', tracked_formatting: 'vết đổi định dạng',
+  merged_table_cells: 'ô bảng gộp', nested_tables: 'bảng lồng', footnotes: 'chú thích cuối trang', endnotes: 'chú thích cuối văn bản',
+  comments: 'bình luận', headers: 'đầu trang', footers: 'chân trang' };
+function regionText(codes) { return (codes ?? []).length ? codes.map(c => REGION_LABEL[c] ?? c).join(', ') : 'không có'; }
 function revisionList(revisions) {
   return '<table><tr><th>Loại</th><th>Người sửa · thời điểm</th><th>Nội dung</th></tr>' + revisions.map(v =>
     `<tr><td>${esc(REVISION_LABEL[v.kind] ?? v.kind)}</td><td>${esc(v.author ?? '?')}<br><span class="src">${esc(v.date ?? '')}</span></td><td>${esc(v.text)} <span class="src">${esc(v.location)}</span></td></tr>`).join('') + '</table>';
