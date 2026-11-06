@@ -59,26 +59,43 @@ public sealed class OutlineStore(string root)
     /// the paragraph's level points to, not the numId, which Word renumbers on save, plus its list relation to the nearest earlier paragraph of
     /// the same definition (same list, another instance, another abstract list; see NumberingKeys.Relate), so splitting or merging lists changes
     /// the signature while a consistent renumbering does not. An unresolved definition keeps the raw numId and the paragraph is unverified.
+    /// Numbering a paragraph gets through its style counts like its own (with its source), and the alignment and outline level its style gives
+    /// and each run's effective formatting after style inheritance are included, so a change made only in styles.xml or numbering.xml changes
+    /// the signature of the paragraphs it reaches. Layers the style reader does not resolve (theme fonts, table styles) are named as gaps, so a
+    /// change there is not seen; see EffectiveFormat.
     /// </summary>
     public static string Signature(ParagraphFingerprint p)
     {
         var text = new StringBuilder()
             .Append(p.RawText).Append('\u001f').Append(p.Container).Append('\u001f').Append(p.StyleId).Append('\u001f')
-            .Append(p.NumberingResolved ? p.NumberingKey : "raw:" + p.NumId).Append('\u001f').Append(p.NumberingRelation).Append('\u001f').Append(p.Ilvl).Append('\u001f').Append(p.Alignment).Append('\u001f')
+            .Append(p.NumberingResolved ? p.NumberingKey : "raw:" + p.EffectiveNumId).Append('\u001f').Append(p.NumberingRelation).Append('\u001f')
+            .Append(p.NumberingSource).Append('\u001f').Append(p.Ilvl).Append('\u001f').Append(p.Alignment).Append('\u001f')
+            .Append(p.FromStyle is { } style ? $"{style.Alignment}|{style.OutlineLevel}|{string.Join(",", style.Gaps)}" : "").Append('\u001f')
             .Append(p.Cell is { } c ? $"{c.GridSpan}|{c.VerticalMerge}|{c.HorizontalMerge}|{c.TableDepth}" : "");
         foreach (var r in p.Runs)
-            text.Append('\u001e').Append($"{r.Start}|{r.End}|{r.Bold}|{r.Italic}|{r.Underline}|{r.FontAscii}|{r.FontSize}|{r.Color}");
+            text.Append('\u001e').Append($"{r.Start}|{r.End}|{r.Bold}|{r.Italic}|{r.Underline}|{r.FontAscii}|{r.FontSize}|{r.Color}")
+                .Append(r.Effective is { } e ? $"|eff:{e.Bold}|{e.Italic}|{e.FontAscii}|{e.FontSize}|{e.Color}|{string.Join(",", e.Gaps)}" : "");
         return Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(text.ToString())));
     }
 
     /// <summary>
-    /// The version of <see cref="Signature"/>. 2: numbering by its resolved definition instead of the numId. Signatures of different versions are
-    /// never compared; an outline stored without a version is version 1.
+    /// The version of <see cref="Signature"/>. 2: numbering by its resolved definition instead of the numId. 3: numbering through the paragraph
+    /// style, the style's alignment and outline level, and effective run formatting. Signatures of different versions are never compared; an
+    /// outline stored without a version is version 1.
     /// </summary>
-    public const string SignatureVersion = "2";
+    public const string SignatureVersion = "3";
 
     public static IReadOnlyList<StoredParagraph> Paragraphs(DocxVersion version) =>
-        version.Paragraphs.Select(p => new StoredParagraph(p.Location, p.Ordinal, Signature(p), !p.NumberingResolved)).ToArray();
+        version.Paragraphs.Select(p => new StoredParagraph(p.Location, p.Ordinal, Signature(p), !Verified(p))).ToArray();
+
+    /// <summary>
+    /// Everything the signature covers was read: the numbering definition, the paragraph style chain and every run's style layers. A gap (an
+    /// unresolved theme font, a table style, a missing style) means a change there would not change the signature, so the paragraph is never
+    /// paired by signature. A file with no styles part at all is not such a gap: its runs take the application's defaults, which nothing in the
+    /// file can change, and adding a styles part changes the read definitions and the effective values.
+    /// </summary>
+    public static bool Verified(ParagraphFingerprint p) =>
+        p.NumberingResolved && p.FromStyle is not { Gaps.Count: > 0 } && p.Runs.All(r => r.Effective?.Gaps.All(g => g == "styles_part_missing") ?? true);
 
     string EntryPath(string sha, string key) => Path.Combine(root, sha[..Math.Min(16, sha.Length)], key + ".json");
     string EditRoot(string sha, string key) => Path.Combine(root, "edits", sha[..Math.Min(16, sha.Length)] + "-" + key);

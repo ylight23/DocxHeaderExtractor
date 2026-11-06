@@ -64,6 +64,18 @@ internal sealed class NumberingKeys
         return $"ilvl={index}|{definition}|override={overrides}";
     }
 
+    /// <summary>
+    /// The level of a list that names this paragraph style (w:lvl/w:pStyle), for numbering a paragraph gets through its style without a level;
+    /// null when no level names it.
+    /// </summary>
+    public int? LevelForStyle(string? numId, string? styleId)
+    {
+        if (styleId is null || !int.TryParse(numId, out var id) || !instances.TryGetValue(id, out var instance) ||
+            !abstracts.TryGetValue(instance.AbstractId, out var abstractNum)) return null;
+        var level = abstractNum.ChildElements.FirstOrDefault(e => e.LocalName == "lvl" && Val(e, "pStyle") == styleId);
+        return level is not null && int.TryParse(Attr(level, "ilvl"), out var n) ? n : null;
+    }
+
     /// <summary>The abstract list a numId points to, or null. Ids are compared only inside one file, never across versions.</summary>
     public int? AbstractOf(string? numId) => int.TryParse(numId, out var id) && instances.TryGetValue(id, out var instance) ? instance.AbstractId : null;
 
@@ -87,10 +99,10 @@ internal sealed class NumberingKeys
             if (!p.NumberingResolved || p.NumberingKey is not { } key || key == "none") { result.Add(p); continue; }
             var list = key[(key.IndexOf('|') + 1)..];
             var position = count.GetValueOrDefault(list);
-            var abstractId = keys.AbstractOf(p.NumId);
-            var instance = lastInstance.TryGetValue((list, p.NumId), out var i) ? (position - i - 1).ToString() : "-";
+            var abstractId = keys.AbstractOf(p.EffectiveNumId);
+            var instance = lastInstance.TryGetValue((list, p.EffectiveNumId), out var i) ? (position - i - 1).ToString() : "-";
             var abstractList = lastAbstract.TryGetValue((list, abstractId), out var j) ? (position - j - 1).ToString() : "-";
-            lastInstance[(list, p.NumId)] = position;
+            lastInstance[(list, p.EffectiveNumId)] = position;
             lastAbstract[(list, abstractId)] = position;
             count[list] = position + 1;
             result.Add(p with { NumberingRelation = $"inst={instance}|abs={abstractList}" });

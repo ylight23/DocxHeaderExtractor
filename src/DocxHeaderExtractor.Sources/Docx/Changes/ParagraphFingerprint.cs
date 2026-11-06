@@ -23,11 +23,14 @@ public sealed record RunFormat(int Start, int End, bool? Bold, bool? Italic, str
 /// <see cref="Location"/> is the same path the heading parser uses (<see cref="ParagraphWalker"/>), so both readers agree on identity.
 /// <see cref="ParaId"/> is a signal, not an identity. <see cref="NumId"/> is the raw instance id, which Word renumbers on save;
 /// <see cref="NumberingKey"/> is the definition it points to (see <see cref="NumberingKeys"/>), null when there is no direct numbering or when
-/// <see cref="NumberingResolved"/> is false.
+/// <see cref="NumberingResolved"/> is false. <see cref="EffectiveNumId"/>/<see cref="EffectiveIlvl"/> are the list the paragraph is numbered
+/// in, directly or through its paragraph style (<see cref="NumberingSource"/> "direct" or "style"); <see cref="NumberingKey"/> and the list
+/// relation follow them. <see cref="FromStyle"/> is what the paragraph style gives (alignment, outline level, numbering, gaps).
 /// </summary>
 public sealed record ParagraphFingerprint(int Ordinal, string Location, string Container, string? ParaId, string RawText, IReadOnlyList<int> LineBreakOffsets,
     string NormalizedKey, string KeyHash, string? NumId, int? Ilvl, string? StyleId, string? Alignment, IReadOnlyList<RunFormat> Runs,
-    TableCellFacts? Cell = null, string? NumberingKey = null, bool NumberingResolved = true, string? NumberingRelation = null);
+    TableCellFacts? Cell = null, string? NumberingKey = null, bool NumberingResolved = true, string? NumberingRelation = null,
+    string? EffectiveNumId = null, int? EffectiveIlvl = null, string? NumberingSource = null, StyleParagraphFormat? FromStyle = null);
 
 /// <summary>
 /// The table cell a paragraph sits in, as declared: horizontal span (gridSpan), vertical merge (restart/continue), legacy horizontal merge,
@@ -43,7 +46,11 @@ public sealed record TableCellFacts(int? GridSpan, string? VerticalMerge, bool H
 /// A DOCX file read for comparison: its SHA-256, its paragraphs in the heading parser's order, and the regions that are present but not read
 /// in full. Anything listed in <see cref="UnsupportedRegions"/> must be shown as not compared, never as unchanged.
 /// </summary>
-public sealed record DocxVersion(string FileSha256, IReadOnlyList<ParagraphFingerprint> Paragraphs, IReadOnlyList<string> UnsupportedRegions);
+public sealed record DocxVersion(string FileSha256, IReadOnlyList<ParagraphFingerprint> Paragraphs, IReadOnlyList<string> UnsupportedRegions)
+{
+    /// <summary>What this reader takes from each style (see <see cref="StyleContext.Definitions"/>), to name the styles that changed.</summary>
+    public IReadOnlyDictionary<string, string> StyleDefinitions { get; init; } = new Dictionary<string, string>();
+}
 
 /// <summary>
 /// Reads a DOCX read-only. Deterministic code: no model call, no change to the heading lane. Paragraphs come from <see cref="ParagraphWalker"/>,
@@ -70,7 +77,7 @@ public static class DocxVersionReader
         var numbering = new NumberingKeys(main);
         var paragraphs = NumberingKeys.Relate(walked.Select((item, ordinal) => Fingerprint(ordinal, item.StableId, item.Element, styles, numbering)).ToArray(),
             numbering);
-        return new DocxVersion(sha, paragraphs, UnsupportedRegions(main, body));
+        return new DocxVersion(sha, paragraphs, UnsupportedRegions(main, body)) { StyleDefinitions = styles.Definitions() };
     }
 
     internal static ParagraphFingerprint Fingerprint(int ordinal, string location, Paragraph paragraph, StyleContext styles, NumberingKeys numberingKeys)
@@ -94,7 +101,14 @@ public static class DocxVersionReader
         var id = paragraph.GetAttributes().FirstOrDefault(a => a.LocalName == "paraId" && a.NamespaceUri == W14).Value;
         var numId = numbering?.NumberingId?.Val?.Value.ToString();
         var ilvl = numbering?.NumberingLevelReference?.Val?.Value;
-        var numberingKey = numberingKeys.Key(numId, ilvl, out var numberingResolved);
+        // Numbering through the paragraph style: the style's list, at its level, or the level of that list that names the style, else level 0.
+        var fromStyle = styles.ResolveParagraph(styleId);
+        var (effectiveNumId, effectiveIlvl, source) = numId is not null ? (numId, ilvl, "direct")
+            : fromStyle.NumId is { } styleNumId ? (styleNumId, fromStyle.Ilvl ?? numberingKeys.LevelForStyle(styleNumId, styleId) ?? 0, "style")
+            : ((string?)null, (int?)null, (string?)null);
+        var numberingKey = numberingKeys.Key(effectiveNumId, effectiveIlvl, out var numberingResolved);
+        // A style chain that could not be read may hide the numbering a paragraph without its own gets: not resolved.
+        if (numId is null && fromStyle.Gaps.Count > 0) numberingResolved = false;
         return new ParagraphFingerprint(
             ordinal,
             location,
@@ -111,7 +125,11 @@ public static class DocxVersionReader
             runs,
             CellFacts(paragraph),
             numberingKey,
-            numberingResolved);
+            numberingResolved,
+            EffectiveNumId: effectiveNumId,
+            EffectiveIlvl: effectiveIlvl,
+            NumberingSource: source,
+            FromStyle: fromStyle);
     }
 
     static TableCellFacts? CellFacts(Paragraph paragraph)

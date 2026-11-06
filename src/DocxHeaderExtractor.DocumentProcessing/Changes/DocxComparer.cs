@@ -30,6 +30,13 @@ public sealed record ComparisonResult(string TemplateSha256, string DocumentSha2
     /// <summary>Optional offline candidates; original changes are preserved and movement direction is not inferred.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public ReorderAnalysis? Reorders { get; init; }
+
+    /// <summary>
+    /// With direct formatting compared: the style ids whose definitions (as the reader takes them) changed. A change there reaches every paragraph
+    /// using the style; the paragraphs whose read formatting it changed are listed among the changes.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public IReadOnlyList<string>? StyleChanges { get; init; }
 }
 
 /// <summary>
@@ -123,10 +130,13 @@ public static class DocxComparer
         var incomplete = context.Alignment.Incomplete;
         var reported = incomplete ? changes.Select(c => c with { Uncertain = true, Note = Join(c.Note, "alignment_incomplete") }).ToList() : changes;
         return new ComparisonResult(template.FileSha256, document.FileSha256, reported, template.UnsupportedRegions, document.UnsupportedRegions,
-            (options.CompareDirectFormatting ? "text_and_selected_direct_formatting; effective_formatting_and_unread_xml_not_compared; run_formatting_only_for_identical_text" : Scope)
+            (options.CompareDirectFormatting ? "text_direct_style_and_effective_formatting_read_by_docx_version_reader; theme_fonts_table_styles_and_unread_xml_not_compared; run_formatting_only_for_identical_text" : Scope)
                 + (incomplete ? "; alignment_incomplete_diff_limit_exceeded" : ""),
             options.GroupRule.ToString(), options.FlagRejectedGroups)
-        { Reorders = options.DetectReorders ? ReorderDetector.Analyze(template, document) : null };
+        {
+            Reorders = options.DetectReorders ? ReorderDetector.Analyze(template, document) : null,
+            StyleChanges = options.CompareDirectFormatting ? DirectFormatDiff.StyleChanges(template, document) : null,
+        };
     }
 
     /// <summary>What one comparison carries through its steps: both documents' matching keys, the change list, the options and the decision log.</summary>
@@ -354,7 +364,7 @@ public static class DocxComparer
         {
             var differences = DirectFormatDiff.Compare(template, document);
             if (differences.Count > 0)
-                changes.Add(new Change("direct_format_modified", status, uncertain || differences.Any(d => d.Property == "numbering.unverified"),
+                changes.Add(new Change("direct_format_modified", status, uncertain || differences.Any(DirectFormatDiff.Unverified),
                     flagNote, Whole(template), Whole(document)) { FormatChanges = differences });
         }
         if (string.Equals(template.RawText, document.RawText, StringComparison.Ordinal))
