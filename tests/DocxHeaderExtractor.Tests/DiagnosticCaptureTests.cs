@@ -20,6 +20,38 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class DiagnosticCaptureTests
 {
     [Fact]
+    public async Task Independent_split_and_whole_placements_capture_the_same_input_without_network()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-place-ab-capture-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            var (bound, evidence, _) = HeadingPlacerTests.Fixture();
+            var request = new PlacementRequest(bound, evidence);
+            var capture = new CaptureRun(root, "sk-route");
+            foreach (var mode in new[] { "split", "whole" })
+            {
+                using var fake = new FakeOpenRouter((body, _) =>
+                {
+                    var packet = body["messages"]![1]!["content"]!.Text();
+                    return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = HierarchyTestProtocol.Reply(packet) }, "stop")
+                        .Replace("\"cost\":0.001", "\"cost\":0.0000001"));
+                }, autoVerify: false);
+                var placer = capture.Placement(mode, mode == "whole", inner: fake);
+                var proposal = await placer.ProposeAsync(request, new ModelAccess("sk-route", () => { }), CancellationToken.None);
+                Assert.Empty(proposal.Failures);
+            }
+            var files = Directory.GetFiles(root, "*.place-request.json", SearchOption.AllDirectories);
+            Assert.Equal(2, files.Length);
+            Assert.Equal(File.ReadAllBytes(files[0]), File.ReadAllBytes(files[1]));
+            var summary = capture.Summary();
+            Assert.Equal(0, summary.MissingResponses);
+            Assert.Equal(0, summary.MissingPlacementResults);
+            Assert.Equal(0, summary.MissingAttemptMetadata);
+            Assert.True(summary.PlacementWireCalls >= summary.PlacementCalls);
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+    [Fact]
     public async Task Full_docx_capture_links_selection_group_and_placement_without_network()
     {
         var root = Path.Combine(Path.GetTempPath(), "dhx-full-capture-" + Guid.NewGuid().ToString("N"));

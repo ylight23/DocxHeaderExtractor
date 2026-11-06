@@ -79,6 +79,9 @@ public sealed class CaptureRun
         Interlocked.Increment(ref verifiedFiles);
     }
     public HttpMessageHandler Handler(string document, string fallbackStage, HttpMessageHandler? inner = null) => new CaptureHandler(this, document, fallbackStage, inner);
+    /// <summary>Capture an independently invoked placement and its wire attempts.</summary>
+    public IHeadingPlacer Placement(string document, bool wholeDocument, bool repairParentChains = false, HttpMessageHandler? inner = null) =>
+        new CapturePlacer(this, document, new HeadingPlacer(Handler(document, "PLACE", inner), wholeDocument, repairParentChains), true);
     public IModelProvider Provider(IModelProvider original, PipelineOptions options, string document, Func<HttpMessageHandler>? handlerFactory = null)
     {
         var selector = new DocxSelector(handlerFactory: () => Handler(document, "SELECT_GROUP", handlerFactory?.Invoke()),

@@ -4,6 +4,8 @@
 
 The older `split-run`, `whole-run`, `split-capture`, `whole-capture`, `place-ab`, `paired-placement`, and `paired-frozen21` entry points are disabled until every model attempt can be captured and verified. `split-replay` and `docx-region-probe` remain available offline.
 
+`place-ab-captured <private-capture-directory> <placement-request.json> <runs-per-mode:1..5> <max-usd>` compares split and whole-document PLACE on the exact same previously captured input; it does not re-run SELECT or GROUP. It makes paid provider calls and requires explicit authorization; the required per-run ceiling is a reservation limit, not an expected or cumulative spend. Input and output may contain source text: keep them private. Capture validates saved evidence and reports missing responses. This has been tested offline with fake PLACE responses, not yet against a live provider; repeated outputs are not necessarily independent.
+
 Runs one goal against one DOCX source. This is a qualification harness, not the production UI or an end-to-end writeback. Provide a JSON array of pipeline `HeadingRecord` objects for source headings. `--style-fallback` explicitly uses Word Heading styles instead; it is not equivalent to the pipeline's heading results.
 
 ```powershell
