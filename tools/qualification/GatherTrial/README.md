@@ -1,6 +1,6 @@
 # Gather trial (experimental)
 
-`capture-docx <private-capture-directory> <docx>` is a draft entry point for the opt-in capture used by the web harness. **It is disabled** until per-attempt protocol errors and PLACE evidence have been verified. Once enabled it will call a paid provider and require explicit authorization. The capture directory must be outside the repository or under ignored `scratchpad` / `.dhx-evidence`. PLACE captures model evidence rather than the complete wire body. This does not replace the blocked A/B and paired probes.
+`capture-docx <private-capture-directory> <docx>` is a draft entry point for the opt-in capture used by the web harness. **It is disabled** pending a complete audit of per-attempt protocol-error attribution. Once enabled it will call a paid provider and require explicit authorization. The capture directory must be outside the repository or under ignored `scratchpad` / `.dhx-evidence`. The standard DOCX placer now records its wire bodies as well as model evidence; custom placers may not use that wire handler. This does not replace the blocked A/B and paired probes.
 
 The older `split-run`, `whole-run`, `split-capture`, `whole-capture`, `place-ab`, `paired-placement`, and `paired-frozen21` entry points are disabled until every model attempt can be captured and verified. `split-replay` and `docx-region-probe` remain available offline.
 

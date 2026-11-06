@@ -1,11 +1,120 @@
 using System.Net;
 using System.Text;
 using DocxHeaderExtractor.App;
+using DocxHeaderExtractor.Contracts.Provider;
+using DocxHeaderExtractor.DocumentProcessing.Placement;
+using DocxHeaderExtractor.HeadingAgent.Placement;
+using DocxHeaderExtractor.HeadingAgent.Selectors;
+using DocxHeaderExtractor.Contracts.Agents;
+using DocxHeaderExtractor.Contracts.Models;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace DocxHeaderExtractor.Tests;
 
 public sealed class DiagnosticCaptureTests
 {
+    [Fact]
+    public async Task Placement_repair_has_its_own_captured_wire_attempt()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-repair-capture-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            var lines = Enumerable.Range(0, 3).Select(i => new SemanticSourceAtom("H" + i, "id:" + i, i, 1, i, 0, "Heading " + i)).ToArray();
+            var bound = lines.Select(l => new CanonicalSemanticBoundHeading(l.Alias, l.SourceId, l.Ordinal, l.Text,
+                "ESTABLISHES_STRUCTURE", "heading", "document_body", [], 0, l.Text.Length)).ToArray();
+            var evidence = new HeadingPlacementEvidence("{}", new Dictionary<string, string>())
+                { Source = new(lines, new Dictionary<string, HeadingAliasState>()) };
+            using var fake = new FakeOpenRouter((body, _) =>
+            {
+                var packet = JsonNode.Parse(body["messages"]![1]!["content"]!.Text())!;
+                var repair = packet["stage"]!.GetValue<string>() == "HIERARCHY_CHAIN_REPAIR";
+                var content = JsonSerializer.Serialize(new { protocolVersion = HeadingPlacer.Version,
+                    placements = packet["toPlace"]!.AsArray().Select(a => new { alias = a!.GetValue<string>(),
+                        parent = a.GetValue<string>() == "H0" ? (repair ? "ROOT" : "NONE") : "H0" }) });
+                return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content }, "stop").Replace("\"cost\":0.001", "\"cost\":0.0000001"));
+            }, autoVerify: false);
+            var capture = new CaptureRun(root, "sk-route");
+            using var handler = capture.Handler("test", "PLACE", fake);
+            var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(handler, repairParentChains: true),
+                new ModelAccess("sk-route", () => { }), evidence, CancellationToken.None);
+            Assert.True(result.Observation.ChainRepair?.LogicalCalls > 0);
+            var indices = Directory.GetFiles(root, "*.index.json", SearchOption.AllDirectories)
+                .Select(f => JsonDocument.Parse(File.ReadAllText(f)).RootElement.Clone()).ToArray();
+            Assert.Contains(indices, i => i.GetProperty("stage").GetString() == "HIERARCHY_CHAIN_REPAIR" &&
+                !string.IsNullOrWhiteSpace(i.GetProperty("unit").GetString()) && i.GetProperty("responseAvailable").GetBoolean());
+            Assert.True(capture.Summary().PlacementWireCalls >= 2);
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+    [Fact]
+    public async Task Selector_and_group_wire_are_recorded_with_model_reply_units()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-selector-capture-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(root);
+        try
+        {
+            var doc = DocxTestDocument.CreateLong(Path.Combine(root, "input.docx"), 20);
+            var capture = new CaptureRun(Path.Combine(root, "evidence"), "sk-test");
+            var replies = new List<ModelReply>();
+            var selector = new DocxSelector(() => capture.Handler("doc", "SELECT_GROUP",
+                new FakeOpenRouter(FakeOpenRouter.FactsThenFirstTwoTargetsThenGroup)), parallelism: 1,
+                onModelReply: r => replies.Add(r));
+            var result = await selector.SelectAsync(doc, "sk-test", CancellationToken.None);
+            var indices = Directory.GetFiles(Path.Combine(root, "evidence"), "*.index.json", SearchOption.AllDirectories)
+                .Select(f => JsonDocument.Parse(File.ReadAllText(f)).RootElement.Clone()).ToArray();
+            Assert.NotEmpty(result.SelectedAliases);
+            Assert.Contains(indices, i => i.GetProperty("stage").GetString() == "SEGMENT");
+            Assert.Contains(indices, i => i.GetProperty("stage").GetString() == "GROUP");
+            Assert.All(indices, i =>
+            {
+                Assert.False(string.IsNullOrWhiteSpace(i.GetProperty("unit").GetString()));
+                Assert.Equal(JsonValueKind.Number, i.GetProperty("turn").ValueKind);
+                Assert.Equal(JsonValueKind.Number, i.GetProperty("retry").ValueKind);
+            });
+            Assert.NotEmpty(replies);
+            Assert.All(replies, r => Assert.False(string.IsNullOrWhiteSpace(r.Unit)));
+            Assert.Equal(0, capture.Summary().MissingResponses);
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task Placement_wire_and_protocol_errors_are_available_without_a_provider(bool malformed)
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-placement-capture-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            var (bound, evidence, _) = HeadingPlacerTests.Fixture();
+            using var fake = new FakeOpenRouter((body, _) =>
+            {
+                var packet = body["messages"]![1]!["content"]!.Text();
+                var content = malformed ? "{\"invalid\":true}" : HierarchyTestProtocol.Reply(packet);
+                return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content }, "stop").Replace("\"cost\":0.001", "\"cost\":0.0000001"));
+            }, autoVerify: false);
+            var capture = new CaptureRun(root, "sk-route");
+            using var handler = capture.Handler("test", "PLACE", fake);
+            var result = await ParentResolver.PlaceAsync(bound, new HeadingPlacer(handler), new ModelAccess("sk-route", () => { }),
+                evidence, CancellationToken.None);
+            var indices = Directory.GetFiles(root, "*.index.json", SearchOption.AllDirectories);
+            Assert.NotEmpty(indices);
+            Assert.All(indices, f =>
+            {
+                using var index = JsonDocument.Parse(File.ReadAllText(f));
+                Assert.True(index.RootElement.GetProperty("responseAvailable").GetBoolean());
+                Assert.Equal("stop", index.RootElement.GetProperty("finishReason").GetString());
+                Assert.False(string.IsNullOrWhiteSpace(index.RootElement.GetProperty("unit").GetString()));
+                Assert.Equal(JsonValueKind.Number, index.RootElement.GetProperty("turn").ValueKind);
+                Assert.Equal(JsonValueKind.Number, index.RootElement.GetProperty("retry").ValueKind);
+            });
+            Assert.Equal(indices.Length, Directory.GetFiles(root, "*.response.json", SearchOption.AllDirectories).Length);
+            if (malformed) Assert.Contains(result.Observation.Calls.SelectMany(c => c.ProtocolErrors), _ => true);
+            else Assert.DoesNotContain(result.Observation.Calls.SelectMany(c => c.ProtocolErrors), _ => true);
+            Assert.DoesNotContain(Directory.GetFiles(root, "*", SearchOption.AllDirectories), f => File.ReadAllText(f).Contains("sk-route"));
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
     sealed class StreamHandler : HttpMessageHandler
     {
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct) =>
@@ -53,6 +162,7 @@ public sealed class DiagnosticCaptureTests
             Assert.Contains(files, f => f.EndsWith(".request.json"));
             Assert.Equal(!fail, files.Any(f => f.EndsWith(".response.json")));
             Assert.Contains(files, f => f.EndsWith(".index.json") && File.ReadAllText(f).Contains(fail ? "\"responseAvailable\":false" : "\"responseAvailable\":true"));
+            Assert.Equal(fail ? 1 : 0, capture.Summary().MissingResponses);
         }
         finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
     }

@@ -50,7 +50,7 @@ public sealed class HeadingPlacer : IHeadingPlacer
     { this.model = model; this.wholeDocument = wholeDocument; this.repairParentChains = repairParentChains; this.batchSize = ValidateBatchSize(batchSize); }
 
     /// <summary>A placer whose rounds take the production path over <paramref name="handler"/> (tests of the wire, without a network).</summary>
-    internal HeadingPlacer(HttpMessageHandler handler, bool wholeDocument = false, bool repairParentChains = false,
+    public HeadingPlacer(HttpMessageHandler handler, bool wholeDocument = false, bool repairParentChains = false,
         int batchSize = DefaultBatchSize)
     { this.handler = handler; this.wholeDocument = wholeDocument; this.repairParentChains = repairParentChains; this.batchSize = ValidateBatchSize(batchSize); }
 

@@ -102,6 +102,7 @@ internal sealed class AgentModel : IDisposable
                     var sendClock = Stopwatch.StartNew();
                     try
                     {
+                        using var metadata = ModelAttemptContext.Enter(unitId, turn, k);
                         sent = Send(request);
                         if (sent.Status == 429 || sent.ErrorCode == 429)
                         {
