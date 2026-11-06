@@ -142,9 +142,10 @@ public static class DocxComparer
         var incomplete = context.Alignment.Incomplete;
         var reported = incomplete ? changes.Select(c => c with { Uncertain = true, Note = Join(c.Note, "alignment_incomplete") }).ToList() : changes;
         // A computed change at a paragraph where Word recorded a revision names it, so a reader sees the recorded change beside the computed one.
-        var revised = template.Revisions.Select(r => r.Location).Concat(document.Revisions.Select(r => r.Location)).ToHashSet(StringComparer.Ordinal);
-        if (revised.Count > 0)
-            reported = reported.Select(c => (c.Template is { } t && revised.Contains(t.Location)) || (c.Document is { } d && revised.Contains(d.Location))
+        var templateRevised = template.Revisions.Select(r => r.Location).ToHashSet(StringComparer.Ordinal);
+        var documentRevised = document.Revisions.Select(r => r.Location).ToHashSet(StringComparer.Ordinal);
+        if (templateRevised.Count > 0 || documentRevised.Count > 0)
+            reported = reported.Select(c => (c.Template is { } t && templateRevised.Contains(t.Location)) || (c.Document is { } d && documentRevised.Contains(d.Location))
                 ? c with { Note = Join(c.Note, "tracked_revision_recorded") } : c).ToList();
         return new ComparisonResult(template.FileSha256, document.FileSha256, reported, template.UnsupportedRegions, document.UnsupportedRegions,
             (options.CompareDirectFormatting ? "text_direct_style_and_effective_formatting_read_by_docx_version_reader; theme_fonts_table_styles_and_unread_xml_not_compared; run_formatting_only_for_identical_text" : Scope)
