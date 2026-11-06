@@ -15,12 +15,39 @@ using static DocxHeaderExtractor.HeadingAgent.Protocol.AgentProtocol;
 using DocxHeaderExtractor.Agents.Budget;
 using DocxHeaderExtractor.Agents.Transport;
 using DocxHeaderExtractor.Agents;
+using DocxHeaderExtractor.App;
 
 namespace DocxHeaderExtractor.Tests;
 
 [Trait("Category", "Slow")]
 public sealed class HeadingGroupVerificationTests
 {
+    [Fact]
+    public void Verifier_protocol_failure_is_recorded_against_its_wire_request()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-verifier-capture-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            var verdicts = new List<ProtocolDiagnosticContext.Verdict>();
+            using var fake = new FakeOpenRouter((body, post) => (HttpStatusCode.OK,
+                FakeOpenRouter.Stream(new { content = post == 1 ? "invalid-json" : FakeOpenRouter.VerificationResponse(body) }, "stop")), autoVerify: false);
+            var capture = new CaptureRun(root, "sk-test");
+            using var handler = capture.Handler("doc", "GROUP", fake);
+            var budget = new AgentBudget(10, 100);
+            using var model = new AgentModel(handler, "sk-test", budget);
+            using (ProtocolDiagnosticContext.Begin(v => verdicts.Add(v)))
+                GroupVerifier.Verify(Source(), new AgentGrouping.Result([new[] { A(1), A(2) }], [], [], 0),
+                    new Dictionary<string, TextOffsetSpan>(), new Dictionary<string, string>(), model.Turn, budget, 1, CancellationToken.None, 0,
+                    "Extract structural headings.");
+            var rejected = Assert.Single(verdicts, v => v.Status == "REFUSED");
+            Assert.Contains("JSON_OR_ENVELOPE_INVALID", rejected.Failure);
+            var wire = Directory.GetFiles(root, "*.index.json", SearchOption.AllDirectories)
+                .Select(f => JsonDocument.Parse(File.ReadAllText(f)).RootElement.Clone()).ToArray();
+            Assert.Contains(wire, i => i.GetProperty("unit").GetString() == rejected.Unit &&
+                i.GetProperty("turn").GetInt32() == rejected.Turn && i.GetProperty("requestSha256").GetString() == rejected.RequestSha256);
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
     const string JsonModeProviderError = "{\"error\":{\"message\":\"'messages' must contain the word 'json' in some form, to use 'response_format' of type 'json_object'.\"}}";
 
     [Fact]

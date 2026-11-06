@@ -28,6 +28,7 @@ static class CaptureDocxTrial
             var summary = capture.Summary();
             summarized = true;
             if (result.HeadingPipeline?.Audit is null || summary.MissingResponses > 0 || summary.MissingPlacementResults > 0 ||
+                summary.MissingAttemptMetadata > 0 || summary.UnattributedResponses > 0 ||
                 summary.PlacementWireCalls < summary.PlacementCalls)
                 throw new InvalidDataException("DIAGNOSTIC_CAPTURE_INCOMPLETE: inspect the private capture directory.");
             Console.WriteLine($"Extraction returned {result.Outline.Headings.Count} headings; confirmed USD {result.ResourceBudget?.ConfirmedUsd}.");

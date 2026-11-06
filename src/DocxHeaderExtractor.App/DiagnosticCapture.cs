@@ -49,7 +49,8 @@ public sealed class DiagnosticCaptureSettings
     public CaptureRun? Start(string? apiKey) => root is null ? null : new CaptureRun(root, apiKey);
 }
 
-public sealed record CaptureSummary(int MissingResponses, int MissingPlacementResults, int PlacementCalls, int PlacementWireCalls);
+public sealed record CaptureSummary(int MissingResponses, int MissingPlacementResults, int PlacementCalls, int PlacementWireCalls,
+    int UnattributedResponses, int MissingAttemptMetadata);
 
 public sealed class CaptureRun
 {
@@ -78,17 +79,17 @@ public sealed class CaptureRun
         Interlocked.Increment(ref verifiedFiles);
     }
     public HttpMessageHandler Handler(string document, string fallbackStage, HttpMessageHandler? inner = null) => new CaptureHandler(this, document, fallbackStage, inner);
-    public IModelProvider Provider(IModelProvider original, PipelineOptions options, string document)
+    public IModelProvider Provider(IModelProvider original, PipelineOptions options, string document, Func<HttpMessageHandler>? handlerFactory = null)
     {
-        var selector = new DocxSelector(handlerFactory: () => Handler(document, "SELECT_GROUP"),
+        var selector = new DocxSelector(handlerFactory: () => Handler(document, "SELECT_GROUP", handlerFactory?.Invoke()),
             onModelReply: reply => Record($"{document}.selector-reply-{Interlocked.Increment(ref sequence):0000}.json", reply),
             extraction: options.Extraction,
             boundarySnapParagraphs: options.DocxBoundarySnapParagraphs,
             selectionCacheRoot: options.DocxReuseSelection ? options.DocxSelectionCacheRoot : null, splitNumberedGroups: options.DocxSplitNumberedGroups);
         var supplied = original.Create<IHeadingPlacer>(AgentRoles.Placer);
-        var placer = supplied ?? new HeadingPlacer(Handler(document, "PLACE"), wholeDocument: options.DocxWholeDocumentPlacement || options.WholeDocumentPlacement,
+        var placer = supplied ?? new HeadingPlacer(Handler(document, "PLACE", handlerFactory?.Invoke()), wholeDocument: options.DocxWholeDocumentPlacement || options.WholeDocumentPlacement,
             repairParentChains: options.RepairParentChains);
-        return new CaptureProvider(original, selector, new CapturePlacer(this, document, placer, supplied is null));
+        return new CaptureProvider(original, new CaptureSelector(this, document, selector), new CapturePlacer(this, document, placer, supplied is null));
     }
     public CaptureSummary Summary()
     {
@@ -96,12 +97,28 @@ public sealed class CaptureRun
         var verifiedAtEnd = writtenHashes.Count(pair => File.Exists(pair.Key) &&
             Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(pair.Key))) == pair.Value);
         var leaked = !string.IsNullOrEmpty(key) && files.Any(f => Encoding.UTF8.GetString(File.ReadAllBytes(f)).Contains(key, StringComparison.Ordinal));
-        var calls = new List<(string Stage, bool Complete)>();
+        var calls = new List<(string Stage, bool Complete, string? Document, string? Unit, int? Turn, int? Retry, string? Hash, int? Status)>();
         foreach (var file in files.Where(f => f.EndsWith(".index.json", StringComparison.Ordinal)))
         {
             using var doc = JsonDocument.Parse(File.ReadAllBytes(file));
-            calls.Add((doc.RootElement.GetProperty("stage").GetString() ?? "UNKNOWN", doc.RootElement.GetProperty("responseAvailable").GetBoolean()));
+            var entry = doc.RootElement;
+            string? String(string name) => entry.TryGetProperty(name, out var value) && value.ValueKind == JsonValueKind.String ? value.GetString() : null;
+            int? Number(string name) => entry.TryGetProperty(name, out var value) && value.ValueKind == JsonValueKind.Number && value.TryGetInt32(out var number) ? number : null;
+            calls.Add((String("stage") ?? "UNKNOWN", entry.GetProperty("responseAvailable").GetBoolean(), String("document"),
+                String("unit"), Number("turn"), Number("retry"), String("requestSha256"), Number("status")));
         }
+        var verdicts = new HashSet<(string? Document, string? Unit, int? Turn, string? Hash)>();
+        foreach (var file in files.Where(f => f.Contains(".protocol-", StringComparison.Ordinal) && f.EndsWith(".json", StringComparison.Ordinal)))
+        {
+            using var doc = JsonDocument.Parse(File.ReadAllBytes(file));
+            var v = doc.RootElement;
+            verdicts.Add((v.GetProperty("document").GetString(), v.GetProperty("Unit").GetString(), v.GetProperty("Turn").GetInt32(),
+                v.GetProperty("RequestSha256").ValueKind == JsonValueKind.String ? v.GetProperty("RequestSha256").GetString() : null));
+        }
+        var missingMetadata = calls.Count(c => c.Document is null || c.Unit is null || c.Turn is null || c.Retry is null);
+        var unattributed = calls.Count(c => c.Complete && c.Status is >= 200 and < 300 &&
+            !c.Stage.Contains("PLACE", StringComparison.OrdinalIgnoreCase) && !c.Stage.Contains("CHAIN_REPAIR", StringComparison.OrdinalIgnoreCase) &&
+            !verdicts.Contains((c.Document, c.Unit, c.Turn, c.Hash)));
         var stages = string.Join(", ", calls.GroupBy(c => c.Stage).Select(g => $"{g.Key}={g.Count()}(missing={g.Count(c => !c.Complete)})"));
         var placeResults = files.Where(f => f.EndsWith(".place-result.json", StringComparison.Ordinal)).ToArray();
         var placeCalls = 0;
@@ -116,18 +133,32 @@ public sealed class CaptureRun
             using var doc = JsonDocument.Parse(File.ReadAllBytes(file));
             if (doc.RootElement.GetProperty("missingEvidence").GetBoolean()) missingPlace++;
         }
-        Console.WriteLine($"Diagnostic capture: {stages}; PLACE calls={placeCalls}, missing result={missingPlace}; files={files.Length}, verified at end={verifiedAtEnd}/{verifiedFiles}; credentialFound={leaked}; path={dir}");
+        Console.WriteLine($"Diagnostic capture: {stages}; PLACE calls={placeCalls}, missing result={missingPlace}; missing attempt metadata={missingMetadata}, unattributed responses={unattributed}; files={files.Length}, verified at end={verifiedAtEnd}/{verifiedFiles}; credentialFound={leaked}; path={dir}");
         if (verifiedAtEnd != verifiedFiles) throw new InvalidDataException("CAPTURE_HASH_MISMATCH");
         if (leaked) throw new InvalidDataException("CAPTURE_CONTAINS_CREDENTIAL");
         return new(calls.Count(c => !c.Complete), missingPlace, placeCalls,
             calls.Count(c => c.Stage.Contains("PLACE", StringComparison.OrdinalIgnoreCase) ||
-                c.Stage.Contains("CHAIN_REPAIR", StringComparison.OrdinalIgnoreCase)));
+                c.Stage.Contains("CHAIN_REPAIR", StringComparison.OrdinalIgnoreCase)), unattributed, missingMetadata);
     }
     sealed class CaptureProvider(IModelProvider inner, IHeadingSelector selector, IHeadingPlacer placer) : IModelProvider
     {
         public ModelRoute CreateRoute() => inner.CreateRoute();
         public T? Create<T>(string role) where T : class => role == AgentRoles.DocxSelector ? selector as T :
             role == AgentRoles.Placer ? placer as T : inner.Create<T>(role);
+    }
+    sealed class CaptureSelector(CaptureRun capture, string document, DocxSelector inner) : IHeadingSelector, IPrimedDocumentSelector
+    {
+        public string SelectorId => inner.SelectorId;
+        public void PrimeDocument(string path, DocxHeaderExtractor.Contracts.Docx.ExtractionOptions? extraction,
+            DocxHeaderExtractor.Contracts.Models.SourceDocument source) => inner.PrimeDocument(path, extraction, source);
+
+        public async Task<HeadingSelection> SelectAsync(string path, string apiKey, CancellationToken ct)
+        {
+            using var scope = ProtocolDiagnosticContext.Begin(verdict =>
+                capture.Record($"{document}.protocol-{Interlocked.Increment(ref capture.sequence):0000}.json",
+                    new { document, verdict.Unit, verdict.Turn, verdict.RequestSha256, verdict.Status, verdict.Failure }));
+            return await inner.SelectAsync(path, apiKey, ct);
+        }
     }
     sealed class CapturePlacer(CaptureRun capture, string document, IHeadingPlacer inner, bool wireCaptured) : IHeadingPlacer
     {
@@ -196,14 +227,14 @@ public sealed class CaptureRun
                 var copy = new ByteArrayContent(raw);
                 foreach (var h in response.Content.Headers) copy.Headers.TryAddWithoutValidation(h.Key, h.Value);
                 response.Content = copy;
-                capture.Record(prefix + ".index.json", new { stage, unit, turn = attempt?.Turn, retry = attempt?.Retry, requestSha256 = Convert.ToHexStringLower(SHA256.HashData(bytes)),
+                capture.Record(prefix + ".index.json", new { document, stage, unit, turn = attempt?.Turn, retry = attempt?.Retry, requestSha256 = Convert.ToHexStringLower(SHA256.HashData(bytes)),
                     responseSha256 = Convert.ToHexStringLower(SHA256.HashData(raw)), status = (int)response.StatusCode, finishReason, responseAvailable = true });
                 lock (capture.gate) Console.WriteLine($"Diagnostic call: document={document}, stage={stage}, unit={unit ?? "unknown"}, response=verified");
                 return response;
             }
             catch
             {
-                capture.Record(prefix + ".index.json", new { stage, unit, turn = attempt?.Turn, retry = attempt?.Retry, responseAvailable = false });
+                capture.Record(prefix + ".index.json", new { document, stage, unit, turn = attempt?.Turn, retry = attempt?.Retry, responseAvailable = false });
                 throw;
             }
         }

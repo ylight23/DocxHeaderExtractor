@@ -10,6 +10,7 @@ using DocxHeaderExtractor.HeadingAgent.Formats;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.Agents.Budget;
 using DocxHeaderExtractor.Agents;
+using DocxHeaderExtractor.Agents.Transport;
 
 namespace DocxHeaderExtractor.HeadingAgent.Grouping;
 
@@ -271,6 +272,7 @@ internal static class AgentGrouping
             try { reply = model(unitId, 1 + repairs, req); }
             catch (ReplyFailure f) when (!f.TransportRetriesHandled && retries < AgentUnit.TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal))
             {
+                ProtocolDiagnosticContext.Report(unitId, 1 + repairs, req.Sha256, "RETRY", f.Code);
                 retries++;
                 if (retryDelayMs > 0) Thread.Sleep(retryDelayMs);
                 continue;
@@ -279,11 +281,12 @@ internal static class AgentGrouping
             // does: without it one slow call withheld every run of the batch (023: three batches timed out at 300 s, 19 runs lost).
             catch (ReplyFailure f) when (!f.TransportRetriesHandled && !retriedOnce && source.Flavor.RetryOnceCodes.Any(c => f.Code.Contains(c, StringComparison.Ordinal)))
             {
+                ProtocolDiagnosticContext.Report(unitId, 1 + repairs, req.Sha256, "RETRY", f.Code);
                 retriedOnce = true;
                 continue;
             }
-            catch (ReplyFailure f) { return (accepted, answers, Fallback("CALL:" + f.Code), posts, repairs, evidence); }
-            catch (Exception e) when (e is not OutOfMemoryException) { return (accepted, answers, Fallback("MODEL_CALL_FAILED"), posts, repairs, evidence); }
+            catch (ReplyFailure f) { ProtocolDiagnosticContext.Report(unitId, 1 + repairs, req.Sha256, "FAILED", "CALL:" + f.Code); return (accepted, answers, Fallback("CALL:" + f.Code), posts, repairs, evidence); }
+            catch (Exception e) when (e is not OutOfMemoryException) { ProtocolDiagnosticContext.Report(unitId, 1 + repairs, req.Sha256, "FAILED", "MODEL_CALL_FAILED"); return (accepted, answers, Fallback("MODEL_CALL_FAILED"), posts, repairs, evidence); }
 
             string? failure, detail = null;
             if (reply.ToolCalls.Count > 0 || reply.FinishReason != "stop") failure = "PROTOCOL:ANSWER_WITH_FINISH_" + (reply.FinishReason ?? "NULL").ToUpperInvariant();
@@ -301,6 +304,7 @@ internal static class AgentGrouping
                 }
             }
             evidence.Add(JsonSerializer.Serialize(new { unit = unitId, turn = 1 + repairs, requestSha256 = req.Sha256, response = reply.Content, failure }, Options));
+            ProtocolDiagnosticContext.Report(unitId, 1 + repairs, req.Sha256, failure is null ? "FINISH" : "REFUSED", failure);
             if (failure is null) return (accepted, answers, null, posts, repairs, evidence);
             if (repairs >= MaxRepairs) return (accepted, answers, Fallback(failure), posts, repairs, evidence);
             repairs++;

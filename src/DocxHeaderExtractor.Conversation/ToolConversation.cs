@@ -53,11 +53,18 @@ internal static class ToolConversation
         var history = new JsonArray();
         var issuedIds = new HashSet<string>(StringComparer.Ordinal);
 
-        TOutcome Stop(string status, string failure) => task.Stop(state, status, failure);
+        var diagnosticTurn = 0;
+        string? diagnosticHash = null;
+        TOutcome Stop(string status, string failure)
+        {
+            ProtocolDiagnosticContext.Report(task.UnitId, diagnosticTurn, diagnosticHash, status, failure);
+            return task.Stop(state, status, failure);
+        }
 
         // Repairs have no limit of their own: the budget's call limit stops a conversation that keeps failing.
         void Repair(string failure, IReadOnlyList<string>? missing = null, string? detail = null)
         {
+            ProtocolDiagnosticContext.Report(task.UnitId, diagnosticTurn, diagnosticHash, "REPAIR", failure);
             state.RepairedFrom ??= failure;
             state.RepairsUsed++;
             foreach (var choice in task.ChoicesAfterRepair(failure)) forcedChoices.Enqueue(choice);
@@ -66,9 +73,12 @@ internal static class ToolConversation
 
         for (int turn = 1; turn <= limits.MaxTurns + 2 * state.RepairsUsed; turn++)
         {
+            diagnosticTurn = turn;
+            diagnosticHash = null;
             if (state.Posts >= maxPosts) return Stop("INCOMPLETE", "REVIEW_POST_LIMIT");
             var toolChoice = forcedChoices.Count > 0 ? forcedChoices.Dequeue() : turn <= limits.MaxToolTurns ? "auto" : "none";
             var req = task.Build(history, toolChoice);
+            diagnosticHash = req.Sha256;
             var refusal = budget.Admit(req);
             if (refusal is not null) return Stop("INCOMPLETE", "BUDGET:" + refusal);
             state.RequestSha256s.Add(req.Sha256);
@@ -79,6 +89,7 @@ internal static class ToolConversation
             {
                 if (state.Posts >= maxPosts) return "REVIEW_POST_LIMIT";
                 req = task.Build(history, toolChoice);
+                diagnosticHash = req.Sha256;
                 if (budget.Admit(req) is { } refused) return "BUDGET:" + refused;
                 state.RetriesUsed++;
                 state.RequestSha256s.Add(req.Sha256);
@@ -92,6 +103,7 @@ internal static class ToolConversation
                     reply = model(task.UnitId, turn, req);
                     if (reply.FinishReason == "length" && task.TryIncreaseCompletionBudget())
                     {
+                        ProtocolDiagnosticContext.Report(task.UnitId, turn, req.Sha256, "RETRY", "AUDIT:FINISH_LENGTH");
                         if (IncreaseCompletion() is { } failure) return Stop("INCOMPLETE", failure);
                         continue;
                     }
@@ -99,10 +111,12 @@ internal static class ToolConversation
                 }
                 catch (ReplyFailure f) when (IsCompletionExhaustion(f.Code) && task.TryIncreaseCompletionBudget())
                 {
+                    ProtocolDiagnosticContext.Report(task.UnitId, turn, req.Sha256, "RETRY", f.Code);
                     if (IncreaseCompletion() is { } failure) return Stop("INCOMPLETE", failure);
                 }
                 catch (ReplyFailure f) when (!f.TransportRetriesHandled && state.RetriesUsed < limits.TransportRetries && limits.RetriableTransport.Contains(f.Code, StringComparer.Ordinal))
                 {
+                    ProtocolDiagnosticContext.Report(task.UnitId, turn, req.Sha256, "RETRY", f.Code);
                     // The provider failed this call: the same bytes are sent again after a pause, admitted by the budget like any POST.
                     state.RetriesUsed++;
                     if (retryDelayMs > 0) Thread.Sleep(retryDelayMs);
@@ -114,6 +128,7 @@ internal static class ToolConversation
                 }
                 catch (ReplyFailure f) when (!f.TransportRetriesHandled && reasoningRetries < 1 && limits.RetryOnceCodes.Any(c => f.Code.Contains(c, StringComparison.Ordinal)))
                 {
+                    ProtocolDiagnosticContext.Report(task.UnitId, turn, req.Sha256, "RETRY", f.Code);
                     // A failure the task retries once (scan: reasoning used every token, or the call timed out): the same bytes once more.
                     reasoningRetries++;
                     state.RetriesUsed++;
@@ -198,6 +213,7 @@ internal static class ToolConversation
                 var images = tools.TakeImages();
                 if (images.Count > 0)
                     history.Add(new JsonObject { ["role"] = "user", ["content"] = new JsonArray(images.Prepend(new JsonObject { ["type"] = "text", ["text"] = task.ImagesNote }).Select(n => (JsonNode)n).ToArray()) });
+                ProtocolDiagnosticContext.Report(task.UnitId, diagnosticTurn, diagnosticHash, "TOOLS_ACCEPTED");
                 continue;
             }
 
@@ -205,6 +221,7 @@ internal static class ToolConversation
             switch (task.Judge(reply, state))
             {
                 case Verdict<TOutcome>.Finish finish:
+                    ProtocolDiagnosticContext.Report(task.UnitId, diagnosticTurn, diagnosticHash, "FINISH");
                     return finish.Outcome;
                 case Verdict<TOutcome>.Repair repair:
                     if (repair.StopIfUnchanged && state.Unchanged(reply.Content)) return Stop("FAILED", repair.Failure + ":UNCHANGED");

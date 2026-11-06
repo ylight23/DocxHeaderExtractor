@@ -5,6 +5,11 @@ using DocxHeaderExtractor.Contracts.Provider;
 using DocxHeaderExtractor.DocumentProcessing.Placement;
 using DocxHeaderExtractor.HeadingAgent.Placement;
 using DocxHeaderExtractor.HeadingAgent.Selectors;
+using DocxHeaderExtractor.Agents.Transport;
+using DocxHeaderExtractor.Agents;
+using DocxHeaderExtractor.Agents.Budget;
+using DocxHeaderExtractor.DocumentProcessing.Harness;
+using System.Security.Cryptography;
 using DocxHeaderExtractor.Contracts.Agents;
 using DocxHeaderExtractor.Contracts.Models;
 using System.Text.Json;
@@ -14,6 +19,163 @@ namespace DocxHeaderExtractor.Tests;
 
 public sealed class DiagnosticCaptureTests
 {
+    [Fact]
+    public async Task Full_docx_capture_links_selection_group_and_placement_without_network()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-full-capture-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(root);
+        try
+        {
+            var doc = DocxTestDocument.CreateLong(Path.Combine(root, "input.docx"), 20);
+            var capture = new CaptureRun(Path.Combine(root, "evidence"), "sk-test");
+            var options = new PipelineOptions { DocxReuseSelection = false, MaxProviderCostUsd = 0.50, MaxProviderAttempts = 40 };
+            var provider = capture.Provider(new OpenRouterProvider("sk-test"), options, "doc", () =>
+                new FakeOpenRouter((body, n) =>
+                {
+                    var text = body["messages"]![1]!["content"]!.Text();
+                    var payload = JsonNode.Parse(text);
+                    var result = payload?["stage"]?.GetValue<string>() == "HIERARCHY_PLACE"
+                        ? (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = HierarchyTestProtocol.Reply(text) }, "stop"))
+                        : FakeOpenRouter.FactsThenFirstTwoTargetsThenGroup(body, n);
+                    return (result.Item1, result.Item2.Replace("\"cost\":0.001", "\"cost\":0.0000001"));
+                }));
+            var result = await new DocumentRunner(options, provider).ExtractAsync(doc);
+            Assert.NotNull(result.HeadingPipeline?.Audit);
+            Assert.NotEmpty(result.Outline.Headings);
+            var summary = capture.Summary();
+            Assert.Equal(0, summary.MissingResponses);
+            Assert.Equal(0, summary.MissingAttemptMetadata);
+            Assert.Equal(0, summary.UnattributedResponses);
+            Assert.Equal(0, summary.MissingPlacementResults);
+            Assert.True(summary.PlacementCalls > 0);
+            Assert.True(summary.PlacementWireCalls >= summary.PlacementCalls);
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+    [Fact]
+    public async Task Capture_provider_persists_protocol_verdicts_beside_wire_evidence()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-provider-verdict-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(root);
+        try
+        {
+            var doc = DocxTestDocument.CreateLong(Path.Combine(root, "input.docx"), 20);
+            var capture = new CaptureRun(Path.Combine(root, "evidence"), "sk-test");
+            var firstGroup = 0;
+            var provider = capture.Provider(new OpenRouterProvider("sk-test"), new PipelineOptions(), "doc", () =>
+                new FakeOpenRouter((body, n) =>
+                {
+                    var payload = JsonNode.Parse(body["messages"]![1]!["content"]!.Text());
+                    if (payload?["stage"]?.GetValue<string>() == "GROUP" && Interlocked.Increment(ref firstGroup) == 1)
+                        return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = "not-json" }, "stop"));
+                    return FakeOpenRouter.FactsThenFirstTwoTargetsThenGroup(body, n);
+                }));
+            var selector = provider.Create<IHeadingSelector>(AgentRoles.DocxSelector)!;
+            await selector.SelectAsync(doc, "sk-test", CancellationToken.None);
+            var verdicts = Directory.GetFiles(Path.Combine(root, "evidence"), "*.protocol-*.json", SearchOption.AllDirectories)
+                .Select(f => JsonDocument.Parse(File.ReadAllText(f)).RootElement.Clone()).ToArray();
+            var rejected = Assert.Single(verdicts, v => v.GetProperty("Failure").GetString() == "PROTOCOL:REPLY_NOT_JSON");
+            var wire = Directory.GetFiles(Path.Combine(root, "evidence"), "*.index.json", SearchOption.AllDirectories)
+                .Select(f => JsonDocument.Parse(File.ReadAllText(f)).RootElement.Clone()).ToArray();
+            Assert.Contains(wire, i => i.GetProperty("requestSha256").GetString() == rejected.GetProperty("RequestSha256").GetString() &&
+                i.GetProperty("unit").GetString() == rejected.GetProperty("Unit").GetString());
+            var summary = capture.Summary();
+            Assert.Equal(0, summary.MissingResponses);
+            Assert.Equal(0, summary.MissingAttemptMetadata);
+            Assert.Equal(0, summary.UnattributedResponses);
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+    sealed class RateLimited : HttpMessageHandler
+    {
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct) =>
+            Task.FromResult(new HttpResponseMessage(HttpStatusCode.TooManyRequests) { Content = new StringContent("rate limited") });
+    }
+
+    [Fact]
+    public void Transport_retry_is_recorded_as_a_separate_attempt()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-retry-capture-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            var capture = new CaptureRun(root, "sk-test");
+            using var handler = capture.Handler("doc", "SELECT", new RateLimited());
+            using var model = new AgentModel(handler, "sk-test", new AgentBudget(10, 10), rateLimitRetries: 1, rateLimitBaseDelayMs: 1);
+            const string body = "{\"model\":\"m\",\"messages\":[{\"role\":\"system\",\"content\":\"s\"},{\"role\":\"user\",\"content\":\"u\"}]}";
+            var request = new PreparedRequest(body, Encoding.UTF8.GetByteCount(body), Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(body))));
+            Assert.Throws<ReplyFailure>(() => model.Turn("unit-1", 3, request));
+            var rows = Directory.GetFiles(root, "*.index.json", SearchOption.AllDirectories)
+                .Select(f => JsonDocument.Parse(File.ReadAllText(f)).RootElement.Clone()).ToArray();
+            Assert.Equal(2, rows.Length);
+            Assert.Equal(new[] { 0, 1 }, rows.Select(r => r.GetProperty("retry").GetInt32()).Order().ToArray());
+            Assert.All(rows, r => { Assert.Equal("unit-1", r.GetProperty("unit").GetString()); Assert.Equal(3, r.GetProperty("turn").GetInt32()); });
+            Assert.Equal(2, Directory.GetFiles(root, "*.response.json", SearchOption.AllDirectories).Length);
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+    [Fact]
+    public async Task Selection_protocol_failure_is_attributed_to_its_request_then_repaired()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-selection-verdict-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(root);
+        try
+        {
+            var doc = DocxTestDocument.CreateLong(Path.Combine(root, "input.docx"), 20);
+            var capture = new CaptureRun(Path.Combine(root, "evidence"), "sk-test");
+            var verdicts = new List<ProtocolDiagnosticContext.Verdict>();
+            var firstAnswer = 0;
+            var selector = new DocxSelector(() => capture.Handler("doc", "SELECT_GROUP", new FakeOpenRouter((body, n) =>
+            {
+                var payload = JsonNode.Parse(body["messages"]![1]!["content"]!.Text());
+                var isGroup = payload?["stage"]?.GetValue<string>() == "GROUP";
+                var hasTool = body["messages"]!.AsArray().Any(m => m!["role"]!.GetValue<string>() == "tool");
+                if (!isGroup && hasTool && Interlocked.Increment(ref firstAnswer) == 1)
+                    return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = "not-json" }, "stop"));
+                return FakeOpenRouter.FactsThenFirstTwoTargetsThenGroup(body, n);
+            })), parallelism: 1);
+            using (ProtocolDiagnosticContext.Begin(v => verdicts.Add(v)))
+                await selector.SelectAsync(doc, "sk-test", CancellationToken.None);
+            var rejected = Assert.Single(verdicts, v => v.Status == "REPAIR");
+            Assert.NotNull(rejected.Failure);
+            Assert.Contains(verdicts, v => v.Unit == rejected.Unit && v.Turn > rejected.Turn && v.Status == "FINISH");
+            var wire = Directory.GetFiles(Path.Combine(root, "evidence"), "*.index.json", SearchOption.AllDirectories)
+                .Select(f => JsonDocument.Parse(File.ReadAllText(f)).RootElement.Clone()).ToArray();
+            Assert.Contains(wire, i => i.GetProperty("unit").GetString() == rejected.Unit &&
+                i.GetProperty("turn").GetInt32() == rejected.Turn && i.GetProperty("requestSha256").GetString() == rejected.RequestSha256);
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+    [Fact]
+    public async Task Group_protocol_failure_is_attributed_to_the_exact_request_then_repaired()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-group-verdict-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(root);
+        try
+        {
+            var doc = DocxTestDocument.CreateLong(Path.Combine(root, "input.docx"), 20);
+            var capture = new CaptureRun(Path.Combine(root, "evidence"), "sk-test");
+            var verdicts = new List<ProtocolDiagnosticContext.Verdict>();
+            var groupCalls = 0;
+            var selector = new DocxSelector(() => capture.Handler("doc", "SELECT_GROUP", new FakeOpenRouter((body, n) =>
+            {
+                var text = body["messages"]![1]!["content"]!.Text();
+                var payload = JsonNode.Parse(text);
+                if (payload?["stage"]?.GetValue<string>() == "GROUP" && Interlocked.Increment(ref groupCalls) == 1)
+                    return (HttpStatusCode.OK, FakeOpenRouter.Stream(new { content = "not-json" }, "stop"));
+                return FakeOpenRouter.FactsThenFirstTwoTargetsThenGroup(body, n);
+            })), parallelism: 1);
+            using (ProtocolDiagnosticContext.Begin(v => verdicts.Add(v)))
+                await selector.SelectAsync(doc, "sk-test", CancellationToken.None);
+            var rejected = Assert.Single(verdicts, v => v.Failure == "PROTOCOL:REPLY_NOT_JSON");
+            Assert.Equal("REFUSED", rejected.Status);
+            Assert.Contains(verdicts, v => v.Unit == rejected.Unit && v.Turn > rejected.Turn && v.Status == "FINISH");
+            var wire = Directory.GetFiles(Path.Combine(root, "evidence"), "*.index.json", SearchOption.AllDirectories)
+                .Select(f => JsonDocument.Parse(File.ReadAllText(f)).RootElement.Clone()).ToArray();
+            Assert.Contains(wire, i => i.GetProperty("unit").GetString() == rejected.Unit &&
+                i.GetProperty("turn").GetInt32() == rejected.Turn && i.GetProperty("requestSha256").GetString() == rejected.RequestSha256);
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
     [Fact]
     public async Task Placement_repair_has_its_own_captured_wire_attempt()
     {

@@ -14,6 +14,7 @@ using DocxHeaderExtractor.HeadingAgent.Protocol;
 using DocxHeaderExtractor.HeadingAgent.Runtime;
 using DocxHeaderExtractor.Agents.Budget;
 using DocxHeaderExtractor.Agents;
+using DocxHeaderExtractor.Agents.Transport;
 
 namespace DocxHeaderExtractor.HeadingAgent.Grouping;
 
@@ -330,6 +331,7 @@ internal static partial class GroupVerifier
                 catch (ReplyFailure f)
                 {
                     var retry = !f.TransportRetriesHandled && retries < TransportRetries && AgentUnit.RetriableTransport.Contains(f.Code, StringComparer.Ordinal);
+                    ProtocolDiagnosticContext.Report(unit, attempt, request.Sha256, retry ? "RETRY" : "FAILED", f.Code);
                     evidence.Add(JsonSerializer.Serialize(new { unit, attempt, round, requestSha256 = request.Sha256,
                         failure = f.Code, transportRetry = retry, transportRetriesUsed = retries + (retry ? 1 : 0) }, Json));
                     if (!retry) return Finish("CALL:" + f.Code);
@@ -338,6 +340,7 @@ internal static partial class GroupVerifier
                 }
                 catch (Exception e) when (e is not OutOfMemoryException)
                 {
+                    ProtocolDiagnosticContext.Report(unit, attempt, request.Sha256, "FAILED", "MODEL_CALL_FAILED");
                     evidence.Add(JsonSerializer.Serialize(new { unit, attempt, round, requestSha256 = request.Sha256, failure = "MODEL_CALL_FAILED" }, Json));
                     return Finish("MODEL_CALL_FAILED");
                 }
@@ -392,6 +395,7 @@ internal static partial class GroupVerifier
                     var parts = new JsonArray(new JsonObject { ["type"] = "text", ["text"] = results.ToJsonString(Json) });
                     foreach (var image in images) parts.Add(image);
                     history.Add(new JsonObject { ["role"] = "user", ["content"] = parts });
+                    ProtocolDiagnosticContext.Report(unit, posts, request.Sha256, "TOOLS_ACCEPTED");
                     continue;
                 }
                 Require(root.Count == 2 && root["verdicts"] is JsonArray, "VERDICTS_ENVELOPE_INVALID");
@@ -447,6 +451,8 @@ internal static partial class GroupVerifier
                 acceptedCandidates = candidates.Where(c => accepted.ContainsKey(c.Id)).Select(c => c.Id).ToArray(),
                 pendingCandidates = remaining, issues, fieldDiagnostics,
                 coverageDiagnostics = coverageDiagnostics.Where(d => d.Attempt == posts).ToArray() }, Json));
+            ProtocolDiagnosticContext.Report(unit, posts, request.Sha256, issues.Count == 0 ? "FINISH" : "REFUSED",
+                issues.Count == 0 ? null : string.Join(";", issues.Select(i => (i.Run ?? "ENVELOPE") + ":" + i.Code)));
             if (remaining.Length == 0) return Finish(null);
             failure = "PROTOCOL:VERIFICATION_INVALID:" + string.Join(";", issues.Select(i => (i.Run ?? "ENVELOPE") + ":" + i.Code));
             if (round == MaxPosts) break;
