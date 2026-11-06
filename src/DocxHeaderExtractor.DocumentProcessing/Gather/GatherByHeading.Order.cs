@@ -38,7 +38,8 @@ public static partial class GatherByHeading
         var sourceKeys = sourceIdx.Select(i => Key(sourceSections[i].Heading)).ToList();
         var alignedTarget = new int[sourceIdx.Count];
         Array.Fill(alignedTarget, -1);
-        foreach (var edit in Myers.Diff(targetKeys, sourceKeys, (a, b) => a == b))
+        var orderEdits = Myers.Diff(targetKeys, sourceKeys, (a, b) => a == b, Myers.Limit, out var orderComplete);
+        foreach (var edit in orderEdits)
             if (edit.Kind == EditKind.Equal) alignedTarget[edit.NewIndex] = targetIdx[edit.OldIndex];
 
         var aligned = new bool[targets.Count];
@@ -52,10 +53,15 @@ public static partial class GatherByHeading
             var location = units[s.First].SourceId + " " + s.Location;
             if (s.Name.Length == 0) { placed[i] = new(-1, null, "heading không có tên", false); continue; }
             if (alignedTarget[k] >= 0) { placed[i] = new(alignedTarget[k], null, null, false); lastTarget = alignedTarget[k]; continue; }
+            // The order alignment stopped at its limit: an unaligned heading has no established place, so its content is listed, never guessed.
+            if (!orderComplete) { placed[i] = new(-1, null, "so thứ tự heading vượt giới hạn; chưa xác định vị trí", false); continue; }
 
             var nextTarget = Enumerable.Range(k + 1, sourceIdx.Count - k - 1).Select(j => alignedTarget[j]).FirstOrDefault(t => t >= 0, targets.Count);
             var gap = Enumerable.Range(lastTarget + 1, nextTarget - lastTarget - 1).Where(t => !aligned[t] && !targets[t].Title).ToList();
-            var near = gap.Select(t => (Target: t, Score: Changes.DocxComparer.Similarity(s.Name, targets[t].Name)))
+            var scored = gap.Select(t => (Target: t, Score: Changes.DocxComparer.Similarity(s.Name, targets[t].Name, out var done), Done: done)).ToList();
+            // A name comparison that stopped at the diff limit decides nothing: the heading is not placed and not added.
+            if (scored.Any(x => !x.Done)) { placed[i] = new(-1, null, "so tên heading vượt giới hạn; chưa xác định vị trí", false); continue; }
+            var near = scored
                 .Where(x => x.Score >= NearNameThreshold).OrderByDescending(x => x.Score).Select(x => x.Target).Take(1).ToList();
             if (near.Count == 1)
             {

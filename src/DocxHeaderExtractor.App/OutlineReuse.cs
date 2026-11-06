@@ -80,7 +80,7 @@ public static class OutlineReuse
         {
             // Read back what the store holds, so the outline hash a reviewer sees is the one the store will check.
             store.Store(new(OutlineStore.Version, sha, configKey, name, DateTimeOffset.UtcNow, paragraphs, version.UnsupportedRegions, headings,
-                Placement: placement?.Invoke(), SelectionComplete: selectionComplete?.Invoke()));
+                Placement: placement?.Invoke(), SelectionComplete: selectionComplete?.Invoke(), SignatureVersion: OutlineStore.SignatureVersion));
             current = store.Find(sha, configKey);
         }
         return new(headings, "EXTRACTED", reason, []) { Current = current, Previous = previous };

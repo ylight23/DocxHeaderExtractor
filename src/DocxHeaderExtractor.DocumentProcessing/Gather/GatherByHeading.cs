@@ -562,8 +562,13 @@ public static partial class GatherByHeading
         if (named.Count > 1)
             return new(-1, null, null, false, new UncertainItem("AMBIGUOUS", s.Heading, location, ParentText(s.Parent), named,
                 "văn bản đích có " + named.Count + " heading tên \"" + s.Name + "\" dưới cùng mục cha") { Anchor = anchor });
-        var near = Subtree(targets, anchor).Where(t => !targets[t].Title).Select(t => (t, Score: Changes.DocxComparer.Similarity(s.Name, targets[t].Name)))
-            .Where(x => x.Score >= NearNameThreshold).OrderByDescending(x => x.Score).Select(x => x.t).Take(1).ToList();
+        var scored = Subtree(targets, anchor).Where(t => !targets[t].Title)
+            .Select(t => (t, Score: Changes.DocxComparer.Similarity(s.Name, targets[t].Name, out var done), Done: done)).ToList();
+        // A name comparison that stopped at the diff limit is not "not similar": the heading is held with those targets for review.
+        if (scored.Where(x => !x.Done).Select(x => x.t).ToList() is { Count: > 0 } notChecked)
+            return new(-1, null, null, false, new UncertainItem("NEAR_NAME", s.Heading, location, ParentText(s.Parent), notChecked,
+                "chưa so được đầy đủ tên heading \"" + s.Name + "\" với văn bản đích (vượt giới hạn so sánh); cần xác nhận") { Anchor = anchor });
+        var near = scored.Where(x => x.Score >= NearNameThreshold).OrderByDescending(x => x.Score).Select(x => x.t).Take(1).ToList();
         if (near.Count == 1)
             return new(-1, null, null, false, new UncertainItem("NEAR_NAME", s.Heading, location, ParentText(s.Parent), near,
                 "văn bản đích không có heading \"" + s.Name + "\" nhưng có heading tên gần giống \"" + targets[near[0]].Heading + "\"") { Anchor = anchor });
@@ -629,9 +634,9 @@ public static partial class GatherByHeading
             }
             taken.TryAdd(key, source);
             var tokens = Changes.TextDiff.WordTokens(text.ToLowerInvariant());
-            var near = targetLines.FirstOrDefault(line =>
-                Changes.DocxComparer.Dice(tokens, Changes.TextDiff.WordTokens(line.ToLowerInvariant())) >= GatherReviewApply.NearTargetThreshold);
-            kept.Add(near is null ? fact : fact with { Flags = [.. fact.Flags, "POSSIBLE_CONFLICT: " + (near.Length > 80 ? near[..80] + "…" : near)] });
+            var (near, checkedAll) = GatherReviewApply.NearLine(tokens, targetLines);
+            var flagged = near is null ? fact : fact with { Flags = [.. fact.Flags, "POSSIBLE_CONFLICT: " + (near.Length > 80 ? near[..80] + "…" : near)] };
+            kept.Add(checkedAll ? flagged : flagged with { Flags = [.. flagged.Flags, GatherReviewApply.UncheckedFlag] });
         }
         return (section with { Run = section.Run with { Facts = kept }, Conflicts = GatherDocument.Conflicts(kept) }, excluded);
     }

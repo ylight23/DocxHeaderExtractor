@@ -6,7 +6,8 @@ namespace DocxHeaderExtractor.DocumentProcessing.Changes;
 public sealed record TextSpan(int Start, int End, string Text);
 
 /// <summary>One run of differing tokens between two raw texts. A side with no tokens in the hunk has an empty span at the insertion point.</summary>
-public sealed record TextHunk(string Kind, TextSpan Template, TextSpan Document);
+/// <summary>One text difference. <see cref="Coarse"/>: the diff stopped at its limit, so this hunk may cover unchanged text too.</summary>
+public sealed record TextHunk(string Kind, TextSpan Template, TextSpan Document, bool Coarse = false);
 
 /// <summary>
 /// Word-level diff on the raw text of each side. Tokens are whitespace runs, runs of letters, marks and digits, a surrogate pair, or any
@@ -23,7 +24,7 @@ public static class TextDiff
     {
         var a = Tokens(template);
         var b = Tokens(document);
-        var edits = Myers.Diff(a, b, (x, y) => string.Equals(x.Text, y.Text, StringComparison.Ordinal));
+        var edits = Myers.Diff(a, b, (x, y) => string.Equals(x.Text, y.Text, StringComparison.Ordinal), Myers.Limit, out var complete);
         var hunks = new List<TextHunk>();
         int ai = 0, bi = 0, i = 0;
         while (i < edits.Count)
@@ -39,7 +40,7 @@ public static class TextDiff
             var templateSpan = Span(template, a, aFrom, ai);
             var documentSpan = Span(document, b, bFrom, bi);
             var kind = templateSpan.Text.Length == 0 ? "text_inserted" : documentSpan.Text.Length == 0 ? "text_deleted" : "text_modified";
-            hunks.Add(new TextHunk(kind, templateSpan, documentSpan));
+            hunks.Add(new TextHunk(kind, templateSpan, documentSpan, !complete));
         }
         return hunks;
     }

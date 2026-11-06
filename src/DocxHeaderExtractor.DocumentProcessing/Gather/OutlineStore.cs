@@ -7,8 +7,16 @@ using DocxHeaderExtractor.DocumentProcessing.Audit;
 
 namespace DocxHeaderExtractor.DocumentProcessing.Gather;
 
-/// <summary>One paragraph as the store keeps it: where it is and a hash of everything the mapping compares (no text).</summary>
-public sealed record StoredParagraph(string Location, int Ordinal, string Signature);
+/// <summary>
+/// One paragraph as the store keeps it: where it is and a hash of everything the mapping compares (no text). <see cref="Unverified"/> is true
+/// when part of what the signature should cover could not be read (an unresolved numbering definition): two equal signatures are then not
+/// evidence of an unchanged paragraph, and the mapping never pairs it.
+/// </summary>
+public sealed record StoredParagraph(string Location, int Ordinal, string Signature, bool Unverified = false)
+{
+    /// <summary>The same paragraph by signature, only when both sides were read in full.</summary>
+    public static bool Same(StoredParagraph a, StoredParagraph b) => !a.Unverified && !b.Unverified && a.Signature == b.Signature;
+}
 
 /// <summary>
 /// A stored outline version: the headings the pipeline gave for one exact file under one pipeline configuration, and the paragraph signatures of
@@ -20,7 +28,7 @@ public sealed record StoredOutline(string Version, string SourceSha256, string C
     IReadOnlyList<StoredParagraph> Paragraphs, IReadOnlyList<string> UnsupportedRegions, IReadOnlyList<HeadingRecord> Headings,
     int Revision = 1, string? PreviousSha256 = null, IReadOnlyList<StoredHeadingBinding>? HeadingBindings = null,
     PlacementAudit? Placement = null, string? EditId = null, string? EditedBy = null, DateTimeOffset? EditedAt = null,
-    string? PreviousOutlineHash = null, bool? SelectionComplete = null);
+    string? PreviousOutlineHash = null, bool? SelectionComplete = null, string? SignatureVersion = null);
 
 /// <summary>Private store evidence for an outline heading. Public HeadingRecord JSON deliberately omits these fields.</summary>
 public sealed record StoredHeadingBinding(int HeadingIndex, string? StableId, int PartCount, IReadOnlyList<HeadingSourcePart> Parts);
@@ -46,20 +54,31 @@ public sealed class OutlineStore(string root)
     public static string ConfigKey(params string[] parts) =>
         Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(Version + "\n" + string.Join("\n", parts))))[..16];
 
-    /// <summary>The signature the mapping compares: text, container, style, numbering, alignment, run formatting and cell facts.</summary>
+    /// <summary>
+    /// The signature the mapping compares: text, container, style, numbering, alignment, run formatting and cell facts. Numbering is the definition
+    /// the paragraph's level points to, not the numId, which Word renumbers on save, plus its list relation to the nearest earlier paragraph of
+    /// the same definition (same list, another instance, another abstract list; see NumberingKeys.Relate), so splitting or merging lists changes
+    /// the signature while a consistent renumbering does not. An unresolved definition keeps the raw numId and the paragraph is unverified.
+    /// </summary>
     public static string Signature(ParagraphFingerprint p)
     {
         var text = new StringBuilder()
             .Append(p.RawText).Append('\u001f').Append(p.Container).Append('\u001f').Append(p.StyleId).Append('\u001f')
-            .Append(p.NumId).Append('\u001f').Append(p.Ilvl).Append('\u001f').Append(p.Alignment).Append('\u001f')
+            .Append(p.NumberingResolved ? p.NumberingKey : "raw:" + p.NumId).Append('\u001f').Append(p.NumberingRelation).Append('\u001f').Append(p.Ilvl).Append('\u001f').Append(p.Alignment).Append('\u001f')
             .Append(p.Cell is { } c ? $"{c.GridSpan}|{c.VerticalMerge}|{c.HorizontalMerge}|{c.TableDepth}" : "");
         foreach (var r in p.Runs)
             text.Append('\u001e').Append($"{r.Start}|{r.End}|{r.Bold}|{r.Italic}|{r.Underline}|{r.FontAscii}|{r.FontSize}|{r.Color}");
         return Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(text.ToString())));
     }
 
+    /// <summary>
+    /// The version of <see cref="Signature"/>. 2: numbering by its resolved definition instead of the numId. Signatures of different versions are
+    /// never compared; an outline stored without a version is version 1.
+    /// </summary>
+    public const string SignatureVersion = "2";
+
     public static IReadOnlyList<StoredParagraph> Paragraphs(DocxVersion version) =>
-        version.Paragraphs.Select(p => new StoredParagraph(p.Location, p.Ordinal, Signature(p))).ToArray();
+        version.Paragraphs.Select(p => new StoredParagraph(p.Location, p.Ordinal, Signature(p), !p.NumberingResolved)).ToArray();
 
     string EntryPath(string sha, string key) => Path.Combine(root, sha[..Math.Min(16, sha.Length)], key + ".json");
     string EditRoot(string sha, string key) => Path.Combine(root, "edits", sha[..Math.Min(16, sha.Length)] + "-" + key);

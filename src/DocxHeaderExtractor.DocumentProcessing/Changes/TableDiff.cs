@@ -151,7 +151,9 @@ internal static class TableDiff
             deleted.Clear();
             inserted.Clear();
         }
-        foreach (var edit in Myers.Diff(s.Rows, u.Rows, (x, y) => x.Key == y.Key))
+        var rowEdits = Myers.Diff(s.Rows, u.Rows, (x, y) => x.Key == y.Key, Myers.Limit, out var rowsComplete);
+        if (!rowsComplete) context.Alignment.Incomplete = true;
+        foreach (var edit in rowEdits)
         {
             switch (edit.Kind)
             {

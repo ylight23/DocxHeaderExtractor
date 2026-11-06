@@ -21,11 +21,13 @@ public sealed record RunFormat(int Start, int End, bool? Bold, bool? Italic, str
 /// One paragraph of a DOCX file as the comparison reads it. <see cref="RawText"/> keeps tabs, line breaks, page breaks and non-breaking hyphens
 /// as their own characters ('\t', '\n', '\f', U+2011). <see cref="NormalizedKey"/> is only a matching key and never replaces the raw text.
 /// <see cref="Location"/> is the same path the heading parser uses (<see cref="ParagraphWalker"/>), so both readers agree on identity.
-/// <see cref="ParaId"/> is a signal, not an identity.
+/// <see cref="ParaId"/> is a signal, not an identity. <see cref="NumId"/> is the raw instance id, which Word renumbers on save;
+/// <see cref="NumberingKey"/> is the definition it points to (see <see cref="NumberingKeys"/>), null when there is no direct numbering or when
+/// <see cref="NumberingResolved"/> is false.
 /// </summary>
 public sealed record ParagraphFingerprint(int Ordinal, string Location, string Container, string? ParaId, string RawText, IReadOnlyList<int> LineBreakOffsets,
     string NormalizedKey, string KeyHash, string? NumId, int? Ilvl, string? StyleId, string? Alignment, IReadOnlyList<RunFormat> Runs,
-    TableCellFacts? Cell = null);
+    TableCellFacts? Cell = null, string? NumberingKey = null, bool NumberingResolved = true, string? NumberingRelation = null);
 
 /// <summary>
 /// The table cell a paragraph sits in, as declared: horizontal span (gridSpan), vertical merge (restart/continue), legacy horizontal merge,
@@ -65,11 +67,13 @@ public static class DocxVersionReader
         var body = main.Document?.Body ?? throw new InvalidDataException("DOCX_BODY_MISSING");
         var walked = ParagraphWalker.Enumerate(body, new ExtractionOptions()).ToArray();
         var styles = new StyleContext(main);
-        var paragraphs = walked.Select((item, ordinal) => Fingerprint(ordinal, item.StableId, item.Element, styles)).ToArray();
+        var numbering = new NumberingKeys(main);
+        var paragraphs = NumberingKeys.Relate(walked.Select((item, ordinal) => Fingerprint(ordinal, item.StableId, item.Element, styles, numbering)).ToArray(),
+            numbering);
         return new DocxVersion(sha, paragraphs, UnsupportedRegions(main, body));
     }
 
-    internal static ParagraphFingerprint Fingerprint(int ordinal, string location, Paragraph paragraph, StyleContext styles)
+    internal static ParagraphFingerprint Fingerprint(int ordinal, string location, Paragraph paragraph, StyleContext styles, NumberingKeys numberingKeys)
     {
         var runs = new List<RunFormat>();
         var lineBreaks = new List<int>();
@@ -88,6 +92,9 @@ public static class DocxVersionReader
         var properties = paragraph.ParagraphProperties;
         var numbering = properties?.NumberingProperties;
         var id = paragraph.GetAttributes().FirstOrDefault(a => a.LocalName == "paraId" && a.NamespaceUri == W14).Value;
+        var numId = numbering?.NumberingId?.Val?.Value.ToString();
+        var ilvl = numbering?.NumberingLevelReference?.Val?.Value;
+        var numberingKey = numberingKeys.Key(numId, ilvl, out var numberingResolved);
         return new ParagraphFingerprint(
             ordinal,
             location,
@@ -97,12 +104,14 @@ public static class DocxVersionReader
             lineBreaks,
             key,
             Hash(key),
-            numbering?.NumberingId?.Val?.Value.ToString(),
-            numbering?.NumberingLevelReference?.Val?.Value,
+            numId,
+            ilvl,
             properties?.ParagraphStyleId?.Val?.Value,
             properties?.Justification?.Val?.InnerText is { Length: > 0 } alignment ? alignment : null,
             runs,
-            CellFacts(paragraph));
+            CellFacts(paragraph),
+            numberingKey,
+            numberingResolved);
     }
 
     static TableCellFacts? CellFacts(Paragraph paragraph)

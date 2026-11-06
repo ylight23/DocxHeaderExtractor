@@ -90,7 +90,7 @@ public sealed class OutlineReuseTests
     {
         var version = DocxVersionReader.Read(path);
         var stored = new StoredOutline(OutlineStore.Version, version.FileSha256, "k", "bao-cao.docx", DateTimeOffset.UtcNow,
-            OutlineStore.Paragraphs(version), version.UnsupportedRegions, Headings);
+            OutlineStore.Paragraphs(version), version.UnsupportedRegions, Headings, SignatureVersion: OutlineStore.SignatureVersion);
         var root = Path.Combine(Path.GetTempPath(), "dhx-outline-" + Guid.NewGuid().ToString("N"));
         new OutlineStore(root).Store(stored);
         return (stored, root);
@@ -129,7 +129,7 @@ public sealed class OutlineReuseTests
     {
         static StoredParagraph Para(int n, string signature) => new($"body[1]/p[{n}]", n - 1, signature);
         var stored = new StoredOutline(OutlineStore.Version, "sha", "k", "f.docx", DateTimeOffset.UtcNow,
-            [Para(1, "a"), Para(2, "b"), Para(3, "c")], before.Split(','), [H(1, 1, "A"), H(3, 1, "C")]);
+            [Para(1, "a"), Para(2, "b"), Para(3, "c")], before.Split(','), [H(1, 1, "A"), H(3, 1, "C")], SignatureVersion: OutlineStore.SignatureVersion);
         var result = OutlineMap.Map(stored, [Para(1, "a"), Para(2, "b"), Para(3, "new"), Para(4, "c")], after.Split(','));
         Assert.Equal(status, result.Status);
         if (status == "MAPPED") Assert.Equal(["body[1]/p[1]", "body[1]/p[4]"], result.Headings.Select(h => h.StableId));

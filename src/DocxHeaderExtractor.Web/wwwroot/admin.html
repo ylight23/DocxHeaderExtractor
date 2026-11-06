@@ -675,6 +675,7 @@ function render(r) {
 
 // ---------------- outline review: each choice is saved at once, for the exact outline shown ----------------
 const KIND_LABEL = {
+  COMPARISON_INCOMPLETE: 'Hai bản khác nhau quá nhiều: chưa so được đầy đủ, cần xem toàn bộ',
   ADDED: 'Heading mới (văn bản không đổi)', REMOVED: 'Bị bỏ khỏi outline (văn bản không đổi)', TEXT: 'Đổi chữ heading', SPLIT: 'Tách heading (chưa chắc)',
   MERGED: 'Gộp heading (chưa chắc)', TEXT_FORMAT: 'Khác chữ hoa hoặc khoảng trắng', LEVEL: 'Đổi cấp', LEVEL_SHIFT: 'Nhóm heading lệch cấp', PARENT: 'Đổi mục cha', PARENT_UNRESOLVED: 'Mục cha chưa xác định',
   BOUNDARY: 'Đổi ranh giới heading–nội dung', BOUNDARY_UNRESOLVED: 'Ranh giới chưa xác minh', BINDING: 'Đổi nguồn của heading',

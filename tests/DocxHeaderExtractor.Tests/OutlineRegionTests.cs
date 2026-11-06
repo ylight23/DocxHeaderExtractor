@@ -17,7 +17,7 @@ public sealed class OutlineRegionTests
     static HeadingRecord H(int index, string text) => new() { Index = index, Level = 1, Text = text, StableId = $"body[1]/p[{index + 1}]" };
 
     static StoredOutline Stored(IEnumerable<string> signatures, params HeadingRecord[] headings) =>
-        new(OutlineStore.Version, "sha", "k", "f.docx", DateTimeOffset.UtcNow, Paras(signatures), [], headings);
+        new(OutlineStore.Version, "sha", "k", "f.docx", DateTimeOffset.UtcNow, Paras(signatures), [], headings, SignatureVersion: OutlineStore.SignatureVersion);
 
     static readonly HeadingRecord[] Headings = [H(3, "H2"), H(7, "H3")];
 

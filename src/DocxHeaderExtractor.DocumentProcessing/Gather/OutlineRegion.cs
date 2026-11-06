@@ -35,7 +35,9 @@ public static class OutlineRegion
             return Full("UNSUPPORTED_REGION:" + tracked, stored, current.Count);
         if (current.Count == 0) return Full("EMPTY_VERSION", stored, 0);
 
-        var edits = Myers.Diff(stored.Paragraphs, current, (a, b) => a.Signature == b.Signature);
+        if (stored.SignatureVersion != OutlineStore.SignatureVersion) return Full("SIGNATURE_VERSION_CHANGED", stored, current.Count);
+        var edits = Myers.Diff(stored.Paragraphs, current, StoredParagraph.Same, Myers.Limit, out var complete);
+        if (!complete) return Full("DIFF_LIMIT_EXCEEDED", stored, current.Count);
         var newAligned = new bool[current.Count];
         var oldToNew = new Dictionary<int, int>();
         var places = new SortedSet<int>();   // new positions where a change is: a changed paragraph, or where one was removed

@@ -33,7 +33,11 @@ public static class OutlineMap
         if (!stored.UnsupportedRegions.Order(StringComparer.Ordinal).SequenceEqual(currentUnsupportedRegions.Order(StringComparer.Ordinal)))
             return Run("UNSUPPORTED_REGIONS_CHANGED");
 
-        var edits = Myers.Diff(stored.Paragraphs, current, (a, b) => a.Signature == b.Signature);
+        // Signatures of another version (an outline stored by older code) cannot be compared with these.
+        if (stored.SignatureVersion != OutlineStore.SignatureVersion) return Run("SIGNATURE_VERSION_CHANGED");
+        var edits = Myers.Diff(stored.Paragraphs, current, StoredParagraph.Same, Myers.Limit, out var complete);
+        // Too many changes to align within the limit: nothing can be carried over.
+        if (!complete) return Run("DIFF_LIMIT_EXCEEDED");
         var oldToNew = edits.Where(e => e.Kind == EditKind.Equal).ToDictionary(e => e.OldIndex, e => e.NewIndex);
         var added = edits.Where(e => e.Kind == EditKind.Insert).Select(e => current[e.NewIndex].Location).ToArray();
         var removed = edits.Where(e => e.Kind == EditKind.Delete).Select(e => stored.Paragraphs[e.OldIndex].Location).ToArray();

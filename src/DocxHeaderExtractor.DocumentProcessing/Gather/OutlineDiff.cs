@@ -82,7 +82,9 @@ public static class OutlineDiff
     public static OutlineComparison Compare(StoredOutline old, StoredOutline next, IReadOnlySet<string>? approvedOld = null)
     {
         approvedOld ??= new HashSet<string>();
-        var edits = Myers.Diff(old.Paragraphs, next.Paragraphs, (a, b) => a.Signature == b.Signature);
+        var edits = Myers.Diff(old.Paragraphs, next.Paragraphs, StoredParagraph.Same, Myers.Limit, out var aligned);
+        // Outlines stored by different signature code cannot be aligned by signature: nothing can read as unchanged.
+        var complete = aligned && old.SignatureVersion == next.SignatureVersion;
         var oldToNew = new Dictionary<int, int>();
         var newToOld = new Dictionary<int, int>();
         var marks = new List<int>();   // new positions of changed or removed paragraphs
@@ -261,6 +263,9 @@ public static class OutlineDiff
                 newEvidence ? null : "outline mới không có source parts", null, null, null, null, false, false, true)
             { Details = pairs.Select(p => Item("BINDING_UNRESOLVED", p.O, p.N, p.Oi, p.Ni)).ToArray() });
         var changed = Math.Max(next.Paragraphs.Count - newToOld.Count, old.Paragraphs.Count - oldToNew.Count);
-        return new OutlineComparison(differences.OrderBy(d => d.NewLocation is { } l && newIndex.TryGetValue(l, out var i) ? i : int.MaxValue).ToList(), same, changed);
+        var ordered = differences.OrderBy(d => d.NewLocation is { } l && newIndex.TryGetValue(l, out var i) ? i : int.MaxValue).ToList();
+        // Beyond the diff limit the middle of the two files was not aligned: say so first, so no part reads as unchanged.
+        if (!complete) ordered.Insert(0, new OutlineDifference("COMPARISON_INCOMPLETE", null, null, null, null, null, null, null, null, false, false, true));
+        return new OutlineComparison(ordered, same, changed);
     }
 }

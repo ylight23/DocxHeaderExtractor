@@ -80,13 +80,27 @@ public static class DocxComparer
             template.Paragraphs.Select(p => p.KeyHash).ToHashSet(StringComparer.Ordinal),
             document.Paragraphs.Select(p => p.KeyHash).ToHashSet(StringComparer.Ordinal),
             changes, options, decisions);
+        // The similarity helpers report an incomplete token diff into this comparison, whichever step calls them.
+        var outer = CurrentAlignment.Value;
+        CurrentAlignment.Value = context.Alignment;
+        try { return CompareIn(template, document, options, context, changes); }
+        finally { CurrentAlignment.Value = outer; }
+    }
+
+    /// <summary>The alignment state of the comparison running in this async flow, if any.</summary>
+    static readonly AsyncLocal<AlignmentState?> CurrentAlignment = new();
+
+    static ComparisonResult CompareIn(DocxVersion template, DocxVersion document, ComparerOptions options, Context context, List<Change> changes)
+    {
 
         // Units: each body paragraph, and each top-level table as a whole (P1b). Without tables this is the paragraph alignment of P1.
         var a = TableDiff.Units(template.Paragraphs);
         var b = TableDiff.Units(document.Paragraphs);
         var deleted = new List<object>();
         var inserted = new List<object>();
-        foreach (var edit in Myers.Diff(a, b, TableDiff.SameUnit))
+        var aligned = Myers.Diff(a, b, TableDiff.SameUnit, Myers.Limit, out var complete);
+        if (!complete) context.Alignment.Incomplete = true;
+        foreach (var edit in aligned)
         {
             switch (edit.Kind)
             {
@@ -100,14 +114,25 @@ public static class DocxComparer
             }
         }
         Flush(deleted, inserted, context);
-        return new ComparisonResult(template.FileSha256, document.FileSha256, changes, template.UnsupportedRegions, document.UnsupportedRegions, Scope,
+        // An alignment that stopped at the diff limit: its unpaired blocks went through the pairing steps on partial evidence. Every change is then
+        // marked for review (not only the middle: a block pairing can reach any part), and the scope says the comparison is partial.
+        var incomplete = context.Alignment.Incomplete;
+        var reported = incomplete ? changes.Select(c => c with { Uncertain = true, Note = Join(c.Note, "alignment_incomplete") }).ToList() : changes;
+        return new ComparisonResult(template.FileSha256, document.FileSha256, reported, template.UnsupportedRegions, document.UnsupportedRegions,
+            incomplete ? Scope + "; alignment_incomplete_diff_limit_exceeded" : Scope,
             options.GroupRule.ToString(), options.FlagRejectedGroups)
         { Reorders = options.DetectReorders ? ReorderDetector.Analyze(template, document) : null };
     }
 
     /// <summary>What one comparison carries through its steps: both documents' matching keys, the change list, the options and the decision log.</summary>
     internal sealed record Context(HashSet<string> TemplateKeys, HashSet<string> DocumentKeys, List<Change> Changes, ComparerOptions Options,
-        List<GroupDecision>? Decisions);
+        List<GroupDecision>? Decisions)
+    {
+        /// <summary>Set when any alignment of this comparison stopped at the diff limit.</summary>
+        public AlignmentState Alignment { get; } = new();
+    }
+
+    internal sealed class AlignmentState { public bool Incomplete; }
 
     /// <summary>One unaligned block of units: its paragraphs are aligned by <see cref="Block"/>, its tables by <see cref="TableDiff.Block"/>.</summary>
     static void Flush(List<object> deleted, List<object> inserted, Context context)
@@ -124,7 +149,9 @@ public static class DocxComparer
     {
         var deleted = new List<ParagraphFingerprint>();
         var inserted = new List<ParagraphFingerprint>();
-        foreach (var edit in Myers.Diff(a, b, (x, y) => x.KeyHash == y.KeyHash))
+        var edits = Myers.Diff(a, b, (x, y) => x.KeyHash == y.KeyHash, Myers.Limit, out var complete);
+        if (!complete) context.Alignment.Incomplete = true;
+        foreach (var edit in edits)
         {
             switch (edit.Kind)
             {
@@ -325,7 +352,7 @@ public static class DocxComparer
         }
         var note = Join(template.KeyHash == document.KeyHash ? "whitespace_or_unicode_only" : null, flagNote);
         foreach (var hunk in TextDiff.Compare(template.RawText, document.RawText))
-            changes.Add(new Change(hunk.Kind, status, uncertain, note,
+            changes.Add(new Change(hunk.Kind, status, uncertain || hunk.Coarse, hunk.Coarse ? Join(note, "text_diff_incomplete") : note,
                 new ChangeSide(template.Location, template.Ordinal, template.RawText, hunk.Template),
                 new ChangeSide(document.Location, document.Ordinal, document.RawText, hunk.Document)));
     }
@@ -348,7 +375,7 @@ public static class DocxComparer
         {
             var (templateSide, templateCrosses) = templateJoint.Map(hunk.Template);
             var (documentSide, documentCrosses) = documentJoint.Map(hunk.Document);
-            var note = templateCrosses || documentCrosses ? label + ";spans_paragraph_boundary" : label;
+            var note = (templateCrosses || documentCrosses ? label + ";spans_paragraph_boundary" : label) + (hunk.Coarse ? ";text_diff_incomplete" : "");
             changes.Add(new Change(hunk.Kind, "paired_by_similarity", true, note, templateSide, documentSide,
                 TemplateGroup: templateGroup, DocumentGroup: documentGroup));
         }
@@ -387,12 +414,42 @@ public static class DocxComparer
 
     internal static string? Join(string? first, string? second) => first is null ? second : second is null ? first : first + ";" + second;
 
-    /// <summary>Dice similarity of two token sequences, 0 to 1, with the common tokens counted in order.</summary>
-    internal static double Dice(string[] x, string[] y) => x.Length + y.Length == 0 ? 1 : 2.0 * Common(x, y) / (x.Length + y.Length);
+    /// <summary>
+    /// Dice similarity of two token sequences, 0 to 1, with the common tokens counted in order. When the token diff stops at its limit the value
+    /// is 0 (no evidence for pairing) and the comparison running in this flow is marked incomplete: "not compared in full" is never reported as
+    /// "compared and different".
+    /// </summary>
+    internal static double Dice(string[] x, string[] y)
+    {
+        var score = Dice(x, y, out var complete);
+        if (!complete && CurrentAlignment.Value is { } state) state.Incomplete = true;
+        return score;
+    }
 
-    internal static int Common(string[] x, string[] y) =>
-        Myers.Diff(x, y, (p, q) => string.Equals(p, q, StringComparison.Ordinal)).Count(e => e.Kind == EditKind.Equal);
+    /// <summary>
+    /// Tokens in common, in order. Beyond the diff limit it is 0 and the comparison running in this flow is marked incomplete, as for
+    /// <see cref="Dice(string[], string[])"/>.
+    /// </summary>
+    internal static int Common(string[] x, string[] y)
+    {
+        var edits = Myers.Diff(x, y, (p, q) => string.Equals(p, q, StringComparison.Ordinal), Myers.Limit, out var complete);
+        if (complete) return edits.Count(e => e.Kind == EditKind.Equal);
+        if (CurrentAlignment.Value is { } state) state.Incomplete = true;
+        return 0;
+    }
+
+    /// <summary>Dice similarity with its completeness, for callers outside a comparison that must act on it themselves.</summary>
+    internal static double Dice(string[] x, string[] y, out bool complete)
+    {
+        complete = true;
+        if (x.Length + y.Length == 0) return 1;
+        var edits = Myers.Diff(x, y, (p, q) => string.Equals(p, q, StringComparison.Ordinal), Myers.Limit, out complete);
+        return complete ? 2.0 * edits.Count(e => e.Kind == EditKind.Equal) / (x.Length + y.Length) : 0;
+    }
 
     /// <summary>Dice similarity of the non-whitespace tokens (as <see cref="TextDiff"/> cuts them) of two matching keys, 0 to 1.</summary>
     internal static double Similarity(string a, string b) => Dice(TextDiff.WordTokens(a), TextDiff.WordTokens(b));
+
+    /// <summary><see cref="Similarity(string, string)"/> with its completeness.</summary>
+    internal static double Similarity(string a, string b, out bool complete) => Dice(TextDiff.WordTokens(a), TextDiff.WordTokens(b), out complete);
 }

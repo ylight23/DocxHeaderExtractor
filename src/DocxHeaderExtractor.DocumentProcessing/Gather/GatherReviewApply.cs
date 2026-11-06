@@ -59,13 +59,33 @@ public static class GatherReviewApply
                 continue;
             }
             var tokens = Changes.TextDiff.WordTokens(text.ToLowerInvariant());
-            var near = lines.FirstOrDefault(line => Changes.DocxComparer.Dice(tokens, Changes.TextDiff.WordTokens(line.ToLowerInvariant())) >= NearTargetThreshold);
-            kept.Add(near is null ? fact : fact with { Flags = [.. fact.Flags, "POSSIBLE_CONFLICT: " + Short(near)] });
+            var (near, checkedAll) = NearLine(tokens, lines);
+            var flagged = near is null ? fact : fact with { Flags = [.. fact.Flags, "POSSIBLE_CONFLICT: " + Short(near)] };
+            kept.Add(checkedAll ? flagged : flagged with { Flags = [.. flagged.Flags, UncheckedFlag] });
         }
         return (section with { Run = section.Run with { Facts = kept }, Conflicts = GatherDocument.Conflicts(kept) }, excluded);
     }
 
     static string Short(string line) => line.Length > 80 ? line[..80] + "…" : line;
+
+    /// <summary>A fact whose comparison with some target line stopped at the diff limit: a conflict with that line is not ruled out.</summary>
+    public const string UncheckedFlag = "CONFLICT_UNCHECKED: chưa so được đầy đủ với nội dung đích (vượt giới hạn so sánh)";
+
+    /// <summary>
+    /// The first target line near the fact's tokens, and whether every comparison completed. A comparison that stopped is not read as "not
+    /// near": the caller flags the fact for review.
+    /// </summary>
+    internal static (string? Near, bool CheckedAll) NearLine(string[] tokens, IEnumerable<string> lines)
+    {
+        var checkedAll = true;
+        foreach (var line in lines)
+        {
+            var score = Changes.DocxComparer.Dice(tokens, Changes.TextDiff.WordTokens(line.ToLowerInvariant()), out var complete);
+            if (!complete) { checkedAll = false; continue; }
+            if (score >= NearTargetThreshold) return (line, checkedAll);
+        }
+        return (null, checkedAll);
+    }
 
     static string Compact(string text) => new(text.Where(c => !char.IsWhiteSpace(c)).ToArray());
 
