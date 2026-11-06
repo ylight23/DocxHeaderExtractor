@@ -129,12 +129,13 @@ pre#log { white-space: pre-wrap; font-size: 14px; background: var(--soft); borde
   </div>
 
   <details class="options">
-    <summary>Tùy chọn</summary>
+    <summary>Công cụ nội bộ (không cần cho người dùng)</summary>
     <div class="checks">
+      <label><input type="checkbox" id="showInternal"> Hiện các thẻ nội bộ (duyệt outline, thay đổi giữa các lượt, heading đã trích, log)</label>
       <label><input type="checkbox" id="classify" checked> Model phân loại các mục không chắc</label>
       <label><input type="checkbox" id="noLlm"> Không gọi mô hình (cần đủ outline JSON)</label>
       <label><input type="checkbox" id="docxReuseSelection"> Dùng lại SELECT/GROUP của file Word không đổi (PLACE vẫn chạy lại)</label>
-      <label><input type="checkbox" id="outlineCache"> Dùng outline đã lưu khi file không đổi; file sửa sẽ trích lại</label>
+      <label><input type="checkbox" id="outlineCache" checked> Lưu và dùng outline để duyệt; file sửa sẽ trích lại</label>
       <label>Mã lịch sử tổng hợp (không bắt buộc): <input id="historyKey" type="text" maxlength="100" placeholder="Ví dụ: báo cáo phòng CTXH"></label>
       <label>Outline JSON có sẵn (không bắt buộc): <input id="outlines" type="file" accept=".json" multiple></label>
     </div>
@@ -174,17 +175,17 @@ pre#log { white-space: pre-wrap; font-size: 14px; background: var(--soft); borde
 
   <div class="lower">
     <div class="lower-tabs">
-      <button class="tab active" data-tab="uncertain">Phần không chắc <span id="uncertainCount"></span></button>
-      <button class="tab" data-tab="review">Duyệt outline</button>
+      <button class="tab active" data-tab="uncertain">Chưa rõ vị trí <span id="uncertainCount"></span></button>
       <button class="tab" data-tab="summary">Tổng quan</button>
-      <button class="tab" data-tab="impact">Thay đổi giữa các lượt</button>
-      <button class="tab" data-tab="extract">Heading đã trích</button>
-      <button class="tab" data-tab="log">Log</button>
+      <button class="tab internal hidden" data-tab="review">Duyệt outline (nội bộ)</button>
+      <button class="tab internal hidden" data-tab="impact">Thay đổi giữa các lượt (nội bộ)</button>
+      <button class="tab internal hidden" data-tab="extract">Heading đã trích (nội bộ)</button>
+      <button class="tab internal hidden" data-tab="log">Log (nội bộ)</button>
     </div>
     <div class="pane" id="paneUncertain">
       <section class="panel">
-        <h2>Phần không chắc — model phân loại <span class="chip" id="modelChip"></span></h2>
-        <p class="note">Mục không chắc không bao giờ được tự ghi. Chọn quyết định cho từng mục rồi bấm TỔNG HỢP để tạo bản tổng hợp tiếp theo.</p>
+        <h2>Nội dung chưa rõ vị trí <span class="chip" id="modelChip"></span></h2>
+        <p class="note">Nội dung chưa rõ vị trí không bao giờ được tự ghi vào thân văn bản: trong file xuất, nó nằm ở phụ lục cuối văn bản. Nếu muốn, chọn vị trí cho từng mục rồi bấm TỔNG HỢP để tạo bản mới; mục chưa chọn vẫn ở phụ lục.</p>
         <div class="toolbar hidden" id="decideBar">
           <button class="linkbtn" id="useModel">Điền theo đề xuất của model</button>
           <button class="linkbtn" id="clearDecisions">Xóa các lựa chọn</button>
@@ -222,19 +223,23 @@ pre#log { white-space: pre-wrap; font-size: 14px; background: var(--soft); borde
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const norm = s => String(s ?? '').replace(/\s+/g, ' ').trim().toLowerCase();
+// Short labels in plain words; the full plain reason comes from the server (plainReason). Codes are never shown.
 const KIND = {
-  NEW_HEADING_REVIEW: ['Heading mới cần xác minh', 'Heading do nguồn đề xuất; chỉ ghi sau khi người duyệt lựa chọn.'],
-  NEAR_NAME: ['Tên gần giống', 'Văn bản đích không có heading này nhưng có heading tên gần giống.'],
-  PATH_DIFFERS: ['Khác mục cha', 'Tên heading giống nhưng đường dẫn mục cha khác; cần xác nhận trước khi ghi.'],
-  AMBIGUOUS: ['Nhiều chỗ khớp', 'Nhiều heading trong đích cùng chuỗi hoặc cùng tên.'],
-  PARENT_UNCERTAIN: ['Mục cha không chắc', 'Heading cha của mục này đang nằm trong nhóm không chắc.'],
-  UNCONFIRMED_HIERARCHY: ['Chưa xác nhận cấp', 'Cần duyệt outline và chạy lại trước khi chọn vị trí ghi.'],
-  MOVED: ['Có thể đã chuyển chỗ', 'Heading cùng tên nằm ở vị trí khác trong văn bản đích.'],
+  NEW_HEADING_REVIEW: 'Mục chưa có trong văn bản đích',
+  NEAR_NAME: 'Tên mục hơi khác',
+  PATH_DIFFERS: 'Nằm dưới mục lớn khác',
+  AMBIGUOUS: 'Nhiều mục cùng tên',
+  PARENT_UNCERTAIN: 'Chưa rõ mục lớn chứa nó',
+  UNCONFIRMED_HIERARCHY: 'Chưa đọc được cấu trúc nguồn',
+  SOURCE_OUTLINE_REVIEW_REQUIRED: 'Chưa đọc được cấu trúc nguồn',
+  TARGET_OUTLINE_INCOMPLETE: 'Chưa kiểm tra hết văn bản đích',
+  MOVED: 'Có thể đã chuyển chỗ',
 };
-const DECISION = { MERGE: ['Gộp vào', 'ok'], NEW: ['Tạo heading mới', 'acc'], UNSURE: ['Không chắc', 'warn'] };
+const DECISION = { MERGE: ['Đặt vào', 'ok'], NEW: ['Tạo mục mới', 'acc'], UNSURE: ['Không chắc', 'warn'] };
 const REASON = {
   ALREADY_IN_TARGET_EXACT: 'Đích đã có y hệt', ALREADY_FROM_OTHER_SOURCE: 'Đã lấy từ nguồn khác', BEFORE_FIRST_HEADING: 'Trước heading đầu tiên',
   DOCUMENT_END_TABLE: 'Bảng kết thúc văn bản (ký tên)', DOCUMENT_TITLE: 'Trong phần tiêu đề văn bản', UNPLACED: 'Không xếp được',
+  FORM_HEADER: 'Đoạn đầu trùng hoàn toàn với văn bản đích', FORM_HEADER_DIGITS: 'Đoạn đầu chỉ khác văn bản đích ở chữ số (ở phụ lục, cần xem số)', TABLE_NOT_GATHERED: 'Nội dung trong bảng — không xử lý bảng',
 };
 
 // ---------------- state ----------------
@@ -261,16 +266,16 @@ function updateMain() {
   btn.textContent = '✦ TỔNG HỢP';
   btn.disabled = !ready;
   const n = Object.keys(choices).length;
-  $('stHint').textContent = run && runKey === filesKey() && run.targetReviewRequired
-    ? (run.documents?.find(d => d.role === 'target')?.outlineReview
-      ? 'Cần duyệt đủ outline đích, rồi bấm TỔNG HỢP để ghép lại trước khi xuất.'
-      : 'Chưa có outline đích có thể duyệt: bật lưu outline và trích lại; outline JSON tải lên chưa được xác minh.')
-    : run && runKey === filesKey() && n ? `Bấm TỔNG HỢP để ghi bản mới theo ${n} quyết định` : '';
+  $('stHint').textContent = run && runKey === filesKey() && n ? `Bấm TỔNG HỢP để ghi bản mới theo ${n} lựa chọn` : '';
 }
 $('run').addEventListener('click', async () => {
   if (controller) { controller.abort(); return; }
-  if (run && !run.targetReviewRequired && runKey === filesKey() && Object.keys(choices).length) await applyDecisions();
+  if (run && runKey === filesKey() && Object.keys(choices).length) await applyDecisions();
   else await gather();
+});
+$('showInternal').addEventListener('change', () => {
+  document.querySelectorAll('.tab.internal').forEach(t => t.classList.toggle('hidden', !$('showInternal').checked));
+  if (!$('showInternal').checked) showTab('uncertain');
 });
 
 function setState(text) { $('stState').textContent = 'Trạng thái: ' + text; }
@@ -329,68 +334,9 @@ async function handle(evt, key, targetAtStart) {
     runKey = key;
     versions = [];
     render(evt);
-    if (evt.download) await addVersion(evt.download, 'Tổng hợp theo chuỗi heading');
-    else if (evt.demoDownload) await addVersion(evt.demoDownload, 'DEMO CHƯA DUYỆT — vị trí và nội dung cần xác minh', true);
-    else await showDraftPreview(evt, targetAtStart);
-    setState(evt.targetReviewRequired ? 'Xem trước — cần duyệt đủ outline đích rồi tổng hợp lại' : 'Đã tổng hợp');
+    await addVersion(evt.download, 'Tổng hợp tự động; nội dung chưa rõ vị trí nằm ở phụ lục');
+    setState(evt.uncertain.length ? `Đã tổng hợp · ${evt.uncertain.length} mục chưa rõ vị trí (ở phụ lục)` : 'Đã tổng hợp');
   }
-}
-
-// A visual plan, not a DOCX: an unreviewed outline cannot establish safe insertion points.
-// Keep the original document intact and show the proposed sections separately from it.
-async function showDraftPreview(result, targetAtStart) {
-  current = -1;
-  $('rightTabs').innerHTML = '';
-  $('stVersions').textContent = '0';
-  $('current').textContent = 'Xem trước — chưa tạo file';
-  $('rightName').textContent = 'BẢN XEM TRƯỚC — chưa duyệt outline, chưa ghi vào Word';
-  const viewer = $('rightViewer');
-  await renderDocx(targetAtStart, viewer);
-  const panel = document.createElement('section');
-  panel.className = 'draft-preview';
-  const heading = document.createElement('h3');
-  heading.textContent = 'Nội dung đề xuất tổng hợp — cần xác minh vị trí';
-  panel.appendChild(heading);
-  const warning = document.createElement('p');
-  warning.className = 'note draft-warning';
-  warning.textContent = `Các đoạn dưới đây chỉ là đề xuất, chưa được chèn vào văn bản bên dưới. Vị trí và outline đích chưa được duyệt; ${result.uncertain.length} mục không chắc cần xác minh. Chưa có file tải xuống.`;
-  panel.appendChild(warning);
-  const sections = [
-    ...result.merged.map(s => ({ ...s, label: 'Dự kiến gộp vào mục', style: 'merged' })),
-    ...result.added.map(s => ({ ...s, label: 'Dự kiến tạo mục mới', style: 'new' })),
-    ...result.uncertain.map(s => ({ heading: s.sourceHeading, facts: s.facts, reason: s.reason, label: 'Chưa chắc — cần xác minh', style: 'uncertain' })),
-  ];
-  if (!sections.length) {
-    const empty = document.createElement('p');
-    empty.textContent = 'Chưa có nội dung được đề xuất hoặc giữ lại để xác minh.';
-    panel.appendChild(empty);
-  }
-  for (const section of sections) {
-    const card = document.createElement('div');
-    card.className = 'draft-section ' + section.style;
-    const title = document.createElement('h4');
-    title.textContent = `${section.label}: ${section.heading}${section.parent ? ' · dưới ' + section.parent : ''}`;
-    card.appendChild(title);
-    if (section.reason) {
-      const reason = document.createElement('p');
-      reason.textContent = section.reason;
-      card.appendChild(reason);
-    }
-    const list = document.createElement('ul');
-    for (const fact of section.facts) {
-      const item = document.createElement('li');
-      item.className = 'draft-fact' + (fact.flags?.length || section.style === 'uncertain' ? ' flagged' : '');
-      item.textContent = fact.text;
-      const source = document.createElement('span');
-      source.className = 'draft-source';
-      source.textContent = `${fact.sources?.length ? 'Nguồn: ' + fact.sources.join('; ') : 'Chưa có nguồn trích'}${fact.flags?.length ? ' · Cần xem: ' + fact.flags.join(', ') : ''}`;
-      item.appendChild(source);
-      list.appendChild(item);
-    }
-    card.appendChild(list);
-    panel.appendChild(card);
-  }
-  viewer.prepend(panel);
 }
 
 /** The summary download link works once: fetch it once and keep the file in the page for viewing and saving. */
@@ -425,7 +371,7 @@ async function applyDecisions() {
       const extra = o.alreadyThere.length ? ` · bỏ ${o.alreadyThere.length} đoạn heading đã có y hệt` : '';
       return `<li>${head} → <b>${label[o.decision] || esc(o.decision)}</b>${o.heading && o.decision === 'MERGE' ? ' “' + esc(o.heading) + '”' : ''}: ghi ${o.written} đoạn${extra}</li>`;
     });
-    if (body.undecided.length) lines.push(`<li>Chưa quyết (không ghi): ${body.undecided.map(i => esc(run.uncertain[i]?.sourceHeading)).join('; ')}</li>`);
+    if (body.undecided.length) lines.push(`<li>Chưa chọn (nằm ở phụ lục): ${body.undecided.map(i => esc(run.uncertain[i]?.sourceHeading)).join('; ')}</li>`);
     if (body.skipped.length) lines.push(...body.skipped.map(x => `<li><span class="chip bad">không ghi được</span> ${esc(x)}</li>`));
     $('applyResult').innerHTML = `<div class="verdict"><b>Bản tổng hợp mới theo quyết định.</b><ul>${lines.join('')}</ul>
       <p class="note">Mỗi đoạn ghi theo quyết định mang cờ USER_DECISION. Có thể đổi lựa chọn và bấm TỔNG HỢP lại để tạo bản tiếp theo.</p></div>`;
@@ -620,7 +566,7 @@ function setChoice(idx, decision, candidate) {
 }
 function countChoices() {
   if (!run) return;
-  $('decideCount').textContent = `Đã quyết ${Object.keys(choices).length}/${run.uncertain.length} mục. Mục chưa quyết không được ghi vào file.`;
+  $('decideCount').textContent = `Đã chọn ${Object.keys(choices).length}/${run.uncertain.length} mục. Mục chưa chọn nằm ở phụ lục của file xuất.`;
   updateMain();
 }
 $('useModel').addEventListener('click', () => run?.uncertain.forEach((u, idx) => {
@@ -677,9 +623,9 @@ function render(r) {
   $('modelChip').className = 'chip ' + (r.modelClassified ? 'acc' : '');
   $('applyResult').classList.add('hidden');
   $('decideBar').classList.toggle('hidden', !r.uncertain.length);
-  $('useModel').disabled = !r.modelClassified || r.targetReviewRequired;
+  $('useModel').disabled = !r.modelClassified;
   $('uncertainList').innerHTML = r.uncertain.length ? r.uncertain.map((u, idx) => {
-    const [kindLabel, kindHelp] = KIND[u.kind] || [u.kind, ''];
+    const kindLabel = KIND[u.kind] || 'Chưa rõ vị trí', kindHelp = u.plainReason || '';
     const v = u.verdict;
     let verdict = '<div class="verdict"><b>Model:</b> chưa phân loại</div>';
     if (v) {
@@ -687,26 +633,27 @@ function render(r) {
       const target = v.decision === 'MERGE' && u.candidates[v.candidate] ? ` “${esc(u.candidates[v.candidate].heading)}”` : '';
       verdict = `<div class="verdict"><b>Model đề xuất:</b> <span class="chip ${tone}">${esc(label)}</span>${target}<div class="meta">${esc(v.reason)}</div></div>`;
     }
-    const candidates = u.candidates.map((c, i) => `<details${i === 0 ? ' open' : ''}><summary>${i}. ${esc(c.heading)} <span class="src">${esc(c.location)}</span></summary>` +
+    const same = c => c.sameFacts ? ` <span class="chip warn" title="Bằng chứng để xem, không phải quyết định: chưa xác nhận đây là mục tương ứng.">${c.sameFacts}/${u.facts.length} đoạn trùng chữ với nội dung mục này (bỏ qua khác biệt khoảng trắng); vị trí ghép chưa được xác nhận</span>` : '';
+    const candidates = u.candidates.map((c, i) => `<details${i === 0 ? ' open' : ''}><summary>${i}. ${esc(c.heading)} <span class="src">${esc(c.location)}</span>${same(c)}</summary>` +
       (c.content.length ? '<ul>' + c.content.map(x => `<li>${esc(x)}</li>`).join('') + '</ul>' : '<p class="note">(heading chưa có nội dung trực tiếp)</p>') + '</details>').join('');
-    const locked = r.targetReviewRequired ? ' disabled' : '';
-    const cannotPlace = r.targetReviewRequired || u.kind === 'UNCONFIRMED_HIERARCHY';
+    const locked = '';
+    const cannotPlace = u.kind === 'UNCONFIRMED_HIERARCHY' || u.kind === 'SOURCE_OUTLINE_REVIEW_REQUIRED' || u.kind === 'TARGET_OUTLINE_INCOMPLETE';
     const noCandidate = cannotPlace || !u.candidates.length ? ' disabled' : '';
     return `<div class="card" data-card="${idx}">
       <div class="head"><span class="chip warn" title="${esc(kindHelp)}">${esc(kindLabel)}</span><span class="title">${esc(u.sourceHeading)}</span><span class="src">${esc(u.source)}</span></div>
-      <div class="meta">${u.sourceParent ? 'Trong mục nguồn: ' + esc(u.sourceParent) + ' · ' : ''}${esc(u.reason)}</div>
+      <div class="meta">${u.sourceParent ? 'Trong mục nguồn: ' + esc(u.sourceParent) + ' · ' : ''}${esc(u.plainReason || '')}</div>
       ${verdict}
       <div class="decide" role="radiogroup" aria-label="Quyết định của người duyệt">
-        <b>Quyết định:</b>
+        <b>Lựa chọn:</b>
         <label><input type="radio" name="d${idx}" value="" checked${locked}> Chưa quyết</label>
-        <label><input type="radio" name="d${idx}" value="MERGE"${noCandidate}> Gộp vào</label>
+        <label><input type="radio" name="d${idx}" value="MERGE"${noCandidate}> Đặt vào mục</label>
         <select data-candidate="${idx}"${noCandidate}>${u.candidates.map((c, i) => `<option value="${i}">${i}. ${esc(c.heading)}</option>`).join('')}</select>
-        <label><input type="radio" name="d${idx}" value="NEW"${cannotPlace ? ' disabled' : ''}> Tạo heading mới${u.newHeadingParent ? ' dưới “' + esc(u.newHeadingParent) + '”' : ''}</label>
-        <label><input type="radio" name="d${idx}" value="SKIP"${locked}> Không thêm</label>
+        <label><input type="radio" name="d${idx}" value="NEW"${cannotPlace ? ' disabled' : ''}> Tạo mục mới${u.newHeadingParent ? ' dưới “' + esc(u.newHeadingParent) + '”' : ''}</label>
+        <label><input type="radio" name="d${idx}" value="SKIP"${locked}> Bỏ qua (vẫn ghi ở phụ lục)</label>
       </div>
       <div class="cols">
-        <div class="box"><h4>Nội dung nguồn đang giữ lại (${u.facts.length})</h4>${facts(u.facts)}</div>
-        <div class="box"><h4>Heading đích có thể thuộc về</h4>${candidates || '<p class="note">(không có)</p>'}</div>
+        <div class="box"><h4>Nội dung chưa rõ vị trí (${u.facts.length} đoạn)</h4>${facts(u.facts)}</div>
+        <div class="box"><h4>Mục trong văn bản đích có thể phù hợp</h4>${candidates || '<p class="note">(không có)</p>'}</div>
       </div>
     </div>`;
   }).join('') : '<p class="note">Không có mục nào không chắc.</p>';
@@ -745,6 +692,11 @@ function renderReview(documents) {
     const pe = r.placementEvidence;
     const placementRows = pe?.decisions?.map(p => `<tr><td>${esc(p.sourceId)} (${esc(p.alias)})</td><td>${esc(p.proposedParentAlias ?? 'không có đề xuất')}</td><td>${esc(p.resolution ?? 'chưa rõ')}</td><td>${esc(p.resolutionBasis ?? 'không có bằng chứng')}</td></tr>`).join('') ?? '';
     const repairStatus = !pe ? '' : pe.chainRepair == null ? 'Repair chuỗi cha chưa bật hoặc không có dữ liệu' : `Repair chuỗi cha đã bật · ${pe.repairCount ?? 0} lượt gọi`;
+    const parentEditor = (r.headings ?? []).map((h, i) => {
+      const options = (r.headings ?? []).slice(0, i).filter(p => p.stableId && p.level != null)
+        .map(p => `<option value="${esc(p.stableId)}">${esc(p.text)}</option>`).join('');
+      return h.stableId && h.level != null ? `<tr><td>${esc(h.text)} <span class="note">${esc(h.stableId)}</span></td><td><select id="parent_${di}_${i}"><option value="">Chọn mục cha mới…</option><option value="__ROOT__">Đầu văn bản</option>${options}</select> <button type="button" data-parent-doc="${di}" data-parent-index="${i}">Sửa mục cha</button></td></tr>` : '';
+    }).join('');
     const placement = pe ? `<details><summary>Bằng chứng PLACE · ${esc(pe.status)} · ${esc(repairStatus)}</summary><table><tr><th>Nguồn</th><th>Parent được đề xuất</th><th>Kết quả</th><th>Cơ sở</th></tr>${placementRows}</table><p class="note">Audit sau xử lý không lưu nguyên packet hoặc response. Repair chuỗi cha chỉ kiểm tra quan hệ bị đứt hoặc không hợp lệ; không xác nhận đúng ngữ nghĩa.</p></details>` : '<p class="note">Không có bằng chứng PLACE được lưu cho phiên bản này.</p>';
     const rows = diffs.map((x, i) => {
       const loc = x.newLocation;
@@ -775,6 +727,7 @@ function renderReview(documents) {
     return `<details open><summary><b>${esc(d.file)}</b> · bản ${r.revision}${r.previousRevision ? ' so với bản ' + r.previousRevision : ' (chưa có bản trước)'} · trạng thái <b id="rvState${di}">${esc(r.state)}</b>
         · ${diffs.length} khác biệt${r.sameHeadings != null ? ', ' + r.sameHeadings + ' heading giống' : ''} <span class="note" id="rvResult${di}"></span></summary>
       ${placement}
+      <details><summary>Sửa mục cha của heading</summary><p class="note">Chọn cha mới và lưu tạo phiên bản chưa duyệt. Sau đó chạy lại tổng hợp và duyệt outline mới.</p><table><tr><th>Heading</th><th>Cha mới</th></tr>${parentEditor}</table></details>
       ${diffs.length ? `<table><tr><th>Loại</th><th>Bản trước</th><th>Bản hiện tại</th><th>Kết luận (lưu ngay)</th></tr>${rows}</table>` : '<p class="note">Không có khác biệt với bản trước.</p>'}
       <p><label><input type="checkbox" data-all="${di}"> Mọi heading của outline hiện tại là đúng (${r.headings.length} heading)</label><br>
       <label><input type="checkbox" data-complete="${di}"> Outline hiện tại đủ heading</label></p></details>`;
@@ -789,6 +742,21 @@ function renderReview(documents) {
     saveReview(+x.dataset.all, r.headings.map(h => ({ location: h.stableId, kind: 'HEADING' })), false, x);
   }));
   $('reviewList').querySelectorAll('[data-complete]').forEach(x => x.addEventListener('change', () => { if (x.checked) saveReview(+x.dataset.complete, [], true, x); }));
+  $('reviewList').querySelectorAll('[data-parent-doc]').forEach(x => x.addEventListener('click', async () => {
+    const di = +x.dataset.parentDoc, i = +x.dataset.parentIndex, r = reviewDocs[di].outlineReview;
+    const parent = $(`parent_${di}_${i}`).value;
+    if (!parent) { $('rvResult' + di).textContent = '· Hãy chọn mục cha mới.'; return; }
+    const reviewer = $('reviewer').value.trim();
+    if (!reviewer) { $('rvResult' + di).textContent = '· Cần nhập tên người duyệt trước.'; return; }
+    const body = { sourceSha256: r.sourceSha256, configKey: r.configKey, outlineSha256: r.outlineSha256,
+      location: r.headings[i].stableId, parentLocation: parent === '__ROOT__' ? null : parent, reviewer };
+    x.disabled = true;
+    const res = await fetch('/api/admin/outline/parent', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const out = await res.json().catch(() => ({}));
+    $('rvResult' + di).textContent = res.ok ? '· Đã tạo phiên bản chưa duyệt; chạy lại tổng hợp.' : '· Không sửa được: ' + (out.message ?? res.status);
+    if (res.ok) { $('rvState' + di).textContent = 'UNREVIEWED'; $('reviewList').querySelectorAll('input,button,select').forEach(e => e.disabled = true); }
+    else x.disabled = false;
+  }));
 }
 async function saveReview(di, items, complete, input) {
   const r = reviewDocs[di].outlineReview;

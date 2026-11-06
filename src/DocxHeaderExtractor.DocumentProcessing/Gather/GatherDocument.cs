@@ -3,7 +3,13 @@ using DocxHeaderExtractor.DocumentProcessing.Output;
 namespace DocxHeaderExtractor.DocumentProcessing.Gather;
 
 /// <summary>A source document of a gathering run: its name (used in the unit ids), its path, and its pipeline outline when there is one.</summary>
-public sealed record GatherSourceFile(string Name, string Path, IReadOnlyList<HeadingRecord>? Outline);
+public sealed record GatherSourceFile(string Name, string Path, IReadOnlyList<HeadingRecord>? Outline)
+{
+    /// <summary>The caller has not confirmed this exact source outline; retain its contents for review instead of matching.</summary>
+    public bool OutlineReviewRequired { get; init; }
+    /// <summary>False when extraction did not decide every source unit; that source must not be placed automatically.</summary>
+    public bool SelectionComplete { get; init; } = true;
+}
 
 /// <summary>
 /// The result for one heading of the target: the goal (the heading and the text under it), the run, and the conflicts among the kept facts. The

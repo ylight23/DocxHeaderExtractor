@@ -17,7 +17,7 @@ namespace DocxHeaderExtractor.Web.Endpoints;
 internal static class AdminGatherEndpoint
 {
     public static async Task HandleAsync(HttpRequest req, HttpResponse res, WritebackStore writebackStore, AdminRunStore runs,
-        ModelProviderFactory modelProvider, OutlineRoot outlineRoot, CancellationToken ct)
+        ModelProviderFactory modelProvider, OutlineRoot outlineRoot, DiagnosticCaptureSettings captureSettings, CancellationToken ct)
     {
         if (!req.HasFormContentType)
         {
@@ -65,6 +65,8 @@ internal static class AdminGatherEndpoint
         Directory.CreateDirectory(work);
         var events = Channel.CreateUnbounded<object>();
         var runId = Guid.NewGuid();
+        CaptureRun? capture = null;
+        var captureReported = false;
         void Stage(string stage, string kind, string message) =>
             events.Writer.TryWrite(new { type = "agent", runId, timestamp = DateTimeOffset.UtcNow, stage, kind, message });
         try
@@ -91,15 +93,21 @@ internal static class AdminGatherEndpoint
 
             var provider = modelProvider();
             var noLlm = Flag(form, "noLlm");
+            // An imported outline contains no SELECT coverage. Only an explicit caller attestation may treat it as complete.
+            var importedOutlineVerified = Flag(form, "outlineCoverageVerified");
             var classify = Flag(form, "classify") && !noLlm;
             var outlineCache = Flag(form, "outlineCache");
             var apiKey = provider.CreateRoute().ApiKey;
+            capture = captureSettings.Start(apiKey);
             var ids = SourceIds(sourcePaths);
             var documents = new[] { (Role: "target", Id: "target", Path: targetPath) }
                 .Concat(sourcePaths.Select((p, i) => (Role: "source", Id: ids[i], Path: p))).ToList();
             var hashes = documents.ToDictionary(d => d.Path, d => Hash(d.Path));
             var options = RequestOptions.Build(form, provider, out _);
             options.Log = _ => { };
+            // A captured qualification run may carry a lower ceiling; production runs keep their defaults.
+            var captureCap = capture is not null ? captureSettings.MaxRunUsd : null;
+            if (captureCap is { } cap) options.MaxProviderCostUsd = Math.Min(options.MaxProviderCostUsd, cap);
             var store = outlineCache ? new OutlineStore(outlineRoot.Path) : null;
             var configKey = OutlineReuse.ConfigKey(options);
             var missing = documents.Where(d => FindOutline(outlines, d.Path) is null && store?.Find(hashes[d.Path], configKey) is null).ToList();
@@ -118,23 +126,35 @@ internal static class AdminGatherEndpoint
                     if (FindOutline(outlines, d.Path) is { } given)
                     {
                         Stage("extract", "Completed", $"{name}: dùng outline tải lên ({given.Headings.Length} heading).");
-                        return (d.Role, d.Id, d.Path, Headings: (IReadOnlyList<HeadingRecord>)given.Headings, From: "outline tải lên", Reuse: (OutlineReuseResult?)null);
+                        return (d.Role, d.Id, d.Path, Headings: (IReadOnlyList<HeadingRecord>)given.Headings, From: "outline tải lên", Reuse: (OutlineReuseResult?)null, SelectionComplete: importedOutlineVerified);
                     }
                     DocxHeaderExtractor.DocumentProcessing.Audit.PlacementAudit? placement = null;
+                    bool? selectionComplete = null;
                     async Task<IReadOnlyList<HeadingRecord>> Extract()
                     {
                         Stage("extract", "Started", $"{name}: trích heading bằng pipeline V6.");
-                        var execution = await new DocumentRunner(options, provider).ExtractAsync(d.Path, ct: ct);
+                        var captureDocument = hashes[d.Path][..16] + "-" + Guid.NewGuid().ToString("N");
+                        var diagnosticProvider = capture?.Provider(provider, options, captureDocument) ?? provider;
+                        var execution = await new DocumentRunner(options, diagnosticProvider).ExtractAsync(d.Path, ct: ct);
                         placement = execution.HeadingPipeline?.Audit?.PlacementExecution;
+                        var audit = execution.HeadingPipeline?.Audit;
+                        capture?.Record(captureDocument + ".pipeline-audit.json", new { audit, execution.ResourceBudget,
+                            grouping = audit?.Grouping, headingAliasStates = audit?.HeadingAliasStates,
+                            selectionProviderCalls = audit?.SelectionProviderCalls, selectionLinesAnswered = audit?.SelectionLinesAnswered,
+                            selectionLinesTotal = audit?.SelectionLinesTotal, placementExecution = audit?.PlacementExecution });
+                        selectionComplete = audit?.SemanticLane is { Status: "complete", FailureClass: null } &&
+                            audit.SelectionLinesTotal is { } total && audit.HeadingAliasStates is { } states && states.Count == total &&
+                            states.Values.All(s => s.FinalSelection != "UNRESOLVED");
                         return execution.Outline.Headings;
                     }
                     if (store is null)
                     {
                         var headings = await Extract();
                         Stage("extract", "Completed", $"{name}: {headings.Count} heading.");
-                        return (d.Role, d.Id, d.Path, Headings: headings, From: "pipeline V6", Reuse: null);
+                        return (d.Role, d.Id, d.Path, Headings: headings, From: "pipeline V6", Reuse: (OutlineReuseResult?)null, SelectionComplete: selectionComplete == true);
                     }
-                    var reuse = await OutlineReuse.GetAsync(d.Path, name, store, configKey, Extract, () => placement);
+                    var reuse = await OutlineReuse.GetAsync(d.Path, name, store, configKey, Extract, () => placement, () => selectionComplete,
+                        refreshUnknownSelection: !noLlm && !string.IsNullOrWhiteSpace(apiKey));
                     var from = reuse.Status switch
                     {
                         "STORED" => "outline đã lưu (file không đổi)",
@@ -143,49 +163,44 @@ internal static class AdminGatherEndpoint
                         _ => reuse.Reason is null ? "pipeline V6" : $"pipeline V6 (không dùng được outline đã lưu: {reuse.Reason})",
                     };
                     Stage("extract", "Completed", $"{name}: {reuse.Headings.Count} heading, {from}.");
-                    return (d.Role, d.Id, d.Path, Headings: reuse.Headings, From: from, Reuse: (OutlineReuseResult?)reuse);
+                    return (d.Role, d.Id, d.Path, Headings: reuse.Headings, From: from, Reuse: (OutlineReuseResult?)reuse,
+                        SelectionComplete: (reuse.Current?.SelectionComplete ?? selectionComplete) == true);
                 }));
                 var target = extracted.Single(e => e.Role == "target");
-                var sources = extracted.Where(e => e.Role == "source").Select(e => new GatherSourceFile(e.Id, e.Path, e.Headings)).ToList();
+                // The user flow has no outline review: a source is held only by a structural check the gather itself makes (a heading without a level).
+                var sources = extracted.Where(e => e.Role == "source").Select(e => new GatherSourceFile(e.Id, e.Path, e.Headings)
+                    { SelectionComplete = e.SelectionComplete }).ToList();
 
                 // 2. Placement by heading chain; what it cannot decide is held as uncertain.
                 Stage("gather", "Started", "Ghép nội dung theo chuỗi heading.");
-                var plan = GatherByHeading.RequireNewHeadingReview(OutlineReuse.FlagAdded(GatherByHeading.Build(target.Path, target.Headings, sources, addMissingHeadings: true),
+                var plan = GatherByHeading.RequireNewHeadingReview(OutlineReuse.FlagAdded(GatherByHeading.Build(target.Path, target.Headings, sources, addMissingHeadings: true,
+                    targetSelectionComplete: target.SelectionComplete),
                     extracted.Where(e => e.Reuse is { Status: "MAPPED" }).ToDictionary(e => e.Id, e => e.Reuse!.AddedParagraphs)));
                 Stage("gather", "Completed", $"{plan.Uncertain.Count} mục không chắc, {plan.Excluded.Count} đoạn không thêm.");
 
                 // 3. The model classifies the uncertain sections; its verdict is advice shown next to them, never applied.
                 GatherUncertainReviewResult? review = null;
-                if (classify && plan.Uncertain.Count > 0 && plan.Uncertain.All(u => u.Kind != "UNCONFIRMED_HIERARCHY") && !string.IsNullOrWhiteSpace(apiKey))
+                if (classify && plan.Uncertain.Count > 0 && plan.Uncertain.All(u => u.Kind is not ("UNCONFIRMED_HIERARCHY" or "SOURCE_OUTLINE_REVIEW_REQUIRED" or "TARGET_OUTLINE_INCOMPLETE")) && !string.IsNullOrWhiteSpace(apiKey))
                 {
                     Stage("classify", "Started", $"Model phân loại {plan.Uncertain.Count} mục không chắc.");
-                    using var model = new GatherOpenRouterModel(apiKey!, maxCalls: 2, ceilingUsd: 0.5);
+                    using var model = new GatherOpenRouterModel(apiKey!, maxCalls: 2, ceilingUsd: Math.Min(0.5, captureCap ?? 0.5),
+                        handler: capture?.Handler("gather", "GATHER_REVIEW"));
                     review = await GatherUncertainReview.ReviewAsync(plan.Uncertain, model, ct);
                     Stage("classify", review.Error is null ? "Completed" : "Partial",
                         review.Error is null ? "Model đã phân loại." : "Model không phân loại được: " + review.Error);
                 }
 
-                // 4. A preview may be built before review, but only an exact target outline already reviewed before this run may be written.
+                // 4. The export: what the chain placed is written as tracked insertions; every uncertain item goes to the appendix until the user decides.
                 var output = Path.Combine(work, Path.GetFileNameWithoutExtension(target.Path) + "_tong_hop.docx");
                 var decided = GatherByHeading.DecidedByChain(plan.Sections);
-                var targetOutline = target.Reuse?.Current;
-                var approvals = new OutlineApprovals(outlineRoot.Path);
-                var targetReviewed = targetOutline is not null && targetOutline.SourceSha256 == hashes[target.Path] &&
-                    OutlineApprovals.OutlineHash(targetOutline) == OutlineApprovals.OutlineHash(targetOutline with { Headings = target.Headings }) &&
-                    OutlineApprovals.State(targetOutline, approvals.Of(targetOutline.SourceSha256, targetOutline.ConfigKey)) == "REVIEWED";
-                var reviewRef = targetReviewed ? new AdminRunStore.TargetApproval(targetOutline!.SourceSha256, targetOutline.ConfigKey,
-                    OutlineApprovals.OutlineHash(targetOutline)) : null;
-                var written = targetReviewed ? GatherWriteback.Apply(target.Path, output, decided.Where(s => s.Run.Facts.Count > 0 || s.NewHeadingDepth is not null).ToList(),
-                    DateTime.UtcNow, targetOutlineCoverageVerified: true, verifiedTargetSha256: hashes[target.Path]) : null;
-                var demo = targetReviewed ? null : GatherWriteback.CreateDemo(target.Path,
-                    Path.Combine(work, Path.GetFileNameWithoutExtension(target.Path) + "_DEMO_CHUA_DUYET.docx"),
-                    decided.Where(s => s.Run.Facts.Count > 0 || s.NewHeadingDepth is not null).ToList(), plan.Uncertain, DateTime.UtcNow);
-                Stage("writeback", targetReviewed ? "Completed" : "Blocked", targetReviewed
-                    ? $"Đã ghi bản tổng hợp; {written!.SkippedHeadings.Count} mục không ghi được."
-                    : "Chỉ xem trước: cần duyệt đủ outline đích, rồi chạy lại tổng hợp trước khi xuất.");
+                var written = GatherWriteback.Export(target.Path, output, decided.Where(s => s.Run.Facts.Count > 0 || s.NewHeadingDepth is not null).ToList(),
+                    plan.Uncertain, DateTime.UtcNow, gaps: plan.Gaps, excluded: plan.Excluded);
+                Stage("writeback", "Completed", $"Đã ghi bản tổng hợp; {plan.Uncertain.Count} mục chưa rõ và {written.SkippedHeadings.Count} mục không ghi được nằm trong phụ lục.");
                 foreach (var (path, hash) in hashes)
                     if (Hash(path) != hash) throw new InvalidDataException("INPUT_CHANGED");
-                return (Extracted: extracted, Plan: plan, Decided: decided, Review: review, Written: written, Demo: demo, ReviewRef: reviewRef);
+                capture?.Summary();
+                captureReported = true;
+                return (Extracted: extracted, Plan: plan, Decided: decided, Review: review, Written: written);
             }, ct);
             _ = run.ContinueWith(_ => events.Writer.TryComplete(), TaskScheduler.Default);
             await foreach (var evt in events.Reader.ReadAllAsync(ct)) await EmitAsync(evt);
@@ -204,25 +219,15 @@ internal static class AdminGatherEndpoint
                     .CompareAndSave(historyKey, new GatherSnapshot(DateTimeOffset.UtcNow, docs, result.Plan));
             }
 
-            if (result.Written is { } completed)
-                writebackStore.Put(runId, await File.ReadAllBytesAsync(completed.OutputPath, ct), Path.GetFileName(completed.OutputPath));
-            Guid? demoId = null;
-            if (result.Demo is { } demoResult)
-            {
-                demoId = Guid.NewGuid();
-                writebackStore.Put(demoId.Value, await File.ReadAllBytesAsync(demoResult.OutputPath, ct), Path.GetFileName(demoResult.OutputPath));
-            }
+            writebackStore.Put(runId, await File.ReadAllBytesAsync(result.Written.OutputPath, ct), Path.GetFileName(result.Written.OutputPath));
             runs.Put(runId, new AdminRunStore.Entry(await File.ReadAllBytesAsync(targetPath, ct), Path.GetFileName(targetPath), result.Decided,
-                result.Plan.Uncertain, DateTimeOffset.UtcNow, result.ReviewRef));
+                result.Plan.Uncertain, DateTimeOffset.UtcNow, Gaps: result.Plan.Gaps, Excluded: result.Plan.Excluded));
             var approvals = new OutlineApprovals(outlineRoot.Path);
             await EmitAsync(new
             {
                 type = "result",
                 runId,
-                download = result.Written is null ? null : $"/api/outline/{runId}.docx",
-                demoDownload = demoId is null ? null : $"/api/outline/{demoId}.docx",
-                demoSkipped = result.Demo?.SkippedHeadings ?? [],
-                targetReviewRequired = result.ReviewRef is null,
+                download = $"/api/outline/{runId}.docx",
                 modelClassified = result.Review is not null,
                 history,
                 documents = result.Extracted.Select(e => new
@@ -241,14 +246,14 @@ internal static class AdminGatherEndpoint
                 }),
                 uncertain = result.Plan.Uncertain.Select((u, i) => new
                 {
-                    u.Kind, u.SourceHeading, u.Source, u.SourceParent, u.Reason, u.NewHeadingParent,
-                    candidates = u.Candidates.Select(c => new { c.Heading, c.Location, c.Content }),
+                    u.Kind, u.SourceHeading, u.Source, u.SourceParent, u.Reason, u.NewHeadingParent, plainReason = GatherWriteback.PlainReason(u.Kind),
+                    candidates = u.Candidates.Select((c, ci) => new { c.Heading, c.Location, c.Content, sameFacts = GatherDecisions.SameAsCandidate(u, ci).Count }),
                     facts = u.Facts.Select(Fact),
                     verdict = result.Review?.Verdicts.FirstOrDefault(v => v.Index == i),
                 }),
                 excluded = result.Plan.Excluded.Select(e => new { e.Reason, e.Heading, text = e.Fact.Render(), sources = Sources(e.Fact) }),
                 unchanged = result.Decided.Where(s => s.NewHeadingDepth is null && s.Run.Facts.Count == 0).Select(s => new { s.Heading, s.Note }),
-                skipped = result.Written?.SkippedHeadings ?? [],
+                skipped = result.Written.SkippedHeadings,
             });
         }
         catch (OperationCanceledException) { }
@@ -263,6 +268,8 @@ internal static class AdminGatherEndpoint
         }
         finally
         {
+            if (capture is not null && !captureReported)
+                try { capture.Summary(); } catch (Exception e) { Console.Error.WriteLine($"Diagnostic capture verification failed: {e.GetType().Name}"); }
             try { Directory.Delete(work, recursive: true); } catch (IOException) { }
         }
     }
@@ -272,30 +279,26 @@ internal static class AdminGatherEndpoint
 
     /// <summary>
     /// <c>POST /api/admin/gather/{runId}/apply</c>: writes the summary again with the reader's decisions on the uncertain sections. The decisions
-    /// come from the person on the page; the model's classification is never applied by the server.
+    /// come from the person on the page; the model's classification is never applied by the server. Items without a valid decision, and items the
+    /// reader skipped, go to the appendix.
     /// </summary>
-    public static async Task<IResult> ApplyAsync(Guid runId, ApplyRequest request, AdminRunStore runs, WritebackStore writebackStore, OutlineRoot outlineRoot, CancellationToken ct)
+    public static async Task<IResult> ApplyAsync(Guid runId, ApplyRequest request, AdminRunStore runs, WritebackStore writebackStore, CancellationToken ct)
     {
         if (runs.Get(runId) is not { } run)
             return Results.NotFound(new { message = "Lượt tổng hợp đã hết hạn (giữ 1 giờ). Hãy chạy tổng hợp lại." });
-        var reviewed = run.ReviewedTargetAtRun;
-        if (reviewed is null) return Results.Conflict(new { message = "Cần duyệt đủ outline đích rồi chạy lại tổng hợp trước khi xuất." });
-        var outline = new OutlineStore(outlineRoot.Path).Find(reviewed.SourceSha256, reviewed.ConfigKey);
-        if (outline is null || reviewed.SourceSha256 != Convert.ToHexStringLower(SHA256.HashData(run.Target)) ||
-            OutlineApprovals.OutlineHash(outline) != reviewed.OutlineSha256 ||
-            OutlineApprovals.State(outline, new OutlineApprovals(outlineRoot.Path).Of(reviewed.SourceSha256, reviewed.ConfigKey)) != "REVIEWED")
-            return Results.Conflict(new { message = "Phê duyệt outline đích không còn hợp lệ; cần kiểm tra và chạy lại tổng hợp." });
         var applied = GatherDecisions.Apply(run.Decided, run.Uncertain, request.Decisions ?? []);
+        var skippedByUser = applied.Outcomes.Where(o => o.Decision == "SKIP" && o.Error is null).Select(o => run.Uncertain[o.Index]).ToList();
+        var notPlaced = applied.Undecided.Where(i => !applied.Outcomes.Any(o => o.Index == i && o.Decision == "SKIP" && o.Error is null))
+            .Select(i => run.Uncertain[i]).ToList();
         var work = Path.Combine(Path.GetTempPath(), "dhx-ui", "admin-apply-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(work);
         try
         {
             var target = Path.Combine(work, run.TargetName);
             await File.WriteAllBytesAsync(target, run.Target, ct);
-            var output = Path.Combine(work, Path.GetFileNameWithoutExtension(run.TargetName) + "_tong_hop_da_duyet.docx");
-            var written = GatherWriteback.Apply(target, output,
-                applied.Sections.Where(s => s.Run.Facts.Count > 0 || s.NewHeadingDepth is not null).ToList(), DateTime.UtcNow,
-                targetOutlineCoverageVerified: true, verifiedTargetSha256: Convert.ToHexStringLower(SHA256.HashData(run.Target)));
+            var output = Path.Combine(work, Path.GetFileNameWithoutExtension(run.TargetName) + "_tong_hop.docx");
+            var written = GatherWriteback.Export(target, output,
+                applied.Sections.Where(s => s.Run.Facts.Count > 0 || s.NewHeadingDepth is not null).ToList(), notPlaced, DateTime.UtcNow, skippedByUser, run.Gaps, run.Excluded);
             var downloadId = Guid.NewGuid();
             writebackStore.Put(downloadId, await File.ReadAllBytesAsync(output, ct), Path.GetFileName(output));
             return Results.Json(new

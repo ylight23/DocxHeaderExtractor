@@ -21,6 +21,8 @@ builder.WebHost.ConfigureKestrel(o => o.Limits.MaxRequestBodySize = Uploads.MaxB
 builder.Services.AddSingleton<ModelProviderFactory>(_ => OpenRouterProvider.FromEnvironment);
 builder.Services.AddSingleton<WritebackStore>();
 builder.Services.AddSingleton<AdminRunStore>();
+builder.Services.AddSingleton(new DiagnosticCaptureSettings(Environment.GetEnvironmentVariable("DHX_CAPTURE_DIR"), Directory.GetCurrentDirectory(),
+    Environment.GetEnvironmentVariable("DHX_CAPTURE_MAX_USD")));
 builder.Services.AddSingleton(new DocxHeaderExtractor.Web.Endpoints.OutlineRoot(DocxHeaderExtractor.DocumentProcessing.Gather.OutlineStore.DefaultRoot));
 builder.Services.AddSingleton<ITaskRunStore>(_ => new JsonFileTaskRunStore(RuntimeStatePaths.RunDirectory));
 builder.Services.AddSingleton<ITaskTelemetrySink>(_ => new JsonLinesTaskTelemetrySink(RuntimeStatePaths.TelemetryPath));
@@ -77,6 +79,7 @@ app.MapPost("/api/extract", ExtractEndpoint.HandleAsync);
 app.MapPost("/api/admin/gather", AdminGatherEndpoint.HandleAsync);
 app.MapPost("/api/admin/gather/{runId:guid}/apply", AdminGatherEndpoint.ApplyAsync);
 app.MapPost("/api/admin/outline/review", AdminOutlineReview.Record);
+app.MapPost("/api/admin/outline/parent", AdminOutlineReview.EditParent);
 
 Console.OutputEncoding = Encoding.UTF8;
 app.Lifetime.ApplicationStarted.Register(() =>

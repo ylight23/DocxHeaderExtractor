@@ -19,7 +19,8 @@ public sealed record StoredParagraph(string Location, int Ordinal, string Signat
 public sealed record StoredOutline(string Version, string SourceSha256, string ConfigKey, string Name, DateTimeOffset Created,
     IReadOnlyList<StoredParagraph> Paragraphs, IReadOnlyList<string> UnsupportedRegions, IReadOnlyList<HeadingRecord> Headings,
     int Revision = 1, string? PreviousSha256 = null, IReadOnlyList<StoredHeadingBinding>? HeadingBindings = null,
-    PlacementAudit? Placement = null);
+    PlacementAudit? Placement = null, string? EditId = null, string? EditedBy = null, DateTimeOffset? EditedAt = null,
+    string? PreviousOutlineHash = null, bool? SelectionComplete = null);
 
 /// <summary>Private store evidence for an outline heading. Public HeadingRecord JSON deliberately omits these fields.</summary>
 public sealed record StoredHeadingBinding(int HeadingIndex, string? StableId, int PartCount, IReadOnlyList<HeadingSourcePart> Parts);
@@ -35,6 +36,7 @@ public sealed record OutlineRevision(int Number, string SourceSha256, DateTimeOf
 /// </summary>
 public sealed class OutlineStore(string root)
 {
+    static readonly object EditGate = new();
     public const string Version = "OUTLINE_STORE_V1";
     public const string DefaultRoot = ".dhx-evidence/outline";
 
@@ -60,6 +62,7 @@ public sealed class OutlineStore(string root)
         version.Paragraphs.Select(p => new StoredParagraph(p.Location, p.Ordinal, Signature(p))).ToArray();
 
     string EntryPath(string sha, string key) => Path.Combine(root, sha[..Math.Min(16, sha.Length)], key + ".json");
+    string EditRoot(string sha, string key) => Path.Combine(root, "edits", sha[..Math.Min(16, sha.Length)] + "-" + key);
     string HistoryPath(string name, string key) => Path.Combine(root, "names",
         Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(name.ToLowerInvariant())))[..16] + "-" + key + ".json");
 
@@ -67,13 +70,117 @@ public sealed class OutlineStore(string root)
     public StoredOutline? Find(string sourceSha256, string configKey)
     {
         var path = EntryPath(sourceSha256, configKey);
+        var active = Path.Combine(EditRoot(sourceSha256, configKey), "active.txt");
+        string? activeHash = null;
+        try
+        {
+            if (File.Exists(active))
+            {
+                // A reviewer's edit is active: an unreadable pointer or a missing version is an error to report, never a reason to extract again and
+                // silently drop the edit.
+                var hash = File.ReadAllText(active).Trim();
+                if (hash.Length != 64 || hash.Any(c => !Uri.IsHexDigit(c))) throw new InvalidDataException("OUTLINE_EDIT_POINTER_INVALID");
+                activeHash = hash;
+                path = Path.Combine(EditRoot(sourceSha256, configKey), hash + ".json");
+                if (!File.Exists(path)) throw new InvalidDataException("OUTLINE_EDIT_VERSION_MISSING");
+            }
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { throw new InvalidDataException("OUTLINE_EDIT_POINTER_UNREADABLE", e); }
         if (!File.Exists(path)) return null;
         try
         {
             var entry = JsonSerializer.Deserialize<StoredOutline>(File.ReadAllText(path));
-            return entry is { Version: Version } && entry.SourceSha256 == sourceSha256 && entry.ConfigKey == configKey ? RestoreBindings(entry) : null;
+            if (entry is not { Version: Version } || entry.SourceSha256 != sourceSha256 || entry.ConfigKey != configKey)
+                return activeHash is null ? null : throw new InvalidDataException("OUTLINE_EDIT_VERSION_INVALID");
+            var restored = RestoreBindings(entry);
+            if (activeHash is null || OutlineApprovals.OutlineHash(restored) == activeHash) return restored;
+            throw new InvalidDataException("OUTLINE_EDIT_VERSION_INVALID");
+        }
+        catch (Exception e) when (e is IOException or JsonException or UnauthorizedAccessException or NotSupportedException)
+        {
+            if (activeHash is not null) throw new InvalidDataException("OUTLINE_EDIT_VERSION_UNREADABLE", e);
+            return null;
+        }
+    }
+
+    /// <summary>Read a particular immutable edit or the original outline, never treating the current pointer as that version.</summary>
+    public StoredOutline? FindVersion(string sha, string key, string hash)
+    {
+        if (hash.Length != 64 || hash.Any(c => !Uri.IsHexDigit(c))) return null;
+        var editedPath = Path.Combine(EditRoot(sha, key), hash + ".json");
+        var path = File.Exists(editedPath) ? editedPath : EntryPath(sha, key);
+        try
+        {
+            if (!File.Exists(path)) return null;
+            var entry = JsonSerializer.Deserialize<StoredOutline>(File.ReadAllText(path));
+            if (entry is not { Version: Version } || entry.SourceSha256 != sha || entry.ConfigKey != key) return null;
+            var restored = RestoreBindings(entry);
+            return OutlineApprovals.OutlineHash(restored) == hash ? restored : null;
         }
         catch (Exception e) when (e is IOException or JsonException or UnauthorizedAccessException or NotSupportedException) { return null; }
+    }
+
+    /// <summary>Save a human-edited outline as a separate immutable version and activate it only if the viewed version is still current.</summary>
+    public (StoredOutline? Outline, string? Error) StoreEdited(string sha, string key, string expectedHash,
+        IReadOnlyList<HeadingRecord> headings, string reviewer)
+    {
+        if (string.IsNullOrWhiteSpace(reviewer)) return (null, "REVIEWER_REQUIRED");
+        lock (EditGate)
+        {
+            var current = Find(sha, key);
+            if (current is null) return (null, "OUTLINE_NOT_FOUND");
+            if (OutlineApprovals.OutlineHash(current) != expectedHash) return (null, "OUTLINE_STALE");
+            var bindings = headings.Select((h, i) => (h, i)).Where(x => x.h.SourceParts is { Count: > 0 } &&
+                x.h.ValidatedSourcePartCount == x.h.SourceParts.Count).Select(x => new StoredHeadingBinding(x.i, x.h.StableId,
+                    x.h.ValidatedSourcePartCount, x.h.SourceParts!.ToArray())).ToArray();
+            var edited = current with { Headings = headings, HeadingBindings = bindings, Revision = current.Revision + 1, Placement = null,
+                EditId = Guid.NewGuid().ToString("N"), EditedBy = reviewer.Trim(), EditedAt = DateTimeOffset.UtcNow, PreviousOutlineHash = expectedHash };
+            var hash = OutlineApprovals.OutlineHash(edited);
+            if (hash == expectedHash) return (null, "NO_CHANGE");
+            try
+            {
+                var dir = EditRoot(sha, key);
+                Directory.CreateDirectory(dir);
+                var versionPath = Path.Combine(dir, hash + ".json");
+                if (!File.Exists(versionPath)) WriteNew(versionPath, JsonSerializer.Serialize(edited, Json));
+                var temp = Path.Combine(dir, Guid.NewGuid().ToString("N") + ".tmp");
+                File.WriteAllText(temp, hash);
+                File.Move(temp, Path.Combine(dir, "active.txt"), overwrite: true);
+                return (Find(sha, key), null);
+            }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException or NotSupportedException) { return (null, "OUTLINE_WRITE_FAILED"); }
+        }
+    }
+
+    /// <summary>Save a verified fresh extraction without overwriting a reviewer edit or the previous snapshot.</summary>
+    public (StoredOutline? Outline, string? Error) StoreRefreshedExtraction(string sha, string key, string expectedHash,
+        IReadOnlyList<HeadingRecord> headings, PlacementAudit? placement)
+    {
+        lock (EditGate)
+        {
+            var current = Find(sha, key);
+            if (current is null) return (null, "OUTLINE_NOT_FOUND");
+            if (OutlineApprovals.OutlineHash(current) != expectedHash || current.EditId is not null || current.SelectionComplete is not null)
+                return (null, "OUTLINE_STALE");
+            var bindings = headings.Select((h, i) => (h, i)).Where(x => x.h.SourceParts is { Count: > 0 } &&
+                x.h.ValidatedSourcePartCount == x.h.SourceParts.Count).Select(x => new StoredHeadingBinding(x.i, x.h.StableId,
+                    x.h.ValidatedSourcePartCount, x.h.SourceParts!.ToArray())).ToArray();
+            var refreshed = current with { Headings = headings, HeadingBindings = bindings, Revision = current.Revision + 1,
+                Placement = placement, SelectionComplete = true, EditId = Guid.NewGuid().ToString("N"), PreviousOutlineHash = expectedHash,
+                Created = DateTimeOffset.UtcNow };
+            var hash = OutlineApprovals.OutlineHash(refreshed);
+            try
+            {
+                var dir = EditRoot(sha, key);
+                Directory.CreateDirectory(dir);
+                WriteNew(Path.Combine(dir, hash + ".json"), JsonSerializer.Serialize(refreshed, Json));
+                var temp = Path.Combine(dir, Guid.NewGuid().ToString("N") + ".tmp");
+                File.WriteAllText(temp, hash);
+                File.Move(temp, Path.Combine(dir, "active.txt"), overwrite: true);
+                return (Find(sha, key), null);
+            }
+            catch (Exception e) when (e is IOException or UnauthorizedAccessException or NotSupportedException) { return (null, "OUTLINE_WRITE_FAILED"); }
+        }
     }
 
     /// <summary>Every revision stored under this file name and configuration, V1 first. Empty when there is none or it cannot be read.</summary>

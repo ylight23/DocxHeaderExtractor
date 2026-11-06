@@ -18,6 +18,74 @@ public sealed class OutlineReuseTests
     static readonly string Original = P("A. Mục một", true) + P("Nội dung một.") + P("B. Mục hai", true) + P("Nội dung hai.");
     static readonly HeadingRecord[] Headings = [H(1, 1, "A. Mục một"), H(3, 1, "B. Mục hai")];
 
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task Selection_coverage_is_saved_and_restored_with_the_exact_outline(bool complete)
+    {
+        var path = RawDocxFixtureTests.Build(Original);
+        var root = Path.Combine(Path.GetTempPath(), "dhx-selection-coverage-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            var store = new OutlineStore(root);
+            var first = await OutlineReuse.GetAsync(path, "f.docx", store, "k",
+                () => Task.FromResult<IReadOnlyList<HeadingRecord>>(Headings), selectionComplete: () => complete);
+            Assert.Equal(complete, first.Current!.SelectionComplete);
+            var cached = await OutlineReuse.GetAsync(path, "f.docx", store, "k",
+                () => throw new InvalidOperationException("must use cached outcome"));
+            Assert.Equal("STORED", cached.Status);
+            Assert.Equal(complete, cached.Current!.SelectionComplete);
+        }
+        finally { File.Delete(path); if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+
+    [Fact]
+    public async Task Legacy_outline_is_refreshed_once_and_old_version_remains_available()
+    {
+        var path = RawDocxFixtureTests.Build(Original);
+        var (_, root) = Store(path);
+        try
+        {
+            var store = new OutlineStore(root);
+            var sha = DocxVersionReader.Read(path).FileSha256;
+            var old = store.Find(sha, "k")!;
+            var oldHash = OutlineApprovals.OutlineHash(old);
+            var calls = 0;
+            Task<IReadOnlyList<HeadingRecord>> Extract() { calls++; return Task.FromResult<IReadOnlyList<HeadingRecord>>(Headings); }
+            var first = await OutlineReuse.GetAsync(path, "bao-cao.docx", store, "k", Extract,
+                selectionComplete: () => true, refreshUnknownSelection: true);
+            var second = await OutlineReuse.GetAsync(path, "bao-cao.docx", store, "k", Extract,
+                selectionComplete: () => true, refreshUnknownSelection: true);
+            Assert.Equal(1, calls);
+            Assert.Equal("EXTRACTED", first.Status);
+            Assert.Equal("STORED", second.Status);
+            Assert.True(second.Current!.SelectionComplete);
+            Assert.NotNull(store.FindVersion(sha, "k", oldHash));
+            Assert.Equal("OUTLINE_STALE", store.StoreRefreshedExtraction(sha, "k", oldHash, Headings, null).Error);
+        }
+        finally { File.Delete(path); if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+
+    [Fact]
+    public async Task Incomplete_legacy_refresh_does_not_replace_stored_outline()
+    {
+        var path = RawDocxFixtureTests.Build(Original);
+        var (_, root) = Store(path);
+        try
+        {
+            var store = new OutlineStore(root);
+            var sha = DocxVersionReader.Read(path).FileSha256;
+            var oldHash = OutlineApprovals.OutlineHash(store.Find(sha, "k")!);
+            var result = await OutlineReuse.GetAsync(path, "bao-cao.docx", store, "k",
+                () => Task.FromResult<IReadOnlyList<HeadingRecord>>(Headings),
+                selectionComplete: () => false, refreshUnknownSelection: true);
+            Assert.Equal("SELECT_COVERAGE_INCOMPLETE", result.Reason);
+            Assert.Null(result.Current);
+            Assert.Equal(oldHash, OutlineApprovals.OutlineHash(store.Find(sha, "k")!));
+        }
+        finally { File.Delete(path); if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+
     static (StoredOutline Stored, string Root) Store(string path)
     {
         var version = DocxVersionReader.Read(path);

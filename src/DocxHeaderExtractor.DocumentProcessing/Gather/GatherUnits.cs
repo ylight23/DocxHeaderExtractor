@@ -77,7 +77,7 @@ public static class GatherUnits
 
     /// <summary>Gap reasons that mean a part of the source is not in the units: not read in full, or a heading that could not be placed.</summary>
     public static bool IsUnread(string reason) =>
-        reason is "merged_cells" or "nested_table" or "heading_boundary_unverified" || reason.StartsWith("heading_unmatched:", StringComparison.Ordinal) || reason.StartsWith("heading_located_by_text:", StringComparison.Ordinal) || WholeFileGaps.Contains(reason);
+        reason is "merged_cells" or "nested_table" or "heading_boundary_unverified" or "selection_incomplete" || reason.StartsWith("heading_unmatched:", StringComparison.Ordinal) || reason.StartsWith("heading_located_by_text:", StringComparison.Ordinal) || WholeFileGaps.Contains(reason);
 
     /// <param name="path">The DOCX file.</param>
     /// <param name="sourceId">The name the units of this file carry in their ids.</param>

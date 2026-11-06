@@ -36,7 +36,7 @@ public static class GatherDecisions
         foreach (var (index, d) in byIndex.OrderBy(x => x.Key))
         {
             var u = uncertain[index];
-            if (u.Kind == "UNCONFIRMED_HIERARCHY" && d.Decision != "SKIP")
+            if ((u.Kind is "UNCONFIRMED_HIERARCHY" or "SOURCE_OUTLINE_REVIEW_REQUIRED" or "TARGET_OUTLINE_INCOMPLETE") && d.Decision != "SKIP")
             {
                 outcomes.Add(new(index, d.Decision, null, 0, [], "OUTLINE_REVIEW_REQUIRED"));
                 continue;
@@ -105,6 +105,21 @@ public static class GatherDecisions
             else there.Add(text);
         }
         return (keep, there);
+    }
+
+    /// <summary>
+    /// The facts of an uncertain section whose text is already in the direct content of one candidate, compared after Unicode NFC and with runs of
+    /// white space made one space (the same comparison as <see cref="Apply"/>). Evidence for the reader only: whether the candidate is the
+    /// corresponding section is not established by this (two sections of one name under different parents may be distinct), so nothing is removed
+    /// or written because of it. It is not a forecast of a MERGE: a MERGE also leaves out text already received from another source and repeats
+    /// inside the section itself.
+    /// </summary>
+    public static IReadOnlyList<int> SameAsCandidate(GatherUncertain uncertain, int candidate)
+    {
+        ArgumentNullException.ThrowIfNull(uncertain);
+        if (candidate < 0 || candidate >= uncertain.Candidates.Count) return [];
+        var present = uncertain.Candidates[candidate].Content.Select(Key).ToHashSet(StringComparer.Ordinal);
+        return Enumerable.Range(0, uncertain.Facts.Count).Where(i => present.Contains(Key(uncertain.Facts[i].Render()))).ToList();
     }
 
     static string Key(string text) => string.Join(' ', text.Normalize(System.Text.NormalizationForm.FormC).Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));

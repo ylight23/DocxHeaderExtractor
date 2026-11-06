@@ -188,7 +188,8 @@ public sealed class GatherByChainTests
             var (sections, excluded) = GatherByHeading.Build(target, [H(0, "Quỹ:", 1)], [new GatherSourceFile("T8", source, [H(0, "Quỹ:", 1)])]);
 
             Assert.Equal(["Thu 16 triệu đồng."], sections[0].Run.Facts.Select(f => f.Render()));
-            Assert.StartsWith("DOCUMENT_END_TABLE:", Assert.Single(excluded).Reason, StringComparison.Ordinal);
+            // Tables are not gathered: the table that ends the source is listed as not added.
+            Assert.StartsWith("TABLE_NOT_GATHERED:", Assert.Single(excluded).Reason, StringComparison.Ordinal);
             var reviewed = sections[0] with { Run = sections[0].Run with { Facts = sections[0].Run.Facts.Select(f => f with { Flags = [] }).ToList() } };
             var hash = Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(target)));
             Assert.Empty(GatherWriteback.Apply(target, output, [reviewed], DateTime.UtcNow, true, hash).SkippedHeadings);

@@ -44,12 +44,27 @@ public static class OutlineReuse
     /// <param name="name">The file name the document is known by, used to retain its version history.</param>
     /// <param name="extract">Runs the pipeline on <paramref name="path"/> when no stored outline can be used.</param>
     public static async Task<OutlineReuseResult> GetAsync(string path, string name, OutlineStore store, string configKey,
-        Func<Task<IReadOnlyList<HeadingRecord>>> extract, Func<PlacementAudit?>? placement = null)
+        Func<Task<IReadOnlyList<HeadingRecord>>> extract, Func<PlacementAudit?>? placement = null, Func<bool?>? selectionComplete = null,
+        bool refreshUnknownSelection = false)
     {
         var sha = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(path)));
         if (store.Find(sha, configKey) is { } stored)
+        {
+            if (refreshUnknownSelection && stored.SelectionComplete is null && stored.EditId is null)
+            {
+                var fresh = await extract().ConfigureAwait(false);
+                if (selectionComplete?.Invoke() != true)
+                    return new(fresh, "EXTRACTED", "SELECT_COVERAGE_INCOMPLETE", []) { Previous = stored };
+                if (Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(path))) != sha)
+                    throw new InvalidDataException("OUTLINE_SOURCE_CHANGED_DURING_EXTRACTION");
+                var (refreshed, error) = store.StoreRefreshedExtraction(sha, configKey, OutlineApprovals.OutlineHash(stored), fresh, placement?.Invoke());
+                if (refreshed is null) throw new InvalidDataException(error ?? "OUTLINE_REFRESH_FAILED");
+                return new(refreshed.Headings, "EXTRACTED", "LEGACY_COVERAGE_REFRESHED", []) { Current = refreshed, Previous = stored };
+            }
             return new(stored.Headings, "STORED", null, [])
-                { Current = stored, Previous = stored.PreviousSha256 is { } before ? store.Find(before, configKey) : null };
+                { Current = stored, Previous = stored.PreviousOutlineHash is { } prior ? store.FindVersion(sha, configKey, prior)
+                    : stored.PreviousSha256 is { } before ? store.Find(before, configKey) : null };
+        }
 
         var version = DocxVersionReader.Read(path);
         var paragraphs = OutlineStore.Paragraphs(version);
@@ -65,7 +80,7 @@ public static class OutlineReuse
         {
             // Read back what the store holds, so the outline hash a reviewer sees is the one the store will check.
             store.Store(new(OutlineStore.Version, sha, configKey, name, DateTimeOffset.UtcNow, paragraphs, version.UnsupportedRegions, headings,
-                Placement: placement?.Invoke()));
+                Placement: placement?.Invoke(), SelectionComplete: selectionComplete?.Invoke()));
             current = store.Find(sha, configKey);
         }
         return new(headings, "EXTRACTED", reason, []) { Current = current, Previous = previous };

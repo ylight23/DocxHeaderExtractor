@@ -30,8 +30,10 @@ public sealed class OutlineApprovals(string root)
     /// <summary>Identity of this exact outline and source/configuration. Old decisions without this identity are not transferable.</summary>
     public static string OutlineHash(StoredOutline outline)
     {
-        var canonical = JsonSerializer.Serialize(new { outline.SourceSha256, outline.ConfigKey,
-            Headings = outline.Headings.OrderBy(h => h.Index).Select(h => new { Heading = h, h.SourceParts, h.ValidatedSourcePartCount }).ToArray() });
+        var headings = outline.Headings.OrderBy(h => h.Index).Select(h => new { Heading = h, h.SourceParts, h.ValidatedSourcePartCount }).ToArray();
+        var canonical = outline.EditId is null
+            ? JsonSerializer.Serialize(new { outline.SourceSha256, outline.ConfigKey, Headings = headings })
+            : JsonSerializer.Serialize(new { outline.SourceSha256, outline.ConfigKey, Headings = headings, outline.EditId });
         return Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(canonical)));
     }
 

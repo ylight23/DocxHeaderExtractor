@@ -15,6 +15,40 @@ namespace DocxHeaderExtractor.Tests;
 public sealed class AdminGatherWebTests
 {
     [Fact]
+    public async Task Editing_parent_creates_unreviewed_version_and_rejects_stale_edit()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "dhx-parent-api-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            static DocxHeaderExtractor.DocumentProcessing.Output.HeadingRecord Bound(int i, int level, string text) => new()
+            {
+                Index = i, Level = level, Text = text, StableId = $"body[1]/p[{i + 1}]", HeadingSpan = new(0, text.Length),
+                SourceParts = [new($"body[1]/p[{i + 1}]", i, new(0, text.Length), text)], ValidatedSourcePartCount = 1,
+            };
+            var hs = new[] { Bound(0, 1, "Kế hoạch"), Bound(1, 2, "Công tác xã hội"), Bound(2, 2, "Duy trì") };
+            var store = new DocxHeaderExtractor.DocumentProcessing.Gather.OutlineStore(root);
+            var paragraphs = hs.Select(h => new DocxHeaderExtractor.DocumentProcessing.Gather.StoredParagraph(h.StableId!, h.Index, "sig")).ToArray();
+            store.Store(new(DocxHeaderExtractor.DocumentProcessing.Gather.OutlineStore.Version, "sha", "config", "f.docx", DateTimeOffset.UtcNow, paragraphs, [], hs));
+            var old = store.Find("sha", "config")!;
+            using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(b => b.ConfigureTestServices(s =>
+                s.AddSingleton(new WebApp::DocxHeaderExtractor.Web.Endpoints.OutlineRoot(root))));
+            using var client = app.CreateClient();
+            var payload = JsonSerializer.Serialize(new { sourceSha256 = "sha", configKey = "config",
+                outlineSha256 = DocxHeaderExtractor.DocumentProcessing.Gather.OutlineApprovals.OutlineHash(old), location = hs[2].StableId, parentLocation = hs[1].StableId, reviewer = "reviewer" });
+            StringContent Body() => new(payload, System.Text.Encoding.UTF8, "application/json");
+            using var response = await client.PostAsync("/api/admin/outline/parent", Body());
+            response.EnsureSuccessStatusCode();
+            var result = JsonDocument.Parse(await response.Content.ReadAsStringAsync()).RootElement;
+            Assert.Equal("UNREVIEWED", result.GetProperty("state").GetString());
+            var current = store.Find("sha", "config")!;
+            Assert.Equal(hs[1].StableId, DocxHeaderExtractor.DocumentProcessing.Gather.OutlineDiff.Parents(current.Headings)[hs[2].StableId!]);
+            using var stale = await client.PostAsync("/api/admin/outline/parent", Body());
+            Assert.Equal(System.Net.HttpStatusCode.Conflict, stale.StatusCode);
+        }
+        finally { if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+
+    [Fact]
     public void Docx_cache_requires_an_explicit_form_opt_in()
     {
         var provider = new OpenRouterProvider(null);
@@ -48,8 +82,198 @@ public sealed class AdminGatherWebTests
 
     static void Add(MultipartFormDataContent form, string field, byte[] content, string name) => form.Add(new ByteArrayContent(content), field, name);
 
+    /// <summary>The text of the downloaded DOCX, one paragraph per line.</summary>
+    static async Task<string> BodyText(HttpClient client, string url)
+    {
+        var bytes = await client.GetByteArrayAsync(url);
+        using var stream = new MemoryStream(bytes);
+        using var doc = DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(stream, false);
+        return string.Join("\n", doc.MainDocumentPart!.Document!.Body!.Descendants<DocumentFormat.OpenXml.Wordprocessing.Paragraph>().Select(p => p.InnerText));
+    }
+
     static JsonElement[] Events(string body) =>
         body.Split('\n', StringSplitOptions.RemoveEmptyEntries).Select(l => JsonDocument.Parse(l).RootElement.Clone()).ToArray();
+
+    [Fact]
+    public async Task Uploaded_outline_without_explicit_coverage_attestation_is_not_auto_placed()
+    {
+        var target = RawDocxFixtureTests.Build(P("Mục A") + P("Đích"));
+        var source = RawDocxFixtureTests.Build(P("Mục A") + P("Thông tin nguồn"));
+        try
+        {
+            using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(b => b.ConfigureTestServices(s =>
+                s.AddSingleton<ModelProviderFactory>(_ => () => new OpenRouterProvider(null))));
+            using var client = app.CreateClient();
+            using var form = new MultipartFormDataContent();
+            Add(form, "target", File.ReadAllBytes(target), "target.docx");
+            Add(form, "sources", File.ReadAllBytes(source), "source.docx");
+            Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("target.docx", (0, 1, "Mục A"))), "target.json");
+            Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("source.docx", (0, 1, "Mục A"))), "source.json");
+            form.Add(new StringContent("1"), "noLlm");
+            using var response = await client.PostAsync("/api/admin/gather", form);
+            var result = Events(await response.Content.ReadAsStringAsync()).Single(e => e.GetProperty("type").GetString() == "result");
+            Assert.Empty(result.GetProperty("merged").EnumerateArray());
+            Assert.Equal("TARGET_OUTLINE_INCOMPLETE", Assert.Single(result.GetProperty("uncertain").EnumerateArray()).GetProperty("kind").GetString());
+            var body = await BodyText(client, result.GetProperty("download").GetString()!);
+            var appendix = body.IndexOf("PHỤ LỤC — NỘI DUNG CHƯA GHÉP ĐƯỢC", StringComparison.Ordinal);
+            Assert.True(appendix >= 0 && body.IndexOf("Thông tin nguồn", StringComparison.Ordinal) > appendix);
+        }
+        finally { File.Delete(target); File.Delete(source); }
+    }
+
+    [Fact]
+    public async Task A_source_without_headings_is_kept_in_the_appendix_on_export_and_apply()
+    {
+        var target = RawDocxFixtureTests.Build(P("Mục A") + P("Đích"));
+        var source = RawDocxFixtureTests.Build(P("Thông tin nguồn không có heading"));
+        try
+        {
+            using (var doc = DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(source, true))
+            {
+                var footer = doc.MainDocumentPart!.AddNewPart<DocumentFormat.OpenXml.Packaging.FooterPart>();
+                footer.Footer = new DocumentFormat.OpenXml.Wordprocessing.Footer(new DocumentFormat.OpenXml.Wordprocessing.Paragraph(
+                    new DocumentFormat.OpenXml.Wordprocessing.Run(new DocumentFormat.OpenXml.Wordprocessing.Text("Nội dung chân trang"))));
+            }
+            using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(b => b.ConfigureTestServices(s =>
+                s.AddSingleton<ModelProviderFactory>(_ => () => new OpenRouterProvider(null))));
+            using var client = app.CreateClient();
+            using var form = new MultipartFormDataContent();
+            Add(form, "target", File.ReadAllBytes(target), "target.docx");
+            Add(form, "sources", File.ReadAllBytes(source), "source.docx");
+            Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("target.docx", (0, 1, "Mục A"))), "target.json");
+            Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("source.docx")), "source.json");
+            form.Add(new StringContent("1"), "noLlm"); form.Add(new StringContent("1"), "outlineCoverageVerified");
+            using var response = await client.PostAsync("/api/admin/gather", form);
+            var events = Events(await response.Content.ReadAsStringAsync());
+            Assert.DoesNotContain(events, e => e.GetProperty("type").GetString() == "error");
+            var result = events.Single(e => e.GetProperty("type").GetString() == "result");
+            var held = Assert.Single(result.GetProperty("uncertain").EnumerateArray());
+            Assert.Equal("UNCONFIRMED_HIERARCHY", held.GetProperty("kind").GetString());
+            Assert.Contains(held.GetProperty("facts").EnumerateArray(), f => f.GetProperty("text").GetString() == "Thông tin nguồn không có heading");
+            async Task CheckBody(string url)
+            {
+                var body = await BodyText(client, url);
+                var appendix = body.IndexOf("PHỤ LỤC — NỘI DUNG CHƯA GHÉP ĐƯỢC", StringComparison.Ordinal);
+                Assert.True(appendix >= 0);
+                Assert.True(body.IndexOf("Thông tin nguồn không có heading", StringComparison.Ordinal) > appendix);
+                Assert.Contains("Chân trang chưa được đọc đầy đủ", body);
+            }
+            await CheckBody(result.GetProperty("download").GetString()!);
+            using var apply = await client.PostAsync($"/api/admin/gather/{result.GetProperty("runId").GetString()}/apply",
+                new StringContent("""{"decisions":[]}""", System.Text.Encoding.UTF8, "application/json"));
+            apply.EnsureSuccessStatusCode();
+            await CheckBody(JsonDocument.Parse(await apply.Content.ReadAsStringAsync()).RootElement.GetProperty("download").GetString()!);
+        }
+        finally { File.Delete(target); File.Delete(source); }
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task Incomplete_cached_selection_never_places_source_in_body(bool targetIncomplete)
+    {
+        var target = RawDocxFixtureTests.Build(P("Mục A") + P("Đích"));
+        var source = RawDocxFixtureTests.Build(P("Mục A") + P("Nội dung nguồn"));
+        var root = Path.Combine(Path.GetTempPath(), "dhx-coverage-web-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            var provider = new OpenRouterProvider(null);
+            var options = RequestOptions.Build(new Microsoft.AspNetCore.Http.FormCollection(
+                new Dictionary<string, Microsoft.Extensions.Primitives.StringValues> { ["noLlm"] = "1" }), provider, out _);
+            var key = OutlineReuse.ConfigKey(options);
+            var store = new DocxHeaderExtractor.DocumentProcessing.Gather.OutlineStore(root);
+            void Save(string path, string name, bool complete)
+            {
+                var version = DocxHeaderExtractor.Sources.Docx.Changes.DocxVersionReader.Read(path);
+                var heading = new DocxHeaderExtractor.DocumentProcessing.Output.HeadingRecord
+                    { Index = 0, Level = 1, Text = "Mục A", StableId = "body[1]/p[1]" };
+                store.Store(new(DocxHeaderExtractor.DocumentProcessing.Gather.OutlineStore.Version, version.FileSha256, key, name,
+                    DateTimeOffset.UtcNow, DocxHeaderExtractor.DocumentProcessing.Gather.OutlineStore.Paragraphs(version), [], [heading],
+                    SelectionComplete: complete));
+            }
+            Save(target, "target.docx", !targetIncomplete);
+            Save(source, "source.docx", targetIncomplete);
+            using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(b => b.ConfigureTestServices(s =>
+            {
+                s.AddSingleton(new WebApp::DocxHeaderExtractor.Web.Endpoints.OutlineRoot(root));
+                s.AddSingleton<ModelProviderFactory>(_ => () => provider);
+            }));
+            using var client = app.CreateClient();
+            using var form = new MultipartFormDataContent();
+            Add(form, "target", File.ReadAllBytes(target), "target.docx");
+            Add(form, "sources", File.ReadAllBytes(source), "source.docx");
+            form.Add(new StringContent("1"), "noLlm"); form.Add(new StringContent("1"), "outlineCoverageVerified");
+            form.Add(new StringContent("1"), "outlineCache");
+            using var response = await client.PostAsync("/api/admin/gather", form);
+            var events = Events(await response.Content.ReadAsStringAsync());
+            Assert.DoesNotContain(events, e => e.GetProperty("type").GetString() == "error");
+            var result = events.Single(e => e.GetProperty("type").GetString() == "result");
+            Assert.Empty(result.GetProperty("merged").EnumerateArray());
+            var held = Assert.Single(result.GetProperty("uncertain").EnumerateArray());
+            Assert.Equal(targetIncomplete ? "TARGET_OUTLINE_INCOMPLETE" : "UNCONFIRMED_HIERARCHY", held.GetProperty("kind").GetString());
+            var body = await BodyText(client, result.GetProperty("download").GetString()!);
+            var appendix = body.IndexOf("PHỤ LỤC — NỘI DUNG CHƯA GHÉP ĐƯỢC", StringComparison.Ordinal);
+            Assert.True(appendix >= 0 && body.IndexOf("Nội dung nguồn", StringComparison.Ordinal) > appendix);
+            Assert.Contains("Chưa kiểm tra hết các đoạn để xác định mục", body);
+        }
+        finally { File.Delete(target); File.Delete(source); if (Directory.Exists(root)) Directory.Delete(root, true); }
+    }
+
+    [Fact]
+    public async Task Export_preserves_unread_gap_even_when_no_section_has_facts()
+    {
+        var target = RawDocxFixtureTests.Build(P("Văn bản đích"));
+        var output = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".docx");
+        try
+        {
+            DocxHeaderExtractor.DocumentProcessing.Gather.GatherWriteback.Export(target, output, [], [], DateTime.UtcNow,
+                gaps: [new("nguồn A", "body[1]/tbl[1]", "merged_cells")]);
+            using var doc = DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(output, false);
+            var text = doc.MainDocumentPart!.Document!.Body!.InnerText;
+            Assert.Contains("PHỤ LỤC — NỘI DUNG CHƯA GHÉP ĐƯỢC", text);
+            Assert.Contains("nguồn A body[1]/tbl[1]", text);
+            Assert.Contains("Ô bảng gộp chưa được đọc đầy đủ", text);
+            Assert.DoesNotContain("merged_cells", text);
+            await Task.CompletedTask;
+        }
+        finally { File.Delete(target); File.Delete(output); }
+    }
+
+    [Fact]
+    public async Task Source_text_before_first_heading_is_in_export_and_reexport()
+    {
+        var target = RawDocxFixtureTests.Build(P("Mục A") + P("Nội dung đích"));
+        var source = RawDocxFixtureTests.Build(P("Đoạn mở đầu nguồn") + P("Mục A") + P("Nội dung nguồn"));
+        try
+        {
+            using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(b => b.ConfigureTestServices(s =>
+                s.AddSingleton<ModelProviderFactory>(_ => () => new OpenRouterProvider(null))));
+            using var client = app.CreateClient();
+            using var form = new MultipartFormDataContent();
+            Add(form, "target", File.ReadAllBytes(target), "target.docx");
+            Add(form, "sources", File.ReadAllBytes(source), "source.docx");
+            Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("target.docx", (0, 1, "Mục A"))), "target.json");
+            Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("source.docx", (1, 1, "Mục A"))), "source.json");
+            form.Add(new StringContent("1"), "noLlm"); form.Add(new StringContent("1"), "outlineCoverageVerified");
+            using var response = await client.PostAsync("/api/admin/gather", form);
+            var events = Events(await response.Content.ReadAsStringAsync());
+            Assert.DoesNotContain(events, e => e.GetProperty("type").GetString() == "error");
+            var result = events.Single(e => e.GetProperty("type").GetString() == "result");
+            async Task Check(string url)
+            {
+                var body = await BodyText(client, url);
+                var appendix = body.IndexOf("PHỤ LỤC — NỘI DUNG CHƯA GHÉP ĐƯỢC", StringComparison.Ordinal);
+                Assert.True(appendix >= 0);
+                Assert.True(body.IndexOf("Đoạn mở đầu nguồn", StringComparison.Ordinal) > appendix);
+            }
+            await Check(result.GetProperty("download").GetString()!);
+            using var apply = await client.PostAsync($"/api/admin/gather/{result.GetProperty("runId").GetString()}/apply",
+                new StringContent("""{"decisions":[]}""", System.Text.Encoding.UTF8, "application/json"));
+            apply.EnsureSuccessStatusCode();
+            await Check(JsonDocument.Parse(await apply.Content.ReadAsStringAsync()).RootElement.GetProperty("download").GetString()!);
+        }
+        finally { File.Delete(target); File.Delete(source); }
+    }
 
     [Fact]
     public async Task New_source_heading_is_held_with_its_text_instead_of_automatic_output()
@@ -64,7 +288,7 @@ public sealed class AdminGatherWebTests
             Add(form, "target", File.ReadAllBytes(target), "target.docx"); Add(form, "sources", File.ReadAllBytes(source), "source.docx");
             Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("target.docx", (0, 1, "Kế hoạch"))), "target.json");
             Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("source.docx", (0, 1, "Kế hoạch"), (1, 2, "Dinh dưỡng"))), "source.json");
-            form.Add(new StringContent("1"), "noLlm");
+            form.Add(new StringContent("1"), "noLlm"); form.Add(new StringContent("1"), "outlineCoverageVerified");
             using var response = await client.PostAsync("/api/admin/gather", form);
             var events = Events(await response.Content.ReadAsStringAsync());
             Assert.DoesNotContain(events, x => x.GetProperty("type").GetString() == "error");
@@ -72,7 +296,13 @@ public sealed class AdminGatherWebTests
             Assert.Empty(result.GetProperty("added").EnumerateArray());
             var held = Assert.Single(result.GetProperty("uncertain").EnumerateArray());
             Assert.Equal("NEW_HEADING_REVIEW", held.GetProperty("kind").GetString());
-            Assert.Equal("Nội dung nguồn", Assert.Single(held.GetProperty("facts").EnumerateArray()).GetProperty("text").GetString());
+            Assert.Equal("Mục này chưa có trong văn bản đích", held.GetProperty("plainReason").GetString());
+            Assert.Contains(held.GetProperty("facts").EnumerateArray(), x => x.GetProperty("text").GetString() == "Nội dung nguồn");
+            // The new heading is not written into the body: its text is in the appendix of the export.
+            var body = await BodyText(client, result.GetProperty("download").GetString()!);
+            var appendix = body[body.IndexOf("PHỤ LỤC — NỘI DUNG CHƯA GHÉP ĐƯỢC", StringComparison.Ordinal)..];
+            Assert.Contains("Nội dung nguồn", appendix);
+            Assert.Contains("Dinh dưỡng", appendix);
         }
         finally { File.Delete(target); File.Delete(source); }
     }
@@ -100,7 +330,7 @@ public sealed class AdminGatherWebTests
                 Add(form, "sources", File.ReadAllBytes(s), "source.docx");
                 Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("target.docx", (0, 1, "Mục A"))), "target.json");
                 Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("source.docx", (0, 1, "Mục A"))), "source.json");
-                form.Add(new StringContent("1"), "noLlm"); form.Add(new StringContent("test-history"), "historyKey");
+                form.Add(new StringContent("1"), "noLlm"); form.Add(new StringContent("1"), "outlineCoverageVerified"); form.Add(new StringContent("test-history"), "historyKey");
                 using var response = await client.PostAsync("/api/admin/gather", form);
                 var events = Events(await response.Content.ReadAsStringAsync());
                 Assert.DoesNotContain(events, e => e.GetProperty("type").GetString() == "error");
@@ -115,8 +345,8 @@ public sealed class AdminGatherWebTests
             Assert.True(impact.GetProperty("targetChanged").GetBoolean());
             Assert.Contains(impact.GetProperty("items").EnumerateArray(), i => i.GetProperty("kind").GetString() == "NEW_OR_UNMATCHED_EVIDENCE"
                 && i.GetProperty("after").GetProperty("fact").GetProperty("parts")[0].GetProperty("text").GetString() == "Nguồn mới");
-            Assert.True(second.GetProperty("targetReviewRequired").GetBoolean());
-            Assert.False(second.TryGetProperty("download", out _));
+            Assert.False(second.TryGetProperty("targetReviewRequired", out _));
+            Assert.NotNull(second.GetProperty("download").GetString());
         }
         finally
         {
@@ -126,63 +356,75 @@ public sealed class AdminGatherWebTests
     }
 
     [Fact]
-    public async Task The_admin_page_gathers_by_heading_chain_and_lists_the_uncertain_sections_without_a_model()
+    public async Task The_admin_page_exports_at_once_and_keeps_every_unplaced_paragraph_in_the_appendix()
     {
-        var target = RawDocxFixtureTests.Build(P("Công tác xã hội:") + P("Đã làm A.") + P("Công tác tiếp nhận và hỗ trợ từ thiện") + P("Tiếp đón 66 lượt."));
-        var source = RawDocxFixtureTests.Build(P("CÔNG TÁC XÃ HỘI:") + P("Đã làm B.") + P("Tiếp nhận và hỗ trợ từ thiện") + P("Tiếp đón 50 lượt."));
+        var target = RawDocxFixtureTests.Build(P("Mục A:") + P("Đã làm A.") + P("Mục con một") + P("Đích 66."));
+        var source = RawDocxFixtureTests.Build(P("MỤC A:") + P("Đã làm B.") + P("Mục con mot") + P("Nguồn 50."));
         var targetBytes = File.ReadAllBytes(target);
         try
         {
             using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(builder => builder.ConfigureTestServices(services =>
                 services.AddSingleton<ModelProviderFactory>(_ => () => new OpenRouterProvider(null))));
             using var client = app.CreateClient();
-            Assert.Contains("Phần không chắc", await client.GetStringAsync("/admin.html"));
-            using var form = new MultipartFormDataContent();
-            Add(form, "target", targetBytes, "10.docx");
-            Add(form, "sources", File.ReadAllBytes(source), "08.docx");
-            Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("10.docx", (0, 1, "Công tác xã hội:"), (2, 2, "Công tác tiếp nhận và hỗ trợ từ thiện"))), "10.json");
-            Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("08.docx", (0, 1, "CÔNG TÁC XÃ HỘI:"), (2, 2, "Tiếp nhận và hỗ trợ từ thiện"))), "08.json");
-            form.Add(new StringContent("1"), "noLlm");
-
+            var page = await client.GetStringAsync("/admin.html");
+            Assert.Contains("Nội dung chưa rõ vị trí", page);
+            Assert.DoesNotContain("targetReviewRequired", page);
+            MultipartFormDataContent Form()
+            {
+                var form = new MultipartFormDataContent();
+                Add(form, "target", targetBytes, "10.docx");
+                Add(form, "sources", File.ReadAllBytes(source), "08.docx");
+                Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("10.docx", (0, 1, "Mục A:"), (2, 2, "Mục con một"))), "10.json");
+                Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("08.docx", (0, 1, "MỤC A:"), (2, 2, "Mục con mot"))), "08.json");
+                form.Add(new StringContent("1"), "noLlm"); form.Add(new StringContent("1"), "outlineCoverageVerified");
+                return form;
+            }
+            using var form = Form();
             using var response = await client.PostAsync("/api/admin/gather", form);
             var events = Events(await response.Content.ReadAsStringAsync());
-
             Assert.DoesNotContain(events, e => e.GetProperty("type").GetString() == "error");
             var result = events.Single(e => e.GetProperty("type").GetString() == "result");
             Assert.False(result.GetProperty("modelClassified").GetBoolean());
-            var merged = Assert.Single(result.GetProperty("merged").EnumerateArray());
-            Assert.Equal("Đã làm B.", Assert.Single(merged.GetProperty("facts").EnumerateArray()).GetProperty("text").GetString());
-            Assert.Empty(result.GetProperty("added").EnumerateArray());
-            var held = Assert.Single(result.GetProperty("uncertain").EnumerateArray());
-            Assert.Equal("NEAR_NAME", held.GetProperty("kind").GetString());
-            Assert.Equal("Công tác tiếp nhận và hỗ trợ từ thiện", Assert.Single(held.GetProperty("candidates").EnumerateArray()).GetProperty("heading").GetString());
 
-            Assert.True(result.GetProperty("targetReviewRequired").GetBoolean());
-            Assert.False(result.TryGetProperty("download", out _));
-
-            // The separate demo is labelled, source-bound, and includes held content without approving or modifying the target.
-            var demoUrl = result.GetProperty("demoDownload").GetString();
-            Assert.NotNull(demoUrl);
-            var demoBytes = await client.GetByteArrayAsync(demoUrl);
-            using (var stream = new MemoryStream(demoBytes))
-            using (var doc = DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(stream, false))
+            // No outline review: the export exists at once. Each source paragraph is in the body, in the appendix, or listed as not added.
+            var body = await BodyText(client, result.GetProperty("download").GetString()!);
+            var excluded = result.GetProperty("excluded").EnumerateArray().Select(e => e.GetProperty("text").GetString()).ToHashSet();
+            foreach (var paragraph in new[] { "Đã làm B.", "Nguồn 50." })
+                Assert.True(body.Contains(paragraph, StringComparison.Ordinal) || excluded.Contains(paragraph), paragraph);
+            var uncertain = result.GetProperty("uncertain").EnumerateArray().ToArray();
+            Assert.NotEmpty(uncertain);
+            var appendixAt = body.IndexOf("PHỤ LỤC — NỘI DUNG CHƯA GHÉP ĐƯỢC", StringComparison.Ordinal);
+            Assert.True(appendixAt >= 0);
+            foreach (var u in uncertain)
             {
-                var body = doc.MainDocumentPart!.Document!.Body!;
-                Assert.Contains("BẢN DEMO CHƯA DUYỆT", body.InnerText);
-                Assert.Contains("Đã làm B.", body.InnerText);
-                Assert.Contains("Tiếp đón 50 lượt.", body.InnerText);
-                Assert.Contains("CHƯA XÁC ĐỊNH VỊ TRÍ", body.InnerText);
-                Assert.Contains("nguồn:", body.InnerText);
-                Assert.NotEmpty(body.Descendants<DocumentFormat.OpenXml.Wordprocessing.InsertedRun>());
+                Assert.False(string.IsNullOrWhiteSpace(u.GetProperty("plainReason").GetString()));
+                foreach (var fact in u.GetProperty("facts").EnumerateArray())
+                {
+                    var text = fact.GetProperty("text").GetString()!;
+                    Assert.True(body.IndexOf(text, appendixAt, StringComparison.Ordinal) > appendixAt, text);
+                    Assert.True(body.IndexOf(text, StringComparison.Ordinal) > appendixAt, "uncertain text written before the appendix: " + text);
+                }
             }
+            Assert.DoesNotContain("NEAR_NAME", body);
 
-            // An unreviewed target remains a preview, even if the caller tries to apply an uncertain-section decision.
+            // The user's choices: a skipped item stays in the appendix, labelled; an item placed by the user leaves the appendix.
             var runId = result.GetProperty("runId").GetString();
-            using var unapprovedDownload = await client.GetAsync($"/api/outline/{runId}.docx");
-            Assert.Equal(System.Net.HttpStatusCode.NotFound, unapprovedDownload.StatusCode);
-            using var apply = await client.PostAsync($"/api/admin/gather/{runId}/apply", new StringContent(
-                """{"decisions":[{"index":0,"decision":"MERGE","candidate":0}]}""", System.Text.Encoding.UTF8, "application/json"));
-            Assert.Equal(System.Net.HttpStatusCode.Conflict, apply.StatusCode);
+            using var skip = await client.PostAsync($"/api/admin/gather/{runId}/apply", new StringContent(
+                """{"decisions":[{"index":0,"decision":"SKIP"}]}""", System.Text.Encoding.UTF8, "application/json"));
+            skip.EnsureSuccessStatusCode();
+            var skipped = await BodyText(client, JsonDocument.Parse(await skip.Content.ReadAsStringAsync()).RootElement.GetProperty("download").GetString()!);
+            Assert.Contains("Người dùng chọn bỏ qua", skipped);
+            if (uncertain[0].GetProperty("candidates").GetArrayLength() > 0)
+            {
+                using var merge = await client.PostAsync($"/api/admin/gather/{runId}/apply", new StringContent(
+                    """{"decisions":[{"index":0,"decision":"MERGE","candidate":0}]}""", System.Text.Encoding.UTF8, "application/json"));
+                merge.EnsureSuccessStatusCode();
+                var merged = await BodyText(client, JsonDocument.Parse(await merge.Content.ReadAsStringAsync()).RootElement.GetProperty("download").GetString()!);
+                var first = uncertain[0].GetProperty("facts")[0].GetProperty("text").GetString()!;
+                var at = merged.IndexOf("PHỤ LỤC — NỘI DUNG CHƯA GHÉP ĐƯỢC", StringComparison.Ordinal);
+                var placed = merged.IndexOf(first, StringComparison.Ordinal);
+                Assert.True(placed >= 0 && (at < 0 || placed < at), first);
+            }
             using var expired = await client.PostAsync($"/api/admin/gather/{Guid.NewGuid()}/apply",
                 new StringContent("""{"decisions":[]}""", System.Text.Encoding.UTF8, "application/json"));
             Assert.Equal(System.Net.HttpStatusCode.NotFound, expired.StatusCode);
@@ -202,7 +444,7 @@ public sealed class AdminGatherWebTests
             using var form = new MultipartFormDataContent();
             Add(form, "target", File.ReadAllBytes(target), "10.docx");
             Add(form, "sources", File.ReadAllBytes(target), "08.docx");
-            form.Add(new StringContent("1"), "noLlm");
+            form.Add(new StringContent("1"), "noLlm"); form.Add(new StringContent("1"), "outlineCoverageVerified");
 
             using var response = await client.PostAsync("/api/admin/gather", form);
             var error = Events(await response.Content.ReadAsStringAsync()).Single(e => e.GetProperty("type").GetString() == "error");
@@ -210,84 +452,6 @@ public sealed class AdminGatherWebTests
             Assert.Contains("10.docx, 08.docx", error.GetProperty("message").GetString());
         }
         finally { File.Delete(target); }
-    }
-
-    [Fact]
-    public async Task Only_an_exact_previously_reviewed_target_can_be_written_and_revocation_blocks_apply()
-    {
-        var target = RawDocxFixtureTests.Build(P("Công tác xã hội:") + P("Đã làm A."));
-        var source = RawDocxFixtureTests.Build(P("Công tác xã hội:") + P("Đã làm B."));
-        var root = Path.Combine(Path.GetTempPath(), "dhx-approved-target-" + Guid.NewGuid().ToString("N"));
-        try
-        {
-            var version = DocxHeaderExtractor.Sources.Docx.Changes.DocxVersionReader.Read(target);
-            var paragraphs = DocxHeaderExtractor.DocumentProcessing.Gather.OutlineStore.Paragraphs(version);
-            var text = version.Paragraphs[0].RawText;
-            var heading = new DocxHeaderExtractor.DocumentProcessing.Output.HeadingRecord { Index = 0, Level = 1, Text = text,
-                StableId = paragraphs[0].Location, HeadingSpan = new(0, text.Length), ValidatedSourcePartCount = 1,
-                SourceParts = [new(paragraphs[0].Location, 0, new(0, text.Length), text)] };
-            var provider = new OpenRouterProvider(null);
-            var formFields = new Dictionary<string, Microsoft.Extensions.Primitives.StringValues> { ["noLlm"] = "1" };
-            var options = RequestOptions.Build(new Microsoft.AspNetCore.Http.FormCollection(formFields), provider, out _);
-            var key = OutlineReuse.ConfigKey(options);
-            var store = new DocxHeaderExtractor.DocumentProcessing.Gather.OutlineStore(root);
-            store.Store(new(DocxHeaderExtractor.DocumentProcessing.Gather.OutlineStore.Version, version.FileSha256, key, "10.docx", DateTimeOffset.UtcNow,
-                paragraphs, [], [heading]));
-            var saved = store.Find(version.FileSha256, key)!;
-            var approvals = new DocxHeaderExtractor.DocumentProcessing.Gather.OutlineApprovals(root);
-
-            using var app = new WebApplicationFactory<WebProgram>().WithWebHostBuilder(b => b.ConfigureTestServices(s =>
-            {
-                s.AddSingleton(new WebApp::DocxHeaderExtractor.Web.Endpoints.OutlineRoot(root));
-                s.AddSingleton<ModelProviderFactory>(_ => () => new OpenRouterProvider(null));
-            }));
-            using var client = app.CreateClient();
-            MultipartFormDataContent Form()
-            {
-                var form = new MultipartFormDataContent();
-                Add(form, "target", File.ReadAllBytes(target), "10.docx");
-                Add(form, "sources", File.ReadAllBytes(source), "08.docx");
-                Add(form, "outlines", System.Text.Encoding.UTF8.GetBytes(Outline("08.docx", (0, 1, text))), "08.json");
-                form.Add(new StringContent("1"), "noLlm"); form.Add(new StringContent("1"), "outlineCache");
-                return form;
-            }
-            using var previewForm = Form();
-            using var previewResponse = await client.PostAsync("/api/admin/gather", previewForm);
-            var previewEvents = Events(await previewResponse.Content.ReadAsStringAsync());
-            Assert.DoesNotContain(previewEvents, e => e.GetProperty("type").GetString() == "error");
-            var preview = previewEvents.Single(e => e.GetProperty("type").GetString() == "result");
-            Assert.True(preview.GetProperty("targetReviewRequired").GetBoolean());
-            Assert.False(preview.TryGetProperty("download", out _));
-            var review = new { sourceSha256 = version.FileSha256, configKey = key,
-                outlineSha256 = DocxHeaderExtractor.DocumentProcessing.Gather.OutlineApprovals.OutlineHash(saved), reviewer = "reviewer",
-                items = new[] { new { location = heading.StableId, kind = "HEADING" } }, complete = true };
-            using var approveResponse = await client.PostAsync("/api/admin/outline/review",
-                new StringContent(JsonSerializer.Serialize(review), System.Text.Encoding.UTF8, "application/json"));
-            approveResponse.EnsureSuccessStatusCode();
-            Assert.Equal("REVIEWED", JsonDocument.Parse(await approveResponse.Content.ReadAsStringAsync()).RootElement.GetProperty("state").GetString());
-            using var staleApply = await client.PostAsync($"/api/admin/gather/{preview.GetProperty("runId").GetString()}/apply",
-                new StringContent("""{"decisions":[]}""", System.Text.Encoding.UTF8, "application/json"));
-            Assert.Equal(System.Net.HttpStatusCode.Conflict, staleApply.StatusCode);
-
-            using var form = Form();
-            using var response = await client.PostAsync("/api/admin/gather", form);
-            var events = Events(await response.Content.ReadAsStringAsync());
-            Assert.DoesNotContain(events, e => e.GetProperty("type").GetString() == "error");
-            var result = events.Single(e => e.GetProperty("type").GetString() == "result");
-            Assert.False(result.GetProperty("targetReviewRequired").GetBoolean());
-            var download = await client.GetByteArrayAsync(result.GetProperty("download").GetString());
-            var written = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".docx");
-            try { File.WriteAllBytes(written, download); using var doc = DocumentFormat.OpenXml.Packaging.WordprocessingDocument.Open(written, false);
-                Assert.Contains("Đã làm B.", doc.MainDocumentPart!.Document!.Body!.InnerText); }
-            finally { File.Delete(written); }
-
-            var contradictory = DocxHeaderExtractor.DocumentProcessing.Gather.OutlineApprovals.Decide(saved, "NOT_HEADING", heading.StableId, "reviewer", DateTimeOffset.UtcNow).Decision!;
-            approvals.Add([contradictory]);
-            using var apply = await client.PostAsync($"/api/admin/gather/{result.GetProperty("runId").GetString()}/apply",
-                new StringContent("""{"decisions":[]}""", System.Text.Encoding.UTF8, "application/json"));
-            Assert.Equal(System.Net.HttpStatusCode.Conflict, apply.StatusCode);
-        }
-        finally { File.Delete(target); File.Delete(source); if (Directory.Exists(root)) Directory.Delete(root, true); }
     }
 
     [Fact]

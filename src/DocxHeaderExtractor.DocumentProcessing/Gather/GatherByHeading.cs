@@ -30,6 +30,8 @@ public sealed record GatherUncertain(string Kind, string SourceHeading, string S
 /// <summary>The result of matching sources to a target by heading: the sections to write, what is not written, and what is held as uncertain.</summary>
 public sealed record GatherHeadingPlan(IReadOnlyList<GatherSection> Sections, IReadOnlyList<GatherExcluded> Excluded, IReadOnlyList<GatherUncertain> Uncertain)
 {
+    /// <summary>All document gaps, including when no target section exists or no source fact can be placed.</summary>
+    public IReadOnlyList<GatherGap> Gaps { get; init; } = [];
     public void Deconstruct(out IReadOnlyList<GatherSection> sections, out IReadOnlyList<GatherExcluded> excluded)
     {
         sections = Sections;
@@ -94,6 +96,53 @@ public static partial class GatherByHeading
     /// other side has no heading with any of their keys. One outline may give the title as a heading and another not, or split it over two
     /// headings; left in, it would change the chain of every heading below it. A title the other side also has stays in the chain.
     /// </summary>
+    public const string FormHeaderReason = "FORM_HEADER: đoạn đầu văn bản nguồn trùng vị trí và trùng toàn bộ chữ với văn bản đích";
+    public const string FormHeaderDigitsReason = "FORM_HEADER_DIGITS: đoạn đầu văn bản nguồn trùng vị trí và chữ với văn bản đích, chỉ khác chữ số; cần xem số";
+    public const string TableReason = "TABLE_NOT_GATHERED: nội dung trong bảng của văn bản nguồn; không xử lý bảng";
+
+    /// <summary>
+    /// The source's opening and closing blocks that are not content to gather. A table in the opening block (before the first section that is not a
+    /// title) or the table that ends the document is out of scope: tables are not gathered. A paragraph of the opening block is the source's own
+    /// form, and leaves the appendix, only when the target has a paragraph in the same place with exactly the same text (case and spacing aside);
+    /// no word list is used. When the two differ only in digits it may be a new period or a changed figure, which the program cannot tell apart:
+    /// it stays in the appendix, labelled so. Any other opening paragraph keeps its reason and stays in the appendix.
+    /// </summary>
+    internal static List<GatherExcluded> FormBlocks(List<GatherExcluded> excluded, GatherSource target, IReadOnlyList<Section> targetSections)
+    {
+        var end = targetSections.FirstOrDefault(s => !s.Title)?.First ?? target.Units.Count;
+        var targetHeader = target.Units.Take(Math.Max(0, end)).Where(u => !string.IsNullOrWhiteSpace(u.Text) && !u.Location.Contains("/tbl[", StringComparison.Ordinal))
+            .GroupBy(u => u.Location, StringComparer.Ordinal).ToDictionary(g => g.Key, g => FormText(string.Concat(g.Select(u => u.Text))), StringComparer.Ordinal);
+        return excluded.Select(e =>
+        {
+            var parts = e.Fact.Parts;
+            if (parts.Count == 0) return e;
+            if (e.Reason.StartsWith("DOCUMENT_END_TABLE", StringComparison.Ordinal)) return e with { Reason = TableReason };
+            if (!e.Reason.StartsWith("BEFORE_FIRST_HEADING", StringComparison.Ordinal) && !e.Reason.StartsWith("DOCUMENT_TITLE", StringComparison.Ordinal)) return e;
+            if (parts.All(InTable)) return e with { Reason = TableReason };
+            if (parts.Any(InTable)) return e;
+            var pairs = parts.GroupBy(p => p.Location, StringComparer.Ordinal)
+                .Select(g => (Source: FormText(string.Concat(g.Select(p => p.Text))), Target: targetHeader.GetValueOrDefault(g.Key))).ToList();
+            if (pairs.Any(x => x.Target is null)) return e;
+            if (pairs.All(x => x.Source == x.Target)) return e with { Reason = FormHeaderReason };
+            return pairs.All(x => WithoutDigits(x.Source) == WithoutDigits(x.Target!)) ? e with { Reason = FormHeaderDigitsReason } : e;
+        }).ToList();
+    }
+
+    /// <summary>The table content of a whole source, listed as not added: tables are not gathered.</summary>
+    static IEnumerable<GatherExcluded> TableFacts(GatherSource source) =>
+        Content(source.Units, new Section("", "", -1, -1, source.Units.Count)).Where(f => f.Parts.Count > 0 && f.Parts.All(InTable))
+            .Select(f => new GatherExcluded("", f, TableReason));
+
+    /// <summary>A part read from a table cell, at any depth.</summary>
+    static bool InTable(SourcedPart p) => p.Location.Contains("/tbl[", StringComparison.Ordinal);
+
+    /// <summary>Text compared for the form: case and spacing ignored; digits are kept.</summary>
+    static string FormText(string text) =>
+        string.Join(' ', text.Normalize(System.Text.NormalizationForm.FormC).ToLowerInvariant().Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
+
+    /// <summary>The form text with every run of digits made the same, to tell a change only in digits from other changes.</summary>
+    static string WithoutDigits(string formText) => System.Text.RegularExpressions.Regex.Replace(formText, @"\d+", "#");
+
     internal static List<Section> WithoutTitle(List<Section> sections, IReadOnlySet<string> otherKeys)
     {
         bool Contains(int ancestor, int i)
@@ -245,7 +294,7 @@ public static partial class GatherByHeading
     /// </summary>
     public static GatherHeadingPlan Build(string targetPath,
         IReadOnlyList<HeadingRecord> targetOutline, IReadOnlyList<GatherSourceFile> sources, bool addMissingHeadings = false,
-        GatherMatching matching = GatherMatching.Chain)
+        GatherMatching matching = GatherMatching.Chain, bool targetSelectionComplete = true)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(targetPath);
         ArgumentNullException.ThrowIfNull(targetOutline);
@@ -257,18 +306,29 @@ public static partial class GatherByHeading
         var rawSources = sources.Select(s =>
         {
             var source = GatherUnits.Read(s.Path, s.Name, s.Outline);
-            return (Name: s.Name, Source: source, Outline: s.Outline ?? OutlineFromUnits(source.Units));
+            if (!s.SelectionComplete) source = source with { Gaps = [.. source.Gaps, new GatherGap(s.Name, "", "selection_incomplete")] };
+            return (Name: s.Name, Source: source, Outline: s.Outline ?? OutlineFromUnits(source.Units), Path: s.Path, s.OutlineReviewRequired, s.SelectionComplete);
         }).ToList();
-        if (NeedsHierarchyReview(targetOutline) || rawSources.Any(r => NeedsHierarchyReview(r.Outline)))
-            return UnconfirmedHierarchy(target, targetOutline, rawSources);
+        if (!targetSelectionComplete || NeedsHierarchyReview(targetOutline))
+        {
+            if (!targetSelectionComplete) target = target with { Gaps = [.. target.Gaps, new GatherGap("target", "", "selection_incomplete")] };
+            return UnconfirmedHierarchy(target, targetOutline, rawSources.Select(r => (r.Name, r.Source, r.Outline)).ToList(), !targetSelectionComplete);
+        }
+        static bool UncertainSource(GatherSource source, IReadOnlyList<HeadingRecord> outline) =>
+            NeedsHierarchyReview(outline) || source.Gaps.Any(g => g.Reason == "heading_boundary_unverified" ||
+                g.Reason.StartsWith("heading_unmatched:", StringComparison.Ordinal) || g.Reason.StartsWith("heading_located_by_text:", StringComparison.Ordinal));
+        var heldSources = rawSources.Where(r => r.OutlineReviewRequired || !r.SelectionComplete || UncertainSource(r.Source, r.Outline)).ToList();
+        var validSources = rawSources.Where(r => !r.OutlineReviewRequired && r.SelectionComplete && !UncertainSource(r.Source, r.Outline)).ToList();
         var targetSections = Sections(target.Units, targetOutline.Where(h => !OutsideTree(h)).ToArray());
-        var read = rawSources.Select(r => (r.Source, Sections: Sections(r.Source.Units, r.Outline.Where(h => !OutsideTree(h)).ToArray()))).ToList();
+        var resolved = validSources.Select(r => (r.Name, r.Source, Sections: Sections(r.Source.Units, r.Outline.Where(h => !OutsideTree(h)).ToArray()), r.Path)).ToList();
+        var withoutSections = resolved.Where(r => r.Sections.Count == 0).ToList();
+        var read = resolved.Where(r => r.Sections.Count > 0).Select(r => (r.Source, r.Sections, r.Path)).ToList();
         // A title only one side has is left out of the chains on that side.
         var targetKeys = targetSections.Select(t => Key(t.Heading)).ToHashSet(StringComparer.Ordinal);
         var sourceKeys = read.SelectMany(r => r.Sections).Select(t => Key(t.Heading)).ToHashSet(StringComparer.Ordinal);
         targetSections = WithoutTitle(targetSections, sourceKeys);
-        read = read.Select(r => (r.Source, WithoutTitle(r.Sections, targetKeys))).ToList();
-        var gaps = target.Gaps.Concat(read.SelectMany(r => r.Source.Gaps)).ToList();
+        read = read.Select(r => (r.Source, WithoutTitle(r.Sections, targetKeys), r.Path)).ToList();
+        var gaps = target.Gaps.Concat(rawSources.SelectMany(r => r.Source.Gaps)).ToList();
 
         var chainCount = targetSections.Where(t => !t.Title).GroupBy(t => t.Chain).ToDictionary(g => g.Key, g => g.Count(), StringComparer.Ordinal);
         var received = targetSections.Select(_ => new List<GatheredFact>()).ToList();
@@ -276,11 +336,22 @@ public static partial class GatherByHeading
         var excluded = new List<GatherExcluded>();
         var matched = new HashSet<int>();
         var uncertain = new List<UncertainItem>();
-        foreach (var (source, sourceSections, path) in read.Select((r, i) => (r.Source, r.Sections, sources[i].Path)))
+        foreach (var (source, sourceSections, path) in read)
         {
             if (sourceSections.Count > 0)
                 foreach (var fact in Content(source.Units, new Section("", "", -1, -1, sourceSections[0].First)))
                     excluded.Add(new GatherExcluded("", fact, "BEFORE_FIRST_HEADING: nội dung trước heading đầu tiên của nguồn"));
+            // Title headings are removed from matching chains, but their original text still needs a disposition. In particular a heading
+            // spanning multiple paragraphs must retain every source part; Content below intentionally starts after the heading itself.
+            foreach (var title in sourceSections.Where(s => s.Title))
+                for (var i = title.First; i <= title.Last; i++)
+                {
+                    var unit = source.Units[i];
+                    var end = i == title.Last && unit.HeadingEnd is { } headingEnd ? headingEnd : unit.Text.Length;
+                    if (Trimmed(unit.Text, 0, end) is { } span)
+                        excluded.Add(new GatherExcluded("", new GatheredFact([Part(unit, span.Start, span.End)], []),
+                            "DOCUMENT_TITLE: tiêu đề của văn bản nguồn"));
+                }
             var placed = new Placement[sourceSections.Count];
             if (matching == GatherMatching.Order) PlaceByOrder(sourceSections, source.Units, targetSections, roots, addMissingHeadings, placed);
             else
@@ -304,6 +375,12 @@ public static partial class GatherByHeading
                 var p = placed[i];
                 foreach (var content in Content(source.Units, s))
                 {
+                    // Tables are not gathered (owner's scope, 2026-11-06): a fact read only from table cells is listed as not added, never written.
+                    if (content.Parts.Count > 0 && content.Parts.All(InTable))
+                    {
+                        excluded.Add(new GatherExcluded(s.Heading, content, TableReason));
+                        continue;
+                    }
                     // The table that ends the source (signature, recipients) closes that document; it is not content of its last heading.
                     if (endTable is not null && content.Parts.All(part => part.Location.StartsWith(endTable, StringComparison.Ordinal)))
                     {
@@ -336,7 +413,9 @@ public static partial class GatherByHeading
                 section.End < target.Units.Count ? target.Units[section.End].Location : null)
             {
                 Note = ambiguous ? "có nhiều heading cùng tên trong văn bản đích; chưa xác định được mục tương ứng" :
-                    facts.Count == 0 ? "không có heading cùng tên trong văn bản nguồn" : null,
+                    facts.Count == 0 ? heldSources.Count > 0
+                        ? "không có heading cùng tên trong các nguồn đã xét; còn nguồn chờ xác minh cấu trúc"
+                        : "không có heading cùng tên trong văn bản nguồn" : null,
             };
             var (kept, repeated) = RemoveDuplicates(built, targetContent);
             var note = built.Note is null && kept.Run.Facts.Count == 0 ? "mọi đoạn của nguồn đã có sẵn trong văn bản đích" :
@@ -370,12 +449,18 @@ public static partial class GatherByHeading
             NewHeadingParent = u.Anchor < 0 ? null : targetSections[u.Anchor].Heading,
             NewHeadingNextLocation = SubtreeEnd(targetSections, u.Anchor) is var end and >= 0 ? targetSections[end].Location : null,
         }).ToList();
-        return new GatherHeadingPlan(sections, excluded, held);
+        held.AddRange(heldSources.Select(s => HoldSource(s.Name, s.Source, s.OutlineReviewRequired, selectionIncomplete: !s.SelectionComplete)));
+        held.AddRange(withoutSections.Where(s => s.Source.Units.Any(u => !string.IsNullOrWhiteSpace(u.Text)))
+            .Select(s => HoldSource(s.Name, s.Source, noSections: true)));
+        // A held source keeps its paragraphs for review; its table content is out of scope like any other table.
+        excluded.AddRange(heldSources.Select(s => s.Source).Concat(withoutSections.Select(s => s.Source)).SelectMany(TableFacts));
+        excluded = FormBlocks(excluded, target, targetSections);
+        return new GatherHeadingPlan(sections, excluded, held) { Gaps = gaps };
     }
 
     // No hierarchy is inferred in this preview. Keep the source text visible, and force a fresh plan after outline review.
     static GatherHeadingPlan UnconfirmedHierarchy(GatherSource target, IReadOnlyList<HeadingRecord> targetOutline,
-        IReadOnlyList<(string Name, GatherSource Source, IReadOnlyList<HeadingRecord> Outline)> sources)
+        IReadOnlyList<(string Name, GatherSource Source, IReadOnlyList<HeadingRecord> Outline)> sources, bool targetIncomplete = false)
     {
         var gaps = target.Gaps.Concat(sources.SelectMany(s => s.Source.Gaps)).ToArray();
         var targets = new List<GatherSection>();
@@ -390,11 +475,19 @@ public static partial class GatherByHeading
                 { Note = "cấp hoặc quan hệ của outline chưa xác nhận; cần duyệt trước khi ghép" });
             cursor = last + 1;
         }
-        var held = sources.Select(s => new GatherUncertain("UNCONFIRMED_HIERARCHY", "Toàn bộ nguồn chờ xác minh cấu trúc", s.Name, null, [],
-            Content(s.Source.Units, new Section("", "", -1, -1, s.Source.Units.Count)).ToList(),
-            "Có heading chưa có cấp; chưa xác định parent hay vị trí chèn. Duyệt outline rồi chạy lại tổng hợp.")).ToArray();
-        return new GatherHeadingPlan(targets, [], held);
+        var held = sources.Select(s => HoldSource(s.Name, s.Source, targetIncomplete: targetIncomplete)).ToArray();
+        return new GatherHeadingPlan(targets, sources.SelectMany(s => TableFacts(s.Source)).ToList(), held) { Gaps = gaps };
     }
+
+    static GatherUncertain HoldSource(string name, GatherSource source, bool reviewRequired = false, bool noSections = false,
+        bool selectionIncomplete = false, bool targetIncomplete = false) =>
+        new(targetIncomplete ? "TARGET_OUTLINE_INCOMPLETE" : reviewRequired ? "SOURCE_OUTLINE_REVIEW_REQUIRED" : "UNCONFIRMED_HIERARCHY", "Toàn bộ nguồn chờ xác minh cấu trúc", name, null, [],
+            Content(source.Units, new Section("", "", -1, -1, source.Units.Count)).Where(f => f.Parts.Count == 0 || !f.Parts.All(InTable)).ToList(),
+            targetIncomplete ? "Chưa kiểm tra hết các đoạn của văn bản đích; giữ nội dung nguồn để xem xét."
+                : selectionIncomplete ? "Chưa kiểm tra hết các đoạn của nguồn; giữ toàn bộ nội dung để xem xét."
+                : noSections ? "Không tìm thấy heading nguồn để xác định vị trí; giữ toàn bộ nội dung để xem xét."
+                : reviewRequired ? "Outline nguồn chưa được duyệt; hãy duyệt và chạy lại trước khi xác định vị trí chèn."
+                : "Có heading chưa có cấp; chưa xác định parent hay vị trí chèn. Duyệt outline rồi chạy lại tổng hợp.");
 
     /// <summary>
     /// The sections with the SCOPE_UNREVIEWED guard removed, for a caller whose contract is the heading chain itself: the place of every fact was

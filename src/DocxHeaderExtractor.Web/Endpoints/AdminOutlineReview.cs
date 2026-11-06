@@ -56,6 +56,21 @@ internal static class AdminOutlineReview
 
     public sealed record ReviewItem(string? Location, string Kind);
     public sealed record ReviewRequest(string SourceSha256, string ConfigKey, string OutlineSha256, string Reviewer, IReadOnlyList<ReviewItem>? Items, bool Complete);
+    public sealed record ParentEditRequest(string SourceSha256, string ConfigKey, string OutlineSha256, string Location, string? ParentLocation, string Reviewer);
+
+    public static IResult EditParent(ParentEditRequest request, OutlineRoot root)
+    {
+        var store = new OutlineStore(root.Path);
+        var outline = store.Find(request.SourceSha256, request.ConfigKey);
+        if (outline is null) return Results.NotFound(new { message = "Không tìm thấy outline đã lưu." });
+        if (OutlineApprovals.OutlineHash(outline) != request.OutlineSha256)
+            return Results.Conflict(new { message = "Outline đã thay đổi; tải lại trước khi sửa." });
+        var (headings, error) = OutlineParentEdit.Apply(outline, request.Location, request.ParentLocation);
+        if (headings is null) return Results.BadRequest(new { message = error });
+        var (edited, saveError) = store.StoreEdited(request.SourceSha256, request.ConfigKey, request.OutlineSha256, headings, request.Reviewer);
+        if (edited is null) return Results.Conflict(new { message = saveError });
+        return Results.Json(new { revision = edited.Revision, outlineSha256 = OutlineApprovals.OutlineHash(edited), state = "UNREVIEWED" }, WebJson.Options);
+    }
 
     public static IResult Record(ReviewRequest request, OutlineRoot root)
     {

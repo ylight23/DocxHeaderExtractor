@@ -23,15 +23,46 @@ public static class GatherWriteback
     /// <param name="verifiedTargetSha256">SHA-256 of the exact target snapshot for which coverage was verified. This binds the assertion to the copied file.</param>
     public static GatherWriteResult Apply(string targetPath, string outputPath, IReadOnlyList<GatherSection> sections, DateTime when,
         bool targetOutlineCoverageVerified = false, string? verifiedTargetSha256 = null)
-        => ApplyCore(targetPath, outputPath, sections, when, targetOutlineCoverageVerified, verifiedTargetSha256, null);
+        => ApplyCore(targetPath, outputPath, sections, when, targetOutlineCoverageVerified, verifiedTargetSha256, null, null);
 
     /// <summary>Creates a clearly marked, provisional copy for display only. This never grants outline approval.</summary>
     public static GatherWriteResult CreateDemo(string targetPath, string outputPath, IReadOnlyList<GatherSection> sections,
         IReadOnlyList<GatherUncertain> uncertain, DateTime when) =>
-        ApplyCore(targetPath, outputPath, sections, when, false, null, uncertain);
+        ApplyCore(targetPath, outputPath, sections, when, false, null, uncertain, null);
+
+    /// <summary>
+    /// The automatic export of the user flow (upload, gather, export; no outline review). The sections placed by the heading chain, and those the
+    /// reader decided, are written as tracked insertions with their sources: a reader can still reject each one in Word. Everything else goes to an
+    /// appendix at the end, item by item with its source, location and a plain reason, so nothing is dropped and nothing is written at a guessed place:
+    /// <paramref name="notPlaced"/> (uncertain items without a decision), <paramref name="userSkipped"/> (items the reader chose to skip), sections that
+    /// could not be written at their place, and source parts that were not read.
+    /// </summary>
+    public static GatherWriteResult Export(string targetPath, string outputPath, IReadOnlyList<GatherSection> sections,
+        IReadOnlyList<GatherUncertain> notPlaced, DateTime when, IReadOnlyList<GatherUncertain>? userSkipped = null,
+        IReadOnlyList<GatherGap>? gaps = null, IReadOnlyList<GatherExcluded>? excluded = null) =>
+        ApplyCore(targetPath, outputPath, sections, when, false, null, null, new ExportAppendix(notPlaced, userSkipped ?? [], gaps ?? [], excluded ?? []));
+
+    sealed record ExportAppendix(IReadOnlyList<GatherUncertain> NotPlaced, IReadOnlyList<GatherUncertain> UserSkipped,
+        IReadOnlyList<GatherGap> Gaps, IReadOnlyList<GatherExcluded> Excluded);
+
+    public const string AppendixTitle = "PHỤ LỤC — NỘI DUNG CHƯA GHÉP ĐƯỢC";
+
+    /// <summary>The reason of an uncertain item in plain words, for the page and the appendix. Codes are never shown to the reader.</summary>
+    public static string PlainReason(string kind) => kind switch
+    {
+        "NEAR_NAME" => "Tên mục ở văn bản nguồn hơi khác tên mục trong văn bản đích",
+        "PATH_DIFFERS" => "Cùng tên mục nhưng nằm dưới mục lớn khác",
+        "NEW_HEADING_REVIEW" => "Mục này chưa có trong văn bản đích",
+        "AMBIGUOUS" => "Văn bản đích có nhiều mục cùng tên",
+        "PARENT_UNCERTAIN" => "Chưa xác định được mục lớn chứa mục này",
+        "MOVED" => "Mục này có thể đã được chuyển sang chỗ khác trong văn bản đích",
+        "UNCONFIRMED_HIERARCHY" or "SOURCE_OUTLINE_REVIEW_REQUIRED" => "Chưa đọc được cấu trúc của văn bản nguồn này",
+        "TARGET_OUTLINE_INCOMPLETE" => "Chưa kiểm tra hết các đoạn của văn bản đích",
+        _ => "Chưa xác định được vị trí trong văn bản đích",
+    };
 
     static GatherWriteResult ApplyCore(string targetPath, string outputPath, IReadOnlyList<GatherSection> sections, DateTime when,
-        bool targetOutlineCoverageVerified, string? verifiedTargetSha256, IReadOnlyList<GatherUncertain>? demoUncertain)
+        bool targetOutlineCoverageVerified, string? verifiedTargetSha256, IReadOnlyList<GatherUncertain>? demoUncertain, ExportAppendix? export)
     {
         var demo = demoUncertain is not null;
         ArgumentException.ThrowIfNullOrWhiteSpace(targetPath);
@@ -42,7 +73,8 @@ public static class GatherWriteback
         string copiedHash;
         using (var copiedStream = File.OpenRead(outputPath))
             copiedHash = Convert.ToHexStringLower(System.Security.Cryptography.SHA256.HashData(copiedStream));
-        var coverageBoundToFile = targetOutlineCoverageVerified && !string.IsNullOrWhiteSpace(verifiedTargetSha256)
+        // The export accepts the automatic outline (the owner's flow has no outline review): what it writes stays a tracked insertion with its source.
+        var coverageBoundToFile = export is not null || targetOutlineCoverageVerified && !string.IsNullOrWhiteSpace(verifiedTargetSha256)
             && string.Equals(copiedHash, verifiedTargetSha256, StringComparison.OrdinalIgnoreCase);
 
         var skipped = new List<string>();
@@ -135,22 +167,89 @@ public static class GatherWriteback
                     appendix.Add("[CHƯA XÁC ĐỊNH VỊ TRÍ — " + section.Heading + "]");
                     appendix.AddRange(Lines(section, emptyNote: false));
                 }
-                if (appendix.Count > 0)
-                {
-                    var properties = body.GetFirstChild<SectionProperties>();
-                    var title = Tracked("DEMO — NỘI DUNG CHƯA XÁC ĐỊNH VỊ TRÍ, CẦN XÁC MINH", when, ref nextId, true);
-                    if (properties is null) body.AppendChild(title); else body.InsertBefore(title, properties);
-                    foreach (var line in appendix)
-                    {
-                        var paragraph = Tracked(line, when, ref nextId);
-                        if (properties is null) body.AppendChild(paragraph); else body.InsertBefore(paragraph, properties);
-                    }
-                }
+                AppendAtEnd(body, "DEMO — NỘI DUNG CHƯA XÁC ĐỊNH VỊ TRÍ, CẦN XÁC MINH", appendix, when, ref nextId);
             }
+            if (export is not null)
+                AppendAtEnd(body, AppendixTitle, ExportAppendixLines(export, sections, skipped), when, ref nextId);
             document.MainDocumentPart!.Document!.Save();
         }
         return new GatherWriteResult(outputPath, skipped);
     }
+
+    /// <summary>A bold title and its lines at the end of the body, before the final section properties; nothing when there is no line.</summary>
+    static void AppendAtEnd(Body body, string title, IReadOnlyList<string> lines, DateTime when, ref int nextId)
+    {
+        if (lines.Count == 0) return;
+        var properties = body.GetFirstChild<SectionProperties>();
+        foreach (var (line, bold) in new[] { (title, true) }.Concat(lines.Select(l => (l, false))))
+        {
+            var paragraph = Tracked(line, when, ref nextId, bold);
+            if (properties is null) body.AppendChild(paragraph); else body.InsertBefore(paragraph, properties);
+        }
+    }
+
+    /// <summary>Every item the export did not write at a place, one by one, with its source, location and plain reason.</summary>
+    static List<string> ExportAppendixLines(ExportAppendix export, IReadOnlyList<GatherSection> sections, IReadOnlyList<string> skipped)
+    {
+        static string Source(GatheredFact fact) =>
+            string.Join("; ", fact.Parts.Concat(fact.AlsoFrom).Select(p => p.SourceId + " " + p.Location).Distinct(StringComparer.Ordinal));
+        var lines = new List<string>();
+        void Item(string label, GatherUncertain item)
+        {
+            lines.Add($"[{label} — {item.SourceHeading}] {PlainReason(item.Kind)} (nguồn: {item.Source})");
+            // Evidence only: the candidate is not confirmed as the corresponding section, so the facts stay here.
+            for (var c = 0; c < item.Candidates.Count; c++)
+                if (GatherDecisions.SameAsCandidate(item, c).Count is var same and > 0)
+                    lines.Add($"({same}/{item.Facts.Count} đoạn trùng chữ với nội dung mục ứng viên “{item.Candidates[c].Heading}” (bỏ qua khác biệt khoảng trắng); vị trí ghép chưa được xác nhận)");
+            foreach (var fact in item.Facts) lines.Add("- " + fact.Render() + " (nguồn: " + Source(fact) + ")");
+        }
+        foreach (var item in export.NotPlaced) Item("Chưa ghép", item);
+        foreach (var item in export.UserSkipped) Item("Người dùng chọn bỏ qua", item);
+        // Text already in the target, taken from another source, an opening paragraph with the target's own words in the same place, or a table at
+        // the start or end (tables are not gathered) is listed on the page as not added, never in the appendix.
+        foreach (var item in export.Excluded.Where(e => !e.Reason.StartsWith("ALREADY_IN_TARGET_EXACT", StringComparison.Ordinal) &&
+            !e.Reason.StartsWith("ALREADY_FROM_OTHER_SOURCE", StringComparison.Ordinal) && !e.Reason.StartsWith("FORM_HEADER:", StringComparison.Ordinal) &&
+            !e.Reason.StartsWith("TABLE_NOT_GATHERED", StringComparison.Ordinal)))
+        {
+            var reason = item.Reason.StartsWith("BEFORE_FIRST_HEADING", StringComparison.Ordinal) ? "Nội dung trước mục đầu tiên của nguồn" :
+                item.Reason.StartsWith("DOCUMENT_END_TABLE", StringComparison.Ordinal) ? "Nội dung trong bảng cuối nguồn" :
+                item.Reason.StartsWith("DOCUMENT_TITLE", StringComparison.Ordinal) ? "Nội dung thuộc phần tiêu đề nguồn" : item.Reason.StartsWith("FORM_HEADER_DIGITS", StringComparison.Ordinal) ? "Đoạn đầu giống văn bản đích, chỉ khác chữ số; cần xem số" :
+                "Nội dung nguồn chưa xác định được vị trí phù hợp";
+            lines.Add($"[Chưa ghép — {(item.Heading.Length > 0 ? item.Heading : "phần đầu văn bản nguồn")}] {reason}");
+            lines.Add("- " + item.Fact.Render() + " (nguồn: " + Source(item.Fact) + ")");
+        }
+        foreach (var section in sections)
+        {
+            var reason = skipped.FirstOrDefault(x => x.StartsWith(section.Heading + " (", StringComparison.Ordinal));
+            if (reason is null) continue;
+            lines.Add($"[Không ghi được vào vị trí dự kiến — {section.Heading}] {reason[(section.Heading.Length + 2)..].TrimEnd(')')}");
+            lines.AddRange(Lines(section, emptyNote: false));
+        }
+        var unread = export.Gaps.Where(g => GatherUnits.IsUnread(g.Reason)).Concat(sections.SelectMany(s => s.Run.UnreadGaps))
+            .Select(g => (g.SourceId, g.Reason, g.Location)).Distinct().ToList();
+        foreach (var (source, reason, location) in unread)
+            lines.Add($"[Phần tài liệu chưa đọc đủ] {source}{(location.Length > 0 ? " " + location : "")}: {PlainGapReason(reason)}");
+        return lines;
+    }
+
+    static string PlainGapReason(string reason) => reason switch
+    {
+        "drawing_or_image" => "Hình ảnh hoặc đối tượng đồ họa chưa được đọc đầy đủ",
+        "tracked_changes" => "Tài liệu có thay đổi theo dõi chưa được đọc đầy đủ",
+        "tracked_formatting" => "Định dạng có theo dõi thay đổi chưa được đọc đầy đủ",
+        "footnotes" => "Chú thích cuối trang chưa được đọc đầy đủ",
+        "endnotes" => "Chú thích cuối văn bản chưa được đọc đầy đủ",
+        "comments" => "Bình luận chưa được đọc đầy đủ",
+        "headers" => "Đầu trang chưa được đọc đầy đủ",
+        "footers" => "Chân trang chưa được đọc đầy đủ",
+        "merged_cells" => "Ô bảng gộp chưa được đọc đầy đủ",
+        "nested_table" => "Bảng lồng nhau chưa được đọc đầy đủ",
+        "heading_boundary_unverified" => "Ranh giới mục chưa được xác minh",
+        "selection_incomplete" => "Chưa kiểm tra hết các đoạn để xác định mục",
+        _ when reason.StartsWith("heading_unmatched:", StringComparison.Ordinal) => "Không tìm thấy vị trí của một mục",
+        _ when reason.StartsWith("heading_located_by_text:", StringComparison.Ordinal) => "Vị trí của một mục cần xác minh",
+        _ => "Một phần tài liệu chưa được đọc đầy đủ",
+    };
 
     /// <summary>The element that is a direct child of the body: a paragraph in a table cell is placed after its table, never inside the cell.</summary>
     static OpenXmlElement BodyLevel(OpenXmlElement element, Body body)

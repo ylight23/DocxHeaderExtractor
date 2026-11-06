@@ -16,7 +16,8 @@ public sealed class AdminRunStore
 
     public sealed record TargetApproval(string SourceSha256, string ConfigKey, string OutlineSha256);
     public sealed record Entry(byte[] Target, string TargetName, IReadOnlyList<GatherSection> Decided, IReadOnlyList<GatherUncertain> Uncertain,
-        DateTimeOffset Created, TargetApproval? ReviewedTargetAtRun = null);
+        DateTimeOffset Created, TargetApproval? ReviewedTargetAtRun = null, IReadOnlyList<TargetApproval>? ReviewedSourcesAtRun = null,
+        IReadOnlyList<GatherGap>? Gaps = null, IReadOnlyList<GatherExcluded>? Excluded = null);
 
     public void Put(Guid runId, Entry entry)
     {
